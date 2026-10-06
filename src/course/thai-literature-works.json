@@ -1,0 +1,198 @@
+[
+  {
+    "id": "work:thailand-th:thai-wikisource-nueng-sai-mu-mai-muan",
+    "courseId": "thailand-th",
+    "lang": "th",
+    "stageId": "stage:thailand-th:g3",
+    "role": "subsidiary",
+    "order": 930,
+    "title": "หนึ่งไซร้หมู่ไม้ม้วน",
+    "author": "ไม่ปรากฏนาม",
+    "sourceUrl": "https://th.wikisource.org/w/index.php?oldid=73265",
+    "streams": [
+      "library"
+    ],
+    "domains": [
+      "literature"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "verified": true,
+      "verifiedBy": "Exact Thai Wikisource public-domain source record",
+      "verifiedAt": "2026-10-02",
+      "basis": "The official source revision 73265 records the underlying work as public domain under the Thai Copyright Act. Transcription attribution and CC BY-SA terms retained.",
+      "statusByJurisdiction": {
+        "TH": "public-domain"
+      },
+      "licence": "Public-domain source; CC BY-SA 4.0 transcription attribution",
+      "userImportOnly": false,
+      "canModify": false,
+      "canStoreOffline": true,
+      "attributionRequired": true,
+      "evidence": [
+        "https://th.wikisource.org/w/index.php?oldid=73265",
+        "https://th.wikisource.org/wiki/Wikisource:Copyright_policy"
+      ]
+    },
+    "bibliographyVerified": true,
+    "optional": true,
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "genre": "poetry",
+    "registers": [
+      "literary",
+      "archaic"
+    ],
+    "notes": "Traditional orthography poem, historical wording retained."
+  },
+  {
+    "id": "work:thailand-th:thai-wikisource-phai-chai-lae-hai-than",
+    "courseId": "thailand-th",
+    "lang": "th",
+    "stageId": "stage:thailand-th:g3",
+    "role": "subsidiary",
+    "order": 931,
+    "title": "ใฝ่ใจแลให้ทาน",
+    "author": "ไม่ปรากฏนาม",
+    "sourceUrl": "https://th.wikisource.org/w/index.php?oldid=73257",
+    "streams": [
+      "library"
+    ],
+    "domains": [
+      "literature"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "verified": true,
+      "verifiedBy": "Exact Thai Wikisource public-domain source record",
+      "verifiedAt": "2026-10-02",
+      "basis": "The official source revision 73257 records the underlying work as public domain under the Thai Copyright Act. Transcription attribution and CC BY-SA terms retained.",
+      "statusByJurisdiction": {
+        "TH": "public-domain"
+      },
+      "licence": "Public-domain source; CC BY-SA 4.0 transcription attribution",
+      "userImportOnly": false,
+      "canModify": false,
+      "canStoreOffline": true,
+      "attributionRequired": true,
+      "evidence": [
+        "https://th.wikisource.org/w/index.php?oldid=73257",
+        "https://th.wikisource.org/wiki/Wikisource:Copyright_policy"
+      ]
+    },
+    "bibliographyVerified": true,
+    "optional": true,
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "genre": "poetry",
+    "registers": [
+      "literary",
+      "archaic"
+    ],
+    "notes": "Traditional orthography poem, historical wording retained."
+  },
+  {
+    "id": "work:thailand-th:thai-wikisource-phu-yai-ha-pha-mai",
+    "courseId": "thailand-th",
+    "lang": "th",
+    "stageId": "stage:thailand-th:g3",
+    "role": "subsidiary",
+    "order": 932,
+    "title": "ผู้ใหญ่หาผ้าใหม่",
+    "author": "ไม่ปรากฏนาม",
+    "sourceUrl": "https://th.wikisource.org/w/index.php?oldid=221517",
+    "streams": [
+      "library"
+    ],
+    "domains": [
+      "literature"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "verified": true,
+      "verifiedBy": "Exact Thai Wikisource public-domain source record",
+      "verifiedAt": "2026-10-02",
+      "basis": "The official source revision 221517 records the underlying work as public domain under the Thai Copyright Act. Transcription attribution and CC BY-SA terms retained.",
+      "statusByJurisdiction": {
+        "TH": "public-domain"
+      },
+      "licence": "Public-domain source; CC BY-SA 4.0 transcription attribution",
+      "userImportOnly": false,
+      "canModify": false,
+      "canStoreOffline": true,
+      "attributionRequired": true,
+      "evidence": [
+        "https://th.wikisource.org/w/index.php?oldid=221517",
+        "https://th.wikisource.org/wiki/Wikisource:Copyright_policy"
+      ]
+    },
+    "bibliographyVerified": true,
+    "optional": true,
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "genre": "poetry",
+    "registers": [
+      "literary",
+      "archaic"
+    ],
+    "notes": "Orthography poem; source verse columns joined in row order."
+  },
+  {
+    "id": "work:thailand-th:nms-vetal-selected",
+    "courseId": "thailand-th",
+    "lang": "th",
+    "stageId": "stage:thailand-th:g8",
+    "role": "subsidiary",
+    "order": 933,
+    "title": "นิทานเวตาล — เรื่องคัดสรร (1, 8–10)",
+    "author": "น.ม.ส.",
+    "sourceUrl": "https://th.wikisource.org/w/index.php?oldid=249961",
+    "streams": [
+      "library"
+    ],
+    "domains": [
+      "literature"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "verified": true,
+      "verifiedBy": "Exact Thai Wikisource public-domain source record",
+      "verifiedAt": "2026-10-02",
+      "basis": "The official source revision 249961 records the underlying work as public domain under the Thai Copyright Act. Transcription attribution and CC BY-SA terms retained.",
+      "statusByJurisdiction": {
+        "TH": "public-domain"
+      },
+      "licence": "Public-domain source; CC BY-SA 4.0 transcription attribution",
+      "userImportOnly": false,
+      "canModify": false,
+      "canStoreOffline": true,
+      "attributionRequired": true,
+      "evidence": [
+        "https://th.wikisource.org/w/index.php?oldid=249961",
+        "https://th.wikisource.org/wiki/Wikisource:Copyright_policy"
+      ]
+    },
+    "bibliographyVerified": true,
+    "optional": true,
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "genre": "historical narrative",
+    "registers": [
+      "literary",
+      "archaic"
+    ],
+    "notes": "Four available complete stories with opening and closing frame. Stories 2–7 have no available chapter transcription; this is explicitly a selection, not a complete ten-story edition."
+  }
+]

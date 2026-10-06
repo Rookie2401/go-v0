@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "bridge-thai-bridge-03",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ตลาดใกล้บ้าน",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-th-bridge-drafts",
+    "kind": "comprehensible-input",
+    "title": "Thai beginner bridge drafts"
+  },
+  "source": {
+    "id": "src:th:thai-bridge-03",
+    "title": "ตลาดใกล้บ้าน — course-owned draft",
+    "author": "Course authors (machine-drafted)",
+    "attribution": "Course-owned Thai draft. Machine-drafted for native-speaker review; no external source or translation claimed.",
+    "provenance": "Original controlled draft written for the course-owned beginner review queue. It is not a published or source-reviewed Thai work.",
+    "rights": "owner-authored",
+    "licenseNote": "Course-owned draft; may not be published until native review.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Native Thai reviewer required. Source fidelity is not applicable because this is original course-owned draft text."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "ตลาด",
+    "ผัก",
+    "ผลไม้"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "course-owned-draft"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss for review only"
+  },
+  "sections": [
+    {
+      "title": "ตลาดใกล้บ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันเสาร์ ฉันไปตลาดกับพ่อ",
+              "english": "On Saturday, I go to the market with Father."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เราถือถุงผ้าใบใหญ่หนึ่งใบ",
+              "english": "We carry one large cloth bag."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อเลือกมะม่วงสุกและกล้วยหอม",
+              "english": "Father chooses ripe mangoes and bananas."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันเลือกผักสีเขียวสำหรับมื้อเย็น",
+              "english": "I choose green vegetables for dinner."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แม่ค้าให้เราชิมผลไม้ชิ้นเล็ก",
+              "english": "The vendor lets us taste a small piece of fruit."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อจ่ายเงินแล้วตรวจของในถุง",
+              "english": "Father pays and checks the things in the bag."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ระหว่างทางกลับ ฉันช่วยถือผัก",
+              "english": "On the way home, I help carry the vegetables."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เราเห็นเพื่อนของพ่อหน้าร้านขนม",
+              "english": "We see Father’s friend in front of a snack shop."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เมื่อถึงบ้าน แม่ดีใจที่ได้ของสด",
+              "english": "When we reach home, Mother is happy to have fresh food."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ตลาดมีเสียงคนคุยกันมากมาย",
+              "english": "The market has many people talking."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อแบ่งกล้วยให้ฉันหนึ่งลูก",
+              "english": "Father gives me one banana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันจำได้ว่าต้องนำถุงกลับมาใช้ใหม่",
+              "english": "I remember that we should reuse the bag."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "work": {
+    "slug": "bridge-thai-bridge-03",
+    "courseId": "thailand-th",
+    "chapter": {
+      "index": 2,
+      "title": "ตลาดใกล้บ้าน"
+    }
+  }
+}

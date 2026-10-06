@@ -1,0 +1,7 @@
+library:build - library-th@2026-10-02 (schema 1)
+  built:    1 work(s), 1189 text(s), 863775 words
+    + bible-thai-otcv2025: 1189 text(s), 863775 words, 1189 published, rights verified-open-licence, quality not checked
+  refused:  0
+  written:  3 index shard(s), 2383 file(s), 30689554 bytes -> C:\Users\CJWal\dev\go-v0\public\library\th
+  digest:   04d69aca9ac32199
+  build time: 101837 ms

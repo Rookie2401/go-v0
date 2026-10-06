@@ -155,7 +155,13 @@ export async function importRecordingFor(rt: Runtime, args: ImportRecordingArgs)
       ...(reviewer && !learner ? { reviewer, reviewedAt: now } : {}), importedAt: now };
     await rt.store.meta.put({ id: importRecordId(asset.id), value: JSON.stringify(record), updatedAt: now });
   }
-  const orderedCoverage = m.coverage.map((c) => ({ c, s: map.get(c.sentenceId)! }));
+  // Alignment review is a separate trust fact from the uploaded manifest. A learner can provide
+  // useful checked timings, but cannot promote their own timing assertion into trusted review.
+  const trustedAlignmentReview = !learner && !!reviewer;
+  const orderedCoverage = m.coverage.map((c) => ({
+    c: trustedAlignmentReview ? c : { ...c, reviewState: 'checked' as const },
+    s: map.get(c.sentenceId)!,
+  }));
   const segmentIds: string[] = [];
   const reviewedCoverage = orderedCoverage.every(({ c }) => c.reviewState === 'reviewed');
   const groups = reviewedCoverage ? orderedCoverage.map(({ c, s }) => ({ coverage: [c], sentences: [s] })) : [{ coverage: [], sentences: orderedCoverage.map(({ s }) => s) }];

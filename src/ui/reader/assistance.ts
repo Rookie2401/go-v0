@@ -215,7 +215,7 @@ export function dictionaryName(info?: Pick<DictionaryInfo, 'attribution'>): stri
  * than guessing its review state.
  */
 export function analysisSourceLine(
-  a: Pick<TokenAnalysis, 'origin' | 'sourceId'> | undefined,
+  a: Pick<TokenAnalysis, 'origin' | 'sourceId' | 'sourceInfo'> | undefined,
   sources?: Readonly<Record<string, AnalysisSourceInfo>>,
   dictionary?: Pick<DictionaryInfo, 'attribution'>,
 ): string | undefined {
@@ -223,15 +223,18 @@ export function analysisSourceLine(
   // A dictionary's reading always names the dictionary, whatever the adapter has opted in to: the meaning on show is
   // the dictionary's, and its licence asks for the attribution.
   if (a.origin === 'dictionary') return dictionary?.attribution ?? (a.sourceId ? `Dictionary ${a.sourceId}` : 'From a dictionary');
-  // An adapter that declares no sources has not opted in to showing provenance: its reader stays exactly as it was.
-  if (!sources) return undefined;
   switch (a.origin) {
     case 'hand': {
-      const src = a.sourceId ? sources?.[a.sourceId] : undefined;
-      if (!src) return undefined;
-      const state = src.reviewStatus === 'machine-drafted' ? ', machine-drafted — not checked by a native speaker'
-        : src.reviewStatus === 'native-reviewed' ? ', checked by a native speaker' : '';
-      return `${src.label}${state}`;
+      const persisted = a.sourceInfo;
+      const src = persisted ?? (a.sourceId ? sources?.[a.sourceId] : undefined);
+      if (!src) return a.sourceId
+        ? `Source ${a.sourceId} is not in the current registry; historical review status is unknown.`
+        : 'Source is not identified; historical review status is unknown.';
+      const status = src.reviewStatus === 'machine-drafted' ? 'machine-drafted; not checked by a native speaker'
+        : src.reviewStatus === 'native-reviewed' ? 'source metadata says native-reviewed; this is not a check of the text shown here'
+        : 'external source; review status is not stated';
+      const currentRegistryNote = persisted ? '' : ' · current source registry; historical review status was not stored';
+      return `${src.label} · ${status}${src.licence ? ` · ${src.licence}` : ''}${src.version ? ` · ${src.version}` : ''}${currentRegistryNote}`;
     }
     case 'rule': return 'worked out by rule';
     case 'corpus': return 'supplied with this text';

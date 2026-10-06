@@ -10,9 +10,42 @@ const story = (over: Partial<CorpusDocument> = {}, review?: CorpusDocument['revi
   if (rights) d.source = { ...d.source, rights };
   return d;
 };
-const reviewed = { status: 'reviewed' as const, reviewedBy: 'Ana Ruiz (native speaker)', reviewedAt: '2026-02-01' };
+const reviewed = { status: 'reviewed' as const, reviewedBy: 'Ana Ruiz (native speaker)', reviewedAt: '2026-02-01', level: 'native' as const };
 
 describe('computePublished — the publication gate', () => {
+  it('requires explicit native review rather than a legacy reviewed label for machine wording', () => {
+    const legacy = story({ generated: true }, { status: 'reviewed', reviewedBy: 'Named reviewer', reviewedAt: '2026-02-01' });
+    expect(computePublished(legacy).published).toBe(false);
+    expect(computePublished(story({ generated: true }, { ...reviewed, reviewedAt: '' })).published).toBe(false);
+  });
+  it('retains curriculum candidate/rejection states despite a signed reviewed or team-text label', () => {
+    for (const lifecycle of ['candidate', 'rights_pending', 'acquired', 'converted', 'linguistic_review', 'native_review', 'rejected'] as const) {
+      const doc = story({ teamText: true, curriculum: { lifecycle, role: 'controlled', registers: ['standard'], rejectionReasons: lifecycle === 'rejected' ? ['No source permission'] : [], provenance: { kind: 'original' }, audio: { state: 'unavailable', rightsCleared: false } } }, reviewed);
+      expect(computePublished(doc).published).toBe(false);
+      if (lifecycle === 'rejected') expect(computePublished(doc).unpublishedReasons).toContain('No source permission');
+    }
+  });
+  it('preserves edition hashes, translation provenance, registry identity and metadata updates through real import', async () => {
+    const store = createMemoryStore();
+    const doc = story({ readingAssessmentId: 'test-heldout', curriculum: { lifecycle: 'ready', role: 'assessment', registers: ['standard'], rejectionReasons: [], provenance: { kind: 'translation', sourceTitle: 'Original story', sourceLanguage: 'de', translator: 'Test translator' }, audio: { state: 'unavailable', rightsCleared: false } } }, reviewed);
+    doc.source = { ...doc.source, sourceHash: 'a'.repeat(64), retrievedAt: '2026-10-04', licence: 'Course-owned', modifications: 'Translated from the original' };
+    const result = await importDocuments(store, registry, [doc], { clock });
+    expect(result.ok).toBe(true);
+    expect(result.documents[0].published).toBe(true);
+    const text = (await store.texts.get('text:es:test-doc'))!;
+    expect(text).toMatchObject({ readingAssessmentId: 'test-heldout', curriculum: { lifecycle: 'published', provenance: doc.curriculum!.provenance, nativeReview: { by: reviewed.reviewedBy, contentVersion: 1 } } });
+    expect(await store.sources.get(doc.source.id)).toMatchObject({ sourceHash: 'a'.repeat(64), retrievedAt: '2026-10-04', licence: 'Course-owned' });
+    expect((await importDocuments(store, registry, [doc], { clock })).documents[0].action).toBe('unchanged');
+    const candidate = { ...doc, curriculum: { ...doc.curriculum!, lifecycle: 'candidate' as const } };
+    const updated = await importDocuments(store, registry, [candidate], { clock });
+    expect(updated.documents[0]).toMatchObject({ action: 'updated', published: false, contentVersion: 1 });
+    expect((await store.texts.get(text.id))!.curriculum!.lifecycle).toBe('candidate');
+    const stale = { ...doc, curriculum: { ...doc.curriculum!, nativeReview: { by: reviewed.reviewedBy, at: reviewed.reviewedAt, language: 'es' as const, contentVersion: 2 } } };
+    const refused = await importDocuments(store, registry, [stale], { clock });
+    expect(refused.documents[0]).toMatchObject({ published: false, contentVersion: 1 });
+    expect((await store.texts.get(text.id))!.curriculum!.lifecycle).toBe('native_review');
+    expect((await importDocuments(store, registry, [stale], { clock })).documents[0]).toMatchObject({ action: 'unchanged', published: false });
+  });
   it('story matrix: review status × rights', () => {
     const cases: Array<[string, CorpusDocument, boolean]> = [
       ['unreviewed', story(), false],

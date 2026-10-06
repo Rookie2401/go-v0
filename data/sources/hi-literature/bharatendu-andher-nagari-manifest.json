@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "lang": "hi",
+  "entries": [
+    {
+      "slug": "bharatendu-andher-nagari",
+      "title": "अंधेर नगरी",
+      "courseId": "india-hi",
+      "stream": "literature",
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "none",
+        "verified": true,
+        "verifiedBy": "Wikisource Bharatendu-Natakavali source record",
+        "verifiedAt": "2026-10-01",
+        "basis": "Wikisource source record revision 517232 identifies the 1935 first edition, PD India and PD US; the underlying 1881 play is by Bharatendu Harishchandra.",
+        "jurisdictions": [
+          "IN",
+          "US"
+        ],
+        "licence": "Public domain in India and United States per the source record; Wikisource transcription CC BY-SA",
+        "attributionRequired": true,
+        "modifications": "HTML transcription extracted from six Wikisource अंक pages; editorial preface excluded.",
+        "sourceRepository": "hi.wikisource.org",
+        "retrievedAt": "2026-10-01",
+        "evidence": [
+          "भारतेंदु-नाटकावली source record: editor Brajaratnadas; first edition VS 1992/1935; play pages 543–570.",
+          "Wikisource marks the work PD India and PD US; six अंक pages were retrieved through the official API."
+        ],
+        "statusByJurisdiction": {
+          "IN": "public-domain",
+          "US": "public-domain"
+        }
+      },
+      "source": {
+        "file": "bharatendu-andher-nagari.json",
+        "kind": "documents",
+        "url": "https://hi.wikisource.org/wiki/भारतेंदु-नाटकावली",
+        "edition": "भारतेंदु-नाटकावली first edition VS 1992 / 1935",
+        "attribution": "भारतेंदु हरिश्चंद्र, अंधेर नगरी; Wikisource parent revision 517232 plus six act-page revisions recorded in the source sidecar; CC BY-SA 4.0 transcription attribution retained.",
+        "provenance": "Official Wikisource API retrieval of six act pages; each canonical URL and API revision is recorded in bharatendu-andher-nagari-source.json. Parent index revision 517232 identifies the edition and rights; editorial preface excluded.",
+        "checksum": "be33006a0584af910eb9cb5a5b7beea1c448c64c81ac63bb02cbc29770a2e91f",
+        "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    }
+  ]
+}

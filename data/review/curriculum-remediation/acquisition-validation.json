@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-04",
+  "validatedBuildManifests": 5,
+  "uniqueReadySourceHashes": 32,
+  "reviewHashMatches": 32,
+  "heldModernFullArticles": 13,
+  "heldTranslations": 40,
+  "nativeReviewClaims": 0,
+  "mediaImported": 0,
+  "audioImported": 0,
+  "standaloneLibraryBuild": "Conversion completed but final atomic directory rename failed with EPERM twice on Windows; not a passing build."
+}

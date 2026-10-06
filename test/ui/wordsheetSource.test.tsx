@@ -48,10 +48,10 @@ const adapter = {
   orthFeatures: () => [],
 } as unknown as LanguageAdapter;
 
-function wire() {
+function wire(currentSources = sources) {
   const catalog = { assistanceFor: vi.fn(async () => ladder), currentStage: vi.fn(async () => undefined) } as unknown as CourseCatalog;
   const info = vi.fn(async () => DICT);
-  Object.assign(h.services, { catalog, adapters: { get: () => adapter, all: () => [adapter] }, lexicon: () => ({ info, lookup: async () => new Map() }) });
+  Object.assign(h.services, { catalog, adapters: { get: () => ({ ...adapter, sources: currentSources }), all: () => [{ ...adapter, sources: currentSources }] }, lexicon: () => ({ info, lookup: async () => new Map() }) });
   return { info };
 }
 
@@ -72,8 +72,8 @@ const sourceLine = () => q(mounted!.container, '[data-testid="analysis-source"]'
 
 describe('the source line under the gloss', () => {
   it.each([
-    ['hand, machine-drafted', { origin: 'hand', sourceId: 'adapter-th@2:hand' }, 'Course word list, machine-drafted — not checked by a native speaker'],
-    ['hand, reviewed by a native speaker', { origin: 'hand', sourceId: 'adapter-th@2:checked' }, 'Checked word list, checked by a native speaker'],
+    ['hand, machine-drafted', { origin: 'hand', sourceId: 'adapter-th@2:hand' }, 'Course word list · machine-drafted; not checked by a native speaker · current source registry; historical review status was not stored'],
+    ['hand, source metadata lists a native review', { origin: 'hand', sourceId: 'adapter-th@2:checked' }, 'Checked word list · source metadata says native-reviewed; this is not a check of the text shown here · current source registry; historical review status was not stored'],
     ['dictionary: its attribution', { origin: 'dictionary', sourceId: DICT.id }, 'Wiktionary via kaikki.org, CC BY-SA 4.0'],
     ['rule', { origin: 'rule' }, 'worked out by rule'],
     ['corpus', { origin: 'corpus' }, 'supplied with this text'],
@@ -87,15 +87,44 @@ describe('the source line under the gloss', () => {
     expect(sourceLine()).toBe(line);
   });
 
-  it('says nothing when the origin is absent, or a hand source cannot be named', async () => {
+  it('states when a historical hand source is missing, and says nothing when the origin is absent', async () => {
     await seed(h.store);
     await patch(h.store, 3, { origin: 'hand', sourceId: 'unknown-source' });
     wire();
     await open();
     await click(tok('ไป'));
-    expect(sourceLine()).toBeUndefined();
+    expect(sourceLine()).toContain('Source unknown-source is not in the current registry; historical review status is unknown.');
     await click(tok('ข้าว')); // origin absent
     expect(sourceLine()).toBeUndefined();
+  });
+
+  it('prefers the persisted source descriptor over a changed current adapter registry', async () => {
+    await seed(h.store);
+    await patch(h.store, 3, {
+      origin: 'hand', sourceId: 'adapter-th@2:hand',
+      sourceInfo: { id: 'adapter-th@2:hand', label: 'Imported course word list', origin: 'hand', reviewStatus: 'machine-drafted', version: '2' },
+    });
+    wire({
+      ...sources,
+      'adapter-th@2:hand': { id: 'adapter-th@2:hand', label: 'Changed current registry', origin: 'hand', reviewStatus: 'external' },
+    });
+    await open();
+    await click(tok('ไป'));
+    expect(sourceLine()).toContain('Imported course word list');
+    expect(sourceLine()).toContain('machine-drafted; not checked by a native speaker');
+    expect(sourceLine()).not.toContain('Checked word list');
+    expect(sourceLine()).not.toContain('current source registry');
+    expect(sourceLine()).not.toContain('historical review status was not stored');
+  });
+
+  it('qualifies matching current-registry metadata for a legacy analysis without a snapshot', async () => {
+    await seed(h.store);
+    await patch(h.store, 3, { origin: 'hand', sourceId: 'adapter-th@2:hand' });
+    wire();
+    await open();
+    await click(tok('ไป'));
+    expect(sourceLine()).toContain('Course word list · machine-drafted; not checked by a native speaker');
+    expect(sourceLine()).toContain('current source registry; historical review status was not stored');
   });
 
   it('a course without a ladder and without origins looks as it did: no line, no disclosure', async () => {
@@ -253,21 +282,21 @@ describe('dictionary lookup on tap (hand-analysed words carry only a marker)', (
   });
 });
 
-describe('the other languages show no provenance', () => {
-  it('a Spanish analysis with origin rule or corpus has no source line, and no dictionary is asked', async () => {
+describe('source lines across languages', () => {
+  it('a Spanish analysis names its rule or corpus source, and does not ask the dictionary', async () => {
     await seedStory(h.store);
     const lookup = vi.fn(async () => new Map());
     const info = vi.fn(async () => undefined);
     Object.assign(h.services, { lexicon: () => ({ info, lookup }) });
     const first = ids.token(ids.sentence(STORY_ID, 0), 1);
-    for (const origin of ['rule', 'corpus'] as const) {
+    for (const [origin, expected] of [['rule', 'worked out by rule'], ['corpus', 'supplied with this text']] as const) {
       const row = (await h.store.analyses.where('tokenId', first))[0];
       await h.store.analyses.put({ ...row, origin });
       mounted = await h.mount(<Reader textId={STORY_ID} mode="corpus" />);
       await click(qa<HTMLButtonElement>(mounted.container, 'button.tok').find((b) => b.textContent === 'creo')!);
       await click(button(mounted.container, 'Show phrases'));
       await click(button(mounted.container, 'Show grammar')); // the analysis is loaded from here on
-      expect(sourceLine()).toBeUndefined();
+      expect(sourceLine()).toBe(expected);
       await mounted.unmount();
       mounted = undefined;
     }

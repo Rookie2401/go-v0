@@ -1,0 +1,187 @@
+{
+  "retrievedAt": "2026-10-01",
+  "api": "https://sq.wikisource.org/w/api.php?action=query&format=json&list=search&srnamespace=0&srlimit=3&srsearch=",
+  "items": [
+    {
+      "slug": "udha-0",
+      "title": "Udha 0 — Shkronjat dhe fjalët e para",
+      "line": "{ slug: 'udha-0', stage: '0', title: 'Udha 0 — Shkronjat dhe fjalët e para', role: 'spine', streams: ['acquisition'], variety: 'sq', level: 'controlled', genre: 'microstories', rights: COURSE, ingestion: 'bundled', readiness: 'implemented',",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "udha-1",
+      "title": "Udha 1 — Familja dhe shtëpia",
+      "line": "{ slug: 'udha-1', stage: '1', title: 'Udha 1 — Familja dhe shtëpia', role: 'spine', streams: ['acquisition'], variety: 'sq', level: 'controlled', genre: 'short narrative', rights: COURSE, ingestion: 'bundled', readiness: 'implemented',",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "misioni-1",
+      "title": "Misioni 1 — Takime",
+      "line": "{ slug: 'misioni-1', stage: '1', title: 'Misioni 1 — Takime', role: 'spine', streams: ['mission', 'acquisition'], variety: 'sq', level: 'controlled', genre: 'dialogues', rights: COURSE, ingestion: 'bundled', readiness: 'implemented',",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "bibla-alb",
+      "title": "Bibla (the Albanian Bible commonly labelled ALB)",
+      "line": "{ slug: 'bibla-alb', stage: '6', title: 'Bibla (the Albanian Bible commonly labelled ALB)', streams: ['scripture', 'mission'], variety: 'sq', genre: 'Bible translation', registers: ['religious', 'biblical'], domains: ['theology'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "kristoforidhi-dhjata-e-re-gheg",
+      "title": "Kostandin Kristoforidhi — the New Testament in Gheg",
+      "line": "{ slug: 'kristoforidhi-dhjata-e-re-gheg', stage: '9', title: 'Kostandin Kristoforidhi — the New Testament in Gheg', author: 'Kostandin Kristoforidhi', died: 1895, streams: ['historical', 'gheg', 'scripture'], variety: 'aln', era: '19th century', genre: 'Bible translation (New Testament)', registers: ['religious', 'biblical', 'historical'], domains: ['theology'], level: 'historical',",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "kristoforidhi-dhjata-e-re-tosk",
+      "title": "Kostandin Kristoforidhi — the New Testament in Tosk",
+      "line": "{ slug: 'kristoforidhi-dhjata-e-re-tosk', stage: '8', title: 'Kostandin Kristoforidhi — the New Testament in Tosk', author: 'Kostandin Kristoforidhi', died: 1895, streams: ['historical', 'scripture'], variety: 'als', era: '19th century', genre: 'Bible translation (New Testament)', registers: ['religious', 'biblical', 'historical'], domains: ['theology'], level: 'historical',",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "naim-frasheri-lulet-e-veres",
+      "title": "Lulet e verës",
+      "line": "{ slug: 'naim-frasheri-lulet-e-veres', stage: '8', title: 'Lulet e verës', author: 'Naim Frashëri', died: 1900, year: 1890, streams: ['historical'], variety: 'sq-hist', era: '19th century', genre: 'verse', level: 'historical', registers: ['literary'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "naim-frasheri-bageti-e-bujqesi",
+      "title": "Bagëti e bujqësi",
+      "line": "{ slug: 'naim-frasheri-bageti-e-bujqesi', stage: '8', title: 'Bagëti e bujqësi', author: 'Naim Frashëri', died: 1900, year: 1886, streams: ['historical'], variety: 'sq-hist', era: '19th century', genre: 'verse', level: 'historical', registers: ['literary'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "naim-frasheri-istori-e-skenderbeut",
+      "title": "Istori e Skënderbeut",
+      "line": "{ slug: 'naim-frasheri-istori-e-skenderbeut', stage: '8', title: 'Istori e Skënderbeut', author: 'Naim Frashëri', died: 1900, year: 1898, streams: ['historical'], variety: 'sq-hist', era: '19th century', genre: 'epic verse', level: 'historical', registers: ['literary'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "sami-frasheri-shqiperia",
+      "title": "Shqipëria ç\\",
+      "line": "{ slug: 'sami-frasheri-shqiperia', stage: '8', title: 'Shqipëria ç\\'ka qënë, ç\\'është e ç\\'do të bëhetë', author: 'Sami Frashëri', died: 1904, year: 1899, streams: ['historical'], variety: 'sq-hist', era: '19th century', genre: 'essay', level: 'historical', domains: ['history'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "cajupi-baba-tomorri",
+      "title": "Baba Tomorri",
+      "line": "{ slug: 'cajupi-baba-tomorri', stage: '8', title: 'Baba Tomorri', author: 'Andon Zako Çajupi', died: 1930, year: 1902, streams: ['historical'], variety: 'sq-hist', era: 'early 20th century', genre: 'verse', level: 'historical', registers: ['literary'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "konica-albania-periodical",
+      "title": "Albania (the periodical edited by Faik Konica)",
+      "line": "{ slug: 'konica-albania-periodical', stage: '8', title: 'Albania (the periodical edited by Faik Konica)', author: 'Faik Konica (editor)', died: 1942, streams: ['historical'], variety: 'sq-hist', era: 'early 20th century', genre: 'periodical', level: 'historical', domains: ['history'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "asdreni-rreze-dielli",
+      "title": "Rreze dielli",
+      "line": "{ slug: 'asdreni-rreze-dielli', stage: '8', title: 'Rreze dielli', author: 'Asdreni', died: 1947, year: 1904, streams: ['historical'], variety: 'sq-hist', era: 'early 20th century', genre: 'verse', level: 'historical', registers: ['literary'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "vasa-bardha-e-temalit",
+      "title": "Bardha e Temalit",
+      "line": "{ slug: 'vasa-bardha-e-temalit', stage: '8', title: 'Bardha e Temalit', author: 'Pashko Vasa', died: 1892, streams: ['historical'], variety: 'sq-hist', era: '19th century', genre: 'novel', level: 'historical',",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "de-rada-milosao",
+      "title": "Milosao",
+      "line": "{ slug: 'de-rada-milosao', stage: '9', title: 'Milosao', author: 'Jeronim de Rada', died: 1903, year: 1836, streams: ['historical'], variety: 'aae', era: '19th century', genre: 'verse', level: 'historical', registers: ['literary'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located",
+      "focusedReview": {
+        "url": "https://wikisource.org/wiki/Author:Jeronym_De_Rada",
+        "edition": "catalogue candidate first published 1836",
+        "blocker": "No exact scan/licence record verified in this bounded lane; De Rada died 1903 but source-country edition/transcription rights remain unestablished."
+      }
+    },
+    {
+      "slug": "fishta-lahuta-e-malcis",
+      "title": "Lahuta e Malcís",
+      "line": "{ slug: 'fishta-lahuta-e-malcis', stage: '9', title: 'Lahuta e Malcís', author: 'Gjergj Fishta', died: 1940, streams: ['historical', 'gheg'], variety: 'aln', era: 'early 20th century', genre: 'epic verse', level: 'historical', registers: ['literary'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located",
+      "focusedReview": {
+        "url": "https://exploral.eu/explore/uploads/balkaneana/pdfs/577e1c785a41e.pdf",
+        "edition": "final edition 1937; historical Gheg epic",
+        "rightsEvidence": "WIPO Albania Law No. 35/2016, Article 41: life + 70 years; Fishta died 1940, so Albania term expired after 2010.",
+        "usEvidence": "1937 US publication term not cleared; treated as protected through 2032 (public domain from 2033, if the 95-year term applies) for this review.",
+        "blocker": "Exact scan/transcription and licence remain unverified."
+      }
+    },
+    {
+      "slug": "fishta-mrizi-i-zanave",
+      "title": "Mrizi i Zanave",
+      "line": "{ slug: 'fishta-mrizi-i-zanave', stage: '9', title: 'Mrizi i Zanave', author: 'Gjergj Fishta', died: 1940, streams: ['historical', 'gheg'], variety: 'aln', era: 'early 20th century', genre: 'play', level: 'historical',",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "fishta-anzat-e-parnasit",
+      "title": "Anzat e Parnasit",
+      "line": "{ slug: 'fishta-anzat-e-parnasit', stage: '9', title: 'Anzat e Parnasit', author: 'Gjergj Fishta', died: 1940, streams: ['historical', 'gheg'], variety: 'aln', era: 'early 20th century', genre: 'satirical verse', level: 'historical', registers: ['literary'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "mjeda-juvenilia",
+      "title": "Juvenilia",
+      "line": "{ slug: 'mjeda-juvenilia', stage: '9', title: 'Juvenilia', author: 'Ndre Mjeda', died: 1937, year: 1917, streams: ['historical', 'gheg'], variety: 'aln', era: 'early 20th century', genre: 'verse', level: 'historical', registers: ['literary'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "migjeni-vargje-te-lira",
+      "title": "Vargje të lira",
+      "line": "{ slug: 'migjeni-vargje-te-lira', stage: '9', title: 'Vargje të lira', author: 'Migjeni (Millosh Gjergj Nikolla)', died: 1938, year: 1936, streams: ['historical', 'gheg'], variety: 'aln', era: '20th century', genre: 'verse', level: 'literary', registers: ['literary'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located",
+      "focusedReview": {
+        "url": "https://adsh.unishk.edu.al/items/show/45",
+        "edition": "1936, Shtypshkronja Gutenberg, Tirana, 84 pages, identifier A/3-R-49",
+        "rightsEvidence": "WIPO Albania Law No. 35/2016, Article 41: life + 70 years; Migjeni died 1938, so Albania term expired after 2008.",
+        "usEvidence": "1936 US publication term not cleared; treated as protected through 2031 (public domain from 2032, if the 95-year term applies) for this review.",
+        "blocker": "Exact scan/transcription and licence remain unverified."
+      }
+    },
+    {
+      "slug": "migjeni-novela-te-qytetit-te-veriut",
+      "title": "Novela të qytetit të Veriut",
+      "line": "{ slug: 'migjeni-novela-te-qytetit-te-veriut', stage: '9', title: 'Novela të qytetit të Veriut', author: 'Migjeni (Millosh Gjergj Nikolla)', died: 1938, streams: ['historical', 'gheg'], variety: 'aln', era: '20th century', genre: 'short stories', level: 'literary',",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "buzuku-meshari",
+      "title": "Meshari",
+      "line": "{ slug: 'buzuku-meshari', stage: '9', title: 'Meshari', author: 'Gjon Buzuku', year: 1555, streams: ['historical', 'gheg'], variety: 'sq-hist', era: '16th century', genre: 'liturgical book', level: 'historical', registers: ['religious', 'archaic'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "bogdani-cuneus-prophetarum",
+      "title": "Cuneus Prophetarum",
+      "line": "{ slug: 'bogdani-cuneus-prophetarum', stage: '9', title: 'Cuneus Prophetarum', author: 'Pjetër Bogdani', year: 1685, streams: ['historical', 'gheg'], variety: 'sq-hist', era: '17th century', genre: 'religious and historical prose', level: 'historical', registers: ['religious', 'archaic'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    }
+  ]
+}
+

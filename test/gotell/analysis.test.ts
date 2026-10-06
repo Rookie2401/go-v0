@@ -129,6 +129,25 @@ describe('analyzeProduction: analysis shape', () => {
     expect(again.suggestions[0].status).toBe('accepted');
     expect(await w.store.suggestions.count()).toBe(1);
   });
+
+  it('does not replay a cached suggestion after its referenced source becomes protected', async () => {
+    const w = await makeWorld([esAdapter()]);
+    await esLearnerB(w, 'A');
+    const t = await w.gotell.getOrCreateTestimony('A', 'es');
+    const draft = 'Cuando yo era joven yo conocía de Jesús pero yo no entender mi pecado.';
+    const first = await w.gotell.submitDraft(t.id, draft);
+    const sourced = first.suggestions.find((s) => s.sources.length > 0)!;
+    expect(sourced).toBeDefined();
+    await w.gotell.acceptSuggestion(sourced.id);
+    const historyBefore = await w.store.suggestions.get(sourced.id);
+    const text = await w.store.texts.get(sourced.sources[0].textId);
+    expect(text).toBeDefined();
+    await w.store.texts.put({ ...text!, listeningAssessmentId: 'assessment:locked' });
+
+    const again = await w.gotell.submitDraft(t.id, draft);
+    expect(again.suggestions.some((s) => s.id === sourced.id)).toBe(false);
+    expect(await w.store.suggestions.get(sourced.id)).toEqual(historyBefore);
+  });
 });
 
 describe('suggestion caps and priority order', () => {
@@ -333,4 +352,3 @@ describe('determinism', () => {
     expect(a1.draftHash).toBe(hash(`B|${t.id}|${ES_ROUGH}`));
   });
 });
-

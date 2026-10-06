@@ -555,6 +555,7 @@ export function makeFakeLibrary(store: AppStore, items: CatalogText[] = []): Fak
       const rows = lib.items.filter((t) => t.lang === q.lang && (!q.stream || t.stream === q.stream || (t.streams ?? []).includes(q.stream)) && (!q.stageId || t.stageId === q.stageId)
         && (!q.domain || (t.domains ?? []).includes(q.domain)) && (!q.workId || t.workId === q.workId) && (!q.variety || t.variety === q.variety) && (!q.rights || t.rights === q.rights)
         && (!q.location || t.location === q.location) && (!q.publishedOnly || t.published)
+        && (q.minWords === undefined || t.features.words >= q.minWords) && (q.maxWords === undefined || t.features.words <= q.maxWords)
         && (!q.text || accent(`${t.title} ${t.author ?? ''}`).includes(accent(q.text))));
       if (q.workId) rows.sort((a, b) => (a.chapter ?? 0) - (b.chapter ?? 0));
       const offset = q.offset ?? 0;

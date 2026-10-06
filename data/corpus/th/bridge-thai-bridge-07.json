@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "bridge-thai-bridge-07",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "รถไฟไปเมือง",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-th-bridge-drafts",
+    "kind": "comprehensible-input",
+    "title": "Thai beginner bridge drafts"
+  },
+  "source": {
+    "id": "src:th:thai-bridge-07",
+    "title": "รถไฟไปเมือง — course-owned draft",
+    "author": "Course authors (machine-drafted)",
+    "attribution": "Course-owned Thai draft. Machine-drafted for native-speaker review; no external source or translation claimed.",
+    "provenance": "Original controlled draft written for the course-owned beginner review queue. It is not a published or source-reviewed Thai work.",
+    "rights": "owner-authored",
+    "licenseNote": "Course-owned draft; may not be published until native review.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Native Thai reviewer required. Source fidelity is not applicable because this is original course-owned draft text."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "รถไฟ",
+    "เมือง",
+    "ตั๋ว"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "course-owned-draft"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss for review only"
+  },
+  "sections": [
+    {
+      "title": "รถไฟไปเมือง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันหยุดนี้ ครอบครัวของฉันนั่งรถไฟเข้าเมือง",
+              "english": "This holiday, my family takes a train into the city."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อซื้อตั๋วให้ทุกคนก่อนขึ้นรถ",
+              "english": "Father buys tickets for everyone before we board."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันนั่งข้างหน้าต่างและดูบ้านระหว่างทาง",
+              "english": "I sit by the window and watch houses along the way."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "น้องนับสะพานที่รถไฟวิ่งผ่าน",
+              "english": "My younger sibling counts the bridges the train crosses."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แม่หยิบขนมออกจากกระเป๋าให้เรา",
+              "english": "Mother takes snacks from her bag for us."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เมื่อถึงเมือง เราเดินไปที่พิพิธภัณฑ์",
+              "english": "When we reach the city, we walk to a museum."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันเห็นรูปเก่าและเรียนรู้เรื่องคนในเมือง",
+              "english": "I see old pictures and learn about people in the city."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ตอนบ่าย เรากลับสถานีด้วยกัน",
+              "english": "In the afternoon, we return to the station together."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันง่วงแต่ดีใจที่ได้เดินทางกับครอบครัว",
+              "english": "I am sleepy but happy to travel with my family."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "สถานีมีคนเดินไปมาเต็มไปหมด",
+              "english": "The station is full of people walking around."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แม่บอกให้เราเก็บตั๋วไว้",
+              "english": "Mother tells us to keep the tickets."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "รถไฟพาเรากลับถึงบ้านก่อนค่ำ",
+              "english": "The train brings us home before dark."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "work": {
+    "slug": "bridge-thai-bridge-07",
+    "courseId": "thailand-th",
+    "chapter": {
+      "index": 6,
+      "title": "รถไฟไปเมือง"
+    }
+  }
+}

@@ -113,17 +113,21 @@ describe('the German catalogue under the rule', () => {
     for (const d of scriptures) expect((d as { work?: { slug?: string } }).work?.slug, d.id).toBe('lutherbibel-1912');
   });
 
-  it('Luther 1912 and the Grimm tales record a basis for the United States, Germany and the EU — and say what is not established', () => {
+  it('Luther 1912 and the Grimm tales record their verified US, German and EU status and exact source evidence', () => {
     for (const slug of ['lutherbibel-1912', 'grimm-sternthaler-1857', 'grimm-der-suesse-brei-1857']) {
       const w = find('de', slug)!;
       expect(w, slug).toBeDefined();
       expect(recordedJurisdictions({ statusByJurisdiction: w.rights.statusByJurisdiction }).sort(), slug).toEqual(['DE', 'EU', 'US']);
-      expect(w.rights.verifiedBy, slug).toMatch(/not legal advice/);
+      expect(w.rights.verifiedBy, slug).toBeTruthy();
+      expect(w.rights.sourceRepository, slug).toBeTruthy();
+      expect(w.rights.evidence?.length ?? 0, slug).toBeGreaterThanOrEqual(2);
     }
     const luther = find('de', 'lutherbibel-1912')!.rights;
-    expect(luther.basis).toMatch(/NOT ESTABLISHED FROM A PRIMARY SOURCE/);
-    expect(luther.evidence!.join(' ')).toMatch(/says nothing about rights/);
-    expect(luther.evidence!.join(' ')).toMatch(/Not checked: Austria and Switzerland/);
+    expect(luther.sourceRepository).toContain('deu1912_usfm.zip');
+    expect(luther.evidence!.join(' ')).toContain('deu1912/copyright.htm');
+    // No claim is made for unrecorded countries even though the listed source editions are cleared in these three.
+    expect(luther.statusByJurisdiction).not.toHaveProperty('AT');
+    expect(luther.statusByJurisdiction).not.toHaveProperty('CH');
   });
 
   it('with the release list US, DE, EU the German documents that are bundled today are still bundled; for a jurisdiction nobody recorded they are not', () => {

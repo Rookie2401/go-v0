@@ -24,6 +24,9 @@
  */
 import type { AssistanceProfile, HelpLayer, RegisterTag, Stage, Stream, VarietyPolicy, Work, WorkRights, WorkRole } from '../core';
 import { ids } from '../core';
+import { MODERN_ALBANIAN_WORKS } from './modernAlbanian';
+import { readingBridgeWorks } from './readingBridges';
+import { CURRICULUM_ACQUIRED_WORKS } from './curriculumAcquired';
 
 export const ALBANIAN_COURSE_ID = 'albania-sq';
 const LANG = 'sq' as const;
@@ -272,6 +275,9 @@ const KRISTOFORIDHI_LAYERS =
 const LEAD_CAUTION = OLD_WORK_CAUTION;
 
 export const ALBANIAN_WORKS: Work[] = [
+  ...CURRICULUM_ACQUIRED_WORKS.filter(w => w.lang === 'sq'),
+  ...MODERN_ALBANIAN_WORKS,
+  ...readingBridgeWorks('sq'),
   // ── Course-authored: the seed. Later course works are not listed until they exist. ──
   ...works([
     { slug: 'udha-0', stage: '0', title: 'Udha 0 — Shkronjat dhe fjalët e para', role: 'spine', streams: ['acquisition'], variety: 'sq', level: 'controlled', genre: 'microstories', rights: COURSE, ingestion: 'bundled', readiness: 'implemented',

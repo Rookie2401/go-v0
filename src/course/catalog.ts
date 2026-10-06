@@ -16,7 +16,8 @@ import { ALBANIAN_COURSE_ID, ALBANIAN_STAGES, ALBANIAN_STREAMS, ALBANIAN_WORKS }
 import { GERMAN_COURSE_ID, GERMAN_SHELVES, GERMAN_STREAMS, GERMAN_WORKS } from './german';
 import { HINDI_COURSE_ID, HINDI_OUTSIDE_ASSISTANCE, HINDI_SHELVES, HINDI_STREAMS, HINDI_WORKS } from './hindi';
 import { SPANISH_COURSE_ID, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS } from './spanish';
-import { THAI_COURSE_ID, THAI_STAGES, THAI_WORKS } from './thai';
+import { THAI_COURSE_ID, THAI_STAGES, THAI_STREAMS, THAI_WORKS } from './thai';
+import { getStageContract } from './curriculumPolicy';
 
 export interface CourseCatalogDeps {
   store: AppStore;
@@ -44,6 +45,7 @@ const LADDERS: Record<string, { stages: Stage[]; works: Work[]; outside?: Assist
 
 /** The content streams of the courses that have them. */
 const STREAMS: Record<string, Stream[]> = {
+  [THAI_COURSE_ID]: THAI_STREAMS,
   [SPANISH_COURSE_ID]: SPANISH_STREAMS,
   [GERMAN_COURSE_ID]: GERMAN_STREAMS,
   [ALBANIAN_COURSE_ID]: ALBANIAN_STREAMS,
@@ -88,7 +90,7 @@ export function createCourseCatalog(deps: CourseCatalogDeps): CourseCatalog {
       if (!ladder) return; // a course without a ladder: nothing to install
       const storedWorks = await store.works.getMany(ladder.works.map((w) => w.id));
       await store.transaction(['stages', 'works'], async () => {
-        await store.stages.bulkPut(ladder.stages.map((s) => structuredClone(s)));
+        await store.stages.bulkPut(ladder.stages.map((s) => structuredClone({ ...s, contract: getStageContract(s) })));
         await store.works.bulkPut(ladder.works.map((w, i) => mergeWork(w, storedWorks[i])));
       });
     },

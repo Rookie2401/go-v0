@@ -113,7 +113,14 @@ export function doorPath(d: Door): string {
 /** The catalogue entries of one work that the library holds, in chapter order (the library serves them from its work index). */
 export async function libraryChapters(library: Library, lang: LanguageCode, work: Work): Promise<CatalogText[]> {
   try {
-    const { items } = await library.search({ lang, workId: work.id, limit: 200 });
-    return items.filter((t) => t.workId === work.id);
+    const chapters: CatalogText[] = [];
+    let offset = 0;
+    while (true) {
+      const page = await library.search({ lang, workId: work.id, limit: 200, offset });
+      chapters.push(...page.items.filter((t) => t.workId === work.id));
+      offset += page.items.length;
+      if (page.items.length === 0 || offset >= page.total) break;
+    }
+    return chapters;
   } catch { return []; }
 }

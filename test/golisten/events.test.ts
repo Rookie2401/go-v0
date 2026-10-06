@@ -17,7 +17,7 @@ describe('listeningEmitter', () => {
     const em = listeningEmitter(bus, ctx);
     const e = (await em.played(seg, { speed: 0.85, transcriptVisible: true })) as AudioPlayed;
     expect(e).toMatchObject({ type: 'AudioPlayed', userId: 'u1', lang: 'es', surface: 'listen', session: 'sess1', textId: 'text:es:x', segmentId: 'seg:a', sentenceIds: ['text:es:x/s0'], speed: 0.85, transcriptVisible: true });
-    expect(e.dedupeKey).toBe('AudioPlayed|sess1|seg:a|0');
+    expect(e.dedupeKey).toMatch(/^AudioPlayed\|sess1\|seg:a\|1\|/);
     const c = (await em.completed(seg, { speed: 0.85, transcriptVisible: true }, { heardCoverageRatio: 1 })) as AudioSegmentCompleted;
     expect(c).toMatchObject({ type: 'AudioSegmentCompleted', speed: 0.85, transcriptVisible: true, replayCount: 0, revealedTranscript: true, revealedTranslation: false });
   });
@@ -42,6 +42,33 @@ describe('listeningEmitter', () => {
     // a different segment and a different session are independent
     expect(await em.completed({ segmentId: 'seg:b', sentenceIds: [], assetId: 'asset:b', ready: true }, view, { heardCoverageRatio: 1 })).not.toBeNull();
     expect(await listeningEmitter(bus, { ...ctx, session: 'sess2' }).completed(seg, view, { heardCoverageRatio: 1 })).not.toBeNull();
+  });
+
+  it('allows a remounted player in the same app session to record a new pass while keeping retries idempotent', async () => {
+    const { bus } = await makeEnv();
+    const first = listeningEmitter(bus, ctx);
+    expect(await first.played(seg, view)).not.toBeNull();
+    expect(await first.abandoned(seg, view, 640)).not.toBeNull();
+    expect(await first.abandoned(seg, view, 640)).toBeNull();
+
+    const remounted = listeningEmitter(bus, ctx);
+    expect(await remounted.played(seg, view)).not.toBeNull();
+    expect(await remounted.abandoned(seg, view, 2639)).not.toBeNull();
+    expect(await ofType(bus, 'AudioPlayed')).toHaveLength(2);
+    expect(await ofType(bus, 'AudioAbandoned')).toHaveLength(2);
+  });
+
+  it('keeps play after an active replay on the replay attempt and dedupes repeated play callbacks', async () => {
+    const { bus } = await makeEnv();
+    const em = listeningEmitter(bus, ctx);
+    expect(await em.played(seg, view)).not.toBeNull();
+    expect(await em.replayed(seg, view)).not.toBeNull();
+    expect(await em.played(seg, view)).not.toBeNull();
+    expect(await em.played(seg, view)).toBeNull();
+    expect(await em.completed(seg, view, { heardCoverageRatio: 1 })).not.toBeNull();
+    expect(await em.completed(seg, view, { heardCoverageRatio: 1 })).toBeNull();
+    expect(await ofType(bus, 'AudioPlayed')).toHaveLength(2);
+    expect(await ofType(bus, 'AudioSegmentCompleted')).toHaveLength(1);
   });
 
   it('every speed change is its own event carrying from/to', async () => {
@@ -99,7 +126,9 @@ describe('player + emitter integration over a real manifest', () => {
     const pm = new PlayerMachine(await buildPlayerManifest(store, r.manifest), { transcriptMode: 'hidden' });
     expect(pm.state.manifest.segments).toHaveLength(3);
     expect(pm.state.manifest.segments.every((s) => s.ready && s.assetId && s.durationMs! > 0 && s.sentenceIds.length === 1)).toBe(true);
-    const em = listeningEmitter(bus, { userId: 'u1', lang: 'de', session: 's-int', textId: r.manifest.textId, store });
+    let eventSecond = 0;
+    const em = listeningEmitter(bus, { userId: 'u1', lang: 'de', session: 's-int', textId: r.manifest.textId, store,
+      clock: () => new Date(Date.UTC(2020, 0, 1, 0, 0, eventSecond++)).toISOString() });
     const step = async (a: Parameters<PlayerMachine['dispatch']>[0]) => emitPlayerEffects(em, pm.state, pm.dispatch(a));
     const coverCurrent = async () => {
       const segment = pm.state.manifest.segments[pm.state.segmentIndex];

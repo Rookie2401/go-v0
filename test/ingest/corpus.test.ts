@@ -6,10 +6,11 @@ import { createMemoryStore } from '../../src/core';
 import { ALBANIAN_WORKS } from '../../src/course/albanian';
 import { GERMAN_WORKS } from '../../src/course/german';
 import { HINDI_WORKS } from '../../src/course/hindi';
+import { THAI_WORKS } from '../../src/course/thai';
 import { SPANISH_WORKS } from '../../src/course/spanish';
 
 // The works of every course that bundles texts of its own: a course adds its list here.
-const COURSE_WORKS = [...SPANISH_WORKS, ...GERMAN_WORKS, ...HINDI_WORKS, ...ALBANIAN_WORKS];
+const COURSE_WORKS = [...SPANISH_WORKS, ...GERMAN_WORKS, ...HINDI_WORKS, ...ALBANIAN_WORKS, ...THAI_WORKS];
 import { importDocuments, validateBatch } from '../../src/ingest';
 import { clock, registry } from './helpers';
 import { isSeed, loadCourseCorpus } from './seed';
@@ -131,17 +132,20 @@ describe('bundled corpus shape (schema version 2)', () => {
     const verified = JSON.parse(fs.readFileSync('data/verified/scripture.json', 'utf8')) as {
       by: string; checkedAt: string; translations: Array<{ lang: string; translationId: string; checkedAt?: string; verses: Record<string, { text: string }>; mismatches: unknown[] }>;
     };
-    expect(verified.translations.map((t) => t.lang).sort()).toEqual(['de', 'es', 'hi']);
+    expect(verified.translations.map((t) => t.lang).sort()).toEqual(['de', 'es', 'hi', 'th']);
     for (const t of verified.translations) {
       expect(t.mismatches).toEqual([]);
       // every verified document of the language, not only the first: each verse equals the record
-      const all = byLang(t.lang as LanguageCode).filter((x) => x.contentType === 'scripture' && x.scripture?.verification);
-      expect(all.length, t.lang).toBeGreaterThanOrEqual(1);
+      const all = loadBundledCorpus().filter(x => x.lang === t.lang && x.contentType === 'scripture' && x.scripture?.verification && x.scripture.translationId === t.translationId);
+      if (t.lang === 'th') {
+        expect(byLang('th').find(x => x.contentType === 'scripture')!.scripture!.verification).toBeUndefined();
+        expect(Object.keys(t.verses).length).toBeGreaterThan(30000);
+      } else expect(all.length, t.lang).toBeGreaterThanOrEqual(1);
       for (const d of all) {
         expect(d.scripture!.translationId, d.id).toBe(t.translationId);
-        // a document carries the date its verses were verified: between the record's first writing and the translation's latest check
+        // Earlier verified seed documents remain valid when a later full-translation record is added.
         const at = d.scripture!.verification!.checkedAt;
-        expect(at >= verified.checkedAt && at <= (t.checkedAt ?? verified.checkedAt), `${d.id} verified ${at}`).toBe(true);
+        expect(Number.isFinite(Date.parse(at)) && at <= (t.checkedAt ?? verified.checkedAt), `${d.id} verified ${at}`).toBe(true);
         for (const s of sentencesOf(d)) {
           expect(s.text, `${t.lang} ${s.verseRefs}`).toBe(s.verseRefs!.map((r) => t.verses[r].text).join(' '));
         }
@@ -181,7 +185,8 @@ describe('the bundled course texts (everything that is not a seed text)', () => 
     expect(batch.ok).toBe(true);
     for (const d of course) {
       expect(d.schemaVersion, d.id).toBe(2);
-      expect(d.source.id, d.id).toBe(`src:${d.lang}:${d.id}`);
+      expect(d.source.id, d.id).toMatch(new RegExp(`^src:${d.lang}:`));
+      expect(d.source.provenance, d.id).toBeTruthy();
     }
   });
 

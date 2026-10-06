@@ -1,0 +1,8 @@
+{
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+  "apiLanguage": "es-es",
+  "language": "es",
+  "available": 12,
+  "imported": 12,
+  "albanianStatus": "not queried"
+}

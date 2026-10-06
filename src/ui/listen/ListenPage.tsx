@@ -4,6 +4,7 @@ import type { LanguageCode, Text } from '../../core';
 import { useApp } from '../context';
 import { isTestimonyText, nameOfLang, textPath } from '../format';
 import { BackLink, Topbar } from '../ui';
+import { useListenEnabled } from '../reader/useListen';
 import { Player } from '../player/Player';
 import type { PlayerControls } from '../player/Player';
 import { listeningProgress } from '../../golisten/progress';
@@ -16,6 +17,7 @@ type ListenMode = 'only' | 'read-listen' | 'listen-first';
 export function ListenPage() {
   const { textId = '' } = useParams();
   const { store, bus, lang, golisten, userId } = useApp();
+  const listenEnabled = useListenEnabled();
   const location = useLocation();
   const navigate = useNavigate();
   const [gate, setGate] = useState<Gate>({ state: 'loading' });
@@ -23,9 +25,12 @@ export function ListenPage() {
   const [audioState, setAudioState] = useState<'loading' | 'ready' | 'unavailable'>('loading');
   const [audioReason, setAudioReason] = useState('');
   const [progress, setProgress] = useState<ListeningProgress | null>(null);
+  const [handoffError, setHandoffError] = useState<string | null>(null);
+  const [handoffPending, setHandoffPending] = useState(false);
   const controls = useRef<PlayerControls | null>(null);
 
   useEffect(() => {
+    if (!listenEnabled) return;
     let live = true;
     setGate({ state: 'loading' });
     const requestedMode = (location.state as { mode?: unknown } | null)?.mode;
@@ -34,7 +39,7 @@ export function ListenPage() {
       const text = await store.texts.get(textId);
       const corpus = text ? await store.corpora.get(text.corpusId) : undefined;
       let next: Gate;
-      if (!text || text.listeningAssessmentId !== undefined || isTestimonyText(text, corpus ? new Map([[corpus.id, corpus]]) : undefined)) next = { state: 'missing' };
+      if (!text || (text.listeningAssessmentId !== undefined || text.readingAssessmentId !== undefined) || isTestimonyText(text, corpus ? new Map([[corpus.id, corpus]]) : undefined)) next = { state: 'missing' };
       else if (text.lang !== lang) next = { state: 'language', lang: text.lang };
       else if (text.published !== true) next = { state: 'unpublished' };
       else next = { state: 'ok', text };
@@ -51,7 +56,7 @@ export function ListenPage() {
       }
     })().catch(() => { if (live) { setAudioState('unavailable'); setAudioReason('Audio could not be checked.'); setGate((g) => g.state === 'loading' ? { state: 'missing' } : g); } });
     return () => { live = false; };
-  }, [store, golisten, textId, lang, userId, location.key, location.state]);
+  }, [store, golisten, textId, lang, userId, location.key, location.state, listenEnabled]);
 
   // Refresh only when this text's completed exposure is recorded. Position ticks are navigation
   // checkpoints and should never trigger an event-log scan or be presented as heard progress.
@@ -61,6 +66,13 @@ export function ListenPage() {
   }), [bus, store, userId, textId]);
 
   const header = <Topbar title="GoListen" left={<BackLink to="/listen" label="Listening" />} />;
+  if (!listenEnabled) return <div>
+    <Topbar title="GoListen" left={<BackLink to="/" label="Home" />} />
+    <main className="page page--narrow">
+      <p role="status">GoListen is not available in this version.</p>
+      <p className="home__links"><Link to="/">Home</Link><Link to="/read">GoLearn reading</Link></p>
+    </main>
+  </div>;
   if (gate.state === 'loading') return <div>{header}<div className="page"><p role="status" className="muted">Opening listening passage…</p></div></div>;
   if (gate.state !== 'ok') {
     if (gate.state === 'missing') return <div>{header}<div className="page"><p role="alert">This passage is not available for listening.</p></div></div>;
@@ -75,9 +87,20 @@ export function ListenPage() {
     controls.current?.setTranscriptMode(next === 'read-listen' ? 'visible' : next === 'listen-first' ? 'reveal-after' : 'hidden');
   };
   const openSupport = async () => {
-    // A transcript reveal is recorded by the Player before GoLearn's Reader records the text opening.
-    await controls.current?.revealForHandoff();
-    navigate(textPath(text));
+    if (handoffPending) return;
+    setHandoffPending(true);
+    setHandoffError(null);
+    try {
+      // Persist where the learner paused before moving to reading. Record the transcript reveal
+      // before GoLearn's Reader records the text opening.
+      await controls.current?.savePosition();
+      await controls.current?.revealForHandoff();
+      navigate(textPath(text));
+    } catch (error) {
+      setHandoffError(error instanceof Error ? error.message : 'Could not save your listening position. Try again.');
+    } finally {
+      setHandoffPending(false);
+    }
   };
   const passageLabel = text.kind === 'scripture'
     ? `Scripture passage${text.scripture ? ` · chapter ${text.scripture.chapter}` : text.chapter ? ` · chapter ${text.chapter.index}` : ''}`
@@ -104,7 +127,8 @@ export function ListenPage() {
       </div>}
       {audioState === 'unavailable' && <div className="note" role="status"><p>{audioReason}</p><p>GoListen does not create speech unless the text and recording rights permit it. You can still <Link to={textPath(text)}>read this passage</Link>.</p></div>}
       {audioState === 'ready' && <Player key={text.id} textId={text.id} controlRef={controls} defaultTranscriptMode={transcriptMode} allowSynthesis={false} />}
-      {audioState === 'ready' && <button type="button" className="btn btn--small btn--quiet" onClick={() => { void openSupport(); }}>Open text and word support</button>}
+      {handoffError && <p role="alert" className="error" data-testid="listen-handoff-error">{handoffError}</p>}
+      {audioState === 'ready' && <button type="button" className="btn btn--small btn--quiet" disabled={handoffPending} onClick={() => { void openSupport(); }}>{handoffPending ? 'Saving listening position…' : 'Open text and word support'}</button>}
       <p className="home__links"><Link to="/listen">Listening library</Link><Link to={text.kind === 'scripture' ? '/scripture' : '/read'}>Back to {text.kind === 'scripture' ? 'Scripture' : 'GoLearn'}</Link></p>
     </main>
   </div>;

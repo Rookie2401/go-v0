@@ -1,0 +1,7 @@
+library:build - library-sq@2026-10-02 (schema 1)
+  built:    1 work(s), 23 text(s), 8707 words
+    + sq-modern-open: 23 text(s), 8707 words, 23 published, rights verified-open-licence, quality not checked (the review in the manifest covers a different file than the one built, so the texts are built unreviewed)
+  refused:  0
+  written:  1 index shard(s), 49 file(s), 262048 bytes -> C:\Users\CJWal\dev\go-v0\public\library\sq
+  digest:   5c1f0f0b1ae96c23
+  build time: 10507 ms

@@ -20,7 +20,7 @@ shared) is [`docs/goread/BACKEND.md`](../../docs/goread/BACKEND.md); the Cloudfl
 ## Run it on Node
 
 ```
-npx vite-node server/goread/main.ts --port 8787 --data data/goread
+npx vite-node --config server/goread/vite.config.ts server/goread/main.ts --port 8787 --data data/goread
 ```
 
 - `--port` (default 8787; `0` picks a free one), `--data` (default `data/goread`, created if missing, git-ignored),

@@ -204,6 +204,11 @@ function htmlToText(xhtml: string, unknown: Set<string>): Converted {
   return { lines, title };
 }
 
+/** Convert one official HTML/XHTML book member with the same block/entity rules used by EPUB ingestion. */
+export function htmlToPlainText(xhtml: string): string {
+  return htmlToText(xhtml, new Set<string>()).lines.join('\n');
+}
+
 // ───────────────────────────── the book ─────────────────────────────
 
 const FONT_OBFUSCATION = ['http://www.idpf.org/2008/embedding', 'http://ns.adobe.com/pdf/enc#RC'];

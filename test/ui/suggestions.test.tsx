@@ -1,9 +1,11 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import type { GoTellSuggestion, IntentProposal } from '../../src/core';
+import { buildFixtureText } from '../../src/core';
 import { Testimony } from '../../src/ui/testimony/Testimony';
 import { button, byLabel, click, installMediaStubs, makeHarness, q, qa, suggestion, type as typeInto } from './harness';
 import type { Harness, Mounted } from './harness';
+import { seedStory } from './fixtures';
 
 let h: Harness;
 let mounted: Mounted | undefined;
@@ -13,8 +15,9 @@ afterEach(async () => { await mounted?.unmount(); mounted = undefined; });
 const editor = () => byLabel<HTMLTextAreaElement>(mounted!.container, 'Your testimony');
 const card = (id: string) => q(mounted!.container, `li[data-suggestion-id="${id}"]`)!;
 
-async function checked(suggestions: GoTellSuggestion[], draft = 'Yo cree en Dios. Yo tiene cinco año.') {
+async function checked(suggestions: GoTellSuggestion[], draft = 'Yo cree en Dios. Yo tiene cinco año.', prepare?: (h: Harness) => Promise<void>) {
   h = await makeHarness({ tell: { suggestions } });
+  await prepare?.(h);
   mounted = await h.mount(<Testimony />);
   await typeInto(editor(), draft);
   await click(button(mounted.container, 'Check my writing'));
@@ -57,10 +60,15 @@ describe('Suggestion cards are honest about what they do', () => {
         { itemId: 'form:es:perdonó', textId: 'text:es:story-01', textTitle: 'Story 1', sentenceId: 'text:es:story-01/s1', excerpt: 'Dios me perdonó.', surface: 'corpus' },
         { itemId: 'form:es:pecados', textId: 'text:es:testimony-r1', textTitle: 'My testimony, version 1', sentenceId: 'text:es:testimony-r1/s0', excerpt: 'Yo pensaba en mis pecados.', surface: 'testimony' },
       ],
-    })]);
+    })], undefined, async (h) => {
+      const story = await seedStory(h.store);
+      await h.store.texts.put({ ...story, published: true });
+    });
     const list = byLabel(card('s'), 'Where you met this wording');
     const items = qa(list, 'li');
-    expect(items.map((li) => li.textContent)).toEqual(['Story 1: Dios me perdonó.', 'My testimony, version 1: Yo pensaba en mis pecados.']);
+    expect(items.map((li) => li.textContent)).toEqual(['Story 1: Dios me perdonó.', 'Source no longer available.']);
+    expect(list.textContent).not.toContain('My testimony, version 1');
+    expect(list.textContent).not.toContain('Yo pensaba en mis pecados.');
     expect(q(card('s'), '[data-testid="no-sources"]')).toBeNull();
   });
 
@@ -90,8 +98,9 @@ describe('Suggestion cards are honest about what they do', () => {
 });
 
 describe('"What are you trying to say?"', () => {
-  async function ask(proposal: IntentProposal, draft = '') {
+  async function ask(proposal: IntentProposal, draft = '', prepare?: (h: Harness) => Promise<void>) {
     h = await makeHarness({ tell: { proposal } });
+    await prepare?.(h);
     mounted = await h.mount(<Testimony />);
     if (draft) await typeInto(editor(), draft);
     await click(button(mounted.container, 'What are you trying to say?')); // a collapsed disclosure: open it first
@@ -115,6 +124,8 @@ describe('"What are you trying to say?"', () => {
     const box = await ask({
       ...base, proposal: 'Empecé a entender mi pecado.',
       sources: [{ itemId: 'form:es:empecé', textId: 'text:es:story-03', textTitle: 'Story 3', sentenceId: 'text:es:story-03/s2', excerpt: 'Un día empecé a entender mi pecado.', surface: 'corpus' }],
+    }, '', async (h) => {
+      await buildFixtureText(h.store, { lang: 'es', slug: 'story-03', title: 'Story 3', published: true, sentences: [{ text: 'Un día empecé a entender mi pecado.', tokens: [{ surface: 'empecé', lemma: 'empezar' }] }] });
     });
     expect(q(box, '.proposal-text')!.textContent).toBe('Empecé a entender mi pecado.');
     expect(byLabel(box, 'Where this wording comes from').textContent).toContain('Story 3: Un día empecé a entender mi pecado.');

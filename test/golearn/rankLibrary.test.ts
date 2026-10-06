@@ -1,6 +1,6 @@
 /** rankLibrary — comprehensibility peaking at the asked-for coverage, interest, natural reinforcement, regional fit, novelty, and the anti-pathology rules. */
 import { describe, expect, it } from 'vitest';
-import { ids } from '../../src/core';
+import { buildFixtureText, ids } from '../../src/core';
 import type { RankCandidate, RankedText } from '../../src/core';
 import { createHarness } from './harness';
 import type { Harness } from './harness';
@@ -174,6 +174,19 @@ describe('anti-pathology: the acquisition path is a ramp, not the course', () =>
 });
 
 describe('properties of a ranking', () => {
+  it('does not rank imported candidates from testimony text or testimony corpora', async () => {
+    const h = await make();
+    await h.store.corpora.put({ id: 'private-ranking', lang: 'es', kind: 'testimony', title: 'Private' });
+    await buildFixtureText(h.store, { lang: 'es', slug: 'private-ranking', corpusId: 'private-ranking', kind: 'story', sentences: [
+      { tokens: [{ surface: 'sol', lemma: 'sol', pos: 'NOUN' }] },
+    ] });
+    await buildFixtureText(h.store, { lang: 'es', slug: 'private-kind', kind: 'testimony', corpusId: 'ci-es', sentences: [
+      { tokens: [{ surface: 'sol', lemma: 'sol', pos: 'NOUN' }] },
+    ] });
+    const r = await rank(h, [cand('private-ranking', 93), cand('private-kind', 93), cand('public', 93)]);
+    expect(order(r)).toEqual(['public']);
+  });
+
   it('deterministic, ties broken by text id, limit honoured, empty list ok, nothing written', async () => {
     const h = await make();
     const cs = [cand('b', 93), cand('a', 93), cand('c', 93)];

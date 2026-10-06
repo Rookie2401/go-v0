@@ -10,6 +10,7 @@ import type { DomainEvent, EventInput } from '../../src/core';
 import type { StoredEncounter } from '../../src/golearn/state';
 import { createHarness } from './harness';
 import type { Harness } from './harness';
+import { withoutHeadCache } from './harness';
 import { ES_STORY, buildSpanish } from './fixtures';
 
 const U = 'u1';
@@ -52,7 +53,7 @@ const snapshot = async (h: Harness, withAsOf = false) => {
   const { asOf, ...numbers } = await h.golearn.coverage(U, BIBLE);
   return JSON.stringify({
     enc: (await h.store.encounters.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)),
-    items: (await h.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)),
+    items: withoutHeadCache((await h.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1))),
     coverage: withAsOf ? { ...numbers, asOf } : numbers,
   });
 };

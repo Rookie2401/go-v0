@@ -1,0 +1,122 @@
+deep: importing each text afresh with adapter 2 and the installed dictionary (public/dict/hi)
+  … 100 of 1312 texts, 76178 words, 32 s
+  … 200 of 1312 texts, 159364 words, 104 s
+  … 300 of 1312 texts, 242002 words, 183 s
+  … 400 of 1312 texts, 320000 words, 261 s
+  … 500 of 1312 texts, 369590 words, 298 s
+  … 600 of 1312 texts, 402371 words, 315 s
+  … 700 of 1312 texts, 444025 words, 336 s
+  … 800 of 1312 texts, 514316 words, 367 s
+  … 900 of 1312 texts, 579843 words, 396 s
+  … 1000 of 1312 texts, 661241 words, 431 s
+  … 1100 of 1312 texts, 719846 words, 456 s
+  … 1200 of 1312 texts, 782377 words, 484 s
+  … 1300 of 1312 texts, 850927 words, 521 s
+
+library:audit hi — library-hi@2026-10-02: 1312 texts in 5 works, 866003 words; deep check of 1312 texts (866003 words), read through GoLearn in 529 s
+  analyzers: stored adapter-hi@2 | today adapter-hi@2 + dict:kaikki-hi@2026-09-28 — 1312 texts
+  ok   catalogue: a work with texts in the library is recorded as bundlable: 5 of 5
+  ok   catalogue: every text names a work: 1312 of 1312
+  ok   catalogue: the rights of the texts are the rights of their work: 5 of 5
+  ok   catalogue: the shelf of a work exists in the course: 5 of 5
+  ok   catalogue: the shelf of the texts is the shelf of their work: 5 of 5
+  ok   catalogue: the stream of the texts is a stream of the course: 5 of 5
+  ok   catalogue: the stream of the texts is a stream of their work: 5 of 5
+  ok   catalogue: the work of a text is in the course catalogue: 5 of 5
+  ok   catalogue: the work says its texts are in the library: 5 of 5
+  ok   deep: every analysis names a lemma that exists: 1312 of 1312
+  ok   deep: every construction found in the text has its row: 1312 of 1312
+  ok   deep: every unit found in the text has its row: 1312 of 1312
+  ok   deep: every word carries the id of its form item: 1312 of 1312
+  ok   deep: every word is a slice of its sentence: 1312 of 1312
+  ok   deep: the document is the text the row names: 1312 of 1312
+  ok   deep: the document names the row's work and chapter: 1312 of 1312
+  FAIL deep: the features are what a fresh import measures: 3 of 1312 — 1309 not
+         text:hi:bible-gen-2: properNounShare, unanalysedShare, registerShare
+         text:hi:bible-gen-3: properNounShare, unanalysedShare
+         text:hi:bible-gen-4: subjunctiveShare, properNounShare, unanalysedShare, registerShare
+         text:hi:bible-gen-5: properNounShare, unanalysedShare, registerShare
+         text:hi:bible-gen-6: phraseShare, properNounShare, unanalysedShare, registerShare
+         text:hi:bible-gen-7: properNounShare, unanalysedShare, registerShare
+         … and 1303 more
+  ok   deep: the forms of the profile sum to its words: 1312 of 1312
+  ok   deep: the importer knows the work: 1312 of 1312
+  ok   deep: the profile counts the words of the text: 1312 of 1312
+  FAIL deep: the profile lists the constructions a fresh import finds: 25 of 1312 — 1287 not
+         text:hi:bible-gen-2: 0 only stored (), 0 only fresh (), 6 with another count (pattern:hi:postposition-after-noun, pattern:hi:perfective-past, pattern:hi:ko-definite-object)
+         text:hi:bible-gen-3: 0 only stored (), 0 only fresh (), 4 with another count (pattern:hi:postposition-after-noun, pattern:hi:perfective-past, pattern:hi:causative)
+         text:hi:bible-gen-4: 0 only stored (), 0 only fresh (), 7 with another count (pattern:hi:postposition-after-noun, pattern:hi:genitive-agreement, pattern:hi:perfective-past)
+         text:hi:bible-gen-5: 0 only stored (), 0 only fresh (), 2 with another count (pattern:hi:postposition-after-noun, pattern:hi:perfective-past)
+         text:hi:bible-gen-6: 0 only stored (), 0 only fresh (), 2 with another count (pattern:hi:postposition-after-noun, pattern:hi:perfective-past)
+         text:hi:bible-gen-7: 0 only stored (), 0 only fresh (), 6 with another count (pattern:hi:postposition-after-noun, pattern:hi:perfective-past, pattern:hi:genitive-agreement)
+         … and 1281 more
+  ok   deep: the profile lists the forms of the text: 1312 of 1312
+  FAIL deep: the profile lists the lemmas a fresh import finds: 3 of 1312 — 1309 not
+         text:hi:bible-gen-2: 1 only stored (lemma:hi:जलना:VERB), 17 only fresh (lemma:hi:वाटिका:NOUN, lemma:hi:अदन:PROPN, lemma:hi:भाँति:NOUN), 3 with another count (lemma:hi:होना:AUX, lemma:hi:करना:VERB, lemma:hi:सकना:AUX)
+         text:hi:bible-gen-3: 2 only stored (lemma:hi:गर्भवना:VERB, lemma:hi:मनाना:VERB), 15 only fresh (lemma:hi:वाटिका:NOUN, lemma:hi:सर्प:NOUN, lemma:hi:अदन:PROPN), 1 with another count (lemma:hi:करना:VERB)
+         text:hi:bible-gen-4: 4 only stored (lemma:hi:गर्भवना:VERB, lemma:hi:बदलना:VERB, lemma:hi:दुहाना:VERB), 30 only fresh (lemma:hi:आदा:NOUN, lemma:hi:गुणा:NOUN, lemma:hi:ग्रहण:NOUN), 4 with another count (lemma:hi:और:CONJ, lemma:hi:करना:VERB, lemma:hi:कहना:VERB)
+         text:hi:bible-gen-5: 0 only stored (), 14 only fresh (lemma:hi:तत्पश्चात्:ADV, lemma:hi:हनोक:PROPN, lemma:hi:शेत:PROPN), 0 with another count ()
+         text:hi:bible-gen-6: 0 only stored (), 16 only fresh (lemma:hi:भाँति:NOUN, lemma:hi:खंड:NOUN, lemma:hi:चलन:NOUN), 1 with another count (lemma:hi:होना:AUX)
+         text:hi:bible-gen-7: 1 only stored (lemma:hi:पाना:VERB), 13 only fresh (lemma:hi:जल:NOUN, lemma:hi:मादा:NOUN, lemma:hi:प्रलय:NOUN), 2 with another count (lemma:hi:होना:AUX, lemma:hi:जलना:VERB)
+         … and 1303 more
+  FAIL deep: the profile lists the units a fresh import finds: 972 of 1312 — 340 not
+         text:hi:bible-gen-5: 0 only stored (), 1 only fresh (phrase:hi:शाप_देना), 0 with another count ()
+         text:hi:bible-gen-6: 0 only stored (), 0 only fresh (), 1 with another count (phrase:hi:उत्पन्न_होना)
+         text:hi:bible-gen-8: 0 only stored (), 1 only fresh (phrase:hi:शाप_देना), 1 with another count (phrase:hi:उत्पन्न_होना)
+         text:hi:bible-gen-11: 1 only stored (phrase:hi:बसना_जाना), 0 only fresh (), 0 with another count ()
+         text:hi:bible-gen-12: 0 only stored (), 1 only fresh (phrase:hi:शाप_देना), 1 with another count (phrase:hi:चलना_जाना)
+         text:hi:bible-gen-16: 2 only stored (phrase:hi:बसना_जाना, phrase:hi:लौटना_जाना), 0 only fresh (), 0 with another count ()
+         … and 334 more
+  FAIL deep: the profile was made by today's analyzer and dictionary: 0 of 1312 — 1312 not
+         text:hi:bible-gen-2: stored adapter-hi@2; today adapter-hi@2 + dict:kaikki-hi@2026-09-28
+         text:hi:bible-gen-3: stored adapter-hi@2; today adapter-hi@2 + dict:kaikki-hi@2026-09-28
+         text:hi:bible-gen-4: stored adapter-hi@2; today adapter-hi@2 + dict:kaikki-hi@2026-09-28
+         text:hi:bible-gen-5: stored adapter-hi@2; today adapter-hi@2 + dict:kaikki-hi@2026-09-28
+         text:hi:bible-gen-6: stored adapter-hi@2; today adapter-hi@2 + dict:kaikki-hi@2026-09-28
+         text:hi:bible-gen-7: stored adapter-hi@2; today adapter-hi@2 + dict:kaikki-hi@2026-09-28
+         … and 1306 more
+  ok   deep: the row's features are the profile's: 1312 of 1312
+  ok   deep: the row's publication decision is the document's: 1312 of 1312
+  ok   deep: the row's title is the document's: 1312 of 1312
+  ok   deep: the stored paragraphs are the document's paragraphs, in order: 126 of 126
+  ok   deep: the stored sentences are the document's sentences, in order: 1186 of 1186
+  ok   deep: the stored text carries its work, chapter, stream and publication: 1312 of 1312
+  ok   deep: the text has sentences: 1312 of 1312
+  ok   deep: the text imports: 1312 of 1312
+  FAIL order (Scripture): a bundled selection of verses is not numbered as a chapter of the Bible: 0 of 1 — 1 not
+         bundled bible-1john-1: verses of 1JN.1, JHN.3 filed as chapter 5
+  FAIL order (Scripture): a chapter is numbered by its place in the canon: 1015 of 1189 — 174 not
+         text:hi:bible-rom-1: ROM.1 is numbered 1019, its place is 1047
+         text:hi:bible-rom-2: ROM.2 is numbered 1020, its place is 1048
+         text:hi:bible-rom-3: ROM.3 is numbered 1021, its place is 1049
+         text:hi:bible-rom-4: ROM.4 is numbered 1022, its place is 1050
+         text:hi:bible-rom-5: ROM.5 is numbered 1023, its place is 1051
+         text:hi:bible-rom-6: ROM.6 is numbered 1024, its place is 1052
+         … and 168 more
+  ok   order (Scripture): every chapter of the canon is present: 1189 of 1189
+  ok   order (Scripture): every chapter says its book and chapter: 1189 of 1189
+  ok   order (Scripture): no chapter twice: 1189 of 1189
+  FAIL order: bundled and library chapters of one work do not share a number: 4 of 5 — 1 not
+         work:india-hi:bible-hindi: 2, 3, 4, 5 (bundled: bible-1john-1=5, bible-gen-1=1, bible-mrk-1=4, bible-psa-1=2, bible-psa-23=3)
+  ok   order: every text of a work has a chapter number: 5 of 5
+  ok   order: no chapter number twice in a work: 5 of 5
+  ok   order: the chapters of a work run without gaps: 4 of 4
+  ok   order: the chapters of a work start at 1 (or 0 for front matter): 4 of 4
+  ok   order: the index lists the chapters of a work in chapter order: 5 of 5
+  ok   read: after reading, no word of the text is new to the learner: 1312 of 1312
+  ok   read: every construction of the profile became a learner item: 1312 of 1312
+  ok   read: every form of the text became a learner item: 1312 of 1312
+  ok   read: every lemma of the profile became a learner item: 1312 of 1312
+  ok   read: every sentence of the text is counted as seen: 1312 of 1312
+  ok   read: every unit of the profile became a learner item: 1312 of 1312
+  ok   read: no form item that is not a form of the text: 1312 of 1312
+  ok   structure: a row is listed under its own primary stream: 1312 of 1312
+  ok   structure: every row has its document file: 1312 of 1312
+  ok   structure: every row has its profile file: 1312 of 1312
+  ok   structure: every row of an index shard is well formed: 5 of 5
+  ok   structure: no document file without a row: 1312 of 1312
+  ok   structure: no profile file without a row: 1312 of 1312
+  ok   structure: no text id twice: 1312 of 1312
+  ok   structure: the manifest counts the texts it lists: 1 of 1
+  ok   structure: the manifest word count is the sum of the rows: 1 of 1
+8 check(s) failed

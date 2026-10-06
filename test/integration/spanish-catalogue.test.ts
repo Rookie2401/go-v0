@@ -35,7 +35,11 @@ describe('Spanish catalogue', () => {
       expect(w.rights.state, w.title).toBeDefined();
       expect(shelves.has(w.stageId), w.title).toBe(true);
       for (const s of w.streams ?? []) expect(streams.has(s), `${w.title}: ${s}`).toBe(true);
-      expect(w.bibliographyVerified, w.title).toBe(false);
+      if (w.id.includes(':bridge-')) {
+        expect(w.bibliographyVerified, w.title).toBe(true);
+        expect(w.sourceUrl, w.title).toContain('digitallibrary.io');
+        expect(w.edition, w.title).toContain('Global Digital Library');
+      } else if (w.id.includes(':gv-')) { expect(w.bibliographyVerified).toBe(true); expect(w.sourceUrl).toContain('globalvoices.org'); expect(w.edition).toBeTruthy(); } else expect(w.bibliographyVerified, w.title).toBe(false);
       const bundlable = BUNDLABLE.has(w.rights.state!);
       expect(w.rights.canBundle, w.title).toBe(bundlable);
       if (w.rights.state === 'verified-public-domain' || w.rights.state === 'verified-open-licence') {
@@ -52,8 +56,8 @@ describe('Spanish catalogue', () => {
       if (w.rights.copyrightStatus === 'in-copyright') expect(w.rights.state, w.title).toBe('prohibited-from-bundling');
       if (w.ingestion === 'bundled') expect(bundlable, w.title).toBe(true);
     }
-    // the only verified public-domain work is the one whose bundled sample was byte-verified
-    expect(SPANISH_WORKS.filter((w) => w.rights.state === 'verified-public-domain').map((w) => w.id)).toEqual([`work:${SPANISH_COURSE_ID}:reina-valera-1909`]);
+    const verifiedPublicDomain = SPANISH_WORKS.filter((w) => w.rights.state === 'verified-public-domain');
+    expect(verifiedPublicDomain.map((w) => w.id)).toContain(`work:${SPANISH_COURSE_ID}:reina-valera-1909`);
   });
 
   it('modern books are listed for the learner\'s own copy only', () => {

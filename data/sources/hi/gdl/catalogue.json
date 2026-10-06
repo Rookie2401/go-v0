@@ -1,0 +1,1637 @@
+{
+  "source": {
+    "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+    "fetchedAt": "2026-10-02T03:52:56.132Z",
+    "licenceEvidence": "https://digitallibrary.io/about/license/"
+  },
+  "language": "hi",
+  "total": 129,
+  "ccBy": 125,
+  "books": [
+    {
+      "postId": 6037,
+      "slug": "%e0%a4%95%e0%a4%b2%e0%a5%8d%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80%e0%a4%ac%e0%a4%be%e0%a5%9b-2",
+      "title": "कल्लू कहानीबाज़",
+      "description": "आज कल्लू को स्कूल के लिये देर हो गई है। क्या बकरी भाग गई थी या कोई बीमार था? अम्मी कि भाई? कल्लू को ज़रूरत है एक कहानी की...एक बढ़िया... जन्नाटेदार...मानने लायक कहानी की... क्या उसे सही कहानी मिली?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b2%e0%a5%8d%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80%e0%a4%ac%e0%a4%be%e0%a5%9b-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16163-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6147,
+      "slug": "%e0%a4%ae%e0%a5%81%e0%a4%a4%e0%a5%8d%e0%a4%a4%e0%a4%9c%e0%a5%8d%e0%a4%9c%e0%a5%80-%e0%a4%95%e0%a5%80-%e0%a4%89%e0%a4%ae%e0%a5%8d%e0%a4%b0-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a4%be-%e0%a4%b9%e0%a5%88",
+      "title": "मुत्तज्जी की उम्र क्या है?",
+      "description": "पुट्टा और पुट्टी जानते हैं कि मुत्तज्जी सचमुच बहुत बहुत बूढ़ी हैं। लेकिन आखिर कितनी बूढ़ी हैं वह? इस बड़े सवाल का जवाब जानने के लिए, उनकी सही उम्र का पता लगाने के लिये, जासूसों की जोड़ी - पुट्टा और पुट्टी - ने मुत्तज्जी की यादों और भारत के इतिहास से जुड़ी घटनाओं के बीच तार से तार जोड़ते हुए, अपनी जांच-पड़ताल का सिलसिला आगे बढ़ाया और मुत्तज्जी की उम्र का पता लगाया!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%81%e0%a4%a4%e0%a5%8d%e0%a4%a4%e0%a4%9c%e0%a5%8d%e0%a4%9c%e0%a5%80-%e0%a4%95%e0%a5%80-%e0%a4%89%e0%a4%ae%e0%a5%8d%e0%a4%b0-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a4%be-%e0%a4%b9%e0%a5%88/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16161-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6149,
+      "slug": "%e0%a4%ae%e0%a5%81%e0%a4%ae%e0%a4%a4%e0%a4%be%e0%a5%9b-%e0%a4%a8%e0%a5%87-%e0%a4%95%e0%a4%be%e0%a5%9d%e0%a5%87-%e0%a4%85%e0%a4%aa%e0%a4%a8%e0%a5%87-%e0%a4%b8%e0%a4%aa%e0%a4%a8%e0%a5%87",
+      "title": "मुमताज़ ने काढ़े अपने सपने",
+      "description": "अपने गाँव से चिकनकारी के कुछ नए टाँके सीखने, मुमताज़ लखनऊ आती है- वहाँ की मशहूर कढ़ाई के अलावा, वह और कितना कुछ सीख जाती है। सब अपने दोस्त मुन्नु की बदौलत! जौली रोहतगी की इस मर्मस्पर्शी कहानी को राम सोनी ने साँझी शैली में बनाए चित्रों से सजाया है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%81%e0%a4%ae%e0%a4%a4%e0%a4%be%e0%a5%9b-%e0%a4%a8%e0%a5%87-%e0%a4%95%e0%a4%be%e0%a5%9d%e0%a5%87-%e0%a4%85%e0%a4%aa%e0%a4%a8%e0%a5%87-%e0%a4%b8%e0%a4%aa%e0%a4%a8%e0%a5%87/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16245-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5964,
+      "slug": "%e0%a4%95%e0%a4%b2%e0%a5%8d%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80%e0%a4%ac%e0%a4%be%e0%a5%9b",
+      "title": "कल्लू कहानीबाज़",
+      "description": "आज कल्लू को स्कूल के लिये देर हो गई है। क्या बकरी भाग गई थी या कोई बीमार था? अम्मी कि भाई? कल्लू को ज़रूरत है एक कहानी की...एक बढ़िया... जन्नाटेदार...मानने लायक कहानी की... क्या उसे सही कहानी मिली?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b2%e0%a5%8d%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80%e0%a4%ac%e0%a4%be%e0%a5%9b/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16163-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6099,
+      "slug": "%e0%a4%a5%e0%a5%8b%e0%a4%a1%e0%a4%bc%e0%a5%80-%e0%a4%b8%e0%a5%80-%e0%a4%ae%e0%a4%a6%e0%a4%a6",
+      "title": "थोड़ी सी मदद",
+      "description": "हमारी क्लास में एक नयी लड़की आई है, और टीचर ने मुझसे कहा है कि मैं उसके साथ दोस्ती करूँ और स्कूल को जानने-समझने में उसकी मदद करूँ। लेकिन ऐसा करने का मेरा मन नहीं करता - वह... वह हम सब जैसी नहीं है न! पेश है, छोटी-छोटी चिट्ठियों के ज़रिए कही गई दोस्ती और माहौल में घुलने-मिलने की एक दिलचस्प कहानी!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%a5%e0%a5%8b%e0%a4%a1%e0%a4%bc%e0%a5%80-%e0%a4%b8%e0%a5%80-%e0%a4%ae%e0%a4%a6%e0%a4%a6/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16107-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6199,
+      "slug": "%e0%a4%b8%e0%a5%8d%e0%a4%b5%e0%a4%a4%e0%a4%82%e0%a4%a4%e0%a5%8d%e0%a4%b0%e0%a4%a4%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%93%e0%a4%b0",
+      "title": "स्वतंत्रता की ओर",
+      "description": "नौ वर्ष का धनी साबरमति आश्रम में रहता है। उसने हठ पकड़ ली है कि वह महात्मा गाँधी के साथ दाँडी यात्रा पर जायेगा। अंग्रेजों द्वारा लगाये गये नमक कर का विरोध करेगा। दाँडी यात्रा कि ७५ वीं जयन्ती पर लिखी गयी एक दिलचस्प कहानी!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%8d%e0%a4%b5%e0%a4%a4%e0%a4%82%e0%a4%a4%e0%a5%8d%e0%a4%b0%e0%a4%a4%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%93%e0%a4%b0/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16123-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6171,
+      "slug": "%e0%a4%b0%e0%a5%9b%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b6%e0%a4%be%e0%a4%b9",
+      "title": "रज़ा और बादशाह",
+      "description": "रज़ा के अब्बा, रहमत खान, मुग़ल बादशाह अकबर के शाही दर्ज़ी हैं। रज़ा अब्बा के साथ बादशाह के नये कपड़े पहुँचाने महल गया। तब उसे पता चला कि बादशाह कपड़ों के मामले में ज़रा नखरैले हैं... मुग़ल काल के भारत में, रज़ा की होशियारी की प्यारी सी कहानी!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b0%e0%a5%9b%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b6%e0%a4%be%e0%a4%b9/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16217-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5941,
+      "slug": "%e0%a4%86%e0%a4%93-%e0%a4%ac%e0%a5%80%e0%a4%9c-%e0%a4%ac%e0%a4%9f%e0%a5%8b%e0%a4%b0%e0%a5%87%e0%a4%82",
+      "title": "आओ, बीज बटोरें!",
+      "description": "चलिये, टूका, पोई और उनके प्यारे दोस्त इंजी के साथ बीज इकट्ठे करने चलते हैं। कहानी शुरू होती है, जब ये तीनों पच्चा नाम के एक इमली के पेड़ से मिलते हैं...",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%86%e0%a4%93-%e0%a4%ac%e0%a5%80%e0%a4%9c-%e0%a4%ac%e0%a4%9f%e0%a5%8b%e0%a4%b0%e0%a5%87%e0%a4%82/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16169-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5947,
+      "slug": "%e0%a4%89%e0%a5%9c%e0%a4%a8%e0%a5%87-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-%e0%a4%91%e0%a4%9f%e0%a5%8b",
+      "title": "उड़ने वाला ऑटो",
+      "description": "दिल्ली की सड़कों की भीड़-भाड़ में फँसे हुए एक ऑटोरिक्शा को एक दिन कुछ अनोखा अनुभव हुआ। उसी ऑटो के चालक और सवारी के साथ सैर कीजिये और जादू का मज़ा लीजिये।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%89%e0%a5%9c%e0%a4%a8%e0%a5%87-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-%e0%a4%91%e0%a4%9f%e0%a5%8b/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16093-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5968,
+      "slug": "%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%81-%e0%a4%97%e0%a4%af%e0%a5%87-%e0%a4%97%e0%a4%be%e0%a4%b2%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a5%87-%e0%a4%97%e0%a4%a1%e0%a5%8d%e0%a4%a2%e0%a5%87",
+      "title": "कहाँ गये गालों के गड्‌ढे?",
+      "description": "लांगलेन के घुंघराले बाल उसके अप्पा जैसे और ठुड्‌डी के बीच गड्ढा उसकी इम्मा जैसा है। इसकी वजह से वो कभी कभी सोचती है कि भाई बहन या माँ-पिताजी और बच्चे एक जैसे क्यों दिखाई देते हैं। क्या वो उनकी विशेषताओं का एक पुलिंदा है? इतने सारे सवाल, लेकिन इम्मा और अप्पा के पास सारे जवाब हैं।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%81-%e0%a4%97%e0%a4%af%e0%a5%87-%e0%a4%97%e0%a4%be%e0%a4%b2%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a5%87-%e0%a4%97%e0%a4%a1%e0%a5%8d%e0%a4%a2%e0%a5%87/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16175-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5970,
+      "slug": "%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a4%bf%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a4%be-%e0%a4%b6%e0%a4%b9%e0%a4%b0",
+      "title": "कहानियों का शहर",
+      "description": "एक नन्ही लड़की और दीदी के शहर में कहानियों की बाढ़ आ गई। उनका शहर ‘कहानियों का शहर’ कैसे बना? यह भी एक कहानी है...",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a4%bf%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a4%be-%e0%a4%b6%e0%a4%b9%e0%a4%b0/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16097-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6003,
+      "slug": "%e0%a4%86%e0%a4%93-%e0%a4%ac%e0%a5%80%e0%a4%9c-%e0%a4%ac%e0%a4%9f%e0%a5%8b%e0%a4%b0%e0%a5%87%e0%a4%82-2",
+      "title": "आओ, बीज बटोरें!",
+      "description": "चलिये, टूका, पोई और उनके प्यारे दोस्त इंजी के साथ बीज इकट्ठे करने चलते हैं। कहानी शुरू होती है, जब ये तीनों पच्चा नाम के एक इमली के पेड़ से मिलते हैं...",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%86%e0%a4%93-%e0%a4%ac%e0%a5%80%e0%a4%9c-%e0%a4%ac%e0%a4%9f%e0%a5%8b%e0%a4%b0%e0%a5%87%e0%a4%82-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16169-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6015,
+      "slug": "%e0%a4%86%e0%a4%93-%e0%a4%ac%e0%a5%80%e0%a4%9c-%e0%a4%ac%e0%a4%9f%e0%a5%8b%e0%a4%b0%e0%a5%87%e0%a4%82-3",
+      "title": "आओ, बीज बटोरें!",
+      "description": "चलिये, टूका, पोई और उनके प्यारे दोस्त इंजी के साथ बीज इकट्ठे करने चलते हैं। कहानी शुरू होती है, जब ये तीनों पच्चा नाम के एक इमली के पेड़ से मिलते हैं...",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%86%e0%a4%93-%e0%a4%ac%e0%a5%80%e0%a4%9c-%e0%a4%ac%e0%a4%9f%e0%a5%8b%e0%a4%b0%e0%a5%87%e0%a4%82-3/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16169-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5982,
+      "slug": "%e0%a4%95%e0%a5%8b%e0%a4%9f%e0%a5%8d%e0%a4%9f%e0%a4%b5%e0%a5%80-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%89%e0%a4%a8%e0%a5%80%e0%a4%82%e0%a4%a6%e0%a4%be-%e0%a4%a6%e0%a5%87",
+      "title": "कोट्टवी राजा और उनींदा देश",
+      "description": "कोट्टवी राजा को नींद नहीं आती थी, केवल रात के समय। दिन में, जब उनके मंत्री जटिल समस्याओं पर विचार करते थे, उन्हें नींद की झपकियाँ आती रहतीं। उन्होंने सभी से सुझाव मांगे, मगर किसी से भी कोई लाभ नहीं हुआ। और फिर एक दिन... आइये, इस कहानी के माध्यम से कोट्टवी राजा के देश चलें और देखें कि आगे क्या होता है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a5%8b%e0%a4%9f%e0%a5%8d%e0%a4%9f%e0%a4%b5%e0%a5%80-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%89%e0%a4%a8%e0%a5%80%e0%a4%82%e0%a4%a6%e0%a4%be-%e0%a4%a6%e0%a5%87/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16147-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5959,
+      "slug": "%e0%a4%95%e0%a4%9b%e0%a5%81%e0%a4%86-%e0%a4%94%e0%a4%b0-%e0%a4%96%e0%a4%b0%e0%a4%97%e0%a5%8b%e0%a4%b6",
+      "title": "कछुआ और खरगोश",
+      "description": "बहुत दिनों पहले कछुए ने अपनी लगन के बल पर घमण्डी खरगोश को दौड़ में हराया था। अब दोनों फिर साथ आये हैं और उन्हें मिल कर राजा का ज़रूरी काम करना है। सहयोग के बिना यह असम्भव है पर क्या दोनों विरोधी मिल कर काम कर पायेंगे?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%9b%e0%a5%81%e0%a4%86-%e0%a4%94%e0%a4%b0-%e0%a4%96%e0%a4%b0%e0%a4%97%e0%a5%8b%e0%a4%b6/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16173-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5993,
+      "slug": "%e0%a4%97%e0%a4%b9%e0%a4%b0%e0%a5%87-%e0%a4%b8%e0%a4%be%e0%a4%97%e0%a4%b0-%e0%a4%95%e0%a5%87-%e0%a4%85%e0%a4%82%e0%a4%a6%e0%a4%b0",
+      "title": "गहरे सागर के अंदर!",
+      "description": "इस कहानी के ज़रिये हमारे साथ समुद्र की गहराई में गोता लगाइये! हम आपको समुद्र के अंदर प्रवाल भित्तियों यानी मूंगे की दीवारों के अनोखे संसार की झलक दिखलाएंगे! सागर की तलहटी में वनस्पतियों के बीच रहने वाले कई किस्म के बेहद अनोखे रंग-रूप वाले सुंदर जीवों के अनूठे संसार को देख आप हैरान रह जाएंगे!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a4%b9%e0%a4%b0%e0%a5%87-%e0%a4%b8%e0%a4%be%e0%a4%97%e0%a4%b0-%e0%a4%95%e0%a5%87-%e0%a4%85%e0%a4%82%e0%a4%a6%e0%a4%b0/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16095-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6069,
+      "slug": "%e0%a4%97%e0%a5%8c%e0%a4%b0%e0%a5%88%e0%a4%af%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%85%e0%a4%ae%e0%a4%b0%e0%a5%82%e0%a4%a6",
+      "title": "गौरैया और अमरूद",
+      "description": "जब गौरैया का मीठा अमरूद कँटीली झाड़ी में गिर जाता है, वह उसे वापस पाने के लिये बड़ी चालाकियाँ खेलती है। पर क्या चालाकी हमेशा काम आती है? पढ़िये, इस मज़ेदार किस्से में...",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a5%8c%e0%a4%b0%e0%a5%88%e0%a4%af%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%85%e0%a4%ae%e0%a4%b0%e0%a5%82%e0%a4%a6/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16235-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6041,
+      "slug": "%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%81-%e0%a4%97%e0%a4%af%e0%a5%87-%e0%a4%97%e0%a4%be%e0%a4%b2%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a5%87-%e0%a4%97%e0%a4%a1%e0%a5%8d%e0%a4%a2%e0%a5%87-2",
+      "title": "कहाँ गये गालों के गड्‌ढे?",
+      "description": "लांगलेन के घुंघराले बाल उसके अप्पा जैसे और ठुड्‌डी के बीच गड्ढा उसकी इम्मा जैसा है। इसकी वजह से वो कभी कभी सोचती है कि भाई बहन या माँ-पिताजी और बच्चे एक जैसे क्यों दिखाई देते हैं। क्या वो उनकी विशेषताओं का एक पुलिंदा है? इतने सारे सवाल, लेकिन इम्मा और अप्पा के पास सारे जवाब हैं।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%81-%e0%a4%97%e0%a4%af%e0%a5%87-%e0%a4%97%e0%a4%be%e0%a4%b2%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a5%87-%e0%a4%97%e0%a4%a1%e0%a5%8d%e0%a4%a2%e0%a5%87-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16175-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6043,
+      "slug": "%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a4%bf%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a4%be-%e0%a4%b6%e0%a4%b9%e0%a4%b0-2",
+      "title": "कहानियों का शहर",
+      "description": "एक नन्ही लड़की और दीदी के शहर में कहानियों की बाढ़ आ गई। उनका शहर ‘कहानियों का शहर’ कैसे बना? यह भी एक कहानी है...",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a4%bf%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a4%be-%e0%a4%b6%e0%a4%b9%e0%a4%b0-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16097-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6021,
+      "slug": "%e0%a4%89%e0%a5%9c%e0%a4%a8%e0%a5%87-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-%e0%a4%91%e0%a4%9f%e0%a5%8b-2",
+      "title": "उड़ने वाला ऑटो",
+      "description": "दिल्ली की सड़कों की भीड़-भाड़ में फँसे हुए एक ऑटोरिक्शा को एक दिन कुछ अनोखा अनुभव हुआ। उसी ऑटो के चालक और सवारी के साथ सैर कीजिये और जादू का मज़ा लीजिये।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%89%e0%a5%9c%e0%a4%a8%e0%a5%87-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-%e0%a4%91%e0%a4%9f%e0%a5%8b-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16093-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6055,
+      "slug": "%e0%a4%95%e0%a5%8b%e0%a4%9f%e0%a5%8d%e0%a4%9f%e0%a4%b5%e0%a5%80-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%89%e0%a4%a8%e0%a5%80%e0%a4%82%e0%a4%a6%e0%a4%be-%e0%a4%a6%e0%a5%87-2",
+      "title": "कोट्टवी राजा और उनींदा देश",
+      "description": "कोट्टवी राजा को नींद नहीं आती थी, केवल रात के समय। दिन में, जब उनके मंत्री जटिल समस्याओं पर विचार करते थे, उन्हें नींद की झपकियाँ आती रहतीं। उन्होंने सभी से सुझाव मांगे, मगर किसी से भी कोई लाभ नहीं हुआ। और फिर एक दिन... आइये, इस कहानी के माध्यम से कोट्टवी राजा के देश चलें और देखें कि आगे क्या होता है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a5%8b%e0%a4%9f%e0%a5%8d%e0%a4%9f%e0%a4%b5%e0%a5%80-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%89%e0%a4%a8%e0%a5%80%e0%a4%82%e0%a4%a6%e0%a4%be-%e0%a4%a6%e0%a5%87-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16147-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6091,
+      "slug": "%e0%a4%9c%e0%a4%be%e0%a4%a6%e0%a4%b5-%e0%a4%95%e0%a4%be-%e0%a4%9c%e0%a4%81%e0%a4%97%e0%a4%b2",
+      "title": "जादव का जँगल",
+      "description": "जादव दुनिया का सबसे बेहतरीन काम करते हैं - वे जँगल पैदा करते हैं। कैसे? यह कहानी पढ़िए और जानिए।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%9c%e0%a4%be%e0%a4%a6%e0%a4%b5-%e0%a4%95%e0%a4%be-%e0%a4%9c%e0%a4%81%e0%a4%97%e0%a4%b2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16243-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6033,
+      "slug": "%e0%a4%95%e0%a4%9b%e0%a5%81%e0%a4%86-%e0%a4%94%e0%a4%b0-%e0%a4%96%e0%a4%b0%e0%a4%97%e0%a5%8b%e0%a4%b6-2",
+      "title": "कछुआ और खरगोश",
+      "description": "बहुत दिनों पहले कछुए ने अपनी लगन के बल पर घमण्डी खरगोश को दौड़ में हराया था। अब दोनों फिर साथ आये हैं और उन्हें मिल कर राजा का ज़रूरी काम करना है। सहयोग के बिना यह असम्भव है पर क्या दोनों विरोधी मिल कर काम कर पायेंगे?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%9b%e0%a5%81%e0%a4%86-%e0%a4%94%e0%a4%b0-%e0%a4%96%e0%a4%b0%e0%a4%97%e0%a5%8b%e0%a4%b6-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16173-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6065,
+      "slug": "%e0%a4%97%e0%a4%b9%e0%a4%b0%e0%a5%87-%e0%a4%b8%e0%a4%be%e0%a4%97%e0%a4%b0-%e0%a4%95%e0%a5%87-%e0%a4%85%e0%a4%82%e0%a4%a6%e0%a4%b0-2",
+      "title": "गहरे सागर के अंदर!",
+      "description": "इस कहानी के ज़रिये हमारे साथ समुद्र की गहराई में गोता लगाइये! हम आपको समुद्र के अंदर प्रवाल भित्तियों यानी मूंगे की दीवारों के अनोखे संसार की झलक दिखलाएंगे! सागर की तलहटी में वनस्पतियों के बीच रहने वाले कई किस्म के बेहद अनोखे रंग-रूप वाले सुंदर जीवों के अनूठे संसार को देख आप हैरान रह जाएंगे!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a4%b9%e0%a4%b0%e0%a5%87-%e0%a4%b8%e0%a4%be%e0%a4%97%e0%a4%b0-%e0%a4%95%e0%a5%87-%e0%a4%85%e0%a4%82%e0%a4%a6%e0%a4%b0-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16095-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6105,
+      "slug": "%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%86%e0%a4%95%e0%a4%be%e0%a4%b6-%e0%a4%95%e0%a4%be-%e0%a4%b0%e0%a4%82%e0%a4%97-%e0%a4%a8%e0%a5%80%e0%a4%b2%e0%a4%be",
+      "title": "दीदी, दीदी, आकाश का रंग नीला क्यों है?",
+      "description": "दीदी से पूछने के लिये मुन्ने राजा के मन में न जाने कितने सवाल उठते रहते हैं। दीदी के पास जवाब हमेशा मिलते हैं क्योंकि वह हर समय कोई न कोई मोटी सी किताब पढ़ती रहती है। यहाँ मुन्ने राजा पूछ रहे हैं कि आकाश नीला क्यों है? जब दीदी पूछती है कि उन्हें क्या लगता है तो मुन्ने राजा की कल्पना की उड़ान के क्या कहने! क्या किसी ने एक विशाल साड़ी सुखाई है या कुछ और ही है? दीदी अन्त में सही उत्तर दे देती है पर मुन्ने राजा के मज़ेदार जवाब भी पढ़ने लायक हैं। आप भी बताइये आपको क्या लगता है आकाश का रंग नीला क्यों है?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%86%e0%a4%95%e0%a4%be%e0%a4%b6-%e0%a4%95%e0%a4%be-%e0%a4%b0%e0%a4%82%e0%a4%97-%e0%a4%a8%e0%a5%80%e0%a4%b2%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16203-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6107,
+      "slug": "%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%97%e0%a4%b0%e0%a4%9c%e0%a4%a4",
+      "title": "दीदी, दीदी, बादल क्यों गरजते हैं?",
+      "description": "दीदी से पूछने के लिये मुन्ने राजा के मन में न जाने कितने सवाल उठते रहते हैं। दीदी के पास जवाब हमेशा मिलते हैं क्योंकि वह हर समय कोई न कोई मोटी सी किताब पढ़ती रहती है। यहाँ मुन्ने राजा सोच रहे हैं कि बादल गरजते क्यों हैं? क्या कोई राक्षस गुस्से में हुंकार रहा है या बादलों में रहने वाले मोटर साइकिल चालक ज़ोर-ज़ोर से मोटर साइकिल चला रहे हैं? दीदी अन्त में सही उत्तर दे देती है पर मुन्ने राजा के मज़ेदार जवाब भी पढ़ने लायक हैं।आप भी बताइये आपको क्या लगता है बादल क्यों गरजते हैं?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%97%e0%a4%b0%e0%a4%9c%e0%a4%a4/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16113-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6109,
+      "slug": "%e0%a4%a7%e0%a5%8d%e0%a4%af%e0%a4%be%e0%a4%a8-%e0%a4%b8%e0%a4%bf%e0%a4%82%e0%a4%b9-%e0%a4%9a%e0%a4%82%e0%a4%a6-%e0%a4%b9%e0%a5%89%e0%a4%95%e0%a5%80-%e0%a4%95%e0%a5%87-%e0%a4%9c",
+      "title": "ध्यान सिंह  'चंद'  : हॉकी के जादूगर",
+      "description": "एक व्यक्ति जिसे हॉकी के जादूगर के नाम से जाना गया, उसने हॉकी को ताड़ के पेड़ की टहनी से खेलना शुरु किया था। एक बच्चे के रूप में उनको क्या खाना पसंद था? उन्होंने हिटलर को गलत कैसे सिद्ध किया? पढ़िये ऐसे कई रोचक प्रश्नों के उत्तर। हम उस व्यक्ति की कहानी आपको सुना रहे हैं जो शायद आपको हॉकी स्टिक उठाकर खेलने के लिए प्रेरित कर दे।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%a7%e0%a5%8d%e0%a4%af%e0%a4%be%e0%a4%a8-%e0%a4%b8%e0%a4%bf%e0%a4%82%e0%a4%b9-%e0%a4%9a%e0%a4%82%e0%a4%a6-%e0%a4%b9%e0%a5%89%e0%a4%95%e0%a5%80-%e0%a4%95%e0%a5%87-%e0%a4%9c/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16237-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6119,
+      "slug": "%e0%a4%aa%e0%a4%aa%e0%a4%b2%e0%a5%82-%e0%a4%b0%e0%a4%be%e0%a4%95%e0%a5%8d%e0%a4%b7%e0%a4%b8-2",
+      "title": "पपलू राक्षस",
+      "description": "पपलू एक अनोखा राक्षस है जिसे लड़ने-झगड़ने में बिलकुल भी मज़ा नहीं आता! पर जब उसके प्यारे गाँव वालों पर मुसीबत आई तो पपलू ने एक नया ही रूप दिखलाया।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%aa%e0%a4%aa%e0%a4%b2%e0%a5%82-%e0%a4%b0%e0%a4%be%e0%a4%95%e0%a5%8d%e0%a4%b7%e0%a4%b8-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16211-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6125,
+      "slug": "%e0%a4%aa%e0%a4%bf%e0%a4%b6%e0%a4%bf-%e0%a4%ab%e0%a4%81%e0%a4%b8%e0%a5%80-%e0%a4%a4%e0%a5%82%e0%a5%9e%e0%a4%be%e0%a4%a8-%e0%a4%ae%e0%a5%87%e0%a4%82",
+      "title": "पिशि फँसी तूफ़ान में",
+      "description": "पिशि एक विशाल मानता रे मछली थी। एक दिन जब तूफ़ान आया तो आप जानते हैं उसकी मदद किसने करी? क्या आप जानना चाहेंगे उस दिन क्या हुआ?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%aa%e0%a4%bf%e0%a4%b6%e0%a4%bf-%e0%a4%ab%e0%a4%81%e0%a4%b8%e0%a5%80-%e0%a4%a4%e0%a5%82%e0%a5%9e%e0%a4%be%e0%a4%a8-%e0%a4%ae%e0%a5%87%e0%a4%82/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16071-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6127,
+      "slug": "%e0%a4%aa%e0%a5%82%e0%a4%b0%e0%a5%80-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%ab%e0%a5%82%e0%a4%b2%e0%a4%a4%e0%a5%80-%e0%a4%b9%e0%a5%88",
+      "title": "पूरी क्यों फूलती है?",
+      "description": "गोल गोल मज़ेदार, फूली हुई पूड़ियाँ खाना किसे अच्छा नहीं लगता! सुनते ही मुँह में पानी आ गया। लेकिन ये पूड़ियाँ फूलती क्यों हैं? कौन इनमें हवा भर देता है? इसके उत्तर में काफ़ी सारा विज्ञान छुपा हुआ है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%aa%e0%a5%82%e0%a4%b0%e0%a5%80-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%ab%e0%a5%82%e0%a4%b2%e0%a4%a4%e0%a5%80-%e0%a4%b9%e0%a5%88/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16089-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6097,
+      "slug": "%e0%a4%9f%e0%a5%82%e0%a4%a5%e0%a4%aa%e0%a5%87%e0%a4%b8%e0%a5%8d%e0%a4%9f-%e0%a4%9f%e0%a5%8d%e0%a4%af%e0%a5%82%e0%a4%ac-%e0%a4%95%e0%a5%87-%e0%a4%85%e0%a4%82%e0%a4%a6%e0%a4%b0-%e0%a4%95%e0%a5%88",
+      "title": "टूथपेस्ट ट्यूब के अंदर कैसे आया?",
+      "description": "हर सुबह ट्यूब को दबाकर टूथपेस्ट निकालना आसान है, मगर क्या तुम जानते हो कि यह ट्यूब के अंदर कैसे आया? आओ, तुम्हें बताएँ --- कैसे?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%9f%e0%a5%82%e0%a4%a5%e0%a4%aa%e0%a5%87%e0%a4%b8%e0%a5%8d%e0%a4%9f-%e0%a4%9f%e0%a5%8d%e0%a4%af%e0%a5%82%e0%a4%ac-%e0%a4%95%e0%a5%87-%e0%a4%85%e0%a4%82%e0%a4%a6%e0%a4%b0-%e0%a4%95%e0%a5%88/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16231-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6167,
+      "slug": "%e0%a4%ae%e0%a5%8b%e0%a4%b0%e0%a5%82-%e0%a4%8f%e0%a4%95-%e0%a4%aa%e0%a4%b9%e0%a5%87%e0%a4%b2%e0%a5%80",
+      "title": "मोरू एक पहेली",
+      "description": "मोरू को अंक पसंद थे और उसे स्कूल जाना भी अच्छा लगता था। ऐसा क्या हुआ जो उसे उसके प्यारे अंकों से दूर ले गया? पढ़िये मोरू की मन को छू लेने वाली कहानी।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%8b%e0%a4%b0%e0%a5%82-%e0%a4%8f%e0%a4%95-%e0%a4%aa%e0%a4%b9%e0%a5%87%e0%a4%b2%e0%a5%80/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16141-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6135,
+      "slug": "%e0%a4%ad%e0%a4%ac%e0%a4%b2%e0%a5%82-%e0%a4%ad%e0%a4%be%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a5%80-%e0%a4%b8%e0%a5%88%e0%a4%b0",
+      "title": "भबलू भालू की सैर",
+      "description": "भबलू भालू के जीवन में कई उतार-चढ़ाव आते हैं। चंचल भबलू के जीवन में रस भी इन्हीं उतार-चढ़ावों की वजह से आता है। पढ़िये भबलू की रसीली-रहस्यमई-रोमांचक कथा और हिमालय के भालुओं के राज़दार बनिये!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ad%e0%a4%ac%e0%a4%b2%e0%a5%82-%e0%a4%ad%e0%a4%be%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a5%80-%e0%a4%b8%e0%a5%88%e0%a4%b0/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16189-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6169,
+      "slug": "%e0%a4%b0%e0%a5%80%e0%a4%a4%e0%a4%bf-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a4%bf%e0%a4%a0%e0%a5%81",
+      "title": "रीति और मिठु",
+      "description": "रीति की छुट्टियाँ शुरू हो गई हैं, मगर वह खुश नहीं है। उसे छुट्टियाँ पसंद नहीं है, क्योंकि उसे अपने दोस्तों की कमी खलती है। एक दिन उसे एक पालतू मिलता है - मिठु, एक बोलने वाला तोता! क्या मिठु उसका सबसे अच्छा दोस्त बनता है? इसे जानने के लिए दिल को छूनेवाली, दोस्ती की यह कहानी पढ़ें!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b0%e0%a5%80%e0%a4%a4%e0%a4%bf-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a4%bf%e0%a4%a0%e0%a5%81/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16135-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6139,
+      "slug": "%e0%a4%ae%e0%a4%9b%e0%a4%b2%e0%a5%80-%e0%a4%a8%e0%a5%87-%e0%a4%b8%e0%a4%ae%e0%a4%be%e0%a4%9a%e0%a4%be%e0%a4%b0-%e0%a4%b8%e0%a5%81%e0%a4%a8%e0%a5%87",
+      "title": "मछली ने समाचार सुने",
+      "description": "मछली परिवार की बैठक में एक बड़ा सा रेडियो है पर छोटी मछलियाँ दादा मछली को उसे सुनने का मौका कहाँ देती हैं। पर एक दिन दादा मछली ने समाचार सुने और शुक्र है कि वह एक बहुत ज़रूरी खबर सुन पाये...",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a4%9b%e0%a4%b2%e0%a5%80-%e0%a4%a8%e0%a5%87-%e0%a4%b8%e0%a4%ae%e0%a4%be%e0%a4%9a%e0%a4%be%e0%a4%b0-%e0%a4%b8%e0%a5%81%e0%a4%a8%e0%a5%87/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16241-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6142,
+      "slug": "%e0%a4%ae%e0%a4%a7%e0%a5%81%e0%a4%ae%e0%a4%95%e0%a5%8d%e0%a4%96%e0%a4%bf%e0%a4%af%e0%a4%be%e0%a4%81-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%ad%e0%a4%a8-%e0%a4%ad%e0%a4%a8-%e0%a4%95",
+      "title": "मधुमक्खियाँ क्यों भन-भन करती हैं?",
+      "description": "मधुमखियाँ चुपचाप काम क्यों नहीं कर सकती उनकी भिनभिनाहट की कई वजहे है तो चलिये इस किताब से सीधी साधी मधुमक्खी के बारे में कुछ और जानते है!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a4%a7%e0%a5%81%e0%a4%ae%e0%a4%95%e0%a5%8d%e0%a4%96%e0%a4%bf%e0%a4%af%e0%a4%be%e0%a4%81-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%ad%e0%a4%a8-%e0%a4%ad%e0%a4%a8-%e0%a4%95/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16207-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6177,
+      "slug": "%e0%a4%b5%e0%a4%bf%e0%a4%b6%e0%a4%be%e0%a4%b2%e0%a4%95%e0%a4%be%e0%a4%af-%e0%a4%8f%e0%a4%95-%e0%a4%aa%e0%a4%82%e0%a4%96-%e0%a4%97%e0%a4%9c%e0%a4%aa%e0%a4%95%e0%a5%8d%e0%a4%b7%e0%a5%80",
+      "title": "विशालकाय एक-पंख गजपक्षी",
+      "description": "मुनिया को विश्‍वास था कि उस विशाल एक-पंख गजपक्षी ने घोड़े को नहीं निगला होगा। वैसे आकार में गजपक्षी इतना बड़ा था कि घोड़े को निगलना उसके लिए कोई बड़ी बात नहीं थी! पर वह घोड़ा ग़ायब कहाँ हो गया? एक जादुई पक्षी और एक बहादुर लड़की की प्यारी सी कहानी।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b5%e0%a4%bf%e0%a4%b6%e0%a4%be%e0%a4%b2%e0%a4%95%e0%a4%be%e0%a4%af-%e0%a4%8f%e0%a4%95-%e0%a4%aa%e0%a4%82%e0%a4%96-%e0%a4%97%e0%a4%9c%e0%a4%aa%e0%a4%95%e0%a5%8d%e0%a4%b7%e0%a5%80/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16153-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6183,
+      "slug": "%e0%a4%b8%e0%a4%ac%e0%a4%b8%e0%a5%87-%e0%a4%85%e0%a4%9a%e0%a5%8d%e0%a4%9b%e0%a4%be-%e0%a4%98%e0%a4%b0",
+      "title": "सबसे अच्छा घर",
+      "description": "बड़े, छोटे, गोल, चौकोर, भारी, हल्के... घर बहुत तरह के हो सकते हैं। जानें कि वे किस तरह से अलग हैं और खुद का घर बनाएँ। आइए हमारी नन्ही वास्तुकार के साथ अपना एक घर बनाते हैं!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a4%ac%e0%a4%b8%e0%a5%87-%e0%a4%85%e0%a4%9a%e0%a5%8d%e0%a4%9b%e0%a4%be-%e0%a4%98%e0%a4%b0/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16223-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6201,
+      "slug": "%e0%a4%b9%e0%a4%b5%e0%a4%be%e0%a4%88-%e0%a4%9c%e0%a4%b9%e0%a4%be%e0%a5%9b-%e0%a4%95%e0%a5%88%e0%a4%b8%e0%a5%87-%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87-%e0%a4%b9%e0%a5%88%e0%a4%82",
+      "title": "हवाई जहाज़ कैसे उड़ते हैं?",
+      "description": "सरला चील या हवाई जहाज़ की तरह आसमान में उड़ना चाहती है।\"क्यों नहीं, ज़रूर! तुम उड़ सकती हो।\" उसकी नई अध्यापिका ने कहा।अब, सरला उड़ान और हवाई जहाज़ के बारे में अपनी जानकारी आप सबसे साझा कर रही है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b9%e0%a4%b5%e0%a4%be%e0%a4%88-%e0%a4%9c%e0%a4%b9%e0%a4%be%e0%a5%9b-%e0%a4%95%e0%a5%88%e0%a4%b8%e0%a5%87-%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87-%e0%a4%b9%e0%a5%88%e0%a4%82/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16101-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5937,
+      "slug": "%e0%a4%85%e0%a4%ae%e0%a5%8d%e0%a4%ae%e0%a4%be-%e0%a4%9c%e0%a4%ac-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2-%e0%a4%97%e0%a4%af%e0%a5%80%e0%a4%82",
+      "title": "अम्मा जब स्कूल गयीं",
+      "description": "मीरा की अम्मा एक दिन उसके स्कूल गयीं पर वहाँ कोई नहीं था, मीरा, उसके मित्र, शिक्षक और यहाँ तक कि बड़ी दीदी भी। वे सब कहाँ गायब हो गए थे?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%ae%e0%a5%8d%e0%a4%ae%e0%a4%be-%e0%a4%9c%e0%a4%ac-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2-%e0%a4%97%e0%a4%af%e0%a5%80%e0%a4%82/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16109-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5939,
+      "slug": "%e0%a4%85%e0%a4%b5%e0%a4%a8%e0%a4%bf-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a4%9f%e0%a4%b0-%e0%a4%95%e0%a4%be-%e0%a4%aa%e0%a5%8c%e0%a4%a7%e0%a4%be",
+      "title": "अवनि और मटर का पौधा",
+      "description": "आखिर ऐसा हुआ कैसे? किसने किया? अवनि तो नहीं जानती और न ही उसकी अम्मा जानती हैं। मटर के पौधे के बारे में कोई नहीं जानता, पर आप जान सकते हैं।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%b5%e0%a4%a8%e0%a4%bf-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a4%9f%e0%a4%b0-%e0%a4%95%e0%a4%be-%e0%a4%aa%e0%a5%8c%e0%a4%a7%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16143-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5945,
+      "slug": "%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87-%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87",
+      "title": "उड़ते उड़ते",
+      "description": "सभी बच्चों में ऊँचे आकाश को छूने की इच्छा होती है। शायद इसी वजह से इस कहानी का बच्चा सपने में आकाश में उड़ता है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87-%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16215-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5949,
+      "slug": "%e0%a4%8a%e0%a4%81%e0%a4%9f-%e0%a4%9a%e0%a4%b2%e0%a4%be-%e0%a4%ad%e0%a4%88-%e0%a4%8a%e0%a4%81%e0%a4%9f-%e0%a4%9a%e0%a4%b2%e0%a4%be",
+      "title": "ऊँट चला, भई! ऊँट चला",
+      "description": "प्रयाग शुक्ल की सरल, सुन्दर व सरस कविताओं का संकलन। सीरज सक्सेना की कला से सज्जित होकर इनकी छटा देखते ही बनती है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%8a%e0%a4%81%e0%a4%9f-%e0%a4%9a%e0%a4%b2%e0%a4%be-%e0%a4%ad%e0%a4%88-%e0%a4%8a%e0%a4%81%e0%a4%9f-%e0%a4%9a%e0%a4%b2%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16181-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5953,
+      "slug": "%e0%a4%8f%e0%a4%95-%e0%a4%b8%e0%a5%8c-%e0%a4%b8%e0%a5%88%e0%a4%82%e0%a4%a4%e0%a5%80%e0%a4%b8%e0%a4%b5%e0%a4%be%e0%a4%81-%e0%a4%aa%e0%a5%88%e0%a4%b0",
+      "title": "एक सौ सैंतीसवाँ पैर",
+      "description": "एक गोजर को चोट लगी है। उसे मदद की ज़रूरत है। अब वह कौन सा पैर है, जिसे मदद की ज़रूरत है? पेश है एक बाल साहित्य पुरस्कार विजेता की एक नई रोचक सचित्र पुस्तक!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%8f%e0%a4%95-%e0%a4%b8%e0%a5%8c-%e0%a4%b8%e0%a5%88%e0%a4%82%e0%a4%a4%e0%a5%80%e0%a4%b8%e0%a4%b5%e0%a4%be%e0%a4%81-%e0%a4%aa%e0%a5%88%e0%a4%b0/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16247-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5957,
+      "slug": "%e0%a4%95%e0%a4%9a%e0%a4%b0%e0%a5%87-%e0%a4%95%e0%a4%be-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2",
+      "title": "कचरे का बादल",
+      "description": "चीकू के सिर पर कचरे का बादल मँडरा रहा है जिसकी वजह से वह दुनिया की सबसे दुखी लड़की हो गई। यह शानदार कहानी पढ़िए और जानिए कि चीकू ने कचरे के डरावने बादल से छुटकारा कैसे पाया।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%9a%e0%a4%b0%e0%a5%87-%e0%a4%95%e0%a4%be-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16183-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5961,
+      "slug": "%e0%a4%95%e0%a4%ac%e0%a4%be%e0%a5%9c%e0%a5%80-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be",
+      "title": "कबाड़ी वाला",
+      "description": "चीनू को अपने पिताजी का हाथ बँटाना अच्छा लगता है। वे कबाड़ी वाले का काम करते हैं और उन्हें बहुत किस्म का सामान मिलता है। कभी-कभी यह चीनू के बहुत काम आता है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%ac%e0%a4%be%e0%a5%9c%e0%a5%80-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16067-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5972,
+      "slug": "%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%95%e0%a5%87%e0%a4%b2%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a5%80",
+      "title": "कहानी केलों की!",
+      "description": "श्रिंगेरी श्रीनिवास के खेतों में बढ़िया मीठे केले उगते थे। पर कोई भी उन्हें खाना नहीं चाहता था। इस मीठी कहानी को पढ़ कर पता लगाइये कि श्रिंगेरी ने केलों का क्या किया।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%95%e0%a5%87%e0%a4%b2%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a5%80/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16077-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5978,
+      "slug": "%e0%a4%95%e0%a4%be%e0%a4%95%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a5%81%e0%a4%a8%e0%a5%8d%e0%a4%a8%e0%a5%80",
+      "title": "काका और मुन्नी",
+      "description": "दुष्ट कौवा काका मुन्नी चिड़िया के अंडे खाना चाहता है। लेकिन मुन्नी बहुत होशियार गौरैया है। क्या काका उस के अंडे खा पायेगा? पंजाब की इस प्रसिद्ध लोककथा को पढ़ें और इसके हर पात्र की सूझबूझ का मज़ा लें।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%be%e0%a4%95%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a5%81%e0%a4%a8%e0%a5%8d%e0%a4%a8%e0%a5%80/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16213-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5980,
+      "slug": "%e0%a4%95%e0%a4%bf%e0%a4%a4%e0%a4%a8%e0%a4%be-%e0%a4%b6%e0%a5%8b%e0%a4%b0",
+      "title": "कितना शोर",
+      "description": "हमारे अपने लम्बे बालों वाले श्रिंगेरी श्रीनिवास को गायों के साथ नए बने राजमार्ग से होकर पशु मेले तक जाना है। पर इतने कानफाड़ू शोर में ऐसा करना लगभग असम्भव है। अब क्या होगा? हमेशा की तरह इस बार भी श्रिंगेरी श्रीनिवास ने एक अनोखा तरीका ढूँढ ही निकाला!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%bf%e0%a4%a4%e0%a4%a8%e0%a4%be-%e0%a4%b6%e0%a5%8b%e0%a4%b0/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16091-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5984,
+      "slug": "%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a4%be-%e0%a4%a6%e0%a5%87%e0%a4%96%e0%a4%a4%e0%a5%80-%e0%a4%b9%e0%a5%88-%e0%a4%85%e0%a4%a8%e0%a5%81",
+      "title": "क्या देखती है अनु?",
+      "description": "अनु ने क्या देखा? उसने अपने आसपास बहुत-सी प्यारी चीज़ों को देखा। क्या आप उनको देख सकते हैं?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a4%be-%e0%a4%a6%e0%a5%87%e0%a4%96%e0%a4%a4%e0%a5%80-%e0%a4%b9%e0%a5%88-%e0%a4%85%e0%a4%a8%e0%a5%81/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16103-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5990,
+      "slug": "%e0%a4%97%e0%a4%b0%e0%a4%9c%e0%a5%87-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%a8%e0%a4%be%e0%a4%9a%e0%a5%87-%e0%a4%ae%e0%a5%8b%e0%a4%b0",
+      "title": "गरजे बादल नाचे मोर",
+      "description": "सुरीली कजरी सुनने से ले कर छोटे झरनों के संगीत तक और गीली मिट्टी की खुशबू से लेकर अम्मा के बनाए हुए गर्म पकोड़ों की सुगन्ध तक, वर्षा की हर बात मीनू को भाती है!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a4%b0%e0%a4%9c%e0%a5%87-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%a8%e0%a4%be%e0%a4%9a%e0%a5%87-%e0%a4%ae%e0%a5%8b%e0%a4%b0/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16219-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5995,
+      "slug": "%e0%a4%97%e0%a5%81%e0%a4%b2%e0%a5%8d%e0%a4%b2%e0%a5%80-%e0%a4%95%e0%a4%be-%e0%a4%97%e0%a5%9b%e0%a4%ac-%e0%a4%aa%e0%a4%bf%e0%a4%9f%e0%a4%be%e0%a4%b0%e0%a4%be",
+      "title": "गुल्ली का गज़ब पिटारा",
+      "description": "गुल्ली के पास है एक गज़ब का बक्सा, जिसमें से निकल कर आती हैं, तरह-तरह की चीज़ें। पर गुल्ली इन सब चीज़ों का क्या करता है? चलो, पता लगाएं! और फिर शायद तुम भी बनाना चाहो अपना ऐसा ही ख़ास बक्सा।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a5%81%e0%a4%b2%e0%a5%8d%e0%a4%b2%e0%a5%80-%e0%a4%95%e0%a4%be-%e0%a4%97%e0%a5%9b%e0%a4%ac-%e0%a4%aa%e0%a4%bf%e0%a4%9f%e0%a4%be%e0%a4%b0%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16105-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5966,
+      "slug": "%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%81-%e0%a4%97%e0%a4%af%e0%a4%be-%e0%a4%97%e0%a5%8b%e0%a4%97%e0%a5%8b",
+      "title": "कहाँ गया गोगो?",
+      "description": "जब गोगो का पिंजड़ा खाली दिखा तो तोतो के होश उड़ गए। आप भी तोतो की मदद करिये नहीं तो बड़ी गड़बड़ हो जाएगी।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%81-%e0%a4%97%e0%a4%af%e0%a4%be-%e0%a4%97%e0%a5%8b%e0%a4%97%e0%a5%8b/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16139-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6001,
+      "slug": "%e0%a4%85%e0%a4%b5%e0%a4%a8%e0%a4%bf-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a4%9f%e0%a4%b0-%e0%a4%95%e0%a4%be-%e0%a4%aa%e0%a5%8c%e0%a4%a7%e0%a4%be-2",
+      "title": "अवनि और मटर का पौधा",
+      "description": "आखिर ऐसा हुआ कैसे? किसने किया? अवनि तो नहीं जानती और न ही उसकी अम्मा जानती हैं। मटर के पौधे के बारे में कोई नहीं जानता, पर आप जान सकते हैं।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%b5%e0%a4%a8%e0%a4%bf-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a4%9f%e0%a4%b0-%e0%a4%95%e0%a4%be-%e0%a4%aa%e0%a5%8c%e0%a4%a7%e0%a4%be-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16143-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6011,
+      "slug": "%e0%a4%85%e0%a4%ae%e0%a5%8d%e0%a4%ae%e0%a4%be-%e0%a4%9c%e0%a4%ac-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2-%e0%a4%97%e0%a4%af%e0%a5%80%e0%a4%82-3",
+      "title": "अम्मा जब स्कूल गयीं",
+      "description": "मीरा की अम्मा एक दिन उसके स्कूल गयीं पर वहाँ कोई नहीं था, मीरा, उसके मित्र, शिक्षक और यहाँ तक कि बड़ी दीदी भी। वे सब कहाँ गायब हो गए थे?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%ae%e0%a5%8d%e0%a4%ae%e0%a4%be-%e0%a4%9c%e0%a4%ac-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2-%e0%a4%97%e0%a4%af%e0%a5%80%e0%a4%82-3/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16109-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6013,
+      "slug": "%e0%a4%85%e0%a4%b5%e0%a4%a8%e0%a4%bf-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a4%9f%e0%a4%b0-%e0%a4%95%e0%a4%be-%e0%a4%aa%e0%a5%8c%e0%a4%a7%e0%a4%be-3",
+      "title": "अवनि और मटर का पौधा",
+      "description": "आखिर ऐसा हुआ कैसे? किसने किया? अवनि तो नहीं जानती और न ही उसकी अम्मा जानती हैं। मटर के पौधे के बारे में कोई नहीं जानता, पर आप जान सकते हैं।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%b5%e0%a4%a8%e0%a4%bf-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a4%9f%e0%a4%b0-%e0%a4%95%e0%a4%be-%e0%a4%aa%e0%a5%8c%e0%a4%a7%e0%a4%be-3/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16143-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6019,
+      "slug": "%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87-%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87-2",
+      "title": "उड़ते उड़ते",
+      "description": "सभी बच्चों में ऊँचे आकाश को छूने की इच्छा होती है। शायद इसी वजह से इस कहानी का बच्चा सपने में आकाश में उड़ता है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87-%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16215-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6023,
+      "slug": "%e0%a4%8a%e0%a4%81%e0%a4%9f-%e0%a4%9a%e0%a4%b2%e0%a4%be-%e0%a4%ad%e0%a4%88-%e0%a4%8a%e0%a4%81%e0%a4%9f-%e0%a4%9a%e0%a4%b2%e0%a4%be-2",
+      "title": "ऊँट चला, भई! ऊँट चला",
+      "description": "प्रयाग शुक्ल की सरल, सुन्दर व सरस कविताओं का संकलन। सीरज सक्सेना की कला से सज्जित होकर इनकी छटा देखते ही बनती है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%8a%e0%a4%81%e0%a4%9f-%e0%a4%9a%e0%a4%b2%e0%a4%be-%e0%a4%ad%e0%a4%88-%e0%a4%8a%e0%a4%81%e0%a4%9f-%e0%a4%9a%e0%a4%b2%e0%a4%be-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16181-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6027,
+      "slug": "%e0%a4%8f%e0%a4%95-%e0%a4%b8%e0%a5%8c-%e0%a4%b8%e0%a5%88%e0%a4%82%e0%a4%a4%e0%a5%80%e0%a4%b8%e0%a4%b5%e0%a4%be%e0%a4%81-%e0%a4%aa%e0%a5%88%e0%a4%b0-2",
+      "title": "एक सौ सैंतीसवाँ पैर",
+      "description": "एक गोजर को चोट लगी है। उसे मदद की ज़रूरत है। अब वह कौन सा पैर है, जिसे मदद की ज़रूरत है? पेश है एक बाल साहित्य पुरस्कार विजेता की एक नई रोचक सचित्र पुस्तक!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%8f%e0%a4%95-%e0%a4%b8%e0%a5%8c-%e0%a4%b8%e0%a5%88%e0%a4%82%e0%a4%a4%e0%a5%80%e0%a4%b8%e0%a4%b5%e0%a4%be%e0%a4%81-%e0%a4%aa%e0%a5%88%e0%a4%b0-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16247-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6031,
+      "slug": "%e0%a4%95%e0%a4%9a%e0%a4%b0%e0%a5%87-%e0%a4%95%e0%a4%be-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-2",
+      "title": "कचरे का बादल",
+      "description": "चीकू के सिर पर कचरे का बादल मँडरा रहा है जिसकी वजह से वह दुनिया की सबसे दुखी लड़की हो गई। यह शानदार कहानी पढ़िए और जानिए कि चीकू ने कचरे के डरावने बादल से छुटकारा कैसे पाया।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%9a%e0%a4%b0%e0%a5%87-%e0%a4%95%e0%a4%be-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16183-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5999,
+      "slug": "%e0%a4%85%e0%a4%ae%e0%a5%8d%e0%a4%ae%e0%a4%be-%e0%a4%9c%e0%a4%ac-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2-%e0%a4%97%e0%a4%af%e0%a5%80%e0%a4%82-2",
+      "title": "अम्मा जब स्कूल गयीं",
+      "description": "मीरा की अम्मा एक दिन उसके स्कूल गयीं पर वहाँ कोई नहीं था, मीरा, उसके मित्र, शिक्षक और यहाँ तक कि बड़ी दीदी भी। वे सब कहाँ गायब हो गए थे?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%ae%e0%a5%8d%e0%a4%ae%e0%a4%be-%e0%a4%9c%e0%a4%ac-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2-%e0%a4%97%e0%a4%af%e0%a5%80%e0%a4%82-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16109-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6035,
+      "slug": "%e0%a4%95%e0%a4%ac%e0%a4%be%e0%a5%9c%e0%a5%80-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-2",
+      "title": "कबाड़ी वाला",
+      "description": "चीनू को अपने पिताजी का हाथ बँटाना अच्छा लगता है। वे कबाड़ी वाले का काम करते हैं और उन्हें बहुत किस्म का सामान मिलता है। कभी-कभी यह चीनू के बहुत काम आता है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%ac%e0%a4%be%e0%a5%9c%e0%a5%80-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16067-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6039,
+      "slug": "%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%81-%e0%a4%97%e0%a4%af%e0%a4%be-%e0%a4%97%e0%a5%8b%e0%a4%97%e0%a5%8b-2",
+      "title": "कहाँ गया गोगो?",
+      "description": "जब गोगो का पिंजड़ा खाली दिखा तो तोतो के होश उड़ गए। आप भी तोतो की मदद करिये नहीं तो बड़ी गड़बड़ हो जाएगी।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%81-%e0%a4%97%e0%a4%af%e0%a4%be-%e0%a4%97%e0%a5%8b%e0%a4%97%e0%a5%8b-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16139-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6045,
+      "slug": "%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%95%e0%a5%87%e0%a4%b2%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a5%80-2",
+      "title": "कहानी केलों की!",
+      "description": "श्रिंगेरी श्रीनिवास के खेतों में बढ़िया मीठे केले उगते थे। पर कोई भी उन्हें खाना नहीं चाहता था। इस मीठी कहानी को पढ़ कर पता लगाइये कि श्रिंगेरी ने केलों का क्या किया।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%95%e0%a5%87%e0%a4%b2%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a5%80-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16077-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6051,
+      "slug": "%e0%a4%95%e0%a4%be%e0%a4%95%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a5%81%e0%a4%a8%e0%a5%8d%e0%a4%a8%e0%a5%80-2",
+      "title": "काका और मुन्नी",
+      "description": "दुष्ट कौवा काका मुन्नी चिड़िया के अंडे खाना चाहता है। लेकिन मुन्नी बहुत होशियार गौरैया है। क्या काका उस के अंडे खा पायेगा? पंजाब की इस प्रसिद्ध लोककथा को पढ़ें और इसके हर पात्र की सूझबूझ का मज़ा लें।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%be%e0%a4%95%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a5%81%e0%a4%a8%e0%a5%8d%e0%a4%a8%e0%a5%80-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16213-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6053,
+      "slug": "%e0%a4%95%e0%a4%bf%e0%a4%a4%e0%a4%a8%e0%a4%be-%e0%a4%b6%e0%a5%8b%e0%a4%b0-2",
+      "title": "कितना शोर",
+      "description": "हमारे अपने लम्बे बालों वाले श्रिंगेरी श्रीनिवास को गायों के साथ नए बने राजमार्ग से होकर पशु मेले तक जाना है। पर इतने कानफाड़ू शोर में ऐसा करना लगभग असम्भव है। अब क्या होगा? हमेशा की तरह इस बार भी श्रिंगेरी श्रीनिवास ने एक अनोखा तरीका ढूँढ ही निकाला!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%bf%e0%a4%a4%e0%a4%a8%e0%a4%be-%e0%a4%b6%e0%a5%8b%e0%a4%b0-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16091-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6057,
+      "slug": "%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a4%be-%e0%a4%a6%e0%a5%87%e0%a4%96%e0%a4%a4%e0%a5%80-%e0%a4%b9%e0%a5%88-%e0%a4%85%e0%a4%a8%e0%a5%81-2",
+      "title": "क्या देखती है अनु?",
+      "description": "अनु ने क्या देखा? उसने अपने आसपास बहुत-सी प्यारी चीज़ों को देखा। क्या आप उनको देख सकते हैं?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a4%be-%e0%a4%a6%e0%a5%87%e0%a4%96%e0%a4%a4%e0%a5%80-%e0%a4%b9%e0%a5%88-%e0%a4%85%e0%a4%a8%e0%a5%81-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16103-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6063,
+      "slug": "%e0%a4%97%e0%a4%b0%e0%a4%9c%e0%a5%87-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%a8%e0%a4%be%e0%a4%9a%e0%a5%87-%e0%a4%ae%e0%a5%8b%e0%a4%b0-2",
+      "title": "गरजे बादल नाचे मोर",
+      "description": "सुरीली कजरी सुनने से ले कर छोटे झरनों के संगीत तक और गीली मिट्टी की खुशबू से लेकर अम्मा के बनाए हुए गर्म पकोड़ों की सुगन्ध तक, वर्षा की हर बात मीनू को भाती है!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a4%b0%e0%a4%9c%e0%a5%87-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%a8%e0%a4%be%e0%a4%9a%e0%a5%87-%e0%a4%ae%e0%a5%8b%e0%a4%b0-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16219-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6067,
+      "slug": "%e0%a4%97%e0%a5%81%e0%a4%b2%e0%a5%8d%e0%a4%b2%e0%a5%80-%e0%a4%95%e0%a4%be-%e0%a4%97%e0%a5%9b%e0%a4%ac-%e0%a4%aa%e0%a4%bf%e0%a4%9f%e0%a4%be%e0%a4%b0%e0%a4%be-2",
+      "title": "गुल्ली का गज़ब पिटारा",
+      "description": "गुल्ली के पास है एक गज़ब का बक्सा, जिसमें से निकल कर आती हैं, तरह-तरह की चीज़ें। पर गुल्ली इन सब चीज़ों का क्या करता है? चलो, पता लगाएं! और फिर शायद तुम भी बनाना चाहो अपना ऐसा ही ख़ास बक्सा।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a5%81%e0%a4%b2%e0%a5%8d%e0%a4%b2%e0%a5%80-%e0%a4%95%e0%a4%be-%e0%a4%97%e0%a5%9b%e0%a4%ac-%e0%a4%aa%e0%a4%bf%e0%a4%9f%e0%a4%be%e0%a4%b0%e0%a4%be-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16105-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6071,
+      "slug": "%e0%a4%98%e0%a4%b0-%e0%a4%9c%e0%a4%be%e0%a4%a8%e0%a4%be-%e0%a4%b9%e0%a5%88",
+      "title": "घर जाना है",
+      "description": "यह नन्ही लड़की जल्दी घर पहुँचना चाहती है। पढ़िये उसकी प्यारी कहानी।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%98%e0%a4%b0-%e0%a4%9c%e0%a4%be%e0%a4%a8%e0%a4%be-%e0%a4%b9%e0%a5%88/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16167-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6073,
+      "slug": "%e0%a4%9a%e0%a4%b2%e0%a5%8b-%e0%a4%95%e0%a4%bf%e0%a4%a4%e0%a4%be%e0%a4%ac%e0%a5%87%e0%a4%82-%e0%a4%96%e0%a4%b0%e0%a5%80%e0%a4%a6%e0%a4%a8%e0%a5%87",
+      "title": "चलो किताबें खरीदने",
+      "description": "अपने अनुभव बताने में बच्चों को बहुत मज़ा आता है। यह बच्चे बताना चाहते हैं कि उन्होंने अपनी मनपसन्द किताबें कैसे खरीदीं।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a4%b2%e0%a5%8b-%e0%a4%95%e0%a4%bf%e0%a4%a4%e0%a4%be%e0%a4%ac%e0%a5%87%e0%a4%82-%e0%a4%96%e0%a4%b0%e0%a5%80%e0%a4%a6%e0%a4%a8%e0%a5%87/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16129-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6077,
+      "slug": "%e0%a4%9a%e0%a4%be%e0%a4%9a%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%b6%e0%a4%be%e0%a4%a6%e0%a5%80",
+      "title": "चाचा की शादी",
+      "description": "चाचा की शादी के लिये ट्रेन से गाँव जाना था। स्टेशन पर क्या-क्या हुआ इसके बारे में पढ़िये।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a4%be%e0%a4%9a%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%b6%e0%a4%be%e0%a4%a6%e0%a5%80/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16155-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6081,
+      "slug": "%e0%a4%9a%e0%a5%81%e0%a4%aa-%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a5%80-%e0%a4%a8%e0%a4%be%e0%a4%95-%e0%a4%95%e0%a5%81%e0%a4%9b-%e0%a4%95%e0%a4%b9-%e0%a4%b0%e0%a4%b9%e0%a5%80-%e0%a4%b9%e0%a5%88",
+      "title": "चुप! मेरी नाक कुछ कह रही है...",
+      "description": "हम सब के पास एक अनोखा शरीर है।पर क्या आपने कभी अपने शरीर की बात सुनी है?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a5%81%e0%a4%aa-%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a5%80-%e0%a4%a8%e0%a4%be%e0%a4%95-%e0%a4%95%e0%a5%81%e0%a4%9b-%e0%a4%95%e0%a4%b9-%e0%a4%b0%e0%a4%b9%e0%a5%80-%e0%a4%b9%e0%a5%88/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16233-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6083,
+      "slug": "%e0%a4%9a%e0%a5%81%e0%a4%b2%e0%a4%ac%e0%a5%81%e0%a4%b2-%e0%a4%95%e0%a5%80-%e0%a4%aa%e0%a5%82%e0%a4%81%e0%a4%9b",
+      "title": "चुलबुल की पूँछ",
+      "description": "चुलबुली चुलबुल को अपनी पूँछ न भायी। पर क्या दूसरों की पूँछ लगाने से बात बनी? पढ़िये, नन्ही चुलबुल की कारस्तानियाँ...",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a5%81%e0%a4%b2%e0%a4%ac%e0%a5%81%e0%a4%b2-%e0%a4%95%e0%a5%80-%e0%a4%aa%e0%a5%82%e0%a4%81%e0%a4%9b/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16165-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6085,
+      "slug": "%e0%a4%9a%e0%a5%82%e0%a4%b9%e0%a4%be-%e0%a4%b8%e0%a4%bf%e0%a4%95%e0%a4%82%e0%a4%a6%e0%a4%b0-%e0%a4%98%e0%a4%b0-%e0%a4%95%e0%a5%87-%e0%a4%85%e0%a4%82%e0%a4%a6%e0%a4%b0",
+      "title": "चूहा सिकंदर, घर के अंदर",
+      "description": "एक चूहा घर में दाखिल होता है। फिर वहाँ अफरातफरी मच जाती है। पेश है बच्चों के लिए जोश से भरी यह कहानी।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a5%82%e0%a4%b9%e0%a4%be-%e0%a4%b8%e0%a4%bf%e0%a4%95%e0%a4%82%e0%a4%a6%e0%a4%b0-%e0%a4%98%e0%a4%b0-%e0%a4%95%e0%a5%87-%e0%a4%85%e0%a4%82%e0%a4%a6%e0%a4%b0/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16239-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6089,
+      "slug": "%e0%a4%9c%e0%a4%82%e0%a4%97%e0%a4%b2-%e0%a4%95%e0%a4%be-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2",
+      "title": "जंगल का स्कूल",
+      "description": "जंगल में स्कूल खुलते ही सभी जानवर बड़े उत्साह से वहाँ जाते हैं। आगे क्या हुआ जानने के लिए पढ़िये जंगल का स्कूल।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%9c%e0%a4%82%e0%a4%97%e0%a4%b2-%e0%a4%95%e0%a4%be-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16099-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6093,
+      "slug": "%e0%a4%9c%e0%a5%81%e0%a4%88-%e0%a4%ae%e0%a5%8c%e0%a4%b8%e0%a5%80-%e0%a4%95%e0%a5%80-%e0%a4%ac%e0%a5%87%e0%a4%9f%e0%a5%80",
+      "title": "जुई मौसी की बेटी",
+      "description": "अनु और माँ, जुई मौसी के घर उनकी नन्ही बिटिया को देखने गये। माँ और मौसी तो उस नन्ही-नन्ही गुड़िया से खूब बतियाते रहे, लेकिन अनु को लगा कि गुड़िया तो भोंदू है...",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%9c%e0%a5%81%e0%a4%88-%e0%a4%ae%e0%a5%8c%e0%a4%b8%e0%a5%80-%e0%a4%95%e0%a5%80-%e0%a4%ac%e0%a5%87%e0%a4%9f%e0%a5%80/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16117-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6101,
+      "slug": "%e0%a4%a6%e0%a4%be%e0%a4%b2-%e0%a4%95%e0%a4%be-%e0%a4%a6%e0%a4%be%e0%a4%a8%e0%a4%be",
+      "title": "दाल का दाना",
+      "description": "नन्ही सी चींटी के लिए उसका प्रत्येक दिन छोटी बड़ी मुश्किलों से भरा हुआ होता है। छोटी सी होने के बाद भी वह कैसे डट कर मुकाबला करती है इस सब का, क्या आपको मालूम है? आइए, इस नन्ही सी चींटी के साथ एक रोमांचक यात्रा पर चलें।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%a6%e0%a4%be%e0%a4%b2-%e0%a4%95%e0%a4%be-%e0%a4%a6%e0%a4%be%e0%a4%a8%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16195-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6103,
+      "slug": "%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%95%e0%a4%be-%e0%a4%b0%e0%a4%82%e0%a4%97-%e0%a4%ac%e0%a4%bf%e0%a4%b0%e0%a4%82%e0%a4%97%e0%a4%be-%e0%a4%96%e0%a5%9b%e0%a4%be%e0%a4%a8%e0%a4%be",
+      "title": "दीदी का रंग बिरंगा खज़ाना",
+      "description": "कचरे के ढ़ेर से घिरे हुए बच्चे मौज मस्ती कैसे करें? लेकिन एक दिन कहीं से दीदी आईं और बच्चों के जीवन में रंग लाई।किताबें जो उनकी दोस्त हो गईं।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%95%e0%a4%be-%e0%a4%b0%e0%a4%82%e0%a4%97-%e0%a4%ac%e0%a4%bf%e0%a4%b0%e0%a4%82%e0%a4%97%e0%a4%be-%e0%a4%96%e0%a5%9b%e0%a4%be%e0%a4%a8%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16065-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6113,
+      "slug": "%e0%a4%a8%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%95%e0%a5%80-%e0%a4%90%e0%a4%a8%e0%a4%95",
+      "title": "नानी की ऐनक",
+      "description": "नानी हमेशा अपनी ऐनक कहीं रखकर भूल जाती हैं। कभी-कभी उन्हें ऐनक ढूँढने के लिए एक जासूस की ज़रूरत पड़ती है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%a8%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%95%e0%a5%80-%e0%a4%90%e0%a4%a8%e0%a4%95/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16199-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6115,
+      "slug": "%e0%a4%a8%e0%a4%bf%e0%a4%b0%e0%a4%be%e0%a4%b2%e0%a5%80-%e0%a4%a6%e0%a4%be%e0%a4%a6%e0%a5%80",
+      "title": "निराली दादी",
+      "description": "मिलिए हमारी निराली दादी से।इन्हें चीज़ें उछालना बहुत अच्छा लगता है!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%a8%e0%a4%bf%e0%a4%b0%e0%a4%be%e0%a4%b2%e0%a5%80-%e0%a4%a6%e0%a4%be%e0%a4%a6%e0%a5%80/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16075-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6117,
+      "slug": "%e0%a4%a8%e0%a5%8c%e0%a4%95%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%b8%e0%a5%88%e0%a4%b0",
+      "title": "नौका की सैर",
+      "description": "विक्की गिलहरी शेखीमार है। एक दिन उसका चचेरा भाई उससे मिलने आया। जब दोनों नाव की सैर पर गये तो बड़ा मज़ा आ रहा था कि अचानक...कुछ हुआ! दो गिलहरियों के मज़ेदार कारनामों की कहानी।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%a8%e0%a5%8c%e0%a4%95%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%b8%e0%a5%88%e0%a4%b0/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16179-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6153,
+      "slug": "%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a4%be-%e0%a4%a6%e0%a5%8b%e0%a4%b8%e0%a5%8d%e0%a4%a4",
+      "title": "मेरा दोस्त",
+      "description": "सोनू को मिला एक नया दोस्त। दोनों साथ में बहुत मज़े करते थे। क्या तुम्हे भी पसन्द है नए दोस्त बनाना ? आओ पढ़ते हैं एक अनोखी दोस्ती के बारे में।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a4%be-%e0%a4%a6%e0%a5%8b%e0%a4%b8%e0%a5%8d%e0%a4%a4/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16121-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6123,
+      "slug": "%e0%a4%aa%e0%a4%be%e0%a4%aa%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%ae%e0%a5%82%e0%a4%81%e0%a4%9b%e0%a5%87%e0%a4%82",
+      "title": "पापा की मूँछें",
+      "description": "अनु को अपने पापा की क्या चीज़ सबसे अच्छी लगती है? उनकी मूँछें! असल में, अनु को मूँछ वाले सारे लोग अच्छे लगते हैं। अनु ने मूँछ देखी नहीं कि उसके मन में न जाने क्या-क्या मज़ेदार कल्पनाएँ उमड़ने लगती हैं।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%aa%e0%a4%be%e0%a4%aa%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%ae%e0%a5%82%e0%a4%81%e0%a4%9b%e0%a5%87%e0%a4%82/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16125-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6131,
+      "slug": "%e0%a4%ac%e0%a4%be%e0%a4%b0%e0%a4%bf%e0%a4%b6-%e0%a4%ae%e0%a5%87%e0%a4%82-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a4%be-%e0%a4%97%e0%a4%be%e0%a4%8f%e0%a4%81",
+      "title": "बारिश में क्या गाएँ ?",
+      "description": "सुखिया काका का गाना इतना सुरीला है कि किसी का भी मन मोह ले। फिर दीनू तो हमेशा से ही गाने का शौक़ीन था।दोनों की जोड़ी ख़ूब जमी!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ac%e0%a4%be%e0%a4%b0%e0%a4%bf%e0%a4%b6-%e0%a4%ae%e0%a5%87%e0%a4%82-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a4%be-%e0%a4%97%e0%a4%be%e0%a4%8f%e0%a4%81/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16069-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6179,
+      "slug": "%e0%a4%b8%e0%a4%82%e0%a4%97%e0%a5%80%e0%a4%a4-%e0%a4%95%e0%a5%80-%e0%a4%a6%e0%a5%81%e0%a4%a8%e0%a4%bf%e0%a4%af%e0%a4%be",
+      "title": "संगीत की दुनिया",
+      "description": "विवान अपनी माँ के साथ एक शास्त्रीय संगीत कार्यक्रम देखने जाता है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a4%82%e0%a4%97%e0%a5%80%e0%a4%a4-%e0%a4%95%e0%a5%80-%e0%a4%a6%e0%a5%81%e0%a4%a8%e0%a4%bf%e0%a4%af%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16187-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6181,
+      "slug": "%e0%a4%b8%e0%a4%ac%e0%a4%b0%e0%a4%82%e0%a4%97",
+      "title": "सबरंग",
+      "description": "कमला बकाया की लेखनी की चपलता देखते ही बनती है। नटखट नन्हों के लिए उनकी नित नयी नवेली कविताएँ!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a4%ac%e0%a4%b0%e0%a4%82%e0%a4%97/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16249-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6185,
+      "slug": "%e0%a4%b8%e0%a4%be%e0%a4%b2%e0%a4%be%e0%a4%a8%e0%a4%be-%e0%a4%ac%e0%a4%be%e0%a4%b2-%e0%a4%95%e0%a4%9f%e0%a4%be%e0%a4%88-%e0%a4%a6%e0%a4%bf%e0%a4%b5%e0%a4%b8",
+      "title": "सालाना बाल-कटाई दिवस",
+      "description": "सृंगेरी श्रीनिवास के बहुत लम्बे बाल थे। वह सालाना बाल-कटाई दिवस पर उन्हें कटवाना चाहता था। परन्तु किसी के पास व़क्त नहीं था। आप सपने में भी नहीं सोच सकते कि उस दिन सृंगेरी की मदद किसने की! पढ़िये और मज़ा लीजिये!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a4%be%e0%a4%b2%e0%a4%be%e0%a4%a8%e0%a4%be-%e0%a4%ac%e0%a4%be%e0%a4%b2-%e0%a4%95%e0%a4%9f%e0%a4%be%e0%a4%88-%e0%a4%a6%e0%a4%bf%e0%a4%b5%e0%a4%b8/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16201-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6155,
+      "slug": "%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a5%80-%e0%a4%aa%e0%a4%be%e0%a4%a0%e0%a4%b6%e0%a4%be%e0%a4%b2%e0%a4%be",
+      "title": "मेरी पाठशाला",
+      "description": "यह कहानी पाठशाला की एक मतिमन्द लडकी की हैँ. उसमे आया हुआ बदल कहानी मे चित्रित किया गया है.",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a5%80-%e0%a4%aa%e0%a4%be%e0%a4%a0%e0%a4%b6%e0%a4%be%e0%a4%b2%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16115-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6189,
+      "slug": "%e0%a4%b8%e0%a5%8b-%e0%a4%9c%e0%a4%be%e0%a4%93-%e0%a4%9f%e0%a4%bf%e0%a4%82%e0%a4%95%e0%a5%81",
+      "title": "सो जाओ टिंकु!",
+      "description": "टिंकू एक नन्हा पिल्ला है और उसे ज़रा भी नींद नहीं आ रही थी। वह रात को अकेले ही बाहर चल पड़ा। उसे कौन कौन मिला पढ़िए उसी की प्यारी सी कहानी।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%8b-%e0%a4%9c%e0%a4%be%e0%a4%93-%e0%a4%9f%e0%a4%bf%e0%a4%82%e0%a4%95%e0%a5%81/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16133-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6191,
+      "slug": "%e0%a4%b8%e0%a5%8b%e0%a4%a8%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%a8%e0%a4%be%e0%a4%95-%e0%a4%ac%e0%a5%9c%e0%a5%80-%e0%a4%a4%e0%a5%87%e0%a4%9c",
+      "title": "सोना की नाक बड़ी तेज",
+      "description": "हमारी नन्ही सोना की तो आदत है हर किसी की मदद करने की। याद है न उसने पिछली बार अपनी माँ की सहायता की थी, उससे पहले अपने बाबा की मदद की थी। आज वह चाचा के यहाँ गयी है, वही जो चुस्की बनाते हैं। चलिये देखते हैं, सोना वहाँ क्या करती है?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%8b%e0%a4%a8%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%a8%e0%a4%be%e0%a4%95-%e0%a4%ac%e0%a5%9c%e0%a5%80-%e0%a4%a4%e0%a5%87%e0%a4%9c/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16185-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6193,
+      "slug": "%e0%a4%b8%e0%a5%8b%e0%a4%a8%e0%a4%be-%e0%a4%ac%e0%a4%a1%e0%a4%bc%e0%a5%80-%e0%a4%b8%e0%a4%af%e0%a4%be%e0%a4%a8%e0%a5%80",
+      "title": "सोना बड़ी सयानी",
+      "description": "आपको याद होगा नन्ही सोना ने कैसे अपने पिता की मदद की थी। अब तो सोना और भी होशियार हो गयी है। देखिये इस बार वह अपनी माँ की मदद कैसे करती है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%8b%e0%a4%a8%e0%a4%be-%e0%a4%ac%e0%a4%a1%e0%a4%bc%e0%a5%80-%e0%a4%b8%e0%a4%af%e0%a4%be%e0%a4%a8%e0%a5%80/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16193-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5943,
+      "slug": "%e0%a4%86%e0%a4%b2%e0%a5%82-%e0%a4%ae%e0%a4%be%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%be%e0%a4%b2%e0%a5%82",
+      "title": "आलू-मालू-कालू",
+      "description": "एक दिन मालू को बगीचे में से आलू लाने थे। उसकी मदद किसने करी? कालू ने! पढ़िये मालू और कालू की आलू वाली कहानी!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%86%e0%a4%b2%e0%a5%82-%e0%a4%ae%e0%a4%be%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%be%e0%a4%b2%e0%a5%82/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16087-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5951,
+      "slug": "%e0%a4%8f%e0%a4%95-%e0%a4%a5%e0%a4%be-%e0%a4%ae%e0%a5%8b%e0%a4%9f%e0%a4%be-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be",
+      "title": "एक था मोटा राजा",
+      "description": "राजा दौड़ा कुत्ते के पीछे",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%8f%e0%a4%95-%e0%a4%a5%e0%a4%be-%e0%a4%ae%e0%a5%8b%e0%a4%9f%e0%a4%be-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16131-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6009,
+      "slug": "%e0%a4%85%e0%a4%ad%e0%a5%80-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-%e0%a4%85%e0%a4%ad%e0%a5%80-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-3",
+      "title": "अभी नहीं, अभी नहीं!",
+      "description": "यह बच्चा अभी सब कुछ करना चाहता है, लेकिन बड़े लोग कहते हैं, अभी नहीं! जब कोई आपको 'अभी नहीं' कहता है तो क्या आप नाराज़ हो जाते हैं?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%ad%e0%a5%80-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-%e0%a4%85%e0%a4%ad%e0%a5%80-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-3/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16151-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5974,
+      "slug": "%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%97%e0%a4%9c%e0%a4%be%e0%a4%a8%e0%a4%a8-%e0%a4%97%e0%a4%82%e0%a4%9c%e0%a5%87",
+      "title": "कहानी- गजानन गंजे",
+      "description": "गजानन बीमार हुए और बाल उड़ गए. तब उन्हों ने क्या उपाय किया ?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%97%e0%a4%9c%e0%a4%be%e0%a4%a8%e0%a4%a8-%e0%a4%97%e0%a4%82%e0%a4%9c%e0%a5%87/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16111-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5976,
+      "slug": "%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%95%e0%a5%80-%e0%a4%b8%e0%a5%88%e0%a4%b0",
+      "title": "कहानी- बादल की सैर",
+      "description": "बादल घुमने चला. उसे कौन-कौन मिला ? फिर वह क्या करने लगा ?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%95%e0%a5%80-%e0%a4%b8%e0%a5%88%e0%a4%b0/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16149-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6017,
+      "slug": "%e0%a4%86%e0%a4%b2%e0%a5%82-%e0%a4%ae%e0%a4%be%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%be%e0%a4%b2%e0%a5%82-2",
+      "title": "आलू-मालू-कालू",
+      "description": "एक दिन मालू को बगीचे में से आलू लाने थे। उसकी मदद किसने करी? कालू ने! पढ़िये मालू और कालू की आलू वाली कहानी!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%86%e0%a4%b2%e0%a5%82-%e0%a4%ae%e0%a4%be%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%be%e0%a4%b2%e0%a5%82-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16087-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5986,
+      "slug": "%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%ad%e0%a4%88-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82",
+      "title": "क्यों भई क्यों?",
+      "description": "एक छोटी सी बच्ची की आँखें लाल क्यों हैं? यह कहानी पढ़ने के बाद नन्हे-मुन्ने पाठक भी गोल-गोल मुँह बनाना चाहेंगे।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%ad%e0%a4%88-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16229-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5988,
+      "slug": "%e0%a4%96%e0%a5%8b%e0%a4%af%e0%a4%be-%e0%a4%aa%e0%a4%be%e0%a4%af%e0%a4%be",
+      "title": "खोया पाया",
+      "description": "कुछ खोये सामान की तलाश में लगे एक छोटे से बच्चे को कैसा लगता है जब उसे वह सामान मिल जाता है? पढ़िए और खुद जान जाइये।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%96%e0%a5%8b%e0%a4%af%e0%a4%be-%e0%a4%aa%e0%a4%be%e0%a4%af%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16157-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6025,
+      "slug": "%e0%a4%8f%e0%a4%95-%e0%a4%a5%e0%a4%be-%e0%a4%ae%e0%a5%8b%e0%a4%9f%e0%a4%be-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be-2",
+      "title": "एक था मोटा राजा",
+      "description": "राजा दौड़ा कुत्ते के पीछे",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%8f%e0%a4%95-%e0%a4%a5%e0%a4%be-%e0%a4%ae%e0%a5%8b%e0%a4%9f%e0%a4%be-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16131-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 5997,
+      "slug": "%e0%a4%85%e0%a4%ad%e0%a5%80-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-%e0%a4%85%e0%a4%ad%e0%a5%80-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-2",
+      "title": "अभी नहीं, अभी नहीं!",
+      "description": "यह बच्चा अभी सब कुछ करना चाहता है, लेकिन बड़े लोग कहते हैं, अभी नहीं! जब कोई आपको 'अभी नहीं' कहता है तो क्या आप नाराज़ हो जाते हैं?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%ad%e0%a5%80-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-%e0%a4%85%e0%a4%ad%e0%a5%80-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16151-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6075,
+      "slug": "%e0%a4%9a%e0%a4%be%e0%a4%81%e0%a4%a6-%e0%a4%95%e0%a4%be-%e0%a4%a4%e0%a5%8b%e0%a4%b9%e0%a5%9e%e0%a4%be",
+      "title": "चाँद का तोहफ़ा",
+      "description": "क्या आपको गरमी के दिनों में टोपी पहनना अच्छा लगता है? इस प्यारी-सी कहानी में पढ़ें कि टोपी पहनना और किसको पसंद है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a4%be%e0%a4%81%e0%a4%a6-%e0%a4%95%e0%a4%be-%e0%a4%a4%e0%a5%8b%e0%a4%b9%e0%a5%9e%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16177-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6047,
+      "slug": "%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%97%e0%a4%9c%e0%a4%be%e0%a4%a8%e0%a4%a8-%e0%a4%97%e0%a4%82%e0%a4%9c%e0%a5%87-2",
+      "title": "कहानी- गजानन गंजे",
+      "description": "गजानन बीमार हुए और बाल उड़ गए. तब उन्हों ने क्या उपाय किया ?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%97%e0%a4%9c%e0%a4%be%e0%a4%a8%e0%a4%a8-%e0%a4%97%e0%a4%82%e0%a4%9c%e0%a5%87-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16111-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6079,
+      "slug": "%e0%a4%9a%e0%a5%81%e0%a4%a8%e0%a5%8d%e0%a4%a8%e0%a5%81-%e0%a4%ae%e0%a5%81%e0%a4%a8%e0%a5%8d%e0%a4%a8%e0%a5%81-%e0%a4%95%e0%a4%be-%e0%a4%a8%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a4%be",
+      "title": "चुन्नु-मुन्नु का नहाना",
+      "description": "पानी, साबुन के बुलबुले और उछल-कूद। देखिए तो चुन्नू मुन्नू कैसे मज़े ले रहे हैं !\r\n",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a5%81%e0%a4%a8%e0%a5%8d%e0%a4%a8%e0%a5%81-%e0%a4%ae%e0%a5%81%e0%a4%a8%e0%a5%8d%e0%a4%a8%e0%a5%81-%e0%a4%95%e0%a4%be-%e0%a4%a8%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16083-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6049,
+      "slug": "%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%95%e0%a5%80-%e0%a4%b8%e0%a5%88%e0%a4%b0-2",
+      "title": "कहानी- बादल की सैर",
+      "description": "बादल घुमने चला. उसे कौन-कौन मिला ? फिर वह क्या करने लगा ?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%95%e0%a5%80-%e0%a4%b8%e0%a5%88%e0%a4%b0-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16149-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6087,
+      "slug": "%e0%a4%9b%e0%a5%81%e0%a4%95-%e0%a4%9b%e0%a5%81%e0%a4%95-%e0%a4%9b%e0%a4%95",
+      "title": "छुक-छुक-छक",
+      "description": "कैसे चली नन्ही की रेलगाड़ी? छुक छुक छक छक!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%9b%e0%a5%81%e0%a4%95-%e0%a4%9b%e0%a5%81%e0%a4%95-%e0%a4%9b%e0%a4%95/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16127-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6059,
+      "slug": "%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%ad%e0%a4%88-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-2",
+      "title": "क्यों भई क्यों?",
+      "description": "एक छोटी सी बच्ची की आँखें लाल क्यों हैं? यह कहानी पढ़ने के बाद नन्हे-मुन्ने पाठक भी गोल-गोल मुँह बनाना चाहेंगे।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%ad%e0%a4%88-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16229-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6061,
+      "slug": "%e0%a4%96%e0%a5%8b%e0%a4%af%e0%a4%be-%e0%a4%aa%e0%a4%be%e0%a4%af%e0%a4%be-2",
+      "title": "खोया पाया",
+      "description": "कुछ खोये सामान की तलाश में लगे एक छोटे से बच्चे को कैसा लगता है जब उसे वह सामान मिल जाता है? पढ़िए और खुद जान जाइये।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%96%e0%a5%8b%e0%a4%af%e0%a4%be-%e0%a4%aa%e0%a4%be%e0%a4%af%e0%a4%be-2/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16157-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6133,
+      "slug": "%e0%a4%ac%e0%a4%be%e0%a4%b0%e0%a4%bf%e0%a4%b6-%e0%a4%b9%e0%a5%8b-%e0%a4%b0%e0%a4%b9%e0%a5%80-%e0%a4%9b%e0%a4%ae%e0%a4%be-%e0%a4%9b%e0%a4%ae",
+      "title": "बारिश हो रही छमा छम",
+      "description": "मेरी कहानी बारिश के मौसम के बारे में है ...",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ac%e0%a4%be%e0%a4%b0%e0%a4%bf%e0%a4%b6-%e0%a4%b9%e0%a5%8b-%e0%a4%b0%e0%a4%b9%e0%a5%80-%e0%a4%9b%e0%a4%ae%e0%a4%be-%e0%a4%9b%e0%a4%ae/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16197-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6137,
+      "slug": "%e0%a4%ad%e0%a5%80%e0%a4%ae%e0%a4%be-%e0%a4%97%e0%a4%a7%e0%a4%be",
+      "title": "भीमा गधा",
+      "description": "भीमा की एक समस्या है। सुबह-सुबह उसकी नींद नहीं खुलती। एक नन्ही दोस्त उसकी मदद करती है। क्या आप जानना चाहेंगे कि भीमा की नींद कैसे खुली?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ad%e0%a5%80%e0%a4%ae%e0%a4%be-%e0%a4%97%e0%a4%a7%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16081-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6111,
+      "slug": "%e0%a4%a8%e0%a4%a8%e0%a5%8d%e0%a4%b9%e0%a5%87-%e0%a4%ae%e0%a4%a6%e0%a4%a6%e0%a4%97%e0%a4%be%e0%a4%b0",
+      "title": "नन्हे मददगार",
+      "description": "घर को रंगना है बेहद मज़ेदार! पर फाटक को कौन सा रंग दें?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%a8%e0%a4%a8%e0%a5%8d%e0%a4%b9%e0%a5%87-%e0%a4%ae%e0%a4%a6%e0%a4%a6%e0%a4%97%e0%a4%be%e0%a4%b0/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16073-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6145,
+      "slug": "%e0%a4%ae%e0%a5%81%e0%a4%9d%e0%a5%87-%e0%a4%b5%e0%a5%8b-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-%e0%a4%9a%e0%a4%be%e0%a4%b9%e0%a4%bf%e0%a4%af%e0%a5%87",
+      "title": "मुझे वो वाला चाहिये!",
+      "description": "जब अनिल माँ से कुछ माँगता है, वह कहती हैं, “ये वाला नहीं।” बाज़ार में भी दुकानदार अनिल से कहते हैं, “ये वाला नहीं।” क्या उस नाराज़ छोटे से बच्चे को कुछ मिलता भी है?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%81%e0%a4%9d%e0%a5%87-%e0%a4%b5%e0%a5%8b-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-%e0%a4%9a%e0%a4%be%e0%a4%b9%e0%a4%bf%e0%a4%af%e0%a5%87/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16225-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6151,
+      "slug": "%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a4%be-%e0%a4%98%e0%a4%b0",
+      "title": "मेरा घर",
+      "description": "मेरे घर ज़रूर आना!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a4%be-%e0%a4%98%e0%a4%b0/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16085-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6121,
+      "slug": "%e0%a4%aa%e0%a4%b9%e0%a4%b2%e0%a4%b5%e0%a4%be%e0%a4%a8-%e0%a4%9c%e0%a5%80-%e0%a4%94%e0%a4%b0-%e0%a4%95%e0%a5%87%e0%a4%b2%e0%a4%be",
+      "title": "पहलवान जी और केला",
+      "description": "केले खाना और खाकर सेहत बनाना तो बड़ी अच्छी बात है। लेकिन केले खाकर उनके छिलके इधर-उधर फेंकना तो बहुत ही ग़लत बात है। पर यह बात भला पहलवान जी को कौन समझाए?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%aa%e0%a4%b9%e0%a4%b2%e0%a4%b5%e0%a4%be%e0%a4%a8-%e0%a4%9c%e0%a5%80-%e0%a4%94%e0%a4%b0-%e0%a4%95%e0%a5%87%e0%a4%b2%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16221-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6157,
+      "slug": "%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a5%87-%e0%a4%a6%e0%a5%8b%e0%a4%b8%e0%a5%8d%e0%a4%a4",
+      "title": "मेरे दोस्त",
+      "description": "मेरे बहुत से दोस्त हैं। मुझे वे सभी अच्छे लगते हैं पर उन में से एक सबसे प्यारा है!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a5%87-%e0%a4%a6%e0%a5%8b%e0%a4%b8%e0%a5%8d%e0%a4%a4/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16171-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6095,
+      "slug": "%e0%a4%9f%e0%a4%bf%e0%a4%ae%e0%a5%80-%e0%a4%94%e0%a4%b0-%e0%a4%aa%e0%a5%87%e0%a4%aa%e0%a5%87",
+      "title": "टिमी और पेपे",
+      "description": "सुनिये टिमी और पेपे की म़जेदार बातें!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%9f%e0%a4%bf%e0%a4%ae%e0%a5%80-%e0%a4%94%e0%a4%b0-%e0%a4%aa%e0%a5%87%e0%a4%aa%e0%a5%87/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16145-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6173,
+      "slug": "%e0%a4%b2%e0%a4%be%e0%a4%b2-%e0%a4%ac%e0%a4%b0%e0%a4%b8%e0%a4%be%e0%a4%a4%e0%a5%80",
+      "title": "लाल बरसाती",
+      "description": "मनु के पास नई बरसाती है। वह उसे पहनने के लिए मचल रहा है, लेकिन बारिश है कि आती ही नहीं है!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b2%e0%a4%be%e0%a4%b2-%e0%a4%ac%e0%a4%b0%e0%a4%b8%e0%a4%be%e0%a4%a4%e0%a5%80/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16119-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6175,
+      "slug": "%e0%a4%b5%e0%a4%b9-%e0%a4%b9%e0%a4%81%e0%a4%b8-%e0%a4%a6%e0%a4%bf%e0%a4%af%e0%a4%be",
+      "title": "वह हँस दिया",
+      "description": "क्‍या आपको दौड़ लगाने में मज़ा आता है? हमारी कहानी के हिरण को भी यह बहुत भाता है।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b5%e0%a4%b9-%e0%a4%b9%e0%a4%81%e0%a4%b8-%e0%a4%a6%e0%a4%bf%e0%a4%af%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16137-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6187,
+      "slug": "%e0%a4%b8%e0%a5%88%e0%a4%b0-%e0%a4%b8%e0%a4%aa%e0%a4%be%e0%a4%9f%e0%a4%be",
+      "title": "सैर सपाटा",
+      "description": "पाँच दोस्त जब सैर सपाटा करने जाते हैं तो बड़ा मज़ा आता है। और नये चटपटे खाने के तो क्या कहने!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%88%e0%a4%b0-%e0%a4%b8%e0%a4%aa%e0%a4%be%e0%a4%9f%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16205-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6161,
+      "slug": "%e0%a4%ae%e0%a5%88%e0%a4%82-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a5%80-%e0%a4%a6%e0%a5%8b%e0%a4%b8%e0%a5%8d%e0%a4%a4-%e0%a4%9f%e0%a5%80%e0%a4%a8%e0%a4%be",
+      "title": "मैं और मेरी दोस्त टीना |",
+      "description": "मैंने अपने दोस्त के खूब मजे किये क्या आप भी करेंगे तो जानिए इस कहानी में......",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%88%e0%a4%82-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a5%80-%e0%a4%a6%e0%a5%8b%e0%a4%b8%e0%a5%8d%e0%a4%a4-%e0%a4%9f%e0%a5%80%e0%a4%a8%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16227-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6163,
+      "slug": "%e0%a4%ae%e0%a5%88%e0%a4%82-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-%e0%a4%a1%e0%a4%b0%e0%a4%a4%e0%a5%80",
+      "title": "मैं नहीं डरती !",
+      "description": "एक छोटी लड़की अकेली बाहर जाती है ! उसे क्‍या देखने को मिलता है ! यह चार किताबों ' मैं बड़ी हो गयी हूँ' मे से एक किताब है !",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%88%e0%a4%82-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-%e0%a4%a1%e0%a4%b0%e0%a4%a4%e0%a5%80/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16209-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6195,
+      "slug": "%e0%a4%b8%e0%a5%8b%e0%a4%a8%e0%a4%be-%e0%a4%b8%e0%a4%af%e0%a4%be%e0%a4%a8%e0%a5%80",
+      "title": "सोना सयानी",
+      "description": "सोना के पापा ने उसके लिये सुन्दर सा खिलौना बनाया। एक दूसरे की मदद से कितना अच्छा खिलौना तैयार हुआ - पढ़िये उसकी प्यारी कहानी।",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%8b%e0%a4%a8%e0%a4%be-%e0%a4%b8%e0%a4%af%e0%a4%be%e0%a4%a8%e0%a5%80/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16191-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6165,
+      "slug": "%e0%a4%ae%e0%a5%8b%e0%a4%9f%e0%a4%be-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be-%e0%a4%a6%e0%a5%81%e0%a4%ac%e0%a4%b2%e0%a4%be-%e0%a4%95%e0%a5%81%e0%a4%a4%e0%a5%8d%e0%a4%a4%e0%a4%be",
+      "title": "मोटा राजा दुबला कुत्ता",
+      "description": "मोटे राजा के साथ दुबले कुत्ते के पीछे भागिये!",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%8b%e0%a4%9f%e0%a4%be-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be-%e0%a4%a6%e0%a5%81%e0%a4%ac%e0%a4%b2%e0%a4%be-%e0%a4%95%e0%a5%81%e0%a4%a4%e0%a5%8d%e0%a4%a4%e0%a4%be/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16159-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    },
+    {
+      "postId": 6197,
+      "slug": "%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2-%e0%a4%95%e0%a4%be-%e0%a4%aa%e0%a4%b9%e0%a4%b2%e0%a4%be-%e0%a4%a6%e0%a4%bf%e0%a4%a8",
+      "title": "स्कूल का पहला दिन",
+      "description": "आज रानी का स्कूल में पहला दिन है। उसने क्या-क्या देखा? उसे कैसा लगा?",
+      "url": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2-%e0%a4%95%e0%a4%be-%e0%a4%aa%e0%a4%b9%e0%a4%b2%e0%a4%be-%e0%a4%a6%e0%a4%bf%e0%a4%a8/",
+      "epubUrl": "https://content.digitallibrary.io/wp-content/uploads/2020/10/16079-7c82e3c3967af7cd0fc0bc6c6c18d468.epub",
+      "license": [
+        "CC-BY-4.0"
+      ],
+      "publisher": "StoryWeaver",
+      "contentsource": "gdl"
+    }
+  ]
+}

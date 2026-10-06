@@ -308,6 +308,17 @@ describe('scriptureReadiness()', () => {
     expect(r.corpusCanPrepare).toBe(true);
   });
 
+  it('never uses a story attached to a private testimony corpus as a preparatory text', async () => {
+    const h = await setupReadiness();
+    const corpusId = 'private-preparation-corpus';
+    await h.store.corpora.put({ id: corpusId, lang: 'es', kind: 'testimony', title: 'Private' });
+    const privateText = await buildFixtureText(h.store, { lang: 'es', slug: 'private-preparation', corpusId, kind: 'story', sentences: [
+      { tokens: [{ surface: 'amó', lemma: 'amar', pos: 'VERB' }, { surface: 'mundo', lemma: 'mundo', pos: 'NOUN' }] },
+    ] });
+    const r = await h.golearn.scriptureReadiness(U, ES_JOHN);
+    expect(r.preparatoryTexts.map((t) => t.textId)).not.toContain(privateText.id);
+  });
+
   it('a text whose only overlap is already-demonstrated words is not preparatory', async () => {
     const h = await setupReadiness();
     await buildFixtureText(h.store, { lang: 'es', slug: 'story-known', sentences: [{ tokens: [{ surface: 'Dios', lemma: 'Dios', pos: 'PROPN' }, { surface: 'cree', lemma: 'creer', pos: 'VERB' }, { surface: 'en', lemma: 'en', pos: 'ADP' }] }] });

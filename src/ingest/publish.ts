@@ -58,6 +58,19 @@ export function computePublished(doc: Pick<CorpusDocument, 'contentType' | 'revi
   const d = doc as Partial<CorpusDocument>;
   if (d.pipeline !== undefined) return computePublishedWithPipeline(doc as Record<string, unknown>);
   const reasons: string[] = [];
+  const curriculum = d.curriculum;
+  if (curriculum && !['ready', 'published'].includes(curriculum.lifecycle)) {
+    reasons.push(`curriculum lifecycle is "${curriculum.lifecycle}" — only ready or published material can reach learners`);
+    if (curriculum.lifecycle === 'rejected') reasons.push(...(curriculum.rejectionReasons ?? []));
+  }
+  const transformed = curriculum?.provenance?.kind && curriculum.provenance.kind !== 'original';
+  const needsNative = d.generated === true || d.source?.authorship === 'generated' || d.editorialTags?.includes('needs-native-review') || transformed;
+  if (needsNative && d.contentType !== 'scripture') {
+    if (d.review?.level !== 'native' || !nonEmpty(d.review.reviewedBy) || !nonEmpty(d.review.reviewedAt) || !Number.isFinite(Date.parse(d.review.reviewedAt))) reasons.push('generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date');
+    if ((d.teamText || d.source?.rights === 'personal-copy') && (!nonEmpty(d.review?.contentSignature) || d.review.contentSignature !== contentSignatureOf(doc))) reasons.push('native review must be bound to the current wording signature');
+  }
+  if (curriculum?.provenance?.kind === 'translation' && (!nonEmpty(curriculum.provenance.sourceTitle) || !nonEmpty(curriculum.provenance.sourceLanguage) || !nonEmpty(curriculum.provenance.translator))) reasons.push('translation provenance needs original title, source language and translator');
+  if (curriculum?.provenance?.kind === 'adaptation' && (!nonEmpty(curriculum.provenance.sourceTextId) || curriculum.provenance.sourceTextId === d.id || curriculum.provenance.sourceTextId === `text:${d.lang}:${d.id}` || !nonEmpty(curriculum.provenance.adapter) || !nonEmpty(curriculum.provenance.description))) reasons.push('adaptation needs a distinct source identity, adapter and transformation description');
 
   // A personal copy is the learner's own copy of a published native work: readable on this device without a review
   // (the transcription stays labelled unchecked), never Scripture, never generated. Any other combination is refused.
@@ -74,8 +87,8 @@ export function computePublished(doc: Pick<CorpusDocument, 'contentType' | 'revi
   // readable on this device without a review, labelled as the team's. A rejected review still blocks it. A document that
   // claims teamText without those conditions is not treated as one (the validator refuses it) and takes the ordinary path.
   if (d.teamText === true && d.source?.rights === 'owner-authored' && d.source.authorship === 'human' && d.generated !== true && d.contentType !== 'scripture') {
-    if (d.review?.status === 'rejected') return { published: false, unpublishedReasons: ['review was rejected — fix the text and record a new review'] };
-    return { published: true, unpublishedReasons: [], teamText: true };
+    if (d.review?.status === 'rejected') reasons.push('review was rejected — fix the text and record a new review');
+    return reasons.length ? { published: false, unpublishedReasons: reasons } : { published: true, unpublishedReasons: [], teamText: true };
   }
 
   const status = d.review?.status;

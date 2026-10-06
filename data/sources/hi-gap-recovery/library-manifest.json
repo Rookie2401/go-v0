@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "lang": "hi",
+  "checkedAt": "2026-10-02",
+  "entries": [
+    {
+      "slug": "bharatendu-bharat-durdasha",
+      "title": "भारत दुर्दशा",
+      "author": "भारतेन्दु हरिश्चन्द्र",
+      "stage": "c8",
+      "streams": [
+        "literature"
+      ],
+      "contentType": "drama",
+      "source": {
+        "file": "bharatendu-bharat-durdasha.txt",
+        "kind": "plain",
+        "url": "https://hi.wikisource.org/wiki/भारतेंदु-नाटकावली/६–भारत_दुर्दशा",
+        "urls": [
+          "https://hi.wikisource.org/wiki/%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%E0%A5%87%E0%A4%82%E0%A4%A6%E0%A5%81-%E0%A4%A8%E0%A4%BE%E0%A4%9F%E0%A4%95%E0%A4%BE%E0%A4%B5%E0%A4%B2%E0%A5%80/%E0%A5%AC%E2%80%93%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%20%E0%A4%A6%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%A6%E0%A4%B6%E0%A4%BE",
+          "https://hi.wikisource.org/wiki/%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%E0%A5%87%E0%A4%82%E0%A4%A6%E0%A5%81-%E0%A4%A8%E0%A4%BE%E0%A4%9F%E0%A4%95%E0%A4%BE%E0%A4%B5%E0%A4%B2%E0%A5%80/%E0%A5%AC%E2%80%93%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%20%E0%A4%A6%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%A6%E0%A4%B6%E0%A4%BE%20(%E0%A4%A6%E0%A5%82%E0%A4%B8%E0%A4%B0%E0%A4%BE%20%E0%A4%85%E0%A4%82%E0%A4%95)",
+          "https://hi.wikisource.org/wiki/%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%E0%A5%87%E0%A4%82%E0%A4%A6%E0%A5%81-%E0%A4%A8%E0%A4%BE%E0%A4%9F%E0%A4%95%E0%A4%BE%E0%A4%B5%E0%A4%B2%E0%A5%80/%E0%A5%AC%E2%80%93%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%20%E0%A4%A6%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%A6%E0%A4%B6%E0%A4%BE%20(%E0%A4%A4%E0%A5%80%E0%A4%B8%E0%A4%B0%E0%A4%BE%20%E0%A4%85%E0%A4%82%E0%A4%95)",
+          "https://hi.wikisource.org/wiki/%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%E0%A5%87%E0%A4%82%E0%A4%A6%E0%A5%81-%E0%A4%A8%E0%A4%BE%E0%A4%9F%E0%A4%95%E0%A4%BE%E0%A4%B5%E0%A4%B2%E0%A5%80/%E0%A5%AC%E2%80%93%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%20%E0%A4%A6%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%A6%E0%A4%B6%E0%A4%BE%20(%E0%A4%9A%E0%A5%8C%E0%A4%A5%E0%A4%BE%20%E0%A4%85%E0%A4%82%E0%A4%95)",
+          "https://hi.wikisource.org/wiki/%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%E0%A5%87%E0%A4%82%E0%A4%A6%E0%A5%81-%E0%A4%A8%E0%A4%BE%E0%A4%9F%E0%A4%95%E0%A4%BE%E0%A4%B5%E0%A4%B2%E0%A5%80/%E0%A5%AC%E2%80%93%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%20%E0%A4%A6%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%A6%E0%A4%B6%E0%A4%BE%20(%E0%A4%AA%E0%A4%BE%E0%A4%81%E0%A4%9A%E0%A4%B5%E0%A4%BE%E0%A4%81%20%E0%A4%85%E0%A4%82%E0%A4%95)",
+          "https://hi.wikisource.org/wiki/%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%E0%A5%87%E0%A4%82%E0%A4%A6%E0%A5%81-%E0%A4%A8%E0%A4%BE%E0%A4%9F%E0%A4%95%E0%A4%BE%E0%A4%B5%E0%A4%B2%E0%A5%80/%E0%A5%AC%E2%80%93%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%20%E0%A4%A6%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%A6%E0%A4%B6%E0%A4%BE%20(%E0%A4%9B%E0%A4%A0%E0%A4%BE%20%E0%A4%85%E0%A4%82%E0%A4%95)"
+        ],
+        "edition": "भारतेंदु-नाटकावली; Hindi Wikisource pages (acts 1–6)",
+        "attribution": "भारत दुर्दशा — भारतेन्दु हरिश्चन्द्र; Hindi Wikisource transcription; CC BY-SA 4.0 contribution.",
+        "provenance": "Official Hindi Wikisource parsed pages; HTML navigation stripped, wording otherwise retained."
+      },
+      "rights": {
+        "state": "rights-unverified",
+        "statusByJurisdiction": {
+          "IN": "needs-edition-check",
+          "US": "needs-edition-check"
+        },
+        "canBundle": false,
+        "verifiedBy": null,
+        "evidence": [
+          "https://hi.wikisource.org/wiki/भारतेंदु-नाटकावली/६–भारत_दुर्दशा",
+          "https://creativecommons.org/licenses/by-sa/4.0/deed.hi"
+        ],
+        "licence": "CC BY-SA 4.0 transcription; underlying edition requires separate verification"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "course-gap acquisition check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "84506b60e01e1641ad06ad6cf5d2a69c7c1440d15092992b544d89f9dcb0a193",
+        "notes": "Page extraction checked; no native-speaker or rights approval."
+      }
+    }
+  ],
+  "limitations": [
+    "Underlying scanned edition and jurisdictional status must be verified before bundling."
+  ]
+}

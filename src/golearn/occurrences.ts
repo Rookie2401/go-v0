@@ -91,6 +91,7 @@ export async function findOccurrences(
   // live and visible, in text then reading order, stopping at the limit
   const ordered = [...bySentence.entries()].sort((a, b) => (a[1].textId < b[1].textId ? -1 : a[1].textId > b[1].textId ? 1 : a[0] < b[0] ? -1 : 1));
   const texts = new Map<string, Text | undefined>();
+  const privateCorpusIds = new Set((await ctx.store.corpora.where('kind', 'testimony')).map((c) => c.id));
   const out: Array<Hit & { index: number }> = [];
   for (let i = 0; i < ordered.length && out.length < limit; i += 200) {
     const batch = ordered.slice(i, i + 200);
@@ -101,7 +102,8 @@ export async function findOccurrences(
     batch.forEach(([sentenceId, v], j) => {
       const s = sentences[j];
       const text = texts.get(v.textId);
-      if (!s || s.retiredInVersion !== undefined || !text || text.listeningAssessmentId !== undefined || (!text.published && !q.includeUnpublished)) return;
+      if (!s || s.retiredInVersion !== undefined || !text || text.kind === 'testimony' || privateCorpusIds.has(text.corpusId)
+        || text.listeningAssessmentId !== undefined || text.readingAssessmentId !== undefined || (!text.published && !q.includeUnpublished)) return;
       out.push({ sentenceId, textId: v.textId, tokenIds: v.tokenIds, index: s.index });
     });
   }

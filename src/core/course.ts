@@ -7,6 +7,7 @@
  * application may distribute it.
  */
 import type { LanguageCode, ReviewStatus } from './model';
+import type { StageContract } from '../course/curriculumPolicy';
 
 // ───────────────────────────── stages and assistance ─────────────────────────────
 
@@ -72,6 +73,7 @@ export const LAYER_ASSISTANCE_LEVEL: Record<HelpLayer, 0 | 1 | 2 | 3 | 4 | 5> = 
 };
 
 export interface Stage {
+  contract?: StageContract;
   id: string; // ids.stage(courseId, key) e.g. "stage:thailand-th:0", "stage:thailand-th:g4", "stage:thailand-th:open"
   courseId: string;
   lang: LanguageCode;

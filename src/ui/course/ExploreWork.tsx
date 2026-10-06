@@ -55,6 +55,7 @@ export function ExploreWork({ work, reloadKey, onImported }: { work: Work; reloa
         {work.author && <span className="work__author" lang={work.lang}> · {work.author}</span>}
       </h3>
       {where && <p className="work__purpose" data-testid="work-where">{where}</p>}
+      {work.edition && <p className="card__note" data-testid="work-edition">Edition: {work.edition}</p>}
       <p className="work__rights card__note" data-testid="rights-line">{stateRightsLine(work)}</p>
       {work.notes && work.rights.state === 'course-authored' && <p className="card__note">{work.notes}</p>}
       {error && <p role="alert" className="error">{error}</p>}
@@ -69,6 +70,13 @@ export function ExploreWork({ work, reloadKey, onImported }: { work: Work; reloa
           <Disclosure label="Chapters" lazy className="work__chapters">
             <ol className="work__chapter-list">
               {stored.map((t) => <li key={t.id}><Link to={textPath(t)} className="work__chapter" lang={t.lang}>{chapterLabel(t)}</Link></li>)}
+            </ol>
+          </Disclosure>
+        )}
+        {inLibrary.length > 0 && (
+          <Disclosure label="Available chapters" lazy className="work__chapters">
+            <ol className="work__chapter-list">
+              {inLibrary.map((t) => <li key={t.id}><button type="button" className="work__chapter" lang={t.lang} onClick={() => { void open(t.id); }}>{t.title}</button></li>)}
             </ol>
           </Disclosure>
         )}

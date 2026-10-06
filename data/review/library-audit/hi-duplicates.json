@@ -1,0 +1,227 @@
+{
+  "generatedAt": "2026-10-02T23:50:13.416Z",
+  "language": "hi",
+  "installed": {
+    "files": 1284,
+    "bodyDuplicateGroups": [],
+    "idDuplicateGroups": []
+  },
+  "resident": {
+    "files": 1317,
+    "bodyDuplicateGroups": [
+      [
+        {
+          "id": "bible-gen-1-complete",
+          "file": "public/library/hi/t/1a/bible-gen-1-complete.json",
+          "work": "bible-hindi",
+          "chapter": 1,
+          "title": "उत्पत्ति 1",
+          "chars": 3876
+        },
+        {
+          "id": "bible-gen-1",
+          "file": "data/corpus/hi/bible-gen-1.json",
+          "work": "bible-hindi",
+          "chapter": 1,
+          "title": "उत्पत्ति 1",
+          "chars": 3876
+        }
+      ],
+      [
+        {
+          "id": "bible-psa-1-complete",
+          "file": "public/library/hi/t/50/bible-psa-1-complete.json",
+          "work": "bible-hindi",
+          "chapter": 479,
+          "title": "भजन संहिता 1",
+          "chars": 652
+        },
+        {
+          "id": "bible-psa-1",
+          "file": "data/corpus/hi/bible-psa-1.json",
+          "work": "bible-hindi",
+          "chapter": 479,
+          "title": "भजन संहिता 1",
+          "chars": 652
+        }
+      ],
+      [
+        {
+          "id": "bible-mrk-1-complete",
+          "file": "public/library/hi/t/98/bible-mrk-1-complete.json",
+          "work": "bible-hindi",
+          "chapter": 958,
+          "title": "मरकुस 1",
+          "chars": 4291
+        },
+        {
+          "id": "bible-mrk-1",
+          "file": "data/corpus/hi/bible-mrk-1.json",
+          "work": "bible-hindi",
+          "chapter": 958,
+          "title": "मरकुस 1",
+          "chars": 4291
+        }
+      ],
+      [
+        {
+          "id": "bible-psa-23-complete",
+          "file": "public/library/hi/t/ea/bible-psa-23-complete.json",
+          "work": "bible-hindi",
+          "chapter": 501,
+          "title": "भजन संहिता 23",
+          "chars": 579
+        },
+        {
+          "id": "bible-psa-23",
+          "file": "data/corpus/hi/bible-psa-23.json",
+          "work": "bible-hindi",
+          "chapter": 501,
+          "title": "भजन संहिता 23",
+          "chars": 579
+        }
+      ]
+    ],
+    "idDuplicateGroups": []
+  },
+  "literarySources": {
+    "files": 5,
+    "bodyDuplicateGroups": [
+      [
+        {
+          "id": "(missing)",
+          "file": "data/sources/hi-literature/bharatendu-andher-nagari-manifest.json",
+          "chars": 0
+        },
+        {
+          "id": "(missing)",
+          "file": "data/sources/hi-literature/bharatendu-andher-nagari-source.json",
+          "chars": 0
+        },
+        {
+          "id": "(missing)",
+          "file": "data/sources/hi-literature/bharatendu-andher-nagari.json",
+          "chars": 0
+        },
+        {
+          "id": "(missing)",
+          "file": "data/sources/hi-literature-bridge/premchand-namak-ka-daroga.json",
+          "title": "नमक का दारोगा",
+          "chars": 0
+        },
+        {
+          "id": "(missing)",
+          "file": "data/sources/hi-literature-bridge/premchand-panch-parmeshwar.json",
+          "title": "पंच परमेश्वर",
+          "chars": 0
+        }
+      ]
+    ],
+    "idDuplicateGroups": [
+      [
+        {
+          "id": "(missing)",
+          "file": "data/sources/hi-literature/bharatendu-andher-nagari-manifest.json",
+          "chars": 0
+        },
+        {
+          "id": "(missing)",
+          "file": "data/sources/hi-literature/bharatendu-andher-nagari-source.json",
+          "chars": 0
+        },
+        {
+          "id": "(missing)",
+          "file": "data/sources/hi-literature/bharatendu-andher-nagari.json",
+          "chars": 0
+        },
+        {
+          "id": "(missing)",
+          "file": "data/sources/hi-literature-bridge/premchand-namak-ka-daroga.json",
+          "title": "नमक का दारोगा",
+          "chars": 0
+        },
+        {
+          "id": "(missing)",
+          "file": "data/sources/hi-literature-bridge/premchand-panch-parmeshwar.json",
+          "title": "पंच परमेश्वर",
+          "chars": 0
+        }
+      ]
+    ]
+  },
+  "intentionalAliases": [
+    [
+      {
+        "id": "bible-gen-1-complete",
+        "file": "public/library/hi/t/1a/bible-gen-1-complete.json",
+        "work": "bible-hindi",
+        "chapter": 1,
+        "title": "उत्पत्ति 1",
+        "chars": 3876
+      },
+      {
+        "id": "bible-gen-1",
+        "file": "data/corpus/hi/bible-gen-1.json",
+        "work": "bible-hindi",
+        "chapter": 1,
+        "title": "उत्पत्ति 1",
+        "chars": 3876
+      }
+    ],
+    [
+      {
+        "id": "bible-psa-1-complete",
+        "file": "public/library/hi/t/50/bible-psa-1-complete.json",
+        "work": "bible-hindi",
+        "chapter": 479,
+        "title": "भजन संहिता 1",
+        "chars": 652
+      },
+      {
+        "id": "bible-psa-1",
+        "file": "data/corpus/hi/bible-psa-1.json",
+        "work": "bible-hindi",
+        "chapter": 479,
+        "title": "भजन संहिता 1",
+        "chars": 652
+      }
+    ],
+    [
+      {
+        "id": "bible-mrk-1-complete",
+        "file": "public/library/hi/t/98/bible-mrk-1-complete.json",
+        "work": "bible-hindi",
+        "chapter": 958,
+        "title": "मरकुस 1",
+        "chars": 4291
+      },
+      {
+        "id": "bible-mrk-1",
+        "file": "data/corpus/hi/bible-mrk-1.json",
+        "work": "bible-hindi",
+        "chapter": 958,
+        "title": "मरकुस 1",
+        "chars": 4291
+      }
+    ],
+    [
+      {
+        "id": "bible-psa-23-complete",
+        "file": "public/library/hi/t/ea/bible-psa-23-complete.json",
+        "work": "bible-hindi",
+        "chapter": 501,
+        "title": "भजन संहिता 23",
+        "chars": 579
+      },
+      {
+        "id": "bible-psa-23",
+        "file": "data/corpus/hi/bible-psa-23.json",
+        "work": "bible-hindi",
+        "chapter": 501,
+        "title": "भजन संहिता 23",
+        "chars": 579
+      }
+    ]
+  ],
+  "possibleNonScriptureDuplicates": []
+}

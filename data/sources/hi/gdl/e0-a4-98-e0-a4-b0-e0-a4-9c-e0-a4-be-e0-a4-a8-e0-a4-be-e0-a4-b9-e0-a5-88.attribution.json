@@ -1,0 +1,44 @@
+{
+  "title": "घर जाना है",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%98%e0%a4%b0-%e0%a4%9c%e0%a4%be%e0%a4%a8%e0%a4%be-%e0%a4%b9%e0%a5%88/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Rukmini Banerji",
+    "Illustrators: Ketan Raut, Santosh Pujari",
+    "Translator: Pratham Books Team",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: घर जाना है is translated by Pratham Books Team . The © for this translation lies with Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' Going Home ' , by Rukmini Banerji . © Pratham Books , 2004. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This book has been published on StoryWeaver by Pratham Books. The development of the print version of this book was supported by Dubai Creek Round Table, Dubai .U.A.E. www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Girl running in a street , by Ketan Raut , Santosh Pujari © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 2: Children and teachers in a school , by Ketan Raut , Santosh Pujari © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 3: Children in school , by Ketan Raut , Santosh Pujari © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 4: Girl walking in a lane of houses , by Ketan Raut , Santosh Pujari © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 5: Girl crossing a road , by Ketan Raut , Santosh Pujari © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 6: Girl crossing road , by Ketan Raut , Santosh Pujari © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 7: Girl running past man , by Ketan Raut , Santosh Pujari © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 8: Girl walking past a shop , by Ketan Raut , Santosh Pujari © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 9: Girl near fish shops , by Ketan Raut , Santosh Pujari © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 10: Girl walking past barber shop , by Ketan Raut , Santosh Pujari © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Illustration Attributions:",
+    "Page 11: Girl in an empty sheet , by Ketan Raut , Santosh Pujari © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 12: Girl hugging father as mother watches , by Ketan Raut , Santosh Pujari © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "घर जाना है (Hindi)",
+    "यह नन्ही लड़की जल्दी घर पहुँचना चाहती है। पढ़िये उसकी प्यारी कहानी।",
+    "यह पठन स्तर २ की किताब है, उन बच्चों के लिए जो सरल शब्द पढ़ लेते हैं और थोड़ी मदद से नए शब्द भी पढ़ सकते हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "7725fbd2ecd5a0549ea82f81069271ed884638f97aba846b4123a8fe0696f924"
+}

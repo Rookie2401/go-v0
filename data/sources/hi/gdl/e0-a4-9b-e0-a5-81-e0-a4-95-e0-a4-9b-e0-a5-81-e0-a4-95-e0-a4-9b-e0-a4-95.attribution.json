@@ -1,0 +1,39 @@
+{
+  "title": "छुक-छुक-छक",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9b%e0%a5%81%e0%a4%95-%e0%a4%9b%e0%a5%81%e0%a4%95-%e0%a4%9b%e0%a4%95/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Vinita Krishna",
+    "Illustrator: Suvidha Mistry",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: छुक-छुक-छक is written by Vinita Krishna . © Pratham Books , 2006. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This book has been published on StoryWeaver by Pratham Books. Pratham Books is a not-for-profit organization that publishes books in multiple Indian languages to promote reading among children. www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Girl waving and train in the background , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 2: Girl carrying a slate and walking with dog , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 3: Girl drawing on a slate and dog watching , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 4: Girl holding slate and looking worried , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 5: Girl and dog looking at slate , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 6: Drawing of a moving train , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 7: Girl and dog watching a moving train , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 8: Girl and dog running happily with train in the background , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "छुक-छुक-छक (Hindi)",
+    "कैसे चली नन्ही की रेलगाड़ी? छुक छुक छक छक!",
+    "यह पठन स्तर १ की किताब है, उन बच्चों के लिए जो पढ़ना शुरू कर रहे हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "aca15add6311cab9e27c5191b7a8b217351a778e5122820dda5b90bf69bacb05"
+}

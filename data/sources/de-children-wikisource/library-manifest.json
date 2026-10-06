@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "lang": "de",
+  "checkedAt": "2026-10-02",
+  "entries": [
+    {
+      "slug": "grimm-khm",
+      "title": "Kinder- und Haus-Märchen, 6. Auflage 1850, Bände 1–2",
+      "author": "Jacob und Wilhelm Grimm",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "source": {
+        "files": [
+          "grimm-khm-1850-band1.json",
+          "grimm-khm-1850-band2.json"
+        ],
+        "kind": "documents",
+        "edition": "Dieterich, Göttingen, sixth edition, 1850",
+        "urls": [
+          "https://de.wikisource.org/wiki/Index:Kinder-_und_Haus-M%C3%A4rchen_Band_1_(1850)",
+          "https://de.wikisource.org/wiki/Index:Kinder-_und_Haus-M%C3%A4rchen_Band_2_(1850)"
+        ],
+        "attribution": "Wikisource scan-backed transcription of the 1850 sixth edition; underlying scans linked by each edition index.",
+        "provenance": "Each retained page was fetched from the official Wikisource raw transcription endpoint and has ProofreadPage quality level 4.",
+        "file": "grimm-khm-1850-documents.json"
+      },
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "public-domain",
+        "permission": "granted",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Wikisource edition index and per-page ProofreadPage status",
+        "verifiedAt": "2026-10-02",
+        "basis": "Exact 1850 edition, scan source, transcription licence, and page-quality records are retained in both source files.",
+        "evidence": [
+          "https://de.wikisource.org/wiki/Index:Kinder-_und_Haus-M%C3%A4rchen_Band_1_(1850)",
+          "https://de.wikisource.org/wiki/Index:Kinder-_und_Haus-M%C3%A4rchen_Band_2_(1850)",
+          "https://creativecommons.org/licenses/by-sa/4.0/"
+        ],
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "prepare-de-children-documents source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "4a1bb1d823db3df5761e55bf954539bba874337e49ce49d18c7bdc40b0ee6fbd",
+        "notes": "Source-fidelity review of retained level-4 Wikisource page documents."
+      }
+    },
+    {
+      "slug": "hauff-maerchen",
+      "title": "Märchen-Almanach auf das Jahr 1826",
+      "author": "Wilhelm Hauff",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "source": {
+        "file": "hauff-almanach-1826-documents.json",
+        "kind": "documents",
+        "edition": "Mendheim edition, 1891–1909, scan section reproducing the 1826 Almanach, pages 60–175",
+        "url": "https://de.wikisource.org/wiki/Index:Wilhelm_Hauff_Werke_Bd_2",
+        "attribution": "Wikisource scan-backed transcription; the bounded section begins with the Almanach introduction and ends before Mitteilungen aus den Memoiren des Satan.",
+        "provenance": "Pages 032–089 of the index section were fetched from the official Wikisource raw transcription endpoint; every page has ProofreadPage quality level 4."
+      },
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "public-domain",
+        "permission": "granted",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Wikisource edition index and per-page ProofreadPage status",
+        "verifiedAt": "2026-10-02",
+        "basis": "Exact bounded Almanach section, scan source, transcription licence, and page-quality records are retained in the source file.",
+        "evidence": [
+          "https://de.wikisource.org/wiki/Index:Wilhelm_Hauff_Werke_Bd_2",
+          "https://creativecommons.org/licenses/by-sa/4.0/"
+        ],
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "prepare-de-children-documents source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "037b4c6c176607d6deb5c267d1826a7441f7990756eba682c8917c7d6f7b8627",
+        "notes": "Source-fidelity review of retained level-4 Wikisource page documents."
+      }
+    }
+  ]
+}

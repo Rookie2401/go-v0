@@ -15,7 +15,7 @@ import { useApp } from '../context';
 import { Disclosure } from '../ui';
 
 /** What the line shows for a source, or null when the text needs none (pure). */
-export function sourceView(source: ContentSource | undefined): { attribution: string; licence?: string; provenance?: string; url?: string } | null {
+export function sourceView(source: ContentSource | undefined): { attribution: string; licence?: string; provenance?: string; url?: string; sourceHash?: string; retrievedAt?: string; modifications?: string } | null {
   if (!source || (source.rights !== 'licensed' && source.rights !== 'public-domain')) return null;
   const attribution = (source.attribution ?? [source.title, source.edition, source.publisher].filter(Boolean).join(', ')).trim();
   if (!attribution) return null;
@@ -24,6 +24,9 @@ export function sourceView(source: ContentSource | undefined): { attribution: st
     ...(source.licenseNote ? { licence: source.licenseNote } : {}),
     ...(source.provenance ? { provenance: source.provenance } : {}),
     ...(source.url && /^https?:\/\//.test(source.url) ? { url: source.url } : {}),
+    ...(source.sourceHash ? { sourceHash: source.sourceHash } : {}),
+    ...(source.retrievedAt ? { retrievedAt: source.retrievedAt } : {}),
+    ...(source.modifications ? { modifications: source.modifications } : {}),
   };
 }
 
@@ -47,6 +50,8 @@ export function SourceLine({ text }: { text: Pick<Text, 'sourceId' | 'lang'> }) 
         <Disclosure label="Licence and source" lazy className="reader__source-more">
           {view.licence && <p className="card__note" data-testid="source-licence">{view.licence}</p>}
           {view.provenance && <p className="card__note" data-testid="source-provenance">{view.provenance}</p>}
+          {view.modifications && view.modifications !== view.provenance && <p className="card__note">Changes: {view.modifications}</p>}
+          {view.retrievedAt && <p className="card__note">Source acquired: {view.retrievedAt}</p>}
           {view.url && <p className="card__note"><a href={view.url} target="_blank" rel="noreferrer noopener">{view.url}</a></p>}
         </Disclosure>
       )}

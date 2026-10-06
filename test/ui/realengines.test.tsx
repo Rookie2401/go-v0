@@ -46,7 +46,7 @@ async function render(route: string) {
 const texts = async (): Promise<Text[]> => (await boot.services.store.texts.all()).filter((t) => t.lang === 'es');
 
 describe('the UI over the real engines', () => {
-  it('normal mode: Read says what is awaited, Scripture offers only the verified Spanish text, Home is not a dead end', async () => {
+  it('normal mode: Read says what is awaited, Scripture offers only verified texts, and Home opens the reading surfaces', async () => {
     const all = await texts();
     const published = all.filter((t) => t.published);
     expect(published.every((t) => t.kind === 'scripture')).toBe(true); // the bundle's state: only verified Scripture is published
@@ -66,11 +66,9 @@ describe('the UI over the real engines', () => {
     await unmount!(); unmount = undefined;
 
     page = await render('/');
-    const empty = q(page, '[data-testid="home-empty"]');
-    const rows = qa(page, 'ul.list li');
-    // either GoLearn offers a note, Home explains what is awaited, or Best next reads has something: never a blank "for you today"
-    const best = q(page, '[data-testid="best-next"]'); // a Spanish Home with something ranked for the learner is not a dead end either
-    expect(rows.length > 0 || !!empty || !!best).toBe(true);
+    const homeLinks = qa<HTMLAnchorElement>(page, 'a.home__entry').map((a) => a.getAttribute('href'));
+    expect(homeLinks).toContain('/read');
+    expect(homeLinks).toContain('/scripture');
     expect(page.textContent).not.toContain('Open a story to begin');
   });
 

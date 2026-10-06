@@ -79,6 +79,7 @@ export function parseShard(raw: unknown, lang: LanguageCode): CatalogText[] {
   const out: CatalogText[] = [];
   for (const r of raw.rows) {
     if (!isObj(r) || !isStr(r.id) || r.lang !== lang || !isStr(r.title) || !isStr(r.stream) || !isStr(r.rights)) continue;
+    if (r.readingAssessmentId !== undefined || r.listeningAssessmentId !== undefined) continue;
     if (r.location !== 'library' || typeof r.published !== 'boolean' || !isObj(r.features) || !isNum(r.features.words)) continue;
     out.push(r as unknown as CatalogText);
   }

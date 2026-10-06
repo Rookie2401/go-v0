@@ -35,7 +35,10 @@ export function createSourceFinder(store: AppStore): SourceFinder {
         if (out.length >= limit) break;
         if (seen.has(r.sentenceId)) continue;
         const [s, t] = await Promise.all([sentence(r.sentenceId), text(r.textId)]);
-        if (!s || !t || t.listeningAssessmentId !== undefined) continue; // protected transfer material is never a training source
+        if (!s || s.retiredInVersion !== undefined || !t || (t.listeningAssessmentId !== undefined || t.readingAssessmentId !== undefined)) continue;
+        const corpus = await store.corpora.get(t.corpusId);
+        const ownTestimony = t.kind === 'testimony' && t.corpusId === `testimony:${userId}`;
+        if (((t.kind === 'testimony' || corpus?.kind === 'testimony') && !ownTestimony) || (!ownTestimony && t.published !== true)) continue;
         seen.add(r.sentenceId);
         out.push({ itemId, textId: t.id, textTitle: t.title, sentenceId: s.id, excerpt: s.text, surface: r.surface });
       }

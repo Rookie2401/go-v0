@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "bridge-thai-bridge-10",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ร้านหนังสือเล็กๆ",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-th-bridge-drafts",
+    "kind": "comprehensible-input",
+    "title": "Thai beginner bridge drafts"
+  },
+  "source": {
+    "id": "src:th:thai-bridge-10",
+    "title": "ร้านหนังสือเล็กๆ — course-owned draft",
+    "author": "Course authors (machine-drafted)",
+    "attribution": "Course-owned Thai draft. Machine-drafted for native-speaker review; no external source or translation claimed.",
+    "provenance": "Original controlled draft written for the course-owned beginner review queue. It is not a published or source-reviewed Thai work.",
+    "rights": "owner-authored",
+    "licenseNote": "Course-owned draft; may not be published until native review.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Native Thai reviewer required. Source fidelity is not applicable because this is original course-owned draft text."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "หนังสือ",
+    "ร้าน",
+    "อ่าน"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "course-owned-draft"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss for review only"
+  },
+  "sections": [
+    {
+      "title": "ร้านหนังสือเล็กๆ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หลังเลิกเรียน ฉันเดินเข้าร้านหนังสือเล็กๆ",
+              "english": "After school, I walk into a small bookshop."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เจ้าของร้านทักทายและถามว่าต้องการอะไร",
+              "english": "The shop owner greets me and asks what I need."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันมองหาหนังสือเกี่ยวกับสัตว์",
+              "english": "I look for a book about animals."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "หนังสือเล่มหนึ่งมีรูปแมวกับนก",
+              "english": "One book has pictures of cats and birds."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันอ่านหน้าแรกและชอบเรื่องนี้มาก",
+              "english": "I read the first page and like the story very much."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันเลือกหนังสือแล้วถามราคา",
+              "english": "I choose the book and ask the price."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อจ่ายเงินให้ฉันที่หน้าเคาน์เตอร์",
+              "english": "Father pays for me at the counter."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เจ้าของร้านใส่หนังสือในถุงกระดาษ",
+              "english": "The shop owner puts the book in a paper bag."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "คืนนั้น ฉันอ่านหนังสือก่อนนอน",
+              "english": "That night, I read the book before bed."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันถามเจ้าของร้านว่ามีหนังสือเล่มอื่นไหม",
+              "english": "I ask the shop owner whether there are other books."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เขาแนะนำหนังสือเกี่ยวกับทะเล",
+              "english": "He recommends a book about the sea."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันตั้งใจจะกลับมาอ่านที่ร้านอีก",
+              "english": "I intend to come back to read at the shop again."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "work": {
+    "slug": "bridge-thai-bridge-10",
+    "courseId": "thailand-th",
+    "chapter": {
+      "index": 9,
+      "title": "ร้านหนังสือเล็กๆ"
+    }
+  }
+}

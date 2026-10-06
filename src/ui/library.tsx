@@ -23,7 +23,7 @@ export function useLangTexts(reloadKey?: unknown): LangTexts {
     void (async () => {
       const [rows, cs] = await Promise.all([store.texts.where('lang', lang), store.corpora.all()]);
       const corpora = new Map(cs.map((c) => [c.id, c]));
-      const texts = rows.filter((t) => t.listeningAssessmentId === undefined && !isTestimonyText(t, corpora));
+      const texts = rows.filter((t) => t.listeningAssessmentId === undefined && t.readingAssessmentId === undefined && !isTestimonyText(t, corpora));
       if (live) setState({ texts, corpora });
     })().catch(() => { if (live) setState({ texts: [], corpora: new Map() }); });
     return () => { live = false; };

@@ -38,7 +38,7 @@ export { planSpeech, stripVerseMarkers, type SpeechPlan } from './pipeline';
 export { approvedForPlay, currentBindingValid, canonicalTextSha256, sha256Hex, releaseIdOf, editionIdOf, isThsv11 } from './rights';
 export { latestListeningCheckpoint, listeningProgress } from './progress';
 export { recommendListening } from './recommendations';
-export { listeningAssessmentAvailability, startListeningAssessment, submitListeningAssessment } from './assessment';
+export { listeningAssessmentAvailability, registerListeningAssessment, startListeningAssessment, submitListeningAssessment } from './assessment';
 export { type AudioGenerationAuthorization, type AudioImportManifest, type AudioImportResult, type OfflineAudioPackage, type ImportOrigin, type ImportRecord, type ImportRecordingArgs } from '../core/contracts/golisten';
 export { readImportRecord, importRecordId } from './import';
 export { SYNTHETIC_PRACTICE } from './status';

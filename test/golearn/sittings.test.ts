@@ -7,6 +7,7 @@ import { SITTING_GAP_MS, buildFixtureText, ids } from '../../src/core';
 import type { DomainEvent, EventInput } from '../../src/core';
 import { createHarness } from './harness';
 import type { Harness } from './harness';
+import { withoutHeadCache } from './harness';
 import { ES_STORY, buildSpanish } from './fixtures';
 
 const U = 'u1';
@@ -45,7 +46,7 @@ describe('sittings: no duplicate exposure inside one sitting', () => {
     const h = mk();
     await buildSpanish(h.store);
     expect(await h.view(U, 'es', ES_STORY, 0, 's1')).not.toBeNull();
-    const snap = async () => JSON.stringify({ e: await encs(h), i: (await h.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)) });
+    const snap = async () => JSON.stringify({ e: await encs(h), i: withoutHeadCache((await h.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1))) });
     const before = await snap();
     const creoBefore = (await reading(h, F('creo'))).exposures;
 
@@ -329,7 +330,7 @@ describe('derived state is rebuildable under evidence@8', () => {
     await play(h);
     const snap = async (x: Harness) => ({
       encounters: await encs(x),
-      items: (await x.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)),
+      items: withoutHeadCache((await x.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1))),
       progress: await x.golearn.readingProgress(U, ES_STORY),
     });
     const live = await snap(h);

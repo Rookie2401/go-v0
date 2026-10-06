@@ -1,0 +1,2090 @@
+[
+  {
+    "id": "work:germany-de:guerber-v1-story-01",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s2",
+    "role": "subsidiary",
+    "order": 100,
+    "title": "Jakobs Haus.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text1",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "ec4551293b1938d29eeafc423c8b47dba12111044c4dca3687b07e969d9d6dc7",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-02",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s2",
+    "role": "subsidiary",
+    "order": 101,
+    "title": "Die drei Schläfer.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text2",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "906ca2f1582587c789a6f8a6939c553721d3ff7f1112265ed9c34b4a7d5e8b91",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-03",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s2",
+    "role": "subsidiary",
+    "order": 102,
+    "title": "Der Hausvater.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text3",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "954d564936b062fad5a4942c250a09e30d270ddac85cc082f768e13bbf582717",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-04",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s2",
+    "role": "subsidiary",
+    "order": 103,
+    "title": "Der Pfannkuchen.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text4",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "0ba331b855c735571b98edbfaea73397d3b671ebdbad9928a4c9df89e54bca63",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-05",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s3",
+    "role": "subsidiary",
+    "order": 104,
+    "title": "Der Riese und das Kind.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text5",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "0afd42ffce50bee93431e012ac120f1a3ab65de160cac98ff445ce2c4b6a2d50",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-06",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s3",
+    "role": "subsidiary",
+    "order": 105,
+    "title": "Der Pfeifer von Hameln.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text6",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "3181d55676a3cf7f1d76f3b78319667871a89ea4e9579ab18e3b37f2bc26a204",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-07",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s3",
+    "role": "subsidiary",
+    "order": 106,
+    "title": "Undank ist der Welt Lohn.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text7",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "1ac3f0dc8665e884d1cf5a4c39dc82918c6289d527a2e9fa1d04c5a5a5234380",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-08",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s3",
+    "role": "subsidiary",
+    "order": 107,
+    "title": "Die Prinzessin, die nicht lachen wollte.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text8",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "d033bf35763dad1b2ad0b0a02627bd83db5dfd0bdd04b83894b019c34abadd1a",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-09",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s4",
+    "role": "subsidiary",
+    "order": 108,
+    "title": "Das gestohlene Kind.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text9",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "7e3717233384f8eefb87f4e4b6717abd021e1f528a2945498298e31cf16c1e96",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-10",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s3",
+    "role": "subsidiary",
+    "order": 109,
+    "title": "Das Reiterbild in Düsseldorf.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text10",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "f709e8c6bab0ae0d170a1445470c648c20b07b5030a330a19af302ed8b07159b",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-11",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s4",
+    "role": "subsidiary",
+    "order": 110,
+    "title": "Die Andernacher Bäckersjungen.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text11",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "20b12d1b939fd91769c741227ac5f4eb04b54496e616d5dd99d4e8c285e1f4c5",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-12",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s4",
+    "role": "subsidiary",
+    "order": 111,
+    "title": "Der Rekrut auf Philippsburg.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text12",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "0707e63e66b5e4606a4835838d9b6c9a77441711b5640723850c98e84df39f18",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-13",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s4",
+    "role": "subsidiary",
+    "order": 112,
+    "title": "Die Reise des Züricher Breitopfes.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text13",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "858fcb3c5e23ea51fe3a66c3c75e95209f8322a4a98dbcad4b4059f289532515",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-14",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s4",
+    "role": "subsidiary",
+    "order": 113,
+    "title": "Die Waldfrau.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text14",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "95b4ad0f60d36639f1a440aff83c982a104cf09fbef6b5069cc26193083f506c",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v1-story-15",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s3",
+    "role": "subsidiary",
+    "order": 114,
+    "title": "Die vier Brüder.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, 1897 imprint; Erster Teil; Project Gutenberg #35794",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html#Text15",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #35794 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/35794",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/35794/pg35794-images.html"
+      ],
+      "checksum": "d37b121714d8aa4f1b698346aa822fc32b2069f2d71a3cb5bab6b5ce4577fe24",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v2-story-01",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 115,
+    "title": "Der Weihnachtsabend.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, undated imprint; copyright 1896; Zweiter Teil; Project Gutenberg #45189",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html#Text1",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #45189 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/45189",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html"
+      ],
+      "checksum": "d33fcafbb2b6c263f5bef12450eb1d6ccd2bf31b012476b0519407c60ba83b1a",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v2-story-02",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 116,
+    "title": "Die zehn Feeen.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, undated imprint; copyright 1896; Zweiter Teil; Project Gutenberg #45189",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html#Text2",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #45189 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/45189",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html"
+      ],
+      "checksum": "2e951b79a26617e28e67d9093c43c89fce446c949401cfd09d7a89258573bbbd",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v2-story-03",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 117,
+    "title": "In sicherer Hut.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, undated imprint; copyright 1896; Zweiter Teil; Project Gutenberg #45189",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html#Text3",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #45189 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/45189",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html"
+      ],
+      "checksum": "0b4538adb1e5c43f786cb7980070fe76d3cfca6ce966691601b7b091281ed66f",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v2-story-04",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 118,
+    "title": "Tisch, Sack und Pack.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, undated imprint; copyright 1896; Zweiter Teil; Project Gutenberg #45189",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html#Text4",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #45189 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/45189",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html"
+      ],
+      "checksum": "fe23fdcc5d04d491cf5265a8209a201f50d4f34d4933be3ac69313467ac668e9",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v2-story-05",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 119,
+    "title": "Barbarossa.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, undated imprint; copyright 1896; Zweiter Teil; Project Gutenberg #45189",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html#Text5",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #45189 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/45189",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html"
+      ],
+      "checksum": "ad4b56e2ae3e1b1d9bdec066b1f1d6c9e0fd899bce91d3de7061bdec233869d9",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v2-story-06",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 120,
+    "title": "Das Neujahrslied.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, undated imprint; copyright 1896; Zweiter Teil; Project Gutenberg #45189",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html#Text6",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #45189 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/45189",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html"
+      ],
+      "checksum": "b7c4931011b382281534861fa135ca22d10372bb231bc6e6a88565f74b621f58",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v2-story-07",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 121,
+    "title": "Rosa von Tannenburg.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, undated imprint; copyright 1896; Zweiter Teil; Project Gutenberg #45189",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html#Text7",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #45189 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/45189",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html"
+      ],
+      "checksum": "e8fb1131fca20e7808f66a6280ad9f1196779770e718e58f6cacc505bb25de46",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted. Length support required: 6,983 adapter tokens in this story; use saved reading sessions and rescue as needed. Placement remains provisional."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted. Length support required: 6,983 adapter tokens in this story; use saved reading sessions and rescue as needed. Placement remains provisional."
+  },
+  {
+    "id": "work:germany-de:guerber-v2-story-08",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 122,
+    "title": "Der Bauer und der Advokat.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, undated imprint; copyright 1896; Zweiter Teil; Project Gutenberg #45189",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html#Text8",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #45189 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/45189",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html"
+      ],
+      "checksum": "3980f0a133a08b229814b5f3b92b1b7805356fbd7ed89e5041f36c8ffe462e9b",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v2-story-09",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 123,
+    "title": "Das hölzerne Kreuz.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, undated imprint; copyright 1896; Zweiter Teil; Project Gutenberg #45189",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html#Text9",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #45189 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/45189",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html"
+      ],
+      "checksum": "f1d3440793d378f222fbb4607668dc77379dd856088a1b8c034a7d6fb5d299c4",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v2-story-10",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 124,
+    "title": "Der Lange, der Breite und der Scharfäugige.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, undated imprint; copyright 1896; Zweiter Teil; Project Gutenberg #45189",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html#Text10",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #45189 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/45189",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html"
+      ],
+      "checksum": "7b9dc0f9dc790a9675e42659cdd3961e4b4d864ccb473cb003ab9e6b4da231c3",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v2-story-11",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 125,
+    "title": "Die Taube.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, undated imprint; copyright 1896; Zweiter Teil; Project Gutenberg #45189",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html#Text11",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #45189 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/45189",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html"
+      ],
+      "checksum": "5cde7e253990bf50f5fd39a34d0c2dc8ed3c8b13701400332537f000a65ec714",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v2-story-12",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 126,
+    "title": "Anekdoten.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, undated imprint; copyright 1896; Zweiter Teil; Project Gutenberg #45189",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html#Text12",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #45189 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/45189",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html"
+      ],
+      "checksum": "8215d6ac9b5508d4fd73e235cfd0cc08dbd8c1928df2acde81d251c817ef71d8",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:guerber-v2-story-13",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 127,
+    "title": "Rübezahl.",
+    "author": "H. A. Guerber",
+    "edition": "D. C. Heath, undated imprint; copyright 1896; Zweiter Teil; Project Gutenberg #45189",
+    "sourceUrl": "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html#Text13",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "historical",
+      "literary"
+    ],
+    "rights": {
+      "state": "verified-public-domain",
+      "copyrightStatus": "public-domain",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": false,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Official Project Gutenberg edition catalogue and exact source comparison",
+      "verifiedAt": "2026-10-04",
+      "basis": "Project Gutenberg #45189 identifies this exact edition as public domain in the USA; no clearance outside the USA is asserted.",
+      "statusByJurisdiction": {
+        "US": "public-domain"
+      },
+      "evidence": [
+        "https://www.gutenberg.org/ebooks/45189",
+        "https://www.gutenberg.org/policy/license.html",
+        "https://www.gutenberg.org/cache/epub/45189/pg45189-images.html"
+      ],
+      "checksum": "02be0cc5c805d4d11b78dcec81445a2ff36ed82c62343f928ba188b741ebf095",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Project Gutenberg",
+      "licence": "US Public Domain",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "modifications": "Numbered prose story only; English preface, poems, vocabulary, questions, advertisements and PG wrapper excluded at HTML h2 boundaries. Paragraphs unwrapped; page and footnote anchor markers removed; no modernization, translation, rescue text, illustrations or audio.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "US"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "graded-historical-narrative",
+    "era": "historical",
+    "variety": "de",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Historical original German spelling; not modernized",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed. Source permission flag retained as acquired; US public-domain status may allow US derivatives, but no modernization is performed or worldwide derivative clearance asserted."
+  },
+  {
+    "id": "work:germany-de:gv-de-91a9508ad151-excerpt",
+    "courseId": "germany-de",
+    "lang": "de",
+    "stageId": "stage:germany-de:s6",
+    "role": "subsidiary",
+    "order": 128,
+    "title": "Eine kolumbianische Sicht auf den Film „Encanto“ von Disney“ — excerpt",
+    "author": "Lully",
+    "translator": "Andreas Kallinteris; FTSK",
+    "edition": "Global Voices de edition, Sun, 31 Mar 2024 15:52:05 +0000",
+    "sourceUrl": "https://de.globalvoices.org/2024/03/31/eine-kolumbianische-sicht-auf-den-film-encanto-von-disney/",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "standard"
+    ],
+    "rights": {
+      "state": "verified-open-licence",
+      "copyrightStatus": "licensed",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": true,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Exact Global Voices article credits, license footer and official republication policy",
+      "verifiedAt": "2026-10-04",
+      "licensing": "CC BY 3.0",
+      "statusByJurisdiction": {
+        "*": "licensed"
+      },
+      "basis": "GV-created author narrative/explanatory paragraphs in this exact credited translation; article/footer CC BY 3.0, current official policy permits redistribution and adaptation. Selected excerpt excludes third-party quoted prose and all media.",
+      "evidence": [
+        "https://de.globalvoices.org/2024/03/31/eine-kolumbianische-sicht-auf-den-film-encanto-von-disney/",
+        "https://es.globalvoices.org/2022/03/23/encanto-una-mirada-colombiana-sobre-la-pelicula-de-disney/",
+        "https://globalvoices.org/about/global-voices-attribution-policy/",
+        "https://creativecommons.org/licenses/by/3.0/"
+      ],
+      "checksum": "6650149db2ef1a56d0d98542d95f31f193ac25c20a5d36d32b7250e7d2cc4f38",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Global Voices",
+      "licence": "CC BY 3.0",
+      "commercialUse": true,
+      "attributionRequired": true,
+      "modifications": "Exact paragraphs 3,4,5,6,7 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "*"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "contemporary-nonfiction",
+    "era": "modern",
+    "variety": "de-DE",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Contemporary publisher wording",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed."
+  },
+  {
+    "id": "work:honduras-es:gv-es-dae11aaaf264-excerpt",
+    "courseId": "honduras-es",
+    "lang": "es",
+    "stageId": "stage:honduras-es:s4",
+    "role": "subsidiary",
+    "order": 129,
+    "title": "¿Qué nos dice el folclore? Nos ayuda a descubrir facetas desconocidas de historias indígenas ignoradas por generaciones — excerpt",
+    "author": "Sanjib Chaudhary",
+    "translator": "Julissa Álvarez Coroa",
+    "edition": "Global Voices es edition, Sat, 03 Oct 2026 07:00:06 +0000",
+    "sourceUrl": "https://es.globalvoices.org/2026/10/03/que-nos-dice-el-folclore-nos-ayuda-a-descubrir-facetas-desconocidas-de-historias-indigenas-ignoradas-por-generaciones/",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "standard"
+    ],
+    "rights": {
+      "state": "verified-open-licence",
+      "copyrightStatus": "licensed",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": true,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Exact Global Voices article credits, license footer and official republication policy",
+      "verifiedAt": "2026-10-04",
+      "licensing": "CC BY 3.0",
+      "statusByJurisdiction": {
+        "*": "licensed"
+      },
+      "basis": "GV-created author narrative/explanatory paragraphs in this exact credited translation; article/footer CC BY 3.0, current official policy permits redistribution and adaptation. Selected excerpt excludes third-party quoted prose and all media.",
+      "evidence": [
+        "https://es.globalvoices.org/2026/10/03/que-nos-dice-el-folclore-nos-ayuda-a-descubrir-facetas-desconocidas-de-historias-indigenas-ignoradas-por-generaciones/",
+        "https://globalvoices.org/2026/09/06/what-does-folklore-have-to-say-it-helps-uncover-untold-facets-of-indigenous-stories-overlooked-for-generations/",
+        "https://globalvoices.org/about/global-voices-attribution-policy/",
+        "https://creativecommons.org/licenses/by/3.0/"
+      ],
+      "checksum": "21ac0d13a11e432379644510690cded5a24896d7b999ef1cf4870bc3fe8d71e4",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Global Voices",
+      "licence": "CC BY 3.0",
+      "commercialUse": true,
+      "attributionRequired": true,
+      "modifications": "Exact paragraphs 3,4,5,6 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "*"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "contemporary-nonfiction",
+    "era": "modern",
+    "variety": "es",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Contemporary publisher wording",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed."
+  },
+  {
+    "id": "work:india-hi:gv-hi-467925c35d73-excerpt",
+    "courseId": "india-hi",
+    "lang": "hi",
+    "stageId": "stage:india-hi:c6",
+    "role": "subsidiary",
+    "order": 130,
+    "title": "भारतीय स्ट्रीट फूड का बादशाह पानी पूरी, अब दुनिया भर में मशहूर — excerpt",
+    "author": "Abhinash Das",
+    "translator": "Debashish Chakrabarty",
+    "edition": "Global Voices hi edition, Sun, 14 Dec 2025 17:00:04 +0000",
+    "sourceUrl": "https://hi.globalvoices.org/2025/12/14/2060/",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "standard"
+    ],
+    "rights": {
+      "state": "verified-open-licence",
+      "copyrightStatus": "licensed",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": true,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Exact Global Voices article credits, license footer and official republication policy",
+      "verifiedAt": "2026-10-04",
+      "licensing": "CC BY 3.0",
+      "statusByJurisdiction": {
+        "*": "licensed"
+      },
+      "basis": "GV-created author narrative/explanatory paragraphs in this exact credited translation; article/footer CC BY 3.0, current official policy permits redistribution and adaptation. Selected excerpt excludes third-party quoted prose and all media.",
+      "evidence": [
+        "https://hi.globalvoices.org/2025/12/14/2060/",
+        "https://globalvoices.org/2025/08/30/why-the-pani-puri-platter-remains-indias-favourite-snack/",
+        "https://globalvoices.org/about/global-voices-attribution-policy/",
+        "https://creativecommons.org/licenses/by/3.0/"
+      ],
+      "checksum": "c2881ba968cc6a0305e95faaf3521f63099a806a0ed8dfb7afecc04705399b6f",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Global Voices",
+      "licence": "CC BY 3.0",
+      "commercialUse": true,
+      "attributionRequired": true,
+      "modifications": "Exact paragraphs 2,3,5 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "*"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "knowledge"
+    ],
+    "genre": "contemporary-nonfiction",
+    "era": "modern",
+    "variety": "hi-IN",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Contemporary publisher wording",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed."
+  },
+  {
+    "id": "work:albania-sq:gv-sq-adc3e64cb681-excerpt",
+    "courseId": "albania-sq",
+    "lang": "sq",
+    "stageId": "stage:albania-sq:6",
+    "role": "subsidiary",
+    "order": 131,
+    "title": "Uzbekistani më në fund po fillon të trajtojë problemin e ndotjes së ajrit — excerpt",
+    "author": "Nurbek Bekmurzaev",
+    "translator": "Ardi Pulaj",
+    "edition": "Global Voices sq edition, Tue, 23 Jan 2024 21:31:08 +0000",
+    "sourceUrl": "https://sq.globalvoices.org/01/23/4914",
+    "purpose": [
+      "Provisional bridge placement from adapter measurements; native placement and transition validation pending"
+    ],
+    "registers": [
+      "standard"
+    ],
+    "rights": {
+      "state": "verified-open-licence",
+      "copyrightStatus": "licensed",
+      "permission": "not-needed",
+      "canBundle": true,
+      "canModify": true,
+      "canStoreOffline": true,
+      "canBundleAudio": false,
+      "verified": true,
+      "verifiedBy": "Exact Global Voices article credits, license footer and official republication policy",
+      "verifiedAt": "2026-10-04",
+      "licensing": "CC BY 3.0",
+      "statusByJurisdiction": {
+        "*": "licensed"
+      },
+      "basis": "GV-created author narrative/explanatory paragraphs in this exact credited translation; article/footer CC BY 3.0, current official policy permits redistribution and adaptation. Selected excerpt excludes third-party quoted prose and all media.",
+      "evidence": [
+        "https://sq.globalvoices.org/01/23/4914",
+        "https://globalvoices.org/2024/01/22/uzbekistan-is-finally-starting-to-address-its-air-pollution-problem/",
+        "https://globalvoices.org/about/global-voices-attribution-policy/",
+        "https://creativecommons.org/licenses/by/3.0/"
+      ],
+      "checksum": "46a6d67d094521536f5042a9538df8d7cb8b371e34cb230d9d39c2a8a6994317",
+      "retrievedAt": "2026-10-04",
+      "sourceRepository": "Global Voices",
+      "licence": "CC BY 3.0",
+      "commercialUse": true,
+      "attributionRequired": true,
+      "modifications": "Exact paragraphs 5,6,9,10,12 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content.",
+      "proofreading": "Exact source extraction checked by tool; native placement review pending",
+      "userImportOnly": false,
+      "jurisdictions": [
+        "*"
+      ],
+      "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed."
+    },
+    "bibliographyVerified": true,
+    "streams": [
+      "library"
+    ],
+    "genre": "contemporary-nonfiction",
+    "era": "modern",
+    "variety": "sq",
+    "ingestion": "ingested",
+    "readiness": "implemented",
+    "orthography": "Contemporary publisher wording",
+    "modernization": "original",
+    "notes": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed."
+  }
+]

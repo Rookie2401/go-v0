@@ -1,0 +1,249 @@
+{
+ "lang": "th",
+ "library": "library-th@2026-10-02",
+ "texts": 1189,
+ "deep": {
+  "texts": 1189,
+  "words": 863775,
+  "read": true
+ },
+ "checks": {
+  "catalogue: a work recorded as installed has texts in the library": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: a work with texts in the library is recorded as bundlable": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: every text names a work": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "catalogue: the rights of the texts are the rights of their work": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: the shelf of a work exists in the course": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: the shelf of the texts is the shelf of their work": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: the stream of the texts is a stream of the course": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: the stream of the texts is a stream of their work": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: the work of a text is in the course catalogue": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: the work says its texts are in the library": {
+   "checked": 1,
+   "failed": 0
+  },
+  "deep: every analysis names a lemma that exists": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: every construction found in the text has its row": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: every unit found in the text has its row": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: every word carries the id of its form item": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: every word is a slice of its sentence": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the document is the text the row names": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the document names the row's work and chapter": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the features are what a fresh import measures": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the forms of the profile sum to its words": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the importer knows the work": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the profile counts the words of the text": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the profile lists the constructions a fresh import finds": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the profile lists the forms of the text": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the profile lists the lemmas a fresh import finds": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the profile lists the units a fresh import finds": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the profile was made by today's analyzer and dictionary": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the row's features are the profile's": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the row's publication decision is the document's": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the row's title is the document's": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the stored sentences are the document's sentences, in order": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the stored text carries its work, chapter, stream and publication": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the text has sentences": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "deep: the text imports": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order (Scripture): a chapter is numbered by its place in the canon": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order (Scripture): every chapter of the canon is present": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order (Scripture): every chapter says its book and chapter": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order (Scripture): no chapter twice": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order: bundled and library chapters of one work do not share a number": {
+   "checked": 1,
+   "failed": 0
+  },
+  "order: every text of a work has a chapter number": {
+   "checked": 1,
+   "failed": 0
+  },
+  "order: no chapter number twice in a work": {
+   "checked": 1,
+   "failed": 0
+  },
+  "order: no text has exactly the words of another text": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order: the index lists the chapters of a work in chapter order": {
+   "checked": 1,
+   "failed": 0
+  },
+  "read: after reading, no word of the text is new to the learner": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "read: every construction of the profile became a learner item": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "read: every form of the text became a learner item": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "read: every lemma of the profile became a learner item": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "read: every sentence of the text is counted as seen": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "read: every unit of the profile became a learner item": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "read: no form item that is not a form of the text": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "structure: a row is listed under its own primary stream": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "structure: every row has its document file": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "structure: every row has its profile file": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "structure: every row of an index shard is well formed": {
+   "checked": 3,
+   "failed": 0
+  },
+  "structure: no document file without a row": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "structure: no library text has the id of a bundled text": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "structure: no profile file without a row": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "structure: no text id twice": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "structure: the manifest counts the texts it lists": {
+   "checked": 1,
+   "failed": 0
+  },
+  "structure: the manifest word count is the sum of the rows": {
+   "checked": 1,
+   "failed": 0
+  }
+ },
+ "findings": {}
+}

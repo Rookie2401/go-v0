@@ -322,6 +322,7 @@ A text is reviewed by a **named person** (or a verification tool) and the review
 
 ```json
 "review": { "status": "reviewed", "reviewedBy": "Ana Ruiz (native speaker)", "reviewedAt": "2026-02-01",
+            "level": "native",
             "contentSignature": "e04a9e3c545c99f8",
             "notes": "Checked wording, glosses and sentence breaks; fixed two phrasings." }
 ```
@@ -329,6 +330,12 @@ A text is reviewed by a **named person** (or a verification tool) and the review
 `status`: `unreviewed` (default), `in-review`, `reviewed`, `approved`, `rejected`. Only `reviewed` / `approved`
 with a `reviewedBy` count. The importer never invents a review; a reviewed status with no reviewer is a
 validation error.
+
+Generated or explicitly translated/adapted curriculum wording requires `level: "native"`, a named reviewer,
+a valid review date and the current wording signature. A legacy reviewed label with no review level does not
+establish native approval. Explicit curriculum lifecycle states publish only from `ready` or `published`; ingestion
+promotes ready metadata to published after the gate passes. Candidate, rights-pending and rejected records also
+remain excluded from production bundling. Curriculum native-review records must match the imported content version.
 
 **A review covers the wording it was given for.** `contentSignature` (optional field of schema version 2, written by
 `applyReview` / `npm run corpus:review`, never by hand) is a hash of the document's ordered exact sentence texts (a
@@ -354,10 +361,11 @@ What a reviewer checks:
 Record the review with the command (it edits only `review` and `editorialTags`, never a text):
 
 ```
-npm run corpus:review -- <file> --by "Ana Ruiz (native speaker)" [--status reviewed|approved|in-review|rejected] [--date YYYY-MM-DD] [--notes "…"]
+npm run corpus:review -- <file> --by "Ana Ruiz (native speaker)" --level native [--status reviewed|approved|in-review|rejected] [--date YYYY-MM-DD] [--notes "…"]
 ```
 
 * `--by` is required (exit `1` without it). `--status` defaults to `reviewed`, `--date` to today.
+* `--level linguistic-check` records a language check without native approval. Omitting `--level` cannot approve generated or transformed curriculum wording.
 * `reviewed` / `approved` remove `needs-native-review` from `editorialTags`; `in-review` / `rejected` record who
   and when but keep the tag, and the text stays unpublished.
 * Scripture without a complete `scripture.verification` is refused (verification is a separate step, §3).

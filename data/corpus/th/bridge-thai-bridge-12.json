@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "bridge-thai-bridge-12",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "เย็นสบายในสวน",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-th-bridge-drafts",
+    "kind": "comprehensible-input",
+    "title": "Thai beginner bridge drafts"
+  },
+  "source": {
+    "id": "src:th:thai-bridge-12",
+    "title": "เย็นสบายในสวน — course-owned draft",
+    "author": "Course authors (machine-drafted)",
+    "attribution": "Course-owned Thai draft. Machine-drafted for native-speaker review; no external source or translation claimed.",
+    "provenance": "Original controlled draft written for the course-owned beginner review queue. It is not a published or source-reviewed Thai work.",
+    "rights": "owner-authored",
+    "licenseNote": "Course-owned draft; may not be published until native review.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Native Thai reviewer required. Source fidelity is not applicable because this is original course-owned draft text."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "สวน",
+    "ต้นไม้",
+    "ลม"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "course-owned-draft"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss for review only"
+  },
+  "sections": [
+    {
+      "title": "เย็นสบายในสวน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หลังฝนตก อากาศในสวนเย็นสบาย",
+              "english": "After the rain, the air in the garden is cool and pleasant."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันเดินช้าๆ ไปดูต้นไม้หลังบ้าน",
+              "english": "I walk slowly to look at the trees behind the house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ใบไม้มีน้ำเล็กๆ เกาะอยู่เต็มไปหมด",
+              "english": "Small drops of water cling to the leaves everywhere."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "นกสองตัวบินลงมาที่พื้น",
+              "english": "Two birds fly down to the ground."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันวางเมล็ดข้าวไว้ใกล้พุ่มไม้",
+              "english": "I put rice grains near the bush."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "นกกินอาหารแล้วบินกลับขึ้นต้นไม้",
+              "english": "The birds eat and fly back up into the tree."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อเดินมานั่งคุยกับฉันบนม้านั่ง",
+              "english": "Father comes to sit and talk with me on the bench."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เราคุยเรื่องวันพรุ่งนี้และงานในบ้าน",
+              "english": "We talk about tomorrow and work at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เมื่อฟ้ามืด เรากลับเข้าบ้านพร้อมกัน",
+              "english": "When it gets dark, we return inside together."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันได้ยินเสียงน้ำหยดจากใบไม้",
+              "english": "I hear water dripping from the leaves."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อชี้ให้ดูรังนกบนกิ่งไม้",
+              "english": "Father points out a bird nest on a branch."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันอยากกลับมาที่สวนอีกในวันพรุ่งนี้",
+              "english": "I want to come back to the garden tomorrow."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "work": {
+    "slug": "bridge-thai-bridge-12",
+    "courseId": "thailand-th",
+    "chapter": {
+      "index": 11,
+      "title": "เย็นสบายในสวน"
+    }
+  }
+}

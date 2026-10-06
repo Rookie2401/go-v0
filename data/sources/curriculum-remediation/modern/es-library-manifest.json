@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "lang": "es",
+  "entries": [
+    {
+      "slug": "gv-es-dae11aaaf264-excerpt",
+      "title": "¿Qué nos dice el folclore? Nos ayuda a descubrir facetas desconocidas de historias indígenas ignoradas por generaciones — excerpt",
+      "author": "Sanjib Chaudhary",
+      "translator": "Julissa Álvarez Coroa",
+      "stage": "s4",
+      "streams": [
+        "library"
+      ],
+      "contentType": "nonfiction",
+      "genre": "contemporary-nonfiction",
+      "era": "modern",
+      "pedagogicalRole": "authentic",
+      "registers": [
+        "modern_standard",
+        "journalistic"
+      ],
+      "releaseState": "ready",
+      "nativeReview": "source-authored; placement review pending",
+      "difficulty": {
+        "adapter": "es",
+        "tokenCount": 214,
+        "typeCount": 135,
+        "observedLemmaCount": 122,
+        "analyzerUnresolvedTokens": 5,
+        "lexicalDiversity": 0.6308411214953271,
+        "sentenceCount": 9,
+        "medianSentenceTokens": 27,
+        "maxSentenceTokens": 41,
+        "limitations": "Adapter lexicon is incomplete; unresolved analyzer tokens are not learner unknown words. No frequency corpus, native review, CEFR, or personalized coverage inferred."
+      },
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "canModify": true,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "verified": true,
+        "verifiedBy": "Exact Global Voices article credits, license footer and official republication policy",
+        "verifiedAt": "2026-10-04",
+        "licensing": "CC BY 3.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "basis": "GV-created author narrative/explanatory paragraphs in this exact credited translation; article/footer CC BY 3.0, current official policy permits redistribution and adaptation. Selected excerpt excludes third-party quoted prose and all media.",
+        "evidence": [
+          "https://es.globalvoices.org/2026/10/03/que-nos-dice-el-folclore-nos-ayuda-a-descubrir-facetas-desconocidas-de-historias-indigenas-ignoradas-por-generaciones/",
+          "https://globalvoices.org/2026/09/06/what-does-folklore-have-to-say-it-helps-uncover-untold-facets-of-indigenous-stories-overlooked-for-generations/",
+          "https://globalvoices.org/about/global-voices-attribution-policy/",
+          "https://creativecommons.org/licenses/by/3.0/"
+        ]
+      },
+      "source": {
+        "file": "gv-es-dae11aaaf264-excerpt.txt",
+        "kind": "plain",
+        "url": "https://es.globalvoices.org/2026/10/03/que-nos-dice-el-folclore-nos-ayuda-a-descubrir-facetas-desconocidas-de-historias-indigenas-ignoradas-por-generaciones/",
+        "edition": "Global Voices es edition, Sat, 03 Oct 2026 07:00:06 +0000",
+        "sha256": "21ac0d13a11e432379644510690cded5a24896d7b999ef1cf4870bc3fe8d71e4",
+        "originalSourceSha256": "00082c9bcebf775fc6ded3094cea97b596952384e225bf461006f1ef32143fd0",
+        "originalStoryUrl": "https://globalvoices.org/2026/09/06/what-does-folklore-have-to-say-it-helps-uncover-untold-facets-of-indigenous-stories-overlooked-for-generations/",
+        "author": "Sanjib Chaudhary",
+        "translator": "Julissa Álvarez Coroa",
+        "attribution": "¿Qué nos dice el folclore? Nos ayuda a descubrir facetas desconocidas de historias indígenas ignoradas por generaciones — Sanjib Chaudhary, translated by Julissa Álvarez Coroa. Originally on Global Voices: https://es.globalvoices.org/2026/10/03/que-nos-dice-el-folclore-nos-ayuda-a-descubrir-facetas-desconocidas-de-historias-indigenas-ignoradas-por-generaciones/; original story: https://globalvoices.org/2026/09/06/what-does-folklore-have-to-say-it-helps-uncover-untold-facets-of-indigenous-stories-overlooked-for-generations/. CC BY 3.0: https://creativecommons.org/licenses/by/3.0/. Changes: selected text-only excerpt; HTML/links unwrapped, other paragraphs, images, captions, quoted prose and media omitted; source wording preserved.",
+        "provenance": "Exact paragraphs 3,4,5,6 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content."
+      },
+      "convert": {
+        "stripBoilerplate": false,
+        "unwrap": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "curriculum-remediation exact article credits and excerpt source-fidelity check",
+        "reviewedAt": "2026-10-04",
+        "coversSourceSha256": "21ac0d13a11e432379644510690cded5a24896d7b999ef1cf4870bc3fe8d71e4",
+        "notes": "Source-authored authentic prose. Article credit/license and excerpt comparison only; no native placement or rescue-text approval invented."
+      }
+    }
+  ]
+}

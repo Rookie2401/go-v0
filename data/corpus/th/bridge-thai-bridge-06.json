@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "bridge-thai-bridge-06",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "แมวสีขาว",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-th-bridge-drafts",
+    "kind": "comprehensible-input",
+    "title": "Thai beginner bridge drafts"
+  },
+  "source": {
+    "id": "src:th:thai-bridge-06",
+    "title": "แมวสีขาว — course-owned draft",
+    "author": "Course authors (machine-drafted)",
+    "attribution": "Course-owned Thai draft. Machine-drafted for native-speaker review; no external source or translation claimed.",
+    "provenance": "Original controlled draft written for the course-owned beginner review queue. It is not a published or source-reviewed Thai work.",
+    "rights": "owner-authored",
+    "licenseNote": "Course-owned draft; may not be published until native review.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Native Thai reviewer required. Source fidelity is not applicable because this is original course-owned draft text."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "แมว",
+    "ปลา",
+    "สวน"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "course-owned-draft"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss for review only"
+  },
+  "sections": [
+    {
+      "title": "แมวสีขาว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แมวสีขาวตัวหนึ่งมานั่งหน้าบ้าน",
+              "english": "A white cat comes to sit in front of the house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "มันมองฉันแล้วร้องเบาๆ",
+              "english": "It looks at me and meows softly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันนำชามน้ำไปวางข้างประตู",
+              "english": "I put a bowl of water beside the door."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แมวเดินเข้ามาดมชามอย่างระวัง",
+              "english": "The cat walks over and carefully smells the bowl."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "น้องอยากเล่นกับมันแต่แมวถอยหลัง",
+              "english": "My younger sibling wants to play with it, but the cat steps back."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันจึงนั่งนิ่งๆ และไม่จับตัวมัน",
+              "english": "So I sit still and do not touch it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ไม่นานแมวก็กินน้ำแล้วนอนใต้ต้นไม้",
+              "english": "Soon the cat drinks water and sleeps under the tree."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ตอนเย็น มันเดินกลับไปทางสวน",
+              "english": "In the evening, it walks back toward the garden."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "วันต่อมา แมวตัวเดิมกลับมาอีกครั้ง",
+              "english": "The next day, the same cat comes back again."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันตั้งชื่อแมวว่าเจ้าขาว",
+              "english": "I name the cat Whitey."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "น้องวางผ้าผืนเล็กให้มันนอน",
+              "english": "My younger sibling puts down a small cloth for it to sleep on."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แมวหลับตาเมื่อได้ยินเสียงเรา",
+              "english": "The cat closes its eyes when it hears us."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "work": {
+    "slug": "bridge-thai-bridge-06",
+    "courseId": "thailand-th",
+    "chapter": {
+      "index": 5,
+      "title": "แมวสีขาว"
+    }
+  }
+}

@@ -14,8 +14,8 @@
  * no evidence. `AudioSegmentCompleted` is emitted only when playback of a READY asset really finished; completing a
  * segment that is not ready, or a failed / aborted play (`failed()`), emits `AudioAbandoned` instead.
  *
- * Keep ONE emitter per listening session (e.g. in a useRef): its pass counters live in the emitter, so
- * a second emitter for the same session would restart at pass 0 and have its repeats deduped away.
+ * Keep ONE emitter per playback mount where practical (e.g. in a useRef): its pass counters live in the emitter.
+ * A remount gets a distinct key scope so a new deliberate attempt in the same app session cannot collide with pass 0.
  */
 import type { AudioAbandoned, AudioPlayed, AudioReplayed, AudioSegmentCompleted, AudioSeeked, EventBus, ListeningPositionSaved, PhraseReplayed, PlaybackSpeedChanged, ShadowingAttempt, Surface, TranscriptRevealed, UserRecordingCreated } from '../core/events';
 import type { LanguageCode } from '../core/model';
@@ -84,7 +84,7 @@ export async function resolvePlaybackFacts(store: AppStore | undefined, seg: Seg
   };
 }
 
-interface SegState { pass: number; replays: number; revealedTranscript: boolean; revealedTranslation: boolean; shadowing: number }
+interface SegState { pass: number; attempt: number; active: boolean; replays: number; revealedTranscript: boolean; revealedTranslation: boolean; shadowing: number }
 
 export interface ListeningEmitter {
   played(seg: SegmentRef, view: EmitView): Promise<AudioPlayed | null>;
@@ -117,7 +117,7 @@ export function listeningEmitter(bus: EventBus, ctx: ListeningContext): Listenin
   const state = new Map<string, SegState>();
   const st = (id: string): SegState => {
     let s = state.get(id);
-    if (!s) { s = { pass: 0, replays: 0, revealedTranscript: false, revealedTranslation: false, shadowing: 0 }; state.set(id, s); }
+    if (!s) { s = { pass: 0, attempt: 0, active: false, replays: 0, revealedTranscript: false, revealedTranslation: false, shadowing: 0 }; state.set(id, s); }
     return s;
   };
   // Unique per deliberate action even if the emitter is recreated within a session.
@@ -135,12 +135,21 @@ export function listeningEmitter(bus: EventBus, ctx: ListeningContext): Listenin
       contentVersion: f.contentVersion, releaseId: f.releaseId, editionId: f.editionId, narratorOrVoiceId: f.narratorOrVoiceId, locale: f.locale,
     };
   };
-  const key = (type: string, segmentId: string, tail: string | number) => `${type}|${ctx.session}|${segmentId}|${tail}`;
-  const abandon = async (seg: SegmentRef, view: EmitView, positionMs: number) =>
-    bus.emit<AudioAbandoned>({ type: 'AudioAbandoned', ...base(key('AudioAbandoned', seg.segmentId, st(seg.segmentId).pass)), ...(await listen(seg, view)), positionMs });
+  // Keep retry idempotence within an emitter, while letting a later player mount in the same app session
+  // record a new deliberate attempt instead of colliding with pass 0 from the prior mount.
+  const key = (type: string, segmentId: string, tail: string | number) => `${type}|${ctx.session}|${segmentId}|${tail}|${nonce}`;
+  const abandon = async (seg: SegmentRef, view: EmitView, positionMs: number) => {
+    const s = st(seg.segmentId);
+    s.active = false;
+    return bus.emit<AudioAbandoned>({ type: 'AudioAbandoned', ...base(key('AudioAbandoned', seg.segmentId, s.attempt)), ...(await listen(seg, view)), positionMs });
+  };
 
   return {
-    played: async (seg, view) => bus.emit<AudioPlayed>({ type: 'AudioPlayed', ...base(key('AudioPlayed', seg.segmentId, st(seg.segmentId).pass)), ...(await listen(seg, view)) }),
+    played: async (seg, view) => {
+      const s = st(seg.segmentId);
+      if (!s.active) { s.attempt += 1; s.active = true; }
+      return bus.emit<AudioPlayed>({ type: 'AudioPlayed', ...base(key('AudioPlayed', seg.segmentId, s.attempt)), ...(await listen(seg, view)) });
+    },
     completed: async (seg, view, extra) => {
       const s = st(seg.segmentId);
       const facts = await resolvePlaybackFacts(ctx.store, seg);
@@ -150,8 +159,9 @@ export function listeningEmitter(bus: EventBus, ctx: ListeningContext): Listenin
       const playback = await listen(seg, view);
       // `heardSentenceIds` is spread in (spreads are not excess-property checked) so that this type-checks both before and
       // after the event type itself declares the field.
+      s.active = false;
       return bus.emit<AudioSegmentCompleted>({
-        type: 'AudioSegmentCompleted', ...base(key('AudioSegmentCompleted', seg.segmentId, s.pass)), ...playback,
+        type: 'AudioSegmentCompleted', ...base(key('AudioSegmentCompleted', seg.segmentId, s.attempt)), ...playback,
         replayCount: extra?.replayCount ?? s.replays,
         revealedTranscript: extra?.revealedTranscript ?? (s.revealedTranscript || view.transcriptVisible),
         revealedTranslation: extra?.revealedTranslation ?? s.revealedTranslation,
@@ -165,6 +175,7 @@ export function listeningEmitter(bus: EventBus, ctx: ListeningContext): Listenin
     replayed: async (seg, view) => {
       const s = st(seg.segmentId);
       s.replays += 1; s.pass += 1;
+      s.attempt += 1; s.active = true;
       return bus.emit<AudioReplayed>({ type: 'AudioReplayed', ...base(key('AudioReplayed', seg.segmentId, s.replays)), ...(await listen(seg, view)), count: s.replays });
     },
     phraseReplayed: async (seg, view, p) => bus.emit<PhraseReplayed>({ type: 'PhraseReplayed', ...base(`PhraseReplayed|${ctx.session}|${seg.segmentId}|${p.alignmentId}|${unique()}`), ...(await listen(seg, view)), alignmentId: p.alignmentId, unitId: p.unitId }),

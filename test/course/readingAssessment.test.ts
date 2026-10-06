@@ -1,0 +1,50 @@
+import { expect, it } from 'vitest';
+import { createReadingAssessmentService, recordReadingAssessment, validateReadingAssessment } from '../../src/course/readingAssessment';
+import { createMemoryStore } from '../../src/core';
+import { GERMAN_SHELVES } from '../../src/course/german';
+import type { AssessmentContext, ReadingAssessmentSpec } from '../../src/course/readingAssessment';
+import type { Text } from '../../src/core/model';
+const spec: ReadingAssessmentSpec = { id: 'unseen', textId: 'held-out', language: 'de', stageId: 'stage:de:8', contentVersion: 1, rights: { cleared: true, basis: 'Assessment permission', by: 'Rights reviewer', at: '2026-10-04' }, comparability: { reviewedBy: 'Editor', at: '2026-10-04', basis: 'Compared with stage samples', dimensions: { vocabulary: 'everyday', syntax: 'connected', length: 'chapter', register: 'standard', genre: 'nonfiction' } }, thresholds: { comprehension: .8, gist: .8, detail: .8, inference: .7, maxLookupsPer100Words: 2, maxRescueUses: 0 } };
+const context: AssessmentContext = { userId: 'learner', text: { id: spec.textId, lang: 'de', sourceId: 'source', contentVersion: 1 } as Text, encounteredTextIds: new Set(), courseTextIds: new Set(), recommendedTextIds: new Set() };
+it('refuses rights-pending, seen, ordinary recommended and noncomparable assessment texts', () => {
+  expect(validateReadingAssessment({ ...spec, rights: { ...spec.rights, cleared: false } }, context)).not.toEqual([]);
+  for (const key of ['encounteredTextIds', 'courseTextIds', 'recommendedTextIds'] as const) expect(validateReadingAssessment(spec, { ...context, [key]: new Set([spec.textId]) })).not.toEqual([]);
+  expect(validateReadingAssessment({ ...spec, comparability: { ...spec.comparability, reviewedBy: '' } }, context)).not.toEqual([]);
+});
+it('records independent reading outcomes without mutating placement or encounter sets', () => {
+  const before = JSON.stringify(spec);
+  const result = recordReadingAssessment(spec, context, { comprehension: .9, gist: 1, detail: .8, inference: .8, wordCount: 500, lookupCount: 5, rescueUses: 0, readingTimeSeconds: 300 }, '2026-10-04');
+  expect(result).toMatchObject({ dimension: 'reading', cefrCertification: false, meetsReadingContract: true, lookupsPer100Words: 1 });
+  expect(context.encounteredTextIds.size).toBe(0);
+  expect(JSON.stringify(spec)).toBe(before);
+  expect(result).not.toHaveProperty('placement');
+});
+it('does not allow rescue-assisted success or malformed scores to become independent reading evidence', () => {
+  const obs = { comprehension: 1, gist: 1, detail: 1, inference: 1, wordCount: 100, lookupCount: 0, rescueUses: 1, readingTimeSeconds: 60 };
+  expect(recordReadingAssessment(spec, context, obs, '2026-10-04').meetsReadingContract).toBe(false);
+  expect(() => recordReadingAssessment(spec, context, { ...obs, comprehension: NaN }, '2026-10-04')).toThrow();
+});
+it('persists isolated reading results and uses actual preview history and previous assessment exposure', async () => {
+  const store = createMemoryStore();
+  const actual = { ...spec, stageId: GERMAN_SHELVES[0].id };
+  await store.stages.put(GERMAN_SHELVES[0]);
+  await store.sources.put({ id: 'source', title: 'Test source', rights: 'owner-authored', authorship: 'human' });
+  await store.texts.put({ ...context.text, readingAssessmentId: spec.id });
+  const service = createReadingAssessmentService(store, [actual], async () => new Set(), () => '2026-10-04T12:00:00Z');
+  await store.events.put({ id: 'preview', type: 'TextViewed', userId: 'seen', lang: 'de', at: '2026-10-03', surface: 'corpus', session: 'preview', dedupeKey: 'preview', textId: spec.textId, mode: 'preview' });
+  await expect(service.start('seen', spec.id)).rejects.toThrow(/encountered/);
+  await service.start('fresh', spec.id);
+  await expect(service.start('fresh', spec.id)).rejects.toThrow(/encountered/);
+  const result = await service.submit('fresh', spec.id, { comprehension: 1, gist: 1, detail: 1, inference: 1, wordCount: 100, lookupCount: 0, rescueUses: 0, readingTimeSeconds: 60 });
+  expect(await service.results('fresh')).toEqual([result]);
+  expect(await store.encounters.count()).toBe(0);
+  expect(await store.learnerItems.count()).toBe(0);
+  expect(await store.events.count()).toBe(1);
+  await expect(service.submit('fresh', spec.id, { comprehension: 1, gist: 1, detail: 1, inference: 1, wordCount: 100, lookupCount: 0, rescueUses: 0, readingTimeSeconds: 60 })).rejects.toThrow(/already completed/);
+  const recommended = createReadingAssessmentService(store, [actual], async () => new Set([spec.textId]));
+  await expect(recommended.start('recommended', spec.id)).rejects.toThrow(/recommendations/);
+  await store.texts.put({ ...context.text, readingAssessmentId: spec.id, workId: 'heldout-work' });
+  await store.texts.put({ ...context.text, id: 'known-chapter', workId: 'heldout-work' });
+  await store.events.put({ id: 'sibling-preview', type: 'TextViewed', userId: 'same-work', lang: 'de', at: '2026-10-03', surface: 'corpus', session: 'preview', dedupeKey: 'sibling-preview', textId: 'known-chapter', mode: 'preview' });
+  await expect(service.start('same-work', spec.id)).rejects.toThrow(/encountered/);
+});

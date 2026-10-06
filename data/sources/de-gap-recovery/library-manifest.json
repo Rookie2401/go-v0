@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "lang": "de",
+  "checkedAt": "2026-10-02",
+  "entries": [
+    {
+      "slug": "der-kleine-haewelmann",
+      "title": "Der kleine Häwelmann",
+      "author": "Theodor Storm",
+      "stage": "s3",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "source": {
+        "file": "der-kleine-haewelmann.txt",
+        "kind": "plain",
+        "url": "https://de.wikisource.org/wiki/Der_kleine_H%C3%A4welmann",
+        "edition": "Sommergeschichten und Lieder, Berlin, Duncker, 1851, pp. 24–30",
+        "attribution": "Der kleine Häwelmann — Theodor Storm; German Wikisource scan-backed transcription; CC BY-SA 4.0 transcription contribution.",
+        "provenance": "Official German Wikisource page and scan metadata; article text extracted from the completed page body, navigation and metadata removed."
+      },
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "canModify": false,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "German Wikisource scan metadata and author death record",
+        "verifiedAt": "2026-10-02",
+        "basis": "1851 edition and Theodor Storm (1817–1888); source contribution licence recorded separately.",
+        "statusByJurisdiction": {
+          "US": "public-domain",
+          "DE": "public-domain"
+        },
+        "evidence": [
+          "https://de.wikisource.org/wiki/Der_kleine_H%C3%A4welmann",
+          "https://creativecommons.org/licenses/by-sa/4.0/deed.de"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "course-gap source-fidelity boundary check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "47d79a6cef0ef3492ed801fdaca8f8bbcffcb526770e298e26f0f7da319b10eb",
+        "qualityVerdict": "usable",
+        "notes": "Completed source page and 1851 edition metadata checked; no native-speaker or level approval."
+      }
+    }
+  ],
+  "limitations": []
+}

@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-04",
+  "integration": [
+    {
+      "lang": "de",
+      "addedWorks": 29,
+      "addedTexts": 29,
+      "addedWords": 48199,
+      "previousDocuments": 1841,
+      "previousDocumentHashesUnchanged": true
+    },
+    {
+      "lang": "es",
+      "addedWorks": 1,
+      "addedTexts": 1,
+      "addedWords": 214,
+      "previousDocuments": 1864,
+      "previousDocumentHashesUnchanged": true
+    },
+    {
+      "lang": "hi",
+      "addedWorks": 1,
+      "addedTexts": 1,
+      "addedWords": 218,
+      "previousDocuments": 1284,
+      "previousDocumentHashesUnchanged": true
+    },
+    {
+      "lang": "sq",
+      "addedWorks": 1,
+      "addedTexts": 1,
+      "addedWords": 307,
+      "previousDocuments": 37,
+      "previousDocumentHashesUnchanged": true
+    }
+  ]
+}

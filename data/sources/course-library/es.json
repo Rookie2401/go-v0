@@ -1,0 +1,2420 @@
+{
+  "schema": 1,
+  "lang": "es",
+  "entries": [
+    {
+      "slug": "reina-valera-1909",
+      "title": "Reina-Valera 1909",
+      "courseId": "honduras-es",
+      "stream": "scripture",
+      "domains": [
+        "scripture"
+      ],
+      "contentType": "scripture",
+      "rights": {
+        "state": "verified-public-domain",
+        "verifiedBy": "eBible.org copyright page and approved publisher USFM archive review",
+        "verifiedAt": "2026-10-01",
+        "basis": "eBible.org source copyright page states Public Domain",
+        "statusByJurisdiction": {
+          "ES": "public-domain",
+          "US": "public-domain",
+          "EU": "public-domain"
+        },
+        "canBundle": true
+      },
+      "source": {
+        "file": "es-bible/spaRV1909-library-documents.json",
+        "kind": "documents",
+        "url": "https://ebible.org/Scriptures/spaRV1909_usfm.zip",
+        "edition": "Reina-Valera 1909",
+        "attribution": "Reina-Valera 1909 — Public Domain; eBible.org (spaRV1909)",
+        "provenance": "Approved publisher USFM archive, imported by scripts/build-scripture-usfm-full.mjs and independently checked by scripts/verify-scripture-usfm-full.mjs."
+      }
+    },
+    {
+      "slug": "marti-edad-de-oro",
+      "title": "La Edad de Oro",
+      "author": "José Martí",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #19898 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/19898"
+        ]
+      },
+      "source": {
+        "file": "es-prose/marti-edad-de-oro.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/19898.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/19898.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #19898",
+        "attribution": "La Edad de Oro — José Martí; Project Gutenberg #19898; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "36de7bbcdcdc8059391dcb952e17785757fa8740699d8fcfad92e2bdc9bbbec3",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 4903
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 8
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 5
+          },
+          {
+            "code": "very-long-paragraphs",
+            "severity": "warning",
+            "count": 3
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "samaniego-fabulas",
+      "title": "Fábulas en verso castellano",
+      "author": "Félix María de Samaniego",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #55206 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/55206"
+        ]
+      },
+      "source": {
+        "file": "es-prose/samaniego-fabulas.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/55206.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/55206.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #55206",
+        "attribution": "Fábulas en verso castellano — Félix María de Samaniego; Project Gutenberg #55206; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "7427a3f8cdb43fa7197ae5a074534b70b2cfce2140da5313021e935e876329c6",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 5
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 149
+          },
+          {
+            "code": "footnote-markers",
+            "severity": "info",
+            "count": 442
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 2
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "iriarte-fabulas",
+      "title": "Fábulas literarias",
+      "author": "Tomás de Iriarte",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #29497 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/29497"
+        ]
+      },
+      "source": {
+        "file": "es-prose/iriarte-fabulas.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/29497.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/29497.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #29497",
+        "attribution": "Fábulas literarias — Tomás de Iriarte; Project Gutenberg #29497; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "8f749408e61f9ff72fabdf9138a84383e5202dc545a50daca0aaca285485fa0c",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "footnote-markers",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "palma-tradiciones-peruanas",
+      "title": "Tradiciones peruanas (selección)",
+      "author": "Ricardo Palma",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #21282 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/21282"
+        ]
+      },
+      "source": {
+        "file": "es-prose/palma-tradiciones-peruanas.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/21282.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/21282.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #21282",
+        "attribution": "Tradiciones peruanas (selección) — Ricardo Palma; Project Gutenberg #21282; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "c497c999a73bf55e3ab0f567c5d0e76482009bc53a1f899ed476d6baffa14730",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 3
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 3495
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 19
+          },
+          {
+            "code": "footnote-markers",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "palacio-valdes-hermana-san-sulpicio",
+      "title": "La hermana San Sulpicio",
+      "author": "Armando Palacio Valdés",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #31013 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/31013"
+        ]
+      },
+      "source": {
+        "file": "es-prose/palacio-valdes-hermana-san-sulpicio.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/31013.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/31013.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #31013",
+        "attribution": "La hermana San Sulpicio — Armando Palacio Valdés; Project Gutenberg #31013; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "70e5bfc27e47ee2b1a07a3b4769b5155de79ebefd6d7339f2fad57f4b9b632aa",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 8360
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 2
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "dario-azul",
+      "title": "Azul...",
+      "author": "Rubén Darío",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #52894 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/52894"
+        ]
+      },
+      "source": {
+        "file": "es-prose/dario-azul.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/52894.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/52894.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #52894",
+        "attribution": "Azul... — Rubén Darío; Project Gutenberg #52894; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "aff5170c789733fadf082b3f16e62415cd0b78426182276352face910393d2c5",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 2677
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 6
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "galdos-marianela",
+      "title": "Marianela",
+      "author": "Benito Pérez Galdós",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #17340 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/17340"
+        ]
+      },
+      "source": {
+        "file": "es-prose/galdos-marianela.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/17340.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/17340.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #17340",
+        "attribution": "Marianela — Benito Pérez Galdós; Project Gutenberg #17340; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "6aa5bbfe298483a4ad7bdf3108f1b72414bc35058e1c82c955678c1a4d17b5dc",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 2
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 3546
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "galdos-trafalgar",
+      "title": "Trafalgar (Episodios nacionales)",
+      "author": "Benito Pérez Galdós",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #16961 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/16961"
+        ]
+      },
+      "source": {
+        "file": "es-prose/galdos-trafalgar.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/16961.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/16961.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #16961",
+        "attribution": "Trafalgar (Episodios nacionales) — Benito Pérez Galdós; Project Gutenberg #16961; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "05e2f0037ddf42ba54071d6a306dca6cc16fa39e2541c0076b3ffbda97a5d2d2",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 3998
+          },
+          {
+            "code": "footnote-markers",
+            "severity": "info",
+            "count": 5
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "galdos-misericordia",
+      "title": "Misericordia",
+      "author": "Benito Pérez Galdós",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #21831 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/21831"
+        ]
+      },
+      "source": {
+        "file": "es-prose/galdos-misericordia.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/21831.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/21831.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #21831",
+        "attribution": "Misericordia — Benito Pérez Galdós; Project Gutenberg #21831; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "9a7a4be687c905ef56c4ab2ec5a4cee1ce2b161906edb4cddbe11e2f9a9ea465",
+        "qualityVerdict": "damaged",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "serious",
+            "count": 115
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 6032
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "galdos-fortunata-y-jacinta",
+      "title": "Fortunata y Jacinta",
+      "author": "Benito Pérez Galdós",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #17013 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/17013"
+        ]
+      },
+      "source": {
+        "file": "es-prose/galdos-fortunata-y-jacinta.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/17013.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/17013.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #17013",
+        "attribution": "Fortunata y Jacinta — Benito Pérez Galdós; Project Gutenberg #17013; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "572707dfaf706c3e6513f82913ba4d66b7cf25581b9dd081e7a6e024e3badd1b",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 16
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 28670
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 215
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 2
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "clarin-la-regenta",
+      "title": "La Regenta",
+      "author": "Leopoldo Alas «Clarín»",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #17073 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/17073"
+        ]
+      },
+      "source": {
+        "file": "es-prose/clarin-la-regenta.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/17073.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/17073.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #17073",
+        "attribution": "La Regenta — Leopoldo Alas «Clarín»; Project Gutenberg #17073; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "bfc34536349ae82bb56995ed2c6d095b7f909e7384fd115e1fa3034684da41ba",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 7
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 22193
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "pardo-bazan-pazos-de-ulloa",
+      "title": "Los pazos de Ulloa",
+      "author": "Emilia Pardo Bazán",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #18005 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/18005"
+        ]
+      },
+      "source": {
+        "file": "es-prose/pardo-bazan-pazos-de-ulloa.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/18005.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/18005.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #18005",
+        "attribution": "Los pazos de Ulloa — Emilia Pardo Bazán; Project Gutenberg #18005; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "4870fc715555adf578b0df05bc9908701a7c551115b959f56abfb74a7ef04b29",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 10
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 6316
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 2
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "valera-pepita-jimenez",
+      "title": "Pepita Jiménez",
+      "author": "Juan Valera",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #17223 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/17223"
+        ]
+      },
+      "source": {
+        "file": "es-prose/valera-pepita-jimenez.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/17223.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/17223.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #17223",
+        "attribution": "Pepita Jiménez — Juan Valera; Project Gutenberg #17223; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "cefb48583cd28417c93f83d0d3513b1cb559ddf773c39d9a3e033ba8f76af19d",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 3
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 3997
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "unamuno-niebla",
+      "title": "Niebla",
+      "author": "Miguel de Unamuno",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #49836 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/49836"
+        ]
+      },
+      "source": {
+        "file": "es-prose/unamuno-niebla.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/49836.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/49836.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #49836",
+        "attribution": "Niebla — Miguel de Unamuno; Project Gutenberg #49836; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "cbb1cdad14dad65b11fc353d8d5ca92d25c8ff75c58dde621b3195a1380c7afa",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 3635
+          },
+          {
+            "code": "footnote-markers",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "baroja-arbol-de-la-ciencia",
+      "title": "El árbol de la ciencia",
+      "author": "Pío Baroja",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #60464 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/60464"
+        ]
+      },
+      "source": {
+        "file": "es-prose/baroja-arbol-de-la-ciencia.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/60464.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/60464.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #60464",
+        "attribution": "El árbol de la ciencia — Pío Baroja; Project Gutenberg #60464; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "2317507e5ea01aa486538ae92d858039ead6b543cbc1cbb9dbea577699d17823",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 3969
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 15
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "baroja-zalacain",
+      "title": "Zalacaín el aventurero",
+      "author": "Pío Baroja",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #13264 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/13264"
+        ]
+      },
+      "source": {
+        "file": "es-prose/baroja-zalacain.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/13264.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/13264.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #13264",
+        "attribution": "Zalacaín el aventurero — Pío Baroja; Project Gutenberg #13264; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "c26df642d3bce932f89acefc69c61e18c4cf34105bee50c0dbb4415751d45382",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 2657
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 25
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "dario-cantos-de-vida-y-esperanza",
+      "title": "Cantos de vida y esperanza",
+      "author": "Rubén Darío",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "genre": "poem",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #50341 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/50341"
+        ]
+      },
+      "source": {
+        "file": "es-prose/dario-cantos-de-vida-y-esperanza.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/50341.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/50341.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #50341",
+        "attribution": "Cantos de vida y esperanza — Rubén Darío; Project Gutenberg #50341; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "1949bed8f5bac401adc38a18b4e23b8d6ff75f491774943ed58472d1c1a67521",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 1523
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 10
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "cervantes-don-quijote",
+      "title": "El ingenioso hidalgo don Quijote de la Mancha",
+      "author": "Miguel de Cervantes",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #2000 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/2000"
+        ]
+      },
+      "source": {
+        "file": "es-prose/cervantes-don-quijote.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/2000.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/2000.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #2000",
+        "attribution": "El ingenioso hidalgo don Quijote de la Mancha — Miguel de Cervantes; Project Gutenberg #2000; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "7afbd0f1fa8f2397d280d5fc81ce03e2133ffa34e68251793289861121e03a2c",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 27
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 26596
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 29
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 39
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 5
+          },
+          {
+            "code": "very-long-paragraphs",
+            "severity": "warning",
+            "count": 6
+          },
+          {
+            "code": "mangled-punctuation",
+            "severity": "info",
+            "count": 352
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "cervantes-novelas-ejemplares",
+      "title": "Novelas ejemplares",
+      "author": "Miguel de Cervantes",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #61202 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/61202"
+        ]
+      },
+      "source": {
+        "file": "es-prose/cervantes-novelas-ejemplares.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/61202.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/61202.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #61202",
+        "attribution": "Novelas ejemplares — Miguel de Cervantes; Project Gutenberg #61202; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "424fe5dba3c6cd560c514013fba2d3f5bb61e74ddbff5090a284822f2869bdcd",
+        "qualityVerdict": "damaged",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "serious",
+            "count": 2222
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 13930
+          },
+          {
+            "code": "footnote-markers",
+            "severity": "info",
+            "count": 4
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "quevedo-el-buscon",
+      "title": "Historia de la vida del Buscón",
+      "author": "Francisco de Quevedo",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #32315 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/32315"
+        ]
+      },
+      "source": {
+        "file": "es-prose/quevedo-el-buscon.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/32315.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/32315.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #32315",
+        "attribution": "Historia de la vida del Buscón — Francisco de Quevedo; Project Gutenberg #32315; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "783f17a17240ad12cf66fd8da150361e200b0991055a432ca198ee104093f8e3",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 2
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 3105
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "juan-manuel-conde-lucanor",
+      "title": "El conde Lucanor",
+      "author": "Don Juan Manuel",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #65738 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/65738"
+        ]
+      },
+      "source": {
+        "file": "es-prose/juan-manuel-conde-lucanor.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/65738.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/65738.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #65738",
+        "attribution": "El conde Lucanor — Don Juan Manuel; Project Gutenberg #65738; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "38ef2a90075eb31285718eb8a06905a6028969283238726f4a94f54a82da6055",
+        "qualityVerdict": "damaged",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "serious",
+            "count": 125
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 5786
+          },
+          {
+            "code": "footnote-markers",
+            "severity": "info",
+            "count": 54
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 45
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "title-page-noise",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "juan-ruiz-libro-de-buen-amor",
+      "title": "Libro de buen amor",
+      "author": "Juan Ruiz, Arcipreste de Hita",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "genre": "poem",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #16625 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/16625"
+        ]
+      },
+      "source": {
+        "file": "es-prose/juan-ruiz-libro-de-buen-amor.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/16625.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/16625.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #16625",
+        "attribution": "Libro de buen amor — Juan Ruiz, Arcipreste de Hita; Project Gutenberg #16625; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "29f372958792615c3cb3749daff580d150f6d2f4e6e698aeb6613c1ee17a7975",
+        "qualityVerdict": "damaged",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "serious",
+            "count": 105
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 16063
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 6
+          },
+          {
+            "code": "very-long-paragraphs",
+            "severity": "warning",
+            "count": 3
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 3
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "bridge-safari-en-la-banera",
+      "title": "Safari en la bañera",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/safari-en-la-banera/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes."
+      },
+      "source": {
+        "file": "reading-bridge/es-es/safari-en-la-banera.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/safari-en-la-banera/",
+        "edition": "Global Digital Library gdl-132",
+        "attribution": "Safari en la bañera — BookDash; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "80688d6be544015373c7c062ff6a15e2519d629bdc9b6c41d1a4048c74cb32b8"
+      },
+      "courseId": "honduras-es",
+      "stage": "s1"
+    },
+    {
+      "slug": "bridge-una-casa-para-raton",
+      "title": "Una casa para Ratón",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/una-casa-para-raton/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes."
+      },
+      "source": {
+        "file": "reading-bridge/es-es/una-casa-para-raton.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/una-casa-para-raton/",
+        "edition": "Global Digital Library gdl-129",
+        "attribution": "Una casa para Ratón — BookDash; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "0f89b7da9bd08bc862eba405c81e3707dc0a19e43455b5d7913dc7d85955c8aa"
+      },
+      "courseId": "honduras-es",
+      "stage": "s1"
+    },
+    {
+      "slug": "bridge-vuelve-gata",
+      "title": "¡Vuelve, Gata!",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/vuelve-gata/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes."
+      },
+      "source": {
+        "file": "reading-bridge/es-es/vuelve-gata.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/vuelve-gata/",
+        "edition": "Global Digital Library gdl-801",
+        "attribution": "¡Vuelve, Gata! — BookDash; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "02b1521aa1dda52787f8ded595781a13b1691cb2f727efd584ad3a08605b8eca"
+      },
+      "courseId": "honduras-es",
+      "stage": "s1"
+    },
+    {
+      "slug": "bridge-dentro-de-la-world-wide-web",
+      "title": "Dentro de la World Wide Web",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/dentro-de-la-world-wide-web/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes."
+      },
+      "source": {
+        "file": "reading-bridge/es-es/dentro-de-la-world-wide-web.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/dentro-de-la-world-wide-web/",
+        "edition": "Global Digital Library gdl-1185",
+        "attribution": "Dentro de la World Wide Web — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "88298f3a3748854fdc46937d3f57c3b778c9274c4527b43451634878bbae68a6"
+      },
+      "courseId": "honduras-es",
+      "stage": "s1"
+    },
+    {
+      "slug": "bridge-el-bate-perdido-2",
+      "title": "El bate perdido",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/el-bate-perdido-2/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes."
+      },
+      "source": {
+        "file": "reading-bridge/es-es/el-bate-perdido-2.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/el-bate-perdido-2/",
+        "edition": "Global Digital Library gdl-1188",
+        "attribution": "El bate perdido — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "a08f31feded3df8039785f7ba306380941bd01d92c8b70e948187cbcf73fdeb7"
+      },
+      "courseId": "honduras-es",
+      "stage": "s1"
+    },
+    {
+      "slug": "bridge-el-nino-y-el-tambor",
+      "title": "El niño y el tambor",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/el-nino-y-el-tambor/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes."
+      },
+      "source": {
+        "file": "reading-bridge/es-es/el-nino-y-el-tambor.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/el-nino-y-el-tambor/",
+        "edition": "Global Digital Library gdl-1193",
+        "attribution": "El niño y el tambor — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "ef51b8d303c5e40c7f927620e124ee7ce16dce708486757a097cf218fadf9793"
+      },
+      "courseId": "honduras-es",
+      "stage": "s1"
+    },
+    {
+      "slug": "bridge-inmersion",
+      "title": "¡INMERSIÓN!",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/inmersion/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes."
+      },
+      "source": {
+        "file": "reading-bridge/es-es/inmersion.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/inmersion/",
+        "edition": "Global Digital Library gdl-1184",
+        "attribution": "¡INMERSIÓN! — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "532e4c55d721d5e4af7e282c3c982c7ce8f2436038b1bf7f28df530d12d619ea"
+      },
+      "courseId": "honduras-es",
+      "stage": "s1"
+    },
+    {
+      "slug": "bridge-pishi-atrapado-en-una-tormenta",
+      "title": "Pishi atrapado en una tormenta",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/pishi-atrapado-en-una-tormenta/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes."
+      },
+      "source": {
+        "file": "reading-bridge/es-es/pishi-atrapado-en-una-tormenta.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/pishi-atrapado-en-una-tormenta/",
+        "edition": "Global Digital Library gdl-1189",
+        "attribution": "Pishi atrapado en una tormenta — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "dddd6822ebc662fab9bb66b651cc2c9239077ec5e3332df981ce08f5e02a3f0a"
+      },
+      "courseId": "honduras-es",
+      "stage": "s1"
+    },
+    {
+      "slug": "bridge-demasiados-platanos",
+      "title": "Demasiados plátanos",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/demasiados-platanos/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes."
+      },
+      "source": {
+        "file": "reading-bridge/es-es/demasiados-platanos.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/demasiados-platanos/",
+        "edition": "Global Digital Library gdl-1146",
+        "attribution": "Demasiados plátanos — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "1b698804cea4ab8c818d3462ccd2de5980f0bb393669eed2c1887532b073aa71"
+      },
+      "courseId": "honduras-es",
+      "stage": "s1"
+    },
+    {
+      "slug": "alarcon-capitan-veneno",
+      "title": "El capitán Veneno",
+      "author": "Pedro Antonio de Alarcón",
+      "stage": "s2",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "source": {
+        "file": "es-gap-recovery/alarcon-capitan-veneno.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/29731.txt.utf-8",
+        "edition": "Project Gutenberg #29731 classroom edition",
+        "attribution": "El capitán Veneno — Pedro Antonio de Alarcón; Project Gutenberg #29731; US public domain.",
+        "provenance": "Exact cached Gutenberg edition; English introduction, notes, exercises, vocabulary and footnotes excluded at documented section boundaries; Spanish narrative wording retained."
+      },
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #29731 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/29731"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "course-gap source-fidelity boundary check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "0d9b5e34393638f706f7760d8fb1947c05f01ba702d548c712ed5e66c1294698",
+        "qualityVerdict": "usable",
+        "notes": "Boundary extraction checked against the cached edition; no native-speaker or level approval."
+      },
+      "courseId": "honduras-es"
+    },
+    {
+      "slug": "jimenez-platero-y-yo",
+      "title": "Platero y yo — selección de 32 capítulos",
+      "author": "Juan Ramón Jiménez",
+      "stage": "s3",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "source": {
+        "file": "es-gap-recovery/jimenez-platero-y-yo.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/9980.txt.utf-8",
+        "edition": "Project Gutenberg #9980 classroom edition; selected 32 chapters",
+        "attribution": "Platero y yo — Juan Ramón Jiménez; Project Gutenberg #9980; US public domain.",
+        "provenance": "Exact cached Gutenberg edition; English introduction, notes, exercises, vocabulary and footnotes excluded at documented section boundaries; Spanish narrative wording retained."
+      },
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #9980 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/9980"
+        ]
+      },
+      "convert": {
+        "chapters": "#[IVXLCDM]+#",
+        "paragraphs": "blank-line",
+        "unwrap": false,
+        "stripBoilerplate": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "course-gap source-fidelity boundary check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "fb4d7b291b443bef706cf2393ae315c6a96531c99377b3502bc32a37b1b9c716",
+        "qualityVerdict": "usable",
+        "notes": "Boundary extraction checked against the cached edition; no native-speaker or level approval."
+      },
+      "courseId": "honduras-es"
+    },
+    {
+      "slug": "alarcon-sombrero-de-tres-picos",
+      "title": "El sombrero de tres picos",
+      "author": "Pedro Antonio de Alarcón",
+      "stage": "s5",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "source": {
+        "file": "es-gap-recovery/alarcon-sombrero-de-tres-picos.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/29506.txt.utf-8",
+        "edition": "Project Gutenberg #29506 classroom edition",
+        "attribution": "El sombrero de tres picos — Pedro Antonio de Alarcón; Project Gutenberg #29506; US public domain.",
+        "provenance": "Exact cached Gutenberg edition; English introduction, notes, exercises, vocabulary and footnotes excluded at documented section boundaries; Spanish narrative wording retained."
+      },
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #29506 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/29506"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "course-gap source-fidelity boundary check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "eeb9f7f9c16ca1f6de7d5c57b2459f1d9468055e22cbc5c7ea161e748f13e1d1",
+        "qualityVerdict": "usable",
+        "notes": "Boundary extraction checked against the cached edition; no native-speaker or level approval."
+      },
+      "courseId": "honduras-es"
+    },
+    {
+      "slug": "gv-es-dae11aaaf264-excerpt",
+      "title": "¿Qué nos dice el folclore? Nos ayuda a descubrir facetas desconocidas de historias indígenas ignoradas por generaciones — excerpt",
+      "author": "Sanjib Chaudhary",
+      "translator": "Julissa Álvarez Coroa",
+      "stage": "s4",
+      "streams": [
+        "library"
+      ],
+      "contentType": "nonfiction",
+      "genre": "contemporary-nonfiction",
+      "era": "modern",
+      "pedagogicalRole": "authentic",
+      "registers": [
+        "modern_standard",
+        "journalistic"
+      ],
+      "releaseState": "ready",
+      "nativeReview": "source-authored; placement review pending",
+      "difficulty": {
+        "adapter": "es",
+        "tokenCount": 214,
+        "typeCount": 135,
+        "observedLemmaCount": 122,
+        "analyzerUnresolvedTokens": 5,
+        "lexicalDiversity": 0.6308411214953271,
+        "sentenceCount": 9,
+        "medianSentenceTokens": 27,
+        "maxSentenceTokens": 41,
+        "limitations": "Adapter lexicon is incomplete; unresolved analyzer tokens are not learner unknown words. No frequency corpus, native review, CEFR, or personalized coverage inferred."
+      },
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "canModify": true,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "verified": true,
+        "verifiedBy": "Exact Global Voices article credits, license footer and official republication policy",
+        "verifiedAt": "2026-10-04",
+        "licensing": "CC BY 3.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "basis": "GV-created author narrative/explanatory paragraphs in this exact credited translation; article/footer CC BY 3.0, current official policy permits redistribution and adaptation. Selected excerpt excludes third-party quoted prose and all media.",
+        "evidence": [
+          "https://es.globalvoices.org/2026/10/03/que-nos-dice-el-folclore-nos-ayuda-a-descubrir-facetas-desconocidas-de-historias-indigenas-ignoradas-por-generaciones/",
+          "https://globalvoices.org/2026/09/06/what-does-folklore-have-to-say-it-helps-uncover-untold-facets-of-indigenous-stories-overlooked-for-generations/",
+          "https://globalvoices.org/about/global-voices-attribution-policy/",
+          "https://creativecommons.org/licenses/by/3.0/"
+        ],
+        "checksum": "21ac0d13a11e432379644510690cded5a24896d7b999ef1cf4870bc3fe8d71e4",
+        "retrievedAt": "2026-10-04",
+        "sourceRepository": "Global Voices",
+        "licence": "CC BY 3.0",
+        "commercialUse": true,
+        "attributionRequired": true,
+        "modifications": "Exact paragraphs 3,4,5,6 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content.",
+        "proofreading": "Exact source extraction checked by tool; native placement review pending",
+        "userImportOnly": false,
+        "jurisdictions": [
+          "*"
+        ],
+        "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed."
+      },
+      "source": {
+        "file": "curriculum-remediation/modern/gv-es-dae11aaaf264-excerpt.txt",
+        "kind": "plain",
+        "url": "https://es.globalvoices.org/2026/10/03/que-nos-dice-el-folclore-nos-ayuda-a-descubrir-facetas-desconocidas-de-historias-indigenas-ignoradas-por-generaciones/",
+        "edition": "Global Voices es edition, Sat, 03 Oct 2026 07:00:06 +0000",
+        "sha256": "21ac0d13a11e432379644510690cded5a24896d7b999ef1cf4870bc3fe8d71e4",
+        "originalSourceSha256": "00082c9bcebf775fc6ded3094cea97b596952384e225bf461006f1ef32143fd0",
+        "originalStoryUrl": "https://globalvoices.org/2026/09/06/what-does-folklore-have-to-say-it-helps-uncover-untold-facets-of-indigenous-stories-overlooked-for-generations/",
+        "author": "Sanjib Chaudhary",
+        "translator": "Julissa Álvarez Coroa",
+        "attribution": "¿Qué nos dice el folclore? Nos ayuda a descubrir facetas desconocidas de historias indígenas ignoradas por generaciones — Sanjib Chaudhary, translated by Julissa Álvarez Coroa. Originally on Global Voices: https://es.globalvoices.org/2026/10/03/que-nos-dice-el-folclore-nos-ayuda-a-descubrir-facetas-desconocidas-de-historias-indigenas-ignoradas-por-generaciones/; original story: https://globalvoices.org/2026/09/06/what-does-folklore-have-to-say-it-helps-uncover-untold-facets-of-indigenous-stories-overlooked-for-generations/. CC BY 3.0: https://creativecommons.org/licenses/by/3.0/. Changes: selected text-only excerpt; HTML/links unwrapped, other paragraphs, images, captions, quoted prose and media omitted; source wording preserved.",
+        "provenance": "Exact paragraphs 3,4,5,6 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content.",
+        "sourceHash": "21ac0d13a11e432379644510690cded5a24896d7b999ef1cf4870bc3fe8d71e4",
+        "retrievedAt": "2026-10-04",
+        "licence": "CC BY 3.0",
+        "modifications": "Exact paragraphs 3,4,5,6 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content."
+      },
+      "convert": {
+        "stripBoilerplate": false,
+        "unwrap": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "curriculum-remediation exact article credits and excerpt source-fidelity check",
+        "reviewedAt": "2026-10-04",
+        "coversSourceSha256": "21ac0d13a11e432379644510690cded5a24896d7b999ef1cf4870bc3fe8d71e4",
+        "notes": "Source-authored authentic prose. Article credit/license and excerpt comparison only; no native placement or rescue-text approval invented."
+      },
+      "curriculum": {
+        "lifecycle": "published",
+        "role": "authentic",
+        "registers": [
+          "standard"
+        ],
+        "rejectionReasons": [],
+        "provenance": {
+          "kind": "original",
+          "sourceTitle": "¿Qué nos dice el folclore? Nos ayuda a descubrir facetas desconocidas de historias indígenas ignoradas por generaciones — excerpt",
+          "description": "Exact paragraphs 3,4,5,6 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content."
+        },
+        "audio": {
+          "state": "unavailable",
+          "rightsCleared": false
+        }
+      },
+      "variety": "es"
+    }
+  ],
+  "withheld": [
+    {
+      "slug": "alarcon-capitan-veneno",
+      "title": "El capitán Veneno",
+      "reason": "the source has English editorial sections mixed into the text (9052 words: About 17% of the words stand in paragraphs that look like English (340 paragraphs): a preface, notes, exercises or a vocabulary of an annotated edition. They ar) — withheld until the source is cut down to the book"
+    },
+    {
+      "slug": "jimenez-platero-y-yo",
+      "title": "Platero y yo",
+      "reason": "the source has English editorial sections mixed into the text (4241 words: About 14% of the words stand in paragraphs that look like English (133 paragraphs): a preface, notes, exercises or a vocabulary of an annotated edition. They ar) — withheld until the source is cut down to the book"
+    },
+    {
+      "slug": "alarcon-sombrero-de-tres-picos",
+      "title": "El sombrero de tres picos",
+      "reason": "the source has English editorial sections mixed into the text (16645 words: About 26% of the words stand in paragraphs that look like English (396 paragraphs): a preface, notes, exercises or a vocabulary of an annotated edition. They ar) — withheld until the source is cut down to the book"
+    }
+  ]
+}

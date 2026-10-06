@@ -17,11 +17,11 @@ data/review/th/*-eval-*.json
 data/review/es/generated/
 # research and validation material (treebanks, reference editions): never committed, never bundled, never course text
 data/research/
+# reviewer packets (printable HTML and return files, with names and corrections): npm run review:packet
+data/review/*/packets/
 
 # GoRead team server data (sqlite, team codes)
 data/goread/
 # the keeper's Cloudflare config (holds the D1 database id): docs/goread/DEPLOY.md
 wrangler.toml
 .wrangler/
-# reviewer and recording packets (docs/LADDER.md)
-data/review/*/packets/

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
-import type { DimensionState, ItemMarked, TextViewed, LearnerItemState, LearnerLevel, Recommendation } from '../../src/core';
+import type { DimensionState, ItemMarked, TextViewed, LearnerItemState, LearnerLevel } from '../../src/core';
 import { ids } from '../../src/core';
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { button, byLabel, choose, click, createTestimonyText, installMediaStubs, makeHarness, q, qa, seedAudio, type as typeInto } from './harness';
@@ -44,8 +44,8 @@ describe('Library and routes', () => {
     expect(rowLinks()).toHaveLength(1);
     await mounted.unmount();
 
-    mounted = await h.mount(app(), { router: '/scripture' });
     // Scripture is the canon tree (Juan's book is open by default): its one chapter is an `a.entry--chapter` (it was `ul.list a`)
+    mounted = await h.mount(app(), { router: '/scripture' });
     const sc = qa<HTMLAnchorElement>(mounted.container, 'a.entry--chapter');
     expect(sc).toHaveLength(1);
     expect(sc[0].textContent).toContain('Juan 3');
@@ -83,7 +83,13 @@ describe('Library and routes', () => {
     expect(prep[0].getAttribute('href')).toBe(`/read/${encodeURIComponent(STORY_ID)}`);
   });
 
-  it('Home shows GoLearn recommendations with coverage and routes the testimony rehearsal', async () => {
+  it('Home has no text recommendations below the directory', async () => {
+    const h = await makeHarness();
+    mounted = await h.mount(app(), { router: '/' });
+    expect(qa(mounted.container, 'a[href^="/read/"]')).toHaveLength(0);
+    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((a) => a.textContent)).toEqual(['Reading', 'GoListen', 'Scripture', 'Testimony', 'Team Texts']);
+  });
+/*
     const recs: Recommendation[] = [
       { reason: 'easy-story', textId: STORY_ID, band: 'comfortable', reinforces: [], score: 0.9, explanation: 'Mostly words you already know.' },
       { reason: 'rehearse-testimony', testimonyId: 'tst:u1:es', reinforces: [], score: 0.5, explanation: 'Read your latest version aloud.' },
@@ -99,10 +105,10 @@ describe('Library and routes', () => {
     expect(rows[0].textContent).toContain('Mostly words you already know.');
     expect(rows[1].getAttribute('href')).toBe('/testimony');
     // no persistent nav strip: the doorway entries, then the quiet links
-    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((a) => a.textContent)).toEqual(['Read', 'GoListen', 'Scripture', 'My Testimony', 'Team Texts']);
+    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((a) => a.textContent)).toEqual(['Read', 'Scripture', 'My Testimony']);
     expect(qa(mounted.container, '.home__links a').map((a) => a.textContent)).toEqual(['Settings', 'Vocabulary']);
     expect(q(mounted.container, 'nav[aria-label="Main"]')).toBeNull();
-  });
+  }); */
 });
 
 describe('Testimony privacy', () => {
@@ -140,7 +146,14 @@ describe('Testimony privacy', () => {
     expect(mounted.container.textContent).not.toContain('Sneaky');
   });
 
-  it('drops recommendations that point at a testimony text, keeping the generic rehearsal card', async () => {
+  it('keeps testimony private on the Reading surface', async () => {
+    const h = await makeHarness();
+    const privateId = await withPrivateText(h);
+    mounted = await h.mount(app(), { router: '/read' });
+    expect(mounted.container.textContent).not.toContain('Testimony v1');
+    expect(h.learn.coverage).not.toHaveBeenCalledWith('u1', privateId);
+  });
+/*
     const h = await makeHarness({ learn: { recommendations: [] } });
     const privateId = await withPrivateText(h);
     const recs: Recommendation[] = [
@@ -159,7 +172,7 @@ describe('Testimony privacy', () => {
     expect(rows[1].querySelector('a')!.getAttribute('href')).toBe('/testimony');
     expect(rows[1].textContent).toContain('Rehearse your testimony');
     expect(h.learn.coverage).not.toHaveBeenCalledWith('u1', privateId);
-  });
+  }); */
 
   it('will not open a testimony text through the Read route, and hides it from passage preparation', async () => {
     const h = await makeHarness({ learn: { readiness: { preparatoryTexts: [] } } });
@@ -249,7 +262,7 @@ describe('Settings', () => {
   });
 });
 
-describe('Home — continue card', () => {
+describe('Reading — continue card', () => {
   it('offers the last text read, and never a private testimony text', async () => {
     const h = await makeHarness();
     await seedStory(h.store);
@@ -260,7 +273,7 @@ describe('Home — continue card', () => {
     const view = (textId: string, at: string) => h.bus.emit<TextViewed>({ type: 'TextViewed', userId: 'u1', lang: 'es', surface: 'corpus', session: 'ses-test', dedupeKey: `tv:${textId}`, textId, at });
     await view(STORY_ID, '2026-02-01T10:00:00.000Z');
     await view(privateId, '2026-02-02T10:00:00.000Z'); // more recent, but private
-    mounted = await h.mount(app(), { router: '/' });
+    mounted = await h.mount(app(), { router: '/read' });
     const card = q<HTMLAnchorElement>(mounted.container, 'a.home__continue')!;
     expect(card.textContent).toContain('Continue reading');
     expect(card.textContent).toContain('Story 1');

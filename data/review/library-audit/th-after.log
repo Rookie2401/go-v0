@@ -1,0 +1,75 @@
+deep: importing each text afresh with adapter 2 and the installed dictionary (public/dict/th)
+  … 100 of 1189 texts, 81726 words, 69 s
+  … 200 of 1189 texts, 172594 words, 137 s
+  … 300 of 1189 texts, 265352 words, 207 s
+  … 400 of 1189 texts, 355901 words, 254 s
+  … 500 of 1189 texts, 409464 words, 303 s
+  … 600 of 1189 texts, 446243 words, 841 s
+  … 700 of 1189 texts, 488983 words, 882 s
+  … 800 of 1189 texts, 566605 words, 921 s
+  … 900 of 1189 texts, 638594 words, 941 s
+  … 1000 of 1189 texts, 725746 words, 967 s
+  … 1100 of 1189 texts, 810987 words, 990 s
+
+library:audit th — library-th@2026-10-02: 1189 texts in 1 works, 863775 words; deep check of 1189 texts (863775 words), read through GoLearn in 1014 s
+  analyzers: stored adapter-th@2 + dict:kaikki-th@2026-09-28 | today adapter-th@2 + dict:kaikki-th@2026-09-28 — 1189 texts
+  ok   catalogue: a work recorded as installed has texts in the library: 1 of 1
+  ok   catalogue: a work with texts in the library is recorded as bundlable: 1 of 1
+  ok   catalogue: every text names a work: 1189 of 1189
+  ok   catalogue: the rights of the texts are the rights of their work: 1 of 1
+  ok   catalogue: the shelf of a work exists in the course: 1 of 1
+  ok   catalogue: the shelf of the texts is the shelf of their work: 1 of 1
+  ok   catalogue: the stream of the texts is a stream of the course: 1 of 1
+  ok   catalogue: the stream of the texts is a stream of their work: 1 of 1
+  ok   catalogue: the work of a text is in the course catalogue: 1 of 1
+  ok   catalogue: the work says its texts are in the library: 1 of 1
+  ok   deep: every analysis names a lemma that exists: 1189 of 1189
+  ok   deep: every construction found in the text has its row: 1189 of 1189
+  ok   deep: every unit found in the text has its row: 1189 of 1189
+  ok   deep: every word carries the id of its form item: 1189 of 1189
+  ok   deep: every word is a slice of its sentence: 1189 of 1189
+  ok   deep: the document is the text the row names: 1189 of 1189
+  ok   deep: the document names the row's work and chapter: 1189 of 1189
+  ok   deep: the features are what a fresh import measures: 1189 of 1189
+  ok   deep: the forms of the profile sum to its words: 1189 of 1189
+  ok   deep: the importer knows the work: 1189 of 1189
+  ok   deep: the profile counts the words of the text: 1189 of 1189
+  ok   deep: the profile lists the constructions a fresh import finds: 1189 of 1189
+  ok   deep: the profile lists the forms of the text: 1189 of 1189
+  ok   deep: the profile lists the lemmas a fresh import finds: 1189 of 1189
+  ok   deep: the profile lists the units a fresh import finds: 1189 of 1189
+  ok   deep: the profile was made by today's analyzer and dictionary: 1189 of 1189
+  ok   deep: the row's features are the profile's: 1189 of 1189
+  ok   deep: the row's publication decision is the document's: 1189 of 1189
+  ok   deep: the row's title is the document's: 1189 of 1189
+  ok   deep: the stored sentences are the document's sentences, in order: 1189 of 1189
+  ok   deep: the stored text carries its work, chapter, stream and publication: 1189 of 1189
+  ok   deep: the text has sentences: 1189 of 1189
+  ok   deep: the text imports: 1189 of 1189
+  ok   order (Scripture): a chapter is numbered by its place in the canon: 1189 of 1189
+  ok   order (Scripture): every chapter of the canon is present: 1189 of 1189
+  ok   order (Scripture): every chapter says its book and chapter: 1189 of 1189
+  ok   order (Scripture): no chapter twice: 1189 of 1189
+  ok   order: bundled and library chapters of one work do not share a number: 1 of 1
+  ok   order: every text of a work has a chapter number: 1 of 1
+  ok   order: no chapter number twice in a work: 1 of 1
+  ok   order: no text has exactly the words of another text: 1189 of 1189
+  ok   order: the index lists the chapters of a work in chapter order: 1 of 1
+  ok   read: after reading, no word of the text is new to the learner: 1189 of 1189
+  ok   read: every construction of the profile became a learner item: 1189 of 1189
+  ok   read: every form of the text became a learner item: 1189 of 1189
+  ok   read: every lemma of the profile became a learner item: 1189 of 1189
+  ok   read: every sentence of the text is counted as seen: 1189 of 1189
+  ok   read: every unit of the profile became a learner item: 1189 of 1189
+  ok   read: no form item that is not a form of the text: 1189 of 1189
+  ok   structure: a row is listed under its own primary stream: 1189 of 1189
+  ok   structure: every row has its document file: 1189 of 1189
+  ok   structure: every row has its profile file: 1189 of 1189
+  ok   structure: every row of an index shard is well formed: 3 of 3
+  ok   structure: no document file without a row: 1189 of 1189
+  ok   structure: no library text has the id of a bundled text: 1189 of 1189
+  ok   structure: no profile file without a row: 1189 of 1189
+  ok   structure: no text id twice: 1189 of 1189
+  ok   structure: the manifest counts the texts it lists: 1 of 1
+  ok   structure: the manifest word count is the sum of the rows: 1 of 1
+every check passed

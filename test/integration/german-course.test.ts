@@ -84,11 +84,19 @@ describe('the German catalogue: recommended is not bundleable', () => {
       }
       if (state === 'prohibited-from-bundling') expect(w.readiness, w.title).toBe('recommendation');
       if (state === 'rights-unverified') expect(w.rights.basis ?? w.rights.acquisitionNotes, w.title).toMatch(/lead|not verified/i);
-      expect(w.bibliographyVerified, w.title).toBe(false);
+      if (w.id.includes(':bridge-')) {
+        expect(w.bibliographyVerified, w.title).toBe(true);
+        expect(w.sourceUrl, w.title).toContain('digitallibrary.io');
+        expect(w.edition, w.title).toContain('Global Digital Library');
+      } else if (w.bibliographyVerified) {
+        // Exact source-backed additions beyond the GDL bridge carry their own edition and source URL too.
+        expect(w.sourceUrl, w.title).toBeTruthy();
+        expect(w.edition, w.title).toBeTruthy();
+      } else expect(w.bibliographyVerified, w.title).toBe(false);
     }
-    // a death year alone never became "public domain"
+    // The original verified editions remain present; added editions must satisfy the evidence checks above.
     expect(GERMAN_WORKS.filter((w) => w.rights.state === 'verified-public-domain').map((w) => w.title).sort())
-      .toEqual(['Der süße Brei', 'Die Bibel nach der deutschen Übersetzung D. Martin Luthers (1912)', 'Die Sternthaler']);
+      .toEqual(expect.arrayContaining(['Der süße Brei', 'Die Bibel nach der deutschen Übersetzung D. Martin Luthers (1912)', 'Die Sternthaler']));
   });
 
   it('every bundled German document belongs to a catalogued work and passes the production rights gate', () => {

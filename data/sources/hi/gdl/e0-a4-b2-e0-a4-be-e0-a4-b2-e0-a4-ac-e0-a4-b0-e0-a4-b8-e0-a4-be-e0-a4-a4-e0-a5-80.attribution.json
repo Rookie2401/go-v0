@@ -1,0 +1,40 @@
+{
+  "title": "लाल बरसाती",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b2%e0%a4%be%e0%a4%b2-%e0%a4%ac%e0%a4%b0%e0%a4%b8%e0%a4%be%e0%a4%a4%e0%a5%80/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Kiran Kasturia",
+    "Illustrator: Zainab Tambawalla",
+    "Translator: Arti Smit",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: लाल बरसाती is translated by Arti Smit . The © for this translation lies with Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' The Red Raincoat ' , by Kiran Kasturia . © Pratham Books , 2015. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This book has been published on StoryWeaver by Pratham Books. It was developed in a workshop of authors and illustrators organized by Pratham Books. The development of the print version of this book has been supported by HDFC Asset Management Company Limited (A joint Venture with Standard Life Investments). www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Boy holding a red raincoat , by Zainab Tambawalla © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 2: Boy holding a red raincoat and lady talking , by Zainab Tambawalla © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 3: Boy and lady looking out of the window , by Zainab Tambawalla © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 4: Boy sitting on the stairs of a house with a red raincoat , by Zainab Tambawalla © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 5: Boy wearing a red raincoat and sun shining through the window , by Zainab Tambawalla © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 6: Boy holding a red raincoat and looking at the sky , by Zainab Tambawalla © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 7: Boy with red raincoat and peacock looking at cloudy sky , by Zainab Tambawalla © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 8: Boy, snail and frog enjoying the rain , by Zainab Tambawalla © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 9: Boy and frog enjoying the rain , by Zainab Tambawalla © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 10: Boy playing in the rain and lady watching , by Zainab Tambawalla © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "लाल बरसाती (Hindi)",
+    "मनु के पास नई बरसाती है। वह उसे पहनने के लिए मचल रहा है, लेकिन बारिश है कि आती ही नहीं है!",
+    "यह पठन स्तर १ की किताब है, उन बच्चों के लिए जो पढ़ना शुरू कर रहे हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "7b8d85bdc383e5d37957b6c7d032f1b4563663800f1d3ac011dc1b7d1f28ee1b"
+}

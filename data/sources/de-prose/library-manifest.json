@@ -1,0 +1,2544 @@
+{
+  "schema": 1,
+  "lang": "de",
+  "entries": [
+    {
+      "slug": "guerber-maerchen-und-erzaehlungen",
+      "title": "Märchen und Erzählungen für Anfänger",
+      "author": "H. A. Guerber",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #35794 and #45189 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/35794",
+          "https://www.gutenberg.org/ebooks/45189"
+        ]
+      },
+      "source": {
+        "file": "guerber-maerchen-und-erzaehlungen.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/35794.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/35794.txt.utf-8",
+          "https://www.gutenberg.org/ebooks/45189.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #35794 + #45189",
+        "attribution": "Märchen und Erzählungen für Anfänger — H. A. Guerber; Project Gutenberg #35794 + #45189; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "cc5798f7e3986d7f382c96ba782a65a1546daaab7ed0aca325f3691ee49fc37f",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "broken-accents",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 2312
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 3
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 6
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 3
+          },
+          {
+            "code": "language-mismatch",
+            "severity": "warning",
+            "count": 4257
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 2378
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 2
+          },
+          {
+            "code": "title-page-noise",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "busch-max-und-moritz",
+      "title": "Max und Moritz. Eine Bubengeschichte in sieben Streichen",
+      "author": "Wilhelm Busch",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "genre": "poem",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #17161 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/17161"
+        ]
+      },
+      "source": {
+        "file": "busch-max-und-moritz.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/17161.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/17161.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #17161",
+        "attribution": "Max und Moritz. Eine Bubengeschichte in sieben Streichen — Wilhelm Busch; Project Gutenberg #17161; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "f9740902b5321983f859bc72b3a05f809228da8a3f90cadbdfe67e6596309d4f",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 2
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "hoffmann-struwwelpeter",
+      "title": "Der Struwwelpeter",
+      "author": "Heinrich Hoffmann",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "genre": "poem",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #24571 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/24571"
+        ]
+      },
+      "source": {
+        "file": "hoffmann-struwwelpeter.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/24571.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/24571.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #24571",
+        "attribution": "Der Struwwelpeter — Heinrich Hoffmann; Project Gutenberg #24571; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "dfb42775d0551c237fd55b8794feef42b00c4d317a8704ef7bdaa8c952e29b8f",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 378
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 3
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "busch-hans-huckebein",
+      "title": "Hans Huckebein, der Unglücksrabe",
+      "author": "Wilhelm Busch",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "genre": "poem",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #2322 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/2322"
+        ]
+      },
+      "source": {
+        "file": "busch-hans-huckebein.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/2322.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/2322.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #2322",
+        "attribution": "Hans Huckebein, der Unglücksrabe — Wilhelm Busch; Project Gutenberg #2322; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "c0f9e6280a91ed83e4e5519494ab7059eef2c66cdfc2ca8e6c575645910d394e",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "footnote-markers",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "hebel-schatzkaestlein",
+      "title": "Schatzkästlein des rheinischen Hausfreundes",
+      "author": "Johann Peter Hebel",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #7810 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/7810"
+        ]
+      },
+      "source": {
+        "file": "hebel-schatzkaestlein.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/7810.epub3.images",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/7810.epub3.images"
+        ],
+        "edition": "Project Gutenberg #7810",
+        "attribution": "Schatzkästlein des rheinischen Hausfreundes — Johann Peter Hebel; Project Gutenberg #7810; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "db2a472d85c071bc886e5a31fd5e7ab45475bc47d16f49c026a1f8b6ce88a48f",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "broken-accents",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 66
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 17
+          },
+          {
+            "code": "very-long-paragraphs",
+            "severity": "warning",
+            "count": 4
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "spyri-heidi",
+      "title": "Heidis Lehr- und Wanderjahre",
+      "author": "Johanna Spyri",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #7500 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/7500"
+        ]
+      },
+      "source": {
+        "file": "spyri-heidi.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/7500.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/7500.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #7500",
+        "attribution": "Heidis Lehr- und Wanderjahre — Johanna Spyri; Project Gutenberg #7500; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "92128d4d133f44cf602ab4d2107d7b86a38c6a6764b7db85849d06453401ad7a",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 4293
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "bassewitz-peterchens-mondfahrt",
+      "title": "Peterchens Mondfahrt",
+      "author": "Gerdt von Bassewitz",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #31204 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/31204"
+        ]
+      },
+      "source": {
+        "file": "bassewitz-peterchens-mondfahrt.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/31204.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/31204.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #31204",
+        "attribution": "Peterchens Mondfahrt — Gerdt von Bassewitz; Project Gutenberg #31204; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "018b480f740b18d1974fff45217d5b882589b82ca68c4e49b6f7302fc7dd2166",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 503
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 3
+          },
+          {
+            "code": "title-page-noise",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "bonsels-biene-maja",
+      "title": "Die Biene Maja und ihre Abenteuer",
+      "author": "Waldemar Bonsels",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #21021 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/21021"
+        ]
+      },
+      "source": {
+        "file": "bonsels-biene-maja.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/21021.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/21021.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #21021",
+        "attribution": "Die Biene Maja und ihre Abenteuer — Waldemar Bonsels; Project Gutenberg #21021; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "93778549a639a54a1e61b6485bc6f2743a1b388e197f261276f634f5ef5dd022",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 3
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 2691
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "title-page-noise",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "storm-immensee",
+      "title": "Immensee",
+      "author": "Theodor Storm",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #6651 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/6651"
+        ]
+      },
+      "source": {
+        "file": "storm-immensee.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/6651.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/6651.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #6651",
+        "attribution": "Immensee — Theodor Storm; Project Gutenberg #6651; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "78868de42959afaeb6b04c035bbf54342ec3443c2c39b0c63123a4d883f0bae3",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 738
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 4
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "storm-pole-poppenspaeler",
+      "title": "Pole Poppenspäler",
+      "author": "Theodor Storm",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #8919 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/8919"
+        ]
+      },
+      "source": {
+        "file": "storm-pole-poppenspaeler.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/8919.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/8919.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #8919",
+        "attribution": "Pole Poppenspäler — Theodor Storm; Project Gutenberg #8919; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "748224b40586c00986da75d197962f8590eb379541e2d9b1b77fe9d2e2c8f947",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 2
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 1344
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "eichendorff-taugenichts",
+      "title": "Aus dem Leben eines Taugenichts",
+      "author": "Joseph von Eichendorff",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #35312 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/35312"
+        ]
+      },
+      "source": {
+        "file": "eichendorff-taugenichts.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/35312.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/35312.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #35312",
+        "attribution": "Aus dem Leben eines Taugenichts — Joseph von Eichendorff; Project Gutenberg #35312; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "abb9ebe442dcf72a35b644219fb4659bfc54960133bf14224e8cfdfd7851310c",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 2657
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "storm-schimmelreiter",
+      "title": "Der Schimmelreiter",
+      "author": "Theodor Storm",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #74008 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/74008"
+        ]
+      },
+      "source": {
+        "file": "storm-schimmelreiter.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/74008.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/74008.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #74008",
+        "attribution": "Der Schimmelreiter — Theodor Storm; Project Gutenberg #74008; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "781116b486940802f685d1ea028b6cf3b567390c2e842f3150ed6476d6a6a30c",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 2990
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 2
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "droste-judenbuche",
+      "title": "Die Judenbuche",
+      "author": "Annette von Droste-Hülshoff",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #45798 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/45798"
+        ]
+      },
+      "source": {
+        "file": "droste-judenbuche.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/45798.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/45798.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #45798",
+        "attribution": "Die Judenbuche — Annette von Droste-Hülshoff; Project Gutenberg #45798; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "4160dc8218d6ae35306daf5346973ac5d40a4ad895bed25b2e43e77a772d0945",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 1391
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "hauptmann-bahnwaerter-thiel",
+      "title": "Bahnwärter Thiel",
+      "author": "Gerhart Hauptmann",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #29376 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/29376"
+        ]
+      },
+      "source": {
+        "file": "hauptmann-bahnwaerter-thiel.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/29376.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/29376.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #29376",
+        "attribution": "Bahnwärter Thiel — Gerhart Hauptmann; Project Gutenberg #29376; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "894c397cd3be2449f747793a989eb7367776a541e4d43cc3eeee93f4cfc5a19c",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 2
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 1300
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "page-numbers",
+            "severity": "warning",
+            "count": 3
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "kafka-das-urteil",
+      "title": "Das Urteil",
+      "author": "Franz Kafka",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #21593 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/21593"
+        ]
+      },
+      "source": {
+        "file": "kafka-das-urteil.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/21593.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/21593.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #21593",
+        "attribution": "Das Urteil — Franz Kafka; Project Gutenberg #21593; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "2f8c5026a4de54f4210615555aa89b3474a2f8bf75f95ebdd2a4227aa35c6be9",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 332
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "title-page-noise",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "kafka-die-verwandlung",
+      "title": "Die Verwandlung",
+      "author": "Franz Kafka",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #22367 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/22367"
+        ]
+      },
+      "source": {
+        "file": "kafka-die-verwandlung.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/22367.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/22367.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #22367",
+        "attribution": "Die Verwandlung — Franz Kafka; Project Gutenberg #22367; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "e374f45dbb4d97247b8043d227512387bd8a376d38d6b1e5c8081142531f98f2",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 1688
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "title-page-noise",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "fontane-effi-briest",
+      "title": "Effi Briest",
+      "author": "Theodor Fontane",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #5323 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/5323"
+        ]
+      },
+      "source": {
+        "file": "fontane-effi-briest.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/5323.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/5323.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #5323",
+        "attribution": "Effi Briest — Theodor Fontane; Project Gutenberg #5323; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "56af227f576b13f14ac9e8723fb89303db3b3e9e7e67387b528454370d76b410",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 7759
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 3
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 16
+          },
+          {
+            "code": "very-long-paragraphs",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "mann-tonio-kroeger",
+      "title": "Tonio Kröger",
+      "author": "Thomas Mann",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #23313 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/23313"
+        ]
+      },
+      "source": {
+        "file": "mann-tonio-kroeger.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/23313.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/23313.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #23313",
+        "attribution": "Tonio Kröger — Thomas Mann; Project Gutenberg #23313; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "c1ed1921815a6f287327f52d68c0a2b89854db3efa85fe170bb055cf0036b3b6",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 1811
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "title-page-noise",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "goethe-werther",
+      "title": "Die Leiden des jungen Werthers",
+      "author": "Johann Wolfgang von Goethe",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #2407 and #2408 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/2407",
+          "https://www.gutenberg.org/ebooks/2408"
+        ]
+      },
+      "source": {
+        "file": "goethe-werther.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/2407.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/2407.txt.utf-8",
+          "https://www.gutenberg.org/ebooks/2408.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #2407 + #2408",
+        "attribution": "Die Leiden des jungen Werthers — Johann Wolfgang von Goethe; Project Gutenberg #2407 + #2408; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "7c408dd30a0a0a24355507154db124709495ab36043695572422ffd582b01f90",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 1508
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 32
+          },
+          {
+            "code": "very-long-paragraphs",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 1843
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 33
+          },
+          {
+            "code": "very-long-paragraphs",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "schiller-wilhelm-tell",
+      "title": "Wilhelm Tell",
+      "author": "Friedrich Schiller",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "genre": "poem",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #77182 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/77182"
+        ]
+      },
+      "source": {
+        "file": "schiller-wilhelm-tell.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/77182.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/77182.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #77182",
+        "attribution": "Wilhelm Tell — Friedrich Schiller; Project Gutenberg #77182; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "3193e454f1a4afc94540bd9d013ad16bf7aa91c91aa7821977f221842abdf0a6",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 814
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 2
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "schiller-kabale-und-liebe",
+      "title": "Kabale und Liebe",
+      "author": "Friedrich Schiller",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #6498 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/6498"
+        ]
+      },
+      "source": {
+        "file": "schiller-kabale-und-liebe.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/6498.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/6498.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #6498",
+        "attribution": "Kabale und Liebe — Friedrich Schiller; Project Gutenberg #6498; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "16af4a672dad0987db3d34a69cf9920db32b8406ab5c169cc885b026a1ec27bb",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 2453
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "lessing-emilia-galotti",
+      "title": "Emilia Galotti",
+      "author": "Gotthold Ephraim Lessing",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #9108 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/9108"
+        ]
+      },
+      "source": {
+        "file": "lessing-emilia-galotti.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/9108.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/9108.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #9108",
+        "attribution": "Emilia Galotti — Gotthold Ephraim Lessing; Project Gutenberg #9108; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "31a4506229313cf5d0f5ba554e5c0cfd3d260e4b889fa775a4530c1d3b54b36e",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 1465
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 39
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "lessing-nathan-der-weise",
+      "title": "Nathan der Weise",
+      "author": "Gotthold Ephraim Lessing",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #9186 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/9186"
+        ]
+      },
+      "source": {
+        "file": "lessing-nathan-der-weise.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/9186.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/9186.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #9186",
+        "attribution": "Nathan der Weise — Gotthold Ephraim Lessing; Project Gutenberg #9186; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "138f021be0f0b7ae0c3a13c6fe67fb7d19885ec1a3a54cf6a27876fc5d8fddea",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 2
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 37
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "goethe-faust-1",
+      "title": "Faust. Der Tragödie erster Teil",
+      "author": "Johann Wolfgang von Goethe",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #2229 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/2229"
+        ]
+      },
+      "source": {
+        "file": "goethe-faust-1.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/2229.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/2229.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #2229",
+        "attribution": "Faust. Der Tragödie erster Teil — Johann Wolfgang von Goethe; Project Gutenberg #2229; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "ae27f847b19444edbb28dbf0daba79419159a59d142678d07515efcd996a9b4c",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 7
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "fontane-der-stechlin",
+      "title": "Der Stechlin",
+      "author": "Theodor Fontane",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #53628 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/53628"
+        ]
+      },
+      "source": {
+        "file": "fontane-der-stechlin.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/53628.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/53628.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #53628",
+        "attribution": "Der Stechlin — Theodor Fontane; Project Gutenberg #53628; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "1eb55a1503f7f32f3d3dcf3c2e1da6f3c15b7aae5edf0869f62da6a1d944ba63",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "broken-accents",
+            "severity": "warning",
+            "count": 7
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 10256
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 3
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 18
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "mann-buddenbrooks",
+      "title": "Buddenbrooks",
+      "author": "Thomas Mann",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #34811 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/34811"
+        ]
+      },
+      "source": {
+        "file": "mann-buddenbrooks.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/34811.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/34811.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #34811",
+        "attribution": "Buddenbrooks — Thomas Mann; Project Gutenberg #34811; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "ba5bd3e27fd6eac6596519f810a4666d72e33a285032845432061a424a0ea941",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 19840
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 3
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 93
+          },
+          {
+            "code": "very-long-paragraphs",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "title-page-noise",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "kant-was-ist-aufklaerung",
+      "title": "Beantwortung der Frage: Was ist Aufklärung?",
+      "author": "Immanuel Kant",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #30821 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/30821"
+        ]
+      },
+      "source": {
+        "file": "kant-was-ist-aufklaerung.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/30821.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/30821.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #30821",
+        "attribution": "Beantwortung der Frage: Was ist Aufklärung? — Immanuel Kant; Project Gutenberg #30821; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "3653d635cface468f149218400d7d494b369684708258e600c823966f3bbbcf5",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 266
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "boilerplate",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "kant-kritik-der-reinen-vernunft",
+      "title": "Kritik der reinen Vernunft",
+      "author": "Immanuel Kant",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #6342 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/6342"
+        ]
+      },
+      "source": {
+        "file": "kant-kritik-der-reinen-vernunft.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/6342.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/6342.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #6342",
+        "attribution": "Kritik der reinen Vernunft — Immanuel Kant; Project Gutenberg #6342; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "5a862b2c408cefca3d11931c133d60947e3e34a4427b5865a10907e0997ac0f3",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 17540
+          },
+          {
+            "code": "running-heads",
+            "severity": "warning",
+            "count": 139
+          },
+          {
+            "code": "footnote-markers",
+            "severity": "info",
+            "count": 36
+          },
+          {
+            "code": "very-long-paragraphs",
+            "severity": "warning",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "nietzsche-zarathustra",
+      "title": "Also sprach Zarathustra",
+      "author": "Friedrich Nietzsche",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #7205 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/7205"
+        ]
+      },
+      "source": {
+        "file": "nietzsche-zarathustra.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/7205.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/7205.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #7205",
+        "attribution": "Also sprach Zarathustra — Friedrich Nietzsche; Project Gutenberg #7205; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "e99ca62beb2dd20a649ea2bf6d8571c841ddc2e816119d1182ec00a28b80a62b",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 5816
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 2
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 15
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "rilke-malte",
+      "title": "Die Aufzeichnungen des Malte Laurids Brigge",
+      "author": "Rainer Maria Rilke",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #2188 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/2188"
+        ]
+      },
+      "source": {
+        "file": "rilke-malte.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/2188.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/2188.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #2188",
+        "attribution": "Die Aufzeichnungen des Malte Laurids Brigge — Rainer Maria Rilke; Project Gutenberg #2188; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "a819c86d9fd0849a4c12924fc9f4c30b565de6f72719ee8baeedddb5e4e9a59a",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "control-characters",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 5104
+          },
+          {
+            "code": "footnote-markers",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "very-long-paragraphs",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "mommsen-roemische-geschichte",
+      "title": "Römische Geschichte",
+      "author": "Theodor Mommsen",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #3060 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/3060"
+        ]
+      },
+      "source": {
+        "file": "mommsen-roemische-geschichte.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/3060.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/3060.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #3060",
+        "attribution": "Römische Geschichte — Theodor Mommsen; Project Gutenberg #3060; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "65252bb4db558ef342d9bbf4c641e04f64c97feadfda2e8d7265be9cfebc0a20",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "control-characters",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "ocr-confusions",
+            "severity": "warning",
+            "count": 4
+          },
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 8920
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 10
+          },
+          {
+            "code": "footnote-markers",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "very-long-paragraphs",
+            "severity": "warning",
+            "count": 2
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "lilienthal-vogelflug",
+      "title": "Der Vogelflug als Grundlage der Fliegekunst",
+      "author": "Otto Lilienthal",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #54565 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/54565"
+        ]
+      },
+      "source": {
+        "file": "lilienthal-vogelflug.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/54565.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/54565.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #54565",
+        "attribution": "Der Vogelflug als Grundlage der Fliegekunst — Otto Lilienthal; Project Gutenberg #54565; US public domain.",
+        "provenance": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-gutenberg-all identity/source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "321dcc2d5fd5c72fd8efa211451983a543f45efafe1cde8f06134d22a867e8a6",
+        "qualityVerdict": "usable",
+        "qualityFlags": [
+          {
+            "code": "hard-wrapped-lines",
+            "severity": "warning",
+            "count": 4177
+          },
+          {
+            "code": "hyphenated-line-breaks",
+            "severity": "warning",
+            "count": 3
+          },
+          {
+            "code": "footnote-markers",
+            "severity": "info",
+            "count": 1
+          },
+          {
+            "code": "duplicated-paragraphs",
+            "severity": "warning",
+            "count": 1
+          },
+          {
+            "code": "no-chapters-found",
+            "severity": "info",
+            "count": 1
+          }
+        ],
+        "notes": "Identity and source fidelity checked; no native-speaker quality claim."
+      }
+    },
+    {
+      "slug": "bechstein-maerchenbuch",
+      "title": "Märchen-Sammlung",
+      "author": "Ludwig Bechstein",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-01",
+        "basis": "Project Gutenberg #23787 identifies the German edition and states public domain in the USA; the edition title page identifies Bechstein, Fraungruber and Fahringer.",
+        "sourceRepository": "Project Gutenberg",
+        "sourceUrl": "https://www.gutenberg.org/ebooks/23787",
+        "jurisdictions": [
+          "US"
+        ],
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/23787",
+          "https://www.gutenberg.org/cache/epub/23787/pg23787.txt"
+        ],
+        "attributionRequired": true,
+        "commercialUse": true,
+        "modifications": "The Gutenberg wrapper and production credit were removed; the title page, editor/illustrator credits, notes and tale text are retained verbatim."
+      },
+      "source": {
+        "file": "de-children/bechstein-maerchenbuch.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/cache/epub/23787/pg23787.txt",
+        "edition": "Project Gutenberg #23787; Gerlach's Jugendbücherei, Märchen-Sammlung, Vienna and Leipzig",
+        "attribution": "Märchen-Sammlung von L. Bechstein; texts reviewed by Hans Fraungruber; images by Karl Fahringer; Project Gutenberg #23787.",
+        "provenance": "Downloaded from the official Gutenberg plain-text URL on 2026-10-01; only the Gutenberg wrapper/production credit was removed."
+      },
+      "convert": {
+        "stripBoilerplate": true,
+        "paragraphs": "blank-line",
+        "unwrap": true
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "source-quality inspectText and identity/source-fidelity check",
+        "reviewedAt": "2026-10-01",
+        "coversSourceSha256": "6d767b03850a541fd06d355b45a990610deb4fdb12398c124a07990ae6103d30",
+        "notes": "No OCR-confusion or control-character serious flag. One duplicate-paragraph warning remains recorded; no canonical repair was made. No native-speaker review is claimed."
+      }
+    }
+  ]
+}

@@ -63,13 +63,20 @@ describe('the reading ladder page', () => {
     const h = await thai();
     mounted = await h.mount(app(), { router: '/course' });
     for (const s of THAI_STAGES) await openStage(s.key);
-    const lines = qa(mounted.container, '[data-testid="rights-line"]').map((e) => e.textContent!);
+    const rightsRows = qa(mounted.container, '[data-testid="rights-line"]');
+    const lines = rightsRows.map((e) => e.textContent!);
     expect(lines).toHaveLength(THAI_WORKS.length);
-    for (const l of lines) expect(l.toLowerCase()).not.toContain('public domain');
+    for (const row of rightsRows) {
+      if (row.textContent?.startsWith('A listening recommendation')) continue;
+      const id = row.closest('[data-work]')?.getAttribute('data-work');
+      const work = THAI_WORKS.find((candidate) => candidate.id === id)!;
+      if (!work.rights.verified) {
+        expect(row.textContent!.toLowerCase()).not.toContain('public domain');
+        expect(row.textContent).toContain('Read it from your own copy.');
+      } else expect(row.textContent).toContain('checked against a source');
+    }
     expect(lines).toContain('In copyright (presumed, not verified). Read it from your own copy.');
     expect(lines).toContain('Rights not researched. Read it from your own copy.');
-    // every one of them points at the learner's own copy, and says that nothing was verified
-    for (const l of lines.filter((x) => !x.startsWith('A listening recommendation'))) expect(l).toContain('Read it from your own copy.');
   });
 
   it('the rights wording only claims what the data says', () => {
@@ -191,12 +198,12 @@ describe('a learner\'s own copy on the ladder', () => {
 });
 
 describe('Home, Read and Settings around the ladder', () => {
-  it('a course with a ladder gets a "Reading ladder" door showing the stage; a course without one has none and /course goes home', async () => {
+  it('Home stays a directory; the ladder remains available at /course only for courses that have one', async () => {
     const t = await thai();
     mounted = await t.mount(app());
-    const door = qa(mounted.container, 'a.home__entry').find((a) => a.getAttribute('href') === '/course')!;
-    expect(door.textContent).toContain('Reading ladder');
-    expect(door.textContent).toContain(THAI_STAGES[0].label);
+    expect(qa(mounted.container, 'a.home__entry').some((a) => a.getAttribute('href') === '/read')).toBe(true);
+    expect(qa(mounted.container, 'a.home__entry').some((a) => a.getAttribute('href') === '/course')).toBe(false);
+    expect(mounted.container.textContent).not.toContain('Reading ladder');
     await mounted.unmount();
 
     const es = await makeHarness();

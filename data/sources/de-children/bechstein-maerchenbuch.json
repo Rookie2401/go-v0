@@ -1,0 +1,65 @@
+{
+  "slug": "bechstein-maerchenbuch",
+  "title": "Märchen-Sammlung",
+  "editionTitle": "Märchen-Sammlung von L. Bechstein",
+  "author": "Ludwig Bechstein",
+  "compiler": "Ludwig Bechstein",
+  "editor": "Hans Fraungruber",
+  "illustrator": "Karl Fahringer",
+  "language": "de",
+  "streams": ["library"],
+  "contentType": "story",
+  "scope": {
+    "tales": 14,
+    "words": 14204,
+    "selection": "Complete 14-tale text in Project Gutenberg #23787; no tales selected out or rewritten."
+  },
+  "rights": {
+    "state": "verified-public-domain",
+    "copyrightStatus": "public-domain",
+    "permission": "not-needed",
+    "canBundle": true,
+    "userImportOnly": false,
+    "canModify": false,
+    "canStoreOffline": true,
+    "canBundleAudio": false,
+    "verified": true,
+    "verifiedBy": "Project Gutenberg official edition page and metadata",
+    "verifiedAt": "2026-10-01",
+    "basis": "Project Gutenberg #23787 identifies the German edition and states public domain in the USA; the edition title page identifies Bechstein, Fraungruber and Fahringer.",
+    "sourceRepository": "Project Gutenberg",
+    "sourceUrl": "https://www.gutenberg.org/ebooks/23787",
+    "jurisdictions": ["US"],
+    "statusByJurisdiction": {"US": "public-domain"},
+    "evidence": [
+      "https://www.gutenberg.org/ebooks/23787",
+      "https://www.gutenberg.org/cache/epub/23787/pg23787.txt"
+    ],
+    "attributionRequired": true,
+    "commercialUse": true,
+    "modifications": "The Gutenberg wrapper and production credit were removed; the title page, editor/illustrator credits, notes and tale text are retained verbatim."
+  },
+  "source": {
+    "file": "de-children/bechstein-maerchenbuch.txt",
+    "kind": "gutenberg",
+    "url": "https://www.gutenberg.org/cache/epub/23787/pg23787.txt",
+    "edition": "Project Gutenberg #23787; Gerlach's Jugendbücherei, Märchen-Sammlung, Vienna and Leipzig",
+    "attribution": "Märchen-Sammlung von L. Bechstein; texts reviewed by Hans Fraungruber; images by Karl Fahringer; Project Gutenberg #23787.",
+    "provenance": "Downloaded from the official Gutenberg plain-text URL on 2026-10-01; only the Gutenberg wrapper/production credit was removed."
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "source-quality inspectText and identity/source-fidelity check",
+    "reviewedAt": "2026-10-01",
+    "coversSourceSha256": "6d767b03850a541fd06d355b45a990610deb4fdb12398c124a07990ae6103d30",
+    "qualityVerdict": "usable",
+    "qualityFlags": [
+      {"code": "hard-wrapped-lines", "severity": "warning", "count": 1219},
+      {"code": "footnote-markers", "severity": "info", "count": 1},
+      {"code": "duplicated-paragraphs", "severity": "warning", "count": 1},
+      {"code": "no-chapters-found", "severity": "info", "count": 1}
+    ],
+    "notes": "No OCR-confusion or control-character serious flag. One duplicate-paragraph warning remains recorded; no canonical repair was made. No native-speaker review is claimed."
+  }
+}
+

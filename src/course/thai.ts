@@ -3,13 +3,16 @@
  *
  * Source of the ladder: the course owner's specification (docs/THAI_COURSE.md). Titles are as given there.
  *
- * RIGHTS: nothing in this file has been checked against a catalogue, a publisher or a lawyer. Every work is
- * therefore `canBundle: false`, `userImportOnly: true`, `verified: false`. Where an author is named it is
+ * RIGHTS: catalogue works remain unverified unless their own record says otherwise. The Biblica Open Thai Common
+ * Version Scripture record below is the one verified release exception. Where an author is named it is
  * from general knowledge and still `bibliographyVerified: false`; where I was not sure, the author is left out
  * rather than guessed. A stated `basis` is a lead for verification, never a conclusion.
  */
-import type { AssistanceProfile, HelpLayer, RegisterTag, Stage, Work, WorkRights, WorkRole } from '../core';
+import type { AssistanceProfile, HelpLayer, RegisterTag, Stage, Stream, Work, WorkRights, WorkRole } from '../core';
 import { ids } from '../core';
+import { readingBridgeWorks } from './readingBridges';
+import { THAI_BEGINNER_DRAFT_WORKS } from './thaiBeginnerDrafts';
+import THAI_LITERATURE_WORKS from './thai-literature-works.json';
 
 export const THAI_COURSE_ID = 'thailand-th';
 const LANG = 'th' as const;
@@ -53,6 +56,20 @@ export const THAI_STAGES: Stage[] = [
   stage(10, 'open', 'Open reading', 'open', ['native Thai reading recommended from the learner model, no grade numbers']),
 ];
 
+const stream = (order: number, key: string, kind: Stream['kind'], label: string, description: string, available = true): Stream => ({
+  id: ids.stream(THAI_COURSE_ID, key), courseId: THAI_COURSE_ID, lang: LANG, key, label, description, kind, order, available,
+});
+
+/** Thai surfaces; Scripture is populated by the verified OTCV2025 lazy library. */
+export const THAI_STREAMS: Stream[] = [
+  stream(0, 'acquisition', 'acquisition', 'First Thai Reading', 'Controlled Thai reading from script decoding into native children’s texts.'),
+  stream(1, 'library', 'library', 'Thai Library', 'Children’s literature, stories, nonfiction and adult reading.'),
+  stream(2, 'scripture', 'scripture', 'Bible', 'Scripture read directly in Thai, with English only as rescue.'),
+  stream(3, 'mission', 'mission', 'Mission', 'Thai for testimony, prayer, church and ordinary ministry conversation.'),
+  stream(4, 'personal', 'personal', 'Your Books', 'Your own lawful Thai books on this device.'),
+  stream(5, 'listening', 'listening', 'Listen', 'Audio attached to texts when rights-clear recordings exist.', false),
+];
+
 // ───────────────────────────── works ─────────────────────────────
 
 const UNKNOWN_RIGHTS: WorkRights = {
@@ -75,7 +92,25 @@ const MOE = modern('Thai Ministry of Education primary reader series (used in sc
 const OBEC = lead('OBEC (สพฐ.) supplementary reader; distribution terms of the specific edition are not known.');
 const TRADITIONAL = lead('Traditional / pre-20th-century text; modern school editions, annotations and retellings may be protected. Verify the exact edition.');
 
+/** Exact bundled Scripture edition used by the lazy Thai library. */
+export const THAI_OTCV_RIGHTS: WorkRights = {
+  state: 'verified-open-licence', copyrightStatus: 'licensed', permission: 'not-needed', canBundle: true, userImportOnly: false,
+  canModify: true, canStoreOffline: true, canBundleAudio: false, audiobook: 'none', verified: true,
+  verifiedBy: 'Open.Bible metadata.xml and USX/USFM release comparison', verifiedAt: '2026-10-01',
+  basis: 'Official Biblica Open Thai Common Version 2025 release metadata identifies CC BY-SA 4.0 and Biblica, Inc.; release a62f327aa0179709-rev2.',
+  sourceRepository: 'open.bible', jurisdictions: ['*'], licence: 'CC BY-SA 4.0 (promoVersionInfo in metadata.xml)', attributionRequired: true, shareAlike: true,
+  modifications: 'USX apparatus (headings, footnotes and cross-references) omitted; verse wording compared against independent USFM.',
+  retrievedAt: '2026-10-01', proofreading: 'Publisher USX/USFM release cross-comparison',
+  checksum: '08e5779a6d40117f97c596601c60cadd704b7a05365c96f04909cfb91783e137',
+  evidence: ['metadata.xml: rightsHolder Biblica, Inc.; promoVersionInfo: CC BY-SA 4.0.', 'Release id a62f327aa0179709-rev2; USX and independent USFM matched across 66 books.'],
+  compliance: 'Attribution and licence are retained in source metadata; derivative title rules are followed.',
+  statusByJurisdiction: { '*': 'licensed' }, commercialUse: true,
+};
+
 export const THAI_WORKS: Work[] = [
+  ...THAI_BEGINNER_DRAFT_WORKS,
+  ...readingBridgeWorks('th'),
+  ...(THAI_LITERATURE_WORKS as unknown as Work[]),
   // ── Stage 0 ──
   ...works('0', [
     { slug: 'an-an-an', title: 'อ่าน อาน อ๊าน — ระดับ 1–4', role: 'spine', purpose: ['script acquisition', 'decoding into reading', 'first frequent vocabulary'], rights: lead('Leveled reader series (about twenty very short books). Publisher and licence terms not checked.'), notes: 'Use the full available leveled series.' },
@@ -173,15 +208,21 @@ export const THAI_WORKS: Work[] = [
     { slug: 'audio-the-active', title: 'The Active Podcast', role: 'audio' },
     { slug: 'audio-back-to-basics', title: 'Back To Basics', role: 'audio' },
   ]),
+  {
+    id: ids.work(THAI_COURSE_ID, 'bible-thai-otcv2025'), courseId: THAI_COURSE_ID, lang: LANG, stageId: ids.stage(THAI_COURSE_ID, 'open'),
+    role: 'scripture', order: order++, title: 'Biblica® Open Thai Common Version 2025', publisher: 'Biblica, Inc.', edition: 'Open Thai Common Version 2025',
+    purpose: ['continuous Thai Scripture reading'], streams: ['scripture'], rights: THAI_OTCV_RIGHTS, bibliographyVerified: true,
+    source: 'https://api.open.bible/artifactContent/2477bade-c5d4-4dc4-8a53-5cad848549db', sourceUrl: 'https://open.bible/bibles/biblica-open-thai-common-version-2025',
+    ingestion: 'ingested', readiness: 'implemented', pipeline: { acquisition: 'retrieved', parsing: 'parsed', proofreading: 'twice' }, optional: false,
+  },
 ];
 
 /** Texts that never belong to the ladder: Scripture is its own continuous corpus, available from the beginning. */
 export const THAI_OUTSIDE_LADDER = ['scripture', 'testimony'] as const;
 
 /**
- * Scripture for the Thai course, as policy data (the course owner's decision of 2026-10-01). Nothing here is bundled,
- * and nothing here unblocks Thai Scripture: the Scripture gate (identified translation, verified wording, established
- * rights) applies unchanged.
+ * Scripture for the Thai course. THSV11 remains declined; the Biblica release is verified from its immutable release
+ * metadata and independently compared USX/USFM files.
  */
 export const THAI_SCRIPTURE_POLICY = {
   /**
@@ -195,14 +236,14 @@ export const THAI_SCRIPTURE_POLICY = {
     status: 'permission-declined', canBundleText: false, canBundleAudio: false, externalLinkOnly: true,
   },
   /**
-   * The replacement named in the course owner's reference. NOT adopted and NOT ingested: the licence is as stated by
-   * the publisher's notice and still has to be verified from the metadata of the exact release that is downloaded
-   * (translation id + immutable release id), with attribution and ShareAlike handling in place, before any text enters
-   * the app. English rescue stays the public-domain World English Bible.
+   * The approved replacement. The release metadata names Biblica, Inc., immutable id a62f327aa0179709 revision 2,
+   * and CC BY-SA 4.0 with attribution, unchanged-copy and derivative-work conditions.
    */
   candidate: {
     name: 'Biblica Open Thai Common Version 2025', publisher: 'Biblica', statedLicence: 'CC BY-SA 4.0',
-    status: 'candidate-unverified', releaseId: undefined as string | undefined, canBundleText: false, canBundleAudio: false,
+    status: 'verified-open-licence', releaseId: 'a62f327aa0179709-rev2', canBundleText: true, canBundleAudio: false,
+    rightsHolder: 'Biblica, Inc.', metadata: 'data/sources/th/usx-full/metadata.xml', verifiedAt: '2026-10-01',
+    canModify: true, canStoreOffline: true,
   },
   /**
    * May be used ONLY as an explicitly labelled technical fixture for testing the Scripture pipeline: it is a draft
@@ -216,3 +257,11 @@ export const THAI_SCRIPTURE_POLICY = {
 
 /** Audio rights are independent of text rights: a recording is attached only with its own rights and provenance on record. */
 export const THAI_AUDIO_POLICY = { bundledRecordings: 'none', requires: ['explicit rights for the recording', 'provenance of the recording'] } as const;
+
+export const THAI_DOORS = [
+  { key: 'stages', label: 'Stages 0–9', stages: ['0', 'g1', 'g2', 'g3', 'g4', 'g5', 'g6', 'g7', 'g8', 'g9'] },
+  { key: 'library', label: 'Thai Library', stream: 'library' },
+  { key: 'bible', label: 'Bible', stream: 'scripture' },
+  { key: 'your-books', label: 'Your Books', stream: 'personal' },
+  { key: 'open-reading', label: 'Open Reading', stages: ['open'] },
+] as const;

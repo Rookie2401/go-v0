@@ -1,0 +1,57 @@
+{
+  "slug": "premchand-panch-parmeshwar",
+  "title": "पंच परमेश्वर",
+  "author": "प्रेमचंद",
+  "stage": "c5",
+  "streams": [
+    "literature"
+  ],
+  "contentType": "story",
+  "source": {
+    "file": "premchand-panch-parmeshwar.txt",
+    "kind": "plain",
+    "url": "https://hi.wikisource.org/wiki/सप्तसरोज/पंच_परमेश्वर",
+    "edition": "सप्तसरोज, हिन्दी पुस्तक एजेंसी, काशी, 1938 (sixteenth)",
+    "attribution": "पंच परमेश्वर — प्रेमचंद; scan-backed Hindi Wikisource transcription; CC BY-SA 4.0 transcription credit.",
+    "provenance": "Official page revision 516643; index revision 516629; source edition and original-work evidence retained in source-research.json."
+  },
+  "rights": {
+    "state": "verified-public-domain",
+    "copyrightStatus": "public-domain",
+    "permission": "not-needed",
+    "canBundle": true,
+    "verified": true,
+    "verifiedBy": "Hindi Wikisource edition page and PD India/PD US source record",
+    "verifiedAt": "2026-10-02",
+    "basis": "The book page labels the work सप्तसरोज (1917), prints the first-edition preface dated 8 June 1917, and lists पंच परमेश्वर in the contents. The page explicitly records PD India and PD US status.",
+    "statusByJurisdiction": {
+      "US": "public-domain",
+      "IN": "public-domain"
+    },
+    "license": "CC BY-SA 4.0 (Wikisource transcription; underlying 1917 work PD in US/India)",
+    "attributionRequired": true,
+    "shareAlike": true,
+    "commercialUse": true,
+    "compliance": "Retain author, edition, source URL, Wikisource attribution and CC BY-SA 4.0 link; indicate changes.",
+    "evidence": [
+      "https://hi.wikisource.org/wiki/सप्तसरोज/पंच_परमेश्वर",
+      "https://hi.wikisource.org/wiki/विषयसूची:सप्तसरोज.djvu",
+      "https://creativecommons.org/licenses/by-sa/4.0/deed.hi"
+    ],
+    "userImportOnly": false,
+    "canModify": false,
+    "canStoreOffline": true,
+    "canBundleAudio": false,
+    "audiobook": "unknown"
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "Hindi bridge source-fidelity check",
+    "reviewedAt": "2026-10-02",
+    "coversSourceSha256": "96d5c51fc33c135563654697734be39d9ce47a8aeb9bdb7577a50b5b52b707eb",
+    "qualityVerdict": "usable",
+    "notes": "Complete story body extracted from the official parsed page; navigation, licence footer, printed page numbers, and repeated transclusion tail excluded. No native-speaker quality claim."
+  },
+  "contentSignature": "4e80e84c491f0b4d7eda74b063bd75f9ea0129ed7c9ca080227d0c172b2b11ed",
+  "wordCount": 4212
+}

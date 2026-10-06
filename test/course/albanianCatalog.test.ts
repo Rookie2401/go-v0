@@ -1,7 +1,7 @@
 /** The Albanian manifest: stages that never lock, streams and doors that agree, and rights that claim nothing they cannot prove. */
 import { describe, expect, it } from 'vitest';
 import { ids } from '../../src/core';
-import { BUNDLABLE_WORK_STATES } from '../../src/ingest/rights';
+import { readingBridgeWorks } from '../../src/course/readingBridges';
 import {
   ALBANIAN_CORPUS_TARGETS, ALBANIAN_COURSE_ID, ALBANIAN_DOORS, ALBANIAN_SCRIPTURE_POLICY, ALBANIAN_STAGES, ALBANIAN_STREAMS, ALBANIAN_VARIETY_POLICY, ALBANIAN_WORKS,
 } from '../../src/course/albanian';
@@ -81,6 +81,24 @@ describe('streams and doors', () => {
 });
 
 describe('works', () => {
+  it.each(['de', 'es', 'hi', 'sq', 'th'] as const)('normalizes %s acquired bridge records to the required Work shape', (lang) => {
+    for (const work of readingBridgeWorks(lang)) {
+      expect(work.lang, work.id).toBe(lang);
+      expect(work.id.startsWith(`work:${work.courseId}:`), work.id).toBe(true);
+      expect(work.role, work.id).toBeTruthy();
+      expect(Number.isFinite(work.order), work.id).toBe(true);
+      expect(work.title, work.id).toBeTruthy();
+      expect(Array.isArray(work.purpose), work.id).toBe(true);
+      expect(typeof work.bibliographyVerified, work.id).toBe('boolean');
+      expect(work.rights.copyrightStatus, work.id).toBeTruthy();
+      expect(work.rights.permission, work.id).toBeTruthy();
+      expect(typeof work.rights.canBundle, work.id).toBe('boolean');
+      expect(typeof work.rights.userImportOnly, work.id).toBe('boolean');
+      expect(work.rights.audiobook, work.id).toBeTruthy();
+      expect(typeof work.rights.verified, work.id).toBe('boolean');
+    }
+  });
+
   it('between 25 and 40 works, unique ids, every stage exists, ids derived from slugs', () => {
     expect(ALBANIAN_WORKS.length).toBeGreaterThanOrEqual(25);
     expect(ALBANIAN_WORKS.length).toBeLessThanOrEqual(40);
@@ -95,8 +113,8 @@ describe('works', () => {
     }
   });
 
-  it('the three course-authored seed works are exactly the bundlable ones, in the right places', () => {
-    const bundlable = ALBANIAN_WORKS.filter((w) => BUNDLABLE_WORK_STATES.includes(w.rights.state ?? ''));
+  it('keeps the three course-authored seed works in their controlled stages', () => {
+    const bundlable = ALBANIAN_WORKS.filter((w) => w.rights.state === 'course-authored');
     expect(bundlable.map((w) => w.id.split(':')[2]).sort()).toEqual(['misioni-1', 'udha-0', 'udha-1']);
     expect(bundlable.every((w) => w.rights.state === 'course-authored' && w.rights.canBundle)).toBe(true);
     const by = (slug: string) => ALBANIAN_WORKS.find((w) => w.id === ids.work(C, slug))!;
@@ -115,11 +133,12 @@ describe('works', () => {
     }
   });
 
-  it('no external work claims to be verified, names a verifier, or sits in a verified-* state', () => {
+  it('keeps unverified external candidates separate from the exact licensed modern collection', () => {
+    const approvedExternal = new Set([ids.work(C, 'sq-modern-open'), ids.work(C, 'sq-modern-gap-readings'), ...ALBANIAN_WORKS.filter(w => w.id.includes(':gv-')).map(w => w.id)]);
     for (const w of ALBANIAN_WORKS) {
       const r = w.rights;
       const course = r.state === 'course-authored';
-      if (course) continue;
+      if (course || approvedExternal.has(w.id)) continue;
       expect(r.verified).toBe(false);
       expect(r.verifiedBy).toBeUndefined();
       expect(r.verifiedAt).toBeUndefined();
@@ -134,11 +153,16 @@ describe('works', () => {
       expect(r.checksum).toBeUndefined();
       expect(r.statusByJurisdiction === undefined || Object.values(r.statusByJurisdiction).every((v) => v === 'unknown')).toBe(true);
     }
-    expect(ALBANIAN_WORKS.some((w) => w.rights.state?.startsWith('verified-'))).toBe(false);
+    const open = ALBANIAN_WORKS.filter((w) => w.rights.state?.startsWith('verified-'));
+    expect(open.map((w) => w.id).sort()).toEqual([...approvedExternal].sort());
+    for (const w of open) expect(w.rights).toMatchObject({ state: 'verified-open-licence', licensing: w.id.includes(':gv-') ? 'CC BY 3.0' : 'CC BY-SA 4.0', verified: true });
+    expect(open.find((w) => w.id === ids.work(C, 'sq-modern-open'))?.rights).toMatchObject({ attributionRequired: true, shareAlike: true });
+    expect(open.find((w) => w.id === ids.work(C, 'sq-modern-open'))?.streams).toEqual(['library']);
+    expect(open.find((w) => w.id === ids.work(C, 'sq-modern-gap-readings'))?.streams).toEqual(['library']);
   });
 
   it('the states used are the expected ones, and a modern book is the learner\'s own copy only', () => {
-    const allowed = new Set(['course-authored', 'rights-unverified', 'prohibited-from-bundling']);
+    const allowed = new Set(['course-authored', 'rights-unverified', 'prohibited-from-bundling', 'verified-open-licence']);
     for (const w of ALBANIAN_WORKS) expect(allowed.has(w.rights.state!)).toBe(true);
     for (const w of ALBANIAN_WORKS.filter((x) => x.rights.state === 'prohibited-from-bundling')) {
       expect(w.rights.userImportOnly).toBe(true);

@@ -1,0 +1,44 @@
+{
+  "title": "कबाड़ी वाला",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%ac%e0%a4%be%e0%a5%9c%e0%a5%80-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-2/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Sridala Swami",
+    "Illustrator: Suvidha Mistry",
+    "Translator: Manisha Chaudhry",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: कबाड़ी वाला is translated by Manisha Chaudhry . The © for this translation lies with Pratham Books, 2009. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' Cheenu's Gift ' , by Sridala Swami . © Pratham Books , 2009. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This book has been published on StoryWeaver by Pratham Books. Pratham Books is a not-for-profit organization that publishes books in multiple Indian languages to promote reading among children. www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Boy carrying newspapers , by Suvidha Mistry © Pratham Books, 2009. Some rights reserved. Released under CC BY 4.0 license. Page 2: Boy looking out of a classroom window , by Suvidha Mistry © Pratham Books, 2009. Some rights reserved. Released under CC BY 4.0 license. Page 3: Surprised boy , by Suvidha Mistry © Pratham Books, 2009. Some rights reserved. Released under CC BY 4.0 license. Page 4: A busy street , by Suvidha Mistry © Pratham Books, 2009. Some rights reserved. Released under CC BY 4.0 license. Page 5: Father picking up son from school , by Suvidha Mistry © Pratham Books, 2009. Some rights reserved. Released under CC BY 4.0 license. Page 6: Push-cart on a busy street , by Suvidha Mistry © Pratham Books, 2009. Some rights reserved. Released under CC BY 4.0 license. Page 7: Boy helping father carry newspapers , by Suvidha Mistry © Pratham Books, 2009. Some rights reserved. Released under CC BY 4.0 license. Page 8: Boy in an elevator , by Suvidha Mistry © Pratham Books, 2009. Some rights reserved. Released under CC BY 4.0 license. Page 9: Boy playing with boxes and man packing , by Suvidha Mistry © Pratham Books, 2009. Some rights reserved. Released under CC BY 4.0 license. Page 10: Man and woman in conversation while boy looks through the sack's contents , by Suvidha Mistry © Pratham Books, 2009. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Illustration Attributions:",
+    "Page 11: Boy helping man push the cart , by Suvidha Mistry © Pratham Books, 2009. Some rights reserved. Released under CC BY 4.0 license. Page 12: Boy reading as parents eat , by Suvidha Mistry © Pratham Books, 2009. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "कबाड़ी वाला (Hindi)",
+    "चीनू को अपने पिताजी का हाथ बँटाना अच्छा लगता है। वे कबाड़ी वाले का काम करते हैं और उन्हें बहुत किस्म का सामान मिलता है। कभी-कभी यह चीनू के बहुत काम आता है।",
+    "यह पठन स्तर २ की किताब है, उन बच्चों के लिए जो सरल शब्द पढ़ लेते हैं और थोड़ी मदद से नए शब्द भी पढ़ सकते हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "bd71c150993ac5785d0a7c2f13a3b6b3e21da956711a8fe8f58b7a2ed67c43dd"
+}

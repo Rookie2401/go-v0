@@ -67,7 +67,7 @@ export function bundledDoc(lang: LanguageCode, id: string): CorpusDocument {
  */
 export function syntheticallyReviewed(doc: CorpusDocument): CorpusDocument {
   // The real review function: it records who reviewed and WHICH wording the review covers (content signature).
-  const r = applyReview(doc, { by: 'integration test (synthetic review, not a native-speaker review)', status: 'reviewed', date: '2026-10-01' });
+  const r = applyReview(doc, { by: 'integration test (synthetic review, not a native-speaker review)', status: 'reviewed', level: 'native', date: '2026-10-01' });
   if (!r.ok) throw new Error('synthetic review refused: ' + JSON.stringify(r.refusals));
   return r.doc as CorpusDocument;
 }

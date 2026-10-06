@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "lang": "th",
+  "entries": [
+    {
+      "slug": "th-gap-recovery-aesop",
+      "title": "นิทานอีสป — นิทาน 45 เรื่อง",
+      "courseId": "thailand-th",
+      "stage": "g1",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "variety": "central-thai",
+      "genre": "fable",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Thai Wikisource root rights record",
+        "verifiedAt": "2026-10-02",
+        "basis": "The Thai Wikisource root page for นิทานอีสป explicitly records the underlying 2499 work as public domain under sections 19–20 of the Thai Copyright Act B.E. 2537. This verification is limited to Thailand; no worldwide or United States clearance is claimed. The cached Wikisource transcription remains attributed under CC BY-SA 4.0.",
+        "licensing": "Public domain in Thailand for the underlying work; CC BY-SA 4.0 transcription attribution",
+        "jurisdictions": [
+          "TH"
+        ],
+        "statusByJurisdiction": {
+          "TH": "public-domain"
+        },
+        "attributionRequired": true,
+        "canStoreOffline": true,
+        "evidence": [
+          "https://th.wikisource.org/wiki/นิทานอีสป",
+          "https://th.wikisource.org/wiki/นิทานอีสป/คำชี้แจงของผู้แต่ง",
+          "https://th.wikisource.org/wiki/Wikisource:Copyright_policy"
+        ]
+      },
+      "source": {
+        "file": "documents.json",
+        "kind": "documents",
+        "url": "https://th.wikisource.org/wiki/%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%B2%E0%B8%99%E0%B8%AD%E0%B8%B5%E0%B8%AA%E0%B8%9B%2F%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%B2%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%201",
+        "edition": "นิทานอีสป, 2499 funeral reprint; Wikisource revisions checked 2026-10-02",
+        "attribution": "Per-document attribution is retained in documents.json.",
+        "provenance": "Exact source revisions cached under raw/; no translation, modernization, or generated text."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "6f86e07bec7332b04e7c960701041c4c71af95d72dd0536a9ea381fa6d054dd9",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification."
+      }
+    }
+  ]
+}

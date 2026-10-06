@@ -7,7 +7,7 @@
  * stages the route goes home.
  */
 import { useMemo } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import type { Stage, Text, Work } from '../../core';
 import { useApp } from '../context';
 import { useReadingProgress } from '../coverage';
@@ -52,9 +52,10 @@ export function CoursePage() {
       {bar}
       <div className="page page--narrow route-fade course">
         <p className="course__intro">
-          A path of real {languageName(course)} books, from the first steps in reading to open reading. The books are recommendations:
-          Go does not supply them. You read each one from a copy of your own, and it stays on this device.
+          A catalogue of {languageName(course)} reading, from first steps to open reading. Some texts are supplied under verified rights;
+          other books are recommendations that require your own lawful copy.
         </p>
+        <p className="card__note"><Link to="/curriculum">Reading path</Link> shows which stages have published material and which still have gaps.</p>
         <StageStatus stages={ladder.stages} current={current} onChange={(id) => { void choose(id); }} />
         <div className="course__stages">
           {ladder.stages.map((s) => (

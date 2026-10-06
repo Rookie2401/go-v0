@@ -121,7 +121,7 @@ describe('source finder', () => {
     await seedBasics(store);
     const gl = new FakeGoLearn(store);
     await buildFixtureText(store, { lang: 'es', slug: 's1', title: 'Story 1', sentences: [{ tokens: [{ surface: 'Yo' }, { surface: 'creo' }] }, { tokens: [{ surface: 'Creo' }, { surface: 'mucho' }] }] });
-    await buildFixtureText(store, { lang: 'es', slug: 't1', title: 'Mine', kind: 'testimony', sentences: [{ tokens: [{ surface: 'creo' }] }] });
+    await buildFixtureText(store, { lang: 'es', slug: 't1', title: 'Mine', kind: 'testimony', corpusId: 'testimony:A', sentences: [{ tokens: [{ surface: 'creo' }] }] });
     const item = 'form:es:creo';
     await gl.encounter('A', 'es', item, 'text:es:t1/s0', 'text:es:t1', 'testimony');
     await gl.encounter('A', 'es', item, 'text:es:s1/s0', 'text:es:s1', 'corpus');
@@ -136,5 +136,25 @@ describe('source finder', () => {
     expect(three[2].surface).toBe('testimony');
     expect(await finder.forItem('C', item)).toEqual([]);
     expect(mergeSources([two, three]).map((s) => s.sentenceId)).toHaveLength(3);
+  });
+
+  it('does not expose a story mislabeled into a private testimony corpus or retired wording', async () => {
+    const { createMemoryStore, seedBasics, buildFixtureText } = await import('../../src/core');
+    const store = createMemoryStore();
+    await seedBasics(store);
+    await store.corpora.put({ id: 'private:A', lang: 'es', kind: 'testimony', title: 'Private' });
+    const text = await buildFixtureText(store, { lang: 'es', slug: 'private-story', kind: 'story', corpusId: 'private:A', sentences: [
+      { tokens: [{ surface: 'creo' }] },
+    ] });
+    const gl = new FakeGoLearn(store);
+    const item = 'form:es:creo';
+    await gl.encounter('A', 'es', item, `${text.id}/s0`, text.id, 'corpus');
+    expect(await createSourceFinder(store).forItem('A', item)).toEqual([]);
+
+    const publicText = await buildFixtureText(store, { lang: 'es', slug: 'retired-source', sentences: [{ tokens: [{ surface: 'creo' }] }] });
+    await gl.encounter('A', 'es', item, `${publicText.id}/s0`, publicText.id, 'corpus');
+    const row = (await store.sentences.get(`${publicText.id}/s0`))!;
+    await store.sentences.put({ ...row, retiredInVersion: 2 });
+    expect((await createSourceFinder(store).forItem('A', item)).map((source) => source.textId)).not.toContain(publicText.id);
   });
 });

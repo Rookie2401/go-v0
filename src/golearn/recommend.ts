@@ -115,7 +115,9 @@ export async function recommend(
   const langName = (await ctx.store.languages.get(lang))?.name ?? lang;
 
   // Protected listening-assessment material is never recommended, nor counted as something the learner could read.
-  const texts = (await ctx.store.texts.where('lang', lang)).filter((t) => t.listeningAssessmentId === undefined).sort((a, b) => (a.id < b.id ? -1 : 1));
+  const privateCorpusIds = new Set((await ctx.store.corpora.where('kind', 'testimony')).map((c) => c.id));
+  const texts = (await ctx.store.texts.where('lang', lang)).filter((t) => t.listeningAssessmentId === undefined && t.readingAssessmentId === undefined
+    && t.kind !== 'testimony' && !privateCorpusIds.has(t.corpusId)).sort((a, b) => (a.id < b.id ? -1 : 1));
   const visible = (t: Text) => includeUnpublished || t.published;
   // never offered as reading: a draft the ladder absorbed (`superseded-by-ladder`), and a work's front matter / preface
   const notOffered = new Set(texts.filter((t) => isSuperseded(t) || isFrontMatterText(t)).map((t) => t.id));
@@ -316,7 +318,7 @@ export async function recommend(
 
   if (opts?.targetTextId) {
     const target = await ctx.store.texts.get(opts.targetTextId);
-    if (target && target.listeningAssessmentId === undefined && visible(target)) {
+    if (target && target.listeningAssessmentId === undefined && target.readingAssessmentId === undefined && visible(target)) {
       const cov = (await analyzeText(ctx, userId, target.id)).coverage;
       if (cov.band !== 'comfortable') {
         const ready = await scriptureReadiness(ctx, userId, target.id, undefined, { includeUnpublished });

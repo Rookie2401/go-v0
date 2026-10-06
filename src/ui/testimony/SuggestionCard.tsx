@@ -4,8 +4,9 @@
  * (provenance: "encountered N times in …"), and accept / reject / edit.
  */
 import { useState } from 'react';
-import type { GoTellSuggestion, LanguageCode, SuggestionKind } from '../../core';
-import { itemSurface, splitCoverage } from '../format';
+import { Link } from 'react-router-dom';
+import type { GoTellSuggestion, LanguageCode, SuggestionKind, Text } from '../../core';
+import { isTestimonyText, itemSurface, splitCoverage, textPath } from '../format';
 
 export const KIND_LABEL: Record<SuggestionKind, string> = {
   repair: 'Correction',
@@ -18,12 +19,14 @@ export interface SuggestionCardProps {
   lang: LanguageCode;
   /** textId → title, for provenance lines. */
   titles: Map<string, string>;
+  /** Loaded source rows allow links only to currently readable material. */
+  sourceTexts: Map<string, Text>;
   onAccept(s: GoTellSuggestion): void;
   onReject(s: GoTellSuggestion): void;
   onEdit(s: GoTellSuggestion, finalText: string): void;
 }
 
-export function SuggestionCard({ suggestion: s, lang, titles, onAccept, onReject, onEdit }: SuggestionCardProps) {
+export function SuggestionCard({ suggestion: s, lang, titles, sourceTexts, onAccept, onReject, onEdit }: SuggestionCardProps) {
   const [editing, setEditing] = useState(false);
   const [text, setText] = useState(s.suggested);
   const open = s.status === 'shown';
@@ -62,7 +65,14 @@ export function SuggestionCard({ suggestion: s, lang, titles, onAccept, onReject
         <ul className="sugg-sources card__prov" aria-label="Where you met this wording">
           {s.sources.map((src) => (
             <li key={`${src.sentenceId}|${src.itemId}`}>
-              <span className="faint">{src.textTitle}:</span> <span lang={lang} className="literal">{src.excerpt}</span>
+              {(() => {
+                const source = sourceTexts.get(src.textId);
+                const readable = source && source.lang === lang && source.published === true
+                  && source.listeningAssessmentId === undefined && source.readingAssessmentId === undefined && !isTestimonyText(source);
+                return readable
+                  ? <><Link className="faint" to={textPath(source)}>{source.title}</Link>: <span lang={lang} className="literal">{src.excerpt}</span></>
+                  : <span className="faint">Source no longer available.</span>;
+              })()}
             </li>
           ))}
         </ul>
@@ -73,7 +83,8 @@ export function SuggestionCard({ suggestion: s, lang, titles, onAccept, onReject
       {s.familiar.length > 0 && (
         <ul className="sugg-prov card__prov" aria-label="Where this language comes from">
           {s.familiar.map((f) => {
-            const where = f.textIds.map((id) => titles.get(id) ?? id).slice(0, 3).join(', ');
+            const where = f.textIds.map((id) => titles.get(id)).filter((title): title is string => !!title).slice(0, 3).join(', ');
+            if (where === '') return null;
             return (
               <li key={f.itemId}>
                 <span lang={lang}>{itemSurface(f.itemId)}</span>

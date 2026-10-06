@@ -1,0 +1,24 @@
+{
+  "slug": "bible-hindi",
+  "title": "बाइबल (हिंदी) — इंडियन रिवाइज्ड वर्जन 2019",
+  "courseId": "india-hi",
+  "stream": "scripture",
+  "domains": ["scripture", "theology"],
+  "contentType": "scripture",
+  "rights": {
+    "state": "verified-open-licence",
+    "verifiedBy": "eBible.org copyright page and approved publisher USFM archive review",
+    "verifiedAt": "2026-10-02",
+    "basis": "IRV Hindi 2019, copyright © 2017, 2018, 2019 Bridge Connectivity Solutions, CC BY-SA 4.0; worldwide licence stated by the distributor",
+    "statusByJurisdiction": { "*": "licensed" },
+    "canBundle": true
+  },
+  "source": {
+    "file": "irv2019-library-documents.json",
+    "kind": "documents",
+    "url": "https://ebible.org/Scriptures/hin2017_usfm.zip",
+    "edition": "IRV Hindi 2019",
+    "attribution": "इंडियन रिवाइज्ड वर्जन (IRV) हिंदी - 2019 — copyright © 2017, 2018, 2019 Bridge Connectivity Solutions; Creative Commons Attribution Share-Alike 4.0 (CC BY-SA 4.0); from eBible.org (hin2017)",
+    "provenance": "Publisher USFM archive hin2017_usfm.zip, imported by scripts/build-hi-scripture-full.mjs. Footnotes, headings and cross references are omitted as apparatus; verse wording is retained. The source archive is independently checked by scripts/verify-hi-usfm.mjs."
+  }
+}

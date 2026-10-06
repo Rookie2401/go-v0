@@ -1,0 +1,376 @@
+{
+  "retrievedAt": "2026-10-01",
+  "api": "https://hi.wikisource.org/w/api.php?action=query&format=json&list=search&srnamespace=0&srlimit=3&srsearch=",
+  "items": [
+    {
+      "slug": "pehli-kahaniyan-0a",
+      "title": "पहली कहानियाँ 0A — घर में",
+      "line": "{ slug: 'pehli-kahaniyan-0a', title: 'पहली कहानियाँ 0A — घर में', role: 'spine', streams: ['acquisition'], level: 'controlled', genre: 'microstories', rights: COURSE, ingestion: 'bundled', readiness: 'implemented',",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "pehli-kahaniyan-0b",
+      "title": "पहली कहानियाँ 0B — दिन भर",
+      "line": "{ slug: 'pehli-kahaniyan-0b', title: 'पहली कहानियाँ 0B — दिन भर', role: 'spine', streams: ['acquisition'], level: 'controlled', genre: 'short narrative', rights: COURSE, ingestion: 'bundled', readiness: 'implemented',",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "pehli-kahaniyan-0c",
+      "title": "पहली कहानियाँ 0C — कल की बातें",
+      "line": "{ slug: 'pehli-kahaniyan-0c', title: 'पहली कहानियाँ 0C — कल की बातें', role: 'spine', streams: ['acquisition'], level: 'controlled', genre: 'narrative', rights: COURSE, ingestion: 'bundled', readiness: 'implemented',",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "gdl-hindi-ccby",
+      "title": "Global Digital Library — Hindi CC BY 4.0 books",
+      "line": "{ slug: 'gdl-hindi-ccby', title: 'Global Digital Library — Hindi CC BY 4.0 books', role: 'extensive', streams: ['children'], publisher: 'Global Digital Library', audience: 'children', genre: 'illustrated story collection', purpose: ['native Hindi children’s reading from individually licensed books'], rights: GDL_HINDI,",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "storyweaver",
+      "title": "StoryWeaver (Pratham Books) — Hindi stories",
+      "line": "{ slug: 'storyweaver', title: 'StoryWeaver (Pratham Books) — Hindi stories', role: 'extensive', streams: ['children'], publisher: 'Pratham Books', audience: 'children', genre: 'illustrated story collection', purpose: ['native children\\'s stories across the first classes'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "panchatantra",
+      "title": "पंचतंत्र की कहानियाँ",
+      "line": "{ slug: 'panchatantra', title: 'पंचतंत्र की कहानियाँ', role: 'extensive', streams: ['children'], audience: 'children', genre: 'fables', era: 'ancient tales, many retellings',",
+      "wikisourceSearch": [
+        {
+          "title": "पंचतन्त्र",
+          "pageid": 155826
+        },
+        {
+          "title": "पंचतन्त्र/चतुर्थ तन्त्र",
+          "pageid": 176335
+        },
+        {
+          "title": "पंचतन्त्र/तृतीय तन्त्र",
+          "pageid": 176334
+        }
+      ],
+      "assessment": "primary-page-lead-needs-exact-scan-and-licence-check"
+    },
+    {
+      "slug": "chauhan-jhansi-ki-rani",
+      "title": "झाँसी की रानी",
+      "line": "{ slug: 'chauhan-jhansi-ki-rani', title: 'झाँसी की रानी', author: 'सुभद्रा कुमारी चौहान', died: 1948, era: 'early 20th century', genre: 'poem', audience: 'children', streams: ['children', 'literature'], registers: ['literary'], domains: ['history'] },",
+      "wikisourceSearch": [
+        {
+          "title": "धर्म के नाम पर/7 अपराध",
+          "pageid": 152669
+        },
+        {
+          "title": "इतिहास तिमिरनाशक 2/लार्ड डलहौसी",
+          "pageid": 152709
+        },
+        {
+          "title": "मानसरोवर २/२० नेउर",
+          "pageid": 153607
+        }
+      ],
+      "assessment": "primary-page-lead-needs-exact-scan-and-licence-check"
+    },
+    {
+      "slug": "chauhan-mukul",
+      "title": "मुकुल",
+      "line": "{ slug: 'chauhan-mukul', title: 'मुकुल', author: 'सुभद्रा कुमारी चौहान', died: 1948, era: 'early 20th century', genre: 'poems', registers: ['literary'], streams: ['literature'] },",
+      "wikisourceSearch": [
+        {
+          "title": "एक घूँट",
+          "pageid": 117043
+        },
+        {
+          "title": "रहीम-कवितावली/मदनाष्टक",
+          "pageid": 193366
+        },
+        {
+          "title": "चन्द्रगुप्त मौर्य्य/चतुर्थ अंक/९",
+          "pageid": 156304
+        }
+      ],
+      "assessment": "primary-page-lead-needs-exact-scan-and-licence-check",
+      "focusedReview": {
+        "url": "https://hi.wikisource.org/wiki/लेखक:सुभद्रा_कुमारी_चौहान",
+        "blocker": "No exact Mukul book index or scan located; prior एक घूँट hit was false."
+      }
+    },
+    {
+      "slug": "premchand-idgah",
+      "title": "ईदगाह",
+      "line": "{ slug: 'premchand-idgah', title: 'ईदगाह', ...PREMCHAND, genre: 'short story', domains: ['family'], notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [
+        {
+          "title": "मानसरोवर १/ईदगाह",
+          "pageid": 81996
+        },
+        {
+          "title": "प्रेमचंद की सर्वश्रेष्ठ कहानियां/ईदगाह",
+          "pageid": 74146
+        },
+        {
+          "title": "प्राचीन चिह्न/प्रयाग-प्रान्त के प्राचीन ऐतिहासिक नगर",
+          "pageid": 147116
+        }
+      ],
+      "assessment": "primary-page-lead-needs-exact-scan-and-licence-check"
+    },
+    {
+      "slug": "premchand-do-bailon-ki-katha",
+      "title": "दो बैलों की कथा",
+      "line": "{ slug: 'premchand-do-bailon-ki-katha', title: 'दो बैलों की कथा', ...PREMCHAND, genre: 'short story', notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [
+        {
+          "title": "प्रेमचंद की सर्वश्रेष्ठ कहानियां/दो बैलों की कथा",
+          "pageid": 74148
+        },
+        {
+          "title": "मानसरोवर २/१२ दो बैलों की कथा",
+          "pageid": 153567
+        },
+        {
+          "title": "आल्हखण्ड/२० बेला ताहर का मैदान",
+          "pageid": 183746
+        }
+      ],
+      "assessment": "primary-page-lead-needs-exact-scan-and-licence-check"
+    },
+    {
+      "slug": "premchand-bade-bhai-sahab",
+      "title": "बड़े भाई साहब",
+      "line": "{ slug: 'premchand-bade-bhai-sahab', title: 'बड़े भाई साहब', ...PREMCHAND, genre: 'short story', domains: ['school', 'family'], notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-gulli-danda",
+      "title": "गुल्ली डंडा",
+      "line": "{ slug: 'premchand-gulli-danda', title: 'गुल्ली डंडा', ...PREMCHAND, genre: 'short story', notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-namak-ka-daroga",
+      "title": "नमक का दारोगा",
+      "line": "{ slug: 'premchand-namak-ka-daroga', title: 'नमक का दारोगा', ...PREMCHAND, genre: 'short story', domains: ['work'], notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-bade-ghar-ki-beti",
+      "title": "बड़े घर की बेटी",
+      "line": "{ slug: 'premchand-bade-ghar-ki-beti', title: 'बड़े घर की बेटी', ...PREMCHAND, genre: 'short story', domains: ['family'], notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-panch-parameshwar",
+      "title": "पंच परमेश्वर",
+      "line": "{ slug: 'premchand-panch-parameshwar', title: 'पंच परमेश्वर', ...PREMCHAND, genre: 'short story', notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-budhi-kaki",
+      "title": "बूढ़ी काकी",
+      "line": "{ slug: 'premchand-budhi-kaki', title: 'बूढ़ी काकी', ...PREMCHAND, genre: 'short story', domains: ['family'], notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-sava-ser-genhu",
+      "title": "सवा सेर गेहूँ",
+      "line": "{ slug: 'premchand-sava-ser-genhu', title: 'सवा सेर गेहूँ', ...PREMCHAND, genre: 'short story', notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-mantra",
+      "title": "मंत्र",
+      "line": "{ slug: 'premchand-mantra', title: 'मंत्र', ...PREMCHAND, genre: 'short story', notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "khatri-chandrakanta",
+      "title": "चंद्रकांता",
+      "line": "{ slug: 'khatri-chandrakanta', title: 'चंद्रकांता', author: 'देवकीनंदन खत्री', died: 1913, year: 1888, era: '19th century', genre: 'adventure novel',",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located",
+      "focusedReview": {
+        "url": "https://hi.wikisource.org/wiki/लेखक:देवकीनंदन_खत्री",
+        "edition": "Chandrakanta Santati scans, including 1893 volume",
+        "blocker": "Located scan is Chandrakanta Santati, not exact catalogue Chandrakanta edition."
+      }
+    },
+    {
+      "slug": "bharatendu-andher-nagari",
+      "title": "अंधेर नगरी",
+      "line": "{ slug: 'bharatendu-andher-nagari', title: 'अंधेर नगरी', author: 'भारतेंदु हरिश्चंद्र', died: 1885, era: '19th century', genre: 'play', registers: ['literary'] },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located",
+      "focusedReview": {
+        "url": "https://hi.wikisource.org/wiki/भारतेंदु-नाटकावली/८–अंधेर_नगरी",
+        "edition": "1881 play; Bharatendu Natakavali collection",
+        "blocker": "Exact first-edition source/checksum and faithful extraction not completed."
+      }
+    },
+    {
+      "slug": "premchand-thakur-ka-kuan",
+      "title": "ठाकुर का कुआँ",
+      "line": "{ slug: 'premchand-thakur-ka-kuan', title: 'ठाकुर का कुआँ', ...PREMCHAND, genre: 'short story', notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-sadgati",
+      "title": "सद्गति",
+      "line": "{ slug: 'premchand-sadgati', title: 'सद्गति', ...PREMCHAND, genre: 'short story', notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-poos-ki-raat",
+      "title": "पूस की रात",
+      "line": "{ slug: 'premchand-poos-ki-raat', title: 'पूस की रात', ...PREMCHAND, genre: 'short story', notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-shatranj-ke-khiladi",
+      "title": "शतरंज के खिलाड़ी",
+      "line": "{ slug: 'premchand-shatranj-ke-khiladi', title: 'शतरंज के खिलाड़ी', ...PREMCHAND, genre: 'short story', domains: ['history'], notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-kafan",
+      "title": "कफ़न",
+      "line": "{ slug: 'premchand-kafan', title: 'कफ़न', ...PREMCHAND, genre: 'short story', notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "guleri-usne-kaha-tha",
+      "title": "उसने कहा था",
+      "line": "{ slug: 'guleri-usne-kaha-tha', title: 'उसने कहा था', author: 'चंद्रधर शर्मा गुलेरी', died: 1922, year: 1915, era: 'early 20th century', genre: 'short story', domains: ['history'] },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "bharatendu-bharat-durdasha",
+      "title": "भारत दुर्दशा",
+      "line": "{ slug: 'bharatendu-bharat-durdasha', title: 'भारत दुर्दशा', author: 'भारतेंदु हरिश्चंद्र', died: 1885, era: '19th century', genre: 'play', registers: ['literary'], domains: ['history'] },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "gandhi-satya-ke-prayog",
+      "title": "सत्य के प्रयोग",
+      "line": "{ slug: 'gandhi-satya-ke-prayog', title: 'सत्य के प्रयोग', author: 'मोहनदास करमचंद गांधी', died: 1948, era: '20th century', genre: 'autobiography', streams: ['knowledge'], domains: ['history'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-nirmala",
+      "title": "निर्मला",
+      "line": "{ slug: 'premchand-nirmala', title: 'निर्मला', ...PREMCHAND, genre: 'novel', domains: ['family'], notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located",
+      "focusedReview": {
+        "url": "https://hi.wikisource.org/wiki/चित्र:निर्मला.pdf",
+        "edition": "1925, Prabhat Prakashan, Delhi",
+        "scan": "Internet Archive premchandnirmalahindi",
+        "blocker": "PDF scan record exists, but faithful proofread/transcription layer and complete rights record were not verified."
+      }
+    },
+    {
+      "slug": "prasad-akashdeep",
+      "title": "आकाशदीप",
+      "line": "{ slug: 'prasad-akashdeep', title: 'आकाशदीप', author: 'जयशंकर प्रसाद', died: 1937, era: 'early 20th century', genre: 'short story', registers: ['literary'] },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "dinkar-rashmirathi",
+      "title": "रश्मिरथी",
+      "line": "{ slug: 'dinkar-rashmirathi', title: 'रश्मिरथी', author: 'रामधारी सिंह \\'दिनकर\\'', died: 1974, era: '20th century', genre: 'epic poem', registers: ['literary'], rights: modern('The author died in 1974.') },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-gaban",
+      "title": "गबन",
+      "line": "{ slug: 'premchand-gaban', title: 'गबन', ...PREMCHAND, genre: 'novel', notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "premchand-sevasadan",
+      "title": "सेवासदन",
+      "line": "{ slug: 'premchand-sevasadan', title: 'सेवासदन', ...PREMCHAND, genre: 'novel', notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located",
+      "focusedReview": {
+        "url": "https://hi.wikisource.org/wiki/सेवासदन",
+        "edition": "1918/1919 Hindi publication; PD India page",
+        "blocker": "Exact scan/transcription provenance for imported text not verified."
+      }
+    },
+    {
+      "slug": "premchand-godan",
+      "title": "गोदान",
+      "line": "{ slug: 'premchand-godan', title: 'गोदान', ...PREMCHAND, year: 1936, genre: 'novel', notes: PREMCHAND_NOTE },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "prasad-kamayani",
+      "title": "कामायनी",
+      "line": "{ slug: 'prasad-kamayani', title: 'कामायनी', author: 'जयशंकर प्रसाद', died: 1937, year: 1936, era: 'early 20th century', genre: 'epic poem', registers: ['literary', 'sanskritic'] },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "shukla-hindi-sahitya-ka-itihas",
+      "title": "हिंदी साहित्य का इतिहास",
+      "line": "{ slug: 'shukla-hindi-sahitya-ka-itihas', title: 'हिंदी साहित्य का इतिहास', author: 'रामचंद्र शुक्ल', died: 1941, era: '20th century', genre: 'literary history', streams: ['knowledge', 'literature'], domains: ['history'], registers: ['sanskritic'] },",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "tulsidas-ramcharitmanas",
+      "title": "रामचरितमानस",
+      "line": "{ slug: 'tulsidas-ramcharitmanas', title: 'रामचरितमानस', author: 'तुलसीदास', died: 1623, streams: ['heritage'], variety: 'awa', era: '16th century', genre: 'epic poem', registers: ['archaic', 'literary', 'religious'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "surdas-sursagar",
+      "title": "सूरसागर (चयन)",
+      "line": "{ slug: 'surdas-sursagar', title: 'सूरसागर (चयन)', author: 'सूरदास', streams: ['heritage'], variety: 'bra', era: '16th century', genre: 'devotional verse', registers: ['archaic', 'literary', 'religious'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "kabir-dohe",
+      "title": "कबीर के दोहे",
+      "line": "{ slug: 'kabir-dohe', title: 'कबीर के दोहे', author: 'कबीर', streams: ['heritage'], variety: 'hi-sant', era: '15th century', genre: 'couplets', registers: ['archaic', 'religious'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    },
+    {
+      "slug": "bible-hindi",
+      "title": "बाइबल (हिंदी)",
+      "line": "{ slug: 'bible-hindi', title: 'बाइबल (हिंदी)', role: 'scripture', streams: ['scripture'], genre: 'Scripture', registers: ['religious', 'biblical'], domains: ['scripture', 'theology'],",
+      "wikisourceSearch": [],
+      "assessment": "no-Wikisource-title-hit; exact primary edition not located"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import { ALBANIAN_COURSE_ID, ALBANIAN_DOORS } from './albanian';
 import { GERMAN_COURSE_ID, GERMAN_DOORS } from './german';
 import { HINDI_COURSE_ID, HINDI_DOORS } from './hindi';
 import { SPANISH_COURSE_ID, SPANISH_DOORS } from './spanish';
+import { THAI_COURSE_ID, THAI_DOORS } from './thai';
 
 export interface CourseDoor {
   key: string;
@@ -17,6 +18,7 @@ export interface CourseDoor {
 }
 
 export const COURSE_DOORS: Record<string, readonly CourseDoor[]> = {
+  [THAI_COURSE_ID]: THAI_DOORS,
   [SPANISH_COURSE_ID]: SPANISH_DOORS,
   [GERMAN_COURSE_ID]: GERMAN_DOORS,
   [ALBANIAN_COURSE_ID]: ALBANIAN_DOORS,

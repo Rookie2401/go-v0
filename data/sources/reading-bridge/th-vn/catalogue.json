@@ -1,0 +1,8 @@
+{
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/th-vn",
+  "apiLanguage": "th-vn",
+  "language": "th",
+  "available": 12,
+  "imported": 12,
+  "albanianStatus": "not queried"
+}

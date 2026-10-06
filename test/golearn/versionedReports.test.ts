@@ -12,6 +12,7 @@ import { importDocuments } from '../../src/ingest';
 import type { CorpusDocument } from '../../src/ingest';
 import { createHarness } from './harness';
 import type { Harness } from './harness';
+import { withoutHeadCache } from './harness';
 import { ES_STORY, buildSpanish } from './fixtures';
 import { COURSE, buildChapter, stageRow, t, workRow } from './courseFixtures';
 
@@ -129,7 +130,7 @@ describe('the progress record: a whole-text report belongs to its content versio
     const before = await h.golearn.readingProgress(U, textId);
     // Word and lemma items are derived from tokens, which a revision keeps. (Phrase and pattern occurrences of a RETIRED sentence are
     // removed by the importer, so a rebuild cannot recreate those items: a pre-existing limit, not about reports.)
-    const words = async () => JSON.stringify((await h.store.learnerItems.where('userId', U)).filter((r) => r.itemKind === 'form' || r.itemKind === 'lemma').sort((x, y) => (x.id < y.id ? -1 : 1)));
+    const words = async () => JSON.stringify(withoutHeadCache((await h.store.learnerItems.where('userId', U)).filter((r) => r.itemKind === 'form' || r.itemKind === 'lemma').sort((x, y) => (x.id < y.id ? -1 : 1))));
     const items = await words();
     await h.golearn.rebuild(U);
     expect(await h.golearn.readingProgress(U, textId)).toEqual(before);
@@ -233,4 +234,3 @@ describe('recommendation wording says what the text is', () => {
     expect((await offered({ includeUnpublished: true })).length).toBeGreaterThan(0); // preview does show them
   });
 });
-

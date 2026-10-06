@@ -36,6 +36,7 @@ interface InstallState { key: string; shards: string[] }
 const installKey = (lang: LanguageCode) => `library:inst:${lang}`;
 
 const PROFILE_CACHE = 64;
+const protectedAssessment = (text: Text | undefined): boolean => !!text && (text.readingAssessmentId !== undefined || text.listeningAssessmentId !== undefined || text.curriculum?.role === 'assessment');
 
 const langOfTextId = (textId: string): LanguageCode | undefined => {
   const m = /^text:([a-z]+):/.exec(textId);
@@ -93,6 +94,9 @@ export function createLibrary(deps: LibraryDeps): Library {
 
   function sync(lang: LanguageCode, q?: LibraryQuery): Promise<void> {
     return serial(lang, async () => {
+      // A newly protected resident passage must disappear even before an explicit index refresh.
+      const protectedIds = (await store.texts.where('lang', lang)).filter(protectedAssessment).map(text => text.id);
+      if (protectedIds.length) await removeCatalogRows(store, protectedIds, clock());
       const m = await loadManifest(lang);
       if (!m) return;
       const key = `${m.id}#${m.digest}`;
@@ -113,7 +117,9 @@ export function createLibrary(deps: LibraryDeps): Library {
         if (state.shards.includes(file)) continue;
         const r = await getJson(lang, file);
         if (!r.ok) continue; // not installed; the next query tries again
-        await putCatalogRows(store, parseShard(r.value, lang), clock());
+        const parsed = parseShard(r.value, lang);
+        const resident = await store.texts.getMany(parsed.map(row => row.id));
+        await putCatalogRows(store, parsed.filter((_, i) => !protectedAssessment(resident[i])), clock());
         state = { key, shards: [...state.shards, file] };
         await saveState(state);
       }
@@ -130,6 +136,7 @@ export function createLibrary(deps: LibraryDeps): Library {
   };
 
   async function entry(textId: string): Promise<CatalogText | undefined> {
+    if (protectedAssessment(await store.texts.get(textId))) return undefined;
     const row = await store.catalog.get(textId);
     if (row) return row;
     const lang = langOfTextId(textId);
@@ -142,13 +149,17 @@ export function createLibrary(deps: LibraryDeps): Library {
 
   async function openText(textId: string): Promise<Text> {
     const stored = await store.texts.get(textId);
-    if (stored) return stored;
+    if (stored) {
+      if (protectedAssessment(stored)) throw new Error('Protected assessment material cannot open in the ordinary reader');
+      return stored;
+    }
     const row = await entry(textId);
     if (!row) throw new Error(`open: "${textId}" is not in the library or the catalogue`);
     if (row.location !== 'library' || !row.documentPath) throw new Error(`open: "${textId}" is not a library text (its documents are not in the built library)`);
     const r = await getJson(row.lang, row.documentPath);
     if (!r.ok) throw new Error(`open: the documents of "${textId}" could not be read from the library`);
     const doc = r.value as CorpusDocument;
+    if (doc?.readingAssessmentId !== undefined || doc?.curriculum?.role === 'assessment') throw new Error('Protected assessment material cannot open in the ordinary reader');
     if (!doc || typeof doc !== 'object' || typeof doc.id !== 'string' || doc.lang !== row.lang || ids.text(doc.lang, doc.id) !== textId) {
       throw new Error(`open: the document found for "${textId}" is not that text`);
     }
@@ -177,9 +188,17 @@ export function createLibrary(deps: LibraryDeps): Library {
     entry,
 
     async profile(textId) {
+      // A lazy profile is only authoritative while the text is still absent from this store. Opening the text can
+      // import it with a newer adapter/dictionary and learner-specific analyses; never let the in-memory lazy copy
+      // shadow that resident measurement.
+      const stored = await store.texts.get(textId);
+      if (protectedAssessment(stored)) { profiles.delete(textId); return undefined; }
+      if (stored) {
+        profiles.delete(textId);
+        return profileOfStored(store, textId, clock());
+      }
       const cached = profiles.get(textId);
       if (cached) return cached;
-      if (await store.texts.get(textId)) return profileOfStored(store, textId, clock());
       const row = await entry(textId);
       if (!row || row.location !== 'library' || !row.profilePath) return undefined;
       const r = await getJson(row.lang, row.profilePath);

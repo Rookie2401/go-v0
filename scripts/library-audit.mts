@@ -24,9 +24,10 @@
  * Changes nothing. Exit 1 when any check fails.
  */
 import crypto from 'node:crypto';
+import { createAuditStore as createMemoryStore } from './audit-store';
 import fs from 'node:fs';
 import path from 'node:path';
-import { COURSES, StoreEventBus, createMemoryStore, ids, seedBasics } from '../src/core';
+import { COURSES, StoreEventBus, ids, seedBasics } from '../src/core';
 import type { CatalogText, LanguageCode, Stage, TextProfile, Work } from '../src/core';
 import { createAdapterRegistry } from '../src/adapters';
 import { createCourseCatalog } from '../src/course';
@@ -49,7 +50,7 @@ if (lang === ('all' as string)) {
   let failed = 0;
   for (const l of ['es', 'de', 'hi', 'sq', 'th']) {
     if (!fs.existsSync(path.join(path.resolve(opt('library') ?? 'public/library'), l, 'manifest.json'))) { console.log(`library:audit ${l} — no library installed`); continue; }
-    const r = spawnSync('npx vite-node scripts/library-audit.mts', [l, ...args.filter((x) => x !== 'all')], { stdio: 'inherit', shell: true });
+    const r = spawnSync(process.execPath, [path.resolve('node_modules/vite-node/dist/cli.mjs'), '--config', path.resolve('scripts/vite.config.ts'), path.resolve('scripts/library-audit.mts'), l, ...args.filter((x) => x !== 'all')], { stdio: 'inherit' });
     if (r.status !== 0) failed++;
   }
   process.exit(failed ? 1 : 0);
@@ -175,16 +176,21 @@ for (const [workId, list] of byWork) {
   expect('order: no chapter number twice in a work', new Set(nums).size === nums.length, () => `${workId}: ${nums.filter((n, i) => nums.indexOf(n) !== i).slice(0, 5).join(', ')}`);
   expect('order: the index lists the chapters of a work in chapter order', nums.every((n, i) => i === 0 || nums[i - 1] < n), () => `${workId}: ${nums.slice(0, 12).join(', ')}…`);
   const also = bundledByWork.get(workId) ?? [];
-  const all = [...nums, ...also.map((d) => d.work!.chapter?.index).filter((n): n is number => typeof n === 'number')].sort((a, b) => a - b);
-  expect('order: bundled and library chapters of one work do not share a number', new Set(all).size === all.length, () => `${workId}: ${all.filter((n, i) => all.indexOf(n) !== i).join(', ')} (bundled: ${also.map((d) => `${d.id}=${d.work!.chapter?.index}`).join(', ')})`);
   const scripture = list.some((r) => r.stream === 'scripture');
+  // A complete lazy Bible owns all 1,189 canonical chapter rows. Starter
+  // passages remain bundled for reader continuity, but their chapter numbers
+  // must not be counted a second time in the lazy canon's order check.
+  const fullLazyScripture = scripture && list.length === CANON.reduce((n, [, count]) => n + count, 0);
+  const all = [...nums, ...(fullLazyScripture ? [] : also.map((d) => d.work!.chapter?.index).filter((n): n is number => typeof n === 'number'))].sort((a, b) => a - b);
+  expect('order: bundled and library chapters of one work do not share a number', new Set(all).size === all.length, () => `${workId}: ${all.filter((n, i) => all.indexOf(n) !== i).join(', ')} (bundled: ${also.map((d) => `${d.id}=${d.work!.chapter?.index}`).join(', ')})`);
   if (!scripture) {
     const first = all[0];
     expect('order: the chapters of a work start at 1 (or 0 for front matter)', first === 0 || first === 1, () => `${workId}: starts at ${first}`);
     expect('order: the chapters of a work run without gaps', all.every((n, i) => i === 0 || n === all[i - 1] + 1), () => `${workId}: ${all.filter((n, i) => i > 0 && n !== all[i - 1] + 1).slice(0, 6).map((n) => `…${n}`).join(' ')} (of ${all.length})`);
     continue;
   }
-  // Scripture: the canon decides, with the bundled chapters of the same work counted in
+  // Scripture: the canon decides. A full lazy canon is checked independently;
+  // bundled starter passages are still structurally validated below.
   const have = new Map<string, { number?: number; where: string }>();
   const note = (book: string | undefined, chapter: number | undefined, number: number | undefined, where: string) => {
     expect('order (Scripture): every chapter says its book and chapter', !!book && typeof chapter === 'number' && bookIndex.has(book ?? ''), () => `${where}: book ${String(book)}, chapter ${String(chapter)}`);
@@ -200,7 +206,23 @@ for (const [workId, list] of byWork) {
     const whole = d.sections.length === 1 && typeof d.scripture?.chapter === 'number' && (d.sections[0].chapter ?? d.scripture.chapter) === d.scripture.chapter;
     const verses = d.sections.flatMap((s) => s.paragraphs.flatMap((p) => ('sentences' in p ? p.sentences : []))).flatMap((s) => s.verseRefs ?? []);
     const oneChapter = new Set(verses.map((v) => v.split('.').slice(0, 2).join('.'))).size === 1;
-    if (whole && oneChapter) note(d.scripture?.book, d.scripture?.chapter, d.work!.chapter?.index, `bundled ${d.id}`);
+    if (fullLazyScripture) {
+      const bundledSentences = d.sections.flatMap((s) => s.paragraphs.flatMap((p) => ('sentences' in p ? p.sentences : [])));
+      const validRefs = verses.every((v) => {
+        const [book, chapter, verse] = v.split('.');
+        const count = CANON.find(([b]) => b === book)?.[1];
+        return !!count && Number.isInteger(Number(chapter)) && Number(chapter) >= 1 && Number(chapter) <= count && Number.isInteger(Number(verse)) && Number(verse) >= 1;
+      });
+      expect('order (Scripture): bundled starter has identified verse references', verses.length > 0 && validRefs, () => `bundled ${d.id}: starter references are incomplete or out of range`);
+      expect('order (Scripture): bundled starter has non-empty verse text', bundledSentences.length > 0 && bundledSentences.every((s) => s.text.trim().length > 0), () => `bundled ${d.id}: empty starter verse`);
+      if (whole && oneChapter) {
+        expect('order (Scripture): bundled full chapter has canonical metadata', !!d.scripture?.book && typeof d.scripture.chapter === 'number' && bookIndex.has(d.scripture.book), () => `bundled ${d.id}: missing book/chapter metadata`);
+        const expected = d.scripture?.book && typeof d.scripture.chapter === 'number' ? runningNumber(d.scripture.book, d.scripture.chapter) : undefined;
+        expect('order (Scripture): bundled full chapter keeps canonical selection index', d.work?.chapter?.index === expected, () => `bundled ${d.id}: index ${String(d.work?.chapter?.index)}, expected ${String(expected)}`);
+      } else {
+        expect('order (Scripture): bundled starter selection is front matter', d.work?.chapter === undefined || d.work.chapter.index === 0, () => `bundled ${d.id}: verse selection filed as chapter ${String(d.work?.chapter?.index)}`);
+      }
+    } else if (whole && oneChapter) note(d.scripture?.book, d.scripture?.chapter, d.work!.chapter?.index, `bundled ${d.id}`);
     else expect('order (Scripture): a bundled selection of verses stands before chapter 1 (number 0), never as a chapter', d.work!.chapter === undefined || d.work!.chapter.index === 0, () => `bundled ${d.id}: verses of ${[...new Set(verses.map((v) => v.split('.').slice(0, 2).join('.')))].join(', ')} filed as chapter ${d.work!.chapter?.index}`);
   }
   for (const [book, count] of CANON) for (let c = 1; c <= count; c++) expect('order (Scripture): every chapter of the canon is present', have.has(`${book}.${c}`), () => `${workId}: ${book} ${c} is missing`);

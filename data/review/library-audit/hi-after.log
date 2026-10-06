@@ -1,0 +1,80 @@
+deep: importing each text afresh with adapter 3 and the installed dictionary (public/dict/hi)
+  … 100 of 1280 texts, 76178 words, 97 s
+  … 200 of 1280 texts, 159364 words, 187 s
+  … 300 of 1280 texts, 242002 words, 262 s
+  … 400 of 1280 texts, 320000 words, 858 s
+  … 500 of 1280 texts, 369590 words, 914 s
+  … 600 of 1280 texts, 402371 words, 934 s
+  … 700 of 1280 texts, 444025 words, 956 s
+  … 800 of 1280 texts, 514316 words, 987 s
+  … 900 of 1280 texts, 579843 words, 1032 s
+  … 1000 of 1280 texts, 661241 words, 1087 s
+  … 1100 of 1280 texts, 731324 words, 1132 s
+  … 1200 of 1280 texts, 783722 words, 1169 s
+
+library:audit hi — library-hi@2026-10-02: 1280 texts in 5 works, 845734 words; deep check of 1280 texts (845734 words), read through GoLearn in 1217 s
+  analyzers: stored adapter-hi@3 + dict:kaikki-hi@2026-09-28 | today adapter-hi@3 + dict:kaikki-hi@2026-09-28 — 1280 texts
+  ok   catalogue: a work recorded as installed has texts in the library: 4 of 4
+  ok   catalogue: a work with texts in the library is recorded as bundlable: 5 of 5
+  ok   catalogue: every text names a work: 1280 of 1280
+  ok   catalogue: the rights of the texts are the rights of their work: 5 of 5
+  ok   catalogue: the shelf of a work exists in the course: 5 of 5
+  ok   catalogue: the shelf of the texts is the shelf of their work: 5 of 5
+  ok   catalogue: the stream of the texts is a stream of the course: 5 of 5
+  ok   catalogue: the stream of the texts is a stream of their work: 5 of 5
+  ok   catalogue: the work of a text is in the course catalogue: 5 of 5
+  ok   catalogue: the work says its texts are in the library: 5 of 5
+  ok   deep: every analysis names a lemma that exists: 1280 of 1280
+  ok   deep: every construction found in the text has its row: 1280 of 1280
+  ok   deep: every unit found in the text has its row: 1280 of 1280
+  ok   deep: every word carries the id of its form item: 1280 of 1280
+  ok   deep: every word is a slice of its sentence: 1280 of 1280
+  ok   deep: the document is the text the row names: 1280 of 1280
+  ok   deep: the document names the row's work and chapter: 1280 of 1280
+  ok   deep: the features are what a fresh import measures: 1280 of 1280
+  ok   deep: the forms of the profile sum to its words: 1280 of 1280
+  ok   deep: the importer knows the work: 1280 of 1280
+  ok   deep: the profile counts the words of the text: 1280 of 1280
+  ok   deep: the profile lists the constructions a fresh import finds: 1280 of 1280
+  ok   deep: the profile lists the forms of the text: 1280 of 1280
+  ok   deep: the profile lists the lemmas a fresh import finds: 1280 of 1280
+  ok   deep: the profile lists the units a fresh import finds: 1280 of 1280
+  ok   deep: the profile was made by today's analyzer and dictionary: 1280 of 1280
+  ok   deep: the row's features are the profile's: 1280 of 1280
+  ok   deep: the row's publication decision is the document's: 1280 of 1280
+  ok   deep: the row's title is the document's: 1280 of 1280
+  ok   deep: the stored paragraphs are the document's paragraphs, in order: 94 of 94
+  ok   deep: the stored sentences are the document's sentences, in order: 1186 of 1186
+  ok   deep: the stored text carries its work, chapter, stream and publication: 1280 of 1280
+  ok   deep: the text has sentences: 1280 of 1280
+  ok   deep: the text imports: 1280 of 1280
+  ok   order (Scripture): a bundled selection of verses stands before chapter 1 (number 0), never as a chapter: 1 of 1
+  ok   order (Scripture): a chapter is numbered by its place in the canon: 1189 of 1189
+  ok   order (Scripture): every chapter of the canon is present: 1189 of 1189
+  ok   order (Scripture): every chapter says its book and chapter: 1189 of 1189
+  ok   order (Scripture): no chapter twice: 1189 of 1189
+  ok   order: bundled and library chapters of one work do not share a number: 5 of 5
+  ok   order: every text of a work has a chapter number: 5 of 5
+  ok   order: no chapter number twice in a work: 5 of 5
+  ok   order: no text has exactly the words of another text: 1280 of 1280
+  ok   order: the chapters of a work run without gaps: 4 of 4
+  ok   order: the chapters of a work start at 1 (or 0 for front matter): 4 of 4
+  ok   order: the index lists the chapters of a work in chapter order: 5 of 5
+  ok   read: after reading, no word of the text is new to the learner: 1280 of 1280
+  ok   read: every construction of the profile became a learner item: 1280 of 1280
+  ok   read: every form of the text became a learner item: 1280 of 1280
+  ok   read: every lemma of the profile became a learner item: 1280 of 1280
+  ok   read: every sentence of the text is counted as seen: 1280 of 1280
+  ok   read: every unit of the profile became a learner item: 1280 of 1280
+  ok   read: no form item that is not a form of the text: 1280 of 1280
+  ok   structure: a row is listed under its own primary stream: 1280 of 1280
+  ok   structure: every row has its document file: 1280 of 1280
+  ok   structure: every row has its profile file: 1280 of 1280
+  ok   structure: every row of an index shard is well formed: 5 of 5
+  ok   structure: no document file without a row: 1280 of 1280
+  ok   structure: no library text has the id of a bundled text: 1280 of 1280
+  ok   structure: no profile file without a row: 1280 of 1280
+  ok   structure: no text id twice: 1280 of 1280
+  ok   structure: the manifest counts the texts it lists: 1 of 1
+  ok   structure: the manifest word count is the sum of the rows: 1 of 1
+every check passed

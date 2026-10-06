@@ -8,7 +8,7 @@ import { ListenHome } from '../../src/ui/listen/ListenHome';
 import { ids, buildFixtureText } from '../../src/core';
 import type { AudioStatus, ListeningPositionSaved } from '../../src/core';
 import { canonicalTextSha256, releaseIdOf } from '../../src/golisten/rights';
-import { button, choose, click, flush, installMediaStubs, makeHarness, pickFiles, qa, seedAudio } from './harness';
+import { button, catalogText, choose, click, flush, installMediaStubs, makeHarness, pickFiles, qa, seedAudio } from './harness';
 import type { Harness, Mounted } from './harness';
 import { STORY_ID, seedStory } from './fixtures';
 
@@ -52,6 +52,7 @@ describe('GoListen learner surface', () => {
 
     expect(view.container.querySelector('[data-testid="golisten-session"]')?.getAttribute('data-listen-mode')).toBe('only');
     expect(view.container.textContent).not.toContain('Yo creo en Dios.');
+    expect(view.container.querySelector('.transcript p[lang]')).toBeNull();
     expect(view.container.querySelector('.reader')).toBeNull();
     expect(await h.events('TextViewed')).toHaveLength(0);
     expect(await h.events('SentenceViewed')).toHaveLength(0);
@@ -72,18 +73,58 @@ describe('GoListen learner surface', () => {
   });
 
   it('opens GoLearn only after recording transcript reveal first', async () => {
+    installMediaStubs();
     const h = await makeHarness({ listen: { providerId: 'azure', approved: true } });
     await seedStory(h.store);
     await seedReviewedRecording(h, STORY_ID, [0, 1, 2].map((i) => ids.sentence(STORY_ID, i)));
     const view = await open(h, `/listen/${STORY_ID}`);
 
+    await click(button(view.container, 'Play'));
+    await act(async () => { const audio = view.container.querySelector('audio')!; audio.currentTime = 0.4; audio.dispatchEvent(new Event('timeupdate')); });
     await click(button(view.container, 'Open text and word support'));
     expect(view.container.querySelector('.reader')).toBeTruthy();
     const events = await h.events();
     const transcriptAt = events.findIndex((e) => e.type === 'TranscriptRevealed');
     const viewedAt = events.findIndex((e) => e.type === 'TextViewed');
+    const checkpointAt = events.findIndex((e) => e.type === 'ListeningPositionSaved');
+    expect((events[checkpointAt] as ListeningPositionSaved).positionMs).toBe(400);
+    expect(transcriptAt).toBeGreaterThan(checkpointAt);
     expect(transcriptAt).toBeGreaterThanOrEqual(0);
     expect(viewedAt).toBeGreaterThan(transcriptAt);
+  });
+
+  it('keeps the listening session open and offers a retry when saving the handoff checkpoint fails', async () => {
+    installMediaStubs();
+    const h = await makeHarness({ listen: { providerId: 'azure', approved: true } });
+    await seedStory(h.store);
+    await seedReviewedRecording(h, STORY_ID, [0, 1, 2].map((i) => ids.sentence(STORY_ID, i)));
+    const view = await open(h, `/listen/${STORY_ID}`);
+    await click(button(view.container, 'Play'));
+    await act(async () => { const audio = view.container.querySelector('audio')!; audio.currentTime = 0.4; audio.dispatchEvent(new Event('timeupdate')); });
+    const originalEmit = h.bus.emit.bind(h.bus);
+    const emit = vi.spyOn(h.bus, 'emit');
+    let rejectedCheckpoint = false;
+    emit.mockImplementation(async (input) => {
+      if (!rejectedCheckpoint && input.type === 'ListeningPositionSaved') {
+        rejectedCheckpoint = true;
+        throw new Error('Could not save your listening position.');
+      }
+      return originalEmit(input);
+    });
+
+    await click(button(view.container, 'Open text and word support'));
+    expect(view.container.querySelector('[data-testid="listen-handoff-error"]')?.textContent).toBe('Could not save your listening position.');
+    expect(view.container.querySelector('.reader')).toBeNull();
+    expect(view.container.querySelector('audio')).toBeTruthy();
+    expect(await h.events('TextViewed')).toHaveLength(0);
+
+    await click(button(view.container, 'Open text and word support'));
+    expect(view.container.querySelector('.reader')).toBeTruthy();
+    expect(view.container.querySelector('[data-testid="listen-handoff-error"]')).toBeNull();
+    expect((await h.events('ListeningPositionSaved')).length).toBeGreaterThan(0);
+    expect(await h.events('TranscriptRevealed')).toHaveLength(1);
+    expect(await h.events('TextViewed')).toHaveLength(1);
+    emit.mockRestore();
   });
 
   it('keeps private and unpublished text behind the same canonical gates', async () => {
@@ -127,6 +168,19 @@ describe('GoListen learner surface', () => {
     expect(view.container.querySelector('[data-testid="golisten-home"]')).toBeTruthy();
     expect(view.container.textContent).toContain('No approved listening audio is ready');
     expect(view.container.textContent).toContain('GoLearn reading');
+    expect(h.listen.ensureAudio).not.toHaveBeenCalled();
+  });
+
+  it('materializes a published lazy catalogue text only when a saved audio manifest points to it', async () => {
+    const h = await makeHarness({ listen: { providerId: 'azure', approved: true } });
+    const story = await seedStory(h.store);
+    await seedReviewedRecording(h, STORY_ID, [0, 1, 2].map((i) => ids.sentence(STORY_ID, i)));
+    await h.store.texts.delete(STORY_ID);
+    h.library.items.push(catalogText({ id: STORY_ID, title: story.title, stream: 'library' }));
+
+    const view = await open(h, '/listen');
+    expect(h.library.opened).toContain(STORY_ID);
+    expect(view.container.querySelector(`a[href="/listen/${encodeURIComponent(STORY_ID)}"]`)).toBeTruthy();
     expect(h.listen.ensureAudio).not.toHaveBeenCalled();
   });
 
@@ -203,6 +257,29 @@ describe('GoListen learner surface', () => {
     expect((importRecording.mock.calls[0] as unknown[])[0]).toMatchObject({ origin: 'learner' });
     expect(((importRecording.mock.calls[0] as unknown[])[0] as { reviewer?: string }).reviewer).toBeUndefined();
     expect(home.container.textContent).toMatch(/only after a named reviewer approves it/);
+  });
+
+  it('imports a recording for an exact lazy published text named by the manifest', async () => {
+    const h = await makeHarness({ listen: { unavailable: true } });
+    const lazyId = 'text:es:brand-new-lazy-release';
+    h.library.items.push(catalogText({ id: lazyId, title: 'A newly added story', lang: 'es', published: true }));
+    const importRecording = vi.fn(async () => ({ manifest: {}, asset: {}, imported: 1, reused: false }));
+    (h.listen as unknown as Record<string, unknown>).importRecording = importRecording;
+    const home = await open(h, '/listen');
+    expect(await h.store.texts.get(lazyId)).toBeUndefined();
+
+    await choose(home.container.querySelector<HTMLSelectElement>('select[aria-label="Text release"]')!, '__manifest__');
+    const manifest = JSON.stringify({ textId: lazyId, kind: 'human', qualityState: 'approved', rights: { status: 'approved' } });
+    const manifestFile = Object.assign(new File([manifest], 'm.json', { type: 'application/json' }), { text: async () => manifest });
+    const audioFile = Object.assign(new File([new Uint8Array([1, 2, 3])], 'a.wav', { type: 'audio/wav' }), { arrayBuffer: async () => new Uint8Array([1, 2, 3]).buffer });
+    await pickFiles(home.container.querySelector<HTMLInputElement>('input[aria-label="Recording manifest"]')!, [manifestFile]);
+    await pickFiles(home.container.querySelector<HTMLInputElement>('input[aria-label="Audio file"]')!, [audioFile]);
+    await click(button(home.container, 'Check and add recording'));
+
+    expect(h.library.opened).toEqual([lazyId]);
+    expect((await h.store.texts.get(lazyId))?.published).toBe(true);
+    expect(importRecording).toHaveBeenCalledTimes(1);
+    expect((importRecording.mock.calls[0] as unknown[])[0]).toMatchObject({ manifest: { textId: lazyId }, origin: 'learner' });
   });
 
   it('disambiguates identical release titles in the recording import selector', async () => {

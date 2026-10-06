@@ -39,11 +39,36 @@ describe('lawful real recording through canonical ingestion and listening', () =
       await emitPlayerEffects(emitter, machine.state, effects);
       return effects;
     };
+    const firstSegment = input.segments[0].segmentId;
+    await bus.emit<ListeningPositionSaved>({ type: 'ListeningPositionSaved', userId: 'u1', lang: 'de', surface: 'listen', session: 'listening', dedupeKey: 'early-cursor',
+      at: '2020-01-01T00:00:00.000Z', textId: text.id, manifestId: recording.manifest.id, segmentId: firstSegment, positionMs: 1000 });
+    expect((await latestListeningCheckpoint(store, 'u1', text.id, recording.manifest.id))?.positionMs).toBe(1000);
+    await dispatch({ type: 'restorePosition', segmentId: firstSegment, positionMs: 1000 });
+    await dispatch({ type: 'play' });
+    for (let ms = 1000; ms <= 2500; ms += 250) await dispatch({ type: 'position', ms, observedAtMs: ms - 1000 });
+    const naturalEnd = Math.round(recording.asset.durationMs);
+    // Native `ended` may fire without a final `timeupdate`; its media clock is still authoritative for transport position.
+    await dispatch({ type: 'ended', observedPositionMs: naturalEnd });
+    const partialEnd = (await bus.history()).filter((e) => e.type === 'AudioAbandoned').at(-1);
+    expect(partialEnd?.type).toBe('AudioAbandoned');
+    if (partialEnd?.type === 'AudioAbandoned') expect(partialEnd.positionMs).toBeGreaterThanOrEqual(recording.asset.durationMs - 60);
+    if (partialEnd?.type === 'AudioAbandoned') {
+      // Older persisted rows may omit these optional facts while the event carries normalized facts.
+      await store.audioAssets.put({ ...recording.asset, sourceType: undefined, audioKind: undefined } as never);
+      await store.events.put({ ...partialEnd, sourceType: 'licensed-recording', audioKind: 'human' });
+    }
+    expect(await latestListeningCheckpoint(store, 'u1', text.id, recording.manifest.id)).toBeUndefined();
+    await store.audioAssets.put(recording.asset);
+    expect((await bus.history()).filter((e) => e.type === 'AudioPlayed')).toHaveLength(1);
+
+    // A natural end below the audible-exposure threshold clears navigation state, but the next full pass can still earn exposure.
     await dispatch({ type: 'play' });
     for (let ms = 0; ms <= 2500; ms += 250) await dispatch({ type: 'position', ms, observedAtMs: ms });
     await dispatch({ type: 'ended' });
     await dispatch({ type: 'ended' }); // duplicate browser callbacks cannot add another pass
     expect((await bus.history()).filter((e) => e.type === 'AudioSegmentCompleted')).toHaveLength(1);
+    expect((await bus.history()).filter((e) => e.type === 'AudioPlayed')).toHaveLength(2);
+    expect(await latestListeningCheckpoint(store, 'u1', text.id, recording.manifest.id)).toBeUndefined();
     let progress = await listeningProgress(store, 'u1', text.id);
     expect(progress.completedExposureSentences).toBe(1);
     expect(progress.masteryEligibleSentences).toBe(0);
@@ -57,7 +82,6 @@ describe('lawful real recording through canonical ingestion and listening', () =
     expect(progress.slowedSentences).toBe(1);
     expect(progress.sources).toContain('licensed-recording');
     expect((await bus.history()).filter((e) => e.type === 'AudioSegmentCompleted').every((e) => e.audioKind === 'human')).toBe(true);
-    const firstSegment = input.segments[0].segmentId;
     await bus.emit<ListeningPositionSaved>({ type: 'ListeningPositionSaved', userId: 'u1', lang: 'de', surface: 'listen', session: 'listening', dedupeKey: 'cursor',
       textId: text.id, manifestId: recording.manifest.id, segmentId: firstSegment, positionMs: 1000 });
     const cursor = await latestListeningCheckpoint(store, 'u1', text.id, recording.manifest.id);

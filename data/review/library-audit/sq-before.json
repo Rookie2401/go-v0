@@ -1,0 +1,326 @@
+{
+ "lang": "sq",
+ "library": "library-sq@2026-10-02",
+ "texts": 23,
+ "deep": {
+  "texts": 23,
+  "words": 8707,
+  "read": true
+ },
+ "checks": {
+  "catalogue: a work with texts in the library is recorded as bundlable": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: every text names a work": {
+   "checked": 23,
+   "failed": 0
+  },
+  "catalogue: the rights of the texts are the rights of their work": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: the shelf of a work exists in the course": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: the shelf of the texts is the shelf of their work": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: the stream of the texts is a stream of the course": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: the stream of the texts is a stream of their work": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: the work of a text is in the course catalogue": {
+   "checked": 1,
+   "failed": 0
+  },
+  "catalogue: the work says its texts are in the library": {
+   "checked": 1,
+   "failed": 0
+  },
+  "deep: every analysis names a lemma that exists": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: every construction found in the text has its row": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: every unit found in the text has its row": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: every word carries the id of its form item": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: every word is a slice of its sentence": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the document is the text the row names": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the document names the row's work and chapter": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the features are what a fresh import measures": {
+   "checked": 23,
+   "failed": 22
+  },
+  "deep: the forms of the profile sum to its words": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the importer knows the work": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the profile counts the words of the text": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the profile lists the constructions a fresh import finds": {
+   "checked": 23,
+   "failed": 21
+  },
+  "deep: the profile lists the forms of the text": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the profile lists the lemmas a fresh import finds": {
+   "checked": 23,
+   "failed": 22
+  },
+  "deep: the profile lists the units a fresh import finds": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the profile was made by today's analyzer and dictionary": {
+   "checked": 23,
+   "failed": 23
+  },
+  "deep: the row's features are the profile's": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the row's publication decision is the document's": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the row's title is the document's": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the stored paragraphs are the document's paragraphs, in order": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the stored text carries its work, chapter, stream and publication": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the text has sentences": {
+   "checked": 23,
+   "failed": 0
+  },
+  "deep: the text imports": {
+   "checked": 23,
+   "failed": 0
+  },
+  "order: bundled and library chapters of one work do not share a number": {
+   "checked": 1,
+   "failed": 0
+  },
+  "order: every text of a work has a chapter number": {
+   "checked": 1,
+   "failed": 0
+  },
+  "order: no chapter number twice in a work": {
+   "checked": 1,
+   "failed": 0
+  },
+  "order: the chapters of a work run without gaps": {
+   "checked": 1,
+   "failed": 0
+  },
+  "order: the chapters of a work start at 1 (or 0 for front matter)": {
+   "checked": 1,
+   "failed": 0
+  },
+  "order: the index lists the chapters of a work in chapter order": {
+   "checked": 1,
+   "failed": 0
+  },
+  "read: after reading, no word of the text is new to the learner": {
+   "checked": 23,
+   "failed": 0
+  },
+  "read: every construction of the profile became a learner item": {
+   "checked": 23,
+   "failed": 0
+  },
+  "read: every form of the text became a learner item": {
+   "checked": 23,
+   "failed": 0
+  },
+  "read: every lemma of the profile became a learner item": {
+   "checked": 23,
+   "failed": 0
+  },
+  "read: every sentence of the text is counted as seen": {
+   "checked": 23,
+   "failed": 0
+  },
+  "read: every unit of the profile became a learner item": {
+   "checked": 23,
+   "failed": 0
+  },
+  "read: no form item that is not a form of the text": {
+   "checked": 23,
+   "failed": 0
+  },
+  "structure: a row is listed under its own primary stream": {
+   "checked": 23,
+   "failed": 0
+  },
+  "structure: every row has its document file": {
+   "checked": 23,
+   "failed": 0
+  },
+  "structure: every row has its profile file": {
+   "checked": 23,
+   "failed": 0
+  },
+  "structure: every row of an index shard is well formed": {
+   "checked": 1,
+   "failed": 0
+  },
+  "structure: no document file without a row": {
+   "checked": 23,
+   "failed": 0
+  },
+  "structure: no profile file without a row": {
+   "checked": 23,
+   "failed": 0
+  },
+  "structure: no text id twice": {
+   "checked": 23,
+   "failed": 0
+  },
+  "structure: the manifest counts the texts it lists": {
+   "checked": 1,
+   "failed": 0
+  },
+  "structure: the manifest word count is the sum of the rows": {
+   "checked": 1,
+   "failed": 0
+  }
+ },
+ "findings": {
+  "deep: the profile was made by today's analyzer and dictionary": [
+   "text:sq:sq-modern-open-ushqimi: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-qeni: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-macja: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-bleta: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-mali: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-deti: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-tirana-gjeografia: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-tirana-klima: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-tirana-arkeologjia: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-tirana-turizmi: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-tirana-transporti: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-tirana-demografia: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-tirana-ekonomia: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-shqiperia-relievi: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-shqiperia-klima: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-shqiperia-popullsia: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-shqiperia-ekonomia: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-shqiperia-gjeografia: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-shqiperia-historia: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-durresi-gjeografia: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-durresi-klima: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-durresi-historia: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28",
+   "text:sq:sq-modern-open-durresi-transporti: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28"
+  ],
+  "deep: the profile lists the lemmas a fresh import finds": [
+   "text:sq:sq-modern-open-ushqimi: 1 only stored (lemma:sq:pa:PART), 56 only fresh (lemma:sq:shkaktoj:VERB, lemma:sq:afat:NOUN, lemma:sq:përdorim:NOUN), 3 with another count (lemma:sq:të:PART, lemma:sq:ai:PRON, lemma:sq:i:DET)",
+   "text:sq:sq-modern-open-qeni: 0 only stored (), 60 only fresh (lemma:sq:deri:ADP, lemma:sq:herë:NOUN, lemma:sq:shikim:NOUN), 2 with another count (lemma:sq:ai:PRON, lemma:sq:i:DET)",
+   "text:sq:sq-modern-open-macja: 2 only stored (lemma:sq:e:CONJ, lemma:sq:jetë:NOUN), 65 only fresh (lemma:sq:anë:NOUN, lemma:sq:eci:VERB, lemma:sq:gjitar:NOUN), 7 with another count (lemma:sq:ai:PRON, lemma:sq:të:PART, lemma:sq:i:DET)",
+   "text:sq:sq-modern-open-bleta: 0 only stored (), 90 only fresh (lemma:sq:mbretëreshë:NOUN, lemma:sq:mashkull:NOUN, lemma:sq:prodhoj:VERB), 5 with another count (lemma:sq:ai:PRON, lemma:sq:të:PART, lemma:sq:i:DET)",
+   "text:sq:sq-modern-open-mali: 0 only stored (), 18 only fresh (lemma:sq:deri:ADP, lemma:sq:veri:NOUN, lemma:sq:jug:NOUN), 2 with another count (lemma:sq:ai:PRON, lemma:sq:i:DET)",
+   "text:sq:sq-modern-open-deti: 0 only stored (), 68 only fresh (lemma:sq:oqean:NOUN, lemma:sq:rrymë:NOUN, lemma:sq:përfshij:VERB), 3 with another count (lemma:sq:ai:PRON, lemma:sq:i:DET, lemma:sq:rregulloj:VERB)",
+   "text:sq:sq-modern-open-tirana-gjeografia: 1 only stored (lemma:sq:unë:PRON), 26 only fresh (lemma:sq:administrativ:ADJ, lemma:sq:bashki:NOUN, lemma:sq:perëndim:NOUN), 4 with another count (lemma:sq:ai:PRON, lemma:sq:i:DET, lemma:sq:të:PART)",
+   "text:sq:sq-modern-open-tirana-klima: 0 only stored (), 1 only fresh (lemma:sq:temperaturë:NOUN), 0 with another count ()",
+   "text:sq:sq-modern-open-tirana-arkeologjia: 0 only stored (), 16 only fresh (lemma:sq:autor:NOUN, lemma:sq:arkeologjik:ADJ, lemma:sq:absidë:NOUN), 2 with another count (lemma:sq:i:DET, lemma:sq:të:PART)",
+   "text:sq:sq-modern-open-tirana-turizmi: 0 only stored (), 41 only fresh (lemma:sq:kala:NOUN, lemma:sq:dëshmor:NOUN, lemma:sq:njësi:NOUN), 4 with another count (lemma:sq:ai:PRON, lemma:sq:të:PART, lemma:sq:i:DET)",
+   "text:sq:sq-modern-open-tirana-transporti: 0 only stored (), 17 only fresh (lemma:sq:linjë:NOUN, lemma:sq:kusht:NOUN, lemma:sq:publik:ADJ), 2 with another count (lemma:sq:të:PART, lemma:sq:ai:PRON)",
+   "text:sq:sq-modern-open-tirana-demografia: 0 only stored (), 25 only fresh (lemma:sq:banor:NOUN, lemma:sq:zonë:NOUN, lemma:sq:popullsi:NOUN), 1 with another count (lemma:sq:ai:PRON)",
+   "text:sq:sq-modern-open-tirana-ekonomia: 0 only stored (), 12 only fresh (lemma:sq:ndërtim:NOUN, lemma:sq:vepër:NOUN, lemma:sq:e:CONJ), 2 with another count (lemma:sq:ai:PRON, lemma:sq:i:DET)",
+   "text:sq:sq-modern-open-shqiperia-relievi: 0 only stored (), 32 only fresh (lemma:sq:kep:VERB, lemma:sq:krahinë:NOUN, lemma:sq:kryesisht:ADV), 3 with another count (lemma:sq:ai:PRON, lemma:sq:i:DET, lemma:sq:të:PART)",
+   "text:sq:sq-modern-open-shqiperia-klima: 0 only stored (), 12 only fresh (lemma:sq:diellor:ADJ, lemma:sq:ndriçim:PROPN, lemma:sq:brez:NOUN), 1 with another count (lemma:sq:të:PART)",
+   "text:sq:sq-modern-open-shqiperia-popullsia: 0 only stored (), 64 only fresh (lemma:sq:pakicë:NOUN, lemma:sq:banor:NOUN, lemma:sq:popullsi:NOUN), 4 with another count (lemma:sq:të:PART, lemma:sq:ai:PRON, lemma:sq:i:DET)",
+   "text:sq:sq-modern-open-shqiperia-ekonomia: 0 only stored (), 40 only fresh (lemma:sq:ekonomi:NOUN, lemma:sq:naftë:NOUN, lemma:sq:zonë:NOUN), 3 with another count (lemma:sq:ai:PRON, lemma:sq:të:PART, lemma:sq:i:DET)",
+   "text:sq:sq-modern-open-shqiperia-gjeografia: 0 only stored (), 77 only fresh (lemma:sq:kufi:NOUN, lemma:sq:adriatik:PROPN, lemma:sq:jug:NOUN), 5 with another count (lemma:sq:ai:PRON, lemma:sq:i:DET, lemma:sq:më:ADV)",
+   "text:sq:sq-modern-open-shqiperia-historia: 0 only stored (), 50 only fresh (lemma:sq:alfabet:NOUN, lemma:sq:prizren:PROPN, lemma:sq:përfshij:VERB), 4 with another count (lemma:sq:të:PART, lemma:sq:ai:PRON, lemma:sq:i:DET)",
+   "text:sq:sq-modern-open-durresi-gjeografia: 1 only stored (lemma:sq:të:PART), 6 only fresh (lemma:sq:jug:NOUN, lemma:sq:adriatik:PROPN, lemma:sq:gji:NOUN), 1 with another count (lemma:sq:i:DET)",
+   "text:sq:sq-modern-open-durresi-historia: 0 only stored (), 21 only fresh (lemma:sq:dyrrah:PROPN, lemma:sq:ilir:NOUN, lemma:sq:autor:NOUN), 2 with another count (lemma:sq:ai:PRON, lemma:sq:i:DET)",
+   "text:sq:sq-modern-open-durresi-transporti: 1 only stored (lemma:sq:ai:PRON), 1 only fresh (lemma:sq:sistem:NOUN), 1 with another count (lemma:sq:i:DET)"
+  ],
+  "deep: the profile lists the constructions a fresh import finds": [
+   "text:sq:sq-modern-open-ushqimi: 1 only stored (pattern:sq:without-pa), 1 only fresh (pattern:sq:optative), 8 with another count (pattern:sq:definite-noun-ending, pattern:sq:negation-nuk, pattern:sq:modal-te)",
+   "text:sq:sq-modern-open-qeni: 0 only stored (), 0 only fresh (), 4 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article, pattern:sq:nominative-after-preposition)",
+   "text:sq:sq-modern-open-macja: 0 only stored (), 1 only fresh (pattern:sq:subjunctive-te), 10 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article, pattern:sq:non-active-present)",
+   "text:sq:sq-modern-open-bleta: 0 only stored (), 0 only fresh (), 9 with another count (pattern:sq:definite-noun-ending, pattern:sq:non-active-present, pattern:sq:object-pronoun-before-verb)",
+   "text:sq:sq-modern-open-mali: 0 only stored (), 1 only fresh (pattern:sq:optative), 2 with another count (pattern:sq:genitive-linking-article, pattern:sq:object-pronoun-before-verb)",
+   "text:sq:sq-modern-open-deti: 0 only stored (), 0 only fresh (), 5 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article, pattern:sq:nominative-after-preposition)",
+   "text:sq:sq-modern-open-tirana-gjeografia: 0 only stored (), 1 only fresh (pattern:sq:object-pronoun-before-verb), 4 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article, pattern:sq:non-active-present)",
+   "text:sq:sq-modern-open-tirana-klima: 0 only stored (), 1 only fresh (pattern:sq:definite-noun-ending), 0 with another count ()",
+   "text:sq:sq-modern-open-tirana-arkeologjia: 0 only stored (), 0 only fresh (), 3 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article, pattern:sq:ablative-after-preposition)",
+   "text:sq:sq-modern-open-tirana-turizmi: 0 only stored (), 1 only fresh (pattern:sq:clitic-doubling), 4 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article, pattern:sq:ablative-after-preposition)",
+   "text:sq:sq-modern-open-tirana-transporti: 0 only stored (), 1 only fresh (pattern:sq:future), 2 with another count (pattern:sq:definite-noun-ending, pattern:sq:ablative-after-preposition)",
+   "text:sq:sq-modern-open-tirana-demografia: 0 only stored (), 1 only fresh (pattern:sq:clitic-doubling), 3 with another count (pattern:sq:definite-noun-ending, pattern:sq:ablative-after-preposition, pattern:sq:genitive-linking-article)",
+   "text:sq:sq-modern-open-tirana-ekonomia: 0 only stored (), 0 only fresh (), 2 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article)",
+   "text:sq:sq-modern-open-shqiperia-relievi: 0 only stored (), 0 only fresh (), 2 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article)",
+   "text:sq:sq-modern-open-shqiperia-klima: 0 only stored (), 1 only fresh (pattern:sq:nominative-after-preposition), 0 with another count ()",
+   "text:sq:sq-modern-open-shqiperia-popullsia: 0 only stored (), 0 only fresh (), 2 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article)",
+   "text:sq:sq-modern-open-shqiperia-ekonomia: 0 only stored (), 0 only fresh (), 4 with another count (pattern:sq:definite-noun-ending, pattern:sq:non-active-present, pattern:sq:genitive-linking-article)",
+   "text:sq:sq-modern-open-shqiperia-gjeografia: 0 only stored (), 0 only fresh (), 3 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article, pattern:sq:nominative-after-preposition)",
+   "text:sq:sq-modern-open-shqiperia-historia: 0 only stored (), 2 only fresh (pattern:sq:gerund-duke, pattern:sq:negation-nuk), 2 with another count (pattern:sq:definite-noun-ending, pattern:sq:nominative-after-preposition)",
+   "text:sq:sq-modern-open-durresi-gjeografia: 0 only stored (), 1 only fresh (pattern:sq:nominative-after-preposition), 2 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article)",
+   "text:sq:sq-modern-open-durresi-historia: 3 only stored (pattern:sq:ablative-after-preposition, pattern:sq:modal-te, pattern:sq:non-active-present), 1 only fresh (pattern:sq:relative-clause), 2 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article)"
+  ],
+  "deep: the features are what a fresh import measures": [
+   "text:sq:sq-modern-open-ushqimi: relativePerSentence, subjunctiveShare, cliticShare, unanalysedShare, genitiveShare, registerShare",
+   "text:sq:sq-modern-open-qeni: cliticShare, unanalysedShare, genitiveShare, registerShare",
+   "text:sq:sq-modern-open-macja: relativePerSentence, subjunctiveShare, cliticShare, properNounShare, unanalysedShare, genitiveShare, registerShare",
+   "text:sq:sq-modern-open-bleta: relativePerSentence, subjunctiveShare, cliticShare, properNounShare, unanalysedShare, genitiveShare, registerShare",
+   "text:sq:sq-modern-open-mali: cliticShare, properNounShare, unanalysedShare, genitiveShare, registerShare",
+   "text:sq:sq-modern-open-deti: relativePerSentence, cliticShare, unanalysedShare, registerShare",
+   "text:sq:sq-modern-open-tirana-gjeografia: cliticShare, properNounShare, unanalysedShare, genitiveShare, registerShare",
+   "text:sq:sq-modern-open-tirana-klima: unanalysedShare",
+   "text:sq:sq-modern-open-tirana-arkeologjia: unanalysedShare, genitiveShare",
+   "text:sq:sq-modern-open-tirana-turizmi: cliticShare, properNounShare, unanalysedShare, genitiveShare",
+   "text:sq:sq-modern-open-tirana-transporti: bracketDistance, subjunctiveShare, cliticShare, unanalysedShare, genitiveShare",
+   "text:sq:sq-modern-open-tirana-demografia: cliticShare, properNounShare, unanalysedShare, genitiveShare, registerShare",
+   "text:sq:sq-modern-open-tirana-ekonomia: cliticShare, unanalysedShare, genitiveShare",
+   "text:sq:sq-modern-open-shqiperia-relievi: cliticShare, properNounShare, unanalysedShare, genitiveShare, registerShare",
+   "text:sq:sq-modern-open-shqiperia-klima: cliticShare, properNounShare, unanalysedShare, registerShare",
+   "text:sq:sq-modern-open-shqiperia-popullsia: cliticShare, properNounShare, unanalysedShare, genitiveShare, registerShare",
+   "text:sq:sq-modern-open-shqiperia-ekonomia: cliticShare, unanalysedShare, genitiveShare",
+   "text:sq:sq-modern-open-shqiperia-gjeografia: cliticShare, properNounShare, unanalysedShare, genitiveShare, registerShare",
+   "text:sq:sq-modern-open-shqiperia-historia: cliticShare, properNounShare, unanalysedShare, genitiveShare",
+   "text:sq:sq-modern-open-durresi-gjeografia: properNounShare, unanalysedShare, genitiveShare",
+   "text:sq:sq-modern-open-durresi-historia: relativePerSentence, cliticShare, properNounShare, unanalysedShare, registerShare",
+   "text:sq:sq-modern-open-durresi-transporti: cliticShare"
+  ]
+ }
+}

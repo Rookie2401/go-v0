@@ -1,0 +1,1287 @@
+{
+  "de": [
+    {
+      "id": "work:germany-de:bridge-der-lowe-rennt-und-die-kuh-geht",
+      "courseId": "germany-de",
+      "lang": "de",
+      "stageId": "stage:germany-de:s1",
+      "role": "subsidiary",
+      "order": 950,
+      "title": "Der Löwe rennt und die Kuh geht",
+      "edition": "Global Digital Library gdl-3928",
+      "sourceUrl": "https://content.digitallibrary.io/de/book/der-lowe-rennt-und-die-kuh-geht/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/der-lowe-rennt-und-die-kuh-geht/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:germany-de:bridge-einfaches-zahlen",
+      "courseId": "germany-de",
+      "lang": "de",
+      "stageId": "stage:germany-de:s1",
+      "role": "subsidiary",
+      "order": 951,
+      "title": "Einfaches Zählen",
+      "edition": "Global Digital Library gdl-3929",
+      "sourceUrl": "https://content.digitallibrary.io/de/book/einfaches-zahlen/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/einfaches-zahlen/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "catalogued",
+      "readiness": "verified-ready",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:germany-de:bridge-lecker-mango",
+      "courseId": "germany-de",
+      "lang": "de",
+      "stageId": "stage:germany-de:s1",
+      "role": "subsidiary",
+      "order": 952,
+      "title": "Lecker Mango!",
+      "edition": "Global Digital Library gdl-7317",
+      "sourceUrl": "https://content.digitallibrary.io/de/book/lecker-mango/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/lecker-mango/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "catalogued",
+      "readiness": "verified-ready",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:germany-de:bridge-mein-kleiner-garten",
+      "courseId": "germany-de",
+      "lang": "de",
+      "stageId": "stage:germany-de:s1",
+      "role": "subsidiary",
+      "order": 953,
+      "title": "Mein kleiner Garten",
+      "edition": "Global Digital Library gdl-7322",
+      "sourceUrl": "https://content.digitallibrary.io/de/book/mein-kleiner-garten/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/mein-kleiner-garten/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "catalogued",
+      "readiness": "verified-ready",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:germany-de:bridge-meine-strase",
+      "courseId": "germany-de",
+      "lang": "de",
+      "stageId": "stage:germany-de:s1",
+      "role": "subsidiary",
+      "order": 954,
+      "title": "Meine Straße",
+      "edition": "Global Digital Library gdl-7318",
+      "sourceUrl": "https://content.digitallibrary.io/de/book/meine-strase/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/meine-strase/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "catalogued",
+      "readiness": "verified-ready",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:germany-de:bridge-navy-und-bora",
+      "courseId": "germany-de",
+      "lang": "de",
+      "stageId": "stage:germany-de:s1",
+      "role": "subsidiary",
+      "order": 955,
+      "title": "Navy und Bora",
+      "edition": "Global Digital Library gdl-3926",
+      "sourceUrl": "https://content.digitallibrary.io/de/book/navy-und-bora/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/navy-und-bora/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:germany-de:bridge-schmetterling-und-tukan",
+      "courseId": "germany-de",
+      "lang": "de",
+      "stageId": "stage:germany-de:s1",
+      "role": "subsidiary",
+      "order": 956,
+      "title": "Schmetterling und Tukan",
+      "edition": "Global Digital Library gdl-3924",
+      "sourceUrl": "https://content.digitallibrary.io/de/book/schmetterling-und-tukan/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/schmetterling-und-tukan/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:germany-de:bridge-ich-kann-mich-selbst-anziehen",
+      "courseId": "germany-de",
+      "lang": "de",
+      "stageId": "stage:germany-de:s1",
+      "role": "subsidiary",
+      "order": 957,
+      "title": "Ich kann mich selbst anziehen!",
+      "edition": "Global Digital Library gdl-7319",
+      "sourceUrl": "https://content.digitallibrary.io/de/book/ich-kann-mich-selbst-anziehen/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/ich-kann-mich-selbst-anziehen/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "catalogued",
+      "readiness": "verified-ready",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:germany-de:bridge-ich-mag",
+      "courseId": "germany-de",
+      "lang": "de",
+      "stageId": "stage:germany-de:s1",
+      "role": "subsidiary",
+      "order": 958,
+      "title": "Ich mag",
+      "edition": "Global Digital Library gdl-7320",
+      "sourceUrl": "https://content.digitallibrary.io/de/book/ich-mag/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/ich-mag/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "catalogued",
+      "readiness": "verified-ready",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:germany-de:bridge-schnipp-schnapp",
+      "courseId": "germany-de",
+      "lang": "de",
+      "stageId": "stage:germany-de:s1",
+      "role": "subsidiary",
+      "order": 959,
+      "title": "Schnipp Schnapp",
+      "edition": "Global Digital Library gdl-7321",
+      "sourceUrl": "https://content.digitallibrary.io/de/book/schnipp-schnapp/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/schnipp-schnapp/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "catalogued",
+      "readiness": "verified-ready",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:germany-de:bridge-verstecken-spielen",
+      "courseId": "germany-de",
+      "lang": "de",
+      "stageId": "stage:germany-de:s1",
+      "role": "subsidiary",
+      "order": 960,
+      "title": "Verstecken spielen",
+      "edition": "Global Digital Library gdl-3920",
+      "sourceUrl": "https://content.digitallibrary.io/de/book/verstecken-spielen/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/verstecken-spielen/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:germany-de:der-kleine-haewelmann",
+      "courseId": "germany-de",
+      "lang": "de",
+      "stageId": "stage:germany-de:s3",
+      "role": "subsidiary",
+      "order": 1211,
+      "title": "Der kleine Häwelmann",
+      "author": "Theodor Storm",
+      "edition": "Sommergeschichten und Lieder, Berlin, Duncker, 1851, pp. 24–30",
+      "sourceUrl": "https://de.wikisource.org/wiki/Der_kleine_H%C3%A4welmann",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading to fill a documented material gap"
+      ],
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "canModify": false,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "German Wikisource scan metadata and author death record",
+        "verifiedAt": "2026-10-02",
+        "basis": "1851 edition and Theodor Storm (1817–1888); source contribution licence recorded separately.",
+        "sourceRepository": "de.wikisource.org, ‘Der kleine Häwelmann’ transcription and scan metadata (https://de.wikisource.org/wiki/Der_kleine_H%C3%A4welmann)",
+        "statusByJurisdiction": {
+          "US": "public-domain",
+          "DE": "public-domain"
+        },
+        "jurisdictions": ["DE", "US"],
+        "modifications": "Article text extracted from the completed source page body; navigation and metadata removed.",
+        "evidence": [
+          "https://de.wikisource.org/wiki/Der_kleine_H%C3%A4welmann",
+          "https://creativecommons.org/licenses/by-sa/4.0/deed.de"
+        ],
+        "compliance": "Author, title and source URL are retained; the transcription contribution is attributed under the source's stated CC BY-SA 4.0 terms.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Authentic source wording and source credits retained. Shelf placement is course orientation; source-fidelity review does not certify a CEFR level or native linguistic review."
+    }
+  ],
+  "es": [
+    {
+      "id": "work:honduras-es:bridge-safari-en-la-banera",
+      "courseId": "honduras-es",
+      "lang": "es",
+      "stageId": "stage:honduras-es:s1",
+      "role": "subsidiary",
+      "order": 950,
+      "title": "Safari en la bañera",
+      "edition": "Global Digital Library gdl-132",
+      "sourceUrl": "https://content.digitallibrary.io/es-es/book/safari-en-la-banera/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/safari-en-la-banera/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:honduras-es:bridge-una-casa-para-raton",
+      "courseId": "honduras-es",
+      "lang": "es",
+      "stageId": "stage:honduras-es:s1",
+      "role": "subsidiary",
+      "order": 951,
+      "title": "Una casa para Ratón",
+      "edition": "Global Digital Library gdl-129",
+      "sourceUrl": "https://content.digitallibrary.io/es-es/book/una-casa-para-raton/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/una-casa-para-raton/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:honduras-es:bridge-vuelve-gata",
+      "courseId": "honduras-es",
+      "lang": "es",
+      "stageId": "stage:honduras-es:s1",
+      "role": "subsidiary",
+      "order": 952,
+      "title": "¡Vuelve, Gata!",
+      "edition": "Global Digital Library gdl-801",
+      "sourceUrl": "https://content.digitallibrary.io/es-es/book/vuelve-gata/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/vuelve-gata/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:honduras-es:bridge-dentro-de-la-world-wide-web",
+      "courseId": "honduras-es",
+      "lang": "es",
+      "stageId": "stage:honduras-es:s1",
+      "role": "subsidiary",
+      "order": 953,
+      "title": "Dentro de la World Wide Web",
+      "edition": "Global Digital Library gdl-1185",
+      "sourceUrl": "https://content.digitallibrary.io/es-es/book/dentro-de-la-world-wide-web/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/dentro-de-la-world-wide-web/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:honduras-es:bridge-el-bate-perdido-2",
+      "courseId": "honduras-es",
+      "lang": "es",
+      "stageId": "stage:honduras-es:s1",
+      "role": "subsidiary",
+      "order": 954,
+      "title": "El bate perdido",
+      "edition": "Global Digital Library gdl-1188",
+      "sourceUrl": "https://content.digitallibrary.io/es-es/book/el-bate-perdido-2/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/el-bate-perdido-2/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:honduras-es:bridge-el-nino-y-el-tambor",
+      "courseId": "honduras-es",
+      "lang": "es",
+      "stageId": "stage:honduras-es:s1",
+      "role": "subsidiary",
+      "order": 955,
+      "title": "El niño y el tambor",
+      "edition": "Global Digital Library gdl-1193",
+      "sourceUrl": "https://content.digitallibrary.io/es-es/book/el-nino-y-el-tambor/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/el-nino-y-el-tambor/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:honduras-es:bridge-inmersion",
+      "courseId": "honduras-es",
+      "lang": "es",
+      "stageId": "stage:honduras-es:s1",
+      "role": "subsidiary",
+      "order": 956,
+      "title": "¡INMERSIÓN!",
+      "edition": "Global Digital Library gdl-1184",
+      "sourceUrl": "https://content.digitallibrary.io/es-es/book/inmersion/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/inmersion/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:honduras-es:bridge-pishi-atrapado-en-una-tormenta",
+      "courseId": "honduras-es",
+      "lang": "es",
+      "stageId": "stage:honduras-es:s1",
+      "role": "subsidiary",
+      "order": 957,
+      "title": "Pishi atrapado en una tormenta",
+      "edition": "Global Digital Library gdl-1189",
+      "sourceUrl": "https://content.digitallibrary.io/es-es/book/pishi-atrapado-en-una-tormenta/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/pishi-atrapado-en-una-tormenta/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:honduras-es:bridge-demasiados-platanos",
+      "courseId": "honduras-es",
+      "lang": "es",
+      "stageId": "stage:honduras-es:s1",
+      "role": "subsidiary",
+      "order": 958,
+      "title": "Demasiados plátanos",
+      "edition": "Global Digital Library gdl-1146",
+      "sourceUrl": "https://content.digitallibrary.io/es-es/book/demasiados-platanos/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/demasiados-platanos/"
+        ],
+        "sourceRepository": "Global Digital Library",
+        "jurisdictions": [
+          "CC BY 4.0 worldwide licence"
+        ],
+        "modifications": "EPUB reading body extracted; source wording retained; navigation and credit pages excluded from the reading body.",
+        "compliance": "Retain source URL, title, publisher and full source credits; link CC BY 4.0 and indicate extraction changes.",
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    }
+  ],
+  "hi": [
+    {
+      "id": "work:india-hi:premchand-panch-parameshwar",
+      "courseId": "india-hi",
+      "lang": "hi",
+      "stageId": "stage:india-hi:c5",
+      "role": "subsidiary",
+      "order": 950,
+      "title": "पंच परमेश्वर",
+      "author": "प्रेमचंद",
+      "edition": "सप्तसरोज, हिन्दी पुस्तक एजेंसी, काशी, 1938 (sixteenth)",
+      "sourceUrl": "https://hi.wikisource.org/wiki/सप्तसरोज/पंच_परमेश्वर",
+      "streams": [
+        "literature"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Hindi Wikisource edition page and PD India/PD US source record",
+        "verifiedAt": "2026-10-02",
+        "basis": "The book page labels the work सप्तसरोज (1917), prints the first-edition preface dated 8 June 1917, and lists पंच परमेश्वर in the contents. The page explicitly records PD India and PD US status.",
+        "statusByJurisdiction": {
+          "US": "public-domain",
+          "IN": "public-domain"
+        },
+        "licence": "CC BY-SA 4.0 (Wikisource transcription; underlying 1917 work PD in US/India)",
+        "attributionRequired": true,
+        "shareAlike": true,
+        "commercialUse": true,
+        "compliance": "Retain author, edition, source URL, Wikisource attribution and CC BY-SA 4.0 link; indicate changes.",
+        "evidence": [
+          "https://hi.wikisource.org/wiki/सप्तसरोज/पंच_परमेश्वर",
+          "https://hi.wikisource.org/wiki/विषयसूची:सप्तसरोज.djvu",
+          "https://creativecommons.org/licenses/by-sa/4.0/deed.hi"
+        ],
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    },
+    {
+      "id": "work:india-hi:premchand-namak-ka-daroga",
+      "courseId": "india-hi",
+      "lang": "hi",
+      "stageId": "stage:india-hi:c5",
+      "role": "subsidiary",
+      "order": 951,
+      "title": "नमक का दारोगा",
+      "author": "प्रेमचंद",
+      "edition": "सप्तसरोज, हिन्दी पुस्तक एजेंसी, काशी, 1938 (sixteenth)",
+      "sourceUrl": "https://hi.wikisource.org/wiki/सप्तसरोज/नमक_का_दारोगा",
+      "streams": [
+        "literature"
+      ],
+      "purpose": [
+        "source-authored reading bridge with exact edition and licence retained"
+      ],
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Hindi Wikisource edition page and PD India/PD US source record",
+        "verifiedAt": "2026-10-02",
+        "basis": "The book page labels the work सप्तसरोज (1917), prints the first-edition preface dated 8 June 1917, and lists नमक का दारोगा in the contents. The page explicitly records PD India and PD US status.",
+        "statusByJurisdiction": {
+          "US": "public-domain",
+          "IN": "public-domain"
+        },
+        "licence": "CC BY-SA 4.0 (Wikisource transcription; underlying 1917 work PD in US/India)",
+        "attributionRequired": true,
+        "shareAlike": true,
+        "commercialUse": true,
+        "compliance": "Retain author, edition, source URL, Wikisource attribution and CC BY-SA 4.0 link; indicate changes.",
+        "evidence": [
+          "https://hi.wikisource.org/wiki/सप्तसरोज/नमक_का_दारोगा",
+          "https://hi.wikisource.org/wiki/विषयसूची:सप्तसरोज.djvu",
+          "https://creativecommons.org/licenses/by-sa/4.0/deed.hi"
+        ],
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "notes": "Shelf placement is an orientation, not a CEFR or native-speaker certification. Source wording and attribution are retained."
+    }
+  ],
+  "th": [
+    {
+      "id": "work:thailand-th:th-gap-recovery-aesop",
+      "courseId": "thailand-th",
+      "lang": "th",
+      "stageId": "stage:thailand-th:g1",
+      "role": "subsidiary",
+      "order": 1200,
+      "title": "นิทานอีสป — นิทาน 45 เรื่อง",
+      "edition": "นิทานอีสป, 2499 funeral reprint; Wikisource revisions checked 2026-10-02",
+      "sourceUrl": "https://th.wikisource.org/wiki/%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%B2%E0%B8%99%E0%B8%AD%E0%B8%B5%E0%B8%AA%E0%B8%9B%2F%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%B2%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%201",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading to fill a documented material gap"
+      ],
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Thai Wikisource root rights record",
+        "verifiedAt": "2026-10-02",
+        "basis": "The Thai Wikisource root page for นิทานอีสป explicitly records the underlying 2499 work as public domain under sections 19–20 of the Thai Copyright Act B.E. 2537. This verification is limited to Thailand; no worldwide or United States clearance is claimed. The cached Wikisource transcription remains attributed under CC BY-SA 4.0.",
+        "licensing": "Public domain in Thailand for the underlying work; CC BY-SA 4.0 transcription attribution",
+        "jurisdictions": [
+          "TH"
+        ],
+        "statusByJurisdiction": {
+          "TH": "public-domain"
+        },
+        "attributionRequired": true,
+        "canStoreOffline": true,
+        "evidence": [
+          "https://th.wikisource.org/wiki/นิทานอีสป",
+          "https://th.wikisource.org/wiki/นิทานอีสป/คำชี้แจงของผู้แต่ง",
+          "https://th.wikisource.org/wiki/Wikisource:Copyright_policy"
+        ],
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "variety": "central-thai",
+      "genre": "fable",
+      "notes": "Authentic source wording and source credits retained. Shelf placement is course orientation; source-fidelity review does not certify a CEFR level or native linguistic review."
+    }
+  ],
+  "sq": [
+    {
+      "id": "work:albania-sq:sq-modern-gap-readings",
+      "courseId": "albania-sq",
+      "lang": "sq",
+      "stageId": "stage:albania-sq:7",
+      "role": "subsidiary",
+      "order": 1200,
+      "title": "Qytete dhe natyrë",
+      "edition": "Exact revisions listed in source-manifest.json",
+      "sourceUrl": "https://sq.wikipedia.org/",
+      "streams": [
+        "library"
+      ],
+      "purpose": [
+        "source-authored reading to fill a documented material gap"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "granted",
+        "canBundle": true,
+        "canModify": true,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "verified": true,
+        "licensing": "CC BY-SA 4.0",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "verifiedBy": "Wikimedia source-manifest and exact-revision checker",
+        "verifiedAt": "2026-10-02",
+        "basis": "Each exact sq.wikipedia.org revision is published under CC BY-SA 4.0; redistribution preserves attribution and share-alike.",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://sq.wikipedia.org/wiki/Wikipedia:CC_BY-SA",
+          "https://creativecommons.org/licenses/by-sa/4.0/"
+        ],
+        "audiobook": "unknown"
+      },
+      "bibliographyVerified": true,
+      "optional": true,
+      "ingestion": "ingested",
+      "readiness": "implemented",
+      "variety": "sq",
+      "genre": "educational reference",
+      "domains": [
+        "geography",
+        "culture"
+      ],
+      "notes": "Authentic source wording and source credits retained. Shelf placement is course orientation; source-fidelity review does not certify a CEFR level or native linguistic review."
+    }
+  ]
+}

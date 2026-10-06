@@ -210,12 +210,12 @@ describe('library chapters', () => {
 });
 
 describe('the same chapter in the library under another id', () => {
-  it('lists a complete chapter once (same place, title, edition and length), but keeps a partial passage and another edition beside it', async () => {
+  it('keeps distinct identities even when place, title, edition and length match', async () => {
     const gen1 = runningNumber('GEN', 1)!;
     const jn1 = runningNumber('1JN', 1)!;
     const h = await german({
       library: [
-        // the complete chapter the resident text already is: same place, same title, same work → listed once (the resident copy)
+        // a distinct catalog identity with matching place/title/work: retain it because these metadata do not prove equal wording
         catalogText({ id: 'text:de:luther-gen-1', lang: 'de', title: '1. Mose 1', workId: 'work:germany-de:lutherbibel-1912', stream: 'scripture', streams: ['scripture'], chapter: gen1, rights: 'verified-public-domain', features: { words: 2, sentences: 1, uniqueForms: 2, meanSentenceWords: 2 } }), // as long as the resident text
         // another edition of the same chapter: a different work → listed beside it
         catalogText({ id: 'text:de:elb-gen-1', lang: 'de', title: '1. Mose 1', workId: 'work:germany-de:elberfelder-1905', stream: 'scripture', streams: ['scripture'], chapter: gen1, rights: 'verified-public-domain' }),
@@ -228,7 +228,7 @@ describe('the same chapter in the library under another id', () => {
     await seed(h, '1jn-1', '1. Johannes 1,8–9; Johannes 3,16', '1JN', 1);
     mounted = await h.mount(app(), { router: '/scripture' });
     expect(links('b:GEN').map((a) => a.getAttribute('href'))).toEqual([
-      `/scripture/${encodeURIComponent(gen.id)}`, `/scripture/${encodeURIComponent('text:de:elb-gen-1')}`,
+      `/scripture/${encodeURIComponent(gen.id)}`, `/scripture/${encodeURIComponent('text:de:luther-gen-1')}`, `/scripture/${encodeURIComponent('text:de:elb-gen-1')}`,
     ]);
     if (head('t:NT').getAttribute('aria-expanded') !== 'true') await click(head('t:NT'));
     if (head('d:epistles').getAttribute('aria-expanded') !== 'true') await click(head('d:epistles'));

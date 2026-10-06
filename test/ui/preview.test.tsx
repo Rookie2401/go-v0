@@ -1,9 +1,8 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
-import type { Recommendation } from '../../src/core';
 import { buildFixtureText } from '../../src/core';
 import { AppRoutes, Shell } from '../../src/ui/App';
-import { button, byLabel, check, click, makeHarness, q, qa } from './harness';
+import { button, byLabel, catalogText, check, click, makeHarness, q, qa } from './harness';
 import type { Harness, Mounted } from './harness';
 import { JOHN_ID, STORY_ID, seedJohn, seedStory, seedThai } from './fixtures';
 
@@ -74,16 +73,14 @@ describe('Preview mode is off by default and gates what is shown', () => {
     expect(q(mounted.container, 'article.reader')).toBeNull();
   });
 
-  it('asks GoLearn for published texts only, in the learner\'s language, and drops an unpublished text it is offered anyway', async () => {
+  it('asks the lazy library for published text in the active language and rejects an unpublished row it returns anyway', async () => {
     const h = await makeHarness();
     await seedUnpublished(h);
-    const recs: Recommendation[] = [{ reason: 'first-text', textId: STORY_ID, reinforces: [], score: 1, explanation: 'Leaked?' }];
-    h.learn.recommend.mockImplementation(async () => recs);
-    mounted = await h.mount(app(), { router: '/' });
-    expect(h.learn.recommend).toHaveBeenCalledWith('u1', { limit: 5, includeUnpublished: false, lang: 'es' });
-    expect(mounted.container.textContent).not.toContain('Leaked?');
-    // the empty state names what is awaited rather than "Open a story to begin"
-    expect(q(mounted.container, '[data-testid="home-empty"]')!.textContent).toContain('awaiting native-speaker review');
+    h.library.search.mockImplementation(async () => ({ total: 1, items: [catalogText({ id: 'text:es:catalog-held', title: 'Catalog secret', published: false })] }));
+    mounted = await h.mount(app(), { router: '/read' });
+    expect(h.library.search).toHaveBeenCalledWith({ lang: 'es', publishedOnly: true, limit: 200, offset: 0 });
+    expect(mounted.container.textContent).not.toContain('Catalog secret');
+    expect(qa(mounted.container, '.entrylist [role="listitem"] a.entry')).toHaveLength(0);
   });
 
   it('does not offer an unpublished text as passage preparation', async () => {
@@ -163,17 +160,18 @@ describe('Preview mode on', () => {
     expect(byLabel(mounted.container, 'Why Story 1 is not published')).not.toBeNull();
   });
 
-  it('asks GoLearn to include unpublished texts and Home shows them marked', async () => {
+  it('preview exposes unpublished material only on the reading surface, never on Home', async () => {
     const h = await makeHarness();
     await seedUnpublished(h);
     await turnOn(h);
     await mounted!.unmount();
-    h.learn.recommend.mockImplementation(async () => [{ reason: 'first-text', textId: STORY_ID, reinforces: [], score: 1, explanation: 'Start with this one.' }] as Recommendation[]);
     mounted = await h.mount(app(), { router: '/' });
-    expect(h.learn.recommend).toHaveBeenCalledWith('u1', { limit: 5, includeUnpublished: true, lang: 'es' });
-    const row = q(mounted.container, 'li[data-reason="first-text"]')!;
-    expect(row.textContent).toContain('Story 1');
-    expect(row.textContent).toContain('unpublished');
+    expect(mounted.container.textContent).not.toContain('Story 1');
+    expect(h.learn.recommend).not.toHaveBeenCalled();
+    await mounted.unmount();
+    mounted = await h.mount(app(), { router: '/read' });
+    expect(mounted.container.textContent).toContain('Story 1');
+    expect(mounted.container.textContent).toContain('unpublished · not reviewed');
   });
 
   it('the banner turns preview off, and everything returns to the gated view', async () => {

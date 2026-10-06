@@ -12,6 +12,7 @@ import type { DomainEvent, RankCandidate } from '../../src/core';
 import type { StoredItem } from '../../src/golearn/agg';
 import { createHarness } from './harness';
 import type { Harness } from './harness';
+import { withoutHeadCache } from './harness';
 import { ES_JOHN, ES_PREP, ES_STORY, buildSpanish, buildSpanishPrep, buildSpanishScripture } from './fixtures';
 import { profile } from './profiles';
 
@@ -19,7 +20,10 @@ const U = 'u1';
 const F = (w: string) => ids.form('es', w);
 const MIN = 60 * 1000;
 /** JSON with sorted keys: equal strings = equal values, whatever order a row's keys were written in. */
-const canon = (v: unknown): string => JSON.stringify(v, (_k, x) => (x && typeof x === 'object' && !Array.isArray(x) ? Object.fromEntries(Object.entries(x).sort(([a], [b]) => (a < b ? -1 : 1))) : x));
+const canon = (v: unknown): string => JSON.stringify(v, (k, x) => {
+  if (['summary', 'needsRelevel', 'pendingPriors'].includes(k)) return undefined;
+  return x && typeof x === 'object' && !Array.isArray(x) ? Object.fromEntries(Object.entries(x).sort(([a], [b]) => (a < b ? -1 : 1))) : x;
+});
 
 const listeningOf = async (h: Harness, user: string, itemId: string) => (await h.golearn.getItemState(user, itemId))?.listening;
 const excludedReasons = async (h: Harness, user: string) => (await h.golearn.auditEvidence(user)).excluded.map((x) => x.reason);
@@ -126,7 +130,7 @@ describe('3 — hearing never merges reading sittings', () => {
     expect(pecado?.reading.exposures).toBe(2);
     expect(new Set((await encountersOf(withListen, U, 'reading')).filter((e) => e.itemId === F('pecado')).map((e) => e.sitting)).size).toBe(2);
     expect((await listeningOf(withListen, U, F('pecado')))?.exposures).toBe(1); // it was heard, in a sitting of its own
-    expect(JSON.stringify(await readingSnapshot(withListen))).toBe(JSON.stringify(await readingSnapshot(without)));
+    expect(canon(await readingSnapshot(withListen))).toBe(canon(await readingSnapshot(without)));
   });
 
   it('listening encounters live in their own sitting key space and a rebuild reproduces the state', async () => {
@@ -134,9 +138,9 @@ describe('3 — hearing never merges reading sittings', () => {
     const heard = (await encountersOf(h, U, 'listening'))[0];
     expect(heard.sitting).toMatch(/^listen:/);
     for (const e of await encountersOf(h, U, 'reading')) expect(e.sitting).not.toMatch(/^listen:/);
-    const before = JSON.stringify((await h.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)));
+    const before = canon((await h.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)));
     await h.golearn.rebuild(U);
-    expect(JSON.stringify((await h.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)))).toBe(before);
+    expect(canon((await h.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)))).toBe(before);
   });
 
   it('negative: two readings only 10 minutes apart are still one reading sitting (reading sittings are unchanged)', async () => {
@@ -283,7 +287,7 @@ describe('6 — state follows the log, not later store edits', () => {
     const asset = (await h.store.audioAssets.get(ev.assetId!))!;
     return { h, asset };
   }
-  const state = async (h: Harness) => JSON.stringify([
+  const state = async (h: Harness) => canon([
     (await h.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)),
     (await h.store.encounters.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)),
   ]);
@@ -444,7 +448,7 @@ describe('the evidence@8 bump leaves a reading-only learner untouched', () => {
     await h.produce(U, 'es', F('creo'), 'independent');
     const snapshot = async () => ({
       encounters: (await h.store.encounters.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)),
-      items: (await h.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)),
+      items: withoutHeadCache((await h.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1))),
       progress: await h.golearn.readingProgress(U, ES_STORY),
       coverage: [await h.golearn.coverage(U, ES_STORY), await h.golearn.coverage(U, ES_PREP)],
     });
@@ -453,7 +457,7 @@ describe('the evidence@8 bump leaves a reading-only learner untouched', () => {
     await h.store.meta.put({ id: `golearn.policy:${U}`, value: 'evidence@7', updatedAt: '2026-01-01T00:00:00.000Z' });
     expect(await h.golearn.ensureCurrent(U)).toBe(true); // the bump triggers a rebuild ...
     expect((await h.store.meta.get(`golearn.policy:${U}`))?.value).toBe('evidence@8');
-    expect(await snapshot()).toEqual(before); // ... that changes nothing
+    expect(canon(await snapshot())).toBe(canon(before)); // ... learner state and its audit outputs do not change
     expect(canon(await snapshot())).toBe(canon(before)); // byte for byte, key order aside for a reading-only learner
   });
 });

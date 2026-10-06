@@ -260,9 +260,17 @@ export function TeamTextsPage() {
             {books.map((b) => (
               <li key={b.key} className="work" data-book={b.key}>
                 <h3 className="work__title" lang={b.texts[0].lang}>{b.title}</h3>
-                <p className="work__copy">
-                  <Link to={textPath(b.texts[0])} className="work__copy-link">{b.texts.length} {b.texts.length === 1 ? 'chapter' : 'chapters'}</Link>
-                </p>
+                <div className="work__copy">
+                  {b.texts.length === 1 ? <Link to={textPath(b.texts[0])} className="work__copy-link">Open chapter</Link>
+                    : <details className="team-book__chapters">
+                      <summary>{b.texts.length} chapters</summary>
+                      <ol aria-label={`${b.title} chapters`}>
+                        {b.texts.map((text) => <li key={text.id}>
+                          <Link to={textPath(text)} className="work__copy-link">{text.title} · Chapter {text.chapter?.index ?? '—'}</Link>
+                        </li>)}
+                      </ol>
+                    </details>}
+                </div>
                 <span className="work__added">Added by {b.by || 'a learner'} · {b.at ? formatDate(b.at) : 'earlier'}</span>
                 {canShare && <BookShare book={b} verdict={verdicts[b.key]} busy={sharing === b.key} outcome={shared[b.key]} onShare={() => {
                   setSharing(b.key); setShared((m) => ({ ...m, [b.key]: [] }));

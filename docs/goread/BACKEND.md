@@ -41,7 +41,7 @@ and so is a document that does not validate (`validateBatch`), one over 2 MB, or
 ## Running it
 
 ```
-npx vite-node server/goread/main.ts --port 8787 --data data/goread
+npx vite-node --config server/goread/vite.config.ts server/goread/main.ts --port 8787 --data data/goread
 ```
 
 - `--data` is a directory (created if missing; git-ignored). It holds `goread.sqlite` (Node's built-in `node:sqlite`).

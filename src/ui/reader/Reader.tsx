@@ -132,7 +132,7 @@ function useSiblings(text: Text): { prev?: Text; next?: Text } {
     void (async () => {
       const [rows, cs] = await Promise.all([store.texts.where('corpusId', text.corpusId), store.corpora.all()]);
       const corpusMap = new Map(cs.map((c) => [c.id, c]));
-      const list = siblingOrder(text, rows.filter((t) => t.listeningAssessmentId === undefined && !isTestimonyText(t, corpusMap)));
+      const list = siblingOrder(text, rows.filter((t) => t.listeningAssessmentId === undefined && t.readingAssessmentId === undefined && !isTestimonyText(t, corpusMap)));
       const i = list.findIndex((t) => t.id === text.id);
       if (live) setSib(i < 0 ? {} : { prev: list[i - 1], next: list[i + 1] });
     })().catch(() => { /* the nav bar is a convenience */ });
@@ -811,10 +811,10 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
 
           <ReadingGateContext.Provider value={gate}>{before}</ReadingGateContext.Provider>
 
-          <div className="reader-body">{sectionBlocks}</div>
-
-          {/* whose text this is: shown with the text at every assistance level (a licence's credit is not optional help) */}
+          {/* Credits precede the text at every assistance level, including publishers requiring top-of-story attribution. */}
           <SourceLine text={text} />
+
+          <div className="reader-body">{sectionBlocks}</div>
 
           <footer className="reader__end">
             {finished ? (

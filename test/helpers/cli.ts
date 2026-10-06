@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process';
+import path from 'node:path';
 
 export interface CliResult {
   status: number | null;
@@ -20,6 +21,14 @@ export interface RunNodeOptions {
  * or when the child is killed by a signal), mirroring spawnSync.
  */
 export function runNode(args: string[], opts: RunNodeOptions = {}): Promise<CliResult> {
+  const cliPath = args[0]?.replace(/\\/g, '/');
+  const entry = args[1]?.replace(/\\/g, '/');
+  const runsViteScript = cliPath?.includes('/vite-node/dist/cli.mjs') && entry && /(?:^|\/)scripts\/.*\.(?:mjs|mts|js|ts)$/.test(entry);
+  // CLI scripts are standalone tools; loading the browser app's Vite plugins adds significant cold-start cost and
+  // does not participate in their rights/schema checks. Keep explicitly supplied runner configs intact.
+  const childArgs = runsViteScript && !args.includes('--config')
+    ? [args[0], '--config', path.resolve(opts.cwd ?? process.cwd(), 'scripts/vite.config.ts'), ...args.slice(1)]
+    : args;
   return new Promise((resolve) => {
     let stdout = '';
     let stderr = '';
@@ -33,7 +42,7 @@ export function runNode(args: string[], opts: RunNodeOptions = {}): Promise<CliR
       resolve({ status, stdout, stderr, out: stdout + stderr });
     };
 
-    const child = spawn(process.execPath, args, {
+    const child = spawn(process.execPath, childArgs, {
       cwd: opts.cwd,
       env: opts.env,
       stdio: ['pipe', 'pipe', 'pipe'],

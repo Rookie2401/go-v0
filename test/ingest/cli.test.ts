@@ -57,13 +57,13 @@ describe('corpus CLI (npm run corpus:validate / corpus:check / corpus:migrate)',
       expect(fs.readFileSync(p, 'utf8')).toBe(bundledBefore);
 
       const before = sentenceTexts(p);
-      const r = await run('scripts/corpus-review.mts', p, '--by', 'Ana Ruiz (native speaker)', '--date', '2026-02-01', '--notes', 'Checked wording and glosses.');
+      const r = await run('scripts/corpus-review.mts', p, '--by', 'Ana Ruiz (native speaker)', '--date', '2026-02-01', '--notes', 'Checked wording and glosses.', '--level', 'native');
       expect(r.status).toBe(0);
       expect(r.out).toMatch(/review: unreviewed -> reviewed by Ana Ruiz \(native speaker\) on 2026-02-01/);
       expect(r.out).toMatch(/removed editorial tag: needs-native-review/);
       expect(r.out).toMatch(/would publish: yes/);
       const doc = JSON.parse(fs.readFileSync(p, 'utf8')) as { review: unknown; editorialTags: string[] };
-      expect(doc.review).toEqual({ status: 'reviewed', reviewedBy: 'Ana Ruiz (native speaker)', reviewedAt: '2026-02-01', contentSignature: expect.stringMatching(/^[0-9a-f]{16}$/), notes: 'Checked wording and glosses.' });
+      expect(doc.review).toEqual({ status: 'reviewed', reviewedBy: 'Ana Ruiz (native speaker)', reviewedAt: '2026-02-01', contentSignature: expect.stringMatching(/^[0-9a-f]{16}$/), notes: 'Checked wording and glosses.', level: 'native' });
       expect(r.out).toMatch(new RegExp(`review covers wording ${(doc.review as { contentSignature: string }).contentSignature.slice(0, 8)}`));
       expect(doc.editorialTags).toEqual(['machine-drafted']);
       expect(sentenceTexts(p)).toEqual(before);
@@ -71,7 +71,7 @@ describe('corpus CLI (npm run corpus:validate / corpus:check / corpus:migrate)',
       expect(story()).toBe(bundledBefore);
       expect((await run('scripts/corpus-validate.mts', p)).out).toMatch(/would publish: yes/);
       // reviewing twice with the same arguments is a no-op
-      const again = await run('scripts/corpus-review.mts', p, '--by', 'Ana Ruiz (native speaker)', '--date', '2026-02-01', '--notes', 'Checked wording and glosses.');
+      const again = await run('scripts/corpus-review.mts', p, '--by', 'Ana Ruiz (native speaker)', '--date', '2026-02-01', '--notes', 'Checked wording and glosses.', '--level', 'native');
       expect(again.status).toBe(0);
       expect(again.out).toMatch(/file already recorded this review/);
     }, 120_000);

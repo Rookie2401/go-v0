@@ -189,6 +189,16 @@ export function createGoLearn(deps: GoLearnDeps): GoLearn {
       for (const userId of order) await rebuild(userId);
       return order;
     },
+    async invalidateProtectedAssessments() {
+      await settled();
+      const users = new Set<string>();
+      for (const event of await ctx.store.events.all()) if (FOLD_TYPE_SET.has(event.type)) users.add(event.userId);
+      for (const row of await ctx.store.encounters.all()) users.add(row.userId);
+      for (const row of await ctx.store.learnerItems.all()) users.add(row.userId);
+      const order = [...users].sort();
+      for (const userId of order) await rebuild(userId);
+      return order;
+    },
     settled,
     async ensureCurrent(userId) {
       await settled();

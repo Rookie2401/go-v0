@@ -13,6 +13,9 @@
  */
 import type { RegisterTag, Stage, Stream, Work, WorkRights, WorkRole } from '../core';
 import { DEFAULT_ASSISTANCE, ids } from '../core';
+import { acquiredWorks } from './acquired';
+import { readingBridgeWorks } from './readingBridges';
+import { CURRICULUM_ACQUIRED_WORKS } from './curriculumAcquired';
 
 export const SPANISH_COURSE_ID = 'honduras-es';
 const LANG = 'es' as const;
@@ -88,20 +91,24 @@ let order = 0;
 interface W {
   slug: string; title: string; author?: string; died?: number; year?: number; role?: WorkRole; streams?: string[]; variety?: string; region?: string;
   era?: string; genre?: string; audience?: string; domains?: string[]; level?: Work['genericLevel']; registers?: RegisterTag[]; rights?: WorkRights;
-  purpose?: string[]; notes?: string; ingestion?: Work['ingestion'];
+  purpose?: string[]; notes?: string; ingestion?: Work['ingestion']; sourceUrl?: string;
 }
 const works = (shelfIndex: number, list: W[]): Work[] => list.map((w) => ({
   id: ids.work(SPANISH_COURSE_ID, w.slug), courseId: SPANISH_COURSE_ID, lang: LANG, stageId: ids.stage(SPANISH_COURSE_ID, `s${shelfIndex}`),
   role: w.role ?? 'subsidiary', order: order++, title: w.title, author: w.author, purpose: w.purpose ?? [], registers: w.registers,
-  rights: w.rights ?? (w.died !== undefined ? lead(`The author died in ${w.died}${w.year ? `; first published ${w.year}` : ''}.`) : BASE),
+  rights: acquiredWorks[LANG]?.[w.slug]?.rights ?? w.rights ?? (w.died !== undefined ? lead(`The author died in ${w.died}${w.year ? `; first published ${w.year}` : ''}.`) : BASE),
   bibliographyVerified: false, optional: true, notes: w.notes,
   streams: w.streams ?? ['library'], variety: w.variety, region: w.region, era: w.era, genre: w.genre, audience: w.audience, domains: w.domains,
-  genericLevel: w.level, publicationYear: w.year, authorDied: w.died, ingestion: w.ingestion ?? 'catalogued',
+  genericLevel: w.level, publicationYear: w.year, authorDied: w.died, ingestion: acquiredWorks[LANG]?.[w.slug]?.installed ? 'ingested' : w.ingestion ?? 'catalogued', sourceUrl: acquiredWorks[LANG]?.[w.slug]?.sourceUrl ?? w.sourceUrl,
+  edition: acquiredWorks[LANG]?.[w.slug]?.edition,
+  readiness: acquiredWorks[LANG]?.[w.slug]?.installed ? 'implemented' : undefined,
 }));
 
 const SPAIN = { variety: 'es-ES', region: 'Spain' } as const;
 
 export const SPANISH_WORKS: Work[] = [
+  ...CURRICULUM_ACQUIRED_WORKS.filter(w => w.lang === 'es'),
+  ...readingBridgeWorks('es'),
   // ── Shelf 0: controlled Spanish written for the course ──
   ...works(0, [
     { slug: 'camino-1', title: 'Camino 1 — Primeros pasos', role: 'spine', streams: ['acquisition'], variety: 'es-419', level: 'controlled', genre: 'microstories', rights: COURSE, ingestion: 'bundled',

@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "lang": "hi",
+  "entries": [
+    {
+      "slug": "gv-hi-467925c35d73-excerpt",
+      "title": "भारतीय स्ट्रीट फूड का बादशाह पानी पूरी, अब दुनिया भर में मशहूर — excerpt",
+      "author": "Abhinash Das",
+      "translator": "Debashish Chakrabarty",
+      "stage": "c6",
+      "streams": [
+        "library"
+      ],
+      "contentType": "nonfiction",
+      "genre": "contemporary-nonfiction",
+      "era": "modern",
+      "pedagogicalRole": "authentic",
+      "registers": [
+        "modern_standard",
+        "journalistic"
+      ],
+      "releaseState": "ready",
+      "nativeReview": "source-authored; placement review pending",
+      "difficulty": {
+        "adapter": "hi",
+        "tokenCount": 218,
+        "typeCount": 136,
+        "observedLemmaCount": 99,
+        "analyzerUnresolvedTokens": 29,
+        "lexicalDiversity": 0.6238532110091743,
+        "sentenceCount": 8,
+        "medianSentenceTokens": 30,
+        "maxSentenceTokens": 37,
+        "limitations": "Adapter lexicon is incomplete; unresolved analyzer tokens are not learner unknown words. No frequency corpus, native review, CEFR, or personalized coverage inferred."
+      },
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "canModify": true,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "verified": true,
+        "verifiedBy": "Exact Global Voices article credits, license footer and official republication policy",
+        "verifiedAt": "2026-10-04",
+        "licensing": "CC BY 3.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "basis": "GV-created author narrative/explanatory paragraphs in this exact credited translation; article/footer CC BY 3.0, current official policy permits redistribution and adaptation. Selected excerpt excludes third-party quoted prose and all media.",
+        "evidence": [
+          "https://hi.globalvoices.org/2025/12/14/2060/",
+          "https://globalvoices.org/2025/08/30/why-the-pani-puri-platter-remains-indias-favourite-snack/",
+          "https://globalvoices.org/about/global-voices-attribution-policy/",
+          "https://creativecommons.org/licenses/by/3.0/"
+        ]
+      },
+      "source": {
+        "file": "gv-hi-467925c35d73-excerpt.txt",
+        "kind": "plain",
+        "url": "https://hi.globalvoices.org/2025/12/14/2060/",
+        "edition": "Global Voices hi edition, Sun, 14 Dec 2025 17:00:04 +0000",
+        "sha256": "c2881ba968cc6a0305e95faaf3521f63099a806a0ed8dfb7afecc04705399b6f",
+        "originalSourceSha256": "86b0bd050883067776923288fca07eef412d24146f8d1c4731788887bfc2f92c",
+        "originalStoryUrl": "https://globalvoices.org/2025/08/30/why-the-pani-puri-platter-remains-indias-favourite-snack/",
+        "author": "Abhinash Das",
+        "translator": "Debashish Chakrabarty",
+        "attribution": "भारतीय स्ट्रीट फूड का बादशाह पानी पूरी, अब दुनिया भर में मशहूर — Abhinash Das, translated by Debashish Chakrabarty. Originally on Global Voices: https://hi.globalvoices.org/2025/12/14/2060/; original story: https://globalvoices.org/2025/08/30/why-the-pani-puri-platter-remains-indias-favourite-snack/. CC BY 3.0: https://creativecommons.org/licenses/by/3.0/. Changes: selected text-only excerpt; HTML/links unwrapped, other paragraphs, images, captions, quoted prose and media omitted; source wording preserved.",
+        "provenance": "Exact paragraphs 2,3,5 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content."
+      },
+      "convert": {
+        "stripBoilerplate": false,
+        "unwrap": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "curriculum-remediation exact article credits and excerpt source-fidelity check",
+        "reviewedAt": "2026-10-04",
+        "coversSourceSha256": "c2881ba968cc6a0305e95faaf3521f63099a806a0ed8dfb7afecc04705399b6f",
+        "notes": "Source-authored authentic prose. Article credit/license and excerpt comparison only; no native placement or rescue-text approval invented."
+      }
+    }
+  ]
+}

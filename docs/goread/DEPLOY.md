@@ -97,5 +97,5 @@ and https://developers.cloudflare.com/d1/platform/limits/ before relying on them
 - `npx wrangler deploy` says no `wrangler.toml`: step 4 (the file must be in the repository root, named exactly that).
 - `/health` works but a PUT answers `401 not-on-whitelist`: the key is wrong, was revoked, or is on another team's list.
 - `UNIQUE constraint failed` running `add.sql`: that name is already on the team's list; use another name.
-- Running the same server on your own machine instead (no Cloudflare): `npx vite-node server/goread/main.ts --port 8787 --data data/goread`,
+- Running the same server on your own machine instead (no Cloudflare): `npx vite-node --config server/goread/vite.config.ts server/goread/main.ts --port 8787 --data data/goread`,
   and the same keeper commands without `--sql` (`... whitelist add --team honduras-es --name "Ana"` writes to `data/goread`).

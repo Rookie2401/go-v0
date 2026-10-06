@@ -5,13 +5,15 @@ import { createRoot } from 'react-dom/client';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { createMemoryStore } from '../../src/core';
-import type { TellAttemptSubmitted } from '../../src/core';
+import type { PracticeTask, SemanticGoal, TellAttemptSubmitted } from '../../src/core';
+import { buildFixtureText } from '../../src/core';
 import { bootstrap } from '../../src/app/bootstrap';
 import type { BootstrapResult } from '../../src/app/bootstrap';
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { AppProvider } from '../../src/ui/context';
 import { resetPrefsForTests } from '../../src/ui/prefs';
 import { button, byLabel, click, flush, installMediaStubs, q, qa, type } from './harness';
+import { STORY_ID, seedStory } from './fixtures';
 
 /** Practise saying it (/tell), the inspector and the testimony map — over the REAL engines (Spanish course). */
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
@@ -41,6 +43,70 @@ async function render(route: string) {
 }
 
 describe('Practise saying it', () => {
+  it('marks unreviewed catalog wording in both sentence frames and full models', async () => {
+    const base = (await boot.services.gotell.practice!.next(boot.user!.id, 'es'))!;
+    const assistance: PracticeTask['assistance'] = [
+      {
+        id: 'frame-sq', kind: 'sentence-frame', tier: 'scaffold', rung: 4,
+        content: 'Unë ___ në ___.', revealedItemIds: ['form:1', 'form:2'], source: 'catalog-model',
+        review: 'unreviewed', at: '2026-10-03T00:00:00.000Z',
+      },
+      {
+        id: 'full-sq', kind: 'full-model', tier: 'model', rung: 8,
+        content: 'Unë shkoj në shtëpi.', revealedItemIds: ['form:1', 'form:2'], source: 'catalog-model',
+        review: 'unreviewed', at: '2026-10-03T00:00:01.000Z',
+      },
+    ];
+    const task: PracticeTask = { ...base, lang: 'sq', assistance };
+    const practice = boot.services.gotell.practice!;
+    const fakePractice = { ...practice, goals: async () => [], states: async () => [], next: async () => task };
+    Object.assign(boot.services.gotell, { practice: fakePractice, forUser: () => ({ ...boot.services.gotell, practice: fakePractice }) });
+
+    const page = await render('/tell');
+    const steps = qa(page, '.tell-step');
+    expect(steps).toHaveLength(2);
+    for (const step of steps) {
+      expect(step.textContent).toContain('MODEL LANGUAGE — not your words; not yet reviewed by a native speaker');
+    }
+    expect(steps[0].getAttribute('data-kind')).toBe('sentence-frame');
+    expect(task.assistance[0].source).toBe('catalog-model');
+    expect(steps[0].textContent).toContain('Unë ___ në ___.');
+  });
+
+  it('links a retell task to its readable source and hides a protected or unavailable source', async () => {
+    await seedStory(boot.services.store);
+    const source = (await boot.services.store.texts.get(STORY_ID))!;
+    await boot.services.store.texts.put({ ...source, published: true });
+    const task: PracticeTask = {
+      taskId: 'retell:1', userId: boot.user!.id, lang: 'es', goal: {} as SemanticGoal, family: 'retell',
+      prompt: 'Retell this meaning in your own words.', retellSource: { textId: STORY_ID, title: source.title }, presentedAt: '2026-10-03T00:00:00.000Z',
+      selection: { score: 1, factors: [], reasons: [], predictedSuccess: 0.2, familyReason: 'Retell a passage.', startRung: 0, startReason: 'Start simply.', policy: 'test' },
+      assistance: [], attempts: [], open: true,
+    };
+    const practice = boot.services.gotell.practice!;
+    const fakePractice = { ...practice, goals: async () => [], states: async () => [], next: async () => task };
+    Object.assign(boot.services.gotell, { practice: fakePractice, forUser: () => ({ ...boot.services.gotell, practice: fakePractice }) });
+    const page = await render('/tell');
+    await flush(20);
+    const sourceLink = q<HTMLAnchorElement>(page, '[data-testid="retell-source"] a')!;
+    expect(sourceLink.textContent).toBe(source.title);
+    expect(sourceLink.getAttribute('href')).toBe(`/read/${encodeURIComponent(STORY_ID)}`);
+    await click(sourceLink);
+    await flush(20);
+    expect(q(page, 'article.reader')).toBeTruthy();
+    await unmount?.(); unmount = undefined;
+
+    const protectedSource = await buildFixtureText(boot.services.store, { lang: 'es', slug: 'protected-retell', title: 'Protected retell source', sentences: [{ text: 'No mostrar.', tokens: [{ surface: 'No', lemma: 'no' }] }] });
+    await boot.services.store.texts.put({ ...protectedSource, published: true });
+    await boot.services.store.texts.put({ ...protectedSource, listeningAssessmentId: 'assessment:retell' });
+    const protectedPractice = { ...practice, goals: async () => [], states: async () => [], next: async () => ({ ...task, retellSource: { textId: protectedSource.id, title: protectedSource.title } }) };
+    Object.assign(boot.services.gotell, { practice: protectedPractice, forUser: () => ({ ...boot.services.gotell, practice: protectedPractice }) });
+    const hidden = await render('/tell');
+    expect(q(hidden, '[data-testid="retell-source"]')?.textContent).toContain('no longer available');
+    expect(q(hidden, '[data-testid="retell-source"] a')).toBeNull();
+    expect(hidden.textContent).not.toContain('Protected retell source');
+  });
+
   it('offers one meaning with its reasons, keeps MY LANGUAGE and MODEL LANGUAGE apart, and records each step', async () => {
     const page = await render('/tell');
     const task = q(page, '.tell-task')!;

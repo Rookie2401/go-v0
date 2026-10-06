@@ -395,12 +395,12 @@ export const CASES: ProofCase[] = [
     title: 'review hold, publication hold, unverified and generated "Scripture"',
     async run(c, r) {
       const caseId = '11 holds';
-      const reviewer = { by: 'SYNTHETIC fixture reviewer (not a person)', date: '2026-09-30', notes: 'SYNTHETIC DEVELOPMENT MATERIAL: proof fixture, not a real review.' };
+      const reviewer = { by: 'SYNTHETIC fixture reviewer (not a person)', date: '2026-09-30', notes: 'SYNTHETIC DEVELOPMENT MATERIAL: proof fixture, not a real review.', level: 'native' as const };
 
       // review hold: unreviewed -> held; applyReview -> publishes
       const hold = c.load('10-hold-review.json');
       const h1 = (await importDocuments(c.store, c.registry, [hold], { clock: c.clock })).documents[0];
-      r.that(caseId, 'review hold: published / reason', 'published false; reason says the review is missing', `published ${h1.published}; ${h1.unpublishedReasons.join(' | ').slice(0, 110)}`, !h1.published && h1.unpublishedReasons.length === 1 && /review status is "unreviewed"/.test(h1.unpublishedReasons[0]));
+      r.that(caseId, 'review hold: published / reason', 'published false; reasons say native review is missing', `published ${h1.published}; ${h1.unpublishedReasons.join(' | ').slice(0, 220)}`, !h1.published && h1.unpublishedReasons.some(reason => /review status is "unreviewed"/.test(reason)) && h1.unpublishedReasons.some(reason => /native-speaker review/.test(reason)));
       const rev = applyReview(hold, reviewer);
       r.eq(caseId, 'review hold: applyReview', { ok: true, wouldPublish: true }, { ok: rev.ok, wouldPublish: rev.ok ? rev.decision.published : undefined });
       if (rev.ok) {
@@ -413,6 +413,8 @@ export const CASES: ProofCase[] = [
 
       // publication hold: reviewed, rights unverified -> held, and a (new) review cannot lift it
       const rights = c.load('10-hold-rights.json');
+      // Explicit native-only TEST approval isolates the rights hold; this never edits a source fixture or learner corpus.
+      rights.review.level = 'native';
       const h3 = (await importDocuments(c.store, c.registry, [rights], { clock: c.clock })).documents[0];
       r.that(caseId, 'rights hold: published / reason', 'published false; the only reason is the unverified rights', `published ${h3.published}; ${h3.unpublishedReasons.join(' | ').slice(0, 110)}`, !h3.published && h3.unpublishedReasons.length === 1 && /rights are unverified/.test(h3.unpublishedReasons[0]));
       r.eq(caseId, 'rights hold: stored reviewStatus is reviewed yet published false', { reviewStatus: 'reviewed', published: false }, { reviewStatus: (await c.store.texts.get(textIdOf(rights)))?.reviewStatus, published: (await c.store.texts.get(textIdOf(rights)))?.published });
@@ -553,7 +555,7 @@ export const CASES: ProofCase[] = [
         again.action === 'unchanged' && again.contentVersion === 2 && (await snapshotStore(c.store)).fingerprint === before.fingerprint);
       // review binding: a REVIEWED text that is revised without a new review is unpublished until reviewed again
       const bound = (d: CorpusDocument): CorpusDocument => { const x = structuredClone(d); x.id = 'synthetic-es-valid-reviewed'; x.source.id = 'synthetic-src-es-valid-reviewed'; return x; };
-      const reviewer = { by: 'SYNTHETIC fixture reviewer (not a person)', date: '2026-09-30' };
+      const reviewer = { by: 'SYNTHETIC fixture reviewer (not a person)', date: '2026-09-30', level: 'native' as const };
       const rv1 = applyReview(bound(v1), reviewer);
       if (!rv1.ok) throw new Error('applyReview refused the synthetic text');
       const b1 = (await importDocuments(c.store, c.registry, [rv1.doc], { clock: c.clock })).documents[0];
@@ -582,7 +584,7 @@ export const CASES: ProofCase[] = [
       if (!c.cli) return;
       const viteNode = path.resolve('node_modules/vite-node/dist/cli.mjs');
       const cli = (script: string, ...args: string[]) => {
-        const x = spawnSync(process.execPath, [viteNode, script, ...args], { encoding: 'utf8', cwd: path.resolve('.'), timeout: 180_000 });
+        const x = spawnSync(process.execPath, [viteNode, '--config', 'scripts/vite.config.ts', script, ...args], { encoding: 'utf8', cwd: path.resolve('.'), timeout: 180_000 });
         return { status: x.status, out: `${x.stdout}${x.stderr}` };
       };
       const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'go-prove-'));
@@ -602,7 +604,7 @@ export const CASES: ProofCase[] = [
         const refused = cli('scripts/corpus-review.mts', file);
         r.that(caseId, 'step 4 review without --by', 'exit 1, [missing-reviewer], file untouched', `exit ${refused.status}; ${/\[missing-reviewer\]/.test(refused.out) ? '[missing-reviewer]' : '?'}; file ${fs.readFileSync(file, 'utf8') === bytes ? 'untouched' : 'CHANGED'}`,
           refused.status === 1 && /\[missing-reviewer\]/.test(refused.out) && fs.readFileSync(file, 'utf8') === bytes);
-        const reviewed = cli('scripts/corpus-review.mts', file, '--by', 'SYNTHETIC fixture reviewer (not a person)', '--date', '2026-09-30', '--notes', 'SYNTHETIC DEVELOPMENT MATERIAL: proof fixture, not a real review.');
+        const reviewed = cli('scripts/corpus-review.mts', file, '--by', 'SYNTHETIC fixture reviewer (not a person)', '--date', '2026-09-30', '--notes', 'SYNTHETIC DEVELOPMENT MATERIAL: proof fixture, not a real review.', '--level', 'native');
         r.that(caseId, 'step 4 review with --by', 'exit 0; removed needs-native-review; text untouched; "review covers wording <sig8>"; "would publish: yes"',
           `exit ${reviewed.status}; ${/removed editorial tag: needs-native-review/.test(reviewed.out) ? 'tag removed' : '?'}; ${/text untouched/.test(reviewed.out) ? 'text untouched' : '?'}; ${/review covers wording [0-9a-f]{8}/.test(reviewed.out) ? 'covers wording' : '?'}; ${/would publish: yes/.test(reviewed.out) ? 'would publish: yes' : '?'}`,
           reviewed.status === 0 && /removed editorial tag: needs-native-review/.test(reviewed.out) && /text untouched/.test(reviewed.out) && /review covers wording [0-9a-f]{8}/.test(reviewed.out) && /would publish: yes/.test(reviewed.out));
@@ -630,7 +632,7 @@ export const CASES: ProofCase[] = [
         r.that(caseId, 'step 7 validate says so before importing', 'exit 0, "would publish: no", missing line "the text changed after it was reviewed", warning review-signature-mismatch',
           `exit ${v3b.status}; ${/would publish: no/.test(v3b.out) ? 'would publish: no' : '?'}; ${v3b.out.includes(`missing: ${reason}`) ? 'reason shown' : '?'}; ${v3b.out.includes('[review-signature-mismatch]') ? 'warning shown' : '?'}`,
           v3b.status === 0 && /would publish: no/.test(v3b.out) && v3b.out.includes(`missing: ${reason}`) && v3b.out.includes('[review-signature-mismatch]'));
-        const rereview = cli('scripts/corpus-review.mts', file, '--by', 'SYNTHETIC fixture reviewer (not a person)', '--date', '2026-09-30');
+        const rereview = cli('scripts/corpus-review.mts', file, '--by', 'SYNTHETIC fixture reviewer (not a person)', '--date', '2026-09-30', '--level', 'native');
         r.that(caseId, 'step 7 new review with --by', 'exit 0, covers a new wording signature, "would publish: yes"',
           `exit ${rereview.status}; ${/review covers wording [0-9a-f]{8}/.test(rereview.out) ? 'covers ' + /review covers wording ([0-9a-f]{8})/.exec(rereview.out)![1] : '?'}; ${/would publish: yes/.test(rereview.out) ? 'would publish: yes' : '?'}`,
           rereview.status === 0 && /review covers wording [0-9a-f]{8}/.test(rereview.out) && /would publish: yes/.test(rereview.out) && /review covers wording ([0-9a-f]{8})/.exec(rereview.out)![1] !== /review covers wording ([0-9a-f]{8})/.exec(reviewed.out)![1]);

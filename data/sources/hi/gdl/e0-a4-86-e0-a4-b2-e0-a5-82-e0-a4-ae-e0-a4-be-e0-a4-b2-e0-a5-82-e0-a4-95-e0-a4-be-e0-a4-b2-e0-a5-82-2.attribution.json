@@ -1,0 +1,39 @@
+{
+  "title": "आलू-मालू-कालू",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%86%e0%a4%b2%e0%a5%82-%e0%a4%ae%e0%a4%be%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%be%e0%a4%b2%e0%a5%82-2/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Vinita Krishna",
+    "Illustrator: Suvidha Mistry",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: आलू-मालू-कालू is written by Vinita Krishna . © Pratham Books , 2006. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This book has been published on StoryWeaver by Pratham Books. Pratham Books is a not-for-profit organization that publishes books in multiple Indian languages to promote reading among children. www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Boy and dog looking at potatoes , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 2: Boy in a garden , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 3: Boy talking to old lady , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 4: Boy searching in a garden , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 5: Old woman talking to boy with basket , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 6: Boy with basket walking with dog , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 7: Boy running towards dog in a garden , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 8: Happy boy and dog looking at potatoes , by Suvidha Mistry © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "आलू-मालू-कालू (Hindi)",
+    "एक दिन मालू को बगीचे में से आलू लाने थे। उसकी मदद किसने करी? कालू ने! पढ़िये मालू और कालू की आलू वाली कहानी!",
+    "यह पठन स्तर १ की किताब है, उन बच्चों के लिए जो पढ़ना शुरू कर रहे हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "98b22374a0df06e81436cb1746fc843a1991ff06a4fb73b0b91bd04e1751f3d1"
+}

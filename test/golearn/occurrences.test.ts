@@ -71,6 +71,16 @@ describe('findOccurrences', () => {
     expect(sids(await h.golearn.findOccurrences({ lang: 'es', itemId: ids.form('es', 'creo'), includeUnpublished: true }))).toContain(draft);
   });
 
+  it('never returns a published story attached to a private testimony corpus', async () => {
+    const h = await world();
+    await h.store.corpora.put({ id: 'private-mislabeled', lang: 'es', kind: 'testimony', title: 'Private testimony' });
+    const privateText = await buildFixtureText(h.store, { lang: 'es', slug: 'private-mislabeled', corpusId: 'private-mislabeled', kind: 'story', sentences: [
+      { tokens: [{ surface: 'creo', lemma: 'creer', pos: 'VERB' }] },
+    ] });
+    expect(privateText.kind).toBe('story');
+    expect((await h.golearn.findOccurrences({ lang: 'es', itemId: ids.form('es', 'creo') })).map((r) => r.textId)).not.toContain(privateText.id);
+  });
+
   it('is read-only and deterministic', async () => {
     const h = await world();
     const before = (await h.store.sentences.count()) + (await h.store.events.count());

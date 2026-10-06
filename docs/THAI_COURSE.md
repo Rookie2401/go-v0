@@ -10,6 +10,8 @@ ladder; nothing here is Thai-only in the architecture except the adapter (`src/a
 Status words are used as in `docs/READINESS.md`: **implemented**, **verified**, **awaiting external input**.
 This document describes the design; READINESS records what is actually true.
 
+Acquisition update (2026-10-01): the licensed Biblica Open Thai Common Version 2025 is installed as a separate Scripture work, with 66 books and 1,189 lazy chapter documents. Its 31,087 nonblank verses were independently compared between the publisher's USX and USFM archives. The source has 16 blank verse slots. CC BY-SA 4.0 attribution and immutable release metadata are retained in `data/sources/th/`. The older unverified Scripture fixture remains excluded from production. See `docs/COURSE_CONTENT_IMPORTS.md` for the cross-course import status.
+
 ## 1. Model: Course → Stage → Work → Chapter → Paragraph → Sentence → Phrase → Token
 
 | Level | Record | Where |
@@ -27,7 +29,7 @@ A work listed in the ladder is a **recommendation**. It becomes readable only wh
 
 - The source text is never rewritten, simplified, re-spaced or "corrected". Help is layered over it. A simplified
   edition can exist only as a separately supplied text that says so.
-- **Rights are recorded, never assumed.** Every work in `src/course/thai.ts` is `canBundle: false`,
+- **Rights are recorded, never assumed.** The literary recommendations in `src/course/thai.ts` are `canBundle: false`,
   `userImportOnly: true`, `verified: false`, `bibliographyVerified: false`. `copyrightStatus` is `in-copyright`
   (presumed, modern works) or `unknown`; nothing is marked public domain. A `basis` is a lead for verification.
 - **Personal copies.** A learner who holds a copy of a book he is entitled to use can import its text

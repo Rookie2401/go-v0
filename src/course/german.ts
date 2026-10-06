@@ -20,6 +20,9 @@
  */
 import type { RegisterTag, Stage, Stream, Work, WorkRights, WorkRole } from '../core';
 import { DEFAULT_ASSISTANCE, ids } from '../core';
+import { acquiredWorks } from './acquired';
+import { readingBridgeWorks } from './readingBridges';
+import { CURRICULUM_ACQUIRED_WORKS } from './curriculumAcquired';
 
 export const GERMAN_COURSE_ID = 'germany-de';
 const LANG = 'de' as const;
@@ -107,14 +110,14 @@ interface W {
 const readinessOf = (r: WorkRights): NonNullable<Work['readiness']> =>
   (r.state === 'prohibited-from-bundling' || r.state === 'recommended-only' ? 'recommendation' : r.state === 'rights-unverified' ? 'candidate' : 'verified-ready');
 const works = (shelfIndex: number, list: W[]): Work[] => list.map((w) => {
-  const rights = w.rights ?? (w.died !== undefined ? lead(`The author died in ${w.died}${w.year ? `; first published ${w.year}` : ''}.`) : BASE);
+  const rights = acquiredWorks[LANG]?.[w.slug]?.rights ?? w.rights ?? (w.died !== undefined ? lead(`The author died in ${w.died}${w.year ? `; first published ${w.year}` : ''}.`) : BASE);
   return {
     id: ids.work(GERMAN_COURSE_ID, w.slug), courseId: GERMAN_COURSE_ID, lang: LANG, stageId: ids.stage(GERMAN_COURSE_ID, `s${shelfIndex}`),
-    role: w.role ?? 'subsidiary', order: order++, title: w.title, author: w.author, edition: w.edition, purpose: w.purpose ?? [], registers: w.registers,
-    rights, bibliographyVerified: false, optional: true, notes: w.notes, translator: w.translator, sourceUrl: w.sourceUrl,
+    role: w.role ?? 'subsidiary', order: order++, title: w.title, author: w.author, edition: acquiredWorks[LANG]?.[w.slug]?.edition ?? w.edition, purpose: w.purpose ?? [], registers: w.registers,
+    rights, bibliographyVerified: false, optional: true, notes: w.notes, translator: w.translator, sourceUrl: acquiredWorks[LANG]?.[w.slug]?.sourceUrl ?? w.sourceUrl,
     streams: w.streams ?? ['library'], variety: w.variety, region: w.region, era: w.era, genre: w.genre, audience: w.audience, domains: w.domains,
-    genericLevel: w.level, publicationYear: w.year, authorDied: w.died, ingestion: w.ingestion ?? 'catalogued',
-    readiness: w.readiness ?? readinessOf(rights),
+    genericLevel: w.level, publicationYear: w.year, authorDied: w.died, ingestion: w.ingestion ?? (acquiredWorks[LANG]?.[w.slug]?.installed ? 'ingested' : 'catalogued'),
+    readiness: acquiredWorks[LANG]?.[w.slug]?.installed ? 'implemented' : w.readiness ?? readinessOf(rights),
   };
 });
 
@@ -188,6 +191,8 @@ const grimm1857 = (page: string, revision: number, scanPage: number, sha256: str
 });
 
 export const GERMAN_WORKS: Work[] = [
+  ...CURRICULUM_ACQUIRED_WORKS.filter(w => w.lang === 'de'),
+  ...readingBridgeWorks('de'),
   // ── Shelf 0: controlled German written for the course ──
   ...works(0, [
     { slug: 'weg-1', title: 'Weg 1 — Erste Schritte', role: 'spine', streams: ['acquisition'], variety: 'de-DE', level: 'controlled', genre: 'microstories', rights: COURSE, ingestion: 'bundled', readiness: 'implemented',

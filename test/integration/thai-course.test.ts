@@ -12,6 +12,7 @@ import { THAI_COURSE_ID, createCourseCatalog } from '../../src/course';
 import { createMemoryLexiconSource } from '../../src/dict';
 import { importDocuments, plainTextToDocuments } from '../../src/ingest';
 import { bundledDoc, liveSentences, makeApp, reader, seedUser, tokensOf, type App } from './harness';
+import { withoutHeadCache } from '../golearn/harness';
 
 const U = 'thai-learner';
 const BOOK = readFileSync(fileURLToPath(new URL('./fixtures/thai-synthetic-book.txt', import.meta.url)), 'utf8');
@@ -155,7 +156,7 @@ describe('reading with script decoding', () => {
     const state = await app.golearn.getItemState(U, ids.orth('th', features[0]));
     expect(state?.itemKind).toBe('orth');
     // derived state (orth items, decoding help) rebuilds identically from the log
-    const snapshot = async () => JSON.stringify((await app.store.learnerItems.where('userId', U)).sort((a, b) => (a.itemId < b.itemId ? -1 : 1)));
+    const snapshot = async () => JSON.stringify(withoutHeadCache((await app.store.learnerItems.where('userId', U)).sort((a, b) => (a.itemId < b.itemId ? -1 : 1))));
     const before = await snapshot();
     await app.golearn.rebuild(U);
     await app.golearn.settled();

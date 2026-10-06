@@ -38,7 +38,16 @@ export const kindCode = (k: string): number => Math.max(0, KIND_OF.indexOf(k as 
 
 /** [kind, assistance, itemHelp, weight × 1e6, priorLevel index, romanized 0|1] — one encounter of the current sitting. */
 export type Entry = [kind: number, assistance: number, itemHelp: number, weightMicro: number, prior: number, roman: number];
-export interface Head { sitting: string; e: Record<string, Entry> }
+export interface Head {
+  sitting: string;
+  e: Record<string, Entry>;
+  /** Incremental current-sitting summary. Missing on rows written before this optimization; computed once on demand. */
+  summary?: Settled;
+  /** Existing entry facts changed, so their creation-order prior levels must be re-derived. */
+  needsRelevel?: boolean;
+  /** New entries have their prior level computed at append time; mirror only those values to event rows. */
+  pendingPriors?: string[];
+}
 
 export interface Settled {
   n: number;
@@ -109,9 +118,27 @@ function add(t: Settled, m: Modality, e: Entry) {
 
 /** Fold a finished sitting into the settled counts. */
 function settle(s: Settled, m: Modality, head: Head) {
-  let anyPlain = false;
-  for (const e of Object.values(head.e)) { add(s, m, e); if (e[1] === 0) anyPlain = true; }
-  if (anyPlain) s.plainOlder = Math.min(ESTIMATE.minSittings, s.plainOlder + 1);
+  const h = headSummary(head, m);
+  s.n += h.n; s.ev += h.ev; s.exposures += h.exposures; s.unassisted += h.unassisted; s.assisted += h.assisted;
+  s.demo += h.demo; s.plain += h.plain; s.rom += h.rom; s.helped += h.helped;
+  s.tail.push(...h.tail);
+  if (s.tail.length > ESTIMATE.cleanTail) s.tail.splice(0, s.tail.length - ESTIMATE.cleanTail);
+  if (h.plain > 0) s.plainOlder = Math.min(ESTIMATE.minSittings, s.plainOlder + 1);
+}
+
+function headSummary(head: Head, m: Modality): Settled {
+  if (!head.summary) {
+    const summary = blankSettled();
+    for (const e of Object.values(head.e)) add(summary, m, e);
+    head.summary = summary;
+  }
+  return head.summary;
+}
+
+/** Mark a current-sitting entry mutation so summary and prior levels are rebuilt on the next flush. */
+export function invalidateHead(agg: ItemAgg, m: Modality, relevelPrior = true) {
+  const head = headOf(agg, m);
+  if (head) { head.summary = undefined; if (relevelPrior) head.needsRelevel = true; }
 }
 
 export interface Totals extends Settled { plainSittings: number }
@@ -122,9 +149,12 @@ export function totalsOf(agg: ItemAgg, m: Modality): Totals {
   const t: Totals = { ...s, tail: [...s.tail], plainSittings: s.plainOlder };
   const head = headOf(agg, m);
   if (head) {
-    let anyPlain = false;
-    for (const e of Object.values(head.e)) { add(t, m, e); if (e[1] === 0) anyPlain = true; }
-    if (anyPlain) t.plainSittings += 1;
+    const h = headSummary(head, m);
+    t.n += h.n; t.ev += h.ev; t.exposures += h.exposures; t.unassisted += h.unassisted; t.assisted += h.assisted;
+    t.demo += h.demo; t.plain += h.plain; t.rom += h.rom; t.helped += h.helped;
+    t.tail.push(...h.tail);
+    if (t.tail.length > ESTIMATE.cleanTail) t.tail.splice(0, t.tail.length - ESTIMATE.cleanTail);
+    if (h.plain > 0) t.plainSittings += 1;
   }
   return t;
 }
@@ -150,15 +180,30 @@ function estimated(m: Modality, t: Totals, level: LearnerLevel): boolean {
  */
 export function relevel(ctx: Ctx, agg: ItemAgg, m: Modality): Array<{ sentenceId: string; sitting: string; prior: LearnerLevel }> {
   const head = headOf(agg, m);
-  if (!head) return [];
+  if (!head || (!head.needsRelevel && !head.pendingPriors?.length)) return [];
+  if (!head.needsRelevel) {
+    const pending = (head.pendingPriors ?? []).map((sentenceId) => ({
+      sentenceId, sitting: head.sitting, prior: LEVEL_ORDER[head.e[sentenceId][4]],
+    }));
+    if (head.pendingPriors) head.pendingPriors.length = 0;
+    return pending;
+  }
   const s = dimOf(agg, m);
   const t: Totals = { ...s, tail: [...s.tail], plainSittings: s.plainOlder };
   const changed: Array<{ sentenceId: string; sitting: string; prior: LearnerLevel }> = [];
+  const pending = new Set(head.pendingPriors ?? []);
   for (const [sentenceId, e] of Object.entries(head.e)) {
     const idx = levelIndex(levelOf(ctx, m, t));
-    if (e[4] !== idx) { e[4] = idx; changed.push({ sentenceId, sitting: head.sitting, prior: LEVEL_ORDER[idx] }); }
+    const changedPrior = e[4] !== idx;
+    if (changedPrior) e[4] = idx;
+    if (pending.has(sentenceId) || changedPrior) changed.push({ sentenceId, sitting: head.sitting, prior: LEVEL_ORDER[idx] });
     add(t, m, e);
   }
+  const summary = blankSettled();
+  for (const e of Object.values(head.e)) add(summary, m, e);
+  head.summary = summary;
+  head.needsRelevel = false;
+  if (head.pendingPriors) head.pendingPriors.length = 0;
   return changed;
 }
 
@@ -171,14 +216,29 @@ export function entryOf(agg: ItemAgg, m: Modality, sitting: string, sentenceId: 
 export interface Meeting { textId: string; sentenceId: string; at: string }
 
 /** Record a NEW receptive encounter (reading or listening) in the current sitting. */
-export function addReceptive(agg: ItemAgg, m: 'reading' | 'listening', sitting: string, entry: Entry, meeting: Meeting) {
+export function addReceptive(ctx: Ctx, agg: ItemAgg, m: 'reading' | 'listening', sitting: string, entry: Entry, meeting: Meeting, hasEncounterRow = true) {
   let head = headOf(agg, m);
   if (!head || head.sitting !== sitting) {
     if (head) settle(agg[m], m, head);
-    head = { sitting, e: {} };
+    head = { sitting, e: {}, summary: blankSettled(), pendingPriors: [] };
     if (m === 'reading') agg.headR = head; else agg.headL = head;
   }
-  head.e[meeting.sentenceId] = entry;
+  const previous = head.e[meeting.sentenceId];
+  if (previous) {
+    head.e[meeting.sentenceId] = entry;
+    invalidateHead(agg, m, hasEncounterRow);
+  } else {
+    // Hydrate a missing/invalidated legacy cache BEFORE inserting. Otherwise the lazy scan would include this
+    // entry, then the incremental add below would count it a second time (writing-system items have no prior row).
+    const priorTotals = totalsOf(agg, m);
+    if (hasEncounterRow) entry[4] = levelIndex(levelOf(ctx, m, priorTotals));
+    head.e[meeting.sentenceId] = entry;
+    add(headSummary(head, m), m, entry);
+    if (hasEncounterRow) {
+      head.pendingPriors ??= [];
+      if (!head.pendingPriors.includes(meeting.sentenceId)) head.pendingPriors.push(meeting.sentenceId);
+    }
+  }
   const s = agg[m];
   if (s.firstAt === undefined || meeting.at < s.firstAt) s.firstAt = meeting.at;
   if (s.lastAt === undefined || meeting.at > s.lastAt) s.lastAt = meeting.at;

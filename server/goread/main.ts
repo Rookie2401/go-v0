@@ -1,7 +1,7 @@
 /**
  * The GoRead team server on Node (contract: docs/goread/BACKEND.md).
  *
- *   npx vite-node server/goread/main.ts --port 8787 --data data/goread
+ *   npx vite-node --config server/goread/vite.config.ts server/goread/main.ts --port 8787 --data data/goread
  *
  * A thin bridge: node:http to the web `Request`/`Response` handler (handler.ts), the sqlite store, and the FULL document
  * check (the validator with every language adapter). Every course of the app is a team; reading is open, adding needs a

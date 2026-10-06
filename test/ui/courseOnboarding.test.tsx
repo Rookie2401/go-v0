@@ -22,16 +22,15 @@ async function firstRun() {
 }
 
 describe('choosing a team on a first run', () => {
-  it('Thailand: Home shows the "Reading ladder" door at once, and /course has its stages (no reload)', async () => {
+  it('Thailand: installing the team makes its ladder available at /course without adding a Home ladder door', async () => {
     const { h, store, services, app } = await firstRun();
     expect(await services.catalog.stages(THAI_COURSE_ID)).toHaveLength(0);
     mounted = await h.mount(app);
     await click(button(mounted.container, 'Select your team'));
     await click(button(mounted.container, 'Thailand'));
-    const door = qa(mounted.container, 'a.home__entry').find((a) => a.getAttribute('href') === '/course')!;
-    expect(door).toBeDefined();
-    expect(door.textContent).toContain('Reading ladder');
-    expect(door.textContent).toContain(THAI_STAGES[0].label);
+    expect(qa(mounted.container, 'a.home__entry').some((a) => a.getAttribute('href') === '/course')).toBe(false);
+    expect(qa(mounted.container, 'a.home__entry').some((a) => a.getAttribute('href') === '/read')).toBe(true);
+    expect(mounted.container.textContent).not.toContain('Reading ladder');
     expect((await store.stages.all()).length).toBe(THAI_STAGES.length);
   });
 

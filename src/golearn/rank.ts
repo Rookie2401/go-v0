@@ -214,7 +214,11 @@ async function extraParts(ctx: Ctx, userId: string, candidates: RankCandidate[],
 export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandidate[], opts: RankOptionsWhole = {}): Promise<RankedTextWhole[]> {
   // Protected listening-assessment material is never offered for reading (a candidate that is not imported has no stored text and stays).
   const stored = await ctx.store.texts.getMany(offered.map((c) => c.profile.textId));
-  const candidates = offered.filter((_, i) => stored[i]?.listeningAssessmentId === undefined);
+  const privateCorpusIds = new Set((await ctx.store.corpora.where('kind', 'testimony')).map((c) => c.id));
+  const candidates = offered.filter((_, i) => {
+    const text = stored[i];
+    return !text || (text.kind !== 'testimony' && !privateCorpusIds.has(text.corpusId) && text.listeningAssessmentId === undefined && text.readingAssessmentId === undefined);
+  });
   const challenge: Challenge = opts.challenge ?? 'steady';
   const target = RANKING.targetCoverage[challenge];
   const interests = new Set((opts.interests ?? []).map((s) => s.toLowerCase()));

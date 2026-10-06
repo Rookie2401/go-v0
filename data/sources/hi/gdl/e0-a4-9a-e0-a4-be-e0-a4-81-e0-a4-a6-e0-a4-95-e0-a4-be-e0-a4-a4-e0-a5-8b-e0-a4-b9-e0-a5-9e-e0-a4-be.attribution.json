@@ -1,0 +1,44 @@
+{
+  "title": "चाँद का तोहफ़ा",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a4%be%e0%a4%81%e0%a4%a6-%e0%a4%95%e0%a4%be-%e0%a4%a4%e0%a5%8b%e0%a4%b9%e0%a5%9e%e0%a4%be/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Rohini Nilekani",
+    "Illustrator: Angie & Upesh",
+    "Translator: Ritu Singh",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: चाँद का तोहफ़ा is translated by Ritu Singh . The © for this translation lies with Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' The Moon and The Cap ' , by Rohini Nilekani . © Pratham Books , 2007. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This book has been published on StoryWeaver by Pratham Books. Pratham Books is a not-for-profit organization that publishes books in multiple Indian languages to promote reading among children. www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Boy holding a cap against a full moon sky , by Angie & Upesh © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 2: Family at a market , by Angie & Upesh © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 3: Children wearing fancy glasses and eating candy , by Angie & Upesh © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 4: Boy losing his cap in the wind , by Angie & Upesh © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 5: Boys looking at cap caught on a tree , by Angie & Upesh © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 6: Boys sitting during meal and one boy crying , by Angie & Upesh © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 7: Boy looking at cap caught on a tree from a window , by Angie & Upesh © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 8: Boy looking at moon wearing a cap , by Angie & Upesh © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 9: Boy holding a red cap , by Angie & Upesh © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 10: Boy wearing a red cap and smiling moon wearing a blue cap , by Angie & Upesh © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Illustration Attributions:",
+    "Page 11: Boys looking at the sun , by Angie & Upesh © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 12: Boy and different caps , by Angie & Upesh © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "चाँद का तोहफ़ा (Hindi)",
+    "क्या आपको गरमी के दिनों में टोपी पहनना अच्छा लगता है? इस प्यारी-सी कहानी में पढ़ें कि टोपी पहनना और किसको पसंद है।",
+    "यह पठन स्तर १ की किताब है, उन बच्चों के लिए जो पढ़ना शुरू कर रहे हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "a4db4febce2927eaa6279856470ebee691ed59d5a3c0b7c029c30cf13b20936c"
+}

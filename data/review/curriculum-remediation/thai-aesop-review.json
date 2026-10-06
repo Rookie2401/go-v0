@@ -1,0 +1,470 @@
+{
+  "date": "2026-10-04",
+  "status": "native_review",
+  "edition": "นิทานอีสป, 1956/2499 funeral reprint",
+  "rights": "Root official Wikisource PD template is Thailand-specific; US/offline global release requires separate edition clearance. CC BY-SA transcription contribution recorded independently.",
+  "evidence": [
+    "https://th.wikisource.org/wiki/นิทานอีสป",
+    "https://th.wikisource.org/wiki/ดัชนี:นิทานอีสป_(2499).pdf",
+    "https://th.wikisource.org/wiki/นิทานอีสป/คำชี้แจงของผู้แต่ง"
+  ],
+  "proofreadingStatus": "Official scan index reports all pages proofread but not independently validated (Thai index status); independent scan comparison by this project not completed. Root includes restored-text category; do not infer validated proofreading.",
+  "checks": [
+    "Compare all 45 cached fables with 1956 scan; record page numbers and corrected/restored passages",
+    "Native Central Thai reviewer assess historical vocabulary, orthography, segmentation and beginner suitability",
+    "Keep exact historical text separate from any explicitly attributed adaptation",
+    "Review 1911 author preface claim of simple sentences after primer against actual difficulty; preface alone is not pedagogical approval"
+  ],
+  "entries": [
+    {
+      "title": "ราชสีห์กับหนู",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132230",
+      "revision": 132230,
+      "rawSha256": "b79058e698243b38c46c489019a389b4c689777dfad3330a7797d3777d296764",
+      "paragraphs": 2,
+      "characters": 960,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "พ่อกับลูก",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132227",
+      "revision": 132227,
+      "rawSha256": "bea1b01fb39295c9f423767db4fa5b858757ec47ac5ca459035baca986138694",
+      "paragraphs": 2,
+      "characters": 827,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ลากับจิ้งหรีด",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132228",
+      "revision": 132228,
+      "rawSha256": "a95f1ce19c3afe99006de3960ed069d1a2d91071be97f918a959d9795e5e74a9",
+      "paragraphs": 2,
+      "characters": 357,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "หมาจิ้งจอกกับนกกระสา",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132233",
+      "revision": 132233,
+      "rawSha256": "b76cfbe87e2cb5b41a9684b49a5c4315436fe944e0511d3e0952d36ad9ef1f4e",
+      "paragraphs": 2,
+      "characters": 512,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "หมาจิ้งจอกกับแพะ",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132234",
+      "revision": 132234,
+      "rawSha256": "8eb060ca8cc60f9287748f91f450a699f2e70ab09271dca82c2c1ae0cf0ac3f6",
+      "paragraphs": 2,
+      "characters": 887,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "กากับนกยูง",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132235",
+      "revision": 132235,
+      "rawSha256": "5c0f4c6dd804e1de9b7a1c4c6ab622d46213af194092787d8178ddfa73878853",
+      "paragraphs": 2,
+      "characters": 771,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "เด็กจับตั๊กแตน",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132236",
+      "revision": 132236,
+      "rawSha256": "78bb50443b89331b4314dd01a073e3398a4b36b011ff310cce3d7544441380f9",
+      "paragraphs": 2,
+      "characters": 515,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "มดง่ามกับจักจั่น",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132238",
+      "revision": 132238,
+      "rawSha256": "fc691c50c6b838213080fd53f0be393e116275d9005f6371ab888751522c549f",
+      "paragraphs": 2,
+      "characters": 766,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ไก่กับพลอย",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132240",
+      "revision": 132240,
+      "rawSha256": "50e97abbe23cacbaf1077f1bd398d7970ae266cfe29f934df58751c5c188eacf",
+      "paragraphs": 2,
+      "characters": 348,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "กระต่ายกับเต่า",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132241",
+      "revision": 132241,
+      "rawSha256": "4ec6ec44fcaa2ac2eea2854af7b50c10f42db3de432de8401510c7dc884edc3c",
+      "paragraphs": 2,
+      "characters": 807,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "เทวดากับคนขับเกวียน",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132242",
+      "revision": 132242,
+      "rawSha256": "46981cfe94ab40f1242e128a2ea780737704c51caa8342183f38c0053a3e7d9f",
+      "paragraphs": 2,
+      "characters": 445,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "หมากับเงา",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132244",
+      "revision": 132244,
+      "rawSha256": "c4d16ec2ce900f60d0ffa04bf86360a4d150ed218a3c95b3595ab934842cd167",
+      "paragraphs": 2,
+      "characters": 401,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ลูกอ้นกับแม่อ้น",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132245",
+      "revision": 132245,
+      "rawSha256": "b6e9f3387a79305593fae15cdc815f04d46e7046948f6956120d0086ff6e0aed",
+      "paragraphs": 2,
+      "characters": 396,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ชาวนากับงูเห่า",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132246",
+      "revision": 132246,
+      "rawSha256": "b54c907cb9ef0d5368714eee515beaa4a647925961e8baf7a90c762e56acccad",
+      "paragraphs": 2,
+      "characters": 540,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ลา หมาจิ้งจอก กับราชสีห์",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132247",
+      "revision": 132247,
+      "rawSha256": "18dcb88128c023f1e255a0c617ceeef70ed09fb519c3bf177a5c1ddd70731fa1",
+      "paragraphs": 2,
+      "characters": 807,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "แมลงวันกับไหน้ำผึ้ง",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132248",
+      "revision": 132248,
+      "rawSha256": "d793b9f1155dce445ed94a51b1f52410f364ac07d3996b346b1f1e71880e0866",
+      "paragraphs": 2,
+      "characters": 421,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "หมาป่ากับลูกแกะ",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132249",
+      "revision": 132249,
+      "rawSha256": "70b465e7f90911912a60c1fa503e39dd6f9dfa22e739effc4e15af1271ce80bb",
+      "paragraphs": 2,
+      "characters": 894,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "หมาไล่เนื้ออายุมาก",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145205",
+      "revision": 145205,
+      "rawSha256": "25ce9ead9adf9c5df9655cb376a254eb6b38b24a941e947e74a44097c745a953",
+      "paragraphs": 2,
+      "characters": 659,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "หมาอยู่ในรางหญ้า",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145206",
+      "revision": 145206,
+      "rawSha256": "1bb9a6893b6a86ffbc5b1222e28a7aa83909a820102fb9d82176ffffecff4d8e",
+      "paragraphs": 2,
+      "characters": 343,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ไก่แจ้กับเหยี่ยว",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145207",
+      "revision": 145207,
+      "rawSha256": "9f78d3ae43ad86585da96592b9c6f7fe921f9d76df77721f9b5d35617fc91106",
+      "paragraphs": 1,
+      "characters": 104,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "หมาจิ้งจอกหางด้วน",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145208",
+      "revision": 145208,
+      "rawSha256": "71bfaf6b3096ec7a2f068657d91d334f4fefdc4991af242bb07d2d40b69ce5d3",
+      "paragraphs": 2,
+      "characters": 1287,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ลูกแพะกับหมาป่า",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145209",
+      "revision": 145209,
+      "rawSha256": "200ab7478b75e646f80033eca975356219e10ce1744379f82440f8f4139d481b",
+      "paragraphs": 2,
+      "characters": 877,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "หมาจิ้งจอกกับเม่น",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145227",
+      "revision": 145227,
+      "rawSha256": "b6bd4411c6941c34ac509c9014f4e461e0aa7489f5935481ac7c17005fb43104",
+      "paragraphs": 2,
+      "characters": 963,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "อึ่งอ่างกับวัว",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145232",
+      "revision": 145232,
+      "rawSha256": "41ee109d2e9e31ea9beae47285879ab8bdb3f29e7592cf0803a3fcd051bc3bac",
+      "paragraphs": 2,
+      "characters": 840,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ลูกปูกับแม่ปู",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145233",
+      "revision": 145233,
+      "rawSha256": "29d74e52700c7ecca5d9accb017c50a53037975e136d677943fc7f38a22f9e6c",
+      "paragraphs": 2,
+      "characters": 615,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "พวกหนูประชุมปรึกษากัน",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145234",
+      "revision": 145234,
+      "rawSha256": "de08547b1f97576a5a47dd8e465dca7a4b4ff304171f1693378b74cac612aa41",
+      "paragraphs": 2,
+      "characters": 778,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "นกอินทรีกับหมาจิ้งจอก",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145235",
+      "revision": 145235,
+      "rawSha256": "e93c46b15473b049f4823c0ddfd3a6c66411896e1b3fba8f94b9f5b4058643d3",
+      "paragraphs": 2,
+      "characters": 877,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ชาวสวนกับลูก",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145236",
+      "revision": 145236,
+      "rawSha256": "0d4a77f0a7aa8f08d14e62733c55c498a9da755d75e7a03f5839baf658f55c43",
+      "paragraphs": 2,
+      "characters": 717,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ท้องกับตัว",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145237",
+      "revision": 145237,
+      "rawSha256": "fb9c3d8b4173b43eea744a9e5458e79044b164ab367eb64ca8658c2f9da1b22a",
+      "paragraphs": 2,
+      "characters": 818,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "เทพารักษ์กับคนตัดไม้",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145238",
+      "revision": 145238,
+      "rawSha256": "0587ee76d8c757bbd10b904eab32a969f419214afa61a9442f002d2bc02d7163",
+      "paragraphs": 3,
+      "characters": 1650,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "นายพรานกับไก่ฟ้า",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145413",
+      "revision": 145413,
+      "rawSha256": "48e556f8039ef34311ef01f8ea7f706d95bc17111c79ee370bf14cca60597596",
+      "paragraphs": 2,
+      "characters": 754,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "หนู กบ กับเหยี่ยว",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145414",
+      "revision": 145414,
+      "rawSha256": "e8e7b84de6220919fb528cfcd6956f942323104f9b41ae4349116bdfb27a7deb",
+      "paragraphs": 2,
+      "characters": 1382,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ราชสีห์ชันสูตรลมหายใจ",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145415",
+      "revision": 145415,
+      "rawSha256": "74ca3b667addef743727a9f3e39dea4bd0f724497f78820fadb360bd06edb416",
+      "paragraphs": 2,
+      "characters": 1024,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "กบเลือกนาย",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145416",
+      "revision": 145416,
+      "rawSha256": "cd1cceebb4f8f8a8ff01950042ade5fa6f3be61a0261a7e9cab1f806137489cc",
+      "paragraphs": 2,
+      "characters": 425,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ยายแก่กับหม้อ",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149798",
+      "revision": 149798,
+      "rawSha256": "4eb16bfb4d26084cd3708e4fff24ab4db29d749dc158286393891d2dd6c87ebe",
+      "paragraphs": 2,
+      "characters": 1463,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ต้นไทรกับต้นอ้อ",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149797",
+      "revision": 149797,
+      "rawSha256": "29260577cf4a208e484b05dd8c5444c40de1f310580bfa82e7d394854c77ba68",
+      "paragraphs": 2,
+      "characters": 870,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "หมาจิ้งจอกกับราชสีห์",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149796",
+      "revision": 149796,
+      "rawSha256": "b4971bb6558dc6961dd98000ad7dee7d335a4ef1b820ffaea6ac91af74deb583",
+      "paragraphs": 2,
+      "characters": 911,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "แม่เนื้อกับนายพรานป่า",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149799",
+      "revision": 149799,
+      "rawSha256": "c333f7eb78604e4941e0401ffb6b26bf156cd04a5017ab709f6265291297b26c",
+      "paragraphs": 2,
+      "characters": 1251,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "หมาดุ",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149800",
+      "revision": 149800,
+      "rawSha256": "81e674ccc0ee937ea2371dd2be5529004eab53d30a3470f43c93f58453f69514",
+      "paragraphs": 2,
+      "characters": 803,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "พ่อค้าเกลือกับโคต่าง",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149795",
+      "revision": 149795,
+      "rawSha256": "b405a26e21fc99ba8536c941ee87de8eca2147c3eab12dd0fffea06b0575c3bf",
+      "paragraphs": 2,
+      "characters": 875,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "กระต่ายป่ากับกบ",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149794",
+      "revision": 149794,
+      "rawSha256": "5835c09b6847f30ef698d9e559cde71def225c6372e3ce0dabe20efd239db5d3",
+      "paragraphs": 2,
+      "characters": 1124,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "กวางกับเสือ",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149793",
+      "revision": 149793,
+      "rawSha256": "67f7ca1293d4dc784869016b6882381b3e56a8fe93354b60b1a64fceed29f019",
+      "paragraphs": 2,
+      "characters": 659,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "ลิงกับคนทอดแห",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149792",
+      "revision": 149792,
+      "rawSha256": "9a58c4b3e118bec485ed20c44477b6ee41e5e0db278a34893d834d71087b5c5c",
+      "paragraphs": 2,
+      "characters": 886,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "คนเลี้ยงแพะกับลูกเสือ",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149791",
+      "revision": 149791,
+      "rawSha256": "98acc7dd916f84bab143a6dbf99101df681b03bfbc56225f713402654c5296f1",
+      "paragraphs": 2,
+      "characters": 539,
+      "status": "native_review",
+      "reviewer": null
+    },
+    {
+      "title": "คนเลี้ยงวัวกับวัวหาย",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145188",
+      "revision": 145188,
+      "rawSha256": "c94aad131fda4e4a9166be27af42e0082be29bbee5f41a3a04d0294c238289b5",
+      "paragraphs": 2,
+      "characters": 1053,
+      "status": "native_review",
+      "reviewer": null
+    }
+  ]
+}

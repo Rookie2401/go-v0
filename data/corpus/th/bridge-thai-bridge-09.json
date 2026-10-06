@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "bridge-thai-bridge-09",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ช่วยกันทำอาหาร",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-th-bridge-drafts",
+    "kind": "comprehensible-input",
+    "title": "Thai beginner bridge drafts"
+  },
+  "source": {
+    "id": "src:th:thai-bridge-09",
+    "title": "ช่วยกันทำอาหาร — course-owned draft",
+    "author": "Course authors (machine-drafted)",
+    "attribution": "Course-owned Thai draft. Machine-drafted for native-speaker review; no external source or translation claimed.",
+    "provenance": "Original controlled draft written for the course-owned beginner review queue. It is not a published or source-reviewed Thai work.",
+    "rights": "owner-authored",
+    "licenseNote": "Course-owned draft; may not be published until native review.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Native Thai reviewer required. Source fidelity is not applicable because this is original course-owned draft text."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "อาหาร",
+    "หม้อ",
+    "ช้อน"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "course-owned-draft"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss for review only"
+  },
+  "sections": [
+    {
+      "title": "ช่วยกันทำอาหาร",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เย็นนี้ ครอบครัวทำอาหารในครัวด้วยกัน",
+              "english": "This evening, the family cooks together in the kitchen."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อหั่นผัก ส่วนแม่เตรียมหม้อ",
+              "english": "Father cuts vegetables while Mother prepares the pot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันล้างช้อนและจานให้สะอาด",
+              "english": "I wash the spoons and plates until they are clean."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "น้องหยิบข้าวสารจากชั้นวาง",
+              "english": "My younger sibling gets rice from the shelf."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แม่ใส่ผักลงในหม้ออย่างช้าๆ",
+              "english": "Mother puts the vegetables into the pot slowly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อชิมอาหารแล้วเติมน้ำเล็กน้อย",
+              "english": "Father tastes the food and adds a little water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "กลิ่นอาหารทำให้ทุกคนหิว",
+              "english": "The smell of the food makes everyone hungry."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เมื่ออาหารเสร็จ เราจัดโต๊ะด้วยกัน",
+              "english": "When the food is ready, we set the table together."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ทุกคนบอกว่าอาหารมื้อนี้อร่อย",
+              "english": "Everyone says that this meal is delicious."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "น้องตั้งชามไว้ข้างจาน",
+              "english": "My younger sibling puts bowls beside the plates."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อบอกว่างานเล็กๆ ก็สำคัญ",
+              "english": "Father says even small tasks are important."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "หลังอาหาร เราล้างครัวจนเรียบร้อย",
+              "english": "After the meal, we clean the kitchen."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "work": {
+    "slug": "bridge-thai-bridge-09",
+    "courseId": "thailand-th",
+    "chapter": {
+      "index": 8,
+      "title": "ช่วยกันทำอาหาร"
+    }
+  }
+}

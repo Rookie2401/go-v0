@@ -290,6 +290,7 @@ export async function scriptureReadiness(
 
   // Preparatory texts: texts that actually contain gap items in their live sentences.
   const target = await ctx.store.texts.get(textId);
+  const privateCorpusIds = new Set((await ctx.store.corpora.where('kind', 'testimony')).map((c) => c.id));
   const searched = gaps.slice(0, MAX_GAPS_SEARCHED);
   const cache = new AnalysisCache(ctx.store);
   const tokenHits = new Map<string, Array<{ token: Token; gapId: string }>>(); // textId → hits
@@ -313,7 +314,8 @@ export async function scriptureReadiness(
   const unpublishedCovers = new Map<string, Set<string>>();
   for (const [tid, hits] of tokenHits) {
     const t = await ctx.store.texts.get(tid);
-    if (!t || t.lang !== target?.lang || t.kind === 'scripture' || t.kind === 'testimony') continue;
+    if (!t || t.lang !== target?.lang || t.kind === 'scripture' || t.kind === 'testimony' || privateCorpusIds.has(t.corpusId)
+      || (t.listeningAssessmentId !== undefined || t.readingAssessmentId !== undefined)) continue;
     const sentences = await ctx.store.sentences.getMany([...new Set(hits.map((h) => h.token.sentenceId))]);
     const live = new Set(sentences.filter((s): s is Sentence => !!s && s.retiredInVersion === undefined).map((s) => s.id));
     const set = new Set(hits.filter((h) => live.has(h.token.sentenceId)).map((h) => h.gapId));

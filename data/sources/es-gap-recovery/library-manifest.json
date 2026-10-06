@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "lang": "es",
+  "checkedAt": "2026-10-02",
+  "entries": [
+    {
+      "slug": "alarcon-capitan-veneno",
+      "title": "El capitán Veneno",
+      "author": "Pedro Antonio de Alarcón",
+      "stage": "s2",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "source": {
+        "file": "alarcon-capitan-veneno.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/29731.txt.utf-8",
+        "edition": "Project Gutenberg #29731 classroom edition",
+        "attribution": "El capitán Veneno — Pedro Antonio de Alarcón; Project Gutenberg #29731; US public domain.",
+        "provenance": "Exact cached Gutenberg edition; English introduction, notes, exercises, vocabulary and footnotes excluded at documented section boundaries; Spanish narrative wording retained."
+      },
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #29731 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/29731"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "course-gap source-fidelity boundary check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "0d9b5e34393638f706f7760d8fb1947c05f01ba702d548c712ed5e66c1294698",
+        "qualityVerdict": "usable",
+        "notes": "Boundary extraction checked against the cached edition; no native-speaker or level approval."
+      }
+    },
+    {
+      "slug": "jimenez-platero-y-yo",
+      "title": "Platero y yo — selección de 32 capítulos",
+      "author": "Juan Ramón Jiménez",
+      "stage": "s3",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "source": {
+        "file": "jimenez-platero-y-yo.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/9980.txt.utf-8",
+        "edition": "Project Gutenberg #9980 classroom edition; selected 32 chapters",
+        "attribution": "Platero y yo — Juan Ramón Jiménez; Project Gutenberg #9980; US public domain.",
+        "provenance": "Exact cached Gutenberg edition; English introduction, notes, exercises, vocabulary and footnotes excluded at documented section boundaries; Spanish narrative wording retained."
+      },
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #9980 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/9980"
+        ]
+      },
+      "convert": {
+        "chapters": "#[IVXLCDM]+#",
+        "paragraphs": "blank-line",
+        "unwrap": false,
+        "stripBoilerplate": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "course-gap source-fidelity boundary check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "fb4d7b291b443bef706cf2393ae315c6a96531c99377b3502bc32a37b1b9c716",
+        "qualityVerdict": "usable",
+        "notes": "Boundary extraction checked against the cached edition; no native-speaker or level approval."
+      }
+    },
+    {
+      "slug": "alarcon-sombrero-de-tres-picos",
+      "title": "El sombrero de tres picos",
+      "author": "Pedro Antonio de Alarcón",
+      "stage": "s5",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "source": {
+        "file": "alarcon-sombrero-de-tres-picos.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/29506.txt.utf-8",
+        "edition": "Project Gutenberg #29506 classroom edition",
+        "attribution": "El sombrero de tres picos — Pedro Antonio de Alarcón; Project Gutenberg #29506; US public domain.",
+        "provenance": "Exact cached Gutenberg edition; English introduction, notes, exercises, vocabulary and footnotes excluded at documented section boundaries; Spanish narrative wording retained."
+      },
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #29506 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/29506"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "course-gap source-fidelity boundary check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "eeb9f7f9c16ca1f6de7d5c57b2459f1d9468055e22cbc5c7ea161e748f13e1d1",
+        "qualityVerdict": "usable",
+        "notes": "Boundary extraction checked against the cached edition; no native-speaker or level approval."
+      }
+    }
+  ],
+  "limitations": [
+    "These exact classroom editions are US public-domain records; Honduras and other release jurisdictions require a separate rights decision."
+  ]
+}

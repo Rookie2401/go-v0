@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { DEFAULT_ASSISTANCE, buildFixtureText, createMemoryStore, ids } from '../../src/core';
 import type { Work } from '../../src/core';
 import {
-  SPANISH_COURSE_ID, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS, THAI_COURSE_ID, THAI_STAGES, createCourseCatalog,
+  SPANISH_COURSE_ID, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS, THAI_COURSE_ID, THAI_STAGES, THAI_STREAMS, createCourseCatalog,
 } from '../../src/course';
 
 const C = SPANISH_COURSE_ID;
@@ -43,7 +43,7 @@ describe('install and the ladder of shelves', () => {
     expect((await catalog.stages(THAI_COURSE_ID)).map((s) => s.key)).toEqual(THAI_STAGES.map((s) => s.key));
     expect((await catalog.stages(C)).length).toBe(SPANISH_SHELVES.length);
     expect((await store.works.where('courseId', THAI_COURSE_ID)).length).toBeGreaterThan(0);
-    expect(await catalog.streams(THAI_COURSE_ID)).toEqual([]);
+    expect((await catalog.streams(THAI_COURSE_ID)).map((s) => s.key)).toEqual(THAI_STREAMS.map((s) => s.key));
   });
 });
 
@@ -54,7 +54,7 @@ describe('streams', () => {
     expect(streams.map((s) => s.key)).toEqual(SPANISH_STREAMS.map((s) => s.key));
     expect(streams.map((s) => s.order)).toEqual([...streams.map((s) => s.order)].sort((a, b) => a - b));
     expect(streams.find((s) => s.key === 'listening')!.available).toBe(false);
-    expect(await catalog.streams('thailand-th')).toEqual([]);
+    expect((await catalog.streams('thailand-th')).map((s) => s.key)).toEqual(THAI_STREAMS.map((s) => s.key));
     streams[0].label = 'changed'; // a copy: the data is not shared
     expect((await catalog.streams(C))[0].label).not.toBe('changed');
   });

@@ -83,7 +83,9 @@ export async function profileOfStored(store: AppStore, textId: string, now: stri
 export async function indexStoredTexts(store: AppStore, lang: LanguageCode, now: string): Promise<number> {
   // A listening-assessment text is protected material: it never enters the library index (and a row that an earlier
   // index wrote for one is removed below, because the text is then "no longer in the store" as far as the index goes).
-  const texts = (await store.texts.where('lang', lang)).filter((t) => t.listeningAssessmentId === undefined);
+  const resident = await store.texts.where('lang', lang);
+  const protectedIds = new Set(resident.filter(t => t.listeningAssessmentId !== undefined || t.readingAssessmentId !== undefined || t.curriculum?.role === 'assessment').map(t => t.id));
+  const texts = resident.filter(t => !protectedIds.has(t.id));
   const existing = await store.catalog.getMany(texts.map((t) => t.id));
   const prints = await store.meta.getMany(texts.map((t) => fingerprintKey(t.id)));
   const sources = new Map<string, ContentSource | undefined>();
@@ -115,9 +117,9 @@ export async function indexStoredTexts(store: AppStore, lang: LanguageCode, now:
 
   // rows of texts that are no longer in the store
   const here = new Set(texts.map((t) => t.id));
-  const stale: string[] = [];
+  const stale: string[] = (await store.catalog.getMany([...protectedIds])).filter((row): row is CatalogText => !!row).map(row => row.id);
   for (const location of ['bundled', 'personal'] as const) {
-    for (const r of await store.catalog.where('location', location)) if (r.lang === lang && !here.has(r.id)) stale.push(r.id);
+    for (const r of await store.catalog.where('location', location)) if (r.lang === lang && !here.has(r.id) && !stale.includes(r.id)) stale.push(r.id);
   }
   if (stale.length) {
     await removeCatalogRows(store, stale, now);

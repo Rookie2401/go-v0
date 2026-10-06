@@ -1,0 +1,62 @@
+deep: importing each text afresh with adapter 3 and the installed dictionary (public/dict/sq)
+
+library:audit sq — library-sq@2026-10-02: 23 texts in 1 works, 8707 words; deep check of 23 texts (8707 words), read through GoLearn in 13 s
+  analyzers: stored adapter-sq@3 + dict:kaikki-sq@2026-09-28 | today adapter-sq@3 + dict:kaikki-sq@2026-09-28 — 23 texts
+  ok   catalogue: a work recorded as installed has texts in the library: 1 of 1
+  ok   catalogue: a work with texts in the library is recorded as bundlable: 1 of 1
+  ok   catalogue: every text names a work: 23 of 23
+  ok   catalogue: the rights of the texts are the rights of their work: 1 of 1
+  ok   catalogue: the shelf of a work exists in the course: 1 of 1
+  ok   catalogue: the shelf of the texts is the shelf of their work: 1 of 1
+  ok   catalogue: the stream of the texts is a stream of the course: 1 of 1
+  ok   catalogue: the stream of the texts is a stream of their work: 1 of 1
+  ok   catalogue: the work of a text is in the course catalogue: 1 of 1
+  ok   catalogue: the work says its texts are in the library: 1 of 1
+  ok   deep: every analysis names a lemma that exists: 23 of 23
+  ok   deep: every construction found in the text has its row: 23 of 23
+  ok   deep: every unit found in the text has its row: 23 of 23
+  ok   deep: every word carries the id of its form item: 23 of 23
+  ok   deep: every word is a slice of its sentence: 23 of 23
+  ok   deep: the document is the text the row names: 23 of 23
+  ok   deep: the document names the row's work and chapter: 23 of 23
+  ok   deep: the features are what a fresh import measures: 23 of 23
+  ok   deep: the forms of the profile sum to its words: 23 of 23
+  ok   deep: the importer knows the work: 23 of 23
+  ok   deep: the profile counts the words of the text: 23 of 23
+  ok   deep: the profile lists the constructions a fresh import finds: 23 of 23
+  ok   deep: the profile lists the forms of the text: 23 of 23
+  ok   deep: the profile lists the lemmas a fresh import finds: 23 of 23
+  ok   deep: the profile lists the units a fresh import finds: 23 of 23
+  ok   deep: the profile was made by today's analyzer and dictionary: 23 of 23
+  ok   deep: the row's features are the profile's: 23 of 23
+  ok   deep: the row's publication decision is the document's: 23 of 23
+  ok   deep: the row's title is the document's: 23 of 23
+  ok   deep: the stored paragraphs are the document's paragraphs, in order: 23 of 23
+  ok   deep: the stored text carries its work, chapter, stream and publication: 23 of 23
+  ok   deep: the text has sentences: 23 of 23
+  ok   deep: the text imports: 23 of 23
+  ok   order: bundled and library chapters of one work do not share a number: 1 of 1
+  ok   order: every text of a work has a chapter number: 1 of 1
+  ok   order: no chapter number twice in a work: 1 of 1
+  ok   order: no text has exactly the words of another text: 23 of 23
+  ok   order: the chapters of a work run without gaps: 1 of 1
+  ok   order: the chapters of a work start at 1 (or 0 for front matter): 1 of 1
+  ok   order: the index lists the chapters of a work in chapter order: 1 of 1
+  ok   read: after reading, no word of the text is new to the learner: 23 of 23
+  ok   read: every construction of the profile became a learner item: 23 of 23
+  ok   read: every form of the text became a learner item: 23 of 23
+  ok   read: every lemma of the profile became a learner item: 23 of 23
+  ok   read: every sentence of the text is counted as seen: 23 of 23
+  ok   read: every unit of the profile became a learner item: 23 of 23
+  ok   read: no form item that is not a form of the text: 23 of 23
+  ok   structure: a row is listed under its own primary stream: 23 of 23
+  ok   structure: every row has its document file: 23 of 23
+  ok   structure: every row has its profile file: 23 of 23
+  ok   structure: every row of an index shard is well formed: 1 of 1
+  ok   structure: no document file without a row: 23 of 23
+  ok   structure: no library text has the id of a bundled text: 23 of 23
+  ok   structure: no profile file without a row: 23 of 23
+  ok   structure: no text id twice: 23 of 23
+  ok   structure: the manifest counts the texts it lists: 1 of 1
+  ok   structure: the manifest word count is the sum of the rows: 1 of 1
+every check passed

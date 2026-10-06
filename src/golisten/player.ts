@@ -110,7 +110,8 @@ export type PlayerAction =
   | { type: 'seekPosition'; ms: number }
   /** Restore a validated checkpoint without emitting play/completion evidence. */
   | { type: 'restorePosition'; segmentId: string; positionMs: number }
-  | { type: 'ended' }
+  /** Natural media end can arrive without a final `timeupdate`; this is the observed media playhead, not heard coverage. */
+  | { type: 'ended'; observedPositionMs?: number }
   /** The media element failed or was aborted (decode error, asset missing): the pass is abandoned, never completed. */
   | { type: 'playbackError' }
   | { type: 'manifestUpdated'; manifest: PlayerManifestInput };
@@ -376,6 +377,9 @@ export function reducePlayer(m: PlayerModel, a: PlayerAction): { model: PlayerMo
       const durationMs = segment?.durationMs;
       const requiredStart = segment?.rangeMs?.startMs ?? 0;
       const requiredEnd = segment?.rangeMs?.endMs ?? durationMs ?? 0;
+      const observedEndPosition = Number.isFinite(a.observedPositionMs)
+        ? Math.max(requiredStart, Math.min(requiredEnd, a.observedPositionMs!))
+        : m.positionMs;
       const requiredDuration = requiredEnd - requiredStart;
       const heard = coveredInRange(m.heardRanges, requiredStart, requiredEnd);
       // Unknown durations and less than 80% audible coverage cannot complete listening evidence. An ended
@@ -383,7 +387,7 @@ export function reducePlayer(m: PlayerModel, a: PlayerAction): { model: PlayerMo
       if (!durationMs || requiredDuration <= 0 || heard / requiredDuration < 0.8) {
         return {
           model: { ...m, playing: false, started: false, positionMs: segment?.rangeMs?.startMs ?? 0, completed: false, heardRanges: [], lastPositionAtMs: undefined },
-          effects: [{ type: 'pause' }, emit({ event: 'abandoned', segmentIndex: m.segmentIndex, view: view(m), positionMs: m.positionMs })],
+          effects: [{ type: 'pause' }, emit({ event: 'abandoned', segmentIndex: m.segmentIndex, view: view(m), positionMs: observedEndPosition })],
         };
       }
       // With reviewed per-sentence alignments the completion names which sentences were heard: a sentence counts when at

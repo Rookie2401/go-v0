@@ -40,7 +40,7 @@ describe('rights-aware local recording import', () => {
 
   it('binds reviewed WAV timing to the exact text release and exposes rights-bound sentence ranges', async () => {
     const f = await fixture();
-    const result = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes, origin: 'curated' });
+    const result = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes, origin: 'curated', reviewer: 'Unit-test alignment reviewer' });
     expect(result.manifest.complete).toBe(true);
     expect(result.imported).toBe(3);
     expect(result.asset).toMatchObject({ audioKind: 'synthetic', sourceType: 'generated-tts', qualityState: 'machine_checked', textBinding: { textId: f.text.id, contentVersion: f.text.contentVersion, textSha256: f.manifest.textSha256 } });
@@ -49,6 +49,28 @@ describe('rights-aware local recording import', () => {
     const pm = await buildPlayerManifest(f.store, result.manifest);
     expect(pm.segments.map((s) => s.rangeMs)).toEqual([{ startMs: 0, endMs: 450 }, { startMs: 450, endMs: 900 }, { startMs: 900, endMs: 1350 }]);
     expect(pm.segments.every((s) => s.playAllowed && s.exactTextBound && s.qualityState === 'machine_checked')).toBe(true);
+  });
+
+  it('does not trust a learner-provided reviewed timing claim', async () => {
+    const f = await fixture();
+    const result = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes, origin: 'learner' });
+    const alignments = await f.store.alignments.where('assetId', result.asset.id);
+    expect(alignments).toHaveLength(0);
+    const player = await buildPlayerManifest(f.store, result.manifest);
+    expect(player.segments).toHaveLength(1);
+    expect(player.segments[0]).toMatchObject({ rangeMs: undefined, reviewedAlignmentIds: [] });
+    expect(player.segments[0].sentenceIds).toEqual(f.sentences.map((s) => s.id));
+    expect(result.asset.qualityState).toBe('machine_checked');
+  });
+
+  it('persists reviewed sentence timings only for curated import with a named reviewer', async () => {
+    const f = await fixture();
+    const result = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes, origin: 'curated', reviewer: 'Unit-test alignment reviewer' });
+    const alignments = await f.store.alignments.where('assetId', result.asset.id);
+    expect(alignments).toHaveLength(f.sentences.length);
+    expect(alignments.every((a) => a.reviewState === 'reviewed')).toBe(true);
+    const player = await buildPlayerManifest(f.store, result.manifest);
+    expect(player.segments.map((s) => s.rangeMs)).toEqual(f.manifest.coverage.map((c) => ({ startMs: c.startMs, endMs: c.endMs })));
   });
 
   it('keeps a lawful imported recording playable when a default TTS provider is registered', async () => {

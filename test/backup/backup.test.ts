@@ -82,6 +82,25 @@ async function tableSizes(store: AppStore) {
 }
 
 describe('backup: export', () => {
+  it('round-trips a structurally valid source descriptor snapshot and rejects an id/origin mismatch', async () => {
+    const store = fresh();
+    const seeded = await seedLearner(store, 'u1');
+    const textId = seeded.revisions[0].textId!;
+    const tokenIds = new Set((await store.tokens.where('textId', textId)).map((token) => token.id));
+    const analysis = (await store.analyses.all()).find((row) => tokenIds.has(row.tokenId))!;
+    const sourceInfo = { id: 'adapter-es@6:hand', label: 'Course word list', origin: 'hand' as const, reviewStatus: 'machine-drafted' as const, version: '6' };
+    await store.analyses.put({ ...analysis, sourceId: sourceInfo.id, origin: sourceInfo.origin, sourceInfo });
+    const file = await exportLearner(store, 'u1');
+    const target = fresh();
+    await restoreLearner(target, file);
+    expect((await target.analyses.get(analysis.id))?.sourceInfo).toEqual(sourceInfo);
+
+    const changed = cloneFile(file);
+    changed.data.testimonyContent.analyses[0].sourceInfo = { ...sourceInfo, id: 'adapter-es@999:hand' };
+    resign(changed);
+    expect(validateBackup(changed)).toContainEqual(expect.objectContaining({ code: 'malformed', path: expect.stringContaining('sourceInfo') }));
+  });
+
   it('produces a versioned, checksummed file with only source rows', async () => {
     const store = fresh();
     await seedLearner(store, 'u1');

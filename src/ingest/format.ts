@@ -14,12 +14,17 @@ import { COURSES, LANGUAGES, LANGUAGE_ROWS, courseForLang, ids } from '../core';
 import { analysisCoverage, type AnalysisCoverage } from '../adapters/shared';
 import { contentSignatureOf } from './publish';
 import { pipelineProblems } from './pipeline';
+import type { CurriculumMetadata } from '../course/curriculumPolicy';
 
 export const CORPUS_SCHEMA_VERSION = 2 as const;
 
 // ───────────────────────────── document types ─────────────────────────────
 
 export interface CorpusSourceInfo {
+  sourceHash?: string;
+  retrievedAt?: string;
+  licence?: string;
+  modifications?: string;
   id: string;
   title: string;
   author?: string;
@@ -46,7 +51,7 @@ export interface DocReview {
   /**
    * What kind of review this was. 'linguistic-check': the language was checked by someone who is not a native speaker,
    * or by a tool — worth recording, and NOT enough to publish machine-drafted text. 'native': a native speaker read it.
-   * Absent ⇒ the review is taken as given (the state of every review recorded before this field existed).
+   * Absent cannot establish native review for generated or transformed course material.
    */
   level?: ReviewLevel;
 }
@@ -200,6 +205,8 @@ export interface Pipeline {
 }
 
 export interface CorpusDocument {
+  curriculum?: CurriculumMetadata;
+  readingAssessmentId?: string;
   schemaVersion: typeof CORPUS_SCHEMA_VERSION;
   /** Stable id (slug); the text id is `text:<lang>:<id>`. */
   id: string;
@@ -330,8 +337,8 @@ const DOC_ID = /^[a-z0-9][a-z0-9-]*$/;
 const SENTENCE_ID = /^[A-Za-z0-9][A-Za-z0-9._-]*$/;
 const LOCALE = /^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$/;
 
-const DOC_KEYS = ['schemaVersion', 'id', 'lang', 'locale', 'title', 'contentType', 'corpus', 'source', 'review', 'difficulty', 'topics', 'editorialTags', 'prepTargets', 'speakers', 'generated', 'scripture', 'english', 'sections', 'work', 'notes', 'streams', 'domains', 'variety', 'quality', 'teamText', 'pipeline'];
-const SOURCE_KEYS = ['id', 'title', 'author', 'publisher', 'url', 'edition', 'attribution', 'provenance', 'rights', 'licenseNote', 'authorship'];
+const DOC_KEYS = ['schemaVersion', 'id', 'lang', 'locale', 'title', 'contentType', 'corpus', 'source', 'review', 'difficulty', 'topics', 'editorialTags', 'prepTargets', 'speakers', 'generated', 'scripture', 'english', 'sections', 'work', 'notes', 'streams', 'domains', 'variety', 'quality', 'teamText', 'curriculum', 'readingAssessmentId', 'pipeline'];
+const SOURCE_KEYS = ['id', 'title', 'author', 'publisher', 'url', 'edition', 'attribution', 'provenance', 'rights', 'licenseNote', 'authorship', 'sourceHash', 'retrievedAt', 'licence', 'modifications'];
 const SENTENCE_KEYS = ['id', 'text', 'english', 'verseRefs', 'speaker', 'spans', 'corrections', 'notes'];
 const WORK_SLUG = /^[a-z0-9-]+$/;
 const SHORT_SLUG = /^[a-z0-9][a-z0-9-]{0,39}$/;
@@ -504,6 +511,9 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
   if (!isObj(src)) required('source', 'source');
   else {
     for (const k of Object.keys(src)) if (!SOURCE_KEYS.includes(k) && !k.startsWith('_')) warn(`source.${k}`, 'unknown-field', `unknown source field "${k}" is ignored`, 'Check the spelling against docs/IMPORT.md.');
+    for (const k of ['sourceHash', 'retrievedAt', 'licence', 'modifications']) if (src[k] !== undefined && !isStr(src[k])) err(`source.${k}`, 'invalid-value', `source.${k} must be a nonempty string`, 'Retain exact acquired edition evidence.');
+    if (src.sourceHash !== undefined && (!isStr(src.sourceHash) || !/^(?:sha256:)?[a-f0-9]{64}$/i.test(src.sourceHash))) err('source.sourceHash', 'invalid-value', 'sourceHash must be a SHA-256 checksum', 'Use the checksum of the exact acquired source file.');
+    if (src.retrievedAt !== undefined && !Number.isFinite(Date.parse(String(src.retrievedAt)))) err('source.retrievedAt', 'invalid-value', 'retrievedAt must be a valid date', 'Record when the source file was retrieved.');
     if (!isStr(src.id)) required('source.id', 'source.id');
     if (!isStr(src.title)) required('source.title', 'source.title');
     if (!isStr(src.attribution)) required('source.attribution', 'source.attribution', 'Write the learner-visible credit line, e.g. "Reina-Valera 1909, public domain".');
@@ -528,6 +538,29 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
     if (src.rights === 'unverified' && !/unverified|replace|verify/i.test(`${provenanceText} ${typeof src.licenseNote === 'string' ? src.licenseNote : ''}`)) {
       err('source.rights', 'unverified-without-note', 'rights "unverified" needs a note saying the text must be replaced or verified before release',
         'Add a sentence to source.provenance (or licenseNote) such as "unverified sample — replace with a licensed text before release".');
+    }
+  }
+
+  if (d.readingAssessmentId !== undefined && !isStr(d.readingAssessmentId)) err('readingAssessmentId', 'invalid-value', 'readingAssessmentId must be a nonempty registry identity', 'Use the approved held-out registry id.');
+  if (isObj(d.curriculum) && d.curriculum.role === 'assessment' && !isStr(d.readingAssessmentId)) err('readingAssessmentId', 'missing-field', 'Assessment-role material needs a protected reading assessment identity', 'Assign its approved held-out registry id; it cannot enter ordinary reading.');
+  if (d.curriculum !== undefined) {
+    const c = d.curriculum;
+    if (!isObj(c)) err('curriculum', 'invalid-value', 'curriculum must be an object', 'Record lifecycle, role, registers, provenance, audio and rejection reasons.');
+    else {
+      const bad = (field: string, message: string) => err(`curriculum.${field}`, 'invalid-value', message, 'Keep missing reviews and rights pending; never invent approval.');
+      if (!['candidate', 'rights_pending', 'acquired', 'converted', 'linguistic_review', 'native_review', 'ready', 'published', 'rejected'].includes(String(c.lifecycle))) bad('lifecycle', 'Invalid curriculum lifecycle');
+      if (!['controlled', 'graded', 'bridge', 'authentic', 'heritage', 'scripture', 'reference', 'assessment'].includes(String(c.role))) bad('role', 'Invalid pedagogical role');
+      if (!Array.isArray(c.registers) || c.registers.some(v => !isStr(v))) bad('registers', 'Registers must be nonempty strings');
+      if (!Array.isArray(c.rejectionReasons) || c.rejectionReasons.some(v => !isStr(v)) || (c.lifecycle === 'rejected' && !c.rejectionReasons.length)) bad('rejectionReasons', 'Rejected material needs retained reasons');
+      if (!isObj(c.provenance) || !['original', 'translation', 'adaptation', 'generated'].includes(String(c.provenance.kind))) bad('provenance', 'Provenance must identify original, translation, adaptation or generated wording');
+      else {
+        for (const field of ['sourceTextId', 'sourceTitle', 'sourceLanguage', 'translator', 'adapter', 'description']) if (c.provenance[field] !== undefined && !isStr(c.provenance[field])) bad(`provenance.${field}`, 'Provenance values must be nonempty strings');
+        if (c.provenance.kind === 'translation' && ['sourceTitle', 'sourceLanguage', 'translator'].some(k => !isStr((c.provenance as Record<string, unknown>)[k]))) bad('provenance', 'Translation must retain original title, original language and translator');
+        if (c.provenance.kind === 'adaptation' && ['sourceTextId', 'adapter', 'description'].some(k => !isStr((c.provenance as Record<string, unknown>)[k]))) bad('provenance', 'Adaptation must identify source, adapter and changes');
+      }
+      if (c.nativeReview !== undefined && (!isObj(c.nativeReview) || !isStr(c.nativeReview.by) || !isStr(c.nativeReview.at) || !Number.isFinite(Date.parse(String(c.nativeReview.at))) || c.nativeReview.language !== d.lang || !Number.isInteger(c.nativeReview.contentVersion) || Number(c.nativeReview.contentVersion) < 1)) bad('nativeReview', 'Native review needs a named reviewer, valid date, target language and positive content version');
+      if (!isObj(c.audio) || !['unavailable', 'candidate', 'rights_pending', 'review_pending', 'ready', 'published'].includes(String(c.audio.state)) || typeof c.audio.rightsCleared !== 'boolean') bad('audio', 'Audio needs independent lifecycle and rights clearance');
+      else if (c.audio.state === 'published' && (!c.audio.rightsCleared || !isStr(c.audio.reviewedBy) || !Number.isInteger(c.audio.contentVersion) || Number(c.audio.contentVersion) < 1)) bad('audio', 'Published audio needs rights clearance, reviewer and wording version');
     }
   }
 

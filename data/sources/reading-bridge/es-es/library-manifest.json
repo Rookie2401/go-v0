@@ -1,0 +1,403 @@
+{
+  "schema": 1,
+  "lang": "es",
+  "apiLanguage": "es-es",
+  "entries": [
+    {
+      "slug": "bridge-safari-en-la-banera",
+      "title": "Safari en la bañera",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/safari-en-la-banera/"
+        ]
+      },
+      "source": {
+        "file": "safari-en-la-banera.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/safari-en-la-banera/",
+        "edition": "Global Digital Library gdl-132",
+        "attribution": "Safari en la bañera — BookDash; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained.",
+        "sha256": "80688d6be544015373c7c062ff6a15e2519d629bdc9b6c41d1a4048c74cb32b8"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "80688d6be544015373c7c062ff6a15e2519d629bdc9b6c41d1a4048c74cb32b8"
+      }
+    },
+    {
+      "slug": "bridge-una-casa-para-raton",
+      "title": "Una casa para Ratón",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/una-casa-para-raton/"
+        ]
+      },
+      "source": {
+        "file": "una-casa-para-raton.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/una-casa-para-raton/",
+        "edition": "Global Digital Library gdl-129",
+        "attribution": "Una casa para Ratón — BookDash; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained.",
+        "sha256": "0f89b7da9bd08bc862eba405c81e3707dc0a19e43455b5d7913dc7d85955c8aa"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "0f89b7da9bd08bc862eba405c81e3707dc0a19e43455b5d7913dc7d85955c8aa"
+      }
+    },
+    {
+      "slug": "bridge-vuelve-gata",
+      "title": "¡Vuelve, Gata!",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/vuelve-gata/"
+        ]
+      },
+      "source": {
+        "file": "vuelve-gata.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/vuelve-gata/",
+        "edition": "Global Digital Library gdl-801",
+        "attribution": "¡Vuelve, Gata! — BookDash; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained.",
+        "sha256": "02b1521aa1dda52787f8ded595781a13b1691cb2f727efd584ad3a08605b8eca"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "02b1521aa1dda52787f8ded595781a13b1691cb2f727efd584ad3a08605b8eca"
+      }
+    },
+    {
+      "slug": "bridge-dentro-de-la-world-wide-web",
+      "title": "Dentro de la World Wide Web",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/dentro-de-la-world-wide-web/"
+        ]
+      },
+      "source": {
+        "file": "dentro-de-la-world-wide-web.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/dentro-de-la-world-wide-web/",
+        "edition": "Global Digital Library gdl-1185",
+        "attribution": "Dentro de la World Wide Web — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained.",
+        "sha256": "88298f3a3748854fdc46937d3f57c3b778c9274c4527b43451634878bbae68a6"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "88298f3a3748854fdc46937d3f57c3b778c9274c4527b43451634878bbae68a6"
+      }
+    },
+    {
+      "slug": "bridge-el-bate-perdido-2",
+      "title": "El bate perdido",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/el-bate-perdido-2/"
+        ]
+      },
+      "source": {
+        "file": "el-bate-perdido-2.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/el-bate-perdido-2/",
+        "edition": "Global Digital Library gdl-1188",
+        "attribution": "El bate perdido — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained.",
+        "sha256": "a08f31feded3df8039785f7ba306380941bd01d92c8b70e948187cbcf73fdeb7"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "a08f31feded3df8039785f7ba306380941bd01d92c8b70e948187cbcf73fdeb7"
+      }
+    },
+    {
+      "slug": "bridge-el-nino-y-el-tambor",
+      "title": "El niño y el tambor",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/el-nino-y-el-tambor/"
+        ]
+      },
+      "source": {
+        "file": "el-nino-y-el-tambor.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/el-nino-y-el-tambor/",
+        "edition": "Global Digital Library gdl-1193",
+        "attribution": "El niño y el tambor — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained.",
+        "sha256": "ef51b8d303c5e40c7f927620e124ee7ce16dce708486757a097cf218fadf9793"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "ef51b8d303c5e40c7f927620e124ee7ce16dce708486757a097cf218fadf9793"
+      }
+    },
+    {
+      "slug": "bridge-inmersion",
+      "title": "¡INMERSIÓN!",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/inmersion/"
+        ]
+      },
+      "source": {
+        "file": "inmersion.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/inmersion/",
+        "edition": "Global Digital Library gdl-1184",
+        "attribution": "¡INMERSIÓN! — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained.",
+        "sha256": "532e4c55d721d5e4af7e282c3c982c7ce8f2436038b1bf7f28df530d12d619ea"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "532e4c55d721d5e4af7e282c3c982c7ce8f2436038b1bf7f28df530d12d619ea"
+      }
+    },
+    {
+      "slug": "bridge-pishi-atrapado-en-una-tormenta",
+      "title": "Pishi atrapado en una tormenta",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/pishi-atrapado-en-una-tormenta/"
+        ]
+      },
+      "source": {
+        "file": "pishi-atrapado-en-una-tormenta.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/pishi-atrapado-en-una-tormenta/",
+        "edition": "Global Digital Library gdl-1189",
+        "attribution": "Pishi atrapado en una tormenta — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained.",
+        "sha256": "dddd6822ebc662fab9bb66b651cc2c9239077ec5e3332df981ce08f5e02a3f0a"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "dddd6822ebc662fab9bb66b651cc2c9239077ec5e3332df981ce08f5e02a3f0a"
+      }
+    },
+    {
+      "slug": "bridge-demasiados-platanos",
+      "title": "Demasiados plátanos",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/es-es",
+          "https://content.digitallibrary.io/es-es/book/demasiados-platanos/"
+        ]
+      },
+      "source": {
+        "file": "demasiados-platanos.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/es-es/book/demasiados-platanos/",
+        "edition": "Global Digital Library gdl-1146",
+        "attribution": "Demasiados plátanos — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained.",
+        "sha256": "1b698804cea4ab8c818d3462ccd2de5980f0bb393669eed2c1887532b073aa71"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "1b698804cea4ab8c818d3462ccd2de5980f0bb393669eed2c1887532b073aa71"
+      }
+    }
+  ]
+}

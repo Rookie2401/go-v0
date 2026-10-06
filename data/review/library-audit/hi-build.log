@@ -1,0 +1,11 @@
+library:build - library-hi@2026-10-02 (schema 1)
+  built:    5 work(s), 1280 text(s), 845734 words
+    + bible-hindi: 1185 text(s), 774442 words, 1185 published, rights verified-open-licence, quality not checked
+    + gdl-hindi-ccby: 92 text(s), 60483 words, 92 published, rights verified-open-licence, quality not checked
+    + bharatendu-andher-nagari: 1 text(s), 3273 words, 1 published, rights verified-public-domain, quality not checked
+    + premchand-panch-parameshwar: 1 text(s), 4312 words, 1 published, rights verified-public-domain, quality usable (No chapter headings were found (a heading is a line such as "บทที่ ๑", "ตอนที่ 3", "Capítulo I" or "Chapter 4" on its own), so the whole text is one chapter. 91 paragraphs read, one for each non-empty line; 9 blank lines skipped. Spaces or tabs at the start or end of 4 lines were trimmed. That is the only change made to the text. Source check: usable, with 1 note: no-chapters-found.)
+    + premchand-namak-ka-daroga: 1 text(s), 3224 words, 1 published, rights verified-public-domain, quality usable (No chapter headings were found (a heading is a line such as "บทที่ ๑", "ตอนที่ 3", "Capítulo I" or "Chapter 4" on its own), so the whole text is one chapter. 57 paragraphs read, one for each non-empty line; 1 blank line skipped. Spaces or tabs at the start or end of 2 lines were trimmed. That is the only change made to the text. Source check: usable, with 1 note: no-chapters-found.)
+  refused:  0
+  written:  5 index shard(s), 2567 file(s), 34042874 bytes -> C:\Users\CJWal\dev\go-v0\public\library\hi
+  digest:   c4e8ca447c521833
+  build time: 498088 ms

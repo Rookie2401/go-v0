@@ -20,7 +20,7 @@ describe('importer preview states the publication outcome', () => {
   });
 
   it('the same text with a recorded review would publish', async () => {
-    const r = applyReview(bundledDoc('es', 'story-01'), { by: 'Synthetic test reviewer', date: '2026-10-01' });
+    const r = applyReview(bundledDoc('es', 'story-01'), { by: 'Synthetic test reviewer', level: 'native', date: '2026-10-01' });
     if (!r.ok) throw new Error('review refused');
     const [view] = await api.validate([r.doc]);
     expect(view.published).toBe(true);

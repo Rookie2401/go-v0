@@ -41,7 +41,7 @@
  */
 import type { AssistanceLevel, DomainEvent, EventInput, EvidenceKind, LanguageCode, Modality, PhraseEncountered, PhraseOccurrence } from '../core';
 import { hash, ids } from '../core';
-import { K_PRODUCTION, addProduction, addReceptive, entryOf, kindCode } from './agg';
+import { K_PRODUCTION, addProduction, addReceptive, entryOf, invalidateHead, kindCode } from './agg';
 import type { Entry, StoredItem } from './agg';
 import { AnalysisCache } from './analysis';
 import { ItemBook } from './book';
@@ -311,7 +311,7 @@ export class Folder {
       const sentence = await this.ctx.store.sentences.get(id);
       if (!sentence) continue;
       const text = await this.ctx.store.texts.get(sentence.textId);
-      if (text && (text as typeof text & { listeningAssessmentId?: string }).listeningAssessmentId) return true;
+      if (text && (text.listeningAssessmentId !== undefined || text.readingAssessmentId !== undefined)) return true;
     }
     return false;
   }
@@ -389,6 +389,7 @@ export class Folder {
       const micro = Math.round(j.weight * 1e6);
       if (ent[0] === kind && ent[1] === assistance && ent[3] === micro && ent[2] === itemHelp && ent[5] === (romanized ? 1 : 0)) continue;
       ent[0] = kind; ent[1] = assistance; ent[2] = itemHelp; ent[3] = micro; ent[5] = romanized ? 1 : 0;
+      invalidateHead(book.get(itemId)!.agg, modality, !isOrthId(itemId));
       if (enc) {
         enc.assistance = assistance;
         enc.evidenceKind = j.evidenceKind;
@@ -465,12 +466,14 @@ export class Folder {
     const info = await sentenceItems(ctx, a.sentenceId, a.tokenFilter, a.modality === 'reading' ? this.orth : undefined);
     if (!info) return; // unknown sentence: nothing to attach evidence to
     const { sentence, text, items, firstPhraseOcc } = info;
+    const corpus = text ? await ctx.store.corpora.get(text.corpusId) : undefined;
     // A text in a heritage variety (Awadhi or Braj beside Modern Standard Hindi) is read as its own language: meeting
     // its words is not evidence about the course language, so no item is credited. The reading itself stays in the log
     // (progress, pace and rescue measures read it); only the word, phrase, pattern and script items are left alone.
     if (text?.variety && this.heritage(text.lang, text.variety)) return;
     const surface = a.modality === 'listening' ? 'listen'
-      : text?.kind === 'scripture' ? 'scripture' : text?.kind === 'testimony' ? 'testimony' : 'corpus';
+      : text?.kind === 'scripture' || corpus?.kind === 'scripture' ? 'scripture'
+        : text?.kind === 'testimony' || corpus?.kind === 'testimony' ? 'testimony' : 'corpus';
     const memo = this.memo(a.userId, a.sitting, a.sentenceId);
     const demonstrated = memo.demo.has(a.modality);
     // Evidence is pinned to the version encountered: the event says which one, else the sentence's own version.
@@ -497,7 +500,7 @@ export class Folder {
 
       if (itemKind === 'orth') { // no encounter row: the aggregate is the record
         if (entryOf(row.agg, a.modality, a.sitting, a.sentenceId)) continue;
-        addReceptive(row.agg, a.modality, a.sitting, entry, meeting);
+        addReceptive(ctx, row.agg, a.modality, a.sitting, entry, meeting, false);
         book.touch(itemId);
         continue;
       }
@@ -511,7 +514,7 @@ export class Folder {
         ex.evidenceKind = j.evidenceKind; ex.weight = j.weight; ex.assistance = assistance;
         ex.playbackSpeed = a.listen!.speed; ex.replays = a.listen!.replays;
         const ent = entryOf(row.agg, a.modality, a.sitting, a.sentenceId);
-        if (ent) { ent[0] = entry[0]; ent[1] = entry[1]; ent[2] = entry[2]; ent[3] = entry[3]; }
+        if (ent) { ent[0] = entry[0]; ent[1] = entry[1]; ent[2] = entry[2]; ent[3] = entry[3]; invalidateHead(row.agg, a.modality); }
         book.putEncounter(ex);
         book.touch(itemId);
         continue;
@@ -523,7 +526,7 @@ export class Folder {
         ...(a.listen ? {} : { itemHelp: this.itemHelpOfMemo(memo, itemId), romanized }),
         playbackSpeed: a.listen?.speed, replays: a.listen?.replays,
       }));
-      addReceptive(row.agg, a.modality, a.sitting, entry, meeting);
+      addReceptive(ctx, row.agg, a.modality, a.sitting, entry, meeting);
       book.touch(itemId);
       if (itemKind === 'phrase') {
         const occ = firstPhraseOcc.get(itemId);

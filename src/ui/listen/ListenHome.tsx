@@ -5,6 +5,7 @@ import type { Text } from '../../core';
 import { recommendListening } from '../../golisten/recommendations';
 import type { ListeningRecommendation } from '../../golisten/recommendations';
 import { useApp } from '../context';
+import { useListenEnabled } from '../reader/useListen';
 import { isTestimonyText } from '../format';
 import type { AudioImportManifest } from '../../core';
 import { BackLink, Topbar } from '../ui';
@@ -13,7 +14,8 @@ type ListenPick = ListeningRecommendation;
 
 /** GoListen's doorway lists only content for which the listening engine has found usable, lawful audio. */
 export function ListenHome() {
-  const { store, golisten, lang, userId } = useApp();
+  const { store, golisten, library, lang, userId } = useApp();
+  const listenEnabled = useListenEnabled();
   const [texts, setTexts] = useState<Text[] | null>(null);
   const [picks, setPicks] = useState<ListenPick[]>([]);
   const [availableTexts, setAvailableTexts] = useState<Text[]>([]);
@@ -21,10 +23,25 @@ export function ListenHome() {
   const [refresh, setRefresh] = useState(0);
 
   const load = useCallback(async () => {
+    if (!listenEnabled) return;
     setError(null);
+    // A restored/imported manifest can outlive a text row while its published catalogue copy
+    // remains lazy. Only materialize those exact manifest targets; never scan/open the whole
+    // catalogue or trigger speech generation just to build this doorway.
+    const manifestIds = [...new Set((await store.manifests.all()).filter((m) => m.lang === lang).map((m) => m.textId))];
+    const lazyCandidates = await Promise.all(manifestIds.map(async (textId) => {
+      if (await store.texts.get(textId)) return undefined;
+      try {
+        const entry = await library.entry(textId);
+        return entry?.lang === lang && entry.published ? entry : undefined;
+      } catch { return undefined; }
+    }));
+    await Promise.all(lazyCandidates.filter((entry): entry is NonNullable<typeof entry> => !!entry).map(async (entry) => {
+      try { await library.open(entry.id); } catch { /* One inaccessible catalogue copy must not hide other recordings. */ }
+    }));
     const [rows, corpora] = await Promise.all([store.texts.where('lang', lang), store.corpora.all()]);
     const byCorpus = new Map(corpora.map((c) => [c.id, c]));
-    const visible = rows.filter((t) => t.listeningAssessmentId === undefined && !isTestimonyText(t, byCorpus) && t.published === true);
+    const visible = rows.filter((t) => t.listeningAssessmentId === undefined && t.readingAssessmentId === undefined && !isTestimonyText(t, byCorpus) && t.published === true);
     setTexts(visible);
 
     const visibleIds = new Set(visible.map((t) => t.id));
@@ -40,15 +57,20 @@ export function ListenHome() {
     ).map(({ textId }) => textId));
     const recommendedIds = new Set(visiblePicks.map((pick) => pick.textId));
     setAvailableTexts(visible.filter((t) => playableIds.has(t.id) && !recommendedIds.has(t.id)));
-  }, [store, golisten, lang, userId]);
+  }, [store, golisten, library, lang, userId, listenEnabled]);
 
-  useEffect(() => { setTexts(null); void load().catch((e: unknown) => setError(e instanceof Error ? e.message : String(e))); }, [load, refresh]);
+  useEffect(() => {
+    if (!listenEnabled) { setTexts([]); return; }
+    setTexts(null);
+    void load().catch((e: unknown) => setError(e instanceof Error ? e.message : String(e)));
+  }, [load, refresh, listenEnabled]);
 
   return (
     <div>
       <Topbar title="GoListen" left={<BackLink to="/" label="Home" />} />
       <main className="page page--narrow route-fade" data-testid="golisten-home">
         <h1>Listen</h1>
+        {!listenEnabled ? <p className="note" role="status">GoListen is not available in this version. <Link to="/">Return home</Link> or <Link to="/read">open GoLearn reading</Link>.</p> : <>
         <p className="card__note">Build understanding through speech. Text and listening progress stay separate.</p>
         {error && <p role="alert" className="error">Could not load listening material: {error}</p>}
         {texts === null ? <p role="status" className="muted">Finding listening material…</p> : (
@@ -90,6 +112,7 @@ export function ListenHome() {
             <p className="home__links"><Link to="/read">GoLearn reading</Link><Link to="/scripture">Scripture</Link></p>
           </>
         )}
+        </>}
       </main>
     </div>
   );
@@ -101,7 +124,7 @@ function scriptureReference(text: Text): string {
 }
 
 function RecordingImport({ texts, onImported }: { texts: Text[]; onImported(): void }) {
-  const { golisten } = useApp();
+  const { golisten, library, store, lang } = useApp();
   const [textId, setTextId] = useState('');
   const [manifestFile, setManifestFile] = useState<File | null>(null);
   const [audioFile, setAudioFile] = useState<File | null>(null);
@@ -114,7 +137,24 @@ function RecordingImport({ texts, onImported }: { texts: Text[]; onImported(): v
     setWorking(true); setMessage('');
     try {
       const parsed: unknown = JSON.parse(await manifestFile.text());
-      if (!parsed || typeof parsed !== 'object' || !('textId' in parsed) || parsed.textId !== textId) throw new Error('The manifest is for a different text. Choose that exact text release before importing.');
+      if (!parsed || typeof parsed !== 'object' || !('textId' in parsed) || typeof parsed.textId !== 'string' || !parsed.textId) throw new Error('The manifest must name the exact text release.');
+      const targetId = parsed.textId;
+      if (textId !== '__manifest__' && targetId !== textId) throw new Error('The manifest is for a different text. Choose that exact text release before importing.');
+      // A newly acquired published text may still be lazy. Resolve only the exact canonical ID named in
+      // the manifest, then recheck the materialized row before the audio importer sees it.
+      let target = await store.texts.get(targetId);
+      if (!target) {
+        const entry = await library.entry(targetId);
+        if (!entry || entry.id !== targetId || entry.lang !== lang || entry.published !== true) {
+          throw new Error('The manifest text is not available as a published text in this language.');
+        }
+        target = await library.open(targetId);
+      }
+      const corpora = await store.corpora.all();
+      if (target.id !== targetId || target.lang !== lang || target.published !== true || (target.listeningAssessmentId !== undefined || target.readingAssessmentId !== undefined)
+        || isTestimonyText(target, new Map(corpora.map((corpus) => [corpus.id, corpus])))) {
+        throw new Error('The manifest text is not available for listening in this language.');
+      }
       const manifest = parsed as AudioImportManifest;
       const bytes = new Uint8Array(await audioFile.arrayBuffer());
       // A recording a learner adds is always a learner import: it plays here, and never counts as reviewed listening evidence.
@@ -134,6 +174,7 @@ function RecordingImport({ texts, onImported }: { texts: Text[]; onImported(): v
     <label className="field"><span className="label">Text release</span>
       <select aria-label="Text release" value={textId} onChange={(e) => setTextId(e.target.value)}>
         <option value="">Choose the exact text</option>
+        <option value="__manifest__">Use exact text named in manifest</option>
         {texts.map((t) => <option key={t.id} value={t.id}>{t.title}{t.version ? ` · ${t.version}` : ''} · v{t.contentVersion} · {t.id}</option>)}
       </select>
     </label>

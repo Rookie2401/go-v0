@@ -1,0 +1,4877 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-10-02",
+  "methodology": {
+    "observed": "Counts come from course catalog exports and installed public/library manifests/provenance. A work is installed only when it has a published provenance entry; catalogue recommendations and empty stage slots are reported as planning signals, not proven CEFR gaps.",
+    "publishedOnly": "Installed text and word totals are taken from published provenance entries. Scripture and secular/heritage classes are separated in publishedByClass; generated unreviewed drafts are counted separately and never inflate installed coverage.",
+    "classification": "Scripture is separated from secular reading. Heritage means an installed public-domain or scan-backed source; modern-source-authored and modern-standard-or-unreviewed works remain separate.",
+    "limitations": "Word and sentence metrics are source-level approximations and may include front matter or document segmentation artifacts. They are not CEFR measurements or native-speaker review. Thai word counts require adapter tokenization; Latin-script and Devanagari word counts use Unicode-letter approximations."
+  },
+  "languages": [
+    {
+      "language": "de",
+      "name": "German",
+      "observed": {
+        "catalogueStages": 14,
+        "catalogueWorks": 88,
+        "installedLibrary": true,
+        "installedWorks": 37,
+        "installedTexts": 1841,
+        "installedWords": 2278289,
+        "publishedByClass": {
+          "scripture": {
+            "works": 1,
+            "texts": 1189,
+            "words": 697618
+          },
+          "heritage": {
+            "works": 32,
+            "texts": 648,
+            "words": 1580532
+          },
+          "modern-source-authored": {
+            "works": 4,
+            "texts": 4,
+            "words": 139
+          }
+        },
+        "installedManifest": {
+          "id": "library-de@2026-10-03",
+          "builtAt": "2026-10-03",
+          "works": 37,
+          "texts": 1841,
+          "words": 2278289
+        },
+        "classCounts": {
+          "scripture": 1,
+          "heritage": 32,
+          "modern-source-authored": 4
+        },
+        "sentenceMetrics": {
+          "sourcesMeasured": 37,
+          "sentences": 103247,
+          "meanSentenceWords": 24.9
+        },
+        "unpublishedGenerated": {
+          "documents": 34,
+          "words": 4540,
+          "note": "Generated drafts are counted separately from published library provenance and are not treated as installed or CEFR evidence."
+        },
+        "gdlHindi": null,
+        "bundledSecular": {
+          "documents": 36,
+          "published": 0,
+          "note": "Bundled document publication is counted independently of catalogue work placement and the lazy library."
+        }
+      },
+      "stageCounts": {
+        "s0": {
+          "label": "Controlled German",
+          "works": 5,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "s1": {
+          "label": "First readers",
+          "works": 12,
+          "installedWorks": 4,
+          "words": 139
+        },
+        "s2": {
+          "label": "Easy readers",
+          "works": 1,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "s3": {
+          "label": "Short native texts",
+          "works": 4,
+          "installedWorks": 4,
+          "words": 7792
+        },
+        "s4": {
+          "label": "Tales",
+          "works": 9,
+          "installedWorks": 4,
+          "words": 1008873
+        },
+        "s5": {
+          "label": "Children's books",
+          "works": 3,
+          "installedWorks": 3,
+          "words": 105998
+        },
+        "s6": {
+          "label": "Young readers",
+          "works": 7,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "s7": {
+          "label": "Plain literary prose",
+          "works": 5,
+          "installedWorks": 3,
+          "words": 58555
+        },
+        "s8": {
+          "label": "Novellas and adventure",
+          "works": 5,
+          "installedWorks": 2,
+          "words": 54635
+        },
+        "s9": {
+          "label": "Mature prose",
+          "works": 6,
+          "installedWorks": 2,
+          "words": 23262
+        },
+        "s10": {
+          "label": "Demanding prose",
+          "works": 8,
+          "installedWorks": 2,
+          "words": 116736
+        },
+        "s11": {
+          "label": "Major literature",
+          "works": 6,
+          "installedWorks": 5,
+          "words": 149638
+        },
+        "s12": {
+          "label": "Major literature, hardest",
+          "works": 4,
+          "installedWorks": 3,
+          "words": 386012
+        },
+        "s13": {
+          "label": "Open reading",
+          "works": 13,
+          "installedWorks": 5,
+          "words": 366649
+        }
+      },
+      "works": [
+        {
+          "slug": "bridge-der-lowe-rennt-und-die-kuh-geht",
+          "title": "Der Löwe rennt und die Kuh geht",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 41,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 41,
+            "sentences": 8,
+            "meanSentenceWords": 5.1,
+            "p90SentenceWords": 8
+          }
+        },
+        {
+          "slug": "bridge-einfaches-zahlen",
+          "title": "Einfaches Zählen",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-lecker-mango",
+          "title": "Lecker Mango!",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-mein-kleiner-garten",
+          "title": "Mein kleiner Garten",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-meine-strase",
+          "title": "Meine Straße",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-navy-und-bora",
+          "title": "Navy und Bora",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 34,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 34,
+            "sentences": 4,
+            "meanSentenceWords": 8.5,
+            "p90SentenceWords": 11
+          }
+        },
+        {
+          "slug": "bridge-schmetterling-und-tukan",
+          "title": "Schmetterling und Tukan",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 41,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 41,
+            "sentences": 7,
+            "meanSentenceWords": 5.9,
+            "p90SentenceWords": 7
+          }
+        },
+        {
+          "slug": "bridge-ich-kann-mich-selbst-anziehen",
+          "title": "Ich kann mich selbst anziehen!",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-ich-mag",
+          "title": "Ich mag",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-schnipp-schnapp",
+          "title": "Schnipp Schnapp",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-verstecken-spielen",
+          "title": "Verstecken spielen",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 23,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 23,
+            "sentences": 8,
+            "meanSentenceWords": 2.9,
+            "p90SentenceWords": 6
+          }
+        },
+        {
+          "slug": "der-kleine-haewelmann",
+          "title": "Der kleine Häwelmann",
+          "stage": "s3",
+          "levelLabel": null,
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 1281,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 1281,
+            "sentences": 86,
+            "meanSentenceWords": 14.9,
+            "p90SentenceWords": 32
+          }
+        },
+        {
+          "slug": "weg-1",
+          "title": "Weg 1 — Erste Schritte",
+          "stage": "s0",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "weg-2",
+          "title": "Weg 2 — Tage und Orte",
+          "stage": "s0",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "weg-3",
+          "title": "Weg 3 — Geschichten",
+          "stage": "s0",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "gespraeche-1",
+          "title": "Gespräche 1",
+          "stage": "s0",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "deutschland-lesungen-1",
+          "title": "Deutschland — Lesungen 1",
+          "stage": "s0",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "guerber-maerchen-und-erzaehlungen",
+          "title": "Märchen und Erzählungen für Anfänger",
+          "stage": "s1",
+          "levelLabel": "easy",
+          "rightsState": "verified-public-domain",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "historical-school-readers",
+          "title": "Historical school readers (to be selected)",
+          "stage": "s2",
+          "levelLabel": "easy",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "busch-max-und-moritz",
+          "title": "Max und Moritz. Eine Bubengeschichte in sieben Streichen",
+          "stage": "s3",
+          "levelLabel": "easy",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 2523,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 2558,
+            "sentences": 202,
+            "meanSentenceWords": 13.3,
+            "p90SentenceWords": 27
+          }
+        },
+        {
+          "slug": "hoffmann-struwwelpeter",
+          "title": "Der Struwwelpeter",
+          "stage": "s3",
+          "levelLabel": "easy",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 3057,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 3046,
+            "sentences": 217,
+            "meanSentenceWords": 14.1,
+            "p90SentenceWords": 29
+          }
+        },
+        {
+          "slug": "busch-hans-huckebein",
+          "title": "Hans Huckebein, der Unglücksrabe",
+          "stage": "s3",
+          "levelLabel": "easy",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 931,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 928,
+            "sentences": 93,
+            "meanSentenceWords": 9.9,
+            "p90SentenceWords": 14
+          }
+        },
+        {
+          "slug": "grimm-khm",
+          "title": "Kinder- und Hausmärchen",
+          "stage": "s4",
+          "levelLabel": "easy",
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 210,
+          "words": 259413,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 259412,
+            "sentences": 1343,
+            "meanSentenceWords": 193.3,
+            "p90SentenceWords": 450
+          }
+        },
+        {
+          "slug": "grimm-sternthaler-1857",
+          "title": "Die Sternthaler",
+          "stage": "s4",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "grimm-der-suesse-brei-1857",
+          "title": "Der süße Brei",
+          "stage": "s4",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bechstein-maerchenbuch",
+          "title": "Deutsches Märchenbuch",
+          "stage": "s4",
+          "levelLabel": "easy",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 14120,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 14118,
+            "sentences": 561,
+            "meanSentenceWords": 25.3,
+            "p90SentenceWords": 48
+          }
+        },
+        {
+          "slug": "hebel-schatzkaestlein",
+          "title": "Schatzkästlein des rheinischen Hausfreundes",
+          "stage": "s4",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "hauff-maerchen",
+          "title": "Märchen (Die Karawane; Der Scheik von Alessandria; Das Wirtshaus im Spessart)",
+          "stage": "s4",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 37722,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 37695,
+            "sentences": 332,
+            "meanSentenceWords": 113.7,
+            "p90SentenceWords": 258
+          }
+        },
+        {
+          "slug": "spyri-heidi",
+          "title": "Heidis Lehr- und Wanderjahre",
+          "stage": "s5",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 6,
+          "words": 51370,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 51270,
+            "sentences": 1598,
+            "meanSentenceWords": 32.1,
+            "p90SentenceWords": 69
+          }
+        },
+        {
+          "slug": "bassewitz-peterchens-mondfahrt",
+          "title": "Peterchens Mondfahrt",
+          "stage": "s5",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 17983,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 18046,
+            "sentences": 1365,
+            "meanSentenceWords": 13.6,
+            "p90SentenceWords": 26
+          }
+        },
+        {
+          "slug": "bonsels-biene-maja",
+          "title": "Die Biene Maja und ihre Abenteuer",
+          "stage": "s5",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 18,
+          "words": 36645,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 36795,
+            "sentences": 2021,
+            "meanSentenceWords": 18.2,
+            "p90SentenceWords": 34
+          }
+        },
+        {
+          "slug": "kaestner-emil",
+          "title": "Emil und die Detektive",
+          "stage": "s6",
+          "levelLabel": "intermediate",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "preussler-kleine-hexe",
+          "title": "Die kleine Hexe",
+          "stage": "s6",
+          "levelLabel": "easy",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "ende-momo",
+          "title": "Momo",
+          "stage": "s6",
+          "levelLabel": "intermediate",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "funke-tintenherz",
+          "title": "Tintenherz",
+          "stage": "s6",
+          "levelLabel": "intermediate",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "riordan-diebe-im-olymp",
+          "title": "Percy Jackson: Diebe im Olymp",
+          "stage": "s6",
+          "levelLabel": "intermediate",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "rowling-stein-der-weisen",
+          "title": "Harry Potter und der Stein der Weisen",
+          "stage": "s6",
+          "levelLabel": "intermediate",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "colfer-land-of-stories",
+          "title": "The Land of Stories, book 1 (German translation)",
+          "stage": "s6",
+          "levelLabel": "intermediate",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "keller-kleider-machen-leute",
+          "title": "Kleider machen Leute",
+          "stage": "s7",
+          "levelLabel": "intermediate",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "storm-immensee",
+          "title": "Immensee",
+          "stage": "s7",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 9744,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 9756,
+            "sentences": 494,
+            "meanSentenceWords": 19.7,
+            "p90SentenceWords": 37
+          }
+        },
+        {
+          "slug": "storm-pole-poppenspaeler",
+          "title": "Pole Poppenspäler",
+          "stage": "s7",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 17464,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 17418,
+            "sentences": 591,
+            "meanSentenceWords": 29.3,
+            "p90SentenceWords": 60
+          }
+        },
+        {
+          "slug": "ebner-eschenbach-krambambuli",
+          "title": "Krambambuli",
+          "stage": "s7",
+          "levelLabel": "intermediate",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "eichendorff-taugenichts",
+          "title": "Aus dem Leben eines Taugenichts",
+          "stage": "s7",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 11,
+          "words": 31347,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 31381,
+            "sentences": 1175,
+            "meanSentenceWords": 26.9,
+            "p90SentenceWords": 51
+          }
+        },
+        {
+          "slug": "storm-schimmelreiter",
+          "title": "Der Schimmelreiter",
+          "stage": "s8",
+          "levelLabel": "advanced",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 4,
+          "words": 38360,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 38335,
+            "sentences": 1170,
+            "meanSentenceWords": 32.6,
+            "p90SentenceWords": 66
+          }
+        },
+        {
+          "slug": "keller-romeo-und-julia",
+          "title": "Romeo und Julia auf dem Dorfe",
+          "stage": "s8",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "may-winnetou-1",
+          "title": "Winnetou I",
+          "stage": "s8",
+          "levelLabel": "intermediate",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "droste-judenbuche",
+          "title": "Die Judenbuche",
+          "stage": "s8",
+          "levelLabel": "advanced",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 16275,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 16282,
+            "sentences": 796,
+            "meanSentenceWords": 20.9,
+            "p90SentenceWords": 42
+          }
+        },
+        {
+          "slug": "hauptmann-bahnwaerter-thiel",
+          "title": "Bahnwärter Thiel",
+          "stage": "s8",
+          "levelLabel": "advanced",
+          "rightsState": "verified-public-domain",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kafka-das-urteil",
+          "title": "Das Urteil",
+          "stage": "s9",
+          "levelLabel": "advanced",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 4054,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 4091,
+            "sentences": 210,
+            "meanSentenceWords": 19.6,
+            "p90SentenceWords": 42
+          }
+        },
+        {
+          "slug": "kafka-die-verwandlung",
+          "title": "Die Verwandlung",
+          "stage": "s9",
+          "levelLabel": "advanced",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 3,
+          "words": 19208,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 19230,
+            "sentences": 659,
+            "meanSentenceWords": 29.3,
+            "p90SentenceWords": 58
+          }
+        },
+        {
+          "slug": "stifter-bergkristall",
+          "title": "Bergkristall",
+          "stage": "s9",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "fontane-irrungen-wirrungen",
+          "title": "Irrungen, Wirrungen",
+          "stage": "s9",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "hoffmann-nussknacker",
+          "title": "Nußknacker und Mausekönig",
+          "stage": "s9",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "schnitzler-leutnant-gustl",
+          "title": "Leutnant Gustl",
+          "stage": "s9",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kleist-michael-kohlhaas",
+          "title": "Michael Kohlhaas",
+          "stage": "s10",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kleist-marquise-von-o",
+          "title": "Die Marquise von O….",
+          "stage": "s10",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "fontane-effi-briest",
+          "title": "Effi Briest",
+          "stage": "s10",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 25,
+          "words": 95312,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 95276,
+            "sentences": 4667,
+            "meanSentenceWords": 20.5,
+            "p90SentenceWords": 42
+          }
+        },
+        {
+          "slug": "hoffmann-der-sandmann",
+          "title": "Der Sandmann",
+          "stage": "s10",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "buechner-lenz",
+          "title": "Lenz",
+          "stage": "s10",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kafka-der-process",
+          "title": "Der Process",
+          "stage": "s10",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "mann-tonio-kroeger",
+          "title": "Tonio Kröger",
+          "stage": "s10",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 10,
+          "words": 21424,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 21438,
+            "sentences": 1053,
+            "meanSentenceWords": 20.4,
+            "p90SentenceWords": 44
+          }
+        },
+        {
+          "slug": "zweig-schachnovelle",
+          "title": "Schachnovelle",
+          "stage": "s10",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "goethe-werther",
+          "title": "Die Leiden des jungen Werthers",
+          "stage": "s11",
+          "levelLabel": "classical",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 5,
+          "words": 39212,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 39076,
+            "sentences": 1873,
+            "meanSentenceWords": 20.7,
+            "p90SentenceWords": 45
+          }
+        },
+        {
+          "slug": "schiller-wilhelm-tell",
+          "title": "Wilhelm Tell",
+          "stage": "s11",
+          "levelLabel": "classical",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 6,
+          "words": 28138,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 28148,
+            "sentences": 2338,
+            "meanSentenceWords": 12.3,
+            "p90SentenceWords": 26
+          }
+        },
+        {
+          "slug": "schiller-kabale-und-liebe",
+          "title": "Kabale und Liebe",
+          "stage": "s11",
+          "levelLabel": "classical",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 6,
+          "words": 31139,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 30151,
+            "sentences": 3409,
+            "meanSentenceWords": 8.7,
+            "p90SentenceWords": 21
+          }
+        },
+        {
+          "slug": "lessing-emilia-galotti",
+          "title": "Emilia Galotti",
+          "stage": "s11",
+          "levelLabel": "classical",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 48,
+          "words": 20940,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 20803,
+            "sentences": 2732,
+            "meanSentenceWords": 7.3,
+            "p90SentenceWords": 19
+          }
+        },
+        {
+          "slug": "lessing-nathan-der-weise",
+          "title": "Nathan der Weise",
+          "stage": "s11",
+          "levelLabel": "classical",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 41,
+          "words": 30209,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 30143,
+            "sentences": 4277,
+            "meanSentenceWords": 6.8,
+            "p90SentenceWords": 17
+          }
+        },
+        {
+          "slug": "novalis-ofterdingen",
+          "title": "Heinrich von Ofterdingen",
+          "stage": "s11",
+          "levelLabel": "classical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "goethe-faust-1",
+          "title": "Faust. Der Tragödie erster Teil",
+          "stage": "s12",
+          "levelLabel": "classical",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 4,
+          "words": 30693,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 30688,
+            "sentences": 3701,
+            "meanSentenceWords": 8.3,
+            "p90SentenceWords": 20
+          }
+        },
+        {
+          "slug": "fontane-der-stechlin",
+          "title": "Der Stechlin",
+          "stage": "s12",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 35,
+          "words": 125476,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 125363,
+            "sentences": 7049,
+            "meanSentenceWords": 17.9,
+            "p90SentenceWords": 37
+          }
+        },
+        {
+          "slug": "kafka-das-schloss",
+          "title": "Das Schloss",
+          "stage": "s12",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "mann-buddenbrooks",
+          "title": "Buddenbrooks",
+          "stage": "s12",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 98,
+          "words": 229843,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 229901,
+            "sentences": 11786,
+            "meanSentenceWords": 19.9,
+            "p90SentenceWords": 42
+          }
+        },
+        {
+          "slug": "luther-kleiner-katechismus",
+          "title": "Der Kleine Katechismus",
+          "stage": "s13",
+          "levelLabel": "intermediate",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "luther-freiheit-eines-christenmenschen",
+          "title": "Von der Freiheit eines Christenmenschen",
+          "stage": "s13",
+          "levelLabel": "classical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "schleiermacher-ueber-die-religion",
+          "title": "Über die Religion. Reden an die Gebildeten unter ihren Verächtern",
+          "stage": "s13",
+          "levelLabel": "classical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bonhoeffer-nachfolge",
+          "title": "Nachfolge",
+          "stage": "s13",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kant-was-ist-aufklaerung",
+          "title": "Beantwortung der Frage: Was ist Aufklärung?",
+          "stage": "s13",
+          "levelLabel": "classical",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 2853,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 2860,
+            "sentences": 165,
+            "meanSentenceWords": 17.6,
+            "p90SentenceWords": 46
+          }
+        },
+        {
+          "slug": "kant-kritik-der-reinen-vernunft",
+          "title": "Kritik der reinen Vernunft",
+          "stage": "s13",
+          "levelLabel": "classical",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 84,
+          "words": 174954,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 175770,
+            "sentences": 5344,
+            "meanSentenceWords": 32.9,
+            "p90SentenceWords": 64
+          }
+        },
+        {
+          "slug": "nietzsche-zarathustra",
+          "title": "Also sprach Zarathustra",
+          "stage": "s13",
+          "levelLabel": "classical",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 9,
+          "words": 84320,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 83718,
+            "sentences": 5456,
+            "meanSentenceWords": 15.2,
+            "p90SentenceWords": 28
+          }
+        },
+        {
+          "slug": "rilke-malte",
+          "title": "Die Aufzeichnungen des Malte Laurids Brigge",
+          "stage": "s13",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 7,
+          "words": 59397,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 59338,
+            "sentences": 3174,
+            "meanSentenceWords": 18.7,
+            "p90SentenceWords": 35
+          }
+        },
+        {
+          "slug": "rilke-briefe-an-einen-jungen-dichter",
+          "title": "Briefe an einen jungen Dichter",
+          "stage": "s13",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "schiller-dreissigjaehriger-krieg",
+          "title": "Geschichte des Dreißigjährigen Kriegs",
+          "stage": "s13",
+          "levelLabel": "classical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "mommsen-roemische-geschichte",
+          "title": "Römische Geschichte",
+          "stage": "s13",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "humboldt-ansichten-der-natur",
+          "title": "Ansichten der Natur",
+          "stage": "s13",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "lilienthal-vogelflug",
+          "title": "Der Vogelflug als Grundlage der Fliegekunst",
+          "stage": "s13",
+          "levelLabel": "advanced",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 6,
+          "words": 45125,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 45128,
+            "sentences": 2181,
+            "meanSentenceWords": 21.7,
+            "p90SentenceWords": 45
+          }
+        },
+        {
+          "slug": "lutherbibel-1912",
+          "title": "Die Bibel nach der deutschen Übersetzung D. Martin Luthers (1912)",
+          "stage": "s4",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1189,
+          "words": 697618,
+          "class": "scripture",
+          "metrics": {
+            "available": true,
+            "words": 696962,
+            "sentences": 31102,
+            "meanSentenceWords": 22.4,
+            "p90SentenceWords": 36
+          }
+        },
+        {
+          "slug": "elberfelder-1905",
+          "title": "Elberfelder Bibel (1905)",
+          "stage": "s4",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "schlachter-1905",
+          "title": "Schlachter-Bibel (Miniaturbibel, 1905)",
+          "stage": "s4",
+          "levelLabel": "intermediate",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        }
+      ],
+      "planning": {
+        "assumption": "Assumes 40–80 assisted words/minute while reading with lookup/help; estimates are planning ranges, not CEFR or native-speaker certification.",
+        "hours50": {
+          "wordsAt40wpm": 120000,
+          "wordsAt80wpm": 240000
+        },
+        "hours100": {
+          "wordsAt40wpm": 240000,
+          "wordsAt80wpm": 480000
+        },
+        "exposureGap": "covers at least 50 hours at 40 words/minute"
+      }
+    },
+    {
+      "language": "es",
+      "name": "Spanish",
+      "observed": {
+        "catalogueStages": 8,
+        "catalogueWorks": 75,
+        "installedLibrary": true,
+        "installedWorks": 31,
+        "installedTexts": 1864,
+        "installedWords": 2633113,
+        "publishedByClass": {
+          "scripture": {
+            "works": 1,
+            "texts": 1189,
+            "words": 704415
+          },
+          "heritage": {
+            "works": 21,
+            "texts": 666,
+            "words": 1921908
+          },
+          "modern-source-authored": {
+            "works": 9,
+            "texts": 9,
+            "words": 6790
+          }
+        },
+        "installedManifest": {
+          "id": "library-es@2026-10-03",
+          "builtAt": "2026-10-03",
+          "works": 31,
+          "texts": 1864,
+          "words": 2633113
+        },
+        "classCounts": {
+          "scripture": 1,
+          "heritage": 21,
+          "modern-source-authored": 9
+        },
+        "sentenceMetrics": {
+          "sourcesMeasured": 31,
+          "sentences": 134210,
+          "meanSentenceWords": 26.5
+        },
+        "unpublishedGenerated": {
+          "documents": 28,
+          "words": 3768,
+          "note": "Generated drafts are counted separately from published library provenance and are not treated as installed or CEFR evidence."
+        },
+        "gdlHindi": null,
+        "bundledSecular": {
+          "documents": 28,
+          "published": 0,
+          "note": "Bundled document publication is counted independently of catalogue work placement and the lazy library."
+        }
+      },
+      "stageCounts": {
+        "s0": {
+          "label": "Controlled Spanish",
+          "works": 4,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "s1": {
+          "label": "Early readers",
+          "works": 13,
+          "installedWorks": 12,
+          "words": 130577
+        },
+        "s2": {
+          "label": "Easy authentic narrative",
+          "works": 4,
+          "installedWorks": 2,
+          "words": 69366
+        },
+        "s3": {
+          "label": "Juvenile and popular",
+          "works": 5,
+          "installedWorks": 1,
+          "words": 6560
+        },
+        "s4": {
+          "label": "General modern prose",
+          "works": 15,
+          "installedWorks": 3,
+          "words": 853629
+        },
+        "s5": {
+          "label": "Nineteenth and twentieth century",
+          "works": 18,
+          "installedWorks": 11,
+          "words": 1148306
+        },
+        "s6": {
+          "label": "Golden Age and early modern",
+          "works": 10,
+          "installedWorks": 2,
+          "words": 424675
+        },
+        "s7": {
+          "label": "Medieval and historical",
+          "works": 6,
+          "installedWorks": 0,
+          "words": 0
+        }
+      },
+      "works": [
+        {
+          "slug": "bridge-safari-en-la-banera",
+          "title": "Safari en la bañera",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 100,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 100,
+            "sentences": 11,
+            "meanSentenceWords": 9.1,
+            "p90SentenceWords": 14
+          }
+        },
+        {
+          "slug": "bridge-una-casa-para-raton",
+          "title": "Una casa para Ratón",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 98,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 98,
+            "sentences": 11,
+            "meanSentenceWords": 8.9,
+            "p90SentenceWords": 10
+          }
+        },
+        {
+          "slug": "bridge-vuelve-gata",
+          "title": "¡Vuelve, Gata!",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 53,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 53,
+            "sentences": 10,
+            "meanSentenceWords": 5.3,
+            "p90SentenceWords": 9
+          }
+        },
+        {
+          "slug": "bridge-dentro-de-la-world-wide-web",
+          "title": "Dentro de la World Wide Web",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 1567,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 1561,
+            "sentences": 16,
+            "meanSentenceWords": 98.1,
+            "p90SentenceWords": 132
+          }
+        },
+        {
+          "slug": "bridge-el-bate-perdido-2",
+          "title": "El bate perdido",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 545,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 545,
+            "sentences": 10,
+            "meanSentenceWords": 54.6,
+            "p90SentenceWords": 73
+          }
+        },
+        {
+          "slug": "bridge-el-nino-y-el-tambor",
+          "title": "El niño y el tambor",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 2825,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 2687,
+            "sentences": 24,
+            "meanSentenceWords": 112.3,
+            "p90SentenceWords": 145
+          }
+        },
+        {
+          "slug": "bridge-inmersion",
+          "title": "¡INMERSIÓN!",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 770,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 770,
+            "sentences": 19,
+            "meanSentenceWords": 40.8,
+            "p90SentenceWords": 107
+          }
+        },
+        {
+          "slug": "bridge-pishi-atrapado-en-una-tormenta",
+          "title": "Pishi atrapado en una tormenta",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 351,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 351,
+            "sentences": 9,
+            "meanSentenceWords": 39.3,
+            "p90SentenceWords": 102
+          }
+        },
+        {
+          "slug": "bridge-demasiados-platanos",
+          "title": "Demasiados plátanos",
+          "stage": "s1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 481,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 481,
+            "sentences": 26,
+            "meanSentenceWords": 18.8,
+            "p90SentenceWords": 24
+          }
+        },
+        {
+          "slug": "camino-1",
+          "title": "Camino 1 — Primeros pasos",
+          "stage": "s0",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "camino-2",
+          "title": "Camino 2 — Días y lugares",
+          "stage": "s0",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "camino-3",
+          "title": "Camino 3 — Historias",
+          "stage": "s0",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "honduras-lecturas-1",
+          "title": "Honduras — Lecturas 1",
+          "stage": "s0",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "marti-edad-de-oro",
+          "title": "La Edad de Oro",
+          "stage": "s1",
+          "levelLabel": "easy",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 13,
+          "words": 66816,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 66726,
+            "sentences": 2182,
+            "meanSentenceWords": 30.5,
+            "p90SentenceWords": 64
+          }
+        },
+        {
+          "slug": "samaniego-fabulas",
+          "title": "Fábulas en verso castellano",
+          "stage": "s1",
+          "levelLabel": "easy",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 11,
+          "words": 42735,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 43634,
+            "sentences": 2944,
+            "meanSentenceWords": 15.2,
+            "p90SentenceWords": 32
+          }
+        },
+        {
+          "slug": "iriarte-fabulas",
+          "title": "Fábulas literarias",
+          "stage": "s1",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 14236,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 14265,
+            "sentences": 599,
+            "meanSentenceWords": 24.6,
+            "p90SentenceWords": 53
+          }
+        },
+        {
+          "slug": "calleja-cuentos",
+          "title": "Cuentos de Calleja",
+          "stage": "s1",
+          "levelLabel": "easy",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "quiroga-cuentos-de-la-selva",
+          "title": "Cuentos de la selva",
+          "stage": "s2",
+          "levelLabel": "easy",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "alarcon-capitan-veneno",
+          "title": "El capitán Veneno",
+          "stage": "s2",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 32,
+          "words": 21368,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 21380,
+            "sentences": 1019,
+            "meanSentenceWords": 20.7,
+            "p90SentenceWords": 50
+          }
+        },
+        {
+          "slug": "pardo-bazan-cuentos",
+          "title": "Cuentos (selección)",
+          "stage": "s2",
+          "levelLabel": "intermediate",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "palma-tradiciones-peruanas",
+          "title": "Tradiciones peruanas (selección)",
+          "stage": "s2",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 5,
+          "words": 47998,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 47927,
+            "sentences": 1778,
+            "meanSentenceWords": 27,
+            "p90SentenceWords": 52
+          }
+        },
+        {
+          "slug": "jimenez-platero-y-yo",
+          "title": "Platero y yo",
+          "stage": "s3",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 32,
+          "words": 6560,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 6598,
+            "sentences": 412,
+            "meanSentenceWords": 16,
+            "p90SentenceWords": 31
+          }
+        },
+        {
+          "slug": "riordan-ladron-del-rayo",
+          "title": "Percy Jackson y los dioses del Olimpo: El ladrón del rayo",
+          "stage": "s3",
+          "levelLabel": "intermediate",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "rowling-piedra-filosofal",
+          "title": "Harry Potter y la piedra filosofal",
+          "stage": "s3",
+          "levelLabel": "intermediate",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "colfer-tierra-de-las-historias",
+          "title": "La tierra de las historias: El hechizo de los deseos",
+          "stage": "s3",
+          "levelLabel": "intermediate",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "tolkien-el-hobbit",
+          "title": "El hobbit",
+          "stage": "s3",
+          "levelLabel": "intermediate",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "garcia-marquez-relato-de-un-naufrago",
+          "title": "Relato de un náufrago",
+          "stage": "s4",
+          "levelLabel": "intermediate",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "garcia-marquez-cien-anos",
+          "title": "Cien años de soledad",
+          "stage": "s4",
+          "levelLabel": "advanced",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "palacio-valdes-hermana-san-sulpicio",
+          "title": "La hermana San Sulpicio",
+          "stage": "s4",
+          "levelLabel": "intermediate",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 18,
+          "words": 117284,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 117080,
+            "sentences": 7530,
+            "meanSentenceWords": 15.5,
+            "p90SentenceWords": 30
+          }
+        },
+        {
+          "slug": "isaacs-maria",
+          "title": "María",
+          "stage": "s4",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "turcios-el-vampiro",
+          "title": "El vampiro",
+          "stage": "s4",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "turcios-cuentos-amor-muerte",
+          "title": "Cuentos del amor y de la muerte",
+          "stage": "s4",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "molina-tierras-mares-cielos",
+          "title": "Tierras, mares y cielos",
+          "stage": "s4",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "gamero-blanca-olmedo",
+          "title": "Blanca Olmedo",
+          "stage": "s4",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "amaya-amador-prision-verde",
+          "title": "Prisión verde",
+          "stage": "s4",
+          "levelLabel": "advanced",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "amaya-amador-cipotes",
+          "title": "Cipotes",
+          "stage": "s4",
+          "levelLabel": "intermediate",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "sosa-los-pobres",
+          "title": "Los pobres",
+          "stage": "s4",
+          "levelLabel": "literary",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "salarrue-cuentos-de-barro",
+          "title": "Cuentos de barro",
+          "stage": "s4",
+          "levelLabel": "advanced",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "asturias-leyendas-de-guatemala",
+          "title": "Leyendas de Guatemala",
+          "stage": "s4",
+          "levelLabel": "literary",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "dario-azul",
+          "title": "Azul...",
+          "stage": "s4",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 23,
+          "words": 31930,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 31911,
+            "sentences": 1586,
+            "meanSentenceWords": 20.4,
+            "p90SentenceWords": 44
+          }
+        },
+        {
+          "slug": "galdos-marianela",
+          "title": "Marianela",
+          "stage": "s5",
+          "levelLabel": "advanced",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 23,
+          "words": 50969,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 50648,
+            "sentences": 3628,
+            "meanSentenceWords": 13.9,
+            "p90SentenceWords": 30
+          }
+        },
+        {
+          "slug": "galdos-dona-perfecta",
+          "title": "Doña Perfecta",
+          "stage": "s5",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "galdos-trafalgar",
+          "title": "Trafalgar (Episodios nacionales)",
+          "stage": "s5",
+          "levelLabel": "advanced",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 18,
+          "words": 51247,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 51138,
+            "sentences": 2275,
+            "meanSentenceWords": 22.5,
+            "p90SentenceWords": 45
+          }
+        },
+        {
+          "slug": "galdos-misericordia",
+          "title": "Misericordia",
+          "stage": "s5",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "galdos-fortunata-y-jacinta",
+          "title": "Fortunata y Jacinta",
+          "stage": "s5",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 43,
+          "words": 394628,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 393572,
+            "sentences": 27237,
+            "meanSentenceWords": 14.4,
+            "p90SentenceWords": 30
+          }
+        },
+        {
+          "slug": "becquer-leyendas",
+          "title": "Leyendas",
+          "stage": "s5",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "becquer-rimas",
+          "title": "Rimas",
+          "stage": "s5",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "clarin-adios-cordera",
+          "title": "¡Adiós, Cordera!",
+          "stage": "s5",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "clarin-la-regenta",
+          "title": "La Regenta",
+          "stage": "s5",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 31,
+          "words": 308220,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 307421,
+            "sentences": 18714,
+            "meanSentenceWords": 16.4,
+            "p90SentenceWords": 36
+          }
+        },
+        {
+          "slug": "pardo-bazan-pazos-de-ulloa",
+          "title": "Los pazos de Ulloa",
+          "stage": "s5",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 31,
+          "words": 83749,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 83574,
+            "sentences": 4382,
+            "meanSentenceWords": 19,
+            "p90SentenceWords": 43
+          }
+        },
+        {
+          "slug": "valera-pepita-jimenez",
+          "title": "Pepita Jiménez",
+          "stage": "s5",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 8,
+          "words": 56650,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 56578,
+            "sentences": 2775,
+            "meanSentenceWords": 20.5,
+            "p90SentenceWords": 45
+          }
+        },
+        {
+          "slug": "alarcon-sombrero-de-tres-picos",
+          "title": "El sombrero de tres picos",
+          "stage": "s5",
+          "levelLabel": "advanced",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 37,
+          "words": 24722,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 24755,
+            "sentences": 1700,
+            "meanSentenceWords": 14.3,
+            "p90SentenceWords": 31
+          }
+        },
+        {
+          "slug": "unamuno-niebla",
+          "title": "Niebla",
+          "stage": "s5",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 34,
+          "words": 57306,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 57327,
+            "sentences": 4770,
+            "meanSentenceWords": 11.9,
+            "p90SentenceWords": 27
+          }
+        },
+        {
+          "slug": "unamuno-san-manuel-bueno",
+          "title": "San Manuel Bueno, mártir",
+          "stage": "s5",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "baroja-arbol-de-la-ciencia",
+          "title": "El árbol de la ciencia",
+          "stage": "s5",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 54,
+          "words": 63305,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 63062,
+            "sentences": 4021,
+            "meanSentenceWords": 15.7,
+            "p90SentenceWords": 32
+          }
+        },
+        {
+          "slug": "baroja-zalacain",
+          "title": "Zalacaín el aventurero",
+          "stage": "s5",
+          "levelLabel": "advanced",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 37,
+          "words": 44896,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 44682,
+            "sentences": 3248,
+            "meanSentenceWords": 13.7,
+            "p90SentenceWords": 30
+          }
+        },
+        {
+          "slug": "marti-versos-sencillos",
+          "title": "Versos sencillos",
+          "stage": "s5",
+          "levelLabel": "advanced",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "dario-cantos-de-vida-y-esperanza",
+          "title": "Cantos de vida y esperanza",
+          "stage": "s5",
+          "levelLabel": "literary",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 64,
+          "words": 12614,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 12672,
+            "sentences": 672,
+            "meanSentenceWords": 18.9,
+            "p90SentenceWords": 39
+          }
+        },
+        {
+          "slug": "lazarillo-de-tormes",
+          "title": "La vida de Lazarillo de Tormes",
+          "stage": "s6",
+          "levelLabel": "classical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "cervantes-don-quijote",
+          "title": "El ingenioso hidalgo don Quijote de la Mancha",
+          "stage": "s6",
+          "levelLabel": "classical",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 127,
+          "words": 381973,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 383633,
+            "sentences": 9456,
+            "meanSentenceWords": 40.9,
+            "p90SentenceWords": 83
+          }
+        },
+        {
+          "slug": "cervantes-novelas-ejemplares",
+          "title": "Novelas ejemplares",
+          "stage": "s6",
+          "levelLabel": "classical",
+          "rightsState": "verified-public-domain",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "quevedo-el-buscon",
+          "title": "Historia de la vida del Buscón",
+          "stage": "s6",
+          "levelLabel": "classical",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 24,
+          "words": 42702,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 42980,
+            "sentences": 2062,
+            "meanSentenceWords": 20.9,
+            "p90SentenceWords": 40
+          }
+        },
+        {
+          "slug": "lope-fuenteovejuna",
+          "title": "Fuenteovejuna",
+          "stage": "s6",
+          "levelLabel": "classical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "calderon-la-vida-es-sueno",
+          "title": "La vida es sueño",
+          "stage": "s6",
+          "levelLabel": "classical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "teresa-libro-de-la-vida",
+          "title": "Libro de la vida",
+          "stage": "s6",
+          "levelLabel": "classical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "teresa-las-moradas",
+          "title": "Las moradas (El castillo interior)",
+          "stage": "s6",
+          "levelLabel": "classical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "juan-de-la-cruz-poesias",
+          "title": "Cántico espiritual y Noche oscura",
+          "stage": "s6",
+          "levelLabel": "classical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "luis-de-leon-nombres-de-cristo",
+          "title": "De los nombres de Cristo",
+          "stage": "s6",
+          "levelLabel": "classical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "rojas-la-celestina",
+          "title": "La Celestina (Tragicomedia de Calisto y Melibea)",
+          "stage": "s7",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "juan-manuel-conde-lucanor",
+          "title": "El conde Lucanor",
+          "stage": "s7",
+          "levelLabel": "historical",
+          "rightsState": "verified-public-domain",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "juan-ruiz-libro-de-buen-amor",
+          "title": "Libro de buen amor",
+          "stage": "s7",
+          "levelLabel": "historical",
+          "rightsState": "verified-public-domain",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "berceo-milagros",
+          "title": "Milagros de Nuestra Señora",
+          "stage": "s7",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "alfonso-x-estoria-de-espana",
+          "title": "Estoria de España",
+          "stage": "s7",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "cantar-de-mio-cid",
+          "title": "Cantar de mio Cid",
+          "stage": "s7",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "reina-valera-1909",
+          "title": "Santa Biblia — Reina-Valera 1909",
+          "stage": "s4",
+          "levelLabel": "advanced",
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1189,
+          "words": 704415,
+          "class": "scripture",
+          "metrics": {
+            "available": true,
+            "words": 703743,
+            "sentences": 31084,
+            "meanSentenceWords": 22.6,
+            "p90SentenceWords": 36
+          }
+        }
+      ],
+      "planning": {
+        "assumption": "Assumes 40–80 assisted words/minute while reading with lookup/help; estimates are planning ranges, not CEFR or native-speaker certification.",
+        "hours50": {
+          "wordsAt40wpm": 120000,
+          "wordsAt80wpm": 240000
+        },
+        "hours100": {
+          "wordsAt40wpm": 240000,
+          "wordsAt80wpm": 480000
+        },
+        "exposureGap": "covers at least 50 hours at 40 words/minute"
+      }
+    },
+    {
+      "language": "hi",
+      "name": "Hindi",
+      "observed": {
+        "catalogueStages": 16,
+        "catalogueWorks": 51,
+        "installedLibrary": true,
+        "installedWorks": 5,
+        "installedTexts": 1284,
+        "installedWords": 847761,
+        "publishedByClass": {
+          "scripture": {
+            "works": 1,
+            "texts": 1189,
+            "words": 776469
+          },
+          "modern-source-authored": {
+            "works": 1,
+            "texts": 92,
+            "words": 60483
+          },
+          "heritage": {
+            "works": 3,
+            "texts": 3,
+            "words": 10809
+          }
+        },
+        "installedManifest": {
+          "id": "library-hi@2026-10-02",
+          "builtAt": "2026-10-02",
+          "works": 5,
+          "texts": 1284,
+          "words": 847761
+        },
+        "classCounts": {
+          "scripture": 1,
+          "modern-source-authored": 1,
+          "heritage": 3
+        },
+        "sentenceMetrics": {
+          "sourcesMeasured": 5,
+          "sentences": 31879,
+          "meanSentenceWords": 244.8
+        },
+        "unpublishedGenerated": {
+          "documents": 28,
+          "words": 4530,
+          "note": "Generated drafts are counted separately from published library provenance and are not treated as installed or CEFR evidence."
+        },
+        "gdlHindi": {
+          "documents": 92,
+          "uniqueContentSignatures": 92,
+          "duplicateDocumentCount": 0,
+          "readingLevelEvidence": "The retained GDL catalogue exposes titles, descriptions, publisher and licence, but no publisher reading-level field; course Class 1 placement is catalogue placement, not independent level evidence."
+        },
+        "bundledSecular": {
+          "documents": 28,
+          "published": 0,
+          "note": "Bundled document publication is counted independently of catalogue work placement and the lazy library."
+        }
+      },
+      "stageCounts": {
+        "s0a": {
+          "label": "Stage 0A — First words in real sentences",
+          "works": 1,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "s0b": {
+          "label": "Stage 0B — Postpositions, agreement, questions",
+          "works": 1,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "s0c": {
+          "label": "Stage 0C — Narrative past and clause linking",
+          "works": 1,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "c1": {
+          "label": "Class 1",
+          "works": 2,
+          "installedWorks": 1,
+          "words": 60483
+        },
+        "c2": {
+          "label": "Class 2",
+          "works": 1,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "c3": {
+          "label": "Class 3",
+          "works": 1,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "c4": {
+          "label": "Class 4",
+          "works": 1,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "c5": {
+          "label": "Class 5",
+          "works": 3,
+          "installedWorks": 2,
+          "words": 7536
+        },
+        "c6": {
+          "label": "Class 6",
+          "works": 4,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "c7": {
+          "label": "Class 7",
+          "works": 3,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "c8": {
+          "label": "Class 8",
+          "works": 7,
+          "installedWorks": 1,
+          "words": 3273
+        },
+        "c9": {
+          "label": "Class 9",
+          "works": 10,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "c10": {
+          "label": "Class 10",
+          "works": 4,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "c11": {
+          "label": "Class 11",
+          "works": 3,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "c12": {
+          "label": "Class 12",
+          "works": 5,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "open": {
+          "label": "Open Reading",
+          "works": 4,
+          "installedWorks": 1,
+          "words": 776469
+        }
+      },
+      "works": [
+        {
+          "slug": "pehli-kahaniyan-0a",
+          "title": "पहली कहानियाँ 0A — घर में",
+          "stage": "s0a",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "pehli-kahaniyan-0b",
+          "title": "पहली कहानियाँ 0B — दिन भर",
+          "stage": "s0b",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "pehli-kahaniyan-0c",
+          "title": "पहली कहानियाँ 0C — कल की बातें",
+          "stage": "s0c",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "gdl-hindi-ccby",
+          "title": "Global Digital Library — Hindi CC BY 4.0 books",
+          "stage": "c1",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 92,
+          "words": 60483,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 59804,
+            "sentences": 92,
+            "meanSentenceWords": 655.2,
+            "p90SentenceWords": 1653
+          }
+        },
+        {
+          "slug": "storyweaver",
+          "title": "StoryWeaver (Pratham Books) — Hindi stories",
+          "stage": "c1",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "ncert-rimjhim",
+          "title": "रिमझिम (Hindi school readers)",
+          "stage": "c2",
+          "levelLabel": null,
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "panchatantra",
+          "title": "पंचतंत्र की कहानियाँ",
+          "stage": "c3",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "chauhan-jhansi-ki-rani",
+          "title": "झाँसी की रानी",
+          "stage": "c4",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "ncert-vasant",
+          "title": "वसंत (Hindi school readers)",
+          "stage": "c5",
+          "levelLabel": null,
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "rowling-harry-potter-1-hindi",
+          "title": "हैरी पॉटर और पारस पत्थर",
+          "stage": "c6",
+          "levelLabel": null,
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "chauhan-mukul",
+          "title": "मुकुल",
+          "stage": "c6",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-idgah",
+          "title": "ईदगाह",
+          "stage": "c6",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-do-bailon-ki-katha",
+          "title": "दो बैलों की कथा",
+          "stage": "c6",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-bade-bhai-sahab",
+          "title": "बड़े भाई साहब",
+          "stage": "c7",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-gulli-danda",
+          "title": "गुल्ली डंडा",
+          "stage": "c7",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "ncert-kshitij",
+          "title": "क्षितिज (Hindi school readers)",
+          "stage": "c7",
+          "levelLabel": null,
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-namak-ka-daroga",
+          "title": "नमक का दारोगा",
+          "stage": "c5",
+          "levelLabel": null,
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 3224,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 3187,
+            "sentences": 289,
+            "meanSentenceWords": 11,
+            "p90SentenceWords": 20
+          }
+        },
+        {
+          "slug": "premchand-bade-ghar-ki-beti",
+          "title": "बड़े घर की बेटी",
+          "stage": "c8",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-panch-parameshwar",
+          "title": "पंच परमेश्वर",
+          "stage": "c5",
+          "levelLabel": null,
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 4312,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 4226,
+            "sentences": 388,
+            "meanSentenceWords": 10.9,
+            "p90SentenceWords": 19
+          }
+        },
+        {
+          "slug": "premchand-budhi-kaki",
+          "title": "बूढ़ी काकी",
+          "stage": "c8",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-sava-ser-genhu",
+          "title": "सवा सेर गेहूँ",
+          "stage": "c8",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-mantra",
+          "title": "मंत्र",
+          "stage": "c8",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "khatri-chandrakanta",
+          "title": "चंद्रकांता",
+          "stage": "c8",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bharatendu-andher-nagari",
+          "title": "अंधेर नगरी",
+          "stage": "c8",
+          "levelLabel": null,
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 3273,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 3230,
+            "sentences": 6,
+            "meanSentenceWords": 522,
+            "p90SentenceWords": 856
+          }
+        },
+        {
+          "slug": "kalam-agni-ki-udaan",
+          "title": "अग्नि की उड़ान",
+          "stage": "c8",
+          "levelLabel": null,
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-thakur-ka-kuan",
+          "title": "ठाकुर का कुआँ",
+          "stage": "c9",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-sadgati",
+          "title": "सद्गति",
+          "stage": "c9",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-poos-ki-raat",
+          "title": "पूस की रात",
+          "stage": "c9",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-shatranj-ke-khiladi",
+          "title": "शतरंज के खिलाड़ी",
+          "stage": "c9",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-kafan",
+          "title": "कफ़न",
+          "stage": "c9",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "guleri-usne-kaha-tha",
+          "title": "उसने कहा था",
+          "stage": "c9",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bharatendu-bharat-durdasha",
+          "title": "भारत दुर्दशा",
+          "stage": "c9",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "gandhi-satya-ke-prayog",
+          "title": "सत्य के प्रयोग",
+          "stage": "c9",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bachchan-madhushala",
+          "title": "मधुशाला",
+          "stage": "c9",
+          "levelLabel": null,
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bharati-gunahon-ka-devta",
+          "title": "गुनाहों का देवता",
+          "stage": "c9",
+          "levelLabel": null,
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-nirmala",
+          "title": "निर्मला",
+          "stage": "c10",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "prasad-akashdeep",
+          "title": "आकाशदीप",
+          "stage": "c10",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "dinkar-rashmirathi",
+          "title": "रश्मिरथी",
+          "stage": "c10",
+          "levelLabel": null,
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "sahni-tamas",
+          "title": "तमस",
+          "stage": "c10",
+          "levelLabel": null,
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-gaban",
+          "title": "गबन",
+          "stage": "c11",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-sevasadan",
+          "title": "सेवासदन",
+          "stage": "c11",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "renu-maila-anchal",
+          "title": "मैला आँचल",
+          "stage": "c11",
+          "levelLabel": null,
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "premchand-godan",
+          "title": "गोदान",
+          "stage": "c12",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "prasad-kamayani",
+          "title": "कामायनी",
+          "stage": "c12",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "shukla-raag-darbari",
+          "title": "राग दरबारी",
+          "stage": "c12",
+          "levelLabel": null,
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "yashpal-jhootha-sach",
+          "title": "झूठा सच",
+          "stage": "c12",
+          "levelLabel": null,
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "shukla-hindi-sahitya-ka-itihas",
+          "title": "हिंदी साहित्य का इतिहास",
+          "stage": "c12",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "tulsidas-ramcharitmanas",
+          "title": "रामचरितमानस",
+          "stage": "open",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "surdas-sursagar",
+          "title": "सूरसागर (चयन)",
+          "stage": "open",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kabir-dohe",
+          "title": "कबीर के दोहे",
+          "stage": "open",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bible-hindi",
+          "title": "बाइबल (हिंदी)",
+          "stage": "open",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1189,
+          "words": 776469,
+          "class": "scripture",
+          "metrics": {
+            "available": true,
+            "words": 771450,
+            "sentences": 31104,
+            "meanSentenceWords": 24.8,
+            "p90SentenceWords": 39
+          }
+        }
+      ],
+      "planning": {
+        "assumption": "Assumes 40–80 assisted words/minute while reading with lookup/help; estimates are planning ranges, not CEFR or native-speaker certification.",
+        "hours50": {
+          "wordsAt40wpm": 120000,
+          "wordsAt80wpm": 240000
+        },
+        "hours100": {
+          "wordsAt40wpm": 240000,
+          "wordsAt80wpm": 480000
+        },
+        "exposureGap": "covers at least 50 hours at 40 words/minute"
+      }
+    },
+    {
+      "language": "sq",
+      "name": "Albanian",
+      "observed": {
+        "catalogueStages": 11,
+        "catalogueWorks": 32,
+        "installedLibrary": true,
+        "installedWorks": 2,
+        "installedTexts": 37,
+        "installedWords": 24259,
+        "publishedByClass": {
+          "modern-source-authored": {
+            "works": 2,
+            "texts": 37,
+            "words": 24259
+          }
+        },
+        "installedManifest": {
+          "id": "library-sq@2026-10-03",
+          "builtAt": "2026-10-03",
+          "works": 2,
+          "texts": 37,
+          "words": 24259
+        },
+        "classCounts": {
+          "modern-source-authored": 2
+        },
+        "sentenceMetrics": {
+          "sourcesMeasured": 2,
+          "sentences": 346,
+          "meanSentenceWords": 71.1
+        },
+        "unpublishedGenerated": {
+          "documents": 22,
+          "words": 960,
+          "note": "Generated drafts are counted separately from published library provenance and are not treated as installed or CEFR evidence."
+        },
+        "gdlHindi": null,
+        "bundledSecular": {
+          "documents": 22,
+          "published": 0,
+          "note": "Bundled document publication is counted independently of catalogue work placement and the lazy library."
+        }
+      },
+      "stageCounts": {
+        "0": {
+          "label": "Stage 0 — Orthography and ultra-simple Albanian",
+          "works": 1,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "1": {
+          "label": "Stage 1 — Core words (about 250–350 lemmas)",
+          "works": 2,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "2": {
+          "label": "Stage 2 — About 600 lemmas",
+          "works": 0,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "3": {
+          "label": "Stage 3 — About 1,000 lemmas",
+          "works": 0,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "4": {
+          "label": "Stage 4 — About 1,500 lemmas",
+          "works": 0,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "5": {
+          "label": "Stage 5 — About 2,500 lemmas",
+          "works": 0,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "6": {
+          "label": "Stage 6 — Transitional: easy unrestricted prose",
+          "works": 1,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "7": {
+          "label": "Stage 7 — Easier authentic contemporary Albanian",
+          "works": 2,
+          "installedWorks": 2,
+          "words": 24259
+        },
+        "8": {
+          "label": "Stage 8 — Historical and literary Albanian",
+          "works": 15,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "9": {
+          "label": "Stage 9 — Unrestricted Albanian with advanced dialect exposure",
+          "works": 11,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "open": {
+          "label": "Open reading",
+          "works": 0,
+          "installedWorks": 0,
+          "words": 0
+        }
+      },
+      "works": [
+        {
+          "slug": "sq-modern-open",
+          "title": "Modern standard Albanian open reading",
+          "stage": "7",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 27,
+          "words": 9647,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 9637,
+            "sentences": 173,
+            "meanSentenceWords": 56.8,
+            "p90SentenceWords": 125
+          }
+        },
+        {
+          "slug": "sq-modern-gap-readings",
+          "title": "Qytete dhe natyrë",
+          "stage": "7",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 10,
+          "words": 14612,
+          "class": "modern-source-authored",
+          "metrics": {
+            "available": true,
+            "words": 14492,
+            "sentences": 173,
+            "meanSentenceWords": 85.4,
+            "p90SentenceWords": 166
+          }
+        },
+        {
+          "slug": "udha-0",
+          "title": "Udha 0 — Shkronjat dhe fjalët e para",
+          "stage": "0",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "udha-1",
+          "title": "Udha 1 — Familja dhe shtëpia",
+          "stage": "1",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "misioni-1",
+          "title": "Misioni 1 — Takime",
+          "stage": "1",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bibla-alb",
+          "title": "Bibla (the Albanian Bible commonly labelled ALB)",
+          "stage": "6",
+          "levelLabel": null,
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kristoforidhi-dhjata-e-re-gheg",
+          "title": "Kostandin Kristoforidhi — the New Testament in Gheg",
+          "stage": "9",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kristoforidhi-dhjata-e-re-tosk",
+          "title": "Kostandin Kristoforidhi — the New Testament in Tosk",
+          "stage": "8",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "naim-frasheri-lulet-e-veres",
+          "title": "Lulet e verës",
+          "stage": "8",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "naim-frasheri-bageti-e-bujqesi",
+          "title": "Bagëti e bujqësi",
+          "stage": "8",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "naim-frasheri-istori-e-skenderbeut",
+          "title": "Istori e Skënderbeut",
+          "stage": "8",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "sami-frasheri-shqiperia",
+          "title": "Shqipëria ç'ka qënë, ç'është e ç'do të bëhetë",
+          "stage": "8",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "cajupi-baba-tomorri",
+          "title": "Baba Tomorri",
+          "stage": "8",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "konica-albania-periodical",
+          "title": "Albania (the periodical edited by Faik Konica)",
+          "stage": "8",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "asdreni-rreze-dielli",
+          "title": "Rreze dielli",
+          "stage": "8",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "vasa-bardha-e-temalit",
+          "title": "Bardha e Temalit",
+          "stage": "8",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "de-rada-milosao",
+          "title": "Milosao",
+          "stage": "9",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "fishta-lahuta-e-malcis",
+          "title": "Lahuta e Malcís",
+          "stage": "9",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "fishta-mrizi-i-zanave",
+          "title": "Mrizi i Zanave",
+          "stage": "9",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "fishta-anzat-e-parnasit",
+          "title": "Anzat e Parnasit",
+          "stage": "9",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "mjeda-juvenilia",
+          "title": "Juvenilia",
+          "stage": "9",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "migjeni-vargje-te-lira",
+          "title": "Vargje të lira",
+          "stage": "9",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "migjeni-novela-te-qytetit-te-veriut",
+          "title": "Novela të qytetit të Veriut",
+          "stage": "9",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "buzuku-meshari",
+          "title": "Meshari",
+          "stage": "9",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bogdani-cuneus-prophetarum",
+          "title": "Cuneus Prophetarum",
+          "stage": "9",
+          "levelLabel": "historical",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "noli-historia-e-skenderbeut",
+          "title": "Historia e Skënderbeut",
+          "stage": "9",
+          "levelLabel": "literary",
+          "rightsState": "rights-unverified",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kadare-gjenerali-i-ushtrise-se-vdekur",
+          "title": "Gjenerali i ushtrisë së vdekur",
+          "stage": "8",
+          "levelLabel": "literary",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kadare-kronike-ne-gur",
+          "title": "Kronikë në gur",
+          "stage": "8",
+          "levelLabel": "literary",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kadare-keshtjella",
+          "title": "Kështjella",
+          "stage": "8",
+          "levelLabel": "literary",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "agolli-njeriu-me-top",
+          "title": "Njeriu me top",
+          "stage": "8",
+          "levelLabel": "literary",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "agolli-shkelqimi-dhe-renia-e-shokut-zylo",
+          "title": "Shkëlqimi dhe rënia e shokut Zylo",
+          "stage": "8",
+          "levelLabel": "literary",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "marko-hasta-la-vista",
+          "title": "Hasta la vista",
+          "stage": "8",
+          "levelLabel": "literary",
+          "rightsState": "prohibited-from-bundling",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        }
+      ],
+      "planning": {
+        "assumption": "Assumes 40–80 assisted words/minute while reading with lookup/help; estimates are planning ranges, not CEFR or native-speaker certification.",
+        "hours50": {
+          "wordsAt40wpm": 120000,
+          "wordsAt80wpm": 240000
+        },
+        "hours100": {
+          "wordsAt40wpm": 240000,
+          "wordsAt80wpm": 480000
+        },
+        "exposureGap": "below a 50-hour assisted-reading floor"
+      }
+    },
+    {
+      "language": "th",
+      "name": "Thai",
+      "observed": {
+        "catalogueStages": 11,
+        "catalogueWorks": 80,
+        "installedLibrary": true,
+        "installedWorks": 6,
+        "installedTexts": 1243,
+        "installedWords": 903566,
+        "publishedByClass": {
+          "scripture": {
+            "works": 1,
+            "texts": 1189,
+            "words": 863775
+          },
+          "heritage": {
+            "works": 5,
+            "texts": 54,
+            "words": 39791
+          }
+        },
+        "installedManifest": {
+          "id": "library-th@2026-10-03",
+          "builtAt": "2026-10-03",
+          "works": 6,
+          "texts": 1243,
+          "words": 903566
+        },
+        "classCounts": {
+          "scripture": 1,
+          "heritage": 5
+        },
+        "sentenceMetrics": {
+          "sourcesMeasured": 6,
+          "sentences": 31556,
+          "meanSentenceWords": 6
+        },
+        "unpublishedGenerated": {
+          "documents": 14,
+          "words": 202,
+          "note": "Generated drafts are counted separately from published library provenance and are not treated as installed or CEFR evidence."
+        },
+        "gdlHindi": null,
+        "bundledSecular": {
+          "documents": 14,
+          "published": 0,
+          "note": "Bundled document publication is counted independently of catalogue work placement and the lazy library."
+        }
+      },
+      "stageCounts": {
+        "0": {
+          "label": "Stage 0 — Pre-reader",
+          "works": 11,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "g1": {
+          "label": "Grade 1",
+          "works": 12,
+          "installedWorks": 1,
+          "words": 9475
+        },
+        "g2": {
+          "label": "Grade 2",
+          "works": 10,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "g3": {
+          "label": "Grade 3",
+          "works": 8,
+          "installedWorks": 3,
+          "words": 156
+        },
+        "g4": {
+          "label": "Grade 4",
+          "works": 5,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "g5": {
+          "label": "Grade 5",
+          "works": 8,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "g6": {
+          "label": "Grade 6",
+          "works": 6,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "g7": {
+          "label": "Grade 7",
+          "works": 4,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "g8": {
+          "label": "Grade 8 — B2 consolidation",
+          "works": 14,
+          "installedWorks": 1,
+          "words": 30160
+        },
+        "g9": {
+          "label": "Grade 9 — adult literary entry",
+          "works": 1,
+          "installedWorks": 0,
+          "words": 0
+        },
+        "open": {
+          "label": "Open reading",
+          "works": 1,
+          "installedWorks": 1,
+          "words": 863775
+        }
+      },
+      "works": [
+        {
+          "slug": "bridge-thai-bridge-01",
+          "title": "บ้านของเรา",
+          "stage": "g1",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-thai-bridge-02",
+          "title": "ข้าวเช้าวันนี้",
+          "stage": "g1",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-thai-bridge-03",
+          "title": "ตลาดใกล้บ้าน",
+          "stage": "g1",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-thai-bridge-04",
+          "title": "ฝนตกที่บ้าน",
+          "stage": "g1",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-thai-bridge-05",
+          "title": "ไปโรงเรียน",
+          "stage": "g1",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-thai-bridge-06",
+          "title": "แมวสีขาว",
+          "stage": "g1",
+          "levelLabel": "controlled",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-thai-bridge-07",
+          "title": "รถไฟไปเมือง",
+          "stage": "g2",
+          "levelLabel": "easy",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-thai-bridge-08",
+          "title": "วันหยุดริมทะเล",
+          "stage": "g2",
+          "levelLabel": "easy",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-thai-bridge-09",
+          "title": "ช่วยกันทำอาหาร",
+          "stage": "g2",
+          "levelLabel": "easy",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-thai-bridge-10",
+          "title": "ร้านหนังสือเล็กๆ",
+          "stage": "g2",
+          "levelLabel": "easy",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-thai-bridge-11",
+          "title": "ของขวัญวันเกิด",
+          "stage": "g2",
+          "levelLabel": "easy",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bridge-thai-bridge-12",
+          "title": "เย็นสบายในสวน",
+          "stage": "g2",
+          "levelLabel": "easy",
+          "rightsState": "course-authored",
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "th-gap-recovery-aesop",
+          "title": "นิทานอีสป — นิทาน 45 เรื่อง",
+          "stage": "g1",
+          "levelLabel": null,
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 45,
+          "words": 9475,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 1375,
+            "sentences": 90,
+            "meanSentenceWords": 15.3,
+            "p90SentenceWords": 34
+          }
+        },
+        {
+          "slug": "thai-wikisource-nueng-sai-mu-mai-muan",
+          "title": "หนึ่งไซร้หมู่ไม้ม้วน",
+          "stage": "g3",
+          "levelLabel": null,
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 58,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 12,
+            "sentences": 6,
+            "meanSentenceWords": 2,
+            "p90SentenceWords": 2
+          }
+        },
+        {
+          "slug": "thai-wikisource-phai-chai-lae-hai-than",
+          "title": "ใฝ่ใจแลให้ทาน",
+          "stage": "g3",
+          "levelLabel": null,
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 39,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 8,
+            "sentences": 4,
+            "meanSentenceWords": 2,
+            "p90SentenceWords": 2
+          }
+        },
+        {
+          "slug": "thai-wikisource-phu-yai-ha-pha-mai",
+          "title": "ผู้ใหญ่หาผ้าใหม่",
+          "stage": "g3",
+          "levelLabel": null,
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 1,
+          "words": 59,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 12,
+            "sentences": 6,
+            "meanSentenceWords": 2,
+            "p90SentenceWords": 2
+          }
+        },
+        {
+          "slug": "nms-vetal-selected",
+          "title": "นิทานเวตาล — เรื่องคัดสรร (1, 8–10)",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": "verified-public-domain",
+          "installed": true,
+          "installedPublishedTexts": 6,
+          "words": 30160,
+          "class": "heritage",
+          "metrics": {
+            "available": true,
+            "words": 4122,
+            "sentences": 363,
+            "meanSentenceWords": 11.5,
+            "p90SentenceWords": 23
+          }
+        },
+        {
+          "slug": "an-an-an",
+          "title": "อ่าน อาน อ๊าน — ระดับ 1–4",
+          "stage": "0",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "pet-hai",
+          "title": "เป็ดหาย",
+          "stage": "0",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "yai-ka-ta",
+          "title": "ยายกะตา",
+          "stage": "0",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "mue-khong-chan",
+          "title": "มือของฉัน",
+          "stage": "0",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "keng",
+          "title": "เก่ง",
+          "stage": "0",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "tukkata-yot-rak",
+          "title": "ตุ๊กตายอดรัก",
+          "stage": "0",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "mana-mani-1",
+          "title": "มานะ มานี ป.1",
+          "stage": "g1",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "chai-di-su-suea",
+          "title": "ใจดีสู้เสือ",
+          "stage": "g1",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "yak-mi-pik",
+          "title": "อยากมีปีก",
+          "stage": "g1",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "dai-thi-khi-phae-lai",
+          "title": "ได้ที่ขี่แพะไล่",
+          "stage": "g1",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kratai-yae-suea",
+          "title": "กระต่ายแหย่เสือ",
+          "stage": "g1",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "mana-mani-2",
+          "title": "มานะ มานี ป.2",
+          "stage": "g2",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "obec-readers-p1-2",
+          "title": "หนังสืออ่านเพิ่มเติม สพฐ. ป.1–2 (remaining suitable titles)",
+          "stage": "g2",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "aesop-simple",
+          "title": "นิทานอีสป (simple retellings)",
+          "stage": "g2",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "thai-folktales-simple",
+          "title": "นิทานพื้นบ้านไทย (simple)",
+          "stage": "g2",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "mana-mani-3",
+          "title": "มานะ มานี ป.3",
+          "stage": "g3",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "chotmai-chak-phi-kaeo",
+          "title": "จดหมายจากพี่แก้ว",
+          "stage": "g3",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "luk-sat-tang-tang",
+          "title": "ลูกสัตว์ต่างๆ",
+          "stage": "g3",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "sang-thong-ti-khli",
+          "title": "สังข์ทอง ตอน ตีคลี",
+          "stage": "g3",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "lawichai-khawi",
+          "title": "หลวิไชย–คาวี",
+          "stage": "g3",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "mana-mani-4",
+          "title": "มานะ มานี ป.4",
+          "stage": "g4",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kaeo-chom-kaen",
+          "title": "แก้วจอมแก่น",
+          "stage": "g4",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "phap-phasit-thai",
+          "title": "ภาพภาษิตไทย",
+          "stage": "g4",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "thai-legends-selected",
+          "title": "ตำนานและนิทานพื้นบ้านไทย (selected)",
+          "stage": "g4",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "readers-p3-4",
+          "title": "หนังสืออ่านเพิ่มเติม ป.3–4 (additional appropriate titles)",
+          "stage": "g4",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "mana-mani-5",
+          "title": "มานะ มานี ป.5",
+          "stage": "g5",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "mana-mani-6",
+          "title": "มานะ มานี ป.6",
+          "stage": "g5",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "som-si-muang",
+          "title": "ส้มสีม่วง",
+          "stage": "g5",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "si-thao-chao-tua-chiu",
+          "title": "สีเทาเจ้าตัวจิ๋ว",
+          "stage": "g5",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "sano-noi",
+          "title": "โสนน้อย",
+          "stage": "g5",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "nu-lo-kap-mo-mo",
+          "title": "หนูหล่อกับมอมอ",
+          "stage": "g5",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "niyai-dao",
+          "title": "นิยายดาว",
+          "stage": "g5",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "waeng-thi-rak",
+          "title": "แว้งที่รัก",
+          "stage": "g6",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "khwan-song",
+          "title": "ขวัญสงฆ์",
+          "stage": "g6",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "khuat-khon-yu-hon-dai",
+          "title": "ฃวดฅนอยู่หนใด",
+          "stage": "g6",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "youth-fiction-lower-secondary",
+          "title": "วรรณกรรมเยาวชนระดับมัธยมต้น (selected)",
+          "stage": "g6",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "dek-naeo",
+          "title": "เด็กแนว",
+          "stage": "g6",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "cho-chang-kap-kho-khon",
+          "title": "ช ช้าง กับ ฅ ฅน",
+          "stage": "g6",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "khwam-suk-khong-kathi",
+          "title": "ความสุขของกะทิ",
+          "stage": "g7",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "kathi-tam-ha-phra-chan",
+          "title": "ความสุขของกะทิ ตอน ตามหาพระจันทร์",
+          "stage": "g7",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "nai-lok-bai-lek",
+          "title": "ในโลกใบเล็ก",
+          "stage": "g7",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "khanom-mae-oei",
+          "title": "ขนมแม่เอ๊ย",
+          "stage": "g7",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "dek-chai-maliwan",
+          "title": "เด็กชายมะลิวัลย์",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "phi-suea-lae-dok-mai",
+          "title": "ผีเสื้อและดอกไม้",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "wela-nai-khuat-kaeo",
+          "title": "เวลาในขวดแก้ว",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "mom",
+          "title": "มอม (in เพื่อนนอน)",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "yu-kap-kong",
+          "title": "อยู่กับก๋ง",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "luk-isan",
+          "title": "ลูกอีสาน",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "ko-kong-sai",
+          "title": "ก่อกองทราย",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "khang-lang-phap",
+          "title": "ข้างหลังภาพ",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "chotmai-chak-mueang-thai",
+          "title": "จดหมายจากเมืองไทย",
+          "stage": "g9",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "audio-nithan-phasom-phasa",
+          "title": "นิทานผสมภาษาพาสนุก",
+          "stage": "0",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "audio-kids-hour",
+          "title": "Kids Hour / ชั่วโมงนิทาน",
+          "stage": "0",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "audio-hu-yao-lao-rueang",
+          "title": "หูยาวเล่าเรื่อง",
+          "stage": "0",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "audio-nithan-suphasit",
+          "title": "นิทานสุภาษิต",
+          "stage": "0",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "audio-phra-athit-yim-chaeng",
+          "title": "พระอาทิตย์ยิ้มแฉ่ง",
+          "stage": "0",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "audio-mong-adit",
+          "title": "มองอดีต (easier episodes)",
+          "stage": "g5",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "audio-pop-sci",
+          "title": "POP SCI วิทย์ติดป๊อป",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "audio-beyond-chronicles",
+          "title": "Beyond Chronicles",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "audio-sci-tech",
+          "title": "Sci & Tech",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "audio-the-active",
+          "title": "The Active Podcast",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "audio-back-to-basics",
+          "title": "Back To Basics",
+          "stage": "g8",
+          "levelLabel": null,
+          "rightsState": null,
+          "installed": false,
+          "installedPublishedTexts": 0,
+          "words": 0,
+          "class": "catalogue-only"
+        },
+        {
+          "slug": "bible-thai-otcv2025",
+          "title": "Biblica® Open Thai Common Version 2025",
+          "stage": "open",
+          "levelLabel": null,
+          "rightsState": "verified-open-licence",
+          "installed": true,
+          "installedPublishedTexts": 1189,
+          "words": 863775,
+          "class": "scripture",
+          "metrics": {
+            "available": true,
+            "words": 782819,
+            "sentences": 31087,
+            "meanSentenceWords": 3.4,
+            "p90SentenceWords": 6
+          }
+        }
+      ],
+      "planning": {
+        "assumption": "Assumes 40–80 assisted words/minute while reading with lookup/help; estimates are planning ranges, not CEFR or native-speaker certification.",
+        "hours50": {
+          "wordsAt40wpm": 120000,
+          "wordsAt80wpm": 240000
+        },
+        "hours100": {
+          "wordsAt40wpm": 240000,
+          "wordsAt80wpm": 480000
+        },
+        "exposureGap": "covers at least 50 hours at 40 words/minute"
+      }
+    }
+  ]
+}

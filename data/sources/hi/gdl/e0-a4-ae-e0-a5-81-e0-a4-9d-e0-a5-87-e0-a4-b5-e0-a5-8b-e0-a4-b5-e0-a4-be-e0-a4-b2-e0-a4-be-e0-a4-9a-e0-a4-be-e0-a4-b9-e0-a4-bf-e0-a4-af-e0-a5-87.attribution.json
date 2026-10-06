@@ -1,0 +1,44 @@
+{
+  "title": "मुझे वो वाला चाहिये!",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%81%e0%a4%9d%e0%a5%87-%e0%a4%b5%e0%a5%8b-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-%e0%a4%9a%e0%a4%be%e0%a4%b9%e0%a4%bf%e0%a4%af%e0%a5%87/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Mala Kumar",
+    "Illustrator: Soumya Menon",
+    "Translator: Rama Sharma",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: मुझे वो वाला चाहिये! is translated by Rama Sharma . The © for this translation lies with Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' I Want That One! ' , by Mala Kumar . © Pratham Books , 2015. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This book has been published on StoryWeaver by Pratham Books.The development of the print version of this book has been supported by HDFC Asset Management Company Limited (A joint venture with Standard Life Investments). www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Boy going shopping with mother , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 2: Lady reading a book and boy pulling her saree , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 3: Lady yelling at a boy pulling heavy boxes from a shelf , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 4: Boy looking sulky and angry , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 5: Lady going shopping and holding a boy's hand , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 6: Mother and son shopping at a vegetable market , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 7: Man looking at boy trying to pull out a book from a pile , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 8: Boy trying to pull out a samosa from a pile and man shouting , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 9: Boy pointing at flowers and crying while flower seller looks on , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 10: Boy looking at old man , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Illustration Attributions:",
+    "Page 11: Lady in saree pointing at something , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 12: Boy holding a puppy and a pile of puppies in a basket , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "मुझे वो वाला चाहिये! (Hindi)",
+    "जब अनिल माँ से कुछ माँगता है, वह कहती हैं, “ये वाला नहीं।” बाज़ार में भी दुकानदार अनिल से कहते हैं, “ये वाला नहीं।” क्या उस नाराज़ छोटे से बच्चे को कुछ मिलता भी है?",
+    "यह पठन स्तर १ की किताब है, उन बच्चों के लिए जो पढ़ना शुरू कर रहे हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "0208289e8827082c0ac31a635eab04435561afd181b800c20aebaebf6d882433"
+}

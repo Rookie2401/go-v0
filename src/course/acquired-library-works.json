@@ -1,0 +1,2042 @@
+{
+  "de": {
+    "lutherbibel-1912": {
+      "rights": {
+        "state": "verified-public-domain",
+        "verifiedBy": "eBible.org copyright page and approved publisher USFM archive review",
+        "verifiedAt": "2026-10-01",
+        "basis": "eBible.org source copyright page states Public Domain",
+        "statusByJurisdiction": {
+          "DE": "public-domain",
+          "US": "public-domain",
+          "EU": "public-domain"
+        },
+        "canBundle": true,
+        "verified": true,
+        "userImportOnly": false,
+        "sourceRepository": "https://ebible.org/Scriptures/deu1912_usfm.zip",
+        "evidence": [
+          "https://ebible.org/Scriptures/deu1912_usfm.zip",
+          "https://ebible.org/deu1912/copyright.htm"
+        ],
+        "jurisdictions": [
+          "DE",
+          "US",
+          "EU"
+        ],
+        "modifications": "Approved publisher USFM archive, imported by scripts/build-scripture-usfm-full.mjs and independently checked by scripts/verify-scripture-usfm-full.mjs.",
+        "compliance": "Die Bibel nach Martin Luther, Ausgabe 1912 — Public Domain; eBible.org (deu1912). Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Luther 1912",
+      "sourceUrl": "https://ebible.org/Scriptures/deu1912_usfm.zip",
+      "installed": false
+    },
+    "guerber-maerchen-und-erzaehlungen": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #35794 and #45189 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/35794",
+          "https://www.gutenberg.org/ebooks/45189",
+          "https://www.gutenberg.org/ebooks/35794.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Märchen und Erzählungen für Anfänger — H. A. Guerber; Project Gutenberg #35794 + #45189; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #35794 + #45189",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/35794.txt.utf-8",
+      "installed": false
+    },
+    "busch-max-und-moritz": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #17161 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/17161",
+          "https://www.gutenberg.org/ebooks/17161.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Max und Moritz. Eine Bubengeschichte in sieben Streichen — Wilhelm Busch; Project Gutenberg #17161; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #17161",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/17161.txt.utf-8",
+      "installed": true
+    },
+    "hoffmann-struwwelpeter": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #24571 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/24571",
+          "https://www.gutenberg.org/ebooks/24571.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Der Struwwelpeter — Heinrich Hoffmann; Project Gutenberg #24571; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #24571",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/24571.txt.utf-8",
+      "installed": true
+    },
+    "busch-hans-huckebein": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #2322 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/2322",
+          "https://www.gutenberg.org/ebooks/2322.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Hans Huckebein, der Unglücksrabe — Wilhelm Busch; Project Gutenberg #2322; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #2322",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/2322.txt.utf-8",
+      "installed": true
+    },
+    "hebel-schatzkaestlein": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #7810 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/7810",
+          "https://www.gutenberg.org/ebooks/7810.epub3.images"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Schatzkästlein des rheinischen Hausfreundes — Johann Peter Hebel; Project Gutenberg #7810; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Schatzkästlein — selected stories; Project Gutenberg #7810",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/7810.epub3.images",
+      "installed": false
+    },
+    "spyri-heidi": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #7500 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/7500",
+          "https://www.gutenberg.org/ebooks/7500.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Heidis Lehr- und Wanderjahre — Johanna Spyri; Project Gutenberg #7500; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #7500",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/7500.txt.utf-8",
+      "installed": true
+    },
+    "bassewitz-peterchens-mondfahrt": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #31204 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/31204",
+          "https://www.gutenberg.org/ebooks/31204.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Peterchens Mondfahrt — Gerdt von Bassewitz; Project Gutenberg #31204; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #31204",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/31204.txt.utf-8",
+      "installed": true
+    },
+    "bonsels-biene-maja": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #21021 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/21021",
+          "https://www.gutenberg.org/ebooks/21021.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Die Biene Maja und ihre Abenteuer — Waldemar Bonsels; Project Gutenberg #21021; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #21021",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/21021.txt.utf-8",
+      "installed": true
+    },
+    "storm-immensee": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #6651 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/6651",
+          "https://www.gutenberg.org/ebooks/6651.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Immensee — Theodor Storm; Project Gutenberg #6651; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #6651",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/6651.txt.utf-8",
+      "installed": true
+    },
+    "storm-pole-poppenspaeler": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #8919 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/8919",
+          "https://www.gutenberg.org/ebooks/8919.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Pole Poppenspäler — Theodor Storm; Project Gutenberg #8919; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #8919",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/8919.txt.utf-8",
+      "installed": true
+    },
+    "eichendorff-taugenichts": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #35312 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/35312",
+          "https://www.gutenberg.org/ebooks/35312.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Aus dem Leben eines Taugenichts — Joseph von Eichendorff; Project Gutenberg #35312; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #35312",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/35312.txt.utf-8",
+      "installed": true
+    },
+    "storm-schimmelreiter": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #74008 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/74008",
+          "https://www.gutenberg.org/ebooks/74008.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Der Schimmelreiter — Theodor Storm; Project Gutenberg #74008; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #74008",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/74008.txt.utf-8",
+      "installed": true
+    },
+    "droste-judenbuche": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #45798 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/45798",
+          "https://www.gutenberg.org/ebooks/45798.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Die Judenbuche — Annette von Droste-Hülshoff; Project Gutenberg #45798; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #45798",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/45798.txt.utf-8",
+      "installed": true
+    },
+    "hauptmann-bahnwaerter-thiel": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #29376 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/29376",
+          "https://www.gutenberg.org/ebooks/29376.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Bahnwärter Thiel — Gerhart Hauptmann; Project Gutenberg #29376; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #29376",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/29376.txt.utf-8",
+      "installed": false
+    },
+    "kafka-das-urteil": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #21593 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/21593",
+          "https://www.gutenberg.org/ebooks/21593.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Das Urteil — Franz Kafka; Project Gutenberg #21593; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #21593",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/21593.txt.utf-8",
+      "installed": true
+    },
+    "kafka-die-verwandlung": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #22367 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/22367",
+          "https://www.gutenberg.org/ebooks/22367.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Die Verwandlung — Franz Kafka; Project Gutenberg #22367; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #22367",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/22367.txt.utf-8",
+      "installed": true
+    },
+    "fontane-effi-briest": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #5323 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/5323",
+          "https://www.gutenberg.org/ebooks/5323.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Effi Briest — Theodor Fontane; Project Gutenberg #5323; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #5323",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/5323.txt.utf-8",
+      "installed": true
+    },
+    "mann-tonio-kroeger": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #23313 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/23313",
+          "https://www.gutenberg.org/ebooks/23313.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Tonio Kröger — Thomas Mann; Project Gutenberg #23313; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #23313",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/23313.txt.utf-8",
+      "installed": true
+    },
+    "goethe-werther": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #2407 and #2408 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/2407",
+          "https://www.gutenberg.org/ebooks/2408",
+          "https://www.gutenberg.org/ebooks/2407.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Die Leiden des jungen Werthers — Johann Wolfgang von Goethe; Project Gutenberg #2407 + #2408; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #2407 + #2408",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/2407.txt.utf-8",
+      "installed": true
+    },
+    "schiller-wilhelm-tell": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #77182 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/77182",
+          "https://www.gutenberg.org/ebooks/77182.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Wilhelm Tell — Friedrich Schiller; Project Gutenberg #77182; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #77182",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/77182.txt.utf-8",
+      "installed": true
+    },
+    "schiller-kabale-und-liebe": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #6498 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/6498",
+          "https://www.gutenberg.org/ebooks/6498.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Kabale und Liebe — Friedrich Schiller; Project Gutenberg #6498; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #6498",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/6498.txt.utf-8",
+      "installed": true
+    },
+    "lessing-emilia-galotti": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #9108 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/9108",
+          "https://www.gutenberg.org/ebooks/9108.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Emilia Galotti — Gotthold Ephraim Lessing; Project Gutenberg #9108; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #9108",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/9108.txt.utf-8",
+      "installed": true
+    },
+    "lessing-nathan-der-weise": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #9186 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/9186",
+          "https://www.gutenberg.org/ebooks/9186.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Nathan der Weise — Gotthold Ephraim Lessing; Project Gutenberg #9186; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #9186",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/9186.txt.utf-8",
+      "installed": true
+    },
+    "goethe-faust-1": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #2229 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/2229",
+          "https://www.gutenberg.org/ebooks/2229.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Faust. Der Tragödie erster Teil — Johann Wolfgang von Goethe; Project Gutenberg #2229; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #2229",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/2229.txt.utf-8",
+      "installed": true
+    },
+    "fontane-der-stechlin": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #53628 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/53628",
+          "https://www.gutenberg.org/ebooks/53628.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Der Stechlin — Theodor Fontane; Project Gutenberg #53628; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #53628",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/53628.txt.utf-8",
+      "installed": true
+    },
+    "mann-buddenbrooks": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #34811 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/34811",
+          "https://www.gutenberg.org/ebooks/34811.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Buddenbrooks — Thomas Mann; Project Gutenberg #34811; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #34811",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/34811.txt.utf-8",
+      "installed": true
+    },
+    "kant-was-ist-aufklaerung": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #30821 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/30821",
+          "https://www.gutenberg.org/ebooks/30821.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Beantwortung der Frage: Was ist Aufklärung? — Immanuel Kant; Project Gutenberg #30821; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #30821",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/30821.txt.utf-8",
+      "installed": true
+    },
+    "kant-kritik-der-reinen-vernunft": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #6342 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/6342",
+          "https://www.gutenberg.org/ebooks/6342.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Kritik der reinen Vernunft — Immanuel Kant; Project Gutenberg #6342; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #6342",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/6342.txt.utf-8",
+      "installed": true
+    },
+    "nietzsche-zarathustra": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #7205 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/7205",
+          "https://www.gutenberg.org/ebooks/7205.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Also sprach Zarathustra — Friedrich Nietzsche; Project Gutenberg #7205; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #7205",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/7205.txt.utf-8",
+      "installed": true
+    },
+    "rilke-malte": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #2188 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/2188",
+          "https://www.gutenberg.org/ebooks/2188.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Die Aufzeichnungen des Malte Laurids Brigge — Rainer Maria Rilke; Project Gutenberg #2188; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #2188",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/2188.txt.utf-8",
+      "installed": true
+    },
+    "mommsen-roemische-geschichte": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #3060 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/3060",
+          "https://www.gutenberg.org/ebooks/3060.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Römische Geschichte — Theodor Mommsen; Project Gutenberg #3060; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Römische Geschichte — Buch 1 only; Project Gutenberg #3060",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/3060.txt.utf-8",
+      "installed": false
+    },
+    "lilienthal-vogelflug": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #54565 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/54565",
+          "https://www.gutenberg.org/ebooks/54565.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Der Vogelflug als Grundlage der Fliegekunst — Otto Lilienthal; Project Gutenberg #54565; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #54565",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/54565.txt.utf-8",
+      "installed": true
+    },
+    "bechstein-maerchenbuch": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-01",
+        "basis": "Project Gutenberg #23787 identifies the German edition and states public domain in the USA; the edition title page identifies Bechstein, Fraungruber and Fahringer.",
+        "sourceRepository": "Project Gutenberg",
+        "sourceUrl": "https://www.gutenberg.org/ebooks/23787",
+        "jurisdictions": [
+          "US"
+        ],
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/23787",
+          "https://www.gutenberg.org/cache/epub/23787/pg23787.txt"
+        ],
+        "attributionRequired": true,
+        "commercialUse": true,
+        "modifications": "The Gutenberg wrapper and production credit were removed; the title page, editor/illustrator credits, notes and tale text are retained verbatim.",
+        "compliance": "Märchen-Sammlung von L. Bechstein; texts reviewed by Hans Fraungruber; images by Karl Fahringer; Project Gutenberg #23787.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Märchen-Sammlung — 14 tales; Project Gutenberg #23787; Gerlach's Jugendbücherei, Märchen-Sammlung, Vienna and Leipzig",
+      "sourceUrl": "https://www.gutenberg.org/cache/epub/23787/pg23787.txt",
+      "installed": true
+    },
+    "grimm-khm": {
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "granted",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Wikisource edition index and per-page ProofreadPage status",
+        "verifiedAt": "2026-10-02",
+        "basis": "Exact 1850 edition, scan source, transcription licence, and page-quality records are retained in both source files.",
+        "evidence": [
+          "https://de.wikisource.org/wiki/Index:Kinder-_und_Haus-M%C3%A4rchen_Band_1_(1850)",
+          "https://de.wikisource.org/wiki/Index:Kinder-_und_Haus-M%C3%A4rchen_Band_2_(1850)",
+          "https://creativecommons.org/licenses/by-sa/4.0/"
+        ],
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "licensing": "CC BY-SA 4.0",
+        "licence": "CC BY-SA 4.0 (Wikisource transcription; underlying historical edition public domain)",
+        "jurisdictions": [
+          "a worldwide CC BY-SA transcription licence; no country-by-country public-domain claim"
+        ],
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "attributionRequired": true,
+        "shareAlike": true,
+        "commercialUse": true,
+        "compliance": "Retain attribution, indicate changes, and share adaptations under CC BY-SA 4.0.",
+        "sourceRepository": "https://de.wikisource.org/wiki/Index:Kinder-_und_Haus-M%C3%A4rchen_Band_1_(1850)",
+        "modifications": "Each retained page was fetched from the official Wikisource raw transcription endpoint and has ProofreadPage quality level 4."
+      },
+      "edition": "Dieterich, Göttingen, sixth edition, 1850",
+      "sourceUrl": "https://de.wikisource.org/wiki/Index:Kinder-_und_Haus-M%C3%A4rchen_Band_1_(1850)",
+      "installed": true
+    },
+    "hauff-maerchen": {
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "granted",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Wikisource edition index and per-page ProofreadPage status",
+        "verifiedAt": "2026-10-02",
+        "basis": "Exact bounded Almanach section, scan source, transcription licence, and page-quality records are retained in the source file.",
+        "evidence": [
+          "https://de.wikisource.org/wiki/Index:Wilhelm_Hauff_Werke_Bd_2",
+          "https://creativecommons.org/licenses/by-sa/4.0/"
+        ],
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "licensing": "CC BY-SA 4.0",
+        "licence": "CC BY-SA 4.0 (Wikisource transcription; underlying historical edition public domain)",
+        "jurisdictions": [
+          "a worldwide CC BY-SA transcription licence; no country-by-country public-domain claim"
+        ],
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "attributionRequired": true,
+        "shareAlike": true,
+        "commercialUse": true,
+        "compliance": "Retain attribution, indicate changes, and share adaptations under CC BY-SA 4.0.",
+        "sourceRepository": "https://de.wikisource.org/wiki/Index:Wilhelm_Hauff_Werke_Bd_2",
+        "modifications": "Pages 032–089 of the index section were fetched from the official Wikisource raw transcription endpoint; every page has ProofreadPage quality level 4."
+      },
+      "edition": "Mendheim edition, 1891–1909, scan section reproducing the 1826 Almanach, pages 60–175",
+      "sourceUrl": "https://de.wikisource.org/wiki/Index:Wilhelm_Hauff_Werke_Bd_2",
+      "installed": true
+    }
+  },
+  "es": {
+    "reina-valera-1909": {
+      "rights": {
+        "state": "verified-public-domain",
+        "verifiedBy": "eBible.org copyright page and approved publisher USFM archive review",
+        "verifiedAt": "2026-10-01",
+        "basis": "eBible.org source copyright page states Public Domain",
+        "statusByJurisdiction": {
+          "ES": "public-domain",
+          "US": "public-domain",
+          "EU": "public-domain"
+        },
+        "canBundle": true,
+        "verified": true,
+        "userImportOnly": false,
+        "sourceRepository": "https://ebible.org/Scriptures/spaRV1909_usfm.zip",
+        "evidence": [
+          "https://ebible.org/Scriptures/spaRV1909_usfm.zip",
+          "https://ebible.org/spaRV1909/copyright.htm"
+        ],
+        "jurisdictions": [
+          "ES",
+          "US",
+          "EU"
+        ],
+        "modifications": "Approved publisher USFM archive, imported by scripts/build-scripture-usfm-full.mjs and independently checked by scripts/verify-scripture-usfm-full.mjs.",
+        "compliance": "Reina-Valera 1909 — Public Domain; eBible.org (spaRV1909). Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Reina-Valera 1909",
+      "sourceUrl": "https://ebible.org/Scriptures/spaRV1909_usfm.zip",
+      "installed": true
+    },
+    "marti-edad-de-oro": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #19898 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/19898",
+          "https://www.gutenberg.org/ebooks/19898.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "La Edad de Oro — José Martí; Project Gutenberg #19898; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #19898",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/19898.txt.utf-8",
+      "installed": true
+    },
+    "samaniego-fabulas": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #55206 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/55206",
+          "https://www.gutenberg.org/ebooks/55206.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Fábulas en verso castellano — Félix María de Samaniego; Project Gutenberg #55206; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #55206",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/55206.txt.utf-8",
+      "installed": true
+    },
+    "iriarte-fabulas": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #29497 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/29497",
+          "https://www.gutenberg.org/ebooks/29497.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Fábulas literarias — Tomás de Iriarte; Project Gutenberg #29497; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #29497",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/29497.txt.utf-8",
+      "installed": true
+    },
+    "alarcon-capitan-veneno": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #29731 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/29731"
+        ]
+      },
+      "edition": "Project Gutenberg #29731 classroom edition",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/29731.txt.utf-8",
+      "installed": true
+    },
+    "palma-tradiciones-peruanas": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #21282 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/21282",
+          "https://www.gutenberg.org/ebooks/21282.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Tradiciones peruanas (selección) — Ricardo Palma; Project Gutenberg #21282; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #21282",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/21282.txt.utf-8",
+      "installed": true
+    },
+    "jimenez-platero-y-yo": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #9980 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/9980"
+        ]
+      },
+      "edition": "Project Gutenberg #9980 classroom edition; selected 32 chapters",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/9980.txt.utf-8",
+      "installed": true
+    },
+    "palacio-valdes-hermana-san-sulpicio": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #31013 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/31013",
+          "https://www.gutenberg.org/ebooks/31013.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "La hermana San Sulpicio — Armando Palacio Valdés; Project Gutenberg #31013; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #31013",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/31013.txt.utf-8",
+      "installed": true
+    },
+    "dario-azul": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #52894 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/52894",
+          "https://www.gutenberg.org/ebooks/52894.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Azul... — Rubén Darío; Project Gutenberg #52894; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #52894",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/52894.txt.utf-8",
+      "installed": true
+    },
+    "galdos-marianela": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #17340 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/17340",
+          "https://www.gutenberg.org/ebooks/17340.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Marianela — Benito Pérez Galdós; Project Gutenberg #17340; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #17340",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/17340.txt.utf-8",
+      "installed": true
+    },
+    "galdos-trafalgar": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #16961 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/16961",
+          "https://www.gutenberg.org/ebooks/16961.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Trafalgar (Episodios nacionales) — Benito Pérez Galdós; Project Gutenberg #16961; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #16961",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/16961.txt.utf-8",
+      "installed": true
+    },
+    "galdos-misericordia": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #21831 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/21831",
+          "https://www.gutenberg.org/ebooks/21831.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Misericordia — Benito Pérez Galdós; Project Gutenberg #21831; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #21831",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/21831.txt.utf-8",
+      "installed": false
+    },
+    "galdos-fortunata-y-jacinta": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #17013 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/17013",
+          "https://www.gutenberg.org/ebooks/17013.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Fortunata y Jacinta — Benito Pérez Galdós; Project Gutenberg #17013; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #17013",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/17013.txt.utf-8",
+      "installed": true
+    },
+    "clarin-la-regenta": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #17073 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/17073",
+          "https://www.gutenberg.org/ebooks/17073.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "La Regenta — Leopoldo Alas «Clarín»; Project Gutenberg #17073; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #17073",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/17073.txt.utf-8",
+      "installed": true
+    },
+    "pardo-bazan-pazos-de-ulloa": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #18005 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/18005",
+          "https://www.gutenberg.org/ebooks/18005.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Los pazos de Ulloa — Emilia Pardo Bazán; Project Gutenberg #18005; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #18005",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/18005.txt.utf-8",
+      "installed": true
+    },
+    "valera-pepita-jimenez": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #17223 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/17223",
+          "https://www.gutenberg.org/ebooks/17223.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Pepita Jiménez — Juan Valera; Project Gutenberg #17223; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #17223",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/17223.txt.utf-8",
+      "installed": true
+    },
+    "alarcon-sombrero-de-tres-picos": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #29506 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/29506"
+        ]
+      },
+      "edition": "Project Gutenberg #29506 classroom edition",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/29506.txt.utf-8",
+      "installed": true
+    },
+    "unamuno-niebla": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #49836 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/49836",
+          "https://www.gutenberg.org/ebooks/49836.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Niebla — Miguel de Unamuno; Project Gutenberg #49836; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #49836",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/49836.txt.utf-8",
+      "installed": true
+    },
+    "baroja-arbol-de-la-ciencia": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #60464 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/60464",
+          "https://www.gutenberg.org/ebooks/60464.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "El árbol de la ciencia — Pío Baroja; Project Gutenberg #60464; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #60464",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/60464.txt.utf-8",
+      "installed": true
+    },
+    "baroja-zalacain": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #13264 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/13264",
+          "https://www.gutenberg.org/ebooks/13264.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Zalacaín el aventurero — Pío Baroja; Project Gutenberg #13264; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #13264",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/13264.txt.utf-8",
+      "installed": true
+    },
+    "dario-cantos-de-vida-y-esperanza": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #50341 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/50341",
+          "https://www.gutenberg.org/ebooks/50341.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Cantos de vida y esperanza — Rubén Darío; Project Gutenberg #50341; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #50341",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/50341.txt.utf-8",
+      "installed": true
+    },
+    "cervantes-don-quijote": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #2000 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/2000",
+          "https://www.gutenberg.org/ebooks/2000.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "El ingenioso hidalgo don Quijote de la Mancha — Miguel de Cervantes; Project Gutenberg #2000; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #2000",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/2000.txt.utf-8",
+      "installed": true
+    },
+    "cervantes-novelas-ejemplares": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #61202 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/61202",
+          "https://www.gutenberg.org/ebooks/61202.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Novelas ejemplares — Miguel de Cervantes; Project Gutenberg #61202; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #61202",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/61202.txt.utf-8",
+      "installed": false
+    },
+    "quevedo-el-buscon": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #32315 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/32315",
+          "https://www.gutenberg.org/ebooks/32315.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Historia de la vida del Buscón — Francisco de Quevedo; Project Gutenberg #32315; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #32315",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/32315.txt.utf-8",
+      "installed": true
+    },
+    "juan-manuel-conde-lucanor": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #65738 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/65738",
+          "https://www.gutenberg.org/ebooks/65738.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "El conde Lucanor — Don Juan Manuel; Project Gutenberg #65738; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #65738",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/65738.txt.utf-8",
+      "installed": false
+    },
+    "juan-ruiz-libro-de-buen-amor": {
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Project Gutenberg official edition page and metadata",
+        "verifiedAt": "2026-10-02",
+        "basis": "Official Project Gutenberg edition(s) #16625 match the mapped author and title; US public-domain notice recorded on the edition page.",
+        "statusByJurisdiction": {
+          "US": "public-domain"
+        },
+        "evidence": [
+          "https://www.gutenberg.org/ebooks/16625",
+          "https://www.gutenberg.org/ebooks/16625.txt.utf-8"
+        ],
+        "sourceRepository": "https://www.gutenberg.org/",
+        "jurisdictions": [
+          "US"
+        ],
+        "modifications": "Exact official Gutenberg edition downloaded on 2026-10-02; standard wrappers removed per volume.",
+        "compliance": "Libro de buen amor — Juan Ruiz, Arcipreste de Hita; Project Gutenberg #16625; US public domain.. Edition-specific rights and jurisdictional limits are retained; no recording is included."
+      },
+      "edition": "Project Gutenberg #16625",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/16625.txt.utf-8",
+      "installed": false
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "key": "pg",
+    "url": "https://www.gutenberg.org/policy/license.html",
+    "acquiredAt": "2026-10-04",
+    "sha256": "8a5137aecb0911dc0700e4ff636834326f6eade4beb997229269658a5ccd82f7"
+  },
+  {
+    "key": "gv",
+    "url": "https://globalvoices.org/about/global-voices-attribution-policy/",
+    "acquiredAt": "2026-10-04",
+    "sha256": "4b65d2ed7399f796ca83ecf638dc79d6ca233894ff9fd63c6d3114304c153252"
+  },
+  {
+    "key": "sw",
+    "url": "https://storyweaver.org.in/attributions",
+    "acquiredAt": "2026-10-04",
+    "sha256": "ad10bba3b2f8f88b93e7ea5b34d0f5e2a68a5bd538341a1818e5c99099eb5ec7"
+  },
+  {
+    "key": "cc",
+    "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+    "acquiredAt": "2026-10-04",
+    "sha256": "58230517b7895aa219ff46a6ed63e67057a1582fb9ea054b16728a8c13525650"
+  }
+]

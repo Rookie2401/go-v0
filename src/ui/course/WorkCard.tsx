@@ -12,7 +12,8 @@ import { CopyImporter } from './CopyImporter';
 import { pointerOnly, registerChips, rightsDetail, workRightsLine } from './wording';
 import './course.css';
 
-export const chapterLabel = (t: Text): string => (t.chapter ? `${t.chapter.index}. ${t.chapter.title ?? t.title}` : t.title);
+/** "3. Chapter title" — but a chapter of Scripture is named by its book and chapter ("Psalms 23"), not by its running number in the Bible. */
+export const chapterLabel = (t: Text): string => (t.chapter ? (t.kind === 'scripture' ? (t.chapter.title ?? t.title) : `${t.chapter.index}. ${t.chapter.title ?? t.title}`) : t.title);
 
 /** The first chapter (in order) he has not finished; the first one when all are finished or progress is not known yet. */
 export function firstUnfinished(texts: readonly Text[], progress: ReadonlyMap<string, ReadingProgress>): Text | undefined {
@@ -42,7 +43,7 @@ export function WorkCard({ work, texts, held, progress, onImported }: {
         {work.author && <span className="work__author" lang={work.lang}> · {work.author}</span>}
         {work.optional && <span className="work__optional"> (optional)</span>}
       </h4>
-      {work.purpose.length > 0 && <p className="work__purpose">{work.purpose.join(' · ')}</p>}
+      {(work.purpose?.length ?? 0) > 0 && <p className="work__purpose">{work.purpose.join(' · ')}</p>}
       {chips.length > 0 && (
         <ul className="chips work__chips" aria-label="Varieties of the language in this work">
           {chips.map((c) => <li key={c} className="chip">{c}</li>)}

@@ -305,7 +305,16 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
   // fast path: the stored content signature equals what this import would write
   if (existing) {
     const sig = await store.meta.get(signatureKey(textId));
-    if (sig?.value === plan.signature) return report('unchanged', existing.contentVersion, 0, 0);
+    const native = doc.curriculum?.nativeReview;
+    if (native && (native.contentVersion !== existing.contentVersion || native.language !== lang)) {
+      plan.decision.published = false;
+      const reason = 'curriculum native review does not match the current target-language wording version';
+      if (!plan.decision.unpublishedReasons.includes(reason)) plan.decision.unpublishedReasons.push(reason);
+    }
+    if (sig?.value === plan.signature && existing.published === plan.decision.published
+      && JSON.stringify(existing.unpublishedReasons) === JSON.stringify(plan.decision.unpublishedReasons)) {
+      return report('unchanged', existing.contentVersion, 0, 0);
+    }
   }
 
   // ── what exists for this text ──
@@ -432,6 +441,7 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
     id: doc.source.id, title: doc.source.title, attribution: doc.source.attribution, provenance: doc.source.provenance, author: doc.source.author,
     publisher: doc.source.publisher, url: doc.source.url, edition: doc.source.edition, rights: doc.source.rights, licenseNote: doc.source.licenseNote,
     authorship: doc.source.authorship,
+    sourceHash: doc.source.sourceHash, retrievedAt: doc.source.retrievedAt, licence: doc.source.licence, modifications: doc.source.modifications,
   });
   await putChanged(store.sources, [source]);
   if (!(await store.corpora.get(doc.corpus.id))) await store.corpora.put({ id: doc.corpus.id, lang, kind: doc.corpus.kind, title: doc.corpus.title });
@@ -571,11 +581,26 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
     transformations, contentVersion,
     workId: plan.workId, chapter: doc.work?.chapter ? compact({ index: doc.work.chapter.index, title: doc.work.chapter.title }) : undefined,
     personalCopy: plan.decision.personalCopy, teamText: plan.decision.teamText,
+    curriculum: doc.curriculum ? { ...structuredClone(doc.curriculum), lifecycle: plan.decision.published && doc.curriculum.lifecycle === 'ready' ? 'published' : doc.curriculum.lifecycle } : undefined, readingAssessmentId: doc.readingAssessmentId,
     streams: doc.streams ? [...doc.streams] : undefined, domains: doc.domains ? [...doc.domains] : undefined, variety: doc.variety, quality: doc.quality,
     scripture: doc.scripture
       ? compact({ book: doc.scripture.book, chapter: doc.scripture.chapter, translationId: doc.scripture.translationId, edition: doc.scripture.edition, verification: doc.scripture.verification })
       : undefined,
   });
+  if (text.curriculum && (doc.generated || text.curriculum.provenance.kind !== 'original' || doc.editorialTags.includes('needs-native-review'))) {
+    const native = text.curriculum.nativeReview;
+    if (!native && plan.decision.published && doc.review.level === 'native' && doc.review.reviewedBy && doc.review.reviewedAt) {
+      // Carry the explicit, signature-bound document review; no review is inferred from a name or label.
+      text.curriculum.nativeReview = { by: doc.review.reviewedBy, at: doc.review.reviewedAt, language: lang, contentVersion };
+    } else if (native && (native.contentVersion !== contentVersion || native.language !== lang)) {
+      text.published = false;
+      const reason = 'curriculum native review does not match the current target-language wording version';
+      if (!text.unpublishedReasons.includes(reason)) text.unpublishedReasons.push(reason);
+      text.curriculum.lifecycle = 'native_review';
+      plan.decision.published = false;
+      plan.decision.unpublishedReasons = [...text.unpublishedReasons];
+    }
+  }
   await store.meta.put({ id: signatureKey(textId), value: plan.signature, updatedAt: now });
   await store.texts.put(text); // LAST: a failed import never leaves a published partial text
   return report(existing ? 'updated' : 'created', contentVersion, added, retire.length);

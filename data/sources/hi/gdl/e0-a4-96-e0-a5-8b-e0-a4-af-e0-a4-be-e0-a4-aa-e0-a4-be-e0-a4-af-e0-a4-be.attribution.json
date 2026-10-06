@@ -1,0 +1,44 @@
+{
+  "title": "खोया पाया",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%96%e0%a5%8b%e0%a4%af%e0%a4%be-%e0%a4%aa%e0%a4%be%e0%a4%af%e0%a4%be/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Sukhada Rahalkar",
+    "Illustrator: Sukhada Rahalkar",
+    "Translator: Poonam S. Kudesia",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: खोया पाया is translated by Poonam S. Kudesia . The © for this translation lies with Pratham Books, 2014. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' Lost and Found ' , by Sukhada Rahalkar . © Pratham Books , 2014. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This book has been published on StoryWeaver by Pratham Books.The development of the print version of 'My Car' has been supported by Parag (Promoting Innovative Publishing in Education), a Sir Ratan Tata Trust Initiative. www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Boy searching for something in a pile , by Sukhada Rahalkar © Pratham Books, 2014. Some rights reserved. Released under CC BY 4.0 license. Page 2: Boy searching for something , by Sukhada Rahalkar © Pratham Books, 2014. Some rights reserved. Released under CC BY 4.0 license. Page 3: Boy thinking , by Sukhada Rahalkar © Pratham Books, 2014. Some rights reserved. Released under CC BY 4.0 license. Page 4: Boy looking for something in a box and under a baby , by Sukhada Rahalkar © Pratham Books, 2014. Some rights reserved. Released under CC BY 4.0 license. Page 5: Boy crying , by Sukhada Rahalkar © Pratham Books, 2014. Some rights reserved. Released under CC BY 4.0 license. Page 6: Boy lookng for something in a pile , by Sukhada Rahalkar © Pratham Books, 2014. Some rights reserved. Released under CC BY 4.0 license. Page 7: Boy pushing a sofa and carrying a stool , by Sukhada Rahalkar © Pratham Books, 2014. Some rights reserved. Released under CC BY 4.0 license. Page 8: Old lady holding a yo-yo , by Sukhada Rahalkar © Pratham Books, 2014. Some rights reserved. Released under CC BY 4.0 license. Page 9: Old lady playing with a yo-yo , by Sukhada Rahalkar © Pratham Books, 2014. Some rights reserved. Released under CC BY 4.0 license. Page 10: Boy hugging old lady holding a yo-yo , by Sukhada Rahalkar © Pratham Books, 2014. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Illustration Attributions:",
+    "Page 11: Boy and old lady playing with a yo-yo , by Sukhada Rahalkar © Pratham Books, 2014. Some rights reserved. Released under CC BY 4.0 license. Page 12: Boy looking upset and old lady playing with a yo-yo on a rocking chair , by Sukhada Rahalkar © Pratham Books, 2014. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "खोया पाया (Hindi)",
+    "कुछ खोये सामान की तलाश में लगे एक छोटे से बच्चे को कैसा लगता है जब उसे वह सामान मिल जाता है? पढ़िए और खुद जान जाइये।",
+    "यह पठन स्तर १ की किताब है, उन बच्चों के लिए जो पढ़ना शुरू कर रहे हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "4dbdec56b155566183c57591d42063851a15c78510c222af4f6463c7f2f5ba03"
+}

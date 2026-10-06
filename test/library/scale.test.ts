@@ -170,7 +170,7 @@ describe(`scale: a ${ROWS}-row catalogue on the memory store`, () => {
     const r = await lib.search({ lang: 'es', stream: 'scripture', limit: 10 });
     expect(r.items).toHaveLength(10);
     expect(meter.reads.rows).toBeLessThanOrEqual(1 + 1 + 10 + 2); // heads, chunk, page, plus the library's own checks
-    expect(meter.reads.listCalls).toBe(0);
+    expect(meter.reads.listCalls).toBe(1); // resident-language scan withdraws protected assessment IDs; the 20,000-row catalogue remains indexed
   });
 });
 

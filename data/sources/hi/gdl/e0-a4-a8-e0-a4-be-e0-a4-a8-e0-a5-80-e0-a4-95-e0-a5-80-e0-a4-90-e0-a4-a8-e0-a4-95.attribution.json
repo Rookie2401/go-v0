@@ -1,0 +1,40 @@
+{
+  "title": "नानी की ऐनक",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%a8%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%95%e0%a5%80-%e0%a4%90%e0%a4%a8%e0%a4%95/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Rohini Nilekani",
+    "Illustrator: Tanaya Vyas",
+    "Translator: Arti Smit",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: नानी की ऐनक is translated by Arti Smit . The © for this translation lies with Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' Grandma’s Glasses ' , by Rohini Nilekani . © Pratham Books , 2015. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This book has been published on StoryWeaver by Pratham Books. The author of this book, Rohini Nilekani used to earlier write under the pseudonym 'Noni'. The development of the digital version of this book has been supported by HDFC Asset Management Company Limited (A joint venture with Standard Life Investments). Pratham Books is a not-for-profit organization that publishes books in multiple Indian languages to promote reading among children. www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Girl thinking with lady in the foreground, seen through spectacles , by Tanaya Vyas © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 2: Girl standing on the cot, Lady standing , by Tanaya Vyas © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 3: Girl behind a cot, Lady knitting , by Tanaya Vyas © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 4: Girl under a chair, Open Cupboard , by Tanaya Vyas © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 5: Women eating and drinking at the dining table, with girl standing , by Tanaya Vyas © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 6: Women drinking tea and having snacks at the table , by Tanaya Vyas © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 7: Woman and girl holding a sweater, Cat following a girl, lady writing a letter , by Tanaya Vyas © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 8: Letter being written, Old woman and girl holding an orange sweater , by Tanaya Vyas © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 9: Girl looking at Telephone and Spectacles , by Tanaya Vyas © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "नानी की ऐनक (Hindi)",
+    "नानी हमेशा अपनी ऐनक कहीं रखकर भूल जाती हैं। कभी-कभी उन्हें ऐनक ढूँढने के लिए एक जासूस की ज़रूरत पड़ती है।",
+    "यह पठन स्तर २ की किताब है, उन बच्चों के लिए जो सरल शब्द पढ़ लेते हैं और थोड़ी मदद से नए शब्द भी पढ़ सकते हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "d9c89d67b53edaad27329b939b7c59519857f8ec0617c5349f72350448dcf1a5"
+}

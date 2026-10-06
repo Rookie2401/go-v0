@@ -1,0 +1,7 @@
+import fs from 'node:fs';
+const p='data/sources/sq-literature/research.json';const j=JSON.parse(fs.readFileSync(p));const focused={
+ 'fishta-lahuta-e-malcis':{url:'https://exploral.eu/explore/uploads/balkaneana/pdfs/577e1c785a41e.pdf',edition:'final edition 1937; historical Gheg epic',rightsEvidence:'WIPO Albania Law No. 35/2016, Article 41: life + 70 years; Fishta died 1940, so Albania term expired after 2010.',usEvidence:'1937 US publication term not cleared; treated as protected through 2032 (public domain from 2033, if the 95-year term applies) for this review.',blocker:'Exact scan/transcription and licence remain unverified.'},
+ 'migjeni-vargje-te-lira':{url:'https://adsh.unishk.edu.al/items/show/45',edition:'1936, Shtypshkronja Gutenberg, Tirana, 84 pages, identifier A/3-R-49',rightsEvidence:'WIPO Albania Law No. 35/2016, Article 41: life + 70 years; Migjeni died 1938, so Albania term expired after 2008.',usEvidence:'1936 US publication term not cleared; treated as protected through 2031 (public domain from 2032, if the 95-year term applies) for this review.',blocker:'Exact scan/transcription and licence remain unverified.'},
+ 'de-rada-milosao':{url:'https://wikisource.org/wiki/Author:Jeronym_De_Rada',edition:'catalogue candidate first published 1836',blocker:'No exact scan/licence record verified in this bounded lane; De Rada died 1903 but source-country edition/transcription rights remain unestablished.'}
+};for(const x of j.items)if(focused[x.slug])x.focusedReview=focused[x.slug];fs.writeFileSync(p,JSON.stringify(j,null,2)+'\n');
+

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { ids } from '../../src/core';
+import { buildFixtureText, ids } from '../../src/core';
 import type { AudioPlayed, ShadowingAttempt, UserRecordingCreated } from '../../src/core';
 import { Testimony } from '../../src/ui/testimony/Testimony';
 import { setPref } from '../../src/ui/prefs';
@@ -29,6 +29,7 @@ async function withSuggestions() {
           id: 'sug:b', sentenceIndex: 1, kind: 'recombination', original: 'Dios me perdonó', suggested: 'Dios me ha perdonado',
           explanation: 'You have met this frame.', categories: ['collocation'], priority: 3,
           familiar: [{ itemId: 'form:es:perdonó', itemKind: 'form', encounterCount: 3, textIds: ['text:es:story-01'], readingLevel: 'recognized', listeningLevel: 'unseen', writingLevel: 'unseen' }],
+          sources: [{ itemId: 'form:es:perdonó', textId: 'text:es:story-01', textTitle: 'Story 1', sentenceId: 'text:es:story-01:s:0', excerpt: 'Dios me perdonó.', surface: 'corpus' }],
         }),
         suggestion({
           id: 'sug:c', sentenceIndex: 1, kind: 'expansion', original: 'Dios', suggested: 'el Señor', explanation: 'This is new language.', categories: ['lexical-choice'], priority: 4,
@@ -67,11 +68,30 @@ describe('My Testimony editor', () => {
     expect(cards[0].textContent).toContain('Use creo after yo.');
     expect(cards[1].textContent).toContain('Uses language you have met');
     expect(cards[1].textContent).toContain('encountered 3 times in Story 1');
+    expect(cards[1].querySelector('a[href="/read/text%3Aes%3Astory-01"]')?.textContent).toBe('Story 1');
     expect(cards[2].textContent).toContain('New expression');
     expect(cards[2].textContent).toContain('Lord');
     expect(cards[2].textContent).toContain('changes the meaning');
     // the learner's draft is untouched until they accept something
     expect(editor().value).toBe(DRAFT);
+  });
+
+  it('does not display cached wording from a protected source when that source is no longer learner-readable', async () => {
+    h = await makeHarness({ tell: { suggestions: [suggestion({
+      id: 'sug:protected',
+      sources: [{ itemId: 'form:es:secreto', textId: 'text:es:protected', textTitle: 'Secret assessment', sentenceId: 'secret-sentence', excerpt: 'Esta frase no debe aparecer.', surface: 'corpus' }],
+    })] } });
+    const protectedText = await buildFixtureText(h.store, { lang: 'es', slug: 'protected', title: 'Secret assessment', sentences: [{ text: 'Esta frase no debe aparecer.', tokens: [{ surface: 'Esta', lemma: 'este' }] }] });
+    await h.store.texts.put({ ...protectedText, listeningAssessmentId: 'assessment:secret' });
+    mounted = await h.mount(<Testimony />);
+    await typeInto(editor(), DRAFT);
+    await click(button(mounted.container, 'Check my writing'));
+
+    const card = q(mounted.container, 'li[data-suggestion-id="sug:protected"]')!;
+    expect(card.textContent).toContain('Source no longer available.');
+    expect(card.textContent).not.toContain('Secret assessment');
+    expect(card.textContent).not.toContain('Esta frase no debe aparecer.');
+    expect(card.querySelector('a')).toBeNull();
   });
 
   it('accept calls GoTell and only then puts the suggested wording in the draft; reject and edit likewise', async () => {

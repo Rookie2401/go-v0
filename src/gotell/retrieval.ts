@@ -132,15 +132,20 @@ export async function retrieveWording(deps: RetrievalDeps, userId: string, lang:
   for (const e of encs) if (!entries.has(e.sentenceId)) entries.set(e.sentenceId, { sentenceId: e.sentenceId, textId: e.textId, surface: e.surface });
   const textIds = [...new Set([...entries.values()].map((e) => e.textId))];
   const texts = new Map<string, Text>();
-  for (const t of await store.texts.getMany(textIds)) if (t && t.kind !== 'testimony' && t.lang === lang) texts.set(t.id, t);
-  const pool = [...entries.values()].filter((e) => texts.has(e.textId));
+  const corpusRows = await store.corpora.where('kind', 'testimony');
+  const privateCorpusIds = new Set(corpusRows.map((c) => c.id));
+  for (const t of await store.texts.getMany(textIds)) {
+    if (t && t.kind !== 'testimony' && !privateCorpusIds.has(t.corpusId) && t.listeningAssessmentId === undefined && t.readingAssessmentId === undefined && t.lang === lang && t.published === true) texts.set(t.id, t);
+  }
+  let pool = [...entries.values()].filter((e) => texts.has(e.textId));
 
   // 2. per text: tokens, rescues, phrase occurrences (indexed queries, one per text)
   const tokensBySentence = new Map<string, Token[]>();
   const rescueStems = new Map<string, Set<string>>();
   const occBySentence = new Map<string, PhraseOccurrence[]>();
   const sentenceRows = new Map<string, Sentence>();
-  for (const s of await store.sentences.getMany(pool.map((e) => e.sentenceId))) if (s) sentenceRows.set(s.id, s);
+  for (const s of await store.sentences.getMany(pool.map((e) => e.sentenceId))) if (s && s.retiredInVersion === undefined) sentenceRows.set(s.id, s);
+  pool = pool.filter((e) => sentenceRows.has(e.sentenceId));
   const wanted = new Set(sentenceRows.keys());
   for (const textId of new Set(pool.map((e) => e.textId))) {
     for (const t of await store.tokens.where('textId', textId)) {

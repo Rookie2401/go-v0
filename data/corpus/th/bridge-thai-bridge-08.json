@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "bridge-thai-bridge-08",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "วันหยุดริมทะเล",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-th-bridge-drafts",
+    "kind": "comprehensible-input",
+    "title": "Thai beginner bridge drafts"
+  },
+  "source": {
+    "id": "src:th:thai-bridge-08",
+    "title": "วันหยุดริมทะเล — course-owned draft",
+    "author": "Course authors (machine-drafted)",
+    "attribution": "Course-owned Thai draft. Machine-drafted for native-speaker review; no external source or translation claimed.",
+    "provenance": "Original controlled draft written for the course-owned beginner review queue. It is not a published or source-reviewed Thai work.",
+    "rights": "owner-authored",
+    "licenseNote": "Course-owned draft; may not be published until native review.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Native Thai reviewer required. Source fidelity is not applicable because this is original course-owned draft text."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "ทะเล",
+    "น้ำ",
+    "ทราย"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "course-owned-draft"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss for review only"
+  },
+  "sections": [
+    {
+      "title": "วันหยุดริมทะเล",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ครอบครัวของฉันไปทะเลในวันหยุด",
+              "english": "My family goes to the sea during the holiday."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันสวมหมวกเพราะแดดแรงมาก",
+              "english": "I wear a hat because the sun is very strong."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "น้องเดินเล่นบนทรายและเก็บเปลือกหอย",
+              "english": "My younger sibling walks on the sand and collects shells."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อเตือนให้เราอยู่ใกล้ผู้ใหญ่",
+              "english": "Father reminds us to stay near an adult."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แม่ปูเสื่อใต้ต้นไม้ให้ทุกคนนั่ง",
+              "english": "Mother spreads a mat under a tree for everyone to sit."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เราใช้น้ำล้างมือก่อนกินอาหาร",
+              "english": "We use water to wash our hands before eating."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "หลังอาหาร เรามองเรือไกลๆ บนทะเล",
+              "english": "After eating, we watch boats far out on the sea."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ลมเย็นทำให้ฉันรู้สึกสบาย",
+              "english": "The cool wind makes me feel comfortable."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ก่อนกลับบ้าน เราถ่ายรูปครอบครัวหนึ่งรูป",
+              "english": "Before going home, we take one family picture."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันเขียนชื่อบนเปลือกหอยหนึ่งชิ้น",
+              "english": "I write my name on one shell."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แม่บอกว่าอย่านำของจากทะเลมากเกินไป",
+              "english": "Mother says not to take too many things from the sea."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เราทิ้งขยะลงถังแล้วเก็บเสื่อ",
+              "english": "We put the rubbish in a bin and roll up the mat."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "work": {
+    "slug": "bridge-thai-bridge-08",
+    "courseId": "thailand-th",
+    "chapter": {
+      "index": 7,
+      "title": "วันหยุดริมทะเล"
+    }
+  }
+}

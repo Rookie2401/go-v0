@@ -1,0 +1,308 @@
+{
+ "lang": "hi",
+ "library": "library-hi@2026-10-02",
+ "texts": 1312,
+ "deep": null,
+ "checks": {
+  "catalogue: a work with texts in the library is recorded as bundlable": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: every text names a work": {
+   "checked": 1312,
+   "failed": 0
+  },
+  "catalogue: the rights of the texts are the rights of their work": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: the shelf of a work exists in the course": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: the shelf of the texts is the shelf of their work": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: the stream of the texts is a stream of the course": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: the stream of the texts is a stream of their work": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: the work of a text is in the course catalogue": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: the work says its texts are in the library": {
+   "checked": 5,
+   "failed": 0
+  },
+  "order (Scripture): a bundled selection of verses is not numbered as a chapter of the Bible": {
+   "checked": 1,
+   "failed": 1
+  },
+  "order (Scripture): a chapter is numbered by its place in the canon": {
+   "checked": 1189,
+   "failed": 174
+  },
+  "order (Scripture): every chapter of the canon is present": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order (Scripture): every chapter says its book and chapter": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order (Scripture): no chapter twice": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order: bundled and library chapters of one work do not share a number": {
+   "checked": 5,
+   "failed": 1
+  },
+  "order: every text of a work has a chapter number": {
+   "checked": 5,
+   "failed": 0
+  },
+  "order: no chapter number twice in a work": {
+   "checked": 5,
+   "failed": 0
+  },
+  "order: the chapters of a work run without gaps": {
+   "checked": 4,
+   "failed": 0
+  },
+  "order: the chapters of a work start at 1 (or 0 for front matter)": {
+   "checked": 4,
+   "failed": 0
+  },
+  "order: the index lists the chapters of a work in chapter order": {
+   "checked": 5,
+   "failed": 0
+  },
+  "structure: a row is listed under its own primary stream": {
+   "checked": 1312,
+   "failed": 0
+  },
+  "structure: every row has its document file": {
+   "checked": 1312,
+   "failed": 0
+  },
+  "structure: every row has its profile file": {
+   "checked": 1312,
+   "failed": 0
+  },
+  "structure: every row of an index shard is well formed": {
+   "checked": 5,
+   "failed": 0
+  },
+  "structure: no document file without a row": {
+   "checked": 1312,
+   "failed": 0
+  },
+  "structure: no profile file without a row": {
+   "checked": 1312,
+   "failed": 0
+  },
+  "structure: no text id twice": {
+   "checked": 1312,
+   "failed": 0
+  },
+  "structure: the manifest counts the texts it lists": {
+   "checked": 1,
+   "failed": 0
+  },
+  "structure: the manifest word count is the sum of the rows": {
+   "checked": 1,
+   "failed": 0
+  }
+ },
+ "findings": {
+  "order: bundled and library chapters of one work do not share a number": [
+   "work:india-hi:bible-hindi: 2, 3, 4, 5 (bundled: bible-1john-1=5, bible-gen-1=1, bible-mrk-1=4, bible-psa-1=2, bible-psa-23=3)"
+  ],
+  "order (Scripture): a chapter is numbered by its place in the canon": [
+   "text:hi:bible-rom-1: ROM.1 is numbered 1019, its place is 1047",
+   "text:hi:bible-rom-2: ROM.2 is numbered 1020, its place is 1048",
+   "text:hi:bible-rom-3: ROM.3 is numbered 1021, its place is 1049",
+   "text:hi:bible-rom-4: ROM.4 is numbered 1022, its place is 1050",
+   "text:hi:bible-rom-5: ROM.5 is numbered 1023, its place is 1051",
+   "text:hi:bible-rom-6: ROM.6 is numbered 1024, its place is 1052",
+   "text:hi:bible-rom-7: ROM.7 is numbered 1025, its place is 1053",
+   "text:hi:bible-rom-8: ROM.8 is numbered 1026, its place is 1054",
+   "text:hi:bible-rom-9: ROM.9 is numbered 1027, its place is 1055",
+   "text:hi:bible-rom-10: ROM.10 is numbered 1028, its place is 1056",
+   "text:hi:bible-rom-11: ROM.11 is numbered 1029, its place is 1057",
+   "text:hi:bible-rom-12: ROM.12 is numbered 1030, its place is 1058",
+   "text:hi:bible-rom-13: ROM.13 is numbered 1031, its place is 1059",
+   "text:hi:bible-rom-14: ROM.14 is numbered 1032, its place is 1060",
+   "text:hi:bible-rom-15: ROM.15 is numbered 1033, its place is 1061",
+   "text:hi:bible-rom-16: ROM.16 is numbered 1034, its place is 1062",
+   "text:hi:bible-1co-1: 1CO.1 is numbered 1035, its place is 1063",
+   "text:hi:bible-1co-2: 1CO.2 is numbered 1036, its place is 1064",
+   "text:hi:bible-1co-3: 1CO.3 is numbered 1037, its place is 1065",
+   "text:hi:bible-1co-4: 1CO.4 is numbered 1038, its place is 1066",
+   "text:hi:bible-1co-5: 1CO.5 is numbered 1039, its place is 1067",
+   "text:hi:bible-1co-6: 1CO.6 is numbered 1040, its place is 1068",
+   "text:hi:bible-1co-7: 1CO.7 is numbered 1041, its place is 1069",
+   "text:hi:bible-1co-8: 1CO.8 is numbered 1042, its place is 1070",
+   "text:hi:bible-1co-9: 1CO.9 is numbered 1043, its place is 1071",
+   "text:hi:bible-1co-10: 1CO.10 is numbered 1044, its place is 1072",
+   "text:hi:bible-1co-11: 1CO.11 is numbered 1045, its place is 1073",
+   "text:hi:bible-1co-12: 1CO.12 is numbered 1046, its place is 1074",
+   "text:hi:bible-1co-13: 1CO.13 is numbered 1047, its place is 1075",
+   "text:hi:bible-1co-14: 1CO.14 is numbered 1048, its place is 1076",
+   "text:hi:bible-1co-15: 1CO.15 is numbered 1049, its place is 1077",
+   "text:hi:bible-1co-16: 1CO.16 is numbered 1050, its place is 1078",
+   "text:hi:bible-2co-1: 2CO.1 is numbered 1051, its place is 1079",
+   "text:hi:bible-2co-2: 2CO.2 is numbered 1052, its place is 1080",
+   "text:hi:bible-2co-3: 2CO.3 is numbered 1053, its place is 1081",
+   "text:hi:bible-2co-4: 2CO.4 is numbered 1054, its place is 1082",
+   "text:hi:bible-2co-5: 2CO.5 is numbered 1055, its place is 1083",
+   "text:hi:bible-2co-6: 2CO.6 is numbered 1056, its place is 1084",
+   "text:hi:bible-2co-7: 2CO.7 is numbered 1057, its place is 1085",
+   "text:hi:bible-2co-8: 2CO.8 is numbered 1058, its place is 1086",
+   "text:hi:bible-2co-9: 2CO.9 is numbered 1059, its place is 1087",
+   "text:hi:bible-2co-10: 2CO.10 is numbered 1060, its place is 1088",
+   "text:hi:bible-2co-11: 2CO.11 is numbered 1061, its place is 1089",
+   "text:hi:bible-2co-12: 2CO.12 is numbered 1062, its place is 1090",
+   "text:hi:bible-2co-13: 2CO.13 is numbered 1063, its place is 1091",
+   "text:hi:bible-gal-1: GAL.1 is numbered 1064, its place is 1092",
+   "text:hi:bible-gal-2: GAL.2 is numbered 1065, its place is 1093",
+   "text:hi:bible-gal-3: GAL.3 is numbered 1066, its place is 1094",
+   "text:hi:bible-gal-4: GAL.4 is numbered 1067, its place is 1095",
+   "text:hi:bible-gal-5: GAL.5 is numbered 1068, its place is 1096",
+   "text:hi:bible-gal-6: GAL.6 is numbered 1069, its place is 1097",
+   "text:hi:bible-eph-1: EPH.1 is numbered 1070, its place is 1098",
+   "text:hi:bible-eph-2: EPH.2 is numbered 1071, its place is 1099",
+   "text:hi:bible-eph-3: EPH.3 is numbered 1072, its place is 1100",
+   "text:hi:bible-eph-4: EPH.4 is numbered 1073, its place is 1101",
+   "text:hi:bible-eph-5: EPH.5 is numbered 1074, its place is 1102",
+   "text:hi:bible-eph-6: EPH.6 is numbered 1075, its place is 1103",
+   "text:hi:bible-php-1: PHP.1 is numbered 1076, its place is 1104",
+   "text:hi:bible-php-2: PHP.2 is numbered 1077, its place is 1105",
+   "text:hi:bible-php-3: PHP.3 is numbered 1078, its place is 1106",
+   "text:hi:bible-php-4: PHP.4 is numbered 1079, its place is 1107",
+   "text:hi:bible-col-1: COL.1 is numbered 1080, its place is 1108",
+   "text:hi:bible-col-2: COL.2 is numbered 1081, its place is 1109",
+   "text:hi:bible-col-3: COL.3 is numbered 1082, its place is 1110",
+   "text:hi:bible-col-4: COL.4 is numbered 1083, its place is 1111",
+   "text:hi:bible-1th-1: 1TH.1 is numbered 1084, its place is 1112",
+   "text:hi:bible-1th-2: 1TH.2 is numbered 1085, its place is 1113",
+   "text:hi:bible-1th-3: 1TH.3 is numbered 1086, its place is 1114",
+   "text:hi:bible-1th-4: 1TH.4 is numbered 1087, its place is 1115",
+   "text:hi:bible-1th-5: 1TH.5 is numbered 1088, its place is 1116",
+   "text:hi:bible-2th-1: 2TH.1 is numbered 1089, its place is 1117",
+   "text:hi:bible-2th-2: 2TH.2 is numbered 1090, its place is 1118",
+   "text:hi:bible-2th-3: 2TH.3 is numbered 1091, its place is 1119",
+   "text:hi:bible-1ti-1: 1TI.1 is numbered 1092, its place is 1120",
+   "text:hi:bible-1ti-2: 1TI.2 is numbered 1093, its place is 1121",
+   "text:hi:bible-1ti-3: 1TI.3 is numbered 1094, its place is 1122",
+   "text:hi:bible-1ti-4: 1TI.4 is numbered 1095, its place is 1123",
+   "text:hi:bible-1ti-5: 1TI.5 is numbered 1096, its place is 1124",
+   "text:hi:bible-1ti-6: 1TI.6 is numbered 1097, its place is 1125",
+   "text:hi:bible-2ti-1: 2TI.1 is numbered 1098, its place is 1126",
+   "text:hi:bible-2ti-2: 2TI.2 is numbered 1099, its place is 1127",
+   "text:hi:bible-2ti-3: 2TI.3 is numbered 1100, its place is 1128",
+   "text:hi:bible-2ti-4: 2TI.4 is numbered 1101, its place is 1129",
+   "text:hi:bible-tit-1: TIT.1 is numbered 1102, its place is 1130",
+   "text:hi:bible-tit-2: TIT.2 is numbered 1103, its place is 1131",
+   "text:hi:bible-tit-3: TIT.3 is numbered 1104, its place is 1132",
+   "text:hi:bible-phm-1: PHM.1 is numbered 1105, its place is 1133",
+   "text:hi:bible-heb-1: HEB.1 is numbered 1106, its place is 1134",
+   "text:hi:bible-heb-2: HEB.2 is numbered 1107, its place is 1135",
+   "text:hi:bible-heb-3: HEB.3 is numbered 1108, its place is 1136",
+   "text:hi:bible-heb-4: HEB.4 is numbered 1109, its place is 1137",
+   "text:hi:bible-heb-5: HEB.5 is numbered 1110, its place is 1138",
+   "text:hi:bible-heb-6: HEB.6 is numbered 1111, its place is 1139",
+   "text:hi:bible-heb-7: HEB.7 is numbered 1112, its place is 1140",
+   "text:hi:bible-heb-8: HEB.8 is numbered 1113, its place is 1141",
+   "text:hi:bible-heb-9: HEB.9 is numbered 1114, its place is 1142",
+   "text:hi:bible-heb-10: HEB.10 is numbered 1115, its place is 1143",
+   "text:hi:bible-heb-11: HEB.11 is numbered 1116, its place is 1144",
+   "text:hi:bible-heb-12: HEB.12 is numbered 1117, its place is 1145",
+   "text:hi:bible-heb-13: HEB.13 is numbered 1118, its place is 1146",
+   "text:hi:bible-jas-1: JAS.1 is numbered 1119, its place is 1147",
+   "text:hi:bible-jas-2: JAS.2 is numbered 1120, its place is 1148",
+   "text:hi:bible-jas-3: JAS.3 is numbered 1121, its place is 1149",
+   "text:hi:bible-jas-4: JAS.4 is numbered 1122, its place is 1150",
+   "text:hi:bible-jas-5: JAS.5 is numbered 1123, its place is 1151",
+   "text:hi:bible-2pe-1: 2PE.1 is numbered 1124, its place is 1157",
+   "text:hi:bible-2pe-2: 2PE.2 is numbered 1125, its place is 1158",
+   "text:hi:bible-2pe-3: 2PE.3 is numbered 1126, its place is 1159",
+   "text:hi:bible-1john-1-remaining: 1JN.1 is numbered 1127, its place is 1160",
+   "text:hi:bible-1john-2: 1JN.2 is numbered 1128, its place is 1161",
+   "text:hi:bible-1john-3: 1JN.3 is numbered 1129, its place is 1162",
+   "text:hi:bible-1john-4: 1JN.4 is numbered 1130, its place is 1163",
+   "text:hi:bible-1john-5: 1JN.5 is numbered 1131, its place is 1164",
+   "text:hi:bible-2jn-1: 2JN.1 is numbered 1132, its place is 1165",
+   "text:hi:bible-jud-1: JUD.1 is numbered 1133, its place is 1167",
+   "text:hi:bible-rev-1: REV.1 is numbered 1134, its place is 1168",
+   "text:hi:bible-rev-2: REV.2 is numbered 1135, its place is 1169",
+   "text:hi:bible-rev-3: REV.3 is numbered 1136, its place is 1170",
+   "text:hi:bible-rev-4: REV.4 is numbered 1137, its place is 1171",
+   "text:hi:bible-rev-5: REV.5 is numbered 1138, its place is 1172",
+   "text:hi:bible-rev-6: REV.6 is numbered 1139, its place is 1173",
+   "text:hi:bible-rev-7: REV.7 is numbered 1140, its place is 1174",
+   "text:hi:bible-rev-8: REV.8 is numbered 1141, its place is 1175",
+   "text:hi:bible-rev-9: REV.9 is numbered 1142, its place is 1176",
+   "text:hi:bible-rev-10: REV.10 is numbered 1143, its place is 1177",
+   "text:hi:bible-rev-11: REV.11 is numbered 1144, its place is 1178",
+   "text:hi:bible-rev-12: REV.12 is numbered 1145, its place is 1179",
+   "text:hi:bible-rev-13: REV.13 is numbered 1146, its place is 1180",
+   "text:hi:bible-rev-14: REV.14 is numbered 1147, its place is 1181",
+   "text:hi:bible-rev-15: REV.15 is numbered 1148, its place is 1182",
+   "text:hi:bible-rev-16: REV.16 is numbered 1149, its place is 1183",
+   "text:hi:bible-rev-17: REV.17 is numbered 1150, its place is 1184",
+   "text:hi:bible-rev-18: REV.18 is numbered 1151, its place is 1185",
+   "text:hi:bible-rev-19: REV.19 is numbered 1152, its place is 1186",
+   "text:hi:bible-rev-20: REV.20 is numbered 1153, its place is 1187",
+   "text:hi:bible-rev-21: REV.21 is numbered 1154, its place is 1188",
+   "text:hi:bible-rev-22: REV.22 is numbered 1155, its place is 1189",
+   "text:hi:bible-act-1: ACT.1 is numbered 1156, its place is 1019",
+   "text:hi:bible-act-2: ACT.2 is numbered 1157, its place is 1020",
+   "text:hi:bible-act-3: ACT.3 is numbered 1158, its place is 1021",
+   "text:hi:bible-act-4: ACT.4 is numbered 1159, its place is 1022",
+   "text:hi:bible-act-5: ACT.5 is numbered 1160, its place is 1023",
+   "text:hi:bible-act-6: ACT.6 is numbered 1161, its place is 1024",
+   "text:hi:bible-act-7: ACT.7 is numbered 1162, its place is 1025",
+   "text:hi:bible-act-8: ACT.8 is numbered 1163, its place is 1026",
+   "text:hi:bible-act-9: ACT.9 is numbered 1164, its place is 1027",
+   "text:hi:bible-act-10: ACT.10 is numbered 1165, its place is 1028",
+   "text:hi:bible-act-11: ACT.11 is numbered 1166, its place is 1029",
+   "text:hi:bible-act-12: ACT.12 is numbered 1167, its place is 1030",
+   "text:hi:bible-act-13: ACT.13 is numbered 1168, its place is 1031",
+   "text:hi:bible-act-14: ACT.14 is numbered 1169, its place is 1032",
+   "text:hi:bible-act-15: ACT.15 is numbered 1170, its place is 1033",
+   "text:hi:bible-act-16: ACT.16 is numbered 1171, its place is 1034",
+   "text:hi:bible-act-17: ACT.17 is numbered 1172, its place is 1035",
+   "text:hi:bible-act-18: ACT.18 is numbered 1173, its place is 1036",
+   "text:hi:bible-act-19: ACT.19 is numbered 1174, its place is 1037",
+   "text:hi:bible-act-20: ACT.20 is numbered 1175, its place is 1038",
+   "text:hi:bible-act-21: ACT.21 is numbered 1176, its place is 1039",
+   "text:hi:bible-act-22: ACT.22 is numbered 1177, its place is 1040",
+   "text:hi:bible-act-23: ACT.23 is numbered 1178, its place is 1041",
+   "text:hi:bible-act-24: ACT.24 is numbered 1179, its place is 1042",
+   "text:hi:bible-act-25: ACT.25 is numbered 1180, its place is 1043",
+   "text:hi:bible-act-26: ACT.26 is numbered 1181, its place is 1044",
+   "text:hi:bible-act-27: ACT.27 is numbered 1182, its place is 1045",
+   "text:hi:bible-act-28: ACT.28 is numbered 1183, its place is 1046",
+   "text:hi:bible-1pe-1: 1PE.1 is numbered 1184, its place is 1152",
+   "text:hi:bible-1pe-2: 1PE.2 is numbered 1185, its place is 1153",
+   "text:hi:bible-1pe-3: 1PE.3 is numbered 1186, its place is 1154",
+   "text:hi:bible-1pe-4: 1PE.4 is numbered 1187, its place is 1155",
+   "text:hi:bible-1pe-5: 1PE.5 is numbered 1188, its place is 1156",
+   "text:hi:bible-3jn-1: 3JN.1 is numbered 1189, its place is 1166",
+   "bundled bible-mrk-1: MRK.1 is numbered 4, its place is 958",
+   "bundled bible-psa-1: PSA.1 is numbered 2, its place is 479",
+   "bundled bible-psa-23: PSA.23 is numbered 3, its place is 501"
+  ],
+  "order (Scripture): a bundled selection of verses is not numbered as a chapter of the Bible": [
+   "bundled bible-1john-1: verses of 1JN.1, JHN.3 filed as chapter 5"
+  ]
+ }
+}

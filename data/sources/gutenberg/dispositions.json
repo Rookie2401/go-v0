@@ -1,0 +1,2869 @@
+[
+  {
+    "lang": "de",
+    "slug": "historical-school-readers",
+    "title": "Historical school readers (to be selected)",
+    "author": null,
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "grimm-khm",
+    "title": "Kinder- und Hausmärchen",
+    "author": "Jacob und Wilhelm Grimm",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "bechstein-maerchenbuch",
+    "title": "Deutsches Märchenbuch",
+    "author": "Ludwig Bechstein",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "hauff-maerchen",
+    "title": "Märchen (Die Karawane; Der Scheik von Alessandria; Das Wirtshaus im Spessart)",
+    "author": "Wilhelm Hauff",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "keller-kleider-machen-leute",
+    "title": "Kleider machen Leute",
+    "author": "Gottfried Keller",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "ebner-eschenbach-krambambuli",
+    "title": "Krambambuli",
+    "author": "Marie von Ebner-Eschenbach",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "keller-romeo-und-julia",
+    "title": "Romeo und Julia auf dem Dorfe",
+    "author": "Gottfried Keller",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "may-winnetou-1",
+    "title": "Winnetou I",
+    "author": "Karl May",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "stifter-bergkristall",
+    "title": "Bergkristall",
+    "author": "Adalbert Stifter",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "fontane-irrungen-wirrungen",
+    "title": "Irrungen, Wirrungen",
+    "author": "Theodor Fontane",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "hoffmann-nussknacker",
+    "title": "Nußknacker und Mausekönig",
+    "author": "E. T. A. Hoffmann",
+    "candidates": [
+      {
+        "id": "32034",
+        "title": "König Nußknacker und der arme Reinhold\nEin Kindermährchen in Bildern",
+        "author": "Hoffmann, Heinrich, 1809-1894",
+        "language": "de",
+        "confidence": 0.58,
+        "url": "https://www.gutenberg.org/ebooks/32034"
+      }
+    ],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "schnitzler-leutnant-gustl",
+    "title": "Leutnant Gustl",
+    "author": "Arthur Schnitzler",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "kleist-michael-kohlhaas",
+    "title": "Michael Kohlhaas",
+    "author": "Heinrich von Kleist",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "kleist-marquise-von-o",
+    "title": "Die Marquise von O….",
+    "author": "Heinrich von Kleist",
+    "candidates": [
+      {
+        "id": "6646",
+        "title": "Das Käthchen von Heilbronn: Oder, die Feuerprobe",
+        "author": "Kleist, Heinrich von, 1777-1811",
+        "language": "de",
+        "confidence": 0.68,
+        "url": "https://www.gutenberg.org/ebooks/6646"
+      },
+      {
+        "id": "35569",
+        "title": "Die Stadt ohne Juden: Ein Roman von übermorgen",
+        "author": "Bettauer, Hugo, 1872-1925; Von Wagner-Schidrowitz, Martha, 1892-1974 [Illustrator]",
+        "language": "de",
+        "confidence": 0.58,
+        "url": "https://www.gutenberg.org/ebooks/35569"
+      },
+      {
+        "id": "43903",
+        "title": "Die Lieder Gottfrieds von Neifen",
+        "author": "Gottfried, von Neifen, active 1234-1255; Haupt, Moriz, 1808-1874 [Editor]",
+        "language": "de",
+        "confidence": 0.58,
+        "url": "https://www.gutenberg.org/ebooks/43903"
+      },
+      {
+        "id": "48476",
+        "title": "Die Hexenrichter von Würzburg: Historische Novelle",
+        "author": "Seeburg, Franz von, 1836-1894",
+        "language": "de",
+        "confidence": 0.58,
+        "url": "https://www.gutenberg.org/ebooks/48476"
+      },
+      {
+        "id": "60295",
+        "title": "Die Hexe von Norderoog",
+        "author": "Perfall, Anton von, 1853-1912",
+        "language": "de",
+        "confidence": 0.58,
+        "url": "https://www.gutenberg.org/ebooks/60295"
+      },
+      {
+        "id": "60684",
+        "title": "Die Bären von Hohen-Esp: Roman",
+        "author": "Eschstruth, Nataly von, 1860-1939",
+        "language": "de",
+        "confidence": 0.58,
+        "url": "https://www.gutenberg.org/ebooks/60684"
+      }
+    ],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "hoffmann-der-sandmann",
+    "title": "Der Sandmann",
+    "author": "E. T. A. Hoffmann",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "buechner-lenz",
+    "title": "Lenz",
+    "author": "Georg Büchner",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "kafka-der-process",
+    "title": "Der Process",
+    "author": "Franz Kafka",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "zweig-schachnovelle",
+    "title": "Schachnovelle",
+    "author": "Stefan Zweig",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "novalis-ofterdingen",
+    "title": "Heinrich von Ofterdingen",
+    "author": "Novalis",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "kafka-das-schloss",
+    "title": "Das Schloss",
+    "author": "Franz Kafka",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "luther-kleiner-katechismus",
+    "title": "Der Kleine Katechismus",
+    "author": "Martin Luther",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "luther-freiheit-eines-christenmenschen",
+    "title": "Von der Freiheit eines Christenmenschen",
+    "author": "Martin Luther",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "schleiermacher-ueber-die-religion",
+    "title": "Über die Religion. Reden an die Gebildeten unter ihren Verächtern",
+    "author": "Friedrich Schleiermacher",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "bonhoeffer-nachfolge",
+    "title": "Nachfolge",
+    "author": "Dietrich Bonhoeffer",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "rilke-briefe-an-einen-jungen-dichter",
+    "title": "Briefe an einen jungen Dichter",
+    "author": "Rainer Maria Rilke",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "schiller-dreissigjaehriger-krieg",
+    "title": "Geschichte des Dreißigjährigen Kriegs",
+    "author": "Friedrich Schiller",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "humboldt-ansichten-der-natur",
+    "title": "Ansichten der Natur",
+    "author": "Alexander von Humboldt",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "elberfelder-1905",
+    "title": "Elberfelder Bibel (1905)",
+    "author": null,
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "schlachter-1905",
+    "title": "Schlachter-Bibel (Miniaturbibel, 1905)",
+    "author": "Franz Eugen Schlachter (translator)",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "calleja-cuentos",
+    "title": "Cuentos de Calleja",
+    "author": "Saturnino Calleja (publisher)",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "quiroga-cuentos-de-la-selva",
+    "title": "Cuentos de la selva",
+    "author": "Horacio Quiroga",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "pardo-bazan-cuentos",
+    "title": "Cuentos (selección)",
+    "author": "Emilia Pardo Bazán",
+    "candidates": [
+      {
+        "id": "40827",
+        "title": "La voz de la conseja, t.1\r\nSelección de las mejores novelas breves y cuentos de los más esclarecidos literatos",
+        "author": "Carrere, Emilio, 1881-1947 [Editor]; Baroja, Pío, 1872-1956; Benavente, Jacinto, 1866-1954; Darío, Rubén, 1867-1916; Dicenta, Joaquín, 1862-1917; León, Ricardo, 1877-1943; Mata, Pedro, 1875-1946; Nogales, José, 1860-1908; Palacio Valdés, Armando, 1853-1938; Pardo Bazán, Emilia, condesa de, 1852-1921; Pérez Galdós, Benito, 1843-1920; Répide, Pedro de, 1882-1948; Reyes, Arturo, 1863-1913; Unamuno, Miguel de, 1864-1936",
+        "language": "es",
+        "confidence": 0.68,
+        "url": "https://www.gutenberg.org/ebooks/40827"
+      }
+    ],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "isaacs-maria",
+    "title": "María",
+    "author": "Jorge Isaacs",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "turcios-el-vampiro",
+    "title": "El vampiro",
+    "author": "Froylán Turcios",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "turcios-cuentos-amor-muerte",
+    "title": "Cuentos del amor y de la muerte",
+    "author": "Froylán Turcios",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "molina-tierras-mares-cielos",
+    "title": "Tierras, mares y cielos",
+    "author": "Juan Ramón Molina",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "gamero-blanca-olmedo",
+    "title": "Blanca Olmedo",
+    "author": "Lucila Gamero de Medina",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "galdos-dona-perfecta",
+    "title": "Doña Perfecta",
+    "author": "Benito Pérez Galdós",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "becquer-leyendas",
+    "title": "Leyendas",
+    "author": "Gustavo Adolfo Bécquer",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "becquer-rimas",
+    "title": "Rimas",
+    "author": "Gustavo Adolfo Bécquer",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "clarin-adios-cordera",
+    "title": "¡Adiós, Cordera!",
+    "author": "Leopoldo Alas «Clarín»",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "unamuno-san-manuel-bueno",
+    "title": "San Manuel Bueno, mártir",
+    "author": "Miguel de Unamuno",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "marti-versos-sencillos",
+    "title": "Versos sencillos",
+    "author": "José Martí",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "lazarillo-de-tormes",
+    "title": "La vida de Lazarillo de Tormes",
+    "author": null,
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "lope-fuenteovejuna",
+    "title": "Fuenteovejuna",
+    "author": "Lope de Vega",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "calderon-la-vida-es-sueno",
+    "title": "La vida es sueño",
+    "author": "Pedro Calderón de la Barca",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "teresa-libro-de-la-vida",
+    "title": "Libro de la vida",
+    "author": "Santa Teresa de Jesús",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "teresa-las-moradas",
+    "title": "Las moradas (El castillo interior)",
+    "author": "Santa Teresa de Jesús",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "juan-de-la-cruz-poesias",
+    "title": "Cántico espiritual y Noche oscura",
+    "author": "San Juan de la Cruz",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "luis-de-leon-nombres-de-cristo",
+    "title": "De los nombres de Cristo",
+    "author": "Fray Luis de León",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "berceo-milagros",
+    "title": "Milagros de Nuestra Señora",
+    "author": "Gonzalo de Berceo",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "alfonso-x-estoria-de-espana",
+    "title": "Estoria de España",
+    "author": "Alfonso X (taller alfonsí)",
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "es",
+    "slug": "cantar-de-mio-cid",
+    "title": "Cantar de mio Cid",
+    "author": null,
+    "candidates": [],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "disposition": "no official edition"
+  },
+  {
+    "lang": "de",
+    "slug": "guerber-maerchen-und-erzaehlungen",
+    "title": "Märchen und Erzählungen für Anfänger",
+    "author": "H. A. Guerber",
+    "candidates": [
+      {
+        "id": "35794",
+        "title": "Märchen und Erzählungen für Anfänger. Erster Teil",
+        "author": "Guerber, H. A. (Hélène Adeline), 1859-1929 [Editor]",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/35794"
+      },
+      {
+        "id": "45189",
+        "title": "Märchen und Erzählungen für Anfänger. Zweiter Teil",
+        "author": "Guerber, H. A. (Hélène Adeline), 1859-1929",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/45189"
+      }
+    ],
+    "bestCandidateId": "35794",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      35794,
+      45189
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/35794.txt.utf-8",
+      "https://www.gutenberg.org/ebooks/45189.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "busch-max-und-moritz",
+    "title": "Max und Moritz. Eine Bubengeschichte in sieben Streichen",
+    "author": "Wilhelm Busch",
+    "candidates": [
+      {
+        "id": "17161",
+        "title": "Max und Moritz: Eine Bubengeschichte in sieben Streichen",
+        "author": "Busch, Wilhelm, 1832-1908",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/17161"
+      }
+    ],
+    "bestCandidateId": "17161",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/17161",
+      "editionId": "17161",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/17161/pg17161-images.html"
+        },
+        {
+          "label": "PDF",
+          "url": "https://www.gutenberg.org/files/17161/17161-pdf.pdf"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/17161/pg17161-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      17161
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/17161.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "hoffmann-struwwelpeter",
+    "title": "Der Struwwelpeter",
+    "author": "Heinrich Hoffmann",
+    "candidates": [
+      {
+        "id": "24571",
+        "title": "Der Struwwelpeter\noder lustige Geschichten und drollige Bilder",
+        "author": "Hoffmann, Heinrich, 1809-1894",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/24571"
+      }
+    ],
+    "bestCandidateId": "24571",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      24571
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/24571.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "busch-hans-huckebein",
+    "title": "Hans Huckebein, der Unglücksrabe",
+    "author": "Wilhelm Busch",
+    "candidates": [
+      {
+        "id": "2322",
+        "title": "Hans Huckebein",
+        "author": "Busch, Wilhelm, 1832-1908",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/2322"
+      }
+    ],
+    "bestCandidateId": "2322",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      2322
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/2322.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "hebel-schatzkaestlein",
+    "title": "Schatzkästlein des rheinischen Hausfreundes",
+    "author": "Johann Peter Hebel",
+    "candidates": [
+      {
+        "id": "7810",
+        "title": "Schatzkästlein des rheinischen Hausfreundes\r\nEine Auswahl aus verschiedenen Quellen",
+        "author": "Hebel, Johann Peter, 1760-1826 [Compiler]",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/7810"
+      }
+    ],
+    "bestCandidateId": "7810",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      7810
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/7810.epub3.images"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "spyri-heidi",
+    "title": "Heidis Lehr- und Wanderjahre",
+    "author": "Johanna Spyri",
+    "candidates": [
+      {
+        "id": "7500",
+        "title": "Heidis Lehr- und Wanderjahre",
+        "author": "Spyri, Johanna, 1827-1901",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/7500"
+      },
+      {
+        "id": "7511",
+        "title": "Heidis Lehr- und Wanderjahre",
+        "author": "Spyri, Johanna, 1827-1901",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/7511"
+      }
+    ],
+    "bestCandidateId": "7500",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/7500",
+      "editionId": "7500",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/7500/pg7500-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/7500/pg7500-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      7500
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/7500.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "bassewitz-peterchens-mondfahrt",
+    "title": "Peterchens Mondfahrt",
+    "author": "Gerdt von Bassewitz",
+    "candidates": [
+      {
+        "id": "31204",
+        "title": "Peterchens Mondfahrt: Ein Märchenspiel",
+        "author": "Bassewitz, Gerdt von, 1878-1923",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/31204"
+      }
+    ],
+    "bestCandidateId": "31204",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      31204
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/31204.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "bonsels-biene-maja",
+    "title": "Die Biene Maja und ihre Abenteuer",
+    "author": "Waldemar Bonsels",
+    "candidates": [
+      {
+        "id": "21021",
+        "title": "Die Biene Maja und ihre Abenteuer",
+        "author": "Bonsels, Waldemar, 1881?-1952",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/21021"
+      }
+    ],
+    "bestCandidateId": "21021",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/21021",
+      "editionId": "21021",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/21021/pg21021-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/21021/pg21021-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      21021
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/21021.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "storm-immensee",
+    "title": "Immensee",
+    "author": "Theodor Storm",
+    "candidates": [
+      {
+        "id": "6651",
+        "title": "Immensee",
+        "author": "Storm, Theodor, 1817-1888",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/6651"
+      }
+    ],
+    "bestCandidateId": "6651",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/6651",
+      "editionId": "6651",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/6651/pg6651-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/6651/pg6651-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      6651
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/6651.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "storm-pole-poppenspaeler",
+    "title": "Pole Poppenspäler",
+    "author": "Theodor Storm",
+    "candidates": [
+      {
+        "id": "8919",
+        "title": "Pole Poppenspäler: Novelle\r\n(1874)",
+        "author": "Storm, Theodor, 1817-1888",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/8919"
+      }
+    ],
+    "bestCandidateId": "8919",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      8919
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/8919.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "eichendorff-taugenichts",
+    "title": "Aus dem Leben eines Taugenichts",
+    "author": "Joseph von Eichendorff",
+    "candidates": [
+      {
+        "id": "35312",
+        "title": "Aus dem Leben eines Taugenichts: Novelle",
+        "author": "Eichendorff, Joseph, Freiherr von, 1788-1857",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/35312"
+      },
+      {
+        "id": "30695",
+        "title": "Aus meinem Leben",
+        "author": "Hindenburg, Paul von, 1847-1934",
+        "language": "de",
+        "confidence": 0.58,
+        "url": "https://www.gutenberg.org/ebooks/30695"
+      }
+    ],
+    "bestCandidateId": "35312",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      35312
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/35312.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "storm-schimmelreiter",
+    "title": "Der Schimmelreiter",
+    "author": "Theodor Storm",
+    "candidates": [
+      {
+        "id": "74008",
+        "title": "Der Schimmelreiter",
+        "author": "Storm, Theodor, 1817-1888",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/74008"
+      }
+    ],
+    "bestCandidateId": "74008",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/74008",
+      "editionId": "74008",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/74008/pg74008-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/74008/pg74008-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      74008
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/74008.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "droste-judenbuche",
+    "title": "Die Judenbuche",
+    "author": "Annette von Droste-Hülshoff",
+    "candidates": [
+      {
+        "id": "45798",
+        "title": "Die Judenbuche",
+        "author": "Droste-Hülshoff, Annette von, 1797-1848; Unold, Max, 1885-1964 [Illustrator]",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/45798"
+      }
+    ],
+    "bestCandidateId": "45798",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/45798",
+      "editionId": "45798",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/45798/pg45798-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/45798/pg45798-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      45798
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/45798.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "hauptmann-bahnwaerter-thiel",
+    "title": "Bahnwärter Thiel",
+    "author": "Gerhart Hauptmann",
+    "candidates": [
+      {
+        "id": "29376",
+        "title": "Bahnwärter Thiel",
+        "author": "Hauptmann, Gerhart, 1862-1946",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/29376"
+      }
+    ],
+    "bestCandidateId": "29376",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/29376",
+      "editionId": "29376",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/29376/pg29376-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/29376/pg29376-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      29376
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/29376.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "kafka-das-urteil",
+    "title": "Das Urteil",
+    "author": "Franz Kafka",
+    "candidates": [
+      {
+        "id": "21593",
+        "title": "Das Urteil: Eine Geschichte",
+        "author": "Kafka, Franz, 1883-1924",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/21593"
+      }
+    ],
+    "bestCandidateId": "21593",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      21593
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/21593.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "kafka-die-verwandlung",
+    "title": "Die Verwandlung",
+    "author": "Franz Kafka",
+    "candidates": [
+      {
+        "id": "22367",
+        "title": "Die Verwandlung",
+        "author": "Kafka, Franz, 1883-1924",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/22367"
+      }
+    ],
+    "bestCandidateId": "22367",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/22367",
+      "editionId": "22367",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/22367/pg22367-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/22367/pg22367-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      22367
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/22367.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "fontane-effi-briest",
+    "title": "Effi Briest",
+    "author": "Theodor Fontane",
+    "candidates": [
+      {
+        "id": "5323",
+        "title": "Effi Briest",
+        "author": "Fontane, Theodor, 1819-1898",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/5323"
+      }
+    ],
+    "bestCandidateId": "5323",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/5323",
+      "editionId": "5323",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/5323/pg5323-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/5323/pg5323-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      5323
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/5323.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "mann-tonio-kroeger",
+    "title": "Tonio Kröger",
+    "author": "Thomas Mann",
+    "candidates": [
+      {
+        "id": "23313",
+        "title": "Tonio Kröger",
+        "author": "Mann, Thomas, 1875-1955",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/23313"
+      },
+      {
+        "id": "38692",
+        "title": "Tonio Kröger\n[Erstausgabe; Illustrationen von Erich M. Simon]",
+        "author": "Mann, Thomas, 1875-1955; Simon, Erich M., 1892- [Illustrator]",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/38692"
+      }
+    ],
+    "bestCandidateId": "23313",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/23313",
+      "editionId": "23313",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/23313/pg23313-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/23313/pg23313-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      23313
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/23313.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "goethe-werther",
+    "title": "Die Leiden des jungen Werthers",
+    "author": "Johann Wolfgang von Goethe",
+    "candidates": [
+      {
+        "id": "2407",
+        "title": "Die Leiden des jungen Werther — Band 1",
+        "author": "Goethe, Johann Wolfgang von, 1749-1832",
+        "language": "de",
+        "confidence": 0.68,
+        "url": "https://www.gutenberg.org/ebooks/2407"
+      },
+      {
+        "id": "2408",
+        "title": "Die Leiden des jungen Werther — Band 2",
+        "author": "Goethe, Johann Wolfgang von, 1749-1832",
+        "language": "de",
+        "confidence": 0.68,
+        "url": "https://www.gutenberg.org/ebooks/2408"
+      }
+    ],
+    "bestCandidateId": null,
+    "exactMatchConfidence": 0,
+    "matchStatus": "no-gutenberg-match",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      2407,
+      2408
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/2407.txt.utf-8",
+      "https://www.gutenberg.org/ebooks/2408.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "schiller-wilhelm-tell",
+    "title": "Wilhelm Tell",
+    "author": "Friedrich Schiller",
+    "candidates": [
+      {
+        "id": "77182",
+        "title": "Wilhelm Tell",
+        "author": "Schiller, Friedrich, 1759-1805",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/77182"
+      }
+    ],
+    "bestCandidateId": "77182",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/77182",
+      "editionId": "77182",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/77182/pg77182-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/77182/pg77182-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      77182
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/77182.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "schiller-kabale-und-liebe",
+    "title": "Kabale und Liebe",
+    "author": "Friedrich Schiller",
+    "candidates": [
+      {
+        "id": "6498",
+        "title": "Kabale und Liebe: Ein bürgerliches Trauerspiel",
+        "author": "Schiller, Friedrich, 1759-1805",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/6498"
+      }
+    ],
+    "bestCandidateId": "6498",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      6498
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/6498.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "lessing-emilia-galotti",
+    "title": "Emilia Galotti",
+    "author": "Gotthold Ephraim Lessing",
+    "candidates": [
+      {
+        "id": "9108",
+        "title": "Emilia Galotti",
+        "author": "Lessing, Gotthold Ephraim, 1729-1781",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/9108"
+      }
+    ],
+    "bestCandidateId": "9108",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/9108",
+      "editionId": "9108",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/9108/pg9108-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/9108/pg9108-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      9108
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/9108.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "lessing-nathan-der-weise",
+    "title": "Nathan der Weise",
+    "author": "Gotthold Ephraim Lessing",
+    "candidates": [
+      {
+        "id": "9186",
+        "title": "Nathan der Weise: Ein Dramatisches Gedicht, in fünf Aufzügen",
+        "author": "Lessing, Gotthold Ephraim, 1729-1781",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/9186"
+      }
+    ],
+    "bestCandidateId": "9186",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      9186
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/9186.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "goethe-faust-1",
+    "title": "Faust. Der Tragödie erster Teil",
+    "author": "Johann Wolfgang von Goethe",
+    "candidates": [
+      {
+        "id": "2229",
+        "title": "Faust: Der Tragödie erster Teil",
+        "author": "Goethe, Johann Wolfgang von, 1749-1832",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/2229"
+      },
+      {
+        "id": "2230",
+        "title": "Faust: Der Tragödie zweiter Teil",
+        "author": "Goethe, Johann Wolfgang von, 1749-1832",
+        "language": "de",
+        "confidence": 0.68,
+        "url": "https://www.gutenberg.org/ebooks/2230"
+      },
+      {
+        "id": "21000",
+        "title": "Faust: Eine Tragödie [erster Teil]",
+        "author": "Goethe, Johann Wolfgang von, 1749-1832",
+        "language": "de",
+        "confidence": 0.68,
+        "url": "https://www.gutenberg.org/ebooks/21000"
+      }
+    ],
+    "bestCandidateId": "2229",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/2229",
+      "editionId": "2229",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/2229/pg2229-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/2229/pg2229-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      2229
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/2229.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "fontane-der-stechlin",
+    "title": "Der Stechlin",
+    "author": "Theodor Fontane",
+    "candidates": [
+      {
+        "id": "53628",
+        "title": "Der Stechlin: Roman",
+        "author": "Fontane, Theodor, 1819-1898",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/53628"
+      }
+    ],
+    "bestCandidateId": "53628",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      53628
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/53628.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "mann-buddenbrooks",
+    "title": "Buddenbrooks",
+    "author": "Thomas Mann",
+    "candidates": [
+      {
+        "id": "34811",
+        "title": "Buddenbrooks: Verfall einer Familie",
+        "author": "Mann, Thomas, 1875-1955",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/34811"
+      }
+    ],
+    "bestCandidateId": "34811",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      34811
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/34811.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "kant-was-ist-aufklaerung",
+    "title": "Beantwortung der Frage: Was ist Aufklärung?",
+    "author": "Immanuel Kant",
+    "candidates": [
+      {
+        "id": "30821",
+        "title": "Beantwortung der Frage: Was ist Aufklärung?",
+        "author": "Kant, Immanuel, 1724-1804",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/30821"
+      }
+    ],
+    "bestCandidateId": "30821",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/30821",
+      "editionId": "30821",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/30821/pg30821-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/30821/pg30821-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      30821
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/30821.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "kant-kritik-der-reinen-vernunft",
+    "title": "Kritik der reinen Vernunft",
+    "author": "Immanuel Kant",
+    "candidates": [
+      {
+        "id": "6342",
+        "title": "Kritik der reinen Vernunft\r\n(Erste Fassung 1781)",
+        "author": "Kant, Immanuel, 1724-1804",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/6342"
+      },
+      {
+        "id": "6343",
+        "title": "Kritik der reinen Vernunft\r\nZweite hin und wieder verbesserte Auflage (1787)",
+        "author": "Kant, Immanuel, 1724-1804",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/6343"
+      },
+      {
+        "id": "49543",
+        "title": "Kant's gesammelte Schriften. Band V. Kritik der praktischen Vernunft.",
+        "author": "Kant, Immanuel, 1724-1804",
+        "language": "de",
+        "confidence": 0.68,
+        "url": "https://www.gutenberg.org/ebooks/49543"
+      }
+    ],
+    "bestCandidateId": "6342",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      6342
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/6342.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "nietzsche-zarathustra",
+    "title": "Also sprach Zarathustra",
+    "author": "Friedrich Nietzsche",
+    "candidates": [
+      {
+        "id": "7205",
+        "title": "Also sprach Zarathustra: Ein Buch für Alle und Keinen",
+        "author": "Nietzsche, Friedrich Wilhelm, 1844-1900",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/7205"
+      }
+    ],
+    "bestCandidateId": "7205",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      7205
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/7205.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "rilke-malte",
+    "title": "Die Aufzeichnungen des Malte Laurids Brigge",
+    "author": "Rainer Maria Rilke",
+    "candidates": [
+      {
+        "id": "2188",
+        "title": "Die Aufzeichnungen des Malte Laurids Brigge",
+        "author": "Rilke, Rainer Maria, 1875-1926",
+        "language": "de",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/2188"
+      }
+    ],
+    "bestCandidateId": "2188",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/2188",
+      "editionId": "2188",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/2188/pg2188-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/2188/pg2188-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      2188
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/2188.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "mommsen-roemische-geschichte",
+    "title": "Römische Geschichte",
+    "author": "Theodor Mommsen",
+    "candidates": [
+      {
+        "id": "3060",
+        "title": "Römische Geschichte — Buch 1",
+        "author": "Mommsen, Theodor, 1817-1903",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/3060"
+      },
+      {
+        "id": "3061",
+        "title": "Römische Geschichte — Buch 2",
+        "author": "Mommsen, Theodor, 1817-1903",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/3061"
+      },
+      {
+        "id": "3062",
+        "title": "Römische Geschichte — Buch 3",
+        "author": "Mommsen, Theodor, 1817-1903",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/3062"
+      },
+      {
+        "id": "3063",
+        "title": "Römische Geschichte — Buch 4",
+        "author": "Mommsen, Theodor, 1817-1903",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/3063"
+      },
+      {
+        "id": "3064",
+        "title": "Römische Geschichte — Buch 5",
+        "author": "Mommsen, Theodor, 1817-1903",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/3064"
+      },
+      {
+        "id": "3065",
+        "title": "Römische Geschichte — Buch 8",
+        "author": "Mommsen, Theodor, 1817-1903",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/3065"
+      }
+    ],
+    "bestCandidateId": "3060",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      3060
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/3060.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "de",
+    "slug": "lilienthal-vogelflug",
+    "title": "Der Vogelflug als Grundlage der Fliegekunst",
+    "author": "Otto Lilienthal",
+    "candidates": [
+      {
+        "id": "54565",
+        "title": "Der Vogelflug als Grundlage der Fliegekunst\r\nEin Beitrag zur Systematik der Flugtechnik",
+        "author": "Lilienthal, Otto, 1848-1896",
+        "language": "de",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/54565"
+      }
+    ],
+    "bestCandidateId": "54565",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      54565
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/54565.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "marti-edad-de-oro",
+    "title": "La Edad de Oro",
+    "author": "José Martí",
+    "candidates": [
+      {
+        "id": "19898",
+        "title": "La Edad de Oro: publicación mensual de recreo e instrucción dedicada a los niños de América.",
+        "author": "Martí, José, 1853-1895",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/19898"
+      }
+    ],
+    "bestCandidateId": "19898",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      19898
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/19898.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "samaniego-fabulas",
+    "title": "Fábulas en verso castellano",
+    "author": "Félix María de Samaniego",
+    "candidates": [
+      {
+        "id": "55206",
+        "title": "Fábulas",
+        "author": "Samaniego, Félix María, 1745-1801",
+        "language": "es",
+        "confidence": 0.7,
+        "url": "https://www.gutenberg.org/ebooks/55206"
+      },
+      {
+        "id": "64058",
+        "title": "Fábulas y cuentos en verso\nSelección",
+        "author": "Goyri, María, 1873-1955? [Compiler]",
+        "language": "es",
+        "confidence": 0.58,
+        "url": "https://www.gutenberg.org/ebooks/64058"
+      }
+    ],
+    "bestCandidateId": "55206",
+    "exactMatchConfidence": 0.7,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      55206
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/55206.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "iriarte-fabulas",
+    "title": "Fábulas literarias",
+    "author": "Tomás de Iriarte",
+    "candidates": [
+      {
+        "id": "29497",
+        "title": "Fábulas literarias",
+        "author": "Iriarte, Tomás de, 1750-1791",
+        "language": "es",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/29497"
+      }
+    ],
+    "bestCandidateId": "29497",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/29497",
+      "editionId": "29497",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/29497/pg29497-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/29497/pg29497-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      29497
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/29497.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "alarcon-capitan-veneno",
+    "title": "El capitán Veneno",
+    "author": "Pedro Antonio de Alarcón",
+    "candidates": [
+      {
+        "id": "29731",
+        "title": "El Capitán Veneno\nThe Hispanic Series",
+        "author": "Alarcón, Pedro Antonio de, 1833-1891; Burnet, Percy Bentley, 1861-1935 [Editor]",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/29731"
+      }
+    ],
+    "bestCandidateId": "29731",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      29731
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/29731.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "palma-tradiciones-peruanas",
+    "title": "Tradiciones peruanas (selección)",
+    "author": "Ricardo Palma",
+    "candidates": [
+      {
+        "id": "21282",
+        "title": "Tradiciones peruanas",
+        "author": "Palma, Ricardo, 1833-1919",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/21282"
+      },
+      {
+        "id": "77298",
+        "title": "Las mejores tradiciones peruanas",
+        "author": "Palma, Ricardo, 1833-1919",
+        "language": "es",
+        "confidence": 0.68,
+        "url": "https://www.gutenberg.org/ebooks/77298"
+      }
+    ],
+    "bestCandidateId": "21282",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      21282
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/21282.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "jimenez-platero-y-yo",
+    "title": "Platero y yo",
+    "author": "Juan Ramón Jiménez",
+    "candidates": [
+      {
+        "id": "9980",
+        "title": "Platero y yo",
+        "author": "Jiménez, Juan Ramón, 1881-1958; Onís, Federico de, 1885-1966 [Author of introduction, etc.]; Walsh, Gertrude M. (Gertrude Margaret), 1884- [Editor]; Petersham, Maud, 1890-1971 [Illustrator]; Petersham, Miska, 1888-1960 [Illustrator]",
+        "language": "es",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/9980"
+      },
+      {
+        "id": "39209",
+        "title": "Platero y yo",
+        "author": "Jiménez, Juan Ramón, 1881-1958",
+        "language": "es",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/39209"
+      }
+    ],
+    "bestCandidateId": "9980",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/9980",
+      "editionId": "9980",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/9980/pg9980-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/9980/pg9980-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      9980
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/9980.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "palacio-valdes-hermana-san-sulpicio",
+    "title": "La hermana San Sulpicio",
+    "author": "Armando Palacio Valdés",
+    "candidates": [
+      {
+        "id": "31013",
+        "title": "La hermana San Sulpicio",
+        "author": "Palacio Valdés, Armando, 1853-1938",
+        "language": "es",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/31013"
+      }
+    ],
+    "bestCandidateId": "31013",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/31013",
+      "editionId": "31013",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/31013/pg31013-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/31013/pg31013-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      31013
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/31013.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "dario-azul",
+    "title": "Azul...",
+    "author": "Rubén Darío",
+    "candidates": [
+      {
+        "id": "52894",
+        "title": "Azul...\nObras Completas Vol. IV",
+        "author": "Darío, Rubén, 1867-1916; Ochoa, Enrique [Illustrator]",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/52894"
+      }
+    ],
+    "bestCandidateId": "52894",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      52894
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/52894.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "galdos-marianela",
+    "title": "Marianela",
+    "author": "Benito Pérez Galdós",
+    "candidates": [
+      {
+        "id": "17340",
+        "title": "Marianela",
+        "author": "Pérez Galdós, Benito, 1843-1920",
+        "language": "es",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/17340"
+      }
+    ],
+    "bestCandidateId": "17340",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/17340",
+      "editionId": "17340",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/17340/pg17340-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/17340/pg17340-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      17340
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/17340.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "galdos-trafalgar",
+    "title": "Trafalgar (Episodios nacionales)",
+    "author": "Benito Pérez Galdós",
+    "candidates": [
+      {
+        "id": "16961",
+        "title": "Trafalgar",
+        "author": "Pérez Galdós, Benito, 1843-1920",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/16961"
+      }
+    ],
+    "bestCandidateId": "16961",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      16961
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/16961.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "galdos-misericordia",
+    "title": "Misericordia",
+    "author": "Benito Pérez Galdós",
+    "candidates": [
+      {
+        "id": "21831",
+        "title": "Misericordia",
+        "author": "Pérez Galdós, Benito, 1843-1920",
+        "language": "es",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/21831"
+      }
+    ],
+    "bestCandidateId": "21831",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/21831",
+      "editionId": "21831",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/21831/pg21831-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/21831/pg21831-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      21831
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/21831.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "galdos-fortunata-y-jacinta",
+    "title": "Fortunata y Jacinta",
+    "author": "Benito Pérez Galdós",
+    "candidates": [
+      {
+        "id": "17013",
+        "title": "Fortunata y Jacinta: dos historias de casadas",
+        "author": "Pérez Galdós, Benito, 1843-1920",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/17013"
+      },
+      {
+        "id": "16372",
+        "title": "Fortuna",
+        "author": "Pérez Escrich, Enrique, 1829-1897; Hills, E. C. (Elijah Clarence), 1867-1932 [Editor]; Reinhardt, Louise, 1866- [Editor]",
+        "language": "es",
+        "confidence": 0.7,
+        "url": "https://www.gutenberg.org/ebooks/16372"
+      }
+    ],
+    "bestCandidateId": "17013",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      17013
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/17013.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "clarin-la-regenta",
+    "title": "La Regenta",
+    "author": "Leopoldo Alas «Clarín»",
+    "candidates": [
+      {
+        "id": "17073",
+        "title": "La Regenta",
+        "author": "Alas, Leopoldo, 1852-1901",
+        "language": "es",
+        "confidence": 0.92,
+        "url": "https://www.gutenberg.org/ebooks/17073"
+      }
+    ],
+    "bestCandidateId": "17073",
+    "exactMatchConfidence": 0.92,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      17073
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/17073.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "pardo-bazan-pazos-de-ulloa",
+    "title": "Los pazos de Ulloa",
+    "author": "Emilia Pardo Bazán",
+    "candidates": [
+      {
+        "id": "18005",
+        "title": "Los pazos de Ulloa",
+        "author": "Pardo Bazán, Emilia, condesa de, 1852-1921",
+        "language": "es",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/18005"
+      },
+      {
+        "id": "58059",
+        "title": "La madre naturaleza (2ª parte de Los pazos de Ulloa)",
+        "author": "Pardo Bazán, Emilia, condesa de, 1852-1921",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/58059"
+      }
+    ],
+    "bestCandidateId": "18005",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/18005",
+      "editionId": "18005",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/18005/pg18005-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/18005/pg18005-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      18005
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/18005.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "valera-pepita-jimenez",
+    "title": "Pepita Jiménez",
+    "author": "Juan Valera",
+    "candidates": [
+      {
+        "id": "17223",
+        "title": "Pepita Jiménez",
+        "author": "Valera, Juan, 1824-1905",
+        "language": "es",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/17223"
+      }
+    ],
+    "bestCandidateId": "17223",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/17223",
+      "editionId": "17223",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/17223/pg17223-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/17223/pg17223-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      17223
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/17223.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "alarcon-sombrero-de-tres-picos",
+    "title": "El sombrero de tres picos",
+    "author": "Pedro Antonio de Alarcón",
+    "candidates": [
+      {
+        "id": "29506",
+        "title": "El sombrero de tres picos\r\nHistoria verdadera de un sucedido que anda en romances escrita ahora tal y como pasó",
+        "author": "Alarcón, Pedro Antonio de, 1833-1891; Bourland, Benjamin Parsons, 1870-1943 [Editor]",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/29506"
+      }
+    ],
+    "bestCandidateId": "29506",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      29506
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/29506.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "unamuno-niebla",
+    "title": "Niebla",
+    "author": "Miguel de Unamuno",
+    "candidates": [
+      {
+        "id": "49836",
+        "title": "Niebla (Nivola)",
+        "author": "Unamuno, Miguel de, 1864-1936",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/49836"
+      }
+    ],
+    "bestCandidateId": "49836",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      49836
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/49836.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "baroja-arbol-de-la-ciencia",
+    "title": "El árbol de la ciencia",
+    "author": "Pío Baroja",
+    "candidates": [
+      {
+        "id": "60464",
+        "title": "El árbol de la ciencia: novela",
+        "author": "Baroja, Pío, 1872-1956",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/60464"
+      }
+    ],
+    "bestCandidateId": "60464",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      60464
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/60464.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "baroja-zalacain",
+    "title": "Zalacaín el aventurero",
+    "author": "Pío Baroja",
+    "candidates": [
+      {
+        "id": "13264",
+        "title": "Zalacaín El Aventurero\r\n(Historia de las buenas andanzas y fortunas de Martín Zalacaín el Aventurero)",
+        "author": "Baroja, Pío, 1872-1956",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/13264"
+      }
+    ],
+    "bestCandidateId": "13264",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      13264
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/13264.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "dario-cantos-de-vida-y-esperanza",
+    "title": "Cantos de vida y esperanza",
+    "author": "Rubén Darío",
+    "candidates": [
+      {
+        "id": "50341",
+        "title": "Cantos de Vida y Esperanza, Los Cisnes y otros poemas.\nObras Completas Vol. VII",
+        "author": "Darío, Rubén, 1867-1916; Ochoa, Enrique [Illustrator]",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/50341"
+      }
+    ],
+    "bestCandidateId": "50341",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      50341
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/50341.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "cervantes-don-quijote",
+    "title": "El ingenioso hidalgo don Quijote de la Mancha",
+    "author": "Miguel de Cervantes",
+    "candidates": [
+      {
+        "id": "2000",
+        "title": "Don Quijote",
+        "author": "Cervantes Saavedra, Miguel de, 1547-1616",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/2000"
+      }
+    ],
+    "bestCandidateId": "2000",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      2000
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/2000.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "cervantes-novelas-ejemplares",
+    "title": "Novelas ejemplares",
+    "author": "Miguel de Cervantes",
+    "candidates": [
+      {
+        "id": "61202",
+        "title": "Novelas ejemplares",
+        "author": "Cervantes Saavedra, Miguel de, 1547-1616",
+        "language": "es",
+        "confidence": 1,
+        "url": "https://www.gutenberg.org/ebooks/61202"
+      },
+      {
+        "id": "55916",
+        "title": "Tres novelas ejemplares y un prólogo",
+        "author": "Unamuno, Miguel de, 1864-1936",
+        "language": "es",
+        "confidence": 0.7,
+        "url": "https://www.gutenberg.org/ebooks/55916"
+      }
+    ],
+    "bestCandidateId": "61202",
+    "exactMatchConfidence": 1,
+    "matchStatus": "exact-title-and-author",
+    "manualReview": false,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "primaryEvidence": {
+      "page": "https://www.gutenberg.org/ebooks/61202",
+      "editionId": "61202",
+      "downloadFormats": [
+        {
+          "label": "Read online now",
+          "url": "https://www.gutenberg.org/cache/epub/61202/pg61202-images.html"
+        },
+        {
+          "label": "Download HTML (zip)",
+          "url": "https://www.gutenberg.org/cache/epub/61202/pg61202-h.zip"
+        }
+      ]
+    },
+    "ids": [
+      61202
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/61202.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "quevedo-el-buscon",
+    "title": "Historia de la vida del Buscón",
+    "author": "Francisco de Quevedo",
+    "candidates": [
+      {
+        "id": "32315",
+        "title": "Historia de la vida del Buscón, llamado Don Pablos, ejemplo de vagabundos y espejo de tacaños",
+        "author": "Quevedo, Francisco de, 1580-1645",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/32315"
+      }
+    ],
+    "bestCandidateId": "32315",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      32315
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/32315.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "rojas-la-celestina",
+    "title": "La Celestina (Tragicomedia de Calisto y Melibea)",
+    "author": "Fernando de Rojas",
+    "candidates": [
+      {
+        "id": "1619",
+        "title": "La Celestina",
+        "author": "Rojas, Fernando de, -1541",
+        "language": "es",
+        "confidence": 0.82,
+        "url": "https://www.gutenberg.org/ebooks/1619"
+      }
+    ],
+    "bestCandidateId": "1619",
+    "exactMatchConfidence": 0.82,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      1619
+    ],
+    "disposition": "rejected: Error: #1619: official page lacks the exact “Public domain in the USA” notice"
+  },
+  {
+    "lang": "es",
+    "slug": "juan-manuel-conde-lucanor",
+    "title": "El conde Lucanor",
+    "author": "Don Juan Manuel",
+    "candidates": [
+      {
+        "id": "65738",
+        "title": "El conde Lucanor",
+        "author": "Juan Manuel, Infante of Castile, 1282-1347",
+        "language": "es",
+        "confidence": 0.92,
+        "url": "https://www.gutenberg.org/ebooks/65738"
+      }
+    ],
+    "bestCandidateId": "65738",
+    "exactMatchConfidence": 0.92,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      65738
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/65738.txt.utf-8"
+    ]
+  },
+  {
+    "lang": "es",
+    "slug": "juan-ruiz-libro-de-buen-amor",
+    "title": "Libro de buen amor",
+    "author": "Juan Ruiz, Arcipreste de Hita",
+    "candidates": [
+      {
+        "id": "16625",
+        "title": "Clásicos Castellanos: Libro de Buen Amor",
+        "author": "Ruiz, Juan, 1283?-1350?; Cejador y Frauca, Julio, 1864-1927 [Editor]",
+        "language": "es",
+        "confidence": 0.7,
+        "url": "https://www.gutenberg.org/ebooks/16625"
+      }
+    ],
+    "bestCandidateId": "16625",
+    "exactMatchConfidence": 0.7,
+    "matchStatus": "candidate-needs-manual-edition-review",
+    "manualReview": true,
+    "rightsReminder": "A Gutenberg match identifies a candidate edition only. Verify the ebook page, edition metadata, and US copyright/public-domain record before changing catalogue rights.",
+    "ids": [
+      16625
+    ],
+    "disposition": "imported",
+    "sourceUrls": [
+      "https://www.gutenberg.org/ebooks/16625.txt.utf-8"
+    ]
+  }
+]

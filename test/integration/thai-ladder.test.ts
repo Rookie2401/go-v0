@@ -4,7 +4,7 @@
  */
 import { describe, expect, it } from 'vitest';
 import { COURSES } from '../../src/core';
-import { THAI_ASSISTANCE, THAI_AUDIO_POLICY, THAI_COURSE_ID, THAI_OUTSIDE_LADDER, THAI_SCRIPTURE_POLICY, THAI_STAGES, THAI_WORKS } from '../../src/course/thai';
+import { THAI_ASSISTANCE, THAI_AUDIO_POLICY, THAI_COURSE_ID, THAI_OTCV_RIGHTS, THAI_OUTSIDE_LADDER, THAI_SCRIPTURE_POLICY, THAI_STAGES, THAI_WORKS } from '../../src/course/thai';
 
 describe('Thai ladder manifest', () => {
   it('belongs to the Thailand course and runs Stage 0, Grades 1–9, then open reading', () => {
@@ -16,15 +16,36 @@ describe('Thai ladder manifest', () => {
     expect(new Set(THAI_STAGES.map((s) => s.id)).size).toBe(THAI_STAGES.length);
   });
 
-  it('makes no rights claim it cannot support', () => {
+  it('keeps draft works distinct from exact licensed and public-domain records', () => {
     expect(THAI_WORKS.length).toBeGreaterThan(50);
+    const externalVerified = new Set([
+      'work:thailand-th:th-gap-recovery-aesop',
+      'work:thailand-th:thai-wikisource-nueng-sai-mu-mai-muan',
+      'work:thailand-th:thai-wikisource-phai-chai-lae-hai-than',
+      'work:thailand-th:thai-wikisource-phu-yai-ha-pha-mai',
+      'work:thailand-th:nms-vetal-selected',
+      'work:thailand-th:bible-thai-otcv2025',
+    ]);
+    expect(THAI_WORKS.filter((w) => w.rights.state?.startsWith('verified-')).map((w) => w.id).sort()).toEqual([...externalVerified].sort());
     for (const w of THAI_WORKS) {
-      expect(w.rights.canBundle, w.title).toBe(false);
-      expect(w.rights.userImportOnly, w.title).toBe(true);
-      expect(w.rights.verified, w.title).toBe(false);
-      expect(w.bibliographyVerified, w.title).toBe(false);
-      expect(['in-copyright', 'unknown'], w.title).toContain(w.rights.copyrightStatus);
-      expect(w.rights.permission === 'none' || w.rights.permission === 'unknown', w.title).toBe(true);
+      if (externalVerified.has(w.id)) {
+        expect(w.rights.canBundle, w.title).toBe(true);
+        expect(w.rights.userImportOnly, w.title).toBe(false);
+        expect(w.rights.verified, w.title).toBe(true);
+        expect(w.rights.verifiedBy, w.title).toBeTruthy();
+        expect(w.rights.evidence?.length ?? 0, w.title).toBeGreaterThan(0);
+      } else if (w.rights.state === 'course-authored') {
+        expect(w.rights.canBundle, w.title).toBe(true);
+        expect(w.author, w.title).toMatch(/Course authors/);
+        expect(w.notes, w.title).toMatch(/unreviewed|review/i);
+      } else {
+        expect(w.rights.canBundle, w.title).toBe(false);
+        expect(w.rights.userImportOnly, w.title).toBe(true);
+        expect(w.rights.verified, w.title).toBe(false);
+        expect(w.bibliographyVerified, w.title).toBe(false);
+        expect(['in-copyright', 'unknown'], w.title).toContain(w.rights.copyrightStatus);
+        expect(w.rights.permission === 'none' || w.rights.permission === 'unknown', w.title).toBe(true);
+      }
     }
   });
 
@@ -70,18 +91,18 @@ describe('Thai ladder manifest', () => {
 
   it('keeps Scripture and testimony outside the numbered ladder', () => {
     expect(THAI_OUTSIDE_LADDER).toContain('scripture');
-    expect(THAI_WORKS.some((w) => w.role === 'scripture')).toBe(false);
+    const scripture = THAI_WORKS.filter((w) => w.role === 'scripture');
+    expect(scripture.map((w) => w.id)).toEqual(['work:thailand-th:bible-thai-otcv2025']);
+    expect(scripture[0].stageId).toBe(THAI_STAGES.find((s) => s.key === 'open')?.id);
   });
 
-  it('records the Scripture and audio policy without unblocking anything', () => {
+  it('records declined THSV11 separately from the verified text-only replacement', () => {
     expect(THAI_SCRIPTURE_POLICY.declined).toMatchObject({ id: 'THSV11', status: 'permission-declined', canBundleText: false, canBundleAudio: false, externalLinkOnly: true });
-    // the named replacement is a candidate only: nothing is bundled until its release metadata is verified
-    expect(THAI_SCRIPTURE_POLICY.candidate).toMatchObject({ status: 'candidate-unverified', canBundleText: false, canBundleAudio: false });
-    expect(THAI_SCRIPTURE_POLICY.candidate.releaseId).toBeUndefined();
+    expect(THAI_SCRIPTURE_POLICY.candidate).toMatchObject({ status: 'verified-open-licence', canBundleText: true, canBundleAudio: false, releaseId: 'a62f327aa0179709-rev2' });
+    expect(THAI_OTCV_RIGHTS).toMatchObject({ state: 'verified-open-licence', canBundle: true, canBundleAudio: false, verified: true, verifiedAt: '2026-10-01' });
     expect(THAI_SCRIPTURE_POLICY.technicalFixture).toMatchObject({ status: 'technical-fixture-only', draftTranslation: true });
     expect(THAI_SCRIPTURE_POLICY.notApproved).toEqual(expect.arrayContaining(['Thai KJV', 'TH1940']));
     expect(THAI_AUDIO_POLICY.bundledRecordings).toBe('none');
-    // no work of the ladder claims audio that may be bundled
-    for (const w of THAI_WORKS) expect(w.rights.canBundle, w.title).toBe(false);
+    expect(THAI_OTCV_RIGHTS.canBundleAudio).toBe(false);
   });
 });

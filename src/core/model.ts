@@ -13,6 +13,7 @@
 
 /** BCP-47 primary subtags of the five course languages. */
 export type LanguageCode = 'es' | 'sq' | 'th' | 'hi' | 'de';
+import type { CurriculumMetadata } from '../course/curriculumPolicy';
 export const LANGUAGES: readonly LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de'] as const;
 
 export type Script = 'Latn' | 'Deva' | 'Thai';
@@ -78,6 +79,11 @@ export interface SourceVerification {
 }
 
 export interface ContentSource {
+  /** Exact acquired edition/file evidence; never inferred from catalogue status. */
+  sourceHash?: string;
+  retrievedAt?: string;
+  licence?: string;
+  modifications?: string;
   id: string;
   title: string;
   /** Learner-visible attribution line ("Reina-Valera 1909, public domain"). */
@@ -129,6 +135,9 @@ export interface QualityReport {
 }
 
 export interface Text {
+  curriculum?: CurriculumMetadata;
+  /** Held-out reading registry identity; excluded from normal course use and encounters. */
+  readingAssessmentId?: string;
   id: string; // see ids.textId
   corpusId: string;
   lang: LanguageCode;
@@ -384,6 +393,8 @@ export interface TokenAnalysis {
   origin?: AnalysisOrigin;
   /** The source within that origin: "adapter-th@2:hand", "kaikki-th@2026-09-28", "import@2", "human:<name>". */
   sourceId?: string;
+  /** Immutable descriptor captured from the analyzer's source registry at import time, when available. */
+  sourceInfo?: AnalysisSourceInfo;
   analyzer: string; // "adapter-de@1", "human:cj"
   createdAt: string;
   supersedes?: string; // id of the analysis this overrides

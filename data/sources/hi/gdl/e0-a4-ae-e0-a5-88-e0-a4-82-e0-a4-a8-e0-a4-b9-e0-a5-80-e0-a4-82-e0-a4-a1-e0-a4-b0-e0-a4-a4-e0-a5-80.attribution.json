@@ -1,0 +1,42 @@
+{
+  "title": "मैं नहीं डरती !",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%88%e0%a4%82-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-%e0%a4%a1%e0%a4%b0%e0%a4%a4%e0%a5%80/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Mini Shrinivasan",
+    "Illustrator: Rayika Sen",
+    "Translator: Yuman Hussain",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: मैं नहीं डरती ! is translated by Yuman Hussain . The © for this translation lies with Yuman Hussain, 2017. Some rights reserved. Released under CC BY 4.0 license. Derived from: ' I Am Not Afraid! / मी नाही घाबरत! ' , by Sandhya Taksale . © Pratham Books , 2013. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' I Am Not Afraid! ' , by Mini Shrinivasan . © Pratham Books , 2013. Some rights reserved. Released under CC BY 4.0 license. This story may have intermediate versions between the root and parent story. To see all versions, please visit the links.",
+    "Illustration Attributions:",
+    "Cover page: Scared girl out in the dark , by Rayika Sen © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 2: A young girl out at night , by Rayika Sen © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 3: Young girl walking through the forest at night , by Rayika Sen © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 4: A cat in a forest at night , by Rayika Sen © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 5: A girl peeping from behind the bushes , by Rayika Sen © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 6: Girl near a well in the forest , by Rayika Sen © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 7: A girl entering a thick forest at night , by Rayika Sen © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 8: A girl drawing water from the well , by Rayika Sen © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 9: A terrified girl in the dark woods , by Rayika Sen © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Illustration Attributions:",
+    "Page 10: A girl running to meet her mother , by Rayika Sen © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 11: A happy girl in the forest , by Rayika Sen © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 12: Smiling girl, cat and patterns , by Rayika Sen © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "मैं नहीं डरती ! (Hindi)",
+    "एक छोटी लड़की अकेली बाहर जाती है ! उसे क्‍या देखने को मिलता है ! यह चार किताबों ' मैं बड़ी हो गयी हूँ' मे से एक किताब है !",
+    "यह पठन स्तर १ की किताब है, उन बच्चों के लिए जो पढ़ना शुरू कर रहे हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "56e44e57877ee4df194a92384ac31f940d3d955d2a9de6e9648295fa103bd825"
+}

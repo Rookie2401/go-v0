@@ -142,6 +142,9 @@ describe('Team Texts: the list of what the team added', () => {
     expect(rows).toHaveLength(2); // the two chapters are one book
     const book = rows.find((r) => (r.textContent ?? '').includes('Mi libro'))!;
     expect(book.querySelector('.work__added')!.textContent).toMatch(/^Added by Ana · /);
+    const chapterLinks = qa<HTMLAnchorElement>(book, '.team-book__chapters a');
+    expect(chapterLinks.map((a) => a.textContent)).toEqual(['Mi libro — Uno · Chapter 1', 'Mi libro — Dos · Chapter 2']);
+    expect(chapterLinks.map((a) => a.getAttribute('href'))).toEqual(['/read/text%3Aes%3Alibro-1', '/read/text%3Aes%3Alibro-2']);
     const single = rows.find((r) => (r.textContent ?? '').includes('Un cuento'))!;
     expect(single.querySelector('.work__added')!.textContent).toContain('Added by Ana');
     expect(listSection().textContent).not.toContain('Built in story');

@@ -9,7 +9,7 @@ import type { CatalogText, LanguageCode, RankCandidate, RankedText } from '../..
 import { useApp } from '../context';
 import { textPath } from '../format';
 import { usePreview } from '../prefs';
-import { doorPath, useDoors } from './catalogue';
+import { doorPath, useDoors, streamsOf } from './catalogue';
 import type { Door } from './catalogue';
 import { DIFFICULTY_WORD } from './wording';
 import './course.css';
@@ -22,21 +22,33 @@ interface Pick { ranked: RankedText; text: CatalogText }
 const MAX_CANDIDATES = 40;
 
 /**
- * Candidates for ranking, read from bounded library pages: one small page per interest stream (so a stated interest is represented) and
- * one general page, deduplicated and capped. Unpublished texts only in preview mode. Scripture is not offered here: the Bible has its own door.
+ * Candidates from the course's available reading streams, merged fairly and capped before profiling.
+ * Unpublished texts only in preview mode. Scripture has its own door.
  */
 async function candidatePage(args: { library: ReturnType<typeof useApp>['library']; lang: LanguageCode; interests: string[]; streamKeys: Set<string>; preview: boolean }): Promise<CatalogText[]> {
   const { library, lang, interests, streamKeys, preview } = args;
   const base = { lang, publishedOnly: !preview };
-  const mine = interests.filter((i) => streamKeys.has(i)).slice(0, 3);
-  const pages = await Promise.all([...mine.map((stream) => library.search({ ...base, stream, limit: 10 })), library.search({ ...base, limit: MAX_CANDIDATES })]);
+  const keys = [...new Set([...interests.filter((i) => streamKeys.has(i)), ...streamKeys])];
+  // Short texts remain discoverable even when a stream's first page is a long classic.
+  // Length is a sampling tool, never a language-level claim or a reading gate.
+  const pages = await Promise.all(keys.flatMap((stream) => [
+    library.search({ ...base, stream, maxWords: 300, limit: 20 }),
+    library.search({ ...base, stream, limit: MAX_CANDIDATES }),
+  ]));
   const seen = new Map<string, CatalogText>();
-  for (const p of pages) for (const t of p.items) if (t.stream !== 'scripture' && !(t.streams ?? []).includes('scripture') && (preview || t.published) && !seen.has(t.id)) seen.set(t.id, t);
+  // Round-robin representation keeps a large collection from swallowing smaller reading streams.
+  for (let i = 0; i < MAX_CANDIDATES && seen.size < MAX_CANDIDATES; i++) {
+    for (const p of pages) {
+      const t = p.items[i];
+      if (t && t.stream !== 'scripture' && !(t.streams ?? []).includes('scripture') && (preview || t.published) && !seen.has(t.id)) seen.set(t.id, t);
+      if (seen.size === MAX_CANDIDATES) break;
+    }
+  }
   return [...seen.values()].slice(0, MAX_CANDIDATES);
 }
 
 export function BestNextReads({ onCount }: { onCount?: (shown: number) => void }) {
-  const { library, golearn, userId, user, lang, course } = useApp();
+  const { library, catalog, golearn, userId, user, lang, course } = useApp();
   const preview = usePreview();
   const navigate = useNavigate();
   const [picks, setPicks] = useState<Pick[] | null>(null);
@@ -48,7 +60,9 @@ export function BestNextReads({ onCount }: { onCount?: (shown: number) => void }
     setPicks(null);
     void (async () => {
       await golearn.settled();
-      const items = await candidatePage({ library, lang, interests, streamKeys: new Set(['acquisition', 'library', 'honduras', 'knowledge', 'scripture', 'mission', 'personal']), preview });
+      const streams = await streamsOf(catalog, course.id);
+      const streamKeys = new Set(streams.filter((s) => s.available && s.kind !== 'scripture' && s.kind !== 'personal' && s.key !== 'listening').map((s) => s.key));
+      const items = await candidatePage({ library, lang, interests, streamKeys, preview });
       if (items.length === 0) { if (live) setPicks([]); return; }
       const profiles = await Promise.all(items.map((t) => library.profile(t.id)));
       let read = new Set<string>();
@@ -69,7 +83,7 @@ export function BestNextReads({ onCount }: { onCount?: (shown: number) => void }
       if (live) setPicks(out);
     })().catch(() => { if (live) setPicks([]); }); // no ranking is not an error the learner can act on: the section simply is not shown
     return () => { live = false; };
-  }, [library, golearn, userId, lang, interests, preview, course.variety?.target]);
+  }, [library, catalog, golearn, userId, lang, interests, preview, course.id, course.variety?.target]);
 
   useEffect(() => { if (picks) onCount?.(picks.length); }, [picks, onCount]);
 

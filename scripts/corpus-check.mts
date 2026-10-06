@@ -6,6 +6,7 @@
  * verified Scripture (data/verified/scripture.json) is byte-identical to the bundled text. Exit code 1 on any failure.
  */
 import fs from 'node:fs';
+import { checkVerifiedScripture, type VerifiedTranslation } from './verified-scripture';
 import { createMemoryStore } from '../src/core';
 import { importDocuments, type CorpusDocument } from '../src/ingest';
 import { collectJsonFiles, loadFiles, registry, validateAndPrint } from './corpus-cli.mts';
@@ -32,24 +33,14 @@ if (!run.errors) {
   }
 }
 
-// verified scripture must be byte-identical to the bundled text
+// Verification records are translation-specific. Unverified samples remain unpublished.
 let verifiedVerses = 0;
 if (fs.existsSync('data/verified/scripture.json')) {
-  const verified = JSON.parse(fs.readFileSync('data/verified/scripture.json', 'utf8')) as { translations: Array<{ lang: string; verses: Record<string, { text: string }> }> };
-  for (const t of verified.translations) {
-    for (const l of loaded) {
-      const d = l.doc as CorpusDocument | undefined;
-      if (!d || d.lang !== t.lang || d.contentType !== 'scripture') continue;
-      for (const sec of d.sections) for (const p of sec.paragraphs) {
-        if (!('sentences' in p)) continue;
-        for (const s of p.sentences) {
-          const want = (s.verseRefs ?? []).map((r) => t.verses[r]?.text).join(' ');
-          if (s.text !== want) { failures++; console.log(`ERROR ${t.lang}: ${(s.verseRefs ?? []).join(',')} differs from data/verified/scripture.json`); }
-          else verifiedVerses++;
-        }
-      }
-    }
-  }
+  const verified = JSON.parse(fs.readFileSync('data/verified/scripture.json', 'utf8')) as { translations: VerifiedTranslation[] };
+  const checked = checkVerifiedScripture(loaded.map(l => l.doc).filter((d): d is CorpusDocument => !!d), verified.translations);
+  verifiedVerses = checked.sentences;
+  failures += checked.errors.length;
+  for (const error of checked.errors) console.log(`ERROR ${error}`);
 }
 
 console.log(`corpus:check - ${run.documents} document(s), ${run.errors} validation error(s), ${run.warnings} warning(s); ${published} published, ${unpublished} unpublished; re-import unchanged: ${unchangedOnReimport ? 'yes' : 'no'}; ${verifiedVerses} verified verse(s) byte-identical; ${failures ? 'FAILED' : 'OK'}`);

@@ -77,6 +77,10 @@ function hasVerification(doc: Record<string, unknown>): boolean {
 /** Why this document may not be shared (the contract's rights table, and generated text whatever its rights); undefined when it may. */
 export function notShareableReason(doc: Record<string, unknown>): string | undefined {
   const source = isObj(doc.source) ? doc.source : undefined;
+  const corpus = isObj(doc.corpus) ? doc.corpus : undefined;
+  if (doc.contentType === 'testimony' || corpus?.kind === 'testimony') {
+    return `Personal testimony is private to the learner who made it, so it is not shared with the team. ${TEAM_HINT}`;
+  }
   if (doc.generated === true || source?.authorship === 'generated') return GENERATED_MESSAGE;
   switch (source?.rights) {
     case 'owner-authored': return undefined;

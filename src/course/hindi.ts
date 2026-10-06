@@ -28,6 +28,8 @@
  */
 import type { AssistanceProfile, HelpLayer, RegisterTag, Stage, Stream, Work, WorkRights, WorkRole } from '../core';
 import { ids } from '../core';
+import { mergeReadingBridgeWorks } from './readingBridges';
+import { CURRICULUM_ACQUIRED_WORKS } from './curriculumAcquired';
 
 export const HINDI_COURSE_ID = 'india-hi';
 const LANG = 'hi' as const;
@@ -182,6 +184,18 @@ export const IRV_HINDI_RIGHTS: WorkRights = {
   acquisitionNotes: 'A slice is bundled. The whole translation is one download from the same distributor, which needs the owner\'s permission to fetch.',
 };
 
+export const BHARATENDU_ANDHER_NAGARI_RIGHTS: WorkRights = {
+  state: 'verified-public-domain', copyrightStatus: 'public-domain', permission: 'not-needed', canBundle: true, userImportOnly: false,
+  canModify: true, canStoreOffline: true, canBundleAudio: false, audiobook: 'none', verified: true,
+  verifiedBy: 'Wikisource Bharatendu-Natakavali revision 517232', verifiedAt: '2026-10-01',
+  basis: 'Wikisource source record identifies the 1935 Bharatendu-Natakavali first edition and explicitly marks it Public Domain India and Public Domain US; the underlying play was written in 1881 by Bharatendu Harishchandra.',
+  sourceRepository: 'hi.wikisource.org', jurisdictions: ['IN', 'US'], licence: 'Public domain underlying edition; Wikisource transcription CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)', attributionRequired: true, shareAlike: true,
+  modifications: 'Navigation and editorial preface removed; Hindi play text retained from six official Wikisource act pages.', retrievedAt: '2026-10-01',
+  checksum: 'be33006a0584af910eb9cb5a5b7beea1c448c64c81ac63bb02cbc29770a2e91f', proofreading: 'Wikisource proofread source pages',
+  evidence: ['भारतेंदु-नाटकावली revision 517232: editor Brajaratnadas, first edition VS 1992 / 1935.', 'Contents index assigns अंधेर नगरी to pages 543–570; all six act pages retrieved.', 'Source record states Public Domain India and Public Domain United States.'],
+  statusByJurisdiction: { IN: 'public-domain', US: 'public-domain' }, commercialUse: true,
+};
+
 /**
  * NCERT school readers. NCERT's own terms (ncert.nic.in/textbook.php, read 2026-10-01; the wording is recorded in
  * docs/hindi/SOURCES_RESEARCH.md, section 3) rule out everything an app would do with them.
@@ -193,6 +207,29 @@ const NCERT: WorkRights = {
   sourceTerms: 'ncert.nic.in/textbook.php, section "Copyright of NCERT Textbooks and terms of use": download for use as a textbook or for reference only; no redistribution; no use inside software; even a link needs NCERT\'s written permission.',
   acquisitionNotes: 'Never bundled, never fetched and not linked from the app: the app holds no text of it. Listed only so that the learner knows the series exists. Only NCERT\'s written permission would change this.',
 };
+
+/** Hindi children's books available through the Global Digital Library's official API. */
+const GDL_HINDI = {
+  state: 'verified-open-licence', copyrightStatus: 'licensed', permission: 'not-needed', canBundle: true, userImportOnly: false,
+  canModify: true, canStoreOffline: true, canBundleAudio: false, audiobook: 'unknown', verified: true,
+  verifiedBy: 'coordinator (AI), from the GDL licence and API records; not legal advice', verifiedAt: '2026-10-01',
+  basis: 'The Global Digital Library licence page says its primary content licences are CC BY and CC BY-SA and that every content element carries its specific licence. The official Hindi books API records CC-BY-4.0 on each eligible book.',
+  licensing: 'CC BY 4.0 (per book; check the API record before acquisition)',
+  sourceRepository: 'Global Digital Library, Hindi books API (https://content.digitallibrary.io/wp-json/content-api/v1/books/hi)',
+  licence: 'Creative Commons Attribution 4.0 International, as recorded per book by the GDL API and explained at https://digitallibrary.io/about/license/',
+  jurisdictions: ['the source states CC licensing; no country-by-country public-domain claim is made'],
+  statusByJurisdiction: { '*': 'licensed' }, attributionRequired: true, shareAlike: false, commercialUse: true,
+  modifications: 'Text is retained verbatim after EPUB extraction; images and read-along audio are not bundled. Each book keeps its own author, illustrator, translator and publisher credit from the EPUB/API metadata.',
+  proofreading: 'source EPUB; no proofreading of our own',
+  evidence: [
+    'The GDL licence page (read 2026-10-01) says its primary licences are CC BY and CC BY-SA and that all content elements are marked with their specific Creative Commons licence.',
+    'The official API endpoint lists 129 Hindi books on the 2026-10-01 catalogue response; 125 carry a per-book CC-BY-4.0 record. The acquisition script stores that response before any EPUB is selected.',
+    'The API documentation says its endpoints support reuse and provide book structure/content without credentials; no StoryWeaver or Literacy Cloud endpoint is used.',
+  ],
+  compliance: 'Attribution is carried per book from the source record. Narration, illustrations and any non-CC-BY book are excluded unless their own record permits reuse.',
+  audioRights: 'No audio is bundled; read-along rights are separate from text.',
+  acquisitionNotes: 'Use scripts/acquire-hi-gdl.mts to save the official catalogue and selected EPUBs under data/private. Run source-quality review and the lazy library build before publication; do not commit the downloaded source files.',
+} as const satisfies WorkRights;
 
 const DRAFT = 'Machine-drafted prototype by an AI model: not reviewed by a native speaker, so it is visible in preview only. Gender, agreement, spelling, naturalness and the English lines all need a native reviewer.';
 
@@ -220,7 +257,7 @@ const works = (shelfKey: string, list: W[]): Work[] => list.map((w) => {
 const PREMCHAND = { author: 'प्रेमचंद', died: 1936, era: 'early 20th century' } as const;
 const PREMCHAND_NOTE = 'Part of his work first appeared in Urdu: which text a Hindi edition follows, and whose spelling and editing it carries, has to be identified edition by edition.';
 
-export const HINDI_WORKS: Work[] = [
+const HINDI_BASE_WORKS: Work[] = [
   // ── Stage 0A–0C: controlled Hindi written for the course (machine-drafted, unreviewed) ──
   ...works('s0a', [
     { slug: 'pehli-kahaniyan-0a', title: 'पहली कहानियाँ 0A — घर में', role: 'spine', streams: ['acquisition'], level: 'controlled', genre: 'microstories', rights: COURSE, ingestion: 'bundled', readiness: 'implemented',
@@ -240,6 +277,8 @@ export const HINDI_WORKS: Work[] = [
 
   // ── Children's Hindi ──
   ...works('c1', [
+    { slug: 'gdl-hindi-ccby', title: 'Global Digital Library — Hindi CC BY 4.0 books', role: 'extensive', streams: ['children'], publisher: 'Global Digital Library', audience: 'children', genre: 'illustrated story collection', purpose: ['native Hindi children’s reading from individually licensed books'], rights: GDL_HINDI, ingestion: 'ingested', readiness: 'implemented',
+      notes: 'A collection index, not one text: each selected book retains its own GDL API licence and attribution record. The lazy library pipeline acquires only individually selected CC-BY-4.0 books.' },
     { slug: 'storyweaver', title: 'StoryWeaver (Pratham Books) — Hindi stories', role: 'extensive', streams: ['children'], publisher: 'Pratham Books', audience: 'children', genre: 'illustrated story collection', purpose: ['native children\'s stories across the first classes'],
       // The publisher's own level and the course's level are STORED SEPARATELY when stories arrive: the publisher's level is a fact about the story, the course level a judgement. genericLevel is left unset on the collection.
       rights: { ...BASE, basis: 'Partly checked, and still unverified as a whole. The site states one open licence for all its stories and illustrations and a narrower one for its narrated stories and videos; the licence of an individual story is printed on that story\'s own attribution page and has not been checked for any story.',
@@ -296,7 +335,7 @@ export const HINDI_WORKS: Work[] = [
     { slug: 'premchand-mantra', title: 'मंत्र', ...PREMCHAND, genre: 'short story', notes: PREMCHAND_NOTE },
     { slug: 'khatri-chandrakanta', title: 'चंद्रकांता', author: 'देवकीनंदन खत्री', died: 1913, year: 1888, era: '19th century', genre: 'adventure novel',
       notes: 'A popular, plainly written romance of adventure. The edition (and any modernised spelling) has its own record.' },
-    { slug: 'bharatendu-andher-nagari', title: 'अंधेर नगरी', author: 'भारतेंदु हरिश्चंद्र', died: 1885, era: '19th century', genre: 'play', registers: ['literary'] },
+    { slug: 'bharatendu-andher-nagari', title: 'अंधेर नगरी', author: 'भारतेंदु हरिश्चंद्र', died: 1885, era: '19th century', genre: 'play', registers: ['literary'], streams: ['literature'], rights: BHARATENDU_ANDHER_NAGARI_RIGHTS, ingestion: 'ingested', readiness: 'implemented', sourceUrl: 'https://hi.wikisource.org/wiki/भारतेंदु-नाटकावली' },
     { slug: 'kalam-agni-ki-udaan', title: 'अग्नि की उड़ान', author: 'A. P. J. Abdul Kalam (Hindi translation)', died: 2015, streams: ['knowledge', 'personal'], genre: 'autobiography in translation', domains: ['science'],
       rights: modern('A modern book in a Hindi translation; the author died in 2015.') },
   ]),
@@ -353,6 +392,8 @@ export const HINDI_WORKS: Work[] = [
       notes: 'The Indian Revised Version (IRV) Hindi 2019. A licensed text (share-alike), not a public-domain one: it is named, credited and kept as its own corpus. Biblical vocabulary is tagged as its own register layer; the text is never changed. Only a slice is bundled.' },
   ]),
 ];
+
+export const HINDI_WORKS: Work[] = [...mergeReadingBridgeWorks(HINDI_BASE_WORKS, LANG), ...CURRICULUM_ACQUIRED_WORKS.filter(w => w.lang === 'hi')];
 
 /** Texts that are not placed on a shelf by this file: the learner's own books and his testimony. */
 export const HINDI_OUTSIDE_SHELVES = ['testimony'] as const;

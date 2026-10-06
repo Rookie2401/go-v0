@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { act } from 'react';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import type { AudioReplayed, AudioSeeked, PlaybackSpeedChanged } from '../../src/core';
+import type { AudioAbandoned, AudioReplayed, AudioSeeked, PlaybackSpeedChanged } from '../../src/core';
 import { ids } from '../../src/core';
 import { Player } from '../../src/ui/player/Player';
 import type { PlayerChange } from '../../src/ui/player/Player';
@@ -57,6 +57,20 @@ describe('Player', () => {
     await act(async () => { audioEl().currentTime = 0.5; audioEl().dispatchEvent(new Event('timeupdate')); });
     await flush();
     expect(Number(slider.value)).toBe(500);
+  });
+
+  it('passes the final native media position to ended without counting it as heard coverage', async () => {
+    await setup();
+    mounted = await h.mount(<Player textId={STORY_ID} />);
+    await click(button(mounted.container, 'Play'));
+    // Simulate a browser that updates currentTime to the end but emits no final timeupdate.
+    audioEl().currentTime = 0.7;
+    await act(async () => { audioEl().dispatchEvent(new Event('ended')); });
+    await flush();
+    const abandoned = await h.events('AudioAbandoned') as AudioAbandoned[];
+    expect(abandoned).toHaveLength(1);
+    expect(abandoned[0].positionMs).toBe(700);
+    expect(await h.events('AudioSegmentCompleted')).toHaveLength(0);
   });
 
   it('muted or zero-volume playback is not hearing: the pass ends as an abandonment, never a completion', async () => {

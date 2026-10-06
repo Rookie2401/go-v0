@@ -333,6 +333,7 @@ export function ReadPage() {
     <div>
       {bar}
       <div className="page page--narrow read disclosure-page route-fade">
+        <p className="card__note"><Link to="/curriculum">Reading path</Link> · available stages and material still being prepared</p>
         {!catalogReady && <p className="muted" role="status">Loading reading…</p>}
         {awaited && (
           <div className="awaited" role="status" data-testid="awaited">

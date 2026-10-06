@@ -1,0 +1,498 @@
+[
+  {
+    "schemaVersion": 2,
+    "id": "sq-gap-recovery-historical-fables-01",
+    "lang": "sq",
+    "locale": "sq",
+    "title": "Bretkosa që deshi të trashej sa një Ka",
+    "contentType": "story",
+    "corpus": {
+      "id": "sq-gap-recovery-historical-fables",
+      "kind": "comprehensible-input",
+      "title": "Albanian historical fable bridge"
+    },
+    "source": {
+      "id": "sq-wikisource-fable-968257",
+      "title": "Bretkosa që deshi të trashej sa një Ka",
+      "edition": "Albanian Wikisource revision 968257",
+      "url": "https://wikisource.org/w/index.php?oldid=968257",
+      "rights": "unverified",
+      "authorship": "published",
+      "attribution": "Bretkosa që deshi të trashej sa një Ka; Albanian Wikisource revision 968257; transcription attribution retained pending rights review.",
+      "licenseNote": "Rights are unverified: verify author, edition, jurisdiction, and transcription rights before release. This source is quarantined and cannot be bundled.",
+      "provenance": "Official Albanian Wikisource parse API; cached revision 968257, rendered HTML SHA256 7f5e97fd394fea2d4e2c5844a83a9ee0283f6b05d8546f10b7f68ed0125c4c71; historical spelling and wording retained without modernization."
+    },
+    "review": {
+      "status": "unreviewed",
+      "level": "linguistic-check",
+      "notes": "Authentic source extraction and provenance checked. This is historical/older Albanian (not a modern-standard A0–B1 review) and needs a variety-aware Albanian review before any use.",
+      "contentSignature": "110334418d67d118"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "historical-variety",
+      "needs-native-review",
+      "not-modern-standard"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "sq-gap-recovery-historical-fables",
+      "chapter": {
+        "index": 1,
+        "title": "Bretkosa që deshi të trashej sa një Ka"
+      }
+    },
+    "sections": [
+      {
+        "title": "Bretkosa që deshi të trashej sa një Ka",
+        "paragraphs": [
+          {
+            "text": "Bretkosa sa një ve, pa një ka sa një deve dhe nakari nuk' e la, desh të trashet sa një ka. Kur vu këtë gjë ndër mënd, vate u shtri ndë një vënd duke ngrën e duke pirë, që të fryhet sa më mirë. - Shihni, shihni, sa u rrita, - thërrit e thoshte përdita. - Mos u mburr' e mos u mbaj, - i thoshnë shoqet e saj. - Shihni, nukë jam sa demi? - Jo! - Shikoni. - Jo, të themi. - Pa shikoni këtë bark si të kaut. - Jo, je lark! - Bretkosa, nga marasi, u fry, u fry gjersa plasi. Shumë njerëz ndë këtë botë thone se janë të zotë; si bretkosa mendohen mburren e lëvdohen."
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "historical-albanian"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "sq-gap-recovery-historical-fables-02",
+    "lang": "sq",
+    "locale": "sq",
+    "title": "Korbi dhe Dhelpra",
+    "contentType": "story",
+    "corpus": {
+      "id": "sq-gap-recovery-historical-fables",
+      "kind": "comprehensible-input",
+      "title": "Albanian historical fable bridge"
+    },
+    "source": {
+      "id": "sq-wikisource-fable-1031830",
+      "title": "Korbi dhe Dhelpra",
+      "edition": "Albanian Wikisource revision 1031830",
+      "url": "https://wikisource.org/w/index.php?oldid=1031830",
+      "rights": "unverified",
+      "authorship": "published",
+      "attribution": "Korbi dhe Dhelpra; Albanian Wikisource revision 1031830; transcription attribution retained pending rights review.",
+      "licenseNote": "Rights are unverified: verify author, edition, jurisdiction, and transcription rights before release. This source is quarantined and cannot be bundled.",
+      "provenance": "Official Albanian Wikisource parse API; cached revision 1031830, rendered HTML SHA256 ed85008765553d973b1e72a9c0e9245568aef3b63e258c0f61613de99f775413; historical spelling and wording retained without modernization."
+    },
+    "review": {
+      "status": "unreviewed",
+      "level": "linguistic-check",
+      "notes": "Authentic source extraction and provenance checked. This is historical/older Albanian (not a modern-standard A0–B1 review) and needs a variety-aware Albanian review before any use.",
+      "contentSignature": "888c0d832030ff36"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "historical-variety",
+      "needs-native-review",
+      "not-modern-standard"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "sq-gap-recovery-historical-fables",
+      "chapter": {
+        "index": 2,
+        "title": "Korbi dhe Dhelpra"
+      }
+    },
+    "sections": [
+      {
+        "title": "Korbi dhe Dhelpra",
+        "paragraphs": [
+          {
+            "text": "Tek një lis sipër në majë korbi qëndroi të hajë një copë djathë që mbante në qeft. Kur nisi të hante, shkon një dhelpër e mallkuar, se i ra erë djathë i vjeshtuar. Dëshiron ta hajë vetë. \"Mirëdita mik i vjetër, bukurinë tënde nuk e ka zog tjetër me pendë të bardhë, në di të këndosh përmbi zogjtë e tjerë do të mbretërosh\" Të tregoje zënë zoti korb gërrhiti dhe lëshoi djathin po dhelpra ia priti dhe korbit i tha: \"Dëgjo, budalla: ata që lëvdojnë, me gjë të botës duan të rrojnë. Zot, kjo këshillë që të rrëfeva, sot vlen më tepër se kjo copë e djathit që të rrëmbeva\" Tha zonja dhelpër dhe iku me bisht përpjetë. Korb' i shkretë, korb' i mjerë, u turpërua dhe u betua të mos gënjenet dhe tjetër herë."
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "historical-albanian"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "sq-gap-recovery-historical-fables-03",
+    "lang": "sq",
+    "locale": "sq",
+    "title": "Lopa, Dhija, Delja dhe Luani",
+    "contentType": "story",
+    "corpus": {
+      "id": "sq-gap-recovery-historical-fables",
+      "kind": "comprehensible-input",
+      "title": "Albanian historical fable bridge"
+    },
+    "source": {
+      "id": "sq-wikisource-fable-968258",
+      "title": "Lopa, Dhija, Delja dhe Luani",
+      "edition": "Albanian Wikisource revision 968258",
+      "url": "https://wikisource.org/w/index.php?oldid=968258",
+      "rights": "unverified",
+      "authorship": "published",
+      "attribution": "Lopa, Dhija, Delja dhe Luani; Albanian Wikisource revision 968258; transcription attribution retained pending rights review.",
+      "licenseNote": "Rights are unverified: verify author, edition, jurisdiction, and transcription rights before release. This source is quarantined and cannot be bundled.",
+      "provenance": "Official Albanian Wikisource parse API; cached revision 968258, rendered HTML SHA256 dfcf6e3936eee4a92840778506d08c2bff9efc62ea01bc27bf880c611fc29f26; historical spelling and wording retained without modernization."
+    },
+    "review": {
+      "status": "unreviewed",
+      "level": "linguistic-check",
+      "notes": "Authentic source extraction and provenance checked. This is historical/older Albanian (not a modern-standard A0–B1 review) and needs a variety-aware Albanian review before any use.",
+      "contentSignature": "d51218322d9b9583"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "historical-variety",
+      "needs-native-review",
+      "not-modern-standard"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "sq-gap-recovery-historical-fables",
+      "chapter": {
+        "index": 3,
+        "title": "Lopa, Dhija, Delja dhe Luani"
+      }
+    },
+    "sections": [
+      {
+        "title": "Lopa, Dhija, Delja dhe Luani",
+        "paragraphs": [
+          {
+            "text": "Ndë kohë të vjetër, një lop' e një dhi dhe një dele tjetër bënë shoqëri bashkë me luanë dhe për gja tok vanë. Një ditë të shtunë, një zorkadhe zunë brënda në një ferrë. Luani, sakaqëherë, e mori e çau, me thonj vet' e ndau. Bëri katër copa, ashtu si desh lopa: \"Cop' e madhe, tha, për mua, se jam luan dhe kshtu dua, Cop' e dytë, besa-besë, më bie vetë në pjesë, doni, s'doni, do ta marr, se sot s'jemi barabar. Dhe këtë copën e tretë jam i zoti e marr vetë, si kam gjithnjë zakonë, Cop' e katrëtë, për zonë, imja qoftë, pa dyshim, se jam trim. Ndë kohë të vjetër, një lop' e një dhi dhe një dele tjetër bënë shoqëri bashkë me luanë dhe për gja tok vanë. Një ditë të shtunë, një zorkadhe zunë brënda në një ferrë. Luani, sakaqëherë, e mori e çau, me thonj vet' e ndau. Bëri katër copa, ashtu si desh lopa: \"Cop' e madhe, tha, për mua, se jam luan dhe kshtu dua, Cop' e dytë, besa-besë, më bie vetë në pjesë, doni, s'doni, do ta marr, se sot s'jemi barabar. Dhe këtë copën e tretë jam i zoti e marr vetë, si kam gjithnjë zakonë, Cop' e katrëtë, për zonë, imja qoftë, pa dyshim, se jam trim."
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "historical-albanian"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "sq-gap-recovery-historical-fables-04",
+    "lang": "sq",
+    "locale": "sq",
+    "title": "Luani dhe Miu",
+    "contentType": "story",
+    "corpus": {
+      "id": "sq-gap-recovery-historical-fables",
+      "kind": "comprehensible-input",
+      "title": "Albanian historical fable bridge"
+    },
+    "source": {
+      "id": "sq-wikisource-fable-968259",
+      "title": "Luani dhe Miu",
+      "edition": "Albanian Wikisource revision 968259",
+      "url": "https://wikisource.org/w/index.php?oldid=968259",
+      "rights": "unverified",
+      "authorship": "published",
+      "attribution": "Luani dhe Miu; Albanian Wikisource revision 968259; transcription attribution retained pending rights review.",
+      "licenseNote": "Rights are unverified: verify author, edition, jurisdiction, and transcription rights before release. This source is quarantined and cannot be bundled.",
+      "provenance": "Official Albanian Wikisource parse API; cached revision 968259, rendered HTML SHA256 dcfc31ed8f94d086b6f30315b196b75fb6a5d1272eea4473047c63d5ab80c6a8; historical spelling and wording retained without modernization."
+    },
+    "review": {
+      "status": "unreviewed",
+      "level": "linguistic-check",
+      "notes": "Authentic source extraction and provenance checked. This is historical/older Albanian (not a modern-standard A0–B1 review) and needs a variety-aware Albanian review before any use.",
+      "contentSignature": "f8b55d6661f31e67"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "historical-variety",
+      "needs-native-review",
+      "not-modern-standard"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "sq-gap-recovery-historical-fables",
+      "chapter": {
+        "index": 4,
+        "title": "Luani dhe Miu"
+      }
+    },
+    "sections": [
+      {
+        "title": "Luani dhe Miu",
+        "paragraphs": [
+          {
+            "text": "Në këtë botë sa rrojmë njëri-tjetrin të ndihmojmë: i math, i vogël, të tëre ç'jemi, për njëri-tjetrin nevojë kemi në këtë jetë. Për këtë gjë të vërtetë dy përralla do të themi. Një mi kur doli nga dheu, ndë thonj të luanit ra; po luani kur e pa, zemër të madhe rrëfeu, se minë të gjall' e la. Po dhe miu kur shpëtoi, të mirën nuk' e harroi, me të tepër ia pagoi. Një luan, një egërsirë, pa të mirë nga një mi, si s'e pandente njeri: Në një pyll në shkretëtirë, i mjeri luan, u zu me dhokan; thërret, bërtet, qan me lot se nga dhokani s'del dot, q'e zuri në këmbë. Po miu me dhëmbë, ep e merr sa e nxjerr; hyn e del, prish një tel, të tërë dhokanë dhe shpëton luanë. Fuqia dhe zemërimi s'mbarojnë ç'mbaron durimi."
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "historical-albanian"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "sq-gap-recovery-historical-fables-05",
+    "lang": "sq",
+    "locale": "sq",
+    "title": "Maçoku dhe Miu plak",
+    "contentType": "story",
+    "corpus": {
+      "id": "sq-gap-recovery-historical-fables",
+      "kind": "comprehensible-input",
+      "title": "Albanian historical fable bridge"
+    },
+    "source": {
+      "id": "sq-wikisource-fable-968260",
+      "title": "Maçoku dhe Miu plak",
+      "edition": "Albanian Wikisource revision 968260",
+      "url": "https://wikisource.org/w/index.php?oldid=968260",
+      "rights": "unverified",
+      "authorship": "published",
+      "attribution": "Maçoku dhe Miu plak; Albanian Wikisource revision 968260; transcription attribution retained pending rights review.",
+      "licenseNote": "Rights are unverified: verify author, edition, jurisdiction, and transcription rights before release. This source is quarantined and cannot be bundled.",
+      "provenance": "Official Albanian Wikisource parse API; cached revision 968260, rendered HTML SHA256 f7b3c62e585ac6f19fbe2f73f577c2928430b6f8c28eeb11535a46f6f429a3ee; historical spelling and wording retained without modernization."
+    },
+    "review": {
+      "status": "unreviewed",
+      "level": "linguistic-check",
+      "notes": "Authentic source extraction and provenance checked. This is historical/older Albanian (not a modern-standard A0–B1 review) and needs a variety-aware Albanian review before any use.",
+      "contentSignature": "5c34d682dc8fb259"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "historical-variety",
+      "needs-native-review",
+      "not-modern-standard"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "sq-gap-recovery-historical-fables",
+      "chapter": {
+        "index": 5,
+        "title": "Maçoku dhe Miu plak"
+      }
+    },
+    "sections": [
+      {
+        "title": "Maçoku dhe Miu plak",
+        "paragraphs": [
+          {
+            "text": "Tregojnë se një maçok ish i fortë sa s'kish shok, kur dilte të gjatonte, asnjë mi nuk' i shpëtonte, minjt' e gjorë desh u shuan, ca të pakët që shpëtuan, në vrimë rrinë të tërë nga frika se mos i zërë, maçi përgjon nat' e ditë, po s'dalin nga vrima mintë, rrinë ndënë prak. Po për këtë shkak, maçi, një mëngjes, shtiret sikur vdes dhe në një litar nga këmbët u var, as tundet, as flet, mitë, me të parë, pandejnë vërtet se, maçokn' e kanë vrarë, Në dhomë, guxojnë qasen mengadale, nga gazi këndojnë dhe kërcejnë valle, i vdekuri qeshi, (u ngjall si Lazari) dhe ra nga litari, zuri minj sa deshi, ata që shpëtuan me vrap u larguan. \"Tekdo që të vini, thosh maçi me vete, shpëtim nukë kini se di marifete, di të them të rreme, di të bëj llagëme.\"- Maçi një të diel. U lye me miell. Minjtë këtë dhunë, Nuk' e kupëtuan dhe ju afruan, një nga një u zunë. Një mi plak me mënd, i ditur, i vuar, s'u qas n'atë vënd: \"Të kam kupëtuar, dhe miell në ke s'të bie në duar se të di kush je sot s'më gënjen dot, s'më qesh dhe thes me miell të jesh, nuk qasem, mos ki shpresë.\" Tha miku dhe iku. Armikut, kush s'i vë besë, shpëton nga rreziku"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "historical-albanian"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "sq-gap-recovery-historical-fables-06",
+    "lang": "sq",
+    "locale": "sq",
+    "title": "Millonai, i Biri dhe një Gomar",
+    "contentType": "story",
+    "corpus": {
+      "id": "sq-gap-recovery-historical-fables",
+      "kind": "comprehensible-input",
+      "title": "Albanian historical fable bridge"
+    },
+    "source": {
+      "id": "sq-wikisource-fable-968263",
+      "title": "Millonai, i Biri dhe një Gomar",
+      "edition": "Albanian Wikisource revision 968263",
+      "url": "https://wikisource.org/w/index.php?oldid=968263",
+      "rights": "unverified",
+      "authorship": "published",
+      "attribution": "Millonai, i Biri dhe një Gomar; Albanian Wikisource revision 968263; transcription attribution retained pending rights review.",
+      "licenseNote": "Rights are unverified: verify author, edition, jurisdiction, and transcription rights before release. This source is quarantined and cannot be bundled.",
+      "provenance": "Official Albanian Wikisource parse API; cached revision 968263, rendered HTML SHA256 c049f9e7b26f30cb308641f4b84a1a39dfd1b0f7d480b0dc859325ec1b4701b7; historical spelling and wording retained without modernization."
+    },
+    "review": {
+      "status": "unreviewed",
+      "level": "linguistic-check",
+      "notes": "Authentic source extraction and provenance checked. This is historical/older Albanian (not a modern-standard A0–B1 review) and needs a variety-aware Albanian review before any use.",
+      "contentSignature": "1cb80a87874a6328"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "historical-variety",
+      "needs-native-review",
+      "not-modern-standard"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "sq-gap-recovery-historical-fables",
+      "chapter": {
+        "index": 6,
+        "title": "Millonai, i Biri dhe një Gomar"
+      }
+    },
+    "sections": [
+      {
+        "title": "Millonai, i Biri dhe një Gomar",
+        "paragraphs": [
+          {
+            "text": "Një millona me të birë u nisnë për në pazar, për të shitur një gomar. Që ta shesën ca më mirë, që të mos lodhet gomari, e shpëtuan nga samari. Kur e lidhë mbi një tra, e muar të dy në kra njëri pas, tjetri përpara. Gjenë ndëpër ara, një tjetër udhëtar: Ky u tha kur i pa: - Nga këta të tre nuk' është gomar ay që pandeni, ndaj mos u gënjeni. Millonai, q'e ndigjoi, e mori vesh këtë fjalë dhe me vrap, bashkë me djalë, në shesh gomar' e lëshoi, e zgjidhi nga druri, përpara e vuri. Kur hipi të birë, vetë, me gas dhe me dëshirë u vete pas. Do, s'do veshgjati shkon duke qarë. se i pëlqente mënyr' e parë. Tre njerëz q'i panë, djalit i thanë - Ti s'paske turp fare, nukë paske gjak' Zbrit nga gomari, t'ja hypi yt' at. q'është shumë plak. Djali me inat zbret nga veshgjati, - ja hipën i jati. Më tutje gjen tri gra, nga të tria njëra tha: - Mbyty, mbytu, millona, që shkon hipur si dhespot! Shiko, djali s'ecën dot. ndë këtë rrëpirë. Millonai plak grave u dha hak, mori në vithe të birë. S'kishnë bërë njëzet çape, poqnë të tjerë njerz prapë; një nga të tërë këta, kur i pa hipur u tha: - S'kini turp të turpëroni? Mos ini të dy të marrë? S'u vjen rëndë që mundoni kaqë shumë sot gomarë, - Vanë mënd e mia, vanë, (thotë millonai), sot kurkush nukë kënaq dot gjithë botën dhe babanë! Çdo njeri me mënd të vet... tani gjë tjetër s'më pret, nga gomari të zbres, që të mos thyhet në mes, Pas këto fjalë, hidhet në shesh bashkë me djalë. Gomari qesh,. se u lërua nga barra. Vunë gomarë përpara, vetë pas i venë, Pa vatur në trek, njerëz të tjerë gjenë, sipër te një brek. Kur u vanë pranë, të tërë tok thanë. - Shihni mëndjehollët, shihni dy të marrë, që grisin shollët, kursejnë gomarë, se i kanë gjarë, U hodh e tha millonai: - Vërtet jam gomar, për zonë, tek un' është gjithë faji se kërkoj të bëj ç'më thonë. Shani, qeshni sot me mua; sot e tutje kurdoherë do të bëj vetëm ç'të dua, jo si të duan të tjerë."
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "historical-albanian"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "sq-gap-recovery-historical-fables-07",
+    "lang": "sq",
+    "locale": "sq",
+    "title": "Ujku dhe Qengji",
+    "contentType": "story",
+    "corpus": {
+      "id": "sq-gap-recovery-historical-fables",
+      "kind": "comprehensible-input",
+      "title": "Albanian historical fable bridge"
+    },
+    "source": {
+      "id": "sq-wikisource-fable-968269",
+      "title": "Ujku dhe Qengji",
+      "edition": "Albanian Wikisource revision 968269",
+      "url": "https://wikisource.org/w/index.php?oldid=968269",
+      "rights": "unverified",
+      "authorship": "published",
+      "attribution": "Ujku dhe Qengji; Albanian Wikisource revision 968269; transcription attribution retained pending rights review.",
+      "licenseNote": "Rights are unverified: verify author, edition, jurisdiction, and transcription rights before release. This source is quarantined and cannot be bundled.",
+      "provenance": "Official Albanian Wikisource parse API; cached revision 968269, rendered HTML SHA256 c224661f1a2a81a3bdd49867baf8f517577dc5b76bb13789facfd7ef7b95b405; historical spelling and wording retained without modernization."
+    },
+    "review": {
+      "status": "unreviewed",
+      "level": "linguistic-check",
+      "notes": "Authentic source extraction and provenance checked. This is historical/older Albanian (not a modern-standard A0–B1 review) and needs a variety-aware Albanian review before any use.",
+      "contentSignature": "98fdf908aecc9782"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "historical-variety",
+      "needs-native-review",
+      "not-modern-standard"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "sq-gap-recovery-historical-fables",
+      "chapter": {
+        "index": 7,
+        "title": "Ujku dhe Qengji"
+      }
+    },
+    "sections": [
+      {
+        "title": "Ujku dhe Qengji",
+        "paragraphs": [
+          {
+            "text": "M'i forti në këtë jetë, punon dhe bën si do vetë. Një qengj i majmë shumë pi ujë në lumë. Një ujk u lëshua dhe iu afërua: Uria e kish shtrënguar dhe kish dalë për të gjuar. - Pse trumbullon ujë?, - thotë gjakëtori, se kur e pa gengji nga frika përmori. - Zot' i math, - tha qengj' i ngratë, - Ndëgjomë, jeta t'u ngjatë, mos u zemëro, të lutem shiko. Zot, lumi shkon poshtë, ti pi përmi mua ujë të kulluar, - Jo! U trumbullua. Pastaj kam ndëgjuar që më ke sharë një vit më parë. - Zot, s'kesha lerë. - Yt vëlla. - Po s'kam. - Të tjerë, yt at, qentë dhe baritë rrin' e më shajnë përditë, nukë kam dyshim, ndaj sot s'ke shpëtim, se për këtë shkak dua të marr gjak. - Dhe u hodh e zuri, ndë një pyll e shpuri, e mbyti, e çqeu, se kshtu i pëlqeu."
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "historical-albanian"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "sq-gap-recovery-historical-fables-08",
+    "lang": "sq",
+    "locale": "sq",
+    "title": "Zogu dhe Djali",
+    "contentType": "story",
+    "corpus": {
+      "id": "sq-gap-recovery-historical-fables",
+      "kind": "comprehensible-input",
+      "title": "Albanian historical fable bridge"
+    },
+    "source": {
+      "id": "sq-wikisource-fable-968287",
+      "title": "Zogu dhe Djali",
+      "edition": "Albanian Wikisource revision 968287",
+      "url": "https://wikisource.org/w/index.php?oldid=968287",
+      "rights": "unverified",
+      "authorship": "published",
+      "attribution": "Zogu dhe Djali; Albanian Wikisource revision 968287; transcription attribution retained pending rights review.",
+      "licenseNote": "Rights are unverified: verify author, edition, jurisdiction, and transcription rights before release. This source is quarantined and cannot be bundled.",
+      "provenance": "Official Albanian Wikisource parse API; cached revision 968287, rendered HTML SHA256 5562186849f889391c2f2bb1ece2dc232c748c46bcf2e7affc205493757a7cb5; historical spelling and wording retained without modernization."
+    },
+    "review": {
+      "status": "unreviewed",
+      "level": "linguistic-check",
+      "notes": "Authentic source extraction and provenance checked. This is historical/older Albanian (not a modern-standard A0–B1 review) and needs a variety-aware Albanian review before any use.",
+      "contentSignature": "9f298a503ee5e782"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "historical-variety",
+      "needs-native-review",
+      "not-modern-standard"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "sq-gap-recovery-historical-fables",
+      "chapter": {
+        "index": 8,
+        "title": "Zogu dhe Djali"
+      }
+    },
+    "sections": [
+      {
+        "title": "Zogu dhe Djali",
+        "paragraphs": [
+          {
+            "text": "Një zok të bukur zuri një djalë, Ay po dridhej dh'e i thosh ca fjalë: \"Nukë të vjen keq që jam i mitur, Si ti i vogël e s'jam dhe rritur? Jam bir i vetëm e mëma më pret, E kam lënë keq brenda në folet. Dheu me dëborë qjith' u mbulua, Më s'ka mbetur dhe gjëkunt pothua! Vuanj i gjori dit' edhe natë E s'gjenj dot asnjë druthë të thatë! E sheh sa u prish fort i shkreti mot, Urie vdiqmë, më s'durojmë dot, Zemërsë sime i lidhe gur, Po mëm' e zezë q'ësht' e sëmurë? Kërkonj e kërkonj, e kam që dije Që s'munt të gjenj dot gjëzë t'i shpije. Ah! kjo e keqe këtu më pruri, E gracka jote ra e më zuri! Më pret im mëzë, si ty jot ëmë. Të mos t'i vete, ç'bënetë prëmë? Të zesthitë na, përse na ngini? Në punët tënë përse s'na lini? Kam dhe unë shpirt dhe dua të rronj, Të lëçinj, të breth, të los, të këndonj, Unë, që s'kam ment, {si thotë njeriu), Kujt i bëra keq? Ç'bëra un' i ziu? Le, mos më mundo, se Zoti të sheh, Të mirën' edhe të ligën' e njeh, E s'do të ligën, po do të mirën, Do butësinë, nuk' egërsirën, Të drejtënë do dhe urtësinë, S'do faqezinë e babëzinë, Mua të lirë më bëri Zoti përse me bën rob? Nga un, Ç'do ti?,.,. Fjalët' e zogut djali i dëgjoi, Qau edh' e puthi, pastaj e lëshoi."
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "historical-albanian"
+  }
+]

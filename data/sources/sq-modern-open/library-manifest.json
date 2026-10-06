@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "lang": "sq",
+  "entries": [
+    {
+      "slug": "sq-modern-open",
+      "title": "Modern standard Albanian open reading",
+      "courseId": "albania-sq",
+      "stage": "7",
+      "streams": [
+        "library"
+      ],
+      "contentType": "nonfiction",
+      "variety": "sq",
+      "genre": "educational reference",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "granted",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Wikimedia source-manifest and CC BY-SA licence record",
+        "verifiedAt": "2026-10-02",
+        "basis": "Each selected source page is an exact Wikimedia revision whose local licence record and global CC BY-SA 4.0 terms permit redistribution with attribution and share-alike.",
+        "licensing": "CC BY-SA 4.0",
+        "sourceRepository": "sq.wikipedia.org rendered page API",
+        "licence": "CC BY-SA 4.0",
+        "jurisdictions": [
+          "*"
+        ],
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "attributionRequired": true,
+        "shareAlike": true,
+        "commercialUse": true,
+        "evidence": [
+          "https://sq.wikipedia.org/wiki/Wikipedia:CC_BY-SA",
+          "https://creativecommons.org/licenses/by-sa/4.0/"
+        ]
+      },
+      "source": {
+        "file": "documents.json",
+        "kind": "documents",
+        "url": "https://sq.wikipedia.org/",
+        "edition": "Selected sq.wikipedia.org revisions checked 2026-10-02",
+        "attribution": "Wikipedia shqip selected articles and sections; CC BY-SA 4.0; per-entry page and revision attribution is retained in documents.json.",
+        "provenance": "Selected source-faithful documents reconstructed from cached Wikimedia rendered-page revisions; section boundaries follow exact Albanian headings and source wording is retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "31b68e3a9507cf55b35a62c25572bf156d9f4ffbe7c776dc85536cd7ba2c3753",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed."
+      }
+    }
+  ]
+}

@@ -1,0 +1,523 @@
+{
+  "schema": 1,
+  "lang": "th",
+  "apiLanguage": "th-vn",
+  "entries": [
+    {
+      "slug": "bridge-yp-xav-kum-c",
+      "title": "yp x&amp;aV kuM {C",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/th-vn",
+          "https://content.digitallibrary.io/th-vn/book/yp-xav-kum-c/"
+        ]
+      },
+      "source": {
+        "file": "yp-xav-kum-c.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/th-vn/book/yp-xav-kum-c/",
+        "edition": "Global Digital Library gdl-7323",
+        "attribution": "yp x&amp;aV kuM {C — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "d8881b4aa6d88ba73721e0d883f8cf5dce87ed129143605e1d482578a8a8d27c"
+      }
+    },
+    {
+      "slug": "bridge-us-yp-kog-if-kn-nat-pouk-si",
+      "title": "uS yp koG if k&gt;N Nat Pouk Si",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/th-vn",
+          "https://content.digitallibrary.io/th-vn/book/us-yp-kog-if-kn-nat-pouk-si/"
+        ]
+      },
+      "source": {
+        "file": "us-yp-kog-if-kn-nat-pouk-si.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/th-vn/book/us-yp-kog-if-kn-nat-pouk-si/",
+        "edition": "Global Digital Library gdl-7325",
+        "attribution": "uS yp koG if k&gt;N Nat Pouk Si — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "9c47d2e95f553ad89019b1488293133bdfd3c617724b5aec1a38ad4171f834c8"
+      }
+    },
+    {
+      "slug": "bridge-lag-ehn-esg-oin",
+      "title": "laG EHN ES&amp;G o*iN",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/th-vn",
+          "https://content.digitallibrary.io/th-vn/book/lag-ehn-esg-oin/"
+        ]
+      },
+      "source": {
+        "file": "lag-ehn-esg-oin.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/th-vn/book/lag-ehn-esg-oin/",
+        "edition": "Global Digital Library gdl-7324",
+        "attribution": "laG EHN ES&amp;G o*iN — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "3258b5c16d643bb3c2ff59fcbfab6d7f354c51db6b90af411e8caa73cf4ffd65"
+      }
+    },
+    {
+      "slug": "bridge-pn-p-apg-c",
+      "title": "#pN p$ APG c$!",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/th-vn",
+          "https://content.digitallibrary.io/th-vn/book/pn-p-apg-c/"
+        ]
+      },
+      "source": {
+        "file": "pn-p-apg-c.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/th-vn/book/pn-p-apg-c/",
+        "edition": "Global Digital Library gdl-7326",
+        "attribution": "#pN p$ APG c$! — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "73213c2b522c08eee0bd10cb42650d80af28adb15c08a9fc97ede908314654c2"
+      }
+    },
+    {
+      "slug": "bridge-nug-fun-exis-eba-el-hn-hun",
+      "title": "N&amp;uG fUN Ex*iS Eb&amp;a eL #hN hu&amp;N",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/th-vn",
+          "https://content.digitallibrary.io/th-vn/book/nug-fun-exis-eba-el-hn-hun/"
+        ]
+      },
+      "source": {
+        "file": "nug-fun-exis-eba-el-hn-hun.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/th-vn/book/nug-fun-exis-eba-el-hn-hun/",
+        "edition": "Global Digital Library gdl-7326",
+        "attribution": "N&amp;uG fUN Ex*iS Eb&amp;a eL #hN hu&amp;N — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "71e181867464330d91c109cb7a7028f4c37bb344fa4d6ccb7d88e90cb8d31cf2"
+      }
+    },
+    {
+      "slug": "bridge-lg-eka-efn-emg-oin-at-end",
+      "title": "&lt;lG Ek*a ef&amp;N EMG Oi&amp;N-AT&amp;-end",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/th-vn",
+          "https://content.digitallibrary.io/th-vn/book/lg-eka-efn-emg-oin-at-end/"
+        ]
+      },
+      "source": {
+        "file": "lg-eka-efn-emg-oin-at-end.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/th-vn/book/lg-eka-efn-emg-oin-at-end/",
+        "edition": "Global Digital Library gdl-7326",
+        "attribution": "&lt;lG Ek*a ef&amp;N EMG Oi&amp;N-AT&amp;-end — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "4e6f926d66345a23095e020264afd2d413147b17d8dc784d4992db9181ad911a"
+      }
+    },
+    {
+      "slug": "bridge-um-cc-ekvc-ng-lad",
+      "title": "UM* &lt;c&amp;c eKVc n*}G Lad",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/th-vn",
+          "https://content.digitallibrary.io/th-vn/book/um-cc-ekvc-ng-lad/"
+        ]
+      },
+      "source": {
+        "file": "um-cc-ekvc-ng-lad.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/th-vn/book/um-cc-ekvc-ng-lad/",
+        "edition": "Global Digital Library gdl-84",
+        "attribution": "UM* &lt;c&amp;c eKVc n*}G Lad — African Storybook; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "4324955522886afd0ae47bf98f17531275a15264db32eca1c03ca0f54ff1ffb9"
+      }
+    },
+    {
+      "slug": "bridge-ba-noj-eba-im-us",
+      "title": "b*a N*oJ Eb&amp;a iM US&amp;",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/th-vn",
+          "https://content.digitallibrary.io/th-vn/book/ba-noj-eba-im-us/"
+        ]
+      },
+      "source": {
+        "file": "ba-noj-eba-im-us.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/th-vn/book/ba-noj-eba-im-us/",
+        "edition": "Global Digital Library gdl-7325",
+        "attribution": "b*a N*oJ Eb&amp;a iM US&amp; — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "3afff672e74783a93d2402c25dbaa0082a97e8b812c569ca47c6ed42aeb18f0f"
+      }
+    },
+    {
+      "slug": "bridge-cvam-xg-ng-cg-ib-ux",
+      "title": "CVaM x&amp;}G n*}G c&gt;G Ib&amp; Ux",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/th-vn",
+          "https://content.digitallibrary.io/th-vn/book/cvam-xg-ng-cg-ib-ux/"
+        ]
+      },
+      "source": {
+        "file": "cvam-xg-ng-cg-ib-ux.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/th-vn/book/cvam-xg-ng-cg-ib-ux/",
+        "edition": "Global Digital Library gdl-7764",
+        "attribution": "CVaM x&amp;}G n*}G c&gt;G Ib&amp; Ux — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "ab185fd57684e4b999b6cba693fdc4862e80a83110e9f828a13b94ab4bd859f5"
+      }
+    },
+    {
+      "slug": "bridge-cvam-t-ma-t-w",
+      "title": "CVaM &lt;t Ma &lt;t [w*",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/th-vn",
+          "https://content.digitallibrary.io/th-vn/book/cvam-t-ma-t-w/"
+        ]
+      },
+      "source": {
+        "file": "cvam-t-ma-t-w.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/th-vn/book/cvam-t-ma-t-w/",
+        "edition": "Global Digital Library gdl-3872",
+        "attribution": "CVaM &lt;t Ma &lt;t [w* — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "47da7746917fcefb78691708a2883230b589932db6c94a537df57a509bdee56a"
+      }
+    },
+    {
+      "slug": "bridge-eb-l-p-ebv-yd",
+      "title": "eb* [l* p&gt; eb*V yd*",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/th-vn",
+          "https://content.digitallibrary.io/th-vn/book/eb-l-p-ebv-yd/"
+        ]
+      },
+      "source": {
+        "file": "eb-l-p-ebv-yd.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/th-vn/book/eb-l-p-ebv-yd/",
+        "edition": "Global Digital Library gdl-114",
+        "attribution": "eb* [l* p&gt; eb*V yd* — African Storybook; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "5323bfb240d9ad6616716af74ea3775d894763fb5b2fdcc438a3fec4a3a3fd8d"
+      }
+    },
+    {
+      "slug": "bridge-cvam-t-ma-t-eta-n-b",
+      "title": "CVaM &lt;T Ma &lt;t Et&amp;a {N* #b*",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/th-vn",
+          "https://content.digitallibrary.io/th-vn/book/cvam-t-ma-t-eta-n-b/"
+        ]
+      },
+      "source": {
+        "file": "cvam-t-ma-t-eta-n-b.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/th-vn/book/cvam-t-ma-t-eta-n-b/",
+        "edition": "Global Digital Library gdl-7323",
+        "attribution": "CVaM &lt;T Ma &lt;t Et&amp;a {N* #b* — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "5b981dc94200524f85030fb4dba5b4e5c444947a85cabc22be601e695c13524f"
+      }
+    }
+  ]
+}

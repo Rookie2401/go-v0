@@ -30,7 +30,8 @@ describe('install', () => {
     expect(await store.stages.count()).toBe(THAI_STAGES.length);
     expect(await store.works.count()).toBe(THAI_WORKS.length);
     expect((await catalog.stages(THAI_COURSE_ID)).map((x) => x.key)).toEqual(['0', 'g1', 'g2', 'g3', 'g4', 'g5', 'g6', 'g7', 'g8', 'g9', 'open']);
-    expect(await store.stages.get(s('g4'))).toEqual(THAI_STAGES.find((x) => x.key === 'g4'));
+    expect(await store.stages.get(s('g4'))).toMatchObject(THAI_STAGES.find((x) => x.key === 'g4')!);
+    expect((await store.stages.get(s('g4')))!.contract).toMatchObject({ id: s('g4'), language: 'th', exitEvidence: { certification: false } });
     expect(await store.works.get(w('kaeo-chom-kaen'))).toEqual(THAI_WORKS.find((x) => x.id === w('kaeo-chom-kaen')));
   });
 
@@ -87,8 +88,12 @@ describe('install', () => {
   it('keeps nothing that the manifest does not say true: no work is marked verified or bundleable by installing', async () => {
     const { store } = await installed();
     const all = await store.works.all();
-    expect(all.every((x) => !x.rights.verified && !x.bibliographyVerified && !x.rights.canBundle && x.rights.userImportOnly)).toBe(true);
-    expect(all.some((x) => x.rights.copyrightStatus === 'public-domain')).toBe(false);
+    for (const item of all) {
+      const source = THAI_WORKS.find((row) => row.id === item.id)!;
+      expect(item.rights).toEqual(source.rights);
+      expect(item.bibliographyVerified).toBe(source.bibliographyVerified);
+    }
+    expect(all.filter((x) => x.rights.canBundle).every((x) => x.rights.state === 'course-authored' || (x.rights.verified && !!x.rights.evidence?.length))).toBe(true);
   });
 });
 

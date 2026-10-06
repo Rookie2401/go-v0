@@ -1,0 +1,67 @@
+{
+ "lang": "de",
+ "at": "2026-10-02",
+ "changes": [
+  "hebel-schatzkaestlein: WITHHELD — it could not be divided into chapters of a readable length: \"Schatzkästlein des rheinischen Hausfreun\" has 36624 words — withheld until the source's headings are marked (the converter takes the line numbers of the headings)",
+  "hauptmann-bahnwaerter-thiel: WITHHELD — its chapters were not found: 15747 of its 15894 words stand before the first heading that was recognised, and what follows is 3 piece(s) of 23, 5, 119 words — withheld until the source's headings are marked (the converter takes the line numbers of the headings)",
+  "mommsen-roemische-geschichte: WITHHELD — it could not be divided into chapters of a readable length: \"Römische Geschichte — Part 1 of 7\" has 79463 words — withheld until the source's headings are marked (the converter takes the line numbers of the headings)"
+ ],
+ "leftOut": [],
+ "withheld": [
+  {
+   "slug": "guerber-maerchen-und-erzaehlungen",
+   "title": "Märchen und Erzählungen für Anfänger",
+   "reason": "the source has English editorial sections mixed into the text (6008 words: About 7% of the words stand in paragraphs that look like English (241 paragraphs): a preface, notes, exercises or a vocabulary of an annotated edition. They are) — withheld until the source is cut down to the book"
+  },
+  {
+   "slug": "bridge-einfaches-zahlen",
+   "title": "Einfaches Zählen",
+   "reason": "fewer than 15 words of the course language are left (8): a wordless or nearly wordless book is not a reading text"
+  },
+  {
+   "slug": "bridge-lecker-mango",
+   "title": "Lecker Mango!",
+   "reason": "fewer than 15 words of the course language are left (0): a wordless or nearly wordless book is not a reading text"
+  },
+  {
+   "slug": "bridge-mein-kleiner-garten",
+   "title": "Mein kleiner Garten",
+   "reason": "fewer than 15 words of the course language are left (0): a wordless or nearly wordless book is not a reading text"
+  },
+  {
+   "slug": "bridge-meine-strase",
+   "title": "Meine Straße",
+   "reason": "fewer than 15 words of the course language are left (0): a wordless or nearly wordless book is not a reading text"
+  },
+  {
+   "slug": "bridge-ich-kann-mich-selbst-anziehen",
+   "title": "Ich kann mich selbst anziehen!",
+   "reason": "fewer than 15 words of the course language are left (0): a wordless or nearly wordless book is not a reading text"
+  },
+  {
+   "slug": "bridge-ich-mag",
+   "title": "Ich mag",
+   "reason": "fewer than 15 words of the course language are left (0): a wordless or nearly wordless book is not a reading text"
+  },
+  {
+   "slug": "bridge-schnipp-schnapp",
+   "title": "Schnipp Schnapp",
+   "reason": "fewer than 15 words of the course language are left (0): a wordless or nearly wordless book is not a reading text"
+  },
+  {
+   "slug": "hebel-schatzkaestlein",
+   "title": "Schatzkästlein des rheinischen Hausfreundes",
+   "reason": "it could not be divided into chapters of a readable length: \"Schatzkästlein des rheinischen Hausfreun\" has 36624 words — withheld until the source's headings are marked (the converter takes the line numbers of the headings)"
+  },
+  {
+   "slug": "hauptmann-bahnwaerter-thiel",
+   "title": "Bahnwärter Thiel",
+   "reason": "its chapters were not found: 15747 of its 15894 words stand before the first heading that was recognised, and what follows is 3 piece(s) of 23, 5, 119 words — withheld until the source's headings are marked (the converter takes the line numbers of the headings)"
+  },
+  {
+   "slug": "mommsen-roemische-geschichte",
+   "title": "Römische Geschichte",
+   "reason": "it could not be divided into chapters of a readable length: \"Römische Geschichte — Part 1 of 7\" has 79463 words — withheld until the source's headings are marked (the converter takes the line numbers of the headings)"
+  }
+ ]
+}

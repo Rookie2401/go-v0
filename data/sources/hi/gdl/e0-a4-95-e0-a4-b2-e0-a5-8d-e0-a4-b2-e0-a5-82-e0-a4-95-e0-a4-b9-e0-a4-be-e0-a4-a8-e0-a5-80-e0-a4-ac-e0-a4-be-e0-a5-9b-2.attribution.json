@@ -1,0 +1,40 @@
+{
+  "title": "कल्लू कहानीबाज़",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b2%e0%a5%8d%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80%e0%a4%ac%e0%a4%be%e0%a5%9b-2/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Subhadra Sen Gupta",
+    "Illustrator: Tapas Guha",
+    "Translator: Manisha Chaudhry",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: कल्लू कहानीबाज़ is translated by Manisha Chaudhry . The © for this translation lies with Pratham Books, 2011. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' Kallu's World 1 - In Big Trouble Again! ' , by Subhadra Sen Gupta . © Pratham Books , 2015. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This book has been published on StoryWeaver by Pratham Books. Pratham Books is a not-for-profit organization that publishes books in multiple Indian languages to promote reading among children. www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Boy passing a man and his cattle , by Tapas Guha © Pratham Books, 2011. Some rights reserved. Released under CC BY 4.0 license. Page 2: Sleeping boy being woken up , by Tapas Guha © Pratham Books, 2011. Some rights reserved. Released under CC BY 4.0 license. Page 6: Girl looking at boy with his leg covered in plaster , by Tapas Guha © Pratham Books, 2011. Some rights reserved. Released under CC BY 4.0 license. Page 9: Tired boy running , by Tapas Guha © Pratham Books, 2011. Some rights reserved. Released under CC BY 4.0 license. Page 11: Boy passing a tea stall , by Tapas Guha © Pratham Books, 2011. Some rights reserved. Released under CC BY 4.0 license. Page 15: Boy passing a man and his buffaloes , by Tapas Guha © Pratham Books, 2011. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "कल्लू कहानीबाज़ (Hindi)",
+    "आज कल्लू को स्कूल के लिये देर हो गई है। क्या बकरी भाग गई थी या कोई बीमार था? अम्मी कि भाई? कल्लू को ज़रूरत है एक कहानी की...एक बढ़िया... जन्नाटेदार...मानने लायक कहानी की... क्या उसे सही कहानी मिली?",
+    "यह पठन स्तर ४ की किताब है, उन बच्चों के लिए जो पढ़ने में प्रवीण हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "e5dec3ed0b52d0a7565cc4adeb27de598f3a2f3f01d9e821b7c700bf5518c32c"
+}

@@ -1,0 +1,87 @@
+deep: importing each text afresh with adapter 3 and the installed dictionary (public/dict/sq)
+
+library:audit sq — library-sq@2026-10-02: 23 texts in 1 works, 8707 words; deep check of 23 texts (8707 words), read through GoLearn in 5 s
+  analyzers: stored adapter-sq@3 | today adapter-sq@3 + dict:kaikki-sq@2026-09-28 — 23 texts
+  ok   catalogue: a work with texts in the library is recorded as bundlable: 1 of 1
+  ok   catalogue: every text names a work: 23 of 23
+  ok   catalogue: the rights of the texts are the rights of their work: 1 of 1
+  ok   catalogue: the shelf of a work exists in the course: 1 of 1
+  ok   catalogue: the shelf of the texts is the shelf of their work: 1 of 1
+  ok   catalogue: the stream of the texts is a stream of the course: 1 of 1
+  ok   catalogue: the stream of the texts is a stream of their work: 1 of 1
+  ok   catalogue: the work of a text is in the course catalogue: 1 of 1
+  ok   catalogue: the work says its texts are in the library: 1 of 1
+  ok   deep: every analysis names a lemma that exists: 23 of 23
+  ok   deep: every construction found in the text has its row: 23 of 23
+  ok   deep: every unit found in the text has its row: 23 of 23
+  ok   deep: every word carries the id of its form item: 23 of 23
+  ok   deep: every word is a slice of its sentence: 23 of 23
+  ok   deep: the document is the text the row names: 23 of 23
+  ok   deep: the document names the row's work and chapter: 23 of 23
+  FAIL deep: the features are what a fresh import measures: 1 of 23 — 22 not
+         text:sq:sq-modern-open-ushqimi: relativePerSentence, subjunctiveShare, cliticShare, unanalysedShare, genitiveShare, registerShare
+         text:sq:sq-modern-open-qeni: cliticShare, unanalysedShare, genitiveShare, registerShare
+         text:sq:sq-modern-open-macja: relativePerSentence, subjunctiveShare, cliticShare, properNounShare, unanalysedShare, genitiveShare, registerShare
+         text:sq:sq-modern-open-bleta: relativePerSentence, subjunctiveShare, cliticShare, properNounShare, unanalysedShare, genitiveShare, registerShare
+         text:sq:sq-modern-open-mali: cliticShare, properNounShare, unanalysedShare, genitiveShare, registerShare
+         text:sq:sq-modern-open-deti: relativePerSentence, cliticShare, unanalysedShare, registerShare
+         … and 16 more
+  ok   deep: the forms of the profile sum to its words: 23 of 23
+  ok   deep: the importer knows the work: 23 of 23
+  ok   deep: the profile counts the words of the text: 23 of 23
+  FAIL deep: the profile lists the constructions a fresh import finds: 2 of 23 — 21 not
+         text:sq:sq-modern-open-ushqimi: 1 only stored (pattern:sq:without-pa), 1 only fresh (pattern:sq:optative), 8 with another count (pattern:sq:definite-noun-ending, pattern:sq:negation-nuk, pattern:sq:modal-te)
+         text:sq:sq-modern-open-qeni: 0 only stored (), 0 only fresh (), 4 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article, pattern:sq:nominative-after-preposition)
+         text:sq:sq-modern-open-macja: 0 only stored (), 1 only fresh (pattern:sq:subjunctive-te), 10 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article, pattern:sq:non-active-present)
+         text:sq:sq-modern-open-bleta: 0 only stored (), 0 only fresh (), 9 with another count (pattern:sq:definite-noun-ending, pattern:sq:non-active-present, pattern:sq:object-pronoun-before-verb)
+         text:sq:sq-modern-open-mali: 0 only stored (), 1 only fresh (pattern:sq:optative), 2 with another count (pattern:sq:genitive-linking-article, pattern:sq:object-pronoun-before-verb)
+         text:sq:sq-modern-open-deti: 0 only stored (), 0 only fresh (), 5 with another count (pattern:sq:definite-noun-ending, pattern:sq:genitive-linking-article, pattern:sq:nominative-after-preposition)
+         … and 15 more
+  ok   deep: the profile lists the forms of the text: 23 of 23
+  FAIL deep: the profile lists the lemmas a fresh import finds: 1 of 23 — 22 not
+         text:sq:sq-modern-open-ushqimi: 1 only stored (lemma:sq:pa:PART), 56 only fresh (lemma:sq:shkaktoj:VERB, lemma:sq:afat:NOUN, lemma:sq:përdorim:NOUN), 3 with another count (lemma:sq:të:PART, lemma:sq:ai:PRON, lemma:sq:i:DET)
+         text:sq:sq-modern-open-qeni: 0 only stored (), 60 only fresh (lemma:sq:deri:ADP, lemma:sq:herë:NOUN, lemma:sq:shikim:NOUN), 2 with another count (lemma:sq:ai:PRON, lemma:sq:i:DET)
+         text:sq:sq-modern-open-macja: 2 only stored (lemma:sq:e:CONJ, lemma:sq:jetë:NOUN), 65 only fresh (lemma:sq:anë:NOUN, lemma:sq:eci:VERB, lemma:sq:gjitar:NOUN), 7 with another count (lemma:sq:ai:PRON, lemma:sq:të:PART, lemma:sq:i:DET)
+         text:sq:sq-modern-open-bleta: 0 only stored (), 90 only fresh (lemma:sq:mbretëreshë:NOUN, lemma:sq:mashkull:NOUN, lemma:sq:prodhoj:VERB), 5 with another count (lemma:sq:ai:PRON, lemma:sq:të:PART, lemma:sq:i:DET)
+         text:sq:sq-modern-open-mali: 0 only stored (), 18 only fresh (lemma:sq:deri:ADP, lemma:sq:veri:NOUN, lemma:sq:jug:NOUN), 2 with another count (lemma:sq:ai:PRON, lemma:sq:i:DET)
+         text:sq:sq-modern-open-deti: 0 only stored (), 68 only fresh (lemma:sq:oqean:NOUN, lemma:sq:rrymë:NOUN, lemma:sq:përfshij:VERB), 3 with another count (lemma:sq:ai:PRON, lemma:sq:i:DET, lemma:sq:rregulloj:VERB)
+         … and 16 more
+  ok   deep: the profile lists the units a fresh import finds: 23 of 23
+  FAIL deep: the profile was made by today's analyzer and dictionary: 0 of 23 — 23 not
+         text:sq:sq-modern-open-ushqimi: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28
+         text:sq:sq-modern-open-qeni: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28
+         text:sq:sq-modern-open-macja: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28
+         text:sq:sq-modern-open-bleta: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28
+         text:sq:sq-modern-open-mali: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28
+         text:sq:sq-modern-open-deti: stored adapter-sq@3; today adapter-sq@3 + dict:kaikki-sq@2026-09-28
+         … and 17 more
+  ok   deep: the row's features are the profile's: 23 of 23
+  ok   deep: the row's publication decision is the document's: 23 of 23
+  ok   deep: the row's title is the document's: 23 of 23
+  ok   deep: the stored paragraphs are the document's paragraphs, in order: 23 of 23
+  ok   deep: the stored text carries its work, chapter, stream and publication: 23 of 23
+  ok   deep: the text has sentences: 23 of 23
+  ok   deep: the text imports: 23 of 23
+  ok   order: bundled and library chapters of one work do not share a number: 1 of 1
+  ok   order: every text of a work has a chapter number: 1 of 1
+  ok   order: no chapter number twice in a work: 1 of 1
+  ok   order: the chapters of a work run without gaps: 1 of 1
+  ok   order: the chapters of a work start at 1 (or 0 for front matter): 1 of 1
+  ok   order: the index lists the chapters of a work in chapter order: 1 of 1
+  ok   read: after reading, no word of the text is new to the learner: 23 of 23
+  ok   read: every construction of the profile became a learner item: 23 of 23
+  ok   read: every form of the text became a learner item: 23 of 23
+  ok   read: every lemma of the profile became a learner item: 23 of 23
+  ok   read: every sentence of the text is counted as seen: 23 of 23
+  ok   read: every unit of the profile became a learner item: 23 of 23
+  ok   read: no form item that is not a form of the text: 23 of 23
+  ok   structure: a row is listed under its own primary stream: 23 of 23
+  ok   structure: every row has its document file: 23 of 23
+  ok   structure: every row has its profile file: 23 of 23
+  ok   structure: every row of an index shard is well formed: 1 of 1
+  ok   structure: no document file without a row: 23 of 23
+  ok   structure: no profile file without a row: 23 of 23
+  ok   structure: no text id twice: 23 of 23
+  ok   structure: the manifest counts the texts it lists: 1 of 1
+  ok   structure: the manifest word count is the sum of the rows: 1 of 1
+4 check(s) failed

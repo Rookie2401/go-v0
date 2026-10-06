@@ -94,7 +94,7 @@ describe('one complete acquisition loop — Spanish', () => {
     const refused = applyReview(supplied, { by: '' }); // a review needs a named reviewer
     expect(refused.ok).toBe(false);
     if (!refused.ok) expect(refused.refusals.map((x) => x.code)).toContain('missing-reviewer');
-    const done = applyReview(supplied, { by: 'Acceptance run (synthetic review, not a native-speaker review)', status: 'reviewed', date: '2026-10-01' });
+    const done = applyReview(supplied, { by: 'Acceptance run (synthetic review, not a native-speaker review)', status: 'reviewed', level: 'native', date: '2026-10-01' });
     if (!done.ok) throw new Error(JSON.stringify(done.refusals));
     expect(done.decision.published).toBe(true);
     reviewed = done.doc as CorpusDocument;
@@ -327,7 +327,7 @@ describe('one complete acquisition loop — Spanish', () => {
     expect(held.documents[0]).toMatchObject({ action: 'updated', contentVersion: 2, sentencesAdded: 1, sentencesRetired: 1, published: false });
     expect(held.documents[0].unpublishedReasons.join(' ')).toMatch(/changed after it was reviewed/);
     expect((await live.golearn.recommend(USER, { lang: LANG })).some((x) => x.textId === storyId)).toBe(false);
-    const rereview = applyReview(revised, { by: 'Acceptance run (synthetic review, not a native-speaker review)', status: 'reviewed', date: '2026-10-02' });
+    const rereview = applyReview(revised, { by: 'Acceptance run (synthetic review, not a native-speaker review)', status: 'reviewed', level: 'native', date: '2026-10-02' });
     if (!rereview.ok) throw new Error(JSON.stringify(rereview.refusals));
     const rep = await importDocuments(live.store, live.adapters, [rereview.doc]);
     expect(rep.documents[0]).toMatchObject({ contentVersion: 2, published: true }); // a review is not a content change

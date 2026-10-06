@@ -1,0 +1,40 @@
+{
+  "title": "अम्मा जब स्कूल गयीं",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%ae%e0%a5%8d%e0%a4%ae%e0%a4%be-%e0%a4%9c%e0%a4%ac-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2-%e0%a4%97%e0%a4%af%e0%a5%80%e0%a4%82-2/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Nandini Nayar",
+    "Illustrator: Ruchi Shah",
+    "Translator: Rajesh Khar",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: अम्मा जब स्कूल गयीं is translated by Rajesh Khar . The © for this translation lies with Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' When Amma Went to School ' , by Nandini Nayar . © Pratham Books , 2013. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This book has been published on StoryWeaver by Pratham Books.The development of the print version of this book has been supported by Parag (Promoting Innovative Publishing in Education), a Sir Ratan Tata Initiative. Pratham Books is a not-for-profit organization that publishes books in multiple Indian languages to promote reading among children. www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Lady scared of snake , by Ruchi Shah © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 2: Mother talking to daughter, and a building in the background , by Ruchi Shah © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 3: Mother talking to daughter, and a building in the background , by Ruchi Shah © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 4: Boy crying, snake in a classroom and people looking scared , by Ruchi Shah © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 5: Scared children looking at a snake , by Ruchi Shah © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 6: Children running away from snake in a classroom , by Ruchi Shah © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 7: Girl climbing a ladder on to the top of a building , by Ruchi Shah © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Page 8: Girl smiling and lady sitting on a chair , by Ruchi Shah © Pratham Books, 2013. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "अम्मा जब स्कूल गयीं (Hindi)",
+    "मीरा की अम्मा एक दिन उसके स्कूल गयीं पर वहाँ कोई नहीं था, मीरा, उसके मित्र, शिक्षक और यहाँ तक कि बड़ी दीदी भी। वे सब कहाँ गायब हो गए थे?",
+    "यह पठन स्तर २ की किताब है, उन बच्चों के लिए जो सरल शब्द पढ़ लेते हैं और थोड़ी मदद से नए शब्द भी पढ़ सकते हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "0eccedceb657b95eded3da3bf4e30f62015bdfd4fcd8992c416b9705971e7956"
+}

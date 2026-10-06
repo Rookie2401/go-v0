@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+const file = 'data/sources/hi-literature/bharatendu-andher-nagari.json';
+const raw = fs.readFileSync(file, 'utf8');
+const docs = JSON.parse(raw); const checksum = crypto.createHash('sha256').update(raw).digest('hex');
+const doc = docs[0];
+doc.source.checksum = checksum; doc.source.proofreading = 'Wikisource proofread source pages retrieved through official API';
+doc.source.evidence = ['भारतेंदु-नाटकावली revision 517232: editor Brajaratnadas, first edition VS 1992 / 1935.', 'Contents index assigns अंधेर नगरी to source pages 543–570; six अंक pages retrieved.', 'Source record states Public Domain India and Public Domain United States.'];
+fs.writeFileSync(file, JSON.stringify(docs, null, 2) + '\n');
+const manifestFile = 'data/sources/hi-literature/bharatendu-andher-nagari-manifest.json'; const m = JSON.parse(fs.readFileSync(manifestFile, 'utf8')); const e = m.entries[0]; e.source.provenance = 'Official Wikisource API retrieval, revision 517232: six अंक pages covering source pages 543–570; navigation removed without rewriting Hindi wording; editorial preface excluded.'; e.source.checksum = checksum; fs.writeFileSync(manifestFile, JSON.stringify(m, null, 2) + '\n');
+const side = 'data/sources/hi-literature/bharatendu-andher-nagari-source.json'; const s = JSON.parse(fs.readFileSync(side, 'utf8')); s.revision=517232; s.sourcePages='543–570'; s.acts=6; fs.writeFileSync(side, JSON.stringify(s, null, 2) + '\n'); console.log(JSON.stringify({checksum,sections:doc.sections.length,words:doc.sections.reduce((n,x)=>n+x.paragraphs.reduce((m,p)=>m+p.sentences.reduce((k,z)=>k+z.text.split(/\s+/).filter(Boolean).length,0),0),0)}));

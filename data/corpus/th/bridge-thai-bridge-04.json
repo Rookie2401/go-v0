@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "bridge-thai-bridge-04",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ฝนตกที่บ้าน",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-th-bridge-drafts",
+    "kind": "comprehensible-input",
+    "title": "Thai beginner bridge drafts"
+  },
+  "source": {
+    "id": "src:th:thai-bridge-04",
+    "title": "ฝนตกที่บ้าน — course-owned draft",
+    "author": "Course authors (machine-drafted)",
+    "attribution": "Course-owned Thai draft. Machine-drafted for native-speaker review; no external source or translation claimed.",
+    "provenance": "Original controlled draft written for the course-owned beginner review queue. It is not a published or source-reviewed Thai work.",
+    "rights": "owner-authored",
+    "licenseNote": "Course-owned draft; may not be published until native review.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Native Thai reviewer required. Source fidelity is not applicable because this is original course-owned draft text."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "ฝน",
+    "ร่ม",
+    "ถนน"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "course-owned-draft"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss for review only"
+  },
+  "sections": [
+    {
+      "title": "ฝนตกที่บ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนบ่าย เมฆสีดำลอยเหนือถนน",
+              "english": "In the afternoon, dark clouds float above the road."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ไม่นานฝนก็ตกลงมาเสียงดัง",
+              "english": "Soon the rain falls with a loud sound."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันปิดหน้าต่างและเก็บผ้าที่ตากไว้",
+              "english": "I close the windows and collect the clothes on the line."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "น้องถือร่มไปดูหน้าประตู",
+              "english": "My younger sibling takes an umbrella to look outside the door."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พื้นหน้าบ้านเปียกและมีน้ำขัง",
+              "english": "The ground in front of the house is wet and has puddles."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แม่ชงน้ำอุ่นให้ทุกคนดื่ม",
+              "english": "Mother makes warm drinks for everyone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เรานั่งฟังเสียงฝนและอ่านหนังสือ",
+              "english": "We sit listening to the rain and read books."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ตอนเย็น ท้องฟ้าใสและลมเย็น",
+              "english": "In the evening, the sky is clear and the wind is cool."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันพอใจที่ทุกคนอยู่บ้านอย่างปลอดภัย",
+              "english": "I am glad that everyone is safe at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "น้องวาดรูปเรือขณะรอฝนหยุด",
+              "english": "My younger sibling draws a boat while waiting for the rain to stop."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อเช็ดรองเท้าที่เปียกให้แห้ง",
+              "english": "Father wipes the wet shoes dry."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เราเปิดประตูเมื่อถนนไม่มีน้ำแล้ว",
+              "english": "We open the door when there is no more water on the road."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "work": {
+    "slug": "bridge-thai-bridge-04",
+    "courseId": "thailand-th",
+    "chapter": {
+      "index": 3,
+      "title": "ฝนตกที่บ้าน"
+    }
+  }
+}

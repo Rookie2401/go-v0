@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-02",
+  "gdlLanguageCatalogue": "https://content.digitallibrary.io/wp-json/content-api/v1/languages",
+  "thaiSlugs": [
+    {"slug":"th-vn","label":"Thai Vietnam","catalogueCount":106,"ccByBooksQueried":12,"usableThaiUnicode":0},
+    {"slug":"th","catalogueCount":0},
+    {"slug":"th-th","catalogueCount":0},
+    {"slug":"thai","catalogueCount":0}
+  ],
+  "storyWeaverPrimaryPage": "https://storyweaver.org.in/en/stories?language=Thai",
+  "storyWeaverResult": "The official page is a client-rendered catalogue shell; no downloadable Thai book records were exposed in the fetched HTML. The official open-content page lists Thai as a supported language and confirms CC BY 4.0, but does not provide a book feed for lawful acquisition."
+}

@@ -193,6 +193,32 @@ describe('open: import on demand', () => {
     expect(asked).toContain('es');
   });
 
+  it('uses the resident profile after open imports newer dictionary analysis', async () => {
+    const store = createMemoryStore();
+    const base = make(store);
+    const row = (await base.library.entry('text:es:cuento-publico-ch01'))!;
+    const lazy = await base.library.profile(row.id);
+    expect(lazy).toBeDefined();
+    expect(lazy!.analyzers.some((a) => a.startsWith('dict:'))).toBe(false);
+
+    const lexicon: LexiconSource = {
+      lang: 'es',
+      async info() { return { id: 'test-es@new', lang: 'es', attribution: 'test', licence: 'test', entries: 1, builtAt: '2026-10-04', hasFrequency: false }; },
+      async lookup(forms) {
+        return forms.includes('había') ? new Map([['había', [{ form: 'había', lang: 'es', pos: 'VERB' as const, glosses: ['had'], formOf: [{ lemma: 'haber', tags: ['imperfect'] }] }]]]) : new Map();
+      },
+    };
+    const current = make(store, out, { lexicon: () => lexicon });
+    const opened = await current.library.open(row.id);
+    expect(opened.id).toBe(row.id);
+    expect(await store.texts.get(row.id)).toMatchObject({ id: row.id });
+    const measured = await current.library.profile(row.id);
+    expect(measured?.analyzers).toContain('dict:test-es@new');
+    expect(measured?.textId).toBe(row.id);
+    expect(measured?.words).toBe(lazy?.words);
+    expect(measured).not.toEqual(lazy);
+  });
+
   it('refuses what is not a library text, or what it cannot read, with a plain message', async () => {
     const { library, store } = make();
     await expect(library.open('text:es:no-existe')).rejects.toThrow(/not in the library/);

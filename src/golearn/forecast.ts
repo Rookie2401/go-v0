@@ -38,7 +38,7 @@ export async function predictDifficulty(
 ): Promise<DifficultyForecast> {
   const text = await ctx.store.texts.get(textId);
   if (!text) throw new Error(`unknown text: ${textId}`);
-  if (text.listeningAssessmentId !== undefined) throw new Error(`protected listening-assessment material has no forecast: ${textId}`);
+  if ((text.listeningAssessmentId !== undefined || text.readingAssessmentId !== undefined)) throw new Error(`protected listening-assessment material has no forecast: ${textId}`);
   const a = await analyzeText(ctx, userId, textId, opts?.sentenceIds);
   const { coverage } = a;
   const n = a.classified.length;

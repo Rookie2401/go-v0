@@ -1,0 +1,39 @@
+{
+  "title": "सैर सपाटा",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%88%e0%a4%b0-%e0%a4%b8%e0%a4%aa%e0%a4%be%e0%a4%9f%e0%a4%be/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Amar Goswami",
+    "Illustrator: Partha Sengupta",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: सैर सपाटा is written by Amar Goswami . © Pratham Books , 2006. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "'Sair Sapata' has been published on StoryWeaver by Pratham Books. www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Animals talking to each other , by Partha Sengupta © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 2: A mouse and a rabbit looking over a rock , by Partha Sengupta © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 3: Blindfolded bear looking for his friends , by Partha Sengupta © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 4: A rabbit, a mouse and a squirrel carrying fruits , by Partha Sengupta © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 5: Animals carrying fruits , by Partha Sengupta © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 6: Three animals eating apples with relish , by Partha Sengupta © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 7: A tree stump , by Partha Sengupta © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 8: A monkey and a squirrel , by Partha Sengupta © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Page 9: Animals talking to one other , by Partha Sengupta © Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "सैर सपाटा (Hindi)",
+    "पाँच दोस्त जब सैर सपाटा करने जाते हैं तो बड़ा मज़ा आता है। और नये चटपटे खाने के तो क्या कहने!",
+    "यह पठन स्तर १ की किताब है, उन बच्चों के लिए जो पढ़ना शुरू कर रहे हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "275978bbce98ee60abc8f466c6d631e213360099b0352c4a663cfe7e799b1fb3"
+}

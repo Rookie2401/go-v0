@@ -225,3 +225,12 @@ export function createHarness(opts: {
 }
 
 export type Harness = ReturnType<typeof createHarness>;
+
+/** Remove implementation-only GoLearn head-cache fields before learner-state parity assertions. */
+export function withoutHeadCache<T>(value: T): T {
+  if (Array.isArray(value)) return value.map(withoutHeadCache) as T;
+  if (!value || typeof value !== 'object') return value;
+  return Object.fromEntries(Object.entries(value as Record<string, unknown>)
+    .filter(([key]) => !['summary', 'needsRelevel', 'pendingPriors'].includes(key))
+    .map(([key, child]) => [key, withoutHeadCache(child)])) as T;
+}

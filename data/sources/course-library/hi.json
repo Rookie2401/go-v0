@@ -1,0 +1,337 @@
+{
+  "schema": 1,
+  "lang": "hi",
+  "entries": [
+    {
+      "slug": "bible-hindi",
+      "title": "बाइबल (हिंदी) — इंडियन रिवाइज्ड वर्जन 2019",
+      "courseId": "india-hi",
+      "stream": "scripture",
+      "domains": [
+        "scripture",
+        "theology"
+      ],
+      "contentType": "scripture",
+      "rights": {
+        "state": "verified-open-licence",
+        "verifiedBy": "eBible.org copyright page and approved publisher USFM archive review",
+        "verifiedAt": "2026-10-01",
+        "basis": "IRV Hindi 2019, copyright © 2017, 2018, 2019 Bridge Connectivity Solutions, CC BY-SA 4.0; worldwide licence stated by the distributor",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "canBundle": true
+      },
+      "source": {
+        "file": "hi/irv2019-library-documents.json",
+        "kind": "documents",
+        "url": "https://ebible.org/Scriptures/hin2017_usfm.zip",
+        "edition": "IRV Hindi 2019",
+        "attribution": "इंडियन रिवाइज्ड वर्जन (IRV) हिंदी - 2019 — copyright © 2017, 2018, 2019 Bridge Connectivity Solutions; Creative Commons Attribution Share-Alike 4.0 (CC BY-SA 4.0); from eBible.org (hin2017)",
+        "provenance": "Publisher USFM archive hin2017_usfm.zip, imported by scripts/build-hi-scripture-full.mjs and independently checked by scripts/verify-hi-usfm.mjs."
+      }
+    },
+    {
+      "slug": "gdl-hindi-ccby",
+      "title": "Global Digital Library Hindi CC BY collection",
+      "courseId": "india-hi",
+      "stage": "c1",
+      "streams": [
+        "children"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "verifiedBy": "Global Digital Library catalogue and cached per-book attribution review",
+        "verifiedAt": "2026-10-01",
+        "basis": "Each accepted source record is explicitly CC BY 4.0; damaged source 6161 excluded.",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "canBundle": true
+      },
+      "source": {
+        "file": "hi/gdl/gdl-library-documents.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+        "edition": "GDL Hindi CC BY 4.0 catalogue",
+        "attribution": "Per-book author, translator, illustrator and publisher credits are retained in each document source record.",
+        "provenance": "124 source documents reconstructed from cached official GDL text and attribution files; damaged source 6161 excluded."
+      }
+    },
+    {
+      "slug": "bharatendu-andher-nagari",
+      "title": "अंधेर नगरी",
+      "courseId": "india-hi",
+      "stream": "literature",
+      "contentType": "story",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "none",
+        "verified": true,
+        "verifiedBy": "Wikisource Bharatendu-Natakavali source record",
+        "verifiedAt": "2026-10-01",
+        "basis": "Wikisource source record revision 517232 identifies the 1935 first edition, PD India and PD US; the underlying 1881 play is by Bharatendu Harishchandra.",
+        "jurisdictions": [
+          "IN",
+          "US"
+        ],
+        "licence": "Public domain in India and United States per the source record; Wikisource transcription CC BY-SA",
+        "attributionRequired": true,
+        "modifications": "HTML transcription extracted from six Wikisource अंक pages; editorial preface excluded.",
+        "sourceRepository": "hi.wikisource.org",
+        "retrievedAt": "2026-10-01",
+        "evidence": [
+          "भारतेंदु-नाटकावली source record: editor Brajaratnadas; first edition VS 1992/1935; play pages 543–570.",
+          "Wikisource marks the work PD India and PD US; six अंक pages were retrieved through the official API."
+        ],
+        "statusByJurisdiction": {
+          "IN": "public-domain",
+          "US": "public-domain"
+        }
+      },
+      "source": {
+        "file": "hi/literature/bharatendu-andher-nagari.json",
+        "kind": "documents",
+        "url": "https://hi.wikisource.org/wiki/भारतेंदु-नाटकावली",
+        "edition": "भारतेंदु-नाटकावली first edition VS 1992 / 1935",
+        "attribution": "भारतेंदु हरिश्चंद्र, अंधेर नगरी; Wikisource parent revision 517232 plus six act-page revisions recorded in the source sidecar; CC BY-SA 4.0 transcription attribution retained.",
+        "provenance": "Official Wikisource API retrieval of six act pages; each canonical URL and API revision is recorded in bharatendu-andher-nagari-source.json. Parent index revision 517232 identifies the edition and rights; editorial preface excluded.",
+        "checksum": "be33006a0584af910eb9cb5a5b7beea1c448c64c81ac63bb02cbc29770a2e91f",
+        "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    },
+    {
+      "slug": "premchand-panch-parameshwar",
+      "title": "पंच परमेश्वर",
+      "author": "प्रेमचंद",
+      "stage": "c5",
+      "streams": [
+        "literature"
+      ],
+      "contentType": "story",
+      "source": {
+        "file": "hi-literature-bridge/premchand-panch-parmeshwar.txt",
+        "kind": "plain",
+        "url": "https://hi.wikisource.org/wiki/सप्तसरोज/पंच_परमेश्वर",
+        "edition": "सप्तसरोज, हिन्दी पुस्तक एजेंसी, काशी, 1938 (sixteenth)",
+        "attribution": "पंच परमेश्वर — प्रेमचंद; scan-backed Hindi Wikisource transcription; CC BY-SA 4.0 transcription credit.",
+        "provenance": "Official page revision 516643; index revision 516629; source edition and original-work evidence retained in source-research.json."
+      },
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Hindi Wikisource edition page and PD India/PD US source record",
+        "verifiedAt": "2026-10-02",
+        "basis": "The book page labels the work सप्तसरोज (1917), prints the first-edition preface dated 8 June 1917, and lists पंच परमेश्वर in the contents. The page explicitly records PD India and PD US status.",
+        "statusByJurisdiction": {
+          "US": "public-domain",
+          "IN": "public-domain"
+        },
+        "licence": "CC BY-SA 4.0 (Wikisource transcription; underlying 1917 work PD in US/India)",
+        "attributionRequired": true,
+        "shareAlike": true,
+        "commercialUse": true,
+        "compliance": "Retain author, edition, source URL, Wikisource attribution and CC BY-SA 4.0 link; indicate changes.",
+        "evidence": [
+          "https://hi.wikisource.org/wiki/सप्तसरोज/पंच_परमेश्वर",
+          "https://hi.wikisource.org/wiki/विषयसूची:सप्तसरोज.djvu",
+          "https://creativecommons.org/licenses/by-sa/4.0/deed.hi"
+        ],
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "Hindi bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "96d5c51fc33c135563654697734be39d9ce47a8aeb9bdb7577a50b5b52b707eb",
+        "qualityVerdict": "usable",
+        "notes": "Complete story body extracted from the official parsed page; navigation, licence footer, printed page numbers, and repeated transclusion tail excluded. No native-speaker quality claim."
+      },
+      "courseId": "india-hi"
+    },
+    {
+      "slug": "premchand-namak-ka-daroga",
+      "title": "नमक का दारोगा",
+      "author": "प्रेमचंद",
+      "stage": "c5",
+      "streams": [
+        "literature"
+      ],
+      "contentType": "story",
+      "source": {
+        "file": "hi-literature-bridge/premchand-namak-ka-daroga.txt",
+        "kind": "plain",
+        "url": "https://hi.wikisource.org/wiki/सप्तसरोज/नमक_का_दारोगा",
+        "edition": "सप्तसरोज, हिन्दी पुस्तक एजेंसी, काशी, 1938 (sixteenth)",
+        "attribution": "नमक का दारोगा — प्रेमचंद; scan-backed Hindi Wikisource transcription; CC BY-SA 4.0 transcription credit.",
+        "provenance": "Official page revision 516646; index revision 516629; source edition and original-work evidence retained in source-research.json."
+      },
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Hindi Wikisource edition page and PD India/PD US source record",
+        "verifiedAt": "2026-10-02",
+        "basis": "The book page labels the work सप्तसरोज (1917), prints the first-edition preface dated 8 June 1917, and lists नमक का दारोगा in the contents. The page explicitly records PD India and PD US status.",
+        "statusByJurisdiction": {
+          "US": "public-domain",
+          "IN": "public-domain"
+        },
+        "licence": "CC BY-SA 4.0 (Wikisource transcription; underlying 1917 work PD in US/India)",
+        "attributionRequired": true,
+        "shareAlike": true,
+        "commercialUse": true,
+        "compliance": "Retain author, edition, source URL, Wikisource attribution and CC BY-SA 4.0 link; indicate changes.",
+        "evidence": [
+          "https://hi.wikisource.org/wiki/सप्तसरोज/नमक_का_दारोगा",
+          "https://hi.wikisource.org/wiki/विषयसूची:सप्तसरोज.djvu",
+          "https://creativecommons.org/licenses/by-sa/4.0/deed.hi"
+        ],
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "Hindi bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "8cc047055014da5c5f09393ad8541a2e07564fab157de9cb8010fa938760eaf3",
+        "qualityVerdict": "usable",
+        "notes": "Complete story body extracted from the official parsed page; navigation, licence footer, printed page numbers, and repeated transclusion tail excluded. No native-speaker quality claim."
+      },
+      "courseId": "india-hi"
+    },
+    {
+      "slug": "gv-hi-467925c35d73-excerpt",
+      "title": "भारतीय स्ट्रीट फूड का बादशाह पानी पूरी, अब दुनिया भर में मशहूर — excerpt",
+      "author": "Abhinash Das",
+      "translator": "Debashish Chakrabarty",
+      "stage": "c6",
+      "streams": [
+        "knowledge"
+      ],
+      "contentType": "nonfiction",
+      "genre": "contemporary-nonfiction",
+      "era": "modern",
+      "pedagogicalRole": "authentic",
+      "registers": [
+        "modern_standard",
+        "journalistic"
+      ],
+      "releaseState": "ready",
+      "nativeReview": "source-authored; placement review pending",
+      "difficulty": {
+        "adapter": "hi",
+        "tokenCount": 218,
+        "typeCount": 136,
+        "observedLemmaCount": 99,
+        "analyzerUnresolvedTokens": 29,
+        "lexicalDiversity": 0.6238532110091743,
+        "sentenceCount": 8,
+        "medianSentenceTokens": 30,
+        "maxSentenceTokens": 37,
+        "limitations": "Adapter lexicon is incomplete; unresolved analyzer tokens are not learner unknown words. No frequency corpus, native review, CEFR, or personalized coverage inferred."
+      },
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "canModify": true,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "verified": true,
+        "verifiedBy": "Exact Global Voices article credits, license footer and official republication policy",
+        "verifiedAt": "2026-10-04",
+        "licensing": "CC BY 3.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "basis": "GV-created author narrative/explanatory paragraphs in this exact credited translation; article/footer CC BY 3.0, current official policy permits redistribution and adaptation. Selected excerpt excludes third-party quoted prose and all media.",
+        "evidence": [
+          "https://hi.globalvoices.org/2025/12/14/2060/",
+          "https://globalvoices.org/2025/08/30/why-the-pani-puri-platter-remains-indias-favourite-snack/",
+          "https://globalvoices.org/about/global-voices-attribution-policy/",
+          "https://creativecommons.org/licenses/by/3.0/"
+        ],
+        "checksum": "c2881ba968cc6a0305e95faaf3521f63099a806a0ed8dfb7afecc04705399b6f",
+        "retrievedAt": "2026-10-04",
+        "sourceRepository": "Global Voices",
+        "licence": "CC BY 3.0",
+        "commercialUse": true,
+        "attributionRequired": true,
+        "modifications": "Exact paragraphs 2,3,5 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content.",
+        "proofreading": "Exact source extraction checked by tool; native placement review pending",
+        "userImportOnly": false,
+        "jurisdictions": [
+          "*"
+        ],
+        "compliance": "Text only. Source-fidelity tool review; no native review, recorded audio or learner transition validation claimed."
+      },
+      "source": {
+        "file": "curriculum-remediation/modern/gv-hi-467925c35d73-excerpt.txt",
+        "kind": "plain",
+        "url": "https://hi.globalvoices.org/2025/12/14/2060/",
+        "edition": "Global Voices hi edition, Sun, 14 Dec 2025 17:00:04 +0000",
+        "sha256": "c2881ba968cc6a0305e95faaf3521f63099a806a0ed8dfb7afecc04705399b6f",
+        "originalSourceSha256": "86b0bd050883067776923288fca07eef412d24146f8d1c4731788887bfc2f92c",
+        "originalStoryUrl": "https://globalvoices.org/2025/08/30/why-the-pani-puri-platter-remains-indias-favourite-snack/",
+        "author": "Abhinash Das",
+        "translator": "Debashish Chakrabarty",
+        "attribution": "भारतीय स्ट्रीट फूड का बादशाह पानी पूरी, अब दुनिया भर में मशहूर — Abhinash Das, translated by Debashish Chakrabarty. Originally on Global Voices: https://hi.globalvoices.org/2025/12/14/2060/; original story: https://globalvoices.org/2025/08/30/why-the-pani-puri-platter-remains-indias-favourite-snack/. CC BY 3.0: https://creativecommons.org/licenses/by/3.0/. Changes: selected text-only excerpt; HTML/links unwrapped, other paragraphs, images, captions, quoted prose and media omitted; source wording preserved.",
+        "provenance": "Exact paragraphs 2,3,5 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content.",
+        "sourceHash": "c2881ba968cc6a0305e95faaf3521f63099a806a0ed8dfb7afecc04705399b6f",
+        "retrievedAt": "2026-10-04",
+        "licence": "CC BY 3.0",
+        "modifications": "Exact paragraphs 2,3,5 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content."
+      },
+      "convert": {
+        "stripBoilerplate": false,
+        "unwrap": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "curriculum-remediation exact article credits and excerpt source-fidelity check",
+        "reviewedAt": "2026-10-04",
+        "coversSourceSha256": "c2881ba968cc6a0305e95faaf3521f63099a806a0ed8dfb7afecc04705399b6f",
+        "notes": "Source-authored authentic prose. Article credit/license and excerpt comparison only; no native placement or rescue-text approval invented."
+      },
+      "curriculum": {
+        "lifecycle": "published",
+        "role": "authentic",
+        "registers": [
+          "standard"
+        ],
+        "rejectionReasons": [],
+        "provenance": {
+          "kind": "original",
+          "sourceTitle": "भारतीय स्ट्रीट फूड का बादशाह पानी पूरी, अब दुनिया भर में मशहूर — excerpt",
+          "description": "Exact paragraphs 2,3,5 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content."
+        },
+        "audio": {
+          "state": "unavailable",
+          "rightsCleared": false
+        }
+      }
+    }
+  ]
+}

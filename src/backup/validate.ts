@@ -122,6 +122,22 @@ export function validateBackup(file: unknown): BackupIssue[] {
   (tc.texts as Obj[]).forEach((t, i) => {
     if (t.kind !== 'testimony') err('malformed', `data.testimonyContent.texts[${i}] is not a testimony text (kind "${String(t.kind)}"); backups never carry corpus texts.`, `data.testimonyContent.texts[${i}].kind`);
   });
+  (tc.analyses as Obj[]).forEach((a, i) => {
+    const path = `data.testimonyContent.analyses[${i}].sourceInfo`;
+    if (a.sourceInfo === undefined) return; // older analysis rows have no source snapshot
+    const info = a.sourceInfo;
+    const origins = new Set(['rule', 'hand', 'dictionary', 'corpus', 'reviewed']);
+    const reviews = new Set(['machine-drafted', 'native-reviewed', 'external']);
+    if (!isObj(info) || typeof info.id !== 'string' || typeof info.label !== 'string'
+      || typeof info.origin !== 'string' || !origins.has(info.origin)
+      || typeof info.reviewStatus !== 'string' || !reviews.has(info.reviewStatus)
+      || (info.version !== undefined && typeof info.version !== 'string')
+      || (info.licence !== undefined && typeof info.licence !== 'string')) {
+      err('malformed', `data.testimonyContent.analyses[${i}].sourceInfo is malformed.`, path);
+      return;
+    }
+    if (info.id !== a.sourceId || info.origin !== a.origin) err('malformed', `The saved source descriptor does not match analysis ${String(a.id)}'s source id and origin.`, path);
+  });
 
   // Counts (summary) must agree with the lists.
   const counts = isObj(f.counts) ? f.counts : {};

@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "lang": "hi",
+  "entries": [
+    {
+      "slug": "gdl-hindi-ccby",
+      "title": "Global Digital Library Hindi CC BY collection",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": true,
+        "verifiedBy": "Global Digital Library API licence records",
+        "verifiedAt": "2026-10-01",
+        "basis": "Each accepted source record is explicitly CC BY 4.0 in the official GDL API; one damaged source (post 6161) is excluded.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        }
+      },
+      "source": {
+        "file": "gdl-library-documents.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+        "edition": "GDL Hindi CC BY 4.0 catalogue",
+        "attribution": "Global Digital Library Hindi CC BY 4.0 collection; per-book author, translator, illustrator and publisher credits are retained in each document source record.",
+        "provenance": "124 source documents extracted from official GDL EPUBs; damaged source 6161 excluded."
+      }
+    }
+  ]
+}

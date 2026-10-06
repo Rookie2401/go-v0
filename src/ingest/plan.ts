@@ -5,7 +5,7 @@
  * are produced later by `materializeSentence`, once the importer has decided which existing sentences survive.
  */
 import type {
-  AdapterRegistry, AnalysisCandidate, AnalysisOrigin, AnalyzedToken, ContentNote, DictionaryEntry, DictionarySense, EnglishRescue, GrammarPattern, LanguageAdapter, Lemma,
+  AdapterRegistry, AnalysisCandidate, AnalysisOrigin, AnalysisSourceInfo, AnalyzedToken, ContentNote, DictionaryEntry, DictionarySense, EnglishRescue, GrammarPattern, LanguageAdapter, Lemma,
   PartOfSpeech, PatternCandidate, PatternOccurrence, Phrase, PhraseCandidate, PhraseOccurrence, RawToken, ReviewStatus, Token, TokenAnalysis,
 } from '../core';
 import { hash, ids } from '../core';
@@ -895,7 +895,7 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
   const noteCount = sentences.reduce((n, s) => n + s.notes.length, 0);
 
   const signature = hash(JSON.stringify({
-    v: 2, analyzerName, dict: dictTool,
+    v: 2, publicationPolicy: 'curriculum-native@1', analyzerName, dict: dictTool,
     doc: {
       id: doc.id, lang: doc.lang, locale: doc.locale, title: doc.title, contentType: doc.contentType, corpus: doc.corpus, source: doc.source, review: doc.review,
       difficulty: doc.difficulty, topics: doc.topics, editorialTags: doc.editorialTags, prepTargets: doc.prepTargets, generated: doc.generated,
@@ -905,6 +905,8 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
       ...(doc.teamText ? { teamText: true } : {}),
       // a pipeline move (reviewed → audio-ready → published) must re-decide publication on re-import
       ...(doc.pipeline ? { pipeline: doc.pipeline } : {}),
+      ...(doc.curriculum ? { curriculum: doc.curriculum } : {}),
+      ...(doc.readingAssessmentId ? { readingAssessmentId: doc.readingAssessmentId } : {}),
     },
     paragraphs,
     sentences: sentences.map((s) => ({
@@ -1085,7 +1087,9 @@ export function materializeSentence(plan: DocumentPlan, ps: PlannedSentence, sen
       ...(best.varieties?.length ? { varieties: [...best.varieties] } : {}),
       // a unit written as several words, and the relation of an older spelling to today's (the text itself is never changed)
       ...(unit ? { unit } : {}), ...(best.orthography ? { orthography: { ...best.orthography } } : {}),
-      confidence: best.confidence, provenance: fromRule ? 'machine' : 'lexicon', origin: bestOrigin.origin, sourceId: bestOrigin.sourceId, analyzer: a.analyzer, createdAt: now,
+      confidence: best.confidence, provenance: fromRule ? 'machine' : 'lexicon', origin: bestOrigin.origin, sourceId: bestOrigin.sourceId,
+      ...(plan.adapter.sources?.[bestOrigin.sourceId] ? { sourceInfo: { ...plan.adapter.sources[bestOrigin.sourceId] } as AnalysisSourceInfo } : {}),
+      analyzer: a.analyzer, createdAt: now,
       ...(alternatives.length ? { alternatives } : {}),
     });
   });

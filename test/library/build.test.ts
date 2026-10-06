@@ -5,7 +5,7 @@ import type { QualityOptions } from '../../src/ingest/quality';
 import { buildLibrary, parseBuildManifest, rightsRefusals, LibraryBuildError, BUNDLABLE, type BuildManifest } from '../../src/library/build';
 import { SHARD_ROWS, documentPathOf, parseManifest, parseShard, profilePathOf } from '../../src/library/format';
 import { registry } from './helpers';
-import { CUENTO, DANADO, PD, cleanInspect, courseDocuments, entry, fixtureManifest, memoryIO, sha } from './fixtures';
+import { CUENTO, DANADO, COURSE, PD, cleanInspect, courseDocuments, entry, fixtureManifest, memoryIO, sha } from './fixtures';
 
 const DATE = '2026-10-01';
 const build = (manifest: BuildManifest, files: Record<string, string>, inspect: (t: string, o: QualityOptions) => QualityReport = cleanInspect) => {
@@ -78,6 +78,23 @@ describe('building a library from a fixture manifest', () => {
     const r = await build(only, files, (text) => (text === DANADO ? damaged : cleanInspect()));
     expect(r.built.map((b) => b.slug)).toEqual(['cuento-publico']);
     expect(r.refused).toEqual([{ slug: 'otro-danado', title: 'otro-danado', reasons: [expect.stringMatching(/damaged \(mojibake x12 \("niÃ±o"\)\)/)] }]);
+  });
+
+  it('keeps testimony out of shared library output even when its source claims course-authored rights', async () => {
+    const base = JSON.parse(courseDocuments(false))[0] as CorpusDocument;
+    const contentTypePrivate = { ...base, id: 'private-by-content-type', contentType: 'testimony' as const };
+    const corpusPrivate = { ...base, id: 'private-by-corpus-kind', corpus: { ...base.corpus, kind: 'testimony' as const } };
+    const publicText = { ...base, id: 'ordinary-owner-authored' };
+    const files = { 'private.json': JSON.stringify([contentTypePrivate, corpusPrivate]), 'public.json': JSON.stringify([publicText]) };
+    const r = await build({ schema: 1, lang: 'es', entries: [
+      entry({ slug: 'private', title: 'Private', rights: COURSE, source: { file: 'private.json', kind: 'documents' } }),
+      entry({ slug: 'public', title: 'Public', rights: COURSE, source: { file: 'public.json', kind: 'documents' } }),
+    ] }, files);
+    expect(r.built.map((x) => x.slug)).toEqual(['public']);
+    expect(r.refused).toHaveLength(1);
+    expect(r.refused[0].reasons.join(' ')).toMatch(/private testimony cannot be built into the shared library/);
+    expect([...r.out.keys()].some((key) => key.includes('private-by-'))).toBe(false);
+    expect([...r.out.keys()].some((key) => key.includes('ordinary-owner-authored'))).toBe(true);
   });
 
   it('refuses a damaged source with the real quality check too, and builds the clean one beside it', async () => {

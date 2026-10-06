@@ -1,7 +1,7 @@
 /**
  * GF — the controlled German starter corpus: Weg 1–3, Deutschland — Lesungen 1, Gespräche 1.
  * Every document is a machine draft: it must validate with the real validator, belong to its work, stay unpublished
- * for the one stated reason, carry one English line per sentence, and show the forms its level is meant to seed.
+ * with both explicit native and review-status blockers, carry one English line per sentence, and show the forms its level is meant to seed.
  * Analysis coverage is printed, not asserted (the lexicon is still growing).
  */
 import fs from 'node:fs';
@@ -140,7 +140,7 @@ describe('German acquisition corpus: validation and publication', () => {
       expect(d.english?.source, d.id).toBe('drafted with the text; not reviewed');
       const gate = computePublished(d);
       expect(gate.published, d.id).toBe(false);
-      expect(gate.unpublishedReasons, d.id).toHaveLength(1);
+      expect(gate.unpublishedReasons, d.id).toHaveLength(2);
       expect(gate.unpublishedReasons[0], d.id).toMatch(/native-speaker review/);
     }
   });

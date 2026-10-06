@@ -1,0 +1,171 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-02",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "documentSha256": "be31b4b5ada1f6892b7a48da1ead49f7c5451a1de7fbfed3848c11a8a3dba48c",
+  "pages": [
+    {
+      "page": "Vlora",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Vlora",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=2988682",
+      "revisionId": 2988682,
+      "modified": "",
+      "rawSha256": "6278061a07a963f677d2e4b1bbf84c8d7f00cdaedcec7100fdc4901c68dfd282"
+    },
+    {
+      "page": "Berati",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Berati",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=2982820",
+      "revisionId": 2982820,
+      "modified": "",
+      "rawSha256": "2d394ed79bf69a12bb46a8651610e6a1f86626c4dc29bd194bbfc3ffb080a149"
+    },
+    {
+      "page": "Korça",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Kor%C3%A7a",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=3010625",
+      "revisionId": 3010625,
+      "modified": "",
+      "rawSha256": "555301cbd5f0be32615482951def3cd47f8388f10b716a93e894f0a87d65cd67"
+    },
+    {
+      "page": "Gjirokastra",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Gjirokastra",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=3042029",
+      "revisionId": 3042029,
+      "modified": "",
+      "rawSha256": "9fc164f6def0ee7e7cf823d4a61dbecee11c5ac6c7c516821eb700b18bf6e1b0"
+    },
+    {
+      "page": "Parku Kombëtar i Lurës",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Parku_Komb%C3%ABtar_i_Lur%C3%ABs",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=3039232",
+      "revisionId": 3039232,
+      "modified": "",
+      "rawSha256": "b92c37efef20b7b21886e45f8f9e5533cbb2d31bb57ce7d30fe1425bf868453b"
+    },
+    {
+      "page": "Parku Kombëtar i Dajtit",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Parku_Komb%C3%ABtar_i_Dajtit",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=2610600",
+      "revisionId": 2610600,
+      "modified": "",
+      "rawSha256": "271763f7cce28cda5394feb9aad4774356594b24a3cfb3dd602e1798fe568cd6"
+    },
+    {
+      "page": "Lumi Vjosa",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Lumi_Vjosa",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=2893771",
+      "revisionId": 2893771,
+      "modified": "",
+      "rawSha256": "264f553b7d88bf135c7ae0e57a44149d9087f4e985ca3d3df034d50389af767d"
+    },
+    {
+      "page": "Liqeni i Shkodrës",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Liqeni_i_Shkodr%C3%ABs",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=3042034",
+      "revisionId": 3042034,
+      "modified": "",
+      "rawSha256": "0cf3eac49386f5c4aa8ebb2c986d0080035eaef573581cafaea1b3b3c46a690c"
+    },
+    {
+      "page": "Alpet Shqiptare",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Alpet_Shqiptare",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=2859102",
+      "revisionId": 2859102,
+      "modified": "",
+      "rawSha256": "1a317341bafe71d547fb5a155f1b86fb13afeee27b5ccd115418c3d35b0ed463"
+    },
+    {
+      "page": "Parku Kombëtar i Butrintit",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Parku_Komb%C3%ABtar_i_Butrintit",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=2816037",
+      "revisionId": 2816037,
+      "modified": "",
+      "rawSha256": "77b3ad8b2d8810eb1892a1ad56aea8219070a75df427a98e13a9b272736f92f4"
+    }
+  ],
+  "entries": [
+    {
+      "id": "vlora",
+      "title": "Vlora",
+      "topics": [
+        "places",
+        "geography"
+      ]
+    },
+    {
+      "id": "berati",
+      "title": "Berati",
+      "topics": [
+        "places",
+        "history"
+      ]
+    },
+    {
+      "id": "korca",
+      "title": "Korça",
+      "topics": [
+        "places",
+        "education"
+      ]
+    },
+    {
+      "id": "gjirokastra",
+      "title": "Gjirokastra",
+      "topics": [
+        "places",
+        "culture"
+      ]
+    },
+    {
+      "id": "park-lura",
+      "title": "Parku Kombëtar i Lurës",
+      "topics": [
+        "nature",
+        "geography"
+      ]
+    },
+    {
+      "id": "park-dajti",
+      "title": "Parku Kombëtar i Dajtit",
+      "topics": [
+        "nature",
+        "geography"
+      ]
+    },
+    {
+      "id": "lumi-vjosa",
+      "title": "Lumi Vjosa",
+      "topics": [
+        "nature",
+        "geography"
+      ]
+    },
+    {
+      "id": "liqeni-shkoder",
+      "title": "Liqeni i Shkodrës",
+      "topics": [
+        "nature",
+        "places"
+      ]
+    },
+    {
+      "id": "alpet-shqiptare",
+      "title": "Alpet Shqiptare",
+      "topics": [
+        "nature",
+        "geography"
+      ]
+    },
+    {
+      "id": "butrinti",
+      "title": "Parku Kombëtar i Butrintit",
+      "topics": [
+        "nature",
+        "history"
+      ]
+    }
+  ]
+}

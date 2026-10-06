@@ -49,6 +49,16 @@ async function addText(h: Harness, slug: string, words: string[], extra: { tags?
 }
 
 describe('recommend() — a new learner', () => {
+  it('does not count or recommend a story attached to a private testimony corpus', async () => {
+    const h = await setup();
+    await h.store.corpora.put({ id: 'private-recommendations', lang: 'es', kind: 'testimony', title: 'Private' });
+    const privateText = await buildFixtureText(h.store, { lang: 'es', slug: 'private-recommendations', corpusId: 'private-recommendations', kind: 'story', sentences: [
+      { tokens: [{ surface: 'casa', lemma: 'casa', pos: 'NOUN' }] },
+    ] });
+    const recs = await h.golearn.recommend(U, { limit: 20 });
+    expect(recs.map((r) => r.textId)).not.toContain(privateText.id);
+  });
+
   it('gets exactly one first-text: the easiest PUBLISHED input text; nothing is invented', async () => {
     const h = await setup();
     await setLevel(h, ES_STORY, { staticLevel: 'A1' });

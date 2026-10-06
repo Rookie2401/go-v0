@@ -124,8 +124,8 @@ describe('works: identity and placement', () => {
   });
 
   it('bibliography is never marked verified: nothing invented, nothing checked', () => {
-    for (const w of HINDI_WORKS) {
-      expect(w.bibliographyVerified, w.title).toBe(false);
+    for (const w of HINDI_WORKS.filter(w => !w.id.includes(':gv-'))) {
+      expect(w.bibliographyVerified, w.title).toBe(['premchand-panch-parameshwar', 'premchand-namak-ka-daroga'].some((slug) => w.id === ids.work(C, slug)));
       expect(w.isbn, w.title).toBeUndefined();
       expect(w.translator, `${w.title}: a translator is recorded only when certain`).toBeUndefined();
     }
@@ -142,26 +142,28 @@ describe('works: rights are recorded facts, never inferences', () => {
 
   it('only course-authored works and the one verified licensed text (the Bible) are bundlable or bundled; everything else is the learner\'s own copy or not yet decided', () => {
     for (const w of HINDI_WORKS) {
-      const own = w.rights.state === 'course-authored' || w.rights.state === 'verified-open-licence';
+      const own = w.rights.state === 'course-authored' || w.rights.state === 'verified-open-licence' || w.rights.state === 'verified-public-domain';
       expect(w.rights.canBundle, w.title).toBe(own);
       // everything not bundled is the learner's own copy to bring — except NCERT's readers, whose terms rule out use inside software
       expect(w.rights.userImportOnly, w.title).toBe(!own && w.publisher !== 'NCERT');
-      expect(w.ingestion === 'bundled', w.title).toBe(own);
-      expect(w.ingestion === 'ingested', w.title).toBe(false);
+      const installedSources = ['bharatendu-andher-nagari', 'gdl-hindi-ccby', 'premchand-panch-parameshwar', 'premchand-namak-ka-daroga', 'gv-hi-467925c35d73-excerpt'].map((slug) => ids.work(C, slug));
+      const expectedIngestion = installedSources.includes(w.id) ? 'ingested' : 'bundled';
+      expect(w.ingestion === expectedIngestion, w.title).toBe(own);
+      expect(w.ingestion === 'ingested', w.title).toBe(installedSources.includes(w.id));
       if (!own) {
         expect(w.rights.verified, w.title).toBe(false);
         expect(w.rights.canStoreOffline, w.title).toBe(false);
       }
     }
-    expect(HINDI_WORKS.filter((w) => w.rights.canBundle)).toHaveLength(4);
-    expect(HINDI_WORKS.filter((w) => w.rights.state === 'verified-open-licence').map((w) => w.id)).toEqual([ids.work(C, 'bible-hindi')]);
+    expect(HINDI_WORKS.filter((w) => w.rights.canBundle)).toHaveLength(9);
+    expect(HINDI_WORKS.filter((w) => w.rights.state === 'verified-open-licence').map((w) => w.id).sort()).toEqual([ids.work(C, 'bible-hindi'), ids.work(C, 'gdl-hindi-ccby'), ids.work(C, 'gv-hi-467925c35d73-excerpt')].sort());
   });
 
   it('no work claims public domain, and a licence is named only where its evidence is recorded: age is a lead, never a conclusion', () => {
     for (const w of HINDI_WORKS) {
-      const verified = w.rights.state === 'verified-open-licence';
-      expect(['verified-public-domain', 'permission-granted'], w.title).not.toContain(w.rights.state);
-      expect(w.rights.copyrightStatus, w.title).not.toBe('public-domain');
+      const verified = w.rights.state === 'verified-open-licence' || w.rights.state === 'verified-public-domain';
+      if (!['bharatendu-andher-nagari', 'premchand-panch-parameshwar', 'premchand-namak-ka-daroga'].some((slug) => w.id === ids.work(C, slug))) expect(['verified-public-domain', 'permission-granted'], w.title).not.toContain(w.rights.state);
+      if (!verified) expect(w.rights.copyrightStatus, w.title).not.toBe('public-domain');
       expect(w.rights.licence === undefined, w.title).toBe(!verified);
       expect(w.rights.verifiedBy === undefined, w.title).toBe(w.rights.state !== 'course-authored' && !verified);
       if (w.rights.state !== 'course-authored' && !verified) expect(w.rights.licensing, w.title).toBeUndefined();
@@ -174,7 +176,7 @@ describe('works: rights are recorded facts, never inferences', () => {
 
   it('the readiness word agrees with the rights state', () => {
     for (const w of HINDI_WORKS) {
-      const expected = w.rights.state === 'course-authored' || w.rights.state === 'verified-open-licence' ? 'implemented' : w.rights.state === 'rights-unverified' ? 'candidate' : 'recommendation';
+      const expected = w.rights.state === 'course-authored' || w.rights.state === 'verified-open-licence' || w.rights.state === 'verified-public-domain' ? 'implemented' : w.rights.state === 'rights-unverified' ? 'candidate' : 'recommendation';
       expect(w.readiness, w.title).toBe(expected);
       expect(['verified-ready']).not.toContain(w.readiness);
     }
@@ -225,11 +227,13 @@ describe('works: the entries the brief names', () => {
     expect(novels.map((n) => n.title).sort()).toEqual(['गबन', 'गोदान', 'निर्मला', 'सेवासदन'].sort());
     for (const w of p) {
       expect(w.authorDied, w.title).toBe(1936);
-      expect(w.rights.state, w.title).toBe('rights-unverified');
-      expect(w.readiness, w.title).toBe('candidate');
+      const acquired = ['premchand-panch-parameshwar', 'premchand-namak-ka-daroga'].some((slug) => w.id === ids.work(C, slug));
+      expect(w.rights.state, w.title).toBe(acquired ? 'verified-public-domain' : 'rights-unverified');
+      expect(w.readiness, w.title).toBe(acquired ? 'implemented' : 'candidate');
+      if (acquired) expect(w.rights.statusByJurisdiction).toEqual({ US: 'public-domain', IN: 'public-domain' });
       expect(w.streams, w.title).toContain('literature');
     }
-    for (const s of stories) expect(Number(keyOf(s.stageId).slice(1)), s.title).toBeGreaterThanOrEqual(6);
+    for (const s of stories) expect(Number(keyOf(s.stageId).slice(1)), s.title).toBeGreaterThanOrEqual(s.rights.verified ? 5 : 6);
     for (const s of stories) expect(Number(keyOf(s.stageId).slice(1)), s.title).toBeLessThanOrEqual(9);
     for (const n of novels) expect(Number(keyOf(n.stageId).slice(1)), n.title).toBeGreaterThanOrEqual(9);
     // a publication year only where it is certain
@@ -237,11 +241,18 @@ describe('works: the entries the brief names', () => {
   });
 
   it('other older authors are candidates; modern Hindi literature and familiar translations are never bundled', () => {
-    for (const slug of ['guleri-usne-kaha-tha', 'prasad-akashdeep', 'bharatendu-andher-nagari', 'khatri-chandrakanta', 'chauhan-jhansi-ki-rani']) {
+    for (const slug of ['guleri-usne-kaha-tha', 'prasad-akashdeep', 'khatri-chandrakanta', 'chauhan-jhansi-ki-rani']) {
       expect(byId(slug), slug).toBeDefined();
       expect(byId(slug).rights.state, slug).toBe('rights-unverified');
       expect(byId(slug).readiness, slug).toBe('candidate');
     }
+    const andher = byId('bharatendu-andher-nagari');
+    expect(andher.rights.state).toBe('verified-public-domain');
+    expect(andher.rights.copyrightStatus).toBe('public-domain');
+    expect(andher.rights.jurisdictions).toEqual(expect.arrayContaining(['IN', 'US']));
+    expect(andher.rights.evidence?.join(' ')).toMatch(/1935|pages 543–570|Public Domain India/);
+    expect(andher.ingestion).toBe('ingested');
+    expect(andher.readiness).toBe('implemented');
     for (const slug of ['sahni-tamas', 'renu-maila-anchal', 'shukla-raag-darbari', 'rowling-harry-potter-1-hindi']) {
       expect(byId(slug).rights.state, slug).toBe('prohibited-from-bundling');
       expect(byId(slug).readiness, slug).toBe('recommendation');
@@ -308,6 +319,7 @@ describe('works: heritage languages are not Modern Standard Hindi', () => {
   it('only heritage works carry a variety tag; Modern Standard Hindi carries none; no heritage work is on a Stage 0 or class shelf', () => {
     for (const w of HINDI_WORKS) {
       if (w.streams?.includes('heritage')) continue;
+      if(w.id.includes(':gv-')) { expect(w.variety).toBe('hi-IN'); continue; }
       expect(w.variety, w.title).toBeUndefined();
     }
     const spineShelves = HINDI_WORKS.filter((w) => w.role === 'spine').map((w) => keyOf(w.stageId));

@@ -1,0 +1,45 @@
+{
+  "title": "कहाँ गया गोगो?",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%81-%e0%a4%97%e0%a4%af%e0%a4%be-%e0%a4%97%e0%a5%8b%e0%a4%97%e0%a5%8b-2/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Authors: Mala Kumar, Manisha Chaudhry",
+    "Illustrator: Soumya Menon",
+    "#6FrameStoryChallenge: A Carnival of Art",
+    "The illustrations in this book were created as part of the #6FrameStoryChallenge, an online campaign run by Pratham Books to build a rich bank of illustrations for StoryWeaver. The essence of the #6FrameStoryChallenge was to tell a good story using just 6 illustrations.",
+    "The campaign inspired nearly 70 illustrators to donate their time and skills to India’s first open-source story-publishing platform for children.",
+    "What started out as an experimental campaign soon blossomed into a carnival of art, birthing nearly 500 new illustrations.",
+    "These wordless narratives cut across language barriers, opening up a world of possibilies, encouraging StoryWeaver’s growing community to dream up multiple stories around these images.",
+    "The #6FrameStoryChallenge is a powerful reminder of the need for collaboration, to get closer to our mission: “A Book in Every Child’s Hand.”",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: कहाँ गया गोगो? is written by Mala Kumar , Manisha Chaudhry . © Pratham Books , 2015. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This story has been inspired by an entry to the #6FrameStoryChallenge, an illustration campaign conducted by Pratham Books. The illustrations in this book were created by one of the judges of the #6FrameStoryChallenge contest.",
+    "Illustration Attributions:",
+    "Cover page: Puzzled boy and dog , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 2: Zoo-keeper is worried , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 3: An explorer in a forest , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 4: A man searching for something near a lake , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 5: A man under water , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 6: Dog and a confused man , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 7: A man staring at a gorilla eating bananas , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 8: A man holding his breath under water , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Page 9: 6framestorychallenge, a collage , by Soumya Menon © Pratham Books, 2015. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "कहाँ गया गोगो? (Hindi)",
+    "जब गोगो का पिंजड़ा खाली दिखा तो तोतो के होश उड़ गए। आप भी तोतो की मदद करिये नहीं तो बड़ी गड़बड़ हो जाएगी।",
+    "यह पठन स्तर २ की किताब है, उन बच्चों के लिए जो सरल शब्द पढ़ लेते हैं और थोड़ी मदद से नए शब्द भी पढ़ सकते हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "e7c65a0a31ac2635969b555ebf90db96a3302cb03460052c1431d9150c926cc4"
+}

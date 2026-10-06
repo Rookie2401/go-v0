@@ -4,12 +4,14 @@
  * One meaning at a time, chosen by the scheduler ("what you are almost able to say on your own"). He writes first; help
  * comes only when he asks, one smallest step at a time, and every step is shown with what it is. Three kinds of language
  * are kept visibly apart: MY LANGUAGE (an attempt with no help), MY LANGUAGE WITH ASSISTANCE (an attempt after help), and
- * MODEL LANGUAGE (wording GoTell showed — not his, and not yet reviewed by a native speaker). Feedback says whether the
+ * MODEL LANGUAGE (wording GoTell showed — not his; catalog-drafted wording is labelled when not yet reviewed by a native speaker). Feedback says whether the
  * MEANING came across and, separately, whether the checker found something; the checker's fix is never shown unasked.
  */
 import { useCallback, useEffect, useState } from 'react';
-import type { AssistanceStep, PracticeTask, ProductiveGoalState, ProductiveLevel, SemanticGoal, TellAttemptRecord } from '../../core';
+import { Link } from 'react-router-dom';
+import type { AssistanceStep, PracticeTask, ProductiveGoalState, ProductiveLevel, SemanticGoal, TellAttemptRecord, Text } from '../../core';
 import { useApp } from '../context';
+import { isTestimonyText, textPath } from '../format';
 import { BackLink, Disclosure, Topbar } from '../ui';
 import './tell.css';
 
@@ -25,7 +27,7 @@ const FAMILY_TEXT: Record<PracticeTask['family'], string> = {
 const STEP_TEXT: Record<AssistanceStep['tier'], string> = { none: 'Another way to put it', cue: 'Hint', scaffold: 'Part of the wording', model: 'Model' };
 
 export function Practice() {
-  const { gotell, userId, lang } = useApp();
+  const { gotell, store, userId, lang } = useApp();
   const practice = gotell.practice;
   const [task, setTask] = useState<PracticeTask | null | undefined>(undefined);
   const [text, setText] = useState('');
@@ -34,6 +36,7 @@ export function Practice() {
   const [states, setStates] = useState<Array<{ goal: SemanticGoal; state: ProductiveGoalState }>>([]);
   const [own, setOwn] = useState('');
   const [ownNote, setOwnNote] = useState<string | null>(null);
+  const [retellText, setRetellText] = useState<Text | null>(null);
 
   const fail = (e: unknown) => setError(e instanceof Error ? e.message : String(e));
 
@@ -54,6 +57,18 @@ export function Practice() {
   }, [practice, userId, lang, refreshStates]);
 
   useEffect(() => { setTask(undefined); void load(); }, [load]);
+  useEffect(() => {
+    let live = true;
+    setRetellText(null);
+    const sourceId = task?.family === 'retell' ? task.retellSource?.textId : undefined;
+    if (!sourceId) return () => { live = false; };
+    void Promise.all([store.texts.get(sourceId), store.corpora.all()]).then(([source, corpora]) => {
+      const byCorpus = new Map(corpora.map((corpus) => [corpus.id, corpus]));
+      if (live && source && source.lang === lang && source.published === true
+        && source.listeningAssessmentId === undefined && source.readingAssessmentId === undefined && !isTestimonyText(source, byCorpus)) setRetellText(source);
+    }).catch(() => undefined);
+    return () => { live = false; };
+  }, [store, lang, task?.family, task?.retellSource?.textId]);
 
   if (!practice) {
     return (
@@ -102,6 +117,11 @@ export function Practice() {
         {task && (
           <section className="tell-task" aria-label="Practice task" data-task-id={task.taskId} data-family={task.family}>
             <p className="chip">{FAMILY_TEXT[task.family]}</p>
+            {task.family === 'retell' && task.retellSource && (
+              <p className="card__note" data-testid="retell-source">
+                {retellText ? <>Source: <Link to={textPath(retellText)}>{retellText.title}</Link></> : 'The source passage is no longer available in this language.'}
+              </p>
+            )}
             <p className="tell-prompt">{task.prompt}</p>
             <Disclosure label="Why this one?" className="tell-why">
               <ul className="card__text" aria-label="Selected because">
@@ -117,7 +137,11 @@ export function Practice() {
                 {task.assistance.map((s) => (
                   <li key={s.id} className={`tell-step tell-step--${s.tier}`} data-kind={s.kind}>
                     <span className="label">{STEP_TEXT[s.tier]}</span>
-                    {s.tier === 'model' && <span className="tell-zone tell-zone--model">MODEL LANGUAGE — not your words{s.review === 'unreviewed' ? '; not yet reviewed by a native speaker' : ''}</span>}
+                    {(s.tier === 'model' || (s.source === 'catalog-model' && s.review === 'unreviewed')) && (
+                      <span className="tell-zone tell-zone--model">
+                        MODEL LANGUAGE — not your words{s.review === 'unreviewed' ? '; not yet reviewed by a native speaker' : ''}
+                      </span>
+                    )}
                     <p className="tell-step__text" lang={s.tier === 'model' || s.tier === 'scaffold' ? lang : undefined}>{s.content}</p>
                     {s.options && <p className="faint">Choose one: {s.options.join(' · ')}</p>}
                   </li>

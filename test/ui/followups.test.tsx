@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-// Browser-audit follow-ups: queued audio runs by itself, Home notes and the Continue card, plain reasons,
+// Browser-audit follow-ups: queued audio runs by itself, Home directory, plain reasons,
 // compact vocabulary numbers with a disclosure (and live refresh), and the suggestion card's checker coverage.
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Recommendation, SentenceViewed, TextViewed } from '../../src/core';
@@ -97,31 +97,26 @@ describe('queued audio is processed without the learner pressing anything', () =
   });
 });
 
-// ───────────────────────── 2/3. Home ─────────────────────────
+// ───────────────────────── 2/3. Home and reading continuation ─────────────────────────
 
-describe('Home — notes and the Continue card', () => {
-  it('a recommendation without a text is a note: only its explanation, as plain text, no title line', async () => {
+describe('Home is a stable doorway; reading continuation belongs to GoLearn', () => {
+  it('does not render engine notes or recommendations as directory items', async () => {
     h = await makeHarness();
     h.learn.recommend.mockImplementation(async () => [rec({ reason: 'next-input', explanation: `No Spanish text is published yet: 1 imported text is waiting (${RAW_REASON}).` })]);
     mounted = await h.mount(app());
-    const row = qa(mounted.container, 'ul.list li')[0];
-    expect(row.querySelector('a')).toBeNull();
-    expect(row.querySelector('.home__entry-name')).toBeNull();
-    expect(row.textContent).toContain('No Spanish text is published yet');
-    expect(row.textContent).not.toContain('Something new to read');
-    // the developer hint is gone, the plain wording is there
-    expect(row.textContent).toContain('awaiting native-speaker review');
-    expect(row.textContent).not.toContain('set review.status');
+    expect(qa(mounted.container, 'a.home__entry').map((a) => a.getAttribute('href'))).toEqual(['/read', '/listen', '/scripture', '/testimony', '/team-texts']);
+    expect(mounted.container.textContent).not.toContain('No Spanish text is published yet');
+    expect(mounted.container.textContent).not.toContain('set review.status');
+    expect(h.learn.recommend).not.toHaveBeenCalled();
   });
 
-  it('the rehearsal suggestion has one title and one explanation line', async () => {
+  it('does not mix a rehearsal suggestion into the reading directory', async () => {
     h = await makeHarness();
     h.learn.recommend.mockImplementation(async () => [rec({ reason: 'rehearse-testimony', testimonyId: 'tst:u1:es', explanation: 'Read your latest version aloud.' })]);
     mounted = await h.mount(app());
-    const row = qa(mounted.container, 'ul.list li')[0];
-    expect(row.textContent!.match(/Rehearse your testimony/g)).toHaveLength(1);
-    expect(row.textContent).toContain('Read your latest version aloud.');
-    expect(row.querySelector('a')!.getAttribute('href')).toBe('/testimony');
+    expect(qa(mounted.container, 'a.home__entry').some((a) => a.getAttribute('href') === '/testimony')).toBe(true);
+    expect(mounted.container.textContent).not.toContain('Read your latest version aloud.');
+    expect(h.learn.recommend).not.toHaveBeenCalled();
   });
 
   async function saveVersion() {
@@ -131,45 +126,26 @@ describe('Home — notes and the Continue card', () => {
     });
   }
 
-  it('after testimony work the Continue card still prefers reading input', async () => {
-    h = await makeHarness();
-    await seedStory(h.store);
-    await saveVersion();
-    h.learn.recommend.mockImplementation(async () => [
-      rec({ reason: 'rehearse-testimony', testimonyId: 'tst:u1:es', explanation: 'Read your latest version aloud.' }),
-      rec({ reason: 'next-input', textId: STORY_ID, explanation: 'A new story.' }),
-    ]);
-    mounted = await h.mount(app());
-    const card = q<HTMLAnchorElement>(mounted.container, 'a.home__continue')!;
-    expect(card.getAttribute('href')).toBe(`/read/${encodeURIComponent(STORY_ID)}`);
-    expect(card.textContent).toContain('Story 1');
-    expect(card.textContent).not.toContain('testimony');
-    // the testimony stays reachable through its normal entry and the rehearsal suggestion
-    expect(qa(mounted.container, 'nav a').some((a) => a.getAttribute('href') === '/testimony')).toBe(true);
-    expect(qa(mounted.container, 'ul.list a').some((a) => a.getAttribute('href') === '/testimony')).toBe(true);
-  });
-
-  it('falls back to the last text read, then to the testimony only when there is no input at all', async () => {
+  it('continues from the last visible text on the reading page even after testimony work', async () => {
     h = await makeHarness();
     await seedStory(h.store);
     await saveVersion();
     await h.bus.emit<TextViewed>({ type: 'TextViewed', userId: 'u1', lang: 'es', surface: 'corpus', session: 'ses-test', dedupeKey: 'tv:1', textId: STORY_ID, at: '2026-02-01T10:00:00.000Z' });
-    h.learn.recommend.mockImplementation(async () => []);
-    mounted = await h.mount(app());
-    let card = q<HTMLAnchorElement>(mounted.container, 'a.home__continue')!;
+    mounted = await h.mount(app(), { router: '/read' });
+    const card = q<HTMLAnchorElement>(mounted.container, 'a.home__continue')!;
     expect(card.getAttribute('href')).toBe(`/read/${encodeURIComponent(STORY_ID)}`);
-    expect(card.textContent).toContain('Continue reading');
-    await mounted.unmount();
+    expect(card.textContent).toContain('Story 1');
+    expect(card.textContent).not.toContain('testimony');
+    expect(mounted.container.textContent).not.toContain('testimony');
+  });
 
-    // no input of any kind: the saved version is what there is to continue
-    const h2 = await makeHarness();
-    h = h2;
+  it('does not invent a Continue item from a testimony revision when there is no reading history', async () => {
+    h = await makeHarness();
+    await seedStory(h.store);
     await saveVersion();
-    h.learn.recommend.mockImplementation(async () => []);
     mounted = await h.mount(app());
-    card = q<HTMLAnchorElement>(mounted.container, 'a.home__continue')!;
-    expect(card.getAttribute('href')).toBe('/testimony');
-    expect(card.textContent).toContain('Continue your testimony');
+    expect(q(mounted.container, 'a.home__continue')).toBeNull();
+    expect(qa(mounted.container, 'a.home__entry').some((a) => a.getAttribute('href') === '/testimony')).toBe(true);
   });
 });
 
@@ -295,4 +271,3 @@ describe('suggestion card: checker coverage is a short line plus a disclosure', 
     expect(q(mounted.container, '[data-testid="checker-coverage"] details')).toBeNull();
   });
 });
-

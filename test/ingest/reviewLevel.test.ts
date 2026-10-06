@@ -40,10 +40,10 @@ describe('review levels', () => {
     expect(approved.ok && approved.decision.published).toBe(true);
   });
 
-  it('a review recorded before levels existed is taken as given (nothing already published is withdrawn)', () => {
+  it('a legacy review without a level cannot establish native review of machine wording', () => {
     const r = applyReview(draft(), { by: 'N. Speaker', date: '2026-10-02' });
     expect(r.ok && r.review.level).toBeUndefined();
-    expect(r.ok && r.decision.published).toBe(true);
+    expect(r.ok && r.decision.published).toBe(false);
   });
 
   it('a language check of a text that is NOT machine-drafted is an ordinary review (the rule is about generated text)', () => {

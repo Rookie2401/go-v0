@@ -47,6 +47,8 @@ export interface PlayerChange {
 
 /** Imperative handle for a host page (testimony rehearsal): jump to a sentence, play, replay. */
 export interface PlayerControls {
+  /** Flush the current durable listening position before a host navigates away. */
+  savePosition(): Promise<void>;
   seekSentence(sentenceId: string): void;
   play(): void;
   replay(): void;
@@ -269,25 +271,25 @@ function PlayerBody({ textId, onChange, controlRef, defaultTranscriptMode, allow
     if (a.type === 'setTranscriptMode') setPref('transcript', machine.state.transcriptMode);
   }, []);
 
-  const savePosition = useCallback((force = false) => {
+  const savePosition = useCallback(async (force = false): Promise<void> => {
     const m = machineRef.current?.state;
     const seg = m?.manifest.segments[m.segmentIndex];
     if (!m || !seg || m.positionMs <= 0 || !m.manifestId) return;
     const now = Date.now();
     const last = lastPositionSaved.current;
     if (!force && last && last.segmentId === seg.segmentId && now - last.at < 5000 && Math.abs(last.ms - m.positionMs) < 4000) return;
+    await emitterRef.current.positionSaved({ manifestId: m.manifestId, segmentId: seg.segmentId, positionMs: Math.round(m.positionMs) });
     lastPositionSaved.current = { at: now, segmentId: seg.segmentId, ms: m.positionMs };
-    void emitterRef.current.positionSaved({ manifestId: m.manifestId, segmentId: seg.segmentId, positionMs: Math.round(m.positionMs) });
   }, []);
 
   const wasPlaying = useRef(false);
   useEffect(() => {
-    if (model && !model.playing && model.positionMs > 0) savePosition(wasPlaying.current);
+    if (model && !model.playing && model.positionMs > 0) void savePosition(wasPlaying.current).catch(() => undefined);
     wasPlaying.current = !!model?.playing;
   }, [model, savePosition]);
 
   useEffect(() => {
-    const onVisibility = () => { if (document.visibilityState === 'hidden') savePosition(true); };
+    const onVisibility = () => { if (document.visibilityState === 'hidden') void savePosition(true).catch(() => undefined); };
     document.addEventListener('visibilitychange', onVisibility);
     return () => document.removeEventListener('visibilitychange', onVisibility);
   }, [savePosition]);
@@ -295,6 +297,7 @@ function PlayerBody({ textId, onChange, controlRef, defaultTranscriptMode, allow
   useEffect(() => {
     if (!controlRef) return;
     controlRef.current = {
+      savePosition: () => savePosition(true),
       seekSentence: (sentenceId) => dispatch({ type: 'seekSentence', sentenceId }),
       play: () => dispatch({ type: 'play' }),
       replay: () => dispatch({ type: 'replay' }),
@@ -308,7 +311,7 @@ function PlayerBody({ textId, onChange, controlRef, defaultTranscriptMode, allow
       },
     };
     return () => { controlRef.current = null; };
-  }, [controlRef, dispatch]);
+  }, [controlRef, dispatch, savePosition]);
 
   // Leaving mid-sentence is an abandonment; always stop the audio.
   useEffect(() => () => {
@@ -428,20 +431,25 @@ function PlayerBody({ textId, onChange, controlRef, defaultTranscriptMode, allow
   const seekStart = activePlayerSegment?.rangeMs?.startMs ?? 0;
   const seekEnd = activePlayerSegment?.rangeMs?.endMs ?? activePlayerSegment?.durationMs ?? 0;
   const skip = (delta: number) => dispatch({ type: 'seekPosition', ms: model.positionMs + delta });
+  const endAtObservedPosition = (mediaTimeSeconds: number) => {
+    const observedPositionMs = mediaTimeSeconds * 1000;
+    if (Number.isFinite(observedPositionMs) && observedPositionMs >= 0) dispatch({ type: 'ended', observedPositionMs });
+    else dispatch({ type: 'ended' });
+  };
 
   return (
     <section className="player" aria-label="Audio player" data-audio-state={stateProp} onKeyDown={onPlayerKey}>
       <audio
         ref={audioRef}
         preload="auto"
-        onEnded={() => dispatch({ type: 'ended' })}
+        onEnded={(e) => endAtObservedPosition(e.currentTarget.currentTime)}
         onError={() => dispatch({ type: 'playbackError' })}
         onTimeUpdate={(e) => {
           // Muted or zero-volume playback is not hearing: the machine counts a tick only while the element is audible.
           dispatch({ type: 'position', ms: e.currentTarget.currentTime * 1000, observedAtMs: performance.now(), muted: e.currentTarget.muted, volume: e.currentTarget.volume });
           const m = machineRef.current?.state;
           const seg = m?.manifest.segments[m.segmentIndex];
-          if (seg?.rangeMs && e.currentTarget.currentTime * 1000 >= seg.rangeMs.endMs - 40) dispatch({ type: 'ended' });
+          if (seg?.rangeMs && e.currentTarget.currentTime * 1000 >= seg.rangeMs.endMs - 40) endAtObservedPosition(e.currentTarget.currentTime);
           const now = Date.now();
           if (m && seg && m.manifestId && m.positionMs > 0 && (!lastPositionSaved.current || lastPositionSaved.current.segmentId !== seg.segmentId || now - lastPositionSaved.current.at >= 5000)) {
             lastPositionSaved.current = { at: now, segmentId: seg.segmentId, ms: m.positionMs };

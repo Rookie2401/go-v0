@@ -231,14 +231,14 @@ describe('re-import with a changed dictionary id', () => {
   });
 });
 
-describe('the other languages are unchanged apart from origin and sourceId', () => {
-  it('the bundled es / de / sq / hi documents: every analysis (and alternative) gains exactly origin and sourceId', async () => {
+describe('the other languages retain analysis facts and persist source descriptors when available', () => {
+  it('the bundled es / de / sq / hi documents: only the explicit source snapshot extends the existing analysis record', async () => {
     const docs = loadBundledCorpus().filter((d) => d.lang !== 'th');
     expect((await Promise.resolve(docs)).length).toBeGreaterThan(0);
     const store = createMemoryStore();
     const reg = bareRegistry;
     expect((await importDocuments(store, reg, docs, { clock })).ok).toBe(true);
-    const allowed = new Set(['id', 'tokenId', 'lang', 'lemmaId', 'pos', 'morph', 'notes', 'gloss', 'register', 'role', 'definition', 'confidence', 'provenance', 'origin', 'sourceId', 'analyzer', 'createdAt', 'supersedes', 'alternatives', 'parts', 'varieties', 'unit', 'orthography']); // (parts and varieties: stated by the Spanish adapter since contract v7; unit and orthography: by the German adapter since contract v9)
+    const allowed = new Set(['id', 'tokenId', 'lang', 'lemmaId', 'pos', 'morph', 'notes', 'gloss', 'register', 'role', 'definition', 'confidence', 'provenance', 'origin', 'sourceId', 'sourceInfo', 'analyzer', 'createdAt', 'supersedes', 'alternatives', 'parts', 'varieties', 'unit', 'orthography']); // sourceInfo snapshots the matching adapter descriptor; parts/varieties and unit/orthography are existing analyzer outputs.
     const allowedAlt = new Set(['lemmaId', 'pos', 'morph', 'confidence', 'origin', 'sourceId']);
     const rows = await store.analyses.all();
     expect(rows.length).toBeGreaterThan(300);
@@ -247,6 +247,9 @@ describe('the other languages are unchanged apart from origin and sourceId', () 
       for (const k of Object.keys(a)) expect(allowed.has(k), k).toBe(true);
       expect(['hand', 'rule']).toContain(a.origin);
       expect(a.sourceId!.startsWith(`adapter-${a.lang}@${reg.get(a.lang as LanguageCode).version}`), a.sourceId).toBe(true); // the adapter may name its own source, e.g. adapter-es@1:hand
+      const descriptor = reg.get(a.lang as LanguageCode).sources?.[a.sourceId!];
+      if (descriptor) expect(a.sourceInfo).toEqual(descriptor);
+      else expect(a.sourceInfo).toBeUndefined();
       expect(a.notes && 'readings' in a.notes).toBeFalsy();
       for (const alt of a.alternatives ?? []) {
         for (const k of Object.keys(alt)) expect(allowedAlt.has(k), k).toBe(true);

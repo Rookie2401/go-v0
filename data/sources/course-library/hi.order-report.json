@@ -1,0 +1,172 @@
+{
+ "lang": "hi",
+ "at": "2026-10-02",
+ "changes": [
+  "bible-hindi: 1185 chapters put in the order of the canon (66 books, GEN … REV); 171 renumbered by their place in it",
+  "gdl-hindi-ccby: 32 text(s) with the same words as an earlier one left out (92 remain)",
+  "gdl-hindi-ccby: 92 texts numbered 1 … 92 (was 0, 2, 5, 8, …)"
+ ],
+ "leftOut": [
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-2-ch01",
+   "why": "the same words as gdl-1-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-4-ch01",
+   "why": "the same words as gdl-3-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-5-ch01",
+   "why": "the same words as gdl-3-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-7-ch01",
+   "why": "the same words as gdl-6-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-8-ch01",
+   "why": "the same words as gdl-6-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-10-ch01",
+   "why": "the same words as gdl-9-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-11-ch01",
+   "why": "the same words as gdl-9-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-13-ch01",
+   "why": "the same words as gdl-12-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-15-ch01",
+   "why": "the same words as gdl-14-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-17-ch01",
+   "why": "the same words as gdl-16-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-19-ch01",
+   "why": "the same words as gdl-18-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-21-ch01",
+   "why": "the same words as gdl-20-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-23-ch01",
+   "why": "the same words as gdl-22-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-25-ch01",
+   "why": "the same words as gdl-24-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-27-ch01",
+   "why": "the same words as gdl-26-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-29-ch01",
+   "why": "the same words as gdl-28-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-31-ch01",
+   "why": "the same words as gdl-30-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-33-ch01",
+   "why": "the same words as gdl-32-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-35-ch01",
+   "why": "the same words as gdl-34-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-37-ch01",
+   "why": "the same words as gdl-36-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-39-ch01",
+   "why": "the same words as gdl-38-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-41-ch01",
+   "why": "the same words as gdl-40-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-43-ch01",
+   "why": "the same words as gdl-42-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-45-ch01",
+   "why": "the same words as gdl-44-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-47-ch01",
+   "why": "the same words as gdl-46-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-49-ch01",
+   "why": "the same words as gdl-48-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-51-ch01",
+   "why": "the same words as gdl-50-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-53-ch01",
+   "why": "the same words as gdl-52-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-55-ch01",
+   "why": "the same words as gdl-54-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-57-ch01",
+   "why": "the same words as gdl-56-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-59-ch01",
+   "why": "the same words as gdl-58-ch01: left out"
+  },
+  {
+   "work": "gdl-hindi-ccby",
+   "text": "gdl-61-ch01",
+   "why": "the same words as gdl-60-ch01: left out"
+  }
+ ],
+ "withheld": []
+}

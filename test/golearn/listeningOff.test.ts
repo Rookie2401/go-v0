@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest';
 import { ids } from '../../src/core';
 import { createHarness } from './harness';
 import type { Harness } from './harness';
+import { withoutHeadCache } from './harness';
 import { ES_STORY, buildSpanish } from './fixtures';
 import { COURSE, buildChapter, filler, stageRow, workRow } from './courseFixtures';
 
@@ -109,7 +110,7 @@ describe('item history and explanations', () => {
 describe('the flag changes what is said, never what is stored', () => {
   it('the same log folds to identical rows with listening on and off, and a rebuild keeps them', async () => {
     const snapshot = async (h: Harness) => JSON.stringify({
-      items: (await h.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)),
+      items: withoutHeadCache((await h.store.learnerItems.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1))),
       encounters: (await h.store.encounters.where('userId', U)).sort((a, b) => (a.id < b.id ? -1 : 1)),
     });
     const on = mk(true);

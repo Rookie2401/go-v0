@@ -17,7 +17,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type { MouseEvent, ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import type { CatalogText, LanguageCode, Text } from '../../core';
-import { CANON, bookIndex } from '../../library/canon';
+import { isSupplementalScripture, sameScriptureText, scriptureAddress } from '../../course/scriptureIntegrity';
 import { useApp } from '../context';
 import { ProgressLine, useCoverageMany, useReadingProgress } from '../coverage';
 // the dropdown parts (and disclosure.css) load before scripture.css, so this page's own rules win where both apply
@@ -27,7 +27,7 @@ import { TextBadges, UnpublishedReasons, useLangTexts } from '../library';
 import { Library } from '../pages/Library';
 import { usePreview } from '../prefs';
 import { BackLink, Topbar } from '../ui';
-import { bookName, bookNameEn, canonTree, isScriptureLang, placeOfRunning } from './canon';
+import { bookName, bookNameEn, canonTree, isScriptureLang } from './canon';
 import type { BookNode, DivisionNode, ScriptureLang, TestamentNode } from './canon';
 import './scripture.css';
 
@@ -55,17 +55,7 @@ interface Entry {
   catalog?: CatalogText;
 }
 
-/** Where a text sits in the canon: its own scripture reference, else (library rows) its running canon number. */
-function placeOf(row: Text | CatalogText): { book: string; chapter: number } | undefined {
-  const s = (row as { scripture?: { book: string; chapter: number } }).scripture;
-  if (s) {
-    const i = bookIndex.get(s.book);
-    if (i !== undefined && Number.isInteger(s.chapter) && s.chapter >= 1 && s.chapter <= CANON[i][1]) return { book: s.book, chapter: s.chapter };
-  }
-  const c = (row as { chapter?: number | { index: number } }).chapter;
-  const running = typeof c === 'number' ? c : c?.index;
-  return running === undefined ? undefined : placeOfRunning(running);
-}
+const placeOf = scriptureAddress;
 
 const openKey = (lang: string) => `go.scripture.open.${lang}`;
 function readOpen(lang: string): Set<string> | null {
@@ -85,7 +75,7 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
   const { texts: allTexts } = useLangTexts();
 
   // Resident Scripture texts, behind the publication gate.
-  const residentAll = useMemo(() => (allTexts ?? []).filter((t) => t.kind === 'scripture' && t.listeningAssessmentId === undefined), [allTexts]);
+  const residentAll = useMemo(() => (allTexts ?? []).filter((t) => t.kind === 'scripture' && t.listeningAssessmentId === undefined && t.readingAssessmentId === undefined), [allTexts]);
   const resident = useMemo(() => residentAll.filter((t) => isVisibleText(t, preview)), [residentAll, preview]);
 
   // Library chapters, opened lazily (paged exactly as the previous page did).
@@ -115,31 +105,18 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
     }).catch((e: unknown) => { if (live) { setCatalogTexts([]); setCatalogReady(true); setCatalogError(e instanceof Error ? e.message : 'Could not load Scripture.'); } });
     return () => { live = false; };
   }, [library, course.lang, preview]);
-  // How many live sentences each resident Scripture text has: a resident text is the library chapter only when it is as long.
-  const [residentSentences, setResidentSentences] = useState<Map<string, number>>(new Map());
+  // Read verse addresses to distinguish mixed-book passages from canonical chapters.
+  const [residentRefs, setResidentRefs] = useState<Map<string, string[]>>(new Map());
   useEffect(() => {
     let live = true;
-    void Promise.all(residentAll.map(async (t) => [t.id, (await store.sentences.where('textId', t.id)).filter((x) => x.retiredInVersion === undefined).length] as const))
-      .then((rows) => { if (live) setResidentSentences(new Map(rows)); })
-      .catch(() => { if (live) setResidentSentences(new Map()); });
+    void Promise.all(residentAll.map(async (t) => [t.id, (await store.sentences.where('textId', t.id))
+      .filter((x) => x.retiredInVersion === undefined).flatMap((x) => x.verseRefs ?? [])] as const))
+      .then((rows) => { if (live) setResidentRefs(new Map(rows)); })
+      .catch(() => { if (live) setResidentRefs(new Map()); });
     return () => { live = false; };
   }, [store, residentAll]);
-  // A library row is the resident text's chapter, and is dropped, when it has the same id — or when a resident text has the
-  // same canon place, the same title, the same edition (work) AND at least as many sentences (so it is the whole chapter, not
-  // a passage of it). Everything else stays listed beside it: a partial seed passage (it can carry the same title as the
-  // complete chapter — the bundled 1 John "1:8–9; John 3:16" seed and its complete chapter do), another edition, a chapter
-  // whose resident length is not known yet. The resident copy is the one that carries the learner's progress.
-  const lazy = useMemo(() => {
-    const have = new Set(residentAll.map((t) => t.id));
-    const same = (t: CatalogText) => residentAll.some((r) => {
-      const a = placeOf(r), b = placeOf(t);
-      const n = residentSentences.get(r.id);
-      return !!a && !!b && a.book === b.book && a.chapter === b.chapter && r.title.trim() === t.title.trim()
-        && (!r.workId || !t.workId || r.workId === t.workId)
-        && n !== undefined && n >= (t.features?.sentences ?? Number.POSITIVE_INFINITY);
-    });
-    return catalogTexts.filter((t) => !have.has(t.id) && !same(t));
-  }, [catalogTexts, residentAll, residentSentences]);
+  // Only the same text id proves identity. Matching titles, editions and lengths cannot prove wording equality.
+  const lazy = useMemo(() => catalogTexts.filter((t) => !resident.some((r) => sameScriptureText(r, t))), [catalogTexts, resident]);
 
   // Progress and coverage for the resident texts, the same shared reads as before.
   const textIds = useMemo(() => resident.map((t) => t.id), [resident]);
@@ -152,7 +129,7 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
     const others: Entry[] = [];
     const byId = new Map<string, Entry>();
     const all: Entry[] = [
-      ...resident.map((text) => ({ id: text.id, title: text.title, text, place: placeOf(text) })),
+      ...resident.map((text) => ({ id: text.id, title: text.title, text, place: isSupplementalScripture(text, residentRefs.get(text.id) ?? []) ? undefined : placeOf(text) })),
       ...lazy.map((catalog) => ({ id: catalog.id, title: catalog.title, catalog, place: placeOf(catalog) })),
     ].map(({ place, ...e }) => ({ ...e, book: place?.book ?? '', chapter: place?.chapter ?? 0 }));
     for (const e of all) {
@@ -164,7 +141,7 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
     }
     for (const chapters of byBook.values()) for (const list of chapters.values()) list.sort((a, b) => Number(!!b.text) - Number(!!a.text) || a.title.localeCompare(b.title));
     return { byBook, others, byId };
-  }, [resident, lazy]);
+  }, [resident, lazy, residentRefs]);
 
   const tree = useMemo(() => canonTree(lang), [lang]);
   const availableIn = (b: BookNode) => byBook.get(b.code)?.size ?? 0;

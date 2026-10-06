@@ -170,6 +170,8 @@ export interface GoLearn {
    * Resolves with the user ids rebuilt. Never call from inside a GoLearn read or fold.
    */
   invalidateListening(textId?: string): Promise<string[]>;
+  /** Rebuild every learner's derived state after assessment material is newly protected. Raw events remain intact. */
+  invalidateProtectedAssessments(): Promise<string[]>;
 
   getItemState(userId: string, itemId: string): Promise<LearnerItemState | undefined>;
   /** GoTell's main query. `ref` may be a formId, lemmaId, phraseId, patternId, or a raw normalized surface (lang required). */

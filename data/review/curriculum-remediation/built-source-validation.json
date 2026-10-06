@@ -1,0 +1,198 @@
+{
+  "date": "2026-10-04",
+  "builtDocuments": 32,
+  "records": [
+    {
+      "id": "guerber-v1-story-04-ch01",
+      "sourceHash": "0ba331b855c735571b98edbfaea73397d3b671ebdbad9928a4c9df89e54bca63",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v2-story-13-ch01",
+      "sourceHash": "02be0cc5c805d4d11b78dcec81445a2ff36ed82c62343f928ba188b741ebf095",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v2-story-12-ch01",
+      "sourceHash": "8215d6ac9b5508d4fd73e235cfd0cc08dbd8c1928df2acde81d251c817ef71d8",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v2-story-07-ch01",
+      "sourceHash": "e8fb1131fca20e7808f66a6280ad9f1196779770e718e58f6cacc505bb25de46",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v2-story-10-ch01",
+      "sourceHash": "7b9dc0f9dc790a9675e42659cdd3961e4b4d864ccb473cb003ab9e6b4da231c3",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v2-story-08-ch01",
+      "sourceHash": "3980f0a133a08b229814b5f3b92b1b7805356fbd7ed89e5041f36c8ffe462e9b",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v2-story-11-ch01",
+      "sourceHash": "5cde7e253990bf50f5fd39a34d0c2dc8ed3c8b13701400332537f000a65ec714",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-06-ch01",
+      "sourceHash": "3181d55676a3cf7f1d76f3b78319667871a89ea4e9579ab18e3b37f2bc26a204",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-15-ch01",
+      "sourceHash": "d37b121714d8aa4f1b698346aa822fc32b2069f2d71a3cb5bab6b5ce4577fe24",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v2-story-04-ch01",
+      "sourceHash": "fe23fdcc5d04d491cf5265a8209a201f50d4f34d4933be3ac69313467ac668e9",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v2-story-02-ch01",
+      "sourceHash": "2e951b79a26617e28e67d9093c43c89fce446c949401cfd09d7a89258573bbbd",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v2-story-06-ch01",
+      "sourceHash": "b7c4931011b382281534861fa135ca22d10372bb231bc6e6a88565f74b621f58",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-08-ch01",
+      "sourceHash": "d033bf35763dad1b2ad0b0a02627bd83db5dfd0bdd04b83894b019c34abadd1a",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v2-story-01-ch01",
+      "sourceHash": "d33fcafbb2b6c263f5bef12450eb1d6ccd2bf31b012476b0519407c60ba83b1a",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-05-ch01",
+      "sourceHash": "0afd42ffce50bee93431e012ac120f1a3ab65de160cac98ff445ce2c4b6a2d50",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-02-ch01",
+      "sourceHash": "906ca2f1582587c789a6f8a6939c553721d3ff7f1112265ed9c34b4a7d5e8b91",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-13-ch01",
+      "sourceHash": "858fcb3c5e23ea51fe3a66c3c75e95209f8322a4a98dbcad4b4059f289532515",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-14-ch01",
+      "sourceHash": "95b4ad0f60d36639f1a440aff83c982a104cf09fbef6b5069cc26193083f506c",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v2-story-03-ch01",
+      "sourceHash": "0b4538adb1e5c43f786cb7980070fe76d3cfca6ce966691601b7b091281ed66f",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v2-story-09-ch01",
+      "sourceHash": "f1d3440793d378f222fbb4607668dc77379dd856088a1b8c034a7d6fb5d299c4",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-01-ch01",
+      "sourceHash": "ec4551293b1938d29eeafc423c8b47dba12111044c4dca3687b07e969d9d6dc7",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v2-story-05-ch01",
+      "sourceHash": "ad4b56e2ae3e1b1d9bdec066b1f1d6c9e0fd899bce91d3de7061bdec233869d9",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-07-ch01",
+      "sourceHash": "1ac3f0dc8665e884d1cf5a4c39dc82918c6289d527a2e9fa1d04c5a5a5234380",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-12-ch01",
+      "sourceHash": "0707e63e66b5e4606a4835838d9b6c9a77441711b5640723850c98e84df39f18",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-03-ch01",
+      "sourceHash": "954d564936b062fad5a4942c250a09e30d270ddac85cc082f768e13bbf582717",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-09-ch01",
+      "sourceHash": "7e3717233384f8eefb87f4e4b6717abd021e1f528a2945498298e31cf16c1e96",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-11-ch01",
+      "sourceHash": "20b12d1b939fd91769c741227ac5f4eb04b54496e616d5dd99d4e8c285e1f4c5",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "guerber-v1-story-10-ch01",
+      "sourceHash": "f709e8c6bab0ae0d170a1445470c648c20b07b5030a330a19af302ed8b07159b",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "gv-de-91a9508ad151-excerpt-ch01",
+      "sourceHash": "6650149db2ef1a56d0d98542d95f31f193ac25c20a5d36d32b7250e7d2cc4f38",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "gv-es-dae11aaaf264-excerpt-ch01",
+      "sourceHash": "21ac0d13a11e432379644510690cded5a24896d7b999ef1cf4870bc3fe8d71e4",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "gv-hi-467925c35d73-excerpt-ch01",
+      "sourceHash": "c2881ba968cc6a0305e95faaf3521f63099a806a0ed8dfb7afecc04705399b6f",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    },
+    {
+      "id": "gv-sq-adc3e64cb681-excerpt-ch01",
+      "sourceHash": "46a6d67d094521536f5042a9538df8d7cb8b371e34cb230d9d39c2a8a6994317",
+      "attributionPreserved": true,
+      "reviewSignaturePreserved": true
+    }
+  ]
+}

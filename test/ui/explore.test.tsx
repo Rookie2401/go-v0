@@ -36,7 +36,9 @@ async function explore(opts: { route?: string; works?: Work[]; fake?: boolean } 
 function fakeCatalogue(h: Harness, total: number) {
   const all = Array.from({ length: total }, (_, i) => work(i + 1));
   const findWorks = vi.fn(async (q: { offset?: number; limit?: number; text?: string; stageId?: string; stream?: string; domain?: string; variety?: string; rights?: string }) => {
-    const rows = q.text ? all.filter((w) => w.title.toLowerCase().includes(q.text!.toLowerCase())) : all;
+    const rows = all.filter((w) => (!q.stageId || w.stageId === q.stageId)
+      && (!q.stream || (w.streams ?? []).includes(q.stream))
+      && (!q.text || w.title.toLowerCase().includes(q.text.toLowerCase())));
     const offset = q.offset ?? 0;
     return { total: rows.length, items: rows.slice(offset, offset + (q.limit ?? 30)) };
   });
@@ -250,8 +252,20 @@ describe('Explore: reading and adding your copy', () => {
     expect(qa(course, 'button').map((b) => b.textContent)).not.toContain('Add your copy');
     expect(q(course, '[data-testid="rights-line"]')!.textContent).toBe('Written for this course.');
 
-    const read = button(q(mounted.container, `[data-work="${work(1).id}"]`)!, 'Read · 2 chapters');
-    await click(read);
-    expect(h.library.opened).toEqual(['text:es:test-1-ch1']);
+    const available = q(mounted.container, `[data-work="${work(1).id}"]`)!;
+    await click(button(available, 'Available chapters'));
+    await click(button(available, 'Zzyzx libro — Capítulo 2'));
+    expect(h.library.opened).toEqual(['text:es:test-1-ch2']);
+  });
+
+  it('makes chapters beyond the first library page available without importing them', async () => {
+    const { catalogText } = await import('./harness');
+    const { libraryChapters } = await import('../../src/ui/course/catalogue');
+    const rows = Array.from({ length: 201 }, (_, i) => catalogText({ id: `text:es:test-1-ch${i + 1}`, title: `Chapter ${i + 1}`, workId: work(1).id, chapter: i + 1 }));
+    const h = await makeHarness({ library: rows });
+    const chapters = await libraryChapters(h.services.library, 'es', work(1));
+    expect(chapters).toHaveLength(201);
+    expect(chapters.at(-1)?.id).toBe('text:es:test-1-ch201');
+    expect(h.library.opened).toEqual([]);
   });
 });

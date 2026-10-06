@@ -1,0 +1,484 @@
+{
+  "schema": 1,
+  "lang": "de",
+  "apiLanguage": "de",
+  "entries": [
+    {
+      "slug": "bridge-der-lowe-rennt-und-die-kuh-geht",
+      "title": "Der Löwe rennt und die Kuh geht",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/der-lowe-rennt-und-die-kuh-geht/"
+        ]
+      },
+      "source": {
+        "file": "der-lowe-rennt-und-die-kuh-geht.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/de/book/der-lowe-rennt-und-die-kuh-geht/",
+        "edition": "Global Digital Library gdl-3928",
+        "attribution": "Der Löwe rennt und die Kuh geht — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained.",
+        "sha256": "db83fc7b1f147ae29fda3ad0051e39b7571d573724dcd2ab5d46fbae3bc05b10"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "db83fc7b1f147ae29fda3ad0051e39b7571d573724dcd2ab5d46fbae3bc05b10"
+      }
+    },
+    {
+      "slug": "bridge-einfaches-zahlen",
+      "title": "Einfaches Zählen",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/einfaches-zahlen/"
+        ]
+      },
+      "source": {
+        "file": "einfaches-zahlen.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/de/book/einfaches-zahlen/",
+        "edition": "Global Digital Library gdl-3929",
+        "attribution": "Einfaches Zählen — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "2ba5fb2895f0b7ccb71f4adb02ecb64487d6793d47225c5d148ea6051d660b28"
+      }
+    },
+    {
+      "slug": "bridge-lecker-mango",
+      "title": "Lecker Mango!",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/lecker-mango/"
+        ]
+      },
+      "source": {
+        "file": "lecker-mango.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/de/book/lecker-mango/",
+        "edition": "Global Digital Library gdl-7317",
+        "attribution": "Lecker Mango! — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "1bbecb032f518bcc58efdb11f14c048eadc168a6e8f33d001417553d5511d7f2"
+      }
+    },
+    {
+      "slug": "bridge-mein-kleiner-garten",
+      "title": "Mein kleiner Garten",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/mein-kleiner-garten/"
+        ]
+      },
+      "source": {
+        "file": "mein-kleiner-garten.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/de/book/mein-kleiner-garten/",
+        "edition": "Global Digital Library gdl-7322",
+        "attribution": "Mein kleiner Garten — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "595a175a024f6ded8b926d9821e5e0149f4112aa0c926a64ca2633cdc7cf5106"
+      }
+    },
+    {
+      "slug": "bridge-meine-strase",
+      "title": "Meine Straße",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/meine-strase/"
+        ]
+      },
+      "source": {
+        "file": "meine-strase.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/de/book/meine-strase/",
+        "edition": "Global Digital Library gdl-7318",
+        "attribution": "Meine Straße — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "627395f8f1785b336a85e16d9f7772cfb84def9e5a73f697c41cd33d0cfc44a5"
+      }
+    },
+    {
+      "slug": "bridge-navy-und-bora",
+      "title": "Navy und Bora",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/navy-und-bora/"
+        ]
+      },
+      "source": {
+        "file": "navy-und-bora.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/de/book/navy-und-bora/",
+        "edition": "Global Digital Library gdl-3926",
+        "attribution": "Navy und Bora — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained.",
+        "sha256": "fd0401499b40113fa790879243dc5a15470df24fe5a0045acfe906c7fa6e8d8d"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "fd0401499b40113fa790879243dc5a15470df24fe5a0045acfe906c7fa6e8d8d"
+      }
+    },
+    {
+      "slug": "bridge-schmetterling-und-tukan",
+      "title": "Schmetterling und Tukan",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/schmetterling-und-tukan/"
+        ]
+      },
+      "source": {
+        "file": "schmetterling-und-tukan.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/de/book/schmetterling-und-tukan/",
+        "edition": "Global Digital Library gdl-3924",
+        "attribution": "Schmetterling und Tukan — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained.",
+        "sha256": "f6271f59c37adf41867ab1ee67ae3a5e4af233a427bf9fb507eef4234620b887"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "f6271f59c37adf41867ab1ee67ae3a5e4af233a427bf9fb507eef4234620b887"
+      }
+    },
+    {
+      "slug": "bridge-ich-kann-mich-selbst-anziehen",
+      "title": "Ich kann mich selbst anziehen!",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/ich-kann-mich-selbst-anziehen/"
+        ]
+      },
+      "source": {
+        "file": "ich-kann-mich-selbst-anziehen.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/de/book/ich-kann-mich-selbst-anziehen/",
+        "edition": "Global Digital Library gdl-7319",
+        "attribution": "Ich kann mich selbst anziehen! — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "2f4f6c16e6da575293bc353599219a2319efab8a15b77bf9eafb9df6c8364dc3"
+      }
+    },
+    {
+      "slug": "bridge-ich-mag",
+      "title": "Ich mag",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/ich-mag/"
+        ]
+      },
+      "source": {
+        "file": "ich-mag.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/de/book/ich-mag/",
+        "edition": "Global Digital Library gdl-7320",
+        "attribution": "Ich mag — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "23e82e548d4ac6347fa0461586fdef51a8db3e20640851bd83e45ac7863b41ca"
+      }
+    },
+    {
+      "slug": "bridge-schnipp-schnapp",
+      "title": "Schnipp Schnapp",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/schnipp-schnapp/"
+        ]
+      },
+      "source": {
+        "file": "schnipp-schnapp.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/de/book/schnipp-schnapp/",
+        "edition": "Global Digital Library gdl-7321",
+        "attribution": "Schnipp Schnapp — ; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "d82b59818f58827b3f69c64e7dcee9de02f5d5006acd8c1e4ee995e2c8490b24"
+      }
+    },
+    {
+      "slug": "bridge-verstecken-spielen",
+      "title": "Verstecken spielen",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "userImportOnly": false,
+        "canModify": true,
+        "canStoreOffline": true,
+        "verified": true,
+        "verifiedBy": "Official GDL API book licence",
+        "verifiedAt": "2026-10-02",
+        "basis": "GDL API marks this book CC BY 4.0; official book page and API retained.",
+        "licensing": "CC BY 4.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://content.digitallibrary.io/wp-json/content-api/v1/books/de",
+          "https://content.digitallibrary.io/de/book/verstecken-spielen/"
+        ]
+      },
+      "source": {
+        "file": "verstecken-spielen.json",
+        "kind": "documents",
+        "url": "https://content.digitallibrary.io/de/book/verstecken-spielen/",
+        "edition": "Global Digital Library gdl-3920",
+        "attribution": "Verstecken spielen — StoryWeaver; CC BY 4.0; Global Digital Library.",
+        "provenance": "Source document generated from the exact official GDL EPUB; source wording retained.",
+        "sha256": "71829f4dd47a562bfe88bc36442c3856c7532d20b9cba14ac6eac92815e02a91"
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-reading-bridge source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "71829f4dd47a562bfe88bc36442c3856c7532d20b9cba14ac6eac92815e02a91"
+      }
+    }
+  ]
+}

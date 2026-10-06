@@ -1,0 +1,3017 @@
+[
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-01",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ราชสีห์กับหนู",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132230",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132230",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132230",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132230; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132230, rendered HTML SHA256 b79058e698243b38c46c489019a389b4c689777dfad3330a7797d3777d296764; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "3ab95692b4ff9400"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 1,
+        "title": "ราชสีห์กับหนู"
+      }
+    },
+    "sections": [
+      {
+        "title": "ราชสีห์กับหนู",
+        "paragraphs": [
+          {
+            "text": "ราชสีห์ตัวหนึ่งนอนหลับอยู่ใต้ต้นไม้ ในเวลานั้น หนูตัวหนึ่งขึ้นไต่ข้ามตัวราชสีห์ ราชสีห์รู้สึกตัวตื่นขึ้นกระโดดตะครุบเอาหนูตัวนั้นไว้ได้ ราชสีห์นึกโกรธจะขย้ำหนูตัวนั้นเสีย หนูจึงร้องวิงวอนว่า \"ข้าพเจ้าขอชีวิตไว้สักครั้งหนึ่งเถิด อย่าเพ่อฆ่าข้าพเจ้าเสียเลย ถ้าท่านปล่อยข้าพเจ้าไป ข้าพเจ้าจะมิลืมคุณของท่านเลย\" ราชสีห์หัวร่อแล้วว่า \"ตัวเอ็งเล็กเท่านี้ เอ็งจะมาตอบแทนคุณเราอย่างไรได้\" ว่าแล้วก็ปล่อยหนูไป อยู่มามิช้ามินาน ราชสีห์ตัวนั้นไปติดบ่วงแร้วที่นายพรานเขาดักไว้ จะดิ้นรนเท่าไรก็ไม่หลุด ราชสีห์สิ้นปัญญาลงร้องครวญครางก้องไปทั้งป่า ฝ่ายหนูตัวนั้นได้ยินเสียงราชสีห์ร้อง จำได้ จึงวิ่งมาปีนขึ้นไปบนคันแร้ว เอาฟันแทะเชือกขาดให้ราชสีห์หลุดรอดพ้นจากความตายไปได้ หนูจึงร้องไปแก่ราชสีห์ว่า \"แต่เดิมท่านก็หัวร่อเยาะข้าพเจ้าว่า เอ็งตัวเล็กเพียงนี้ จะแทนคุณท่านอย่างไรได้ มาบัดนี้ ข้าพเจ้าก็ได้แทนคุณของท่านซึ่งเป็นสัตว์ใหญ่และมีกำลังมากให้เห็นประจักษ์แก่ตาท่านอยู่เองแล้ว\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า แม้แต่ผู้เลวทราม ก็อย่าได้ดูถูก ถ้าเราทำดีแก่เขา เขาอาจจะแทนคุณเราได้"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-02",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "พ่อกับลูก",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132227",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132227",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132227",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132227; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132227, rendered HTML SHA256 bea1b01fb39295c9f423767db4fa5b858757ec47ac5ca459035baca986138694; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "1c3aa95ac054c8cc"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 2,
+        "title": "พ่อกับลูก"
+      }
+    },
+    "sections": [
+      {
+        "title": "พ่อกับลูก",
+        "paragraphs": [
+          {
+            "text": "ชายแก่คนหนึ่งมีลูกหลายคน ลูกเหล่านั้นทะเลาะกันวุ่นวายอยู่เสมอมิได้ขาด พ่อสั่งสอนเท่าใด ลูกเหล่านั้นก็ไม่เลิกทะเลาะกัน วันหนึ่ง พ่อจึงบอกให้ลูกไปหาแขนงไผ่มาคนละสองสามอันตามแต่จะหาได้ เมื่อได้มากพอแล้ว พ่อเอาแขนงไผ่เหล่านั้นมัดรวมกันเข้าเป็นกำเดียวส่งให้ลูกหักแขนงไผ่ทั้งมัดโดยเต็มกำลังทีละคน ๆ ก็ไม่มีใครหักได้สักคนเดียว พ่อจึงแก้มัดแขนงไผ่แล้วยื่นให้หักแต่คนละอัน ๆ ลูกก็หักได้ พ่อจึงพูดให้ฟังว่า \"นี่แหละ ลูก ถ้าพวกเจ้ารักกัน พร้อมใจกัน ช่วยธุระกัน ไม่ว่าในการงานใด ๆ ให้กลมเกลียวเป็นอันเดียวกัน พวกเจ้าจะมีกำลังมั่นคงเหมือนกับแขนงไผ่ทั้ง ๆ มัด ถึงใครคิดร้าย ก็จะทำร้ายแก่พวกเจ้ามิได้ แต่ถ้าเจ้าทะเลาะวิวาทแตกกันเป็นต่างคนต่างใจแล้ว ก็จะเช่นเดียวกับแขนงไผ่เป็นอัน ๆ ใครเขาจะทำร้าย ทำไปทีละคน ๆ ก็จะหมดพวกเจ้าทุกคนในไม่ช้านานเท่าใด\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า ความรักใคร่ช่วยเหลือกันและกัน ไม่วิวาทกัน ย่อมเป็นกำลังด้วยกันทุกคน"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-03",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ลากับจิ้งหรีด",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132228",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132228",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132228",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132228; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132228, rendered HTML SHA256 a95f1ce19c3afe99006de3960ed069d1a2d91071be97f918a959d9795e5e74a9; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "b5a4a61c1ac7fd63"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 3,
+        "title": "ลากับจิ้งหรีด"
+      }
+    },
+    "sections": [
+      {
+        "title": "ลากับจิ้งหรีด",
+        "paragraphs": [
+          {
+            "text": "ลาโง่ตัวหนึ่งกินหญ้าอยู่ที่ชายป่า ได้ยินเสียงจิ้งหรีดร้องเพราะจับใจ อยากจะใคร่ร้องได้บ้าง จึงไปถามจิ้งหรีดว่า \"เจ้ากินอะไร จึงร้องได้เสียงเพราะอย่างนี้\" จิ้งหรีดบอกว่า \"เรากินน้ำค้าง\" ลาได้ยินดังนั้น ก็อดหญ้าอดน้ำแต่วันนั้นมา ตั้งหน้าแต่เที่ยวเลียน้ำค้างกินตามใบหญ้าใบไม้ ในไม่ช้า ก็ตาย"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า สิ่งไรที่ผิดวิสัยของตน ไปทำเข้า อาจจะให้โทษ"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-04",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "หมาจิ้งจอกกับนกกระสา",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132233",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132233",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132233",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132233; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132233, rendered HTML SHA256 b76cfbe87e2cb5b41a9684b49a5c4315436fe944e0511d3e0952d36ad9ef1f4e; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "9ffdf3a830219046"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 4,
+        "title": "หมาจิ้งจอกกับนกกระสา"
+      }
+    },
+    "sections": [
+      {
+        "title": "หมาจิ้งจอกกับนกกระสา",
+        "paragraphs": [
+          {
+            "text": "หมาจิ้งจอกตัวหนึ่งก้างปลาติดคอ จึงไปว่าจ้างนกกระสาให้ช่วยเอาจะงอยปากล้วงลงไปคาบเอาก้างปลาออกจากคอ เมื่อนกกระสาคาบเอาก้างปลาขึ้นมาได้แล้ว จึงทวงค่าจ้าง ฝ่ายข้างหมาจิ้งจอกกลับทำเป็นโกรธ ขบเขี้ยวเคี้ยวฟัน คำรามว่า \"ชะ ชะ เอ็งนี่กำเริบนักทีเดียว เมื่อจะงอยปากเอ็งเข้าไปอยู่ในคอของข้า ถ้าข้างับ เอ็งก็ตายเปล่า ที่ปล่อยให้เอ็งเอาปากออกมาได้เช่นนี้ คุณของข้ายังไม่เป็นค่าจ้างพอแล้วหรือ\" นกกระสาก็ไม่รู้จะเอาค่าจ้างอย่างไรแก่หมาจิ้งจอก"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า ผู้มีกำลังน้อยทำคุณแก่คนพาลนั้น ยากที่จะให้คนพาลรู้สึกคุณ"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-05",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "หมาจิ้งจอกกับแพะ",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132234",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132234",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132234",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132234; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132234, rendered HTML SHA256 8eb060ca8cc60f9287748f91f450a699f2e70ab09271dca82c2c1ae0cf0ac3f6; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "2c9cc781db9b7125"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 5,
+        "title": "หมาจิ้งจอกกับแพะ"
+      }
+    },
+    "sections": [
+      {
+        "title": "หมาจิ้งจอกกับแพะ",
+        "paragraphs": [
+          {
+            "text": "หมาจิ้งจอกตัวหนึ่งตกลงไปในบ่อลึก จะพยายามตะเกียกตะกายสักเท่าใดก็ขึ้นไม่ได้ เมื่อจนปัญญา ก็เกาะข้างบ่อนิ่งอยู่แต่พอไม่ให้จมน้ำตาย ขณะนั้น มีแพะตัวหนึ่งกระหายน้ำเดินมาที่ปากบ่อ เห็นหมาจิ้งจอกลงไปอยู่ในบ่อนั้น จึงร้องถามหมาจิ้งจอกลงไปว่า น้ำลึกหรือตื้น รสจืดสนิทดีหรือกร่อยเค็มเป็นอย่างไร หมาจิ้งจอกได้ฟังดังนั้นก็ดีใจ หมายจะลวงแพะเอาตัวรอด จึงร้องตอบขึ้นมาว่า \"ลงมาเถิดเว้ย น้ำในนี้จืดเย็นดีนัห ลงมากินอาบเล่นด้วยกันให้สบายใจเถิด\" แพะไม่รู้เท่าหมาจิ้งจอก ก็กระโจนลงไปในทันที หาได้ตริตรองเสียก่อนไม่ หมาจิ้งจอกได้ช่อง ก็เหยียบเขาแพะกระโดดขึ้นฝั่งได้ แล้วชะโงกลงไปพูดแก่แพะว่า \"ถ้าเจ้ามีความคิดมากเท่ากับเส้นเคราที่ใต้คางของเจ้าแล้ว ไหนเลยเจ้าจะใจเร็วด่วนได้เสียท่วงทีแก่เราถึงเพียงนี้ ที่ถูก เจ้าจะต้องคิดให้ดีเสียก่อน แล้วจึงค่อยกระโดดลงไป ไม่ใช่หรือ\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การงานใด ๆ ถ้าเราใจเร็วด่วนได้ ไม่คิดให้รอบคอบเสียก่อนแล้วจึงทำลงไป ฉวยพลาดท่า ก็จะเสียหาย และได้ความอับอายมาก"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-06",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "กากับนกยูง",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132235",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132235",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132235",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132235; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132235, rendered HTML SHA256 5c0f4c6dd804e1de9b7a1c4c6ab622d46213af194092787d8178ddfa73878853; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "8ab973885adecd10"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 6,
+        "title": "กากับนกยูง"
+      }
+    },
+    "sections": [
+      {
+        "title": "กากับนกยูง",
+        "paragraphs": [
+          {
+            "text": "กาตัวหนึ่งนึกอยากจะให้วิเศษยิ่งกว่าเพื่อนกาด้วยกัน จึงไปเที่ยวเก็บเอาขนหางและขนหงอนนกยูงที่ร่วงหล่นอยู่ตามป่ามาแทรกแซมขนของตัว แล้วละฝูงกาไปทำเดินกรีดกรายและเล็มอยู่ข้าง ๆ ฝูงนกยูง เมื่อนกยูงเห็น จำได้ว่า ไม่ใช่พวกของตน ก็ช่วยกันจิกตีขับไล่ให้ออกไปเสียจากฝูง กาได้ความเจ็บปวดเป็นอันมาก จะทนอยู่ต่อไปอีกมิได้ จึงบินหนีลัดลอดไปแอบถอนขนนกยูงทิ้งเสียในป่า แล้วกลับไปเข้าฝูงของตัวอย่างเดิม ฝ่ายเพื่อนกาที่เคยเห็นกาตัวนั้นติดขนนกยูง เมื่อได้เห็นกาเย่อหยิ่งตัวนั้นกลับคืนมาอยู่ในฝูงอีก ก็ช่วยกันจิกตีขับไล่ไม่ให้เข้าพวก แล้วกาตัวหนึ่งจึงร้องไปว่า \"ถ้าเจ้าไม่ใฝ่สูงให้เกินศักดิ์และชาติกำเนิดของเจ้าแล้ว ไหนเลยเข้าจะได้รับทั้งความลำบากจากผู้ที่สูงกว่าเจ้า และทั้งความเกลียดชังจากพวกเราผู้เสมอกับตัวเจ้า\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การเย่อหยิ่ง จองหอง และอวดดี เป็นโทษ ไม่ว่าที่ไหน"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-07",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "เด็กจับตั๊กแตน",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132236",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132236",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132236",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132236; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132236, rendered HTML SHA256 78bb50443b89331b4314dd01a073e3398a4b36b011ff310cce3d7544441380f9; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "2355164537bd17f5"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 7,
+        "title": "เด็กจับตั๊กแตน"
+      }
+    },
+    "sections": [
+      {
+        "title": "เด็กจับตั๊กแตน",
+        "paragraphs": [
+          {
+            "text": "เด็กคนหนึ่งเที่ยวจับตั๊กแตนเล่นอยู่ตามสนามหญ้าแต่เช้าเมื่อเวลาน้ำค้างยังไม่ทันแห้ง จับมาสักชั่วโมงเศษ ๆ ก็ได้ตั๊กแตนเป็นอันมาก ครั้นสายขึ้น แมลงป่องตัวหนึ่งออกหากิน เด็กเห็น สำคัญว่า เป็นตั๊กแตน จึงเอื้อมมือออกไปจะจับ แมลงป่องเห็นดังนั้นก็ขยายเหล็กไนออกแล้วร้องว่า \"เฮ้ย อย่าซุนซน เจ้าเด็กน้อย ถ้าถูกตัวข้าเข้า มิใช่เจ้าจะได้ตัวข้าเมื่อไร ถึงตั๊กแตนที่เจ้าได้ไว้มากแล้วนั้นก็จะพลอยศูนย์ไปด้วย\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า ทำสิ่งใด อย่าได้ระรานนัก จงเห็นแก่หน้าผู้อื่นเขาบ้าง ถ้าระรานมากไป ก็อาจจะเสียประโยชน์ของตนได้"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-08",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "มดง่ามกับจักจั่น",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132238",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132238",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132238",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132238; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132238, rendered HTML SHA256 fc691c50c6b838213080fd53f0be393e116275d9005f6371ab888751522c549f; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "5969b299c7409661"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 8,
+        "title": "มดง่ามกับจักจั่น"
+      }
+    },
+    "sections": [
+      {
+        "title": "มดง่ามกับจักจั่น",
+        "paragraphs": [
+          {
+            "text": "เช้าวันหนึ่งในฤดูฝน แต่แดดออกจัดดี มดง่ามพวกหนึ่งจึงช่วยกันขนเมล็ดข้าวที่หาไว้ได้ในฤดูร้อนออกตากแดด ขณะนั้น มีจักจั่นผอมเดินโซเซผ่านมาเห็นเข้า จึงแวะเข้าไปหามดแล้วพูดว่า \"ข้าพเจ้าอดอาหารมาหลายเวลาแล้ว หิวเต็มทน ขอทานข้าวให้ข้าพเจ้ากินสักเมล็ดสองเมล็ดพอรอดตาย จะได้หรือไม่\" มดถามว่า \"ก็ในฤดูร้อนซึ่งเป็นหน้าเกี่ยวข้าว มีอาหารอุดม ท่านไปทำอะไรเสีย จึงไม่หาอาหารเก็บเอาไว้เล่า\" จักจั่นตอบว่า \"ข้าพเจ้าหาเวลาว่างไม่ได้ เพราะฤดูแล้ง เที่ยวร้องเพลงเล่นเพลินไปวันยังค่ำ ๆ จนสิ้นฤดู ครั้นถึงฤดูฝนตก ข้าวก็งอกเสียหมดแล้ว\" มดจึงเย้ยให้ว่า \"อ้าว ดีแล้วละเป็นไร ถ้าท่านร้องเพลงเพลินไปในฤดูร้อน ทำไมจึงไม่หัดรำในฤดูฝนเล่า\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า ขณะที่ยังดี ๆ อยู่ ถ้าเราไม่อุตส่าห์ทำการงานหาสมบัติเอาไว้แล้ว ในเมื่อถึงเวลาเจ็บไข้ได้ยาก เราก็จะได้ความลำบากยากแค้นเป็นอยางยิ่ง"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-09",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ไก่กับพลอย",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132240",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132240",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132240",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132240; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132240, rendered HTML SHA256 50e97abbe23cacbaf1077f1bd398d7970ae266cfe29f934df58751c5c188eacf; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "71d7c35401cc5df9"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 9,
+        "title": "ไก่กับพลอย"
+      }
+    },
+    "sections": [
+      {
+        "title": "ไก่กับพลอย",
+        "paragraphs": [
+          {
+            "text": "ไก่แจ้ตัวหนึ่ง ขณะที่คุ้ยเขี่ยดินหาอาหาร ไปพบพลอยเม็ดหนึ่ง งามดี มีค่ามาก จึงพูดเปรย ๆ ขึ้นว่า \"ถ้าเจ้าของของเจ้ามาพบเจ้าเข้าเช่นนี้ เขาคงเก็บเจ้าไปฝังไว้ในหัวแหวนตามเดิม นี่เจ้าไม่มีประโยชน์อะไรแก่เรา สู้แต่ข้าวสุกข้าวสารเมล็ดเดียวก็ไม่ได้\" ว่าแล้วก็คุ้ยเขี่ยเลยไปในแปลงอื่น ๆ"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า ของที่ดีย่อมมีประโยชน์แต่แก่ผู้ที่รู้จักใช้"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-10",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "กระต่ายกับเต่า",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132241",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132241",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132241",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132241; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132241, rendered HTML SHA256 4ec6ec44fcaa2ac2eea2854af7b50c10f42db3de432de8401510c7dc884edc3c; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "dc7192772f20f3e7"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 10,
+        "title": "กระต่ายกับเต่า"
+      }
+    },
+    "sections": [
+      {
+        "title": "กระต่ายกับเต่า",
+        "paragraphs": [
+          {
+            "text": "กระต่ายตัวหนึ่งเห็นเต่าคลานมา ก็หัวร่อเยาะว่า เต่าขาสั้น เดินช้า เต่าจึงตอบไปว่า \"ถึงท่านจะวิ่งเร็วราวกะลมพัด และขาเราจะสั้นกว่าขาของท่านก็จริงอยู่ แต่เราอยากจะลองดีเดินแข่งกับท่าน ท่านจะว่ากระไร\" กระต่ายได้ยินเต่าท้าดังนั้น ก็นึกกระหยิ่มใจ ตกลงจะวิ่งแข่งด้วย จึงพร้อมกันไปหาหมาจิ้งจอก บอกความที่ตกลงกัน แล้วก็ตั้งให้หมาจิ้งจอกเป็นผู้เลือกทางที่จะแข่ง และให้เป็นผู้ตัดสินอยู่ปลายทางด้วย เมื่อถึงวันนัด สัตว์ทั้งสองก็มาตั้งต้นแข่งในที่ที่หมาจิ้งจอกชี้ให้ เต่าเมื่อตั้งต้นออกเดิน ก็ก้มหน้าคลานลัดตัดตรงไปทีละน้อย ๆ จนถึงที่สุด ฝ่ายกระต่ายถือดีในฝีเท้าของตัวว่า วิ่งได้เร็วกว่าเต่า ก็ชะล่าใจ หยุดนอนเสีย ไม่ออกวิ่ง ครั้นตื่นขึ้น ตกใจกลัวว่า จะไล่เต่าไม่ทัน จึงรีบกระโจนไปโดยเร็ว ก็พบเต่าไปถึงก่อนเสียแล้ว"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า อย่าได้ประมาทหมิ่นผู้ที่ตัวเห็นว่า เลวทรามกว่าตัว เมื่อประมาทพลาดลงแล้ว อายเขา"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-11",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "เทวดากับคนขับเกวียน",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132242",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132242",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132242",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132242; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132242, rendered HTML SHA256 46981cfe94ab40f1242e128a2ea780737704c51caa8342183f38c0053a3e7d9f; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "60e837e2984f2287"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 11,
+        "title": "เทวดากับคนขับเกวียน"
+      }
+    },
+    "sections": [
+      {
+        "title": "เทวดากับคนขับเกวียน",
+        "paragraphs": [
+          {
+            "text": "ชายผู้หนึ่งขับเกวียนไปในป่า ลูกล้อเกวียนตกหล่มลึก ควายลากไม่ไหว ชายผู้นั้นกลัวจะมืดค่ำอยู่กลางทาง จึงบนบานขอให้เทพดาช่วย ในขณะนั้น เทวดาที่เป็นเจ้าป่าลงมาบอกแก่ชายผู้นั้นว่า \"จะยืนดูอยู่ทำไมอีกเล่า จงเอาบ่าแบกลูกล้อเข้า แล้วเฆี่ยนควายให้เดิน ลูกล้อก็จะเคลื่อนที่ขึ้นจากหล่มได้ การที่ร้องโวยวายไปเสียก่อนยังไม่ทันจะได้ลองกำลังของงตนเองให้เต็มฝีมือดังนี้ จะให้ใครเขามีแก่ใจช่วยเจ้าได้\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การหมายพึ่งตัวเองดีกว่าพึ่งผู้อื่น"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-12",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "หมากับเงา",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132244",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132244",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132244",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132244; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132244, rendered HTML SHA256 c4d16ec2ce900f60d0ffa04bf86360a4d150ed218a3c95b3595ab934842cd167; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "e0adcd3ff811ce17"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 12,
+        "title": "หมากับเงา"
+      }
+    },
+    "sections": [
+      {
+        "title": "หมากับเงา",
+        "paragraphs": [
+          {
+            "text": "หมาตัวหนึ่งลักเนื้อวัวที่ตลาดวิ่งข้ามสะพานมา ขณะเมื่ออยู่บนสะพานนั้น หมาแลลงไปในน้ำ เห็นเงาของตัวเอง และเงาก้อนเนื้อโตขึ้นกว่าชิ้นที่คาบมาอีกเท่าตัว จึงทิ้งชิ้นเนื้อในปากเสีย ด้วยหมายว่า จะแย่งเอาเนื้อชิ้นใหญ่จากหมาที่แลเห็นอยู่ในน้ำ เมื่อทิ้งก้อนเนื้อลงในน้ำแล้ว ทั้งเนื้อทั้งเงาก็จมน้ำหายไปในทันที ตกลงหมาโง่ตัวนั้นเสียทั้งเนื้อของตนและเนื้อที่ตนอยากจะได้"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า โลภนัก มักลาภหาย"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-13",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ลูกอ้นกับแม่อ้น",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132245",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132245",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132245",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132245; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132245, rendered HTML SHA256 b6e9f3387a79305593fae15cdc815f04d46e7046948f6956120d0086ff6e0aed; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "130c1b1046b7da94"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 13,
+        "title": "ลูกอ้นกับแม่อ้น"
+      }
+    },
+    "sections": [
+      {
+        "title": "ลูกอ้นกับแม่อ้น",
+        "paragraphs": [
+          {
+            "text": "อ้นตัวหนึ่งตาบอดมาแต่กำเนิด วันหนึ่ง มันอวดกับแม่ของมันว่า \"แม่ แม่ ฉันแลเห็นแล้วแม่\" แม่อยากจะใคร่ทดลองดูให้เห็นจริง จึงไปคาบเอากำยานมาวางไว้ต่อหน้าสองสามก้อน แล้วถามลูกว่า \"นี่อะไร\" ลูกอนตอบว่า \"ก้อนกรวด\" แม่อ้นได้ฟังดังนั้นจึงบอกกับลูกว่า \"เจ้าไม่ใช่แต่ตาบอดอย่างเดียว ซ้ำจมูกก็ดมอะไรไม่รู้สึกกลิ่นด้วย\""
+          },
+          {
+            "text": "นิทานเรื่องนสอนให้รู้ว่า ถ้าอวดดีนัก ความโง่ของตนก็จะปรากฏออกมาให้เขาเห็นไม่รู้จักสิ้นสุด"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-14",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ชาวนากับงูเห่า",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132246",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132246",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132246",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132246; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132246, rendered HTML SHA256 b54c907cb9ef0d5368714eee515beaa4a647925961e8baf7a90c762e56acccad; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "d7959588cddc991e"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 14,
+        "title": "ชาวนากับงูเห่า"
+      }
+    },
+    "sections": [
+      {
+        "title": "ชาวนากับงูเห่า",
+        "paragraphs": [
+          {
+            "text": "วันหนึ่ง ในฤดูหนาว ชาวนาออกไปพบงูเห่านอนตัวแข็งอยู่บนคันนา ด้วยความหนาวทำให้เป็นเหน็บชาไปทั่วทั้งตัว ชาวนาผู้นั้นนึกสมเพช อยากจะใคร่ช่วยชีวิตไว้ จึงจับงูอุ้มมา เมื่องูเห่าได้ไอตัวคนอบอุ่นเช่นนั้น ไม่สู้ช้านานนัก ก็ค่อย ๆ กระดิกตัวขึ้นได้ทีละน้อย ๆ จนแข็งแรงดีอย่างเดิม แล้วก็เห่าฟ่อ ๆ และกัดชาวนาเข้าที่แขนเป็นแผลลึก พิษร้ายแล่นซึมซาบเข้าไปโดยรวดเร็ว ในไม่ช้า ก็ลงนอนตายอยู่ในที่นั้นเอง แต่เมื่อจะขาดใจ ชาวนาผู้นั้นร้องขึ้นว่า \"ทำคุณแก่สัตว์ร้ายนี่ให้โทษเช่นนี้แลหนอ\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า วิสัยพาลแล้ว ย่อมไม่รู้จักที่จะกตัญญูต่อผู้ใด"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-15",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ลา หมาจิ้งจอก กับราชสีห์",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132247",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132247",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132247",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132247; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132247, rendered HTML SHA256 18dcb88128c023f1e255a0c617ceeef70ed09fb519c3bf177a5c1ddd70731fa1; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "8e08176737fb177a"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 15,
+        "title": "ลา หมาจิ้งจอก กับราชสีห์"
+      }
+    },
+    "sections": [
+      {
+        "title": "ลา หมาจิ้งจอก กับราชสีห์",
+        "paragraphs": [
+          {
+            "text": "ลากับหมาจิ้งจอกสบถเป็นเกลอกันว่า ถึงจะตกทุกข์ได้ยากหรือได้ความคับแค้นอย่างไร ๆ ก็จะไม่ละทิ้งกัน วันหนึ่ง สัตว์ทั้งสองนี้พากันไปหากินในป่า เผอิญไปพบราชสีห์เดินมาแต่ไกล จะหลบหนีอย่างไรก็ไม่ทัน หมาจิ้งจอกรู้ว่า อันตรายจะมาถึงตัว จึงรีบวิ่งไปหาราชสีห์ แล้วบอกแก่ราชสีห์ว่า จะรับอาสาหาลาให้กินสักตัวหนึ่ง แต่ขออย่าให้ราชสีห์ทำร้ายแก่ตัวเลย ราชสีห์รู้เท่าหมาจิ้งจอก จึงแกล้งรับว่า ถ้าคิดอ่านลวงลามาให้ได้แล้ว จะปล่อยหมาจิ้งจอกไป หมาจิ้งจอกก็ดีใจ วิ่งไปพูดแก่ลาว่า ราชสีห์จะไม่ทำอันตรายแก่ตนทั้งสอง แล้วก็ลวงลาให้เดินไปจนตกลงในหล่มลึก เมื่อหมาจิ้งจอกเห็นลาติดหล่อมแล้ว ก็วิ่งกลับมาแจ้งความแก่ราชสีห์ว่า \"ข้าพเจ้าลวงลาไปติดหล่มอยู่แล้ว เชิญท่านไปกินลาเถิด\" ราชสีห์ก็จับหมาจิ้งจอกกินเสียในทันใด แล้วจึงค่อย ๆ เดินไปกัดลากินเมื่อภายหลัง"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า เพื่อนที่ไม่ซื่อตรงต่อเพื่อน ย่อมมีความอันตรายมาถึงตน"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-16",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "แมลงวันกับไหน้ำผึ้ง",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132248",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132248",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132248",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132248; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132248, rendered HTML SHA256 d793b9f1155dce445ed94a51b1f52410f364ac07d3996b346b1f1e71880e0866; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "d65f8b7710b5a33c"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 16,
+        "title": "แมลงวันกับไหน้ำผึ้ง"
+      }
+    },
+    "sections": [
+      {
+        "title": "แมลงวันกับไหน้ำผึ้ง",
+        "paragraphs": [
+          {
+            "text": "หญิงคนหนึ่งทำไหน้ำผึ้งหกราดอยู่บนพื้นเรือน แมลงวันได้กลิ่นน้ำผึ้ง ก็พากันบินมาจับกินอยู่ในที่ที่หก ขณะเมื่อกินเพลินอยู่นั้น น้ำผึ้งติดขาติดปีกเกรอะกรังจนกระพือไม่ออก ในไม่ช้า ตัวก็คลุกกลั้วอยู่ในน้ำผึ้ง นอนอัดใจตายอยู่เป็นแถว ๆ ในเมื่อจวนจะตาย มันร้องบอกกันว่า \"เรานี่เป็นสัตว์โง่เขลามาก มาเสียชีวิตครั้งนี้ก็เพราะเห็นแก่ความอร่อยเท่านนเอง\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การที่หลงเพลิดเพลินในความสุขเกินไป ย่อมทำให้เกิดทุกข์"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-17",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "หมาป่ากับลูกแกะ",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-132249",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 132249",
+      "url": "https://th.wikisource.org/w/index.php?oldid=132249",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 132249; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 132249, rendered HTML SHA256 70b465e7f90911912a60c1fa503e39dd6f9dfa22e739effc4e15af1271ce80bb; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "a7137ddd1bcf0786"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 17,
+        "title": "หมาป่ากับลูกแกะ"
+      }
+    },
+    "sections": [
+      {
+        "title": "หมาป่ากับลูกแกะ",
+        "paragraphs": [
+          {
+            "text": "ขณะเมื่อหมาป่ากำลังกินน้ำอยู่ที่ต้นลำธารแห่งหนึ่ง แลเห็นลูกแกะเดินท่องน้ำมาแต่ไกล หมาป่าตั้งใจว่า จะจับกินเสีย แต่เมื่อจะกิน คิดว่า จะต้องทำให้ลูกแกะเห็นความชอบธรรมของตนเสียก่อน เมื่อคิดดังนั้นแล้ว ก็ตรงเข้าไปด่าลูกแกะว่า \"เอ็งนี้ชาติชั่ว เอ็งถือดีอย่างไรจึงมากวนน้ำกินของข้าให้ขุ่นเป็นตมไปดังนี้\" ลูกแกะตกใจ ร้องตอบไปโดยซื่อว่า \"ท่านจะว่า ข้าพเจ้ากวนน้ำกินของท่านให้ขุ่นอย่างไรถูก เพราะน้ำในลำธารนี้ไหลจากท่านมายังข้าพเจ้า หาได้ไหลจากข้าพเจ้าไปยังท่านไม่\" หมาป่าก็แกล้งหาความต่อไปว่า \"เอาเถิด ถึงเอ็งจะไม่ได้ทำน้ำขุ่นวันนี้ เมื่อปีกลายนี้ เอ็งก็ได้ด่าว่าข้านักหนา\" ลูกแกะตัวสั่น ร้องตอบไปว่า \"พุทโธ่เอ๋ย เมื่อปีกลายนี้ ข้าพเจ้าก็ยังไม่ได้เกิดมาเห็นเดือนเห็นตะวันเลย\" หมาป่าตอบว่า \"เอาเถอะน่ะ ถึงเอ็งไม่ได้ด่าข้า พ่อของเอ็งก็ด่าข้า เอ็งมีความผิดเหมือนกัน จะมาต่อล้อต่อเถียงกันไปทำไม\" ว่าแล้วก็ตะครุบลูกแกะกินเป็นอาหาร"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า วิสัยพาลย่อมหาเหตุที่จะพาลผู้ไม่มีความผิดให้จงได้"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-18",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "หมาไล่เนื้ออายุมาก",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145205",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145205",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145205",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145205; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145205, rendered HTML SHA256 25ce9ead9adf9c5df9655cb376a254eb6b38b24a941e947e74a44097c745a953; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "132342b1b8f8c44e"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 18,
+        "title": "หมาไล่เนื้ออายุมาก"
+      }
+    },
+    "sections": [
+      {
+        "title": "หมาไล่เนื้ออายุมาก",
+        "paragraphs": [
+          {
+            "text": "ยังมีหมาไล่เนื้อตัวหนึ่ง เมื่อหนุ่ม ๆ อยู่ มีกำลังมาก และเคยไล่ต้อนเนื้อตามเชิงเขาให้เจ้าของเสมอมา ครั้นต่อมา หมาตัวนั้นแก่ลง กำลังก็ถอยอ่อนเพลีย อยู่มาวันหนึ่ง เจ้าของพาหมาตัวนี้ออกไปไล่หมูป่าที่ในป่า พอฉวยคอหมูได้ เขี้ยวก็หักฝังจมอยู่ในเนื้อ หมูหนีรอดไปได้ เจ้าของมาทันเข้า มีความโกรธ เอาด้ามหอกเข้าทุบตี หมาแก่จึงร้องขึ้นว่า \"ท่านจะมีน้ำใจสงสารข้าพเจ้าบ้างเป็นไร ที่หมูรอดพ้นไปได้ทั้งนี้ ใช่ว่าข้าพเจ้าจะแกล้งปล่อยเสียนั้นหามิได้ ที่แท้ก็ด้วยข้าพเจ้าแก่ลง ฟันจึงทานแรงหมูไม่ได้ ขอท่านได้นึกถึงความหลังบ้าง\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า ผู้ใหญ่ แม้จะลงโทษผู้น้อย อย่าถือแต่เพียงเท่าที่ตาเห็นเป็นประมาณ ควรจะพิเคราะห์เหตุผลให้เห็นความจริงเสียก่อน จึงค่อยทำลงไป"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-19",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "หมาอยู่ในรางหญ้า",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145206",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145206",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145206",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145206; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145206, rendered HTML SHA256 1bb9a6893b6a86ffbc5b1222e28a7aa83909a820102fb9d82176ffffecff4d8e; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "7420a7380b4aab59"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 19,
+        "title": "หมาอยู่ในรางหญ้า"
+      }
+    },
+    "sections": [
+      {
+        "title": "หมาอยู่ในรางหญ้า",
+        "paragraphs": [
+          {
+            "text": "หมาตัวหนึ่งลงไปนอนอยู่ในรางหญ้าของวัว ครั้นวัวเข้ามาในโรงจะกินหญ้า หมาตัวนั้นก็ลุกขึ้นไล่งับขับไล่ไม่ให้วัวเข้าไปใกล้ราง วัวนึกแค้นจึงพูดขึ้นว่า \"ดูเถิด ตัวมันเองก็ไม่กินหญ้า แล้วมันยังหวงห้ามไม่ให้ผู้ที่กินหญ้าเข้าไปกินด้วย\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การเห็นแต่แก่ได้ ไม่รู้จักประโยชน์ที่จะมีแก่ตัวหรือไม่นั้น ย่อมเป็นการที่ผู้อื่นเขาติเตียน"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-20",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ไก่แจ้กับเหยี่ยว",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145207",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145207",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145207",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145207; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145207, rendered HTML SHA256 9f78d3ae43ad86585da96592b9c6f7fe921f9d76df77721f9b5d35617fc91106; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "9f565bae84bba47e"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 20,
+        "title": "ไก่แจ้กับเหยี่ยว"
+      }
+    },
+    "sections": [
+      {
+        "title": "ไก่แจ้กับเหยี่ยว",
+        "paragraphs": [
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า เมื่อทำการอะไรได้สมหมายแล้ว อย่ากำเริบ ถ้ากำเริบนัก มักมีภัยมาถึงตัวในภายหลัง"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-21",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "หมาจิ้งจอกหางด้วน",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145208",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145208",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145208",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145208; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145208, rendered HTML SHA256 71bfaf6b3096ec7a2f068657d91d334f4fefdc4991af242bb07d2d40b69ce5d3; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "8260eb07f634cbf4"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 21,
+        "title": "หมาจิ้งจอกหางด้วน"
+      }
+    },
+    "sections": [
+      {
+        "title": "หมาจิ้งจอกหางด้วน",
+        "paragraphs": [
+          {
+            "text": "หมาจิ้งจอกตัวหนึ่งไปเที่ยวลักไก่ชาวบ้าน หางไปติดกับที่เขาวางไว้สำหรับดัก หมาจิ้งจอกก็ดิ้นรนจนหางขาดตัวรอดไปได้ ขณะเมื่อเดินกลับไปที่อยู่ หมาหวนระลึกถึงที่ตัวหางด้วย ก็นึกละอาย กลับเห็นว่า ถ้าตายเสียเมื่อติดกับยังจะดีกว่าอยู่ แต่เมื่อจำจะต้องมีชีวิตอยู่ดังนี้ ก็จำจะต้องหาเพื่อนที่หางด้วนอย่างเดียวกันให้มาก ๆ ความอดสูนั้นจึงจะลดหย่อนลง คิดแล้วจึงเรียกบรรดาเพื่อนหมาจิ้งจอกมารวมกันอยู่ในที่แห่งหนึ่ง แล้วประกาศว่า \"นี่แน่ะ ท่านทั้งหลาย เรามีเรื่องสำคัญที่จะเล่าให้ท่านฟัง หางนั้นเป็นของรุงรังน่าเกลียดน่าชังมาก ซ้ำจะใช้ประโยชน์อะไรก็ไม่ได้ เมื่อเราตรองเห็นดังนี้ จึงไปตัดเสีย ทำให้เดินคล่องแคล่วประเปรียวแลดูรูปโฉมงดงามขึ้นอีกเป็นอันมาก เรามานึก ๆ ดูก็ประหลาดใจว่า หมาจิ้งจอกจำพวกเราก็มีมานานแล้ว เหตุไรจึงไม่มีใครนึกสะดุดใจขึ้นบ้างว่า หางเป็นของรุงรังและน่าเกลียด นี่เป็นเคราะห์ดีของท่านทั้งหลายนักหนาที่เรามาคิดเห็นขึ้นได้ก่อน ถ้าพวกท่านทั้งหลายอยากจะได้ความสุขอย่างเราบ้าง ก็จงพากันไปตัดหางเสียให้หมดทุก ๆ ตัว\" พอหมาจิ้งจอกหางด้วนพูดขาดคำลง หมาจิ้งจอกตัวหนึ่งได้รู้เรื่องที่หางหมาตัวนั้นไปตัดกับ จึงเล่าเรื่องที่จริงให้ฝูงหมาจิ้งจอกทราบทั่วกันแล้วเลยเย้ยว่า \"หางของเจ้า เจ้าทำให้งอกออกมาเสียอย่างเดิมให้ได้ก่อนเถิด อย่ามาสอนให้เราไปตัดเล่นตามอย่างเจ้าเลย\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า จะเอาความชั่วของตัวไปหลอกเพื่อนว่าเป็นความดีนั้น เขารู้ทันก็จะกลับขายหน้าเสียยิ่งกว่าบอกเขาเสียตามจริง"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-22",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ลูกแพะกับหมาป่า",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145209",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145209",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145209",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145209; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145209, rendered HTML SHA256 200ab7478b75e646f80033eca975356219e10ce1744379f82440f8f4139d481b; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "ecc08b7128f5b219"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 22,
+        "title": "ลูกแพะกับหมาป่า"
+      }
+    },
+    "sections": [
+      {
+        "title": "ลูกแพะกับหมาป่า",
+        "paragraphs": [
+          {
+            "text": "ลูกแพะตัวหนึ่งเดินไปเที่ยวหากินแต่ลำพัง ไปพบหมาป่าเข้าที่กลางทาง หมาป่าจึงออกไล่กวดจะจับกินเสีย เมื่อลูกแพะเห็นจวนตัว จะวิ่งหนีไปไหนไม่พ้น และจะหาที่พึ่งที่ไหนก็ไม่ได้อีกแล้ว จึงแกล้งทำเป็นใจดี แข็งใจร้องไปแก่หมาป่าว่า \"นี่แน่ะ ท่าน ไหน ๆ ข้าพเจ้าก็จะหนีไม่พ้น จำจะต้องเป็นเหยื่อของท่านอยู่แล้ว ข้าพเจ้าจะขอฟังเสียงปี่ให้เพราะจับใจสักหน่อยเถิด\" หมาป่าได้ฟังดังนั้นก็ตามใจ ฉวยปี่ได้แล้ว ลุกขึ้นนั่งยอง ๆ เป่าให้ฟังอยู่ที่ข้างก้อนหิน ส่วนลูกแพะก็ลุกขึ้นเต้นสองขาให้เข้ากับเสียงปี่ ทันใดนั้น หมาไล่เนื้อตัวหนึ่งอยู่ใกล้ ได้ยินเสียง วิ่งมาดู พบหมาป่าเข้า ก็ไล่กวดไป ขณะเมื่อหมาป่าจะวิ่งหนี หมาป่าร้องไปแก่ลูกแพะว่า \"สมควรแล้วที่เราจะต้องวิ่งหนี เพราะเราก็เป็นแต่เพียงหมาป่าผู้มีหน้าที่ที่จะเห่าหอนและจับสัตว์กินเท่านั้น แล้วยังจะเผยอหน้ามาเป่าปี่กับเขาด้วย\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การหมกมุ่นเอาเป็นธุระในสิ่งซึ่งไม่ใช่หน้าที่ของตนจะต้องกระทำ ย่อมเป็นเหตุให้เสียประโยชน์แก่ตนได้"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-23",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "หมาจิ้งจอกกับเม่น",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145227",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145227",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145227",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145227; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145227, rendered HTML SHA256 b6bd4411c6941c34ac509c9014f4e461e0aa7489f5935481ac7c17005fb43104; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "3ad9af81f0bc7ae4"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 23,
+        "title": "หมาจิ้งจอกกับเม่น"
+      }
+    },
+    "sections": [
+      {
+        "title": "หมาจิ้งจอกกับเม่น",
+        "paragraphs": [
+          {
+            "text": "หมาจิ้งจอกตัวหนึ่งกำลัง⟨ก⟩ระหายน้ำ วิ่งหอบมาแต่ไกล มาเห็นลำธารขวางหน้าอยู่ ไม่ทันพิจารณาว่า น้ำกำลังไหลเชี่ยว ก็กระจนลงไปจะกินน้ำ กระแสน้ำในลำธารนั้นจึงพัดเอาหมาจิ้งจอกลอยไปติดอยู่ในซอกหินแห่งหนึ่งซึ่งเป็นตลิ่งสูงชัน หมาจะปีนขึ้นไปไม่ได้ ก็เกาะก้อนหินนิ่งอยู่แต่พอไม่ให้จมน้ำตาย ฝ่ายตัวเหลือฝูงหนึ่งได้กลิ่นหมาจิ้งจอก ก็มาตอมกัดกินเลือดกลุ้มอยู่ ในขณะนั้น มีเม่นตัวหนึ่งลงมาจากป่าจะกินน้ำ พอแลเห็นหมาจิ้งจอกก็นึกสมเพชจึงร้องไปว่า \"ตัวเหลือบตอมกัดท่านอยู่ออกเป็นกลุ่ม ทำไมจึงนิ่งทนอยู่ได้ เราจะลงไปช่วยปัดให้ จะเอาหรือไม่\" หมาจิ้งจอกได้ฟังก็ตอบไปแก่เม่นว่า \"อย่าเลยท่านเอ๋ย เหลือบฝูงนี้มันกินเลือดเราอิ่มทุกตัวแล้ว ถึงมันจะตอมเราต่อไป มันก็เป็นแต่ตอมอยู่เปล่า ๆ จะกัดกินเลือดเราอีกมิได้ ถ้าท่านไล่เหลือบฝูงนี้ไปเสีย เหลือบฝูงอื่นที่ยังหิวก็จะพากันมากัดกินเลือดเราแทนเหลือบฝูงนี้อีก\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า ถึงเราได้รับความทุกข์อยู่บ้างเพียงใด การที่จะคิดหลีกเลี่ยงความทุกข์นั้นควรพิจารณาเสียก่อน บางทีหลีกความทุกข์น้อย จะถูกความทุกข์ใหญ่ อย่าให้เป็นได้เช่นนั้น"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-24",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "อึ่งอ่างกับวัว",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145232",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145232",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145232",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145232; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145232, rendered HTML SHA256 41ee109d2e9e31ea9beae47285879ab8bdb3f29e7592cf0803a3fcd051bc3bac; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "f27faf2c241e7737"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 24,
+        "title": "อึ่งอ่างกับวัว"
+      }
+    },
+    "sections": [
+      {
+        "title": "อึ่งอ่างกับวัว",
+        "paragraphs": [
+          {
+            "text": "วันตัวหนึ่งเที่ยวและเล็มหญ้ากินอยู่ตามชายทุ่ง ขณะเมื่อเดินเลียบไปตามริมคู เผอิญย่างเท้าไปเหยียบถูกอึ่งอ่างครอกหนึ่งตายเกือบหมด เหลืออยู่แต่ตัวเดียว ครั้นแม่อึ่งอ่างกลับมาจากหากิน ลูกอึ่งอ่างจึงเล่าเรื่องให้แม่ฟังว่า \"แม่ แม่ เมื่อตะกี้นี้มีสัตว์อะไรตัวหนึ่งใหญ่โตจริง ๆ มาเหยียบลูกของแม่ตายหมด รอดอยู่แต่ฉันตัวเดียวเท่านั้น\" แม่ถามว่า \"สัตว์อะไรจึงใหญ่นักหนา ใหญ่เท่านี้ได้ไหม\" ว่าแล้วก็พองตัวขึ้น ลูกตอบว่า \"มันใหญ่กว่านั้นอีกแม่\" แม่อึ่งอ่างก็พองตัวขึ้นอีกแล้วถามลูกว่า \"เท่านี้ได้ไหม\" ลูกตอบว่า \"นั่นก็ยังโตไม่ได้ครึ่งตัวของมันเลยแม่\" แม่ได้ฟังดังนั้น มีความขัดเคือง นึกอยู่แต่ในใจว่า ไฉนตนจะทำให้ตัวโตเท่าเทียมสัตว์ใหญ่นั้นไม่ได้ เมื่อคิดดังนั้นแล้ว ก็ค่อย ๆ เบ่งให้ตัวพองขึ้นทีละน้อย ๆ จนเกินขนาด ท้องแตกตายอยู่กับที่"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การทะนงตัวอยากจะเท่าเทียมผู้ที่สูงกว่าตัวด้วยอุบายที่ผิดธรรมดา ย่อมเกิดความเสียหายแก่ตนเอง"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-25",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ลูกปูกับแม่ปู",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145233",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145233",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145233",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145233; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145233, rendered HTML SHA256 29d74e52700c7ecca5d9accb017c50a53037975e136d677943fc7f38a22f9e6c; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "3ee5a00f35cb2e2f"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 25,
+        "title": "ลูกปูกับแม่ปู"
+      }
+    },
+    "sections": [
+      {
+        "title": "ลูกปูกับแม่ปู",
+        "paragraphs": [
+          {
+            "text": "วันหนึ่ง เวลาน้ำลงงวด ปูสองตัวแม่ลูกพากันไต่ลงไปหากินตามชายเลน ขณะเมื่อไต่ไปนั้น ลูกเดินหน้า แม่เดินหลัง ตาแม่จับอยู่ที่ลูก พอไต่ไปได้สักหน่อย แม่ก็ร้องบอกไปแก่ลูกว่า \"นั่น ทำไมเจ้าจึงเดินงุ่มง่ามซัดไปเซมาดังนั้น จะเดินให้ตรง ๆ ทางไม่ได้หรือ จะได้ไปถึงที่หากินเสียเร็ว ๆ มัวเดินคดไปคดมาเช่นนี้ น้ำก็จะขึ้นมาเสียก่อนเราไปถึงที่\" ลูกปูจึงย้อมถามมาว่า \"แม่จะให้เดินให้ตรงทางนั้นเดินอย่างไรฉันก็ยังไม่รู้ แม่ลองเดินให้ฉันดูสักที\" แม่ปูก็เดินตรงไม่ได้ ด้วยวิสัยปูย่อมเดินคดไปคดมาเป็นธรรมดา แต่หากแม่ปูไม่รู้สึกตัวเอง"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การที่จะสั่งสอนผู้อื่นให้ทำอย่างใดนั้น เราทำอย่างนั้นได้เอง จึงควรสอนผู้อื่น"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-26",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "พวกหนูประชุมปรึกษากัน",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145234",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145234",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145234",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145234; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145234, rendered HTML SHA256 de08547b1f97576a5a47dd8e465dca7a4b4ff304171f1693378b74cac612aa41; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "2ddd28c163614525"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 26,
+        "title": "พวกหนูประชุมปรึกษากัน"
+      }
+    },
+    "sections": [
+      {
+        "title": "พวกหนูประชุมปรึกษากัน",
+        "paragraphs": [
+          {
+            "text": "ยังมีหนูฝูงหนึ่งถูกแมวรบกวนอยู่เสมอเป็นนิจ จะออกไปเที่ยวหากินในที่ใด ก็ให้ครั่นคร้ามแมวตัวนั้นเป็นกำลัง ถึงแก่พากันอดอาหารซุกซ่อนอยู่แต่ในรัง หนูจึงนัดประชุมปรึกษากันถึงว่า จะทำอย่างไรดีที่จะหลบหลีกให้พ้นแมวไปได้ หนูต่างตัวต่างก็คิดเห็นแปลก ๆ กัน แต่ก็ไม่ตกลงกันได้เป็นเด็ดขาดว่า จะทำอย่างไรดี ในที่สุด ลูกหนูตัวหนึ่งออกความเห็นขึ้นว่า ควรจะเอาลูกพรวนไปผูกคอแมวไว้เสีย เมื่อแมวมา หนูจะได้ได้ยินเสียงลูกพรวแต่ไกล พอมีเวลาวิ่งหนีแมวทัน หนูทั้งหลายก็พากันเห็นดี ตกลงจะทำตามคำแนะนำของลูกหนู ทันใดนั้น หนูแก่ตัวที่นั่งฟังอยู่จึงกล่าวขึ้นว่า \"ที่ว่าดังนั้น เราก็เห็นชอบด้วย แต่เราอยากจะขอถามสักคำว่า หนูตัวไหนจะเป็นผู้รับอาสาเอาลูกพรวนไปผูกคอแมว\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การพูดพล่อย ๆ แต่ปาก ถึงแม้ว่าจะเป็นความเห็นดีวิเศษสักปานใด แต่ถ้าทำไม่ได้จริง ๆ ดังพูดแล้ว ก็หาประโยชน์บมิได้"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-27",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "นกอินทรีกับหมาจิ้งจอก",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145235",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145235",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145235",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145235; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145235, rendered HTML SHA256 e93c46b15473b049f4823c0ddfd3a6c66411896e1b3fba8f94b9f5b4058643d3; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "8395c12dd8658a27"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 27,
+        "title": "นกอินทรีกับหมาจิ้งจอก"
+      }
+    },
+    "sections": [
+      {
+        "title": "นกอินทรีกับหมาจิ้งจอก",
+        "paragraphs": [
+          {
+            "text": "นกอินทีคู่หนึ่งทำรังอยู่บนยอดไม้ มีหมาจิ้งจอกตัวหนึ่งออกลูกอยู่ในโพรงโคนต้นไม้ต้นเดียวกันนั้น วันหนึ่ง เวลาหมาจิ้งจอกไปเที่ยวหากินหนทางไกล ทิ้งลูกไว้ในโพลงไม้แต่ลำพัง นกอินทรีบินลงเฉี่ยวเอาลูกหมาจิ้งจอกขึ้นไปไว้บนรังตัวหนึ่ง หมายว่าจะเอาไปให้ลูกของตัวกิน หมาจิ้งจอกกลับเห็นลูกหายไป และได้ยินเสียงร้องอยู่บนยอดไม้ ก็รู้ว่า นกอินทรีลักเอาไป จึงออกมาตะเกียกตะกายโคนต้นไม้ ร้องอ้อนวอนขอให้นกอินทรีส่งลูกกลับคืนมาให้แก่ตน ฝ่ายข้างนกอินทรีถือดีว่าตัวอยู่บนยอดไม้สูง หมาจิ้งจอกจะทำอันตรายแก่ตนมิได้ ก็พูดจาโอหังก้าวร้าวไม่ยอมคืนลูกให้แก่หมาจิ้งจอก หมาจิ้งจอกมีความโกรธ คิดผูกพยาบาท จึงไปคาบเอาคบที่ชาวป่าเขาจุดทิ้งไว้มารมใต้รังนกอินทรี นกอินทรีได้ไอไฟร้อน กลัวรังและลูกของตนจะเป็นอันตรายไหม้เกรียมไป ก็ต้องยอมรับผิดแก่หมาจิ้งจอก แล้วก็คืนลูกให้โดยดี"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า ถ้าตนเป็นผู้ใหญ่ ก็อย่ารังแกผู้น้อย เพราะถ้าผู้น้อยมีความโกรธ คิดผูกพยาบาทขึ้นมาบ้าง ก็อาจจะให้ร้ายแก่ตนได้"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-28",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ชาวสวนกับลูก",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145236",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145236",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145236",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145236; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145236, rendered HTML SHA256 0d4a77f0a7aa8f08d14e62733c55c498a9da755d75e7a03f5839baf658f55c43; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "7337d0ed7ad45b3a"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 28,
+        "title": "ชาวสวนกับลูก"
+      }
+    },
+    "sections": [
+      {
+        "title": "ชาวสวนกับลูก",
+        "paragraphs": [
+          {
+            "text": "ชาวสวนผู้หนึ่ง เมื่อจวนจะตาย อยากจะสอนลูกของตนให้รู้จักการทำสวน จะได้ดำรงวงศ์ตระกูลของตนต่อไป จึงเรียกลูกเข้ามานั่งพร้อมหน้ากันแล้วสั่งว่า \"นี่แน่ะ เจ้าทั้งหลาย พ่อก็จวนจะสิ้นลมหายใจอยู่แล้ว ทรัพย์สมบัติที่พ่อจะให้เจ้านั้นอยู่ในสวนหลังบ้านเราทั้งสิ้น\" พอสั่งดังนั้นแล้ว ชาวสวนก็สิ้นใจ ครั้นปลงศพพ่อเสร็จลง พวกลูกจำคำที่พอสั่งได้ สำคัญว่า พ่อเอาทรัพย์ฝังไว้ในสวน จึงเอาจอบเสียมไปเที่ยวขุดพรวนดินค้นหาทรัพย์จนทั่ว ก็ไม่พบทรัพย์ ครั้นอยู่มา ต้นไม้ที่ในสวนนั้น ครั้นเมื่อดินซุยขึ้น และได้เลนซึ่งเขาโกยขึ้นมาจากท้องร่องเป็นปุ๋ยอันดี ก็แตกกิ่งก้านสาขางอกงามขึ้นโดยเร็ว เมื่อถึงฤดู ก็มีลูกดก เหล่าลูกเจ้าของสวนก็ขายได้เงินทวีขึ้นกว่าปีก่อน ๆ อีกหลายเท่า"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า ถึงคนโง่ ถ้ามีความเพียร ก็ย่อมได้รับผลอันดี"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-29",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ท้องกับตัว",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145237",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145237",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145237",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145237; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145237, rendered HTML SHA256 fb9c3d8b4173b43eea744a9e5458e79044b164ab367eb64ca8658c2f9da1b22a; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "dc168bbdc2c30231"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 29,
+        "title": "ท้องกับตัว"
+      }
+    },
+    "sections": [
+      {
+        "title": "ท้องกับตัว",
+        "paragraphs": [
+          {
+            "text": "ครั้งหนึ่ง ส่วนต่าง ๆ ของร่างกาย มีมือ ปาก และฟัน เป็นต้น เกิดถุ้งเถียงเกี่ยงงอนกันขึ้นกับท้อง ส่วนเหล่านั้นหาความว่า ท้องไม่ได้ทำการงานอะไร นิ่งอยู่เฉย ๆ คอยแต่ที่จะอิ่มเท่านั้น แต่ส่วนมือตีนต้องทำการงานต่าง ๆ เหน็ดเหนื่อย แม้ปากก็ต้องเคี้ยวอาหาร สำหรับแต่จะให้ท้องอิ่ม ส่วนเหล่านี้เกิดอิจฉาทองขึ้นมา จึงพากันนิ่งเฉยเสีย มือก็ไม่หยิบของส่งเข้าปาก ปากก็ไม่อมอาหารไว้ และฟันก็ไม่เคี้ยว ด้วยหวังจะแกล้งทรมานท้องให้อดอยาก ในไม่ช้า ร่างกายของคนผู้นั้นก็ซูบผอมไป ส่วนที่คบคิดกันแกล้งท้องก็พากันอ่อนเพลียกระวนกระวายไปตามกัน จึงได้รู้สำนึกว่า ตัวผิด เพราะส่วนในร่างกายทุก ๆ ส่วนต้องอาศัยกัน จะแยกกันมิได้ ถ้าแยกกันแล้ว ก็ต่างถึงความลำบากเสียหายไปด้วยกัน"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า กิจธุระอันใดที่ต้องช่วยกันทำหลายคน ถ้าคนเหล่านั้นเกี่ยงแย่งไม่ปรองดองช่วยเหลือกันและกัน ปล่อยให้ ก็เสียการเสียประโยชน์ของคนเหล่านั้นด้วยกันทุกคน"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-30",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "เทพารักษ์กับคนตัดไม้",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145238",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145238",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145238",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145238; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145238, rendered HTML SHA256 0587ee76d8c757bbd10b904eab32a969f419214afa61a9442f002d2bc02d7163; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "ed1214f1a2556596"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 30,
+        "title": "เทพารักษ์กับคนตัดไม้"
+      }
+    },
+    "sections": [
+      {
+        "title": "เทพารักษ์กับคนตัดไม้",
+        "paragraphs": [
+          {
+            "text": "ยังมีชาวป่าผู้หนึ่ง ขณะที่ตัดต้นไม้อยู่ริมลำธาร ทำขวานหลุดมือพลัดตกจมหายไปในน้ำ ตัวเป็นคนว่ายน้ำไม่เป็น ครั้นจะลงไปงม ก็กลัวจมน้ำตาย ไม่รู้ที่จะทำประการใด ก็ลงนั่งกอดเข่าร้องไห้อยู่ริมลำธารนั้น เทพารักษ์ที่เป็นผู้รักษาลำธารมีความสงสาร จึงมาปลอบโยนเอาใจให้หยุดร้องไห้ แล้วก็ลงไปงมเอาขวานทองขึ้นมาส่งให้เล่มหนึ่ง ชายผู้นั้นเห็นว่า ไม่ใช่ขวานของตน ก็ไม่รับเอา จึงบอกไปแก่เทพารักษ์ว่า \"ขวานของข้าพเจ้าไม่ใช่เล่มนี้\" เทพารักษ์ก็วางขวานนั้นเสีย ลงไปงมให้ใหม่ คราวนี้ เทพารักษ์ถือเอาขวานเงินขึ้นมาส่งให้ ชายผู้นั้นก็ไม่รับอีก ยืนยันว่า ไม่ใช่ขวานของตนอยู่นั่นเอง ครั้งนี้ เทพารักษ์งมเอาขวานเหล็กเล่มที่ตกน้ำนั้นขึ้นมาให้ ชายผู้นั้นก็ดีใจ ยกมือขึ้นไหว้แล้วรับเอา เทพารักษ์เห็นชายผู้นั้นเป็นคนซื่อสัตย์ จึงเลยยกขวานเงินและขวานทองทั้งสองเล่มนั้นให้ด้วย"
+          },
+          {
+            "text": "เมื่อชายผู้นั้นกลับบ้าน เพื่อนบ้านใกล้เคียงได้รู้เรื่องที่ได้ขวานเงินขวานทองเพราะขวานตกน้ำ ก็พากันเล่าลือต่อ ๆ กันไป ยังมีชายอีกคนหนึ่งซึ่งเป็นสหายของชายสัตย์ซื่อผู้นั้น เมื่อได้ทราบข่าวเล่าลือ นึกอยากจะใคร่ได้ขวานเงินขวานทองบ้าง จึงฉวยขวานของตนเข้าป่าไปที่ข้างลำธารนั้น ทำทีดังว่าตัดไม้ แล้วก็เหวี่ยงขวานลงไปในน้ำ แกล้งทำเป็นนั่งร้องไห้คร่ำครวญอยู่ข้างลำธาร ในมิช้ามินาน เทพารักษ์องค์นั้นก็มาปลอบโยนดังเช่นที่ทำกับชายผู้สัตย์ซื่อคนก่อน แล้วก็ลงไปดำเอาขวานทองขึ้นมายื่นให้ ถามว่า \"นี่ขวานของเจ้าหรือมิใช่\" ชายผู้นั้นแลเห็นขวานทองก็ดีใจ รีบตะลีตะลานรับว่าเป็นขวานเล่มที่ตนทำตกน้ำในทันที เทพารักษ์จึงว่า \"เมื่อเจ้ารักจะประพฤติเป็นคนไม่ซื่อสัตย์สุจริตอยู่ดังนี้ ก็อย่าเอาขวานทองเล่มนี้เลย ถึงขวานเล่มที่ทำตกน้ำ ข้าก็จะไม่งมให้ด้วยเหมือนกัน\" พอว่าดังนั้นแล้ว เทพารักษ์ก็หายไปกับทั้งขวานทอง เหลือแต่ชายผู้นั้นนั่งแลตะลึงอยู่คนเดียว"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า หาประโยชน์ด้วยความซื่อสัตย์แน่นอนดีกว่าหาด้วยความเท็จ"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-31",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "นายพรานกับไก่ฟ้า",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145413",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145413",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145413",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145413; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145413, rendered HTML SHA256 48e556f8039ef34311ef01f8ea7f706d95bc17111c79ee370bf14cca60597596; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "9fd0d1ebc9ac5c70"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 31,
+        "title": "นายพรานกับไก่ฟ้า"
+      }
+    },
+    "sections": [
+      {
+        "title": "นายพรานกับไก่ฟ้า",
+        "paragraphs": [
+          {
+            "text": "นายพรานผู้หนึ่งเอาข่ายไปขึงดักนกไว้ที่กลางป่า แล้วก็กลับมาแอบข้างพุ่มไม้ คอยอยู่จนกว่าจะตอดนก ในเวลานั้น มีไก่ฟ้าตัวหนึ่งบินผ่านมา เห็นเมล็ดข้าวที่นายพรานโปรยล่อไว้ จึงถาลงมาจิกกินจนล่วงเข้าไปติดข่าย จะดิ้นรนสักเท่าใดก็ไม่หลุด เมื่อนายพรานเห็นดังนั้น ก็รีบวิ่งไปปลดตาข่าย แล้วจับนกมาอุ้มไว้ นกมีความกลัวจนตัวสั่น ร้องวิงวอนขอให้ปล่อยตนไป แล้วสัญญาว่า ถ้าปล่อยให้รอดชีวิตไปแล้ว จะไปล่อลวงพวกเพื่อนให้มาติดตาข่ายอีกเป็นอันมาก นายพรานได้ยินดังนั้นจึงกล่าวแก่ไก่ฟ้าว่า \"ผู้ที่ใจคดถึงแก่จะล่อลวงพวกเพื่อนให้มาติดตาข่ายเพื่อจะเอาชีวิตของตนรอดอยู่แต่ผู้เดียวเช่นนี้ ไม่ควรจะมีชีวิตอยู่ให้หนักแผ่นดิน เราจะต้องรีบเชือดคอเจ้าให้ตายเสียในบัดนี้\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า ผู้ที่คิดให้ร้ายแก่เพื่อนเพื่อประโยชน์ของตนเองฝ่ายเดียว ย่อมเป็นความเสียหายแก่ตนเองยิ่งขึ้น"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-32",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "หนู กบ กับเหยี่ยว",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145414",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145414",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145414",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145414; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145414, rendered HTML SHA256 e8e7b84de6220919fb528cfcd6956f942323104f9b41ae4349116bdfb27a7deb; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "618175206dca1043"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 32,
+        "title": "หนู กบ กับเหยี่ยว"
+      }
+    },
+    "sections": [
+      {
+        "title": "หนู กบ กับเหยี่ยว",
+        "paragraphs": [
+          {
+            "text": "หนูตัวหนึ่งเที่ยวหากินอยู่ตามท้องนา ไปพบกบตัวหนึ่งที่ริมหนอง ไปคุ้นเคยชอบพอกันขึ้น ทั้งสองสัตว์ต่างสัญญาว่า จะเป็นเกลอกันต่อไป แต่นั้นมา ก็ไปเที่ยวหากินด้วยกันทุก ๆ เวลาเช้าเวลาเย็น อยู่มาวันหนึ่ง กบพูดแก่หนูว่า \"นี่แน่ะ เจ้าเพื่อนยาก เอ็งกับข้าก็ได้ชอบรักสนิทสนมกันแล้ว ข้าก็เห็นใจเอ็งแล้วว่า เป็นผู้ที่ควรคบได้ แต่มีข้อรำคาญอยู่อย่างหนึ่งที่เอ็งกับข้าจะไปเที่ยวหากินไกล ๆ ด้วยกันไม่ใคร่สะดวก เพราะข้าเป็นสัตว์เดินช้า เอ็งเป็นสตว์เดินเร็ว มักจะตามเอ็งไม่ใคร่ทัน\" หนูจึงถามว่า \"จะทำอย่างไรจึงจะไปด้วยกันได้\" กบจึงว่า \"อย่าเลย เอ็งกับข้ามาผูกตีนติดกันเสียเถิด เพื่อไปไหนจะได้ไปพร้อม ๆ กัน ไม่ต้องพลัดพรากจากกัน\" หนูเห็นดีด้วยก็ยอมใหกบผูกตีนของตัวติดกับตีนกบ แล้วก็พากันไปเที่ยวหากินห่างออกไปกว่าที่เคยมาแล้ว ครั้นไปพบบึงใหญ่ขวางหน้าอยู่ น้ำในบึงนั้นใสเย็นน่าอาบน่าว่ายเล่น ฝ่ายข้างกบมีความเบิกบานใจ ไม่ทันนึกถึงที่ตัวผูกตีนติดอยู่กับหนู ก็กระโดดลงไปแหวกว่ายดำเล่นเพลินอยู่ ส่วนหนูซึ่งเป็นสัตว์บกไม่ชำนาญในการว่ายนา เมื่อต้องลงไปลอยคอตะเกียกตะกายอยู่ในบึง เพราะเชือกผูกติดอยู่กับเพื่อนเช่นนั้น ไม่ช้าก็อ่อนกำลังลง เลยขาดใจตายลอดน้ำอยู่ ในขณะนั้น มีเหยี่ยวตัวหนึ่งเที่ยวบินร่อนหาอาหารกินอยู่ตามแถบนนั้น ครั้นแลลงมาเห็นหนูตายลอยน้ำ ก็ถาลงมาโฉบเอาไปกิน กบที่กำลังดำงน้ำเล่นเพลินอยู่ ก็พลอยติดเชือกขึ้นไปเป็นเหยื่อของเหยี่ยวด้วยอีกตัวหนึ่ง"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การที่เห็นแต่แก่ความสนุกเพลิดเพลินของตัวเองฝ่ายเดียว ไม่นึกถึงความทุกข์ของผู้อื่นบ้าง ย่อมกระทำให้เกิดความเสียหายแก่ตนได้"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-33",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ราชสีห์ชันสูตรลมหายใจ",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145415",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145415",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145415",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145415; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145415, rendered HTML SHA256 74ca3b667addef743727a9f3e39dea4bd0f724497f78820fadb360bd06edb416; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "5bfeb4bcebc9d52a"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 33,
+        "title": "ราชสีห์ชันสูตรลมหายใจ"
+      }
+    },
+    "sections": [
+      {
+        "title": "ราชสีห์ชันสูตรลมหายใจ",
+        "paragraphs": [
+          {
+            "text": "ราชสีห์ตัวหนึ่งอยากจะใคร่รู้ว่า ลมหายใจของตัวมีกลิ่นเป็นอย่างไร จึงไปถามแกะซึ่งกินหญ้าอยู่ที่ชายป่า แกะบอกว่า มีกลิ่นเหม็น ราชสีห์ก็โกรธ ตรงเข้าขย้ำคอแกะนั้นตาย ครั้นเดินต่อไปอีกสักหน่อย ราชสีห์ไปพบหมาป่าสวนทางมา ราชสีห์ก็ถามถึงกลิ่นลมหายใจของตนแก่หมาป่าอีก หมาป่ามีความครั่นคร้ามกลัวราชสีห์จะทำร้ายแก่ตน จึงแข็งใจเข้ามาสูดกลิ่นดมดูแล้วตอบว่า \"ลมหายใจของท่านมีกลิ่นหอมน่าชื่นใจ\" ราชสีห์ได้ฟังดังนั้น รู้ว่า หมาป่าแกล้งพูดยกยอล่อลวงตัวเพื่อจะให้ชอบ ก็มีความโกรธแค้น ตรงเข้าตบกัดฟัดเหวี่ยงจนหมาป่าตายอีก คราวนี้ ราชสีห์ไปพบหมาจิ้งจอก ก็บอกให้หมาจิ้งจอกตรวจลมหายใจของตนดังที่ให้สัตว์ทั้งสองตรวจมาแล้ว หมาจิ้งจอกรู้ทีว่า ราชสีห์ไม่ชอบให้ใครยกยอ กับทั้งจะบอกไปตามจริงก็กลัวจะหาความว่าดูหมิ่น จึงพูกตัดความเสียว่า \"เวลานี้ ข้าพเจ้ากำลังเป็นหวัดคัดจมูกอยู่ ถึงจะเข้าไปดมลมหายใจของท่านสักเท่าไร ๆ ก็คงจะไม่รู้สึกกลิ่นได้ เพราะฉะนั้น ขอให้ท่านไปถามผู้ที่จะพบต่อไปข้างหน้านั้นเถิด\" ราชสีห์ได้ฟังดังนั้นก็ไม่ว่ากระไร เลยเดินผ่านพ้นไปจากหมาจิ้งจอก"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การรู้จักหลีกเลี่ยงไม่เกี่ยวข้องแก่คนพาล ย่อมเป็นคุณแก่ตัวมาก"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-34",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "กบเลือกนาย",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145416",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145416",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145416",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145416; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145416, rendered HTML SHA256 cd1cceebb4f8f8a8ff01950042ade5fa6f3be61a0261a7e9cab1f806137489cc; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "c574d89e9358d64e"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 34,
+        "title": "กบเลือกนาย"
+      }
+    },
+    "sections": [
+      {
+        "title": "กบเลือกนาย",
+        "paragraphs": [
+          {
+            "text": "ยังมีกบฝูงหนึ่งอาศัยอยู่ในบึงใหญ่ อยู่มา กบฝูงนั้นอยากจะหานายไว้คุ้มครองป้องกันตัว จึงไปร้องทุกข์แก่เทวดาขอให้หานายส่งมาให้ ฝ่ายข้างเทวดาเมื่อเล็งเห็นความโง่เขลาของกบก็ทิ้งขอนไม้ขอนใหญ่ลงไปในบึง เสียงดังสะท้านและน้ำกระเพื่อมเป็นระลอก ทำให้พวกกบตื่นตกใจเป็นอลหม่าน เมื่อเสียงสงบลงแล้ว มีกบกล้าตัวหนึ่งว่ายน้ำเข้าไปมองดู เห็นขอนไม้ลอยน้ำ"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า ความทะเยอทะยานอยากได้ไม่รู้จักประมาณ ย่อมเป็นการหาภัยใส่ตัวเอง"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-35",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ยายแก่กับหม้อ",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-149798",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 149798",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149798",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 149798; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 149798, rendered HTML SHA256 4eb16bfb4d26084cd3708e4fff24ab4db29d749dc158286393891d2dd6c87ebe; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "d6d92382f4653169"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 35,
+        "title": "ยายแก่กับหม้อ"
+      }
+    },
+    "sections": [
+      {
+        "title": "ยายแก่กับหม้อ",
+        "paragraphs": [
+          {
+            "text": "ยังมียายแก่คนหนึ่งเป็นโรคตามัว จะมองดูอะไรไม่ใคร่เห็น จึงวานเด็กให้จูงไปหาหมอยาตาที่อยู่ในหมู่บ้านเดียวกัน เมื่อพบหมอ แกจึงพูดแก่หมอว่า \"ท่านหมอ ตาอีฉันมืดไป ถ้าท่านช่วยรักษาให้เห็นได้ดังเก่า อีฉันจะให้เงินค่ารักษาแก่ท่านให้พอแก่ใจ\" หมอตรวจดูนัยน์ตาเห็นว่า พอจะรักษาให้หายได้ ก็ยอมรับรักษา ครั้นวันรุ่งขึ้น หมอเอายามาที่บ้านยายแก่ เห็นยายแก่มีทรัพย์สิ่งของมาก จึงนึกในใจว่า ถ้ายายแก่มืดอยู่อย่างนี้ เราจะหยิบฉวยอะไรไป ก็จะแลไม่เห็น เราอย่ารักษาให้แก่หายเร็วเลย หยิบเอาของของแก่เสียให้หมดก่อนเถิด เมื่อของหมดแล้ว เราจึงจะรักษาให้หาย แต่วันนั้นเป็นต้นมา หมอก็เอายาที่ไม่ถูกกับโรคมาหยอดให้ยายแก่ทุกเวลาเช้าเวลาเย็น แต่เมื่อขาจะกลับไป ก็ฉวยเอาของของยายแก่ เป็นต้นว่า ขันน้ำ พานรอง ขวดโหล หีบ ถาด ถ้วย ชาม และเครื่องใช้สอยต่าง ๆ ติดมือไปด้วยวันละสิ่งสองสิ่งจดหมด ครั้นเมื่อของหมดแล้ว ตาหมอจึงเอายาขนานที่ถูกกับโรคหยอดตายายแก่ ไม่ช้ายายแก่ก็หาย แลเห็นได้เป็นปรกติ แล้วหมอจึงทวงเงินที่ยายแก่บนไว้ ยายแก่รู้ว่า หมอลักเอาของไปหมดแล้ว ก็ไม่ยอมให้ค่ารักษา จึงเกิดโต้เถียงกันขึ้น จนถึงแก่ไปฟ้องร้องกันยังโรงศาล เมื่อตุลาการซักถาม ยายแก่ให้การว่า \"เมื่อครั้งตาอีฉันยังดี ๆ อยู่ ทรัพย์สิ่งของของอีฉันมีมาก อีฉันแลเห็นของในบ้านเรือนได้ทุกสิ่งทุกอย่าง ครั้นเมื่อตามืดมัวลง แลไม่เห็นอะไร จึงได้ไปหาหมอคนนี้มารักษา และหมอยังรักษาอีฉันไม่หายเหมือนแต่ก่อน ตาอีฉันยังไม่แลเห็นทรัพย์สิ่งของในบ้านเรือนเหมือนดังแต่ก่อน หมอจะมาเรียกเอาค่ารักษาตาของอีฉันตามสัญญาอย่างไรได้\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การรู้มากและเห็นแต่แก่เล็กแก่น้อย ย่อมตัดประโยชน์ที่ตนยังจะได้ต่อไปภายหน้าอีกเป็นอันมาก"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-36",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ต้นไทรกับต้นอ้อ",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-149797",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 149797",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149797",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 149797; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 149797, rendered HTML SHA256 29260577cf4a208e484b05dd8c5444c40de1f310580bfa82e7d394854c77ba68; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "ddc3973fc958c58f"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 36,
+        "title": "ต้นไทรกับต้นอ้อ"
+      }
+    },
+    "sections": [
+      {
+        "title": "ต้นไทรกับต้นอ้อ",
+        "paragraphs": [
+          {
+            "text": "คืนวันหนึ่ง เกิดพายุกล้า ต้นไทรใหญ่ต้นหนึ่งอยู่ริมน้ำ ทนลมไม่ไหว ก็หักโค่นลอยน้ำไปติดพงแขมอยู่ที่ชายตลิ่งแห่งหนึ่ง รุ่งขึ้น ต้นไทรเห็นพงแขมเป็นปรกติดี ไม่มีต้นใดหักโค่น จึงถามพงแขมว่า \"เมื่อคืนนี้ พายจัด พัดเราจนหักโค่นลงน้ำลอยมา พวกท่านล้วนแต่เป็นไม้ต้นเล็ก ๆ ต้นหนึ่ง จะเทียบแต่กับกิ่งของเราก็ไม่ได้ เหตุไฉนจึงอยู่เป็นปรกติดีด้วยกัน หรือว่า พายุไม่ได้พัดมาถึงที่นี้\" พงแขมจึงตอบว่า \"พายุพัดมาถึงที่นี่เหมือนกัน แต่พวกเราเป็นไม้อ่อน เมื่อลมพัดกล้า เราเอนลู่ไปเสียตามลม ปล่อยให้ลมพัดข้ามเราไปเสีย ลมจึงไม่พัดเราหักโค่น\" ต้นไทรได้ฟังดังนั้น จึงนึกว่า ถึงเราเป็นต้นไม้ใหญ่โต เราไม่รู้จักผ่อนผันหลีกเลี่ยงลมกล้า ตั้งหน้าต้านลมอยู่อย่างเดียว ลมมีแรงกว่าเรา จึงพัดเอาเราโค่นล้ม ต้นแขมเหล่านี้ ถึงเป็นไม้เล็ก รู้จักผ่อนผันหลบหลีกให้ลมพายุพัดพ้นไปได้ ก็ไม่หักเหมือนต้นไม้ใหญ่เช่นตัวเรา"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การต่อสู้กำลังที่มากนั้น บางทีต่อสู้ด้วยอ่อนดีกว่าต่อสู้ด้วยแข็ง"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-37",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "หมาจิ้งจอกกับราชสีห์",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-149796",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 149796",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149796",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 149796; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 149796, rendered HTML SHA256 b4971bb6558dc6961dd98000ad7dee7d335a4ef1b820ffaea6ac91af74deb583; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "69ff59d5065256aa"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 37,
+        "title": "หมาจิ้งจอกกับราชสีห์"
+      }
+    },
+    "sections": [
+      {
+        "title": "หมาจิ้งจอกกับราชสีห์",
+        "paragraphs": [
+          {
+            "text": "มีหมาจิ้งจอกตัวหนึ่งอาสาเข้าไปเป็นบ่าวอยู่กับราชสีห์ เมื่อราชสีห์จะไปในที่ใด หมาจิ้งจอกก็ตามไปด้วยทุกคราว วันหนึ่ง ขณะที่สัตว์ทั้งสองกำลังเดินไปกลางทาง หมาจิ้งจอกได้กลิ่นเนื้อ วิ่งเข้าไปค้นดูในพุ่มไม้ ก็พบเนื้อ จึงรีบกลับออกมาบอกราชสีห์ให้ไปจับกิน แต่วันนั้นเป็นต้นมา ราชสีห์รู้ว่า หมาจิ้งจอกมีจมูกดี ก็ใช้ให้ออกไปเที่ยวตามรอยเนื้อ แล้วให้กลับมาบอกตำบลที่ไปพบเนื้อทุกวัน ๆ หมาจิ้งจอกเห็นกิริยาราชสีห์อาจหาญในขณะเมื่อจะเข้าตะครุบเนื้อ ก็นึกชอบใจ อยากจะเอาอย่างเช่นนั้นบ้าง จึงขออนุญาตต่อราชสีห์ว่า ถ้าคราวต่อไปได้พบเนื้อแล้ว ตนจะเข้าตะครุบเองจนเนื้อตายแล้ว จึงจะกลับมาเชิญให้ราชสีห์ไปกิน ราชสีห์ก็ยอมอนุญาตให้ทำตามที่หมาจิ้งจอกขอ หมาจิ้งจอกดีใจ รีบวิ่งเข้าป่าไปทันที เผอิญไปสวนทางเข้ากับกวางที่ไหล่เขา แต่พอหมาจิ้งจอกจะกระโดดขึ้นไปตะครุบกวาง นายพรานที่ด้อมตามรอยกวางมาก็ยิงตายทั้งกวางและทั้งหมาจิ้งจอกตัวนั้นด้วยในขณะเดียวนั้น"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า ความทะนงตัวอยากจะมีอำนาจเกินสมควร ย่อมเป็นอันตรายแก่ตัวได้"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-38",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "แม่เนื้อกับนายพรานป่า",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-149799",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 149799",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149799",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 149799; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 149799, rendered HTML SHA256 c333f7eb78604e4941e0401ffb6b26bf156cd04a5017ab709f6265291297b26c; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "63eb7afcaef29e6d"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 38,
+        "title": "แม่เนื้อกับนายพรานป่า"
+      }
+    },
+    "sections": [
+      {
+        "title": "แม่เนื้อกับนายพรานป่า",
+        "paragraphs": [
+          {
+            "text": "แม่เนื้อตัวหนึ่งเที่ยวและเล็มหญ้ากินอยู่ตามลานกว้างในกลางป่าแห่งหนึ่ง ในขณะที่กำลังหากินเพลินอยู่นั้น แม่เนื้อเหลือบไปเห็นนายพรานป่าถือหน้าไม้เดินมาแต่ไกล ก็มีความตกใจกลัว คิดหาทางที่จะหนีเอาตัวรอด ก็ยังไม่เห็นว่า จะทำอย่างไรดี ครั้นจะวิ่งหนีไปกลางแจ้งซึ่ง ๆ หน้า ก็กลัวนายพรานจะยิงถูก เพราะนายพรานคนนี้เป็นผู้มีฝีมือแม่นยิ่งนัก ครั้นจะเล็ดลอดไปตามใต้ร่มไม้ ก็เกรงว่า ต้นไม้ที่ขึ้นระกะอยู่ไม่สู้จะหนาทึบ จะไม่เป็นที่กำบังตนให้พ้นจากลูกธนูได้ ครั้นยิ่งยืนตะลึงอยู่เช่นนั้นนานเข้า นายพรานก็ยิ่งเดินใกล้เข้ามาทุกที แม่เนื้อเห็นจวนตัว ไม่รู้ที่จะทำประการใดดี ก็เลยเสี่ยงบุญเสี่ยงกรรมวิ่งเข้าไปซุกซ่อนตัวอยู่ในเซิงเถาวัลย์ซึ่งขึ้นปรกอยู่ที่ชายป่า นายพราน เมื่อมาถึงที่ ๆ แม่เนื้อยืนอยู่ก่อน ไม่เห็นแม่เนื้อ สำคัญใจว่า แม่เนื้อวิ่งบหนีเตลิดพ้นไปเสียแล้ว ก็จะเดินเลยไป ฝ่ายแม่เนื้อ เมื่อเห็นพรานเดินเลยลับไปแล้ว หมายว่า พ้นภัย ก็เลยเล็มใบเถาวัลย์กินจนพุ่มไม้นั้นโปร่ง ครั้นนายพรานเดินกลับมา ก็แลเห็นแม่เนื้อได้ถนัด จึงยกหน้าไม้ขึ้นยิงถูกที่เหมาะ ทำให้แม่เนื้อทรุดนิ่งแน่อยู่ณที่นั้นเอง เมื่อแม่เนื้อจะตาย แม่เนื้อร้องขึ้นว่า \"นี่แหละคือผลของการที่เนรคุณเขา ได้อาศัยซ่อนตัวอยู่ในเซิงเถาวัลย์ดี ๆ แล้ว ก็ไปกินใบเถาวัลย์ จนกระทั่งนายพรานแลเห็นตัวได้ว่า ซุ่มซ่อนอยู่ที่ไหน\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า ความที่คิดร้ายต่อผู้ที่ปกป้องรักษาเรา ย่อมเป็นอันตรายแก่ตนเอง"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-39",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "หมาดุ",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-149800",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 149800",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149800",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 149800; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 149800, rendered HTML SHA256 81e674ccc0ee937ea2371dd2be5529004eab53d30a3470f43c93f58453f69514; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "75513c9688c651bd"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 39,
+        "title": "หมาดุ"
+      }
+    },
+    "sections": [
+      {
+        "title": "หมาดุ",
+        "paragraphs": [
+          {
+            "text": "ชาวบ้านเลี้ยงหมาไว้ตัวหนึ่ง หมาตัวนี้ เมื่อโตขึ้น มักลอบกัดคน เจ้าของจึงเอาลูกพรวนแขวนคอไว้เพื่อว่า หมาตัวนั้นเข้าไปที่ไหน คนจะได้ยินเสียงลูกพรวนและระวังตัวมิให้มันลอบกัดได้ แต่หมาตัวที่ถูกผูกลูกพรวนนั้นไปเข้าใจเสียว่า เจ้าของผูกของดีมีราคาให้เป็นเครื่องแต่งตัว ก็เที่ยววิ่งชูคออวดลูกพรวนแก่เพื่อนหมาด้วยกันไปทั่วทุกหนทุกแห่ง เหล่าหมาหนุ่มสาวที่ไม่เคยเห็นก็พากันชมหมาที่ผูกลูกพรวนว่า เป็นหมาดีมีเครื่องประดับ ความนั้นรู้ไปถึงหมาตัวหนึ่งซึ่งเป็นผู้เฒ่าอยู่ในบ้านนั้นมาช้านานกว่าหมาตัวอื่น หมาเฒ่าเข้าใจเหตุการณ์ จึงชี้แจงแก่หมาทั้งปวงว่า เพราะหมาตัวนั้นมันมักลอบกัดคน จึงถูกผูกลูกพรวน เขาผูกประจานความชั่วร้ายของมันต่างหาก"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า เครื่องประดับสำคัญอยู่ที่ความดีความชั่วของผู้ที่ใช้เครื่องประดับนั้น ถ้าเครื่องประดับเป็นเครื่องหมายความชั่วแล้ว ก็เป็นเครื่องประจาน หาใช่เครื่องประดับไม่"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-40",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "พ่อค้าเกลือกับโคต่าง",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-149795",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 149795",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149795",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 149795; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 149795, rendered HTML SHA256 b405a26e21fc99ba8536c941ee87de8eca2147c3eab12dd0fffea06b0575c3bf; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "b058ac8be60aa738"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 40,
+        "title": "พ่อค้าเกลือกับโคต่าง"
+      }
+    },
+    "sections": [
+      {
+        "title": "พ่อค้าเกลือกับโคต่าง",
+        "paragraphs": [
+          {
+            "text": "ยังมีวัวต่างของพ่อค้าเกลือตัวหนึ่ง เจ้าของบรรทุกเกลือไปขายเนือง ๆ ครั้นหนึ่ง วัวต่างนั้นเดิมข้ามห้วย เหยียบหินพลลาดพลัดตกลงไปอยู่ในแอ่งน้ำในห้วย กว่าเจ้าของจะลงไปจูงขึ้นมาได้ ก็พอเกลือที่อยู่ในต่างถูกน้ำละลายไปหมด เมื่อวัวขึ้นมาถึงบนบก รู้สึกเบาหลัง จึงนึกว่า ที่ได้ลงไปแช่อยู่ในน้ำนั้นทำให้ของที่เขาบรรทุกหลังเบาไปได้ แต่นั้นมา เมื่อเจ้าของพาต่างบรรทุกเกลือไปถึงแม่น้ำลำคลองแห่งใด วัวต่างตัวนั้นก็แกล้งลงไปนอนเสียในน้ำจนเกลือละลายทุกคราวมา พ่อค้าต่างเห็นวัวโกงเช่นนั้น คราวหลังจึงแกล้งเอานุ่นบรรทุกต่างวัวตัวนั้นให้หนักเท่ากับที่เคยบรรทุกเกลือมาแต่ก่อน ฝ่ายวัวไม่รู้เท่าเจ้าของ ครั้นเดินไปถึงห้วงน้ำ ก็ลงไปนอนแช่น้ำเสียอีก คราวนี้ นุ่นไปถูกน้ำเข้า ก็อุ้มน้ำหนักขึ้นกว่าเวลาแห้ง วัวตัวนั้นก็ต้องหนักหลังยิ่งกว่าแต่ก่อน เจ้าของทำอย่างนี้จนวัวตัวนั้นเข็ด ไม่กล้าลงไปนอนในน้ำอีกต่อไป"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า คนโกงเอาเปรียบเขาบ่อยนัก เขาคงรู้เท่าทำโทษคนโกงให้สมกับที่โกงเขาได้"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-41",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "กระต่ายป่ากับกบ",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-149794",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 149794",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149794",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 149794; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 149794, rendered HTML SHA256 5835c09b6847f30ef698d9e559cde71def225c6372e3ce0dabe20efd239db5d3; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "1091989dcc47c9d1"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 41,
+        "title": "กระต่ายป่ากับกบ"
+      }
+    },
+    "sections": [
+      {
+        "title": "กระต่ายป่ากับกบ",
+        "paragraphs": [
+          {
+            "text": "ยังมีกระต่ายป่าฝูงหนึ่งอาศัยอยู่ที่ป่าละเมาะ กระต่ายฝูงนั้นเคยออกมาหาอาหารกินอยู่ที่ตามนาร้างข้างป่านั้นทุกเวลาเช้าเวลาเย็น ในเวลาที่ฝูงกระต่ายเที่ยวและเล็มหญ้ากินอยู่ ถ้าเห็นวัวควายหรือคนเดินผ่านมาแต่ไกล กระต่ายก็หวาดว่า จะมาทำร้ายแก่ตน รีบวิ่งเข้าซุกซ่อนตัวอยู่ในหญ้ารก พวกที่ฝีตีนเร็ว ก็วิ่งกลับเข้าไปยังป่าละเมาะได้ กระต่ายทำแต่ดังนี้เสมอมา จนนึกเบื่อหน่ายเข้าเอง จึงมาปรึกษากันว่า ถ้าจะอยู่ต่อไป ก็ไม่เป็นสุข เพราะจำจะต้องตื่นเต้นตกใจอยู่ทุกเช้าค่ำ เมื่อคิดดังนนแล้ว ฝูงกระต่ายจึงเห็นพร้อมกันว่า จะฆ่าตัวตายเสีย จะได้ไม่ลำบากอีกต่อไป พอรุ่งเช้าขึ้น ฝูงกระต่ายพากันวิ่งไปทางลำธารจะไปกระโดดน้ำตาย แต่พอไปถึงฝั่งน้ำ ก็เห็นฝูงกบตื่นตกใจกลัวกระโจนลงในน้ำดำหายไป กระต่ายเฒ่าที่เป็นโจกฝูงหยุดชะงักแล้วร้องขึ้นว่า \"พวกเรานี้โง่จริง ๆ มิใช่ว่า พวกเราตื่นตกใจง่าย ๆ แต่พวกเดียวเมื่อไร ถึงสัตว์จำพวกอื่นก็ขลาดเหมือนกัน เมื่อเป็นเช่นนั้น เราจะมาพากันฆ่าตัวตายเสียด้วยเหตุประการใด\" ว่าแล้ว ฝูงกระตายก็พากันกลบไปอยู่ในป่าละเมาะตามเดิม"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า บางทีรู้สึกว่า ตัวมีความทุกข์ร้อนยิ่งกว่าผู้อื่น แต่ที่จริง ผู้ที่เขามีทุกข์ร้อนกว่าตัวยังมี เพราะฉะนั้น ในการที่จะทำอะไรไปด้วยความรู้สึกทุกข์ร้อน ควรพิจารณาเสียให้มากก่อน"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-42",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "กวางกับเสือ",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-149793",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 149793",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149793",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 149793; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 149793, rendered HTML SHA256 67f7ca1293d4dc784869016b6882381b3e56a8fe93354b60b1a64fceed29f019; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "c242f6d65448d85d"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 42,
+        "title": "กวางกับเสือ"
+      }
+    },
+    "sections": [
+      {
+        "title": "กวางกับเสือ",
+        "paragraphs": [
+          {
+            "text": "กวางตัวหนึ่งออกเที่ยวหากินอยู่ที่ชายป่า ในขณะที่และเล็มหญ้ากินเพลินอยู่ กวางเหลือบไปเห็นนายพรานถือหน้าไม้เดินด้อมเข้ามาทางหมู่ไม้ ก็มีความตกใจกลัว กระโดดหนีเข้าป่าไป ส่วนนายพรานก็สะกดรอยตามรุกเข้าไปจนกวางจวนตัวจะหนีไปไหนไม่รอด จึงวิ่งเข้าไปซ่อนตัวอยู่ในถ้ำเสือ ข้างฝ่ายเสือ เมื่อเห็นกวางวิ่งเข้าไปในถ้ำเสือ เสือก็หมอบฟุบลงที่ข้างก้อนหินใหญ่ไม่ให้กวางเห็น ปล่อยให้กวางเข้าไปจนก้นถ้ำแล้ว ก็กระโจนเข้างับคอกวางล้มตายอยู่ณที่ซ่อนนั้นเอง กวาง ในเมื่อเวลาจะสิ้นใจ ร้องขึ้นว่า \"ดูเถอะ อันตรายย่อมมีอยู่ไม่ว่าที่ไหน เราหนีคนพ้นแล้ว ก็ยังมาปะเสือเข้าอีก\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การที่จะหลบหลีกอันตราย จงคิดดูเสียให้รอบคอบก่อน ระวังอย่าวิ่งเข้าไปหาอันตรายเข้าอีกได้"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-43",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "ลิงกับคนทอดแห",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-149792",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 149792",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149792",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 149792; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 149792, rendered HTML SHA256 9a58c4b3e118bec485ed20c44477b6ee41e5e0db278a34893d834d71087b5c5c; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "26ba04ca4948012e"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 43,
+        "title": "ลิงกับคนทอดแห"
+      }
+    },
+    "sections": [
+      {
+        "title": "ลิงกับคนทอดแห",
+        "paragraphs": [
+          {
+            "text": "ชายผู้หนึ่งทอดแหอยู่ที่ริมฝั่งน้ำ ที่ข้างตลิ่งนั้นมีต้นหว้าใหญ่อยู่ต้นหนึ่งกำลังออกลูกดก ลิงที่กำลังปลิดลูกหว้ากินอยู่ เมื่อเห็นชายผู้นั้นเหวี่ยงแหไป นึกประหลาดใจ จ้องดูอยู่จนลืมกินลูกหว้า ในที่ตรงนั้น เผอิญมีกุ้งปลาชุม ชายที่ทอดแหจึงทอดแทเพลินไปจนลืมกินข้าวเช้า ครั้นตกสายเข้า คนทอดแหทนหิวไม่ไหว ก็เอาเรือผูกทิ้งไว้โคนต้นหว้า ตัวกลับไปกินข้าวที่บ้าน และคิดไว้ว่า เมื่อกินข้าวแล้ว จะกลับมาทอดแหต่อไปอีก ข้างฝ่ายลิง เมื่อเห็นคนเดินลับไปแล้ว ก็ลงมาจากต้นหว้า ไต่ลงไปในเรือ จับแหจะทอดกุ้งปลาเอาอย่างคน แต่แหเป็นของกว้างใหญ่เกินตัวลิง จึงพันต้นพันมือลิงยุ่งเหยิง ลิงยิ่งดิ้นรนเท่าไร แหก็ยิ่งพันยุ่งหนักเข้าทุกที ลงท้ายที่สุด ลิงก็พลาดแคมเรือตกลงไปในน้ำทั้ง ๆ แหพันตัวอยู่ดังนั้น เมื่อลิงสิ้นแรงจะจมน้ำตาย ลิงร้องขึ้นว่า \"นี่แหละ สมน้ำหน้าตัวเราเองที่เราชอบสู่รู้\""
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า จะทำการสิ่งใดต้องรู้จักประมาณกำลังตน อย่าหลงไปว่า ใครเขาทำอะไรได้แล้ว เราจะทำเหมือนเขาได้ไปทุกอย่าง"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-44",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "คนเลี้ยงแพะกับลูกเสือ",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-149791",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 149791",
+      "url": "https://th.wikisource.org/w/index.php?oldid=149791",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 149791; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 149791, rendered HTML SHA256 98acc7dd916f84bab143a6dbf99101df681b03bfbc56225f713402654c5296f1; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "950da20410345cbb"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 44,
+        "title": "คนเลี้ยงแพะกับลูกเสือ"
+      }
+    },
+    "sections": [
+      {
+        "title": "คนเลี้ยงแพะกับลูกเสือ",
+        "paragraphs": [
+          {
+            "text": "ชายคนหนึ่งเป็นพ่อค้าขายแพะ เลี้ยงแพะไว้ที่ริมสถานีรถไฟฝูงหนึ่ง วันหนึ่ง ชายนั้นเข้าป่าจะไปตัดไม้ไผ่มาทำคอกแพะ ขณะเมื่อเดินไปถึงเชิงเขา ชายผู้นั้นพบลูกเสือหลงแม่ตัวหนึ่งเดินอยู่แต่ลำพัง จึงจับเอามาเลี้ยงไว้ แล้วหัดให้ลูกเสือเที่ยวขโมยลูกแพะของชาวบ้านที่ใกล้เคียง ส่วนลูกเสือนั้น ถ้าวันไหนขโมยลูกแพะของชาวบ้านได้สองตัว ก็กัดกินเสียตัวหนึ่ง เหลือเอาไปให้เจ้าของแต่ตัวเดียว ถ้าวันไหนขโมยแพะของคนอื่นไม่ได้ พอตกกลางคืนลง ก็ขโมยแพะของเจ้าของกินเสียทุกวันไป"
+          },
+          {
+            "text": "นิทานเรื่องนี้สอนให้รู้ว่า การคิดหาประโยชน์ใส่ตัวในทางมิชอบ ลงปลายมักจะเสียประโยชน์ตนเอง"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "th-gap-recovery-aesop-45",
+    "lang": "th",
+    "locale": "th-TH",
+    "title": "คนเลี้ยงวัวกับวัวหาย",
+    "contentType": "story",
+    "corpus": {
+      "id": "th-gap-recovery-aesop",
+      "kind": "comprehensible-input",
+      "title": "Thai beginner source fables"
+    },
+    "source": {
+      "id": "th-wikisource-aesop-145188",
+      "title": "นิทานอีสป",
+      "author": "พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+      "edition": "Thai Wikisource revision 145188",
+      "url": "https://th.wikisource.org/w/index.php?oldid=145188",
+      "rights": "public-domain",
+      "authorship": "published",
+      "attribution": "พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499); Thai Wikisource revision 145188; transcription attribution CC BY-SA 4.0.",
+      "licenseNote": "Wikisource records the underlying 2499 work as public domain under Thai copyright terms; transcription attribution and CC BY-SA 4.0 terms are retained.",
+      "provenance": "Official Thai Wikisource parse API; cached revision 145188, rendered HTML SHA256 c94aad131fda4e4a9166be27af42e0082be29bbee5f41a3a04d0294c238289b5; source wording and orthography retained."
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedBy": "Wikisource revision and extraction check",
+      "reviewedAt": "2026-10-02",
+      "level": "linguistic-check",
+      "notes": "Source-fidelity and rights evidence checked. Beginner suitability is supported by the source preface but still needs Thai-native pedagogical review.",
+      "contentSignature": "c5a186a911cdc87d"
+    },
+    "generated": false,
+    "topics": [
+      "fable",
+      "short-reading"
+    ],
+    "editorialTags": [
+      "beginner-source-candidate",
+      "needs-native-review"
+    ],
+    "prepTargets": [],
+    "work": {
+      "slug": "th-gap-recovery-aesop",
+      "chapter": {
+        "index": 45,
+        "title": "คนเลี้ยงวัวกับวัวหาย"
+      }
+    },
+    "sections": [
+      {
+        "title": "คนเลี้ยงวัวกับวัวหาย",
+        "paragraphs": [
+          {
+            "text": "ยังมีวัวบ้านฝูงหนึ่งเขาปล่อยให้กินหญ้าอยู่กลางทุ่งนา วัวตัวหนึ่งเจ้าปัญญาคิดเห็นว่า การที่หากินอยู่กับเพื่อนมากด้วยกันเช่นนั้น ไม่สู้จะได้หญ้าอ่อนและหญ้าชนิดที่ดี ๆ กินนัก คิดแล้ววัวตัวนั้นก็ออกจากฝูงเข้าไปหาหญ้ากินที่ชายป่าแต่โดยลำพัง ในมิช้ามินาน ราชสีห์ตัวหนึ่งได้สาบวัว ก็เดินตามสาบออกมาทางชายป่า พบวัวกำลังกินหญ้าเพลินอยู่ ก็กระโจนเข้าตบกัดฟัดเหวี่ยงจนวัวตาย แล้วราชสีห์ก็พาไปไว้ยังถ้ำที่ตีนเขา ครั้นตกบ่ายลง คนเลี้ยงวัวออกมาจากที่พักจะมาต้อนฝูงวัวเข้าคอก แต่เมื่อมานับวัวดู เห็นวัวหายไปตัวหนึ่ง จึงออกเที่ยวตามหาจนเหนื่อย ก็ไม่พบวัว คนเลี้ยงวัวหมดปัญญา จึงนั่งลงกราบไหว้บนเจ้าป่าขอให้ช่วยให้พบวัว แล้วจะแก้บนด้วยหมูเป็ดไก่ พอบนแล้วได้สักหน่อย คนเลี้ยงวัวเดินไปพบถ้ำที่ราชสีห์อยู่ เมื่อคนเลี้ยงวัวชะโงกเข้าไปในถ้ำ เห็นราชสีห์กำลังกินวัวอยู่ ก็ตกใจกลัวร้องขึ้นว่า \"คราวนี้ ถ้าตัวข้าพเจ้ารอดชีวิตไปได้แล้ว ข้าพเจ้าจะถวายวัวให้แก่เจ้าป่าเพิ่มขึ้นอีกตัวหนึ่ง\""
+          },
+          {
+            "text": "นิทานเรื่องนี้ตรงกับสุภาษิตที่ว่า \"เสียน้อยเสียยากเสียมากเสียง่าย\" คือ สอนให้รู้ว่า เมื่อเราเสียของอะไรไปบ้างเล็กน้อยแล้ว ก็อย่าบ่นร่ำไรหรือวุ่นวายให้เกินไปนัก เกลือกจะกลับเสียซ้ำเติมเข้าไปอีก"
+          }
+        ]
+      }
+    ],
+    "streams": [
+      "library"
+    ],
+    "variety": "central-thai"
+  }
+]

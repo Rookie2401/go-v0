@@ -62,6 +62,28 @@ export async function latestListeningCheckpoint(
     if (!approvedForPlay(asset.rights) || !binding || binding.textId !== textId || binding.contentVersion !== text.contentVersion || !(await currentBindingValid(store, asset))) continue;
     const playerSegment = (await buildPlayerManifest(store, manifest)).segments.find((s) => s.segmentId === segment.id);
     if (!playerSegment?.ready) continue;
+    // A transport that reached the end supersedes an earlier mid-play cursor, whether its observed coverage
+    // earned exposure credit or ended below that threshold. End offsets are intentionally not resumable, so
+    // without this check a stale early checkpoint would resume a clip that the browser already finished.
+    const rangeEnd = playerSegment.rangeMs?.endMs ?? asset.durationMs;
+    const reachedEndAfter = all.some((event) => {
+      if ((event.type !== 'AudioSegmentCompleted' && event.type !== 'AudioAbandoned')
+        || event.userId !== userId || event.textId !== textId || event.lang !== text.lang || event.segmentId !== segment.id
+        || event.assetId !== asset.id || event.contentVersion !== text.contentVersion
+        || (event.sourceType !== undefined && asset.sourceType !== undefined && event.sourceType !== asset.sourceType)
+        || (event.audioKind !== undefined && asset.audioKind !== undefined && event.audioKind !== asset.audioKind)
+        || event.rightsId !== asset.rights?.id || event.rightsApproved !== true || event.exactTextBound !== true
+        || event.textSha256 !== binding.textSha256 || event.releaseId !== binding.releaseId
+        || event.editionId !== binding.editionId
+        || !(event.at > e.at || (event.at === e.at && event.id > e.id))) return false;
+      if (event.type === 'AudioSegmentCompleted') {
+        return event.audibleCoverageVersion === 'observed-playback@1'
+          && typeof event.heardCoverageRatio === 'number' && Number.isFinite(event.heardCoverageRatio)
+          && event.heardCoverageRatio >= 0 && event.heardCoverageRatio <= 1;
+      }
+      return Number.isFinite(event.positionMs) && event.positionMs >= rangeEnd - 60 && event.positionMs <= rangeEnd + 250;
+    });
+    if (reachedEndAfter) continue;
     const lo = playerSegment.rangeMs?.startMs ?? 0;
     const hi = playerSegment.rangeMs?.endMs ?? asset.durationMs;
     if (e.positionMs < lo || e.positionMs > hi || e.positionMs >= asset.durationMs) continue;

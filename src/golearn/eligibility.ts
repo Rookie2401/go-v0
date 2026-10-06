@@ -38,7 +38,8 @@ export async function listenVerdict(ctx: Ctx, e: AudioCompleted): Promise<Verdic
   const asset = await ctx.store.audioAssets.get(resolvedAssetId);
   if (!asset || !(await ctx.store.assets.has(resolvedAssetId))) return { eligible: false, reason: 'unknown-asset' };
   if (isFixtureAsset(asset)) return { eligible: false, reason: 'non-speech-audio' };
-  if ((await ctx.store.texts.get(e.textId))?.listeningAssessmentId) return { eligible: false, reason: 'assessment-material' };
+  const protectedText = await ctx.store.texts.get(e.textId);
+  if (protectedText?.listeningAssessmentId !== undefined || protectedText?.readingAssessmentId !== undefined) return { eligible: false, reason: 'assessment-material' };
   const audioKind = asset.audioKind ?? (asset.sourceType === 'generated-tts' ? 'synthetic' : asset.sourceType === 'human-recording' || asset.sourceType === 'licensed-recording' ? 'human' : undefined);
   if (!audioKind) return { eligible: false, reason: 'unknown-asset' };
   // Synthetic speech is practice, never evidence — whatever its review, rights or coverage.

@@ -9,6 +9,8 @@ describe('Bible access', () => {
   it('identifies the linked Albanian edition and the limits of ordinary personal imports', () => {
     const html = renderToStaticMarkup(<BibleAccess lang="sq" />);
     expect(html).toContain('not bundled');
+    expect(html).toContain('No approved Albanian Bible text is available in GoLearn’s Scripture library.');
+    expect(html).toContain('Copyright and permission to bundle or redistribute are not established.');
     expect(html).toContain('href="https://www.bible.com/versions/3631"');
     expect(html).toContain('separate from');
     expect(html).toContain('do not yet have Bible verse navigation');

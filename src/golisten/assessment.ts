@@ -5,7 +5,7 @@
  */
 import type { EventBus, ListeningAssessmentStarted, ListeningAssessmentSubmitted } from '../core/events';
 import type { AppStore } from '../core/store';
-import type { LanguageCode, Text } from '../core/model';
+import type { GoLearn, LanguageCode, Text } from '../core';
 import { approvedForPlay, currentBindingValid } from './rights';
 
 export interface ListeningAssessmentRegistryEntry {
@@ -37,6 +37,57 @@ export type ListeningAssessmentAvailability =
   | { state: 'ready'; text: Text; entry: ListeningAssessmentRegistryEntry };
 
 const lockId = (assessmentId: string) => `listening-assessment-registry:${assessmentId}`;
+
+/**
+ * Register exact, reviewed assessment material and rebuild derived learner state after it becomes protected.
+ * Callers cannot make an arbitrary Text an assessment by setting a marker alone: the entry must bind the complete
+ * current sentence set to ready human-reviewed, lawful audio. Existing events are retained; only their derived
+ * training exposure is removed. Repeating the same registration is safe.
+ */
+export async function registerListeningAssessment(
+  store: AppStore, golearn: GoLearn, entry: ListeningAssessmentRegistryEntry, clock: () => string = () => new Date().toISOString(),
+): Promise<string[]> {
+  if (entry.approved !== true || entry.basis !== 'learner-self-report-only' || !entry.id || !entry.textId || !entry.manifestId
+    || !Number.isInteger(entry.contentVersion) || entry.contentVersion < 1 || !Array.isArray(entry.sentenceIds) || entry.sentenceIds.length === 0
+    || new Set(entry.sentenceIds).size !== entry.sentenceIds.length) throw new Error('Invalid protected assessment registry entry.');
+  const text = await store.texts.get(entry.textId);
+  if (!text || !text.published || text.contentVersion !== entry.contentVersion
+    || (text.listeningAssessmentId !== undefined && text.listeningAssessmentId !== entry.id)) throw new Error('Assessment text is missing, unpublished, stale, or protected by another entry.');
+  const conflicting = (await store.texts.all()).find((t) => t.id !== entry.textId && t.listeningAssessmentId === entry.id);
+  if (conflicting) throw new Error('Assessment registry id is already assigned to another text.');
+  const live = (await store.sentences.where('textId', entry.textId)).filter((s) => s.retiredInVersion === undefined).sort((a, b) => a.index - b.index);
+  if (live.length !== entry.sentenceIds.length || live.some((s, i) => s.id !== entry.sentenceIds[i])) throw new Error('Assessment registry must cover every current sentence in order.');
+  const manifest = await store.manifests.get(entry.manifestId);
+  if (!manifest || manifest.textId !== entry.textId || manifest.contentVersion !== entry.contentVersion) throw new Error('Assessment audio does not match the current text version.');
+  const segments = (await store.audioSegments.getMany(manifest.segmentIds)).filter((s) => !!s);
+  const covered = segments.flatMap((s) => s.sentenceIds);
+  if (segments.length !== manifest.segmentIds.length || covered.length !== entry.sentenceIds.length
+    || new Set(covered).size !== covered.length || entry.sentenceIds.some((id) => !covered.includes(id))) throw new Error('Assessment audio must cover the registered sentences exactly.');
+  for (const segment of segments) {
+    if (segment.status !== 'ready' || segment.textId !== text.id || segment.contentVersion !== text.contentVersion || !segment.assetId) throw new Error('Assessment audio contains an unavailable segment.');
+    const asset = await store.audioAssets.get(segment.assetId);
+    const voice = await store.voices.get(segment.voiceConfigId);
+    if (!asset || !(await store.assets.has(asset.id)) || asset.audioKind !== 'human' || asset.isSpeech !== true
+      || !['human_reviewed', 'approved'].includes(asset.qualityState ?? '') || !approvedForPlay(asset.rights)
+      || !(await currentBindingValid(store, asset)) || (voice && (voice.isSpeech !== true || !['reviewed', 'approved'].includes(voice.reviewStatus)))) {
+      throw new Error('Assessment registration requires current lawful, reviewed human speech.');
+    }
+  }
+  const id = lockId(entry.id);
+  const existing = await store.meta.get(id);
+  const serialized = JSON.stringify(entry);
+  if (existing && existing.value !== serialized) throw new Error('Assessment registry entry is immutable once registered.');
+  await store.transaction(['texts', 'meta'], async () => {
+    const currentText = await store.texts.get(text.id);
+    if (!currentText || currentText.contentVersion !== entry.contentVersion
+      || (currentText.listeningAssessmentId !== undefined && currentText.listeningAssessmentId !== entry.id)) throw new Error('Assessment text changed during registration.');
+    const currentLock = await store.meta.get(id);
+    if (currentLock && currentLock.value !== serialized) throw new Error('Assessment registry entry changed during registration.');
+    await store.texts.put({ ...currentText, listeningAssessmentId: entry.id });
+    await store.meta.put({ id, value: serialized, updatedAt: clock() });
+  });
+  return golearn.invalidateProtectedAssessments();
+}
 
 /** Check a protected, exact, previously unheard item. Missing registry rows are unavailable, never inferred. */
 export async function listeningAssessmentAvailability(
@@ -79,20 +130,25 @@ export async function listeningAssessmentAvailability(
   const targetRows = (await store.sentences.getMany(entry.sentenceIds)).filter((s) => !!s);
   if (targetRows.length !== entry.sentenceIds.length || targetRows.some((s) => s.textId !== textId || s.retiredInVersion !== undefined)) return { state: 'unavailable', reason: 'An assessment sentence is missing or retired.' };
   const targetHashes = new Set(targetRows.map((s) => s.textHash));
-  let trained = userEvents.some((e) =>
+  let trained = userEvents.some((e) => e.lang === text.lang && (
     e.type === 'TextViewed' && e.textId === textId
     || e.type === 'TranscriptRevealed' && e.textId === textId
     || (e.type === 'AudioPlayed' || e.type === 'AudioSegmentCompleted' || e.type === 'AudioAbandoned') && e.textId === textId
-    || e.type === 'ListeningAssessmentStarted' && e.textId === textId,
-  );
+    || e.type === 'ListeningAssessmentStarted' && e.textId === textId));
   if (!trained) for (const e of userEvents) {
+    if (e.lang !== text.lang) continue;
     const seenIds = e.type === 'SentenceViewed' ? [e.sentenceId]
       : e.type === 'EnglishRescueRevealed' || e.type === 'ComprehensionReported' ? e.sentenceIds
-      : e.type === 'AudioPlayed' || e.type === 'AudioSegmentCompleted' || e.type === 'AudioAbandoned' || e.type === 'TranscriptRevealed' ? e.sentenceIds : [];
-    if (seenIds.some((id) => targetSentences.has(id))) { trained = true; break; }
+      : e.type === 'AudioPlayed' || e.type === 'AudioSegmentCompleted' || e.type === 'AudioAbandoned' || e.type === 'TranscriptRevealed' ? e.sentenceIds
+      : e.type === 'TokenHelpOpened' || e.type === 'PhraseHelpOpened' || e.type === 'GrammarHelpOpened'
+        || e.type === 'SentenceExplanationRevealed' || e.type === 'DecodingRevealed' || e.type === 'SentenceReread' ? [e.sentenceId] : [];
     if (seenIds.length) {
       const rows = await store.sentences.getMany(seenIds);
-      if (rows.some((s) => !!s && targetHashes.has(s.textHash))) { trained = true; break; }
+      const eventTextId = 'textId' in e ? e.textId : undefined;
+      if (rows.some((s) => !!s && s.lang === text.lang && s.retiredInVersion === undefined
+        && (!eventTextId || s.textId === eventTextId) && (targetSentences.has(s.id) || targetHashes.has(s.textHash)))) {
+        trained = true; break;
+      }
     }
   }
   if (trained) return { state: 'contaminated', reason: 'This learner has already read or heard the protected material.' };

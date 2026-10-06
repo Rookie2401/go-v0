@@ -109,13 +109,20 @@ describe('the Albanian catalogue', () => {
     expect((await catalog.findWorks({ courseId: C, stream: 'mission' })).items.map((w) => w.id)).toContain(ids.work(C, 'misioni-1'));
   });
 
-  it('lets exactly the three course-authored works be bundled, and no external work claims to be verified', async () => {
+  it('allows the three course-authored works and two explicitly verified external collections, while holding other candidates', async () => {
     const works = await catalog.works(C);
     const bundlable = works.filter((w) => BUNDLABLE_WORK_STATES.includes(w.rights.state ?? ''));
-    expect(bundlable.map((w) => w.id.split(':')[2]).sort()).toEqual([...COURSE_WORKS].sort());
+    const verifiedExternal = ['sq-modern-open', 'sq-modern-gap-readings', ...ALBANIAN_WORKS.filter(w => w.id.includes(':gv-')).map(w => w.id.split(':')[2])];
+    expect(bundlable.map((w) => w.id.split(':')[2]).sort()).toEqual([...COURSE_WORKS, ...verifiedExternal].sort());
     for (const w of bundlable) {
-      expect(w.rights).toMatchObject({ state: 'course-authored', canBundle: true });
-      expect(w.ingestion).toBe('bundled');
+      expect(w.rights.canBundle, w.title).toBe(true);
+      if (w.rights.state === 'course-authored') {
+        expect(w.ingestion, w.title).toBe('bundled');
+      } else {
+        expect(w.rights).toMatchObject({ state: 'verified-open-licence', verified: true, licensing: w.id.includes(':gv-') ? 'CC BY 3.0' : 'CC BY-SA 4.0' });
+        expect(w.rights.verifiedBy, w.title).toBeTruthy();
+        expect(w.rights.verifiedAt, w.title).toBeTruthy();
+      }
     }
     for (const w of works.filter((x) => !bundlable.includes(x))) {
       expect(w.rights.canBundle, w.title).toBe(false);
@@ -462,11 +469,13 @@ describe('the rights gate', () => {
     }
   });
 
-  it('refuses every other work of the manifest that is not course-authored', () => {
-    for (const w of ALBANIAN_WORKS.filter((x) => x.rights.state !== 'course-authored')) {
+  it('refuses every external work whose exact rights remain unverified or prohibited', () => {
+    const allowedExternal = new Set(['sq-modern-open', 'sq-modern-gap-readings', ...ALBANIAN_WORKS.filter(w => w.id.includes(':gv-')).map(w => w.id.split(':')[2])]);
+    for (const w of ALBANIAN_WORKS.filter((x) => x.rights.state !== 'course-authored' && !allowedExternal.has(x.id.split(':')[2]))) {
       const slug = w.id.split(':')[2];
       expect(bundleDecision(asClaim(`x-${slug}`, slug), { work: workRecord }).verdict, slug).toBe('refuse');
     }
+    for (const slug of allowedExternal) expect(bundleDecision(asClaim(`x-${slug}`, slug), { work: workRecord }).verdict, slug).toBe('bundle');
   });
 
   it('refuses a research-only document and a document of a research-only work', () => {

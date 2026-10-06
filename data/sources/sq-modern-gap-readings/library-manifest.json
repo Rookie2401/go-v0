@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "lang": "sq",
+  "entries": [
+    {
+      "slug": "sq-modern-gap-readings",
+      "title": "Qytete dhe natyrë",
+      "courseId": "albania-sq",
+      "stage": "7",
+      "streams": [
+        "library"
+      ],
+      "contentType": "nonfiction",
+      "variety": "sq",
+      "genre": "educational reference",
+      "domains": [
+        "geography",
+        "culture"
+      ],
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "granted",
+        "canBundle": true,
+        "canModify": true,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "verified": true,
+        "licensing": "CC BY-SA 4.0",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "verifiedBy": "Wikimedia source-manifest and exact-revision checker",
+        "verifiedAt": "2026-10-02",
+        "basis": "Each exact sq.wikipedia.org revision is published under CC BY-SA 4.0; redistribution preserves attribution and share-alike.",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "evidence": [
+          "https://sq.wikipedia.org/wiki/Wikipedia:CC_BY-SA",
+          "https://creativecommons.org/licenses/by-sa/4.0/"
+        ]
+      },
+      "source": {
+        "file": "documents.json",
+        "kind": "documents",
+        "url": "https://sq.wikipedia.org/",
+        "edition": "Exact revisions listed in source-manifest.json",
+        "attribution": "Wikipedia shqip contributors; CC BY-SA 4.0; per-reading revision attribution retained in documents.json",
+        "provenance": "Source-faithful prose readings from exact cached Wikimedia revisions."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-gap-readings source-fidelity checker",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "be31b4b5ada1f6892b7a48da1ead49f7c5451a1de7fbfed3848c11a8a3dba48c",
+        "notes": "Source extraction and rights checked; no native-speaker or CEFR claim."
+      }
+    }
+  ]
+}

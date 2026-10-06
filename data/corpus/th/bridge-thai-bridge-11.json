@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "bridge-thai-bridge-11",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ของขวัญวันเกิด",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-th-bridge-drafts",
+    "kind": "comprehensible-input",
+    "title": "Thai beginner bridge drafts"
+  },
+  "source": {
+    "id": "src:th:thai-bridge-11",
+    "title": "ของขวัญวันเกิด — course-owned draft",
+    "author": "Course authors (machine-drafted)",
+    "attribution": "Course-owned Thai draft. Machine-drafted for native-speaker review; no external source or translation claimed.",
+    "provenance": "Original controlled draft written for the course-owned beginner review queue. It is not a published or source-reviewed Thai work.",
+    "rights": "owner-authored",
+    "licenseNote": "Course-owned draft; may not be published until native review.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Native Thai reviewer required. Source fidelity is not applicable because this is original course-owned draft text."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "วันเกิด",
+    "ของขวัญ",
+    "กล่อง"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "course-owned-draft"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss for review only"
+  },
+  "sections": [
+    {
+      "title": "ของขวัญวันเกิด",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันนี้เป็นวันเกิดของน้อง",
+              "english": "Today is my younger sibling’s birthday."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันซ่อนของขวัญไว้ในกล่องสีฟ้า",
+              "english": "I hide a gift in a blue box."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แม่ทำเค้กเล็กๆ ในครัว",
+              "english": "Mother makes a small cake in the kitchen."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อแขวนกระดาษสีไว้ที่ผนัง",
+              "english": "Father hangs colored paper on the wall."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เมื่อถึงเวลา น้องเปิดประตูเข้ามา",
+              "english": "When the time comes, my younger sibling opens the door."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ทุกคนร้องเพลงและยิ้มให้กัน",
+              "english": "Everyone sings and smiles at one another."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "น้องเปิดกล่องแล้วเห็นหนังสือเล่มใหม่",
+              "english": "My younger sibling opens the box and sees a new book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "น้องพูดขอบคุณและกอดฉัน",
+              "english": "My younger sibling says thank you and hugs me."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เรากินเค้กด้วยกันอย่างมีความสุข",
+              "english": "We eat cake together happily."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "น้องเลือกแบ่งเค้กให้ทุกคน",
+              "english": "My younger sibling chooses to share the cake with everyone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แม่เก็บกล่องของขวัญไว้ใช้วันหน้า",
+              "english": "Mother keeps the gift box to use another day."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันรู้สึกดีที่ได้ทำให้น้องยิ้ม",
+              "english": "I feel good that I made my younger sibling smile."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "work": {
+    "slug": "bridge-thai-bridge-11",
+    "courseId": "thailand-th",
+    "chapter": {
+      "index": 10,
+      "title": "ของขวัญวันเกิด"
+    }
+  }
+}

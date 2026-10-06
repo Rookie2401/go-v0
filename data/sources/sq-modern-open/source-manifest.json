@@ -1,0 +1,383 @@
+{
+  "checkedAt": "2026-10-02",
+  "licenceEvidenceUrl": "https://sq.wikipedia.org/wiki/Wikipedia:CC_BY-SA",
+  "documentSha256": "31b68e3a9507cf55b35a62c25572bf156d9f4ffbe7c776dc85536cd7ba2c3753",
+  "pages": [
+    {
+      "page": "Ushqimi",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Ushqimi",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=2942428",
+      "apiUrl": "https://api.wikimedia.org/core/v1/wikipedia/sq/page/Ushqimi/html",
+      "revisionId": 2942428,
+      "modified": "2026-04-14T04:25:04Z",
+      "rawSha256": "d6fe70c69be5277ff2c49dbe1ff86f3fd9389e262a46f1732e5ce83c0d5330ef",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "page": "Qeni",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Qeni",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=2913834",
+      "apiUrl": "https://api.wikimedia.org/core/v1/wikipedia/sq/page/Qeni/html",
+      "revisionId": 2913834,
+      "modified": "2026-03-24T16:57:38Z",
+      "rawSha256": "1e91f09ea5672a8926fb4718cf8065856901f43715d79312ea49e588beaa9fc2",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "page": "Macja",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Macja",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=3047276",
+      "apiUrl": "https://api.wikimedia.org/core/v1/wikipedia/sq/page/Macja/html",
+      "revisionId": 3047276,
+      "modified": "2026-09-21T21:29:29Z",
+      "rawSha256": "78d908f3c5bd1ea7b53b9ecad63978def7f98680b17088686378115236602651",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "page": "Bleta",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Bleta",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=2973401",
+      "apiUrl": "https://api.wikimedia.org/core/v1/wikipedia/sq/page/Bleta/html",
+      "revisionId": 2973401,
+      "modified": "2026-04-26T02:52:08Z",
+      "rawSha256": "8b99fdf05b7170cf80ab4758733b7e96257d31f99a2be790a2d1b93173ba2084",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "page": "Mali",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Mali",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=2834703",
+      "apiUrl": "https://api.wikimedia.org/core/v1/wikipedia/sq/page/Mali/html",
+      "revisionId": 2834703,
+      "modified": "2025-09-12T23:55:07Z",
+      "rawSha256": "37d8923696ddc799275a6d903d082450c1217e50c5c7695a62d036305f0f95e6",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "page": "Deti",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Deti",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=2942331",
+      "apiUrl": "https://api.wikimedia.org/core/v1/wikipedia/sq/page/Deti/html",
+      "revisionId": 2942331,
+      "modified": "2026-04-14T04:07:26Z",
+      "rawSha256": "534ebfbda66929b8ab0965ee9fe73bfa7563b2b726f423436b09359510641ad8",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "page": "Tirana",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Tirana",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=3042030",
+      "apiUrl": "https://api.wikimedia.org/core/v1/wikipedia/sq/page/Tirana/html",
+      "revisionId": 3042030,
+      "modified": "2026-09-16T08:23:08Z",
+      "rawSha256": "40e9cd0f23153ea885064cc3440781627d0745adc18685bae170d73086c6890d",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "page": "Shqipëria",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Shqip%C3%ABria",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=3029498",
+      "apiUrl": "https://api.wikimedia.org/core/v1/wikipedia/sq/page/Shqip%C3%ABria/html",
+      "revisionId": 3029498,
+      "modified": "2026-09-03T15:58:19Z",
+      "rawSha256": "f0afd7bf94bf35373185f1ef22a4d2b940946386ef1c8de55ae9e9db6e6a37a2",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "page": "Durrësi",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Durr%C3%ABsi",
+      "url": "https://sq.wikipedia.org/w/index.php?oldid=3041932",
+      "apiUrl": "https://api.wikimedia.org/core/v1/wikipedia/sq/page/Durr%C3%ABsi/html",
+      "revisionId": 3041932,
+      "modified": "2026-09-16T08:21:35Z",
+      "rawSha256": "8944a9637c05f4a982fe0bf7cfa819dfa6047d93807d85645589b178f75b1907",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  ],
+  "quarantined": [
+    {
+      "page": "Familja",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Familja",
+      "reason": "Orthography is inconsistent with a modern-standard model; retained raw cache only for review."
+    },
+    {
+      "page": "Shqipëria",
+      "section": "Kultura",
+      "pageUrl": "https://sq.wikipedia.org/wiki/Shqip%C3%ABria",
+      "reason": "Opening source spelling errors fail the modern-standard quality bar; retained in the raw page only for native review."
+    }
+  ],
+  "entries": [
+    {
+      "id": "ushqimi",
+      "page": "Ushqimi",
+      "title": "Ushqimi",
+      "topics": [
+        "food",
+        "daily-life"
+      ]
+    },
+    {
+      "id": "qeni",
+      "page": "Qeni",
+      "title": "Qeni",
+      "topics": [
+        "animals"
+      ]
+    },
+    {
+      "id": "macja",
+      "page": "Macja",
+      "title": "Macja",
+      "topics": [
+        "animals"
+      ]
+    },
+    {
+      "id": "bleta",
+      "page": "Bleta",
+      "title": "Bleta",
+      "topics": [
+        "animals",
+        "nature"
+      ]
+    },
+    {
+      "id": "mali",
+      "page": "Mali",
+      "title": "Mali",
+      "topics": [
+        "countries",
+        "geography"
+      ]
+    },
+    {
+      "id": "deti",
+      "page": "Deti",
+      "title": "Deti",
+      "topics": [
+        "nature",
+        "places"
+      ]
+    },
+    {
+      "id": "tirana-gjeografia",
+      "page": "Tirana",
+      "title": "Tirana — Gjeografia",
+      "section": "Gjeografia",
+      "topics": [
+        "places",
+        "geography"
+      ]
+    },
+    {
+      "id": "tirana-klima",
+      "page": "Tirana",
+      "title": "Tirana — Klima",
+      "section": "Klima",
+      "topics": [
+        "places",
+        "weather"
+      ]
+    },
+    {
+      "id": "tirana-arkeologjia",
+      "page": "Tirana",
+      "title": "Tirana — Arkeologjia",
+      "section": "Arkeologjia",
+      "topics": [
+        "places",
+        "history"
+      ]
+    },
+    {
+      "id": "tirana-turizmi",
+      "page": "Tirana",
+      "title": "Tirana — Turizmi",
+      "section": "Turizmi",
+      "topics": [
+        "places",
+        "travel"
+      ]
+    },
+    {
+      "id": "tirana-transporti",
+      "page": "Tirana",
+      "title": "Tirana — Transporti",
+      "section": "Transporti",
+      "topics": [
+        "places",
+        "daily-life"
+      ]
+    },
+    {
+      "id": "tirana-demografia",
+      "page": "Tirana",
+      "title": "Tirana — Demografia",
+      "section": "Demografia",
+      "topics": [
+        "places",
+        "society"
+      ]
+    },
+    {
+      "id": "tirana-ekonomia",
+      "page": "Tirana",
+      "title": "Tirana — Ekonomia",
+      "section": "Ekonomia",
+      "topics": [
+        "work",
+        "society"
+      ]
+    },
+    {
+      "id": "shqiperia-relievi",
+      "page": "Shqipëria",
+      "title": "Shqipëria — Relievi",
+      "section": "Relievi",
+      "topics": [
+        "places",
+        "geography"
+      ]
+    },
+    {
+      "id": "shqiperia-klima",
+      "page": "Shqipëria",
+      "title": "Shqipëria — Klima",
+      "section": "Klima",
+      "topics": [
+        "places",
+        "weather"
+      ]
+    },
+    {
+      "id": "shqiperia-popullsia",
+      "page": "Shqipëria",
+      "title": "Shqipëria — Popullsia",
+      "section": "Popullsia",
+      "topics": [
+        "society",
+        "places"
+      ]
+    },
+    {
+      "id": "shqiperia-ekonomia",
+      "page": "Shqipëria",
+      "title": "Shqipëria — Ekonomia",
+      "section": "Ekonomia",
+      "topics": [
+        "work",
+        "society"
+      ]
+    },
+    {
+      "id": "shqiperia-gjeografia",
+      "page": "Shqipëria",
+      "title": "Shqipëria — Gjeografia",
+      "section": "Gjeografia",
+      "topics": [
+        "places",
+        "geography"
+      ]
+    },
+    {
+      "id": "shqiperia-historia",
+      "page": "Shqipëria",
+      "title": "Shqipëria — Historia",
+      "section": "Historia",
+      "topics": [
+        "places",
+        "history"
+      ]
+    },
+    {
+      "id": "durresi-gjeografia",
+      "page": "Durrësi",
+      "title": "Durrësi — Gjeografia",
+      "section": "Gjeografia",
+      "topics": [
+        "places",
+        "geography"
+      ]
+    },
+    {
+      "id": "durresi-klima",
+      "page": "Durrësi",
+      "title": "Durrësi — Klima",
+      "section": "Klima",
+      "topics": [
+        "places",
+        "weather"
+      ]
+    },
+    {
+      "id": "durresi-historia",
+      "page": "Durrësi",
+      "title": "Durrësi — Historia",
+      "section": "Historia",
+      "topics": [
+        "places",
+        "history"
+      ]
+    },
+    {
+      "id": "durresi-transporti",
+      "page": "Durrësi",
+      "title": "Durrësi — Transporti",
+      "section": "Transporti",
+      "topics": [
+        "places",
+        "daily-life"
+      ]
+    },
+    {
+      "id": "tirana-historia",
+      "page": "Tirana",
+      "title": "Tirana — Historia",
+      "section": "Historia",
+      "topics": [
+        "places",
+        "society"
+      ]
+    },
+    {
+      "id": "tirana-institucione",
+      "page": "Tirana",
+      "title": "Tirana — Institucione e Tiranës",
+      "section": "Institucione e Tiranës",
+      "topics": [
+        "places",
+        "society"
+      ]
+    },
+    {
+      "id": "durresi-prejardhja",
+      "page": "Durrësi",
+      "title": "Durrësi — Prejardhja e emrit",
+      "section": "Prejardhja e emrit",
+      "topics": [
+        "places",
+        "society"
+      ]
+    },
+    {
+      "id": "shqiperia-politika",
+      "page": "Shqipëria",
+      "title": "Shqipëria — Politika",
+      "section": "Politika",
+      "topics": [
+        "places",
+        "society"
+      ]
+    }
+  ]
+}

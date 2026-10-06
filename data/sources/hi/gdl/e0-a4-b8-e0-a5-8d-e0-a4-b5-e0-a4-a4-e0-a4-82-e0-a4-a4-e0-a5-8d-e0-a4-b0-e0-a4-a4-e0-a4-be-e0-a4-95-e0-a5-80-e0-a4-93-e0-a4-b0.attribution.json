@@ -1,0 +1,40 @@
+{
+  "title": "स्वतंत्रता की ओर",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%8d%e0%a4%b5%e0%a4%a4%e0%a4%82%e0%a4%a4%e0%a5%8d%e0%a4%b0%e0%a4%a4%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%93%e0%a4%b0/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: Subhadra Sen Gupta",
+    "Illustrator: Tapas Guha",
+    "Translator: Manisha Chaudhry",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: स्वतंत्रता की ओर is translated by Manisha Chaudhry . The © for this translation lies with Pratham Books, 2016. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' Marching to Freedom ' , by Subhadra Sen Gupta . © Pratham Books , 2005. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This book has been published on StoryWeaver by Pratham Books. Pratham Books is a not-for-profit organization that publishes books in multiple Indian languages to promote reading among children. www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Gandhi and a boy , by Tapas Guha © Pratham Books, 2005. Some rights reserved. Released under CC BY 4.0 license. Page 3: Boy watching a goat graze , by Tapas Guha © Pratham Books, 2005. Some rights reserved. Released under CC BY 4.0 license. Page 5: Boy and old man with a spade , by Tapas Guha © Pratham Books, 2005. Some rights reserved. Released under CC BY 4.0 license. Page 10: Boy watching man spin a charkha , by Tapas Guha © Pratham Books, 2005. Some rights reserved. Released under CC BY 4.0 license. Page 13: Boy standing next to a Goat and Gandhi watching a cow and calf , by Tapas Guha © Pratham Books, 2005. Some rights reserved. Released under CC BY 4.0 license. Page 15: Gandhi and a boy , by Tapas Guha © Pratham Books, 2005. Some rights reserved. Released under CC BY 4.0 license. Page 17: Collage on the Dandi March , by Tapas Guha © Pratham Books, 2005. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "स्वतंत्रता की ओर (Hindi)",
+    "नौ वर्ष का धनी साबरमति आश्रम में रहता है। उसने हठ पकड़ ली है कि वह महात्मा गाँधी के साथ दाँडी यात्रा पर जायेगा। अंग्रेजों द्वारा लगाये गये नमक कर का विरोध करेगा। दाँडी यात्रा कि ७५ वीं जयन्ती पर लिखी गयी एक दिलचस्प कहानी!",
+    "यह पठन स्तर ४ की किताब है, उन बच्चों के लिए जो पढ़ने में प्रवीण हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "fa8fa4b37d0f430908cf867e085e77b8675891b7215c7ba1bd3451e2058c16ca"
+}

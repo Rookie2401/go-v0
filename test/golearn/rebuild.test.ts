@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { ids } from '../../src/core';
 import { createHarness } from './harness';
 import type { Harness } from './harness';
+import { withoutHeadCache } from './harness';
 import { ES_JOHN, ES_STORY, buildSpanish, buildSpanishScripture } from './fixtures';
 
 const F = (w: string) => ids.form('es', w);
@@ -9,7 +10,7 @@ const F = (w: string) => ids.form('es', w);
 async function snapshot(h: Harness, userId: string) {
   const byId = <T extends { id: string }>(a: T, b: T) => (a.id < b.id ? -1 : 1);
   return {
-    items: (await h.store.learnerItems.where('userId', userId)).sort(byId),
+    items: withoutHeadCache((await h.store.learnerItems.where('userId', userId)).sort(byId)),
     encounters: (await h.store.encounters.where('userId', userId)).sort(byId),
   };
 }

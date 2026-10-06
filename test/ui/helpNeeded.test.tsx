@@ -7,7 +7,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import type { RescueDependence } from '../../src/core';
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { rescueChanges, rescueLines } from '../../src/ui/rescue';
-import { makeHarness, q } from './harness';
+import { makeHarness, q, qa } from './harness';
 import type { Mounted } from './harness';
 
 let mounted: Mounted | undefined;
@@ -50,31 +50,21 @@ describe('rescueLines (pure)', () => {
   });
 });
 
-describe('Home shows the panel', () => {
-  it('is absent before any reading', async () => {
+describe('Home is a directory; reading guidance stays with reading surfaces', () => {
+  it('links to the reader without showing invented progress figures', async () => {
     const h = await makeHarness();
     mounted = await h.mount(app());
+    expect(qa(mounted.container, 'a.home__entry').some((a) => a.getAttribute('href') === '/read')).toBe(true);
     expect(q(mounted.container, '[data-testid="help-needed"]')).toBeNull();
+    expect(h.learn.rescueDependence).not.toHaveBeenCalled();
   });
 
-  it('shows the figures, asks GoLearn for the active language, and states the direction in plain words', async () => {
-    const h = await makeHarness();
-    h.learn.rescueDependence.mockImplementation(async () => ({ overall: rates(), trend: 'falling' as const }));
-    mounted = await h.mount(app());
-    const panel = q(mounted.container, '[data-testid="help-needed"]')!;
-    expect(panel).not.toBeNull();
-    expect(panel.textContent).toContain('English for a sentence: 12 in 100 sentences');
-    expect(q(mounted.container, '[data-testid="help-needed-trend"]')!.textContent).toBe('You are needing English for a sentence less often than before.');
-    expect(panel.textContent).toContain('Over 200 sentences and 1000 words read.');
-    expect(h.learn.rescueDependence.mock.calls[0][1]).toEqual({ lang: 'es' });
-    // never a score, never a grade
-    expect(panel.textContent).not.toMatch(/score|grade|level|%/i);
-  });
-
-  it('with too little reading it says so instead of naming a direction', async () => {
+  it('does not put rescue trend numbers on Home after there is reading history either', async () => {
     const h = await makeHarness();
     h.learn.rescueDependence.mockImplementation(async () => ({ overall: rates({ sentences: 8, words: 40 }), trend: 'insufficient-data' as const }));
     mounted = await h.mount(app());
-    expect(q(mounted.container, '[data-testid="help-needed-trend"]')!.textContent).toBe('Too little reading yet to say whether this is changing.');
+    expect(q(mounted.container, '[data-testid="help-needed"]')).toBeNull();
+    expect(h.learn.rescueDependence).not.toHaveBeenCalled();
+    expect(mounted.container.textContent).not.toMatch(/Too little reading yet|in 100 sentences/);
   });
 });

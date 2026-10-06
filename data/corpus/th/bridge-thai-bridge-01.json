@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "bridge-thai-bridge-01",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "บ้านของเรา",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-th-bridge-drafts",
+    "kind": "comprehensible-input",
+    "title": "Thai beginner bridge drafts"
+  },
+  "source": {
+    "id": "src:th:thai-bridge-01",
+    "title": "บ้านของเรา — course-owned draft",
+    "author": "Course authors (machine-drafted)",
+    "attribution": "Course-owned Thai draft. Machine-drafted for native-speaker review; no external source or translation claimed.",
+    "provenance": "Original controlled draft written for the course-owned beginner review queue. It is not a published or source-reviewed Thai work.",
+    "rights": "owner-authored",
+    "licenseNote": "Course-owned draft; may not be published until native review.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Native Thai reviewer required. Source fidelity is not applicable because this is original course-owned draft text."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "บ้าน",
+    "เช้า",
+    "แม่"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "course-owned-draft"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss for review only"
+  },
+  "sections": [
+    {
+      "title": "บ้านของเรา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนเช้า แม่เปิดหน้าต่างให้ลมเข้าบ้าน",
+              "english": "In the morning, Mother opens the window to let the wind into the house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อกวาดพื้นหน้าประตูอย่างช้าๆ",
+              "english": "Father slowly sweeps the floor in front of the door."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันช่วยน้องเก็บของเล่นใส่กล่อง",
+              "english": "I help my younger sibling put the toys in a box."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "หลังจากนั้น เรานั่งกินข้าวด้วยกัน",
+              "english": "After that, we sit and eat rice together."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แมวสีขาวนอนอยู่ใต้โต๊ะ",
+              "english": "The white cat is sleeping under the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แม่ถามว่าวันนี้ฉันอยากทำอะไร",
+              "english": "Mother asks what I want to do today."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันบอกว่าอยากอ่านหนังสือในสวน",
+              "english": "I say that I want to read a book in the garden."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อหัวเราะและบอกว่าไปได้เลย",
+              "english": "Father laughs and says, “Go ahead.”"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ตอนเย็น ทุกคนกลับมานั่งคุยกันที่บ้าน",
+              "english": "In the evening, everyone comes back to sit and talk at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ก่อนนอน ฉันช่วยแม่ปิดประตูบ้าน",
+              "english": "Before bed, I help Mother close the house door."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อถามว่าพรุ่งนี้อยากไปไหน",
+              "english": "Father asks where I want to go tomorrow."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันตอบว่าอยากอยู่กับครอบครัว",
+              "english": "I answer that I want to be with my family."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "work": {
+    "slug": "bridge-thai-bridge-01",
+    "courseId": "thailand-th",
+    "chapter": {
+      "index": 0,
+      "title": "บ้านของเรา"
+    }
+  }
+}

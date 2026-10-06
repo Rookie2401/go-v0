@@ -4,7 +4,7 @@
  * "Understood x of y (your report)", the vocabulary line unchanged. The word "Read" is never used for an exposure count.
  */
 import { afterEach, describe, expect, it } from 'vitest';
-import type { ComprehensionReported, Recommendation, SentenceViewed, TextCompleted, TextViewed } from '../../src/core';
+import type { ComprehensionReported, SentenceViewed, TextCompleted, TextViewed } from '../../src/core';
 import { ids } from '../../src/core';
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { Reader } from '../../src/ui/reader/Reader';
@@ -23,7 +23,6 @@ const base = { userId: 'u1', lang: 'es' as const, surface: 'corpus' as const, se
 const seen = (h: Harness, i: number) => h.bus.emit<SentenceViewed>({ ...base, type: 'SentenceViewed', dedupeKey: `sv:${i}`, textId: STORY_ID, sentenceId: S(i), tokenIds: [], dwellMs: 2000, contentVersion: 1 });
 const understood = (h: Harness, i: number) => h.bus.emit<ComprehensionReported>({ ...base, type: 'ComprehensionReported', dedupeKey: `cr:${i}`, textId: STORY_ID, sentenceIds: [S(i)], modality: 'reading', scope: 'sentence', degree: 'all', contentVersion: 1 });
 const finished = (h: Harness) => h.bus.emit<TextCompleted>({ ...base, type: 'TextCompleted', dedupeKey: 'done', textId: STORY_ID, contentVersion: 1 });
-const rec = (over: Partial<Recommendation>): Recommendation => ({ reason: 'next-input', reinforces: [], score: 1, explanation: 'because', ...over });
 
 describe('the wording helpers', () => {
   const p = { userId: 'u1', lang: 'es' as const, textId: 't', contentVersion: 1, sentencesTotal: 4, sentencesSeen: 3, sentencesUnderstood: 0, sittings: 1, listenedSentences: 0 };
@@ -88,31 +87,17 @@ describe('Library rows', () => {
   });
 });
 
-describe('Home', () => {
-  it('the Continue card says where you are, as Seen x of y sentences', async () => {
+describe('Home is navigation; progress is shown with the reading list and reader', () => {
+  it('keeps the doorway clear of progress claims while linking to the current reading surface', async () => {
     const h = await makeHarness();
     await seedStory(h.store);
     await h.bus.emit<TextViewed>({ ...base, type: 'TextViewed', dedupeKey: 'tv', textId: STORY_ID, mode: 'open', contentVersion: 1 });
     await seen(h, 0);
     mounted = await h.mount(app());
-    expect(q(mounted.container, '.home__continue')!.textContent).toContain('Continue reading');
-    expect(q(mounted.container, '[data-testid="continue-progress"]')!.textContent).toBe('Seen 1 of 3 sentences');
+    expect(qa<HTMLAnchorElement>(mounted.container, 'a.home__entry').some((a) => a.getAttribute('href') === '/read')).toBe(true);
+    expect(q(mounted.container, '.home__continue')).toBeNull();
+    expect(q(mounted.container, '[data-testid="continue-progress"]')).toBeNull();
     expect(mounted.container.textContent).not.toMatch(NO_READ_COUNT);
-  });
-
-  it('a recommended text shows Seen x of y, and Finished only after the explicit button', async () => {
-    const h = await makeHarness();
-    await seedStory(h.store);
-    await seen(h, 0); await seen(h, 1); await seen(h, 2);
-    h.learn.recommend.mockImplementation(async () => [rec({ reason: 'reread', textId: STORY_ID, explanation: 'You have seen every sentence of "Story 1" but have not marked it finished.' })]);
-    mounted = await h.mount(app());
-    const item = () => q(mounted!.container, '[data-testid="item-progress"]')!.textContent;
-    expect(item()).toBe('Seen 3 of 3 sentences');
-    expect(mounted.container.textContent).toContain('have not marked it finished'); // the engine's wording is shown as given
-    await mounted.unmount();
-    await finished(h);
-    mounted = await h.mount(app());
-    expect(item()).toBe('Seen 3 of 3 sentences · Finished');
   });
 });
 

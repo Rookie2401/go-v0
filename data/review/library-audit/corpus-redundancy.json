@@ -1,0 +1,292 @@
+{
+  "checkedAt": "2026-10-02",
+  "method": "NFC body text, whitespace normalized; no source or learner data modified",
+  "languages": [
+    {
+      "language": "th",
+      "installedDocuments": 1243,
+      "readingDocuments": 54,
+      "publishedReadingDocuments": 54,
+      "readingWorks": 5,
+      "readingWords": 39791,
+      "bundledDocuments": 15,
+      "publishedBundledReadingDocuments": 0,
+      "repeatedStageDirections": [],
+      "duplicateBodies": [],
+      "duplicateIds": [],
+      "duplicateChapters": [],
+      "intentionalScriptureOverlaps": [],
+      "literaryOverlaps": [],
+      "lostReadingIds": []
+    },
+    {
+      "language": "sq",
+      "installedDocuments": 37,
+      "readingDocuments": 37,
+      "publishedReadingDocuments": 37,
+      "readingWorks": 2,
+      "readingWords": 24259,
+      "bundledDocuments": 23,
+      "publishedBundledReadingDocuments": 0,
+      "repeatedStageDirections": [],
+      "duplicateBodies": [],
+      "duplicateIds": [],
+      "duplicateChapters": [],
+      "intentionalScriptureOverlaps": [],
+      "literaryOverlaps": [],
+      "lostReadingIds": []
+    },
+    {
+      "language": "hi",
+      "installedDocuments": 1284,
+      "readingDocuments": 95,
+      "publishedReadingDocuments": 95,
+      "readingWorks": 4,
+      "readingWords": 71292,
+      "bundledDocuments": 33,
+      "publishedBundledReadingDocuments": 0,
+      "repeatedStageDirections": [],
+      "duplicateBodies": [],
+      "duplicateIds": [],
+      "duplicateChapters": [],
+      "intentionalScriptureOverlaps": [
+        [
+          {
+            "id": "text:hi:bible-gen-1-complete",
+            "file": "public/library/hi/t/1a/bible-gen-1-complete.json",
+            "title": "उत्पत्ति 1",
+            "work": "bible-hindi",
+            "chapter": 1,
+            "kind": "scripture",
+            "published": true,
+            "characters": 3876
+          },
+          {
+            "id": "text:hi:bible-gen-1",
+            "file": "data/corpus/hi/bible-gen-1.json",
+            "title": "उत्पत्ति 1",
+            "work": "bible-hindi",
+            "chapter": 1,
+            "kind": "scripture",
+            "published": true,
+            "characters": 3876
+          }
+        ],
+        [
+          {
+            "id": "text:hi:bible-psa-1-complete",
+            "file": "public/library/hi/t/50/bible-psa-1-complete.json",
+            "title": "भजन संहिता 1",
+            "work": "bible-hindi",
+            "chapter": 479,
+            "kind": "scripture",
+            "published": true,
+            "characters": 652
+          },
+          {
+            "id": "text:hi:bible-psa-1",
+            "file": "data/corpus/hi/bible-psa-1.json",
+            "title": "भजन संहिता 1",
+            "work": "bible-hindi",
+            "chapter": 479,
+            "kind": "scripture",
+            "published": true,
+            "characters": 652
+          }
+        ],
+        [
+          {
+            "id": "text:hi:bible-psa-23-complete",
+            "file": "public/library/hi/t/ea/bible-psa-23-complete.json",
+            "title": "भजन संहिता 23",
+            "work": "bible-hindi",
+            "chapter": 501,
+            "kind": "scripture",
+            "published": true,
+            "characters": 579
+          },
+          {
+            "id": "text:hi:bible-psa-23",
+            "file": "data/corpus/hi/bible-psa-23.json",
+            "title": "भजन संहिता 23",
+            "work": "bible-hindi",
+            "chapter": 501,
+            "kind": "scripture",
+            "published": true,
+            "characters": 579
+          }
+        ],
+        [
+          {
+            "id": "text:hi:bible-mrk-1-complete",
+            "file": "public/library/hi/t/98/bible-mrk-1-complete.json",
+            "title": "मरकुस 1",
+            "work": "bible-hindi",
+            "chapter": 958,
+            "kind": "scripture",
+            "published": true,
+            "characters": 4291
+          },
+          {
+            "id": "text:hi:bible-mrk-1",
+            "file": "data/corpus/hi/bible-mrk-1.json",
+            "title": "मरकुस 1",
+            "work": "bible-hindi",
+            "chapter": 958,
+            "kind": "scripture",
+            "published": true,
+            "characters": 4291
+          }
+        ]
+      ],
+      "literaryOverlaps": [],
+      "lostReadingIds": []
+    },
+    {
+      "language": "de",
+      "installedDocuments": 1841,
+      "readingDocuments": 652,
+      "publishedReadingDocuments": 652,
+      "readingWorks": 36,
+      "readingWords": 1580671,
+      "bundledDocuments": 41,
+      "publishedBundledReadingDocuments": 0,
+      "repeatedStageDirections": [
+        [
+          {
+            "id": "text:de:lessing-emilia-galotti-ch30",
+            "file": "public/library/de/t/44/lessing-emilia-galotti-ch30.json",
+            "title": "Emilia Galotti — Vierter Aufzug",
+            "work": "lessing-emilia-galotti",
+            "chapter": 30,
+            "kind": "story",
+            "published": true,
+            "characters": 17
+          },
+          {
+            "id": "text:de:lessing-emilia-galotti-ch39",
+            "file": "public/library/de/t/5f/lessing-emilia-galotti-ch39.json",
+            "title": "Emilia Galotti — Fünfter Aufzug",
+            "work": "lessing-emilia-galotti",
+            "chapter": 39,
+            "kind": "story",
+            "published": true,
+            "characters": 17
+          }
+        ]
+      ],
+      "duplicateBodies": [],
+      "duplicateIds": [],
+      "duplicateChapters": [],
+      "intentionalScriptureOverlaps": [
+        [
+          {
+            "id": "text:de:bible-gen-1-complete",
+            "file": "public/library/de/t/92/bible-gen-1-complete.json",
+            "title": "1. Mose 1",
+            "work": "lutherbibel-1912",
+            "chapter": 1,
+            "kind": "scripture",
+            "published": true,
+            "characters": 3939
+          },
+          {
+            "id": "text:de:bible-gen-1",
+            "file": "data/corpus/de/bible-gen-1.json",
+            "title": "1. Mose 1",
+            "work": "lutherbibel-1912",
+            "chapter": 1,
+            "kind": "scripture",
+            "published": true,
+            "characters": 3939
+          }
+        ],
+        [
+          {
+            "id": "text:de:bible-psa-1-complete",
+            "file": "public/library/de/t/38/bible-psa-1-complete.json",
+            "title": "Psalm 1",
+            "work": "lutherbibel-1912",
+            "chapter": 479,
+            "kind": "scripture",
+            "published": true,
+            "characters": 600
+          },
+          {
+            "id": "text:de:bible-psa-1",
+            "file": "data/corpus/de/bible-psa-1.json",
+            "title": "Psalm 1",
+            "work": "lutherbibel-1912",
+            "chapter": 479,
+            "kind": "scripture",
+            "published": true,
+            "characters": 600
+          }
+        ],
+        [
+          {
+            "id": "text:de:bible-psa-23-complete",
+            "file": "public/library/de/t/62/bible-psa-23-complete.json",
+            "title": "Psalm 23",
+            "work": "lutherbibel-1912",
+            "chapter": 501,
+            "kind": "scripture",
+            "published": true,
+            "characters": 586
+          },
+          {
+            "id": "text:de:bible-psa-23",
+            "file": "data/corpus/de/bible-psa-23.json",
+            "title": "Psalm 23",
+            "work": "lutherbibel-1912",
+            "chapter": 501,
+            "kind": "scripture",
+            "published": true,
+            "characters": 586
+          }
+        ],
+        [
+          {
+            "id": "text:de:bible-mat-1-complete",
+            "file": "public/library/de/t/52/bible-mat-1-complete.json",
+            "title": "Matthäus 1",
+            "work": "lutherbibel-1912",
+            "chapter": 930,
+            "kind": "scripture",
+            "published": true,
+            "characters": 2511
+          },
+          {
+            "id": "text:de:bible-mat-1",
+            "file": "data/corpus/de/bible-mat-1.json",
+            "title": "Matthäus 1",
+            "work": "lutherbibel-1912",
+            "chapter": 930,
+            "kind": "scripture",
+            "published": true,
+            "characters": 2511
+          }
+        ]
+      ],
+      "literaryOverlaps": [],
+      "lostReadingIds": []
+    },
+    {
+      "language": "es",
+      "installedDocuments": 1864,
+      "readingDocuments": 675,
+      "publishedReadingDocuments": 675,
+      "readingWorks": 30,
+      "readingWords": 1928698,
+      "bundledDocuments": 29,
+      "publishedBundledReadingDocuments": 0,
+      "repeatedStageDirections": [],
+      "duplicateBodies": [],
+      "duplicateIds": [],
+      "duplicateChapters": [],
+      "intentionalScriptureOverlaps": [],
+      "literaryOverlaps": [],
+      "lostReadingIds": []
+    }
+  ]
+}

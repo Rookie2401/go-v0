@@ -1,0 +1,1682 @@
+{
+  "schema": 1,
+  "reason": "Reconcile cached public index flags with current explicit native-review publication gate; no wording or review changes.",
+  "publicationExpansions": 0,
+  "sourceDocumentsChanged": 0,
+  "heldTextCount": 82,
+  "summaries": [
+    {
+      "lang": "sq",
+      "heldTexts": 37,
+      "oldDigest": "eba7f7333ac9e70a",
+      "newDigest": "1363de6286f0ee8c",
+      "provenanceWorkCounts": [
+        {
+          "slug": "sq-modern-open",
+          "oldPublished": 27,
+          "newPublished": 0
+        },
+        {
+          "slug": "sq-modern-gap-readings",
+          "oldPublished": 10,
+          "newPublished": 0
+        }
+      ]
+    },
+    {
+      "lang": "th",
+      "heldTexts": 45,
+      "oldDigest": "af4b66a39257a089",
+      "newDigest": "986294d37bb5e365",
+      "provenanceWorkCounts": [
+        {
+          "slug": "th-gap-recovery-aesop",
+          "oldPublished": 45,
+          "newPublished": 0
+        }
+      ]
+    }
+  ],
+  "texts": [
+    {
+      "textId": "text:sq:sq-modern-open-ushqimi",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/7c/sq-modern-open-ushqimi.json",
+      "sourceSha256": "d119ebc533c5e36015629c892f0be93f9b4d38ecd6ce19703b1bbb254594056d",
+      "contentSignature": "bbb253bad42d182f",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "bbb253bad42d182f"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-qeni",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/a7/sq-modern-open-qeni.json",
+      "sourceSha256": "5b41c27b8845276b63a9b30ed6ad953c22591cc9958991118148ae9a6d694f9a",
+      "contentSignature": "1dc3a2f949c5d2cb",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "1dc3a2f949c5d2cb"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-macja",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/8e/sq-modern-open-macja.json",
+      "sourceSha256": "fe1540a9f1ae8021934d87d2ac52cb0f0379205e89944649e691fcc1fbb69a37",
+      "contentSignature": "4175e234f19a7dc2",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "4175e234f19a7dc2"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-bleta",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/8a/sq-modern-open-bleta.json",
+      "sourceSha256": "ca8b630c6c72938ed2c29b266fa46775a11551e1a5b9ba0e3eb5cd5aa5d89b28",
+      "contentSignature": "c7e4fcb357448e44",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "c7e4fcb357448e44"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-mali",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/99/sq-modern-open-mali.json",
+      "sourceSha256": "4027770987afb6452ab820f7f46bf49aa2f7f94b4c4a99c7de4ae3e26d91ee9e",
+      "contentSignature": "0b52edba7c33aabe",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "0b52edba7c33aabe"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-deti",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/4c/sq-modern-open-deti.json",
+      "sourceSha256": "0bd2f64fe453c9a86e809157e7b199d251d90465fc86eb79b1a59edb6893bc5a",
+      "contentSignature": "fbce08791facfb44",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "fbce08791facfb44"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-tirana-gjeografia",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/4b/sq-modern-open-tirana-gjeografia.json",
+      "sourceSha256": "9305ebaf8862813ed38057abd91d4233df1269fe7f08b10e28ae8c6ccc39f005",
+      "contentSignature": "d8f670b1ec71d458",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "d8f670b1ec71d458"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-tirana-klima",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/ca/sq-modern-open-tirana-klima.json",
+      "sourceSha256": "4c2f166bc1497b26811e0cddbd38470067ab25274c3d4cb9da938fd78e7fe70d",
+      "contentSignature": "2dae07c249a50095",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "2dae07c249a50095"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-tirana-arkeologjia",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/00/sq-modern-open-tirana-arkeologjia.json",
+      "sourceSha256": "cd4e38f7284eb20c5cbba8ee5deb1d10614322c7c42adf1bab13c86506eea182",
+      "contentSignature": "b8672a633e5f76aa",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "b8672a633e5f76aa"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-tirana-turizmi",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/18/sq-modern-open-tirana-turizmi.json",
+      "sourceSha256": "c3f3237a649b57601c3ce703cd0b811b320ef521a0b134190ff64af3b07fed55",
+      "contentSignature": "e67b3f563ecb958a",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "e67b3f563ecb958a"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-tirana-transporti",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/7e/sq-modern-open-tirana-transporti.json",
+      "sourceSha256": "f63ff9de6cbd11b792aa19df5f0ec2b38d6cdc9f1d5b361c317cf746e9d57a28",
+      "contentSignature": "6967f7910749cd99",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "6967f7910749cd99"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-tirana-demografia",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/21/sq-modern-open-tirana-demografia.json",
+      "sourceSha256": "9a81fdd20d16c55dfbb0533a941a46f6b25253b355176e6c2326679d0f6716bb",
+      "contentSignature": "b3f8f9cbd6f87b18",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "b3f8f9cbd6f87b18"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-tirana-ekonomia",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/21/sq-modern-open-tirana-ekonomia.json",
+      "sourceSha256": "f197c71621825dfee06ff9a4c01e7e06603c5eaf2be3daae3ad374bd2358c27d",
+      "contentSignature": "5d9deb6251bf47b4",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "5d9deb6251bf47b4"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-shqiperia-relievi",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/6b/sq-modern-open-shqiperia-relievi.json",
+      "sourceSha256": "15808da54ae0b737e989d3521d88727f3c6d0e2c226ea880f9dbc3518c2fbf71",
+      "contentSignature": "b036360c788818ee",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "b036360c788818ee"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-shqiperia-klima",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/2f/sq-modern-open-shqiperia-klima.json",
+      "sourceSha256": "3930b4e51ac32ace8593f4d51e769d60a45d5e4a8408ee5f7386dc49fa8dd491",
+      "contentSignature": "ed0a34f9ef970eb5",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "ed0a34f9ef970eb5"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-shqiperia-popullsia",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/52/sq-modern-open-shqiperia-popullsia.json",
+      "sourceSha256": "3479af05ab19fcf5cbbb0614f5670e33b384ea81c582b944032643e62523e255",
+      "contentSignature": "78a5efb7617699c8",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "78a5efb7617699c8"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-shqiperia-ekonomia",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/ca/sq-modern-open-shqiperia-ekonomia.json",
+      "sourceSha256": "cdc9f07efc9bb8df21761c862d5dcbce00554b0b5b471a05523f54050a05a7e0",
+      "contentSignature": "4044498b6d4f0e00",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "4044498b6d4f0e00"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-shqiperia-gjeografia",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/70/sq-modern-open-shqiperia-gjeografia.json",
+      "sourceSha256": "ef69e05def3d374cc840db72dc183da3f9542fcc0efe6a8f85f9942a5e28d6b0",
+      "contentSignature": "2988078736f43367",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "2988078736f43367"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-shqiperia-historia",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/5a/sq-modern-open-shqiperia-historia.json",
+      "sourceSha256": "6e055a0cac09386c50b1c31d937c30aa3817650fb721b2c5dade13df07568a88",
+      "contentSignature": "f80bfc8a61456b56",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "f80bfc8a61456b56"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-durresi-gjeografia",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/54/sq-modern-open-durresi-gjeografia.json",
+      "sourceSha256": "a9a59fa223fe2044a5448ab849630c71b3ce07afe325980f0b1e4cd34557b17b",
+      "contentSignature": "ec56c236162f8608",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "ec56c236162f8608"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-durresi-klima",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/83/sq-modern-open-durresi-klima.json",
+      "sourceSha256": "3d9f56e5f6a5605c5588763a746838efbce7a7a35133e1918bd2637e69df4bed",
+      "contentSignature": "c40206c44df13292",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "c40206c44df13292"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-durresi-historia",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/86/sq-modern-open-durresi-historia.json",
+      "sourceSha256": "ead6b9da1213801815de1e078943bf875fd6df20aab2dad49a797939074096fd",
+      "contentSignature": "1cb49c19820ea0fc",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "1cb49c19820ea0fc"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-durresi-transporti",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/6d/sq-modern-open-durresi-transporti.json",
+      "sourceSha256": "7be8a12ccead1cb60b18db963600ce1bea9ba97ec6b158fd41e560be8e3e109a",
+      "contentSignature": "2e47cc007b8c7e10",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "2e47cc007b8c7e10"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-tirana-historia",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/2d/sq-modern-open-tirana-historia.json",
+      "sourceSha256": "c124bc0bb8db56fa508b5ea8f0e96f34bf218d972baa530a680017e6566ac8d2",
+      "contentSignature": "a25cd47361862a46",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "a25cd47361862a46"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-tirana-institucione",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/e6/sq-modern-open-tirana-institucione.json",
+      "sourceSha256": "5adacccf9568c29b70f2b5ac97c0046dffb8a74d389fa41e925d8cf61eac487c",
+      "contentSignature": "83a2716effa101a8",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "83a2716effa101a8"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-durresi-prejardhja",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/5a/sq-modern-open-durresi-prejardhja.json",
+      "sourceSha256": "51f7e63cccd942e206294c109942541d344d09483c9b08b1ca43cd912875a31f",
+      "contentSignature": "10e5c41cf4c68053",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "10e5c41cf4c68053"
+      }
+    },
+    {
+      "textId": "text:sq:sq-modern-open-shqiperia-politika",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/50/sq-modern-open-shqiperia-politika.json",
+      "sourceSha256": "165757a1cb5ef5ccb471fe6c5ec5c3924749cb6598de40aa81a9fa249a7ad6ba",
+      "contentSignature": "4126300a033d674b",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-open source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed.",
+        "contentSignature": "4126300a033d674b"
+      }
+    },
+    {
+      "textId": "text:sq:sq-gap-vlora",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/ec/sq-gap-vlora.json",
+      "sourceSha256": "9cb648c4b7de41efd8266111fb32a0a7a20e97bda49ece39c0706f024bf515d0",
+      "contentSignature": "743d227fca18fc50",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-gap-readings source-fidelity checker",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source extraction and rights checked; no native-speaker or CEFR claim.",
+        "contentSignature": "743d227fca18fc50"
+      }
+    },
+    {
+      "textId": "text:sq:sq-gap-berati",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/d9/sq-gap-berati.json",
+      "sourceSha256": "ef4e5f4a3511fe9b41b8b3a7932d86c4fc08e2d203049c19ee08e1adfabe370e",
+      "contentSignature": "be74f4468ddf00ec",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-gap-readings source-fidelity checker",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source extraction and rights checked; no native-speaker or CEFR claim.",
+        "contentSignature": "be74f4468ddf00ec"
+      }
+    },
+    {
+      "textId": "text:sq:sq-gap-korca",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/b6/sq-gap-korca.json",
+      "sourceSha256": "b50f76bd7a5ac70e14928f6e8e6113e7c587f402b6ae2265771b357b7de6df13",
+      "contentSignature": "52829612bee1ab80",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-gap-readings source-fidelity checker",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source extraction and rights checked; no native-speaker or CEFR claim.",
+        "contentSignature": "52829612bee1ab80"
+      }
+    },
+    {
+      "textId": "text:sq:sq-gap-gjirokastra",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/87/sq-gap-gjirokastra.json",
+      "sourceSha256": "d6d0495696ed710b00c7cc6cf054b85f9beb4ac6779abc6f8586e5c8787abe20",
+      "contentSignature": "2b1929820f15b688",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-gap-readings source-fidelity checker",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source extraction and rights checked; no native-speaker or CEFR claim.",
+        "contentSignature": "2b1929820f15b688"
+      }
+    },
+    {
+      "textId": "text:sq:sq-gap-park-lura",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/73/sq-gap-park-lura.json",
+      "sourceSha256": "75faf7ec7c8a876939243a0a74f903fd02db688dc6d8e777b958c12bd634131e",
+      "contentSignature": "8d5d6a432996d5ee",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-gap-readings source-fidelity checker",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source extraction and rights checked; no native-speaker or CEFR claim.",
+        "contentSignature": "8d5d6a432996d5ee"
+      }
+    },
+    {
+      "textId": "text:sq:sq-gap-park-dajti",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/83/sq-gap-park-dajti.json",
+      "sourceSha256": "41e3d4c84a5193bf98a162e4d6f53cfad6dbb6091b6ec96aed4b861886494eed",
+      "contentSignature": "502dea52a7d0a23b",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-gap-readings source-fidelity checker",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source extraction and rights checked; no native-speaker or CEFR claim.",
+        "contentSignature": "502dea52a7d0a23b"
+      }
+    },
+    {
+      "textId": "text:sq:sq-gap-lumi-vjosa",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/bf/sq-gap-lumi-vjosa.json",
+      "sourceSha256": "6b74bbdacdf1f9354ba8f3122e5e790af684fac5a98ff2d832ebb677e4ea9a9e",
+      "contentSignature": "ca7de6109ec28550",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-gap-readings source-fidelity checker",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source extraction and rights checked; no native-speaker or CEFR claim.",
+        "contentSignature": "ca7de6109ec28550"
+      }
+    },
+    {
+      "textId": "text:sq:sq-gap-liqeni-shkoder",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/df/sq-gap-liqeni-shkoder.json",
+      "sourceSha256": "7ffede287b34191d43dcc7e399cd1cee80704a8abf051d31fce260cfcc5ce24d",
+      "contentSignature": "4eea36cc22c0a3ac",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-gap-readings source-fidelity checker",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source extraction and rights checked; no native-speaker or CEFR claim.",
+        "contentSignature": "4eea36cc22c0a3ac"
+      }
+    },
+    {
+      "textId": "text:sq:sq-gap-alpet-shqiptare",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/cc/sq-gap-alpet-shqiptare.json",
+      "sourceSha256": "dadac77be9006acd61ba7ad08fea90aed88b0680b8365e3289dc94ed33e49d9a",
+      "contentSignature": "40db8a66af82a5a2",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-gap-readings source-fidelity checker",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source extraction and rights checked; no native-speaker or CEFR claim.",
+        "contentSignature": "40db8a66af82a5a2"
+      }
+    },
+    {
+      "textId": "text:sq:sq-gap-butrinti",
+      "lang": "sq",
+      "indexFile": "public/library/sq/index/library-0000.json",
+      "sourceFile": "public/library/sq/t/d1/sq-gap-butrinti.json",
+      "sourceSha256": "1fd62006599ae502da4005c2ed4afa14d4a43e50e967a357c67e41dfbd3997fa",
+      "contentSignature": "dd84b6bac329b7ef",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-sq-modern-gap-readings source-fidelity checker",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source extraction and rights checked; no native-speaker or CEFR claim.",
+        "contentSignature": "dd84b6bac329b7ef"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-01",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/0c/th-gap-recovery-aesop-01.json",
+      "sourceSha256": "31ce6c66e80d4967e678b6ac64571673ac60c143b3b1f3889e33f55b1a9d3b58",
+      "contentSignature": "3ab95692b4ff9400",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "3ab95692b4ff9400"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-02",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/25/th-gap-recovery-aesop-02.json",
+      "sourceSha256": "0f73916d89bfa622e56082992b7091dc7393677f8f65209dc59229921eec3bfd",
+      "contentSignature": "1c3aa95ac054c8cc",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "1c3aa95ac054c8cc"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-03",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/72/th-gap-recovery-aesop-03.json",
+      "sourceSha256": "08e0b28036dca4707cf3d0a52a314d7fd40a859ec6696da720a77223d797182e",
+      "contentSignature": "b5a4a61c1ac7fd63",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "b5a4a61c1ac7fd63"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-04",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/f3/th-gap-recovery-aesop-04.json",
+      "sourceSha256": "9e4215d50cfcd3870aedc00164898eb27697338d57efc292a8cb890106deb139",
+      "contentSignature": "9ffdf3a830219046",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "9ffdf3a830219046"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-05",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/40/th-gap-recovery-aesop-05.json",
+      "sourceSha256": "8726c1bd67c433498558901bba44c005672c5d4a484a0c34ba21b0e2b3f4cf33",
+      "contentSignature": "2c9cc781db9b7125",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "2c9cc781db9b7125"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-06",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/59/th-gap-recovery-aesop-06.json",
+      "sourceSha256": "49123e2af643da0a80f405f5e1a107cbcea5706708dcb5c3ab7bcd697a742cdf",
+      "contentSignature": "8ab973885adecd10",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "8ab973885adecd10"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-07",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/a6/th-gap-recovery-aesop-07.json",
+      "sourceSha256": "3433a685b2b8f011e21ba46fc7fdee152710bae582bf3af121caeabf5e90d11b",
+      "contentSignature": "2355164537bd17f5",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "2355164537bd17f5"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-08",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/57/th-gap-recovery-aesop-08.json",
+      "sourceSha256": "c94a33cf4a0af7e5e712ecb4c9fcad138a239a453857cb7fabfd61bb2c7edb85",
+      "contentSignature": "5969b299c7409661",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "5969b299c7409661"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-09",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/a4/th-gap-recovery-aesop-09.json",
+      "sourceSha256": "0fa7fd10eda6d0e95fd3cab9fbcdbc83ad75151383308b85693410e585c0866b",
+      "contentSignature": "71d7c35401cc5df9",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "71d7c35401cc5df9"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-10",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/b6/th-gap-recovery-aesop-10.json",
+      "sourceSha256": "48acc84662d811d9b7c3bcd69fa10be962445dee70d31990c96322fe44f30f5c",
+      "contentSignature": "dc7192772f20f3e7",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "dc7192772f20f3e7"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-11",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/69/th-gap-recovery-aesop-11.json",
+      "sourceSha256": "d061db5e0bb495ab8d1f5e289edc706d5935e8cc451718ffce4f4f1afa874d02",
+      "contentSignature": "60e837e2984f2287",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "60e837e2984f2287"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-12",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/50/th-gap-recovery-aesop-12.json",
+      "sourceSha256": "73170f32242cb4278c66277511c329d0ee43e31ff818cf85750293b49e3f9e1f",
+      "contentSignature": "e0adcd3ff811ce17",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "e0adcd3ff811ce17"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-13",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/03/th-gap-recovery-aesop-13.json",
+      "sourceSha256": "22101d0b63d8f2458a08e439f819d9e97eacdd6d3b8fcb3153f2a7afb831bce2",
+      "contentSignature": "130c1b1046b7da94",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "130c1b1046b7da94"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-14",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/82/th-gap-recovery-aesop-14.json",
+      "sourceSha256": "b3bc63dd4c9e88a9295d89bd36a1cd2228ee8593e26bf42202c85658944224b4",
+      "contentSignature": "d7959588cddc991e",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "d7959588cddc991e"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-15",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/35/th-gap-recovery-aesop-15.json",
+      "sourceSha256": "a4bc219e94549262bf10a8d401145cee1b55d4e134e8f7f11165ac079d357429",
+      "contentSignature": "8e08176737fb177a",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "8e08176737fb177a"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-16",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/1c/th-gap-recovery-aesop-16.json",
+      "sourceSha256": "b24f1e7e51f7b8f65cde432019a4c633ab3d42cf7c93010cb5fa1f26cc95ac3e",
+      "contentSignature": "d65f8b7710b5a33c",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "d65f8b7710b5a33c"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-17",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/cf/th-gap-recovery-aesop-17.json",
+      "sourceSha256": "bc11c4669a9bde221976843b382f2cdb3477d39894ed7926db32c2475ef6f77d",
+      "contentSignature": "a7137ddd1bcf0786",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "a7137ddd1bcf0786"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-18",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/4e/th-gap-recovery-aesop-18.json",
+      "sourceSha256": "46f8e4ba4b67192a7e5b6bde68f6efc9fdf897e9b22a4adf770a409e7c405bee",
+      "contentSignature": "132342b1b8f8c44e",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "132342b1b8f8c44e"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-19",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/01/th-gap-recovery-aesop-19.json",
+      "sourceSha256": "54d53c54c43d3b01d71e739e72eaf76b59b9633bf6f09e468997cd3a19e2a8c4",
+      "contentSignature": "7420a7380b4aab59",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "7420a7380b4aab59"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-20",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/8d/th-gap-recovery-aesop-20.json",
+      "sourceSha256": "0b9b5b68ac17b80ee737ddba8cbaa9011843641453944eec69951b2c2200a3b4",
+      "contentSignature": "9f565bae84bba47e",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "9f565bae84bba47e"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-21",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/da/th-gap-recovery-aesop-21.json",
+      "sourceSha256": "f59cffb9ec965f64200503f0a8f6207a885a15406de03d0d75768e3f9dfdfb7c",
+      "contentSignature": "8260eb07f634cbf4",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "8260eb07f634cbf4"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-22",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/27/th-gap-recovery-aesop-22.json",
+      "sourceSha256": "c10aba6ce9826a89c6b9fbfb810c52229650fbad6f205efd28de129613d1894d",
+      "contentSignature": "ecc08b7128f5b219",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "ecc08b7128f5b219"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-23",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/74/th-gap-recovery-aesop-23.json",
+      "sourceSha256": "56dbe85e69db5f82a95063f4c0ee17176f02c647104d5ef49e6b1e5dff89d699",
+      "contentSignature": "3ad9af81f0bc7ae4",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "3ad9af81f0bc7ae4"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-24",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/c1/th-gap-recovery-aesop-24.json",
+      "sourceSha256": "04c4d157fed4cf05aa2e0ff3cb48859931ba46627c060360cb2272200fced781",
+      "contentSignature": "f27faf2c241e7737",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "f27faf2c241e7737"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-25",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/0e/th-gap-recovery-aesop-25.json",
+      "sourceSha256": "d2b5bf7982f7a4ab0c2ac2553f5c4f76c310914c48937b88fa69da3457e72788",
+      "contentSignature": "3ee5a00f35cb2e2f",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "3ee5a00f35cb2e2f"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-26",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/5b/th-gap-recovery-aesop-26.json",
+      "sourceSha256": "295df2c293ac312f574f6090830698079fe6f34451562da59255213de12d8d1d",
+      "contentSignature": "2ddd28c163614525",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "2ddd28c163614525"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-27",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/a8/th-gap-recovery-aesop-27.json",
+      "sourceSha256": "d99c43d426ea176042ab53d8372da0b9a794b322d34dee36d337daedf70903a1",
+      "contentSignature": "8395c12dd8658a27",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "8395c12dd8658a27"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-28",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/f5/th-gap-recovery-aesop-28.json",
+      "sourceSha256": "acf34bd30a2e54d8fe3750ead7cc7917082555f54afb032f465ba7c1f6b14a93",
+      "contentSignature": "7337d0ed7ad45b3a",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "7337d0ed7ad45b3a"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-29",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/42/th-gap-recovery-aesop-29.json",
+      "sourceSha256": "d929f3d57e6eca5a00a7473264a18afa39842cc0830fae077883d0e4dc141f06",
+      "contentSignature": "dc168bbdc2c30231",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "dc168bbdc2c30231"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-30",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/04/th-gap-recovery-aesop-30.json",
+      "sourceSha256": "2e974220fe4669b91f6476a2e2ae49c267cd0efd3d5a63a820e0594388e66315",
+      "contentSignature": "ed1214f1a2556596",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "ed1214f1a2556596"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-31",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/b7/th-gap-recovery-aesop-31.json",
+      "sourceSha256": "af363d97c92f1afd24201a5451e1a79b2b1488196dd114c165e2c770da5395d3",
+      "contentSignature": "9fd0d1ebc9ac5c70",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "9fd0d1ebc9ac5c70"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-32",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/6a/th-gap-recovery-aesop-32.json",
+      "sourceSha256": "ddc08c545d0e632510249eb290d8abd4e34a6e65988f6bc48b9f54bcbe5d9196",
+      "contentSignature": "618175206dca1043",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "618175206dca1043"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-33",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/1d/th-gap-recovery-aesop-33.json",
+      "sourceSha256": "b414aad7e1f22a33ad8a0c103bd8ef13261b3cb107d672c1179424c6301460f8",
+      "contentSignature": "5bfeb4bcebc9d52a",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "5bfeb4bcebc9d52a"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-34",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/38/th-gap-recovery-aesop-34.json",
+      "sourceSha256": "607fec10843deb82c2e97f2874083f6c33ec6e198ff18fefe9a444de2407eb2c",
+      "contentSignature": "c574d89e9358d64e",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "c574d89e9358d64e"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-35",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/eb/th-gap-recovery-aesop-35.json",
+      "sourceSha256": "0adde9190f751bf2cbfe8340326a046d3801ea738a16437654ead0b699efb6c9",
+      "contentSignature": "d6d92382f4653169",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "d6d92382f4653169"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-36",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/9e/th-gap-recovery-aesop-36.json",
+      "sourceSha256": "41112af444ccac5a718b0ab73a3ef89811c67d1f58e3b05e95751cde6ebb239e",
+      "contentSignature": "ddc3973fc958c58f",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "ddc3973fc958c58f"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-37",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/51/th-gap-recovery-aesop-37.json",
+      "sourceSha256": "fc31d882453c1d0f518c1fd6cdd49408a21a415b4d2d2ec8009327d0519c920e",
+      "contentSignature": "69ff59d5065256aa",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "69ff59d5065256aa"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-38",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/6c/th-gap-recovery-aesop-38.json",
+      "sourceSha256": "50b5ba15b4933ee516d43e07016b35da69f9a01640478603d8fe298d1c77c88c",
+      "contentSignature": "63eb7afcaef29e6d",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "63eb7afcaef29e6d"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-39",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/1f/th-gap-recovery-aesop-39.json",
+      "sourceSha256": "25f50113c451dcc699d59c3c447145cafb55d05a377fa0769012a2962e152daf",
+      "contentSignature": "75513c9688c651bd",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "75513c9688c651bd"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-40",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/7b/th-gap-recovery-aesop-40.json",
+      "sourceSha256": "d8fe982fc6dfcf105ad7f71280d44edeea6f6cbbf89ccd3ce85be30b70c91b40",
+      "contentSignature": "b058ac8be60aa738",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "b058ac8be60aa738"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-41",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/c8/th-gap-recovery-aesop-41.json",
+      "sourceSha256": "92fec2396099a0b221ec0e8546e91acfe1db2bc4727754b8cc44920e91ab1656",
+      "contentSignature": "1091989dcc47c9d1",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "1091989dcc47c9d1"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-42",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/e1/th-gap-recovery-aesop-42.json",
+      "sourceSha256": "ddda4d905fb10f62a4971a1aea0540ad8323e4b11b9407d4215927ffde5be09e",
+      "contentSignature": "c242f6d65448d85d",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "c242f6d65448d85d"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-43",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/2e/th-gap-recovery-aesop-43.json",
+      "sourceSha256": "9099b4e57b2a066df241377e6ecf5dc64642d58cfec2eb0b89d6f1c9a7af7fd0",
+      "contentSignature": "26ba04ca4948012e",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "26ba04ca4948012e"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-44",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/47/th-gap-recovery-aesop-44.json",
+      "sourceSha256": "b290c106ebc0c0fafba1512dc81d041e3d2fc40e0a146ea4c64f132490f2d0b7",
+      "contentSignature": "950da20410345cbb",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "950da20410345cbb"
+      }
+    },
+    {
+      "textId": "text:th:th-gap-recovery-aesop-45",
+      "lang": "th",
+      "indexFile": "public/library/th/index/library-0000.json",
+      "sourceFile": "public/library/th/t/94/th-gap-recovery-aesop-45.json",
+      "sourceSha256": "7f71d528fd659c52f55ce4215ffb3a00c9a97e5bf7d0ec6007b6726caef0d658",
+      "contentSignature": "c5a186a911cdc87d",
+      "oldPublished": true,
+      "newPublished": false,
+      "exactBlockingReasons": [
+        "generated or transformed wording needs an explicit native-speaker review with a named reviewer and valid date"
+      ],
+      "reviewUnchanged": {
+        "status": "reviewed",
+        "reviewedBy": "acquire-course-gaps-th-sq source-fidelity check",
+        "reviewedAt": "2026-10-02",
+        "notes": "Source-fidelity and Thai-only rights checked; beginner suitability remains a planning hypothesis, not CEFR certification.",
+        "contentSignature": "c5a186a911cdc87d"
+      }
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
+import { act } from 'react';
 import { buildFixtureText, type CatalogText, type LanguageCode } from '../../src/core';
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { makeHarness, type Mounted } from './harness';
@@ -19,7 +20,10 @@ describe('Scripture canonical identity', () => {
       const h = await makeHarness({ courseId, library: [full] });
       const seed = await buildFixtureText(h.store, {
         lang, slug: 'seed-1john-1', title: full.title, kind: 'scripture', scripture: { book: '1JN', chapter: 1 },
-        sentences: [{ tokens: [{ surface: 'Test', isWord: true }], verseRefs: ['1JN.1.9'] }],
+        sentences: [
+          { tokens: [{ surface: 'Test', isWord: true }], verseRefs: ['1JN.1.9'] },
+          { tokens: [{ surface: 'Test', isWord: true }], verseRefs: ['JHN.3.16'] },
+        ],
       });
       await h.store.texts.put({ ...seed, chapter: { index: 1160 } });
       localStorage.setItem(`go.scripture.open.${lang}`, JSON.stringify(['t:new', 'd:letters', 'b:1JN']));
@@ -30,6 +34,11 @@ describe('Scripture canonical identity', () => {
       const entries = mounted.container.querySelectorAll(`[data-text-id="${full.id}"]`);
       expect(entries).toHaveLength(1);
       expect(entries[0].querySelector('a')?.getAttribute('href')).toContain(encodeURIComponent(full.id));
+      const other = mounted.container.querySelector<HTMLButtonElement>('[data-group="other"] button');
+      await act(async () => { if (other?.getAttribute('aria-expanded') === 'false') other.click(); });
+      const supplemental = mounted.container.querySelector(`[data-group="other"] [data-text-id="${seed.id}"]`);
+      expect(supplemental).not.toBeNull();
+      expect(mounted.container.querySelector(`[data-group="b:1JN"] [data-text-id="${seed.id}"]`)).toBeNull();
       expect(await h.store.texts.get(seed.id)).toBeDefined();
     },
   );

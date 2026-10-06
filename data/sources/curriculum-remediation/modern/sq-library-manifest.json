@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "lang": "sq",
+  "entries": [
+    {
+      "slug": "gv-sq-adc3e64cb681-excerpt",
+      "title": "Uzbekistani më në fund po fillon të trajtojë problemin e ndotjes së ajrit — excerpt",
+      "author": "Nurbek Bekmurzaev",
+      "translator": "Ardi Pulaj",
+      "stage": "6",
+      "streams": [
+        "library"
+      ],
+      "contentType": "nonfiction",
+      "genre": "contemporary-nonfiction",
+      "era": "modern",
+      "pedagogicalRole": "authentic",
+      "registers": [
+        "modern_standard",
+        "journalistic"
+      ],
+      "releaseState": "ready",
+      "nativeReview": "source-authored; placement review pending",
+      "difficulty": {
+        "adapter": "sq",
+        "tokenCount": 307,
+        "typeCount": 179,
+        "observedLemmaCount": 106,
+        "analyzerUnresolvedTokens": 72,
+        "lexicalDiversity": 0.5830618892508144,
+        "sentenceCount": 18,
+        "medianSentenceTokens": 15,
+        "maxSentenceTokens": 46,
+        "limitations": "Adapter lexicon is incomplete; unresolved analyzer tokens are not learner unknown words. No frequency corpus, native review, CEFR, or personalized coverage inferred."
+      },
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "canModify": true,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "verified": true,
+        "verifiedBy": "Exact Global Voices article credits, license footer and official republication policy",
+        "verifiedAt": "2026-10-04",
+        "licensing": "CC BY 3.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "basis": "GV-created author narrative/explanatory paragraphs in this exact credited translation; article/footer CC BY 3.0, current official policy permits redistribution and adaptation. Selected excerpt excludes third-party quoted prose and all media.",
+        "evidence": [
+          "https://sq.globalvoices.org/01/23/4914",
+          "https://globalvoices.org/2024/01/22/uzbekistan-is-finally-starting-to-address-its-air-pollution-problem/",
+          "https://globalvoices.org/about/global-voices-attribution-policy/",
+          "https://creativecommons.org/licenses/by/3.0/"
+        ]
+      },
+      "source": {
+        "file": "gv-sq-adc3e64cb681-excerpt.txt",
+        "kind": "plain",
+        "url": "https://sq.globalvoices.org/01/23/4914",
+        "edition": "Global Voices sq edition, Tue, 23 Jan 2024 21:31:08 +0000",
+        "sha256": "46a6d67d094521536f5042a9538df8d7cb8b371e34cb230d9d39c2a8a6994317",
+        "originalSourceSha256": "5d0ebec04cbe6116326eccd8642283cccb11df85fe398af4c4febfaa925a3bb1",
+        "originalStoryUrl": "https://globalvoices.org/2024/01/22/uzbekistan-is-finally-starting-to-address-its-air-pollution-problem/",
+        "author": "Nurbek Bekmurzaev",
+        "translator": "Ardi Pulaj",
+        "attribution": "Uzbekistani më në fund po fillon të trajtojë problemin e ndotjes së ajrit — Nurbek Bekmurzaev, translated by Ardi Pulaj. Originally on Global Voices: https://sq.globalvoices.org/01/23/4914; original story: https://globalvoices.org/2024/01/22/uzbekistan-is-finally-starting-to-address-its-air-pollution-problem/. CC BY 3.0: https://creativecommons.org/licenses/by/3.0/. Changes: selected text-only excerpt; HTML/links unwrapped, other paragraphs, images, captions, quoted prose and media omitted; source wording preserved.",
+        "provenance": "Exact paragraphs 5,6,9,10,12 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content."
+      },
+      "convert": {
+        "stripBoilerplate": false,
+        "unwrap": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "curriculum-remediation exact article credits and excerpt source-fidelity check",
+        "reviewedAt": "2026-10-04",
+        "coversSourceSha256": "46a6d67d094521536f5042a9538df8d7cb8b371e34cb230d9d39c2a8a6994317",
+        "notes": "Source-authored authentic prose. Article credit/license and excerpt comparison only; no native placement or rescue-text approval invented."
+      }
+    }
+  ]
+}

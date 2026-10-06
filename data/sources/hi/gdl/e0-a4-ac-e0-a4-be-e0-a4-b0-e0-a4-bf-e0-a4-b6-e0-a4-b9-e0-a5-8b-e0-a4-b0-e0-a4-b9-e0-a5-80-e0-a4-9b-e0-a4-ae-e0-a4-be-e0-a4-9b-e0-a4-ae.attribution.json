@@ -1,0 +1,38 @@
+{
+  "title": "बारिश हो रही छमा छम",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ac%e0%a4%be%e0%a4%b0%e0%a4%bf%e0%a4%b6-%e0%a4%b9%e0%a5%8b-%e0%a4%b0%e0%a4%b9%e0%a5%80-%e0%a4%9b%e0%a4%ae%e0%a4%be-%e0%a4%9b%e0%a4%ae/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Author: shilpa",
+    "Illustrators: Ajit Narayan, Ketan Raut, Padmanabh",
+    "Translator: Ravi Ranjan Goswami",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: बारिश हो रही छमा छम is translated by Ravi Ranjan Goswami . The © for this translation lies with Ravi Ranjan Goswami, 2016. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' Rain is falling chamma, cham...... ' , by shilpa . © shilpa , 2016. Some rights reserved. Released under CC BY 4.0 license.",
+    "Illustration Attributions:",
+    "Cover page: Falling rain , by Ajit Narayan © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 2: Boys playing in the rain , by Ajit Narayan © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 3: Boys waving to the cloud in the sky , by Ajit Narayan © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 4: Boys playing in the rain , by Ajit Narayan © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 5: Tree with little plants around it , by Ketan Raut © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 6: Farmer gazing at the cloud in the sky , by Ajit Narayan © Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Page 7: Crow watching peacock dance , by Padmanabh © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "बारिश हो रही छमा छम (Hindi)",
+    "मेरी कहानी बारिश के मौसम के बारे में है ...",
+    "यह पठन स्तर १ की किताब है, उन बच्चों के लिए जो पढ़ना शुरू कर रहे हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "a3f933ed8346d372e82abfa95a45e82f9e04842604c0f5adbb78562a071f35d4"
+}

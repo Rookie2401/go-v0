@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 // PLAN8: GoListen is deferred. With `features.listen = false` no audio interface and no statement about listening is shown.
 // Uses the harness with `features: { listen: false }`; the same pages with `listen: true` are covered by the existing suites.
-import { afterEach, describe, expect, it } from 'vitest';
-import type { ReadingProgress, Recommendation } from '../../src/core';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import type { ReadingProgress } from '../../src/core';
 import { THAI_COURSE_ID, THAI_WORKS } from '../../src/course';
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { TextProgress } from '../../src/ui/coverage';
@@ -75,14 +75,34 @@ describe('listening off: banners, Home, progress', () => {
     expect(q(mounted.container, '[data-testid="preview-banner"]')!.textContent).toContain('placeholder sound');
   });
 
-  it('Home drops an audio recommendation even if the engine offers one', async () => {
+  it('Home hides the listening doorway when listening is explicitly switched off', async () => {
     const h = await makeHarness(off);
     await seedStory(h.store);
-    const rec = (over: Partial<Recommendation>): Recommendation => ({ reason: 'next-input', reinforces: [], score: 1, explanation: 'because', ...over });
-    h.learn.recommend.mockImplementation(async () => [rec({ reason: 'listen-to-read-text', textId: STORY_ID, explanation: 'Reviewed real speech exists.' }), rec({ reason: 'reread', textId: STORY_ID })]);
     mounted = await h.mount(app());
-    expect(qa(mounted.container, 'ul.list li').map((li) => li.getAttribute('data-reason'))).toEqual(['reread']);
+    expect(qa(mounted.container, 'a.home__entry').some((a) => a.getAttribute('href') === '/listen')).toBe(false);
+    expect(h.learn.recommend).not.toHaveBeenCalled();
     expect(mounted.container.textContent).not.toMatch(AUDIO_WORDS);
+  });
+
+  it('direct GoListen routes show an unavailable state without loading audio or materializing content', async () => {
+    const h = await makeHarness(off);
+    const story = await seedStory(h.store);
+    await h.store.texts.put({ ...story, published: true });
+    const manifestsAll = vi.spyOn(h.store.manifests, 'all');
+
+    mounted = await h.mount(app(), { router: '/listen' });
+    expect(mounted.container.textContent).toContain('GoListen is not available in this version');
+    expect(mounted.container.querySelector('input[aria-label="Recording manifest"]')).toBeNull();
+    expect(manifestsAll).not.toHaveBeenCalled();
+    expect(h.library.open).not.toHaveBeenCalled();
+    expect(h.listen.audioStatus).not.toHaveBeenCalled();
+
+    await mounted.unmount(); mounted = undefined;
+    mounted = await h.mount(app(), { router: `/listen/${encodeURIComponent(STORY_ID)}` });
+    expect(mounted.container.textContent).toContain('GoListen is not available in this version');
+    expect(mounted.container.textContent).not.toContain(story.title);
+    expect(qa<HTMLAnchorElement>(mounted.container, 'a').some((a) => a.getAttribute('href') === '/read')).toBe(true);
+    expect(h.listen.audioStatus).not.toHaveBeenCalled();
   });
 
   it('the reader\'s progress block shows no "listened" figure (but does with listening on)', async () => {

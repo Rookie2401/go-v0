@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "lang": "sq",
+  "entries": [
+    {
+      "slug": "sq-gap-recovery-historical-fables",
+      "title": "Albanian historical fable bridge",
+      "courseId": "albania-sq",
+      "stage": "4",
+      "streams": [
+        "library"
+      ],
+      "contentType": "story",
+      "variety": "historical-albanian",
+      "genre": "fable",
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "jurisdiction-check-required",
+        "canBundle": false,
+        "verified": false,
+        "licensing": "Rights and edition identity require verification",
+        "attributionRequired": true,
+        "canStoreOffline": false,
+        "evidence": [
+          "https://wikisource.org/wiki/Category:Sq_Shqip_(Albanian)",
+          "https://creativecommons.org/licenses/by-sa/4.0/"
+        ]
+      },
+      "source": {
+        "file": "documents.json",
+        "kind": "documents",
+        "url": "https://wikisource.org/wiki/Bretkosa%20q%C3%AB%20deshi%20t%C3%AB%20trashej%20sa%20nj%C3%AB%20Ka",
+        "edition": "Wikisource revisions checked 2026-10-02",
+        "attribution": "Per-document attribution is retained in documents.json.",
+        "provenance": "Exact source revisions cached under raw/; no translation, modernization, or generated text."
+      },
+      "review": {
+        "status": "unreviewed",
+        "coversSourceSha256": "26b533a22bbcfc104e7aed1186da759600e6f3ab5b9a3e1bd6628b38204c1b20",
+        "notes": "Historical variety only; rights and author/edition identity remain pending. Not approved for the modern course spine."
+      }
+    }
+  ]
+}

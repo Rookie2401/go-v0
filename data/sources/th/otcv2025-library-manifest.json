@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "lang": "th",
+  "entries": [
+    {
+      "slug": "bible-thai-otcv2025",
+      "title": "Biblica® Open Thai Common Version 2025 — Thai Bible",
+      "courseId": "thailand-th",
+      "stream": "scripture",
+      "domains": [
+        "scripture",
+        "theology"
+      ],
+      "contentType": "scripture",
+      "rights": {
+        "state": "verified-open-licence",
+        "verifiedBy": "Open.Bible metadata.xml and release cross-comparison",
+        "verifiedAt": "2026-10-01",
+        "basis": "Official release metadata.xml identifies Biblica, Inc. as rights holder and CC BY-SA 4.0, with attribution and derivative-work conditions.",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "canBundle": true
+      },
+      "source": {
+        "file": "otcv2025-library-documents.json",
+        "kind": "documents",
+        "url": "https://api.open.bible/artifactContent/2477bade-c5d4-4dc4-8a53-5cad848549db",
+        "edition": "Open Thai Common Version 2025",
+        "attribution": "Biblica® Open Thai Common Version 2025 — Copyright © 2025 by Biblica, Inc.; CC BY-SA 4.0; original available at www.biblica.com and open.bible.",
+        "provenance": "Imported verse by verse from the official Open.Bible release a62f327aa0179709-rev2; USX and independent USFM archives were compared after removing only declared apparatus (headings, footnotes and cross-references)."
+      }
+    }
+  ]
+}

@@ -13,9 +13,9 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { GoTellSuggestion, IntentProposal, ProductionAnalysis, Testimony as TestimonyRow, TestimonyRevision } from '../../core';
+import type { GoTellSuggestion, IntentProposal, ProductionAnalysis, Testimony as TestimonyRow, TestimonyRevision, Text } from '../../core';
 import { useApp } from '../context';
-import { formatDate, itemSurface } from '../format';
+import { formatDate, isTestimonyText, itemSurface } from '../format';
 import { BackLink, Collapsible, Disclosure, Topbar } from '../ui';
 import { statusText } from './draft';
 import { RevisionAudio } from './RevisionAudio';
@@ -39,6 +39,7 @@ export function Testimony() {
   const [analysis, setAnalysis] = useState<ProductionAnalysis | null>(null);
   const [suggestions, setSuggestions] = useState<GoTellSuggestion[]>([]);
   const [titles, setTitles] = useState<Map<string, string>>(new Map());
+  const [sourceTexts, setSourceTexts] = useState<Map<string, Text>>(new Map());
   const [busy, setBusy] = useState<null | 'check' | 'save' | 'intent' | 'restore'>(null);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -52,7 +53,7 @@ export function Testimony() {
   // screen; the draft itself is per learner + language and comes back when you switch back.
   useEffect(() => {
     let live = true;
-    setTestimony(null); setRevisions([]); setAnalysis(null); setSuggestions([]); setDiff(null); setProposal(null); setUndo(null); setNotice(null); setError(null);
+    setTestimony(null); setRevisions([]); setAnalysis(null); setSuggestions([]); setTitles(new Map()); setSourceTexts(new Map()); setDiff(null); setProposal(null); setUndo(null); setNotice(null); setError(null);
     void (async () => {
       const t = await gotell.getOrCreateTestimony(userId, lang);
       const revs = await gotell.listRevisions(t.id);
@@ -65,14 +66,25 @@ export function Testimony() {
 
   // Titles for provenance lines ("encountered 3 times in Story 1, John 3").
   useEffect(() => {
-    const textIds = [...new Set(suggestions.flatMap((s) => s.familiar.flatMap((f) => f.textIds)))];
+    const textIds = [...new Set([
+      ...suggestions.flatMap((s) => [...s.familiar.flatMap((f) => f.textIds), ...(s.sources ?? []).map((src) => src.textId)]),
+      ...(proposal?.sources ?? []).map((source) => source.textId),
+    ])];
+    setTitles(new Map());
+    setSourceTexts(new Map());
     if (textIds.length === 0) return;
     let live = true;
-    void store.texts.getMany(textIds).then((rows) => {
-      if (live) setTitles(new Map(rows.filter((t): t is NonNullable<typeof t> => !!t).map((t) => [t.id, t.title])));
+    void Promise.all([store.texts.getMany(textIds), store.corpora.all()]).then(([rows, corpora]) => {
+      if (live) {
+        const byCorpus = new Map(corpora.map((c) => [c.id, c]));
+        const found = rows.filter((t): t is Text => !!t && t.lang === lang && t.published === true
+          && t.listeningAssessmentId === undefined && t.readingAssessmentId === undefined && !isTestimonyText(t, byCorpus));
+        setTitles(new Map(found.map((t) => [t.id, t.title])));
+        setSourceTexts(new Map(found.map((t) => [t.id, t])));
+      }
     });
     return () => { live = false; };
-  }, [store, suggestions]);
+  }, [store, lang, suggestions, proposal]);
 
   const fail = (e: unknown) => setError(e instanceof Error ? e.message : String(e));
 
@@ -244,7 +256,7 @@ export function Testimony() {
             <input ref={intentField} type="text" value={english} onChange={(e) => setEnglish(e.target.value)} aria-label="What you want to say, in English" />
           </label>
           <button type="button" className="btn btn--small" disabled={busy !== null || english.trim() === ''} onClick={() => { void askIntent(); }}>Help me say it</button>
-          {proposal && <IntentBox proposal={proposal} lang={lang} onInsert={(text) => setDraft(draft ? `${draft}${lang === 'th' ? '' : ' '}${text}` : text)} />}
+          {proposal && <IntentBox proposal={proposal} lang={lang} sourceTexts={sourceTexts} onInsert={(text) => setDraft(draft ? `${draft}${lang === 'th' ? '' : ' '}${text}` : text)} />}
         </Disclosure>
 
         {gotell.practice && (
@@ -264,7 +276,7 @@ export function Testimony() {
                   <h3 className="label">Sentence {index + 1}</h3>
                   <ul className="list plain">
                     {list.map((s) => (
-                      <SuggestionCard key={s.id} suggestion={s} lang={lang} titles={titles}
+                      <SuggestionCard key={s.id} suggestion={s} lang={lang} titles={titles} sourceTexts={sourceTexts}
                         onAccept={(x) => { void accept(x); }} onReject={(x) => { void reject(x); }} onEdit={(x, t) => { void edit(x, t); }} />
                     ))}
                   </ul>
@@ -316,7 +328,7 @@ export function Testimony() {
 }
 
 /** The answer to "What are you trying to say?". Unsupported ⇒ the limitation and nothing to insert. */
-function IntentBox({ proposal, lang, onInsert }: { proposal: IntentProposal; lang: string; onInsert(text: string): void }) {
+function IntentBox({ proposal, lang, sourceTexts, onInsert }: { proposal: IntentProposal; lang: string; sourceTexts: Map<string, Text>; onInsert(text: string): void }) {
   const canInsert = proposal.supported && proposal.insertable && !!proposal.proposal;
   return (
     <div className="proposal sugg" aria-label="Suggested wording" data-supported={proposal.supported ? 'true' : 'false'}>
@@ -339,9 +351,15 @@ function IntentBox({ proposal, lang, onInsert }: { proposal: IntentProposal; lan
       {proposal.meaningNote && <p className="note note--warn" role="note">{proposal.meaningNote}</p>}
       {proposal.supported && proposal.sources.length > 0 && (
         <ul className="sugg-sources card__prov" aria-label="Where this wording comes from">
-          {proposal.sources.map((s) => (
-            <li key={`${s.sentenceId}|${s.itemId}`}><span className="faint">{s.textTitle}:</span> <span lang={lang} className="literal">{s.excerpt}</span></li>
-          ))}
+          {proposal.sources.map((s) => {
+            const source = sourceTexts.get(s.textId);
+            const readable = source && source.lang === lang && source.published === true
+              && source.listeningAssessmentId === undefined && source.readingAssessmentId === undefined && !isTestimonyText(source);
+            return <li key={`${s.sentenceId}|${s.itemId}`}>
+              {readable ? <Link className="faint" to={source.kind === 'scripture' ? `/scripture/${encodeURIComponent(source.id)}` : `/read/${encodeURIComponent(source.id)}`}>{source.title}</Link> : <span className="faint">Source no longer available.</span>}
+              {readable && <>: <span lang={lang} className="literal">{s.excerpt}</span></>}
+            </li>;
+          })}
         </ul>
       )}
       {proposal.supported && proposal.newItems.length > 0 && (

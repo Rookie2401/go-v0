@@ -84,8 +84,10 @@ export function testimonySlug(userId: string, number: number): string {
 }
 
 /** Testimony Texts live in the shared texts table; UI/GoLearn filter with this. */
-export function isTestimonyText(text: Text): boolean {
-  return text.kind === 'testimony';
+export function isTestimonyText(text: Text): boolean;
+export function isTestimonyText(text: Text, corpus: { kind: string }): boolean;
+export function isTestimonyText(text: Text, corpus?: { kind: string }): boolean {
+  return text.kind === 'testimony' || corpus?.kind === 'testimony';
 }
 
 export const MAX_SUGGESTIONS_PER_SENTENCE = 3;
@@ -335,13 +337,13 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
 
     const suggestions: GoTellSuggestion[] = [];
     for (const s of kept) {
-      if (!persist) { suggestions.push(s); continue; }
+      if (!persist) { if (await suggestionSourcesCurrent(s)) suggestions.push(s); continue; }
       const existing = await store.suggestions.get(s.id);
-      if (existing && existing.status !== 'shown') { suggestions.push(existing); continue; } // keep the learner's decision
+      if (existing && existing.status !== 'shown') { if (await suggestionSourcesCurrent(existing)) suggestions.push(existing); continue; } // keep the learner's decision
       // a re-check keeps the moment the suggestion was FIRST shown (provenance depends on it)
       const row: GoTellSuggestion = existing ? { ...s, createdAt: existing.createdAt } : s;
       await store.suggestions.put(row);
-      suggestions.push(row);
+      if (await suggestionSourcesCurrent(row)) suggestions.push(row);
       await bus.emit<GoTellSuggestionShown>({ type: 'GoTellSuggestionShown', ...common(userId, lang, `gotell:${contextId}`, `gts-shown:${row.id}`), suggestionId: row.id, kind: row.kind });
     }
 
@@ -360,6 +362,21 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
       }
     }
     return { draftHash, lang, sentences: ctxs.map((c) => c.sentence), suggestions, independentItemIds: unique(independent) };
+  }
+
+  /** Hide stale cached corrections when any wording source later becomes private, retired, or unpublished.
+   * The persisted suggestion and event log remain intact for audit; this is only the active learner view. */
+  async function suggestionSourcesCurrent(s: GoTellSuggestion): Promise<boolean> {
+    for (const source of s.sources) {
+      const [text, sentence] = await Promise.all([store.texts.get(source.textId), store.sentences.get(source.sentenceId)]);
+      if (!text || !sentence || sentence.text !== source.excerpt || sentence.textId !== text.id || sentence.retiredInVersion !== undefined) return false;
+      if ((text.listeningAssessmentId !== undefined || text.readingAssessmentId !== undefined)) return false;
+      const corpus = await store.corpora.get(text.corpusId);
+      const ownTestimony = text.kind === 'testimony' && text.corpusId === `testimony:${s.userId}`;
+      if ((text.kind === 'testimony' || corpus?.kind === 'testimony') && !ownTestimony) return false;
+      if (!ownTestimony && text.published !== true) return false;
+    }
+    return true;
   }
 
   // ───────────────────────── revisions: provenance (rule 6) ─────────────────────────

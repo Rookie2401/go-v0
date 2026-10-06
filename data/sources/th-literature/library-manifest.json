@@ -1,0 +1,206 @@
+{
+  "schema": 1,
+  "lang": "th",
+  "entries": [
+    {
+      "slug": "thai-wikisource-nueng-sai-mu-mai-muan",
+      "title": "หนึ่งไซร้หมู่ไม้ม้วน",
+      "author": "ไม่ปรากฏนาม",
+      "courseId": "thailand-th",
+      "stage": "g3",
+      "stream": "library",
+      "domains": [
+        "literature"
+      ],
+      "contentType": "nonfiction",
+      "genre": "poetry",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Exact Thai Wikisource public-domain source record",
+        "verifiedAt": "2026-10-02",
+        "basis": "The official source revision 73265 records the underlying work as public domain under the Thai Copyright Act. Transcription attribution and CC BY-SA terms retained.",
+        "statusByJurisdiction": {
+          "TH": "public-domain"
+        },
+        "licence": "Public-domain source; CC BY-SA 4.0 transcription attribution",
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "attributionRequired": true,
+        "evidence": [
+          "https://th.wikisource.org/w/index.php?oldid=73265",
+          "https://th.wikisource.org/wiki/Wikisource:Copyright_policy"
+        ]
+      },
+      "source": {
+        "file": "th-literature/thai-wikisource-nueng-sai-mu-mai-muan.json",
+        "kind": "documents",
+        "url": "https://th.wikisource.org/w/index.php?oldid=73265",
+        "edition": "Thai Wikisource root revision 73265",
+        "attribution": "ไม่ปรากฏนาม; หนึ่งไซร้หมู่ไม้ม้วน; Thai Wikisource contributors, revision 73265. Public-domain source record; transcription attribution under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).",
+        "provenance": "Traditional orthography poem, historical wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "Thai Wikisource revision and extraction comparison",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "b1aede9246efb2748be51b1e02906926bb926828ce169940e1d6665eca7428e2",
+        "notes": "Exact cached source extraction; no invented wording, modernization or native-review claim."
+      }
+    },
+    {
+      "slug": "thai-wikisource-phai-chai-lae-hai-than",
+      "title": "ใฝ่ใจแลให้ทาน",
+      "author": "ไม่ปรากฏนาม",
+      "courseId": "thailand-th",
+      "stage": "g3",
+      "stream": "library",
+      "domains": [
+        "literature"
+      ],
+      "contentType": "nonfiction",
+      "genre": "poetry",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Exact Thai Wikisource public-domain source record",
+        "verifiedAt": "2026-10-02",
+        "basis": "The official source revision 73257 records the underlying work as public domain under the Thai Copyright Act. Transcription attribution and CC BY-SA terms retained.",
+        "statusByJurisdiction": {
+          "TH": "public-domain"
+        },
+        "licence": "Public-domain source; CC BY-SA 4.0 transcription attribution",
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "attributionRequired": true,
+        "evidence": [
+          "https://th.wikisource.org/w/index.php?oldid=73257",
+          "https://th.wikisource.org/wiki/Wikisource:Copyright_policy"
+        ]
+      },
+      "source": {
+        "file": "th-literature/thai-wikisource-phai-chai-lae-hai-than.json",
+        "kind": "documents",
+        "url": "https://th.wikisource.org/w/index.php?oldid=73257",
+        "edition": "Thai Wikisource root revision 73257",
+        "attribution": "ไม่ปรากฏนาม; ใฝ่ใจแลให้ทาน; Thai Wikisource contributors, revision 73257. Public-domain source record; transcription attribution under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).",
+        "provenance": "Traditional orthography poem, historical wording retained."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "Thai Wikisource revision and extraction comparison",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "6fe8d8cb759e77cc44b6f830be1846c09a3666553d43e68f45982b04d4466c21",
+        "notes": "Exact cached source extraction; no invented wording, modernization or native-review claim."
+      }
+    },
+    {
+      "slug": "thai-wikisource-phu-yai-ha-pha-mai",
+      "title": "ผู้ใหญ่หาผ้าใหม่",
+      "author": "ไม่ปรากฏนาม",
+      "courseId": "thailand-th",
+      "stage": "g3",
+      "stream": "library",
+      "domains": [
+        "literature"
+      ],
+      "contentType": "nonfiction",
+      "genre": "poetry",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Exact Thai Wikisource public-domain source record",
+        "verifiedAt": "2026-10-02",
+        "basis": "The official source revision 221517 records the underlying work as public domain under the Thai Copyright Act. Transcription attribution and CC BY-SA terms retained.",
+        "statusByJurisdiction": {
+          "TH": "public-domain"
+        },
+        "licence": "Public-domain source; CC BY-SA 4.0 transcription attribution",
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "attributionRequired": true,
+        "evidence": [
+          "https://th.wikisource.org/w/index.php?oldid=221517",
+          "https://th.wikisource.org/wiki/Wikisource:Copyright_policy"
+        ]
+      },
+      "source": {
+        "file": "th-literature/thai-wikisource-phu-yai-ha-pha-mai.json",
+        "kind": "documents",
+        "url": "https://th.wikisource.org/w/index.php?oldid=221517",
+        "edition": "Thai Wikisource root revision 221517",
+        "attribution": "ไม่ปรากฏนาม; ผู้ใหญ่หาผ้าใหม่; Thai Wikisource contributors, revision 221517. Public-domain source record; transcription attribution under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).",
+        "provenance": "Orthography poem; source verse columns joined in row order."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "Thai Wikisource revision and extraction comparison",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "b38c69f9a3c4e98d8a6f64e6c77cbd6dc3d0c984d37dc0808381b29b0101804c",
+        "notes": "Exact cached source extraction; no invented wording, modernization or native-review claim."
+      }
+    },
+    {
+      "slug": "nms-vetal-selected",
+      "title": "นิทานเวตาล — เรื่องคัดสรร (1, 8–10)",
+      "author": "น.ม.ส.",
+      "courseId": "thailand-th",
+      "stage": "g8",
+      "stream": "library",
+      "domains": [
+        "literature"
+      ],
+      "contentType": "story",
+      "genre": "historical narrative",
+      "rights": {
+        "state": "verified-public-domain",
+        "copyrightStatus": "public-domain",
+        "permission": "not-needed",
+        "canBundle": true,
+        "verified": true,
+        "verifiedBy": "Exact Thai Wikisource public-domain source record",
+        "verifiedAt": "2026-10-02",
+        "basis": "The official source revision 249961 records the underlying work as public domain under the Thai Copyright Act. Transcription attribution and CC BY-SA terms retained.",
+        "statusByJurisdiction": {
+          "TH": "public-domain"
+        },
+        "licence": "Public-domain source; CC BY-SA 4.0 transcription attribution",
+        "userImportOnly": false,
+        "canModify": false,
+        "canStoreOffline": true,
+        "attributionRequired": true,
+        "evidence": [
+          "https://th.wikisource.org/w/index.php?oldid=249961",
+          "https://th.wikisource.org/wiki/Wikisource:Copyright_policy"
+        ]
+      },
+      "source": {
+        "file": "th-literature/nms-vetal-selected.json",
+        "kind": "documents",
+        "url": "https://th.wikisource.org/w/index.php?oldid=249961",
+        "edition": "Thai Wikisource root revision 249961",
+        "attribution": "น.ม.ส.; นิทานเวตาล/ต้นเรื่อง; Thai Wikisource contributors, revision 216958. Public-domain source record; transcription attribution under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).",
+        "provenance": "Four available complete stories with opening and closing frame. Stories 2–7 have no available chapter transcription; this is explicitly a selection, not a complete ten-story edition."
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "Thai Wikisource revision and extraction comparison",
+        "reviewedAt": "2026-10-02",
+        "coversSourceSha256": "ebeb6de28cf1b5e1d7f25a49286682475e48265c86af911ef4e11a04f2b634af",
+        "notes": "Exact cached source extraction; no invented wording, modernization or native-review claim."
+      }
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+ "lang": "hi",
+ "library": "library-hi@2026-10-02",
+ "texts": 1284,
+ "deep": null,
+ "checks": {
+  "catalogue: a work recorded as installed has texts in the library": {
+   "checked": 4,
+   "failed": 0
+  },
+  "catalogue: a work with texts in the library is recorded as bundlable": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: every text names a work": {
+   "checked": 1284,
+   "failed": 0
+  },
+  "catalogue: the rights of the texts are the rights of their work": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: the shelf of a work exists in the course": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: the shelf of the texts is the shelf of their work": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: the stream of the texts is a stream of the course": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: the stream of the texts is a stream of their work": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: the work of a text is in the course catalogue": {
+   "checked": 5,
+   "failed": 0
+  },
+  "catalogue: the work says its texts are in the library": {
+   "checked": 5,
+   "failed": 0
+  },
+  "order (Scripture): a chapter is numbered by its place in the canon": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order (Scripture): bundled full chapter has canonical metadata": {
+   "checked": 4,
+   "failed": 0
+  },
+  "order (Scripture): bundled full chapter keeps canonical selection index": {
+   "checked": 4,
+   "failed": 0
+  },
+  "order (Scripture): bundled starter has identified verse references": {
+   "checked": 5,
+   "failed": 0
+  },
+  "order (Scripture): bundled starter has non-empty verse text": {
+   "checked": 5,
+   "failed": 0
+  },
+  "order (Scripture): bundled starter selection is front matter": {
+   "checked": 1,
+   "failed": 0
+  },
+  "order (Scripture): every chapter of the canon is present": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order (Scripture): every chapter says its book and chapter": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order (Scripture): no chapter twice": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order: bundled and library chapters of one work do not share a number": {
+   "checked": 5,
+   "failed": 0
+  },
+  "order: every text of a work has a chapter number": {
+   "checked": 5,
+   "failed": 0
+  },
+  "order: no chapter number twice in a work": {
+   "checked": 5,
+   "failed": 0
+  },
+  "order: no text has exactly the words of another text": {
+   "checked": 1284,
+   "failed": 0
+  },
+  "order: the chapters of a work run without gaps": {
+   "checked": 4,
+   "failed": 0
+  },
+  "order: the chapters of a work start at 1 (or 0 for front matter)": {
+   "checked": 4,
+   "failed": 0
+  },
+  "order: the index lists the chapters of a work in chapter order": {
+   "checked": 5,
+   "failed": 0
+  },
+  "structure: a row is listed under its own primary stream": {
+   "checked": 1284,
+   "failed": 0
+  },
+  "structure: every row has its document file": {
+   "checked": 1284,
+   "failed": 0
+  },
+  "structure: every row has its profile file": {
+   "checked": 1284,
+   "failed": 0
+  },
+  "structure: every row of an index shard is well formed": {
+   "checked": 5,
+   "failed": 0
+  },
+  "structure: no document file without a row": {
+   "checked": 1284,
+   "failed": 0
+  },
+  "structure: no library text has the id of a bundled text": {
+   "checked": 1284,
+   "failed": 0
+  },
+  "structure: no profile file without a row": {
+   "checked": 1284,
+   "failed": 0
+  },
+  "structure: no text id twice": {
+   "checked": 1284,
+   "failed": 0
+  },
+  "structure: the manifest counts the texts it lists": {
+   "checked": 1,
+   "failed": 0
+  },
+  "structure: the manifest word count is the sum of the rows": {
+   "checked": 1,
+   "failed": 0
+  }
+ },
+ "findings": {}
+}

@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "bridge-thai-bridge-02",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ข้าวเช้าวันนี้",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-th-bridge-drafts",
+    "kind": "comprehensible-input",
+    "title": "Thai beginner bridge drafts"
+  },
+  "source": {
+    "id": "src:th:thai-bridge-02",
+    "title": "ข้าวเช้าวันนี้ — course-owned draft",
+    "author": "Course authors (machine-drafted)",
+    "attribution": "Course-owned Thai draft. Machine-drafted for native-speaker review; no external source or translation claimed.",
+    "provenance": "Original controlled draft written for the course-owned beginner review queue. It is not a published or source-reviewed Thai work.",
+    "rights": "owner-authored",
+    "licenseNote": "Course-owned draft; may not be published until native review.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Native Thai reviewer required. Source fidelity is not applicable because this is original course-owned draft text."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "ข้าว",
+    "ไข่",
+    "ครัว"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "course-owned-draft"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss for review only"
+  },
+  "sections": [
+    {
+      "title": "ข้าวเช้าวันนี้",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันนี้ฉันตื่นก่อนนาฬิกาจะดัง",
+              "english": "Today I wake up before the alarm rings."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันได้กลิ่นข้าวร้อนจากครัว",
+              "english": "I smell hot rice from the kitchen."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แม่กำลังทอดไข่ในกระทะ",
+              "english": "Mother is frying an egg in a pan."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันวางจานและช้อนบนโต๊ะ",
+              "english": "I put plates and spoons on the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "น้องนำแก้วน้ำมาให้ทุกคน",
+              "english": "My younger sibling brings a glass of water for everyone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เรากินข้าวกับไข่และผัก",
+              "english": "We eat rice with eggs and vegetables."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "พ่อบอกว่าอาหารเช้าทำให้มีแรง",
+              "english": "Father says breakfast gives us strength."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันเก็บจานไปล้างเมื่อเรากินเสร็จ",
+              "english": "I take the plates to wash when we finish eating."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ก่อนออกจากบ้าน ฉันพูดขอบคุณแม่",
+              "english": "Before leaving home, I thank Mother."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "น้องเติมน้ำในแก้วของฉัน",
+              "english": "My younger sibling fills my glass with water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เราหัวเราะเมื่อไข่ชิ้นหนึ่งกลิ้งบนโต๊ะ",
+              "english": "We laugh when an egg rolls across the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แม่บอกให้เรารีบไปโรงเรียน",
+              "english": "Mother tells us to hurry to school."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "work": {
+    "slug": "bridge-thai-bridge-02",
+    "courseId": "thailand-th",
+    "chapter": {
+      "index": 1,
+      "title": "ข้าวเช้าวันนี้"
+    }
+  }
+}

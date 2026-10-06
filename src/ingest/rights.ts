@@ -60,6 +60,7 @@ export interface RightsContext {
 }
 
 interface DocLike {
+  curriculum?: { lifecycle?: unknown; rejectionReasons?: unknown };
   id?: unknown; lang?: unknown; contentType?: unknown;
   source?: { rights?: unknown; licenseNote?: unknown; attribution?: unknown };
   scripture?: { translationId?: unknown; edition?: unknown; role?: unknown; verification?: { against?: unknown; checkedAt?: unknown; method?: unknown; by?: unknown } };
@@ -84,6 +85,7 @@ const coversJurisdiction = (w: WorkRightsRecord, j: string): boolean => {
 export function bundleDecision(doc: unknown, ctx: RightsContext = {}): BundleDecision {
   if (!doc || typeof doc !== 'object') return { verdict: 'refuse', reason: 'not a document' };
   const d = doc as DocLike;
+  if (['candidate', 'rights_pending', 'rejected'].includes(String(d.curriculum?.lifecycle))) return { verdict: 'exclude', reason: `curriculum lifecycle is ${String(d.curriculum?.lifecycle)}: excluded from production bundling${Array.isArray(d.curriculum?.rejectionReasons) && d.curriculum.rejectionReasons.length ? ` (${d.curriculum.rejectionReasons.join('; ')})` : ''}` };
   const rights = d.source?.rights;
 
   if (rights === 'owner-authored' || rights === 'generated') {

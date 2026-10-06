@@ -1,0 +1,772 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DBLMetadata version="2.2.1" id="a62f327aa0179709" revision="2">
+  <identification>
+    <name>Biblica® Open Thai Common Version 2025</name>
+    <nameLocal>Biblica® พระคริสตธรรมคัมภีร์ ฉบับไทยสามัญแบบเปิด</nameLocal>
+    <description>Thai: Biblica® พระคริสตธรรมคัมภีร์ ฉบับไทยสามัญแบบเปิด (Bible)</description>
+    <descriptionLocal>พระคริสตธรรมคัมภีร์</descriptionLocal>
+    <abbreviation>OTCV</abbreviation>
+    <abbreviationLocal>OTCV</abbreviationLocal>
+    <scope>Bible</scope>
+    <dateCompleted>2025-03-01</dateCompleted>
+    <bundleProducer>Paratext/9.5.106.2</bundleProducer>
+    <systemId type="paratext">
+      <id>a62f327aa0179709ac6643226d77ddfcacdac5d9</id>
+      <csetId>4b93c4d31ebb522057cea6cee79aac095471f95e+</csetId>
+      <name>thOTCV25</name>
+      <fullName>Biblica® Open Thai Common Version 2025</fullName>
+    </systemId>
+    <systemId type="ptreg">
+      <id>4XjGs5gCJaCG76bfu</id>
+    </systemId>
+  </identification>
+  <type>
+    <medium>text</medium>
+    <isConfidential>false</isConfidential>
+    <hasCharacters>true</hasCharacters>
+    <isTranslation>true</isTranslation>
+    <isExpression>true</isExpression>
+    <translationType>Revision</translationType>
+    <audience>Basic</audience>
+    <projectType>Standard</projectType>
+  </type>
+  <relationships />
+  <agencies>
+    <rightsHolder>
+      <abbr>Biblica</abbr>
+      <url>http://www.Biblica.com/permissions</url>
+      <nameLocal>Biblica, Inc.</nameLocal>
+      <uid>545d2cb00fd5dca263562474</uid>
+      <name>Biblica, Inc.</name>
+    </rightsHolder>
+    <rightsAdmin>
+      <url>http://www.Biblica.com/permissions</url>
+      <uid>545d2cb00fd5dca263562474</uid>
+      <name>Biblica, Inc.</name>
+    </rightsAdmin>
+    <contributor>
+      <content>true</content>
+      <publication>true</publication>
+      <management>true</management>
+      <finance>true</finance>
+      <qa>true</qa>
+      <uid>545d2cb00fd5dca263562474</uid>
+      <name>Biblica, Inc.</name>
+    </contributor>
+  </agencies>
+  <language>
+    <iso>tha</iso>
+    <name>Thai</name>
+    <nameLocal>ไทย</nameLocal>
+    <script>Thai</script>
+    <scriptCode>Thai</scriptCode>
+    <scriptDirection>LTR</scriptDirection>
+    <ldml>th</ldml>
+    <numerals>Thai</numerals>
+  </language>
+  <countries>
+    <country>
+      <iso>TH</iso>
+      <name>Thailand</name>
+    </country>
+  </countries>
+  <format>
+    <usxVersion>3.0</usxVersion>
+    <versedParagraphs>false</versedParagraphs>
+  </format>
+  <names>
+    <name id="book-gen">
+      <abbr>ปฐก.</abbr>
+      <short>ปฐมกาล</short>
+      <long>ปฐมกาล</long>
+    </name>
+    <name id="book-exo">
+      <abbr>อพย.</abbr>
+      <short>อพยพ</short>
+      <long>อพยพ</long>
+    </name>
+    <name id="book-lev">
+      <abbr>ลนต.</abbr>
+      <short>เลวีนิติ</short>
+      <long>เลวีนิติ</long>
+    </name>
+    <name id="book-num">
+      <abbr>กดว.</abbr>
+      <short>กันดารวิถี</short>
+      <long>กันดารวิถี</long>
+    </name>
+    <name id="book-deu">
+      <abbr>ฉธบ.</abbr>
+      <short>เฉลยธรรมบัญญัติ</short>
+      <long>เฉลยธรรมบัญญัติ</long>
+    </name>
+    <name id="book-jos">
+      <abbr>ยชว.</abbr>
+      <short>โยชูวา</short>
+      <long>โยชูวา</long>
+    </name>
+    <name id="book-jdg">
+      <abbr>วนฉ.</abbr>
+      <short>ผู้/วินิจฉัย</short>
+      <long>ผู้/วินิจฉัย</long>
+    </name>
+    <name id="book-rut">
+      <abbr>นรธ.</abbr>
+      <short>นางรูธ</short>
+      <long>นางรูธ</long>
+    </name>
+    <name id="book-1sa">
+      <abbr>1ซมอ.</abbr>
+      <short>1 ซามูเอล</short>
+      <long>1 ซามูเอล</long>
+    </name>
+    <name id="book-2sa">
+      <abbr>2ซมอ.</abbr>
+      <short>2 ซามูเอล</short>
+      <long>2 ซามูเอล</long>
+    </name>
+    <name id="book-1ki">
+      <abbr>1พกษ.</abbr>
+      <short>1 พงศ์กษัตริย์</short>
+      <long>1 พงศ์กษัตริย์</long>
+    </name>
+    <name id="book-2ki">
+      <abbr>2พกษ.</abbr>
+      <short>2 พงศ์กษัตริย์</short>
+      <long>2 พงศ์กษัตริย์</long>
+    </name>
+    <name id="book-1ch">
+      <abbr>1พศด.</abbr>
+      <short>1 พงศาวดาร</short>
+      <long>1 พงศาวดาร</long>
+    </name>
+    <name id="book-2ch">
+      <abbr>2พศด.</abbr>
+      <short>2 พงศาวดาร</short>
+      <long>2 พงศาวดาร</long>
+    </name>
+    <name id="book-ezr">
+      <abbr>อสร.</abbr>
+      <short>เอสรา</short>
+      <long>เอสรา</long>
+    </name>
+    <name id="book-neh">
+      <abbr>นหม.</abbr>
+      <short>เนหะมีย์</short>
+      <long>เนหะมีย์</long>
+    </name>
+    <name id="book-est">
+      <abbr>อสธ.</abbr>
+      <short>เอสเธอร์</short>
+      <long>เอสเธอร์</long>
+    </name>
+    <name id="book-job">
+      <abbr>โยบ</abbr>
+      <short>โยบ</short>
+      <long>โยบ</long>
+    </name>
+    <name id="book-psa">
+      <abbr>สดด.</abbr>
+      <short>สดุดี</short>
+      <long>สดุดี</long>
+    </name>
+    <name id="book-pro">
+      <abbr>สภษ.</abbr>
+      <short>สุภาษิต</short>
+      <long>สุภาษิต</long>
+    </name>
+    <name id="book-ecc">
+      <abbr>ปญจ.</abbr>
+      <short>ปัญญาจารย์</short>
+      <long>ปัญญาจารย์</long>
+    </name>
+    <name id="book-sng">
+      <abbr>พซม.</abbr>
+      <short>เพลง/โซโลมอน</short>
+      <long>เพลง/โซโลมอน</long>
+    </name>
+    <name id="book-isa">
+      <abbr>อสย.</abbr>
+      <short>อิสยาห์</short>
+      <long>อิสยาห์</long>
+    </name>
+    <name id="book-jer">
+      <abbr>ยรม.</abbr>
+      <short>เยเรมีย์</short>
+      <long>เยเรมีย์</long>
+    </name>
+    <name id="book-lam">
+      <abbr>พคค.</abbr>
+      <short>เพลง/คร่ำครวญ</short>
+      <long>เพลง/คร่ำครวญ</long>
+    </name>
+    <name id="book-ezk">
+      <abbr>อสค.</abbr>
+      <short>เอเสเคียล</short>
+      <long>เอเสเคียล</long>
+    </name>
+    <name id="book-dan">
+      <abbr>ดนล.</abbr>
+      <short>ดาเนียล</short>
+      <long>ดาเนียล</long>
+    </name>
+    <name id="book-hos">
+      <abbr>ฮชย.</abbr>
+      <short>โฮเชยา</short>
+      <long>โฮเชยา</long>
+    </name>
+    <name id="book-jol">
+      <abbr>ยอล.</abbr>
+      <short>โยเอล</short>
+      <long>โยเอล</long>
+    </name>
+    <name id="book-amo">
+      <abbr>อมส.</abbr>
+      <short>อาโมส</short>
+      <long>อาโมส</long>
+    </name>
+    <name id="book-oba">
+      <abbr>อบด.</abbr>
+      <short>โอบาดีห์</short>
+      <long>โอบาดีห์</long>
+    </name>
+    <name id="book-jon">
+      <abbr>ยนา.</abbr>
+      <short>โยนาห์</short>
+      <long>โยนาห์</long>
+    </name>
+    <name id="book-mic">
+      <abbr>มคา.</abbr>
+      <short>มีคาห์</short>
+      <long>มีคาห์</long>
+    </name>
+    <name id="book-nam">
+      <abbr>นาฮูม</abbr>
+      <short>นาฮูม</short>
+      <long>นาฮูม</long>
+    </name>
+    <name id="book-hab">
+      <abbr>ฮบก.</abbr>
+      <short>ฮาบากุก</short>
+      <long>ฮาบากุก</long>
+    </name>
+    <name id="book-zep">
+      <abbr>ศฟย.</abbr>
+      <short>เศฟันยาห์</short>
+      <long>เศฟันยาห์</long>
+    </name>
+    <name id="book-hag">
+      <abbr>ฮกก.</abbr>
+      <short>ฮักกัย</short>
+      <long>ฮักกัย</long>
+    </name>
+    <name id="book-zec">
+      <abbr>ศคย.</abbr>
+      <short>เศคาริยาห์</short>
+      <long>เศคาริยาห์</long>
+    </name>
+    <name id="book-mal">
+      <abbr>มลค.</abbr>
+      <short>มาลาคี</short>
+      <long>มาลาคี</long>
+    </name>
+    <name id="book-mat">
+      <abbr>มธ.</abbr>
+      <short>มัทธิว</short>
+      <long>มัทธิว</long>
+    </name>
+    <name id="book-mrk">
+      <abbr>มก.</abbr>
+      <short>มาระโก</short>
+      <long>มาระโก</long>
+    </name>
+    <name id="book-luk">
+      <abbr>ลก.</abbr>
+      <short>ลูกา</short>
+      <long>ลูกา</long>
+    </name>
+    <name id="book-jhn">
+      <abbr>ยน.</abbr>
+      <short>ยอห์น</short>
+      <long>ยอห์น</long>
+    </name>
+    <name id="book-act">
+      <abbr>กจ.</abbr>
+      <short>กิจการ/ของ/อัครทูต</short>
+      <long>กิจการ/ของ/อัครทูต</long>
+    </name>
+    <name id="book-rom">
+      <abbr>รม.</abbr>
+      <short>โรม</short>
+      <long>โรม</long>
+    </name>
+    <name id="book-1co">
+      <abbr>1คร.</abbr>
+      <short>1 โครินธ์</short>
+      <long>1 โครินธ์</long>
+    </name>
+    <name id="book-2co">
+      <abbr>2คร.</abbr>
+      <short>2 โครินธ์</short>
+      <long>2 โครินธ์</long>
+    </name>
+    <name id="book-gal">
+      <abbr>กท.</abbr>
+      <short>กาลาเทีย</short>
+      <long>กาลาเทีย</long>
+    </name>
+    <name id="book-eph">
+      <abbr>อฟ.</abbr>
+      <short>เอเฟซัส</short>
+      <long>เอเฟซัส</long>
+    </name>
+    <name id="book-php">
+      <abbr>ฟป.</abbr>
+      <short>ฟีลิปปี</short>
+      <long>ฟีลิปปี</long>
+    </name>
+    <name id="book-col">
+      <abbr>คส.</abbr>
+      <short>โคโลสี</short>
+      <long>โคโลสี</long>
+    </name>
+    <name id="book-1th">
+      <abbr>1ธส.</abbr>
+      <short>1 เธสะโลนิกา</short>
+      <long>1 เธสะโลนิกา</long>
+    </name>
+    <name id="book-2th">
+      <abbr>2ธส.</abbr>
+      <short>2 เธสะโลนิกา</short>
+      <long>2 เธสะโลนิกา</long>
+    </name>
+    <name id="book-1ti">
+      <abbr>1ทธ.</abbr>
+      <short>1 ทิโมธี</short>
+      <long>1 ทิโมธี</long>
+    </name>
+    <name id="book-2ti">
+      <abbr>2ทธ.</abbr>
+      <short>2 ทิโมธี</short>
+      <long>2 ทิโมธี</long>
+    </name>
+    <name id="book-tit">
+      <abbr>ทต.</abbr>
+      <short>ทิตัส</short>
+      <long>ทิตัส</long>
+    </name>
+    <name id="book-phm">
+      <abbr>ฟม.</abbr>
+      <short>ฟีเลโมน</short>
+      <long>ฟีเลโมน</long>
+    </name>
+    <name id="book-heb">
+      <abbr>ฮบ.</abbr>
+      <short>ฮีบรู</short>
+      <long>ฮีบรู</long>
+    </name>
+    <name id="book-jas">
+      <abbr>ยก.</abbr>
+      <short>ยากอบ</short>
+      <long>ยากอบ</long>
+    </name>
+    <name id="book-1pe">
+      <abbr>1ปต.</abbr>
+      <short>1 เปโตร</short>
+      <long>1 เปโตร</long>
+    </name>
+    <name id="book-2pe">
+      <abbr>2ปต.</abbr>
+      <short>2 เปโตร</short>
+      <long>2 เปโตร</long>
+    </name>
+    <name id="book-1jn">
+      <abbr>1ยน.</abbr>
+      <short>1 ยอห์น</short>
+      <long>1 ยอห์น</long>
+    </name>
+    <name id="book-2jn">
+      <abbr>2ยน.</abbr>
+      <short>2 ยอห์น</short>
+      <long>2 ยอห์น</long>
+    </name>
+    <name id="book-3jn">
+      <abbr>3ยน.</abbr>
+      <short>3 ยอห์น</short>
+      <long>3 ยอห์น</long>
+    </name>
+    <name id="book-jud">
+      <abbr>ยด.</abbr>
+      <short>ยูดา</short>
+      <long>ยูดา</long>
+    </name>
+    <name id="book-rev">
+      <abbr>วว.</abbr>
+      <short>วิวรณ์</short>
+      <long>วิวรณ์</long>
+    </name>
+  </names>
+  <manifest>
+    <resource checksum="674ad8916033b49990e392a49275dd3d" mimeType="application/xml" size="483739" uri="release/USX_1/1CH.usx" />
+    <resource checksum="ff68aa90f79bc63ec40dba056ad2c989" mimeType="application/xml" size="224517" uri="release/USX_1/1CO.usx" />
+    <resource checksum="9697d75d8e66532787ab142bc47e8744" mimeType="application/xml" size="52187" uri="release/USX_1/1JN.usx" />
+    <resource checksum="9beed8f4de018871d31c8f71aff8fd5c" mimeType="application/xml" size="449150" uri="release/USX_1/1KI.usx" />
+    <resource checksum="9f9014399c805ea4bdc1379a841272a5" mimeType="application/xml" size="59704" uri="release/USX_1/1PE.usx" />
+    <resource checksum="960e06b4ed105bb9b358815f12fa4aa4" mimeType="application/xml" size="458705" uri="release/USX_1/1SA.usx" />
+    <resource checksum="a9d9c2095bad771d6dff91832cdbdc18" mimeType="application/xml" size="43163" uri="release/USX_1/1TH.usx" />
+    <resource checksum="932218ccfb10171853d617157de8f98c" mimeType="application/xml" size="57644" uri="release/USX_1/1TI.usx" />
+    <resource checksum="4901a90339e6a8d2bf16888acda8d850" mimeType="application/xml" size="501720" uri="release/USX_1/2CH.usx" />
+    <resource checksum="8f3b79c8b4135f2cba6f5ce813715aeb" mimeType="application/xml" size="137372" uri="release/USX_1/2CO.usx" />
+    <resource checksum="dd4e6711fdf6b4bcfc6391f3df34d0e5" mimeType="application/xml" size="6967" uri="release/USX_1/2JN.usx" />
+    <resource checksum="44a7700ef5eef72705ac374f4c3c1216" mimeType="application/xml" size="436739" uri="release/USX_1/2KI.usx" />
+    <resource checksum="75e665771c3aa329d50225ba08959c78" mimeType="application/xml" size="36526" uri="release/USX_1/2PE.usx" />
+    <resource checksum="df7a12b821fb57214a75005e679c47a8" mimeType="application/xml" size="405662" uri="release/USX_1/2SA.usx" />
+    <resource checksum="5ddb485d0324173a6849041e88e98190" mimeType="application/xml" size="26069" uri="release/USX_1/2TH.usx" />
+    <resource checksum="2bba8f8c447b1980b9105483b86cf621" mimeType="application/xml" size="40836" uri="release/USX_1/2TI.usx" />
+    <resource checksum="aa3c71a2548425116ad1e8aee8988580" mimeType="application/xml" size="7286" uri="release/USX_1/3JN.usx" />
+    <resource checksum="baf6492721d6c281fb7d5f5de52479ba" mimeType="application/xml" size="478867" uri="release/USX_1/ACT.usx" />
+    <resource checksum="638d767d735f2d9418bd0ff5e26951f6" mimeType="application/xml" size="104174" uri="release/USX_1/AMO.usx" />
+    <resource checksum="1b7e233508228d521f896aac9932e5bd" mimeType="application/xml" size="52035" uri="release/USX_1/COL.usx" />
+    <resource checksum="f05750bd9c6cf16a1b7ef15ab2812b1b" mimeType="application/xml" size="211654" uri="release/USX_1/DAN.usx" />
+    <resource checksum="d43ff313c1c5935f176d1fe3bb94b9e1" mimeType="application/xml" size="524940" uri="release/USX_1/DEU.usx" />
+    <resource checksum="7151f6af8fe9858c6acd153db000ba55" mimeType="application/xml" size="120617" uri="release/USX_1/ECC.usx" />
+    <resource checksum="17909ae0c87937123220233022af6fca" mimeType="application/xml" size="74156" uri="release/USX_1/EPH.usx" />
+    <resource checksum="230c6c65419435d23716eca1a03737c0" mimeType="application/xml" size="93790" uri="release/USX_1/EST.usx" />
+    <resource checksum="15a4ea233b15d429534aa45fd227504a" mimeType="application/xml" size="599522" uri="release/USX_1/EXO.usx" />
+    <resource checksum="342ff8f3b54b66dd206a24210f16214b" mimeType="application/xml" size="752496" uri="release/USX_1/EZK.usx" />
+    <resource checksum="beed0ed7e3b6c8eba5c848f078a66a4a" mimeType="application/xml" size="142195" uri="release/USX_1/EZR.usx" />
+    <resource checksum="1d72f1ee5d38093e8a17002c0ffeb9e2" mimeType="application/xml" size="77493" uri="release/USX_1/GAL.usx" />
+    <resource checksum="38fe0fa8b4d24562f539ffba8c75be1b" mimeType="application/xml" size="753724" uri="release/USX_1/GEN.usx" />
+    <resource checksum="535f415c6df461ad1d114dc76e34bdbb" mimeType="application/xml" size="40214" uri="release/USX_1/HAB.usx" />
+    <resource checksum="a8f98e565c5efef4f453de596ac280c7" mimeType="application/xml" size="22427" uri="release/USX_1/HAG.usx" />
+    <resource checksum="1fa106858b1526ebfdce867ecaccf8b1" mimeType="application/xml" size="167134" uri="release/USX_1/HEB.usx" />
+    <resource checksum="b3c9aa393b862da4fac8073ce2cd0a2e" mimeType="application/xml" size="141084" uri="release/USX_1/HOS.usx" />
+    <resource checksum="7189f1c17655259f5aa71d55ad0a4de6" mimeType="application/xml" size="882045" uri="release/USX_1/ISA.usx" />
+    <resource checksum="257ecc030322dfd8f5638e2edec48b39" mimeType="application/xml" size="50079" uri="release/USX_1/JAS.usx" />
+    <resource checksum="5185f96a7a8a304af14ccc76a32ea45a" mimeType="application/xml" size="347442" uri="release/USX_1/JDG.usx" />
+    <resource checksum="9e7d06e2bc24c5b81ad57efae569cbbb" mimeType="application/xml" size="880571" uri="release/USX_1/JER.usx" />
+    <resource checksum="7f5b4a49d8ee1f87e113ec818f47b734" mimeType="application/xml" size="418539" uri="release/USX_1/JHN.usx" />
+    <resource checksum="2a28265b533de33438ff0859036f0110" mimeType="application/xml" size="452507" uri="release/USX_1/JOB.usx" />
+    <resource checksum="e7d16106d2495a10c4a204d85d0db3ed" mimeType="application/xml" size="50676" uri="release/USX_1/JOL.usx" />
+    <resource checksum="a57a98d2df299826eadc20718d1eeca9" mimeType="application/xml" size="25711" uri="release/USX_1/JON.usx" />
+    <resource checksum="baf7eb202854816beb3bdaf8b1ee1e0b" mimeType="application/xml" size="340049" uri="release/USX_1/JOS.usx" />
+    <resource checksum="0eb062b957681ba37aa861e9fe78fb66" mimeType="application/xml" size="16868" uri="release/USX_1/JUD.usx" />
+    <resource checksum="f8426d9825c38a8ad20bff77c5678631" mimeType="application/xml" size="92342" uri="release/USX_1/LAM.usx" />
+    <resource checksum="27d594fbb1f5107ae33cea5e7f8159b9" mimeType="application/xml" size="437486" uri="release/USX_1/LEV.usx" />
+    <resource checksum="a4efc57c2859d17c1bc7d34bee9aea20" mimeType="application/xml" size="530069" uri="release/USX_1/LUK.usx" />
+    <resource checksum="9e130faedb9c1ebb5d1d159e6c7ece1d" mimeType="application/xml" size="37784" uri="release/USX_1/MAL.usx" />
+    <resource checksum="6b97486f04ac6da9291c1557715d1e05" mimeType="application/xml" size="513473" uri="release/USX_1/MAT.usx" />
+    <resource checksum="31ebbe2c280383925e76a3e803578829" mimeType="application/xml" size="79636" uri="release/USX_1/MIC.usx" />
+    <resource checksum="7814a30627938580a7306eae4b5838ec" mimeType="application/xml" size="318439" uri="release/USX_1/MRK.usx" />
+    <resource checksum="f503c2be0fe5a3e5b629253f6a4ac162" mimeType="application/xml" size="32760" uri="release/USX_1/NAM.usx" />
+    <resource checksum="6b3993a64f9e0e7c0040a62e4a828371" mimeType="application/xml" size="204705" uri="release/USX_1/NEH.usx" />
+    <resource checksum="6e36f4f681ae2b2a2f53d798f0cb64f2" mimeType="application/xml" size="604547" uri="release/USX_1/NUM.usx" />
+    <resource checksum="b8722d841aee6bdcc68b1c13497fe180" mimeType="application/xml" size="15329" uri="release/USX_1/OBA.usx" />
+    <resource checksum="6edb667f1b5282f2a837bfd04d722f94" mimeType="application/xml" size="11941" uri="release/USX_1/PHM.usx" />
+    <resource checksum="8acd98f26dbb2720b147b0868fde8044" mimeType="application/xml" size="52975" uri="release/USX_1/PHP.usx" />
+    <resource checksum="b521002491bc8925be1c1c3b64fc131b" mimeType="application/xml" size="389202" uri="release/USX_1/PRO.usx" />
+    <resource checksum="898f999f944d9d97f6a9f38dea72f3e3" mimeType="application/xml" size="1275619" uri="release/USX_1/PSA.usx" />
+    <resource checksum="39e19a1fe38637f024fab11538299bc6" mimeType="application/xml" size="247401" uri="release/USX_1/REV.usx" />
+    <resource checksum="4cc356d79eec06221a79d1b24eab806c" mimeType="application/xml" size="250048" uri="release/USX_1/ROM.usx" />
+    <resource checksum="6d22291f27b8e846cf99c985733a0cf6" mimeType="application/xml" size="53643" uri="release/USX_1/RUT.usx" />
+    <resource checksum="411bc19e40c7319036e941632b4ee941" mimeType="application/xml" size="74611" uri="release/USX_1/SNG.usx" />
+    <resource checksum="6e9a51c14753a82c90f98261f8d846eb" mimeType="application/xml" size="23788" uri="release/USX_1/TIT.usx" />
+    <resource checksum="2c8bab87dee4906477d5ac520f1a74e3" mimeType="application/xml" size="125495" uri="release/USX_1/ZEC.usx" />
+    <resource checksum="b2c935d8d40e1c4f84d68636150ca71a" mimeType="application/xml" size="42506" uri="release/USX_1/ZEP.usx" />
+    <resource checksum="4c317c61072ca20a1d9d68c79ea3f757" mimeType="application/xml" size="106206" uri="release/styles.xml" />
+    <resource checksum="3936f7086bc18986009c1fa8d5f8a81e" mimeType="application/xml" size="4502" uri="release/tha_th.ldml" />
+    <resource checksum="63feb6b8a23a3bbeff265787db000e46" mimeType="text/plain" size="15431" uri="release/versification.vrs" />
+    <resource checksum="d28a3b6ff857855afcceca6d0a3db541" mimeType="application/zip" size="2027082" uri="source/paratext-resource.zip" />
+  </manifest>
+  <source>
+    <canonicalContent>
+      <book code="1CH" />
+      <book code="1CO" />
+      <book code="1JN" />
+      <book code="1KI" />
+      <book code="1PE" />
+      <book code="1SA" />
+      <book code="1TH" />
+      <book code="1TI" />
+      <book code="2CH" />
+      <book code="2CO" />
+      <book code="2JN" />
+      <book code="2KI" />
+      <book code="2PE" />
+      <book code="2SA" />
+      <book code="2TH" />
+      <book code="2TI" />
+      <book code="3JN" />
+      <book code="ACT" />
+      <book code="AMO" />
+      <book code="COL" />
+      <book code="DAN" />
+      <book code="DEU" />
+      <book code="ECC" />
+      <book code="EPH" />
+      <book code="EST" />
+      <book code="EXO" />
+      <book code="EZK" />
+      <book code="EZR" />
+      <book code="GAL" />
+      <book code="GEN" />
+      <book code="HAB" />
+      <book code="HAG" />
+      <book code="HEB" />
+      <book code="HOS" />
+      <book code="ISA" />
+      <book code="JAS" />
+      <book code="JDG" />
+      <book code="JER" />
+      <book code="JHN" />
+      <book code="JOB" />
+      <book code="JOL" />
+      <book code="JON" />
+      <book code="JOS" />
+      <book code="JUD" />
+      <book code="LAM" />
+      <book code="LEV" />
+      <book code="LUK" />
+      <book code="MAL" />
+      <book code="MAT" />
+      <book code="MIC" />
+      <book code="MRK" />
+      <book code="NAM" />
+      <book code="NEH" />
+      <book code="NUM" />
+      <book code="OBA" />
+      <book code="PHM" />
+      <book code="PHP" />
+      <book code="PRO" />
+      <book code="PSA" />
+      <book code="REV" />
+      <book code="ROM" />
+      <book code="RUT" />
+      <book code="SNG" />
+      <book code="TIT" />
+      <book code="ZEC" />
+      <book code="ZEP" />
+    </canonicalContent>
+    <structure>
+      <content src="source/paratext-resource.zip" role="sourceZip" />
+    </structure>
+  </source>
+  <publications>
+    <publication id="p1" default="true">
+      <name>Thai Common Version 2025</name>
+      <nameLocal>คัมภีร์ ฉบับไทยสามัญ</nameLocal>
+      <description>Holy Bible</description>
+      <descriptionLocal>พระคริสตธรรม</descriptionLocal>
+      <abbreviation>TCV</abbreviation>
+      <abbreviationLocal>TCV</abbreviationLocal>
+      <canonicalContent>
+        <book code="1CH" />
+        <book code="1CO" />
+        <book code="1JN" />
+        <book code="1KI" />
+        <book code="1PE" />
+        <book code="1SA" />
+        <book code="1TH" />
+        <book code="1TI" />
+        <book code="2CH" />
+        <book code="2CO" />
+        <book code="2JN" />
+        <book code="2KI" />
+        <book code="2PE" />
+        <book code="2SA" />
+        <book code="2TH" />
+        <book code="2TI" />
+        <book code="3JN" />
+        <book code="ACT" />
+        <book code="AMO" />
+        <book code="COL" />
+        <book code="DAN" />
+        <book code="DEU" />
+        <book code="ECC" />
+        <book code="EPH" />
+        <book code="EST" />
+        <book code="EXO" />
+        <book code="EZK" />
+        <book code="EZR" />
+        <book code="GAL" />
+        <book code="GEN" />
+        <book code="HAB" />
+        <book code="HAG" />
+        <book code="HEB" />
+        <book code="HOS" />
+        <book code="ISA" />
+        <book code="JAS" />
+        <book code="JDG" />
+        <book code="JER" />
+        <book code="JHN" />
+        <book code="JOB" />
+        <book code="JOL" />
+        <book code="JON" />
+        <book code="JOS" />
+        <book code="JUD" />
+        <book code="LAM" />
+        <book code="LEV" />
+        <book code="LUK" />
+        <book code="MAL" />
+        <book code="MAT" />
+        <book code="MIC" />
+        <book code="MRK" />
+        <book code="NAM" />
+        <book code="NEH" />
+        <book code="NUM" />
+        <book code="OBA" />
+        <book code="PHM" />
+        <book code="PHP" />
+        <book code="PRO" />
+        <book code="PSA" />
+        <book code="REV" />
+        <book code="ROM" />
+        <book code="RUT" />
+        <book code="SNG" />
+        <book code="TIT" />
+        <book code="ZEC" />
+        <book code="ZEP" />
+      </canonicalContent>
+      <structure>
+        <content name="book-gen" src="release/USX_1/GEN.usx" role="GEN" />
+        <content name="book-exo" src="release/USX_1/EXO.usx" role="EXO" />
+        <content name="book-lev" src="release/USX_1/LEV.usx" role="LEV" />
+        <content name="book-num" src="release/USX_1/NUM.usx" role="NUM" />
+        <content name="book-deu" src="release/USX_1/DEU.usx" role="DEU" />
+        <content name="book-jos" src="release/USX_1/JOS.usx" role="JOS" />
+        <content name="book-jdg" src="release/USX_1/JDG.usx" role="JDG" />
+        <content name="book-rut" src="release/USX_1/RUT.usx" role="RUT" />
+        <content name="book-1sa" src="release/USX_1/1SA.usx" role="1SA" />
+        <content name="book-2sa" src="release/USX_1/2SA.usx" role="2SA" />
+        <content name="book-1ki" src="release/USX_1/1KI.usx" role="1KI" />
+        <content name="book-2ki" src="release/USX_1/2KI.usx" role="2KI" />
+        <content name="book-1ch" src="release/USX_1/1CH.usx" role="1CH" />
+        <content name="book-2ch" src="release/USX_1/2CH.usx" role="2CH" />
+        <content name="book-ezr" src="release/USX_1/EZR.usx" role="EZR" />
+        <content name="book-neh" src="release/USX_1/NEH.usx" role="NEH" />
+        <content name="book-est" src="release/USX_1/EST.usx" role="EST" />
+        <content name="book-job" src="release/USX_1/JOB.usx" role="JOB" />
+        <content name="book-psa" src="release/USX_1/PSA.usx" role="PSA" />
+        <content name="book-pro" src="release/USX_1/PRO.usx" role="PRO" />
+        <content name="book-ecc" src="release/USX_1/ECC.usx" role="ECC" />
+        <content name="book-sng" src="release/USX_1/SNG.usx" role="SNG" />
+        <content name="book-isa" src="release/USX_1/ISA.usx" role="ISA" />
+        <content name="book-jer" src="release/USX_1/JER.usx" role="JER" />
+        <content name="book-lam" src="release/USX_1/LAM.usx" role="LAM" />
+        <content name="book-ezk" src="release/USX_1/EZK.usx" role="EZK" />
+        <content name="book-dan" src="release/USX_1/DAN.usx" role="DAN" />
+        <content name="book-hos" src="release/USX_1/HOS.usx" role="HOS" />
+        <content name="book-jol" src="release/USX_1/JOL.usx" role="JOL" />
+        <content name="book-amo" src="release/USX_1/AMO.usx" role="AMO" />
+        <content name="book-oba" src="release/USX_1/OBA.usx" role="OBA" />
+        <content name="book-jon" src="release/USX_1/JON.usx" role="JON" />
+        <content name="book-mic" src="release/USX_1/MIC.usx" role="MIC" />
+        <content name="book-nam" src="release/USX_1/NAM.usx" role="NAM" />
+        <content name="book-hab" src="release/USX_1/HAB.usx" role="HAB" />
+        <content name="book-zep" src="release/USX_1/ZEP.usx" role="ZEP" />
+        <content name="book-hag" src="release/USX_1/HAG.usx" role="HAG" />
+        <content name="book-zec" src="release/USX_1/ZEC.usx" role="ZEC" />
+        <content name="book-mal" src="release/USX_1/MAL.usx" role="MAL" />
+        <content name="book-mat" src="release/USX_1/MAT.usx" role="MAT" />
+        <content name="book-mrk" src="release/USX_1/MRK.usx" role="MRK" />
+        <content name="book-luk" src="release/USX_1/LUK.usx" role="LUK" />
+        <content name="book-jhn" src="release/USX_1/JHN.usx" role="JHN" />
+        <content name="book-act" src="release/USX_1/ACT.usx" role="ACT" />
+        <content name="book-rom" src="release/USX_1/ROM.usx" role="ROM" />
+        <content name="book-1co" src="release/USX_1/1CO.usx" role="1CO" />
+        <content name="book-2co" src="release/USX_1/2CO.usx" role="2CO" />
+        <content name="book-gal" src="release/USX_1/GAL.usx" role="GAL" />
+        <content name="book-eph" src="release/USX_1/EPH.usx" role="EPH" />
+        <content name="book-php" src="release/USX_1/PHP.usx" role="PHP" />
+        <content name="book-col" src="release/USX_1/COL.usx" role="COL" />
+        <content name="book-1th" src="release/USX_1/1TH.usx" role="1TH" />
+        <content name="book-2th" src="release/USX_1/2TH.usx" role="2TH" />
+        <content name="book-1ti" src="release/USX_1/1TI.usx" role="1TI" />
+        <content name="book-2ti" src="release/USX_1/2TI.usx" role="2TI" />
+        <content name="book-tit" src="release/USX_1/TIT.usx" role="TIT" />
+        <content name="book-phm" src="release/USX_1/PHM.usx" role="PHM" />
+        <content name="book-heb" src="release/USX_1/HEB.usx" role="HEB" />
+        <content name="book-jas" src="release/USX_1/JAS.usx" role="JAS" />
+        <content name="book-1pe" src="release/USX_1/1PE.usx" role="1PE" />
+        <content name="book-2pe" src="release/USX_1/2PE.usx" role="2PE" />
+        <content name="book-1jn" src="release/USX_1/1JN.usx" role="1JN" />
+        <content name="book-2jn" src="release/USX_1/2JN.usx" role="2JN" />
+        <content name="book-3jn" src="release/USX_1/3JN.usx" role="3JN" />
+        <content name="book-jud" src="release/USX_1/JUD.usx" role="JUD" />
+        <content name="book-rev" src="release/USX_1/REV.usx" role="REV" />
+      </structure>
+    </publication>
+  </publications>
+  <copyright>
+    <fullStatement>
+      <statementContent type="xhtml">
+        <p>Biblica® พระคริสตธรรมคัมภีร์ ฉบับไทยสามัญแบบเปิด™</p>
+        <p>สงวนลิขสิทธิ์ © 2025 โดย Biblica, Inc.</p>
+        <p>Biblica® Open Thai Common Version™</p>
+        <p>Copyright © 2025 by Biblica, Inc.</p>
+        <p>“Biblica” เป็นเครื่องหมายการค้าจดทะเบียนในสำนักงานสิทธิบัตรและเครื่องหมายการค้าสหรัฐอเมริกาของ Biblica, Inc. ซึ่งใช้งานภายใต้ใบอนุญาต</p>
+        <p>“Biblica” is a trademark registered in the United States Patent and Trademark Office by Biblica, Inc. Used with permission.</p>
+        <p>See promoVersionInfo in metadata.xml for Creative Commons license.</p>
+      </statementContent>
+    </fullStatement>
+  </copyright>
+  <promotion>
+    <promoVersionInfo contentType="xhtml">
+      <p>Biblica® พระคริสตธรรมคัมภีร์ ฉบับไทยสามัญแบบเปิด™</p>
+      <p>สงวนลิขสิทธิ์ © 2025 โดย Biblica, Inc.</p>
+      <p>‌</p>
+      <p>Biblica® Open Thai Common Version™</p>
+      <p>Copyright © 2025 by Biblica, Inc.</p>
+      <p>‌</p>
+      <p>‌“Biblica” เป็นเครื่องหมายการค้าจดทะเบียนในสำนักงานสิทธิบัตรและเครื่องหมายการค้าสหรัฐอเมริกาของ Biblica, Inc. ซึ่งใช้งานภายใต้ใบอนุญาต</p>
+      <p>‌</p>
+      <p>‌“Biblica” is a trademark registered in the United States Patent and Trademark Office by Biblica, Inc. Used with permission.</p>
+      <h3>Creative Commons license</h3>
+      <p>พระคริสตธรรมคัมภีร์ นี้ หรือ “ผลงาน” นี้เปิดให้ท่านเข้าถึงได้ภายใต้สัญญาอนุญาตครีเอทีฟคอมมอนส์แบบ Attribution-ShareAlike 4.0 International License (CC BY-SA) ท่านสามารถดูสัญญาอนุญาตนี้ได้โดยเข้าไปที่ <a href="https://creativecommons.org/licenses/by-sa/4.0">https://creativecommons.org/licenses/by-sa/4.0</a> หรือส่งหนังสือไปยัง Creative Commons ที่ ตู้ ปณ. 1866 เมาน์เทนวิว รัฐแคลิฟอร์เนีย 94042 ประเทศสหรัฐอเมริกา</p>
+      <p>‌</p>
+      <p>“Biblica” เป็นเครื่องหมายการค้าจดทะเบียนของ Biblica, Inc. ในการใช้เครื่องหมายการค้า Biblica® ทุกครั้ง ท่านต้องได้รับอนุญาตเป็นลายลักษณ์อักษรจาก Biblica, Inc. ท่านได้รับอนุญาตให้ทำซ้ำและแจกจ่ายผลงานนี้โดยไม่มีการเปลี่ยนแปลงผลงาน และต้องคงไว้ซึ่งชื่อของผลงานตามเดิมรวมถึงเครื่องหมายการค้า “Biblica®” การเปลี่ยนแปลง หรือการแปลผลงานนี้เป็นการก่อให้เกิดงานดัดแปลงซึ่งในกรณีดังกล่าวท่านต้องลบเครื่องหมายการค้า Biblica® ออก เมื่อท่านทำการเผยแพร่งานดัดแปลงดังกล่าว ท่านต้องแสดงถึงการเปลี่ยนแปลงที่ท่านได้ทำขึ้นโดยจัดทำเป็นรายการไว้ในที่ซึ่งบุคคลทั่วไปสามารถเห็นได้ เช่น บนเว็บไซต์ และท่านต้องแจ้งให้ทราบถึงที่มาของผลงานต้นฉบับด้วยโดยระบุว่า “สามารถเข้าถึงผลงานต้นฉบับโดย Biblica, Inc. ได้ที่ <a href="www.biblica.com">www.biblica.com</a> และ <a href="open.bible">open.bible</a>”</p>
+      <p>‌</p>
+      <p>ไม่ว่าท่านจะใช้ผลงานนี้โดยไม่มีการเปลี่ยนแปลงใดๆ หรือโดยมีการสร้างงานดัดแปลง ท่านต้องระบุข้อความแสดงลิขสิทธิ์ไว้ที่ชื่อเรื่องหรือหน้าลิขสิทธิ์ของผลงาน/ผลงานดัดแปลงด้วยโดยใช้ข้อความดังต่อไปนี้:</p>
+      <p>‌</p>
+      <p>Biblica® พระคริสตธรรมคัมภีร์ ฉบับไทยสามัญแบบเปิด™</p>
+      <p>สงวนลิขสิทธิ์ © 2025 โดย Biblica, Inc.</p>
+      <p>‌</p>
+      <p>Biblica® Open Thai Common Version™</p>
+      <p>Copyright © 2025 by Biblica, Inc.</p>
+      <p>‌</p>
+      <p>“Biblica” เป็นเครื่องหมายการค้าจดทะเบียนในสำนักงานสิทธิบัตรและเครื่องหมายการค้าสหรัฐอเมริกาของ Biblica, Inc. ซึ่งใช้งานภายใต้ใบอนุญาต</p>
+      <p>‌</p>
+      <p>“Biblica” is a trademark registered in the United States Patent and Trademark Office by Biblica, Inc. Used with permission.</p>
+      <p>‌</p>
+      <p>ท่านต้องเผยแพร่ผลงานดัดแปลงของท่านโดยใช้สัญญาอนุญาตแบบเดียวกัน (กล่าวคือ แบบ CC BY-SA) และใช้กฎกติกาเดียวกันด้วย</p>
+      <p>หากท่านต้องการแจ้งเรื่องการแปลผลงานนี้ของท่านต่อ Biblica, Inc. ท่านสามารถติดต่อพวกเราได้ที่ <a href="https://open.bible/#feedback">https://open.bible/#feedback</a>.</p>
+      <p>‌</p>
+      <p>‌</p>
+      <p>This work is made available under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA). To view a copy of this license, visit <a href="https://creativecommons.org/licenses/by-sa/4.0">https://creativecommons.org/licenses/by-sa/4.0</a> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.</p>
+      <p>‌</p>
+      <p>You have permission to copy and distribute this Work, as long as you do not change it and you keep the title as it is. Changing or translating this Work will create a derivative work. When you publish this derivative work, you must list what changes you have made where people can see them, such as on a website. You must also show where the original Work is from: “The original Work by its copyright holders is available for free at <a href="www.biblica.com">www.biblica.com</a> and <a href="open.bible">open.bible</a>.”</p>
+      <p>‌</p>
+      <p>Notice of copyright must appear on the title or copyright page of the work as follows:</p>
+      <p>‌</p>
+      <p>Biblica® พระคริสตธรรมคัมภีร์ ฉบับไทยสามัญแบบเปิด™</p>
+      <p>สงวนลิขสิทธิ์ © 2025 โดย Biblica, Inc.</p>
+      <p>‌</p>
+      <p>Biblica® Open Thai Common Version™</p>
+      <p>Copyright © 2025 by Biblica, Inc.</p>
+      <p>‌</p>
+      <p>“Biblica” เป็นเครื่องหมายการค้าจดทะเบียนในสำนักงานสิทธิบัตรและเครื่องหมายการค้าสหรัฐอเมริกาของ Biblica, Inc. ซึ่งใช้งานภายใต้ใบอนุญาต</p>
+      <p>‌</p>
+      <p>“Biblica” is a trademark registered in the United States Patent and Trademark Office by Biblica, Inc. Used with permission.</p>
+      <p>‌</p>
+      <p>You must also make your derivative work available under the same license (CC BY-SA).</p>
+      <p>‌</p>
+      <p>If you would like to notify Biblica, Inc. regarding your translation of this work, please contact us at <a href="https://open.bible/#feedback">https://open.bible/#feedback</a>. </p>
+    </promoVersionInfo>
+  </promotion>
+  <archiveStatus>
+    <archivistName>email address</archivistName>
+    <dateArchived>2025-07-31T14:57:20.0196134-06:00</dateArchived>
+    <dateUpdated>2025-07-31T21:22:33.6926036+00:00</dateUpdated>
+    <comments>Metadata update</comments>
+  </archiveStatus>
+</DBLMetadata>

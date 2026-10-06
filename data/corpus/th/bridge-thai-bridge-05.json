@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "bridge-thai-bridge-05",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ไปโรงเรียน",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-th-bridge-drafts",
+    "kind": "comprehensible-input",
+    "title": "Thai beginner bridge drafts"
+  },
+  "source": {
+    "id": "src:th:thai-bridge-05",
+    "title": "ไปโรงเรียน — course-owned draft",
+    "author": "Course authors (machine-drafted)",
+    "attribution": "Course-owned Thai draft. Machine-drafted for native-speaker review; no external source or translation claimed.",
+    "provenance": "Original controlled draft written for the course-owned beginner review queue. It is not a published or source-reviewed Thai work.",
+    "rights": "owner-authored",
+    "licenseNote": "Course-owned draft; may not be published until native review.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Native Thai reviewer required. Source fidelity is not applicable because this is original course-owned draft text."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "โรงเรียน",
+    "กระเป๋า",
+    "เพื่อน"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "course-owned-draft"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss for review only"
+  },
+  "sections": [
+    {
+      "title": "ไปโรงเรียน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เช้าวันจันทร์ ฉันสะพายกระเป๋าไปโรงเรียน",
+              "english": "On Monday morning, I carry my bag to school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เพื่อนยืนรอฉันที่หน้าปากซอย",
+              "english": "A friend waits for me at the entrance of the lane."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เราคุยกันเรื่องการบ้านระหว่างเดิน",
+              "english": "We talk about homework while walking."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ครูยิ้มและทักทายพวกเราในห้อง",
+              "english": "The teacher smiles and greets us in the classroom."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "วันนี้เราอ่านเรื่องสั้นเกี่ยวกับสัตว์",
+              "english": "Today we read a short story about animals."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันอ่านช้าแต่พยายามอ่านให้จบ",
+              "english": "I read slowly but try to finish."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ตอนพัก เรากินขนมใต้ต้นไม้",
+              "english": "At break time, we eat snacks under a tree."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เพื่อนช่วยอธิบายคำที่ฉันไม่รู้",
+              "english": "My friend explains a word that I do not know."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "หลังเลิกเรียน ฉันกลับบ้านอย่างมีความสุข",
+              "english": "After school, I return home happily."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ครูให้การบ้านหนึ่งหน้า",
+              "english": "The teacher gives us one page of homework."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันจดคำใหม่ลงในสมุด",
+              "english": "I write the new words in my notebook."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เพื่อนบอกว่าจะพบฉันพรุ่งนี้",
+              "english": "My friend says we will meet tomorrow."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "work": {
+    "slug": "bridge-thai-bridge-05",
+    "courseId": "thailand-th",
+    "chapter": {
+      "index": 4,
+      "title": "ไปโรงเรียน"
+    }
+  }
+}

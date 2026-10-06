@@ -1,0 +1,86 @@
+{
+  "checkedAt": "2026-10-02",
+  "entries": [
+    {
+      "work": "thai-wikisource-nueng-sai-mu-mai-muan",
+      "page": "หนึ่งไซร้หมู่ไม้ม้วน",
+      "url": "https://th.wikisource.org/w/index.php?oldid=73265",
+      "revision": 73265,
+      "renderedSha256": "b0b1fe937f51afe5a87290bd6860412b89b5dd6b18254a9ba82f32d14db97181",
+      "paragraphs": 6,
+      "characters": 203
+    },
+    {
+      "work": "thai-wikisource-phai-chai-lae-hai-than",
+      "page": "ใฝ่ใจแลให้ทาน",
+      "url": "https://th.wikisource.org/w/index.php?oldid=73257",
+      "revision": 73257,
+      "renderedSha256": "28cf19d6a4ce7ed79b3f533bd4079f5e72b2ea4d874135ca1d85db7a1b4345b5",
+      "paragraphs": 4,
+      "characters": 127
+    },
+    {
+      "work": "thai-wikisource-phu-yai-ha-pha-mai",
+      "page": "ผู้ใหญ่หาผ้าใหม่",
+      "url": "https://th.wikisource.org/w/index.php?oldid=221517",
+      "revision": 221517,
+      "renderedSha256": "30b2c288bf7fea56ebfe411dcb50c7ee34fcc93575d208dd0d257f13a997f736",
+      "paragraphs": 6,
+      "characters": 207
+    },
+    {
+      "work": "nms-vetal-selected",
+      "page": "นิทานเวตาล/ต้นเรื่อง",
+      "url": "https://th.wikisource.org/w/index.php?oldid=216958",
+      "revision": 216958,
+      "renderedSha256": "56be522d31efce4542954bbfb8931d351151f402a2466561785374d5db67a9f1",
+      "paragraphs": 83,
+      "characters": 28805
+    },
+    {
+      "work": "nms-vetal-selected",
+      "page": "นิทานเวตาล/เรื่องที่ 1",
+      "url": "https://th.wikisource.org/w/index.php?oldid=188095",
+      "revision": 188095,
+      "renderedSha256": "160f69739b5c7a70e82df42204c650563fdf9c927733ffc9546870fb031f8ede",
+      "paragraphs": 98,
+      "characters": 33908
+    },
+    {
+      "work": "nms-vetal-selected",
+      "page": "นิทานเวตาล/เรื่องที่ 8",
+      "url": "https://th.wikisource.org/w/index.php?oldid=194802",
+      "revision": 194802,
+      "renderedSha256": "5667f131d98210958aa6e35d18d46ff5e5c66aa1f99ad99b9b50839a2c19d59b",
+      "paragraphs": 80,
+      "characters": 22611
+    },
+    {
+      "work": "nms-vetal-selected",
+      "page": "นิทานเวตาล/เรื่องที่ 9",
+      "url": "https://th.wikisource.org/w/index.php?oldid=191092",
+      "revision": 191092,
+      "renderedSha256": "ba2b09abd54534eec9c428b059ebaa31a6a2d77d5d037a699ed5c3601194357d",
+      "paragraphs": 64,
+      "characters": 15811
+    },
+    {
+      "work": "nms-vetal-selected",
+      "page": "นิทานเวตาล/เรื่องที่ 10",
+      "url": "https://th.wikisource.org/w/index.php?oldid=191090",
+      "revision": 191090,
+      "renderedSha256": "fd661093c67ff87488522d26b726b39c61ac254bcfb51ac89542881718d74936",
+      "paragraphs": 20,
+      "characters": 6415
+    },
+    {
+      "work": "nms-vetal-selected",
+      "page": "นิทานเวตาล/ปลายเรื่อง",
+      "url": "https://th.wikisource.org/w/index.php?oldid=216846",
+      "revision": 216846,
+      "renderedSha256": "5e3d8587874dfcbff8abdbd6627c3c4450a1547db700042e0396ddac0b575416",
+      "paragraphs": 18,
+      "characters": 6919
+    }
+  ]
+}

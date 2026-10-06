@@ -1,0 +1,57 @@
+{
+  "slug": "premchand-namak-ka-daroga",
+  "title": "नमक का दारोगा",
+  "author": "प्रेमचंद",
+  "stage": "c5",
+  "streams": [
+    "literature"
+  ],
+  "contentType": "story",
+  "source": {
+    "file": "premchand-namak-ka-daroga.txt",
+    "kind": "plain",
+    "url": "https://hi.wikisource.org/wiki/सप्तसरोज/नमक_का_दारोगा",
+    "edition": "सप्तसरोज, हिन्दी पुस्तक एजेंसी, काशी, 1938 (sixteenth)",
+    "attribution": "नमक का दारोगा — प्रेमचंद; scan-backed Hindi Wikisource transcription; CC BY-SA 4.0 transcription credit.",
+    "provenance": "Official page revision 516646; index revision 516629; source edition and original-work evidence retained in source-research.json."
+  },
+  "rights": {
+    "state": "verified-public-domain",
+    "copyrightStatus": "public-domain",
+    "permission": "not-needed",
+    "canBundle": true,
+    "verified": true,
+    "verifiedBy": "Hindi Wikisource edition page and PD India/PD US source record",
+    "verifiedAt": "2026-10-02",
+    "basis": "The book page labels the work सप्तसरोज (1917), prints the first-edition preface dated 8 June 1917, and lists नमक का दारोगा in the contents. The page explicitly records PD India and PD US status.",
+    "statusByJurisdiction": {
+      "US": "public-domain",
+      "IN": "public-domain"
+    },
+    "license": "CC BY-SA 4.0 (Wikisource transcription; underlying 1917 work PD in US/India)",
+    "attributionRequired": true,
+    "shareAlike": true,
+    "commercialUse": true,
+    "compliance": "Retain author, edition, source URL, Wikisource attribution and CC BY-SA 4.0 link; indicate changes.",
+    "evidence": [
+      "https://hi.wikisource.org/wiki/सप्तसरोज/नमक_का_दारोगा",
+      "https://hi.wikisource.org/wiki/विषयसूची:सप्तसरोज.djvu",
+      "https://creativecommons.org/licenses/by-sa/4.0/deed.hi"
+    ],
+    "userImportOnly": false,
+    "canModify": false,
+    "canStoreOffline": true,
+    "canBundleAudio": false,
+    "audiobook": "unknown"
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "Hindi bridge source-fidelity check",
+    "reviewedAt": "2026-10-02",
+    "coversSourceSha256": "8cc047055014da5c5f09393ad8541a2e07564fab157de9cb8010fa938760eaf3",
+    "qualityVerdict": "usable",
+    "notes": "Complete story body extracted from the official parsed page; navigation, licence footer, printed page numbers, and repeated transclusion tail excluded. No native-speaker quality claim."
+  },
+  "contentSignature": "a38003f2b41cca5fb17f8f28038a4f38a1e4a45f2e77b8a4738c27191d8ff070",
+  "wordCount": 3185
+}

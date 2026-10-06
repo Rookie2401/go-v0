@@ -18,9 +18,8 @@ import { resetSittingsForTests } from '../../src/ui/sitting';
 import { flush, installMediaStubs, q, qa } from './harness';
 
 /**
- * ONE store, the REAL GoLearn, the real importer and the bundled Spanish story: for the same learner and text, Home (the
- * Continue card and every recommendation row), the library and the reader must show the SAME progress string in every
- * audited state. This is the regression test for "Seen 0 of 10 · Finished" on one screen and "Seen 4 of 10 · Finished" on another.
+ * ONE store, the REAL GoLearn, the real importer and the bundled Spanish story: the reading directory and reader must
+ * show the SAME progress string. Home is a stable doorway and deliberately carries no learner progress state.
  */
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -79,38 +78,39 @@ async function render(route: string): Promise<HTMLElement> {
 
 interface Shown { line: string; why?: string }
 /** What each surface shows for the text: the progress string(s), and its "why" explanation when it has one. */
-async function surfaces(): Promise<{ home: Shown[]; library: Shown[]; reader: Shown[] }> {
+async function surfaces(): Promise<{ homeHasContinue: boolean; homeHasProgress: boolean; library: Shown[]; reader: Shown[] }> {
   const read = (root: ParentNode, testIds: string[]): Shown[] => testIds.flatMap((id) => qa(root, `[data-testid="${id}"]`).map((el): Shown => {
     const why = q(root, `[data-testid="${id}-why"]`);
     return { line: el.textContent ?? '', ...(why ? { why: why.getAttribute('title') ?? why.textContent ?? '' } : {}) };
   }));
   const home = await render('/');
-  const h = read(home, ['continue-progress', 'item-progress']);
+  const homeHasContinue = !!q(home, '.home__continue');
+  const homeHasProgress = !!q(home, '[data-testid="continue-progress"]');
   const lib = await render('/read');
   const l = read(lib, ['library-progress']);
   const rd = await render(`/read/${encodeURIComponent(STORY)}`);
   const r = read(rd, ['reading-progress']);
-  return { home: h, library: l, reader: r };
+  return { homeHasContinue, homeHasProgress, library: l, reader: r };
 }
 
 async function expectIdentical(expected: string, opts: { why: boolean }) {
   const s = await surfaces();
   expect(s.library, 'the library row').toHaveLength(1);
   expect(s.reader, 'the reader block').toHaveLength(1);
-  expect(s.home.length, 'Home shows the text (Continue card and/or recommendation rows)').toBeGreaterThanOrEqual(1);
-  for (const [name, shown] of [['Home', s.home], ['library', s.library], ['reader', s.reader]] as const) {
+  expect(s.homeHasContinue).toBe(false);
+  expect(s.homeHasProgress).toBe(false);
+  for (const [name, shown] of [['library', s.library], ['reader', s.reader]] as const) {
     for (const x of shown) {
       expect(x.line, name).toBe(expected);
       if (opts.why) expect(x.why, `${name} explains why Seen and Finished differ`).toBe(FINISHED_EXPLANATION);
       else expect(x.why, `${name} has nothing to explain`).toBeUndefined();
     }
   }
-  expect(s.home.map((x) => x.line)).toEqual(s.home.map(() => expected)); // the Continue card AND every row agree
   expect(s.library[0].line).toBe(s.reader[0].line);
   return s;
 }
 
-describe('one canonical record, rendered identically by Home, the library and the reader (real GoLearn, real importer, bundled story)', () => {
+describe('one canonical record, rendered identically by the reading directory and reader (real GoLearn, real importer, bundled story)', () => {
   it('(a) four sentences seen + explicit finish', async () => {
     await importDocs([doc()]);
     const S = await live();

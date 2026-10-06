@@ -142,6 +142,26 @@ describe('intent(): never built from a draft or a revision', () => {
     expect(r.proposal).toBe('Empecé a entender mi pecado.');
     expect(JSON.stringify(r)).not.toMatch(/creer|creo/);
   });
+
+  it('does not retrieve wording from testimony corpora, newly protected assessment text, or retired wording', async () => {
+    const privateWorld = await world();
+    await esScriptureIntent(privateWorld, 'A');
+    const source = (await privateWorld.store.texts.get('text:es:scripture-i'))!;
+    await privateWorld.store.corpora.put({ id: source.corpusId, lang: 'es', kind: 'testimony', title: 'Private' });
+    expect((await privateWorld.gotell.intent({ userId: 'A', lang: 'es', english: 'I began to understand my sin' })).supported).toBe(false);
+
+    const protectedWorld = await world();
+    await esScriptureIntent(protectedWorld, 'A');
+    const protectedText = (await protectedWorld.store.texts.get('text:es:scripture-i'))!;
+    await protectedWorld.store.texts.put({ ...protectedText, listeningAssessmentId: 'protected-after-encounter' });
+    expect((await protectedWorld.gotell.intent({ userId: 'A', lang: 'es', english: 'I began to understand my sin' })).supported).toBe(false);
+
+    const revisedWorld = await world();
+    await esScriptureIntent(revisedWorld, 'A');
+    const sentence = (await revisedWorld.store.sentences.get('text:es:scripture-i/s0'))!;
+    await revisedWorld.store.sentences.put({ ...sentence, retiredInVersion: 2 });
+    expect((await revisedWorld.gotell.intent({ userId: 'A', lang: 'es', english: 'I began to understand my sin' })).supported).toBe(false);
+  });
 });
 
 describe('intent(): with an attempt', () => {

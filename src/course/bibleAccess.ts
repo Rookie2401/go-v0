@@ -54,7 +54,7 @@ export const BIBLE_ACCESS: Readonly<Record<LanguageCode, BibleAccessRecord>> = {
     sourceUrl: 'https://www.bible.com/versions/3631',
     method: 'YouVersion edition page identifies the translation, lists the books and chapters, and credits © Interconfessional Bible Society of Albania. This is a separate linked edition, not the unidentified ALB catalogue candidate.',
     importMethod: 'An entitled personal .txt or unprotected .epub can be imported for ordinary reading on this device. The general importer does not create a verse-addressed Scripture edition.',
-    rights: 'Copyright and permission to bundle or redistribute are not established. No Albanian Bible text is bundled.',
+    rights: 'Copyright and permission to bundle or redistribute are not established. No approved Albanian Bible text is available in GoLearn’s Scripture library.',
     historicalVarieties: ['Gheg (Kristoforidhi)', 'Tosk (Kristoforidhi)'],
   },
 };

@@ -1,6 +1,6 @@
 /**
  * H5 — the first controlled Hindi stories (Stage 0A, 0B, 0C: 26 stories). Every document is a MACHINE DRAFT: it must
- * validate with the real validator, belong to its work, stay unpublished for the one stated reason, and carry one
+ * validate with the real validator, belong to its work, stay unpublished with both explicit native and review-status blockers, and carry one
  * English line per sentence. The language budgets (sentence length, words per band, distinct forms, repetition of
  * new words) are checked on the text itself; words are counted by splitting on whitespace and stripping punctuation,
  * never with the Hindi adapter, whose analysis is being rebuilt. Analysis coverage is printed, not asserted.
@@ -122,7 +122,7 @@ describe('Hindi Stage 0: validation and publication', () => {
       expect(d.english?.source, d.id).toBe('drafted with the text; not reviewed');
       const gate = computePublished(d);
       expect(gate.published, d.id).toBe(false);
-      expect(gate.unpublishedReasons, d.id).toHaveLength(1);
+      expect(gate.unpublishedReasons, d.id).toHaveLength(2);
       expect(gate.unpublishedReasons[0], d.id).toMatch(/native-speaker review/);
     }
   });

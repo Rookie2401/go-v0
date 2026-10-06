@@ -260,6 +260,21 @@ describe.each(VARIANTS)('GoRead handler: $name', (variant) => {
       await refused('not-shareable', ({ put }) => put({ ...withSource(spanish(), { rights: 'generated', authorship: 'generated' }), generated: true }));
     });
 
+    it('not-shareable: testimony stays private even when marked owner-authored and licensed for public sharing', async () => {
+      const publicOwnerAuthored = withSource(spanish(), { rights: 'owner-authored', authorship: 'human' });
+      await refused('not-shareable', ({ put }) => put({ ...publicOwnerAuthored, contentType: 'testimony' }));
+      await refused('not-shareable', ({ put }) => put({
+        ...publicOwnerAuthored,
+        contentType: 'story',
+        corpus: { ...publicOwnerAuthored.corpus, kind: 'testimony' },
+      }));
+      // A normal owner-authored course text remains eligible for team sharing.
+      const { put, close } = await setup();
+      const response = await put(publicOwnerAuthored);
+      expect(response.status).toBe(201);
+      close();
+    });
+
     it('not-shareable: user-private and unverified', async () => {
       await refused('not-shareable', ({ put }) => put(withSource(spanish(), { rights: 'user-private', authorship: 'learner' })));
       await refused('not-shareable', ({ put }) => put(withSource(spanish(), { rights: 'unverified', provenance: 'unverified sample, replace before release' })));
@@ -462,7 +477,7 @@ describe('GoRead program (child process)', () => {
     const added = await runAdmin(['whitelist', 'add', '--team', TEAM, '--name', 'Ana', '--data', data], { stdout: () => undefined, stderr: () => undefined }, { newKey: () => ANA_KEY });
     expect(added).toBe(0);
     const port = await freePort();
-    child = spawn(process.execPath, ['node_modules/vite-node/dist/cli.mjs', 'server/goread/main.ts', '--port', String(port), '--data', data], {
+    child = spawn(process.execPath, ['node_modules/vite-node/dist/cli.mjs', '--config', 'server/goread/vite.config.ts', 'server/goread/main.ts', '--port', String(port), '--data', data], {
       stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true,
     });
     let out = '';

@@ -17,9 +17,9 @@ describe('applyReview', () => {
   it('records the review block, removes needs-native-review, keeps machine-drafted, and never touches a text byte', () => {
     const before = draft();
     const frozen = clone(before);
-    const r = ok(applyReview(before, { by: 'Ana Ruiz (native speaker)', date: '2026-02-01', notes: 'Checked wording.' }));
+    const r = ok(applyReview(before, { by: 'Ana Ruiz (native speaker)', date: '2026-02-01', notes: 'Checked wording.', level: 'native' }));
     expect(before).toEqual(frozen); // the input is not mutated
-    expect(r.review).toEqual({ status: 'reviewed', reviewedBy: 'Ana Ruiz (native speaker)', reviewedAt: '2026-02-01', contentSignature: contentSignatureOf(before), notes: 'Checked wording.' });
+    expect(r.review).toEqual({ status: 'reviewed', reviewedBy: 'Ana Ruiz (native speaker)', reviewedAt: '2026-02-01', contentSignature: contentSignatureOf(before), notes: 'Checked wording.', level: 'native' });
     expect(r.doc.review).toEqual(r.review);
     expect(r.doc.editorialTags).toEqual(['machine-drafted']);
     expect(r.removedTags).toEqual(['needs-native-review']);
@@ -92,7 +92,7 @@ describe('applyReview', () => {
   it('a positive review does not make unestablished rights publishable: the remaining reasons come back', () => {
     const d = draft();
     d.source = { ...d.source, rights: 'unverified', provenance: 'unknown; replace this text' };
-    const r = ok(applyReview(d, { by: 'A', status: 'approved' }));
+    const r = ok(applyReview(d, { by: 'A', status: 'approved', level: 'native' }));
     expect(r.decision.published).toBe(false);
     expect(r.decision.unpublishedReasons).toHaveLength(1);
     expect(r.decision.unpublishedReasons[0]).toMatch(/rights are unverified/);
@@ -103,7 +103,7 @@ describe('applyReview', () => {
     const d = draft();
     const first = await importDocuments(store, registry, [d], { clock });
     expect(first.documents[0]).toMatchObject({ action: 'created', published: false });
-    const reviewed = ok(applyReview(d, { by: 'Ana Ruiz', date: '2026-02-01' })).doc;
+    const reviewed = ok(applyReview(d, { by: 'Ana Ruiz', date: '2026-02-01', level: 'native' })).doc;
     const second = await importDocuments(store, registry, [reviewed], { clock: () => '2026-02-01T00:00:00.000Z' });
     expect(second.documents[0]).toMatchObject({ action: 'updated', contentVersion: 1, published: true, sentencesAdded: 0, sentencesRetired: 0 });
     const t = (await store.texts.get(ids.text('es', 'test-doc')))!;

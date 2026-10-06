@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-10-02",
+  "host": "wikisource.org",
+  "licenceEvidenceUrl": "https://wikisource.org/wiki/Wikisource:Copyright_policy",
+  "documentSha256": "26b533a22bbcfc104e7aed1186da759600e6f3ab5b9a3e1bd6628b38204c1b20",
+  "rootEvidence": [],
+  "entries": [
+    {
+      "title": "Bretkosa që deshi të trashej sa një Ka",
+      "url": "https://wikisource.org/w/index.php?oldid=968257",
+      "revision": 968257,
+      "rawSha256": "7f5e97fd394fea2d4e2c5844a83a9ee0283f6b05d8546f10b7f68ed0125c4c71",
+      "paragraphs": 1,
+      "characters": 559
+    },
+    {
+      "title": "Korbi dhe Dhelpra",
+      "url": "https://wikisource.org/w/index.php?oldid=1031830",
+      "revision": 1031830,
+      "rawSha256": "ed85008765553d973b1e72a9c0e9245568aef3b63e258c0f61613de99f775413",
+      "paragraphs": 1,
+      "characters": 702
+    },
+    {
+      "title": "Lopa, Dhija, Delja dhe Luani",
+      "url": "https://wikisource.org/w/index.php?oldid=968258",
+      "revision": 968258,
+      "rawSha256": "dfcf6e3936eee4a92840778506d08c2bff9efc62ea01bc27bf880c611fc29f26",
+      "paragraphs": 1,
+      "characters": 1089
+    },
+    {
+      "title": "Luani dhe Miu",
+      "url": "https://wikisource.org/w/index.php?oldid=968259",
+      "revision": 968259,
+      "rawSha256": "dcfc31ed8f94d086b6f30315b196b75fb6a5d1272eea4473047c63d5ab80c6a8",
+      "paragraphs": 1,
+      "characters": 712
+    },
+    {
+      "title": "Maçoku dhe Miu plak",
+      "url": "https://wikisource.org/w/index.php?oldid=968260",
+      "revision": 968260,
+      "rawSha256": "f7b3c62e585ac6f19fbe2f73f577c2928430b6f8c28eeb11535a46f6f429a3ee",
+      "paragraphs": 1,
+      "characters": 1126
+    },
+    {
+      "title": "Millonai, i Biri dhe një Gomar",
+      "url": "https://wikisource.org/w/index.php?oldid=968263",
+      "revision": 968263,
+      "rawSha256": "c049f9e7b26f30cb308641f4b84a1a39dfd1b0f7d480b0dc859325ec1b4701b7",
+      "paragraphs": 1,
+      "characters": 1903
+    },
+    {
+      "title": "Ujku dhe Qengji",
+      "url": "https://wikisource.org/w/index.php?oldid=968269",
+      "revision": 968269,
+      "rawSha256": "c224661f1a2a81a3bdd49867baf8f517577dc5b76bb13789facfd7ef7b95b405",
+      "paragraphs": 1,
+      "characters": 741
+    },
+    {
+      "title": "Zogu dhe Djali",
+      "url": "https://wikisource.org/w/index.php?oldid=968287",
+      "revision": 968287,
+      "rawSha256": "5562186849f889391c2f2bb1ece2dc232c748c46bcf2e7affc205493757a7cb5",
+      "paragraphs": 1,
+      "characters": 1190
+    }
+  ]
+}

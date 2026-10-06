@@ -17,6 +17,10 @@ const scripture = (extra: Record<string, unknown> = {}, source: Record<string, u
 const book = (rights: string, work?: string) => ({ id: 'c', lang: 'hi', contentType: 'story', source: { rights, licenseNote: 'x', attribution: 'y' }, ...(work ? { work: { slug: work } } : {}) });
 
 describe('bundleDecision', () => {
+  it('cannot bundle rights-pending or rejected material despite an owner-authored label', () => {
+    for (const lifecycle of ['candidate', 'rights_pending', 'rejected']) expect(bundleDecision({ ...authored, curriculum: { lifecycle, rejectionReasons: ['No permission'] } }).verdict).toBe('exclude');
+    expect(bundleDecision({ ...authored, curriculum: { lifecycle: 'native_review' } }).verdict).toBe('bundle');
+  });
   it('bundles what was written for the course', () => {
     expect(bundleDecision(authored).verdict).toBe('bundle');
     expect(bundleDecision({ ...authored, source: { rights: 'generated' } }).verdict).toBe('bundle');

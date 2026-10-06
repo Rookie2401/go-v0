@@ -1,0 +1,27 @@
+S'ka pengesë për parandalimin e ligjeve të shkruara nga AI
+
+Pasi një projektligj u miratua nga Këshilli Bashkiak i Porto Alegre, në shtetin më jugor të Brazilit, Rio Grande do Sul dhe ju dha OK nga kryetari i bashkisë, këshilltari i qytetit që e prezantoi, zbuloi se teksti ishte shkruar dhe përfshinte sugjerime të bëra nga inteligjenca artificiale (AI).
+
+Dokumenti, që përjashton njerëzit nga pagesa për matësin e ri të ujit në rast vjedhjeje, u miratua unanimisht.
+
+Këshilltari Ramiro Rosário zbuloi se i dërgoi ChatGPT një direktivë prej 289 karakteresh dhe rezultati ishte një projektligj me tetë nene dhe arsyetim, i cili ishte i paplotë në draftin fillestar për shkak të kufizimeve të karaktereve – diçka që këshilltari nuk e vuri re, derisa u paralajmërua nga Seksioni për Hartimin Legjislativ dhe kështu ai u kthye në platformën e AI për ndihmë shtesë.
+
+Në një intervistë për gazetën Folha de S. Paulo, ai tha:
+
+Këshilltari ishte i kënaqur me një nga propozimet origjinale të AI: të përjashtohej pronari nga pagesa e faturës së ujit deri sa të zëvendësohej pajisja.
+
+“Mendova se ishte një ide e mirë edhe pse nuk ishte e imja”, tha ai, sipas Matinal Jornalismo.
+
+Rosário zbuloi përdorimin e AI vetëm pasi kryetari e dekretoi ligjin, sipas tij, për të krijuar debat mbi këtë temë. Megjithëse nuk ka pengesa ligjore për parandalimin e rregulloreve të shkruara nga AI në dokumentet braziliane, kreu i këshillit bashkiak Hamilton Sossmeier i tha gazetës G1 se ai e konsideroi atë një “precedent të rrezikshëm”:
+
+ChatGPT u krijua nga kompania teknologjike në SHBA OpenAI, bazuar në një model gjuhësor, i vënë në dispozicion të publikut në vitin 2022. Ai përdor mësimin për të gjeneruar shkrime të ngjashme me ato që shkruan njeriu dhe funksionon në një dizajn si chatbot. Ndërsa fleksibiliteti dhe aftësitë gjeneruese të modeleve gjuhësore mund të ndihmojnë me prozën, poezinë dhe programimin, për shembull, ato gjithashtu ngrenë shqetësime për keqpërdorimin.
+
+Në hartimin e ligjeve, ChatGPT është përdorur edhe jashtë Brazilit. Në fillim të 2023, një ligjvënës i Massachusetts përdori ChatGPT për të shkruar legjislacionin e menaxhimit të modeleve gjeneruese të inteligjencës artificiale. “ChatGPT na mbuloi 70 për qind të asaj që na nevojitej kur donim të hartonim këtë projektligj, por nuk e kreu punën deri në fund”, tha senatori i Massachusetts Barry Finegold.
+
+ChatGPT gjeneron fjali bazuar në grupin e të dhënave. Ai operon në dy modele: një version me pagesë, me një bazë të dhënash të përditësuar në 2023 dhe një version falas, me të dhënat e tij më aktuale që përfshin njohuri deri në vitin 2021. Përveç ngritjes së pyetjeve në lidhje me pronësinë dhe të drejtën e autorit, ruajtja e objektivitetit dhe shmangia e paragjykimeve në kontekstet politike është një shqetësim për disa vëzhgues.
+
+Për më tepër, ChatGPT ka një potencial të madh për të gjeneruar dezinformata dhe të bëhet “halucinant”. Halucinacionet ndodhin kur një model i AI krijon rezultate që devijojnë nga ajo që do të konsiderohej normale, ose e parashikuar bazuar në të dhënat e trajnimit.
+
+Kongresi kombëtar i Brazilit aktualisht po shqyrton një projektligj që synon të rregullojë përdorimin e AI në vend. Transparenca, mbrojtja e privatësisë dhe e vlerave demokratike duhet të respektohen të gjitha, sipas tekstit aktual.
+
+Në senatin e Brazilit po diskutohet edhe një projektligj tjetër, i cili synon gjithashtu të rregullojë përdorimin e inteligjencës artificiale dhe zbatimin e saj, duke propozuar një vlerësim të rrezikut përpara se shërbimi të vihet në dispozicion.

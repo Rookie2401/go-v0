@@ -1,0 +1,994 @@
+[
+  {
+    "id": "gdl-1-ch01",
+    "sourceId": "src:hi:gdl:1",
+    "index": 0,
+    "title": "अभी नहीं, अभी नहीं!",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%ad%e0%a5%80-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-%e0%a4%85%e0%a4%ad%e0%a5%80-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-2/",
+    "signature": "384940d910e8b1b8"
+  },
+  {
+    "id": "gdl-2-ch01",
+    "sourceId": "src:hi:gdl:2",
+    "index": 1,
+    "title": "अभी नहीं, अभी नहीं!",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%ad%e0%a5%80-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-%e0%a4%85%e0%a4%ad%e0%a5%80-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-3/",
+    "signature": "384940d910e8b1b8"
+  },
+  {
+    "id": "gdl-3-ch01",
+    "sourceId": "src:hi:gdl:3",
+    "index": 2,
+    "title": "अम्मा जब स्कूल गयीं",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%ae%e0%a5%8d%e0%a4%ae%e0%a4%be-%e0%a4%9c%e0%a4%ac-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2-%e0%a4%97%e0%a4%af%e0%a5%80%e0%a4%82-2/",
+    "signature": "aff05929ec10e505"
+  },
+  {
+    "id": "gdl-4-ch01",
+    "sourceId": "src:hi:gdl:4",
+    "index": 3,
+    "title": "अम्मा जब स्कूल गयीं",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%ae%e0%a5%8d%e0%a4%ae%e0%a4%be-%e0%a4%9c%e0%a4%ac-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2-%e0%a4%97%e0%a4%af%e0%a5%80%e0%a4%82-3/",
+    "signature": "aff05929ec10e505"
+  },
+  {
+    "id": "gdl-5-ch01",
+    "sourceId": "src:hi:gdl:5",
+    "index": 4,
+    "title": "अम्मा जब स्कूल गयीं",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%ae%e0%a5%8d%e0%a4%ae%e0%a4%be-%e0%a4%9c%e0%a4%ac-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2-%e0%a4%97%e0%a4%af%e0%a5%80%e0%a4%82/",
+    "signature": "aff05929ec10e505"
+  },
+  {
+    "id": "gdl-6-ch01",
+    "sourceId": "src:hi:gdl:6",
+    "index": 5,
+    "title": "अवनि और मटर का पौधा",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%b5%e0%a4%a8%e0%a4%bf-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a4%9f%e0%a4%b0-%e0%a4%95%e0%a4%be-%e0%a4%aa%e0%a5%8c%e0%a4%a7%e0%a4%be-2/",
+    "signature": "3ec56d85b3c9ffd0"
+  },
+  {
+    "id": "gdl-7-ch01",
+    "sourceId": "src:hi:gdl:7",
+    "index": 6,
+    "title": "अवनि और मटर का पौधा",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%b5%e0%a4%a8%e0%a4%bf-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a4%9f%e0%a4%b0-%e0%a4%95%e0%a4%be-%e0%a4%aa%e0%a5%8c%e0%a4%a7%e0%a4%be-3/",
+    "signature": "3ec56d85b3c9ffd0"
+  },
+  {
+    "id": "gdl-8-ch01",
+    "sourceId": "src:hi:gdl:8",
+    "index": 7,
+    "title": "अवनि और मटर का पौधा",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%85%e0%a4%b5%e0%a4%a8%e0%a4%bf-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a4%9f%e0%a4%b0-%e0%a4%95%e0%a4%be-%e0%a4%aa%e0%a5%8c%e0%a4%a7%e0%a4%be/",
+    "signature": "3ec56d85b3c9ffd0"
+  },
+  {
+    "id": "gdl-9-ch01",
+    "sourceId": "src:hi:gdl:9",
+    "index": 8,
+    "title": "आओ, बीज बटोरें!",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%86%e0%a4%93-%e0%a4%ac%e0%a5%80%e0%a4%9c-%e0%a4%ac%e0%a4%9f%e0%a5%8b%e0%a4%b0%e0%a5%87%e0%a4%82-2/",
+    "signature": "12e03ef57877bfd4"
+  },
+  {
+    "id": "gdl-10-ch01",
+    "sourceId": "src:hi:gdl:10",
+    "index": 9,
+    "title": "आओ, बीज बटोरें!",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%86%e0%a4%93-%e0%a4%ac%e0%a5%80%e0%a4%9c-%e0%a4%ac%e0%a4%9f%e0%a5%8b%e0%a4%b0%e0%a5%87%e0%a4%82-3/",
+    "signature": "12e03ef57877bfd4"
+  },
+  {
+    "id": "gdl-11-ch01",
+    "sourceId": "src:hi:gdl:11",
+    "index": 10,
+    "title": "आओ, बीज बटोरें!",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%86%e0%a4%93-%e0%a4%ac%e0%a5%80%e0%a4%9c-%e0%a4%ac%e0%a4%9f%e0%a5%8b%e0%a4%b0%e0%a5%87%e0%a4%82/",
+    "signature": "12e03ef57877bfd4"
+  },
+  {
+    "id": "gdl-12-ch01",
+    "sourceId": "src:hi:gdl:12",
+    "index": 11,
+    "title": "आलू-मालू-कालू",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%86%e0%a4%b2%e0%a5%82-%e0%a4%ae%e0%a4%be%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%be%e0%a4%b2%e0%a5%82-2/",
+    "signature": "a1656ed42b5fbea4"
+  },
+  {
+    "id": "gdl-13-ch01",
+    "sourceId": "src:hi:gdl:13",
+    "index": 12,
+    "title": "आलू-मालू-कालू",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%86%e0%a4%b2%e0%a5%82-%e0%a4%ae%e0%a4%be%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%be%e0%a4%b2%e0%a5%82/",
+    "signature": "a1656ed42b5fbea4"
+  },
+  {
+    "id": "gdl-14-ch01",
+    "sourceId": "src:hi:gdl:14",
+    "index": 13,
+    "title": "उड़ते उड़ते",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87-%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87-2/",
+    "signature": "388deafa04fd0f67"
+  },
+  {
+    "id": "gdl-15-ch01",
+    "sourceId": "src:hi:gdl:15",
+    "index": 14,
+    "title": "उड़ते उड़ते",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87-%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87/",
+    "signature": "388deafa04fd0f67"
+  },
+  {
+    "id": "gdl-16-ch01",
+    "sourceId": "src:hi:gdl:16",
+    "index": 15,
+    "title": "उड़ने वाला ऑटो",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%89%e0%a5%9c%e0%a4%a8%e0%a5%87-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-%e0%a4%91%e0%a4%9f%e0%a5%8b-2/",
+    "signature": "ac152ea0562fb640"
+  },
+  {
+    "id": "gdl-17-ch01",
+    "sourceId": "src:hi:gdl:17",
+    "index": 16,
+    "title": "उड़ने वाला ऑटो",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%89%e0%a5%9c%e0%a4%a8%e0%a5%87-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-%e0%a4%91%e0%a4%9f%e0%a5%8b/",
+    "signature": "ac152ea0562fb640"
+  },
+  {
+    "id": "gdl-18-ch01",
+    "sourceId": "src:hi:gdl:18",
+    "index": 17,
+    "title": "ऊँट चला, भई! ऊँट चला",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%8a%e0%a4%81%e0%a4%9f-%e0%a4%9a%e0%a4%b2%e0%a4%be-%e0%a4%ad%e0%a4%88-%e0%a4%8a%e0%a4%81%e0%a4%9f-%e0%a4%9a%e0%a4%b2%e0%a4%be-2/",
+    "signature": "0b8d7fff4d6e90d7"
+  },
+  {
+    "id": "gdl-19-ch01",
+    "sourceId": "src:hi:gdl:19",
+    "index": 18,
+    "title": "ऊँट चला, भई! ऊँट चला",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%8a%e0%a4%81%e0%a4%9f-%e0%a4%9a%e0%a4%b2%e0%a4%be-%e0%a4%ad%e0%a4%88-%e0%a4%8a%e0%a4%81%e0%a4%9f-%e0%a4%9a%e0%a4%b2%e0%a4%be/",
+    "signature": "0b8d7fff4d6e90d7"
+  },
+  {
+    "id": "gdl-20-ch01",
+    "sourceId": "src:hi:gdl:20",
+    "index": 19,
+    "title": "एक था मोटा राजा",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%8f%e0%a4%95-%e0%a4%a5%e0%a4%be-%e0%a4%ae%e0%a5%8b%e0%a4%9f%e0%a4%be-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be-2/",
+    "signature": "ed3ef931b7bf7f69"
+  },
+  {
+    "id": "gdl-21-ch01",
+    "sourceId": "src:hi:gdl:21",
+    "index": 20,
+    "title": "एक था मोटा राजा",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%8f%e0%a4%95-%e0%a4%a5%e0%a4%be-%e0%a4%ae%e0%a5%8b%e0%a4%9f%e0%a4%be-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be/",
+    "signature": "ed3ef931b7bf7f69"
+  },
+  {
+    "id": "gdl-22-ch01",
+    "sourceId": "src:hi:gdl:22",
+    "index": 21,
+    "title": "एक सौ सैंतीसवाँ पैर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%8f%e0%a4%95-%e0%a4%b8%e0%a5%8c-%e0%a4%b8%e0%a5%88%e0%a4%82%e0%a4%a4%e0%a5%80%e0%a4%b8%e0%a4%b5%e0%a4%be%e0%a4%81-%e0%a4%aa%e0%a5%88%e0%a4%b0-2/",
+    "signature": "502c5c9a92ab65fb"
+  },
+  {
+    "id": "gdl-23-ch01",
+    "sourceId": "src:hi:gdl:23",
+    "index": 22,
+    "title": "एक सौ सैंतीसवाँ पैर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%8f%e0%a4%95-%e0%a4%b8%e0%a5%8c-%e0%a4%b8%e0%a5%88%e0%a4%82%e0%a4%a4%e0%a5%80%e0%a4%b8%e0%a4%b5%e0%a4%be%e0%a4%81-%e0%a4%aa%e0%a5%88%e0%a4%b0/",
+    "signature": "502c5c9a92ab65fb"
+  },
+  {
+    "id": "gdl-24-ch01",
+    "sourceId": "src:hi:gdl:24",
+    "index": 23,
+    "title": "कचरे का बादल",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%9a%e0%a4%b0%e0%a5%87-%e0%a4%95%e0%a4%be-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-2/",
+    "signature": "063f0d3c37bd1021"
+  },
+  {
+    "id": "gdl-25-ch01",
+    "sourceId": "src:hi:gdl:25",
+    "index": 24,
+    "title": "कचरे का बादल",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%9a%e0%a4%b0%e0%a5%87-%e0%a4%95%e0%a4%be-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2/",
+    "signature": "063f0d3c37bd1021"
+  },
+  {
+    "id": "gdl-26-ch01",
+    "sourceId": "src:hi:gdl:26",
+    "index": 25,
+    "title": "कछुआ और खरगोश",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%9b%e0%a5%81%e0%a4%86-%e0%a4%94%e0%a4%b0-%e0%a4%96%e0%a4%b0%e0%a4%97%e0%a5%8b%e0%a4%b6-2/",
+    "signature": "dc4ee4afb72521e2"
+  },
+  {
+    "id": "gdl-27-ch01",
+    "sourceId": "src:hi:gdl:27",
+    "index": 26,
+    "title": "कछुआ और खरगोश",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%9b%e0%a5%81%e0%a4%86-%e0%a4%94%e0%a4%b0-%e0%a4%96%e0%a4%b0%e0%a4%97%e0%a5%8b%e0%a4%b6/",
+    "signature": "dc4ee4afb72521e2"
+  },
+  {
+    "id": "gdl-28-ch01",
+    "sourceId": "src:hi:gdl:28",
+    "index": 27,
+    "title": "कबाड़ी वाला",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%ac%e0%a4%be%e0%a5%9c%e0%a5%80-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-2/",
+    "signature": "7241b5c15d60369e"
+  },
+  {
+    "id": "gdl-29-ch01",
+    "sourceId": "src:hi:gdl:29",
+    "index": 28,
+    "title": "कबाड़ी वाला",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%ac%e0%a4%be%e0%a5%9c%e0%a5%80-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be/",
+    "signature": "7241b5c15d60369e"
+  },
+  {
+    "id": "gdl-30-ch01",
+    "sourceId": "src:hi:gdl:30",
+    "index": 29,
+    "title": "कल्लू कहानीबाज़",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b2%e0%a5%8d%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80%e0%a4%ac%e0%a4%be%e0%a5%9b-2/",
+    "signature": "bb23ed0c1be10a88"
+  },
+  {
+    "id": "gdl-31-ch01",
+    "sourceId": "src:hi:gdl:31",
+    "index": 30,
+    "title": "कल्लू कहानीबाज़",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b2%e0%a5%8d%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80%e0%a4%ac%e0%a4%be%e0%a5%9b/",
+    "signature": "bb23ed0c1be10a88"
+  },
+  {
+    "id": "gdl-32-ch01",
+    "sourceId": "src:hi:gdl:32",
+    "index": 31,
+    "title": "कहाँ गया गोगो?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%81-%e0%a4%97%e0%a4%af%e0%a4%be-%e0%a4%97%e0%a5%8b%e0%a4%97%e0%a5%8b-2/",
+    "signature": "45b20f3a0fb50dd0"
+  },
+  {
+    "id": "gdl-33-ch01",
+    "sourceId": "src:hi:gdl:33",
+    "index": 32,
+    "title": "कहाँ गया गोगो?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%81-%e0%a4%97%e0%a4%af%e0%a4%be-%e0%a4%97%e0%a5%8b%e0%a4%97%e0%a5%8b/",
+    "signature": "45b20f3a0fb50dd0"
+  },
+  {
+    "id": "gdl-34-ch01",
+    "sourceId": "src:hi:gdl:34",
+    "index": 33,
+    "title": "कहाँ गये गालों के गड्‌ढे?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%81-%e0%a4%97%e0%a4%af%e0%a5%87-%e0%a4%97%e0%a4%be%e0%a4%b2%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a5%87-%e0%a4%97%e0%a4%a1%e0%a5%8d%e0%a4%a2%e0%a5%87-2/",
+    "signature": "bbcca6b5c1349a34"
+  },
+  {
+    "id": "gdl-35-ch01",
+    "sourceId": "src:hi:gdl:35",
+    "index": 34,
+    "title": "कहाँ गये गालों के गड्‌ढे?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%81-%e0%a4%97%e0%a4%af%e0%a5%87-%e0%a4%97%e0%a4%be%e0%a4%b2%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a5%87-%e0%a4%97%e0%a4%a1%e0%a5%8d%e0%a4%a2%e0%a5%87/",
+    "signature": "bbcca6b5c1349a34"
+  },
+  {
+    "id": "gdl-36-ch01",
+    "sourceId": "src:hi:gdl:36",
+    "index": 35,
+    "title": "कहानियों का शहर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a4%bf%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a4%be-%e0%a4%b6%e0%a4%b9%e0%a4%b0-2/",
+    "signature": "9fbe25f13b1583a0"
+  },
+  {
+    "id": "gdl-37-ch01",
+    "sourceId": "src:hi:gdl:37",
+    "index": 36,
+    "title": "कहानियों का शहर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a4%bf%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a4%be-%e0%a4%b6%e0%a4%b9%e0%a4%b0/",
+    "signature": "9fbe25f13b1583a0"
+  },
+  {
+    "id": "gdl-38-ch01",
+    "sourceId": "src:hi:gdl:38",
+    "index": 37,
+    "title": "कहानी केलों की!",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%95%e0%a5%87%e0%a4%b2%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a5%80-2/",
+    "signature": "d5d348b99edd6ba9"
+  },
+  {
+    "id": "gdl-39-ch01",
+    "sourceId": "src:hi:gdl:39",
+    "index": 38,
+    "title": "कहानी केलों की!",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%95%e0%a5%87%e0%a4%b2%e0%a5%8b%e0%a4%82-%e0%a4%95%e0%a5%80/",
+    "signature": "d5d348b99edd6ba9"
+  },
+  {
+    "id": "gdl-40-ch01",
+    "sourceId": "src:hi:gdl:40",
+    "index": 39,
+    "title": "कहानी- गजानन गंजे",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%97%e0%a4%9c%e0%a4%be%e0%a4%a8%e0%a4%a8-%e0%a4%97%e0%a4%82%e0%a4%9c%e0%a5%87-2/",
+    "signature": "01d9fc9ea86609a2"
+  },
+  {
+    "id": "gdl-41-ch01",
+    "sourceId": "src:hi:gdl:41",
+    "index": 40,
+    "title": "कहानी- गजानन गंजे",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%97%e0%a4%9c%e0%a4%be%e0%a4%a8%e0%a4%a8-%e0%a4%97%e0%a4%82%e0%a4%9c%e0%a5%87/",
+    "signature": "01d9fc9ea86609a2"
+  },
+  {
+    "id": "gdl-42-ch01",
+    "sourceId": "src:hi:gdl:42",
+    "index": 41,
+    "title": "कहानी- बादल की सैर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%95%e0%a5%80-%e0%a4%b8%e0%a5%88%e0%a4%b0-2/",
+    "signature": "ebe76e93e50e56b4"
+  },
+  {
+    "id": "gdl-43-ch01",
+    "sourceId": "src:hi:gdl:43",
+    "index": 42,
+    "title": "कहानी- बादल की सैर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%95%e0%a5%80-%e0%a4%b8%e0%a5%88%e0%a4%b0/",
+    "signature": "ebe76e93e50e56b4"
+  },
+  {
+    "id": "gdl-44-ch01",
+    "sourceId": "src:hi:gdl:44",
+    "index": 43,
+    "title": "काका और मुन्नी",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%be%e0%a4%95%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a5%81%e0%a4%a8%e0%a5%8d%e0%a4%a8%e0%a5%80-2/",
+    "signature": "b6a8567735244788"
+  },
+  {
+    "id": "gdl-45-ch01",
+    "sourceId": "src:hi:gdl:45",
+    "index": 44,
+    "title": "काका और मुन्नी",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%be%e0%a4%95%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a5%81%e0%a4%a8%e0%a5%8d%e0%a4%a8%e0%a5%80/",
+    "signature": "b6a8567735244788"
+  },
+  {
+    "id": "gdl-46-ch01",
+    "sourceId": "src:hi:gdl:46",
+    "index": 45,
+    "title": "कितना शोर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%bf%e0%a4%a4%e0%a4%a8%e0%a4%be-%e0%a4%b6%e0%a5%8b%e0%a4%b0-2/",
+    "signature": "6025514b12885802"
+  },
+  {
+    "id": "gdl-47-ch01",
+    "sourceId": "src:hi:gdl:47",
+    "index": 46,
+    "title": "कितना शोर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a4%bf%e0%a4%a4%e0%a4%a8%e0%a4%be-%e0%a4%b6%e0%a5%8b%e0%a4%b0/",
+    "signature": "6025514b12885802"
+  },
+  {
+    "id": "gdl-48-ch01",
+    "sourceId": "src:hi:gdl:48",
+    "index": 47,
+    "title": "कोट्टवी राजा और उनींदा देश",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a5%8b%e0%a4%9f%e0%a5%8d%e0%a4%9f%e0%a4%b5%e0%a5%80-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%89%e0%a4%a8%e0%a5%80%e0%a4%82%e0%a4%a6%e0%a4%be-%e0%a4%a6%e0%a5%87-2/",
+    "signature": "e975e15acb3df7b3"
+  },
+  {
+    "id": "gdl-49-ch01",
+    "sourceId": "src:hi:gdl:49",
+    "index": 48,
+    "title": "कोट्टवी राजा और उनींदा देश",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a5%8b%e0%a4%9f%e0%a5%8d%e0%a4%9f%e0%a4%b5%e0%a5%80-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%89%e0%a4%a8%e0%a5%80%e0%a4%82%e0%a4%a6%e0%a4%be-%e0%a4%a6%e0%a5%87/",
+    "signature": "e975e15acb3df7b3"
+  },
+  {
+    "id": "gdl-50-ch01",
+    "sourceId": "src:hi:gdl:50",
+    "index": 49,
+    "title": "क्या देखती है अनु?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a4%be-%e0%a4%a6%e0%a5%87%e0%a4%96%e0%a4%a4%e0%a5%80-%e0%a4%b9%e0%a5%88-%e0%a4%85%e0%a4%a8%e0%a5%81-2/",
+    "signature": "8280a7d238010a3b"
+  },
+  {
+    "id": "gdl-51-ch01",
+    "sourceId": "src:hi:gdl:51",
+    "index": 50,
+    "title": "क्या देखती है अनु?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a4%be-%e0%a4%a6%e0%a5%87%e0%a4%96%e0%a4%a4%e0%a5%80-%e0%a4%b9%e0%a5%88-%e0%a4%85%e0%a4%a8%e0%a5%81/",
+    "signature": "8280a7d238010a3b"
+  },
+  {
+    "id": "gdl-52-ch01",
+    "sourceId": "src:hi:gdl:52",
+    "index": 51,
+    "title": "क्यों भई क्यों?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%ad%e0%a4%88-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-2/",
+    "signature": "ee277e541f5f0662"
+  },
+  {
+    "id": "gdl-53-ch01",
+    "sourceId": "src:hi:gdl:53",
+    "index": 52,
+    "title": "क्यों भई क्यों?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%ad%e0%a4%88-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82/",
+    "signature": "ee277e541f5f0662"
+  },
+  {
+    "id": "gdl-54-ch01",
+    "sourceId": "src:hi:gdl:54",
+    "index": 53,
+    "title": "खोया पाया",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%96%e0%a5%8b%e0%a4%af%e0%a4%be-%e0%a4%aa%e0%a4%be%e0%a4%af%e0%a4%be-2/",
+    "signature": "ffa02fe638c2757d"
+  },
+  {
+    "id": "gdl-55-ch01",
+    "sourceId": "src:hi:gdl:55",
+    "index": 54,
+    "title": "खोया पाया",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%96%e0%a5%8b%e0%a4%af%e0%a4%be-%e0%a4%aa%e0%a4%be%e0%a4%af%e0%a4%be/",
+    "signature": "ffa02fe638c2757d"
+  },
+  {
+    "id": "gdl-56-ch01",
+    "sourceId": "src:hi:gdl:56",
+    "index": 55,
+    "title": "गरजे बादल नाचे मोर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a4%b0%e0%a4%9c%e0%a5%87-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%a8%e0%a4%be%e0%a4%9a%e0%a5%87-%e0%a4%ae%e0%a5%8b%e0%a4%b0-2/",
+    "signature": "ec1825420487fe55"
+  },
+  {
+    "id": "gdl-57-ch01",
+    "sourceId": "src:hi:gdl:57",
+    "index": 56,
+    "title": "गरजे बादल नाचे मोर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a4%b0%e0%a4%9c%e0%a5%87-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%a8%e0%a4%be%e0%a4%9a%e0%a5%87-%e0%a4%ae%e0%a5%8b%e0%a4%b0/",
+    "signature": "ec1825420487fe55"
+  },
+  {
+    "id": "gdl-58-ch01",
+    "sourceId": "src:hi:gdl:58",
+    "index": 57,
+    "title": "गहरे सागर के अंदर!",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a4%b9%e0%a4%b0%e0%a5%87-%e0%a4%b8%e0%a4%be%e0%a4%97%e0%a4%b0-%e0%a4%95%e0%a5%87-%e0%a4%85%e0%a4%82%e0%a4%a6%e0%a4%b0-2/",
+    "signature": "ca2fc6be8ef9806e"
+  },
+  {
+    "id": "gdl-59-ch01",
+    "sourceId": "src:hi:gdl:59",
+    "index": 58,
+    "title": "गहरे सागर के अंदर!",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a4%b9%e0%a4%b0%e0%a5%87-%e0%a4%b8%e0%a4%be%e0%a4%97%e0%a4%b0-%e0%a4%95%e0%a5%87-%e0%a4%85%e0%a4%82%e0%a4%a6%e0%a4%b0/",
+    "signature": "ca2fc6be8ef9806e"
+  },
+  {
+    "id": "gdl-60-ch01",
+    "sourceId": "src:hi:gdl:60",
+    "index": 59,
+    "title": "गुल्ली का गज़ब पिटारा",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a5%81%e0%a4%b2%e0%a5%8d%e0%a4%b2%e0%a5%80-%e0%a4%95%e0%a4%be-%e0%a4%97%e0%a5%9b%e0%a4%ac-%e0%a4%aa%e0%a4%bf%e0%a4%9f%e0%a4%be%e0%a4%b0%e0%a4%be-2/",
+    "signature": "dab5402d37813152"
+  },
+  {
+    "id": "gdl-61-ch01",
+    "sourceId": "src:hi:gdl:61",
+    "index": 60,
+    "title": "गुल्ली का गज़ब पिटारा",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a5%81%e0%a4%b2%e0%a5%8d%e0%a4%b2%e0%a5%80-%e0%a4%95%e0%a4%be-%e0%a4%97%e0%a5%9b%e0%a4%ac-%e0%a4%aa%e0%a4%bf%e0%a4%9f%e0%a4%be%e0%a4%b0%e0%a4%be/",
+    "signature": "dab5402d37813152"
+  },
+  {
+    "id": "gdl-62-ch01",
+    "sourceId": "src:hi:gdl:62",
+    "index": 61,
+    "title": "गौरैया और अमरूद",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%97%e0%a5%8c%e0%a4%b0%e0%a5%88%e0%a4%af%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%85%e0%a4%ae%e0%a4%b0%e0%a5%82%e0%a4%a6/",
+    "signature": "5278b8afd1c7e8a6"
+  },
+  {
+    "id": "gdl-63-ch01",
+    "sourceId": "src:hi:gdl:63",
+    "index": 62,
+    "title": "घर जाना है",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%98%e0%a4%b0-%e0%a4%9c%e0%a4%be%e0%a4%a8%e0%a4%be-%e0%a4%b9%e0%a5%88/",
+    "signature": "6f6e94c11998273a"
+  },
+  {
+    "id": "gdl-64-ch01",
+    "sourceId": "src:hi:gdl:64",
+    "index": 63,
+    "title": "चलो किताबें खरीदने",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a4%b2%e0%a5%8b-%e0%a4%95%e0%a4%bf%e0%a4%a4%e0%a4%be%e0%a4%ac%e0%a5%87%e0%a4%82-%e0%a4%96%e0%a4%b0%e0%a5%80%e0%a4%a6%e0%a4%a8%e0%a5%87/",
+    "signature": "0860febec6992763"
+  },
+  {
+    "id": "gdl-65-ch01",
+    "sourceId": "src:hi:gdl:65",
+    "index": 64,
+    "title": "चाँद का तोहफ़ा",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a4%be%e0%a4%81%e0%a4%a6-%e0%a4%95%e0%a4%be-%e0%a4%a4%e0%a5%8b%e0%a4%b9%e0%a5%9e%e0%a4%be/",
+    "signature": "29011c363ba37ecc"
+  },
+  {
+    "id": "gdl-66-ch01",
+    "sourceId": "src:hi:gdl:66",
+    "index": 65,
+    "title": "चाचा की शादी",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a4%be%e0%a4%9a%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%b6%e0%a4%be%e0%a4%a6%e0%a5%80/",
+    "signature": "ba6df4ea8ccc26a8"
+  },
+  {
+    "id": "gdl-67-ch01",
+    "sourceId": "src:hi:gdl:67",
+    "index": 66,
+    "title": "चुन्नु-मुन्नु का नहाना",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a5%81%e0%a4%a8%e0%a5%8d%e0%a4%a8%e0%a5%81-%e0%a4%ae%e0%a5%81%e0%a4%a8%e0%a5%8d%e0%a4%a8%e0%a5%81-%e0%a4%95%e0%a4%be-%e0%a4%a8%e0%a4%b9%e0%a4%be%e0%a4%a8%e0%a4%be/",
+    "signature": "831f4b024d491fa0"
+  },
+  {
+    "id": "gdl-68-ch01",
+    "sourceId": "src:hi:gdl:68",
+    "index": 67,
+    "title": "चुप! मेरी नाक कुछ कह रही है...",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a5%81%e0%a4%aa-%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a5%80-%e0%a4%a8%e0%a4%be%e0%a4%95-%e0%a4%95%e0%a5%81%e0%a4%9b-%e0%a4%95%e0%a4%b9-%e0%a4%b0%e0%a4%b9%e0%a5%80-%e0%a4%b9%e0%a5%88/",
+    "signature": "56e7394e8b2a4625"
+  },
+  {
+    "id": "gdl-69-ch01",
+    "sourceId": "src:hi:gdl:69",
+    "index": 68,
+    "title": "चुलबुल की पूँछ",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a5%81%e0%a4%b2%e0%a4%ac%e0%a5%81%e0%a4%b2-%e0%a4%95%e0%a5%80-%e0%a4%aa%e0%a5%82%e0%a4%81%e0%a4%9b/",
+    "signature": "d3f2bf0b71256563"
+  },
+  {
+    "id": "gdl-70-ch01",
+    "sourceId": "src:hi:gdl:70",
+    "index": 69,
+    "title": "चूहा सिकंदर, घर के अंदर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9a%e0%a5%82%e0%a4%b9%e0%a4%be-%e0%a4%b8%e0%a4%bf%e0%a4%95%e0%a4%82%e0%a4%a6%e0%a4%b0-%e0%a4%98%e0%a4%b0-%e0%a4%95%e0%a5%87-%e0%a4%85%e0%a4%82%e0%a4%a6%e0%a4%b0/",
+    "signature": "40c445c14f7da4d1"
+  },
+  {
+    "id": "gdl-71-ch01",
+    "sourceId": "src:hi:gdl:71",
+    "index": 70,
+    "title": "छुक-छुक-छक",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9b%e0%a5%81%e0%a4%95-%e0%a4%9b%e0%a5%81%e0%a4%95-%e0%a4%9b%e0%a4%95/",
+    "signature": "d60f6c831a646746"
+  },
+  {
+    "id": "gdl-72-ch01",
+    "sourceId": "src:hi:gdl:72",
+    "index": 71,
+    "title": "जंगल का स्कूल",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9c%e0%a4%82%e0%a4%97%e0%a4%b2-%e0%a4%95%e0%a4%be-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2/",
+    "signature": "a6e9dd264c9a3ed3"
+  },
+  {
+    "id": "gdl-73-ch01",
+    "sourceId": "src:hi:gdl:73",
+    "index": 72,
+    "title": "जादव का जँगल",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9c%e0%a4%be%e0%a4%a6%e0%a4%b5-%e0%a4%95%e0%a4%be-%e0%a4%9c%e0%a4%81%e0%a4%97%e0%a4%b2/",
+    "signature": "70732239e63f0b88"
+  },
+  {
+    "id": "gdl-74-ch01",
+    "sourceId": "src:hi:gdl:74",
+    "index": 73,
+    "title": "जुई मौसी की बेटी",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9c%e0%a5%81%e0%a4%88-%e0%a4%ae%e0%a5%8c%e0%a4%b8%e0%a5%80-%e0%a4%95%e0%a5%80-%e0%a4%ac%e0%a5%87%e0%a4%9f%e0%a5%80/",
+    "signature": "220f114e3ad1c40c"
+  },
+  {
+    "id": "gdl-75-ch01",
+    "sourceId": "src:hi:gdl:75",
+    "index": 74,
+    "title": "टिमी और पेपे",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9f%e0%a4%bf%e0%a4%ae%e0%a5%80-%e0%a4%94%e0%a4%b0-%e0%a4%aa%e0%a5%87%e0%a4%aa%e0%a5%87/",
+    "signature": "8ddcf4020ba0588a"
+  },
+  {
+    "id": "gdl-76-ch01",
+    "sourceId": "src:hi:gdl:76",
+    "index": 75,
+    "title": "टूथपेस्ट ट्यूब के अंदर कैसे आया?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9f%e0%a5%82%e0%a4%a5%e0%a4%aa%e0%a5%87%e0%a4%b8%e0%a5%8d%e0%a4%9f-%e0%a4%9f%e0%a5%8d%e0%a4%af%e0%a5%82%e0%a4%ac-%e0%a4%95%e0%a5%87-%e0%a4%85%e0%a4%82%e0%a4%a6%e0%a4%b0-%e0%a4%95%e0%a5%88/",
+    "signature": "17c4a1a8fecf75d7"
+  },
+  {
+    "id": "gdl-77-ch01",
+    "sourceId": "src:hi:gdl:77",
+    "index": 76,
+    "title": "थोड़ी सी मदद",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%a5%e0%a5%8b%e0%a4%a1%e0%a4%bc%e0%a5%80-%e0%a4%b8%e0%a5%80-%e0%a4%ae%e0%a4%a6%e0%a4%a6/",
+    "signature": "dea24b0c661eb0cd"
+  },
+  {
+    "id": "gdl-78-ch01",
+    "sourceId": "src:hi:gdl:78",
+    "index": 77,
+    "title": "दाल का दाना",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%a6%e0%a4%be%e0%a4%b2-%e0%a4%95%e0%a4%be-%e0%a4%a6%e0%a4%be%e0%a4%a8%e0%a4%be/",
+    "signature": "f0ec935faa902933"
+  },
+  {
+    "id": "gdl-79-ch01",
+    "sourceId": "src:hi:gdl:79",
+    "index": 78,
+    "title": "दीदी का रंग बिरंगा खज़ाना",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%95%e0%a4%be-%e0%a4%b0%e0%a4%82%e0%a4%97-%e0%a4%ac%e0%a4%bf%e0%a4%b0%e0%a4%82%e0%a4%97%e0%a4%be-%e0%a4%96%e0%a5%9b%e0%a4%be%e0%a4%a8%e0%a4%be/",
+    "signature": "7d618274ef27ce62"
+  },
+  {
+    "id": "gdl-80-ch01",
+    "sourceId": "src:hi:gdl:80",
+    "index": 79,
+    "title": "दीदी, दीदी, आकाश का रंग नीला क्यों है?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%86%e0%a4%95%e0%a4%be%e0%a4%b6-%e0%a4%95%e0%a4%be-%e0%a4%b0%e0%a4%82%e0%a4%97-%e0%a4%a8%e0%a5%80%e0%a4%b2%e0%a4%be/",
+    "signature": "aecd23eb04eb572c"
+  },
+  {
+    "id": "gdl-81-ch01",
+    "sourceId": "src:hi:gdl:81",
+    "index": 80,
+    "title": "दीदी, दीदी, बादल क्यों गरजते हैं?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%a6%e0%a5%80%e0%a4%a6%e0%a5%80-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b2-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%97%e0%a4%b0%e0%a4%9c%e0%a4%a4/",
+    "signature": "d3518bf354e71dad"
+  },
+  {
+    "id": "gdl-82-ch01",
+    "sourceId": "src:hi:gdl:82",
+    "index": 81,
+    "title": "ध्यान सिंह  'चंद'  : हॉकी के जादूगर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%a7%e0%a5%8d%e0%a4%af%e0%a4%be%e0%a4%a8-%e0%a4%b8%e0%a4%bf%e0%a4%82%e0%a4%b9-%e0%a4%9a%e0%a4%82%e0%a4%a6-%e0%a4%b9%e0%a5%89%e0%a4%95%e0%a5%80-%e0%a4%95%e0%a5%87-%e0%a4%9c/",
+    "signature": "60d894210f812114"
+  },
+  {
+    "id": "gdl-83-ch01",
+    "sourceId": "src:hi:gdl:83",
+    "index": 82,
+    "title": "नन्हे मददगार",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%a8%e0%a4%a8%e0%a5%8d%e0%a4%b9%e0%a5%87-%e0%a4%ae%e0%a4%a6%e0%a4%a6%e0%a4%97%e0%a4%be%e0%a4%b0/",
+    "signature": "31f45387d7210d1a"
+  },
+  {
+    "id": "gdl-84-ch01",
+    "sourceId": "src:hi:gdl:84",
+    "index": 83,
+    "title": "नानी की ऐनक",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%a8%e0%a4%be%e0%a4%a8%e0%a5%80-%e0%a4%95%e0%a5%80-%e0%a4%90%e0%a4%a8%e0%a4%95/",
+    "signature": "555d6dff95e2501a"
+  },
+  {
+    "id": "gdl-85-ch01",
+    "sourceId": "src:hi:gdl:85",
+    "index": 84,
+    "title": "निराली दादी",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%a8%e0%a4%bf%e0%a4%b0%e0%a4%be%e0%a4%b2%e0%a5%80-%e0%a4%a6%e0%a4%be%e0%a4%a6%e0%a5%80/",
+    "signature": "dd7679aa36117879"
+  },
+  {
+    "id": "gdl-86-ch01",
+    "sourceId": "src:hi:gdl:86",
+    "index": 85,
+    "title": "नौका की सैर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%a8%e0%a5%8c%e0%a4%95%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%b8%e0%a5%88%e0%a4%b0/",
+    "signature": "0f32752e74cfc2a4"
+  },
+  {
+    "id": "gdl-87-ch01",
+    "sourceId": "src:hi:gdl:87",
+    "index": 86,
+    "title": "पपलू राक्षस",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%aa%e0%a4%aa%e0%a4%b2%e0%a5%82-%e0%a4%b0%e0%a4%be%e0%a4%95%e0%a5%8d%e0%a4%b7%e0%a4%b8-2/",
+    "signature": "b2fbb8dbad8135fe"
+  },
+  {
+    "id": "gdl-88-ch01",
+    "sourceId": "src:hi:gdl:88",
+    "index": 87,
+    "title": "पहलवान जी और केला",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%aa%e0%a4%b9%e0%a4%b2%e0%a4%b5%e0%a4%be%e0%a4%a8-%e0%a4%9c%e0%a5%80-%e0%a4%94%e0%a4%b0-%e0%a4%95%e0%a5%87%e0%a4%b2%e0%a4%be/",
+    "signature": "49bdd206fbc66c29"
+  },
+  {
+    "id": "gdl-89-ch01",
+    "sourceId": "src:hi:gdl:89",
+    "index": 88,
+    "title": "पापा की मूँछें",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%aa%e0%a4%be%e0%a4%aa%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%ae%e0%a5%82%e0%a4%81%e0%a4%9b%e0%a5%87%e0%a4%82/",
+    "signature": "adee738df0a322d9"
+  },
+  {
+    "id": "gdl-90-ch01",
+    "sourceId": "src:hi:gdl:90",
+    "index": 89,
+    "title": "पिशि फँसी तूफ़ान में",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%aa%e0%a4%bf%e0%a4%b6%e0%a4%bf-%e0%a4%ab%e0%a4%81%e0%a4%b8%e0%a5%80-%e0%a4%a4%e0%a5%82%e0%a5%9e%e0%a4%be%e0%a4%a8-%e0%a4%ae%e0%a5%87%e0%a4%82/",
+    "signature": "c96620c89026696c"
+  },
+  {
+    "id": "gdl-91-ch01",
+    "sourceId": "src:hi:gdl:91",
+    "index": 90,
+    "title": "पूरी क्यों फूलती है?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%aa%e0%a5%82%e0%a4%b0%e0%a5%80-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%ab%e0%a5%82%e0%a4%b2%e0%a4%a4%e0%a5%80-%e0%a4%b9%e0%a5%88/",
+    "signature": "3afc3a39f5a390c8"
+  },
+  {
+    "id": "gdl-92-ch01",
+    "sourceId": "src:hi:gdl:92",
+    "index": 91,
+    "title": "बारिश में क्या गाएँ ?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ac%e0%a4%be%e0%a4%b0%e0%a4%bf%e0%a4%b6-%e0%a4%ae%e0%a5%87%e0%a4%82-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a4%be-%e0%a4%97%e0%a4%be%e0%a4%8f%e0%a4%81/",
+    "signature": "58c6a8ed464bc9f6"
+  },
+  {
+    "id": "gdl-93-ch01",
+    "sourceId": "src:hi:gdl:93",
+    "index": 92,
+    "title": "बारिश हो रही छमा छम",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ac%e0%a4%be%e0%a4%b0%e0%a4%bf%e0%a4%b6-%e0%a4%b9%e0%a5%8b-%e0%a4%b0%e0%a4%b9%e0%a5%80-%e0%a4%9b%e0%a4%ae%e0%a4%be-%e0%a4%9b%e0%a4%ae/",
+    "signature": "2ca76fb712ed8bcb"
+  },
+  {
+    "id": "gdl-94-ch01",
+    "sourceId": "src:hi:gdl:94",
+    "index": 93,
+    "title": "भबलू भालू की सैर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ad%e0%a4%ac%e0%a4%b2%e0%a5%82-%e0%a4%ad%e0%a4%be%e0%a4%b2%e0%a5%82-%e0%a4%95%e0%a5%80-%e0%a4%b8%e0%a5%88%e0%a4%b0/",
+    "signature": "b2c65eca67806514"
+  },
+  {
+    "id": "gdl-95-ch01",
+    "sourceId": "src:hi:gdl:95",
+    "index": 94,
+    "title": "भीमा गधा",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ad%e0%a5%80%e0%a4%ae%e0%a4%be-%e0%a4%97%e0%a4%a7%e0%a4%be/",
+    "signature": "5a7e3df6ab6e6494"
+  },
+  {
+    "id": "gdl-96-ch01",
+    "sourceId": "src:hi:gdl:96",
+    "index": 95,
+    "title": "मछली ने समाचार सुने",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a4%9b%e0%a4%b2%e0%a5%80-%e0%a4%a8%e0%a5%87-%e0%a4%b8%e0%a4%ae%e0%a4%be%e0%a4%9a%e0%a4%be%e0%a4%b0-%e0%a4%b8%e0%a5%81%e0%a4%a8%e0%a5%87/",
+    "signature": "caf7877aa1f163bc"
+  },
+  {
+    "id": "gdl-97-ch01",
+    "sourceId": "src:hi:gdl:97",
+    "index": 96,
+    "title": "मधुमक्खियाँ क्यों भन-भन करती हैं?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a4%a7%e0%a5%81%e0%a4%ae%e0%a4%95%e0%a5%8d%e0%a4%96%e0%a4%bf%e0%a4%af%e0%a4%be%e0%a4%81-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a5%8b%e0%a4%82-%e0%a4%ad%e0%a4%a8-%e0%a4%ad%e0%a4%a8-%e0%a4%95/",
+    "signature": "18308c3a4c1c0056"
+  },
+  {
+    "id": "gdl-98-ch01",
+    "sourceId": "src:hi:gdl:98",
+    "index": 97,
+    "title": "मुझे वो वाला चाहिये!",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%81%e0%a4%9d%e0%a5%87-%e0%a4%b5%e0%a5%8b-%e0%a4%b5%e0%a4%be%e0%a4%b2%e0%a4%be-%e0%a4%9a%e0%a4%be%e0%a4%b9%e0%a4%bf%e0%a4%af%e0%a5%87/",
+    "signature": "801a14b5b8d5db03"
+  },
+  {
+    "id": "gdl-99-ch01",
+    "sourceId": "src:hi:gdl:99",
+    "index": 98,
+    "title": "मुत्तज्जी की उम्र क्या है?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%81%e0%a4%a4%e0%a5%8d%e0%a4%a4%e0%a4%9c%e0%a5%8d%e0%a4%9c%e0%a5%80-%e0%a4%95%e0%a5%80-%e0%a4%89%e0%a4%ae%e0%a5%8d%e0%a4%b0-%e0%a4%95%e0%a5%8d%e0%a4%af%e0%a4%be-%e0%a4%b9%e0%a5%88/",
+    "signature": "b592173dd98a63df"
+  },
+  {
+    "id": "gdl-100-ch01",
+    "sourceId": "src:hi:gdl:100",
+    "index": 99,
+    "title": "मुमताज़ ने काढ़े अपने सपने",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%81%e0%a4%ae%e0%a4%a4%e0%a4%be%e0%a5%9b-%e0%a4%a8%e0%a5%87-%e0%a4%95%e0%a4%be%e0%a5%9d%e0%a5%87-%e0%a4%85%e0%a4%aa%e0%a4%a8%e0%a5%87-%e0%a4%b8%e0%a4%aa%e0%a4%a8%e0%a5%87/",
+    "signature": "da1bd5c2427cf4dc"
+  },
+  {
+    "id": "gdl-101-ch01",
+    "sourceId": "src:hi:gdl:101",
+    "index": 100,
+    "title": "मेरा घर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a4%be-%e0%a4%98%e0%a4%b0/",
+    "signature": "9c0c5b650ee87105"
+  },
+  {
+    "id": "gdl-102-ch01",
+    "sourceId": "src:hi:gdl:102",
+    "index": 101,
+    "title": "मेरा दोस्त",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a4%be-%e0%a4%a6%e0%a5%8b%e0%a4%b8%e0%a5%8d%e0%a4%a4/",
+    "signature": "9b3f3f1134cd6a0e"
+  },
+  {
+    "id": "gdl-103-ch01",
+    "sourceId": "src:hi:gdl:103",
+    "index": 102,
+    "title": "मेरी पाठशाला",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a5%80-%e0%a4%aa%e0%a4%be%e0%a4%a0%e0%a4%b6%e0%a4%be%e0%a4%b2%e0%a4%be/",
+    "signature": "40dc99b388795784"
+  },
+  {
+    "id": "gdl-104-ch01",
+    "sourceId": "src:hi:gdl:104",
+    "index": 103,
+    "title": "मेरे दोस्त",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%87%e0%a4%b0%e0%a5%87-%e0%a4%a6%e0%a5%8b%e0%a4%b8%e0%a5%8d%e0%a4%a4/",
+    "signature": "38599df8441354e6"
+  },
+  {
+    "id": "gdl-105-ch01",
+    "sourceId": "src:hi:gdl:105",
+    "index": 104,
+    "title": "मैं नहीं डरती !",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%88%e0%a4%82-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-%e0%a4%a1%e0%a4%b0%e0%a4%a4%e0%a5%80/",
+    "signature": "8140cb35718ee45b"
+  },
+  {
+    "id": "gdl-106-ch01",
+    "sourceId": "src:hi:gdl:106",
+    "index": 105,
+    "title": "मोटा राजा दुबला कुत्ता",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%8b%e0%a4%9f%e0%a4%be-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be-%e0%a4%a6%e0%a5%81%e0%a4%ac%e0%a4%b2%e0%a4%be-%e0%a4%95%e0%a5%81%e0%a4%a4%e0%a5%8d%e0%a4%a4%e0%a4%be/",
+    "signature": "ed49703e893cc3b5"
+  },
+  {
+    "id": "gdl-107-ch01",
+    "sourceId": "src:hi:gdl:107",
+    "index": 106,
+    "title": "मोरू एक पहेली",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%ae%e0%a5%8b%e0%a4%b0%e0%a5%82-%e0%a4%8f%e0%a4%95-%e0%a4%aa%e0%a4%b9%e0%a5%87%e0%a4%b2%e0%a5%80/",
+    "signature": "9b99ba8143ca66b0"
+  },
+  {
+    "id": "gdl-108-ch01",
+    "sourceId": "src:hi:gdl:108",
+    "index": 107,
+    "title": "रीति और मिठु",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b0%e0%a5%80%e0%a4%a4%e0%a4%bf-%e0%a4%94%e0%a4%b0-%e0%a4%ae%e0%a4%bf%e0%a4%a0%e0%a5%81/",
+    "signature": "872c0a4013fab862"
+  },
+  {
+    "id": "gdl-109-ch01",
+    "sourceId": "src:hi:gdl:109",
+    "index": 108,
+    "title": "रज़ा और बादशाह",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b0%e0%a5%9b%e0%a4%be-%e0%a4%94%e0%a4%b0-%e0%a4%ac%e0%a4%be%e0%a4%a6%e0%a4%b6%e0%a4%be%e0%a4%b9/",
+    "signature": "64a75c5f758de3ba"
+  },
+  {
+    "id": "gdl-110-ch01",
+    "sourceId": "src:hi:gdl:110",
+    "index": 109,
+    "title": "लाल बरसाती",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b2%e0%a4%be%e0%a4%b2-%e0%a4%ac%e0%a4%b0%e0%a4%b8%e0%a4%be%e0%a4%a4%e0%a5%80/",
+    "signature": "48087338af2298d9"
+  },
+  {
+    "id": "gdl-111-ch01",
+    "sourceId": "src:hi:gdl:111",
+    "index": 110,
+    "title": "वह हँस दिया",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b5%e0%a4%b9-%e0%a4%b9%e0%a4%81%e0%a4%b8-%e0%a4%a6%e0%a4%bf%e0%a4%af%e0%a4%be/",
+    "signature": "f270e04a38e327be"
+  },
+  {
+    "id": "gdl-112-ch01",
+    "sourceId": "src:hi:gdl:112",
+    "index": 111,
+    "title": "विशालकाय एक-पंख गजपक्षी",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b5%e0%a4%bf%e0%a4%b6%e0%a4%be%e0%a4%b2%e0%a4%95%e0%a4%be%e0%a4%af-%e0%a4%8f%e0%a4%95-%e0%a4%aa%e0%a4%82%e0%a4%96-%e0%a4%97%e0%a4%9c%e0%a4%aa%e0%a4%95%e0%a5%8d%e0%a4%b7%e0%a5%80/",
+    "signature": "b776bd4670fc66e2"
+  },
+  {
+    "id": "gdl-113-ch01",
+    "sourceId": "src:hi:gdl:113",
+    "index": 112,
+    "title": "संगीत की दुनिया",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a4%82%e0%a4%97%e0%a5%80%e0%a4%a4-%e0%a4%95%e0%a5%80-%e0%a4%a6%e0%a5%81%e0%a4%a8%e0%a4%bf%e0%a4%af%e0%a4%be/",
+    "signature": "7a6216fad481b1b0"
+  },
+  {
+    "id": "gdl-114-ch01",
+    "sourceId": "src:hi:gdl:114",
+    "index": 113,
+    "title": "सबरंग",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a4%ac%e0%a4%b0%e0%a4%82%e0%a4%97/",
+    "signature": "5afe08c69afefcc5"
+  },
+  {
+    "id": "gdl-115-ch01",
+    "sourceId": "src:hi:gdl:115",
+    "index": 114,
+    "title": "सबसे अच्छा घर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a4%ac%e0%a4%b8%e0%a5%87-%e0%a4%85%e0%a4%9a%e0%a5%8d%e0%a4%9b%e0%a4%be-%e0%a4%98%e0%a4%b0/",
+    "signature": "0848781ef46044b0"
+  },
+  {
+    "id": "gdl-116-ch01",
+    "sourceId": "src:hi:gdl:116",
+    "index": 115,
+    "title": "सालाना बाल-कटाई दिवस",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a4%be%e0%a4%b2%e0%a4%be%e0%a4%a8%e0%a4%be-%e0%a4%ac%e0%a4%be%e0%a4%b2-%e0%a4%95%e0%a4%9f%e0%a4%be%e0%a4%88-%e0%a4%a6%e0%a4%bf%e0%a4%b5%e0%a4%b8/",
+    "signature": "7e1d076ce68ef64a"
+  },
+  {
+    "id": "gdl-117-ch01",
+    "sourceId": "src:hi:gdl:117",
+    "index": 116,
+    "title": "सैर सपाटा",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%88%e0%a4%b0-%e0%a4%b8%e0%a4%aa%e0%a4%be%e0%a4%9f%e0%a4%be/",
+    "signature": "77c5a35a69a98981"
+  },
+  {
+    "id": "gdl-118-ch01",
+    "sourceId": "src:hi:gdl:118",
+    "index": 117,
+    "title": "सो जाओ टिंकु!",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%8b-%e0%a4%9c%e0%a4%be%e0%a4%93-%e0%a4%9f%e0%a4%bf%e0%a4%82%e0%a4%95%e0%a5%81/",
+    "signature": "f7892ce0d924849b"
+  },
+  {
+    "id": "gdl-119-ch01",
+    "sourceId": "src:hi:gdl:119",
+    "index": 118,
+    "title": "सोना की नाक बड़ी तेज",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%8b%e0%a4%a8%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%a8%e0%a4%be%e0%a4%95-%e0%a4%ac%e0%a5%9c%e0%a5%80-%e0%a4%a4%e0%a5%87%e0%a4%9c/",
+    "signature": "71a9a4fd829c95bd"
+  },
+  {
+    "id": "gdl-120-ch01",
+    "sourceId": "src:hi:gdl:120",
+    "index": 119,
+    "title": "सोना बड़ी सयानी",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%8b%e0%a4%a8%e0%a4%be-%e0%a4%ac%e0%a4%a1%e0%a4%bc%e0%a5%80-%e0%a4%b8%e0%a4%af%e0%a4%be%e0%a4%a8%e0%a5%80/",
+    "signature": "e309faa0bdc588db"
+  },
+  {
+    "id": "gdl-121-ch01",
+    "sourceId": "src:hi:gdl:121",
+    "index": 120,
+    "title": "सोना सयानी",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%8b%e0%a4%a8%e0%a4%be-%e0%a4%b8%e0%a4%af%e0%a4%be%e0%a4%a8%e0%a5%80/",
+    "signature": "67b81d8309f46a8a"
+  },
+  {
+    "id": "gdl-122-ch01",
+    "sourceId": "src:hi:gdl:122",
+    "index": 121,
+    "title": "स्कूल का पहला दिन",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2-%e0%a4%95%e0%a4%be-%e0%a4%aa%e0%a4%b9%e0%a4%b2%e0%a4%be-%e0%a4%a6%e0%a4%bf%e0%a4%a8/",
+    "signature": "c7a2a44efbee6d0c"
+  },
+  {
+    "id": "gdl-123-ch01",
+    "sourceId": "src:hi:gdl:123",
+    "index": 122,
+    "title": "स्वतंत्रता की ओर",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b8%e0%a5%8d%e0%a4%b5%e0%a4%a4%e0%a4%82%e0%a4%a4%e0%a5%8d%e0%a4%b0%e0%a4%a4%e0%a4%be-%e0%a4%95%e0%a5%80-%e0%a4%93%e0%a4%b0/",
+    "signature": "b1dbfd9b08a884ea"
+  },
+  {
+    "id": "gdl-124-ch01",
+    "sourceId": "src:hi:gdl:124",
+    "index": 123,
+    "title": "हवाई जहाज़ कैसे उड़ते हैं?",
+    "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%b9%e0%a4%b5%e0%a4%be%e0%a4%88-%e0%a4%9c%e0%a4%b9%e0%a4%be%e0%a5%9b-%e0%a4%95%e0%a5%88%e0%a4%b8%e0%a5%87-%e0%a4%89%e0%a5%9c%e0%a4%a4%e0%a5%87-%e0%a4%b9%e0%a5%88%e0%a4%82/",
+    "signature": "922bf64188fa05eb"
+  }
+]

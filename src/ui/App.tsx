@@ -10,8 +10,10 @@ import { AlphabetPage } from './alphabet/AlphabetPage';
 import { TeamTextsPage } from './goread/TeamTexts';
 import { BooksPage } from './pages/Books';
 import { CoursePage } from './pages/Course';
+import { CurriculumPage } from './pages/Curriculum';
 import { ExplorePage } from './pages/Explore';
 import { Home } from './pages/Home';
+import { PathPage } from './ladder/PathPage';
 import { Stage0Home } from './stage0/Stage0Home';
 import { StepPage as Stage0StepPage } from './stage0/StepPage';
 import { ListenHome } from './listen/ListenHome';
@@ -24,7 +26,6 @@ import { SandboxBanner } from './SandboxBanner';
 import { ScriptureRoute } from './scripture/ScripturePage';
 import { applyTheme, usePref } from './prefs';
 import { Testimony } from './testimony/Testimony';
-import { PathPage } from './ladder/PathPage';
 import { TellInspector } from './tell/Inspector';
 import { Practice } from './tell/Practice';
 
@@ -49,8 +50,10 @@ export function AppRoutes() {
       <Route path="/listen" element={<ListenHome />} />
       <Route path="/listen/:textId" element={<ListenPage />} />
       <Route path="/course" element={<CoursePage />} />
+      <Route path="/path" element={<PathPage />} />
       <Route path="/start" element={<Stage0Home />} />
       <Route path="/start/:stepId" element={<Stage0StepPage />} />
+      <Route path="/curriculum" element={<CurriculumPage />} />
       <Route path="/explore" element={<ExplorePage />} />
       <Route path="/explore/:door" element={<ExplorePage />} />
       <Route path="/books" element={<BooksPage />} />
@@ -60,7 +63,6 @@ export function AppRoutes() {
       <Route path="/tell" element={<Practice />} />
       <Route path="/tell/inspect" element={<TellInspector />} />
       <Route path="/team-texts" element={<TeamTextsPage />} />
-      <Route path="/path" element={<PathPage />} />
       <Route path="/alphabet" element={<AlphabetPage />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/vocabulary" element={<VocabularyPage />} />

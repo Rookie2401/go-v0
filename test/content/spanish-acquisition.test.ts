@@ -1,7 +1,7 @@
 /**
  * S7 — the controlled Spanish acquisition prototype (Camino 1–3 and Honduras — Lecturas 1).
  * Every document is a machine draft: it must validate with the real validator, belong to its work, stay unpublished
- * for the one stated reason, and carry one English line per sentence. Analysis coverage is printed, not asserted.
+ * with both explicit native and review-status blockers, and carry one English line per sentence. Analysis coverage is printed, not asserted.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -122,7 +122,7 @@ describe('Spanish acquisition path: validation and publication', () => {
       expect(d.english?.source, d.id).toBe('drafted with the text; not reviewed');
       const gate = computePublished(d);
       expect(gate.published, d.id).toBe(false);
-      expect(gate.unpublishedReasons, d.id).toHaveLength(1);
+      expect(gate.unpublishedReasons, d.id).toHaveLength(2);
       expect(gate.unpublishedReasons[0], d.id).toMatch(/native-speaker review/);
     }
   });

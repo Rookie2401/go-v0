@@ -15,6 +15,7 @@
 import type { AdapterRegistry, CatalogText, LanguageCode, LexiconSource, QualityReport, RightsState, TextKind, TextProfile, Work, WorkRights } from '../core';
 import { courseForLang, createMemoryStore, hash, ids } from '../core';
 import type { CorpusDocument, DocReview } from '../ingest/format';
+import type { CurriculumMetadata } from '../course/curriculumPolicy';
 import { validateDocument } from '../ingest/format';
 import { importDocuments } from '../ingest/import';
 import { plainTextToDocuments } from '../ingest/plaintext';
@@ -50,6 +51,7 @@ export interface BuildEntry {
   contentType?: TextKind;
   /** Machine-drafted course text says so (and stays unpublished until a person reviews it). */
   generated?: boolean;
+  curriculum?: CurriculumMetadata;
   /** The rights record. Only its `state` and the facts the gate asks for are read here; nothing is assumed. */
   rights: WorkRights;
   source: {
@@ -61,6 +63,10 @@ export interface BuildEntry {
     edition?: string;
     attribution?: string;
     provenance?: string;
+    sourceHash?: string;
+    retrievedAt?: string;
+    licence?: string;
+    modifications?: string;
   };
   /** Options for the plain-text converter (chapters, paragraphs, unwrap, stripBoilerplate, headings …), passed through. */
   convert?: Record<string, unknown>;
@@ -80,6 +86,9 @@ export class LibraryBuildError extends Error {
 const SLUG = /^[a-z0-9][a-z0-9-]*$/;
 const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
 const isStr = (v: unknown): v is string => typeof v === 'string' && v.trim().length > 0;
+/** Testimony is learner-private by meaning, regardless of the rights label attached to its source. */
+const isPrivateDocument = (doc: CorpusDocument): boolean =>
+  doc.contentType === 'testimony' || doc.corpus?.kind === 'testimony';
 
 /** Structural check of a build manifest. A malformed manifest stops the build (nothing is built from a file we cannot read). */
 export function parseBuildManifest(raw: unknown, lang: LanguageCode): BuildManifest {
@@ -221,7 +230,15 @@ async function documentsOf(entry: BuildEntry, opts: BuildOptions, notes: string[
     } catch (e) {
       return { refuse: [`the converter refused the text: ${e instanceof Error ? e.message : String(e)}`] };
     }
-    if (!docs.length) return { refuse: ['the text has no content'] };
+  if (!docs.length) return { refuse: ['the text has no content'] };
+  }
+
+  const privateDocs = docs.filter(isPrivateDocument);
+  if (privateDocs.length) {
+    return { refuse: [`private testimony cannot be built into the shared library (${privateDocs.slice(0, 3).map((d) => d.id).join(', ')})`] };
+  }
+  if (docs.some(d => d.readingAssessmentId !== undefined || d.curriculum?.role === 'assessment')) {
+    return { refuse: ['Protected assessment material cannot be bundled into the ordinary reading library'] };
   }
 
   const state = entry.rights.state as RightsState;
@@ -246,6 +263,10 @@ async function documentsOf(entry: BuildEntry, opts: BuildOptions, notes: string[
       provenance: entry.source.provenance
         ?? `Built from ${entry.source.file} (sha256 ${src.sha256.slice(0, 16)}…) by ${BUILD_TOOL}; rights${entry.rights.verifiedBy ? ` verified by ${entry.rights.verifiedBy}` : ' state'}: ${entry.rights.basis ?? sr.label}.`,
       rights: sr.rights,
+      sourceHash: src.sha256,
+      ...(entry.source.retrievedAt ? { retrievedAt: entry.source.retrievedAt } : {}),
+      ...(entry.source.licence ? { licence: entry.source.licence } : {}),
+      ...(entry.source.modifications ? { modifications: entry.source.modifications } : {}),
       ...(entry.rights.licensing ? { licenseNote: entry.rights.licensing } : {}),
       authorship: entry.generated && sr.rights === 'owner-authored' ? 'generated' as const : sr.authorship,
     };
@@ -256,6 +277,7 @@ async function documentsOf(entry: BuildEntry, opts: BuildOptions, notes: string[
       corpus: kind === 'documents' ? d.corpus : { id: `library-${opts.lang}`, kind: 'comprehensible-input', title: 'Library' },
       source,
       generated: entry.generated ?? d.generated ?? false,
+      ...(entry.curriculum ? { curriculum: structuredClone(entry.curriculum) } : {}),
       work: { slug: entry.slug, courseId, chapter },
       ...(entry.streams ?? entry.stream ? { streams: [...new Set([entry.stream ?? entry.streams![0], ...(entry.streams ?? [])])] } : {}),
       ...(entry.domains?.length ? { domains: entry.domains } : {}),

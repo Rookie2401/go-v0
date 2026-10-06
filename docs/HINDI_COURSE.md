@@ -15,18 +15,18 @@ person, a permission or a file).
 
 | Area | Status |
 |---|---|
-| Course structure: 16 shelves (Stage 0A–0C, Classes 1–12, Open Reading), 9 streams, 9 doors, 50 catalogued works | implemented |
+| Course structure: 16 shelves (Stage 0A–0C, Classes 1–12, Open Reading), 9 streams, 9 doors, 51 catalogued works | implemented |
 | Stage 0 stories: 26 texts, 4,387 words, recurring cast | implemented; **machine-drafted, not reviewed** — visible in preview only; awaiting a native reviewer |
 | Devanagari layer: akṣara segmentation, pronunciation by rule with the unwritten *a* stated per unit, romanization as a rescue | implemented; verified against the coordinator's unseen tables (169 checks); awaiting a native reviewer for the exception list |
 | Word forms by rule (nouns, adjectives, pronouns and their fusions, verbs, causatives, -वाला, abstract nouns) | implemented; verified against the coordinator's unseen tables (288 of 288, including the script checks) |
 | Word list: 2,746 lemmas with gender, register layer, domains, causative and ने flags | implemented; machine-drafted; awaiting a native reviewer |
 | Multiword units (603 complex predicates, 13 vector verbs, 73 compound postpositions, 81 fixed expressions), 50 constructions, neighbour rules, sentence splitting, writing checks | implemented; tested on the real adapter; machine-drafted |
-| Hindi Scripture: 91 verses of the Indian Revised Version (IRV Hindi 2019, CC BY-SA 4.0) | implemented and **verified** verse by verse against the distributor; the whole translation is awaiting a download the owner approved but the tool permissions blocked (section 12) |
+| Hindi Scripture: complete Indian Revised Version (IRV Hindi 2019, CC BY-SA 4.0) | implemented and **verified** against the publisher archive: 66 books, 1,189 chapters, 31,104 verses. Original 91 verse references remain in the seed documents; 1,185 lazy documents supply the remaining verses without duplication. |
 | Rights: a state for every work, a machine-enforced build gate, the credit shown with the text | implemented; verified for the bundled sources (section 8) |
 | Learner model shared by stories, Scripture, the learner's own books and testimony; rescue dependence; heritage languages kept apart | implemented |
 | Linguistic gold set | architecture only: 189 model-drafted candidates, **0 accepted**; nothing about correctness has been measured against a native speaker |
-| Hindi dictionary (Wiktionary extract) | awaiting the same blocked download; the importer path exists and is used by Thai and Spanish |
-| Children's and general native Hindi (StoryWeaver, Premchand …) | catalogued only; rights unverified; nothing bundled |
+| Hindi dictionary (Wiktionary extract) | implemented: official Kaikki extract installed, 38,635 entries and 35,814 forms in 256 shards; dictionary lookups verified. |
+| Children's and general native Hindi | 124 Global Digital Library CC BY 4.0 books installed with individual source credits; one damaged eligible source withheld. Literary acquisition and edition-specific gaps are recorded in `docs/hindi/LITERATURE_ACQUISITION.md`. |
 | Audio | out of scope: GoListen is switched off for every course and is not a prerequisite for anything here |
 
 ## 2. What was found in the Thai and Spanish courses, and what Hindi reuses
@@ -212,7 +212,7 @@ software.
 in Hindi (a story the learner may already know), तमस, झूठा सच, मधुशाला, मैला आँचल, राग दरबारी, गुनाहों का
 देवता, रश्मिरथी, अग्नि की उड़ान.
 
-**Rights unverified — catalogued, nothing bundled, nothing fetched:**
+**Remaining acquisition candidates** (the following describes the initial research; the acquisition update below supersedes completed items):
 - *StoryWeaver (Pratham Books).* Verified: the site states CC BY 4.0 for all stories and illustrations and
   CC BY-NC-ND 4.0 for narrated stories and videos (so text and audio rights differ), and prescribes the credit a
   reused story must carry. Not verified: the licence line of any individual story; a lawful way of taking stories
@@ -274,22 +274,21 @@ and it does not publish anything.
 
 ## 12. Awaiting external input
 
-- **Two downloads the owner approved on 2026-10-01 and the tool's permission layer then refused.** Run them by
-  hand (or allow them) from `C:\Users\CJWal\dev\go-v0`:
+The two previously blocked downloads are now complete and installed. Their source records and checksums are retained:
   - `hin2017_usfm.zip` from `https://ebible.org/Scriptures/hin2017_usfm.zip` (2,237,995 bytes) → `data/sources/hi/`
     — the whole IRV Hindi text, to build the Bible beyond the 91-verse slice (same licence, same verification).
   - `kaikki.org-dictionary-Hindi.jsonl.gz` from `https://kaikki.org/dictionary/Hindi/` (17,993,921 bytes) →
     `data/dictionaries/` — the Wiktionary extract, to be built into `public/dict/hi` with `npm run dict:build`
     as for Thai and Spanish. Its licence (CC BY-SA and GFDL) is the dictionary's own and is shown with every gloss.
 - **A native Hindi reviewer** (section 11).
-- **Pratham Books** on a lawful route to StoryWeaver stories at scale.
-- **The owner's confirmation** of the IRV rights record and of the open share-alike question (section 7).
+- **Remaining literary editions:** exact reusable editions or permission where the acquisition report records a gap.
+
+The documented Global Digital Library API supplied 124 licensed children's books, with individual credits; one damaged source was excluded. A complete six-act source of *अंधेर नगरी* is also installed with edition and transcription attribution. The IRV share-alike corpus remains separate from the children's collection. All 1,310 lazy Hindi documents pass the publication gate; native review of machine-drafted Stage 0 remains outstanding.
 
 ## 13. Next highest-value step
 
 A native review of Stage 0A. It is the smallest unit of work that turns the course from a preview into something a
-learner can start, and it exercises the whole review path once. In parallel, and needing no reviewer: fetch the two
-approved files, build the dictionary and the full Scripture, and re-run the held-out probe.
+learner can start, and it exercises the whole review path once. The dictionary, full Scripture, and licensed children's collection are already installed. Continue edition-specific acquisition using the recorded gaps, and re-run the held-out probe when the adapter changes.
 
 ## 14. How to continue
 

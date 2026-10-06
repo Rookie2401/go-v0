@@ -1,0 +1,154 @@
+{
+ "lang": "de",
+ "library": "library-de@2026-10-02",
+ "texts": 1871,
+ "deep": null,
+ "checks": {
+  "catalogue: a work with texts in the library is recorded as bundlable": {
+   "checked": 47,
+   "failed": 0
+  },
+  "catalogue: every text names a work": {
+   "checked": 1871,
+   "failed": 0
+  },
+  "catalogue: the rights of the texts are the rights of their work": {
+   "checked": 47,
+   "failed": 0
+  },
+  "catalogue: the shelf of a work exists in the course": {
+   "checked": 47,
+   "failed": 0
+  },
+  "catalogue: the shelf of the texts is the shelf of their work": {
+   "checked": 47,
+   "failed": 0
+  },
+  "catalogue: the stream of the texts is a stream of the course": {
+   "checked": 47,
+   "failed": 0
+  },
+  "catalogue: the stream of the texts is a stream of their work": {
+   "checked": 47,
+   "failed": 4
+  },
+  "catalogue: the work of a text is in the course catalogue": {
+   "checked": 47,
+   "failed": 0
+  },
+  "catalogue: the work says its texts are in the library": {
+   "checked": 47,
+   "failed": 0
+  },
+  "order (Scripture): a bundled selection of verses is not numbered as a chapter of the Bible": {
+   "checked": 1,
+   "failed": 1
+  },
+  "order (Scripture): a chapter is numbered by its place in the canon": {
+   "checked": 1189,
+   "failed": 3
+  },
+  "order (Scripture): every chapter of the canon is present": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order (Scripture): every chapter says its book and chapter": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order (Scripture): no chapter twice": {
+   "checked": 1189,
+   "failed": 0
+  },
+  "order: bundled and library chapters of one work do not share a number": {
+   "checked": 47,
+   "failed": 1
+  },
+  "order: every text of a work has a chapter number": {
+   "checked": 47,
+   "failed": 0
+  },
+  "order: no chapter number twice in a work": {
+   "checked": 47,
+   "failed": 0
+  },
+  "order: the chapters of a work run without gaps": {
+   "checked": 46,
+   "failed": 0
+  },
+  "order: the chapters of a work start at 1 (or 0 for front matter)": {
+   "checked": 46,
+   "failed": 9
+  },
+  "order: the index lists the chapters of a work in chapter order": {
+   "checked": 47,
+   "failed": 0
+  },
+  "structure: a row is listed under its own primary stream": {
+   "checked": 1871,
+   "failed": 0
+  },
+  "structure: every row has its document file": {
+   "checked": 1871,
+   "failed": 0
+  },
+  "structure: every row has its profile file": {
+   "checked": 1871,
+   "failed": 0
+  },
+  "structure: every row of an index shard is well formed": {
+   "checked": 5,
+   "failed": 0
+  },
+  "structure: no document file without a row": {
+   "checked": 1871,
+   "failed": 0
+  },
+  "structure: no profile file without a row": {
+   "checked": 1871,
+   "failed": 0
+  },
+  "structure: no text id twice": {
+   "checked": 1871,
+   "failed": 0
+  },
+  "structure: the manifest counts the texts it lists": {
+   "checked": 1,
+   "failed": 0
+  },
+  "structure: the manifest word count is the sum of the rows": {
+   "checked": 1,
+   "failed": 0
+  }
+ },
+ "findings": {
+  "catalogue: the stream of the texts is a stream of their work": [
+   "work:germany-de:kant-was-ist-aufklaerung: texts in library, work in knowledge",
+   "work:germany-de:kant-kritik-der-reinen-vernunft: texts in library, work in knowledge",
+   "work:germany-de:mommsen-roemische-geschichte: texts in library, work in knowledge",
+   "work:germany-de:lilienthal-vogelflug: texts in library, work in knowledge"
+  ],
+  "order: bundled and library chapters of one work do not share a number": [
+   "work:germany-de:lutherbibel-1912: 2, 3, 4, 5 (bundled: bible-1john-1=5, bible-gen-1=1, bible-mat-1=4, bible-psa-1=2, bible-psa-23=3)"
+  ],
+  "order (Scripture): a bundled selection of verses is not numbered as a chapter of the Bible": [
+   "bundled bible-1john-1: verses of 1JN.1, JHN.3 filed as chapter 5"
+  ],
+  "order (Scripture): a chapter is numbered by its place in the canon": [
+   "bundled bible-mat-1: MAT.1 is numbered 4, its place is 930",
+   "bundled bible-psa-1: PSA.1 is numbered 2, its place is 479",
+   "bundled bible-psa-23: PSA.23 is numbered 3, its place is 501"
+  ],
+  "order: the chapters of a work start at 1 (or 0 for front matter)": [
+   "work:germany-de:bridge-lecker-mango: starts at 2",
+   "work:germany-de:bridge-mein-kleiner-garten: starts at 3",
+   "work:germany-de:bridge-meine-strase: starts at 4",
+   "work:germany-de:bridge-navy-und-bora: starts at 5",
+   "work:germany-de:bridge-schmetterling-und-tukan: starts at 6",
+   "work:germany-de:bridge-ich-kann-mich-selbst-anziehen: starts at 7",
+   "work:germany-de:bridge-ich-mag: starts at 8",
+   "work:germany-de:bridge-schnipp-schnapp: starts at 9",
+   "work:germany-de:bridge-verstecken-spielen: starts at 10"
+  ]
+ }
+}

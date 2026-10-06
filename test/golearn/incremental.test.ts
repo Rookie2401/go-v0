@@ -7,10 +7,13 @@
  */
 import { describe, expect, it } from 'vitest';
 import { SITTING_GAP_MS, ids } from '../../src/core';
-import type { DomainEvent, EventInput, LanguageCode } from '../../src/core';
+import type { DomainEvent, EventInput, LanguageCode, LearnerLevel } from '../../src/core';
 import { createGoLearn, defaultPolicy } from '../../src/golearn';
 import { referenceItemState } from '../../src/golearn/state';
 import type { Ctx, StoredEncounter } from '../../src/golearn/state';
+import { K_DEMONSTRATED, K_EXPOSURE, addReceptive, blankAgg, blankSettled, invalidateHead, levelOf, relevel, totalsOf } from '../../src/golearn/agg';
+import { levelIndex } from '../../src/golearn/policy';
+import { isUnassisted } from '../../src/golearn/state';
 import { createHarness } from './harness';
 import type { Harness } from './harness';
 import { ES_JOHN, ES_STORY, TH_STORY, buildSpanish, buildSpanishScripture, buildThai } from './fixtures';
@@ -136,7 +139,7 @@ const byId = <T extends { id: string }>(a: T, b: T) => (a.id < b.id ? -1 : 1);
 function canonical(v: unknown, key = ''): unknown {
   if (Array.isArray(v)) return v.map((x) => canonical(x));
   if (v && typeof v === 'object') {
-    const keys = key === 'e' ? Object.keys(v) : Object.keys(v).sort();
+    const keys = key === 'e' ? Object.keys(v) : Object.keys(v).filter((k) => !['summary', 'needsRelevel', 'pendingPriors'].includes(k)).sort();
     return Object.fromEntries(keys.map((k) => [k, canonical((v as Record<string, unknown>)[k], k)]));
   }
   return v;
@@ -172,6 +175,63 @@ async function ctxOf(h: Harness): Promise<Ctx> {
 }
 
 describe('incremental folding equals a rebuild from the log', () => {
+  it('matches a scan oracle for a repeated item across a long sitting and safely upgrades a legacy head', () => {
+    const agg = blankAgg();
+    const ctx = { policy: defaultPolicy } as Ctx;
+    const count = 1200;
+    const oracle = blankSettled();
+    const scanAdd = (t: ReturnType<typeof blankSettled>, entry: number[]) => {
+      t.n++; t.ev += entry[3];
+      if (entry[0] === K_EXPOSURE) t.exposures++;
+      if (isUnassisted('reading', entry[1] as 0 | 1 | 2 | 3)) t.unassisted++; else t.assisted++;
+      if (entry[0] === K_DEMONSTRATED) t.demo++;
+      if (entry[1] === 0) t.plain++;
+      t.tail.push(entry[2] > 0 ? 1 : 0);
+      if (t.tail.length > 2) t.tail.shift();
+      if (entry[5]) t.rom++;
+      if (entry[2] > 0) t.helped++;
+    };
+    for (let i = 0; i < count; i++) {
+      const sentenceId = `text:synthetic/s${i}`;
+      const entry = [i % 9 === 0 ? K_DEMONSTRATED : K_EXPOSURE, 0, 0, i % 9 === 0 ? 100_000 : 0, 0, 0];
+      const prior = levelOf(ctx, 'reading', oracle);
+      addReceptive(ctx, agg, 'reading', 'same-sitting', entry as [number, number, number, number, number, number], {
+        textId: 'text:synthetic', sentenceId, at: new Date(T0 + i).toISOString(),
+      });
+      expect(entry[4]).toBe(levelIndex(prior));
+      // Independent old-style accumulation provides an oracle, without consulting the cached head summary.
+      scanAdd(oracle, entry);
+      const mirrored = relevel(ctx, agg, 'reading');
+      expect(mirrored).toEqual([{ sentenceId, sitting: 'same-sitting', prior }]);
+      if ((i + 1) % 100 === 0) expect(totalsOf(agg, 'reading')).toMatchObject(oracle);
+    }
+    expect(Object.keys(agg.headR!.e)).toHaveLength(count);
+    expect(totalsOf(agg, 'reading')).toMatchObject(oracle);
+
+    // Old persisted heads have entries but no cache. Reading totals may populate a one-time summary and still match a full scan.
+    const legacy = structuredClone(agg);
+    delete legacy.headR!.summary;
+    const legacyTotals = totalsOf(legacy, 'reading');
+    expect(legacyTotals).toMatchObject(oracle);
+
+    // A later help/report mutation invalidates the summary and recomputes priors for all affected later entries.
+    const changed = legacy.headR!.e['text:synthetic/s0'];
+    changed[0] = K_EXPOSURE; changed[1] = 2; changed[3] = 0;
+    invalidateHead(legacy, 'reading');
+    const expected = blankSettled();
+    const expectedAfterMutation: Array<{ sentenceId: string; sitting: string; prior: LearnerLevel }> = [];
+    const oldPriors = new Map<string, number>();
+    for (const [sentenceId, e] of Object.entries(legacy.headR!.e)) {
+      oldPriors.set(sentenceId, e[4]);
+      expectedAfterMutation.push({ sentenceId, sitting: 'same-sitting', prior: levelOf(ctx, 'reading', expected) });
+      scanAdd(expected, e);
+    }
+    const updated = relevel(ctx, legacy, 'reading');
+    expect(Object.values(legacy.headR!.e).map((e) => e[4])).toEqual(expectedAfterMutation.map((p) => levelIndex(p.prior)));
+    expect(updated).toEqual(expectedAfterMutation.filter((p) => oldPriors.get(p.sentenceId) !== levelIndex(p.prior)));
+    expect(totalsOf(legacy, 'reading')).toMatchObject(expected);
+  });
+
   for (const seed of [1, 7, 2026]) {
     it(`seed ${seed}: a long mixed sequence (views across sittings, every help level, decoding ± romanization, rescues, reports, completions, listening, production, marks)`, async () => {
       const h = await world();

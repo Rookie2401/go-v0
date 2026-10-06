@@ -1,0 +1,125 @@
+{
+ "lang": "es",
+ "at": "2026-10-02",
+ "changes": [
+  "alarcon-capitan-veneno: WITHHELD — the source has English editorial sections mixed into the text (9052 words: About 17% of the words stand in paragraphs that look like English (340 paragraphs): a preface, notes, exercises or a vocabulary of an annotated edition. They ar) — withheld until the source is cut down to the book",
+  "jimenez-platero-y-yo: WITHHELD — the source has English editorial sections mixed into the text (4241 words: About 14% of the words stand in paragraphs that look like English (133 paragraphs): a preface, notes, exercises or a vocabulary of an annotated edition. They ar) — withheld until the source is cut down to the book",
+  "alarcon-sombrero-de-tres-picos: WITHHELD — the source has English editorial sections mixed into the text (16645 words: About 26% of the words stand in paragraphs that look like English (396 paragraphs): a preface, notes, exercises or a vocabulary of an annotated edition. They ar) — withheld until the source is cut down to the book",
+  "bridge-safari-en-la-banera: bridge-safari-en-la-banera-ch01: 1 paragraph(s) that are not the story left out",
+  "bridge-una-casa-para-raton: bridge-una-casa-para-raton-ch01: 1 paragraph(s) that are not the story left out",
+  "bridge-una-casa-para-raton: the one text is chapter 1 (was 2)",
+  "bridge-vuelve-gata: bridge-vuelve-gata-ch01: 1 paragraph(s) that are not the story left out",
+  "bridge-vuelve-gata: the one text is chapter 1 (was 3)",
+  "bridge-dentro-de-la-world-wide-web: bridge-dentro-de-la-world-wide-web-ch01: 2 paragraph(s) that are not the story left out",
+  "bridge-dentro-de-la-world-wide-web: the one text is chapter 1 (was 5)",
+  "bridge-el-bate-perdido-2: bridge-el-bate-perdido-2-ch01: 2 paragraph(s) that are not the story left out",
+  "bridge-el-bate-perdido-2: the one text is chapter 1 (was 6)",
+  "bridge-el-nino-y-el-tambor: bridge-el-nino-y-el-tambor-ch01: 2 paragraph(s) that are not the story left out",
+  "bridge-el-nino-y-el-tambor: the one text is chapter 1 (was 8)",
+  "bridge-inmersion: bridge-inmersion-ch01: 2 paragraph(s) that are not the story left out",
+  "bridge-inmersion: the one text is chapter 1 (was 9)",
+  "bridge-pishi-atrapado-en-una-tormenta: bridge-pishi-atrapado-en-una-tormenta-ch01: 3 paragraph(s) that are not the story left out",
+  "bridge-pishi-atrapado-en-una-tormenta: the one text is chapter 1 (was 10)",
+  "bridge-demasiados-platanos: bridge-demasiados-platanos-ch01: 2 paragraph(s) that are not the story left out",
+  "bridge-demasiados-platanos: the one text is chapter 1 (was 11)"
+ ],
+ "leftOut": [
+  {
+   "work": "bridge-safari-en-la-banera",
+   "text": "bridge-safari-en-la-banera-ch01",
+   "why": "platform or licence text left out: \"Safari en la bañera Creado por Tracy Lynn Chemaly, Robert McEwan, Sarah-Jane Williams Esta…\""
+  },
+  {
+   "work": "bridge-una-casa-para-raton",
+   "text": "bridge-una-casa-para-raton-ch01",
+   "why": "platform or licence text left out: \"Una casa para Ratón Creado por Michele Fry, Amy Uzzell, Jennifer Jacobs Esta obra está lic…\""
+  },
+  {
+   "work": "bridge-vuelve-gata",
+   "text": "bridge-vuelve-gata-ch01",
+   "why": "platform or licence text left out: \"¡Vuelve, Gata! Creado por Nicola Rijsdijk, Karen Lilje, Sam Scarborough Esta obra está lic…\""
+  },
+  {
+   "work": "bridge-dentro-de-la-world-wide-web",
+   "text": "bridge-dentro-de-la-world-wide-web-ch01",
+   "why": "title-page credits left out: \"Dentro de la World Wide Web Autor: Roopa Pai Ilustrador: Delwyn Remedios…\""
+  },
+  {
+   "work": "bridge-dentro-de-la-world-wide-web",
+   "text": "bridge-dentro-de-la-world-wide-web-ch01",
+   "why": "English paragraph left out: \"Inside the World Wide Web (English) Know how to send an email? Of COURSE! Then you know wh…\""
+  },
+  {
+   "work": "bridge-el-bate-perdido-2",
+   "text": "bridge-el-bate-perdido-2-ch01",
+   "why": "title-page credits left out: \"El bate perdido Autor: Vaishali Shroff Ilustrador: Tapas Guha…\""
+  },
+  {
+   "work": "bridge-el-bate-perdido-2",
+   "text": "bridge-el-bate-perdido-2-ch01",
+   "why": "English paragraph left out: \"The Missing Bat (English) There was a cricket bat missing from Rehman Chacha's warehouse, …\""
+  },
+  {
+   "work": "bridge-el-nino-y-el-tambor",
+   "text": "bridge-el-nino-y-el-tambor-ch01",
+   "why": "title-page credits left out: \"El niño y el tambor Autor: Umesh P N Ilustrador: Rajiv Eipe…\""
+  },
+  {
+   "work": "bridge-el-nino-y-el-tambor",
+   "text": "bridge-el-nino-y-el-tambor-ch01",
+   "why": "English paragraph left out: \"The Boy and the Drum (English) A folktale about giving and kindness transforms into a live…\""
+  },
+  {
+   "work": "bridge-inmersion",
+   "text": "bridge-inmersion-ch01",
+   "why": "title-page credits left out: \"¡INMERSIÓN! Autor: Rajiv Eipe Ilustrador: Rajiv Eipe…\""
+  },
+  {
+   "work": "bridge-inmersion",
+   "text": "bridge-inmersion-ch01",
+   "why": "English paragraph left out: \"DIVE! (English) Take a dive with us into the spectacular world of coral reefs, and catch a…\""
+  },
+  {
+   "work": "bridge-pishi-atrapado-en-una-tormenta",
+   "text": "bridge-pishi-atrapado-en-una-tormenta-ch01",
+   "why": "title-page credits left out: \"Pishi atrapado en una tormenta Autores: Mala Kumar, Manisha Chaudhry Ilustrador: Sangeeta …\""
+  },
+  {
+   "work": "bridge-pishi-atrapado-en-una-tormenta",
+   "text": "bridge-pishi-atrapado-en-una-tormenta-ch01",
+   "why": "platform or licence text left out: \"#6FrameStoryChallenge: Un carnaval de arte Las ilustraciones de este libro se crearon como…\""
+  },
+  {
+   "work": "bridge-pishi-atrapado-en-una-tormenta",
+   "text": "bridge-pishi-atrapado-en-una-tormenta-ch01",
+   "why": "English paragraph left out: \"Pishi Caught in a Storm (English) Pishi was a huge manta ray fish. Once, when he was caugh…\""
+  },
+  {
+   "work": "bridge-demasiados-platanos",
+   "text": "bridge-demasiados-platanos-ch01",
+   "why": "title-page credits left out: \"Demasiados plátanos Autor: Rohini Nilekani Ilustrador: Angie y Upesh…\""
+  },
+  {
+   "work": "bridge-demasiados-platanos",
+   "text": "bridge-demasiados-platanos-ch01",
+   "why": "English paragraph left out: \"Too Many Bananas (English) No one wanted to buy the sweet bananas that Sringeri Srinivas g…\""
+  }
+ ],
+ "withheld": [
+  {
+   "slug": "alarcon-capitan-veneno",
+   "title": "El capitán Veneno",
+   "reason": "the source has English editorial sections mixed into the text (9052 words: About 17% of the words stand in paragraphs that look like English (340 paragraphs): a preface, notes, exercises or a vocabulary of an annotated edition. They ar) — withheld until the source is cut down to the book"
+  },
+  {
+   "slug": "jimenez-platero-y-yo",
+   "title": "Platero y yo",
+   "reason": "the source has English editorial sections mixed into the text (4241 words: About 14% of the words stand in paragraphs that look like English (133 paragraphs): a preface, notes, exercises or a vocabulary of an annotated edition. They ar) — withheld until the source is cut down to the book"
+  },
+  {
+   "slug": "alarcon-sombrero-de-tres-picos",
+   "title": "El sombrero de tres picos",
+   "reason": "the source has English editorial sections mixed into the text (16645 words: About 26% of the words stand in paragraphs that look like English (396 paragraphs): a preface, notes, exercises or a vocabulary of an annotated edition. They ar) — withheld until the source is cut down to the book"
+  }
+ ]
+}

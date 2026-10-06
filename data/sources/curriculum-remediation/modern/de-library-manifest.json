@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "lang": "de",
+  "entries": [
+    {
+      "slug": "gv-de-91a9508ad151-excerpt",
+      "title": "Eine kolumbianische Sicht auf den Film „Encanto“ von Disney“ — excerpt",
+      "author": "Lully",
+      "translator": "Andreas Kallinteris; FTSK",
+      "stage": "s6",
+      "streams": [
+        "library"
+      ],
+      "contentType": "nonfiction",
+      "genre": "contemporary-nonfiction",
+      "era": "modern",
+      "pedagogicalRole": "authentic",
+      "registers": [
+        "modern_standard",
+        "journalistic"
+      ],
+      "releaseState": "ready",
+      "nativeReview": "source-authored; placement review pending",
+      "difficulty": {
+        "adapter": "de",
+        "tokenCount": 219,
+        "typeCount": 147,
+        "observedLemmaCount": 130,
+        "analyzerUnresolvedTokens": 2,
+        "lexicalDiversity": 0.6712328767123288,
+        "sentenceCount": 10,
+        "medianSentenceTokens": 22,
+        "maxSentenceTokens": 34,
+        "limitations": "Adapter lexicon is incomplete; unresolved analyzer tokens are not learner unknown words. No frequency corpus, native review, CEFR, or personalized coverage inferred."
+      },
+      "rights": {
+        "state": "verified-open-licence",
+        "copyrightStatus": "licensed",
+        "permission": "not-needed",
+        "canBundle": true,
+        "canModify": true,
+        "canStoreOffline": true,
+        "canBundleAudio": false,
+        "verified": true,
+        "verifiedBy": "Exact Global Voices article credits, license footer and official republication policy",
+        "verifiedAt": "2026-10-04",
+        "licensing": "CC BY 3.0",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "basis": "GV-created author narrative/explanatory paragraphs in this exact credited translation; article/footer CC BY 3.0, current official policy permits redistribution and adaptation. Selected excerpt excludes third-party quoted prose and all media.",
+        "evidence": [
+          "https://de.globalvoices.org/2024/03/31/eine-kolumbianische-sicht-auf-den-film-encanto-von-disney/",
+          "https://es.globalvoices.org/2022/03/23/encanto-una-mirada-colombiana-sobre-la-pelicula-de-disney/",
+          "https://globalvoices.org/about/global-voices-attribution-policy/",
+          "https://creativecommons.org/licenses/by/3.0/"
+        ]
+      },
+      "source": {
+        "file": "gv-de-91a9508ad151-excerpt.txt",
+        "kind": "plain",
+        "url": "https://de.globalvoices.org/2024/03/31/eine-kolumbianische-sicht-auf-den-film-encanto-von-disney/",
+        "edition": "Global Voices de edition, Sun, 31 Mar 2024 15:52:05 +0000",
+        "sha256": "6650149db2ef1a56d0d98542d95f31f193ac25c20a5d36d32b7250e7d2cc4f38",
+        "originalSourceSha256": "cd9fbb26fc6a36d82d797cd68b46a97fb49a35d7e1a5f6c5154e102fb2e0205e",
+        "originalStoryUrl": "https://es.globalvoices.org/2022/03/23/encanto-una-mirada-colombiana-sobre-la-pelicula-de-disney/",
+        "author": "Lully",
+        "translator": "Andreas Kallinteris; FTSK",
+        "attribution": "Eine kolumbianische Sicht auf den Film „Encanto“ von Disney“ — Lully, translated by Andreas Kallinteris; FTSK. Originally on Global Voices: https://de.globalvoices.org/2024/03/31/eine-kolumbianische-sicht-auf-den-film-encanto-von-disney/; original story: https://es.globalvoices.org/2022/03/23/encanto-una-mirada-colombiana-sobre-la-pelicula-de-disney/. CC BY 3.0: https://creativecommons.org/licenses/by/3.0/. Changes: selected text-only excerpt; HTML/links unwrapped, other paragraphs, images, captions, quoted prose and media omitted; source wording preserved.",
+        "provenance": "Exact paragraphs 3,4,5,6,7 from cached text-only extraction; this is a labeled excerpt, not complete article. Original author/translator identified from exact article byline. Native placement pending; no generated content."
+      },
+      "convert": {
+        "stripBoilerplate": false,
+        "unwrap": false
+      },
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "curriculum-remediation exact article credits and excerpt source-fidelity check",
+        "reviewedAt": "2026-10-04",
+        "coversSourceSha256": "6650149db2ef1a56d0d98542d95f31f193ac25c20a5d36d32b7250e7d2cc4f38",
+        "notes": "Source-authored authentic prose. Article credit/license and excerpt comparison only; no native placement or rescue-text approval invented."
+      }
+    }
+  ]
+}

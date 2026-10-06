@@ -1,0 +1,40 @@
+{
+  "title": "जंगल का स्कूल",
+  "sourceUrl": "https://content.digitallibrary.io/hi/book/%e0%a4%9c%e0%a4%82%e0%a4%97%e0%a4%b2-%e0%a4%95%e0%a4%be-%e0%a4%b8%e0%a5%8d%e0%a4%95%e0%a5%82%e0%a4%b2/",
+  "api": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+  "licence": [
+    {
+      "term_id": 1578,
+      "name": "CC-BY-4.0",
+      "slug": "cc-by-4-0",
+      "term_group": 0,
+      "term_taxonomy_id": 224,
+      "taxonomy": "license",
+      "description": "",
+      "parent": 0,
+      "count": 9428,
+      "filter": "raw",
+      "term_order": "0"
+    }
+  ],
+  "publisher": "StoryWeaver",
+  "contentsource": "gdl",
+  "credits": [
+    "Authors: Madhav Chavan, Meera Tendolkar",
+    "Illustrator: Ketan Raut",
+    "Translator: Pratham Books Team",
+    "This book was made possible by Pratham Books' StoryWeaver platform. Content under Creative Commons licenses can be downloaded, translated and can even be used to create new stories ­ provided you give appropriate credit, and indicate if changes were made. To know more about this, and the full terms of use and attribution, please visit the following link .",
+    "Story Attribution:",
+    "This story: जंगल का स्कूल is translated by Pratham Books Team . The © for this translation lies with Pratham Books, 2006. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' The Jungle School ' , by Madhav Chavan , Meera Tendolkar . © Pratham Books , 2004. Some rights reserved. Released under CC BY 4.0 license.",
+    "Other Credits:",
+    "This book has been published on StoryWeaver by Pratham Books. The development of the print version of this book was supported by Dubai Creek Round Table, Dubai .U.A.E. www.prathambooks.org",
+    "Illustration Attributions:",
+    "Cover page: Signboard in a jungle , by Ketan Raut © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 2: Path in a jungle , by Ketan Raut © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 3: Animals talking , by Ketan Raut © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 4: Animals near a signboard , by Ketan Raut © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 5: Animals on a tree , by Ketan Raut © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 6: Gathering of animals on a tree , by Ketan Raut © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 7: Animals in a class on a tree , by Ketan Raut © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 8: Animals looking worried , by Ketan Raut © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Page 9: Animals scared of a teacher , by Ketan Raut © Pratham Books, 2004. Some rights reserved. Released under CC BY 4.0 license. Disclaimer: https://www.storyweaver.org.in/terms_and_conditions",
+    "Some rights reserved. This book is CC­-BY­-4.0 licensed. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. For full terms of use and attribution, http://creativecommons.org/licenses/by/4.0/",
+    "जंगल का स्कूल (Hindi)",
+    "जंगल में स्कूल खुलते ही सभी जानवर बड़े उत्साह से वहाँ जाते हैं। आगे क्या हुआ जानने के लिए पढ़िये जंगल का स्कूल।",
+    "यह पठन स्तर २ की किताब है, उन बच्चों के लिए जो सरल शब्द पढ़ लेते हैं और थोड़ी मदद से नए शब्द भी पढ़ सकते हैं।",
+    "Pratham Books goes digital to weave a whole new chapter in the realm of multilingual children's stories. Knitting together children, authors, illustrators and publishers. Folding in teachers, and translators. To create a rich fabric of openly licensed multilingual stories for the children of India ­­ and the world. Our unique online platform, StoryWeaver, is a playground where children, parents, teachers and librarians can get creative. Come, start weaving today, and help us get a book in every child's hand!"
+  ],
+  "epubSha256": "c1766d65846632ff4277585c78506545502340290acd294ad6542867f60fa311"
+}

@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-04",
+  "results": [
+    {
+      "lang": "de",
+      "manifest": "de/library-manifest.json",
+      "built": 28,
+      "published": 28,
+      "tokens": 47980,
+      "files": 59,
+      "refused": []
+    },
+    {
+      "lang": "de",
+      "manifest": "modern/de-library-manifest.json",
+      "built": 1,
+      "published": 1,
+      "tokens": 219,
+      "files": 5,
+      "refused": []
+    },
+    {
+      "lang": "es",
+      "manifest": "modern/es-library-manifest.json",
+      "built": 1,
+      "published": 1,
+      "tokens": 214,
+      "files": 5,
+      "refused": []
+    },
+    {
+      "lang": "hi",
+      "manifest": "modern/hi-library-manifest.json",
+      "built": 1,
+      "published": 1,
+      "tokens": 218,
+      "files": 5,
+      "refused": []
+    },
+    {
+      "lang": "sq",
+      "manifest": "modern/sq-library-manifest.json",
+      "built": 1,
+      "published": 1,
+      "tokens": 307,
+      "files": 5,
+      "refused": []
+    }
+  ]
+}

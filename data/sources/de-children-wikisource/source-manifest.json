@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-02",
+  "source": "Wikisource raw transcription endpoint; scan-backed proofread transcriptions",
+  "entries": [
+    {
+      "candidateId": "grimm-khm-1850-band1",
+      "title": "Kinder- und Haus-Märchen, Band 1 (6. Auflage, 1850)",
+      "sourceUrl": "https://de.wikisource.org/wiki/Index:Kinder-_und_Haus-M%C3%A4rchen_Band_1_(1850)",
+      "pageCount": 501,
+      "proofreadPages": 501,
+      "words": 123654,
+      "sha256": "05880f30594a0724f4d6b0a40efb4e1b7e699903c78da9afd1cfaec3d7cddd84"
+    },
+    {
+      "candidateId": "grimm-khm-1850-band2",
+      "title": "Kinder- und Haus-Märchen, Band 2 (6. Auflage, 1850)",
+      "sourceUrl": "https://de.wikisource.org/wiki/Index:Kinder-_und_Haus-M%C3%A4rchen_Band_2_(1850)",
+      "pageCount": 561,
+      "proofreadPages": 561,
+      "words": 135978,
+      "sha256": "78763849416f0ab54e7880dc323a848d0e9eb8f6d8e0b5eb787308568278bcb0"
+    },
+    {
+      "candidateId": "hauff-almanach-1826",
+      "title": "Märchen-Almanach auf das Jahr 1826",
+      "sourceUrl": "https://de.wikisource.org/wiki/Index:Wilhelm_Hauff_Werke_Bd_2",
+      "pageCount": 58,
+      "proofreadPages": 58,
+      "words": 38465,
+      "sha256": "6207c88421ff7b477c4f716c8a4f7e89844f23a65723a866584c8fce3ca0befc"
+    }
+  ]
+}

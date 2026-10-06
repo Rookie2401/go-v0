@@ -1,0 +1,528 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-01",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ตอนผมเป็นเด็ก",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-01",
+    "title": "When I was a child (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting a native Thai reviewer (preferably from Chiang Mai)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography",
+    "childhood",
+    "village life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam (man)",
+    "ton": "Ton (man)",
+    "daeng": "Auntie Daeng (woman)"
+  },
+  "sections": [
+    {
+      "title": "ที่ร้านป้าแดง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันอาทิตย์ ต้นกับแซมนั่งดื่มกาแฟที่ร้านป้าแดง",
+              "english": "On Sunday Ton and Sam sit drinking coffee at Auntie Daeng's shop."
+            },
+            {
+              "text": "แซมอยากรู้ว่าตอนเด็กๆ พี่ต้นทำอะไร",
+              "english": "Sam wants to know what Ton did when he was a child."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "พี่ต้นครับ ตอนเด็กๆ พี่อยู่ที่ไหนครับ",
+              "english": "Ton, where did you live when you were a child?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเกิดที่หมู่บ้านใกล้เมืองลำพูนครับ",
+              "english": "I was born in a village near the town of Lamphun."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเกิดตอนฝนตก ในเดือนกรกฎาคม",
+              "english": "I was born when it was raining, in July."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตอนเด็กๆ ผมอยู่กับปู่และย่า",
+              "english": "As a child I lived with my grandfather and grandmother."
+            },
+            {
+              "speaker": "sam",
+              "text": "ทำไมพี่ไม่อยู่กับพ่อแม่ครับ",
+              "english": "Why didn't you live with your parents?"
+            },
+            {
+              "speaker": "ton",
+              "text": "เพราะพ่อกับแม่ย้ายไปทำงานที่เชียงใหม่",
+              "english": "Because my father and mother moved to Chiang Mai for work."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเป็นหลานคนเดียวในบ้าน",
+              "english": "I was the only grandchild in the house."
+            },
+            {
+              "speaker": "ton",
+              "text": "ที่บ้านมีเสียงหัวเราะทุกวัน",
+              "english": "There was laughter at the house every day."
+            },
+            {
+              "speaker": "ton",
+              "text": "เราอยู่ในบ้านหลังเล็กๆ ใกล้ทุ่งนา",
+              "english": "We lived in a small house near the rice fields."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "สัตว์และแม่น้ำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "ที่บ้านมีสัตว์หลายตัว",
+              "english": "At the house there were several animals."
+            },
+            {
+              "speaker": "ton",
+              "text": "มีควาย วัว ไก่ หมา แมว และกระต่ายสองตัว",
+              "english": "There were buffalo, cows, chickens, a dog, a cat and two rabbits."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมชอบกระต่ายมาก ทุกเช้าผมเอาผักให้กระต่าย",
+              "english": "I liked the rabbits very much. Every morning I gave them vegetables."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมรักสัตว์ทุกตัว",
+              "english": "I loved every animal."
+            },
+            {
+              "speaker": "ton",
+              "text": "หลังฝนตก ผมกับเพื่อนไปที่ทุ่ง",
+              "english": "After it rained, my friends and I went out to the fields."
+            },
+            {
+              "speaker": "ton",
+              "text": "เรามองท้องฟ้า แล้ววิ่งไปที่แม่น้ำ",
+              "english": "We looked at the sky, then ran to the river."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปทำอะไรที่แม่น้ำครับ",
+              "english": "What did you do at the river?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ไปว่ายน้ำ จับปลา จับกบ",
+              "english": "We went swimming and caught fish and frogs."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมว่ายน้ำได้ตอนอายุห้าปี",
+              "english": "I could swim at the age of five."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมกระโดดลงน้ำ เพื่อนๆ ก็กระโดดลงมา",
+              "english": "I jumped into the water, and my friends jumped in too."
+            },
+            {
+              "speaker": "ton",
+              "text": "เรากระโดดกันทั้งวัน",
+              "english": "We jumped in all day long."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่แม่น้ำมีสัตว์อะไรครับ",
+              "english": "What animals were there at the river?"
+            },
+            {
+              "speaker": "ton",
+              "text": "มีปลา ปู และเต่าตัวเล็กๆ",
+              "english": "There were fish, crabs and little turtles."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเคยเห็นเต่าตัวใหญ่หนึ่งตัว",
+              "english": "Once I saw one big turtle."
+            },
+            {
+              "speaker": "ton",
+              "text": "เต่าว่ายน้ำช้ามาก เด็กๆ เล่นกับเต่า แล้วก็ปล่อยไป",
+              "english": "Turtles swim very slowly. The children played with the turtle and then let it go."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตอนเย็นผมเอากบกลับบ้าน",
+              "english": "In the evening I took the frogs home."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมจับปูได้ห้าตัว ดีใจมาก",
+              "english": "I caught five crabs and was very happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ส้มตำของย่า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "คืนนั้นย่าทำส้มตำใส่ปู",
+              "english": "That night my grandmother made papaya salad with crab."
+            },
+            {
+              "speaker": "ton",
+              "text": "หั่นมะละกอ ใส่มะนาว น้ำปลา และพริก",
+              "english": "She cut the papaya and added lime, fish sauce and chilli."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตำในครกใบใหญ่ แล้วก็ชิม",
+              "english": "She pounded it in a big mortar and then tasted it."
+            },
+            {
+              "speaker": "sam",
+              "text": "อร่อยไหมครับ",
+              "english": "Was it good?"
+            },
+            {
+              "speaker": "ton",
+              "text": "อร่อยที่สุด เปรี้ยว เค็ม เผ็ด",
+              "english": "The best. Sour, salty and spicy."
+            },
+            {
+              "speaker": "ton",
+              "text": "ข้าวอยู่ในหม้อ เรากินกันที่บ้าน",
+              "english": "The rice was in the pot, and we ate at home."
+            },
+            {
+              "speaker": "ton",
+              "text": "คืนนั้นผมได้ยินเสียงกบร้องทั้งคืน",
+              "english": "That night I heard the frogs singing all night."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ปู่ ลุง และน้า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ปู่กับย่าแต่งงานตอนอายุเท่าไรครับ",
+              "english": "How old were your grandparents when they married?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ย่าแต่งงานตอนอายุยี่สิบ สามีอายุสามสิบ",
+              "english": "My grandmother married at twenty. Her husband was thirty."
+            },
+            {
+              "speaker": "ton",
+              "text": "ย่าเล่าว่าปู่เป็นสามีที่ดีมาก",
+              "english": "She told me that my grandfather was a very good husband."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเป็นหลานที่ย่ารักมาก",
+              "english": "I was a grandchild whom my grandmother loved very much."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตอนผมอายุสิบสอง ปู่ตาย",
+              "english": "When I was twelve, my grandfather died."
+            },
+            {
+              "speaker": "ton",
+              "text": "เรากอดกันแล้วร้องไห้ทั้งคืน",
+              "english": "We held each other and cried all night."
+            },
+            {
+              "speaker": "ton",
+              "text": "ลุงกับน้าอยู่ใกล้ๆ",
+              "english": "My uncle and my aunt lived nearby."
+            },
+            {
+              "speaker": "ton",
+              "text": "ทุกวันอาทิตย์ผมไปเล่นที่บ้านลุง",
+              "english": "Every Sunday I went to play at my uncle's house."
+            },
+            {
+              "speaker": "ton",
+              "text": "ลุงเป็นพี่ของแม่ น้าเป็นน้องของแม่",
+              "english": "He is my mother's older brother, and she is my mother's younger sister."
+            },
+            {
+              "speaker": "ton",
+              "text": "น้าทำขนมให้ผมกินเสมอ",
+              "english": "My aunt always made sweets for me to eat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ต้นไม้ ช้าง งู และหนู",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "ที่บ้านมีต้นไม้ใหญ่",
+              "english": "At the house there was a big tree."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมชอบปีนต้นไม้",
+              "english": "I liked climbing the tree."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมปีนสูงกว่าเพื่อนๆ",
+              "english": "I climbed higher than my friends."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมนั่งบนต้นไม้ มองนาทั้งเช้า",
+              "english": "I sat in the tree and looked at the fields all morning."
+            },
+            {
+              "speaker": "ton",
+              "text": "เมื่อก่อนผมโตเร็ว ผมปีนได้สูงมาก",
+              "english": "Back then I grew fast, and I could climb very high."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่ลำพูนมีช้างไหมครับ",
+              "english": "Are there elephants in Lamphun?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ในหมู่บ้านไม่มี",
+              "english": "Not in the village."
+            },
+            {
+              "speaker": "ton",
+              "text": "แต่ผมเคยเห็นช้างตัวใหญ่ในเมือง",
+              "english": "But I once saw a big elephant in town."
+            },
+            {
+              "speaker": "ton",
+              "text": "ช้างตัวนั้นใหญ่กว่าบ้านของเรามาก",
+              "english": "That elephant was much bigger than our house."
+            },
+            {
+              "speaker": "ton",
+              "text": "ที่นามีงูด้วย",
+              "english": "There were snakes in the fields too."
+            },
+            {
+              "speaker": "ton",
+              "text": "ครั้งหนึ่ง ผมเห็นงูตัวใหญ่บนถนนไปโรงเรียน",
+              "english": "Once I saw a big snake on the road to school."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมวิ่งกลับบ้าน วิ่งเร็วมาก",
+              "english": "I ran home, ran very fast."
+            },
+            {
+              "speaker": "ton",
+              "text": "ทุกคืนหนูเข้ามาในบ้าน",
+              "english": "Every night rats came into the house."
+            },
+            {
+              "speaker": "ton",
+              "text": "แมวตัวเล็กๆ กินหนูไม่ได้",
+              "english": "The little cat could not eat them."
+            },
+            {
+              "speaker": "ton",
+              "text": "ปู่ว่างูกินหนูได้ดีกว่าแมว",
+              "english": "My grandfather said a snake eats rats better than a cat."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมไม่ชอบงูเลย แต่ผมชอบเล่นกับลูกแมว",
+              "english": "I did not like snakes at all, but I liked playing with kittens."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันของผม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "เมื่อก่อนผมตื่นเช้ามาก",
+              "english": "Back then I got up very early."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมให้อาหารไก่ก่อน แล้วก็กินข้าวกับไข่",
+              "english": "I fed the chickens first, and then I ate rice with an egg."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตอนเย็นผมช่วยเลี้ยงควาย แล้วนั่งมองท้องฟ้าที่ทุ่ง",
+              "english": "In the evening I helped look after the buffalo and sat looking at the sky in the field."
+            },
+            {
+              "speaker": "sam",
+              "text": "โรงเรียนไกลไหมครับ",
+              "english": "Was the school far?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ไกลมาก ผมเดินสองชั่วโมง",
+              "english": "Very far. I walked for two hours."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตอนอายุสิบ ลุงซื้อจักรยานให้ผม",
+              "english": "When I was ten, my uncle bought me a bicycle."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมดีใจมาก ผมขี่ไปโรงเรียนทุกวัน",
+              "english": "I was so happy. I rode it to school every day."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตอนอายุสิบห้า ผมย้ายไปอยู่เชียงใหม่",
+              "english": "At fifteen I moved to Chiang Mai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนนี้พี่อยากกลับไปไหมครับ",
+              "english": "Do you want to go back now?"
+            },
+            {
+              "speaker": "ton",
+              "text": "อยาก ที่นั่นนาเขียว ดอกไม้เหลืองเต็มทุ่ง",
+              "english": "I do. The fields there are green, and yellow flowers fill the field."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมโตที่นั่น ผมอยากให้ลูกผมเห็นด้วย",
+              "english": "I grew up there. I want my son to see it too."
+            },
+            {
+              "speaker": "ton",
+              "text": "เมื่อก่อนผมเบื่อที่นั่น ตอนนี้ผมรักที่นั่นมาก",
+              "english": "Back then I was bored there. Now I love the place very much."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ป้าแดงมาที่โต๊ะ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ป้าแดงเดินมาที่โต๊ะ",
+              "english": "Auntie Daeng comes over to the table."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าก็เกิดที่ลำพูนเหมือนกันนะคะ",
+              "english": "I was born in Lamphun too, you know."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เมื่อก่อนป้าก็ตื่นเช้าทุกวัน",
+              "english": "In the old days I also got up early every day."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากไปที่นั่นด้วยครับ",
+              "english": "I would like to go there too."
+            },
+            {
+              "speaker": "ton",
+              "text": "ปีใหม่เราไปด้วยกันนะครับ",
+              "english": "Let's go together at New Year."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมจะซื้อมะม่วงให้แซมกิน",
+              "english": "I will buy Sam some mangoes to eat."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

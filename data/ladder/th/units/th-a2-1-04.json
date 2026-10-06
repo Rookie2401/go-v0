@@ -1,0 +1,452 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-04",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "คืนพายุ",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-04",
+    "title": "The night of the storm (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting a native Thai reviewer (preferably from Chiang Mai)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative",
+    "storm",
+    "neighbours"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam (man)",
+    "daeng": "Auntie Daeng (woman)",
+    "ton": "Ton (man)",
+    "ball": "Ball (boy)"
+  },
+  "sections": [
+    {
+      "title": "วันที่ร้อนมาก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันนั้นร้อนมาก ตอนเย็นแซมนั่งคุยกับป้าแดงที่ร้าน",
+              "english": "That day was very hot. In the evening Sam sat chatting with Auntie Daeng at the shop."
+            },
+            {
+              "speaker": "daeng",
+              "text": "วันนี้ร้อนมากเลยนะคะ ป้านอนไม่หลับเลย",
+              "english": "It's very hot today, isn't it. I can't sleep at all."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมก็ไม่ชอบอากาศร้อนครับ",
+              "english": "I don't like hot weather either."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ฤดูฝนใกล้มาแล้วค่ะ เมื่อฝนมา อากาศก็เย็นสบาย",
+              "english": "The rainy season is near. When the rain comes, the weather is cool and pleasant."
+            },
+            {
+              "text": "คืนนั้นแซมนอนไม่หลับ เขานั่งอยู่ในห้องที่ร้านป้าแดง",
+              "english": "That night Sam could not sleep. He sat in his room at Auntie Daeng's shop."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "พายุมาแล้ว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อเขามองท้องฟ้า ท้องฟ้าก็ดำมาก",
+              "english": "When he looked at the sky, it was very black."
+            },
+            {
+              "text": "ฟ้าแลบ แล้วฟ้าร้อง",
+              "english": "Lightning flashed, and then the thunder rumbled."
+            },
+            {
+              "text": "ลมเริ่มพัด แล้วพายุก็มา",
+              "english": "The wind began to blow, and then the storm came."
+            },
+            {
+              "text": "ฝนตกมาก ลมพัดหน้าต่างปิดแล้วเปิด",
+              "english": "The rain fell heavily, and the wind blew the window shut and open again."
+            },
+            {
+              "text": "เมื่อลมมาถึง ไฟก็ดับ",
+              "english": "When the wind arrived, the lights went out."
+            },
+            {
+              "text": "ทุกอย่างมืดไปหมด",
+              "english": "Everything went dark."
+            },
+            {
+              "text": "แซมตกใจมาก เขาได้ยินเสียงบนหลังคา",
+              "english": "Sam was very frightened. He heard a noise on the roof."
+            },
+            {
+              "text": "แล้วเขาได้ยินป้าแดงตะโกน",
+              "english": "Then he heard Auntie Daeng shout."
+            },
+            {
+              "speaker": "daeng",
+              "text": "แซมคะ ลงมาเร็วๆ ค่ะ",
+              "english": "Sam, come down quickly!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ต้นไม้ล้ม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แซมวิ่งลงมาที่ร้าน ร้านมืดมาก",
+              "english": "Sam ran down to the shop. The shop was very dark."
+            },
+            {
+              "text": "ฟ้าแลบอีกครั้ง เขาจึงเห็นต้นไม้ใหญ่ที่ซอยล้มลง",
+              "english": "Lightning flashed again, and so he saw the big tree in the lane fall."
+            },
+            {
+              "text": "กิ่งใหญ่หักลงบนหลังคาร้าน",
+              "english": "A big branch broke off and landed on the roof of the shop."
+            },
+            {
+              "speaker": "daeng",
+              "text": "หลังคาถูกพัดเสียหายหมดแล้วค่ะ",
+              "english": "The roof has been blown away and is all damaged."
+            },
+            {
+              "speaker": "daeng",
+              "text": "น้ำฝนเข้าร้านแล้ว ขนมเปียกหมดเลย",
+              "english": "Rain is coming into the shop. The sweets are all wet."
+            },
+            {
+              "text": "ป้าแดงตกใจ ป้าแดงร้องไห้ แซมยืนอยู่ใกล้ๆ",
+              "english": "Auntie Daeng was shocked and cried. Sam stood near her."
+            },
+            {
+              "text": "แซมอยากร้องไห้ด้วย แต่เขายิ้ม",
+              "english": "Sam wanted to cry too, but he smiled."
+            },
+            {
+              "speaker": "sam",
+              "text": "ป้าไม่ต้องกลัวนะครับ ผมอยู่ที่นี่",
+              "english": "Don't be afraid, Auntie. I am here."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าไม่กลัวพายุค่ะ แต่ร้านของป้าเสียหายหมดเลย",
+              "english": "I'm not afraid of the storm. But my shop is all damaged."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าพูดว่าเหมือนโลกจะหมดแล้วค่ะ",
+              "english": "It feels as if the world is ending."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าต้องการเทียนค่ะ เทียนอยู่ที่โต๊ะ",
+              "english": "I need a candle. The candles are on the table."
+            },
+            {
+              "text": "แซมเอาเทียนมา ไฟจากเทียนทำให้ร้านไม่มืดมาก",
+              "english": "Sam brought a candle. The light from the candle made the shop not so dark."
+            },
+            {
+              "text": "แมวของป้าแดงวิ่งหนีเข้าใต้โต๊ะ",
+              "english": "Auntie Daeng's cat ran away under the table."
+            },
+            {
+              "text": "ฟ้าแลบอีกแล้ว แมวกลัวมาก",
+              "english": "Lightning flashed again. The cat was very scared."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เพื่อนบ้านมาช่วย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนนั้นมีคนตะโกนมาจากซอย",
+              "english": "Just then someone shouted from the lane."
+            },
+            {
+              "speaker": "ton",
+              "text": "ป้าแดง แซม ปลอดภัยไหมครับ",
+              "english": "Auntie Daeng, Sam, are you safe?"
+            },
+            {
+              "text": "ต้นกับบอลวิ่งมาที่ร้านป้าแดง",
+              "english": "Ton and Ball ran to Auntie Daeng's shop."
+            },
+            {
+              "speaker": "ton",
+              "text": "ขอโทษครับ ผมมาช้า ต้นไม้ล้มที่ซอยด้วย",
+              "english": "Sorry, I'm late. The tree has fallen in our lane too."
+            },
+            {
+              "text": "บอลตกใจเสียงฟ้าร้อง",
+              "english": "Ball was frightened by the sound of the thunder."
+            },
+            {
+              "text": "บอลวิ่งกระโดดกอดพ่อ",
+              "english": "Ball ran and jumped into his father's arms."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไม่กลัวเลยครับ",
+              "english": "I'm not afraid at all!"
+            },
+            {
+              "text": "บอลพูดหลอกแซมว่าไม่กลัว แต่บอลตกใจจริงๆ และร้องไห้",
+              "english": "Ball told Sam, as a trick, that he was not afraid, but Ball was really frightened and cried."
+            },
+            {
+              "text": "บอลวิ่งไล่แมวไปทั่วร้าน แล้วก็ยิ้มได้",
+              "english": "Ball ran chasing the cat all around the shop and managed to smile."
+            },
+            {
+              "text": "เสียงฟ้าร้องทำให้หลายคนตกใจ",
+              "english": "The sound of thunder startled many people."
+            },
+            {
+              "text": "เพื่อนบ้านออกมายืนที่ถนน",
+              "english": "The neighbours came out and stood in the road."
+            },
+            {
+              "text": "ผู้ชายหลายคนตะโกนเรียกกัน",
+              "english": "Several men shouted to one another."
+            },
+            {
+              "text": "บ้านหลายหลังเสียหาย ไฟดับทั้งซอย",
+              "english": "Many houses were damaged, and the lights were out all along the lane."
+            },
+            {
+              "text": "หัวหน้าซอยมาดูต้นไม้ใหญ่",
+              "english": "The head of the lane came to look at the big tree."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมขอสมัครเป็นหัวหน้าซอยคืนนี้ครับ",
+              "english": "I would like to apply to be head of the lane tonight!"
+            },
+            {
+              "text": "เพื่อนบ้านหัวเราะ ป้าแดงก็หัวเราะ",
+              "english": "The neighbours laughed, and Auntie Daeng laughed too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ตำรวจมา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตำรวจสองนายมาที่ซอย",
+              "english": "Two police officers came to the lane."
+            },
+            {
+              "text": "ถนนถูกปิด เพราะต้นไม้ใหญ่ล้มลงบนถนน",
+              "english": "The road was closed because the big tree had fallen across it."
+            },
+            {
+              "text": "ตำรวจอยากรู้ว่ามีคนเจ็บไหม",
+              "english": "The police wanted to know whether anyone was hurt."
+            },
+            {
+              "text": "ไม่มีใครเจ็บ ทุกบ้านปลอดภัย",
+              "english": "Nobody was hurt. Every house was safe."
+            },
+            {
+              "text": "แซมช่วยป้าแดงเดินไปที่บ้านใกล้ๆ ที่นั่นปลอดภัยกว่า",
+              "english": "Sam helped Auntie Daeng walk to a house nearby. It was safer there."
+            },
+            {
+              "text": "บอลเหนื่อยมาก พ่อจึงให้บอลนั่งในห้อง",
+              "english": "Ball was very tired, so his father let him sit in the room."
+            },
+            {
+              "text": "แซมมีกีตาร์ เขาเล่นกีตาร์ให้เด็กฟัง",
+              "english": "Sam had a guitar. He played the guitar for the boy to hear."
+            },
+            {
+              "text": "บอลฟังเพลง แล้วก็หลับ",
+              "english": "Ball listened to the song and fell asleep."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ตอนเช้า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนเช้า ฝนไม่ตกแล้ว แต่ไฟยังดับอยู่",
+              "english": "In the morning the rain had stopped, but the lights were still out."
+            },
+            {
+              "text": "ที่ซอยมีกิ่งหักอีกหลายกิ่ง หลังคาร้านหักไปครึ่งหนึ่ง",
+              "english": "In the lane there were many more broken branches, and half of the shop roof was broken."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่เคยมัดหลังคามาก่อนครับ",
+              "english": "I have never tied down a roof before."
+            },
+            {
+              "text": "ต้นเอาผ้าผืนใหญ่มาให้ป้าแดง",
+              "english": "Ton brought a big piece of cloth for Auntie Daeng."
+            },
+            {
+              "text": "เขากับแซมมัดผ้าบนหลังคา",
+              "english": "He and Sam tied the cloth over the roof."
+            },
+            {
+              "text": "ต้นซื้อผ้าผืนนี้ และจ่ายเงินให้ป้าแดง",
+              "english": "Ton bought this cloth and paid for it."
+            },
+            {
+              "text": "เพื่อนบ้านมาช่วยกัน บางคนเก็บกิ่ง บางคนมัดผ้าอีกผืน",
+              "english": "The neighbours helped one another: some picked up branches, some tied down another cloth."
+            },
+            {
+              "text": "ผู้หญิงจากโทรทัศน์มาสัมภาษณ์ป้าแดง",
+              "english": "A woman from the television came to interview Auntie Daeng."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าไม่เคยมีประสบการณ์อย่างนี้เลยค่ะ",
+              "english": "I've never had an experience like this."
+            },
+            {
+              "speaker": "daeng",
+              "text": "แต่เพื่อนบ้านช่วยป้า ป้าดีใจมากค่ะ",
+              "english": "But the neighbours helped me. I am very happy."
+            },
+            {
+              "text": "ผู้อำนวยการโรงเรียนโทรหาเขา",
+              "english": "The school director phoned Ton."
+            },
+            {
+              "speaker": "ton",
+              "text": "วันนี้โรงเรียนปิดครับ เพราะพายุทำให้ต้นไม้ล้มหลายที่",
+              "english": "Today the school is closed, because the storm made trees fall in many places."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่โต๊ะอาหาร",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "ป้าเชิญทุกบ้านมากินข้าวที่ร้านพรุ่งนี้ค่ะ",
+              "english": "I invite every household to come and eat at the shop tomorrow."
+            },
+            {
+              "speaker": "sam",
+              "text": "พายุอย่างนี้มาเดือนอะไรครับ",
+              "english": "In which month do storms like this come?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ที่เชียงใหม่ เดือนพฤษภาคมถึงตุลาคม ฝนตกมาก",
+              "english": "In Chiang Mai, from May to October it rains a lot."
+            },
+            {
+              "speaker": "ton",
+              "text": "เดือนมิถุนายน กรกฎาคม สิงหาคม กันยายน มีพายุได้ครับ",
+              "english": "In June, July, August and September there can be storms."
+            },
+            {
+              "speaker": "ton",
+              "text": "เดือนพฤศจิกายนถึงกุมภาพันธ์ อากาศเย็นสบาย",
+              "english": "From November to February the weather is cool and pleasant."
+            },
+            {
+              "speaker": "ton",
+              "text": "เดือนธันวาคมกับมกราคมหนาวที่สุด",
+              "english": "December and January are the coldest."
+            },
+            {
+              "speaker": "ton",
+              "text": "เดือนมีนาคมกับเมษายนร้อนมาก",
+              "english": "March and April are very hot."
+            },
+            {
+              "speaker": "sam",
+              "text": "พายุคืนนี้ทำให้เราใกล้กันมากขึ้น",
+              "english": "Tonight's storm has brought us closer together."
+            },
+            {
+              "speaker": "sam",
+              "text": "เป็นประสบการณ์ที่ผมไม่ลืมครับ",
+              "english": "It is an experience I will not forget."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

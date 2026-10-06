@@ -1,0 +1,464 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-05",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ซื้อเสื้อผ้าที่ตลาดกลางคืน",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-05",
+    "title": "Buying clothes at the night bazaar (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting a native Thai reviewer (preferably from Chiang Mai)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation",
+    "shopping",
+    "clothes",
+    "bargaining"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam (man)",
+    "mali": "Mali (woman)",
+    "phi": "Clothes seller (woman)",
+    "lung": "Old shoe seller (man)"
+  },
+  "sections": [
+    {
+      "title": "ไปตลาดกลางคืน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คืนนี้แซมกับมะลิไปตลาดกลางคืน",
+              "english": "Tonight Sam and Mali go to the night bazaar."
+            },
+            {
+              "text": "พรุ่งนี้แซมต้องไปสัมภาษณ์งานที่โรงเรียน",
+              "english": "Tomorrow Sam has to go to a job interview at the school."
+            },
+            {
+              "text": "ผู้อำนวยการกับหัวหน้าครูจะคุยกับเขา",
+              "english": "The director and the head teacher will talk with him."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมต้องการเสื้อกับกางเกงใหม่ครับ",
+              "english": "I need a new shirt and new trousers."
+            },
+            {
+              "speaker": "mali",
+              "text": "ทำไมคะ เสื้อผ้าของแซมเก่าหมดแล้วไหมคะ",
+              "english": "Why? Are all your clothes old?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีแต่ตัวสั้นๆ ครับ ไม่มีชุดสวยๆ",
+              "english": "I only have short ones, no nice outfit."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผู้อำนวยการต้องการครูที่มีประสบการณ์ ผมมีประสบการณ์ไม่มากครับ",
+              "english": "The director wants a teacher with experience. I don't have much."
+            },
+            {
+              "speaker": "mali",
+              "text": "ไม่ต้องกลัวนะคะ แซมสมัครแล้ว เขาเชิญแซมไปคุยแล้ว",
+              "english": "Don't be afraid. You have applied, and they have invited you to talk."
+            },
+            {
+              "speaker": "mali",
+              "text": "เรามาเลือกของดีๆ กันค่ะ น้าของฉันก็ขายของที่ตลาดนี้",
+              "english": "Let's choose some good things. My aunt sells things at this market too."
+            },
+            {
+              "text": "ตลาดนี้มีหลังคาใหญ่ มีคนมาก",
+              "english": "The bazaar has a big roof, and there are many people."
+            },
+            {
+              "text": "คนขายตะโกนเรียกคนที่เดินผ่าน",
+              "english": "The sellers shout to call people walking past."
+            },
+            {
+              "text": "มีตำรวจสองนายเดินอยู่ในตลาด ที่นี่ปลอดภัยค่ะ",
+              "english": "Two police officers walk through the market. It is safe here."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เลือกเสื้อ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "phi",
+              "text": "เชิญค่ะ เชิญดูก่อนนะคะ",
+              "english": "Welcome. Please have a look."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอโทษครับ ผมอยากได้เสื้อยาวสีฟ้า",
+              "english": "Excuse me, I would like a long shirt in blue."
+            },
+            {
+              "speaker": "phi",
+              "text": "ตัวนี้ค่ะ สีฟ้าสวยมาก จับดูได้เลยค่ะ",
+              "english": "This one. A very pretty blue. Feel it, please."
+            },
+            {
+              "speaker": "phi",
+              "text": "ต้องการไซส์อะไรคะ",
+              "english": "What size do you need?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมจำไซส์ของผมไม่ได้ครับ ที่อเมริกาไม่เหมือนที่นี่",
+              "english": "I can't remember my size. In America it is not like here."
+            },
+            {
+              "speaker": "phi",
+              "text": "ใส่ตัวนี้ดูค่ะ ไซส์ใหญ่",
+              "english": "Try this one on. It is a large size."
+            },
+            {
+              "text": "แซมลองตัวนั้น มันหลวมมาก",
+              "english": "Sam tried that one. It was very loose."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตัวนี้หลวมครับ ผมอยากลองตัวที่เล็กกว่านี้",
+              "english": "This one is loose. I'd like to try a smaller one."
+            },
+            {
+              "text": "แซมใส่ตัวที่เล็กกว่า แต่มันคับ",
+              "english": "Sam put on a smaller one, but it was tight."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันว่าตัวใหญ่ไป ตัวเล็กไปค่ะ",
+              "english": "I think the big one is too big and the small one too small."
+            },
+            {
+              "speaker": "phi",
+              "text": "ตัวนี้ไซส์ใหญ่กว่าตัวเล็ก แต่เล็กกว่าตัวใหญ่ ใส่ดูไหมคะ",
+              "english": "This one is bigger than the small one but smaller than the large one. Do you want to try it on?"
+            },
+            {
+              "text": "แซมสวมตัวใหม่ แล้วยิ้ม",
+              "english": "Sam put on the new one and smiled."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตัวนี้ไม่หลวมไม่คับครับ แบบนี้ผมชอบ",
+              "english": "This one is neither loose nor tight. I like this style."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบแบบง่ายๆ ครับ",
+              "english": "I like simple styles."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันซื้อเสื้อให้ย่าที่ตลาดนี้ทุกปีค่ะ ย่าก็ชอบแบบง่ายๆ",
+              "english": "I buy a shirt for my grandmother at this market every year. She likes simple styles too."
+            },
+            {
+              "speaker": "mali",
+              "text": "สีฟ้าสวยจริงๆ ค่ะ แซมใส่แล้วเหมือนครูเลย",
+              "english": "The blue is really pretty. You look just like a teacher in it."
+            },
+            {
+              "text": "แซมมองเสื้อของเขาแล้วหัวเราะ",
+              "english": "Sam looked at his shirt and laughed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ต่อราคา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ตัวนี้เท่าไรครับ",
+              "english": "How much is this one?"
+            },
+            {
+              "speaker": "phi",
+              "text": "350 บาทค่ะ สามร้อยห้าสิบบาท",
+              "english": "350 baht. Three hundred and fifty baht."
+            },
+            {
+              "speaker": "sam",
+              "text": "แพงไปครับ ลดได้ไหมครับ",
+              "english": "That's too expensive. Can you reduce it?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ถ้าซื้อเสื้อกับกางเกงเป็นชุด ก็ต้องลดนะคะ",
+              "english": "If you buy a shirt and trousers as a set, you have to reduce it."
+            },
+            {
+              "speaker": "phi",
+              "text": "ถ้าซื้อสองตัว พี่ลดให้ 50 บาทค่ะ",
+              "english": "If you buy two, I'll take 50 baht off."
+            },
+            {
+              "speaker": "mali",
+              "text": "ช่วยต่อให้อีกหน่อยได้ไหมคะ",
+              "english": "Could you bargain down a little more for us?"
+            },
+            {
+              "speaker": "phi",
+              "text": "ต่อไม่ได้แล้วค่ะ พี่ขายถูกแล้ว",
+              "english": "I can't go lower. I'm already selling cheaply."
+            },
+            {
+              "speaker": "sam",
+              "text": "เอาสองตัวครับ ผมจะจ่าย 600",
+              "english": "I'll take two. I'll pay 600."
+            },
+            {
+              "text": "แซมให้เงินหนึ่งพันบาท คนขายทอนสี่ร้อย",
+              "english": "Sam gave a thousand-baht note, and the seller gave 400 in change."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ พี่ทอนถูกแล้ว",
+              "english": "Thank you. You gave the right change."
+            },
+            {
+              "speaker": "phi",
+              "text": "ทอนให้ถูกแล้วนะคะ",
+              "english": "I gave you the right change."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "กางเกงและรองเท้า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ผมอยากได้กางเกงยาวสีดำครับ",
+              "english": "I'd like a pair of long black trousers."
+            },
+            {
+              "speaker": "phi",
+              "text": "ใส่กางเกงตัวนี้ดูค่ะ",
+              "english": "Try this pair of trousers on."
+            },
+            {
+              "text": "แซมใส่ตัวนี้ มันยาวไป ตัวนั้นสั้นไป",
+              "english": "Sam put on this pair. It was too long, and that pair too short."
+            },
+            {
+              "speaker": "mali",
+              "text": "ลองตัวสีดำตัวนั้นสิคะ",
+              "english": "Try that black one."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตัวนี้ดีครับ ไม่หลวมไม่คับ",
+              "english": "This one is good. Neither loose nor tight."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากได้กางเกงว่ายน้ำด้วยครับ",
+              "english": "I'd also like some swimming trunks."
+            },
+            {
+              "speaker": "mali",
+              "text": "แซมจะไปว่ายน้ำที่ไหนคะ",
+              "english": "Where will you go swimming?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปกับต้นกับบอลที่แม่น้ำครับ",
+              "english": "With Ton and Ball at the river."
+            },
+            {
+              "text": "ต่อไป แซมกับมะลิเดินไปที่ร้านรองเท้า",
+              "english": "Next Sam and Mali walk over to the shoe stall."
+            },
+            {
+              "text": "ลุงที่ขายของที่นั่นนั่งอยู่ใกล้ๆ",
+              "english": "An old man who sold things there was sitting nearby."
+            },
+            {
+              "speaker": "lung",
+              "text": "รองเท้าคู่นี้ราคา 200 บาทครับ",
+              "english": "This pair of shoes costs 200 baht."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมขอลองคู่นี้ครับ",
+              "english": "May I try this pair?"
+            },
+            {
+              "text": "แซมสวมคู่นั้น แล้วเดินไปเดินมา",
+              "english": "Sam put on that pair and walked back and forth."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบครับ ผมอยากใส่ไปปีนภูเขา ไปป่า ไปถ้ำเลย",
+              "english": "I like this pair. I'd like to wear them to climb mountains, to the forest, even to caves."
+            },
+            {
+              "speaker": "mali",
+              "text": "รองเท้าไม่ดีทำให้ล้มได้นะคะ เลือกคู่ที่ดีดีกว่า",
+              "english": "Bad shoes can make you fall, you know. It is better to choose a good pair."
+            },
+            {
+              "speaker": "sam",
+              "text": "ครับ ผมเลือกเลย ผมอยากใส่ที่ทุ่งนาด้วย",
+              "english": "Yes. I choose this pair. I want to wear them in the rice fields too."
+            },
+            {
+              "speaker": "mali",
+              "text": "แซมไม่เลือกหมวกใช่ไหมคะ",
+              "english": "You are not choosing a hat, are you?"
+            },
+            {
+              "text": "ปู่คนหนึ่งขายหมวกอยู่ใกล้ๆ",
+              "english": "An old grandfather was selling hats nearby."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมสวมหมวกแล้วเหมือนนักเรียนครับ ผมไม่เอาหมวก",
+              "english": "With a hat on I look like a pupil. I don't want a hat."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีเงินไม่มากครับ ผมจะซื้อสองอย่างนี้ก่อน",
+              "english": "I don't have much money. I will buy these two things first."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เสื้อผ้ากับเดือน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนเดินกลับ แซมอยากรู้เรื่องเสื้อผ้า",
+              "english": "On the way back Sam wanted to know about clothes."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่เชียงใหม่ คนใส่เสื้อผ้าแบบไหนครับ",
+              "english": "What kind of clothes do people wear in Chiang Mai?"
+            },
+            {
+              "speaker": "mali",
+              "text": "เดือนพฤศจิกายน ธันวาคม มกราคม กุมภาพันธ์ อากาศเย็น เราใส่เสื้อยาวค่ะ",
+              "english": "In November, December, January and February the weather is cool, and we wear long-sleeved clothes."
+            },
+            {
+              "speaker": "mali",
+              "text": "เดือนมีนาคม เมษายน พฤษภาคม ร้อนมาก เราใส่เสื้อสั้นกับกางเกงสั้นค่ะ",
+              "english": "In March, April and May it is very hot, and we wear short-sleeved shirts and shorts."
+            },
+            {
+              "speaker": "mali",
+              "text": "เดือนมิถุนายน กรกฎาคม ฝนจะมา เราต้องมีร่มกับรองเท้าดีๆ",
+              "english": "In June and July there is rain, and we need an umbrella and good shoes."
+            },
+            {
+              "speaker": "mali",
+              "text": "เดือนสิงหาคมกับกันยายนมีฝนมากที่สุด ตุลาคมก็ยังมีฝนค่ะ",
+              "english": "In August and September there is the most rain, and there is still rain in October."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมรู้แล้วครับ ผมไม่โง่แล้ว",
+              "english": "I understand now. I'm not stupid any more."
+            },
+            {
+              "speaker": "mali",
+              "text": "แซมฉลาดมากค่ะ ที่ซื้อเสื้อผ้าใหม่ก่อนไปสัมภาษณ์",
+              "english": "You are very clever to buy new clothes before the interview."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณมากครับ พรุ่งนี้ผมจะใส่ชุดสีฟ้านี้ไปโรงเรียน",
+              "english": "Thank you very much. Tomorrow I will wear this blue outfit to the school."
+            },
+            {
+              "speaker": "mali",
+              "text": "พรุ่งนี้แซมต้องตื่นเช้านะคะ สัมภาษณ์ตอนเก้าโมง",
+              "english": "Tomorrow you must get up early. The interview is at nine."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมจะตื่นตอนหกโมงครับ แล้วกินข้าวกับไข่",
+              "english": "I will get up at six and eat rice with an egg."
+            },
+            {
+              "speaker": "mali",
+              "text": "อธิษฐานก่อนไปด้วยนะคะ พระเจ้าช่วยแซมค่ะ",
+              "english": "Pray before you go, too. God will help you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ ผมจะอธิษฐานก่อนไปโรงเรียนครับ",
+              "english": "Thank you. I will pray before I go to the school."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

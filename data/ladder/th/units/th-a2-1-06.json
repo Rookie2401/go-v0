@@ -1,0 +1,508 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-06",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ขอ บอก ถาม ตอบ",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-06",
+    "title": "Asking, telling, lending (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting a native Thai reviewer (preferably from Chiang Mai)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "practical communication",
+    "requests",
+    "borrowing",
+    "thanks"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical-communication"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam (man)",
+    "daeng": "Auntie Daeng (woman)",
+    "mali": "Mali (woman)",
+    "ton": "Ton (man)",
+    "ball": "Ball (boy)",
+    "friend": "Mali's friend (woman)"
+  },
+  "sections": [
+    {
+      "title": "ฝากของไว้ที่ร้านป้า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เช้านี้แซมต้องไปโรงเรียน เขามีของหลายอย่าง",
+              "english": "This morning Sam has to go to the school. He has many things with him."
+            },
+            {
+              "speaker": "sam",
+              "text": "ป้าครับ ขอรบกวนหน่อยนะครับ",
+              "english": "Auntie, sorry to bother you."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ว่ามาเลยค่ะ มีอะไรคะ",
+              "english": "Go ahead. What is it?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมขอฝากกระเป๋าไว้ที่ร้านป้าได้ไหมครับ ผมจะมารับตอนเย็น",
+              "english": "May I leave my bag at your shop? I'll come and pick it up in the evening."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ได้ค่ะ ฝากที่โต๊ะนะคะ",
+              "english": "Yes. Leave it on the table."
+            },
+            {
+              "speaker": "sam",
+              "text": "ถ้าพี่ต้นโทรมา ช่วยบอกพี่ต้นให้โทรหาผมหน่อยได้ไหมครับ",
+              "english": "If Ton calls, could you please tell him to call me?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ได้ค่ะ ป้าจะจดข้อความไว้ให้",
+              "english": "Yes, I'll write the message down for you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ ผมไม่อยากรบกวนป้ามาก",
+              "english": "Thank you. I don't want to bother you too much."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ไม่เป็นไรค่ะ ป้าชอบช่วยแซม",
+              "english": "It's no trouble. I like helping Sam."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ยืมร่ม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ฝนจะตก แต่แซมไม่มีร่ม",
+              "english": "It is going to rain, but Sam has no umbrella."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณมะลิครับ ผมยืมร่มของคุณได้ไหมครับ",
+              "english": "Mali, may I borrow your umbrella?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ได้ค่ะ แต่ต้องคืนนะคะ ร่มคันนี้ของแม่",
+              "english": "Yes, but you must return it. This umbrella is my mother's."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมจะคืนพรุ่งนี้ครับ ผมไม่ลืม",
+              "english": "I'll return it tomorrow. I won't forget."
+            },
+            {
+              "speaker": "mali",
+              "text": "ไม่ต้องนำร่มมาคืนที่โรงพยาบาลนะคะ ฝากที่ร้านป้าแดงค่ะ",
+              "english": "You don't have to bring the umbrella back to the hospital. Leave it at Auntie Daeng's shop."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ช่วยถือของ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนเย็น มะลิซื้อผลไม้หลายอย่าง",
+              "english": "That evening Mali bought several kinds of fruit."
+            },
+            {
+              "speaker": "mali",
+              "text": "แซมคะ ช่วยถือถุงให้หน่อยได้ไหมคะ",
+              "english": "Sam, could you carry the bag for me, please?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ได้ครับ ผมถือให้ ถุงนี้ใหญ่มาก",
+              "english": "Of course. I'll carry it. This bag is very big."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขอโทษที่รบกวนนะคะ ฉันนึกไม่ออกว่าจะทำอย่างไร",
+              "english": "Sorry to bother you. I couldn't think what to do."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไม่เป็นไรครับ ผมถือได้",
+              "english": "No problem. I can carry it."
+            },
+            {
+              "speaker": "mali",
+              "text": "เดี๋ยวฉันแบ่งมะม่วงกับกล้วยให้แซมนะคะ",
+              "english": "I'll share some mangoes and bananas with you in a moment."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "โทรศัพท์จากพี่ต้น",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนบ่าย พี่ต้นโทรมาที่ร้านป้าแดง ป้าแดงรับโทรศัพท์",
+              "english": "In the afternoon Ton phoned the shop, and Auntie Daeng answered."
+            },
+            {
+              "speaker": "ton",
+              "text": "สวัสดีครับป้า ผมโทรหาแซมครับ แซมอยู่ไหมครับ",
+              "english": "Hello, Auntie. I'm calling for Sam. Is Sam there?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "แซมไปโรงเรียนค่ะ ป้าจดข้อความไว้ให้",
+              "english": "Sam has gone to the school. I'll write down a message for him."
+            },
+            {
+              "speaker": "ton",
+              "text": "ช่วยบอกแซมว่า ให้มาหาผมที่โรงเรียนตอนห้าโมงเย็นครับ",
+              "english": "Could you tell Sam to come and see me at the school at five this evening?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ค่ะ ห้าโมงเย็น ที่โรงเรียน ใช่ไหมคะ",
+              "english": "Yes. Five in the evening, at the school, right?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ใช่ครับ ขอบคุณมากครับ",
+              "english": "Right. Thank you very much."
+            },
+            {
+              "text": "ตอนเย็น แซมมารับกระเป๋าที่ร้าน",
+              "english": "In the evening Sam came to the shop to pick up his bag."
+            },
+            {
+              "speaker": "daeng",
+              "text": "พี่ต้นโทรมาค่ะ ให้แซมไปหาที่โรงเรียนตอนห้าโมง",
+              "english": "Ton phoned. He wants you to go and see him at the school at five."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมนึกว่าพี่ต้นจะลืมครับ",
+              "english": "I thought he would forget."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเอากระดาษให้ดูค่ะ ป้าจดไว้แล้ว",
+              "english": "I'll show you the paper. I've written it down."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ผู้อำนวยการชอบแซม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "พี่ต้นรออยู่ที่โรงเรียน เขายิ้มมาก",
+              "english": "Ton was waiting at the school, smiling broadly."
+            },
+            {
+              "speaker": "ton",
+              "text": "แซม ผู้อำนวยการบอกผมว่า แซมสัมภาษณ์ได้ดีมากครับ",
+              "english": "Sam, the director told me you did very well in the interview."
+            },
+            {
+              "speaker": "sam",
+              "text": "จริงไหมครับ",
+              "english": "Really?"
+            },
+            {
+              "speaker": "ton",
+              "text": "จริงครับ ผู้อำนวยการต้องการให้แซมมาสอนสองวันต่อสัปดาห์",
+              "english": "Yes. The director wants you to come and teach two days a week."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดีใจมากครับ ผมจะตอบผู้อำนวยการว่าอย่างไรดีครับ",
+              "english": "I'm so happy. How should I answer the director?"
+            },
+            {
+              "speaker": "ton",
+              "text": "แซมจะกลับบ้านอย่างไรครับ ฝนจะตกอีกแล้ว",
+              "english": "How will you get home? It's going to rain again."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมนำร่มของคุณมะลิมาด้วยครับ ร่มมีประโยชน์มากจริงๆ",
+              "english": "I brought Mali's umbrella with me. An umbrella is really useful."
+            },
+            {
+              "speaker": "ton",
+              "text": "พรุ่งนี้ผมพาแซมไปหาผู้อำนวยการครับ",
+              "english": "Tomorrow I'll take you to see the director."
+            },
+            {
+              "speaker": "ton",
+              "text": "ถ้าแซมอยากยืมรถของผมไปบ้าน ยืมได้นะครับ",
+              "english": "If you'd like to borrow my car to get home, you can."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับพี่ต้น แต่ผมเดินไปได้ครับ ไม่ต้องรบกวนพี่",
+              "english": "Thank you, Ton, but I can walk. I don't need to trouble you."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไม่เป็นไรครับ",
+              "english": "No problem."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ถามตอบกับบอล",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "บอลวิ่งมาหาแซม เขามีคำถามมาก",
+              "english": "Ball ran up to Sam. He had many questions."
+            },
+            {
+              "speaker": "ball",
+              "text": "พี่แซมครับ ผมถามพี่ได้ไหมครับ",
+              "english": "Sam, may I ask you some questions?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ได้เลย ถามมาสิ",
+              "english": "Of course. Go ahead and ask."
+            },
+            {
+              "speaker": "ball",
+              "text": "สัตว์อะไรกระโดดได้ครับ",
+              "english": "Which animals can jump?"
+            },
+            {
+              "speaker": "sam",
+              "text": "กบกับกระต่ายครับ",
+              "english": "Frogs and rabbits."
+            },
+            {
+              "speaker": "ball",
+              "text": "ถูกครับ สัตว์อะไรว่ายน้ำได้",
+              "english": "Right. Which animals can swim?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ปลา เต่า แล้วก็ปู",
+              "english": "Fish, turtles and crabs."
+            },
+            {
+              "speaker": "ball",
+              "text": "สัตว์อะไรปีนต้นไม้ได้ครับ",
+              "english": "Which animals can climb trees?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ลิง กับงู ผมตอบถูกไหมครับ",
+              "english": "Monkeys and snakes. Did I answer correctly?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ถูกครับ สัตว์อะไรจับหนู",
+              "english": "Right. Which animals catch rats?"
+            },
+            {
+              "speaker": "sam",
+              "text": "แมวกับงู",
+              "english": "Cats and snakes."
+            },
+            {
+              "speaker": "ball",
+              "text": "สัตว์อะไรตัวใหญ่ที่สุดครับ",
+              "english": "Which animal is the biggest?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ช้างครับ",
+              "english": "The elephant."
+            },
+            {
+              "speaker": "ball",
+              "text": "พี่แซมตอบถูกหมดเลย ตอนนี้พี่ถามผมสิครับ",
+              "english": "You got them all right. Now you ask me some, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมนึกไม่ออกว่าจะถามอะไรครับ ไม่เป็นไรนะ ผมถามพรุ่งนี้ได้ไหม",
+              "english": "I can't think what to ask. Never mind. Can I ask tomorrow?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ปฏิเสธอย่างสุภาพ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "มะลิมีเพื่อนคนหนึ่ง เธอมาหาที่ร้านป้าแดง",
+              "english": "Mali had a friend, who came to see her at Auntie Daeng's shop."
+            },
+            {
+              "speaker": "friend",
+              "text": "มะลิคะ เธอพาฉันไปตลาดวันอาทิตย์ได้ไหม",
+              "english": "Mali, can you take me to the market on Sunday?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ขอโทษนะคะ วันอาทิตย์ฉันต้องไปโบสถ์ค่ะ",
+              "english": "I'm sorry. On Sunday I have to go to church."
+            },
+            {
+              "speaker": "mali",
+              "text": "พรุ่งนี้ฉันพาเธอไปได้ค่ะ เธอว่างไหมคะ",
+              "english": "Tomorrow I can take you. Are you free?"
+            },
+            {
+              "speaker": "friend",
+              "text": "ว่างค่ะ ขอบคุณมากนะคะ",
+              "english": "I'm free. Thank you very much."
+            },
+            {
+              "speaker": "friend",
+              "text": "ฉันขอแบ่งขนมของป้าแดงได้ไหมคะ",
+              "english": "May I share some of Auntie Daeng's sweets?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ได้ค่ะ ขนมของป้าแดงอร่อยที่สุด",
+              "english": "Sure. Auntie Daeng's sweets are the best."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "แซมจดบันทึก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คืนนั้นแซมนั่งจดสิ่งที่เกิดในสัปดาห์นี้ลงกระดาษ",
+              "english": "That night Sam sat and wrote down what had happened this week."
+            },
+            {
+              "text": "สัปดาห์นี้เกิดหลายสิ่งหลายอย่าง",
+              "english": "Many things happened this week."
+            },
+            {
+              "text": "พายุมาตอนคืน ไฟดับ ทำให้ป้าแดงตกใจและกลัว แมวของป้าหนีไปซ่อนใต้โต๊ะ",
+              "english": "A storm came in the night and the lights went out, which shocked and frightened Auntie Daeng. Her cat ran off and hid under the table."
+            },
+            {
+              "text": "กิ่งต้นไม้หักลงบนหลังคาร้านของป้า",
+              "english": "A tree branch broke and fell on the roof of her shop."
+            },
+            {
+              "text": "เพื่อนบ้านมาช่วยกันมัดผ้าบนหลังคา",
+              "english": "The neighbours came to help tie cloth over the roof."
+            },
+            {
+              "text": "ตำรวจสองนายมาที่ซอยด้วย",
+              "english": "Two police officers came to the lane as well."
+            },
+            {
+              "text": "ผมไปตลาดกลางคืนกับคุณมะลิ ผมลองเสื้อสั้น กางเกงสั้น หมวก และรองเท้าคู่ใหม่",
+              "english": "I went to the night bazaar with Mali and tried on short shirts, shorts, a hat and a new pair of shoes."
+            },
+            {
+              "text": "ผมเลือกชุดสีฟ้าแบบง่ายๆ ไม่หลวมไม่คับ ผมจ่ายเงินแล้ว และสวมชุดนี้ไปสัมภาษณ์",
+              "english": "I chose a simple blue outfit, neither loose nor tight, paid, and wore it to the interview."
+            },
+            {
+              "text": "ผมสมัครเป็นครูที่โรงเรียน ผมสัมภาษณ์กับผู้อำนวยการและหัวหน้าครู",
+              "english": "I applied to be a teacher at the school, and I was interviewed by the director and the head teacher."
+            },
+            {
+              "text": "ผมมีประสบการณ์ไม่มาก แต่ผมต้องการสอน เสื้อผ้าใหม่ของผมช่วยผมได้",
+              "english": "I do not have much experience, but I want to teach. My new clothes helped me."
+            },
+            {
+              "text": "ผมจำลุงเล็กที่หมู่บ้านของยายได้ เมื่อก่อนไม่มีไฟฟ้า ตอนนี้ทันสมัยมาก",
+              "english": "I remember Uncle Lek in Grandmother's village. In the past there was no electricity; now it is very modern."
+            },
+            {
+              "text": "พี่ต้นเล่าว่าเขาโตกับปู่และย่า น้ากับลุงของเขาอยู่ใกล้ๆ",
+              "english": "Ton told me he grew up with his grandfather and grandmother, and his aunt and uncle lived nearby."
+            },
+            {
+              "text": "ปีใหม่ผมอยากไปที่ทุ่งนากับพี่ต้น และมองดูสิ่งที่เปลี่ยนไป",
+              "english": "At New Year I want to go to the rice fields with Ton and look at what has changed."
+            },
+            {
+              "text": "ผมเขียนคำใหม่ด้วย ยืม บอก ถาม ตอบ ถือ ฝาก รับ พา นำ แบ่ง",
+              "english": "I also wrote new words: borrow, tell, ask, answer, hold, leave, receive, take, bring, share."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

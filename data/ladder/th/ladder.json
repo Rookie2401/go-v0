@@ -258,6 +258,190 @@
       "document": "units/th-a1-2-16.json",
       "domain": "work",
       "title": "Ton looks for a second job"
+    },
+    {
+      "id": "th-a2-1-01",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-01.json",
+      "domain": "biography",
+      "title": "When I was a child"
+    },
+    {
+      "id": "th-a2-1-02",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-02.json",
+      "domain": "explanation",
+      "title": "Our village then and now"
+    },
+    {
+      "id": "th-a2-1-03",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-03.json",
+      "domain": "narrative",
+      "title": "Grandmother's night story"
+    },
+    {
+      "id": "th-a2-1-04",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-04.json",
+      "domain": "narrative",
+      "title": "The night of the storm"
+    },
+    {
+      "id": "th-a2-1-05",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-05.json",
+      "domain": "conversation",
+      "title": "Buying clothes at the night bazaar"
+    },
+    {
+      "id": "th-a2-1-06",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-06.json",
+      "domain": "practical-communication",
+      "title": "Asking, telling, lending"
+    },
+    {
+      "id": "th-a2-1-07",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-07.json",
+      "domain": "correspondence",
+      "title": "The team's group chat"
+    },
+    {
+      "id": "th-a2-1-08",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-08.json",
+      "domain": "daily-life",
+      "title": "Ball's morning"
+    },
+    {
+      "id": "th-a2-1-09",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-09.json",
+      "domain": "church-and-mission-life",
+      "title": "Getting ready for Sunday school"
+    },
+    {
+      "id": "th-a2-1-10",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "../../corpus/th/bridge-thai-bridge-01.json",
+      "domain": "narrative",
+      "title": "บ้านของเรา"
+    },
+    {
+      "id": "th-a2-1-11",
+      "stage": "a2-1",
+      "kind": "adapted",
+      "document": "units/th-a2-1-11.json",
+      "domain": "narrative",
+      "title": "The fox and the lion (a fable retold, 1)"
+    },
+    {
+      "id": "th-a2-1-12",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-12.json",
+      "domain": "health",
+      "title": "The mobile clinic in a hill village"
+    },
+    {
+      "id": "th-a2-1-13",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-13.json",
+      "domain": "travel",
+      "title": "A delayed night train"
+    },
+    {
+      "id": "th-a2-1-14",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-14.json",
+      "domain": "work",
+      "title": "A day at the school and the orchard"
+    },
+    {
+      "id": "th-a2-1-15",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-15.json",
+      "domain": "contemporary-nonfiction",
+      "title": "Thailand in facts"
+    },
+    {
+      "id": "th-a2-1-16",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-16.json",
+      "domain": "scripture",
+      "title": "The son who left home (a retelling of Luke 15)"
+    },
+    {
+      "id": "th-a2-1-17",
+      "stage": "a2-1",
+      "kind": "adapted",
+      "document": "units/th-a2-1-17.json",
+      "domain": "narrative",
+      "title": "The frog, the mouse and the hawk (a fable retold, 2)"
+    },
+    {
+      "id": "th-a2-1-18",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-18.json",
+      "domain": "correspondence",
+      "title": "A letter home"
+    },
+    {
+      "id": "th-a2-1-19",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "../../corpus/th/bridge-thai-bridge-05.json",
+      "domain": "narrative",
+      "title": "ไปโรงเรียน"
+    },
+    {
+      "id": "th-a2-1-20",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-20.json",
+      "domain": "biography",
+      "title": "A missionary couple"
+    },
+    {
+      "id": "th-a2-1-21",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-21.json",
+      "domain": "instructions",
+      "title": "How it is done"
+    },
+    {
+      "id": "th-a2-1-22",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/th-a2-1-22.json",
+      "domain": "conversation",
+      "title": "Renting a room"
+    },
+    {
+      "id": "th-a2-1-23",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "../../corpus/th/bridge-thai-bridge-10.json",
+      "domain": "narrative",
+      "title": "ร้านหนังสือเล็กๆ"
     }
   ]
 }

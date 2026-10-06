@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-14",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "วันที่โรงเรียนและสวน",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-14",
+    "title": "A day at the school and the orchard (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting a native Thai reviewer (preferably from Chiang Mai)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "work",
+    "school",
+    "orchard",
+    "tools"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ton": "Ton (man)",
+    "sam": "Sam (man)",
+    "teacher": "Colleague teacher (woman)",
+    "worker": "Farm worker (man)"
+  },
+  "sections": [
+    {
+      "title": "ที่ห้องเรียน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เช้านี้ครูต้นมาถึงโรงเรียนก่อนเจ็ดโมง",
+              "english": "This morning Ton arrived at the school before seven."
+            },
+            {
+              "text": "เขาเตรียมบทเรียนสำหรับเด็กชั้นหนึ่ง",
+              "english": "He prepared a lesson for the first-year children."
+            },
+            {
+              "text": "เขาจัดโต๊ะในห้องเรียน แล้ววางสมุดบนโต๊ะทุกตัว",
+              "english": "He arranged the desks in the classroom and put a notebook on every desk."
+            },
+            {
+              "text": "แซมมาถึงตอนเจ็ดโมงครึ่ง เขาแจกดินสอให้เด็กๆ",
+              "english": "Sam arrived at half past seven and handed pencils out to the children."
+            },
+            {
+              "text": "แซมสอนเด็กๆ ร้องเพลงภาษาอังกฤษ เด็กๆ ชอบมาก",
+              "english": "Sam taught the children to sing an English song, and they liked it very much."
+            },
+            {
+              "speaker": "ton",
+              "text": "วันนี้เราจะเรียนเรื่องร่างกายและความสะอาดครับ",
+              "english": "Today we will learn about the body and cleanliness."
+            },
+            {
+              "text": "เขาเขียนบนกระดานว่า แปรงฟัน อาบน้ำ แต่งตัว",
+              "english": "He wrote on the board: brush teeth, shower, get dressed."
+            },
+            {
+              "speaker": "ton",
+              "text": "ทุกเช้า เราใช้แปรงแปรงฟัน ใช้สบู่ล้างตัว",
+              "english": "Every morning we use a brush to brush our teeth and use soap to wash."
+            },
+            {
+              "speaker": "ton",
+              "text": "เราใช้ผ้าเช็ดตัวเช็ดตัว แล้วใช้หวีหวีผม ก่อนแต่งตัว",
+              "english": "We use a towel to dry ourselves, then use a comb to comb our hair, before getting dressed."
+            },
+            {
+              "speaker": "ton",
+              "text": "ร่างกายของเรามีศีรษะ แขน ขา นิ้ว เท้า และจมูก เราต้องดูแลทุกส่วน",
+              "english": "Our body has a head, arms, legs, fingers, feet and a nose. We must look after every part."
+            },
+            {
+              "speaker": "ton",
+              "text": "เด็กๆ จะรับวัคซีนที่โรงเรียนเดือนหน้า และครูพยาบาลจะวัดความดันเลือดให้ครูด้วย",
+              "english": "The children will get a vaccine at school next month, and the nurse will measure the teachers' blood pressure too."
+            },
+            {
+              "text": "เด็กๆ จดในสมุดด้วยปากกาหรือดินสอ",
+              "english": "The children wrote in their notebooks with a pen or a pencil."
+            },
+            {
+              "text": "เด็กชายคนหนึ่งซนมาก เขาวิ่งไปวิ่งมาในห้องเรียน",
+              "english": "One boy was very lively and ran about the classroom."
+            },
+            {
+              "speaker": "ton",
+              "text": "นั่งลงก่อน เราต้องตั้งใจเรียน ถ้านั่งดีๆ เราจะฟังครูได้",
+              "english": "Sit down first. We must pay attention. If you sit properly, we can hear the teacher."
+            },
+            {
+              "speaker": "sam",
+              "text": "เราเล่นกันครับ ให้เด็กๆ หลับตา แล้วผมจะวางของไว้ในกล่อง",
+              "english": "We will play. Children, close your eyes and I will put something in the box."
+            },
+            {
+              "text": "เด็กๆ หลับตา แซมวางแปรงฟันไว้ในกล่อง",
+              "english": "The children closed their eyes, and Sam put a toothbrush in the box."
+            },
+            {
+              "speaker": "sam",
+              "text": "ในกล่องมีอะไรครับ",
+              "english": "What is in the box?"
+            },
+            {
+              "text": "เด็กๆ ตอบพร้อมกันว่า แปรงฟัน",
+              "english": "The children answered together: a toothbrush."
+            },
+            {
+              "speaker": "ton",
+              "text": "ดีมาก การบ้านวันนี้คือ เขียนเรื่อง เช้าของฉัน ลงในสมุดครับ",
+              "english": "Very good. Today's homework is to write about \"My Morning\" in your notebooks."
+            },
+            {
+              "speaker": "ton",
+              "text": "พรุ่งนี้เอาสบู่กับผ้าเช็ดตัวมาโรงเรียนด้วยนะครับ เราจะล้างมือที่อ่างกัน",
+              "english": "Tomorrow bring soap and a towel to school too. We will wash our hands at the basin."
+            },
+            {
+              "speaker": "ton",
+              "text": "ใครไม่มีปากกา ใช้ดินสอเขียนได้ครับ",
+              "english": "Whoever has no pen can use a pencil."
+            },
+            {
+              "text": "ครูผู้หญิงที่ทำงานด้วยกันเดินเข้ามาในห้อง",
+              "english": "A woman teacher who worked with them walked into the room."
+            },
+            {
+              "speaker": "teacher",
+              "text": "ครูต้นคะ ฉันนับเด็กแล้วค่ะ วันนี้มาสามสิบคน",
+              "english": "Ton, I have counted the children. Today thirty have come."
+            },
+            {
+              "speaker": "teacher",
+              "text": "ฉันเตรียมถ้วยกับน้ำสำหรับเด็กๆ แล้วค่ะ",
+              "english": "I have prepared cups and water for the children."
+            },
+            {
+              "speaker": "ton",
+              "text": "ขอบคุณครับ ช่วยผมที่กระดานได้ไหมครับ",
+              "english": "Thank you. Could you help me at the board?"
+            },
+            {
+              "text": "ตอนบ่าย ครูต้นกับครูผู้หญิงนั่งกินข้าวด้วยกัน",
+              "english": "At noon Ton and the woman teacher sat eating together."
+            },
+            {
+              "speaker": "teacher",
+              "text": "ห้องเรียนของเรามีเด็กมาก ฉันต้องตื่นเช้าทุกวันค่ะ",
+              "english": "Our classroom has many children. I have to get up early every day."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมก็ต้องตื่นเช้าครับ ถ้าตื่นช้า ผมก็ไปโรงเรียนช้า",
+              "english": "I have to get up early too. If I get up late, I do not get to school in time."
+            },
+            {
+              "speaker": "teacher",
+              "text": "เมื่อเช้าฉันมาช้า เพราะรถไฟล่าช้า ฉันนั่งรอที่ชานชาลานาน",
+              "english": "This morning I was late, because the train was delayed. I sat waiting on the platform for a long time."
+            },
+            {
+              "speaker": "ton",
+              "text": "ระหว่างรอ ครูอ่านหนังสือสักเล่มไหมครับ",
+              "english": "While waiting, did you read a book?"
+            },
+            {
+              "speaker": "teacher",
+              "text": "ค่ะ ฉันนั่งอยู่ที่ชั้นสองของสถานี",
+              "english": "Yes. I was sitting on the upper floor of the station."
+            },
+            {
+              "speaker": "teacher",
+              "text": "กระดานในห้องเรียนเก่าแล้วค่ะ เด็กๆ เขียนการบ้านบนกระดานไม่นาน เด็กต้องรอนาน",
+              "english": "The board in the classroom is old. The children write their homework on the board and have to wait a long time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "สวนของเพื่อน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันอาทิตย์ แซมกับต้นไปสวนมะม่วง",
+              "english": "On Sunday Sam and Ton went to the mango orchard."
+            },
+            {
+              "text": "สวนอยู่ใกล้หมู่บ้าน เป็นของเพื่อนเขา",
+              "english": "The orchard was near the village and belonged to a friend of Ton's."
+            },
+            {
+              "text": "ลุงคนหนึ่งทำงานที่สวนทุกวัน เขาสะพายถุงใบใหญ่",
+              "english": "An old man worked at the orchard every day. He carried a big bag over his shoulder."
+            },
+            {
+              "speaker": "worker",
+              "text": "สวัสดีครับ เชิญดูสวนได้เลยครับ",
+              "english": "Hello. Please have a look around the orchard."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่นี่ปลูกมะม่วงอย่างเดียวหรือครับ",
+              "english": "Do they grow only mangoes here?"
+            },
+            {
+              "speaker": "worker",
+              "text": "ปลูกกล้วยกับส้มด้วยครับ ผมปลูกเองกับมือ",
+              "english": "We grow bananas and oranges too. I plant them myself, by hand."
+            },
+            {
+              "speaker": "worker",
+              "text": "ผมจะให้ดูเครื่องมือของผมครับ เครื่องมือผมไม่มาก ขวานเป็นเครื่องมือที่ดีที่สุดของผม",
+              "english": "Let me show you my tools. The axe is my best tool."
+            },
+            {
+              "text": "ลุงเอาขวานเล่มหนึ่งมา เขาวางถังกับอ่างไว้ที่พื้น",
+              "english": "The old man brought an axe, and he put a bucket and a basin on the ground."
+            },
+            {
+              "speaker": "worker",
+              "text": "ขวานนี้ใช้ตัดไม้ครับ ถ้าต้นไม้ตาย ผมก็ตัดมัน",
+              "english": "This axe is for cutting wood. If a tree dies, I cut it down."
+            },
+            {
+              "speaker": "worker",
+              "text": "ถังนี้สำหรับน้ำ ผมใช้ถังรดน้ำต้นไม้ทุกเช้า",
+              "english": "This bucket is for water. I use the bucket to water the trees every morning."
+            },
+            {
+              "speaker": "worker",
+              "text": "อ่างนี้สำหรับล้างผลไม้ ผมใช้อ่างล้างมะม่วงก่อนขาย",
+              "english": "This basin is for washing fruit. I use the basin to wash the mangoes before selling."
+            },
+            {
+              "speaker": "ton",
+              "text": "ทรายนี้ใช้ทำอะไรครับ",
+              "english": "What is this sand used for?"
+            },
+            {
+              "speaker": "worker",
+              "text": "ผมใส่ทรายในดินเพื่อให้น้ำออกง่าย",
+              "english": "I put sand into the soil so that the water drains easily."
+            },
+            {
+              "speaker": "sam",
+              "text": "ลุงทำงานทุกวันหรือครับ ลุงเหนื่อยไหมครับ",
+              "english": "Do you work every day? Aren't you tired?"
+            },
+            {
+              "speaker": "worker",
+              "text": "ทุกวันครับ ผมตื่นตอนห้าโมงเช้า แล้วกินข้าวกับไข่",
+              "english": "Every day. I get up at five in the morning and eat rice with an egg."
+            },
+            {
+              "speaker": "worker",
+              "text": "ผมชอบงานนี้ เพราะผมชอบอยู่ที่สวน ผมไม่ชอบนั่งอยู่ในห้อง",
+              "english": "I like this work, because I like being in the orchard. I do not like sitting in a room."
+            },
+            {
+              "speaker": "worker",
+              "text": "ผมขายมะม่วงที่ตลาด ราคาสามสิบบาท",
+              "english": "I sell the mangoes at the market, for thirty baht."
+            },
+            {
+              "speaker": "worker",
+              "text": "เพื่อปลูกต้นไม้ใหม่ ต้องใช้ทรายด้วยครับ",
+              "english": "To plant new trees, you need sand as well."
+            },
+            {
+              "text": "แซมอยากช่วย เขาใช้มือถือถังน้ำไปที่ต้นไม้เล็ก",
+              "english": "Sam wanted to help. He carried the bucket of water in his hands to a small tree."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมรดน้ำเพื่อให้ต้นไม้โตเร็วใช่ไหมครับ",
+              "english": "I water it so that the tree grows quickly, right?"
+            },
+            {
+              "speaker": "worker",
+              "text": "ใช่ครับ ถ้าไม่รดน้ำ ต้นไม้ก็ตาย",
+              "english": "Yes. If you don't water it, the tree dies."
+            },
+            {
+              "text": "แซมรดน้ำต้นไม้เล็กๆ เขาเหนื่อยแต่ดีใจ",
+              "english": "Sam watered the small trees. He was tired but happy."
+            },
+            {
+              "text": "ครูต้นกับลุงตัดกิ่งไม้ที่หักบนต้นไม้",
+              "english": "Ton and the old man cut the broken branches from the mango tree."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตัดกิ่งเก่าเพื่อให้กิ่งใหม่โตครับ",
+              "english": "We cut the old branches so that new ones grow."
+            },
+            {
+              "text": "ลุงชงชาให้สองคน เขานำผลไม้ใส่กล่องให้แซม",
+              "english": "The old man made tea for the two and put fruit in a box for Sam."
+            },
+            {
+              "speaker": "worker",
+              "text": "ผมแบ่งมะม่วงให้ครับ เอากลับบ้านได้",
+              "english": "I'll give you some mangoes. You can take them home."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณมากครับ ผมจะนำไปให้ป้าแดง",
+              "english": "Thank you very much. I will take them to Auntie Daeng."
+            },
+            {
+              "text": "ก่อนกลับ ลุงแขวนเสื้อเปียกไว้ให้ตาก และผูกกล่องไว้ให้แซม",
+              "english": "Before leaving, the old man hung up his wet shirt to dry and tied the box up for Sam."
+            },
+            {
+              "text": "แซมกับต้นรีบกลับบ้านก่อนฝนจะตก",
+              "english": "Sam and Ton hurried home before the rain came."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,435 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-18",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "จดหมายถึงบ้าน",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-18",
+    "title": "A letter home (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted letter from Sam to his home church; the letter form (opening, closing, no polite particles in the body) is the drafter's reading of written Thai and needs a native reviewer. ผม is used by the writer throughout; the closing formula should be checked."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "correspondence",
+    "letter",
+    "mission life",
+    "thanks"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam (man)"
+  },
+  "sections": [
+    {
+      "title": "เรียนพี่น้องที่โบสถ์",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "เรียนท่านและพี่น้องที่โบสถ์ที่บ้านเกิด ด้วยความเคารพและความคิดถึง",
+              "english": "Dear sirs and brothers and sisters at my home church, with respect and with longing."
+            },
+            {
+              "speaker": "sam",
+              "text": "จดหมายนี้ผมเขียนที่ร้านของป้าแดง ในเมืองเชียงใหม่",
+              "english": "I am writing this letter at Auntie Daeng's shop in Chiang Mai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมาอยู่ที่นี่ได้สองเดือนแล้ว และอยากทักทายพี่น้องที่นั่น",
+              "english": "I have been here two months now and want to greet you all."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมคิดถึงพี่น้องมาก แต่ผมสบายดี ไม่ต้องห่วง",
+              "english": "I miss you very much, but I am well. Please do not worry."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมคิดถึงอาหารที่บ้านบ้าง แต่ผมชอบอาหารไทยมาก",
+              "english": "I miss the food at home a bit, but I like Thai food more."
+            },
+            {
+              "speaker": "sam",
+              "text": "จดหมายของพี่น้องทำให้ผมดีใจ ผมรอจดหมายตอบ",
+              "english": "Your letters make me happy. I am waiting for a reply."
+            },
+            {
+              "speaker": "sam",
+              "text": "คำสุดท้ายในจดหมายของพี่น้อง ทำให้ผมไม่ลืมบ้านเลย",
+              "english": "The last words in your letter made me not forget home at all."
+            },
+            {
+              "speaker": "sam",
+              "text": "วันสุดท้ายของสัปดาห์ ผมนั่งเขียนจดหมายนี้ถึงสิบเอ็ดโมง",
+              "english": "On the last day of the week I sat writing this letter until eleven."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ชีวิตที่เชียงใหม่",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ที่นี่อาหารอร่อยมาก ผมกินส้มตำ ข้าวผัด และผลไม้ทุกวัน",
+              "english": "The food here is delicious. I eat papaya salad, fried rice and fruit every day."
+            },
+            {
+              "speaker": "sam",
+              "text": "ป้าแดงเป็นเหมือนแม่ของผม เธอช่วยผมทุกอย่าง",
+              "english": "Auntie Daeng is like a mother to me. She helps me with everything."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมได้เพื่อนใหม่ที่โบสถ์ คือพี่ต้น มะลิ และบอล",
+              "english": "I have new friends at the church: Ton, Mali and Ball."
+            },
+            {
+              "speaker": "sam",
+              "text": "พี่ต้นเป็นครู และเขาให้ผมไปช่วยสอนที่โรงเรียนสองวันต่อสัปดาห์",
+              "english": "Ton is a teacher, and he has me go and help teach at his school two days a week."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเลิกเรียนตอนบ่าย กลับมาที่ร้านป้า",
+              "english": "I finish when school ends in the afternoon and come back to Auntie's shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "ในห้องเรียนมีกระดานเก่า แต่เด็กๆ ตั้งใจเรียนมาก",
+              "english": "In the classroom there is an old board, but the children study hard."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "สิ่งที่ผมเห็นและเรียน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "วันหนึ่ง ผมไปสวนมะม่วงกับพี่ต้น",
+              "english": "One day I went to a mango orchard with Ton."
+            },
+            {
+              "speaker": "sam",
+              "text": "ลุงที่สวนใช้ขวานตัดไม้ ใช้ถังรดน้ำ และใช้อ่างล้างผลไม้",
+              "english": "The old man at the orchard used an axe to cut wood, a bucket to water the trees, and a basin to wash fruit."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมช่วยรดน้ำต้นไม้และเอาทรายใส่ แต่ผมเหนื่อยมาก",
+              "english": "I helped water the trees and put sand in, but I was very tired."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปหมู่บ้านบนเขาด้วย กับมะลิซึ่งเป็นพยาบาล",
+              "english": "I also went to a mountain village with Mali, who is a nurse."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณหมอวัดความดัน ทา ยาที่บาดแผล และให้วัคซีนที่แขนของเด็ก",
+              "english": "The doctor measured blood pressure, put medicine on a wound, and gave a child a vaccine in his arm."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเห็นเลือดและบาดแผล แต่ผมไม่กลัวเหมือนก่อน",
+              "english": "I saw blood and wounds, but I was not afraid as before."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเรียนคำใหม่ เช่น ศีรษะ ขา เท้า นิ้ว ร่างกาย และจมูก",
+              "english": "I learned new words such as head, leg, foot, finger, body and nose."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมนั่งรถไฟกลางคืนไปกรุงเทพกับพี่ต้นด้วย",
+              "english": "I also took the night train to Bangkok with Ton."
+            },
+            {
+              "speaker": "sam",
+              "text": "รถไฟล่าช้ามาก เรานั่งรอที่ชานชาลานาน และนั่งที่พื้น",
+              "english": "The train was very late. We sat waiting on the platform for a long time, sitting on the floor."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมนั่งตู้ชั้นสอง และเพลินดูนาและภูเขา",
+              "english": "I sat in a second-class carriage and enjoyed looking at the fields and mountains."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ประเทศไทยที่ผมรู้จักมากขึ้น",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ประเทศนี้กว้างมาก มีสี่ภาค มีทะเลสาบ ทะเล และเกาะหลายเกาะ",
+              "english": "This country is very wide, with four regions, lakes, the sea and many islands."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยู่ภาคเหนือ แต่ผมอยากไปภาคกลางและภาคตะวันออกด้วย",
+              "english": "I live in the north, but I want to visit the centre and the east too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ประชากรส่วนใหญ่เป็นพุทธ แต่ก็มีคริสเตียนอยู่หลายคน",
+              "english": "Most of the population are Buddhist, but there are several Christians too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่เชียงใหม่ ผมไปพิพิธภัณฑ์ที่เล่าเรื่องแคว้นเก่า",
+              "english": "In Chiang Mai I went to a museum that tells the story of the old kingdom."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปเที่ยวลำธารด้วย เรานั่งเรือเล็กไปริมลำธาร เรือนั้นเก่ามาก",
+              "english": "I also went to a stream. We took a small boat along the bank of the stream. The boat was very old."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่นั่นมีหินใหญ่ และดินสีแดง ผมนั่งบนหินริมน้ำ ดินเปียกและเย็น",
+              "english": "There were big rocks and red soil. I sat on a rock at the water's edge. The soil was wet and cool."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมนั่งอยู่นาน ผมเห็นนกบินอยู่เหนือน้ำ ผมคิดถึงบ้านด้วย",
+              "english": "I sat for a long time. I saw a bird flying above the water. I missed home as well."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมนั่งเรือเล็กอีกครั้ง ริมลำธารมีหินและดิน น่าดูมาก",
+              "english": "I took the small boat again. At the edge of the stream there were rocks and soil, lovely to look at."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมห่วงบอล ผมห่วงป้าแดง และผมห่วงพี่น้องที่โบสถ์ด้วย",
+              "english": "I worry about Ball, I worry about Auntie Daeng, and I worry about you at church too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ครั้นผมเขียนมาถึงตรงนี้ ผมก็คิดถึงบ้านมาก",
+              "english": "When I had written this far, I missed home very much."
+            },
+            {
+              "speaker": "sam",
+              "text": "พี่น้องห่วงผมเหมือนกัน และผมรู้ว่าเราเป็นคริสเตียนด้วยกัน",
+              "english": "You worry about me too, and I know that we are Christians together."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "งานของผมและพี่น้องที่นี่",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ภารกิจของผมที่นี่คือเรียนภาษา ช่วยโรงเรียน และอยู่กับคนไทย ภารกิจนี้ไม่ง่าย",
+              "english": "My mission here is to learn the language, help the school and live with Thai people. This mission is not easy."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมรู้ว่าภารกิจของเราใช้เวลา และผมต้องการพี่น้องช่วยอธิษฐาน",
+              "english": "I know the team's mission takes time, and I need you to help by praying."
+            },
+            {
+              "speaker": "sam",
+              "text": "คนไทยทักทายกันด้วยการไหว้ เด็กๆ ทักทายผมทุกเช้า ผมเรียนที่จะทักทายอย่างไทย",
+              "english": "Thai people greet each other with the wai. The children greet me every morning, and I am learning to greet the Thai way."
+            },
+            {
+              "speaker": "sam",
+              "text": "คนไทยเคารพคนที่อายุมากมาก ผมอยากเคารพเขาเหมือนกัน",
+              "english": "Thai people respect their elders greatly. I want to respect them in the same way."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากเป็นเพื่อนที่ดีของคนไทย และผมอยากเป็นคริสเตียนที่ดีด้วย",
+              "english": "I want to be a good friend to Thai people, and I want to be a good Christian too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่โบสถ์ ผมช่วยสอนเด็กๆ ในวันอาทิตย์",
+              "english": "At church I help teach the children on Sundays."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเล่านิทานให้เด็กๆ ฟัง เรื่องกบกับหนู ที่ผูกตีนติดกัน",
+              "english": "I tell the children stories, the story of the frog and the mouse who tied their feet together."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเล่าเรื่องบุตรที่ไปไกลด้วย เขาเอามรดกไปใช้หมด และหิวโหยมาก ต้องเลี้ยงหมูป่า",
+              "english": "I also told the story of the son who went far away. He spent his inheritance and was starving and had to look after wild pigs."
+            },
+            {
+              "speaker": "sam",
+              "text": "แต่บิดาต้อนรับเขา และใส่แหวนที่นิ้วเขา",
+              "english": "But his father welcomed him and put a ring on his finger."
+            },
+            {
+              "speaker": "sam",
+              "text": "กบเพลินกับน้ำ จึงไม่ทันนึกว่าหนูว่ายน้ำไม่เป็น",
+              "english": "The frog was so absorbed in the water that it did not think in time of the mouse who could not swim."
+            },
+            {
+              "speaker": "sam",
+              "text": "เหยี่ยวบินลงมา และกบก็หากินไม่ได้อีกเลย",
+              "english": "The hawk flew down, and the frog could never look for food again."
+            },
+            {
+              "speaker": "sam",
+              "text": "เด็กๆ ชอบเรื่องนี้ แต่เด็กๆ ไม่ชอบตอนจบ",
+              "english": "The children like this story, but they do not like the ending."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องที่ขอให้อธิษฐาน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ผมมีเรื่องจะขอให้พี่น้องอธิษฐานให้บ้าง",
+              "english": "I have a few things to ask you to pray about."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอให้อธิษฐานเรื่องภาษาไทยของผม ผมพูดผิดบ้าง แต่ผมเรียนทุกวัน",
+              "english": "Please pray for my Thai. I make some mistakes, but I study every day."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอให้อธิษฐานให้ป้าแดง หลังคาร้านของเธอยังไม่ดี",
+              "english": "Please pray for Auntie Daeng. The roof of her shop is still not good."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอให้อธิษฐานให้บอลซึ่งเคยป่วย และให้เด็กๆ ที่ผมสอน",
+              "english": "Please pray for Ball, who was ill, and for the children I teach."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมห่วงพี่น้องที่โบสถ์ด้วย ถ้ามีเรื่องที่อยากให้ผมอธิษฐาน ขอให้เขียนบอกผม",
+              "english": "I worry about you at church too. If there is anything you want me to pray about, please write and tell me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ขอบคุณสำหรับของขวัญ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ผมขอบคุณมากสำหรับของขวัญที่พี่น้องส่งมา",
+              "english": "Thank you very much for the gifts you sent."
+            },
+            {
+              "speaker": "sam",
+              "text": "เสื้อกับรองเท้าคู่ใหม่ ใส่ได้ดีที่สุด",
+              "english": "The new shirt and pair of shoes fit best."
+            },
+            {
+              "speaker": "sam",
+              "text": "หนังสือเกี่ยวกับเมืองไทยก็มีประโยชน์ ผมอ่านทุกวันจันทร์",
+              "english": "The books about Thailand are useful too. I read them every Monday."
+            },
+            {
+              "speaker": "sam",
+              "text": "ป้าแดงชอบรูปครอบครัวที่ส่งมา เธอหัวเราะและร้องไห้",
+              "english": "Auntie Daeng loved the family photograph you sent. She laughed and cried."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ปิดจดหมาย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "สุดท้ายนี้ ผมขอให้พระเจ้าอยู่กับพี่น้องทุกบ้าน",
+              "english": "Finally, I ask that God be with every home among you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ข้าพเจ้าขอบคุณท่านที่ส่งของขวัญมา และขอให้ท่านสบายดีเถิด",
+              "english": "I thank you who sent the gifts, and wish you well."
+            },
+            {
+              "speaker": "sam",
+              "text": "ด้วยความเคารพและความรัก แซม",
+              "english": "With respect and love, Sam."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

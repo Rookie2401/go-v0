@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-09",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "เตรียมโรงเรียนวันอาทิตย์",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-09",
+    "title": "Getting ready for Sunday school (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting a native Thai reviewer (preferably from Chiang Mai)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "church",
+    "Sunday school",
+    "preparation",
+    "children"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "pastor": "Pastor (man)",
+    "mali": "Mali (woman)",
+    "sam": "Sam (man)",
+    "daeng": "Auntie Daeng (woman)",
+    "ball": "Ball (boy)"
+  },
+  "sections": [
+    {
+      "title": "เย็นวันก่อนวันอาทิตย์",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนเย็น แซมกับมะลิมาที่โบสถ์ พรุ่งนี้จะมีโรงเรียนวันอาทิตย์",
+              "english": "In the evening Sam and Mali come to the church. Tomorrow there will be Sunday school."
+            },
+            {
+              "text": "ศิษยาภิบาลรออยู่ที่ห้องใหญ่",
+              "english": "The pastor is waiting in the big room."
+            },
+            {
+              "speaker": "pastor",
+              "text": "สวัสดีครับ เราต้อง เตรียมห้องให้พร้อมก่อนมืดนะครับ",
+              "english": "Hello. We must get the room ready before dark."
+            },
+            {
+              "speaker": "mali",
+              "text": "พรุ่งนี้เด็กๆ จะมากี่คนคะ",
+              "english": "How many children will come tomorrow?"
+            },
+            {
+              "speaker": "pastor",
+              "text": "ผมนับแล้วครับ ปีที่แล้วมีสิบห้าคน ปีนี้อาจจะมีสามสิบคน",
+              "english": "I have counted. Last year there were fifteen. This year there may be thirty."
+            },
+            {
+              "speaker": "mali",
+              "text": "มากจริงๆ ค่ะ เราต้องมีเก้าอี้กับถ้วยพอ",
+              "english": "That's a lot. We must have enough chairs and cups."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดูเก้าอี้ให้ครับ",
+              "english": "I'll check the chairs."
+            },
+            {
+              "text": "แซมนับเก้าอี้ มีสิบสองตัว",
+              "english": "Sam counted the chairs. There were twelve."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไม่พอครับ เราต้องการอีกสิบแปดตัว",
+              "english": "That's not enough. We need eighteen more."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ผมไปยืมที่วัดได้ครับ ที่วัดมีเก้าอี้มาก",
+              "english": "I can go and borrow some from the temple. The temple has plenty of chairs."
+            },
+            {
+              "speaker": "mali",
+              "text": "ดีค่ะ ฉันจะพาเด็กๆ ไปถือเก้าอี้ด้วย",
+              "english": "Good. I'll take the children along to carry chairs too."
+            },
+            {
+              "text": "แซมกับศิษยาภิบาลไปที่วัด พระที่วัดยิ้มและให้ยืมเก้าอี้",
+              "english": "Sam and the pastor went to the temple. The monk smiled and let them borrow the chairs."
+            },
+            {
+              "text": "ทั้งสองคนนำเก้าอี้กลับมาที่โบสถ์",
+              "english": "The two of them brought the chairs back to the church."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "จัดห้อง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "pastor",
+              "text": "ช่วยกันจัดห้องนะครับ วางเก้าอี้เป็นสามแถว",
+              "english": "Let's arrange the room together. Place the chairs in three rows."
+            },
+            {
+              "text": "แซมวางเก้าอี้ มะลิจัดโต๊ะ",
+              "english": "Sam placed the chairs, and Mali arranged the table."
+            },
+            {
+              "speaker": "mali",
+              "text": "วางถ้วยไว้บนโต๊ะค่ะ เด็กๆ จะได้ดื่มน้ำ",
+              "english": "Put the cups on the table so the children can drink water."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดูถ้วยแล้ว มีสามสิบใบครับ",
+              "english": "I've checked the cups. There are thirty."
+            },
+            {
+              "speaker": "mali",
+              "text": "พอค่ะ ของพร้อมแล้ว",
+              "english": "That is enough. Everything is ready."
+            },
+            {
+              "text": "ป้าแดงมาที่โบสถ์พร้อมกล่องขนมสองใบ",
+              "english": "Auntie Daeng came to the church with two boxes of sweets."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเตรียมขนมให้เด็กๆ ค่ะ ใส่กล่องแล้ว",
+              "english": "I've prepared sweets for the children. They're in boxes."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขอบคุณค่ะป้า วางไว้ที่โต๊ะนะคะ",
+              "english": "Thank you, Auntie. Put them on the table."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "บทเรียนวันพรุ่งนี้",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "pastor",
+              "text": "ใครจะสอนบทเรียนพรุ่งนี้ครับ",
+              "english": "Who will teach tomorrow's lesson?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันสอนค่ะ บทเรียนพรุ่งนี้คือ ไม่ต้องกลัว",
+              "english": "I will. Tomorrow's lesson is \"Do not be afraid.\""
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันตั้งใจเตรียมบทเรียนเรื่องพายุค่ะ เด็กๆ ชอบฟังเรื่อง",
+              "english": "I have carefully prepared a lesson about the storm. The children like to hear stories."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ดีมากครับ ให้ป้าแดงเล่าเรื่องคืนพายุได้ไหมครับ",
+              "english": "Very good. Could Auntie Daeng tell the story of the storm night?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ได้ค่ะ ป้าจดไว้ในกระดาษแล้ว",
+              "english": "Yes. I've written it down on paper."
+            },
+            {
+              "speaker": "daeng",
+              "text": "คืนนั้นฟ้าแลบ ฟ้าร้อง ลมพัด ไฟดับ มืดไปหมด",
+              "english": "That night there was lightning and thunder, the wind blew, the lights went out, and everything went dark."
+            },
+            {
+              "speaker": "daeng",
+              "text": "หลังคาหัก กิ่งต้นไม้ล้ม ป้าตกใจและกลัวมาก",
+              "english": "The roof broke, branches fell, and I was shocked and very afraid."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าตะโกนเรียกแซม แซมเอาเทียนมา",
+              "english": "I shouted for Sam, and Sam brought a candle."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เพื่อนบ้านมัดผ้าผืนใหญ่บนหลังคา ทุกคนปลอดภัย",
+              "english": "The neighbours tied a big cloth on the roof, and everybody was safe."
+            },
+            {
+              "speaker": "daeng",
+              "text": "พายุทำให้ป้ากลัว แต่พระเจ้าทำให้ป้าไม่กลัว",
+              "english": "The storm made me afraid, but God made me not afraid."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขอบคุณค่ะป้า เด็กๆ จะตั้งใจฟังค่ะ",
+              "english": "Thank you, Auntie. The children will listen carefully."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เด็กๆ จะทำอะไร",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "หลังเล่าเรื่อง เด็กๆ จะวาดรูปเรื่องเสือกับลิงที่ยายของฉันเล่า",
+              "english": "After the story, the children will draw the story of the tiger and the monkey that my grandmother tells."
+            },
+            {
+              "speaker": "sam",
+              "text": "เรื่องนั้นฉลาดดีครับ ลิงหลอกเสือ เสือโง่",
+              "english": "That story is clever. The monkey tricks the tiger, and the tiger is stupid."
+            },
+            {
+              "speaker": "mali",
+              "text": "ใช่ค่ะ ในป่ามีเสือ มีลิง ลิงซ่อนในถ้ำ เสือไล่ลิงแต่ลิงหนีได้",
+              "english": "Yes. In the forest there is a tiger and a monkey. The monkey hides in a cave, and the tiger chases it, but the monkey gets away."
+            },
+            {
+              "speaker": "mali",
+              "text": "เราต้องมีกระดาษ ดินสอ และหนังสือสิบเล่ม",
+              "english": "We need paper, pencils and ten books."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมแจกหนังสือได้ครับ ผมจะนับเล่มก่อน",
+              "english": "I can hand out the books. I'll count the volumes first."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "แซมดูหนังสือ มีเก้าเล่ม",
+              "english": "Sam checked the books. There were nine."
+            },
+            {
+              "speaker": "sam",
+              "text": "มีไม่พอหนึ่งเล่มครับ",
+              "english": "There is one too few."
+            },
+            {
+              "speaker": "mali",
+              "text": "ไม่เป็นไรค่ะ ให้เด็กสองคนอ่านด้วยกัน",
+              "english": "Never mind. Let two children read together."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ผมจะให้แซมเล่นกีตาร์ เด็กๆ จะร้องเพลงด้วย",
+              "english": "I'll have Sam play the guitar, and the children will sing along."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเตรียมเพลงแล้วครับ ผมอยากให้เด็กๆ ตั้งใจร้อง",
+              "english": "I have prepared a song. I want the children to sing with care."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ผมจัดหนังสือไว้ที่โต๊ะแล้วครับ ผมเตรียมเทียนไว้ด้วย ถ้าไฟดับเราจะมีเทียน",
+              "english": "I have set the books on the table. I have prepared candles too, so if the lights go out we will have candles."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "กฎของห้อง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "pastor",
+              "text": "เด็กๆ ต้องวางรองเท้าไว้ที่หน้าห้อง ห้ามสวมหมวกในห้องนะครับ",
+              "english": "The children must leave their shoes at the front of the room, and they must not wear hats in the room."
+            },
+            {
+              "speaker": "mali",
+              "text": "เด็กบางคนอาจจะลืม เราต้องช่วยกันดู",
+              "english": "Some children may forget. We must watch out together."
+            },
+            {
+              "speaker": "mali",
+              "text": "วันพรุ่งนี้ ให้เด็กๆ สวมชุดดีๆ มาโบสถ์ได้ แต่ไม่ต้องเลือกแบบสวยๆ",
+              "english": "Tomorrow the children may wear nice clothes to church, but they don't have to choose fancy styles."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ถ้าเสื้อผ้าสั้นไป ยาวไป คับไป หลวมไป ก็ไม่เป็นไรค่ะ",
+              "english": "If the clothes are too short, too long, too tight or too loose, it doesn't matter."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้ามีเสื้อสีฟ้าสองตัว ป้าฝากไว้ที่โบสถ์ได้",
+              "english": "I have two blue shirts. I can leave them at the church."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้ามีกางเกงให้เด็กๆ ลองด้วยนะคะ มีไซส์เล็กกับไซส์ใหญ่",
+              "english": "I have trousers for the children to try on too, in small and large sizes."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าซื้อถ้วยอีกที่ตลาด ได้เงินทอนห้าบาทค่ะ",
+              "english": "I bought more cups at the market and got five baht in change."
+            },
+            {
+              "speaker": "sam",
+              "text": "รองเท้าคู่ไหนไม่ใช่ของเด็ก ผมเก็บไว้ให้ครับ",
+              "english": "Any pair of shoes that isn't a child's, I'll put aside."
+            },
+            {
+              "speaker": "mali",
+              "text": "ถ้ามีเด็กมาแต่ไม่มีรองเท้า เราจะรับเด็กไว้ค่ะ ไม่ต้องกลัว",
+              "english": "If a child comes without shoes, we will take them in. No need to worry."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "บอลมาช่วย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "บอลมาที่โบสถ์กับพ่อ เขาซนมาก",
+              "english": "Ball came to the church with his father. He was very lively."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมช่วยแจกถ้วยได้ครับ",
+              "english": "I can help hand out the cups."
+            },
+            {
+              "speaker": "mali",
+              "text": "ได้ค่ะ ให้บอลแจกนะคะ",
+              "english": "Yes. Let Ball hand them out."
+            },
+            {
+              "text": "บอลวิ่งไปวิ่งมา เด็กซนอย่างบอลอาจล้มได้",
+              "english": "Ball ran back and forth. A lively child like Ball might fall."
+            },
+            {
+              "speaker": "pastor",
+              "text": "บอล อย่าวิ่งในห้องนะครับ",
+              "english": "Ball, don't run in the room."
+            },
+            {
+              "speaker": "ball",
+              "text": "ขอโทษครับ ผมซนไปหน่อย",
+              "english": "Sorry. I was a bit too lively."
+            },
+            {
+              "text": "ศิษยาภิบาลยิ้ม เขาจดชื่อเด็กๆ ที่จะมาพรุ่งนี้",
+              "english": "The pastor smiled and wrote down the names of the children who would come tomorrow."
+            },
+            {
+              "text": "ป้าแดงแบ่งขนมให้เด็กๆ และคนที่ช่วยกัน เราได้กินขนมจากกล่อง",
+              "english": "Auntie Daeng shared sweets with the children and those who had helped. We ate sweets from the box."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "อธิษฐาน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อทุกอย่างพร้อมแล้ว ศิษยาภิบาลให้เรามายืนด้วยกัน",
+              "english": "When everything was ready, the pastor asked us to stand together."
+            },
+            {
+              "speaker": "pastor",
+              "text": "เรามาอธิษฐานกันครับ หลับตาด้วยนะครับ",
+              "english": "Let us pray. Please close your eyes."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมหลับตาแล้วครับ",
+              "english": "I've closed my eyes."
+            },
+            {
+              "speaker": "pastor",
+              "text": "เด็กๆ ต้องหลับตาตอนอธิษฐานนะครับ ผมจะบอกเด็กๆ พรุ่งนี้",
+              "english": "The children must close their eyes when they pray. I will tell them tomorrow."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ขอบคุณพระเจ้าที่เราเตรียมห้องนี้ได้ ขอให้เด็กๆ ปลอดภัยและตั้งใจฟังพรุ่งนี้",
+              "english": "Thank God that we could prepare this room. May the children be safe and listen carefully tomorrow."
+            },
+            {
+              "speaker": "pastor",
+              "text": "พรุ่งนี้หลังเรียน เด็กๆ จะเล่นที่สวนของโบสถ์ครับ ขอให้ฝนไม่ตก",
+              "english": "Tomorrow after class the children will play in the church garden. May it not rain."
+            },
+            {
+              "text": "มะลิพาบอลกลับบ้าน แซมถือกีตาร์ ส่วนป้าแดงถือกล่องขนมกลับไปที่ร้าน",
+              "english": "Mali took Ball home, Sam carried the guitar, and Auntie Daeng took the box of sweets back to the shop."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

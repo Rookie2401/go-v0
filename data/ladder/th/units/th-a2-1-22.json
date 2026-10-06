@@ -1,0 +1,456 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-22",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "เช่าห้อง",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-22",
+    "title": "Renting a room (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted conversation. Prices, deposit practice and the landlady's questions are the drafter's invention and are not checked against real Thai rental practice; a native Thai reviewer should check the register of the landlady (an older woman speaking to a young foreigner) and the polite particles."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation",
+    "renting",
+    "money",
+    "rules"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam (man)",
+    "lady": "Landlady (woman)",
+    "ton": "Ton (man)"
+  },
+  "sections": [
+    {
+      "title": "ต้องหาห้องใหม่",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หลังพายุ ร้านของป้าแดงยังไม่พร้อมอีกหนึ่งเดือน",
+              "english": "After the storm Auntie Daeng's shop was still not ready for another month."
+            },
+            {
+              "text": "แซมจึงต้อง หาห้องใหม่ใกล้โรงเรียน",
+              "english": "So Sam had to find a new room near the school."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมมีเพื่อนเป็นป้าคนหนึ่ง เธอมีห้องให้เช่าครับ",
+              "english": "I have an older woman as a friend who has a room to rent."
+            },
+            {
+              "speaker": "ton",
+              "text": "บ้านอยู่ริมลำธาร ใกล้โรงเรียนมาก",
+              "english": "The house is by the stream, very near the school."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับพี่ต้น ผมไปดูห้องพรุ่งนี้ได้ไหมครับ",
+              "english": "Thank you, Ton. May I go and see the room tomorrow?"
+            },
+            {
+              "text": "ต้นกับแซมไปที่บ้านตอนเช้า",
+              "english": "Ton and Sam went to the house in the morning."
+            },
+            {
+              "text": "บ้านอยู่ติดถนน มีสวนเล็กๆ และมีดินสีแดง",
+              "english": "The house was next to the road, with a small garden and red soil."
+            },
+            {
+              "text": "ป้าเจ้าของบ้านยิ้ม และทักทายสองคน",
+              "english": "The landlady smiled and greeted the two of them."
+            },
+            {
+              "speaker": "lady",
+              "text": "สวัสดีค่ะ ยินดีต้อนรับค่ะ เชิญเข้ามาค่ะ",
+              "english": "Hello, welcome. Please come in."
+            },
+            {
+              "speaker": "lady",
+              "text": "เข้ามาเถิดค่ะ อย่ายืนอยู่ที่ประตู",
+              "english": "Do come in. Don't stand at the door."
+            },
+            {
+              "speaker": "ton",
+              "text": "สวัสดีครับป้า นี่แซม เขาอยากเช่าห้องครับ",
+              "english": "Hello. This is Sam. He would like to rent a room."
+            },
+            {
+              "speaker": "sam",
+              "text": "สวัสดีครับ ผมแซมครับ ผมมาจากอเมริกา",
+              "english": "Hello, I am Sam. I come from America."
+            },
+            {
+              "speaker": "lady",
+              "text": "ป้าเป็นเจ้าของบ้านนี้ค่ะ ห้องอยู่ทางนี้",
+              "english": "I am the owner of this house. The room is this way."
+            },
+            {
+              "speaker": "lady",
+              "text": "ป้าเป็นเจ้าของบ้านนี้มาสามสิบปีแล้ว บุตรของป้าไปทำงานที่กรุงเทพ",
+              "english": "I have been the owner of this house for thirty years. My son has gone to work in Bangkok."
+            },
+            {
+              "speaker": "lady",
+              "text": "ในยุคนี้ ค่าเช่าแพงขึ้น แต่ป้าไม่อยากให้ใครหิวโหย",
+              "english": "In this era rents are higher, but I do not want anyone to go hungry."
+            },
+            {
+              "speaker": "lady",
+              "text": "สมัยก่อนที่นี่มีหมูป่า ป้าหากินยาก ตอนนี้ป้าสบายขึ้น",
+              "english": "In the old days there were wild pigs here and I found it hard to make a living. Now I am more comfortable."
+            },
+            {
+              "speaker": "lady",
+              "text": "แหวนนี้เป็นของแม่ป้า ป้าใส่ทุกวัน",
+              "english": "This ring was my mother's. I wear it every day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ดูห้อง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ห้องไม่ใหญ่ แต่สะอาด มีเตียง โต๊ะ และเก้าอี้",
+              "english": "The room was not big but clean, with a bed, a table and a chair."
+            },
+            {
+              "text": "หน้าต่างอยู่ริมลำธาร ลมเย็นสบาย น่าอยู่มาก",
+              "english": "The window was by the stream, with a cool breeze, a very pleasant place to live."
+            },
+            {
+              "speaker": "sam",
+              "text": "ห้องนี้เช่าเท่าไรครับ",
+              "english": "How much is it to rent this room?"
+            },
+            {
+              "speaker": "lady",
+              "text": "เดือนหนึ่งสามพันบาทค่ะ ราคานี้ไม่แพงนะคะ",
+              "english": "Three thousand baht a month. This price is not expensive."
+            },
+            {
+              "speaker": "sam",
+              "text": "ค่าไฟกับน้ำอยู่ในค่าเช่าไหมครับ",
+              "english": "Are electricity and water in the rent?"
+            },
+            {
+              "speaker": "lady",
+              "text": "ไม่อยู่ค่ะ น้ำกับไฟ แซมจ่ายเองนะคะ",
+              "english": "Not in it. You pay for water and electricity yourself."
+            },
+            {
+              "speaker": "lady",
+              "text": "น้ำเดือนหนึ่งสองร้อย ค่าไฟตามที่ใช้ค่ะ",
+              "english": "Water is two hundred a month. Electricity is as much as you use."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "มัดจำและกฎของบ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ต้องมัดจำไหมครับ",
+              "english": "Do I have to pay a deposit?"
+            },
+            {
+              "speaker": "lady",
+              "text": "ต้องค่ะ มัดจำสองเดือน คือหกพันบาท",
+              "english": "Yes. A two-month deposit, that is six thousand baht."
+            },
+            {
+              "speaker": "lady",
+              "text": "ป้าจะคืนมัดจำให้ ถ้าแซมไม่ทำอะไรเสียหายค่ะ",
+              "english": "I will give the deposit back if you do not damage anything."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเข้าใจครับ แต่ผมยังไม่มีเงินมาก",
+              "english": "I understand, but I do not have much money yet."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมจ่ายเข้าบัญชีธนาคารของป้าได้ไหมครับ",
+              "english": "May I pay into your bank account?"
+            },
+            {
+              "speaker": "lady",
+              "text": "ได้ค่ะ ป้าจะบอกบัญชีให้ ส่วนเบอร์โทรศัพท์ ป้าจดไว้ที่กระดาษแผ่นนี้ค่ะ",
+              "english": "Yes. I will tell you the account, and I have written my phone number on this sheet of paper."
+            },
+            {
+              "text": "แซมรับกระดาษแผ่นนั้น เขาจดเบอร์ลงในโทรศัพท์",
+              "english": "Sam took that sheet of paper and entered the number into his phone."
+            },
+            {
+              "speaker": "lady",
+              "text": "ป้ามีสามอย่างที่อยากให้แซมทำค่ะ",
+              "english": "I have three things I would like you to do."
+            },
+            {
+              "speaker": "lady",
+              "text": "หนึ่ง ห้ามทำเสียงมากหลังสี่ทุ่มค่ะ",
+              "english": "One: no loud noise after ten at night."
+            },
+            {
+              "speaker": "lady",
+              "text": "อีกอย่าง ห้ามจุดเทียนหรือไฟในห้องตอนไม่อยู่ค่ะ",
+              "english": "Another: no lighting candles or fires in the room when you are out."
+            },
+            {
+              "speaker": "lady",
+              "text": "อย่างสุดท้าย ถ้ามีเพื่อนมา ต้องบอกป้าก่อนนะคะ",
+              "english": "The last: if friends come, you must tell me first."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเข้าใจครับ ผมเคารพสิ่งที่ป้าพูดครับ",
+              "english": "I understand. I respect what you say."
+            },
+            {
+              "speaker": "lady",
+              "text": "จุดที่ป้าห่วงที่สุดคือไฟค่ะ ป้ากลัวไฟมาก",
+              "english": "The point I worry about most is fire. I am very afraid of fire."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่จุดเทียนครับ ที่ห้องมีไฟฟ้า",
+              "english": "I will not light candles. The room has electricity."
+            },
+            {
+              "speaker": "lady",
+              "text": "ตกลงค่ะ ป้าเชื่อแซม",
+              "english": "Agreed. I trust Sam."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ป้าถามแซม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "lady",
+              "text": "ป้าขอถามบ้างได้ไหมคะ แซมเกิดที่ไหนคะ",
+              "english": "May I ask a few questions? Where were you born?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่กำเนิดของผมคือเมืองเล็กๆ ในอเมริกาครับ",
+              "english": "My birthplace is a small town in America."
+            },
+            {
+              "speaker": "lady",
+              "text": "ครอบครัวของแซมเป็นอย่างไรคะ คิดถึงบิดาและแม่ไหมคะ",
+              "english": "What is your family like? Do you miss your father and mother?"
+            },
+            {
+              "speaker": "sam",
+              "text": "คิดถึงมากครับ ผมเขียนจดหมายถึงบิดาและแม่ทุกสัปดาห์",
+              "english": "Very much. I write a letter to my father and mother every week."
+            },
+            {
+              "speaker": "lady",
+              "text": "แซมมีภรรยาหรือยังคะ",
+              "english": "Do you have a wife yet?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ยังไม่มีครับ ผมยังเรียนภาษาไทยอยู่ครับ",
+              "english": "Not yet. I am still studying Thai."
+            },
+            {
+              "speaker": "lady",
+              "text": "แซมมาเมืองไทยเพราะภารกิจอะไรคะ",
+              "english": "What mission brought you to Thailand?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเป็นคริสเตียนครับ ผมมาช่วยโบสถ์และโรงเรียน",
+              "english": "I am a Christian. I came to help the church and the school."
+            },
+            {
+              "speaker": "lady",
+              "text": "ป้าเคยเจอคริสเตียนหลายคน ศิษยาภิบาลของแซมเป็นผู้นำที่ดีไหมคะ",
+              "english": "I have met several Christians. Is your pastor a good leader?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ดีมากครับ เขามีศรัทธามากและเปลี่ยนแปลงชีวิตคนหลายคน",
+              "english": "Very good. He has great faith and has changed the lives of many people."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมพบเขาที่โบสถ์ เขาเคยเป็นลูกคนยากจน",
+              "english": "I met him at the church. He was once the child of a poor family."
+            },
+            {
+              "speaker": "lady",
+              "text": "ดีค่ะ ป้าชอบคนที่พูดจริง ป้าเองก็ไม่มีเงินมากค่ะ",
+              "english": "Good. I like people who speak truthfully. I do not have much money myself either."
+            },
+            {
+              "speaker": "lady",
+              "text": "บ้านหลังนี้เป็นมรดกจากบิดาของป้าค่ะ",
+              "english": "This house is an inheritance from my father."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ใบและเอกสาร",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "lady",
+              "text": "ป้าต้องขอดูหนังสือเดินทางของแซมค่ะ",
+              "english": "I need to see your passport."
+            },
+            {
+              "text": "แซมยื่นหนังสือเดินทางและบัตรให้ป้า",
+              "english": "Sam handed his passport and card to the landlady."
+            },
+            {
+              "speaker": "lady",
+              "text": "ป้าต้องแจ้งตำรวจด้วยว่า มีคนต่างประเทศมาอยู่ที่บ้าน",
+              "english": "I also have to tell the police that a foreigner is staying at the house."
+            },
+            {
+              "speaker": "sam",
+              "text": "ครับ ผมมีสิทธิเช่าบ้านในประเทศนี้ และผมมีใบอนุญาตทำงานครับ",
+              "english": "Yes. I have the right to rent a house in this country, and I have a work permit."
+            },
+            {
+              "speaker": "lady",
+              "text": "ธรรมดาแล้ว ป้าไม่ขอดู แต่คราวนี้ต้องแจ้งค่ะ",
+              "english": "Normally I would not ask to see it, but this time I must report it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ตกลงกัน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ผมตกลงเช่าห้องนี้ครับ",
+              "english": "I agree to rent this room."
+            },
+            {
+              "speaker": "lady",
+              "text": "ป้าก็ตกลงค่ะ เรามาเขียนที่เคาน์เตอร์ใกล้ประตูกันเลย",
+              "english": "I agree too. Let us write it at the counter near the door."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเป็นอาจารย์สอนภาษา ผมจะเติมเงินโทรศัพท์ แล้วโทรหาป้าบ่อย ครับ",
+              "english": "I am a language teacher. I will top up my phone and call you often."
+            },
+            {
+              "text": "ทั้งสองคนเขียนชื่อบนกระดาษสองแผ่น",
+              "english": "The two wrote their names on two sheets of paper."
+            },
+            {
+              "text": "แซมได้กระดาษแผ่นหนึ่ง ป้าได้อีกแผ่นหนึ่ง",
+              "english": "Sam got one sheet and the landlady got the other."
+            },
+            {
+              "text": "ต้นยิ้ม เขาดีใจที่แซมได้ห้องใหม่",
+              "english": "Ton smiled. He was glad Sam had a new room."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตกลงตามนี้นะครับ ผมจะช่วยแซมย้ายของ",
+              "english": "Agreed, then. I will help Sam move his things."
+            },
+            {
+              "speaker": "lady",
+              "text": "ห้องนี้น่าอยู่ ตอนเช้านกบินมาที่หน้าต่างด้วยนะคะ",
+              "english": "This room is pleasant. In the morning birds fly to the window."
+            },
+            {
+              "speaker": "lady",
+              "text": "วันหนึ่งแซมจะรักที่นี่ค่ะ ป้ารู้",
+              "english": "One day you will love it here. I know."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณมากครับ ผมจะย้ายมาวันอาทิตย์ครับ",
+              "english": "Thank you very much. I will move in on Sunday."
+            },
+            {
+              "speaker": "lady",
+              "text": "ดีค่ะ ถ้าไม่ย้ายวันอาทิตย์ ป้าจะไม่ทันเตรียมห้อง",
+              "english": "Good. If you do not move on Sunday, I will not be in time to prepare the room."
+            },
+            {
+              "text": "แซมนั่งดูลำธารที่มีเรือเล็กและหินใหญ่ เขาเพลินมาก ลืมเวลา",
+              "english": "Sam sat looking at the stream with its small boats and big rocks, he was so absorbed that he forgot the time."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

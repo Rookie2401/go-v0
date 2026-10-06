@@ -1,0 +1,412 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-21",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ทำอย่างไรดี",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-21",
+    "title": "How it is done (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted practical guide. The rules about visa reports, bank accounts and work permits are the drafter's general picture of Thailand and may be out of date or wrong in detail; they must be checked by a native Thai reviewer and against current official information before any use. The title is deliberately plain."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "instructions",
+    "phone",
+    "immigration",
+    "bank",
+    "etiquette"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam (man)",
+    "mali": "Mali (woman)",
+    "daeng": "Auntie Daeng (woman)",
+    "shop": "Phone-shop assistant (woman)"
+  },
+  "sections": [
+    {
+      "title": "ซื้อเบอร์โทรศัพท์",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แซมอยู่เมืองไทยได้สองเดือน แต่เขายังไม่มีเบอร์ของตัวเอง",
+              "english": "Sam had been in Thailand two months, but he still had no number of his own."
+            },
+            {
+              "speaker": "sam",
+              "text": "มะลิครับ ผมต้องการเบอร์โทรศัพท์ ทำอย่างไรดีครับ",
+              "english": "Mali, I need a phone number. What should I do?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ง่ายมากค่ะ ไปที่ร้านโทรศัพท์ และซื้อซิม",
+              "english": "Very easy. Go to a phone shop and buy a SIM."
+            },
+            {
+              "speaker": "mali",
+              "text": "ต้องเอาหนังสือเดินทางไปด้วย ร้านจะถ่ายรูปไว้",
+              "english": "You must take your passport with you. The shop will photograph it."
+            },
+            {
+              "text": "แซมกับมะลิไปที่ร้านโทรศัพท์ตอนบ่าย",
+              "english": "Sam and Mali went to the phone shop in the afternoon."
+            },
+            {
+              "speaker": "shop",
+              "text": "สวัสดีค่ะ ต้องการซิมใหม่ไหมคะ",
+              "english": "Hello. Would you like a new SIM?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ครับ ผมอยากได้เบอร์ที่จำง่าย",
+              "english": "Yes. I would like a number that is easy to remember."
+            },
+            {
+              "speaker": "shop",
+              "text": "เลือกได้ค่ะ แต่เบอร์สวยๆ ราคาแพง",
+              "english": "You can choose, but pretty numbers cost more."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเอาแบบธรรมดาครับ ไม่ต้องสวย",
+              "english": "I will take an ordinary one. It does not have to be pretty."
+            },
+            {
+              "speaker": "shop",
+              "text": "ต่อไป เติมเงินสองร้อยบาทไหมคะ",
+              "english": "Next, would you like to top up with two hundred baht?"
+            },
+            {
+              "speaker": "sam",
+              "text": "เติมเงินแล้วอยู่ได้นานไหมครับ",
+              "english": "After topping up, will it last long?"
+            },
+            {
+              "speaker": "shop",
+              "text": "เติมสองร้อย อยู่ได้หนึ่งเดือนค่ะ",
+              "english": "Topping up two hundred lasts a month."
+            },
+            {
+              "speaker": "mali",
+              "text": "เติมเงินที่ร้านอื่นหรือที่ธนาคารด้วยค่ะ",
+              "english": "You can top up at other shops or at a bank as well."
+            },
+            {
+              "speaker": "shop",
+              "text": "นี่ค่ะ ของคุณ จดไว้ด้วยนะคะ",
+              "english": "Here you are. Please write it down."
+            },
+            {
+              "text": "แซมจดเบอร์ลงกระดาษ แล้วส่งข้อความให้มะลิ",
+              "english": "Sam wrote the number on paper and sent Mali a message."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "แจ้งที่อยู่",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันต่อมา มะลิบอกแซมเรื่องที่ต้องรู้",
+              "english": "The next day Mali told Sam something he had to know."
+            },
+            {
+              "speaker": "mali",
+              "text": "คนต่างประเทศต้องแจ้งที่อยู่ ทุกเก้าสิบวันค่ะ",
+              "english": "Foreigners must report their address every ninety days."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมต้องไปที่ไหนครับ",
+              "english": "Where do I have to go?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ต้องไปที่ที่ทำงานของตำรวจ ที่ทำเรื่องคนต่างประเทศค่ะ",
+              "english": "You have to go to the police office that deals with foreigners."
+            },
+            {
+              "speaker": "mali",
+              "text": "ต้องเอาหนังสือเดินทาง รูปถ่าย และกระดาษที่บอกที่อยู่ไปด้วย",
+              "english": "You must take your passport, a photograph and a paper that shows your address."
+            },
+            {
+              "speaker": "sam",
+              "text": "ต้องยื่นอะไรอีกไหมครับ",
+              "english": "Do I have to hand in anything else?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ถ้ามีใบอนุญาตทำงาน ก็ยื่นด้วยค่ะ",
+              "english": "If you have a work permit, hand that in too."
+            },
+            {
+              "speaker": "mali",
+              "text": "คนต่างประเทศมีสิทธิอยู่ในประเทศนี้ ตามที่ในหนังสือบอก",
+              "english": "Foreigners have the right to stay in this country as the book says."
+            },
+            {
+              "speaker": "mali",
+              "text": "แต่ไม่มีสิทธิทำงาน ถ้าไม่มีใบอนุญาตค่ะ",
+              "english": "But they do not have the right to work if they have no permit."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเข้าใจแล้วครับ ผมจะไปแจ้งพรุ่งนี้",
+              "english": "I understand now. I will go and report tomorrow."
+            },
+            {
+              "text": "แซมไปที่ที่ทำงานของตำรวจ และยื่นหนังสือเดินทาง",
+              "english": "Sam went to the police office and handed in his passport."
+            },
+            {
+              "text": "ตำรวจดูหนังสือ และแจ้งว่า ทุกอย่างเรียบร้อย",
+              "english": "The police looked at the book and said that everything was in order."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เปิดบัญชีธนาคาร",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "มะลิครับ ผมอยากเปิดบัญชีที่ธนาคารด้วย",
+              "english": "Mali, I would like to open a bank account too."
+            },
+            {
+              "speaker": "mali",
+              "text": "ได้ค่ะ แต่ต้องเอาหนังสือเดินทางกับใบอนุญาตไปด้วย",
+              "english": "Yes, but you must take your passport and your permit."
+            },
+            {
+              "speaker": "mali",
+              "text": "ธนาคารจะให้บัตรกับแซม ใช้เอาเงินได้",
+              "english": "The bank will give you a card, and you can use it to take out money."
+            },
+            {
+              "speaker": "mali",
+              "text": "คนต่างประเทศมีสิทธิเปิดบัญชีด้วย ถ้ามีใบอนุญาตค่ะ",
+              "english": "Foreigners have the right to open an account too, if they have a permit."
+            },
+            {
+              "speaker": "mali",
+              "text": "บัญชีของแซมต้องใช้ชื่อเดียวกับในหนังสือเดินทางค่ะ",
+              "english": "Sam's account must use the same name as in the passport."
+            },
+            {
+              "speaker": "mali",
+              "text": "ธนาคารเปิดตอนเก้าโมงเช้า ธรรมดาแล้วคนมากค่ะ",
+              "english": "The bank opens at nine in the morning. As a rule there are many people."
+            },
+            {
+              "speaker": "mali",
+              "text": "อย่าบอกเบอร์บัตรกับใคร ไม่ว่าเขาจะโทรมาถามอะไร",
+              "english": "Do not tell anyone the number of the card, whatever they phone to ask."
+            },
+            {
+              "text": "แซมไปธนาคารตอนสิบโมง และนั่งรอนานมาก",
+              "english": "Sam went to the bank at ten and sat waiting for a very long time."
+            },
+            {
+              "text": "คนที่ธนาคารยิ้มและทักทายเขา",
+              "english": "The people at the bank smiled and greeted him."
+            },
+            {
+              "text": "เมื่อถึงตาของแซม เขาเขียนชื่อลงในใบ",
+              "english": "When it was Sam's turn, he wrote his name on the form."
+            },
+            {
+              "text": "ในที่สุด แซมก็ได้บัญชีและบัตรใหม่",
+              "english": "In the end Sam got a new account and card."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ใบที่ต้องเขียน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ในใบที่ธนาคารให้ มีเรื่องที่ต้องตอบหลายอย่าง",
+              "english": "On the form the bank gave there were several things to answer."
+            },
+            {
+              "text": "ใบนั้นถามชื่อ ประเทศ อายุ และศาสนา",
+              "english": "The form asked for name, country, age and religion."
+            },
+            {
+              "text": "แซมเขียนว่า คริสเตียน มะลิก็เป็นคริสเตียนเหมือนกัน",
+              "english": "Sam wrote \"Christian,\" and Mali was Christian too."
+            },
+            {
+              "speaker": "mali",
+              "text": "ถ้าเป็นพุทธ ก็เขียนว่า พุทธค่ะ ศาสนาของคนไม่เหมือนกัน",
+              "english": "If someone is Buddhist, they write \"Buddhist.\" People's religions are different."
+            },
+            {
+              "text": "ใบนั้นถามด้วยว่า มาประเทศนี้ทำอะไร",
+              "english": "The form also asked what he had come to this country to do."
+            },
+            {
+              "text": "แซมนั่งนาน แล้วเขียนว่า ภารกิจของโบสถ์",
+              "english": "Sam sat for a long time and wrote \"church mission\"."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "นั่งรถแถวให้ถูก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "มะลิครับ ผมต้องการไปพิพิธภัณฑ์ในเมือง ไปอย่างไรดีครับ",
+              "english": "Mali, I want to go to the museum in town. How should I go?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ไปโดยรถแถวค่ะ รถแถวสีแดงไปในเมือง",
+              "english": "Go by songthaew. The red songthaew goes into town."
+            },
+            {
+              "speaker": "mali",
+              "text": "ต้องบอกคนที่นั่งหน้ารถว่าจะลงที่ไหน ก่อนขึ้นรถ",
+              "english": "You must tell the person up front where you will get off before getting on."
+            },
+            {
+              "speaker": "mali",
+              "text": "โดยธรรมดา ราคาสามสิบบาทค่ะ",
+              "english": "As a rule the price is thirty baht."
+            },
+            {
+              "speaker": "sam",
+              "text": "ถ้ารถไม่ไปตามทางที่ผมต้องการล่ะครับ",
+              "english": "And if the songthaew does not go along the road I want?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ก็ขอลงตามทางที่ใกล้ที่สุด แล้วเดินต่อค่ะ",
+              "english": "Then ask to get off along the nearest road and walk on."
+            },
+            {
+              "speaker": "mali",
+              "text": "ถ้ารถเต็ม ก็รอคันต่อไป ไม่ต้องรีบค่ะ",
+              "english": "If the songthaew is full, wait for the next one. There is no need to hurry."
+            },
+            {
+              "text": "แซมไปโดยรถแถว เขานั่งตามที่มะลิบอก และลงถูกที่",
+              "english": "Sam went by songthaew, sat as Mali said, and got off at the right place."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ขอบคุณเจ้าบ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คืนวันอาทิตย์ ป้าแดงเชิญแซมไปกินข้าวที่บ้านของเธอ",
+              "english": "On Sunday evening Auntie Daeng invited Sam to eat at her home."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่บ้านคนไทย มีธรรมเนียมที่ต้องรู้ค่ะ",
+              "english": "In a Thai home there are customs you need to know."
+            },
+            {
+              "speaker": "mali",
+              "text": "ก่อนเข้าบ้าน เอารองเท้าวางไว้ที่ประตู",
+              "english": "Before entering the house, leave your shoes at the door."
+            },
+            {
+              "speaker": "mali",
+              "text": "เมื่อเจอคนที่อายุมาก ให้ไหว้และทักทายก่อน",
+              "english": "When you meet someone much older, wai and greet first."
+            },
+            {
+              "speaker": "mali",
+              "text": "ถ้านำของขวัญไป เช่น ผลไม้ จะดีมาก ประเพณีนี้มีมานาน",
+              "english": "If you bring a gift, such as fruit, that is very good. This tradition has existed for a long time."
+            },
+            {
+              "text": "แซมนำมะม่วงไปให้ป้าแดง ป้าแดงต้อนรับเขาอย่างดี",
+              "english": "Sam took some mangoes to Auntie Daeng, and she welcomed him warmly."
+            },
+            {
+              "text": "หลังกินข้าว แซมขอบคุณป้าแดง สิ่งสุดท้ายที่คนมาต้องทำ",
+              "english": "After the meal Sam thanked Auntie Daeng, the last thing a guest has to do."
+            },
+            {
+              "speaker": "sam",
+              "text": "อร่อยมากครับ ขอบคุณที่ต้อนรับผมครับ",
+              "english": "It was delicious. Thank you for welcoming me."
+            },
+            {
+              "speaker": "daeng",
+              "text": "มาอีกนะคะ ป้าดีใจที่แซมมา ไม่ต้องห่วงเรื่องอะไรนะคะ",
+              "english": "Come again. I am glad Sam came. Don't worry about anything."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

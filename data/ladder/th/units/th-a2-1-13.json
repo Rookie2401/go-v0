@@ -1,0 +1,388 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-13",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "รถไฟกลางคืนที่มาช้า",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-13",
+    "title": "A delayed night train (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting a native Thai reviewer (preferably from Chiang Mai)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "travel",
+    "night train",
+    "waiting",
+    "Bangkok"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam (man)",
+    "ton": "Ton (man)",
+    "yai": "Old woman (woman)",
+    "mali": "Mali (woman)"
+  },
+  "sections": [
+    {
+      "title": "เตรียมของไปกรุงเทพ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันนี้แซมกับต้นจะนั่งรถไฟกลางคืนไปกรุงเทพ",
+              "english": "Today Sam and Ton will take the night train to Bangkok."
+            },
+            {
+              "text": "พรุ่งนี้เก้าโมงเช้า เขามีงานที่โรงเรียนในกรุงเทพ",
+              "english": "Tomorrow at nine in the morning they have a job at a school in Bangkok."
+            },
+            {
+              "text": "ตอนบ่าย แซมเตรียมกระเป๋า เขาจัดของหลายอย่าง",
+              "english": "In the afternoon Sam prepared his bag. He arranged many things."
+            },
+            {
+              "text": "เขาวางแปรงฟัน สบู่ และผ้าเช็ดตัวไว้บนเสื้อ",
+              "english": "He put the toothbrush, soap and towel on top of his shirts."
+            },
+            {
+              "text": "เขานำสมุด ปากกา ดินสอ และหนังสือหนึ่งเล่มใส่กระเป๋า",
+              "english": "He put a notebook, pen, pencil and a book in the bag."
+            },
+            {
+              "text": "เขายังนำการบ้านของนักเรียนไปดูบนรถด้วย",
+              "english": "He also took the pupils' homework to look at on the way."
+            },
+            {
+              "speaker": "sam",
+              "text": "พร้อมแล้วครับ ผมสะพายกระเป๋าได้",
+              "english": "I'm ready. I can carry the bag."
+            },
+            {
+              "speaker": "ton",
+              "text": "ดี เราต้องรีบไปสถานีนะครับ รถออกหนึ่งทุ่ม",
+              "english": "Good. We must hurry to the station. It leaves at seven in the evening."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "บนชานชาลา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "สองคนถึงสถานีตอนหกโมงครึ่ง คนเต็มสถานี",
+              "english": "The two reached the station at half past six. The station was full of people."
+            },
+            {
+              "text": "เขาไปที่ชานชาลา แต่รถไฟยังไม่มา",
+              "english": "They went to the platform, but the train had not come."
+            },
+            {
+              "text": "มีเสียงบอกว่า รถไฟล่าช้า สามชั่วโมง",
+              "english": "A voice announced that the train was delayed by three hours."
+            },
+            {
+              "speaker": "sam",
+              "text": "สามชั่วโมง นานมากเลยครับ",
+              "english": "Three hours. That's a very long time."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไม่เป็นไร เราโทรไปบอกผู้อำนวยการได้ครับ",
+              "english": "Never mind. We can phone the director and tell him."
+            },
+            {
+              "speaker": "ton",
+              "text": "ระหว่างรอ เราไปซื้อข้าวกินกันดีไหมครับ",
+              "english": "While we wait, shall we go and buy something to eat?"
+            },
+            {
+              "text": "เก้าอี้เต็มหมด แซมกับต้นจึงนั่งที่พื้น",
+              "english": "All the chairs were full, so Sam and Ton sat on the floor."
+            },
+            {
+              "text": "พื้นเย็น แต่ก็สะอาด",
+              "english": "The floor was cool but clean."
+            },
+            {
+              "text": "เด็กๆ หลายคนซน วิ่งไปวิ่งมาบนชานชาลา",
+              "english": "Many children were lively, running back and forth along the platform."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ยายที่นั่งใกล้ๆ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ยายคนหนึ่งนั่งอยู่ใกล้ๆ เธอมีกล่องข้าวและถ้วยชา",
+              "english": "An old woman sat nearby. She had a box of rice and a cup of tea."
+            },
+            {
+              "speaker": "yai",
+              "text": "คุณสองคนจะไปไหนคะ",
+              "english": "Where are you two going?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปกรุงเทพครับยาย รถมาช้ามาก",
+              "english": "To Bangkok, Grandma. The train is very late."
+            },
+            {
+              "speaker": "yai",
+              "text": "ยายก็ไปค่ะ ยายไปหาลูก",
+              "english": "I'm going too. I'm going to see my child."
+            },
+            {
+              "speaker": "yai",
+              "text": "เมื่อก่อนรถไม่ช้าอย่างนี้ สมัยนี้ล่าช้าบ่อยค่ะ",
+              "english": "In the past it was not this slow. These days it is often late."
+            },
+            {
+              "speaker": "ton",
+              "text": "ยายนั่งรถไฟบ่อยไหมครับ",
+              "english": "Do you take the train often, Grandma?"
+            },
+            {
+              "speaker": "yai",
+              "text": "ยายนั่งมาตอนเด็กๆ ค่ะ ยายนั่งชั้นสองเสมอ ชั้นหนึ่งแพงไปค่ะ",
+              "english": "Since I was a child I always ride second class. First class is too expensive."
+            },
+            {
+              "speaker": "yai",
+              "text": "ระหว่างทาง ยายชอบดูนาและภูเขาค่ะ",
+              "english": "On the way I like to look at the fields and mountains."
+            },
+            {
+              "text": "ยายแบ่งข้าวในกล่องให้เราสองคน",
+              "english": "The old woman shared the rice in her box with the two of us."
+            },
+            {
+              "speaker": "yai",
+              "text": "กินด้วยกันนะคะ ยายมีเค้กด้วย",
+              "english": "Eat with us. I have some cake too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบใจมากครับยาย ผมรู้สึกดีใจมาก",
+              "english": "Thank you very much, Grandma. I'm very happy."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมชงชาให้ยายได้ไหมครับ",
+              "english": "May I make tea for you?"
+            },
+            {
+              "text": "ชงชาใส่ถ้วยให้ยายและแซม",
+              "english": "He made tea in cups for the old woman and for Sam."
+            },
+            {
+              "speaker": "yai",
+              "text": "เรียบร้อยเลยค่ะ ยายขอบใจมากนะคะ",
+              "english": "Lovely. Thank you very much."
+            },
+            {
+              "text": "แซมนับนาทีที่รอ เขานับสามสิบ แล้วก็นับต่อ",
+              "english": "Sam counted the minutes of waiting. He counted thirty and then counted on."
+            },
+            {
+              "speaker": "ton",
+              "text": "อย่านับนะครับ ถ้านับ เวลาก็จะนานมาก",
+              "english": "Don't count. If you count, the time will seem very long."
+            },
+            {
+              "text": "เด็กชายคนหนึ่งแจกขนมให้คนที่รอ",
+              "english": "A boy handed out sweets to the people waiting."
+            },
+            {
+              "text": "คนบนชานชาลาหัวเราะ และขำเมื่อเขาให้ขนมแซมสองอย่าง",
+              "english": "The people on the platform laughed, amused that he gave Sam two kinds."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขำมากครับ แต่ผมไม่ซนเหมือนเด็กคนนั้น",
+              "english": "Very funny, but I am not as naughty as that boy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "รถไฟมาแล้ว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนสี่ทุ่ม รถไฟมาถึง",
+              "english": "At ten in the evening the train arrived."
+            },
+            {
+              "text": "คนรีบขึ้นรถ แซมกับต้นตั้งใจหาตู้ที่หก",
+              "english": "People hurried aboard. Sam and Ton set out to find carriage six."
+            },
+            {
+              "text": "ตู้ที่หกอยู่ไกลมาก ต้องเดินผ่านหลายตู้",
+              "english": "Carriage six was very far, and they had to walk through many carriages."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตู้นี้ชั้นสอง ที่นั่งอยู่ตรงนี้ครับ",
+              "english": "This carriage is second class. Our seats are here."
+            },
+            {
+              "text": "ยายอยู่ตู้นี้ด้วย เธอขึ้นไปนอนที่ชั้นบน",
+              "english": "The old woman was in this carriage too, and she went up to sleep on the upper bunk."
+            },
+            {
+              "text": "แซมแขวนผ้าเช็ดตัวไว้ ส่วนเขาอีกคนตากเสื้อที่เปียกฝน",
+              "english": "Sam hung up his towel, and the other hung out his rain-wet shirt to dry."
+            },
+            {
+              "text": "คืนนั้นแซมไม่แปรงฟัน เพราะเหนื่อยมาก",
+              "english": "That night Sam did not brush his teeth, because he was very tired."
+            },
+            {
+              "text": "แซมหลับ แต่ต้นนั่งดูโทรศัพท์",
+              "english": "Sam slept, but Ton sat looking at his phone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เช้าบนรถไฟ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนเช้า แซมตื่น แล้วแปรงฟัน ล้างตัว และแต่งตัว",
+              "english": "In the morning Sam woke up, brushed his teeth, washed and got dressed."
+            },
+            {
+              "text": "เขาหวีผม ผูกรองเท้า แล้วดูการบ้านของนักเรียน",
+              "english": "He combed his hair, tied his shoes and looked at his pupils' homework."
+            },
+            {
+              "speaker": "ton",
+              "text": "จากเมื่อคืนถึงตอนนี้ รถไฟล่าช้ามากครับ",
+              "english": "From last night until now the train has been very late."
+            },
+            {
+              "speaker": "sam",
+              "text": "เรานั่งมานานแล้วครับ ระหว่างนั่ง ผมอยากถึงเร็วๆ",
+              "english": "We have been sitting a long time. While sitting, I just wanted to arrive soon."
+            },
+            {
+              "text": "รถไฟถึงกรุงเทพตอนสิบสองโมงครึ่ง ช้ากว่าที่ควรมาก",
+              "english": "The train reached Bangkok at half past twelve, much later than it should."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "งานที่ไม่ทัน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "งานที่โรงเรียนจบแล้วครับ เรามาช้าไป",
+              "english": "The work at the school is over. We came too late."
+            },
+            {
+              "text": "แซมโทรหาผู้อำนวยการ เขาพูดว่า ขอโทษครับ รถไฟล่าช้า",
+              "english": "Sam phoned the director. He said, \"Sorry, the train was late.\""
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมรู้สึกไม่ดีเลยครับ",
+              "english": "I feel bad about it."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไม่เป็นไร ผู้อำนวยการได้ข่าวจากสถานีแล้ว",
+              "english": "Never mind. The director has already heard the news from the station."
+            },
+            {
+              "text": "ผู้อำนวยการบอกว่า ไม่เป็นไร ให้เรามาพรุ่งนี้เช้า",
+              "english": "The director said it did not matter, and told us to come tomorrow morning."
+            },
+            {
+              "text": "แซมถ่ายรูปภาพชานชาลาไว้ แล้วส่งให้มะลิ",
+              "english": "Sam had taken a picture of the platform and sent it to Mali."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตลกมากค่ะ แซมนั่งที่พื้นเหมือนเด็ก ฉันขำมาก",
+              "english": "So funny. Sam sitting on the floor like a child. I laughed a lot."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีข่าวด่วนครับ ผมหิวมากแล้ว",
+              "english": "I have urgent news: I am very hungry now."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตลกจริงๆ ครับ ข่าวนี้ด่วนจริงๆ ไปหาข้าวกันครับ",
+              "english": "Really funny. That is urgent news indeed. Let's go and find rice."
+            },
+            {
+              "text": "แซมกับต้นเดินออกจากสถานี ทุกอย่างเรียบร้อยแล้ว เขาไม่รีบอีก",
+              "english": "Sam and Ton walked out of the station. Everything was settled, and they no longer hurried."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

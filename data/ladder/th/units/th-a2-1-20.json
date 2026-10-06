@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-20",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ศิษยาภิบาลและภรรยา",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-20",
+    "title": "A missionary couple (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted biography of an invented Thai pastor and his wife (not real persons); written as a text Sam prepares for the church. Details of Thai church history, Buddhist family customs and the villages are the drafter's general picture and need a native Thai Christian reviewer. The mention of the family's Buddhist practice is meant to be factual and respectful."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography",
+    "pastor",
+    "marriage",
+    "faith",
+    "mission"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam (man)",
+    "pastor": "Pastor (man)",
+    "wife": "Pastor's wife (woman)"
+  },
+  "sections": [
+    {
+      "title": "แซมอยากเขียนเรื่อง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แซมอยากเขียนเรื่องของชีวิตศิษยาภิบาลกับภรรยา",
+              "english": "Sam wanted to write the story of the pastor's life and his wife's."
+            },
+            {
+              "text": "เขาจะนำเรื่องนี้ไปเล่าให้เด็กๆ ที่โบสถ์ฟัง",
+              "english": "He would take the story and tell it to the children at the church."
+            },
+            {
+              "text": "วันอาทิตย์หลังจากไหว้พระเจ้า แซมไปหาศิษยาภิบาล",
+              "english": "On Sunday after worship Sam went to see the pastor."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมขอสัมภาษณ์ท่านทั้งสองได้ไหมครับ",
+              "english": "May I interview the two of you?"
+            },
+            {
+              "speaker": "pastor",
+              "text": "ได้ครับ เรามีเรื่องมากที่จะเล่า",
+              "english": "Yes. We have many stories to tell."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่กำเนิดทางใต้",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ศิษยาภิบาลเกิดที่ภาคใต้ ซึ่งเป็นที่กำเนิดของเขา",
+              "english": "The pastor was born in the south, which is where he came from."
+            },
+            {
+              "text": "บ้านของเขาอยู่ใกล้ทะเล และอยู่ใกล้เกาะเล็กๆ",
+              "english": "His home was near the sea and near a small island."
+            },
+            {
+              "text": "ครอบครัวของเขายากจน แต่ทุกคนทำงานทุกวัน",
+              "english": "His family was poor, but everyone worked every day."
+            },
+            {
+              "text": "พ่อปลูกยาง และใช้ขวานตัดไม้ที่ตายแล้ว",
+              "english": "His father planted rubber and used an axe to cut dead wood."
+            },
+            {
+              "text": "เขาช่วยพ่อรดน้ำให้ยางเล็กๆ ตอนอายุเจ็ดปี",
+              "english": "He helped his father water the small rubber trees at the age of seven."
+            },
+            {
+              "text": "พ่อใช้เครื่องมือเก่า ใช้ทั้งขวานและถัง",
+              "english": "His father used old tools, both an axe and a bucket."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ผมยากจน แต่ผมมีความสุข เพราะผมมีพ่อกับแม่",
+              "english": "I was poor, but I was happy, because I had my father and mother."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ผมยังจำเสียงทะเลได้ดีครับ",
+              "english": "I still remember the sound of the sea well."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ศาสนาของครอบครัว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ครอบครัวของเขาเป็นพุทธ",
+              "english": "His family was Buddhist."
+            },
+            {
+              "text": "ทุกคนไปวัด และทำประเพณีและธรรมเนียมของคนไทย",
+              "english": "Everyone went to the temple and followed the traditions and customs of Thai people."
+            },
+            {
+              "text": "ศาสนาพุทธอยู่ในชีวิตของเขามาตอนเด็ก",
+              "english": "The Buddhist religion had been part of his life since childhood."
+            },
+            {
+              "text": "ที่บ้านมีรูปกษัตริย์ติดอยู่ที่ผนัง",
+              "english": "At home there was a picture of the king on the wall."
+            },
+            {
+              "text": "เขาไหว้พระกับพ่อแม่ทุกปี",
+              "english": "He paid respect to the Buddha with his parents every year."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "อาจารย์ที่มาจากอเมริกา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนอายุสิบห้า เขาไปเรียนที่เมืองใหญ่ทางภาคกลาง",
+              "english": "At fifteen he went to study in a big city in the central region."
+            },
+            {
+              "text": "ที่นั่น เขาพบอาจารย์คนหนึ่งซึ่งมาจากอเมริกา",
+              "english": "There he met a teacher who had come from America."
+            },
+            {
+              "text": "อาจารย์คนนั้นสอนภาษาที่ห้องเรียน และเขียนบนกระดาน",
+              "english": "That teacher taught language in the classroom and wrote on the board."
+            },
+            {
+              "text": "อาจารย์เป็นคริสเตียน และเขาเล่าเรื่องพระเยซูให้เด็กฟัง",
+              "english": "The teacher was a Christian and told the children about Jesus."
+            },
+            {
+              "text": "ตอนนั้น ศิษยาภิบาลไม่ชอบเรื่องนี้",
+              "english": "At that time the pastor did not like this."
+            },
+            {
+              "text": "แต่ต่อมา เขาถามอาจารย์หลายเรื่อง และอาจารย์ตอบทุกเรื่อง",
+              "english": "But later he asked the teacher many things, and the teacher answered everything."
+            },
+            {
+              "text": "อาจารย์ให้เขาอ่านหนังสือเกี่ยวกับพระเยซู",
+              "english": "The teacher had him read a book about Jesus."
+            },
+            {
+              "text": "หลังจากนั้นสองปี เขามีศรัทธาในพระเยซู",
+              "english": "Two years after that he had faith in Jesus."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ข้าพเจ้ามีศรัทธา และศรัทธาเปลี่ยนแปลงชีวิตผมครับ",
+              "english": "I came to have faith, and faith changed my life."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ผมไม่ได้ทิ้งครอบครัว แต่ผมเปลี่ยนแปลงตัวเอง",
+              "english": "I did not abandon my family, but I changed myself."
+            },
+            {
+              "text": "พ่อแม่ของเขาไม่สบายใจ แต่ก็ยังรักเขา",
+              "english": "His parents were sad but still loved him."
+            },
+            {
+              "text": "ครั้นถึงปีที่ห้า พ่อก็ให้เขาไปทำงานของพระเจ้า",
+              "english": "In the fifth year his father let him go and do God's work."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ภรรยาจากภูเขา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ภรรยาของเขาเกิดที่หมู่บ้านบนภูเขาทางภาคเหนือ",
+              "english": "His wife was born in a village in the mountains in the north."
+            },
+            {
+              "text": "ที่กำเนิดของเธอไกลจากทะเลมาก และใกล้ลำธาร",
+              "english": "Her birthplace was very far from the sea and near a stream."
+            },
+            {
+              "text": "พ่อของเธอเป็นผู้นำของหมู่บ้าน",
+              "english": "Her father was the leader of the village."
+            },
+            {
+              "text": "ในยุคนั้น ไม่มีโรงเรียนใกล้หมู่บ้าน",
+              "english": "In that era there was no school near the village."
+            },
+            {
+              "text": "เธอต้องนั่งเรือเล็กไปโรงเรียนริมลำธาร",
+              "english": "She had to take a small boat to a school by the stream."
+            },
+            {
+              "text": "บนทางมีหินใหญ่ และดินที่เปียกในฤดูฝน",
+              "english": "On the way there were big rocks and soil that was wet in the rainy season."
+            },
+            {
+              "speaker": "wife",
+              "text": "ฉันเดินและนั่งเรือสองชั่วโมงทุกวันค่ะ",
+              "english": "I walked and rode the boat for two hours every day."
+            },
+            {
+              "speaker": "wife",
+              "text": "พวกเด็กในหมู่บ้านต้องเรียนอย่างนี้ทุกคนค่ะ",
+              "english": "The children of the village all had to study this way."
+            },
+            {
+              "text": "เธอไม่ใช่คริสเตียนตอนนั้น แต่เธอเป็นเด็กที่ตั้งใจเรียน",
+              "english": "She was not a Christian then, but she was a child who studied with care."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "พบกันที่กรุงเทพ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ทั้งสองคนพบกันที่กรุงเทพ ในโรงเรียนของอาจารย์",
+              "english": "The two met in Bangkok, in the teacher's school."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ผมพบภรรยาของผมที่ห้องเรียนครับ เธอนั่งอยู่ใกล้กระดาน",
+              "english": "I met my wife in the classroom. She was sitting near the board."
+            },
+            {
+              "speaker": "wife",
+              "text": "ฉันมีศรัทธาก่อนเขา เพราะอาจารย์สอนฉันเรื่องพระเจ้า",
+              "english": "I had faith before he did, because the teacher taught me about God."
+            },
+            {
+              "text": "หลังจากนั้นสามปี ทั้งสองแต่งงานกัน",
+              "english": "Three years after that the two were married."
+            },
+            {
+              "text": "ที่กำเนิดของครอบครัวใหม่ คือโบสถ์เล็กๆ ที่กรุงเทพ",
+              "english": "The birthplace of the new family was a small church in Bangkok."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หลายปีในภาคเหนือ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หลังจากนั้นไม่นาน ทั้งสองย้ายไปที่ภาคเหนือ",
+              "english": "Not long after that the two moved to the north."
+            },
+            {
+              "text": "เขาไปอยู่หมู่บ้านบนภูเขา และเป็นผู้นำโบสถ์เล็กๆ",
+              "english": "They went to live in a mountain village, and he became the leader of a small church."
+            },
+            {
+              "text": "ที่นั่นเขาใช้ห้องเรียนของโรงเรียนเป็นโบสถ์",
+              "english": "There he used the school's classroom as a church."
+            },
+            {
+              "text": "ภรรยาสอนเด็กๆ อ่านและเขียน ด้วยกระดานเก่า",
+              "english": "His wife taught the children to read and write, using an old board."
+            },
+            {
+              "text": "เขาปลูกผักที่สวนหลังโบสถ์ และใช้เครื่องมือเล็กๆ",
+              "english": "He grew vegetables in the garden behind the church, using small tools."
+            },
+            {
+              "text": "เขาใช้ขวานตัดไม้ ใช้ถังรดน้ำ ใช้อ่างล้างผัก และใส่ทรายในสวน",
+              "english": "He used an axe to cut wood, a bucket to water, a basin to wash vegetables, and put sand in the garden."
+            },
+            {
+              "text": "บางวัน เขาไปหาคนที่อยู่ไกล ด้วยเรือเล็กที่ลำธาร",
+              "english": "Some days he went to see people who lived far away, by small boat on the stream."
+            },
+            {
+              "text": "เขาพบคนหลายคน และเขาพบความยากจนด้วย",
+              "english": "He met many people, and he met poverty too."
+            },
+            {
+              "text": "พวกชาวบ้านมาฟังเขา และบางคนมีศรัทธา",
+              "english": "The villagers came to listen to him, and some had faith."
+            },
+            {
+              "text": "เขาปลูกพริก ปลูกผัก และใช้เครื่องมือของตัวเองทุกเช้า",
+              "english": "He grew chillies and vegetables and used his own tools every morning."
+            },
+            {
+              "text": "ในหมู่บ้าน มีประชากรไม่ถึงสองร้อยคน",
+              "english": "The village had a population of fewer than two hundred."
+            },
+            {
+              "text": "ทุกคนเรียกเขาว่า ครู และเรียกภรรยาว่า ครูผู้หญิง",
+              "english": "Everyone called him \"teacher\" and his wife \"the woman teacher\"."
+            },
+            {
+              "text": "บางครั้ง เขาพาเด็กๆ ไปพิพิธภัณฑ์ในเมืองใหญ่ เพื่อเรียนเรื่องแคว้นเก่า",
+              "english": "Sometimes he took the children to a museum in a big city to learn about the old kingdoms."
+            },
+            {
+              "text": "เด็กๆ เห็นประเทศที่กว้าง เห็นทะเลสาบ และเห็นทะเลกับเกาะทางตะวันออก",
+              "english": "The children saw a wide country, saw a lake, and saw the sea and islands in the east."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ทุกวันนี้",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ทุกวันนี้ ทั้งสองอยู่ที่เชียงใหม่",
+              "english": "Today the two live in Chiang Mai."
+            },
+            {
+              "text": "เขาสอนคนใหม่ๆ ที่อยากเป็นผู้นำโบสถ์",
+              "english": "He teaches new people who want to be church leaders."
+            },
+            {
+              "text": "ภรรยาของเขาช่วยสอนเด็กๆ และพวกผู้หญิงที่โบสถ์",
+              "english": "His wife helps teach the children and the women at the church."
+            },
+            {
+              "text": "แซมถามทั้งสองคนว่า ชีวิตเปลี่ยนแปลงไปอย่างไรบ้าง",
+              "english": "Sam asked the two how life had changed."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ยุคนี้ทุกอย่างเร็ว แต่พระเจ้าไม่เปลี่ยนครับ",
+              "english": "In this era everything is fast, but God does not change."
+            },
+            {
+              "speaker": "wife",
+              "text": "ยุคเก่ายากกว่า แต่ฉันดีใจที่ได้เป็นครูค่ะ",
+              "english": "The old era was harder, but I am glad I was able to be a teacher."
+            },
+            {
+              "text": "แซมเขียนทุกอย่างลงกระดาษ เขาอยากเล่าให้ทุกคนฟัง",
+              "english": "Sam wrote everything on paper. He wanted to tell it to everyone."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

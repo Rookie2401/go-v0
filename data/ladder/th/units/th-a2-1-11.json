@@ -1,0 +1,399 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-11",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ราชสีห์ หมาป่า และหมาจิ้งจอก",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-11",
+    "title": "The lion, the wolf and the fox (a fable retold, 1) (ladder unit, adapted and machine-drafted)",
+    "author": "Go course authors (drafted by an AI model), after พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+    "edition": "Thai Wikisource revision 145415 (transcription of the 1956 translation, นิทานอีสป)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=145415",
+    "attribution": "Adapted from \"ราชสีห์ชันสูตรลมหายใจ\" in พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499), Thai Wikisource transcription (https://th.wikisource.org/w/index.php?oldid=145415), CC BY-SA 4.0. This is a simplified retelling written for the course ladder; it is an adaptation, not the original text. Adapted and machine-drafted; not reviewed by a native speaker. Share-alike: CC BY-SA 4.0.",
+    "provenance": "Retold for learners in the vocabulary of the Thai ladder from the library fable \"ราชสีห์ชันสูตรลมหายใจ\" (th-gap-recovery-aesop-33; พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป, 2499, Thai Wikisource revision 145415). The retelling is machine-drafted by an AI model, shorter and simpler than the original, with the old-style small words kept on purpose (the fable register of the ladder's plan); not reviewed by a native speaker. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). The underlying 2499 translation is recorded by Wikisource as public domain; the Wikisource transcription is under CC BY-SA 4.0, so this adaptation carries the attribution and the share-alike term. Changes: simplified and shortened retelling, new sentences. Machine-drafted, not yet native-reviewed.",
+    "licence": "CC BY-SA 4.0, adapted (share-alike)",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted adaptation of a public-domain fable (via a CC BY-SA 4.0 transcription); awaiting a native Thai reviewer. For the reviewer: the small old-style words (จึง, ใคร่, ไม่ใคร่, พ้น, คราว, หลีก, แกล้ง) are deliberate fable register; the animals say ฉัน / คุณ / ผม because the old pronouns (เจ้า, เอ็ง, ข้า, ท่าน) are taught in later units. The closing talk between the fox and his child is an addition to the original."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "fable",
+    "narrative",
+    "animals"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "lion": "Lion (animal)",
+    "sheep": "Sheep (animal)",
+    "wolf": "Wolf (animal)",
+    "fox": "Fox (animal)",
+    "cub": "Fox's child (animal)"
+  },
+  "sections": [
+    {
+      "title": "ในป่าใหญ่",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ในป่าใหญ่ มีราชสีห์ตัวหนึ่ง",
+              "english": "In a big forest there lived a lion."
+            },
+            {
+              "text": "ป่านั้นสวยมาก มีต้นไม้สูง มีทั้งดอกไม้เหลืองและแดง",
+              "english": "That forest was very beautiful, with tall trees and yellow and red flowers."
+            },
+            {
+              "text": "มันตัวใหญ่ และสัตว์ทุกตัวในป่ากลัวมัน",
+              "english": "He was big, and every animal in the forest was afraid of him."
+            },
+            {
+              "text": "ทุกเช้า มันตื่นขึ้น แล้วเดินไปกินน้ำที่บ่อ",
+              "english": "Every morning he woke up and walked to drink water at the pond."
+            },
+            {
+              "text": "คราวหนึ่ง มันกินน้ำแล้วนึกขึ้นได้",
+              "english": "One time, after drinking, he suddenly wondered about something."
+            },
+            {
+              "text": "มันใคร่รู้ว่า ปากของมันมีกลิ่นอย่างไร",
+              "english": "He wanted to know what his mouth smelled like."
+            },
+            {
+              "text": "มันไม่มีเพื่อน จึงต้องไปถามสัตว์ในป่า",
+              "english": "He had no friends, so he had to go and ask the animals of the forest."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "แกะ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตัวใหญ่เดินไปที่นา และเห็นแกะตัวหนึ่ง",
+              "english": "The big one walked to the fields and saw a sheep."
+            },
+            {
+              "text": "แกะกำลังกินหญ้าอยู่ ตัวเล็กและสีขาว",
+              "english": "The sheep was eating grass, small and white."
+            },
+            {
+              "speaker": "lion",
+              "text": "ปากของฉันมีกลิ่นอย่างไร",
+              "english": "What does my mouth smell like?"
+            },
+            {
+              "text": "แกะไม่รู้ว่าจะตอบอย่างไร แต่มันพูดจริง",
+              "english": "The sheep did not know how to answer, but it told the truth."
+            },
+            {
+              "speaker": "sheep",
+              "text": "เหม็น",
+              "english": "It stinks."
+            },
+            {
+              "text": "ราชสีห์โกรธมาก",
+              "english": "The lion was very angry."
+            },
+            {
+              "text": "มันตรงเข้าไปกัดแกะ",
+              "english": "He rushed in and bit the sheep."
+            },
+            {
+              "text": "แกะตายในที่นั้น",
+              "english": "The sheep died on the spot."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หมาป่า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตัวใหญ่เดินต่อไปอีกสักหน่อย",
+              "english": "The big one walked on a little further."
+            },
+            {
+              "text": "คราวนี้ มันเห็นหมาป่า",
+              "english": "This time he saw a wolf."
+            },
+            {
+              "text": "หมาป่ากำลังนอนอยู่ใต้ต้นไม้",
+              "english": "The wolf was lying under a tree."
+            },
+            {
+              "text": "มันถามเหมือนที่ถามแกะ",
+              "english": "He asked as he had asked the sheep."
+            },
+            {
+              "text": "มันเห็นแกะตายอยู่ใกล้ๆ จึงกลัวมาก",
+              "english": "It saw the dead sheep nearby and was very afraid."
+            },
+            {
+              "text": "มันนึกว่า ถ้าพูดจริง ก็จะตาย",
+              "english": "He thought that if he told the truth, he would die."
+            },
+            {
+              "text": "มันจึงแกล้งพูดว่า",
+              "english": "So he pretended and said:"
+            },
+            {
+              "speaker": "wolf",
+              "text": "หอมมาก หอมที่สุดในป่าเลย",
+              "english": "It smells lovely, the loveliest in the forest!"
+            },
+            {
+              "text": "ตัวใหญ่ฟัง แล้วก็รู้ว่ามันแกล้งพูด",
+              "english": "The big one listened and knew that it was pretending."
+            },
+            {
+              "text": "มันไม่ใคร่ชอบคนที่พูดดีแต่ปาก",
+              "english": "He did not much like those who only talk sweetly."
+            },
+            {
+              "text": "ราชสีห์โกรธอีกครั้ง",
+              "english": "The lion became angry again."
+            },
+            {
+              "text": "มันตรงเข้าไปกัดตัวนั้น",
+              "english": "He rushed in and bit it."
+            },
+            {
+              "text": "ตัวนั้นตายอีกตัวหนึ่ง",
+              "english": "That was another one dead."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หมาจิ้งจอก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "มันเดินต่อไปอีก",
+              "english": "He walked on again."
+            },
+            {
+              "text": "มันเดินต่อไป แต่สัตว์หนีไปหมด",
+              "english": "He walked on, but the animals all ran away."
+            },
+            {
+              "text": "ไม่มีใครตอบมันได้สักตัว",
+              "english": "Not one of them answered him."
+            },
+            {
+              "text": "คราวนี้ มันเห็นหมาจิ้งจอกตัวหนึ่ง",
+              "english": "This time he saw a fox."
+            },
+            {
+              "text": "หมาจิ้งจอกยืนอยู่บนทาง มันฉลาดมาก",
+              "english": "The fox was standing on the path. He was very clever."
+            },
+            {
+              "speaker": "lion",
+              "text": "แล้วคุณล่ะ ปากของฉันเป็นอย่างไร",
+              "english": "And you? What is my mouth like?"
+            },
+            {
+              "text": "หมาจิ้งจอกรู้ว่า ถ้าตอบว่าเหม็น ก็จะถูกกัด",
+              "english": "The fox knew that if he said it stank, he would be bitten."
+            },
+            {
+              "text": "ถ้าตอบว่าหอม ก็จะถูกกัดเหมือนกัน",
+              "english": "If he said it smelled lovely, he would be bitten as well."
+            },
+            {
+              "text": "มันจึงหลีกไม่ตอบ",
+              "english": "So he avoided answering."
+            },
+            {
+              "speaker": "fox",
+              "text": "ผมป่วยอยู่ ผมไม่ได้กลิ่นอะไรเลย",
+              "english": "I am ill. I cannot smell anything at all."
+            },
+            {
+              "speaker": "fox",
+              "text": "ผมไม่รู้เลยว่าจะตอบอย่างไร ผมตอบไม่ได้",
+              "english": "I do not know at all how to answer. I cannot answer."
+            },
+            {
+              "speaker": "fox",
+              "text": "ไปถามตัวต่อไปที่คุณเจอดีกว่า",
+              "english": "It would be better to ask the next animal you meet."
+            },
+            {
+              "text": "ราชสีห์ไม่ใคร่ชอบคำตอบนี้ แต่มันไม่พูดอะไรอีก",
+              "english": "The lion did not much like this answer, but he said nothing more."
+            },
+            {
+              "text": "มันเดินไปจากหมาจิ้งจอก",
+              "english": "He walked away from the fox."
+            },
+            {
+              "text": "หมาจิ้งจอกพ้นจากมันได้",
+              "english": "The fox got clear of him."
+            },
+            {
+              "text": "มันยิ้ม แล้วเดินกลับบ้านอีกทางหนึ่ง",
+              "english": "He smiled and went home another way."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่บ้านของหมาจิ้งจอก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ที่บ้าน ลูกของมันนั่งรออยู่",
+              "english": "At home his child sat waiting."
+            },
+            {
+              "text": "ตอนเย็น ครอบครัวของมันกินข้าวด้วยกัน",
+              "english": "In the evening his family ate together."
+            },
+            {
+              "speaker": "cub",
+              "text": "พ่อครับ ทำไมวันนี้พ่อกลับช้า",
+              "english": "Dad, why are you late today?"
+            },
+            {
+              "speaker": "cub",
+              "text": "ราชสีห์ตรงเข้าไปกัดพ่อไหมครับ",
+              "english": "Did the lion rush in and bite you?"
+            },
+            {
+              "speaker": "fox",
+              "text": "ไม่ พ่อไม่รู้ว่ามันจะทำอะไร แต่พ่อพ้นมาได้",
+              "english": "No. I did not know what he would do, but I got away."
+            },
+            {
+              "speaker": "fox",
+              "text": "พ่อเจอราชสีห์ในป่า มันถามพ่อ",
+              "english": "I met the lion in the forest. He asked me a question."
+            },
+            {
+              "speaker": "cub",
+              "text": "พ่อตอบว่าอะไรครับ",
+              "english": "What did you answer?"
+            },
+            {
+              "speaker": "fox",
+              "text": "พ่อไม่พูดสักคำ พ่อแกล้งบอกว่าพ่อป่วย",
+              "english": "I did not say a word. I pretended to say I was ill."
+            },
+            {
+              "speaker": "cub",
+              "text": "ทำไมพ่อไม่ตอบครับ",
+              "english": "Why didn't you answer?"
+            },
+            {
+              "speaker": "fox",
+              "text": "เพราะแกะกับหมาป่าตอบแล้ว ก็ถูกกัดทั้งคู่",
+              "english": "Because the sheep and the wolf answered, and both were bitten."
+            },
+            {
+              "speaker": "cub",
+              "text": "พ่อไม่กลัวราชสีห์หรือครับ",
+              "english": "Aren't you afraid of the lion?"
+            },
+            {
+              "speaker": "fox",
+              "text": "กลัวสิ แต่พ่อไม่พูดมาก พ่อยิ้ม และเดินกลับบ้าน",
+              "english": "Of course I am afraid, but I did not say much. I smiled and walked home."
+            },
+            {
+              "speaker": "cub",
+              "text": "พรุ่งนี้ผมอยากไปป่ากับพ่อครับ ผมจะไม่พูดมากเหมือนพ่อ",
+              "english": "Tomorrow I want to go to the forest with you. I will not say much, like you."
+            },
+            {
+              "speaker": "fox",
+              "text": "ดีมาก เรากินข้าวกันก่อน แล้วนอนนะ",
+              "english": "Very good. Let us eat first and then sleep."
+            },
+            {
+              "speaker": "fox",
+              "text": "สองตัวนั้นตายทั้งคู่",
+              "english": "Both of those died."
+            },
+            {
+              "speaker": "cub",
+              "text": "พ่อหลีกได้ดีมากครับ พ่อฉลาดที่สุด",
+              "english": "You avoided him very well. You are the cleverest."
+            },
+            {
+              "speaker": "fox",
+              "text": "ลูกก็ต้องฉลาด เมื่อคนโกรธ ลูกต้องหลีก ลูกจึงจะพ้นได้",
+              "english": "You must be clever too. When someone is angry, you must keep away, and then you will get clear."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คำสอน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คนฉลาดต้องรู้ว่าจะหลีกคนที่กำลังโกรธ",
+              "english": "A clever person must know how to keep away from someone who is angry."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,423 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-03",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "นิทานของยาย",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-03",
+    "title": "Grandmother's night story (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting a native Thai reviewer (preferably from Chiang Mai)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative",
+    "folktale",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ball": "Ball (boy)",
+    "yai": "Mali's grandmother (woman)",
+    "mali": "Mali (woman)",
+    "tiger": "Tiger (animal)",
+    "monkey": "Monkey (animal)",
+    "elephant": "Elephant (animal)"
+  },
+  "sections": [
+    {
+      "title": "ยายมาที่บ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันนี้ยายมาจากหมู่บ้านที่ลำพูน",
+              "english": "Today Grandmother came from the village in Lamphun."
+            },
+            {
+              "text": "บอลดีใจมาก เพราะยายเล่านิทานสนุก",
+              "english": "Ball is very happy, because Grandmother tells fun stories."
+            },
+            {
+              "speaker": "ball",
+              "text": "ยายครับ ยายเอาอะไรมาครับ",
+              "english": "Grandma, what did you bring?"
+            },
+            {
+              "speaker": "yai",
+              "text": "ยายเอาผลไม้มาค่ะ มีมะม่วง กล้วย และส้ม",
+              "english": "I brought fruit: mangoes, bananas and oranges."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมชอบมะม่วงที่สุดครับ",
+              "english": "I like mangoes best."
+            },
+            {
+              "speaker": "yai",
+              "text": "วันนี้บอลไปโรงเรียนไหมคะ",
+              "english": "Did you go to school today, Ball?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ไปครับ ผมเรียนพูดกับแซม",
+              "english": "Yes. I practised speaking with Sam."
+            },
+            {
+              "speaker": "yai",
+              "text": "แซมเป็นใครคะ",
+              "english": "Who is Sam?"
+            },
+            {
+              "speaker": "ball",
+              "text": "แซมมาจากอเมริกาครับ แซมพูดภาษาไทยได้นิดหน่อย",
+              "english": "Sam comes from America. He can speak a little Thai."
+            },
+            {
+              "speaker": "yai",
+              "text": "ยายเอาขนมมาด้วยนะคะ แล้วก็ดอกไม้สีเหลืองด้วย ดอกไม้สวยมากค่ะ",
+              "english": "I brought some sweets too, and yellow flowers. The flowers are very pretty."
+            },
+            {
+              "text": "ตอนเย็น มะลิกลับจากโรงพยาบาล",
+              "english": "In the evening Mali comes back from the hospital."
+            },
+            {
+              "speaker": "mali",
+              "text": "สวัสดีค่ะยาย ยายสบายดีไหมคะ",
+              "english": "Hello, Grandma. Are you well?"
+            },
+            {
+              "speaker": "yai",
+              "text": "สบายดีค่ะ",
+              "english": "I am well."
+            },
+            {
+              "speaker": "yai",
+              "text": "มะลิเหนื่อยไหมคะ",
+              "english": "Are you tired?"
+            },
+            {
+              "speaker": "mali",
+              "text": "เหนื่อยนิดหน่อยค่ะ แต่ดีใจที่ยายมา",
+              "english": "A little tired, but glad you came."
+            },
+            {
+              "text": "เรากินข้าวด้วยกัน ยายทำผัดผักกับไข่",
+              "english": "We eat together. Grandmother makes stir-fried vegetables with egg."
+            },
+            {
+              "text": "หลังกินข้าว แล้วบอลล้างจานให้ยาย จานสะอาดทุกใบ",
+              "english": "After the meal Ball washes the dishes for Grandmother. Every plate is clean."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ฟังนิทาน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนคืน ท้องฟ้าสีดำ ฝนจะตก",
+              "english": "At night the sky is black. It is going to rain."
+            },
+            {
+              "text": "บอลนอนอยู่บนเตียง ยายนั่งอยู่ใกล้ๆ",
+              "english": "Ball is lying in bed. His grandmother sits nearby."
+            },
+            {
+              "speaker": "ball",
+              "text": "ยายครับ ผมอยากฟังนิทานเรื่องเสือครับ",
+              "english": "Grandma, I want to hear a tiger story."
+            },
+            {
+              "speaker": "yai",
+              "text": "ได้ค่ะ ยายจะเล่าเรื่องเสือกับลิงนะคะ",
+              "english": "All right. I will tell the story of the tiger and the monkey."
+            },
+            {
+              "speaker": "ball",
+              "text": "ลิงฉลาดไหมครับ",
+              "english": "Is the monkey clever?"
+            },
+            {
+              "speaker": "yai",
+              "text": "ฉลาดมากค่ะ ฟังนะคะ",
+              "english": "Very clever. Listen."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เสือหิว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "yai",
+              "text": "ในป่าใหญ่มีเสือตัวหนึ่ง มันหิวมาก",
+              "english": "In a big forest there was a tiger. It was very hungry."
+            },
+            {
+              "speaker": "yai",
+              "text": "มันเห็นลิงตัวเตี้ยอยู่บนต้นไม้สูง",
+              "english": "It saw a short little monkey in a tall tree."
+            },
+            {
+              "speaker": "yai",
+              "text": "มันจึงไล่ลิงไปไกล",
+              "english": "So it chased the monkey a long way."
+            },
+            {
+              "speaker": "yai",
+              "text": "ตัวเล็กวิ่งหนี วิ่งเร็วมาก",
+              "english": "The small one ran away, very fast."
+            },
+            {
+              "speaker": "yai",
+              "text": "ไม่ไกลมีถ้ำเก่าและดำ",
+              "english": "Not far away there was an old, dark cave."
+            },
+            {
+              "speaker": "yai",
+              "text": "ตัวเล็กวิ่งเข้าถ้ำ ซ่อนอยู่ในนั้น",
+              "english": "The small one ran into the cave and hid inside."
+            },
+            {
+              "speaker": "yai",
+              "text": "ตัวใหญ่ยืนอยู่ที่นั่น ไล่เร็วมาก แต่ตัวเล็กเร็วกว่า",
+              "english": "The big one stood there. It chased very fast, but the small one was faster."
+            },
+            {
+              "speaker": "tiger",
+              "text": "ออกมาเดี๋ยวนี้ ฉันหิวมากนะ",
+              "english": "Come out right now. I am very hungry."
+            },
+            {
+              "speaker": "ball",
+              "text": "ลิงซ่อนอยู่ที่ไหนครับ",
+              "english": "Where was the monkey hiding?"
+            },
+            {
+              "speaker": "yai",
+              "text": "ซ่อนอยู่ในนั้นค่ะ ลิงรู้ว่าตัวใหญ่โง่ มันจึงหลอก",
+              "english": "Inside. The monkey knew that the big one was stupid, so it played a trick."
+            },
+            {
+              "speaker": "monkey",
+              "text": "ฉันคือสัตว์ที่กินเสือ",
+              "english": "I am the animal that eats tigers."
+            },
+            {
+              "speaker": "monkey",
+              "text": "วันนี้ฉันยังไม่ได้กิน เข้ามาสิ",
+              "english": "I haven't eaten today. Come in!"
+            },
+            {
+              "speaker": "yai",
+              "text": "ตัวใหญ่เชื่อ มันจึงหนีไป วิ่งเร็วที่สุด",
+              "english": "The big one believed it, so it ran away, as fast as it could."
+            },
+            {
+              "speaker": "ball",
+              "text": "เรื่องนี้สนุกมากครับ มันหลอกเสือได้",
+              "english": "This story is great. It managed to trick the tiger."
+            },
+            {
+              "speaker": "yai",
+              "text": "ใช่ค่ะ ตัวใหญ่โง่ แต่ตัวเล็กฉลาดค่ะ",
+              "english": "Yes. The big one was stupid, but the small one was clever."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "สัตว์ในป่าหัวเราะ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "yai",
+              "text": "ตัวใหญ่วิ่งไปที่บ่อ ที่นั่นมีช้างตัวใหญ่",
+              "english": "The big one ran to the pond. There was a big elephant there."
+            },
+            {
+              "speaker": "elephant",
+              "text": "วิ่งหนีอะไรมา",
+              "english": "What are you running away from?"
+            },
+            {
+              "speaker": "tiger",
+              "text": "ฉันเจอสัตว์ตัวใหญ่ที่นั่น มันจะกินฉัน",
+              "english": "I met a big animal there. It wanted to eat me."
+            },
+            {
+              "speaker": "elephant",
+              "text": "ตัวเล็กนิดเดียว เสือโง่จริงๆ",
+              "english": "It was tiny. Tiger, you are really stupid."
+            },
+            {
+              "speaker": "yai",
+              "text": "ช้างหัวเราะ กบหัวเราะ เต่าหัวเราะ กระต่ายกับงูก็หัวเราะ",
+              "english": "The elephant laughed, the frog laughed, the turtle laughed, and the rabbit and the snake laughed too."
+            },
+            {
+              "speaker": "yai",
+              "text": "ป่าเขียวมีแต่เสียงหัวเราะ",
+              "english": "The green forest was full of laughter."
+            },
+            {
+              "speaker": "ball",
+              "text": "เสือไล่ลิงอีกไหมครับ",
+              "english": "Did the tiger chase the monkey again?"
+            },
+            {
+              "speaker": "yai",
+              "text": "ไม่ไล่อีกเลยค่ะ ลิงอยู่ในถ้ำสบายมาก ถ้ำสะอาดและสวย",
+              "english": "Never again. The monkey lived very comfortably in the cave. The cave was clean and pretty."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เมื่อนิทานจบ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ball",
+              "text": "ผมเตี้ยกว่าเพื่อนครับ ผมอยากสูงเหมือนพ่อ",
+              "english": "I am shorter than my friends. I want to be tall like my father."
+            },
+            {
+              "speaker": "yai",
+              "text": "คนตัวใหญ่บางคนก็โง่นะคะ ลิงจึงหลอกได้",
+              "english": "Some big people are stupid, you know. That is why the monkey could fool it."
+            },
+            {
+              "speaker": "yai",
+              "text": "แต่บอลสูงกว่ายายแล้ว ยายเตี้ยกว่าหลานแล้วค่ะ",
+              "english": "But Ball, you are taller than me already. I am shorter than my grandchild now."
+            },
+            {
+              "speaker": "ball",
+              "text": "ที่หมู่บ้านของยายมีเสือไหมครับ",
+              "english": "Are there tigers in your village, Grandma?"
+            },
+            {
+              "speaker": "yai",
+              "text": "เมื่อก่อนมีในป่า แต่ตอนนี้ป่าเล็กลง",
+              "english": "There used to be some in the forest, but now the forest is smaller."
+            },
+            {
+              "speaker": "yai",
+              "text": "ตอนนี้ที่นั่นมีโรงงานกับไร่ข้าวโพด",
+              "english": "Now there is a factory and corn fields there."
+            },
+            {
+              "speaker": "yai",
+              "text": "เด็กชายหลายคนไปทำงานที่โรงงานแล้วค่ะ",
+              "english": "Many of the boys have gone to work at the factory."
+            },
+            {
+              "speaker": "ball",
+              "text": "ยายจะอยู่ถึงเดือนอะไรครับ",
+              "english": "Until which month will you stay?"
+            },
+            {
+              "speaker": "yai",
+              "text": "ยายมาเดือนธันวาคม จะกลับเดือนกุมภาพันธ์ค่ะ",
+              "english": "I came in December and will go home in February."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมเกิดเดือนตุลาคมครับ ยายเกิดเดือนอะไรคะ",
+              "english": "I was born in October. Which month were you born?"
+            },
+            {
+              "speaker": "yai",
+              "text": "ยายเกิดเดือนมิถุนายนค่ะ",
+              "english": "I was born in June."
+            },
+            {
+              "speaker": "yai",
+              "text": "มะลิเกิดเดือนเมษายนค่ะ",
+              "english": "Mali was born in April."
+            },
+            {
+              "speaker": "yai",
+              "text": "พ่อบอลเกิดเดือนสิงหาคม",
+              "english": "Ball's father was born in August."
+            },
+            {
+              "speaker": "yai",
+              "text": "ปีใหม่เดือนมกราคม ยายอยู่ที่นี่ด้วยกันนะคะ",
+              "english": "At New Year, in January, I will be here with you all."
+            },
+            {
+              "speaker": "ball",
+              "text": "ขอโทษครับยาย ผมอยากนอนแล้ว",
+              "english": "Sorry, Grandma, I want to sleep now."
+            },
+            {
+              "text": "บอลเอากีตาร์ตัวเก่าของพ่อมา แล้วเล่นเพลง",
+              "english": "Ball brings his father's old guitar and plays a song."
+            },
+            {
+              "text": "ยายร้องเพลงด้วย แล้วบอลก็หลับ",
+              "english": "Grandma sings too, and then Ball falls asleep."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

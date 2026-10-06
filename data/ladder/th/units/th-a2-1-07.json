@@ -1,0 +1,465 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-07",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "กลุ่มแชทของทีม",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-07",
+    "title": "The team's group chat (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting a native Thai reviewer (preferably from Chiang Mai)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "correspondence",
+    "group chat",
+    "team life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "pastor": "Pastor (man)",
+    "mali": "Mali (woman)",
+    "ton": "Ton (man)",
+    "sam": "Sam (man)",
+    "daeng": "Auntie Daeng (woman)"
+  },
+  "sections": [
+    {
+      "title": "วันที่ 10 เดือนพฤศจิกายน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "pastor",
+              "text": "สวัสดีครับพี่น้อง วันอาทิตย์ที่ 14 เรากินข้าวด้วยกันที่โบสถ์ครับ",
+              "english": "Hello, brothers and sisters. On Sunday the 14th we will eat together at the church."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ใครจะนำอะไรมาครับ",
+              "english": "Who will bring what?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันนำส้มตำมาค่ะ ใส่ปูด้วยนะคะ",
+              "english": "I'll bring papaya salad, with crab in it."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมนำข้าวโพดกับกล้วยมาครับ",
+              "english": "I'll bring corn and bananas."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อมะม่วงกับส้มพรุ่งนี้ครับ",
+              "english": "I'll buy mangoes and oranges tomorrow."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าทำขนมมาให้ค่ะ ของเก่าเปียกหมดแล้ว ป้าต้องทำใหม่",
+              "english": "I'll make sweets. The old ones got wet, so I have to make new ones."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ขอบใจมากครับพี่น้อง",
+              "english": "Thank you all very much."
+            },
+            {
+              "speaker": "mali",
+              "text": "โอเคค่ะ",
+              "english": "OK."
+            },
+            {
+              "speaker": "ton",
+              "text": "โอเคครับผม",
+              "english": "OK, will do."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันที่ 11 เดือนพฤศจิกายน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "ขอให้ช่วยอธิษฐานเรื่องบอลด้วยครับ บอลป่วยเป็นไข้เมื่อวาน",
+              "english": "Please pray for Ball. He got a fever yesterday."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ได้ครับ เราจะอธิษฐานให้บอลทุกวัน",
+              "english": "Of course. We will pray for Ball every day."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันไปดูบอลแล้วค่ะ บอลกินยาแล้ว ไม่ต้องกลัวนะคะ",
+              "english": "I have been to see Ball. He has taken his medicine. Don't be afraid."
+            },
+            {
+              "speaker": "ton",
+              "text": "ขอบใจมากนะครับมะลิ",
+              "english": "Thank you very much, Mali."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าทำข้าวให้บอลกินค่ะ แซมนำไปให้ได้ไหมคะ",
+              "english": "I made some rice for Ball to eat. Sam, can you take it over? — ข้าวต้ม unknown"
+            },
+            {
+              "speaker": "sam",
+              "text": "ได้ครับ ผมไปเดี๋ยวนี้",
+              "english": "Yes. I'll go right now."
+            },
+            {
+              "speaker": "sam",
+              "text": "ถึงแล้วครับ ผมให้บอลแล้วครับ",
+              "english": "I've arrived and given it to Ball."
+            },
+            {
+              "speaker": "ton",
+              "text": "เรียบร้อยครับ ขอบคุณมาก",
+              "english": "All done. Thank you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันที่ 12 เดือนพฤศจิกายน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "รถแถวมาช้ามากครับ ผมไปโรงเรียนช้านะครับ",
+              "english": "The songthaew is very late. I will be late to school."
+            },
+            {
+              "speaker": "ton",
+              "text": "วันนี้แซมไปรถแถวหรือเดินครับ",
+              "english": "Are you going by songthaew or on foot today?"
+            },
+            {
+              "speaker": "sam",
+              "text": "รถแถวครับ แต่ผมรอหนึ่งชั่วโมง",
+              "english": "By songthaew, but I waited an hour."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไม่เป็นไรครับ ผมจะบอกผู้อำนวยการให้",
+              "english": "No problem. I will tell the director for you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับพี่ต้น",
+              "english": "Thank you, Ton."
+            },
+            {
+              "speaker": "sam",
+              "text": "ถึงแล้วครับ รถแถวคันนี้ช้ากว่าเมื่อวาน",
+              "english": "I've arrived. This songthaew was slower than yesterday."
+            },
+            {
+              "speaker": "mali",
+              "text": "เรียบร้อยดีไหมคะ",
+              "english": "Is everything all right?"
+            },
+            {
+              "speaker": "sam",
+              "text": "เรียบร้อยครับ",
+              "english": "All fine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันที่ 13 เดือนพฤศจิกายน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ส่งรูปภาพให้ดูครับ ผมสวมหมวกใบใหญ่ที่ตลาด",
+              "english": "Sending a picture. I'm wearing a big hat at the market."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตลกมากค่ะ แซมเหมือนคนขายผลไม้",
+              "english": "So funny. Sam looks like a fruit seller."
+            },
+            {
+              "speaker": "ton",
+              "text": "ขำมากครับ",
+              "english": "Very funny."
+            },
+            {
+              "speaker": "ton",
+              "text": "บอลดีขึ้นแล้วครับ เขาวาดรูปภาพสัตว์ให้ผมดู",
+              "english": "Ball is better. He drew pictures of animals for me."
+            },
+            {
+              "speaker": "ton",
+              "text": "มีช้าง งู กบ กระต่าย เต่า และลิง ลิงสวมเสื้อสีฟ้า",
+              "english": "There are an elephant, a snake, a frog, a rabbit, a turtle and a monkey. The monkey is wearing a blue shirt."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ตลกมากครับ ขอบใจบอลที่ทำให้เราขำ",
+              "english": "Very funny. Thank you, Ball, for making us laugh."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันชอบรูปภาพของบอลที่สุดค่ะ ช้างตัวใหญ่ที่สุดในรูป",
+              "english": "I like Ball's pictures best. The elephant is the biggest in the picture."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ผมส่งรูปภาพจากงานเมื่อก่อนมาให้ดูครับ เด็กๆ วิ่ง กระโดด ปีนต้นไม้",
+              "english": "I'm sending pictures from an earlier event. The children run, jump and climb trees."
+            },
+            {
+              "speaker": "pastor",
+              "text": "เด็กๆ จับกบที่ทุ่งนา ว่ายน้ำที่บ่อ และมองสัตว์ตัวเล็กๆ",
+              "english": "The children catch frogs in the rice field, swim in the pond and look at little animals."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าก็อยู่ในรูปภาพด้วยค่ะ ป้ากำลังหัวเราะ",
+              "english": "I am in the picture too. I am laughing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันที่ 14 เดือนพฤศจิกายน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "pastor",
+              "text": "ข้อความด่วนครับ มีข่าวว่าพายุจะมาตอนบ่าย",
+              "english": "Urgent message. There is news that a storm will come this afternoon."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ฟ้าแลบ ฟ้าร้อง และลมพัดมาก ตอนบ่ายถนนจะมืด",
+              "english": "Lightning, thunder and wind. In the afternoon the road will be dark. — แรง unknown"
+            },
+            {
+              "speaker": "ton",
+              "text": "ด่วนมากครับ เรากินข้าวตอนเช้าหรือตอนบ่ายดีครับ",
+              "english": "Very urgent. Shall we eat in the morning or the afternoon?"
+            },
+            {
+              "speaker": "pastor",
+              "text": "ตอนเช้าครับ เรากินตอนสิบเอ็ดโมง ดีไหมครับ",
+              "english": "In the morning. We will eat at eleven. Is that good?"
+            },
+            {
+              "speaker": "sam",
+              "text": "โอเคครับ",
+              "english": "OK."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันตื่นแล้วค่ะ ฉันจะนำส้มตำไปตอนนี้",
+              "english": "I'm up. I'll take the papaya salad now."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมถือผลไม้ไปได้ครับ ผมวิ่งไปเร็วๆ",
+              "english": "I can carry the fruit. I'll run there."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้ามัดผ้าบนหลังคาแล้วค่ะ ป้ากลัวพายุ",
+              "english": "I tied the cloth down on the roof. I'm afraid of the storm."
+            },
+            {
+              "speaker": "ton",
+              "text": "เรียบร้อยครับ บอลอยู่บ้านกับยาย",
+              "english": "All done. Ball is at home with Grandmother."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ขอบใจมากครับพี่น้อง ที่ช่วยเปลี่ยนเวลาให้",
+              "english": "Thank you all very much for helping change the time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันที่ 15 เดือนพฤศจิกายน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "pastor",
+              "text": "ขอบคุณพระเจ้าครับ ทุกบ้านปลอดภัย แต่ไฟฟ้าที่ซอยดับตอนเย็น",
+              "english": "Thank God. Every house is safe, but the electricity in the lane went out in the evening."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันตกใจมากค่ะ กิ่งต้นไม้หักลงที่หน้าต่าง",
+              "english": "I was very frightened. A branch broke off and hit the window."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผ้าผืนใหญ่บนหลังคาร้านป้าแดงยังอยู่ครับ",
+              "english": "The big cloth on the roof of Auntie Daeng's shop is still there."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ชายสองคนมาช่วยป้า ป้าขอบใจมากค่ะ",
+              "english": "Two men came to help me. I thank them very much."
+            },
+            {
+              "speaker": "sam",
+              "text": "มีข่าวที่ดีครับ ผมสอนที่โรงเรียนได้แล้ว",
+              "english": "I have good news. I can teach at the school now."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผู้อำนวยการบอกว่า ผมสอนสองวันต่อสัปดาห์ครับ",
+              "english": "The director said I can teach two days a week."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ข่าวนี้ดีมากครับ ขอบคุณพระเจ้า",
+              "english": "This news is very good. Thank God."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตอนนั้นแซมสวมชุดสีฟ้าใช่ไหมครับ ชุดนั้นสวยครับ",
+              "english": "You wore the blue outfit then, didn't you? That outfit is nice."
+            },
+            {
+              "speaker": "sam",
+              "text": "ครับ ผมซื้อที่ตลาดกลางคืนครับ ผมลองกางเกงหลายตัว",
+              "english": "Yes, I bought it at the night bazaar. I tried on many pairs of trousers."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตัวยาวยาวไป ตัวสั้นก็ไม่ดี ไซส์ใหญ่หลวม ไซส์เล็กคับ",
+              "english": "The long pair was too long, the short pair was no good, the big size was loose, and the small size was tight."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเลือกแบบง่ายๆ คู่นี้ผมซื้อตอนคนขายทอนเงินผิด",
+              "english": "I chose a simple style. This pair I bought when the seller gave the wrong change."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขำมากค่ะ แต่คนขายทอนถูกนะคะ",
+              "english": "So funny, but the seller gave the right change."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตลกจริงๆ ครับ แซมไม่โง่เลยครับ",
+              "english": "Really funny. You are not stupid at all."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณมากครับ ผมไม่ได้ซื้อรองเท้าสองคู่นะครับ",
+              "english": "Thank you. I did not buy two pairs of shoes!"
+            },
+            {
+              "speaker": "pastor",
+              "text": "ที่เราคุยกันที่นี่มีประโยชน์มากครับ เราอยู่ไกลกัน แต่โลกเล็กลง",
+              "english": "What we talk about here is very useful. We live far apart, but the world is smaller now."
+            },
+            {
+              "speaker": "pastor",
+              "text": "สิ่งที่ดีที่สุดคือเราอธิษฐานให้กัน จริงๆ แล้วเราเป็นพี่น้องกันครับ",
+              "english": "The best thing is that we pray for one another. Really, we are brothers and sisters."
+            },
+            {
+              "speaker": "mali",
+              "text": "ค่ะ ฉันรักที่นี่มากค่ะ",
+              "english": "Yes. I love it here very much."
+            },
+            {
+              "speaker": "ton",
+              "text": "ครับ ผมนอนก่อนนะครับ",
+              "english": "Yes. I'm going to bed now."
+            },
+            {
+              "speaker": "ton",
+              "text": "ปู่กับย่าของบอลจะมาหาบอลตอนปีใหม่ครับ",
+              "english": "Ball's grandfather and grandmother will come to see Ball at New Year."
+            },
+            {
+              "speaker": "mali",
+              "text": "น้าของฉันกับลุงเล็กก็จะมาด้วยค่ะ ลุงเล็กบอกว่าหมู่บ้านทันสมัยแล้ว มีโรงงานใหม่",
+              "english": "My aunt and Uncle Lek will come too. Uncle Lek says the village is modern now, with a new factory."
+            },
+            {
+              "speaker": "ton",
+              "text": "สมัยนี้ทุกที่เปลี่ยนเร็วครับ",
+              "english": "These days everywhere changes fast."
+            },
+            {
+              "speaker": "pastor",
+              "text": "เอาชาหรือกาแฟดีครับ ผมนำมาให้",
+              "english": "Tea or coffee? I will bring it."
+            },
+            {
+              "speaker": "mali",
+              "text": "ข้อความด่วนจากโรงพยาบาลค่ะ ฉันต้องไปก่อน",
+              "english": "An urgent message from the hospital. I must go first."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

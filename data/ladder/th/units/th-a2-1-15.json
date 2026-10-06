@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-15",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ประเทศไทยในข้อเท็จจริง",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-15",
+    "title": "Thailand in facts (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted; the facts (regions, population figures, customs) are the drafter's general knowledge and have NOT been checked against a source; a native Thai reviewer and a fact-check are needed. The mention of religion and of the king is deliberately brief, factual and respectful."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "nonfiction",
+    "geography",
+    "Thailand",
+    "customs"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "บทที่ 1 ที่ตั้งของประเทศ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ในบทนี้ เราจะดูว่าประเทศนี้อยู่ที่ไหน",
+              "english": "In this chapter we will see where this country is."
+            },
+            {
+              "text": "ประเทศนี้มีสี่ภาค คือ ภาคเหนือ ภาคกลาง ภาคตะวันออก และภาคใต้",
+              "english": "This country has four regions: the north, the centre, the east and the south."
+            },
+            {
+              "text": "ทางเหนือมีภูเขาสูง และมีเชียงใหม่ซึ่งเป็นเมืองใหญ่ เชียงใหม่อยู่ทางเหนือของกรุงเทพ",
+              "english": "In the north there are high mountains, and Chiang Mai, which is a big city. Chiang Mai is north of Bangkok."
+            },
+            {
+              "text": "ตรงกลางมีแม่น้ำกว้างและนาข้าวที่กว้างมาก กรุงเทพอยู่ที่นั่น",
+              "english": "In the middle there are rivers and very wide rice fields. Bangkok is there."
+            },
+            {
+              "text": "ทางตะวันออกมีทะเล และมีเกาะหลายเกาะ คนทางตะวันออกทำงานที่ทะเลมาก",
+              "english": "In the east there is the sea and there are many islands. Many people in the east work at the sea."
+            },
+            {
+              "text": "ทางใต้ก็มีทะเลกว้างเหมือนกัน และมีเกาะสวยๆ ด้วย",
+              "english": "The south has a wide sea too, and beautiful islands as well."
+            },
+            {
+              "text": "คนทางใต้ปลูกยาง และใช้ยางทำของหลายอย่าง",
+              "english": "People in the south plant rubber and use rubber to make many things."
+            },
+            {
+              "text": "ยางขายได้ราคาดี แต่ราคาเปลี่ยนบ่อย",
+              "english": "Rubber sells for a good price, but the price changes often."
+            },
+            {
+              "text": "ทะเลสาบที่ใหญ่ที่สุดของเมืองไทยอยู่ทางใต้",
+              "english": "The biggest lake in Thailand is in the south."
+            },
+            {
+              "text": "ทะเลสาบนั้นกว้างมาก คนไปเที่ยวทะเลสาบทุกปี",
+              "english": "That lake is very wide. People go to visit the lake every year."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "บทที่ 2 คนไทย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ประเทศนี้มีประชากรเจ็ดสิบล้านคน หรือ 70,000,000 คน",
+              "english": "This country has a population of seventy million people, or 70,000,000."
+            },
+            {
+              "text": "กรุงเทพมีประชากรสิบล้านคน",
+              "english": "Bangkok has a population of ten million."
+            },
+            {
+              "text": "เชียงใหม่มีประชากรหนึ่งล้านแปดแสนคน",
+              "english": "Chiang Mai has a population of one million eight hundred thousand."
+            },
+            {
+              "text": "คนไทยพูดภาษาไทย ซึ่งเขียนด้วยตัวหนังสือของไทย",
+              "english": "Thai people speak Thai, which is written in the Thai script."
+            },
+            {
+              "text": "ศาสนาของคนไทยส่วนใหญ่คือศาสนาพุทธ",
+              "english": "The religion of most Thai people is the Buddhist religion."
+            },
+            {
+              "text": "ศาสนาพุทธทำให้มีวัดมากทุกเมือง",
+              "english": "Because of Buddhism there are many temples in every town."
+            },
+            {
+              "text": "คนที่เป็นพุทธไปทำบุญที่วัด และไหว้พระ",
+              "english": "Buddhists go to make merit at the temple and pay respect to the Buddha."
+            },
+            {
+              "text": "ในเมืองไทยยังมีศาสนาหลายอย่าง และคริสตจักรหลายที่",
+              "english": "In Thailand there are also several religions, and several churches."
+            },
+            {
+              "text": "ประเทศนี้มีกษัตริย์ ซึ่งอยู่ที่กรุงเทพ",
+              "english": "This country has a king, who lives in Bangkok."
+            },
+            {
+              "text": "คนไทยรักและไหว้กษัตริย์ของเขา",
+              "english": "Thai people love and pay respect to their king."
+            },
+            {
+              "text": "ในบ้านและในร้าน เรามักเห็นรูปของกษัตริย์",
+              "english": "In homes and shops we often see pictures of the king."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "บทที่ 3 เมืองเก่าและพิพิธภัณฑ์",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อก่อนเชียงใหม่เป็นแคว้นหนึ่ง ชื่อว่าแคว้นล้านนา",
+              "english": "In the past Chiang Mai was a kingdom called Lanna."
+            },
+            {
+              "text": "แคว้นล้านนามีวัด มีเมือง และมีประเพณีของตัวเอง",
+              "english": "The kingdom of Lanna had temples, towns and traditions of its own."
+            },
+            {
+              "text": "ในเชียงใหม่มีพิพิธภัณฑ์หลายที่ ซึ่งเล่าเรื่องของเมืองนี้",
+              "english": "In Chiang Mai there are several museums, which tell the story of this city."
+            },
+            {
+              "text": "พิพิธภัณฑ์เปิดตอนเก้าโมงเช้า และปิดตอนสี่โมงเย็น",
+              "english": "The museum opens at nine in the morning and closes at four in the evening."
+            },
+            {
+              "text": "คนที่โตแล้วจ่ายสามสิบบาท ส่วนเด็กไม่ต้องจ่าย",
+              "english": "Adults pay thirty baht, but children do not have to pay."
+            },
+            {
+              "text": "การไปพิพิธภัณฑ์ช่วยให้เรารู้เรื่องของเมือง",
+              "english": "Going to a museum helps us learn about a town."
+            },
+            {
+              "text": "ในบทต่อไป เราจะดูเรื่องธรรมเนียมของคนไทย",
+              "english": "In the next chapter we will look at the customs of Thai people."
+            },
+            {
+              "text": "เด็กไทยอ่านนิทานที่มีราชสีห์ หมาป่า และหมาจิ้งจอก",
+              "english": "Thai children read stories with a lion, a wolf and a fox."
+            },
+            {
+              "text": "คราวหนึ่ง หมาจิ้งจอกใคร่รู้เรื่องราชสีห์ จึงตรงเข้าไปหา แต่ราชสีห์โกรธและกัด",
+              "english": "Once the fox, curious about the lion, went straight in to him, but the lion got angry and bit."
+            },
+            {
+              "text": "หมาป่าแกล้งพูดดี แต่หมาจิ้งจอกหลีกคำตอบ และพ้นไปได้",
+              "english": "The wolf pretended to speak sweetly, but the fox avoided answering and got clear."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "บทที่ 4 ประเพณีและธรรมเนียม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คนไทยมีประเพณีมาก เช่น ประเพณีปีใหม่ และประเพณีทำบุญ",
+              "english": "Thai people have many traditions, such as the New Year tradition and the merit-making tradition."
+            },
+            {
+              "text": "ในประเพณีนี้ คนไทยไปวัดด้วยกัน",
+              "english": "In these traditions Thai people go to the temple together."
+            },
+            {
+              "text": "คนไทยมีธรรมเนียมไหว้ เมื่อเจอคนที่อายุมาก",
+              "english": "Thai people have a custom of the wai when they meet someone much older."
+            },
+            {
+              "text": "การไหว้ใช้มือสองมือ ความสูงของมือแล้วแต่ว่าไหว้ใคร",
+              "english": "The wai uses both hands. How high the hands go depends on whom one greets."
+            },
+            {
+              "text": "อีกธรรมเนียมหนึ่งคือ การวางรองเท้าไว้ที่ประตู ก่อนเข้าบ้าน",
+              "english": "Another custom is to leave one's shoes at the door before entering a house."
+            },
+            {
+              "text": "ศีรษะเป็นส่วนที่สูงที่สุดของร่างกาย คนไทยจึงไม่จับศีรษะของเขา",
+              "english": "The head is the highest part of the body, so Thai people do not touch another's head."
+            },
+            {
+              "text": "เท้าเป็นส่วนใต้ที่สุด เพราะอย่างนั้นเราไม่ชี้ด้วยเท้า",
+              "english": "The feet are the lowest part, so we do not point with the feet."
+            },
+            {
+              "text": "ถ้าเดินเข้าวัด ควรใส่เสื้อที่สะอาด และมีแขนยาว เราไม่ควรชี้ด้วยนิ้วที่วัดด้วย",
+              "english": "If you walk into a temple, you should wear clean clothes with long sleeves. We should not point with a finger at a temple either."
+            },
+            {
+              "text": "ขาและแขนควรมีผ้าปิดด้วย",
+              "english": "Legs and arms should be covered with cloth too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "บทที่ 5 สำหรับคนมาเที่ยว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คนมาเที่ยวควรเตรียมตัวก่อนมา",
+              "english": "People who come to visit should prepare before they come."
+            },
+            {
+              "text": "ควรไปหาหมอ และรับวัคซีนก่อนมา คนที่อายุมากควรวัดความดันเลือดด้วย",
+              "english": "They should see a doctor and get a vaccine before they come. Older people should have their blood pressure measured too."
+            },
+            {
+              "text": "ถ้ามีบาดแผล ควรทา ยา และปิดด้วยผ้าสะอาด",
+              "english": "If you have a wound, you should put medicine on it and cover it with clean cloth."
+            },
+            {
+              "text": "เวลาร้อน อากาศร้อนมาก ควรดื่มน้ำมากๆ",
+              "english": "When it is hot, the weather is very hot, so you should drink plenty of water."
+            },
+            {
+              "text": "ความร้อนทำให้เราเหนื่อยเร็ว ควรพักในที่ร่ม",
+              "english": "The heat makes us tired quickly, so we should rest in the shade."
+            },
+            {
+              "text": "เด็กที่มีไข้ ไอ และจมูกแดง ควรไปหาหมอ",
+              "english": "A child with a fever, a cough and a red nose should go to a doctor."
+            },
+            {
+              "text": "การเดินทางจากกรุงเทพไปเชียงใหม่ ไปได้ด้วยรถไฟ",
+              "english": "The journey from Bangkok to Chiang Mai can be made by train."
+            },
+            {
+              "text": "ระหว่างทาง เราเห็นนา ภูเขา และทะเลสาบ",
+              "english": "On the way we see rice fields, mountains and lakes."
+            },
+            {
+              "text": "รถไฟกลางคืนมีตู้นอน และคนนั่งรอที่ชานชาลา",
+              "english": "The night train has sleeping carriages, and people wait on the platform."
+            },
+            {
+              "text": "บางครั้งรถไฟล่าช้า เราจึงควรเตรียมอาหารใส่กล่อง",
+              "english": "Sometimes the train is late, so we should prepare food in a box."
+            },
+            {
+              "text": "ควรมีถ้วยกับน้ำ และมีหนังสือสักเล่ม",
+              "english": "We should have a cup and water, and a book."
+            },
+            {
+              "text": "เด็กไม่ควรซนในตู้ และควรหลับตาพักก่อนถึงเมือง",
+              "english": "Children should not be rowdy in the carriage and should rest with eyes closed before reaching the city."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "บทที่ 6 โรงเรียนของเด็กไทย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เด็กไทยไปโรงเรียนตอนเจ็ดโมงครึ่ง",
+              "english": "Thai children go to school at half past seven."
+            },
+            {
+              "text": "ครูเตรียมห้อง จัดโต๊ะ และวางหนังสือไว้ก่อน",
+              "english": "The teacher prepares the room, arranges the desks and puts out books beforehand."
+            },
+            {
+              "text": "ครูแจกหนังสือ และนับเด็กทุกวัน",
+              "english": "The teacher hands out books and counts the children every day."
+            },
+            {
+              "text": "เด็กพร้อมแล้ว ก็ตั้งใจเรียนทั้งเช้า",
+              "english": "When the children are ready, they study carefully until the morning."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

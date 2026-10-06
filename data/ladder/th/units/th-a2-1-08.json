@@ -1,0 +1,395 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-08",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "เช้าของบอล",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-08",
+    "title": "Ball's morning (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting a native Thai reviewer (preferably from Chiang Mai)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily life",
+    "morning routine",
+    "school"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ton": "Ton (man)",
+    "ball": "Ball (boy)"
+  },
+  "sections": [
+    {
+      "title": "ตื่นช้า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เช้านี้เด็กชายบอลตื่นช้ามาก นาฬิกาบอกเจ็ดโมงครึ่ง",
+              "english": "This morning Ball woke up very late. The clock said half past seven."
+            },
+            {
+              "speaker": "ton",
+              "text": "บอล ตื่นได้แล้ว เดี๋ยวไปโรงเรียนช้านะ",
+              "english": "Ball, get up now, or you'll be late for school."
+            },
+            {
+              "speaker": "ball",
+              "text": "ครับพ่อ ผมกำลังจะตื่นครับ",
+              "english": "Yes, Dad. I'm just about to get up."
+            },
+            {
+              "text": "บอลลงจากเตียง แล้วรีบไปอาบน้ำ",
+              "english": "Ball got out of bed and hurried to take a shower."
+            },
+            {
+              "text": "เขาเอาสบู่ล้างตัว แล้วล้างอีกครั้ง",
+              "english": "He washed with soap and then rinsed again."
+            },
+            {
+              "speaker": "ball",
+              "text": "พ่อครับ สบู่หมดแล้ว",
+              "english": "Dad, the soap has run out."
+            },
+            {
+              "speaker": "ton",
+              "text": "เปิดสบู่ใหม่ได้เลย",
+              "english": "Just open a new one."
+            },
+            {
+              "text": "บอลเอาผ้าเช็ดตัวจากพื้น แล้วเช็ดตัว",
+              "english": "Ball picked the towel up from the floor and dried himself."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "แปรงฟัน แต่งตัว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ball",
+              "text": "พ่อครับ วันนี้ผมต้องเล่าเรื่องคืนพายุที่โรงเรียนครับ",
+              "english": "Dad, today I have to tell the story of the storm night at school."
+            },
+            {
+              "speaker": "ton",
+              "text": "ถ้าอย่างนั้น แปรงฟันแล้วเล่าให้พ่อฟังก่อนสิ",
+              "english": "Then brush your teeth and tell it to me first."
+            },
+            {
+              "text": "บอลแปรงฟันไปเล่าไป",
+              "english": "Ball brushed his teeth while telling the story."
+            },
+            {
+              "speaker": "ball",
+              "text": "คืนนั้นพายุมา ฟ้าแลบ ฟ้าร้อง ลมพัดหลังคาร้านป้าแดง",
+              "english": "That night the storm came, with lightning and thunder, and the wind blew at the roof of Auntie Daeng's shop."
+            },
+            {
+              "speaker": "ball",
+              "text": "ไฟดับ มืดมาก กิ่งต้นไม้หัก ต้นไม้ล้ม",
+              "english": "The lights went out. It was very dark. Branches broke and a tree fell."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมตกใจ ผมกลัว ผมตะโกนเรียกพ่อ",
+              "english": "I was shocked. I was afraid. I shouted for my father."
+            },
+            {
+              "speaker": "ball",
+              "text": "แต่ทุกบ้านปลอดภัย แซมเอาเทียนมา ไฟจากเทียนทำให้ป้าแดงยิ้ม",
+              "english": "But every house was safe. Sam brought a candle, and its light made Auntie Daeng smile."
+            },
+            {
+              "speaker": "ball",
+              "text": "เพื่อนบ้านมัดผ้าผืนใหญ่บนหลังคา",
+              "english": "The neighbours tied a big piece of cloth on the roof."
+            },
+            {
+              "speaker": "ton",
+              "text": "ดีมาก แต่อย่าแปรงฟันช้านะ รีบแต่งตัวด้วย",
+              "english": "Very good. But don't brush so slowly. Hurry and get dressed too."
+            },
+            {
+              "text": "ชุดนักเรียนที่พ่อซักเมื่อวาน ตากอยู่ที่หน้าต่าง",
+              "english": "The school uniform that Dad washed yesterday was hanging out to dry at the window."
+            },
+            {
+              "text": "พ่อแขวนเสื้อสีขาวไว้ที่ประตู บอลแต่งตัว แล้วสวมกางเกงสั้นสีดำ",
+              "english": "Dad hung the white shirt on the door. Ball got dressed and put on black shorts."
+            },
+            {
+              "speaker": "ball",
+              "text": "กางเกงตัวนี้คับแล้วครับ ผมโตเร็วมาก เสื้อผ้าคับหมด ต้องซื้อไซส์ใหญ่ขึ้น",
+              "english": "These shorts are tight now. I'm growing fast, and all my clothes are tight. We have to buy a bigger size."
+            },
+            {
+              "speaker": "ton",
+              "text": "วันอาทิตย์เราไปเลือกกางเกงตัวใหม่กัน",
+              "english": "On Sunday we'll go and choose a new pair."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอยากได้ตัวยาวครับ",
+              "english": "I'd like a long pair."
+            },
+            {
+              "text": "พอแต่งตัวแล้ว บอลหวีผมสองครั้ง แต่ผมยังไม่เรียบร้อย",
+              "english": "After getting dressed, Ball combed his hair twice, but it still was not neat."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมหวีได้ครับ ไม่ต้องช่วย หวีอันนี้เก่าแล้ว",
+              "english": "I can comb it. No need to help. This comb is old."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "กินข้าวเช้า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "พ่อชงกาแฟให้ตัวเอง",
+              "english": "Dad made himself a coffee."
+            },
+            {
+              "speaker": "ball",
+              "text": "พ่อครับ ผมชงชาให้พ่อได้ไหมครับ ผมทำเองได้",
+              "english": "Dad, can I make you tea? I can do it myself."
+            },
+            {
+              "speaker": "ton",
+              "text": "ได้ แต่ชงเร็วๆ นะ",
+              "english": "All right, but make it quickly."
+            },
+            {
+              "text": "บอลชงชาแล้วเอามาให้พ่อ",
+              "english": "Ball made the tea and brought it to his father."
+            },
+            {
+              "text": "บอลกินข้าวกับไข่ แล้วแบ่งไข่ให้พ่อ",
+              "english": "Ball ate rice with an egg and shared some egg with his father."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เก็บของใส่กระเป๋า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "ตรวจของในกระเป๋าด้วยนะ ต้องมีสมุด ปากกา ดินสอ",
+              "english": "Check the things in your bag too. You need a notebook, a pen and a pencil."
+            },
+            {
+              "speaker": "ball",
+              "text": "ปากกาอยู่ครับ ดินสออยู่ครับ แต่มันอยู่ที่ไหนครับ",
+              "english": "The pen is here, and the pencil is here, but where is it?"
+            },
+            {
+              "speaker": "ton",
+              "text": "อยู่ในห้องของบอลไหม",
+              "english": "Is it in your room?"
+            },
+            {
+              "text": "บอลหาในห้อง เขาเจอปากกา เจอดินสอ แต่ไม่เจอสมุด",
+              "english": "Ball looked in his room. He found a pen and a pencil, but not the notebook."
+            },
+            {
+              "speaker": "ton",
+              "text": "การบ้านอยู่ในนั้นใช่ไหม",
+              "english": "Is your homework in it?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ใช่ครับ ผมเขียนการบ้านเมื่อวาน ผมเขียนเรื่องคืนพายุในสมุด",
+              "english": "Yes. I wrote my homework yesterday. I wrote the story of the storm night in the notebook."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไม่เป็นไร บอลเล่าได้แล้ว เพราะเล่าให้พ่อฟังแล้ว",
+              "english": "Never mind. You can tell it, because you've already told me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "รีบไปโรงเรียน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "บอลรีบผูกรองเท้า เขาผูกเอง แต่ผูกช้า",
+              "english": "Ball hurried to tie his shoes. He tied them himself, but slowly."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผูกเร็วๆ นะ รถแถวมาแล้ว",
+              "english": "Tie them quickly. The songthaew is here."
+            },
+            {
+              "speaker": "ton",
+              "text": "อย่าลืมตากผ้าเช็ดตัวนะ",
+              "english": "Don't forget to hang the towel out to dry."
+            },
+            {
+              "text": "บอลแขวนผ้าเช็ดตัวไว้ที่หน้าต่าง แล้วแขวนเสื้อเก่าอีกตัว แล้วตากอีกผืน",
+              "english": "Ball hung the towel at the window, hung up another old shirt, and put another cloth out to dry."
+            },
+            {
+              "text": "เด็กชายบอลสะพายกระเป๋า พ่อสะพายกระเป๋าของพ่อ",
+              "english": "Ball slung his bag over his shoulder, and Dad slung his own bag."
+            },
+            {
+              "text": "พ่อพาบอลไปที่รถแถว เขาถือกระเป๋าให้บอล",
+              "english": "Dad took Ball to the songthaew and carried his bag for him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ในรถแถว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ball",
+              "text": "พ่อครับ เมื่อคืนยายเล่าเรื่องเสือกับลิงให้ผมฟัง",
+              "english": "Dad, last night Grandmother told me the story of the tiger and the monkey."
+            },
+            {
+              "speaker": "ball",
+              "text": "ในป่ามีเสือตัวหนึ่ง มันไล่ลิง ลิงหนีเข้าถ้ำ ซ่อนอยู่ในนั้น",
+              "english": "In the forest there was a tiger. It chased a monkey, and the monkey ran into a cave and hid inside."
+            },
+            {
+              "speaker": "ball",
+              "text": "ลิงฉลาด ลิงหลอกเสือ เสือโง่",
+              "english": "The monkey is clever. The monkey tricked the tiger. The tiger is stupid."
+            },
+            {
+              "speaker": "ton",
+              "text": "ดีมาก ตอนเด็กๆ พ่อสะพายกระเป๋าไปโรงเรียนไกล ยายก็เล่าเรื่องนี้ให้พ่อฟัง",
+              "english": "Very good. When I was a child, I carried my bag to a far school, and Grandmother told me this story too."
+            },
+            {
+              "speaker": "ball",
+              "text": "ยายบอกว่าหมู่บ้านของยายเปลี่ยนไป ทันสมัยแล้ว",
+              "english": "Grandmother says her village has changed. It is modern now."
+            },
+            {
+              "speaker": "ball",
+              "text": "มีไฟฟ้า มีโรงงาน มีไร่ข้าวโพด และมีบ่อเก่า",
+              "english": "There is electricity, a factory, corn fields and an old well."
+            },
+            {
+              "speaker": "ton",
+              "text": "เรื่องที่ยายเล่าเป็นเรื่องจริง การเล่าเรื่องมีประโยชน์ เพราะทำให้เรารู้เรื่องของโลก",
+              "english": "What Grandmother tells is true. Telling stories is useful, because it lets us learn about the world."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่โรงเรียน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "รถแถวถึงโรงเรียน บอลให้เงินยี่สิบบาท ลุงทอนเงินสิบห้าบาท",
+              "english": "The songthaew reached the school. Ball gave twenty baht and the old man gave fifteen baht change."
+            },
+            {
+              "text": "ครูถามบอลว่า วันนี้ใครเล่าเรื่องก่อน",
+              "english": "The teacher asked who would tell their story first."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมเล่าก่อนครับ สิ่งที่ผมลืมคือสมุด แต่ผมจำได้ครับ",
+              "english": "I will go first. The thing I forgot is my notebook, but I remember it."
+            },
+            {
+              "text": "ครูอยากดูการบ้านของบอล แต่บอลยืนอยู่ในห้อง เขาเล่าเรื่องพายุให้เพื่อนๆ ฟัง",
+              "english": "The teacher wanted to see Ball's homework, but Ball stood in the room and told his friends the story of the storm."
+            },
+            {
+              "text": "ครูตอบว่า ดีมาก แล้วยิ้ม ท้องฟ้าวันนี้สีฟ้าสวย",
+              "english": "The teacher answered, \"Very good,\" and smiled. Today the sky was a pretty blue."
+            },
+            {
+              "text": "ตอนบ่าย พ่อนำสมุดมา แล้วฝากไว้กับครู ครูรับสมุดแล้วให้บอล มันอยู่ใต้เตียงมาตลอด",
+              "english": "In the afternoon Dad brought the notebook and left it with the teacher. The teacher took it and gave it to Ball. It had been under the bed all along."
+            },
+            {
+              "speaker": "ton",
+              "text": "พรุ่งนี้อย่าลืมมันอีกนะ จดไว้ด้วย",
+              "english": "Tomorrow don't forget it again. Make a note of it."
+            },
+            {
+              "speaker": "ball",
+              "text": "ครับพ่อ ผมจะเก็บมันไว้ในกระเป๋าเองครับ",
+              "english": "Yes, Dad. I will keep it in my bag myself."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

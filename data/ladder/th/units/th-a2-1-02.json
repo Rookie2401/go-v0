@@ -1,0 +1,434 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-02",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "หมู่บ้านเมื่อก่อนและตอนนี้",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-02",
+    "title": "Our village then and now (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting a native Thai reviewer (preferably from Chiang Mai)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "explanation",
+    "village life",
+    "change"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "mali": "Mali (woman)",
+    "sam": "Sam (man)",
+    "lek": "Uncle Lek (man)",
+    "boy": "Boy (boy)",
+    "yai": "Mali's grandmother (woman)"
+  },
+  "sections": [
+    {
+      "title": "ไปหมู่บ้านของยาย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันนี้มะลิกับแซมไปหมู่บ้านของยายที่ลำพูน",
+              "english": "Today Mali and Sam go to Mali's grandmother's village in Lamphun."
+            },
+            {
+              "text": "หมู่บ้านอยู่ไม่ไกลจากเมือง เขานั่งรถแถวไป",
+              "english": "The village is not far from the town. They go by songthaew."
+            },
+            {
+              "speaker": "mali",
+              "text": "แซมคะ ที่นี่เปลี่ยนไปมากนะคะ",
+              "english": "Sam, this place has changed a lot."
+            },
+            {
+              "speaker": "mali",
+              "text": "เมื่อก่อนไม่มีไฟฟ้า ตอนนี้มีทุกบ้านค่ะ",
+              "english": "In the past there was no electricity. Now every house has it."
+            },
+            {
+              "speaker": "sam",
+              "text": "เมื่อก่อนที่นี่ทำอะไรกันครับ",
+              "english": "What did people do here in the past?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเกิดที่เชียงใหม่ ไม่ได้อยู่ที่นี่ค่ะ ไปคุยกับลุงเล็กดีกว่า",
+              "english": "I was born in Chiang Mai and did not live here. It would be better to talk to Uncle Lek."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ลุงเล็กเล่า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ชายซึ่งนั่งอยู่ใต้ต้นไม้คือลุงเล็ก",
+              "english": "The man sitting under the tree is Uncle Lek."
+            },
+            {
+              "speaker": "lek",
+              "text": "เมื่อก่อนหมู่บ้านนี้เล็กมากครับ",
+              "english": "In the past this village was very small."
+            },
+            {
+              "speaker": "lek",
+              "text": "ไม่มีไฟฟ้า ตอนคืนเรานั่งคุยกันที่บ้าน",
+              "english": "There was no electricity. At night we sat and talked at home."
+            },
+            {
+              "speaker": "lek",
+              "text": "ตอนนี้ทุกอย่างเปลี่ยนไป หมู่บ้านทันสมัยมากครับ",
+              "english": "Now everything has changed. The village is very modern."
+            },
+            {
+              "speaker": "sam",
+              "text": "อะไรเปลี่ยนมากที่สุดครับ จริงไหมครับที่เมื่อก่อนไม่มีไฟฟ้า",
+              "english": "What changed the most? Is it true that there was no electricity in the past?"
+            },
+            {
+              "speaker": "lek",
+              "text": "ไฟฟ้าครับ ไฟฟ้ามีประโยชน์มาก",
+              "english": "Electricity. Electricity is very useful."
+            },
+            {
+              "speaker": "lek",
+              "text": "ตอนนี้มีของทันสมัยหลายอย่าง เช่นโทรทัศน์ โทรศัพท์ และรถ",
+              "english": "Now there are many modern things, such as television, telephones and cars."
+            },
+            {
+              "speaker": "lek",
+              "text": "โทรศัพท์ก็มีประโยชน์มาก เราคุยกับลูกหลานได้ทุกวัน",
+              "english": "Telephones are very useful too. We can talk to our children and grandchildren every day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ถนนและโรงเรียน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "lek",
+              "text": "ถนนซึ่งเมื่อก่อนเล็กและเก่า ตอนนี้ใหม่ ใหญ่ และสะอาด",
+              "english": "The road, which was small and old in the past, is now new, big and clean."
+            },
+            {
+              "speaker": "sam",
+              "text": "ถนนใหม่มีประโยชน์ไหมครับ",
+              "english": "Is the new road useful?"
+            },
+            {
+              "speaker": "lek",
+              "text": "มีประโยชน์มากครับ แต่รถก็มากด้วย",
+              "english": "Very useful, but there are a lot of vehicles too."
+            },
+            {
+              "speaker": "lek",
+              "text": "เมื่อก่อนโรงเรียนมีห้องเดียว ครูคนเดียว",
+              "english": "In the past the school had one room and one teacher."
+            },
+            {
+              "speaker": "lek",
+              "text": "ตอนนี้มีเด็กหลายร้อยคน",
+              "english": "Now there are hundreds of children."
+            },
+            {
+              "speaker": "lek",
+              "text": "เด็กชายหลายคนไปเรียนที่เมือง",
+              "english": "Many of the boys go to school in town."
+            },
+            {
+              "speaker": "lek",
+              "text": "ส่วนวัดยังใหญ่และสวยเหมือนเมื่อก่อนครับ",
+              "english": "As for the temple, it is still big and beautiful, as before."
+            },
+            {
+              "text": "เด็กชายคนหนึ่งวิ่งมาหาลุงเล็ก",
+              "english": "A boy runs up to Uncle Lek."
+            },
+            {
+              "speaker": "boy",
+              "text": "ลุงครับ แม่ให้ผมมาเรียกไปกินข้าวครับ",
+              "english": "Uncle, Mother sent me to call you to eat."
+            },
+            {
+              "speaker": "lek",
+              "text": "ไปก่อนนะ เดี๋ยวลุงไป",
+              "english": "Go ahead, I'll come in a moment."
+            },
+            {
+              "speaker": "lek",
+              "text": "ส่วนเด็กๆ สมัยนี้ ไม่ชอบทำนาแล้วครับ",
+              "english": "As for the children of today, they don't like farming any more."
+            },
+            {
+              "speaker": "lek",
+              "text": "ที่วัดมีบ่อใหญ่ เมื่อก่อนเราเอาน้ำจากบ่อ",
+              "english": "At the temple there is a big well. In the past we took our water from it."
+            },
+            {
+              "speaker": "lek",
+              "text": "ตอนนี้ทุกบ้านมีน้ำ แต่บ่อยังอยู่",
+              "english": "Now every house has water, but the well is still there."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "นาและโรงงาน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "lek",
+              "text": "เมื่อก่อนทุกบ้านทำนา",
+              "english": "In the past every household farmed rice."
+            },
+            {
+              "speaker": "lek",
+              "text": "เดือนพฤษภาคมฝนเริ่มตก เรากับควายไปที่นา",
+              "english": "In May the rain began, and we went to the fields with the buffalo."
+            },
+            {
+              "speaker": "lek",
+              "text": "เดือนพฤศจิกายนข้าวเป็นสีเหลือง เราเก็บข้าว",
+              "english": "In November the rice turned yellow, and we harvested it."
+            },
+            {
+              "speaker": "lek",
+              "text": "ตอนนี้บ้านหลายหลังทำไร่ข้าวโพด",
+              "english": "Now many households have corn fields."
+            },
+            {
+              "speaker": "lek",
+              "text": "ข้าวโพดเก็บง่าย ข้าวโพดขายได้ราคาดี แต่เราต้องกินข้าว",
+              "english": "Corn is easy to harvest and sells at a good price, but we have to eat rice."
+            },
+            {
+              "speaker": "sam",
+              "text": "ควายยังมีไหมครับ",
+              "english": "Are there still buffalo?"
+            },
+            {
+              "speaker": "lek",
+              "text": "มีไม่มากครับ ตอนนี้ทุกบ้านมีรถ",
+              "english": "Not many. Now every house has a vehicle."
+            },
+            {
+              "speaker": "lek",
+              "text": "ใกล้ถนนใหญ่มีโรงงานใหม่",
+              "english": "Near the main road there is a new factory."
+            },
+            {
+              "speaker": "lek",
+              "text": "โรงงานซึ่งอยู่ใกล้วัดมีงานให้คนหลายคน",
+              "english": "The factory, which is near the temple, has jobs for many people."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "lek",
+              "text": "ลูกหลานหลายคนทำงานที่โรงงาน",
+              "english": "Many of the young people work at the factory."
+            },
+            {
+              "speaker": "lek",
+              "text": "เรามีเงินพอกิน แต่ไม่ใช่ทุกบ้านมีงาน",
+              "english": "We have enough money to eat, but not every household has work."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ลุงชอบอะไร",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ลุงชอบอะไรที่สุดครับ",
+              "english": "What do you like best?"
+            },
+            {
+              "speaker": "lek",
+              "text": "สิ่งที่ลุงชอบที่สุดคือเสียงเด็กๆ ครับ",
+              "english": "The thing I like best is the sound of the children."
+            },
+            {
+              "speaker": "lek",
+              "text": "ส่วนสิ่งที่ลุงไม่ชอบคือถนนที่มีรถมาก",
+              "english": "The thing I don't like is the road with so many vehicles."
+            },
+            {
+              "speaker": "lek",
+              "text": "คนทั้งโลกเปลี่ยน หมู่บ้านของเราก็เปลี่ยน",
+              "english": "People all over the world change, and our village changes too."
+            },
+            {
+              "speaker": "lek",
+              "text": "เมื่อก่อนโลกของเราเล็กมาก ตอนนี้ทุกอย่างเร็วขึ้นจริงๆ",
+              "english": "In the past our world was very small. Now everything is really faster."
+            },
+            {
+              "speaker": "lek",
+              "text": "สมัยนี้โลกเล็กลงนะครับ แซมมาจากอเมริกาได้ในหนึ่งวัน",
+              "english": "These days the world has become smaller. Sam can come from America in a single day."
+            },
+            {
+              "speaker": "sam",
+              "text": "จริงครับ เมื่อวานนี้ผมยังอยู่ที่อเมริกา",
+              "english": "True. Yesterday I was still in America."
+            },
+            {
+              "speaker": "lek",
+              "text": "ไม่ใช่ทุกอย่างที่ใหม่ดี และไม่ใช่ทุกอย่างที่เก่าไม่ดี",
+              "english": "Not everything new is good, and not everything old is bad."
+            },
+            {
+              "speaker": "lek",
+              "text": "เราต้องเก็บสิ่งเก่าที่ดี เช่นวัดและครกของยาย",
+              "english": "We must keep the good old things, such as the temple and Grandmother's mortar."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ข้าวกลางวันของยาย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "บ้านของยายเป็นบ้านหลังเก่าสีดำ",
+              "english": "Grandmother's house is an old black house."
+            },
+            {
+              "speaker": "yai",
+              "text": "มาสิคะ แซม ยายทำส้มตำ",
+              "english": "Come on, Sam. I made papaya salad."
+            },
+            {
+              "speaker": "yai",
+              "text": "ยายหั่นมะละกอ ใส่มะนาว น้ำตาล พริก ถั่ว และน้ำปลา",
+              "english": "I cut up papaya and put in lime, sugar, chilli, peanuts and fish sauce."
+            },
+            {
+              "speaker": "yai",
+              "text": "น้ำปลาขวดเล็กนี้ยายซื้อที่ตลาดค่ะ",
+              "english": "I bought this little bottle of fish sauce at the market."
+            },
+            {
+              "speaker": "yai",
+              "text": "ยายตำในครกใบเก่า ครกใบนี้ไม่ใช่ของทันสมัยค่ะ",
+              "english": "I pound it in the old mortar. This mortar is not modern."
+            },
+            {
+              "speaker": "yai",
+              "text": "แต่ยายชอบของเก่า เช่นครกกับหม้อค่ะ",
+              "english": "But I like old things, such as the mortar and the pot."
+            },
+            {
+              "speaker": "mali",
+              "text": "ชิมสิคะ แซม",
+              "english": "Taste it, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "อร่อยมากครับ เปรี้ยว หวาน เค็ม เผ็ด",
+              "english": "Delicious. Sour, sweet, salty, spicy."
+            },
+            {
+              "speaker": "yai",
+              "text": "ยายใส่ปูด้วยนะคะ ปูตัวเล็กๆ จากนา",
+              "english": "I put crab in too. Little crabs from the rice field."
+            },
+            {
+              "speaker": "yai",
+              "text": "ข้าวอยู่ในหม้อดำใบนั้น ข้าวพอไหมคะ",
+              "english": "The rice is in that black pot. Is there enough rice?"
+            },
+            {
+              "speaker": "sam",
+              "text": "พอครับ อิ่มมากครับ",
+              "english": "That's enough, thank you. I'm very full."
+            },
+            {
+              "speaker": "mali",
+              "text": "เดือนมีนาคมที่นี่ร้อนที่สุดค่ะ",
+              "english": "In March it is hottest here."
+            },
+            {
+              "speaker": "mali",
+              "text": "เดือนกรกฎาคมฝนตกทุกวัน เดือนกันยายนนาเขียวสวยมาก",
+              "english": "In July it rains every day. In September the fields are beautifully green."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากมาอีกในเดือนกันยายนครับ",
+              "english": "I'd like to come again in September."
+            },
+            {
+              "speaker": "lek",
+              "text": "หมู่บ้านใหม่แล้ว แต่ส้มตำของยายอร่อยเหมือนเมื่อก่อนจริงๆ ครับ",
+              "english": "The village is new now, but Grandmother's papaya salad is really as good as in the old days."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-17",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "กบ หนู และเหยี่ยว",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-17",
+    "title": "The frog, the mouse and the hawk (a fable retold, 2) (ladder unit, adapted and machine-drafted)",
+    "author": "Go course authors (drafted by an AI model), after พระยาเมธาธิบดี (สาตร สุทธเสถียร)",
+    "edition": "Thai Wikisource revision 145414 (transcription of the 1956 translation, นิทานอีสป)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=145414",
+    "attribution": "Adapted from \"หนู กบ กับเหยี่ยว\" in พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499), Thai Wikisource transcription (https://th.wikisource.org/w/index.php?oldid=145414), CC BY-SA 4.0. This is a simplified retelling written for the course ladder; it is an adaptation, not the original text. Adapted and machine-drafted; not reviewed by a native speaker. Share-alike: CC BY-SA 4.0.",
+    "provenance": "Retold for learners in the vocabulary of the Thai ladder from the library fable \"หนู กบ กับเหยี่ยว\" (th-gap-recovery-aesop-32; พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป, 2499, Thai Wikisource revision 145414). The retelling is machine-drafted by an AI model, shorter and simpler than the original, with the old-style small words kept on purpose (the fable register of the ladder's plan); not reviewed by a native speaker. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). The underlying 2499 translation is recorded by Wikisource as public domain; the Wikisource transcription is under CC BY-SA 4.0, so this adaptation carries the attribution and the share-alike term. Changes: simplified and shortened retelling, new sentences. Machine-drafted, not yet native-reviewed.",
+    "licence": "CC BY-SA 4.0, adapted (share-alike)",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted adaptation of a public-domain fable (via a CC BY-SA 4.0 transcription); awaiting a native Thai reviewer. For the reviewer: เจ้า, เอ็ง and ข้า are the old fable pronouns, used here only in the speech of the frog and of the tortoise; แล, ต่าง, ไม่ทัน, เพลิน and หากิน are deliberate fable register. The final conversation of the tortoise and the rabbit is an addition to the original."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "fable",
+    "narrative",
+    "animals"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "frog": "Frog (animal)",
+    "turtle": "Tortoise (animal)",
+    "rabbit": "Rabbit (animal)"
+  },
+  "sections": [
+    {
+      "title": "หนูกับกบ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หนูตัวหนึ่งเที่ยวหากินอยู่ที่นา ทุกเช้าทุกเย็น",
+              "english": "A mouse went about looking for food in the fields, every morning and evening."
+            },
+            {
+              "text": "วันหนึ่ง มันพบเพื่อนใหม่ที่บ่อ",
+              "english": "One day it met a new friend at the pond."
+            },
+            {
+              "text": "เพื่อนใหม่ของมันคือกบตัวหนึ่ง",
+              "english": "Its new friend was a frog."
+            },
+            {
+              "text": "ทั้งสองต่างชอบกัน และพูดว่า จะเป็นเพื่อนกันเสมอ",
+              "english": "The two liked each other and said they would always be friends."
+            },
+            {
+              "text": "จากนั้น เขาก็ไปหากินด้วยกัน ทั้งเช้าและเย็น",
+              "english": "After that they went looking for food together, morning and evening."
+            },
+            {
+              "text": "กบเป็นสัตว์เดินช้า หนูเป็นสัตว์เดินเร็ว",
+              "english": "The frog was a slow walker, and the mouse a fast one."
+            },
+            {
+              "text": "หนูต้องรอกบทุกวัน กบจึงเหนื่อยมาก",
+              "english": "The mouse had to wait for the frog every day, and the frog got very tired."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ผูกตีนติดกัน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันหนึ่ง กบพูดกับหนูว่า",
+              "english": "One day the frog said to the mouse:"
+            },
+            {
+              "speaker": "frog",
+              "text": "เอ็งกับข้าเป็นเพื่อนกันแล้ว",
+              "english": "You and I are friends now."
+            },
+            {
+              "speaker": "frog",
+              "text": "แต่ข้าเดินช้า เอ็งเดินเร็ว เอ็งไปไม่รอข้า",
+              "english": "But I walk slowly and you walk fast. You go without waiting for me."
+            },
+            {
+              "text": "หนูถามว่า จะทำอย่างไรดี",
+              "english": "The mouse asked what they should do."
+            },
+            {
+              "speaker": "frog",
+              "text": "เรามาผูกตีนติดกันเถิด",
+              "english": "Let us tie our feet together."
+            },
+            {
+              "speaker": "frog",
+              "text": "เจ้ากับข้าจะได้ไปด้วยกันเสมอ",
+              "english": "That way you and I will always go together."
+            },
+            {
+              "text": "หนูว่าดี มันไม่ถามอะไรอีก",
+              "english": "The mouse thought it was good and asked nothing more."
+            },
+            {
+              "text": "ทั้งสองผูกกัน แล้วก็ไปด้วยกัน ต่างมีความสุขมาก",
+              "english": "The two tied themselves together and went on together, each very happy."
+            },
+            {
+              "text": "แต่กบไม่ได้บอกหนูว่า มันอยากว่ายน้ำ",
+              "english": "But the frog did not tell the mouse that it wanted to swim."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ทะเลสาบใหญ่",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ไปได้ไม่ไกล ทั้งสองก็เจอทะเลสาบใหญ่",
+              "english": "They had not gone far when they came to a big lake."
+            },
+            {
+              "text": "น้ำในทะเลสาบเย็นและสะอาด น่าว่ายน้ำมาก",
+              "english": "The water in the lake was cool and clean, very inviting for a swim."
+            },
+            {
+              "text": "น้ำนั้นน่าเล่นด้วย ทะเลสาบน่าดูมาก",
+              "english": "That water looked good to play in too. The lake was lovely to look at."
+            },
+            {
+              "text": "กบดีใจมาก มันกระโดดลงน้ำ",
+              "english": "The frog was delighted and jumped into the water."
+            },
+            {
+              "text": "กบว่ายน้ำเพลิน เพลินมาก ลืมว่าตีนติดอยู่กับหนู",
+              "english": "The frog swam happily, so happily that it forgot its foot was tied to the mouse."
+            },
+            {
+              "text": "หนูไม่ใช่สัตว์น้ำ ว่ายน้ำไม่เป็น",
+              "english": "The mouse was not a water animal and could not swim."
+            },
+            {
+              "text": "เมื่อกบลงน้ำ หนูก็ตกไปในน้ำด้วย",
+              "english": "When the frog went into the water, the mouse fell in too."
+            },
+            {
+              "text": "สัตว์ในป่าต่างพูดถึงเรื่องนี้ไปทั่ว",
+              "english": "The animals of the forest all talked about this everywhere."
+            },
+            {
+              "text": "หนูไม่ทันพูดอะไร มันตะโกนว่า ช่วยด้วย หนูหนีไม่ทัน",
+              "english": "The mouse had no time to say anything; it shouted, \"Help!\" It could not get away in time."
+            },
+            {
+              "text": "แต่กบยังเพลินอยู่ ไม่ได้ยินเสียงหนู",
+              "english": "But the frog was still absorbed and did not hear the mouse."
+            },
+            {
+              "text": "ไม่นาน หนูก็ตายอยู่บนน้ำ",
+              "english": "Before long the mouse lay dead on the water."
+            },
+            {
+              "text": "ครั้นกบเห็นหนูตาย มันก็ร้องไห้",
+              "english": "When the frog saw the dead mouse, it cried."
+            },
+            {
+              "text": "กบแลดูหนูที่ตายแล้ว มันอยากหนีไป แต่กระโดดไม่ทัน",
+              "english": "The frog looked at the dead mouse. It wanted to get away, but could not jump in time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เหยี่ยว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนนั้น มีเหยี่ยวตัวหนึ่งบินอยู่เหนือทะเลสาบ",
+              "english": "At that moment a hawk was flying above the lake."
+            },
+            {
+              "text": "มันบินหากินทุกวัน และชอบสัตว์ตัวเล็กๆ",
+              "english": "It flew about looking for food every day and liked small animals."
+            },
+            {
+              "text": "มันแลลงมา เห็นหนูตายอยู่บนน้ำ กบแลขึ้นไป เห็นเหยี่ยว",
+              "english": "It looked down and saw the dead mouse on the water. The frog looked up and saw the hawk."
+            },
+            {
+              "text": "เหยี่ยวบินลงมาอย่างเร็ว แล้วจับตีนหนูไป",
+              "english": "The hawk flew down fast and seized the mouse by its foot."
+            },
+            {
+              "text": "กบติดอยู่กับหนู จึงถูกพาไปด้วย",
+              "english": "The frog, tied to the mouse, was carried off too."
+            },
+            {
+              "text": "กบพูดว่า ข้าพเจ้าทำผิดแล้ว ข้าไม่เคยนึกถึงผู้อื่นเลย",
+              "english": "The frog said, \"I did wrong. I never thought of others at all.\""
+            },
+            {
+              "text": "แต่ไม่มีใครได้ยินมัน",
+              "english": "But nobody heard it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "สัตว์อื่นพูดกัน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันหนึ่ง สัตว์อื่นในป่าได้ยินเรื่องนี้ เต่ากับกระต่ายพูดกัน",
+              "english": "One day the other animals of the forest heard of this. The tortoise and the rabbit talked about it."
+            },
+            {
+              "speaker": "turtle",
+              "text": "เจ้าเห็นไหม กบทำให้เพื่อนตาย",
+              "english": "Did you see? The frog caused his friend's death."
+            },
+            {
+              "speaker": "rabbit",
+              "text": "เจ้าพูดถูก กบเพลินมาก ลืมเพื่อนไปเลย",
+              "english": "You are right. The frog got so carried away that it forgot its friend."
+            },
+            {
+              "speaker": "turtle",
+              "text": "เราเดินช้า แต่เราไม่เคยลืมเพื่อน",
+              "english": "We walk slowly, but we never forget a friend."
+            },
+            {
+              "speaker": "rabbit",
+              "text": "เราไม่ควรทำอะไรเพื่อตัวเองอย่างเดียว",
+              "english": "We should not do things only for ourselves."
+            },
+            {
+              "speaker": "turtle",
+              "text": "เราเคยได้ยินเรื่องราชสีห์ ราชสีห์โกรธ แล้วตรงเข้าไปกัดหมาป่า",
+              "english": "I have heard the story of the lion. The lion got angry and rushed in and bit the wolf."
+            },
+            {
+              "speaker": "turtle",
+              "text": "แต่หมาจิ้งจอกหลีกคำถามได้ และพ้นจากราชสีห์",
+              "english": "But the fox avoided the question and got clear of the lion."
+            },
+            {
+              "speaker": "rabbit",
+              "text": "ส่วนหมาจิ้งจอกตัวนั้นแกล้งป่วย เพราะราชสีห์ใคร่รู้เรื่องปากของมัน คราวนั้นหมาป่าไม่ฉลาด",
+              "english": "As for that fox, he pretended to be ill, because the lion was keen to know about his own mouth. That time the wolf was not clever."
+            },
+            {
+              "speaker": "rabbit",
+              "text": "ยังมีเรื่องบุตรที่ไปไกล เขาเอามรดกไปใช้หมด หิวโหยมาก ต้องเลี้ยงหมูป่า",
+              "english": "There is also the story of the son who went far away. He spent his inheritance, and was so starving that he had to look after wild pigs."
+            },
+            {
+              "speaker": "turtle",
+              "text": "แต่บิดาต้อนรับเขา และใส่แหวนให้เขาที่นิ้ว",
+              "english": "But his father welcomed him and put a ring on his finger."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คำสอน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คนที่ไม่นึกถึงผู้อื่น ก็ทำให้ตัวเองเสียหาย",
+              "english": "A person who does not think of others will do harm to himself too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

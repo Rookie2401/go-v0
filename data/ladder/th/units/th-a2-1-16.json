@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-16",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ลูกชายที่ไปจากบ้าน",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-16",
+    "title": "The son who left home (a retelling of Luke 15) (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted retelling of the parable in Luke 15:11-32, in the course's own simple words (it quotes neither the OTCV nor any other Thai Bible). Needs a Scripture-competent reviewer as well as a native linguistic reviewer. Register: ท่าน and ข้าพเจ้า are used by the sons in a few key lines to the father, and ครั้น and เถิด in narration and speech, as deliberate written register; the speakers use no ครับ or ค่ะ because the story is told as a parable. Check the details (the ring, the robe, the shoes, the meal) against the passage."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "scripture",
+    "parable",
+    "retelling",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "needs-scripture-reviewer"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "scripture"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "younger": "Younger son (man)",
+    "father": "Father (man)",
+    "elder": "Older son (man)",
+    "servant": "Servant (man)"
+  },
+  "sections": [
+    {
+      "title": "พระเยซูเล่าเรื่อง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ครั้งหนึ่ง พระเยซูเล่าเรื่องให้คนฟัง",
+              "english": "Once Jesus told the people a story."
+            },
+            {
+              "text": "บิดาคนหนึ่งมีบุตรสองคน",
+              "english": "A father had two sons."
+            },
+            {
+              "text": "บุตรคนโตอยู่กับบิดา และช่วยทำงานทุกวัน",
+              "english": "The older son stayed with his father and helped with the work every day."
+            },
+            {
+              "text": "บุตรคนเล็กไม่อยากอยู่ที่บ้านอีก",
+              "english": "The younger son did not want to stay at home any longer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ขอมรดก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คนเล็กไปหาพ่อ และพูดว่า",
+              "english": "The younger one went to his father and said:"
+            },
+            {
+              "speaker": "younger",
+              "text": "ท่านพ่อ ขอมรดกส่วนของลูก ลูกอยากไปจากที่นี่",
+              "english": "Father, give me my share of the inheritance. I want to leave this place."
+            },
+            {
+              "text": "พ่อฟังแล้วก็ไม่พูดอะไร แต่ไม่โกรธ",
+              "english": "The father listened and said nothing, but he was not angry."
+            },
+            {
+              "text": "ครั้นแล้ว เขาแบ่งมรดกให้ลูกสองคน",
+              "english": "Then he divided the inheritance between his two sons."
+            },
+            {
+              "text": "ประเพณีของที่นั่นคือ ลูกคนโตได้ส่วนที่ใหญ่กว่า",
+              "english": "The custom there was that the older son got the larger share."
+            },
+            {
+              "text": "บุตรคนเล็กเอามรดกของเขา แล้วรีบไปจากบ้าน",
+              "english": "The younger son took his inheritance and hurried away from home."
+            },
+            {
+              "text": "เขาไปประเทศที่ไกลมาก ทางตะวันออก ไม่ต้องทำงาน ไม่ต้องฟังใคร",
+              "english": "He went to a country far away in the east, where he did not have to work or listen to anyone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ใช้เงินหมด",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ที่นั่นเขามีเพื่อนมาก เพราะเขามีเงิน",
+              "english": "There he had many friends, because he had money."
+            },
+            {
+              "text": "เขากินอย่างดี ซื้อเสื้อสวยๆ และเที่ยวทุกวัน",
+              "english": "He ate well, bought nice clothes and went out every day."
+            },
+            {
+              "text": "ไม่นาน เงินก็หมด",
+              "english": "Before long the money was gone."
+            },
+            {
+              "text": "ครั้นเงินหมด เพื่อนก็ไปหมดเหมือนกัน",
+              "english": "When the money was gone, the friends all went away too."
+            },
+            {
+              "text": "ตอนนั้น ฝนไม่ตกหลายเดือนในแคว้นนั้น ข้าวแพงมาก ประชากรหิวโหยทุกที่",
+              "english": "At that time there was no rain for many months in that region, and rice was very expensive. The population everywhere was starving."
+            },
+            {
+              "text": "เขาไม่มีเงิน ไม่มีข้าว ไม่มีบ้าน",
+              "english": "He had no money, no rice and no home."
+            },
+            {
+              "text": "เขาหิวโหย และไม่มีใครให้อะไร",
+              "english": "He was starving, and no one gave him anything."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เลี้ยงหมูป่า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เขาไปหาชายคนหนึ่ง และขอทำงาน",
+              "english": "He went to a man and asked for work."
+            },
+            {
+              "text": "ชายคนนั้นให้เขาไปเลี้ยงหมูป่าที่ทุ่ง",
+              "english": "The man sent him to look after wild pigs in the field."
+            },
+            {
+              "text": "ที่ทุ่งนั้นกว้าง และมีไร่ยางอยู่ใกล้ๆ",
+              "english": "That field was wide, and there were rubber plantations nearby."
+            },
+            {
+              "text": "เขานั่งที่พื้น ดูหมูป่ากินอาหาร",
+              "english": "He sat on the ground, watching the pigs eat."
+            },
+            {
+              "text": "เขาหิวโหยมาก เขาอยากกินอาหารของหมูป่า",
+              "english": "He was so starving that he wanted to eat the pigs' food."
+            },
+            {
+              "text": "แต่ไม่มีใครให้เขากิน",
+              "english": "But no one let him eat."
+            },
+            {
+              "text": "ที่ไร่มีหมาป่าตัวหนึ่ง คราวหนึ่งมันตรงเข้าไปกัดหมูป่า",
+              "english": "On the farm there was a wolf. Once it rushed in and bit a wild pig."
+            },
+            {
+              "text": "เขาต้องหลีกไป และไม่ใคร่พ้นจากมัน",
+              "english": "He had to get out of its way and could hardly get clear of it."
+            },
+            {
+              "text": "เขาแกล้งทำเป็นไม่หิว แต่เขาใคร่กินข้าวมาก",
+              "english": "He pretended he was not hungry, but he was longing for rice."
+            },
+            {
+              "text": "เขานั่งอยู่นาน แล้วนึกเห็นบ้านของบิดา",
+              "english": "He sat for a long time and pictured his father's house."
+            },
+            {
+              "speaker": "younger",
+              "text": "คนงานของพ่อมีข้าวกินมาก แต่ลูกหิวโหยอยู่ที่นี่",
+              "english": "My father's workers have plenty of rice, but I am starving here."
+            },
+            {
+              "speaker": "younger",
+              "text": "ลูกจะกลับไปหาพ่อ และจะพูดว่า",
+              "english": "I will go back to my father, and I will say:"
+            },
+            {
+              "speaker": "younger",
+              "text": "ท่านพ่อ ข้าพเจ้าทำผิด ข้าพเจ้าไม่ควรเป็นบุตรของท่านอีก",
+              "english": "Father, I have done wrong. I should no longer be your son."
+            },
+            {
+              "speaker": "younger",
+              "text": "ให้ลูกเป็นคนงานของพ่อเถิด",
+              "english": "Let me be one of your workers."
+            },
+            {
+              "text": "เขายืนขึ้น และเดินกลับบ้าน",
+              "english": "He stood up and walked home."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "กลับบ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เขาเดินมานาน เท้ามีเลือดและมีบาดแผล เต็มไปด้วยทราย",
+              "english": "He walked a long time, his feet bloody and wounded and full of sand."
+            },
+            {
+              "text": "ทุกวัน บิดาออกมามองถนน",
+              "english": "Every day the father came out to look down the road."
+            },
+            {
+              "text": "วันนั้น บิดาเห็นเขาแต่ไกล",
+              "english": "That day the father saw him from far away."
+            },
+            {
+              "text": "บิดาเห็นเขาแล้วก็รักเขาอีก ท่านวิ่งไปหาเขา",
+              "english": "The father saw him and loved him again, and ran to him."
+            },
+            {
+              "text": "ท่านกอดเขาไว้ในแขน และจับศีรษะของเขา",
+              "english": "He held him in his arms and held his head."
+            },
+            {
+              "text": "เขาร้องไห้ และพูดกับบิดาว่า",
+              "english": "He cried and spoke to his father:"
+            },
+            {
+              "speaker": "younger",
+              "text": "ท่านพ่อ ข้าพเจ้าทำผิด ข้าพเจ้าไม่ควรเป็นบุตรของท่านอีก",
+              "english": "Father, I have done wrong. I should no longer be your son."
+            },
+            {
+              "text": "บิดาไม่ฟังต่อ เขาเรียกคนงานมา",
+              "english": "The father did not listen further, and called the servants."
+            },
+            {
+              "speaker": "father",
+              "text": "เอาเสื้อตัวที่ดีที่สุดมาให้ลูกเรา",
+              "english": "Bring the best shirt for my son."
+            },
+            {
+              "speaker": "father",
+              "text": "ใส่แหวนที่นิ้วของเขา และเอารองเท้ามาใส่ที่เท้าเขา",
+              "english": "Put a ring on his finger, and bring shoes to put on his feet."
+            },
+            {
+              "speaker": "father",
+              "text": "เอาน้ำใส่อ่างมาให้เขาล้างเท้า และทา ยาที่บาดแผลด้วย",
+              "english": "Bring water in a basin for him to wash his feet, and put medicine on his wounds too."
+            },
+            {
+              "speaker": "father",
+              "text": "เอาวัวตัวเล็กมาทำอาหาร มากินด้วยกันเถิด เราจะดีใจด้วยกัน",
+              "english": "Bring the young cow and prepare a meal. Come, let us eat together. We will be glad together."
+            },
+            {
+              "speaker": "father",
+              "text": "ลูกของเราตายไปแล้ว ตอนนี้เขามีชีวิตอีก เขาหายไป ตอนนี้เจอแล้ว",
+              "english": "My son was dead, and now he is alive again. He was lost, and now he is found."
+            },
+            {
+              "text": "คนงานต้อนรับเขาเหมือนกษัตริย์ ด้วยเสื้อใหม่ แหวนสวย และรองเท้า",
+              "english": "The servants welcomed him like a king, with new clothes, a pretty ring and shoes."
+            },
+            {
+              "text": "ทุกอย่างพร้อมแล้ว บิดาต้อนรับเขาอีกครั้ง และให้เขานั่งที่โต๊ะ",
+              "english": "Everything was ready, and the father welcomed him once more and had him sit at the table."
+            },
+            {
+              "text": "บิดาใส่แหวนที่นิ้วเขาอีกครั้ง และพูดว่า กินเถิด ลูกของพ่อ",
+              "english": "The father put the ring on his finger once more and said, \"Eat, my child.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ลูกคนโต",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนนั้น ลูกคนโตอยู่ที่ไร่",
+              "english": "At that time the older son was in the field."
+            },
+            {
+              "text": "ครั้นเขากลับมาใกล้บ้าน เขาได้ยินเสียงเพลง",
+              "english": "When he came back near the house, he heard the sound of music."
+            },
+            {
+              "text": "เขาเรียกคนงานคนหนึ่งมาถามว่า มีอะไรที่บ้าน",
+              "english": "He called one of the servants over and asked what was happening at the house."
+            },
+            {
+              "speaker": "servant",
+              "text": "น้องของคุณกลับมาแล้ว พ่อของคุณดีใจมาก",
+              "english": "Your brother has come back. Your father is very glad."
+            },
+            {
+              "speaker": "servant",
+              "text": "พ่อทำอาหารต้อนรับเขา เพราะเขากลับมาปลอดภัย",
+              "english": "Your father has prepared a meal to welcome him, because he came back safe."
+            },
+            {
+              "text": "ลูกคนโตโกรธมาก เขาไม่เข้าไปในบ้าน",
+              "english": "The older son was very angry, and he would not go into the house."
+            },
+            {
+              "text": "พ่อออกมาหาเขา และขอให้เขาเข้าไป",
+              "english": "The father came out to him and asked him to come in."
+            },
+            {
+              "speaker": "elder",
+              "text": "ข้าพเจ้าทำงานให้พ่อหลายปี ข้าพเจ้าไม่เคยทำผิด",
+              "english": "I have worked for you for many years, and I have never done wrong."
+            },
+            {
+              "speaker": "elder",
+              "text": "แต่พ่อไม่เคยให้ไก่สักตัว ให้ลูกกินกับเพื่อน",
+              "english": "But you never gave me even a chicken to eat with my friends."
+            },
+            {
+              "speaker": "elder",
+              "text": "ตอนนี้น้องใช้เงินของพ่อหมด พ่อกลับทำอาหารให้เขา",
+              "english": "Now my brother has spent all your money, and you have prepared a meal for him."
+            },
+            {
+              "speaker": "father",
+              "text": "ลูกอยู่กับพ่อเสมอ ของทุกอย่างของพ่อก็เป็นของลูก",
+              "english": "You are always with me, and everything I have is yours."
+            },
+            {
+              "speaker": "father",
+              "text": "แต่เราต้องดีใจ เพราะน้องของลูกตายไปแล้ว ตอนนี้เขามีชีวิตอีก",
+              "english": "But we must be glad, because your brother was dead, and now he is alive again."
+            },
+            {
+              "speaker": "father",
+              "text": "เขาหายไป ตอนนี้เจอแล้ว เข้ามาเถิด",
+              "english": "He was lost, and now he is found. Come in."
+            },
+            {
+              "text": "พระเยซูเล่าเรื่องนี้เพื่อให้คนรู้ว่า พระเจ้ารักคนที่กลับมาหาท่าน",
+              "english": "Jesus told this story so that people would know that God loves those who come back to him."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

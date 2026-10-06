@@ -1,0 +1,442 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-1-12",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "คลินิกเคลื่อนที่ในหมู่บ้านบนเขา",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-1-12",
+    "title": "The mobile clinic in a hill village (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native Thai speaker. It is controlled Thai written for learners (standard Central Thai, Chiang Mai setting) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting a native Thai reviewer (preferably from Chiang Mai)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "health",
+    "mobile clinic",
+    "village",
+    "nurse"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "mali": "Mali (woman)",
+    "sam": "Sam (man)",
+    "doctor": "Doctor (man)",
+    "mother": "Village mother (woman)",
+    "lung": "Old man (man)",
+    "father": "Village father (man)"
+  },
+  "sections": [
+    {
+      "title": "ถนนไปหมู่บ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันนี้โรงพยาบาลจะไปตรวจคนไข้ที่หมู่บ้านบนภูเขา",
+              "english": "Today the hospital is going to examine patients in a village in the mountains."
+            },
+            {
+              "text": "มะลิเป็นพยาบาล เธอสะพายกระเป๋าใบใหญ่",
+              "english": "Mali is a nurse. She carries a big bag over her shoulder."
+            },
+            {
+              "text": "แซมไปช่วยถือของ เขาอยากเห็นงานของหมอ",
+              "english": "Sam goes to help carry things. He wants to see the doctors' work."
+            },
+            {
+              "text": "คุณหมอสองคนนั่งรถของโรงพยาบาลไปด้วยกัน",
+              "english": "Two doctors ride in the hospital car together."
+            },
+            {
+              "text": "ถนนไกลและเล็ก รถต้องไปช้าๆ สองชั่วโมง",
+              "english": "The road was long and narrow, and the car had to go slowly for two hours."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมขอรบกวนถามหน่อยครับ ที่หมู่บ้านมีหมอไหมครับ",
+              "english": "Excuse me for asking, but is there a doctor in the village?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ไม่มีค่ะ คนไข้ต้องไปโรงพยาบาลไกลมาก",
+              "english": "No. Patients have to go a very long way to a hospital."
+            },
+            {
+              "speaker": "mali",
+              "text": "เพราะอย่างนั้น เราจึงมาที่นี่เดือนหนึ่งครั้งค่ะ",
+              "english": "That is why we come here once a month."
+            },
+            {
+              "speaker": "doctor",
+              "text": "เราต้องรีบนะครับ คนไข้รออยู่",
+              "english": "We must hurry. The patients are waiting."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ใต้ต้นไม้ใหญ่",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "รถถึงหมู่บ้านตอนเช้า ผู้ชายสองคนมารับของ",
+              "english": "The car reached the village in the morning, and two men came to take the things."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมยืมโต๊ะกับเก้าอี้จากโรงเรียนได้ไหมครับ",
+              "english": "May I borrow tables and chairs from the school?"
+            },
+            {
+              "speaker": "lung",
+              "text": "ได้ครับ ผมจะนำมาให้ ผมยืมรถของลูกมาครับ ไม่เป็นไรครับ",
+              "english": "Yes. I will bring them. I borrowed my son's car. No problem."
+            },
+            {
+              "text": "เขาวางโต๊ะใต้ต้นไม้ใหญ่ มะลิวางกระดาษและปากกา",
+              "english": "They put the tables under the big tree, and Mali put out paper and pens."
+            },
+            {
+              "text": "เธอแขวนรูปภาพของร่างกายคนไว้ที่ผนัง",
+              "english": "She hung a picture of the human body on the wall."
+            },
+            {
+              "speaker": "mali",
+              "text": "ดูรูปภาพนี้นะคะ ศีรษะอยู่ตรงนี้ แขน ขา นิ้ว และเท้าอยู่ตรงนี้ค่ะ",
+              "english": "Look at this picture. The head is here, and the arms, legs, fingers and feet are here."
+            },
+            {
+              "text": "คนจากหมู่บ้านมานั่งรอ มะลิยิ้มให้เขา",
+              "english": "People from the village came and sat waiting. Mali smiled at them."
+            },
+            {
+              "speaker": "mali",
+              "text": "เชิญค่ะ ฉันจะจดชื่อก่อนนะคะ",
+              "english": "Please come. I will write down your names first."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วัดความดัน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ลุงคนหนึ่งมาก่อน อายุเจ็ดสิบปี",
+              "english": "An old man came first, seventy years old."
+            },
+            {
+              "speaker": "lung",
+              "text": "ผมรบกวนหมอมาก ขอโทษนะครับ",
+              "english": "I am troubling the doctor a lot. Sorry."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ไม่รบกวนเลยครับ ผมถามลุงได้ไหมครับ ลุงกินยาอะไรอยู่",
+              "english": "Not at all. May I ask you what medicine you are taking?"
+            },
+            {
+              "speaker": "lung",
+              "text": "ผมไม่รู้ชื่อยานั้นครับ ผมฝากลูกซื้อที่ตลาด ผมตอบไม่ได้ครับ",
+              "english": "I don't know the name. I asked my son to buy it at the market. I can't answer."
+            },
+            {
+              "speaker": "mali",
+              "text": "ลุงควรนั่งก่อนนะคะ ฉันจะวัดความดันให้ค่ะ",
+              "english": "Please sit down first. I will measure your blood pressure."
+            },
+            {
+              "text": "มะลิผูกผ้าที่แขนของลุง แล้วดูที่ผ้า",
+              "english": "Mali tied the cuff around the old man's arm and looked at the cuff."
+            },
+            {
+              "speaker": "mali",
+              "text": "ความดันเลือดสูงไปนิดหน่อยค่ะ ลุงควรพักมากๆ แล้วเรามาวัดความดันอีกครั้ง",
+              "english": "The blood pressure is a little high. You should rest a lot, and then we will measure it again."
+            },
+            {
+              "speaker": "lung",
+              "text": "ผมปวดขาด้วยครับ ผมเจ็บเมื่อวาน",
+              "english": "My leg hurts too. It started hurting yesterday."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมขอตรวจขาหน่อยนะครับ",
+              "english": "Let me examine your leg."
+            },
+            {
+              "text": "คุณหมอตรวจขาและเท้าของลุง",
+              "english": "The doctor examined the old man's leg and foot."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ลุงล้มใช่ไหมครับ ขามีบาดแผลด้วย",
+              "english": "You fell, didn't you? There is a wound on your leg too."
+            },
+            {
+              "speaker": "lung",
+              "text": "ใช่ครับ ผมล้มที่นา เลือดออกมาก",
+              "english": "Yes. I fell in the rice field. There was a lot of blood."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ให้พยาบาลทา ยาที่บาดแผลครับ",
+              "english": "I will have the nurse put medicine on the wound."
+            },
+            {
+              "text": "มะลิทา ยาที่ขา แล้วเอาผ้าปิด",
+              "english": "Mali put medicine on the leg and covered it with cloth."
+            },
+            {
+              "speaker": "mali",
+              "text": "ทา ยาสองครั้งต่อวันนะคะ ถ้าลุงไม่มีรถ ยืมรถเพื่อนบ้านมาหาเราได้ค่ะ",
+              "english": "Put the medicine on twice a day. If you have no car, you can borrow a neighbour's to come and see us."
+            },
+            {
+              "speaker": "mali",
+              "text": "ห้ามเดินมากนะคะ ห้ามให้น้ำเข้าบาดแผลด้วยค่ะ",
+              "english": "Do not walk much, and do not let water get into the wound."
+            },
+            {
+              "speaker": "mali",
+              "text": "เท้าของลุงยังเย็นอยู่ ลุงควรนั่งพักค่ะ เรียบร้อยแล้วนะคะ",
+              "english": "Your foot is still cold. You should sit and rest. All done now."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เด็กไม่สบาย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แม่คนหนึ่งพาลูกมา เด็กตัวร้อนและไอ",
+              "english": "A mother brought her child. The child was hot and coughing."
+            },
+            {
+              "speaker": "mother",
+              "text": "ลูกมีไข้สองวันแล้วค่ะ ลูกไม่กินข้าว",
+              "english": "My child has had a fever for two days. The child isn't eating."
+            },
+            {
+              "speaker": "mother",
+              "text": "ลูกปวดศีรษะด้วย ศีรษะร้อนมาก ฉันนึกว่าลูกจะป่วยมาก ฉันกลัวค่ะ",
+              "english": "He has a headache too, and his head is very hot. I thought he would be very ill. I was afraid."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ให้เด็กเปิดปากหน่อยครับ ผมจะตรวจคอ",
+              "english": "Have the child open his mouth. I will examine his throat."
+            },
+            {
+              "text": "คุณหมอตรวจคอ ตรวจที่หู และตรวจจมูก",
+              "english": "The doctor examined the throat, the ears and the nose."
+            },
+            {
+              "speaker": "doctor",
+              "text": "จมูกแดง คอก็แดง เขาควรกินยาและดื่มน้ำมากๆ ครับ",
+              "english": "The nose is red and so is the throat. He should take medicine and drink plenty of water."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ร่างกายของเด็กต้องพัก ไม่เป็นไรครับ ให้เด็กเช็ดจมูกด้วยผ้าสะอาดนะครับ",
+              "english": "The child's body needs rest. It's all right. Have him wipe his nose with a clean cloth."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันจะนำยาลดไข้มาให้ค่ะ เด็กกินสามครั้งต่อวัน",
+              "english": "I will bring some fever medicine. The child takes it three times a day."
+            },
+            {
+              "speaker": "mother",
+              "text": "ขอบใจมากค่ะ",
+              "english": "Thank you very much."
+            },
+            {
+              "speaker": "mali",
+              "text": "ไม่เป็นไรค่ะ",
+              "english": "You're welcome."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เด็กถูกหมากัด",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนบ่าย พ่อคนหนึ่งวิ่งมาพร้อมเด็กผู้ชาย",
+              "english": "In the afternoon a father ran up with a boy."
+            },
+            {
+              "speaker": "father",
+              "text": "ด่วนครับ เด็กถูกหมากัดที่ขา",
+              "english": "It's urgent. The boy has been bitten by a dog on the leg."
+            },
+            {
+              "text": "เด็กร้องไห้ เลือดออกมาก มะลินับนิ้วให้เด็กดู เด็กจึงยิ้ม",
+              "english": "The boy cried, and blood was coming out. Mali counted fingers for him to see, and so the boy smiled."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ไม่ต้องกลัวนะครับ ผมจะดูบาดแผล",
+              "english": "Don't be afraid. I will look at the wound."
+            },
+            {
+              "speaker": "doctor",
+              "text": "เด็กถูกหมากัด เขาควรรับวัคซีนครับ",
+              "english": "The boy was bitten by a dog. He should get a vaccine."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันจะช่วยหมอค่ะ ให้เด็กหลับตานะคะ",
+              "english": "I will help the doctor. Have the child close his eyes."
+            },
+            {
+              "text": "เด็กหลับตา และมะลิถือมือเขาไว้",
+              "english": "The boy closed his eyes, and Mali held his hand."
+            },
+            {
+              "text": "คุณหมอให้วัคซีนที่แขน เด็กไม่ร้องไห้",
+              "english": "The doctor gave the vaccine in his arm, and the boy did not cry."
+            },
+            {
+              "speaker": "doctor",
+              "text": "เจ็บไหมครับ",
+              "english": "Does it hurt?"
+            },
+            {
+              "text": "เด็กตอบว่า ไม่เจ็บแล้ว",
+              "english": "The boy answered that it did not hurt any more."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ต้องรับวัคซีนอีกหลายครั้ง ให้พ่อพาเด็กไปโรงพยาบาลนะครับ",
+              "english": "He must get the vaccine several more times. Have his father take him to the hospital."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันจะจดวันให้ค่ะ บาดแผลถูกปิดด้วยผ้าแล้ว",
+              "english": "I will write down the dates. The wound has been covered with cloth."
+            },
+            {
+              "speaker": "father",
+              "text": "ขอบคุณครับ เด็กนิ้วมือเย็น เขากลัวมาก",
+              "english": "Thank you. His fingers are cold. He was very frightened."
+            },
+            {
+              "speaker": "sam",
+              "text": "เด็กตลกมากครับ เขาบอกว่าหมาหิวมาก",
+              "english": "The boy is funny. He said the dog was very hungry."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ตอนเย็น",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คนจากหมู่บ้านนำข้าวกับผลไม้มาให้เรา",
+              "english": "The villagers brought us rice and fruit."
+            },
+            {
+              "text": "เราแบ่งอาหารกันกินใต้ต้นไม้",
+              "english": "We shared the food, eating under the tree."
+            },
+            {
+              "text": "ลุงคนนั้นชงชาให้เรา เขาตากผ้าไว้ที่บ้าน เขาบอกว่าเราควรมาอีก",
+              "english": "That old man made tea for us. He had hung cloth out to dry at his house. He said we should come again."
+            },
+            {
+              "speaker": "mali",
+              "text": "มีข่าวไปทั่วหมู่บ้านแล้วค่ะ ว่าเดือนต่อไปเราจะมาอีก",
+              "english": "The news has gone all over the village that we will come again next month."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมนึกอยู่ว่า คุณหมอนึกอะไรตอนเห็นเด็กๆ ครับ",
+              "english": "I was wondering what the doctor thinks when he sees the children."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมนึกเห็นลูกของผม ผมว่าทุกหมู่บ้านควรมีหมอ เพราะร่างกายคนต้องการหมอครับ",
+              "english": "I think of my own child. I think everyone should have a doctor."
+            },
+            {
+              "speaker": "mali",
+              "text": "เราจะกลับมาอีกเดือนต่อไปค่ะ",
+              "english": "We will come back next month."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากมาด้วยอีกครับ ผมจะนำรูปภาพไปให้เด็กๆ",
+              "english": "I want to come again. I will bring pictures for the children."
+            },
+            {
+              "text": "เด็กๆ ขำเมื่อแซมพูดภาษาไทยผิด",
+              "english": "The children found it funny when Sam spoke Thai wrongly."
+            },
+            {
+              "text": "ตอนเย็น เรารีบขึ้นรถกลับโรงพยาบาล",
+              "english": "In the evening we hurried onto the car and went back to the hospital."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

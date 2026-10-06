@@ -8,9 +8,14 @@
 /** Encounters in earlier texts after which a lemma counts as "known" for the audit. An audit threshold, not mastery. */
 export const COVERAGE_MIN_ENCOUNTERS = 3;
 
-/** Warning / error floors for the coverage of a unit. `adapted` units use the `controlled` band (LADDER.md: reviewed like a controlled text). */
+/**
+ * Warning / error floors for the coverage of a unit. `adapted` units use the `controlled` band (LADDER.md: reviewed like a
+ * controlled text). The controlled warning was 92 % until 2026-10-06: drafters padded units with known words and avoided
+ * ordinary ones to stay above it, which made the Spanish ladder stilted (docs/audits/B2-SIMULATION.md). A warning is
+ * advice for a reviewer, never a target to write to.
+ */
 export const COVERAGE_BANDS = {
-  controlled: { warn: 0.92, error: 0.85 },
+  controlled: { warn: 0.88, error: 0.85 },
   authentic: { warn: 0.92, error: 0.88 },
 } as const;
 

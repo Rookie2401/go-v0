@@ -64,7 +64,7 @@ adapter's `detectPatterns` keys), domain, and Scripture share of the stage.
 
 | check | warning | error (fails CI) |
 |---|---|---|
-| coverage of a controlled/adapted unit (≥ 3 encounters; PROPN and numerals count as known) | < 92 % | < 85 % |
+| coverage of a controlled/adapted unit (≥ 3 encounters; PROPN and numerals count as known) | < 88 % (was 92 % until 2026-10-06) | < 85 % |
 | coverage of an authentic unit | < 92 % | < 88 % |
 | cliff: drop below the mean of the previous three units | > 6 points | > 12 points |
 | new lemmas per 100 running words | > 5 | > 9 |
@@ -72,7 +72,10 @@ adapter's `detectPatterns` keys), domain, and Scripture share of the stage.
 | a stage whose words are > 40 % Scripture | warning | — |
 
 The first two units after Stage 0 are allowed one band lower (warning at 85 %, error at 78 %): Stage 0 gives only a few
-hundred words. Thresholds live in one place (`src/ladder/policy.ts`) and are themselves provisional.
+hundred words. Thresholds live in one place (`src/ladder/policy.ts`) and are themselves provisional. **A warning is advice for the
+reviewer, never a target to write to:** padding a unit with known words, or avoiding ordinary words the plan has not
+scheduled, to stay above a warning makes worse Spanish — the first Spanish ladder did exactly that
+(`docs/audits/B2-SIMULATION.md`). Only errors fail CI.
 
 `npm run ladder:place -- --lang es <textId | file>` answers the owner's question for any candidate text: *where could
 this enter the ladder* (the first unit after which its coverage is ≥ 95 %), or *library, not ladder* (never).

@@ -30,7 +30,8 @@
   ],
   "editorialTags": [
     "needs-native-review",
-    "machine-drafted"
+    "machine-drafted",
+    "superseded-by-ladder"
   ],
   "prepTargets": [
     "JHN.3.16",

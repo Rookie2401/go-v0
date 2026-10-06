@@ -33,7 +33,8 @@
   "editorialTags": [
     "machine-drafted",
     "needs-native-review",
-    "needs-regional-review"
+    "needs-regional-review",
+    "superseded-by-ladder"
   ],
   "prepTargets": [],
   "generated": true,

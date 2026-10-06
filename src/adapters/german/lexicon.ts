@@ -1,7 +1,7 @@
 /**
  * The German hand lexicon as the engine and the sentence layer see it, built once from the row lists:
  *   lexicon-nouns.ts, lexicon-verbs.ts, lexicon-modifiers.ts (adjectives, adverbs), function-words.ts (closed classes),
- *   prefixes.ts, and the course's own extra rows in lexicon-course.ts.
+ *   prefixes.ts, the course's own extra rows in lexicon-course.ts, and the ladder plan's words in lexicon-ladder.ts.
  * All lookups take the adapter-normalized form (NFC + lower case, `toLocaleLowerCase('de')`). MACHINE-DRAFTED, NOT
  * CHECKED BY A NATIVE SPEAKER.
  *
@@ -13,6 +13,7 @@ import type { PartOfSpeech, RegisterTag } from '../../core';
 import { parseRows, type DePlainRow, type DeRows } from './entries';
 import { CLOSED_FORMS, CONTRACTIONS, FUNCTION_ROWS, PREPOSITIONS } from './function-words';
 import { COURSE_ROWS } from './lexicon-course';
+import { LADDER_ROWS } from './lexicon-ladder';
 import { ADJECTIVE_ROWS, ADVERB_ROWS } from './lexicon-modifiers';
 import { NOUN_ROWS } from './lexicon-nouns';
 import { VERB_ROWS } from './lexicon-verbs';
@@ -112,6 +113,8 @@ for (const p of PREPOSITIONS) addPlain({ lemma: p.form, pos: 'ADP', gloss: p.glo
   for (const a of course.adjectives) addAdjective(a, true);
   for (const p of course.plain) if (!plainBy.get(norm(p.lemma))?.some((x) => x.pos === p.pos)) addPlain(p);
 }
+// the ladder plan's words (lexicon-ladder.ts): added like main rows, so a second gender (die / der Leiter) stays beside the first
+addRows(parseRows(LADDER_ROWS, 'lexicon-ladder'), false);
 
 const closedBy = new Map<string, DeClosedForm[]>();
 for (const f of CLOSED_FORMS) push(closedBy, norm(f.form), f);

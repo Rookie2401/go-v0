@@ -85,6 +85,38 @@ export function decideInitial(s: Sent): void {
   }
 }
 
+/** A title or a kinship word that is followed by a name: Herr Koch, Familie Keller, Tante Berg. */
+const NAME_TITLES = new Set(['herr', 'frau', 'fräulein', 'familie', 'ehepaar', 'pastor', 'pfarrer', 'doktor', 'dr', 'professor', 'prof', 'onkel', 'tante', 'bruder', 'schwester']);
+/** A preposition that stands before a place name with no article: nach Halle, aus Jena, in Bremen, bei Koch. */
+const NAME_PREPOSITIONS = new Set(['nach', 'aus', 'in', 'bei', 'bis']);
+
+/**
+ * A word that is a name and also an ordinary noun or adjective (Keller, Koch, Bauer, Wolf, Klein, Halle) is read as the name
+ * where the sentence says so: straight after a title (Herr Koch) or after another name that is no genitive (Anna Keller), and
+ * after a preposition that takes a place with no article (nach Halle). Elsewhere the ordinary reading stays first (der Keller).
+ * The name reading is only moved up, never made.
+ */
+export function decideNames(s: Sent): void {
+  for (const t of s.toks) {
+    if (!t.word || !t.cap || t.caps) continue;
+    const prev = s.toks[t.i - 1];
+    // Dr. Richter: the full stop of the abbreviation lets a sentence begin by the layer's reckoning, but it does not here
+    const abbreviated = !!prev && !prev.word && prev.raw.surface === '.' && !!s.toks[t.i - 2]?.word && /^(dr|prof)$/.test(s.toks[t.i - 2].raw.normalized);
+    if (t.start && !abbreviated) continue;
+    if (!anyLive(t, (c) => c.pos === 'PROPN') || top(t)?.c.pos === 'PROPN') continue;
+    let why = '';
+    if (abbreviated) {
+      why = `follows the title ${s.toks[t.i - 2].raw.surface}.: a name`;
+    } else if (prev?.word) {
+      const p = prev.raw.normalized;
+      if (NAME_TITLES.has(p)) why = `follows the title ${prev.raw.surface}: a name`;
+      else if (NAME_PREPOSITIONS.has(p)) why = `follows ${prev.raw.surface} with no article: a place or a name`;
+      else if (top(prev)?.c.pos === 'PROPN' && !has(top(prev)?.c, 'Case', 'Gen')) why = `follows the name ${prev.raw.surface}: a surname`;
+    }
+    if (why) prefer(t, (r) => r.c.pos === 'PROPN', why);
+  }
+}
+
 // ───────────────────────────── words with several functions ─────────────────────────────
 
 const RELATIVE_FORMS = new Set(['der', 'die', 'das', 'dem', 'den', 'des', 'dessen', 'deren', 'denen']);

@@ -4,7 +4,8 @@
  *
  * The order of the steps, for one sentence:
  *   1. every word gets its context-free readings (engine, older spelling, compounds, derived nouns: context-base.ts);
- *   2. capital letters (a noun inside a sentence, never at a lower-case word) and the first word of the sentence;
+ *   2. capital letters (a noun inside a sentence, never at a lower-case word), the first word of the sentence, and a name
+ *      that is also a noun (Herr Koch, nach Halle: context-words.ts, decideNames);
  *   3. separated verbs: the prefix at the end of the clause joins its verb, or the detached readings go (units.ts);
  *   4. the noun phrase: case, gender and number agree, a preposition governs, the adjective's declension follows
  *      the determiner (agreement.ts);
@@ -21,7 +22,7 @@ import { agreeNounPhrases, settlePhrases } from './agreement';
 import { decideHomographs, mergeSameReadings } from './context-nouns';
 import { baseReadings } from './context-base';
 import { decideVerbs } from './context-verbs';
-import { applyCapitals, decideInitial, decideWords } from './context-words';
+import { applyCapitals, decideInitial, decideNames, decideWords } from './context-words';
 import { DE_ANALYZER, capitalise, cloneCandidate, makeSent, makeToks, norm, settle, type R } from './context';
 import { componentLemmas } from './compounds';
 import { joinSeparableVerbs } from './units';
@@ -45,6 +46,7 @@ function run(tokens: RawToken[], lex: DeLexiconView, given: (i: number) => Given
   applyCapitals(toks);
   const s = makeSent(lex, toks);
   decideInitial(s);
+  decideNames(s);
   joinSeparableVerbs(s);
   agreeNounPhrases(s);
   decideWords(s);

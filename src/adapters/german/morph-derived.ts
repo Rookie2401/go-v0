@@ -1,7 +1,7 @@
 /**
  * Readings DERIVED by rule for a written word the word list does not hold, from a base it does hold: a diminutive
- * (Töpfchen), the genitive of a name (Annas, Jonas'), the clitic es (geht's, wirds), the old full ending of Luther's
- * German (führet, salbest). Every one says in its rule that it is derived; none poses as a listed word. They are tried
+ * (Töpfchen), the feminine -in of a listed masculine noun (Mechanikerin, Köchinnen), the genitive of a name (Annas, Jonas'),
+ * the clitic es (geht's, wirds), the old full ending of Luther's German (führet, salbest). Every one says in its rule that it is derived; none poses as a listed word. They are tried
  * only when the word has no listed reading, and before any guess.
  */
 import type { WordPart } from '../../core';
@@ -17,7 +17,7 @@ type Listed = (word: string) => DeReading[];
 
 export function deriveReadings(word: string, lex: DeLexiconView, listed: Listed): DeReading[] {
   if (word.length < 4 || !/^[\p{L}'’ʼ]+$/u.test(word)) return [];
-  for (const attempt of [() => nameGenitive(word, lex), () => diminutive(word, lex), () => clitic(word, listed), () => (isCapitalised(word) ? [] : separablePrefixVerb(word, listed)), () => oldEnding(word, listed)]) {
+  for (const attempt of [() => nameGenitive(word, lex), () => diminutive(word, lex), () => feminine(word, lex), () => clitic(word, listed), () => (isCapitalised(word) ? [] : separablePrefixVerb(word, listed)), () => oldEnding(word, listed)]) {
     const found = attempt();
     if (found.length) return found;
   }
@@ -80,6 +80,53 @@ function diminutive(word: string, lex: DeLexiconView): DeReading[] {
       parts: parts.map((p) => ({ ...p })),
     };
   });
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// the feminine -in of a masculine noun the list holds
+
+/**
+ * The masculine noun a feminine -in comes from: as written, with the umlaut undone (Ärztin → Arzt, Köchin → Koch), with a dropped
+ * -e put back (Kollegin → Kollege, Löwin → Löwe). Only a masculine noun counts.
+ */
+function feminineBase(stem: string, lex: DeLexiconView): DeNoun | undefined {
+  for (const v of new Set([stem, undoUmlaut(stem)])) {
+    for (const cand of [v, `${v}e`]) {
+      const hit = lex.nouns(cand.toLowerCase()).find((n) => n.lemma === cand && n.gender === 'm' && !n.adjectival);
+      if (hit) return hit;
+    }
+  }
+  return undefined;
+}
+
+/**
+ * Mechanikerin, Kassiererinnen: the German dictionaries list the feminine form as a word of its own (Lehrerin is not Lehrer), and
+ * so does this one; the reading is derived, not listed (0.6, no gloss), and ties the plural -innen to the singular -in, so that
+ * the two do not become two lemmas. Listed feminine forms (Lehrerin, Ärztin, Erzieherin) never reach this.
+ */
+function feminine(word: string, lex: DeLexiconView): DeReading[] {
+  const m = /^(\p{Lu}\p{L}{3,}?)(innen|in)$/u.exec(word);
+  if (!m) return [];
+  const [, stem, suffix] = m;
+  const base = feminineBase(stem, lex);
+  const plural = suffix === 'innen';
+  // -innen is the plural of a feminine -in noun whatever the masculine is (Anwohnerinnen), so it is tied to the singular even where the masculine is not listed
+  if (!base && !(plural && stem.length >= 5)) return [];
+  const lemma = `${stem}in`;
+  const cells: DeCell[] = (['N', 'A', 'D', 'G'] as const).map((c) => ({ c, g: plural ? ('p' as const) : ('f' as const) }));
+  const morph = morphOfCells(cells);
+  const gendered: Record<string, string> = {};
+  if (morph.Case) gendered.Case = morph.Case;
+  gendered.Gender = 'Fem';
+  for (const [k, v] of Object.entries(morph)) if (k !== 'Case' && k !== 'Gender') gendered[k] = v;
+  return [{
+    lemma, pos: 'NOUN', morph: gendered, cells, confidence: base ? 0.6 : 0.5, lemmaKnown: false,
+    rule: `derived feminine noun ${lemma} (not in the word list): ${base ? `${base.lemma} + -in names the woman` : `the plural -innen of a noun in -in`}; ${describeGermanMorph(gendered)}`,
+    parts: [
+      { text: stem, start: 0, end: stem.length, ...(base ? { lemma: base.lemma } : {}), pos: 'NOUN', kind: 'stem', role: base ? `masculine noun: ${base.gloss}` : 'the person named' },
+      { text: suffix, start: stem.length, end: word.length, kind: 'marker', role: plural ? 'feminine suffix -in, with the plural ending -nen' : 'feminine suffix -in: a woman who does this' },
+    ],
+  }];
 }
 
 // ---------------------------------------------------------------------------------------------------------------

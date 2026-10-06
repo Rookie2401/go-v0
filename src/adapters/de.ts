@@ -60,6 +60,31 @@ function productionView(tokens: RawToken[], analyses: AnalyzedToken[]): Analyzed
   });
 }
 
+const splitWords = makeWordTokenizer({ locale: 'de', normalize });
+
+/**
+ * One letter + hyphen + noun is one word in German (E-Mail, U-Bahn, S-Bahn, T-Shirt, X-Beine), and so is the hyphenated compound
+ * that goes on (E-Mail-Adresse, U-Bahn-Station); the segmenter alone would give "E" (no reading), "-" and "Mail". Offsets stay exact;
+ * the normalized form keeps the hyphen (e-mail).
+ */
+function tokenizeGerman(text: string): RawToken[] {
+  const toks = splitWords(text);
+  const out: RawToken[] = [];
+  for (let i = 0; i < toks.length; i++) {
+    const t = toks[i];
+    const dash = toks[i + 1];
+    const next = toks[i + 2];
+    if (!(t.isWord && /^\p{Lu}$/u.test(t.surface) && dash?.surface === '-' && dash.start === t.end && next?.isWord && next.start === dash.end && /^\p{Lu}/u.test(next.surface))) { out.push(t); continue; }
+    let end = next.end;
+    let k = i + 2;
+    while (toks[k + 1]?.surface === '-' && toks[k + 1].start === end && toks[k + 2]?.isWord && toks[k + 2].start === toks[k + 1].end && /^\p{Lu}/u.test(toks[k + 2].surface)) { end = toks[k + 2].end; k += 2; }
+    const surface = text.slice(t.start, end);
+    out.push({ surface, start: t.start, end, isWord: true, normalized: normalize(surface) });
+    i = k;
+  }
+  return out;
+}
+
 /** Modern spelling → the older spellings the list pairs with it (Tal → Thal, dass → daß), built once. */
 let OLDER: Map<string, string[]> | undefined;
 function olderHeadwords(lemma: string): string[] {
@@ -100,7 +125,7 @@ export const deAdapter: LanguageAdapter = {
   varieties: DE_VARIETIES,
 
   segmentSentences: segmentGermanSentences,
-  tokenize: makeWordTokenizer({ locale: 'de', normalize }),
+  tokenize: tokenizeGerman,
   normalize,
   /** Keeps umlauts (ü ≠ u): they distinguish words. */
   searchNormalize: (q) => normalize(q).trim(),

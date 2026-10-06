@@ -11,7 +11,7 @@ import { morphOfCells } from './types';
 
 export type C = AnalysisCandidate;
 
-export const DE_ANALYZER_VERSION = '6';
+export const DE_ANALYZER_VERSION = '7';
 export const DE_ANALYZER = `adapter-de@${DE_ANALYZER_VERSION}`;
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
 export const DE_SOURCE_IDS = {

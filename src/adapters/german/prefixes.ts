@@ -13,7 +13,7 @@ const SEPARABLE = [
   'ab', 'an', 'auf', 'aus', 'bei', 'ein', 'fort', 'los', 'mit', 'nach', 'vor', 'weg', 'weiter', 'zu', 'zurück', 'zusammen',
   'auseinander', 'dar', 'empor', 'entgegen', 'fern', 'fest', 'frei', 'heim', 'her', 'heran', 'herab', 'heraus', 'herbei',
   'herein', 'herüber', 'herum', 'herunter', 'hervor', 'hin', 'hinaus', 'hinein', 'hinüber', 'hinunter', 'hinzu', 'hoch',
-  'kennen', 'nieder', 'statt', 'teil', 'vorbei', 'voran', 'voraus', 'wahr', 'zurecht', 'bereit', 'vorüber',
+  'kennen', 'nieder', 'statt', 'teil', 'vorbei', 'voran', 'voraus', 'wahr', 'zurecht', 'bereit', 'vorüber', 'weh', 'leid',
 ];
 const INSEPARABLE = ['be', 'emp', 'ent', 'er', 'ge', 'miss', 'ver', 'zer'];
 const DUAL = ['durch', 'über', 'um', 'unter', 'wieder', 'wider', 'hinter'];

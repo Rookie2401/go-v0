@@ -136,8 +136,13 @@ function listed(word: string, lex: DeLexiconView, idx: Index): DeReading[] {
   const con = lex.contraction(lower);
   if (con) rest.push(contractionReading(con, word, lex));
   for (const c of lex.closed(lower)) rest.push(closedReading(c));
-  rest.push(...plainReadings(lex, lower));
+  // a name is a name only with a capital (klein is not Klein, wolf is not Wolf), and it stands behind the ordinary readings
+  // of a word that is also a verb, an adjective or a function word (Klein ist er nicht); the sentence layer moves it up
+  // after a title or a first name (context-words.ts, decideNames)
+  const plain = plainReadings(lex, lower);
+  rest.push(...plain.filter((r) => r.pos !== 'PROPN'));
   rest.push(...(idx.lower.get(lower) ?? []));
+  if (cap) rest.push(...plain.filter((r) => r.pos === 'PROPN'));
   for (const r of rest) out.push(cap ? { ...r, rule: `${r.rule}; ${CAPITAL_LOWER}` } : r);
   return out;
 }

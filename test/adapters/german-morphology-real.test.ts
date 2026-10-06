@@ -376,8 +376,8 @@ describe('real lexicon: an unlisted separable verb', () => {
 });
 
 describe('real lexicon: guesses for -ieren verbs and unknown plural compounds', () => {
-  it('renoviert, funktioniert, organisiert: the participle and the finite forms of a verb in -ieren', () => {
-    for (const [w, lemma] of [['renoviert', 'renovieren'], ['funktioniert', 'funktionieren'], ['organisiert', 'organisieren']] as const) {
+  it('renoviert, funktioniert, kopiert: the participle and the finite forms of a verb in -ieren', () => {
+    for (const [w, lemma] of [['renoviert', 'renovieren'], ['funktioniert', 'funktionieren'], ['kopiert', 'kopieren']] as const) {
       const rs = an(w);
       expect(rs.map((r) => `${r.lemma}|${r.morph.VerbForm}|${r.confidence}`), w).toEqual([`${lemma}|Part|0.55`, `${lemma}|Fin|0.5`, `${lemma}|Fin|0.45`]);
       expect(rs.every((r) => !r.lemmaKnown && r.gloss === undefined), w).toBe(true);

@@ -29,7 +29,7 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
   const onChange = useCallback((i: PlayerChange) => setInfo(i), []);
   const back = mode === 'scripture' ? '/scripture' : '/read';
   const backLabel = mode === 'scripture' ? 'Scripture' : 'Library';
-  const { store, lang } = useApp();
+  const { store, lang, library } = useApp();
   const listen = useListenEnabled();
   const preview = usePreview();
   const [gate, setGate] = useState<Gate>({ state: 'loading' });
@@ -37,7 +37,10 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
     let live = true;
     setGate({ state: 'loading' });
     void (async () => {
-      const text = await store.texts.get(textId);
+      let text = await store.texts.get(textId);
+      // A deep link to a library text never opened on this device: open it as the lists do (library.open imports it) and give up
+      // only when the library has no such text. The checks below apply to it like to any other text.
+      if (!text) text = await library.open(textId).catch(() => undefined);
       const corpus = text ? await store.corpora.get(text.corpusId) : undefined;
       let next: Gate;
       if (!text || (text.listeningAssessmentId !== undefined || text.readingAssessmentId !== undefined) || isTestimonyText(text, corpus ? new Map([[corpus.id, corpus]]) : undefined)) next = { state: 'missing' };
@@ -47,7 +50,7 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
       if (live) setGate(next);
     })();
     return () => { live = false; };
-  }, [store, textId, lang, preview]);
+  }, [store, library, textId, lang, preview]);
 
   const bar = <Topbar title={backLabel} left={<BackLink to={back} label={backLabel} />} />;
   if (gate.state === 'loading') return <div>{bar}<div className="page"><p className="muted" role="status">Loading…</p></div></div>;

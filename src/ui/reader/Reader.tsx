@@ -94,6 +94,15 @@ export function verseLabel(refs: string[]): string {
   return nums.length > 1 ? `${nums[0]}–${nums[nums.length - 1]}` : (nums[0] ?? '');
 }
 
+/**
+ * Luther 1912 carries the other numbering of a verse inline, in the verified text ("[17:1] Und der HERR redete …", "[1b]").
+ * The text is never rewritten: the reader lays these ranges out as a quiet label instead of as words.
+ */
+const VERSE_MARKER = /\[\d+(?::\d+)?[a-z]?\]/g;
+export function verseMarkers(text: string): Array<{ start: number; end: number; label: string }> {
+  return [...text.matchAll(VERSE_MARKER)].map((m) => ({ start: m.index ?? 0, end: (m.index ?? 0) + m[0].length, label: m[0].slice(1, -1) }));
+}
+
 function buildVerses(sentences: Sentence[]): Map<string, VerseInfo> {
   const out = new Map<string, VerseInfo>();
   let shared: string[] = [];
@@ -535,12 +544,34 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
   const renderSentenceText = (s: Sentence): ReactNode[] => {
     const tokens = data.tokensBySentence.get(s.id) ?? [];
     const hl = data.support.get(s.id)?.highlight ?? {};
+    const marks = verseMarkers(s.text);
     const out: ReactNode[] = [];
+    const placed = new Set<number>();
+    // A bracketed marker is shown once, as a quiet label, wherever its first character falls; its tokens are not words to tap.
+    const mark = (at: number) => {
+      if (placed.has(at)) return;
+      placed.add(at);
+      const m = marks[at];
+      out.push(<sup key={`vm${at}`} className="vn vn--alt" title={`Also numbered ${m.label} in other editions`}>{m.label}</sup>);
+    };
+    const plain = (from: number, to: number) => {
+      let at = from;
+      marks.forEach((m, i) => {
+        if (m.end <= from || m.start >= to) return;
+        if (m.start > at) out.push(s.text.slice(at, m.start));
+        mark(i);
+        at = Math.max(at, Math.min(m.end, to));
+      });
+      if (at < to) out.push(s.text.slice(at, to));
+    };
     let cursor = 0;
     for (const t of tokens) {
       if (t.start < cursor) continue; // defensive: overlapping tokens never duplicate text
-      if (t.start > cursor) out.push(s.text.slice(cursor, t.start));
-      if (t.isWord) {
+      if (t.start > cursor) plain(cursor, t.start);
+      const inMark = marks.findIndex((m) => t.start >= m.start && t.end <= m.end);
+      if (inMark >= 0) {
+        mark(inMark);
+      } else if (t.isWord) {
         const state = hl[t.id] ?? 'none';
         out.push(
           <button
@@ -559,7 +590,7 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
       }
       cursor = t.end;
     }
-    if (cursor < s.text.length) out.push(s.text.slice(cursor));
+    if (cursor < s.text.length) plain(cursor, s.text.length);
     return out;
   };
 

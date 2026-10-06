@@ -117,6 +117,25 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
   }, [store, residentAll]);
   // Only the same text id proves identity. Matching titles, editions and lengths cannot prove wording equality.
   const lazy = useMemo(() => catalogTexts.filter((t) => !resident.some((r) => sameScriptureText(r, t))), [catalogTexts, resident]);
+  // A bundled sample of a chapter the library holds whole is listed once, as the library's chapter. The sample goes only when it is
+  // a plain chapter of its own address (an excerpt across chapters keeps its own row), is not itself a library row, and the library
+  // chapter at that address has at least as many sentences as the sample has verses (a sample is never hidden by a shorter text).
+  const superseded = useMemo(() => {
+    const libraryIds = new Set(catalogTexts.map((t) => t.id));
+    const sentencesAt = new Map<string, number>();
+    for (const t of catalogTexts) {
+      const at = placeOf(t);
+      if (at) sentencesAt.set(`${at.book}.${at.chapter}`, Math.max(sentencesAt.get(`${at.book}.${at.chapter}`) ?? 0, t.features.sentences));
+    }
+    const gone = new Set<string>();
+    for (const t of resident) {
+      const refs = residentRefs.get(t.id);
+      const at = placeOf(t);
+      if (!refs || refs.length === 0 || !at || libraryIds.has(t.id) || isSupplementalScripture(t, refs)) continue;
+      if ((sentencesAt.get(`${at.book}.${at.chapter}`) ?? 0) >= new Set(refs).size) gone.add(t.id);
+    }
+    return gone;
+  }, [catalogTexts, resident, residentRefs]);
 
   // Progress and coverage for the resident texts, the same shared reads as before.
   const textIds = useMemo(() => resident.map((t) => t.id), [resident]);
@@ -129,7 +148,7 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
     const others: Entry[] = [];
     const byId = new Map<string, Entry>();
     const all: Entry[] = [
-      ...resident.map((text) => ({ id: text.id, title: text.title, text, place: isSupplementalScripture(text, residentRefs.get(text.id) ?? []) ? undefined : placeOf(text) })),
+      ...resident.filter((text) => !superseded.has(text.id)).map((text) => ({ id: text.id, title: text.title, text, place: isSupplementalScripture(text, residentRefs.get(text.id) ?? []) ? undefined : placeOf(text) })),
       ...lazy.map((catalog) => ({ id: catalog.id, title: catalog.title, catalog, place: placeOf(catalog) })),
     ].map(({ place, ...e }) => ({ ...e, book: place?.book ?? '', chapter: place?.chapter ?? 0 }));
     for (const e of all) {
@@ -141,7 +160,7 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
     }
     for (const chapters of byBook.values()) for (const list of chapters.values()) list.sort((a, b) => Number(!!b.text) - Number(!!a.text) || a.title.localeCompare(b.title));
     return { byBook, others, byId };
-  }, [resident, lazy, residentRefs]);
+  }, [resident, lazy, residentRefs, superseded]);
 
   const tree = useMemo(() => canonTree(lang), [lang]);
   const availableIn = (b: BookNode) => byBook.get(b.code)?.size ?? 0;

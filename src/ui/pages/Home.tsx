@@ -2,9 +2,10 @@
  * Home is the small directory: Reading, Scripture and Testimony, with settings and vocabulary utilities.
  * Reading recommendations and continuation belong to the Reading surface.
  */
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../context';
-import { teamLabel } from '../format';
+import { languageName, teamLabel } from '../format';
 import { I } from '../ui';
 import { Stage0Entry } from '../stage0/Stage0Entry';
 import { hasLadder } from '../read/hasLadder';
@@ -20,7 +21,16 @@ const ENTRIES: Array<{ to: string; name: string; sub: string }> = [
 ];
 
 export function Home() {
-  const { user, course, features, lang } = useApp();
+  const { user, course, features, lang, store } = useApp();
+  // GoListen's own doorway starts from the recordings stored for the language (store.manifests); with none, the entry says so.
+  const [recordings, setRecordings] = useState<boolean | null>(null);
+  useEffect(() => {
+    let live = true;
+    setRecordings(null);
+    if (!features.listen) return () => { live = false; };
+    void store.manifests.all().then((rows) => { if (live) setRecordings(rows.some((m) => m.lang === lang)); }, () => undefined);
+    return () => { live = false; };
+  }, [store, lang, features.listen]);
 
   return (
     <div className="page home route-fade">
@@ -35,7 +45,7 @@ export function Home() {
           <Link key={e.to} to={e.to} className="home__entry">
             <span className="home__entry-body">
               <span className="home__entry-name">{e.name}</span>
-              <span className="home__entry-sub">{e.sub}</span>
+              <span className="home__entry-sub">{e.to === '/listen' && recordings === false ? `No recordings in ${languageName(course)} yet` : e.sub}</span>
             </span>
             <span className="home__entry-go" aria-hidden="true">{I.chevronRight}</span>
           </Link>

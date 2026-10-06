@@ -2,7 +2,7 @@
 import { act } from 'react';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import type { EnglishRescueRevealed, SentenceViewed, TokenHelpOpened } from '../../src/core';
-import { ids } from '../../src/core';
+import { buildFixtureText, ids } from '../../src/core';
 import { Reader } from '../../src/ui/reader/Reader';
 import { ManualViewDetector } from '../../src/ui/reader/viewDetection';
 import { button, byLabel, choose, click, flush, makeHarness, pressKey, q, qa } from './harness';
@@ -272,6 +272,34 @@ describe('Reader — scripture mode', () => {
   it('says so when the text is not in the library', async () => {
     mounted = await h.mount(<Reader textId="text:es:nope" mode="corpus" />);
     expect(mounted.container.textContent).toContain('not in your library');
+  });
+});
+
+describe('Reader — Luther verse markers', () => {
+  it('lays an inline "[17:1]" / "[1b]" out as a quiet label: not a word to tap, the stored text and the word tokens untouched', async () => {
+    const t = await buildFixtureText(h.store, {
+      lang: 'de', slug: 'num-16', title: '4. Mose 16', kind: 'scripture', scripture: { book: 'NUM', chapter: 16 },
+      sentences: [
+        {
+          text: '[17:1] Und der HERR redete mit Mose.',
+          tokens: [{ surface: '[', isWord: false }, { surface: '17' }, { surface: ':', isWord: false }, { surface: '1' }, { surface: ']', isWord: false },
+            { surface: 'Und' }, { surface: 'der' }, { surface: 'HERR' }, { surface: 'redete' }, { surface: 'mit' }, { surface: 'Mose' }, { surface: '.', isWord: false }],
+          verseRefs: ['NUM.16.36'],
+        },
+        { text: 'Er sprach [1b] zu ihm.', tokens: [{ surface: 'Er' }, { surface: 'sprach' }, { surface: 'zu' }, { surface: 'ihm' }, { surface: '.', isWord: false }], verseRefs: ['NUM.16.37'] },
+      ],
+    });
+    // the second sentence's marker has no tokens of its own: it falls in a gap and is still laid out as a label
+    const stored = (await h.store.sentences.where('textId', t.id)).sort((a, b) => a.index - b.index);
+    expect(stored[0].text).toBe('[17:1] Und der HERR redete mit Mose.');
+    mounted = await h.mount(<Reader textId={t.id} mode="scripture" />);
+    const marks = qa(mounted.container, 'sup.vn--alt');
+    expect(marks.map((e) => e.textContent)).toEqual(['17:1', '1b']);
+    expect(qa(mounted.container, 'sup.verse').map((e) => e.textContent)).toEqual(['36', '37']); // the verse labels are the ones from verseRefs
+    const words = qa(mounted.container, 'button.tok').map((b) => b.textContent);
+    expect(words).toEqual(['Und', 'der', 'HERR', 'redete', 'mit', 'Mose', 'Er', 'sprach', 'zu', 'ihm']);
+    const text = qa(mounted.container, '.sent-text').map((e) => e.textContent);
+    expect(text).toEqual(['17:1 Und der HERR redete mit Mose.', 'Er sprach 1b zu ihm.']);
   });
 });
 

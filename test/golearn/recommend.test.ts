@@ -83,8 +83,11 @@ describe('recommend() — a new learner', () => {
     expect(recs).toHaveLength(1);
     expect(recs[0].reason).toBe('first-text');
     expect(recs[0].textId).toBeUndefined();
-    expect(recs[0].explanation).toMatch(/No Spanish text is published yet/);
-    expect(recs[0].explanation).toContain('fixture: marked unpublished'); // the reason it is waiting
+    expect(recs[0].explanation).toMatch(/The course's own Spanish texts are waiting for a native speaker's review/);
+    expect(recs[0].explanation).toContain('Reading shelves'); // the library is where to go meanwhile
+    expect(recs[0].explanation).toContain('Preview mode in Settings');
+    expect(recs[0].explanation).not.toContain('fixture: marked unpublished'); // the raw reason is developer wording, never shown to a learner
+    expect(recs[0].explanation).not.toMatch(/review.status|reviewedBy|imported text/);
     const preview = await h.golearn.recommend(U, { includeUnpublished: true });
     expect(preview[0]).toMatchObject({ reason: 'first-text', textId: 'text:es:draft' });
   });
@@ -96,9 +99,9 @@ describe('recommend() — a new learner', () => {
     await buildSpanishScripture(h.store);
     const recs = await h.golearn.recommend(U);
     const note = recs.find((r) => r.reason === 'first-text' && !r.textId)!;
-    expect(note.explanation).toMatch(/No Spanish story or dialogue is published yet: 1 imported text is waiting/);
+    expect(note.explanation).toMatch(/The course's own Spanish stories and dialogues are waiting for a native speaker's review/);
     expect(note.explanation).toContain('Scripture is published: open it under Scripture.');
-    expect(note.explanation).not.toMatch(/No Spanish text is published/);
+    expect(note.explanation).not.toMatch(/No Spanish text is published|imported text/);
   });
 
   it('with no text at all, says so', async () => {

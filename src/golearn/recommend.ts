@@ -487,10 +487,11 @@ function whatToDo(ctx: Ctx, hasFinished: boolean, canPreview: boolean): string {
 
 function noneExplanation(langName: string, withheld: Text[], includeUnpublished: boolean, scripturePublished = false): string {
   if (includeUnpublished || withheld.length === 0) return `No ${langName} text has been imported yet.`;
-  const reasons = [...new Set(withheld.flatMap((t) => t.unpublishedReasons))].slice(0, 3);
+  // For the learner: the raw `unpublishedReasons` are developer wording and stay out of it (the preview badges show them in words).
   // "No text" would be untrue when the Scripture of this language is published: say what is missing, and where the rest is.
-  return `No ${langName} ${scripturePublished ? 'story or dialogue' : 'text'} is published yet: ${withheld.length} imported text${withheld.length === 1 ? ' is' : 's are'} waiting`
-    + (reasons.length ? ` (${reasons.join('; ')})` : '') + `.${scripturePublished ? ' Scripture is published: open it under Scripture.' : ''} You can still use preview mode to see them.`;
+  return `The course's own ${langName} ${scripturePublished ? 'stories and dialogues' : 'texts'} are waiting for a native speaker's review, so none is offered here yet.`
+    + ` The Reading shelves have texts from the library you can open now.`
+    + `${scripturePublished ? ' Scripture is published: open it under Scripture.' : ''} Preview mode in Settings shows the waiting texts, marked as not yet reviewed.`;
 }
 
 /** Read at under `REACH.rereadMinCoverage` known: more than the rest of that share of the word encounters of the LATEST reading sitting needed help. */

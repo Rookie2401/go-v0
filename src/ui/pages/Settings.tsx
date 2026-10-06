@@ -7,8 +7,8 @@
  * Everything the learner needs day to day — preferences, team, backup — is reachable without opening Advanced.
  */
 import { useCallback, useEffect, useId, useMemo, useState } from 'react';
-import { LEVEL_ORDER } from '../../core';
-import type { GoListenDiagnostics, ItemKind, ItemMarked, LearnerItemState, LearnerLevel, User } from '../../core';
+import { COURSES, LEVEL_ORDER } from '../../core';
+import type { Course, GoListenDiagnostics, ItemKind, ItemMarked, LearnerItemState, LearnerLevel, User } from '../../core';
 import { useApp } from '../context';
 import { itemSurface, languageName } from '../format';
 import { TeamSelect } from '../Onboarding';
@@ -117,7 +117,12 @@ function LearnerSection() {
   }, [store]);
   useEffect(() => { void load(); }, [load, user.id]);
 
-  const run = (fn: () => Promise<void>) => { setError(null); fn().catch((e: unknown) => setError(e instanceof Error ? e.message : String(e))); };
+  // The team being switched to, from the choice until refreshUser resolves (it installs the course's texts: seconds, not instants).
+  const [switching, setSwitching] = useState<Course | null>(null);
+  const run = (fn: () => Promise<void>, settled?: () => void) => {
+    setError(null);
+    fn().catch((e: unknown) => setError(e instanceof Error ? e.message : String(e))).finally(settled);
+  };
 
   return (
     <section aria-label="You" id="settings-you" data-settings-section="you">
@@ -132,9 +137,13 @@ function LearnerSection() {
       <label className="field">
         <span className="label">Team</span>
         <TeamSelect
-          value={course.id}
-          onChange={(courseId) => run(async () => { await store.users.put({ ...user, courseId }); rememberChosenCourse(courseId); await refreshUser(); })}
+          value={switching?.id ?? course.id}
+          onChange={(courseId) => {
+            setSwitching(COURSES.find((c) => c.id === courseId) ?? null);
+            run(async () => { await store.users.put({ ...user, courseId }); rememberChosenCourse(courseId); await refreshUser(); }, () => setSwitching(null));
+          }}
         />
+        {switching && <span className="card__note" role="status">Switching to the {switching.country} team…</span>}
         <span className="card__note">You are learning {languageName(course)}. Your progress is kept per language, so switching teams loses nothing.</span>
       </label>
       <form

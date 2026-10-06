@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import type { DimensionState, ItemMarked, TextViewed, LearnerItemState, LearnerLevel } from '../../src/core';
 import { ids } from '../../src/core';
 import { AppRoutes, Shell } from '../../src/ui/App';
-import { button, byLabel, choose, click, createTestimonyText, installMediaStubs, makeHarness, q, qa, seedAudio, type as typeInto } from './harness';
+import { button, byLabel, catalogText, choose, click, createTestimonyText, installMediaStubs, makeHarness, q, qa, seedAudio, type as typeInto } from './harness';
 import type { Mounted } from './harness';
 import { JOHN_ID, STORY_ID, seedJohn, seedStory } from './fixtures';
 
@@ -109,6 +109,46 @@ describe('Library and routes', () => {
     expect(qa(mounted.container, '.home__links a').map((a) => a.textContent)).toEqual(['Settings', 'Vocabulary']);
     expect(q(mounted.container, 'nav[aria-label="Main"]')).toBeNull();
   }); */
+});
+
+describe('Home — GoListen entry', () => {
+  const listenSub = (root: HTMLElement) => q(root, 'a.home__entry[href="/listen"] .home__entry-sub')!.textContent;
+
+  it('says plainly that there are no recordings in the language when none is stored, and keeps the entry and its route', async () => {
+    const h = await makeHarness();
+    mounted = await h.mount(app(), { router: '/' });
+    expect(q(mounted.container, 'a.home__entry[href="/listen"]')).not.toBeNull();
+    expect(listenSub(mounted.container)).toBe('No recordings in Spanish yet');
+  });
+
+  it('keeps its promise when a recording of the language is stored (a recording in another language is not counted)', async () => {
+    const h = await makeHarness();
+    await seedStory(h.store);
+    await seedAudio(h.store, h.voice, STORY_ID, [ids.sentence(STORY_ID, 0)]);
+    mounted = await h.mount(app(), { router: '/' });
+    expect(listenSub(mounted.container)).toBe('Understand stories and Scripture by listening');
+    await mounted.unmount();
+    const other = await makeHarness({ courseId: 'thailand-th' });
+    mounted = await other.mount(app(), { router: '/' });
+    expect(listenSub(mounted.container)).toBe('No recordings in Thai yet');
+  });
+});
+
+describe('Text routes — deep links', () => {
+  it('opens a library text that was never opened on this device through library.open, and shows the not-found message only when the library has none', async () => {
+    const h = await makeHarness({ library: [catalogText({ id: 'text:es:lib-1', title: 'Lib one' })] });
+    expect(await h.store.texts.get('text:es:lib-1')).toBeUndefined();
+    mounted = await h.mount(app(), { router: `/read/${encodeURIComponent('text:es:lib-1')}` });
+    expect(h.library.opened).toContain('text:es:lib-1');
+    expect(q(mounted.container, 'article.reader')).not.toBeNull();
+    expect(mounted.container.textContent).not.toContain('not in your library');
+    await mounted.unmount();
+
+    mounted = await h.mount(app(), { router: `/scripture/${encodeURIComponent('text:es:nope')}` });
+    expect(h.library.opened).toContain('text:es:nope'); // it was tried
+    expect(mounted.container.textContent).toContain('This text is not in your library.');
+    expect(q(mounted.container, 'article.reader')).toBeNull();
+  });
 });
 
 describe('Testimony privacy', () => {
@@ -259,6 +299,26 @@ describe('Settings', () => {
     const added = (await h.store.users.all()).find((u) => u.displayName === 'Third')!;
     expect(added.courseId).toBe('india-hi');
     expect(q(mounted.container, '.who')!.textContent).toContain('Third · HI'); // switched to the new learner
+  });
+});
+
+describe('Settings — switching team', () => {
+  it('shows that the switch is under way until the course is ready, then the new team', async () => {
+    const h = await makeHarness();
+    mounted = await h.mount(app(), { router: '/settings' });
+    expect(q(mounted.container, '[data-settings-section="you"] [role="status"]')).toBeNull();
+    // refreshUser installs the course's texts (seconds in the real app): hold the first step open
+    let release!: () => void;
+    const held = new Promise<void>((r) => { release = r; });
+    const put = h.store.users.put.bind(h.store.users);
+    h.store.users.put = async (row) => { await held; return put(row); };
+    await choose(byLabel<HTMLSelectElement>(mounted.container, 'Team'), 'germany-de');
+    expect(q(mounted.container, '[data-settings-section="you"] [role="status"]')!.textContent).toBe('Switching to the Germany team…');
+    expect(byLabel<HTMLSelectElement>(mounted.container, 'Team').value).toBe('germany-de'); // the choice does not snap back meanwhile
+    release();
+    await choose(byLabel<HTMLSelectElement>(mounted.container, 'Team'), 'germany-de'); // lets the pending work settle
+    expect(q(mounted.container, '[data-settings-section="you"] [role="status"]')).toBeNull();
+    expect(q(mounted.container, '.who')!.textContent).toContain('· DE');
   });
 });
 

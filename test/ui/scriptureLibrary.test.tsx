@@ -74,3 +74,35 @@ describe('full Scripture directory', () => {
     expect(mounted.container.textContent).toContain('1189 chapters');
   });
 });
+
+describe('a bundled sample of a chapter the library holds whole', () => {
+  const libraryRow = (slug: string, title: string, chapter: number, sentences: number): CatalogText => ({
+    id: `text:de:${slug}`, lang: 'de', title, chapter, stream: 'scripture', streams: ['scripture'], rights: 'verified-public-domain',
+    location: 'library', published: true, features: { words: 100, sentences, uniqueForms: 10, meanSentenceWords: 1 },
+  });
+  const sample = (h: Awaited<ReturnType<typeof makeHarness>>, slug: string, title: string, book: string, chapter: number, verses: number[]) => buildFixtureText(h.store, {
+    lang: 'de', slug, title, kind: 'scripture', scripture: { book, chapter },
+    sentences: verses.map((v) => ({ tokens: [{ surface: 'Wort' }], verseRefs: [`${book}.${chapter}.${v}`] })),
+  });
+
+  it('lists the chapter once, as the library chapter; a sample the library chapter does not cover, and an excerpt across chapters, stay', async () => {
+    const h = await makeHarness({
+      courseId: 'germany-de',
+      library: [libraryRow('bible-gen-1-complete', '1. Mose 1', 1, 31), libraryRow('bible-psa-1-complete', 'Psalm 1', 479, 2), libraryRow('bible-1john-1-complete', '1. Johannes 1', 1160, 10)],
+    });
+    const gen = await sample(h, 'bible-gen-1', '1. Mose 1', 'GEN', 1, [1, 2, 3]);
+    const psa = await sample(h, 'bible-psa-1', 'Psalm 1', 'PSA', 1, [1, 2, 3, 4, 5, 6]); // longer than the library's two sentences
+    const john = await buildFixtureText(h.store, {
+      lang: 'de', slug: 'bible-1john-1', title: '1. Johannes 1,8–9; Johannes 3,16', kind: 'scripture', scripture: { book: '1JN', chapter: 1 },
+      sentences: [{ tokens: [{ surface: 'Wort' }], verseRefs: ['1JN.1.8'] }, { tokens: [{ surface: 'Wort' }], verseRefs: ['JHN.3.16'] }],
+    });
+    localStorage.setItem('go.scripture.open.de', JSON.stringify(['t:old', 'd:law', 'b:GEN', 't:new', 'd:letters', 'b:1JN', 'd:writings', 'b:PSA', 'other']));
+    mounted = await h.mount(<Shell><AppRoutes /></Shell>, { router: '/scripture' });
+    const rows = (id: string) => mounted!.container.querySelectorAll(`[data-text-id="${id}"]`).length;
+    expect(rows('text:de:bible-gen-1-complete')).toBe(1);
+    expect(rows(gen.id)).toBe(0); // the sample is not listed beside the complete chapter
+    expect(rows(psa.id)).toBe(1); // the library chapter has fewer sentences than the sample has verses: nothing is hidden by a shorter text
+    expect(rows(john.id)).toBe(1); // a cross-chapter excerpt is its own passage
+    expect(await h.store.texts.get(gen.id)).toBeDefined(); // hidden from the list only; nothing is deleted
+  });
+});

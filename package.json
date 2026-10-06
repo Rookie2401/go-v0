@@ -10,7 +10,7 @@
     "ladder:place": "vite-node scripts/ladder-place.mts",
     "audio:packet": "vite-node scripts/audio-packet.mts",
     "dev": "vite",
-    "build": "tsc -b && vite-node --config scripts/vite.config.ts scripts/rights-gate.mts && vite-node --config scripts/vite.config.ts scripts/check-course-libraries.mts && node scripts/verify-scripture-canon.mjs && vite-node --config scripts/vite.config.ts scripts/library-audit.mts all && vite-node --config scripts/vite.config.ts scripts/dict-status.mts && vite build",
+    "build": "tsc -b && vite-node --config scripts/vite.config.ts scripts/rights-gate.mts && vite-node --config scripts/vite.config.ts scripts/check-course-libraries.mts --require hi,de,es,th,sq && node scripts/verify-scripture-canon.mjs && vite-node --config scripts/vite.config.ts scripts/library-audit.mts all && vite-node --config scripts/vite.config.ts scripts/dict-status.mts --require hi,de,es,th,sq && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b",
     "test": "vitest run",

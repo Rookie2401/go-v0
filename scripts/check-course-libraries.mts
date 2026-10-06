@@ -14,6 +14,11 @@ const adapters = createAdapterRegistry();
 const verifiedFile = 'data/verified/scripture.json';
 const verified = fs.existsSync(verifiedFile) ? JSON.parse(fs.readFileSync(verifiedFile, 'utf8')) : { translations: [] };
 const release = process.env.GO_RELEASE_JURISDICTIONS?.split(',').map((s) => s.trim()).filter(Boolean);
+// --require hi,de,es,th,sq: a missing library is a failure (npm run build passes all five), unless GO_ALLOW_MISSING_CONTENT=1 says this
+// build knowingly ships without them (a developer build on a machine without the built libraries).
+const argv = process.argv.slice(2).filter((a) => a !== '--');
+const reqAt = argv.indexOf('--require');
+const requiredLibs = reqAt >= 0 && process.env.GO_ALLOW_MISSING_CONTENT !== '1' ? (argv[reqAt + 1] ?? '').split(',').map((x) => x.trim()).filter(Boolean) : [];
 let failures = 0; let shownErrors = 0;
 const report = (message: string) => { if (shownErrors++ < 20) console.error(message); };
 // These manifests are the release source of truth for the combined course
@@ -40,7 +45,11 @@ for (const lang of combinedManifestLanguages) {
 for (const lang of ['hi', 'de', 'es', 'th', 'sq'] as LanguageCode[]) {
   const root = path.resolve('public/library', lang);
   const manifestFile = path.join(root, 'manifest.json');
-  if (!fs.existsSync(manifestFile)) { console.log(`${lang}: no installed library`); continue; }
+  if (!fs.existsSync(manifestFile)) {
+    if (requiredLibs.includes(lang)) { failures++; report(`${lang}: required library missing: run npm run library:build for ${lang} (docs/COURSE_CONTENT_IMPORTS.md), or set GO_ALLOW_MISSING_CONTENT=1 for a build without it`); }
+    else console.log(`${lang}: no installed library`);
+    continue;
+  }
   const manifest = parseManifest(JSON.parse(fs.readFileSync(manifestFile, 'utf8')), lang);
   if (!manifest) { failures++; report(`${lang}: invalid manifest`); continue; }
   const provenanceFile = path.join(root, 'provenance.json');

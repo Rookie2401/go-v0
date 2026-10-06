@@ -13,7 +13,7 @@ import { LANGUAGES } from '../src/core';
 
 const args = process.argv.slice(2).filter((a) => a !== '--');
 const reqAt = args.indexOf('--require');
-const required = reqAt >= 0 ? (args[reqAt + 1] ?? '').split(',').map((s) => s.trim()).filter(Boolean) : [];
+const required = reqAt >= 0 && process.env.GO_ALLOW_MISSING_CONTENT !== '1' ? (args[reqAt + 1] ?? '').split(',').map((s) => s.trim()).filter(Boolean) : [];
 const dirAt = args.indexOf('--dir');
 const root = dirAt >= 0 && args[dirAt + 1] ? args[dirAt + 1] : 'public/dict';
 let bad = 0;

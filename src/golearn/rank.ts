@@ -104,7 +104,7 @@ export interface Reach {
   /** The same plus half of the words met before: what the comprehensibility part is judged on. */
   effective: number;
   /**
-   * New words per word: the distinct lemmas not yet known (a word met a hundred times counts once) per word of the text, names INCLUDED in the
+   * New words per word: the distinct lemmas not yet known (a word met a hundred times counts once) per word of the text, names and words with no reading INCLUDED in the
    * count of words (a list of names teaches little for the reading it costs). What reading it would teach; absent on the form-based fallback.
    */
   yield?: number;
@@ -144,7 +144,9 @@ export function reachOf(
     return { coverage, effective: coverage + 0.5 * scored.metShare, nameShare: 0, basis: 'forms' };
   }
   const coverage = known / free;
-  return { coverage, effective: coverage + (0.5 * met) / free, yield: unknownTypes / (names + free), nameShare: names / (names + free), basis: 'lemmas' };
+  // the yield is per word of the WHOLE text: words with no reading at all (in a genealogy mostly names the analyser does not know) cost
+  // reading time too and teach nothing, so they count in the denominator (the Hindi 1 Chronicles case: 38 % of its words unanalysed)
+  return { coverage, effective: coverage + (0.5 * met) / free, yield: unknownTypes / Math.max(names + free, profile.words), nameShare: names / (names + free), basis: 'lemmas' };
 }
 
 /** The lemma ids (names and numerals excluded) of some profiles, for one read of the learner's rows. */

@@ -115,6 +115,10 @@ describe('1. names do not make a text easy; a text that teaches nothing ranks be
     const mostlyNames = reachOf(prof('g6', [['david:PROPN', 300], ['hijo:NOUN', 90], ['rio:NOUN', 5], ['luna:NOUN', 5]]), rows, shares);
     expect(mostlyNames.yield).toBeCloseTo(2 / 400, 5);
     expect(reachTier(mostlyNames)).toBe(1);
+    // words with no reading at all (names the analyser does not know: 1 Chronicles in Hindi) are words of the text too
+    const unread = reachOf(profile('g7', [['abiud', 60], ['hijo', 98], ['rio', 2]], { lemmas: [['hijo:NOUN', 98], ['rio:NOUN', 2]] }), rows, shares);
+    expect(unread.yield).toBeCloseTo(1 / 160, 5); // not 1 / 100
+    expect(reachTier(unread)).toBe(1);
     expect(reachTier({ coverage: 0.6, yield: 0.4 })).toBe(2);
     expect(reachTier({ coverage: 0.93, yield: 0.07 })).toBe(0);
     expect(reachTier({ coverage: 0.93 })).toBe(0); // a measure without a yield is never "teaches nothing"

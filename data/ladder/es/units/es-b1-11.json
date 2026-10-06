@@ -1,0 +1,617 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-11",
+  "lang": "es",
+  "title": "El conde del barrio",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-11",
+    "title": "The count of the neighborhood (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored Spanish for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is written for B1 learners (natural prose at the level of the bridge; its vocabulary is scheduled by the ladder) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. B1 bridge, unit 11: a NEW course-authored dialogue story (owner decisions of 2026-10-06: (1) Gutenberg texts are not adapted, so this unit does not adapt Unamuno's Niebla ch04; it teaches the lemma pack planned for that adaptation with an original plot; (2) Niebla is not used as the bridge's core). One pack item was deliberately NOT used: \"suicidarse\" (a theme the unit does not need); the slot is logged as dropped. For the Honduran reviewer: (a) \"el conde\" is a nickname for a rich, generous neighbor, not a real count; his \"coche\" is an old horse-drawn carriage he collects, since Honduran speech would say \"carro\" for a car; (b) \"adelante\", \"murmuró\", \"advirtió\", \"interrumpió\" are literary tags chosen for the pack; (c) the abstract words (eternidad, porvenir, anarquismo, psicológica, fisiológico, género) sit in the uncle's talk and should read as the speech of a retired, bookish man; (d) informal address is voseo (vos) among the family; the uncle and the conde use usted with each other."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "La carta de la hipoteca",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mario era un hombre distraído, y esa mañana había perdido la carta del banco.",
+              "english": "Mario was an absent-minded man, and that morning he had lost the letter from the bank."
+            },
+            {
+              "text": "La casa tenía un sitio para cada cosa, pero Mario nunca ponía nada en su sitio.",
+              "english": "The house had a place for every thing, but Mario never put anything in its place."
+            },
+            {
+              "text": "Una pared separaba la cocina del patio, y la carta, según él, había desaparecido de manera misteriosa.",
+              "english": "A wall separated the kitchen from the patio, and the letter, according to him, had disappeared mysteriously."
+            },
+            {
+              "text": "La buscó debajo de la mesa, dentro de un libro y en el bolsillo de una camisa vieja.",
+              "english": "He looked for it under the table, inside a book and in the pocket of an old shirt."
+            },
+            {
+              "text": "—¿Otra vez perdiste algo? —murmuró su tío Ricardo, sentado en su silla.",
+              "english": "\"Did you lose something again?\" his uncle Ricardo murmured, sitting in his chair."
+            },
+            {
+              "text": "El tío Ricardo era ciego desde hacía diez años, pero oía todo, y se daba cuenta de todo.",
+              "english": "Uncle Ricardo had been blind for ten years, but he heard everything, and he noticed everything."
+            },
+            {
+              "text": "—No es nada, tío —dijo Mario—.",
+              "english": "\"It is nothing, Uncle,\" Mario said."
+            },
+            {
+              "text": "Busco la carta de la hipoteca.",
+              "english": "\"I am looking for the mortgage letter.\""
+            },
+            {
+              "text": "—¿Y no hay que pagar hoy? —preguntó el viejo con calma.",
+              "english": "\"And is it not to be paid today?\" the old man asked calmly."
+            },
+            {
+              "text": "Mario se puso blanco y se sentó en el suelo.",
+              "english": "Mario turned white and sat down on the floor."
+            },
+            {
+              "text": "—Sí, hoy.",
+              "english": "\"Yes, today."
+            },
+            {
+              "text": "Y no tenemos el dinero.",
+              "english": "And we do not have the money."
+            },
+            {
+              "text": "Es una desgracia terrible.",
+              "english": "It is a terrible misfortune.\""
+            },
+            {
+              "text": "—No es el fin del mundo —advirtió el tío—.",
+              "english": "\"It is not the end of the world,\" the uncle warned."
+            },
+            {
+              "text": "Es un problema.",
+              "english": "\"It is a problem."
+            },
+            {
+              "text": "Y los problemas se resuelven cuando uno se calma.",
+              "english": "And problems are solved when one calms down.\""
+            },
+            {
+              "text": "—Usted siempre dice lo mismo, y yo siempre estoy exaltado.",
+              "english": "\"You always say the same thing, and I am always agitated.\""
+            },
+            {
+              "text": "—Por eso hay que calmar primero al exaltado.",
+              "english": "\"That is why the agitated one has to be calmed first."
+            },
+            {
+              "text": "Venite acá, tonto.",
+              "english": "Come here, silly.\""
+            },
+            {
+              "text": "Mario se acercó, y el viejo le apretaba la mano con cariño mientras hablaba.",
+              "english": "Mario came closer, and the old man squeezed his hand with affection as he spoke."
+            },
+            {
+              "text": "Sofía, la sobrina, apretaba la otra mano de Mario, y le acariciaba la cabeza como a un perro.",
+              "english": "Sofía, the niece, squeezed Mario's other hand, and stroked his head as if he were a dog."
+            },
+            {
+              "text": "—No seas tonto, Mario —dijo la chica—.",
+              "english": "\"Do not be silly, Mario,\" said the girl."
+            },
+            {
+              "text": "Tenés que calmar ese corazón, y la carta va a aparecer.",
+              "english": "\"You have to calm that heart, and the letter will turn up.\""
+            },
+            {
+              "text": "—Yo no soy tonto —dijo él—: soy distraído.",
+              "english": "\"I am not silly,\" he said: \"I am absent-minded."
+            },
+            {
+              "text": "Y ahora estoy peor.",
+              "english": "And now I am worse.\""
+            },
+            {
+              "text": "Mario apretaba la silla con las dos manos, y no lograba calmarse.",
+              "english": "Mario gripped the chair with both hands, and could not calm down."
+            },
+            {
+              "text": "—Un problema grave —dijo Ricardo— se vuelve más grave si lo ocultamos.",
+              "english": "\"A serious problem,\" said Ricardo, \"becomes more serious if we hide it.\""
+            },
+            {
+              "text": "—No quiero ocultar nada —respondió Mario—, sólo quiero encontrar la carta.",
+              "english": "\"I do not want to hide anything,\" Mario replied, \"I only want to find the letter.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una visita misteriosa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En ese momento, alguien tocó la puerta tres veces.",
+              "english": "At that moment, someone knocked on the door three times."
+            },
+            {
+              "text": "—¡Adelante! —gritó la chica, que se llamaba Sofía y tenía once años.",
+              "english": "\"Come in!\" shouted the girl, who was called Sofía and was eleven years old."
+            },
+            {
+              "text": "Sofía había dejado al perro en el patio, y corrió a abrir con el pelo en la cara.",
+              "english": "Sofía had left the dog in the patio, and ran to open the door with hair in her face."
+            },
+            {
+              "text": "Entró un hombre grande, con un sombrero de color café y una camisa larga.",
+              "english": "A big man came in, with a coffee-colored hat and a long shirt."
+            },
+            {
+              "text": "Era don Fernando, al que toda la gente llamaba «el conde», porque tenía un coche de caballos de hacía cien años.",
+              "english": "It was don Fernando, whom everybody called \"the count,\" because he had a hundred-year-old horse carriage."
+            },
+            {
+              "text": "—Buenos días a todos —dijo don Fernando, y se quitó el sombrero—.",
+              "english": "\"Good morning to all,\" said don Fernando, and he took off his hat."
+            },
+            {
+              "text": "¿Se puede?",
+              "english": "\"May I?\""
+            },
+            {
+              "text": "—Adelante, adelante —dijo el tío—.",
+              "english": "\"Come in, come in,\" said the uncle."
+            },
+            {
+              "text": "Ya entró usted, don Fernando, pero no importa.",
+              "english": "\"You have already come in, don Fernando, but it does not matter.\""
+            },
+            {
+              "text": "—Es una burla, tío —dijo Mario, rojo.",
+              "english": "\"It is a mockery, Uncle,\" Mario said, red in the face."
+            },
+            {
+              "text": "—No es nada de eso —dijo don Fernando—.",
+              "english": "\"It is nothing of the sort,\" said don Fernando."
+            },
+            {
+              "text": "Es un modo admirable de saludar.",
+              "english": "\"It is an admirable way to greet."
+            },
+            {
+              "text": "Su tío es un hombre admirable, y a mí me da pena no tener uno igual.",
+              "english": "Your uncle is an admirable man, and I feel sorry not to have one like him.\""
+            },
+            {
+              "text": "Se sentó en un sitio cerca de la ventana, y miró a todos con una mirada misteriosa.",
+              "english": "He sat in a place near the window, and looked at everyone with a mysterious look."
+            },
+            {
+              "text": "Tenía una voz misteriosa, grave y lenta, y nadie dijo nada.",
+              "english": "He had a mysterious voice, deep and slow, and nobody said anything."
+            },
+            {
+              "text": "—Me hace falta hablar con ustedes —dijo—.",
+              "english": "\"I need to talk with you,\" he said."
+            },
+            {
+              "text": "Es una cosa que importa, y para mí es terrible dejarla pasar.",
+              "english": "\"It is something that matters, and for me it is terrible to let it pass.\""
+            },
+            {
+              "text": "—Vine por una cosa de dinero —dijo—.",
+              "english": "\"I came about a matter of money,\" he said."
+            },
+            {
+              "text": "Es una cosa grave, pero también es una cosa buena.",
+              "english": "\"It is a serious thing, but it is also a good thing.\""
+            },
+            {
+              "text": "Mario miró a su tío, y el tío hizo como que miraba.",
+              "english": "Mario looked at his uncle, and the uncle pretended to look."
+            },
+            {
+              "text": "—Vi la carta del banco en el correo —siguió don Fernando—.",
+              "english": "\"I saw the bank's letter in the mail,\" don Fernando went on."
+            },
+            {
+              "text": "Y quiero ayudarlos.",
+              "english": "\"And I want to help you.\""
+            },
+            {
+              "text": "—¿Por qué? —interrumpió Mario—.",
+              "english": "\"Why?\" Mario interrupted."
+            },
+            {
+              "text": "¿Qué gana usted con eso?",
+              "english": "\"What do you gain from it?\""
+            },
+            {
+              "text": "—Nada.",
+              "english": "\"Nothing."
+            },
+            {
+              "text": "Es mi deseo.",
+              "english": "It is my wish."
+            },
+            {
+              "text": "Un hombre tiene derecho a un deseo, ¿no?",
+              "english": "A man has the right to a wish, does he not?\""
+            },
+            {
+              "text": "Sofía se paró delante de él y lo miró con ojos grandes, y don Fernando se rió.",
+              "english": "Sofía stood in front of him and looked at him with big eyes, and don Fernando laughed."
+            },
+            {
+              "text": "—Señor conde —dijo la sobrina del ciego—, ¿es verdad que su coche habla?",
+              "english": "\"Mr. Count,\" said the blind man's niece, \"is it true that your carriage talks?\""
+            },
+            {
+              "text": "—No habla, chiquilla —respondió él—.",
+              "english": "\"It does not talk, little one,\" he answered."
+            },
+            {
+              "text": "Es sólo viejo, como yo.",
+              "english": "\"It is only old, like me.\""
+            },
+            {
+              "text": "Sofía se rió, y le dio la mano a don Fernando, que acariciaba su barba.",
+              "english": "Sofía laughed, and gave her hand to don Fernando, who was stroking his beard."
+            },
+            {
+              "text": "—Soy la sobrina de Ricardo —dijo la chica—, y también soy la que encuentra las cartas.",
+              "english": "\"I am Ricardo's niece,\" said the girl, \"and I am also the one who finds the letters.\""
+            },
+            {
+              "text": "—Admirable —repitió Mario, que no entendía qué había de admirable en una chica con tantas cartas.",
+              "english": "\"Admirable,\" Mario repeated, who did not understand what was so admirable about a girl with so many letters."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La conversación del porvenir",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Don Fernando puso su sombrero sobre la mesa.",
+              "english": "Don Fernando put his hat on the table."
+            },
+            {
+              "text": "—Don Ricardo —dijo—, yo sé que usted fue anarquista de joven.",
+              "english": "\"Don Ricardo,\" he said, \"I know you were an anarchist when you were young.\""
+            },
+            {
+              "text": "—Mi anarquismo fue un error de joven —contestó el viejo—.",
+              "english": "\"My anarchism was an error of youth,\" the old man answered."
+            },
+            {
+              "text": "Pero un error con ilusión, que es lo mejor del mundo.",
+              "english": "\"But an error with enthusiasm, which is the best thing in the world.\""
+            },
+            {
+              "text": "—Del anarquismo me quedó la idea de dudar de todo, incluso de los señores importantes.",
+              "english": "\"From anarchism I kept the idea of doubting everything, even important men.\""
+            },
+            {
+              "text": "—Un anarquismo sin pan no sirve —interrumpió Sofía, que había oído hablar de eso en la escuela.",
+              "english": "\"An anarchism without bread is no use,\" Sofía interrupted, who had heard about it at school."
+            },
+            {
+              "text": "—Tampoco sirve un pan sin ilusión —dijo el tío—.",
+              "english": "\"Neither is bread without enthusiasm any use,\" said the uncle."
+            },
+            {
+              "text": "Ese es otro género de hambre.",
+              "english": "\"That is another kind of hunger.\""
+            },
+            {
+              "text": "—¿Y hoy qué cree usted?",
+              "english": "\"And what do you believe today?\""
+            },
+            {
+              "text": "—Hoy creo en el porvenir.",
+              "english": "\"Today I believe in the future."
+            },
+            {
+              "text": "No en el mío, que es poco, sino en el de ellos.",
+              "english": "Not in mine, which is little, but in theirs.\""
+            },
+            {
+              "text": "Con la mano mostró a Mario y a Sofía.",
+              "english": "With his hand he indicated Mario and Sofía."
+            },
+            {
+              "text": "—El porvenir de esta casa —advirtió— es lo que me preocupa.",
+              "english": "\"The future of this house,\" he warned, \"is what worries me.\""
+            },
+            {
+              "text": "—Yo también pienso en la eternidad —dijo don Fernando—, pero con menos ilusión.",
+              "english": "\"I also think about eternity,\" said don Fernando, \"but with less enthusiasm.\""
+            },
+            {
+              "text": "—La eternidad es una cosa para los que no tienen hipoteca —se rió el tío—.",
+              "english": "\"Eternity is a thing for those who have no mortgage,\" the uncle laughed."
+            },
+            {
+              "text": "Para nosotros, el único porvenir es el viernes.",
+              "english": "\"For us, the only future is Friday.\""
+            },
+            {
+              "text": "—La eternidad dura mucho —dijo Sofía—, y yo ya tengo hambre.",
+              "english": "\"Eternity lasts a long time,\" said Sofía, \"and I am already hungry.\""
+            },
+            {
+              "text": "Don Fernando se rió también, y Sofía se rió con ellos sin entender por qué.",
+              "english": "Don Fernando laughed too, and Sofía laughed with them without understanding why."
+            },
+            {
+              "text": "Mario seguía distraído, mirando la mesa.",
+              "english": "Mario was still absent-minded, looking at the table."
+            },
+            {
+              "text": "—Se me antojaba que usted era un hombre importante —murmuró—.",
+              "english": "\"It seemed to me that you were an important man,\" he murmured."
+            },
+            {
+              "text": "Se me antojaba también que no tenía problemas.",
+              "english": "\"It also seemed to me that you had no problems.\""
+            },
+            {
+              "text": "—Todos tenemos un deseo, joven.",
+              "english": "\"We all have a wish, young man."
+            },
+            {
+              "text": "Es una cosa del género humano —dijo don Fernando—.",
+              "english": "It is a thing of the human kind,\" said don Fernando."
+            },
+            {
+              "text": "Nunca somos lo que parecemos.",
+              "english": "\"We are never what we seem.\""
+            },
+            {
+              "text": "—No —interrumpió el tío—, déjelo hablar.",
+              "english": "\"No,\" the uncle interrupted, \"let him speak."
+            },
+            {
+              "text": "En este género de problemas, el tiempo ayuda.",
+              "english": "In this kind of problem, time helps.\""
+            },
+            {
+              "text": "—¿Y usted qué es? —preguntó el ciego.",
+              "english": "\"And what are you?\" asked the blind man."
+            },
+            {
+              "text": "—Un hombre con mucho tiempo —dijo don Fernando—.",
+              "english": "\"A man with a lot of time,\" said don Fernando."
+            },
+            {
+              "text": "Mi mayor problema es el aburrimiento.",
+              "english": "\"My biggest problem is boredom."
+            },
+            {
+              "text": "Por eso compro cosas viejas.",
+              "english": "That is why I buy old things.\""
+            },
+            {
+              "text": "—Si el aburrimiento fuera una enfermedad —dijo Ricardo—, sería psicológica.",
+              "english": "\"If boredom were an illness,\" Ricardo said, \"it would be psychological.\""
+            },
+            {
+              "text": "—¿Qué es psicológica? —preguntó Sofía.",
+              "english": "\"What is psychological?\" Sofía asked."
+            },
+            {
+              "text": "—Psicológica es lo que está en la cabeza —explicó el tío—, y fisiológica es lo que está en el cuerpo.",
+              "english": "\"Psychological is what is in the head,\" the uncle explained, \"and physiological is what is in the body.\""
+            },
+            {
+              "text": "—O fisiológica —dijo don Fernando—.",
+              "english": "\"Or physiological,\" said don Fernando."
+            },
+            {
+              "text": "Mi médico dice que me falta sueño.",
+              "english": "\"My doctor says I lack sleep."
+            },
+            {
+              "text": "Si fuera fisiológica, dormiría más; pero yo digo que me faltan penas.",
+              "english": "If it were physiological, I would sleep more; but I say I lack troubles.\""
+            },
+            {
+              "text": "—Aquí no faltan penas —dijo el viejo—.",
+              "english": "\"Here troubles are not lacking,\" the old man said."
+            },
+            {
+              "text": "Y para nosotros, la noche pasada fue una noche terrible, por falta de dinero y por falta de sueño.",
+              "english": "\"And for us, last night was a terrible night, for lack of money and for lack of sleep.\""
+            },
+            {
+              "text": "Mario se retiró a la cocina, y volvió con tres tazas de café.",
+              "english": "Mario withdrew to the kitchen, and came back with three cups of coffee."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un trato sin burla",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Mirá, tío —dijo Mario, exaltado de nuevo—.",
+              "english": "\"Look, Uncle,\" said Mario, agitated again."
+            },
+            {
+              "text": "Dice que quiere ayudarnos, y no sé qué pensar.",
+              "english": "\"He says he wants to help us, and I do not know what to think."
+            },
+            {
+              "text": "Será otra burla.",
+              "english": "It will be another mockery.\""
+            },
+            {
+              "text": "Don Fernando se retiró un poco de la mesa, y su cara cambió.",
+              "english": "Don Fernando moved back a little from the table, and his face changed."
+            },
+            {
+              "text": "—Joven —dijo—, no hay burla en esto.",
+              "english": "\"Young man,\" he said, \"there is no mockery in this."
+            },
+            {
+              "text": "Hoy mi aburrimiento terminó, y estoy dispuesto a todo.",
+              "english": "Today my boredom ended, and I am ready for anything.\""
+            },
+            {
+              "text": "—Y mi tío, ¿qué gana? —preguntó Mario.",
+              "english": "\"And what does my uncle gain?\" asked Mario."
+            },
+            {
+              "text": "—Mi propuesta es fácil.",
+              "english": "\"My proposal is easy."
+            },
+            {
+              "text": "Yo pagaré la hipoteca, y ustedes me dejan usar el patio para guardar mi coche.",
+              "english": "I will pay the mortgage, and you let me use the patio to keep my carriage.\""
+            },
+            {
+              "text": "—¿Eso de cien años en el patio? —se rió Sofía—.",
+              "english": "\"That hundred-year-old thing in the patio?\" laughed Sofía."
+            },
+            {
+              "text": "¡Qué tontería!",
+              "english": "\"What nonsense!\""
+            },
+            {
+              "text": "—Son tonterías de viejo, chiquilla —respondió él—, pero me hacen feliz.",
+              "english": "\"It is old men's nonsense, little one,\" he answered, \"but it makes me happy.\""
+            },
+            {
+              "text": "—No hay que ocultar nada —advirtió el tío—.",
+              "english": "\"There is nothing to hide,\" the uncle warned."
+            },
+            {
+              "text": "¿Qué más quiere usted?",
+              "english": "\"What else do you want?\""
+            },
+            {
+              "text": "—Nada más.",
+              "english": "\"Nothing more."
+            },
+            {
+              "text": "Estoy dispuesto a firmar hoy mismo.",
+              "english": "I am ready to sign this very day.\""
+            },
+            {
+              "text": "—Y yo estoy dispuesto a creerlo —dijo el viejo—, aunque la desgracia nos haya hecho tristes.",
+              "english": "\"And I am ready to believe it,\" said the old man, \"even if misfortune has made us sad.\""
+            },
+            {
+              "text": "—Tío —murmuró Mario—, ¿se lo creemos?",
+              "english": "\"Uncle,\" Mario murmured, \"do we believe him?\""
+            },
+            {
+              "text": "El viejo guardó silencio un largo rato.",
+              "english": "The old man kept silent for a long while."
+            },
+            {
+              "text": "—Hijo, hay un consuelo en la desgracia —dijo por fin—.",
+              "english": "\"My son, there is a comfort in misfortune,\" he said at last."
+            },
+            {
+              "text": "A veces llega un hombre que no esperábamos.",
+              "english": "\"Sometimes a man arrives whom we did not expect.\""
+            },
+            {
+              "text": "—No hay que creerle a cualquiera —dijo Mario.",
+              "english": "\"One should not believe just anyone,\" Mario said."
+            },
+            {
+              "text": "—Este consuelo —dijo el tío— vale más que mil palabras.",
+              "english": "\"This comfort,\" said the uncle, \"is worth more than a thousand words."
+            },
+            {
+              "text": "Y es verdad, no es mentira.",
+              "english": "And it is true, it is not a lie.\""
+            },
+            {
+              "text": "Sofía, la chiquilla, acariciaba la mano de don Fernando, y él la miró con cariño.",
+              "english": "Sofía, the little one, was stroking don Fernando's hand, and he looked at her fondly."
+            },
+            {
+              "text": "A Mario se le antojaba que todo era un sueño, y que mañana la carta aparecería debajo de la cama.",
+              "english": "It seemed to Mario that it was all a dream, and that tomorrow the letter would turn up under the bed."
+            },
+            {
+              "text": "Esa tarde firmaron el papel, y Mario sintió que algo se separaba en su pecho, como una piedra que se retira.",
+              "english": "That afternoon they signed the paper, and Mario felt something come apart in his chest, like a stone being moved away."
+            },
+            {
+              "text": "—Vuelvo mañana, sin falta —dijo el conde al irse, sonriendo.",
+              "english": "\"I will be back tomorrow, without fail,\" said the count as he left, smiling."
+            },
+            {
+              "text": "Y el tío se quedó en su silla, diciendo bajito: «Qué extraño es el mundo».",
+              "english": "And the uncle stayed in his chair, saying softly: \"How strange the world is.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

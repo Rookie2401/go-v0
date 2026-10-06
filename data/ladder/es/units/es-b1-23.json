@@ -1,0 +1,624 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-23",
+  "lang": "es",
+  "title": "Después de la crecida",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-23",
+    "title": "After the flood (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A fictional local news report on a river flood in southern Honduras, an interview with the nurse Ana (usted), a short voseo interview with a sixteen-year-old volunteer, and a call for help. Variety / register points for the Honduran reviewer: news register (\"según los vecinos\", \"el alcalde auxiliar\", \"damnificados\"); \"albergue\" (shelter), \"cobijas\" (blankets), \"zancudo\" (mosquito), \"carro\", lempiras; the figures are invented; the interview with Luis uses voseo (hacés, vení, trabajás, preparaste). \"Sur de Honduras, 14 de octubre\" is a placeholder dateline. Vocabulary plan: PLAN-B1 pack for es-b1-23 (news 2) was written for Niebla; its Niebla-only words (nivolesco, fogueteiro, suicidio, cuchitril, ...) were dropped and replaced by news and health vocabulary (albergue, damnificados, donaciones, zancudo, ...) plus words the later authentic texts need (pedazos, multitud, repente, prisa, cestas). Logged."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "news",
+    "health"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "news"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "La noticia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Cuarenta familias pasan la noche en un albergue después de la crecida del río",
+              "english": "Forty families spend the night in a shelter after the river floods"
+            },
+            {
+              "text": "Sur de Honduras, 14 de octubre.",
+              "english": "Southern Honduras, 14 October."
+            },
+            {
+              "text": "Después de tres días de lluvia, el río subió el lunes por la noche y entró en las casas de una aldea del sur del país.",
+              "english": "After three days of rain, the river rose on Monday night and entered the houses of a village in the south of the country."
+            },
+            {
+              "text": "Según los vecinos, el agua llegó casi sin avisar.",
+              "english": "According to the neighbours, the water arrived almost without warning."
+            },
+            {
+              "text": "«Fue de repente», dijo Marta Reyes, de cincuenta y ocho años, que vive a cien pasos del río.",
+              "english": "\"It was all of a sudden,\" said Marta Reyes, aged fifty-eight, who lives a hundred paces from the river."
+            },
+            {
+              "text": "«Yo estaba cocinando, y de repente el agua ya estaba en la cocina».",
+              "english": "\"I was cooking, and suddenly the water was already in the kitchen.\""
+            },
+            {
+              "text": "Esa noche hubo relámpagos entre las nubes negras, y el río, agitado y profundo, se llevó techos y pedazos de camino.",
+              "english": "That night there was lightning among the black clouds, and the river, rough and deep, carried away roofs and pieces of road."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ahora es un río profundo y callado, pero esa noche parecía otro.",
+              "english": "Now it is a deep and quiet river, but that night it seemed another."
+            },
+            {
+              "text": "Nadie recuerda una noche con tantos relámpagos y tantas nubes.",
+              "english": "Nobody remembers a night with so much lightning and so many clouds."
+            },
+            {
+              "text": "Un árbol grande cayó sobre el río, y la corriente lo empujó contra el puente.",
+              "english": "A big tree fell into the river, and the current pushed it against the bridge."
+            },
+            {
+              "text": "La corriente empujó también un carro, y dos hombres tuvieron que correr.",
+              "english": "The current also pushed a car, and two men had to run."
+            },
+            {
+              "text": "Por la mañana, el alcalde dijo que no hubo muertos, pero que cuarenta familias se quedaron sin casa.",
+              "english": "In the morning the mayor said that nobody died, but that forty families were left without a home."
+            },
+            {
+              "text": "Esas familias, que ahora llaman los damnificados, duermen en la escuela de la aldea, convertida en albergue.",
+              "english": "Those families, now called the damnified, sleep in the village school, which has become a shelter."
+            },
+            {
+              "text": "Las víctimas de la crecida son casi doscientas personas, y la mitad son niños.",
+              "english": "The victims of the flood are almost two hundred people, and half of them are children."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En el albergue, los voluntarios prepararon camas con cobijas prestadas, y las víctimas durmieron bajo techo.",
+              "english": "At the shelter the volunteers prepared beds with borrowed blankets, and the victims slept under a roof."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La respuesta de los vecinos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La respuesta de los vecinos fue rápida.",
+              "english": "The neighbours' response was quick."
+            },
+            {
+              "text": "Una multitud de personas llegó al albergue con ropa, comida y agua, y algunos traían cestas llenas de pan.",
+              "english": "A crowd of people arrived at the shelter with clothes, food and water, and some brought baskets full of bread."
+            },
+            {
+              "text": "Otros traían cestas con arroz, y las cestas se acabaron en una hora.",
+              "english": "Others brought baskets of rice, and the baskets ran out within an hour."
+            },
+            {
+              "text": "«Nadie preguntó cuánto había que traer», contó una de las voluntarias.",
+              "english": "\"Nobody asked how much they had to bring,\" said one of the volunteers."
+            },
+            {
+              "text": "«Todos trabajaron con prisa, porque sabían que la noche venía otra vez».",
+              "english": "\"Everybody worked in a hurry, because they knew the night was coming again.\""
+            },
+            {
+              "text": "Con prisa llegaron también los maestros, y sin prisa se fueron los últimos voluntarios, ya de noche.",
+              "english": "The teachers came in a hurry too, and the last volunteers left unhurriedly, already at night."
+            },
+            {
+              "text": "Las donaciones llegan de varios pueblos, y los voluntarios las dan en una mesa larga delante de la escuela.",
+              "english": "Donations are arriving from several towns, and the volunteers hand them out at a long table in front of the school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Cada familia recibe comida, una botella de agua limpia y una cobija.",
+              "english": "Each family receives food, a bottle of clean water and a blanket."
+            },
+            {
+              "text": "Las donaciones de agua son las más importantes, porque el agua no es potable en ninguna casa.",
+              "english": "Water donations are the most important, because the water is not drinkable in any house."
+            },
+            {
+              "text": "El agua de la aldea está llena de lodo, y las familias no pueden beber agua que no sea potable.",
+              "english": "The village water is full of mud, and the families cannot drink water that is not drinkable."
+            },
+            {
+              "text": "El agua potable llega en un carro dos veces al día, y los voluntarios cuidan que alcance para todos.",
+              "english": "Drinkable water arrives in a car twice a day, and the volunteers make sure there is enough for everybody."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una voz joven",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luis tiene dieciséis años y llegó al albergue la primera noche, con su mamá, que es maestra.",
+              "english": "Luis is sixteen and came to the shelter on the first night, with his mother, who is a teacher."
+            },
+            {
+              "text": "Esta es la entrevista que le hicimos mientras daba cobijas.",
+              "english": "This is the interview we did with him while he was handing out blankets."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Qué hacés vos aquí, Luis?",
+              "english": "What are you doing here, Luis?"
+            },
+            {
+              "text": "Ayudo con las donaciones.",
+              "english": "I help with the donations."
+            },
+            {
+              "text": "Mi mamá me dijo: «Vení, que hay mucho por hacer», y vine inmediatamente.",
+              "english": "My mother said to me: \"Come on, there is a lot to do,\" and I came immediately."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Y cuántas horas trabajás?",
+              "english": "And how many hours do you work?"
+            },
+            {
+              "text": "Casi diez, porque hago doble trabajo: de mañana con las donaciones y de noche con los niños.",
+              "english": "Almost ten, because I do double the work: in the morning with the donations and at night with the children."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Y qué fue lo más difícil de esa noche?",
+              "english": "And what was the hardest thing about that night?"
+            },
+            {
+              "text": "Ver el río.",
+              "english": "Seeing the river."
+            },
+            {
+              "text": "Las nubes se pusieron negras de repente, hubo relámpagos, y el río estaba agitado y profundo, como nunca lo había visto.",
+              "english": "The clouds turned black all of a sudden, there was lightning, and the river was rough and deep, as I had never seen it."
+            },
+            {
+              "text": "Una ola empujó la casa de mi tío, y yo corrí con prisa hasta la calle para gritarle que saliera.",
+              "english": "A wave pushed my uncle's house, and I ran in a hurry to the street to shout to him to get out."
+            },
+            {
+              "text": "Él salió, gracias a Dios, y hoy es una de las víctimas que duermen aquí.",
+              "english": "He got out, thank God, and today he is one of the victims sleeping here."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Qué hacés cuando un niño llora de noche?",
+              "english": "What do you do when a child cries at night?"
+            },
+            {
+              "text": "Le doy agua, le canto algo, y espero.",
+              "english": "I give him water, I sing something to him, and I wait."
+            },
+            {
+              "text": "Algunos niños están inquietos porque les duele el estómago, y otros no tienen apetito.",
+              "english": "Some children are restless because their stomachs hurt, and others have no appetite."
+            },
+            {
+              "text": "Entonces busco a la enfermera, porque sé que ella nos dijo que hay que llamarla inmediatamente.",
+              "english": "Then I look for the nurse, because I know she told us we have to call her immediately."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Cómo te preparaste para esto?",
+              "english": "How did you prepare for this?"
+            },
+            {
+              "text": "No me preparé, y nadie se prepara para una cosa así.",
+              "english": "I did not prepare, and nobody prepares for something like this."
+            },
+            {
+              "text": "Pero la preparación de los grandes ayuda: ellos saben qué hacer, y uno aprende mirando.",
+              "english": "But the preparation of the adults helps: they know what to do, and you learn by watching."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Y la gente, está de acuerdo con la ayuda que reciben?",
+              "english": "And the people, are they happy with the help they receive?"
+            },
+            {
+              "text": "Sí, pero algunos se sienten mal por pedir, y hay que explicarles que no es mala cosa pedir en un momento así.",
+              "english": "Yes, but some feel bad about asking, and you have to explain to them that it is not a bad thing to ask at a time like this."
+            },
+            {
+              "text": "Mi mamá dice que una ayuda que se da con cariño no necesita justificar nada.",
+              "english": "My mother says that help given with love does not need to justify anything."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El alcalde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El alcalde atendió a este periódico en la puerta del albergue.",
+              "english": "The mayor spoke to this newspaper at the door of the shelter."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Cuál es su primer trabajo hoy, señor alcalde?",
+              "english": "What is your first job today, Mr Mayor?"
+            },
+            {
+              "text": "Que nadie pase hambre ni frío.",
+              "english": "That nobody goes hungry or cold."
+            },
+            {
+              "text": "Hemos solicitado ayuda al gobierno y a las iglesias, y estamos esperando la respuesta.",
+              "english": "We have asked the government and the churches for help, and we are waiting for the answer."
+            },
+            {
+              "text": "Los vecinos solicitaron cobijas y camas, y la respuesta llegó en dos días.",
+              "english": "The neighbours asked for blankets and beds, and the answer came in two days."
+            },
+            {
+              "text": "Los vecinos solicitaron una reunión con el alcalde para el viernes.",
+              "english": "The neighbours asked for a meeting with the mayor for Friday."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Cuánto va a costar arreglar las casas?",
+              "english": "How much will it cost to fix the houses?"
+            },
+            {
+              "text": "Todavía no tenemos un número claro, pero va a ser mucho dinero, y el trabajo va a durar meses.",
+              "english": "We do not yet have a clear number, but it will be a lot of money, and the work will last months."
+            },
+            {
+              "text": "Mientras tanto, el albergue tiene un doble trabajo: dar techo a los damnificados y cuidar su salud.",
+              "english": "In the meantime the shelter has a double task: to give the people affected a roof and to look after their health."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Tiene usted algún mensaje para los vecinos?",
+              "english": "Do you have a message for the neighbours?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sí: gracias.",
+              "english": "Yes: thank you."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Esta ayuda no se puede justificar con palabras, y yo no lo voy a intentar.",
+              "english": "This help cannot be justified with words, and I am not going to try."
+            },
+            {
+              "text": "Es un compromiso de todos, y nadie debe quedar fuera.",
+              "english": "It is a commitment of everybody, and nobody should be left out."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una entrevista con la enfermera",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "A los tres días llegó al albergue un equipo de salud, con la enfermera Ana y dos voluntarios.",
+              "english": "After three days a health team arrived at the shelter, with the nurse Ana and two volunteers."
+            },
+            {
+              "text": "Ana atendió a los niños, revisó el agua y habló con las madres de la campaña que empieza esta semana.",
+              "english": "Ana treated the children, checked the water and talked with the mothers about the campaign that begins this week."
+            },
+            {
+              "text": "Después de un día largo, aceptó una entrevista.",
+              "english": "After a long day she agreed to an interview."
+            },
+            {
+              "text": "Esa entrevista fue la primera de la semana, y la hicimos en la cocina de la escuela.",
+              "english": "That interview was the first of the week, and we did it in the kitchen of the school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Cuál es el mayor riesgo después de una crecida, Ana?",
+              "english": "What is the greatest risk after a flood, Ana?"
+            },
+            {
+              "text": "Hay dos riesgos concretos.",
+              "english": "There are two concrete risks."
+            },
+            {
+              "text": "También hay otros riesgos concretos, pero esos dos son los más graves.",
+              "english": "There are also other concrete risks, but those two are the most serious."
+            },
+            {
+              "text": "El primero es el agua mala, que causa diarrea y dolor de estómago, sobre todo en los niños.",
+              "english": "The first is bad water, which causes diarrhoea and stomach ache, above all in children."
+            },
+            {
+              "text": "La diarrea es peligrosa para los bebés, y un bebé con diarrea pierde el apetito.",
+              "english": "Diarrhoea is dangerous for babies, and a baby with diarrhoea loses his appetite."
+            },
+            {
+              "text": "El segundo riesgo es el dengue, porque el agua que queda en el suelo es un criadero de zancudos.",
+              "english": "The second risk is dengue, because the water left on the ground is a breeding place for mosquitoes."
+            },
+            {
+              "text": "Toda agua que no corre es un criadero, y cada criadero puede dar muchos zancudos.",
+              "english": "Any water that does not flow is a breeding place, and every breeding place can produce many mosquitoes."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Cómo pasa el contagio?",
+              "english": "How does the infection spread?"
+            },
+            {
+              "text": "Los zancudos se alimentan de una persona enferma y después de una persona sana, y así pasa el contagio.",
+              "english": "The mosquitoes feed on a sick person and then on a healthy one, and that is how the infection passes."
+            },
+            {
+              "text": "Por eso la campaña pide sacar el agua de cualquier cosa donde se junte, porque toda agua que no corre es un criadero.",
+              "english": "That is why the campaign asks people to get the water out of anything where it collects, because any water that does not flow is a breeding place."
+            },
+            {
+              "text": "Los voluntarios van de casa en casa con la campaña, y yo explico cómo se hace.",
+              "english": "The volunteers go from house to house with the campaign, and I explain how it is done."
+            },
+            {
+              "text": "Para los voluntarios el trabajo es doble: explicar la campaña y volver a explicarla.",
+              "english": "For the volunteers the work is double: explaining the campaign and explaining it again."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Qué le aconseja usted a una familia en el albergue?",
+              "english": "What do you advise a family in the shelter?"
+            },
+            {
+              "text": "Les aconsejo tomar sólo agua con cloro o agua de botella, y lavarse las manos antes de comer.",
+              "english": "I advise them to drink only water with chlorine or bottled water, and to wash their hands before eating."
+            },
+            {
+              "text": "Eso mismo les aconsejo a las madres que se quedan en casa.",
+              "english": "I give the same advice to the mothers who stay at home."
+            },
+            {
+              "text": "El cloro es barato, y un poco de cloro en cada botella limpia el agua.",
+              "english": "Chlorine is cheap, and a little chlorine in each bottle cleans the water."
+            },
+            {
+              "text": "Es un consejo fácil, pero la gente no está acostumbrada a pensar en eso cuando acaba de perder su casa.",
+              "english": "It is easy advice, but people are not used to thinking about that when they have just lost their home."
+            },
+            {
+              "text": "Los niños se acostumbran más rápido que los grandes, y a veces ellos enseñan a los padres.",
+              "english": "Children get used to things faster than grown-ups, and sometimes they teach their parents."
+            },
+            {
+              "text": "Hay que acostumbrarse otra vez a lavar las manos, y a mirar cada semana dónde se junta el agua.",
+              "english": "You have to get used again to washing your hands, and to checking every week where water collects."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Qué señales deben preocupar a las madres?",
+              "english": "Which signs should worry mothers?"
+            },
+            {
+              "text": "Fiebre alta, pérdida de apetito y dolor fuerte de estómago.",
+              "english": "High fever, loss of appetite and strong stomach pain."
+            },
+            {
+              "text": "Si los niños están inquietos, no quieren comer y tienen la piel caliente, hay que llevarlos inmediatamente a la clínica.",
+              "english": "If the children are restless, do not want to eat and have hot skin, they must be taken to the clinic immediately."
+            },
+            {
+              "text": "Los bebés inquietos son una señal, y una madre que mira bien lo nota antes que nadie.",
+              "english": "Restless babies are a sign, and a mother who looks closely notices it before anyone else."
+            },
+            {
+              "text": "Ana dio tres consejos concretos a las madres, y todos eran fáciles de recordar.",
+              "english": "Ana gave the mothers three concrete pieces of advice, and all of them were easy to remember."
+            },
+            {
+              "text": "No hay que esperar al día siguiente: hay que ir inmediatamente.",
+              "english": "There is no need to wait until the next day: you have to go immediately."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Tiene el equipo todo lo necesario para tantos enfermos?",
+              "english": "Does the team have everything it needs for so many sick people?"
+            },
+            {
+              "text": "La preparación nunca es bastante, pero tenemos un compromiso con estas familias.",
+              "english": "Preparation is never enough, but we have a commitment to these families."
+            },
+            {
+              "text": "Nuestro compromiso es visitar el albergue cada mañana, y la clínica de la aldea va a abrir otra vez el jueves.",
+              "english": "Our commitment is to visit the shelter every morning, and the village clinic will open again on Thursday."
+            },
+            {
+              "text": "La preparación del equipo empezó antes de la lluvia, con una reunión y muchas ideas.",
+              "english": "The team's preparation began before the rain, with a meeting and many ideas."
+            },
+            {
+              "text": "Es difícil justificar un descanso cuando hay niños enfermos, y nadie lo pide.",
+              "english": "It is hard to justify a rest when there are sick children, and nobody asks for one."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Cómo ha visto usted a la gente en estos días?",
+              "english": "How have you seen the people these days?"
+            },
+            {
+              "text": "Cansada, pero con calma.",
+              "english": "Tired, but calm."
+            },
+            {
+              "text": "Hay mucha tristeza, y a veces alguien llora, pero la gente se mueve lentamente, con cuidado, como quien se levanta después de una caída.",
+              "english": "There is a lot of sadness, and sometimes someone cries, but people move slowly, carefully, like someone getting up after a fall."
+            },
+            {
+              "text": "Ayer una señora me dijo: «Perdí la casa, pero no perdí a mi familia».",
+              "english": "Yesterday a woman said to me: \"I lost the house, but I did not lose my family.\""
+            },
+            {
+              "text": "Esa frase me acompañó toda la tarde, y me ayudó a trabajar lentamente, sin perder la calma.",
+              "english": "That sentence stayed with me all afternoon, and it helped me work slowly, without losing my calm."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Para ayudar",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El albergue sigue recibiendo ayuda: comida que no se dañe, agua potable, cobijas y ropa para niños.",
+              "english": "The shelter continues to receive help: food that does not spoil, drinking water, blankets and children's clothes."
+            },
+            {
+              "text": "Quien quiera ayudar puede llevar sus donaciones a la escuela cualquier día antes de las cinco de la tarde.",
+              "english": "Anyone who wants to help can bring their donations to the school on any day before five in the afternoon."
+            },
+            {
+              "text": "El alcalde recuerda que las donaciones se dan a todos los damnificados, sin dejar a nadie.",
+              "english": "The mayor reminds people that donations are given to all the people affected, without leaving anyone out."
+            },
+            {
+              "text": "Mientras escribimos esta nota, la lluvia ha parado, y el río, que hace tres días estaba agitado y enorme, vuelve lentamente a su lugar.",
+              "english": "As we write this note the rain has stopped, and the river, which three days ago was rough and huge, is slowly going back to its place."
+            },
+            {
+              "text": "En octubre es un río profundo, y nadie lo cruza hasta que baje el agua.",
+              "english": "In October it is a deep river, and nobody crosses it until the water goes down."
+            },
+            {
+              "text": "Alrededor del albergue, los niños juegan otra vez en el patio.",
+              "english": "Around the shelter the children are playing in the yard again."
+            },
+            {
+              "text": "Alrededor de las cinco, los voluntarios cierran la mesa de donaciones, y alrededor de las seis llega la noche.",
+              "english": "Around five the volunteers close the donations table, and around six the night comes."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-10",
+  "lang": "es",
+  "title": "Cien años del parque",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-10",
+    "title": "A hundred years of the park (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored Spanish for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is written for B1 learners (natural prose at the level of the bridge; its vocabulary is scheduled by the ladder) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. B1 bridge, unit 10: a NEW course-authored explanatory text (local history), written to teach the lemma pack planned for an adaptation of Martí's \"Historia del hombre contada por sus casas\" (owner decision of 2026-10-06 (1): Gutenberg texts are not adapted; the topic, plot and wording here are original). The town, its people and the events are COMPOSITE and invented for the course; the reviewer should decide whether it needs a visible \"invented local history\" label. For the Honduran reviewer: (a) the register is a short local-history article written for a municipal booklet, with quoted memories; (b) \"nivola\" is a word coined by the writer Unamuno (here it is a word a local teacher invents; the pack asks for it): check that the aside reads naturally; (c) \"señorito\", \"merced\", \"ay\", \"bah\", \"embargo\" (sin embargo) and \"ente\" are deliberate pack items; (d) informal address in the quotations is voseo; (e) \"canario\" is used for a man from the Canary Islands."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "explanation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Los primeros pinos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El parque de este pueblo del norte tiene hoy cuatro bancos, un árbol viejo y cinco pinos altos.",
+              "english": "The park of this northern town has four benches, an old tree and five tall pines today."
+            },
+            {
+              "text": "Pero hace cien años no era un parque: era un campo de tierra, con un solo pino y un camino largo.",
+              "english": "But a hundred years ago it was not a park: it was a field of dirt, with a single pine and a long road."
+            },
+            {
+              "text": "Los vecinos cuentan que el cura plantó los primeros pinos con sus propias manos, y que era un hombre viejo, con una barba blanca y una voz muy fuerte.",
+              "english": "The neighbors say that the priest planted the first pines with his own hands, and that he was an old man, with a white beard and a very strong voice."
+            },
+            {
+              "text": "«El cura de la barba blanca era bueno —dice doña Mercedes—.",
+              "english": "\"The priest with the white beard was good,\" says doña Mercedes."
+            },
+            {
+              "text": "Un día se atrevió a decirle al capitán que el campo era de todos.»",
+              "english": "\"One day he dared to tell the captain that the field belonged to everyone.\""
+            },
+            {
+              "text": "—Así fue —prosiguió—.",
+              "english": "\"That is how it was,\" she went on."
+            },
+            {
+              "text": "Y desde entonces nadie se atrevió a decir que el parque era de uno solo.",
+              "english": "\"And from then on nobody dared to say that the park belonged to one person alone.\""
+            },
+            {
+              "text": "El capitán era el jefe del pueblo, y tenía su despacho en una casa pintada de rojo, al lado del campo.",
+              "english": "The captain was the head of the town, and he had his office in a house painted red, next to the field."
+            },
+            {
+              "text": "Sin embargo, no era un hombre malo, y al cabo de un año dio la orden de plantar más árboles.",
+              "english": "However, he was not a bad man, and after a year he gave the order to plant more trees."
+            },
+            {
+              "text": "Así empezó el parque: con un viejo, un jefe y unos árboles que crecían despacio.",
+              "english": "That is how the park began: with an old man, a chief and some trees that grew slowly."
+            },
+            {
+              "text": "Pero la existencia de un parque no es cosa de un día.",
+              "english": "But the existence of a park is not the matter of a single day."
+            },
+            {
+              "text": "Al cabo de diez años, el viento llevaba las hojas por todo el camino.",
+              "english": "After ten years, the wind carried the leaves all along the road."
+            },
+            {
+              "text": "Las hojas eran largas y secas, y los niños las usaban para hacer escobas pequeñas.",
+              "english": "The leaves were long and dry, and the children used them to make little brooms."
+            },
+            {
+              "text": "Por suerte, había buena agua, y el campo seco se puso verde.",
+              "english": "Luckily, there was good water, and the dry field turned green."
+            },
+            {
+              "text": "«Tuvimos suerte —dice doña Mercedes—.",
+              "english": "\"We were lucky,\" says doña Mercedes."
+            },
+            {
+              "text": "Con mala suerte, no habría pueblo.»",
+              "english": "\"With bad luck, there would be no town.\""
+            },
+            {
+              "text": "Al cabo de otro tiempo, esa orden se cumplió, y el parque tuvo su primera casa pintada de blanco.",
+              "english": "After another while, that order was carried out, and the park had its first house painted white."
+            },
+            {
+              "text": "La segunda casa fue pintada de azul por un maestro, y en ella estuvo el despacho de la escuela.",
+              "english": "The second house was painted blue by a teacher, and the school's office was in it."
+            },
+            {
+              "text": "Hoy esa casa sigue ahí, a merced del sol y de las lluvias, y la orden de cuidarla pasó de padres a hijos.",
+              "english": "Today that house is still there, at the mercy of the sun and the rains, and the order to take care of it passed from parents to children."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los que llegaron",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Los años siguientes trajeron gente nueva.",
+              "english": "The following years brought new people."
+            },
+            {
+              "text": "Primero llegó un inglés, un ingeniero que venía a hacer el tren, y se quedó dos años en una casa cerca del parque.",
+              "english": "First came an Englishman, an engineer who came to build the railway, and he stayed two years in a house near the park."
+            },
+            {
+              "text": "El inglés hablaba poco español, pero observó todo con mucho cuidado, y escribió una carta larga.",
+              "english": "The Englishman spoke little Spanish, but he observed everything very carefully, and he wrote a long letter."
+            },
+            {
+              "text": "«El pueblo vive a merced de la lluvia —escribió—: si llueve poco, no hay comida, y si llueve mucho, el río se lleva los caminos.»",
+              "english": "\"The town lives at the mercy of the rain,\" he wrote: \"if it rains little, there is no food, and if it rains a lot, the river takes away the roads.\""
+            },
+            {
+              "text": "También llegó un canario, un hombre de las islas Canarias, que abrió una tienda de carne y de pan en una esquina.",
+              "english": "A man from the Canary Islands also arrived, who opened a shop for meat and bread on a corner."
+            },
+            {
+              "text": "El canario vendía carne de cerdo los sábados, y la gente se reunía a comprar y a hablar.",
+              "english": "The Canarian sold pork on Saturdays, and people gathered to buy and to talk."
+            },
+            {
+              "text": "Aquellas conversaciones eran la mejor manera de saber qué pasaba en el pueblo.",
+              "english": "Those conversations were the best way to know what was going on in the town."
+            },
+            {
+              "text": "«Con una conversación en la tienda del canario se sabía todo —cuenta una vecina—: quién se casaba, quién estaba enfermo, quién tenía carne esa semana.»",
+              "english": "\"With one conversation in the Canarian's shop you knew everything,\" a neighbor says: \"who was getting married, who was sick, who had meat that week.\""
+            },
+            {
+              "text": "El inglés observó que las mujeres eran las que mejor hablaban, y las que más oían.",
+              "english": "The Englishman observed that the women were the ones who spoke best, and the ones who listened most."
+            },
+            {
+              "text": "Un matrimonio joven abrió después la primera farmacia, y el marido era capaz de leer cuatro idiomas.",
+              "english": "A young married couple later opened the first pharmacy, and the husband was able to read four languages."
+            },
+            {
+              "text": "El hijo de ese matrimonio, capaz de todo, fue más tarde el primer médico del pueblo.",
+              "english": "The son of that couple, capable of anything, was later the town's first doctor."
+            },
+            {
+              "text": "El matrimonio ayudaba a los enfermos sin pedir dinero, y la mujer era capaz de sanar con hierbas.",
+              "english": "The couple helped the sick without asking for money, and the wife was able to heal with herbs."
+            },
+            {
+              "text": "Pero no todos eran tan buenos.",
+              "english": "But not everybody was so good."
+            },
+            {
+              "text": "Un señorito de la ciudad llegó con un carro nuevo y quiso comprar todo el parque.",
+              "english": "A young gentleman from the city arrived with a new car and wanted to buy the whole park."
+            },
+            {
+              "text": "—¿Para qué querés tanta tierra? —le preguntó el viejo de la barba.",
+              "english": "\"What do you want so much land for?\" the old man with the beard asked him."
+            },
+            {
+              "text": "—Bah, para nada —dijo el señorito—.",
+              "english": "\"Bah, for nothing,\" said the young gentleman."
+            },
+            {
+              "text": "Para conquistar el pueblo.",
+              "english": "\"To conquer the town.\""
+            },
+            {
+              "text": "—Conquistar un pueblo es imposible, hijo —prosiguió el viejo, con calma—.",
+              "english": "\"To conquer a town is impossible, my son,\" the old man went on, calmly."
+            },
+            {
+              "text": "Un pueblo sólo se conquista cuando ya es tuyo.",
+              "english": "\"A town is only conquered when it is already yours.\""
+            },
+            {
+              "text": "—¡Bah!",
+              "english": "\"Bah!"
+            },
+            {
+              "text": "Eso es imposible de creer —dijo el señorito.",
+              "english": "That is impossible to believe,\" said the young gentleman."
+            },
+            {
+              "text": "Pero se fue sin decir nada, y el parque siguió siendo de todos.",
+              "english": "But he left without saying anything, and the park remained everyone's."
+            },
+            {
+              "text": "—Ay, qué hombre tan malo —dijeron algunos—.",
+              "english": "\"Ay, what a bad man,\" some said."
+            },
+            {
+              "text": "Bah, ya se le pasará.",
+              "english": "\"Bah, he will get over it.\""
+            },
+            {
+              "text": "Esa tarde nadie quiso hablar más, y sólo quedó el viento.",
+              "english": "That afternoon nobody wanted to talk any more, and only the wind was left."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La escuela y los versos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En 1930 se construyó la escuela de la esquina, y con ella llegaron los primeros maestros.",
+              "english": "In 1930 the school on the corner was built, and with it came the first teachers."
+            },
+            {
+              "text": "La portera de la escuela era una mujer resignada, y casi nunca hablaba.",
+              "english": "The school's caretaker was a resigned woman, and she hardly ever spoke."
+            },
+            {
+              "text": "Pero guardaba en silencio todo lo que oía, y por eso los maestros le contaban sus problemas en el despacho.",
+              "english": "But she kept in silence everything she heard, and that is why the teachers told her their problems in the office."
+            },
+            {
+              "text": "«La portera sabía más que todos los libros —dice un maestro viejo—.",
+              "english": "\"The caretaker knew more than all the books,\" says an old teacher."
+            },
+            {
+              "text": "Su silencio era una creación, como una canción que nadie canta.»",
+              "english": "\"Her silence was a creation, like a song that nobody sings.\""
+            },
+            {
+              "text": "Una vecina decía que ella era tan resignada que era la mujer más feliz del pueblo.",
+              "english": "A neighbor said that the caretaker was so resigned that she was the happiest woman in the town."
+            },
+            {
+              "text": "Nunca la oían decir una palabra mala, y su cara resignada era una señal de paz.",
+              "english": "They never heard her say a bad word, and her resigned face was a sign of peace."
+            },
+            {
+              "text": "Uno de esos maestros, don Ricardo, escribía versos por las noches, y los leía a los vecinos en el parque.",
+              "english": "One of those teachers, don Ricardo, wrote verses at night, and read them to the neighbors in the park."
+            },
+            {
+              "text": "Algunos decían que sus versos eran ridículos, porque hablaban de los pinos como si fueran personas.",
+              "english": "Some said his verses were ridiculous, because they spoke of the pines as if they were people."
+            },
+            {
+              "text": "Nadie quería hacer el ridículo, y por eso casi nadie los leía en voz alta.",
+              "english": "Nobody wanted to look ridiculous, and that is why hardly anybody read them aloud."
+            },
+            {
+              "text": "—¡Ay, maestro! —le decían—.",
+              "english": "\"Ay, teacher!\" they said to him."
+            },
+            {
+              "text": "¿Quién va a querer un árbol con nombre?",
+              "english": "\"Who is going to want a tree with a name?\""
+            },
+            {
+              "text": "Don Ricardo sonreía y prosiguió con sus versos, y un día escribió un libro grande.",
+              "english": "Don Ricardo smiled and kept on with his verses, and one day he wrote a big book."
+            },
+            {
+              "text": "No era una novela ni un cuento, y el maestro le puso un nombre inventado: una nivola.",
+              "english": "It was not a novel or a tale, and the teacher gave it an invented name: a nivola."
+            },
+            {
+              "text": "«Una nivola es una obra de ficción —explicaba—, pero hecha con personas de verdad: el viejo, el capitán, la portera.»",
+              "english": "\"A nivola is a work of fiction,\" he explained, \"but made with real people: the old man, the captain, the caretaker.\""
+            },
+            {
+              "text": "El libro habla de un ente extraño, mitad árbol y mitad hombre, que cuida el parque de noche.",
+              "english": "The book is about a strange being, half tree and half man, who watches over the park at night."
+            },
+            {
+              "text": "Ese ente de ficción habla con los vecinos, y casi siempre les dice lo contrario de lo que esperan.",
+              "english": "That fictional being talks to the neighbors, and almost always tells them the opposite of what they expect."
+            },
+            {
+              "text": "Los niños devoraban el libro en la escuela, y una niña quiso devorar todos los libros del maestro, y los devoró en una semana.",
+              "english": "The children devoured the book at school, and one girl wanted to devour all the teacher's books, and devoured them in a week."
+            },
+            {
+              "text": "Jugaban a ser él, y todos hacían lo contrario de lo que se les pedía.",
+              "english": "They played at being him, and everyone did the opposite of what they were asked."
+            },
+            {
+              "text": "—Es lo contrario de la escuela —se reía el maestro.",
+              "english": "\"It is the opposite of school,\" the teacher laughed."
+            },
+            {
+              "text": "Un joven anarquista, llegado de la costa, leyó el libro con gozo.",
+              "english": "A young anarchist, who had arrived from the coast, read the book with delight."
+            },
+            {
+              "text": "Dijo que el ente de don Ricardo era un anarquista también, porque no obedecía a nadie.",
+              "english": "He said that don Ricardo's being was also an anarchist, because it obeyed nobody."
+            },
+            {
+              "text": "El maestro contestó que no: que un anarquista no cree en la ficción, y que su figura era sólo una creación de papel.",
+              "english": "The teacher answered no: that an anarchist does not believe in fiction, and that his figure was only a creation of paper."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El pianista y la esperanza",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Con el tiempo, el parque tuvo también música.",
+              "english": "In time, the park also had music."
+            },
+            {
+              "text": "Un pianista que tocaba en el cine se sentaba los domingos bajo los árboles, y tocaba un piano viejo que le prestaban.",
+              "english": "A pianist who played at the cinema sat under the trees on Sundays, and played an old piano that they lent him."
+            },
+            {
+              "text": "El pianista no tenía casa propia, y vivía a merced de lo que le daban los vecinos.",
+              "english": "The pianist had no house of his own, and lived at the mercy of what the neighbors gave him."
+            },
+            {
+              "text": "Sin embargo, su música daba tanto gozo que nadie lo dejaba solo.",
+              "english": "However, his music gave so much joy that nobody left him alone."
+            },
+            {
+              "text": "Sin embargo, el pianista nunca quiso otra casa, y tocaba hasta muy tarde.",
+              "english": "However, the pianist never wanted another house, and played until very late."
+            },
+            {
+              "text": "Una mujer de la ciudad, que estudiaba psicología, pasó tres semanas en el parque con un libro de psicología bajo el brazo.",
+              "english": "A woman from the city, who studied psychology, spent three weeks in the park with a psychology book under her arm."
+            },
+            {
+              "text": "Escribió lo que veía, y dijo que la psicología de los pueblos pequeños era más fácil de lo que se pensaba.",
+              "english": "She wrote down what she saw, and said that the psychology of small towns was easier than people thought."
+            },
+            {
+              "text": "Observó que la existencia de la gente era dura, pero que la conversación la hacía más fácil.",
+              "english": "She observed that people's existence was hard, but that conversation made it easier."
+            },
+            {
+              "text": "«La necesidad nos hace hablar —escribió—, y hablar nos hace pueblo.»",
+              "english": "\"Need makes us talk,\" she wrote, \"and talking makes us a town.\""
+            },
+            {
+              "text": "Algunos se rieron: «Ay, esa señora quiere hacernos creer que somos brutos».",
+              "english": "Some laughed: \"Ay, that lady wants to make us believe we are brutes.\""
+            },
+            {
+              "text": "Pero ella contestó con calma que los brutos no escriben versos ni inventan palabras.",
+              "english": "But she answered calmly that brutes do not write verses or invent words."
+            },
+            {
+              "text": "Pensaba, además, que era imposible conocer un pueblo sin escuchar a los brutos y a los que saben por igual.",
+              "english": "She also thought that it was impossible to know a town without listening to the brutes and to those who know alike."
+            },
+            {
+              "text": "Esa fue una buena respuesta, y desde entonces todos la saludaban en el parque.",
+              "english": "That was a good answer, and from then on everybody greeted her in the park."
+            },
+            {
+              "text": "Hoy el parque tiene cinco árboles, un banco nuevo y una historia que nadie ha escrito del todo.",
+              "english": "Today the park has five trees, a new bench and a history that nobody has written completely."
+            },
+            {
+              "text": "Doña Mercedes dice que la existencia del parque es una creación de todos los vecinos.",
+              "english": "Doña Mercedes says that the existence of the park is a creation of all the neighbors."
+            },
+            {
+              "text": "Y don Ricardo, ya viejo, sigue escribiendo cada noche, con la esperanza de terminar su libro.",
+              "english": "And don Ricardo, already old, keeps writing every night, in the hope of finishing his book."
+            },
+            {
+              "text": "«Cada pueblo es una nivola —dice—, una mezcla de lo que existe y de lo que se ha inventado.»",
+              "english": "\"Every town is a nivola,\" he says, \"a mixture of what exists and of what has been invented.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

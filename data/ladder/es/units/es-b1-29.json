@@ -1,0 +1,880 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-29",
+  "lang": "es",
+  "title": "En la plaza, un sábado",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-29",
+    "title": "In the square, on a Saturday (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Owner decision 2 (2026-10-06): Niebla is not used as the core of the bridge; the plan's Niebla slot is taken by this new course-authored unit (or by a library text that ladder:place shows readable at that point). A contemporary conversation with voseo between two friends (Ana, Karla) and market vendors (usted): the supply the plan's section 4 says the open library lacks. Points for the Honduran reviewer: \"regatear\", \"va pues\", \"cabal\", \"mi niña\", \"doña\", \"¿A cómo...?\", \"libra\", \"centavos\", prices in lempiras (invented and probably too round), \"chiquitines\" (cipotes is more Honduran; kept because the lemma helps Galdós), \"yuca\", \"aguacates\", \"carro\", \"leña / carbón / estufa\", \"vos\" as an interjection (\"ya compramos la piña, vos\"), voseo forms (querés, Mirá, Llevá, Fijate). Owner decision 3: the 92 % entry line for authentic placements stays; new-lemmas warnings are acceptable. Vocabulary plan: Not in PLAN-B1 as written: this unit takes the plan's Niebla slot es-b1-29 (Niebla ch09). Its vocabulary is a market and party lexicon chosen for coverage of Martí and Galdós (gordo, fino, miel, madera, sacos, fama, ay, inteligente, chiquitín, ...). Logged."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "conversation",
+    "daily life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Antes de salir",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mañana es el cumpleaños de Nico, y Ana y Karla van a la plaza a comprar todo para la fiesta.",
+              "english": "Tomorrow is Nico's birthday, and Ana and Karla are going to the square to buy everything for the party."
+            },
+            {
+              "text": "Karla tiene una lista larga en la mano, y Ana se ríe cuando la ve.",
+              "english": "Karla has a long list in her hand, and Ana laughs when she sees it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¿Todo eso querés comprar, Karla? —pregunta Ana.",
+              "english": "\"Is that everything you want to buy, Karla?\" asks Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Sí, y todavía falta lo más importante: el pastel —contesta Karla.",
+              "english": "\"Yes, and the most important thing is still missing: the cake,\" answers Karla."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Nico cumple diez años, y no quiero que nadie se quede sin comer.",
+              "english": "\"Nico turns ten, and I do not want anybody to go without food.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Mirá, vamos primero al mercado, y después hacemos las cuentas con calma —dice Ana.",
+              "english": "\"Look, let's go to the market first, and then we'll do the sums calmly,\" says Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Llevá dinero en billetes pequeños, porque en la plaza nadie tiene cambio —le recuerda Ana.",
+              "english": "\"Take money in small notes, because nobody in the square has change,\" Ana reminds her."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana lleva una canasta grande, y Karla lleva la lista y las monedas.",
+              "english": "Ana carries a big basket, and Karla carries the list and the coins."
+            },
+            {
+              "text": "La canasta está vacía, pero Ana ya sabe que al volver la canasta va a pesar mucho.",
+              "english": "The basket is empty, but Ana already knows that on the way back the basket will be heavy."
+            },
+            {
+              "text": "Salen temprano, antes de que el sol caliente el pueblo.",
+              "english": "They set out early, before the sun heats up the town."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Piñas, aguacates y yuca",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La plaza está llena de gente y de gritos.",
+              "english": "The square is full of people and shouts."
+            },
+            {
+              "text": "En el mercado hay de todo: ropa, ollas, flores y hasta animales.",
+              "english": "In the market there is everything: clothes, pots, flowers and even animals."
+            },
+            {
+              "text": "Una vendedora grita: «¡Aguacates, aguacates!», y otra ofrece yuca fresca y chile.",
+              "english": "A vendor shouts: \"Avocados, avocados!\", and another offers yuca and chilli."
+            },
+            {
+              "text": "Ana se detiene en un puesto y mira las piñas.",
+              "english": "Ana stops at a stall and looks at the pineapples."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Buenos días, doña —dice Ana.",
+              "english": "\"Good morning, ma'am,\" says Ana."
+            },
+            {
+              "text": "¿A cómo está la piña?",
+              "english": "\"How much is the pineapple?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—A veinte lempiras la piña, mi niña, y es dulce como la miel —contesta la vendedora.",
+              "english": "\"Twenty lempiras for the pineapple, dear, and it is sweet as honey,\" answers the vendor."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Ay, veinte, ¿tan caro? —dice Ana.",
+              "english": "\"Oh, twenty, so dear?\" says Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—La semana pasada estaba a quince.",
+              "english": "\"Last week it was fifteen.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Es que llovió mucho, y la cosecha vino pequeña —explica la vendedora.",
+              "english": "\"It's just that it rained a lot, and the harvest came in small,\" explains the vendor."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana mira a Karla y sonríe, porque Karla ya sabe lo que viene: Ana va a regatear.",
+              "english": "Ana looks at Karla and smiles, because Karla already knows what is coming: Ana is going to haggle."
+            },
+            {
+              "text": "En la plaza, regatear no es una falta de respeto, sino una costumbre.",
+              "english": "In the square, haggling is not disrespect but a custom."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Mire, doña, si llevo tres piñas, ¿me hace un descuento?",
+              "english": "\"Look, ma'am, if I take three pineapples, will you give me a discount?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Tres piñas, cuarenta y cinco —dice la vendedora.",
+              "english": "\"Three pineapples, forty-five,\" says the vendor."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Cuarenta, y le compro también una docena de limones —contesta Ana.",
+              "english": "\"Forty, and I'll also buy a dozen lemons from you,\" answers Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La rebaja es poca, pero la docena de limones vale la pena.",
+              "english": "The reduction is small, but the dozen lemons are worth it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Cuarenta y dos, y no digamos más, porque ya me quedé sin ganancia —dice la vendedora.",
+              "english": "\"Forty-two, and let's say no more, because I've already lost my profit,\" says the vendor."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Va pues, cuarenta y dos —acepta Ana.",
+              "english": "\"All right, forty-two,\" agrees Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla paga con billetes grandes, y la vendedora le da el cambio en monedas.",
+              "english": "Karla pays with big notes, and the vendor gives her the change in coins."
+            },
+            {
+              "text": "Entre las monedas hay unos centavos, y Karla se queda mirándolos en la mano.",
+              "english": "Among the coins there are a few cents, and Karla stands looking at them in her hand."
+            },
+            {
+              "text": "Son centavos de los viejos, y casi nadie los acepta ya.",
+              "english": "They are the old cents, and almost nobody accepts them any more."
+            },
+            {
+              "text": "Los centavos casi no valen nada, pero la vendedora los cuenta uno por uno.",
+              "english": "The cents are worth almost nothing, but the vendor counts them one by one."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¿Y los aguacates, doña?",
+              "english": "\"And the avocados, ma'am?\""
+            },
+            {
+              "text": "¿A cómo están los aguacates?",
+              "english": "\"How much are the avocados?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—A cinco lempiras cada uno, y son de los buenos —dice la vendedora.",
+              "english": "\"Five lempiras each, and they are good ones,\" says the vendor."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Si me da seis aguacates y una libra de yuca, ¿me hace una rebaja? —pregunta Ana.",
+              "english": "\"If you give me six avocados and a pound of yuca, will you give me a reduction?\" asks Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Está bien, le hago la rebaja, pero no se lo cuente a nadie —contesta la señora.",
+              "english": "\"All right, I'll give you the reduction, but don't tell anybody,\" answers the woman."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla se ríe, porque las dos saben que la señora le hace la misma rebaja a todo el mundo.",
+              "english": "Karla laughs, because the two of them know that the woman gives everyone the same reduction."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Naranjas, huevos y un pollo gordo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En el siguiente puesto, Ana pide naranjas, y esta vez no regatea tanto.",
+              "english": "At the next stall Ana asks for oranges, and this time she does not haggle as much."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Dos docenas de naranjas, por favor, para el jugo de mañana —pide Ana.",
+              "english": "\"Two dozen oranges, please, for tomorrow's juice,\" Ana asks."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Mirá que el jugo no alcanza si son sólo naranjas —le dice Karla en voz baja.",
+              "english": "\"Look, the juice won't be enough if it's only oranges,\" Karla says to her in a low voice."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Entonces compramos también mango para el jugo, ¿no? —propone Ana.",
+              "english": "\"Then we'll buy mango for the juice as well, won't we?\" proposes Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Ya compramos la piña, vos —le dice Karla.",
+              "english": "\"We already bought the pineapple, you know,\" Karla tells her."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Es verdad, ay, qué cabeza la mía —dice Ana.",
+              "english": "\"That's true, oh, what a head I have,\" says Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Se ríen las dos, y la vendedora de naranjas se ríe también.",
+              "english": "The two of them laugh, and the orange seller laughs too."
+            },
+            {
+              "text": "Compran un mango maduro, y la vendedora lo pesa en la mano.",
+              "english": "They buy a ripe mango, and the vendor weighs it in her hand."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Mango fino, doña, de los que sólo se encuentran un día por semana —dice la vendedora.",
+              "english": "\"Fine mango, ma'am, the kind you only find one day a week,\" says the vendor."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Siguen caminando hasta un puesto donde una señora vende huevos.",
+              "english": "They keep walking until a stall where a woman sells eggs."
+            },
+            {
+              "text": "Esta señora tiene fama de vender los mejores huevos del mercado.",
+              "english": "This woman has a reputation for selling the best eggs in the market."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Una docena de huevos, y que sean grandes, por favor —dice Karla.",
+              "english": "\"A dozen eggs, and make them big ones, please,\" says Karla."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Para la gente de la clínica, lo mejor que tengo —contesta la señora de los huevos.",
+              "english": "\"For the people of the clinic, the best I have,\" answers the egg woman."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Por algo tiene usted tanta fama, doña —le dice Ana.",
+              "english": "\"No wonder you have such a reputation, ma'am,\" Ana tells her."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—La fama no se compra, mi niña: se gana con los años, y a veces la fama pesa más que los huevos.",
+              "english": "\"A reputation is not bought, dear: you earn it over the years, and sometimes the reputation weighs more than the eggs.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¿Y el pollo? —pregunta Ana.",
+              "english": "\"And the chicken?\" asks Ana."
+            },
+            {
+              "text": "¿Cuánto cuesta el pollo gordo?",
+              "english": "\"How much is the fat chicken?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—A treinta lempiras la libra, mi niña, y ese pollo es fino, no es de esos delgados.",
+              "english": "\"Thirty lempiras a pound, dear, and that chicken is a fine one, not one of those thin ones.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla piensa en cuántas personas van a venir mañana y hace una cuenta rápida con los dedos.",
+              "english": "Karla thinks about how many people are coming tomorrow and does a quick sum on her fingers."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Dos pollos gordos son seis libras, y cada libra a treinta, son ciento ochenta.",
+              "english": "\"Two fat chickens are six pounds, and at thirty a pound, that is a hundred and eighty.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana dice que sí con la cabeza, pone dos pollos en la canasta y regatea otra vez, sin prisa.",
+              "english": "Ana nods, puts two chickens in the basket and haggles again, without hurrying."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Si me lleva los dos pollos gordos, ¿me da un descuento de diez lempiras? —pregunta Ana.",
+              "english": "\"If you take both fat chickens, will you give me a discount of ten lempiras?\" asks Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Cabal, diez lempiras, y le regalo una bolsita de chile —dice la señora.",
+              "english": "\"Right then, ten lempiras, and I'll give you a little bag of chilli,\" says the woman."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Cabal, doña, pero que el chile sea del bueno —contesta Ana.",
+              "english": "\"Right, ma'am, but make sure the chilli is a good one,\" answers Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Cabal, mi niña, cabal —ríe la señora.",
+              "english": "\"Right, dear, right,\" laughs the woman."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Entonces, trato hecho —dice Ana.",
+              "english": "\"Then it's a deal,\" says Ana."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Leña, madera y carbón",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Para la comida de mañana necesitan fuego, y hay que comprar leña.",
+              "english": "For tomorrow's meal they need fire, and they have to buy firewood."
+            },
+            {
+              "text": "Al final de la plaza hay un hombre con un carro lleno de leña y de sacos de carbón.",
+              "english": "At the end of the square there is a man with a car full of firewood and sacks of charcoal."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Buenos días, don —dice Karla.",
+              "english": "\"Good morning, sir,\" says Karla."
+            },
+            {
+              "text": "¿A cómo la leña?",
+              "english": "\"How much is the firewood?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Una carga de leña, cien lempiras —contesta el hombre.",
+              "english": "\"A load of firewood, one hundred lempiras,\" answers the man."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¿Y el carbón?",
+              "english": "\"And the charcoal?\""
+            },
+            {
+              "text": "¿Cuánto cuestan los sacos?",
+              "english": "\"How much are the sacks?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—El saco pequeño, treinta, y el grande, cincuenta —dice el hombre.",
+              "english": "\"The small sack, thirty, and the big one, fifty,\" says the man."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Dos sacos grandes y una carga de leña, ¿cuánto sale? —pregunta Ana.",
+              "english": "\"Two big sacks and a load of firewood, how much does that come to?\" asks Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Doscientos, pero para usted le hago un descuento —dice el hombre.",
+              "english": "\"Two hundred, but I'll give you a discount,\" says the man."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Ciento ochenta, y nos llevamos también los pedazos pequeños que tiene en el carro —dice Ana.",
+              "english": "\"A hundred and eighty, and we'll also take the small pieces you have in the car,\" says Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Ciento ochenta y cinco, y no regateen más —termina el hombre.",
+              "english": "\"A hundred and eighty-five, and don't haggle any more,\" the man finishes."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla saca los billetes, y Ana cuenta los sacos de carbón antes de pagar.",
+              "english": "Karla takes out the notes, and Ana counts the sacks of charcoal before paying."
+            },
+            {
+              "text": "Entre las dos suben la carga de leña al carro del hombre.",
+              "english": "Between the two of them they lift the load of firewood onto the man's car."
+            },
+            {
+              "text": "La leña y el carbón son para cocinar mañana en la cocina de la escuela, que todavía tiene una estufa vieja.",
+              "english": "The firewood and the charcoal are for cooking tomorrow in the school kitchen, which still has an old stove."
+            },
+            {
+              "text": "La estufa sólo sirve con carbón, y la madera sirve para calentar el agua.",
+              "english": "The stove only works with charcoal, and the wood is for heating the water."
+            },
+            {
+              "text": "Sin la estufa no hay fiesta, y sin carbón no hay estufa.",
+              "english": "Without the stove there is no party, and without charcoal there is no stove."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El pastel, la miel y los globos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Para el pastel hace falta harina, huevos, azúcar y miel.",
+              "english": "For the cake you need flour, eggs, sugar and honey."
+            },
+            {
+              "text": "Karla compra una botella de miel, de las que se venden en la esquina del mercado.",
+              "english": "Karla buys a bottle of honey, one of those sold at the corner of the market."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¿Y por qué es tan cara, don? —pregunta Karla.",
+              "english": "\"And why is it so dear, sir?\" asks Karla."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Porque la miel no se hace sola, y las abejas trabajan mucho —contesta el señor.",
+              "english": "\"Because honey does not make itself, and the bees work a lot,\" answers the man."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Después van a un puesto donde venden globos de todos los colores.",
+              "english": "Then they go to a stall where they sell balloons of every colour."
+            },
+            {
+              "text": "Los globos son baratos, y los hay de todas las formas.",
+              "english": "The balloons are cheap, and there are all shapes."
+            },
+            {
+              "text": "Karla compra veinte globos, una piñata en forma de estrella y un paquete de velas.",
+              "english": "Karla buys twenty balloons, a piñata in the shape of a star and a packet of candles."
+            },
+            {
+              "text": "Ana mira la piñata y se acuerda de su cumpleaños de niña.",
+              "english": "Ana looks at the piñata and remembers her birthdays as a girl."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Mi mamá no tenía dinero para una piñata, pero hacía una con papel y con maíz —cuenta Ana.",
+              "english": "\"My mother had no money for a piñata, but she made one with paper and corn,\" Ana tells her."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Y ahora Nico va a tener una de estrella, y los chiquitines del pueblo van a pelear por los dulces —dice Karla.",
+              "english": "\"And now Nico will have a star one, and the little ones from the town will fight over the sweets,\" says Karla."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Qué niño más inteligente es Nico, ¿verdad? —dice Karla.",
+              "english": "\"What a clever boy Nico is, isn't he?\" says Karla."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Ya aprendió a leer en dos idiomas, y le encanta hablar con los chiquitines de la escuela —contesta Ana.",
+              "english": "\"He has already learned to read in two languages, and he loves talking to the little ones at school,\" answers Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Dicen que es demasiado inteligente para su edad, pero yo creo que sólo pregunta mucho.",
+              "english": "\"They say he is too clever for his age, but I think he just asks a lot of questions.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "De regreso",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Con las bolsas llenas, Karla y Ana buscan un carro que las lleve de vuelta.",
+              "english": "With their bags full, Karla and Ana look for a car to take them back."
+            },
+            {
+              "text": "Un señor las deja subir a su carro, entre sacos de maíz y pedazos de madera.",
+              "english": "A man lets them climb into his car, among sacks of corn and pieces of wood."
+            },
+            {
+              "text": "La madera es para el carbón, y los sacos de maíz son para la escuela.",
+              "english": "The wood is for the charcoal, and the sacks of corn are for the school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¿Y el helado? —pregunta Karla.",
+              "english": "\"And the ice cream?\" asks Karla."
+            },
+            {
+              "text": "¿Dónde lo vamos a guardar?",
+              "english": "\"Where are we going to keep it?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Compramos el helado mañana temprano, para que no se derrita —contesta Ana.",
+              "english": "\"We'll buy the ice cream early tomorrow, so that it does not melt,\" answers Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¿Y qué helado quiere Nico? —pregunta Karla.",
+              "english": "\"And what ice cream does Nico want?\" asks Karla."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—De mango, claro, como el jugo —dice Ana.",
+              "english": "\"Mango, of course, like the juice,\" says Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Y el jugo lo preparamos mañana con las naranjas, la piña, el mango y los limones.",
+              "english": "\"And we'll make the juice tomorrow with the oranges, the pineapple, the mango and the lemons.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—A ver, miremos la lista —dice Karla—: piñas, limones, aguacates, la yuca, naranjas, mango, huevos y pollos.",
+              "english": "\"Let's go over the list,\" says Karla: \"pineapples, lemons, avocados, yuca, oranges, mango, eggs and chickens.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Y el pastel, los globos y la piñata —dice Ana—.",
+              "english": "\"And the cake, the balloons and the piñata,\" says Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—El pastel lo hacemos nosotras mañana, con la miel y con harina de la buena.",
+              "english": "\"We'll make the cake ourselves tomorrow, with the honey and with good flour.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Y para los mayores, un café fino con pastel.",
+              "english": "\"And for the grown-ups, a fine coffee with cake.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Y los aguacates los comemos con la yuca frita, como hace mi tía.",
+              "english": "\"And we'll eat the avocados with fried yuca, the way my aunt makes it.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Con yuca y con aguacates no necesitamos mucho más.",
+              "english": "\"With yuca and avocados we don't need much more.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla mira la plaza que queda atrás, llena de colores y de gritos.",
+              "english": "Karla watches the square staying behind, full of colours and shouts."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Qué hermosa es la plaza, ¿verdad?",
+              "english": "\"How beautiful the square is, isn't it?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Sí, y cada sábado parece más hermosa, aunque cada sábado pagamos un poco más.",
+              "english": "\"Yes, and each Saturday it seems more beautiful, although each Saturday we pay a little more.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana se ríe, y Karla también, y el carro sigue por el camino de tierra hasta la clínica.",
+              "english": "Ana laughs, and Karla does too, and the car goes on along the dirt road to the clinic."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

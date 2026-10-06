@@ -1,0 +1,549 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-19",
+  "lang": "es",
+  "title": "Un día en el arrecife",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-19",
+    "title": "A day on the reef (adapted from two CC BY 4.0 GDL stories)",
+    "author": "Go course authors (adapted by an AI model from Mala Kumar, Manisha Chaudhry and Rajiv Eipe)",
+    "publisher": "Global Digital Library / StoryWeaver (Pratham Books)",
+    "url": "https://content.digitallibrary.io/es-es/book/inmersion/",
+    "edition": "adapted from Global Digital Library gdl-1184 (¡INMERSIÓN!) and gdl-1189 (Pishi atrapado en una tormenta)",
+    "attribution": "Adapted from ¡INMERSIÓN! (Rajiv Eipe) and Pishi atrapado en una tormenta (Mala Kumar, Manisha Chaudhry; illustrations Sangeeta Das), StoryWeaver / Pratham Books, Global Digital Library, CC BY 4.0. Changes were made: the stories were merged, rewritten for learners, and extended. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Adapted by an AI model for the course from two CC BY 4.0 books of the Global Digital Library (already in the library as bridge-inmersion-ch01 and bridge-pishi-atrapado-en-una-tormenta-ch01); the sentences are new, the animals and events of the sources are kept. Not reviewed by a native speaker. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licenseNote": "CC BY 4.0; attribution required and changes must be indicated (see source.modifications). Owned by the course authors only as far as the adaptation goes; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated",
+    "licence": "CC BY 4.0",
+    "modifications": "Two stories merged and rewritten sentence by sentence for the Spanish ladder (controlled vocabulary, new sentence order); new sections added (the instructor's advice, the animals of the reef, the closing advice); the Indian Ocean setting of the Pishi story is kept."
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted adaptation by an AI model; awaiting native-speaker review. ADAPTED from two openly licensed Global Digital Library books (CC BY 4.0): ¡INMERSIÓN! (Rajiv Eipe, StoryWeaver / Pratham Books, GDL gdl-1184) and Pishi atrapado en una tormenta (Mala Kumar and Manisha Chaudhry, illustrations Sangeeta Das, StoryWeaver / Pratham Books, GDL gdl-1189). Changes (CC BY requires them to be indicated): the two stories were merged under one frame, every sentence was rewritten for the ladder's vocabulary, an instructor's advice section and explanations of the animals were added, and the closing advice uses voseo. Variety notes for the Honduran reviewer: voseo imperatives (hacés, renunciá, mirá, escuchá, esperá); \"plantel de peces\" is the source's wording and may sound Peninsular or Chilean (Honduran speakers may prefer cardumen); \"pasto marino\" / \"hierba marina\"; \"budiones\" (cleaner wrasses) and \"pez aguja\" are the source's names; \"bote\" for a small boat is fine in Honduras. Check naturalness of \"pez manta ... su reina\", the sentence mood of \"atrae/atraía\", and the dugong paragraph (the dugong lives in the Indian Ocean, not in Honduran waters; the Honduran counterpart is the manatee). Vocabulary plan: Pack of PLAN-B1 3.3 (nature / sea vocabulary and the Marianela-register words semejante, conviene, arrojó, espaldas, tendido, sombra, sostener, especie, consejo, queja, reina, capa, angustias) kept as planned."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "explanation",
+    "nature"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Un día para el buceo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Cielo azul, mar tranquilo: era un día hermoso para el buceo.",
+              "english": "Blue sky, calm sea: it was a beautiful day for diving."
+            },
+            {
+              "text": "Subimos a un bote pequeño y salimos temprano, con muchas ganas de ver algo nuevo.",
+              "english": "We climbed into a small boat and set out early, eager to see something new."
+            },
+            {
+              "text": "Cuando llegamos al sitio, el maestro de buceo nos dio un consejo: «Revisen cuidadosamente el equipo, respiren despacio y no toquen nada».",
+              "english": "When we reached the spot, the diving teacher gave us some advice: \"Check your equipment carefully, breathe slowly and do not touch anything.\""
+            },
+            {
+              "text": "Después nos dio otro consejo: «Si sienten miedo, sostengan la mano de quien esté a su lado y mírenme a mí».",
+              "english": "Then he gave us another piece of advice: \"If you feel afraid, hold the hand of whoever is beside you and look at me.\""
+            },
+            {
+              "text": "Arrojó al agua una cuerda amarilla para marcar el sitio, y nosotros nos pusimos las aletas.",
+              "english": "He threw a yellow rope into the water to mark the spot, and we put on our fins."
+            },
+            {
+              "text": "Nos tiramos al agua de espaldas, como se hace en el buceo.",
+              "english": "We dropped into the water backwards, the way it is done in diving."
+            },
+            {
+              "text": "Apenas estuvimos bajo el agua, un plantel de peces amarillos vino a recibirnos.",
+              "english": "As soon as we were under the water, a school of yellow fish came to meet us."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Eran tantos que, a través del agua, no se veía otra cosa que un mar amarillo.",
+              "english": "There were so many that you could see nothing but a yellow sea."
+            },
+            {
+              "text": "Un segundo plantel pasó sobre nosotros, y su sombra cruzó el fondo.",
+              "english": "A second school passed over us, and its shadow crossed the bottom."
+            },
+            {
+              "text": "A nuestras espaldas sólo había agua azul, y delante de nosotros, el arrecife.",
+              "english": "Behind our backs there was only blue water, and in front of us, the reef."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los consejos del maestro",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Antes de bajar, el maestro nos explicó cómo cuidar el arrecife.",
+              "english": "Before going down, the teacher explained to us how to take care of the reef."
+            },
+            {
+              "text": "Primero, conviene bajar despacio, porque el cuerpo necesita tiempo.",
+              "english": "First, it is wise to go down slowly, because the body needs time."
+            },
+            {
+              "text": "Conviene también no nadar solo, y por eso cada uno tenía a alguien a su lado.",
+              "english": "It is also wise not to swim alone, and that is why each of us had someone at our side."
+            },
+            {
+              "text": "Segundo, hay que mantener la distancia con los animales, sobre todo con los de una especie venenosa.",
+              "english": "Second, you have to keep your distance from the animals, above all from those of a poisonous species."
+            },
+            {
+              "text": "Por último, nadie debe tocar los corales, porque una mano puede hacerles mucho daño.",
+              "english": "Finally, nobody should touch the corals, because a hand can do them a lot of harm."
+            },
+            {
+              "text": "Cada consejo tenía una razón, y el maestro nos la explicaba con calma.",
+              "english": "Each piece of advice had a reason, and the teacher explained it to us calmly."
+            },
+            {
+              "text": "Para sostener el cuerpo en el agua sin moverse, dijo, hay que respirar despacio.",
+              "english": "To hold your body in the water without moving, he said, you have to breathe slowly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nos dijo también que la mejor foto es la que uno guarda en la memoria.",
+              "english": "He also told us that the best photo is the one you keep in your memory."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los habitantes del arrecife",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El arrecife era un mundo de colores.",
+              "english": "The reef was a world of colours."
+            },
+            {
+              "text": "Había corales de todas las formas, y entre ellos nadaban criaturas que yo nunca había visto.",
+              "english": "There were corals of every shape, and among them swam creatures I had never seen."
+            },
+            {
+              "text": "Un pez payaso cuidaba su casa, una anémona grande, y no quería que nos acercáramos.",
+              "english": "A clownfish was guarding its home, a big anemone, and did not want us to come near."
+            },
+            {
+              "text": "La anémona es semejante a una flor, pero es un animal, y para otros peces es venenosa.",
+              "english": "The anemone is similar to a flower, but it is an animal, and for other fish it is poisonous."
+            },
+            {
+              "text": "Un poco más allá nadaba un pez muy bonito, de una especie venenosa.",
+              "english": "A little further on swam a very pretty fish, of a poisonous species."
+            },
+            {
+              "text": "Hay más de una especie así, y cada especie tiene sus colores.",
+              "english": "There is more than one species like that, and each species has its own colours."
+            },
+            {
+              "text": "Yo mantuve la distancia, y el maestro me sonrió.",
+              "english": "I kept my distance, and the teacher smiled at me."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Un pulpo estaba escondido entre las piedras, y nosotros jugamos al escondite con él.",
+              "english": "An octopus was hidden among the stones, and we played hide and seek with it."
+            },
+            {
+              "text": "El pulpo tiene ocho brazos y ningún hueso, y por eso entra en cualquier lugar pequeño.",
+              "english": "The octopus has eight arms and no bones, and that is why it fits into any small place."
+            },
+            {
+              "text": "El pulpo ganó, porque cambia de color y queda mezclado con el fondo.",
+              "english": "The octopus won, because it changes colour and ends up blended with the bottom."
+            },
+            {
+              "text": "Cuando lo molestamos, arrojó algo oscuro al agua y se fue.",
+              "english": "When we bothered it, it threw something dark into the water and left."
+            },
+            {
+              "text": "Los peces aguja también saben esconderse, y por eso cuesta tanto encontrarlos.",
+              "english": "Pipefish are good at hiding too, and that is why they are so hard to find."
+            },
+            {
+              "text": "Su cuerpo largo y delgado está mezclado con el verde del fondo, y casi no se mueve.",
+              "english": "Their long, thin body is mixed in with the green of the bottom, and they hardly move."
+            },
+            {
+              "text": "Un pez aguja tiene un color verde, otro tiene un color rojo, y el maestro nos enseñó a encontrarlos por su forma.",
+              "english": "One pipefish is green, another is red, and the teacher showed us how to find them by their shape."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Algunos peces aguja nadan con la cabeza hacia abajo, y a través del agua parecen una hoja.",
+              "english": "Some pipefish swim with their heads down, and through the water they look like a leaf."
+            },
+            {
+              "text": "Cerca del fondo descansaban dos tiburones de aletas blancas, que no son peligrosos.",
+              "english": "Near the bottom two white-finned sharks were resting; they are not dangerous."
+            },
+            {
+              "text": "Los tiburones duermen casi todo el día, y por eso nadamos hacia ellos sin hacer ruido.",
+              "english": "The sharks sleep almost the whole day, and that is why we swam towards them without making a sound."
+            },
+            {
+              "text": "Los tiburones ni siquiera levantaron la cabeza.",
+              "english": "The sharks did not even lift their heads."
+            },
+            {
+              "text": "Después seguimos a una tortuga carey, que buscaba su almuerzo entre las piedras.",
+              "english": "Then we followed a hawksbill turtle, which was looking for its lunch among the stones."
+            },
+            {
+              "text": "La tortuga nos dejó acercarnos a muy poca distancia, y la sombra de las piedras la cubría.",
+              "english": "The turtle let us come very close, and the shadow of the stones covered it."
+            },
+            {
+              "text": "Una carey puede vivir muchos años, y la tortuga que vimos parecía muy vieja.",
+              "english": "A hawksbill can live for many years, and the turtle we saw looked very old."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Al volver hacia el bote vimos un pez enorme que parecía volar a través del agua.",
+              "english": "On the way back towards the boat we saw a huge fish that seemed to fly through the water."
+            },
+            {
+              "text": "Y cuando pensamos que ya no podía mejorar, apareció un dugongo, tendido sobre el fondo.",
+              "english": "And just when we thought it could not get any better, a dugong appeared, stretched out on the bottom."
+            },
+            {
+              "text": "Estaba comiendo pasto marino, tranquilo, como una vaca en el campo.",
+              "english": "It was eating sea grass, calm, like a cow in a field."
+            },
+            {
+              "text": "Después, tendidos en el bote, nadie habló durante un rato.",
+              "english": "Afterwards, stretched out in the boat, nobody spoke for a while."
+            },
+            {
+              "text": "La verdad, yo me muero por volver.",
+              "english": "The truth is, I cannot wait to go back."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Quién vive en el arrecife",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Los corales son animales muy pequeños que viven juntos, y dentro de ellos viven unas plantas.",
+              "english": "Corals are very small animals that live together, and plants live inside them."
+            },
+            {
+              "text": "Esas plantas les dan alimento para crecer, y por eso el arrecife necesita agua clara y mucha luz.",
+              "english": "Those plants give them food to grow, and that is why the reef needs clear water and a lot of light."
+            },
+            {
+              "text": "Con el tiempo, los corales hacen una casa dura, y esa casa es lo que llamamos el arrecife.",
+              "english": "Over time the corals build a hard house, and that house is what we call the reef."
+            },
+            {
+              "text": "Muchas criaturas marinas comen plancton, que es una mezcla de plantas y animales muy pequeños.",
+              "english": "Many sea creatures eat plankton, which is a mixture of very small plants and animals."
+            },
+            {
+              "text": "De noche, las criaturas cambian: unas duermen y otras despiertan.",
+              "english": "At night the creatures change: some sleep and others wake up."
+            },
+            {
+              "text": "El plancton es el alimento principal de todas ellas, y el mar lo lleva de un lado a otro.",
+              "english": "Plankton is the main food of all of them, and the sea carries it from one place to another."
+            },
+            {
+              "text": "En ninguna parte hay tanta vida marina como en un arrecife.",
+              "english": "Nowhere is there as much marine life as on a reef."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Las estrellas de pluma parecen plantas, pero en realidad son animales.",
+              "english": "Feather stars look like plants, but they are really animals."
+            },
+            {
+              "text": "Sus brazos, semejantes a una pluma grande, agarran el plancton que viene con el agua.",
+              "english": "Their arms, similar to a big feather, grab the plankton that comes with the water."
+            },
+            {
+              "text": "Cuando la estrella de pluma abre los brazos, parece una pluma de color amarillo.",
+              "english": "When the feather star opens its arms, it looks like a yellow feather."
+            },
+            {
+              "text": "Una capa de arena blanca cubre el fondo, y sobre esa capa crecen los corales.",
+              "english": "A layer of white sand covers the bottom, and the corals grow on that layer."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Los peces loro tienen dientes muy fuertes, y su boca es semejante al pico de un loro.",
+              "english": "Parrotfish have very strong teeth, and their mouth is like a parrot's beak."
+            },
+            {
+              "text": "Con ese pico comen los corales, y más tarde devuelven la arena al mar.",
+              "english": "With that beak they eat the corals, and later they give the sand back to the sea."
+            },
+            {
+              "text": "Así se forman muchas de las playas blancas, y por eso es raro ver un pez loro sin una playa cerca.",
+              "english": "That is how many of the white beaches are formed, and that is why it is rare to see a parrotfish without a beach nearby."
+            },
+            {
+              "text": "Los peces payaso y las anémonas se ayudan unos a otros.",
+              "english": "Clownfish and anemones help one another."
+            },
+            {
+              "text": "El payaso limpia la anémona y atrae a otros peces, y la anémona lo esconde sin hacerle daño.",
+              "english": "The clownfish cleans the anemone and attracts other fish, and the anemone hides it without harming it."
+            },
+            {
+              "text": "Los budiones son peces pequeños que mantienen limpios a los peces más grandes.",
+              "english": "Cleaner wrasses are small fish that keep the bigger fish clean."
+            },
+            {
+              "text": "El color de los budiones atrae a los peces grandes, que reconocen a sus pequeños médicos.",
+              "english": "The colour of the cleaner wrasses attracts the big fish, which recognise their little doctors."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Un plantel de budiones puede limpiar a un pez grande en pocos minutos.",
+              "english": "A school of cleaner wrasses can clean a big fish in a few minutes."
+            },
+            {
+              "text": "En las partes bajas crece el pasto marino, que es el alimento de la tortuga marina y del dugongo.",
+              "english": "In the low parts of the reef grows sea grass, which is the food of the sea turtle and the dugong."
+            },
+            {
+              "text": "Por eso los pescadores dicen que donde hay pasto marino hay vida marina.",
+              "english": "That is why fishermen say that where there is sea grass there is marine life."
+            },
+            {
+              "text": "La tortuga carey tiene un cuerpo bajo y una boca fuerte.",
+              "english": "The hawksbill turtle has a low body and a strong mouth."
+            },
+            {
+              "text": "El dugongo es un animal que sólo come plantas, y por eso lo llaman la vaca marina.",
+              "english": "The dugong is an animal that eats only plants, and that is why it is called the sea cow."
+            },
+            {
+              "text": "Pasta tendido sobre el fondo, como una vaca en el campo.",
+              "english": "It grazes stretched out on the bottom, like a cow in a field."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Pishi y la tormenta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pishi era un pez manta, y esa mañana se sentía triste y solo.",
+              "english": "Pishi was a manta ray, and that morning he felt sad and alone."
+            },
+            {
+              "text": "El día anterior formaba parte de un grupo grande, que comía lejos de la costa.",
+              "english": "The day before he had been part of a large group, feeding far from the coast."
+            },
+            {
+              "text": "Pero apareció un barco, y Pishi se escondió, mezclado con el agua oscura.",
+              "english": "But a boat appeared, and Pishi hid, blended into the dark water."
+            },
+            {
+              "text": "Sus amigos se fueron nadando, y él movió las aletas y trató de salvarse.",
+              "english": "His friends swam away, and he moved his fins and tried to save himself."
+            },
+            {
+              "text": "Entonces cayeron rayos del cielo negro, y un trueno los siguió.",
+              "english": "Then lightning fell from the black sky, and a clap of thunder followed."
+            },
+            {
+              "text": "Una ola enorme lo arrojó contra el barco, y Pishi sintió una herida grande en el cuerpo.",
+              "english": "A huge wave threw him against the boat, and Pishi felt a big wound in his body."
+            },
+            {
+              "text": "El miedo y las angustias lo dejaron sin fuerzas.",
+              "english": "Fear and distress left him without strength."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Las angustias de aquella noche fueron las peores de su vida.",
+              "english": "The distress of that night was the worst of his life."
+            },
+            {
+              "text": "Sin embargo, no hizo ninguna queja.",
+              "english": "Even so, he made no complaint."
+            },
+            {
+              "text": "Una queja no iba a curarle la herida, y en el mar nadie escucha una queja.",
+              "english": "A complaint was not going to heal his wound, and in the sea nobody listens to a complaint."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Tenía que encontrar a sus amigos, pero primero necesitaba que alguien le curara la herida.",
+              "english": "He had to find his friends, but first he needed somebody to treat his wound."
+            },
+            {
+              "text": "Nadó hacia la costa tan rápido como pudo, con el barco a sus espaldas y bajo su sombra.",
+              "english": "He swam towards the coast as fast as he could, with the boat behind his back and under its shadow."
+            },
+            {
+              "text": "Su corazón iba muy rápido, y pensaba: «Si no llego pronto, no voy a poder sostenerme».",
+              "english": "His heart was racing, and he thought: \"If I do not arrive soon, I will not be able to hold on.\""
+            },
+            {
+              "text": "Pero entonces vio una luz en la costa, una luz que atraía a los peces pequeños, y saltó de alegría.",
+              "english": "But then he saw a light on the coast, a light that drew the small fish, and he leaped for joy."
+            },
+            {
+              "text": "Había llegado al hospital de la naturaleza.",
+              "english": "He had reached the hospital of nature."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Un grupo de peces pequeños nadó junto a él.",
+              "english": "A group of small fish swam beside him."
+            },
+            {
+              "text": "Eran los budiones, y ahora eran sus enfermeras.",
+              "english": "They were the cleaner wrasses, and now they were his nurses."
+            },
+            {
+              "text": "Limpiaron la herida cuidadosamente, y Pishi se sintió mucho mejor.",
+              "english": "They cleaned the wound carefully, and Pishi felt much better."
+            },
+            {
+              "text": "Ya no sentía angustias, y esa noche durmió tranquilo, protegido por una capa de agua en calma.",
+              "english": "He no longer felt distress, and that night he slept peacefully, protected by a layer of calm water."
+            },
+            {
+              "text": "Por la mañana encontró a su reina, la manta más grande del grupo, que lo esperaba.",
+              "english": "In the morning he found his queen, the largest manta of the group, who was waiting for him."
+            },
+            {
+              "text": "La reina lo miró, y el pez manta ya no se sentía solo.",
+              "english": "The queen looked at him, and the manta ray no longer felt alone."
+            },
+            {
+              "text": "Los dos nadaron juntos hacia el sol, como una reina y su amigo.",
+              "english": "The two of them swam together towards the sun, like a queen and her friend."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El hospital de la naturaleza",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Los peces manta visitan muchas veces las estaciones de limpieza, que son lugares del mar donde otros peces los limpian.",
+              "english": "Manta rays often visit cleaning stations, which are places in the sea where other fish clean them."
+            },
+            {
+              "text": "Por eso la estación de limpieza es el hospital de la naturaleza.",
+              "english": "That is why the cleaning station is the hospital of nature."
+            },
+            {
+              "text": "Aunque el pez manta es enorme, es un animal muy suave.",
+              "english": "Although the manta ray is huge, it is a very gentle animal."
+            },
+            {
+              "text": "Si alguna vez hacés buceo, un último consejo: no corras detrás de los animales, y renunciá a tocarlos.",
+              "english": "If you ever go diving, one last piece of advice: do not run after the animals, and give up the idea of touching them."
+            },
+            {
+              "text": "Es difícil renunciar a una foto bonita, pero es mejor renunciar que hacer daño.",
+              "english": "It is hard to give up a nice photo, but it is better to give up than to do harm."
+            },
+            {
+              "text": "Mirá, escuchá y esperá, y el arrecife se va a mostrar solo.",
+              "english": "Look, listen and wait, and the reef will show itself."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

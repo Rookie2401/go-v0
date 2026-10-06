@@ -1,0 +1,587 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-21",
+  "lang": "es",
+  "title": "Tres testimonios",
+  "contentType": "testimony",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-21",
+    "title": "Three testimonies (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Three composite first-person testimonies (a conversion, a healing, a court case), no Scripture quoted; the people are invented. Content note: alcohol, violence in the home, a child with dengue, a false accusation and prison; the Honduran reviewer should confirm they are handled with respect. Variety / register points: evangelical idiom (\"nacido de nuevo\", \"hermanos\", \"gloria a Dios\"), voseo among spouses (no tomés, volvé, tenés), usted for the judge, \"cipote\", \"tomar\" for drinking alcohol, \"pulpería\", \"carro prestado\", \"azote\" for the dengue epidemic, \"sepulcros\" (the planned word; people usually say cementerio), \"cuán\" (literary; the plan lists it as receptive), \"suspenso\" (here: waiting without knowing), \"juntando\" (gathering money). Check that the court scene (a witness testifies against his own father) is plausible in a Honduran court. Vocabulary plan: Pack of PLAN-B1 3.3 for es-b1-21 (testimony: pálido, persiguen..., 53 slots); 12 slots that do not belong in a modern testimony (sinagogo, príncipe, tribuna, romano, puercos, demonio, panoli, potestad, visiones, colocación, aquélla, cabellera) were dropped and logged; persiguen is not used."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "testimony",
+    "church and mission life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Domingo de testimonios",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El primer domingo de cada mes, en la iglesia de la aldea no hay sermón.",
+              "english": "On the first Sunday of every month there is no sermon at the village church."
+            },
+            {
+              "text": "Ese día, el pastor Mario deja hablar a los hermanos que quieran contar algo.",
+              "english": "On that day Pastor Mario lets the members who want to tell something speak."
+            },
+            {
+              "text": "Esta vez se levantaron tres personas: Pedro, Elena y don José.",
+              "english": "This time three people stood up: Pedro, Elena and don José."
+            },
+            {
+              "text": "Los demás escuchaban en silencio, y nadie miraba la hora.",
+              "english": "The rest listened in silence, and nobody looked at the time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Pedro: «Yo era un hombre atado»",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Buenas noches, hermanos.",
+              "english": "Good evening, brothers and sisters."
+            },
+            {
+              "text": "Hoy soy un hombre nacido de nuevo, pero no siempre fui así.",
+              "english": "Today I am a man born again, but I was not always like this."
+            },
+            {
+              "text": "Yo nací en Olancho, y desde cipote me gustaba tomar.",
+              "english": "I was born in Olancho, and from the time I was a kid I liked drinking."
+            },
+            {
+              "text": "A los treinta años ya llevaba media vida tomando, y ni yo mismo lo veía.",
+              "english": "By the age of thirty I had spent half my life drinking, and I did not even see it myself."
+            },
+            {
+              "text": "Eso es estar atado, aunque uno nunca lo reconozca.",
+              "english": "That is what being tied up is, even if you never admit it."
+            },
+            {
+              "text": "Yo estaba atado a la botella, y para mí era sólo un capricho.",
+              "english": "I was tied to the bottle, and to me it was only a whim."
+            },
+            {
+              "text": "Hoy sé que aquello no era un capricho, sino una cadena.",
+              "english": "Today I know that it was not a whim but a chain."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mi esposa me decía: «Pedro, no tomés más», y yo contestaba que era un capricho de hombre y que podía dejarlo cuando quisiera.",
+              "english": "My wife used to say, \"Pedro, don't drink any more,\" and I would answer that it was a man's whim and that I could quit whenever I wanted."
+            },
+            {
+              "text": "Una noche, en un arrebato, le grité cosas muy feas delante de nuestros hijos.",
+              "english": "One night, in a fit of anger, I shouted very ugly things at her in front of our children."
+            },
+            {
+              "text": "Aquel arrebato me costó muchas lágrimas, y no fue el único arrebato de esos años.",
+              "english": "That fit of anger cost me many tears, and it was not the only one of those years."
+            },
+            {
+              "text": "Mi hija mayor se escondió en un rincón de la casa, y nunca voy a olvidar su cara.",
+              "english": "My oldest daughter hid in a corner of the house, and I will never forget her face."
+            },
+            {
+              "text": "Salí a la calle y caminé hasta los sepulcros, al otro lado del pueblo.",
+              "english": "I went out into the street and walked as far as the graves, on the other side of the town."
+            },
+            {
+              "text": "Esa noche dormí entre los sepulcros, y sentí un espanto que no puedo explicar.",
+              "english": "That night I slept among the graves, and I felt a dread that I cannot explain."
+            },
+            {
+              "text": "Nadie sabe lo que es el silencio entre los sepulcros cuando uno sabe que ha hecho daño.",
+              "english": "Nobody knows what the silence among the graves is like when you know you have done harm."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Tenía espanto de mí mismo, y el espanto no me dejaba dormir.",
+              "english": "I was afraid of myself, and the fear would not let me sleep."
+            },
+            {
+              "text": "Lo que había hecho me atormentaba, y por primera vez me dio lástima de mí mismo y de mi familia.",
+              "english": "What I had done tormented me, and for the first time I felt pity for myself and for my family."
+            },
+            {
+              "text": "Esa lástima fue el principio de todo, porque la lástima me hizo llorar.",
+              "english": "That pity was the beginning of everything, because the pity made me cry."
+            },
+            {
+              "text": "Entonces recordé una cosa que decía el pastor: «Hay un Salvador que no se cansa de buscar a los perdidos».",
+              "english": "Then I remembered something the pastor used to say: \"There is a Saviour who never tires of looking for the lost.\""
+            },
+            {
+              "text": "Yo no creía mucho, pero esa noche me atormentaba tanto la culpa que pedí ayuda a ese Salvador.",
+              "english": "I did not believe much, but that night the guilt tormented me so much that I asked that Saviour for help."
+            },
+            {
+              "text": "También me atormentaba pensar en mis hijos, y por eso no me dormí.",
+              "english": "It also tormented me to think about my children, and that is why I did not fall asleep."
+            },
+            {
+              "text": "Al salir el sol oí en el silencio algo semejante a un susurro.",
+              "english": "At sunrise I heard in the silence something like a whisper."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Era un susurro suave, y decía: «Volvé a tu casa».",
+              "english": "It was a soft whisper, and it said: \"Go back to your house.\""
+            },
+            {
+              "text": "Creo que ese susurro fue la voz de Dios.",
+              "english": "I believe that whisper was the voice of God."
+            },
+            {
+              "text": "Volví, y mi esposa estaba en la puerta, con los ojos rojos de llorar.",
+              "english": "I went back, and my wife was at the door, her eyes red from crying."
+            },
+            {
+              "text": "No me gritó ni me castigó con palabras.",
+              "english": "She did not shout at me or punish me with words."
+            },
+            {
+              "text": "Sólo me dijo: «Estoy contigo, pero tenés que cambiar».",
+              "english": "She only said to me: \"I am with you, but you have to change.\""
+            },
+            {
+              "text": "Ese domingo vine a esta iglesia, y mi encuentro con Cristo fue como el resplandor del sol después de una noche larga.",
+              "english": "That Sunday I came to this church, and my meeting with Christ was like the radiance of the sun after a long night."
+            },
+            {
+              "text": "Fue un encuentro de pocos minutos: unas manos, una oración, un resplandor en el corazón.",
+              "english": "It was a meeting of a few minutes: some hands, a prayer, a radiance in the heart."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Después de ese encuentro todavía me caí dos veces, porque yo no soy perfecto.",
+              "english": "After that meeting I still fell twice, because I am not perfect."
+            },
+            {
+              "text": "Pero Dios no pide que uno sea perfecto; pide que uno vuelva.",
+              "english": "But God does not ask us to be perfect; he asks us to come back."
+            },
+            {
+              "text": "Ser nacido de nuevo no quiere decir ser perfecto, y hoy no soy perfecto, pero ya no soy un hombre atado.",
+              "english": "Being born again does not mean being perfect, and today I am not perfect, but I am no longer a tied-up man."
+            },
+            {
+              "text": "No quiero ofender a los que no creen, pero esto fue lo que me pasó a mí.",
+              "english": "I do not want to offend those who do not believe, but this is what happened to me."
+            },
+            {
+              "text": "Gracias, hermanos, por no cansarse de mí.",
+              "english": "Thank you, brothers and sisters, for not growing tired of me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Elena: «La tercera noche»",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Buenas noches.",
+              "english": "Good evening."
+            },
+            {
+              "text": "Voy a hablar de mi hija Rosa, que hoy está sentada allá atrás y se ríe porque se pone roja.",
+              "english": "I am going to talk about my daughter Rosa, who is sitting back there today and laughing because she is turning red."
+            },
+            {
+              "text": "Hace dos años el dengue llegó a nuestra aldea como un azote.",
+              "english": "Two years ago dengue came to our village like a scourge."
+            },
+            {
+              "text": "Ese azote no perdonó a ninguna casa, y yo pensé que a la mía no iba a llegar.",
+              "english": "That scourge spared no house, and I thought it would not reach mine."
+            },
+            {
+              "text": "No entendía por qué ese azote había caído sobre mi hija.",
+              "english": "I did not understand why that scourge had fallen on my daughter."
+            },
+            {
+              "text": "Pero el contagio llegó primero a Rosa, y yo pensé: «Es sólo fiebre, ya va a pasar».",
+              "english": "But the infection reached Rosa first, and I thought: \"It is only a fever, it will pass.\""
+            },
+            {
+              "text": "El contagio fue rápido, y en dos días media familia estaba enferma.",
+              "english": "The infection spread fast, and in two days half the family was ill."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ese contagio se llevó a dos vecinos de nuestra calle.",
+              "english": "That infection took two neighbours from our street."
+            },
+            {
+              "text": "La fiebre no pasó, y mi hija estaba cada día más pálida.",
+              "english": "The fever did not pass, and my daughter got paler every day."
+            },
+            {
+              "text": "Alarmada, y con mi marido lejos, no sabía qué hacer.",
+              "english": "Alarmed, and with my husband far away, I did not know what to do."
+            },
+            {
+              "text": "Alarmada como estaba, llamé a mi mamá, y ella tampoco pudo venir.",
+              "english": "Alarmed as I was, I called my mother, and she could not come either."
+            },
+            {
+              "text": "Se puso pálida como una hoja, y yo me puse pálida también.",
+              "english": "She turned pale as a leaf, and I turned pale too."
+            },
+            {
+              "text": "La clínica estaba cerrada, y el hospital quedaba a tres horas de camino.",
+              "english": "The clinic was closed, and the hospital was three hours away by road."
+            },
+            {
+              "text": "Alarmada, salí a la calle a pedir ayuda.",
+              "english": "Alarmed, I went out into the street to ask for help."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "No teníamos carro ni dinero, y fui a ver a doña Marta, la dueña de la pulpería.",
+              "english": "We had no car and no money, and I went to see doña Marta, the owner of the little shop."
+            },
+            {
+              "text": "Ella no me hizo ni una pregunta; sólo abrió la caja y me dio lo que tenía.",
+              "english": "She did not ask me a single question; she just opened the till and gave me what she had."
+            },
+            {
+              "text": "La dueña de la pulpería es así: no habla mucho, pero está siempre.",
+              "english": "The owner of the little shop is like that: she does not talk much, but she is always there."
+            },
+            {
+              "text": "Nunca me olvido de lo que hizo esa dueña por mi hija.",
+              "english": "I never forget what that owner did for my daughter."
+            },
+            {
+              "text": "Esa noche, juntando lo poco que teníamos y lo que dieron los vecinos, llevamos a la niña al hospital en un carro prestado.",
+              "english": "That night, putting together the little we had and what the neighbours gave, we took the girl to the hospital in a borrowed car."
+            },
+            {
+              "text": "Las vecinas siguieron juntando comida y ropa para nosotros durante esa semana.",
+              "english": "The neighbours went on gathering food and clothes for us during that week."
+            },
+            {
+              "text": "Los doctores dijeron: «Hay que esperar tres días».",
+              "english": "The doctors said: \"We have to wait three days.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Y esperar es lo más difícil, porque uno queda en suspenso, sin poder hacer nada.",
+              "english": "And waiting is the hardest thing, because you are left in suspense, unable to do anything."
+            },
+            {
+              "text": "Durante dos noches viví en suspenso, juntando fuerzas para no llorar.",
+              "english": "For two nights I lived in suspense, gathering strength so as not to cry."
+            },
+            {
+              "text": "La tercera noche yo estaba sentada junto a la cama, y no podía orar, porque no encontraba palabras.",
+              "english": "On the third night I was sitting beside the bed and I could not pray, because I could not find words."
+            },
+            {
+              "text": "En esa tercera noche me sentí sola y en suspenso, como si el tiempo se hubiera parado.",
+              "english": "On that third night I felt alone and in suspense, as if time had stopped."
+            },
+            {
+              "text": "Me senté en un rincón del cuarto, para no despertarla.",
+              "english": "I sat in a corner of the room, so as not to wake her."
+            },
+            {
+              "text": "Entonces escuché una voz bajita: era mi hija, que me pedía agua.",
+              "english": "Then I heard a little voice: it was my daughter, asking me for water."
+            },
+            {
+              "text": "Le toqué la frente, y ya no estaba caliente.",
+              "english": "I touched her forehead, and it was no longer hot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Cuando salió el sol, el resplandor de la ventana cayó sobre su cara, y el color había vuelto.",
+              "english": "When the sun came up, the radiance from the window fell on her face, and the colour had come back."
+            },
+            {
+              "text": "No quiero ofender a los doctores, que trabajaron mucho y nos cuidaron bien.",
+              "english": "I do not want to offend the doctors, who worked hard and took good care of us."
+            },
+            {
+              "text": "Tampoco quiero ofender a nadie que no cree, porque yo tampoco creía.",
+              "english": "Nor do I want to offend anyone who does not believe, because I did not believe either."
+            },
+            {
+              "text": "Pero los hermanos de la iglesia habían formado una cadena de oración desde el primer día.",
+              "english": "But the brothers and sisters of the church had formed a chain of prayer from the very first day."
+            },
+            {
+              "text": "Yo no sé cuántas personas tenía esa cadena, pero sé que no se rompió.",
+              "english": "I do not know how many people that chain had, but I know it did not break."
+            },
+            {
+              "text": "Una cadena de oración es una cadena de manos, y cada mano sostiene a la otra.",
+              "english": "A chain of prayer is a chain of hands, and each hand holds up the next."
+            },
+            {
+              "text": "Yo les pregunté a los doctores lo que había acontecido, y ellos sólo dijeron: «Su hija tiene suerte».",
+              "english": "I asked the doctors what had happened, and they only said: \"Your daughter is lucky.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Yo sé lo que había acontecido en esa habitación, y también sé lo que había acontecido en esta iglesia.",
+              "english": "I know what had happened in that room, and I also know what had happened in this church."
+            },
+            {
+              "text": "Hoy mi hija corre, juega y me hace enojar, y le doy gracias a Dios por cada una de esas cosas.",
+              "english": "Today my daughter runs, plays and makes me angry, and I thank God for each one of those things."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Don José: «Acusado, pero no solo»",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hermanos, ya soy un hombre viejo, pero esto me pasó hace diez años.",
+              "english": "Brothers and sisters, I am an old man now, but this happened to me ten years ago."
+            },
+            {
+              "text": "Yo trabajaba cuidando una tienda, y un día faltó dinero.",
+              "english": "I worked looking after a shop, and one day money went missing."
+            },
+            {
+              "text": "El dueño me acusó de robar, y me llevaron a la prisión.",
+              "english": "The owner accused me of stealing, and they took me to prison."
+            },
+            {
+              "text": "Nunca había oído algo tan feo, y yo no sabía cómo defenderme.",
+              "english": "I had never heard anything so ugly, and I did not know how to defend myself."
+            },
+            {
+              "text": "Yo no tenía abogado ni dinero, y estuve encerrado dos meses antes del juicio.",
+              "english": "I had no lawyer and no money, and I was shut up for two months before the trial."
+            },
+            {
+              "text": "Encerrado en un cuarto pequeño, yo me preguntaba cuánto iba a durar todo.",
+              "english": "Shut up in a small room, I wondered how long all this was going to last."
+            },
+            {
+              "text": "Seguí encerrado hasta el día del juicio, sin saber nada de mi casa.",
+              "english": "I stayed shut up until the day of the trial, knowing nothing about my home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la cárcel estaba rodeado de hombres con miedo, y yo también tenía temor.",
+              "english": "In jail I was surrounded by frightened men, and I was afraid too."
+            },
+            {
+              "text": "El temor es un mal amigo: no deja comer ni dormir.",
+              "english": "Fear is a bad friend: it lets you neither eat nor sleep."
+            },
+            {
+              "text": "Vivir con temor es peor que vivir sin comida.",
+              "english": "Living in fear is worse than living without food."
+            },
+            {
+              "text": "La prisión es un lugar donde uno piensa, y yo pensaba en mi esposa y en mi casa.",
+              "english": "Prison is a place where one thinks, and I thought about my wife and my home."
+            },
+            {
+              "text": "Mi esposa me contó que esperaba un hijo, y que el nacimiento iba a ser mientras yo estaba en la cárcel.",
+              "english": "My wife told me she was expecting a child, and that the birth was going to happen while I was in jail."
+            },
+            {
+              "text": "Esa fue la parte más dura, porque un varón quiere estar con su familia en el nacimiento de un hijo.",
+              "english": "That was the hardest part, because a man wants to be with his family at the birth of a child."
+            },
+            {
+              "text": "Yo era un varón solo, rodeado de otros varones, y sin saber nada del juicio.",
+              "english": "I was a lonely man, surrounded by other men, and knowing nothing about the trial."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Los hombres que me rodeaban eran de todo tipo, y algunos eran buenos.",
+              "english": "The men around me were of every kind, and some of them were good."
+            },
+            {
+              "text": "Pero una noche, en la cárcel, una voz me dijo: «No te voy a dejar solo».",
+              "english": "But one night in jail a voice said to me: \"I am not going to leave you alone.\""
+            },
+            {
+              "text": "Desde entonces sentí una tranquilidad que nadie podía explicar, una tranquilidad que no era mía.",
+              "english": "From then on I felt a calm that nobody could explain, a calm that was not mine."
+            },
+            {
+              "text": "Yo no sabía cuánto iba a durar esa tranquilidad, pero no se fue.",
+              "english": "I did not know how long that calm would last, but it did not go away."
+            },
+            {
+              "text": "El día del juicio, el juez preguntó si había algún testigo a mi favor.",
+              "english": "On the day of the trial the judge asked if there was a witness in my favour."
+            },
+            {
+              "text": "Nadie respondió, y yo pensé que todo estaba perdido.",
+              "english": "Nobody answered, and I thought that everything was lost."
+            },
+            {
+              "text": "Entonces se abrió la puerta, y entró un muchacho que yo conocía de vista: era el hijo del dueño.",
+              "english": "Then the door opened, and in came a young man I knew by sight: he was the owner's son."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Venía a testificar contra su propio padre, y ese testigo no tenía miedo.",
+              "english": "He had come to testify against his own father, and that witness was not afraid."
+            },
+            {
+              "text": "Para testificar contra un padre hace falta mucho valor.",
+              "english": "It takes a lot of courage to testify against a father."
+            },
+            {
+              "text": "Dijo que su papá había tomado el dinero, y que me había acusado para esconder la verdad.",
+              "english": "He said his father had taken the money, and that he had accused me to hide the truth."
+            },
+            {
+              "text": "Otros dos testigos hablaron después, y el juez los escuchó con atención.",
+              "english": "Two other witnesses spoke afterwards, and the judge listened to them closely."
+            },
+            {
+              "text": "No sé quién los llamó a testificar, pero llegaron a tiempo.",
+              "english": "I do not know who called them to testify, but they arrived in time."
+            },
+            {
+              "text": "El juez me miró y dijo: «Señor José, usted está libre».",
+              "english": "The judge looked at me and said: \"Mr José, you are free.\""
+            },
+            {
+              "text": "Cuán largos habían sido esos dos meses, y cuán rápido fue ese momento.",
+              "english": "How long those two months had been, and how fast that moment was."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Esa tarde salí de la prisión, y cuando llegué a mi casa, mi hijo ya tenía dos meses.",
+              "english": "That afternoon I walked out of prison, and when I got home my son was already two months old."
+            },
+            {
+              "text": "No quiero castigar a nadie, ni siquiera al dueño, porque Dios sabe castigar mejor que yo, y yo también soy un pecador.",
+              "english": "I do not want to punish anyone, not even the owner, because God knows how to punish better than I do, and I am a sinner too."
+            },
+            {
+              "text": "Sólo quiero decirles: si alguna vez los acusan sin razón y se sienten solos, recuerden la voz que oí yo: «Estoy contigo».",
+              "english": "I only want to tell you: if you are ever accused without reason and feel alone, remember the voice I heard: \"I am with you.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Al terminar",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Cuando don José se sentó, el pastor Mario dijo en voz baja: «Cuán grande es lo que acaban de oír».",
+              "english": "When don José sat down, Pastor Mario said quietly: \"How great is what you have just heard.\""
+            },
+            {
+              "text": "Después cantaron todos juntos, y Pedro abrazó a su esposa.",
+              "english": "Afterwards they all sang together, and Pedro hugged his wife."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

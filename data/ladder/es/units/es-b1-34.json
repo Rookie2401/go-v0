@@ -1,0 +1,689 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-34",
+  "lang": "es",
+  "title": "Mensajes, un correo y una carta",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-34",
+    "title": "Messages, an e-mail and a letter (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Owner decision 2 (2026-10-06): Niebla is not used as the core of the bridge; the plan's Niebla slot is taken by this new course-authored unit (or by a library text that ladder:place shows readable at that point). Points for the Honduran reviewer: voseo in the chat and the mother's reply (necesitás, mandame, callate, cuidate, avisá, preocupés, comás, acostés, olvidés), usted for the mother and the formal letters, \"mijo\", \"saldo\" (prepaid phone credit), \"residencia\", \"transferencia\", formal e-mail conventions (\"Estimado señor Rivera: ... Atentamente\"), \"quedo atento\", the amounts, and the scholarship process (invented). Owner decision 3: the 92 % entry line for authentic placements stays; new-lemmas warnings are acceptable. Vocabulary plan: Not in PLAN-B1 as written: this unit takes the plan's Niebla slot es-b1-34 (Niebla ch27). Contemporary correspondence (a chat with voseo, an e-mail to a mother with usted, a dictated reply, a formal scholarship application and its reply). Logged."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "correspondence",
+    "family",
+    "education"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "En el chat de la familia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marvin estudia ingeniería en la capital, y su hermana Ana vive en la aldea, donde trabaja como enfermera.",
+              "english": "Marvin studies engineering in the capital, and his sister Ana lives in the village, where she works as a nurse."
+            },
+            {
+              "text": "Los dos se escriben todos los domingos por la noche, cuando hay señal.",
+              "english": "The two of them write to each other every Sunday night, when there is a signal."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marvin: Hola, Ana.",
+              "english": "Marvin: Hi, Ana."
+            },
+            {
+              "text": "¿Estás ahí?",
+              "english": "Are you there?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana: Sí, vos.",
+              "english": "Ana: Yes, you."
+            },
+            {
+              "text": "Me acabo de sentar.",
+              "english": "I just sat down."
+            },
+            {
+              "text": "¿Cómo te fue en el examen?",
+              "english": "How did the exam go?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marvin: Más o menos.",
+              "english": "Marvin: So-so."
+            },
+            {
+              "text": "Me fue bien en la primera parte, pero el examen era larguísimo.",
+              "english": "I did well in the first part, but the exam was extremely long."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana: ¿Y el promedio?",
+              "english": "Ana: And your average?"
+            },
+            {
+              "text": "¿Cuánto necesitás para la beca?",
+              "english": "How much do you need for the scholarship?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marvin: Necesito ochenta y cinco, y ahora tengo ochenta y dos.",
+              "english": "Marvin: I need eighty-five, and right now I have eighty-two."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana: Entonces tenés que aprobar el próximo examen con una nota alta.",
+              "english": "Ana: Then you have to pass the next exam with a high mark."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marvin: Lo sé.",
+              "english": "Marvin: I know."
+            },
+            {
+              "text": "Por eso me quedo estudiando hasta las dos de la mañana, aunque el tráfico y el ruido de la residencia no ayudan.",
+              "english": "That's why I stay up studying until two in the morning, although the traffic and the noise of the hall of residence don't help."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana: ¿Cuánto pagás de alquiler este mes?",
+              "english": "Ana: How much are you paying in rent this month?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marvin: Dos mil lempiras, y es un cuarto chiquito.",
+              "english": "Marvin: Two thousand lempiras, and it is a tiny room."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana: Tranquilo, que algo te mando el viernes por transferencia.",
+              "english": "Ana: Don't worry, I'll send you something on Friday by transfer."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marvin: No, no, Ana, no hace falta.",
+              "english": "Marvin: No, no, Ana, there is no need."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana: Callate.",
+              "english": "Ana: Be quiet."
+            },
+            {
+              "text": "No es un lujo, es mi hermanito.",
+              "english": "It is not a luxury, he is my little brother."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marvin: Total, que algún día te lo devuelvo con intereses.",
+              "english": "Marvin: Anyway, one day I'll pay it back with interest."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana: Ya me contaste lo de los intereses.",
+              "english": "Ana: You already told me about the interest."
+            },
+            {
+              "text": "¿Y la mamá cómo está?",
+              "english": "And how is Mom?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marvin: La llamé ayer, pero no contestó.",
+              "english": "Marvin: I called her yesterday, but she did not answer."
+            },
+            {
+              "text": "Creo que se le acabó el saldo.",
+              "english": "I think she ran out of credit."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana: Le voy a mandar saldo mañana.",
+              "english": "Ana: I'll send her credit tomorrow."
+            },
+            {
+              "text": "Le encanta oír tu voz.",
+              "english": "She loves hearing your voice."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marvin: Mandame una foto de ella, por favor.",
+              "english": "Marvin: Send me a photo of her, please."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana: Te mando una graciosa: está regando las matas con el sombrero puesto.",
+              "english": "Ana: I'll send you a funny one: she is watering the plants with her hat on."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marvin: Qué bien.",
+              "english": "Marvin: Great."
+            },
+            {
+              "text": "Total, no pasa nada si hoy me acuesto tarde.",
+              "english": "Anyway, it does not matter if I go to bed late today."
+            },
+            {
+              "text": "Te dejo, que se me acaba la batería.",
+              "english": "I'll leave you, my battery is about to run out."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana: Cuidate, y avisá cuando llegués.",
+              "english": "Ana: Take care, and let me know when you get there."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pasaron diez minutos, y el celular de Marvin se quedó sin batería.",
+              "english": "Ten minutes passed, and Marvin's phone ran out of battery."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una nota de voz",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El lunes por la mañana, Ana le mandó a su hermano una nota de voz, y Marvin la escribió después para no olvidarla.",
+              "english": "On Monday morning Ana sent her brother a voice note, and Marvin wrote it down afterwards so as not to forget it."
+            },
+            {
+              "text": "Hola, Marvin, te mando esta nota porque no tengo tiempo de escribir.",
+              "english": "Hi, Marvin, I'm sending you this note because I don't have time to write."
+            },
+            {
+              "text": "Ya te hice la transferencia del alquiler, y te mandé algo más para el autobús.",
+              "english": "I've already made the transfer for the rent, and I sent you a bit more for the bus."
+            },
+            {
+              "text": "Esa transferencia es poca cosa, así que no me des las gracias.",
+              "english": "That transfer is not much, so don't thank me."
+            },
+            {
+              "text": "Total, vos hacés lo mismo por mí cada vez que me mandás una foto de la capital.",
+              "english": "Anyway, you do the same for me every time you send me a photo of the capital."
+            },
+            {
+              "text": "Hoy en la clínica llegó una señora con una historia graciosa, y me acordé de vos.",
+              "english": "Today at the clinic a woman came with a funny story, and I thought of you."
+            },
+            {
+              "text": "Dijo que su hijo estudia ingeniería en la capital, y que ella no sabe qué es la ingeniería, pero que su hijo es listo.",
+              "english": "She said her son studies engineering in the capital, and that she does not know what engineering is, but that her son is clever."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Me dijo que le había mandado un mensaje con una carita, y que ella le contestó con un abrazo muy largo escrito con las letras de su teléfono.",
+              "english": "She told me she had sent him a message with a little face, and that she answered with a very long hug written with the letters on her phone."
+            },
+            {
+              "text": "Es una historia graciosa, pero también es una historia triste, porque esa señora no ve a su hijo desde hace un año.",
+              "english": "It is a funny story, but it is also a sad story, because that woman has not seen her son for a year."
+            },
+            {
+              "text": "La mamá te manda decir que no le des vueltas al promedio, y que no estudies hasta tan tarde.",
+              "english": "Mom sends word that you should not obsess about your average, and that you should not study until so late."
+            },
+            {
+              "text": "Mijo, dice, no te voy a querer menos si sacás ochenta y dos.",
+              "english": "\"Son,\" she says, \"I will not love you less if you get eighty-two.\""
+            },
+            {
+              "text": "Y yo te digo lo mismo, hermano: total, si no podés aprobar con nota alta, tampoco se acaba el mundo.",
+              "english": "And I tell you the same, brother: anyway, if you cannot pass with a high mark, the world does not end either."
+            },
+            {
+              "text": "Eso sí, estudiá, porque el título es una puerta, y una puerta se abre con llave.",
+              "english": "That said, study, because the degree is a door, and a door opens with a key."
+            },
+            {
+              "text": "Con ese título vas a poder trabajar donde quieras, y vas a ser el primero de la familia con un título.",
+              "english": "With that degree you will be able to work wherever you want, and you will be the first in the family with a degree."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Te quiero mucho, y ojalá que la batería te dure hasta el domingo.",
+              "english": "I love you very much, and I hope your battery lasts until Sunday."
+            },
+            {
+              "text": "Dales saludos de mi parte a los de la residencia.",
+              "english": "Give my regards to the people at the residence."
+            },
+            {
+              "text": "Y que el tráfico de la capital te trate bien, que ese tráfico me da miedo.",
+              "english": "And may the traffic of the capital treat you well, because that traffic frightens me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un correo a la mamá",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marvin escribe también a su mamá, aunque ella no tiene computadora y alguien tiene que leerle el correo.",
+              "english": "Marvin also writes to his mother, although she has no computer and somebody has to read the e-mail to her."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Asunto: Saludos desde la capital",
+              "english": "Subject: Greetings from the capital"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Querida mamá:",
+              "english": "Dear Mom:"
+            },
+            {
+              "text": "¿Cómo está usted?",
+              "english": "How are you?"
+            },
+            {
+              "text": "Espero que esté bien, y que la lluvia no le haya hecho daño al techo.",
+              "english": "I hope you are well, and that the rain has not damaged the roof."
+            },
+            {
+              "text": "Le escribo porque el domingo pasado no pude llamarla, y no quería que se preocupara.",
+              "english": "I am writing because last Sunday I could not call you, and I did not want you to worry."
+            },
+            {
+              "text": "Le cuento que estoy bien, que como tres veces al día y que me estoy cuidando.",
+              "english": "Let me tell you that I am well, that I eat three times a day and that I am looking after myself."
+            },
+            {
+              "text": "Mi cuarto en la residencia es pequeño, pero tiene una ventana, y por la mañana el sol brilla en la pared y me despierta.",
+              "english": "My room in the hall of residence is small, but it has a window, and in the morning the sun shines on the wall and wakes me up."
+            },
+            {
+              "text": "En la residencia vivimos tres estudiantes en un cuarto, y la residencia está lejos de la universidad.",
+              "english": "In the residence three students live in one room, and the residence is far from the university."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Cuando el sol brilla así, pienso en la aldea y en las tardes en el patio, y entonces brillan también mis ojos.",
+              "english": "When the sun shines like that I think of the village and the afternoons in the yard, and then my eyes shine too."
+            },
+            {
+              "text": "Mamá, usted me preguntó si extraño la casa, y la verdad es que sí, la extraño todos los días.",
+              "english": "Mom, you asked me if I miss home, and the truth is that I do, I miss it every day."
+            },
+            {
+              "text": "Extraño el café de la mañana, el ruido de las gallinas y su voz cuando me dice que me levante.",
+              "english": "I miss the morning coffee, the noise of the hens and your voice when you tell me to get up."
+            },
+            {
+              "text": "No me gusta la capital, que es muy grande y tiene mucho tráfico, pero tampoco quiero volver sin mi título.",
+              "english": "I do not like the capital, which is very big and has a lot of traffic, but neither do I want to come back without my degree."
+            },
+            {
+              "text": "Voy a seguir estudiando, y le prometo que no voy a dejar los estudios, porque es la única manera de ayudar a la familia.",
+              "english": "I am going to keep studying, and I promise you that I will not abandon my studies, because it is the only way to help the family."
+            },
+            {
+              "text": "Un abrazo muy grande, y dele saludos de mi parte a doña Marta y a don Carlos.",
+              "english": "A very big hug, and give my regards to doña Marta and don Carlos."
+            },
+            {
+              "text": "Su hijo que la quiere, Marvin",
+              "english": "Your son who loves you, Marvin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La respuesta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La mamá no sabe escribir mucho, así que le dijo la respuesta a Ana, que la escribió con su mejor letra.",
+              "english": "The mother does not know how to write much, so she told the reply to Ana, who wrote it with her best handwriting."
+            },
+            {
+              "text": "Mijo querido:",
+              "english": "My dear son:"
+            },
+            {
+              "text": "Recibí tu correo, y Ana me lo leyó dos veces, porque la primera vez lloré y no pude oír.",
+              "english": "I received your e-mail, and Ana read it to me twice, because the first time I cried and could not hear."
+            },
+            {
+              "text": "Aquí todo está bien, y el techo no tiene ningún daño, aunque llovió mucho.",
+              "english": "Everything is fine here, and the roof has no damage, although it rained a lot."
+            },
+            {
+              "text": "Las gallinas siguen haciendo ruido, y el café sigue tan bueno como siempre.",
+              "english": "The hens are still making noise, and the coffee is as good as ever."
+            },
+            {
+              "text": "Mijo, no te preocupés por mí, y no te preocupés por el dinero, que Dios no nos deja solos.",
+              "english": "Son, don't worry about me, and don't worry about the money, God does not leave us alone."
+            },
+            {
+              "text": "Lo que sí te pido es que comás bien, que te acostés temprano y que no te olvidés de orar.",
+              "english": "What I do ask of you is that you eat well, go to bed early and do not forget to pray."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La beca va a llegar, y si no llega esta vez, llegará la próxima, porque la gente que trabaja siempre encuentra una puerta abierta.",
+              "english": "The scholarship will come, and if it does not come this time, it will come the next, because people who work always find an open door."
+            },
+            {
+              "text": "Tu hermana dice que te mande un abrazo, y yo te mando todos los que tengo.",
+              "english": "Your sister says to send you a hug, and I send you all that I have."
+            },
+            {
+              "text": "Tu mamá, que te espera en diciembre",
+              "english": "Your mother, who is waiting for you in December"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una solicitud de beca",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El mes siguiente, Marvin envió su solicitud de beca.",
+              "english": "The following month Marvin sent in his scholarship application."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Asunto: Solicitud de beca para estudiantes de ingeniería",
+              "english": "Subject: Application for a scholarship for engineering students"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Estimado señor Rivera:",
+              "english": "Dear Mr Rivera:"
+            },
+            {
+              "text": "Por medio de este correo, solicito formalmente la beca de apoyo que ofrecen ustedes a los estudiantes del interior del país.",
+              "english": "By means of this e-mail, I formally apply for the support scholarship that you offer to students from the interior of the country."
+            },
+            {
+              "text": "Soy estudiante de ingeniería, con tres años de estudios, y mi promedio actual es de ochenta y dos.",
+              "english": "I am an engineering student, with three years of study, and my current average is eighty-two."
+            },
+            {
+              "text": "Adjunto mi currículum, mis notas del último año y una carta de recomendación de mi profesor.",
+              "english": "I attach my curriculum vitae, my marks for the last year and a letter of recommendation from my professor."
+            },
+            {
+              "text": "Mi currículum es pequeño, porque todavía no he trabajado mucho, pero la recomendación de mi profesor dice que soy trabajador.",
+              "english": "My curriculum vitae is short, because I have not worked much yet, but my professor's recommendation says I am hardworking."
+            },
+            {
+              "text": "Mi familia vive en una aldea de la montaña, y mi madre y mi hermana son la razón por la que estudio.",
+              "english": "My family lives in a village in the mountains, and my mother and my sister are the reason why I study."
+            },
+            {
+              "text": "Sé que una beca no es un lujo, sino una oportunidad, y la pido con la convicción de que voy a devolver lo que reciba.",
+              "english": "I know that a scholarship is not a luxury but an opportunity, and I ask for it with the conviction that I will give back whatever I receive."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "No escribo por escribir, sino con la convicción de que esta oportunidad cambiaría la vida de mi familia.",
+              "english": "I am not writing just to write, but with the conviction that this opportunity would change my family's life."
+            },
+            {
+              "text": "Mi sueño es volver al interior como ingeniero, y ayudar a construir los caminos y los puentes que la gente de mi aldea necesita.",
+              "english": "My dream is to return to the interior as an engineer, and help build the roads and bridges that the people of my village need."
+            },
+            {
+              "text": "Estoy a su disposición para una entrevista, por teléfono o en persona, y le envío adjunto también mi carné de estudiante.",
+              "english": "I am at your disposal for an interview, by telephone or in person, and I am also sending you my student card attached."
+            },
+            {
+              "text": "Le agradezco el tiempo que dedique a mi solicitud, y espero su respuesta.",
+              "english": "I thank you for the time you give to my application, and I await your reply."
+            },
+            {
+              "text": "Atentamente, Marvin",
+              "english": "Yours sincerely, Marvin"
+            },
+            {
+              "text": "Dos semanas después llegó la respuesta, y en el celular de Marvin apareció la figura del señor Rivera, con una sonrisa.",
+              "english": "Two weeks later the reply came, and on Marvin's mobile phone appeared the figure of Mr Rivera, with a smile."
+            },
+            {
+              "text": "Marvin leyó el mensaje, se quedó un rato callado, y entonces escribió a su hermana: «Ana, me dieron la beca».",
+              "english": "Marvin read the message, stayed quiet for a while, and then wrote to his sister: \"Ana, they gave me the scholarship.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana contestó en segundos: «¡Gloria a Dios!».",
+              "english": "Ana answered within seconds: \"Glory to God!\""
+            },
+            {
+              "text": "«Ya le aviso a la mamá».",
+              "english": "\"I'll tell Mom right away.\""
+            },
+            {
+              "text": "Para su familia, mandar a un hijo a la capital había sido un lujo, y ahora la beca le quitaba esa carga.",
+              "english": "For his family, sending a son to the capital had been a luxury, and now the scholarship took that burden away."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La respuesta de la fundación",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Asunto: Respuesta a su solicitud de beca",
+              "english": "Subject: Reply to your scholarship application"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Estimado Marvin:",
+              "english": "Dear Marvin:"
+            },
+            {
+              "text": "Le informamos que su solicitud ha sido aprobada, y que la beca cubre sus estudios y el alquiler durante dos años.",
+              "english": "We inform you that your application has been approved, and that the scholarship covers your studies and the rent for two years."
+            },
+            {
+              "text": "Hemos leído con atención su currículum y la carta de recomendación de su profesor.",
+              "english": "We have read your curriculum vitae and your professor's letter of recommendation with attention."
+            },
+            {
+              "text": "La recomendación nos dice que usted es trabajador, y su currículum lo dice también.",
+              "english": "The recommendation tells us that you are hardworking, and your curriculum vitae says so too."
+            },
+            {
+              "text": "Lo que más nos convenció fue la convicción con que usted escribe, y por eso creemos en su sueño.",
+              "english": "What convinced us most was the conviction with which you write, and that is why we believe in your dream."
+            },
+            {
+              "text": "La primera transferencia llega el día cinco de cada mes, y le pedimos su número de cuenta en el documento adjunto.",
+              "english": "The first transfer arrives on the fifth day of each month, and we ask for your account number in the attached document."
+            },
+            {
+              "text": "Le recordamos que el promedio que pide la beca es ochenta y cinco, y que usted debe aprobar todos sus exámenes.",
+              "english": "We remind you that the average the scholarship requires is eighty-five, and that you must pass all your exams."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sabemos que no es fácil, pero usted ya demostró que sabe trabajar duro, y le deseamos mucho éxito.",
+              "english": "We know it is not easy, but you have already shown that you know how to work hard, and we wish you much success."
+            },
+            {
+              "text": "Reciba un saludo, y salude de nuestra parte a su familia.",
+              "english": "Receive a greeting, and give our regards to your family."
+            },
+            {
+              "text": "Atentamente, Rodolfo Rivera",
+              "english": "Yours sincerely, Rodolfo Rivera"
+            },
+            {
+              "text": "Marvin escribió el mensaje en una hoja, y se lo mandó a su mamá, con una carta suya al final.",
+              "english": "Marvin wrote the message on a sheet of paper and sent it to his mother, with a letter of his own at the end."
+            },
+            {
+              "text": "Ana le puso saldo al celular de la mamá, y así la mamá pudo llamar a Marvin esa misma noche.",
+              "english": "Ana put credit on their mother's phone, and so the mother was able to call Marvin that same night."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

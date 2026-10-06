@@ -554,6 +554,286 @@
       "document": "units/es-a2-2-20.json",
       "domain": "testimony",
       "title": "Why I came to Honduras"
+    },
+    {
+      "id": "es-b1-01",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:bible-jhn-4",
+      "domain": "scripture",
+      "title": "The woman at the well (John 4)"
+    },
+    {
+      "id": "es-b1-02",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-02.json",
+      "domain": "narrative",
+      "title": "The giant's well"
+    },
+    {
+      "id": "es-b1-03",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-03.json",
+      "domain": "contemporary-nonfiction",
+      "title": "The stories the village does not want to forget"
+    },
+    {
+      "id": "es-b1-04",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:gv-es-dae11aaaf264-excerpt-ch01",
+      "domain": "contemporary-nonfiction",
+      "title": "Folklore and indigenous stories (Global Voices excerpt)"
+    },
+    {
+      "id": "es-b1-05",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-05.json",
+      "domain": "narrative",
+      "title": "The red thread"
+    },
+    {
+      "id": "es-b1-06",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:marti-edad-de-oro-ch06",
+      "domain": "narrative",
+      "title": "The riddles (Martí, La Edad de Oro, ch. 6)"
+    },
+    {
+      "id": "es-b1-07",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:marti-edad-de-oro-ch02",
+      "domain": "narrative",
+      "title": "The tale of Meñique (Martí, La Edad de Oro, ch. 2)"
+    },
+    {
+      "id": "es-b1-08",
+      "stage": "b1-bridge",
+      "kind": "adapted",
+      "document": "units/es-b1-08.json",
+      "domain": "explanation",
+      "title": "What is the internet?"
+    },
+    {
+      "id": "es-b1-09",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:bridge-demasiados-platanos-ch01",
+      "domain": "narrative",
+      "title": "Too many bananas (GDL)"
+    },
+    {
+      "id": "es-b1-10",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-10.json",
+      "domain": "explanation",
+      "title": "A hundred years of the park"
+    },
+    {
+      "id": "es-b1-11",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-11.json",
+      "domain": "narrative",
+      "title": "The count of the neighborhood"
+    },
+    {
+      "id": "es-b1-12",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:bible-gen-28",
+      "domain": "scripture",
+      "title": "Jacob's dream (Genesis 28)"
+    },
+    {
+      "id": "es-b1-13",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-13.json",
+      "domain": "biography",
+      "title": "The teacher of the frogs"
+    },
+    {
+      "id": "es-b1-14",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:bible-jhn-9",
+      "domain": "scripture",
+      "title": "The man born blind (John 9)"
+    },
+    {
+      "id": "es-b1-15",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-15.json",
+      "domain": "biography",
+      "title": "Don Rafael and the mill theater"
+    },
+    {
+      "id": "es-b1-16",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:marti-edad-de-oro-ch03",
+      "domain": "narrative",
+      "title": "Meñique, chapter 3 (Martí, La Edad de Oro)"
+    },
+    {
+      "id": "es-b1-17",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-17.json",
+      "domain": "correspondence",
+      "title": "Three letters"
+    },
+    {
+      "id": "es-b1-18",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:bible-jhn-11",
+      "domain": "scripture",
+      "title": "Lazarus (John 11)"
+    },
+    {
+      "id": "es-b1-19",
+      "stage": "b1-bridge",
+      "kind": "adapted",
+      "document": "units/es-b1-19.json",
+      "domain": "explanation",
+      "title": "A day on the reef"
+    },
+    {
+      "id": "es-b1-20",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:bible-jhn-6",
+      "domain": "scripture",
+      "title": "John 6: the bread for the crowd"
+    },
+    {
+      "id": "es-b1-21",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-21.json",
+      "domain": "testimony",
+      "title": "Three testimonies"
+    },
+    {
+      "id": "es-b1-22",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:bible-gen-45",
+      "domain": "scripture",
+      "title": "Genesis 45: Joseph makes himself known"
+    },
+    {
+      "id": "es-b1-23",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-23.json",
+      "domain": "news",
+      "title": "After the flood"
+    },
+    {
+      "id": "es-b1-24",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:marti-edad-de-oro-ch04",
+      "domain": "narrative",
+      "title": "La Edad de Oro, IV (Martí)"
+    },
+    {
+      "id": "es-b1-25",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:bible-act-26",
+      "domain": "scripture",
+      "title": "Acts 26: Paul tells his story before Agrippa"
+    },
+    {
+      "id": "es-b1-26",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-26.json",
+      "domain": "practical-communication",
+      "title": "Notices, rules and instructions"
+    },
+    {
+      "id": "es-b1-27",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-27.json",
+      "domain": "narrative",
+      "title": "Doña Aurora's path"
+    },
+    {
+      "id": "es-b1-28",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:bible-exo-4",
+      "domain": "scripture",
+      "title": "Exodus 4: Moses and the signs"
+    },
+    {
+      "id": "es-b1-29",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-29.json",
+      "domain": "conversation",
+      "title": "In the square, on a Saturday"
+    },
+    {
+      "id": "es-b1-30",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:marti-edad-de-oro-ch05",
+      "domain": "narrative",
+      "title": "La Edad de Oro, V: the giant at the palace (Meñique)"
+    },
+    {
+      "id": "es-b1-31",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:marti-edad-de-oro-ch01",
+      "domain": "narrative",
+      "title": "La Edad de Oro, I: the three brothers (Meñique)"
+    },
+    {
+      "id": "es-b1-32",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-32.json",
+      "domain": "contemporary-nonfiction",
+      "title": "Coffee, from the plantation to the cup"
+    },
+    {
+      "id": "es-b1-33",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-33.json",
+      "domain": "narrative",
+      "title": "The new teacher"
+    },
+    {
+      "id": "es-b1-34",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-34.json",
+      "domain": "correspondence",
+      "title": "Messages, an e-mail and a letter"
+    },
+    {
+      "id": "es-b1-35",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:es:galdos-marianela-ch06",
+      "domain": "narrative",
+      "title": "Marianela, chapter VI (Galdós)"
     }
   ]
 }

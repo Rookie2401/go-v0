@@ -1,0 +1,429 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-17",
+  "lang": "es",
+  "title": "Tres cartas",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-17",
+    "title": "Three letters (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored Spanish for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is written for B1 learners (natural prose at the level of the bridge; its vocabulary is scheduled by the ladder) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. B1 bridge, unit 17: NEW course-authored correspondence (the plan: \"three letters / e-mails (family, church, official)\", with the pack of the letters in Valera's Pepita Jiménez as vocabulary model; Pepita Jiménez is a Gutenberg text and is not adapted). All people, places and events are invented. For the Honduran reviewer: (a) register: letter 1 is a family letter with voseo (vos); letters 2 and 3 are formal and use usted; (b) \"vicario\" is the assistant priest of a Catholic parish, \"renta\" is used for rent, \"chico\" for a boy or young man: please check that these read naturally in Honduras; (c) the pack items \"repuso\", \"desahogo\", \"epílogo\", \"envejecido\", \"frialdad\" and \"comedia\" are literary words placed in letters; the reviewer may move them; (d) the pack item \"diablo\" appears in everyday exclamations only."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "correspondence"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Primera carta: de Karla a su mamá",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Tegucigalpa, 12 de marzo",
+              "english": "Tegucigalpa, March 12"
+            },
+            {
+              "text": "Querida mamá:",
+              "english": "Dear Mom:"
+            },
+            {
+              "text": "Te escribo esta carta íntima porque no encuentro otro modo de hablarte, sin gritos y sin peleas.",
+              "english": "I am writing you this intimate letter because I find no other way of talking to you, without shouting and without quarrels."
+            },
+            {
+              "text": "Escribo con una vela derritiéndose a mi lado, y con la cabeza llena de cosas.",
+              "english": "I am writing with a candle melting beside me, and with my head full of things."
+            },
+            {
+              "text": "Hoy necesito un desahogo, mamá, porque aquí todo es ruido, y la gente tiene una frialdad que me da miedo.",
+              "english": "Today I need to let off steam, Mom, because here everything is noise, and people have a coldness that frightens me."
+            },
+            {
+              "text": "Esa frialdad se siente en la calle, en la iglesia y hasta en el parque.",
+              "english": "That coldness is felt in the street, in the church and even in the park."
+            },
+            {
+              "text": "Mi carácter no ha cambiado, pero mi vida sí: ya no le cuento a nadie lo que me pasa.",
+              "english": "My character has not changed, but my life has: I no longer tell anyone what happens to me."
+            },
+            {
+              "text": "Esa frialdad se parece a un papel vencido, y yo me siento como un personaje de novela.",
+              "english": "That coldness is like an expired deadline, and I feel like a character in a novel."
+            },
+            {
+              "text": "Una tarde húmeda, mientras caminaba con la ropa fría, pensé que la vela de mi cuarto se iba derritiendo igual que mis ganas.",
+              "english": "One humid afternoon, as I walked with wet clothes, I thought that the candle in my room was melting just like my desire."
+            },
+            {
+              "text": "Ayer, contemplando la lluvia desde la ventana, pensé en nuestra casa y en el patio, siempre con la tierra húmeda.",
+              "english": "Yesterday, looking at the rain from the window, I thought of our house and of the patio, always with damp earth."
+            },
+            {
+              "text": "Seguí contemplando el agua un largo rato, y en la memoria me llegó tu voz.",
+              "english": "I kept looking at the water for a long while, and your voice came to me in my memory."
+            },
+            {
+              "text": "Vos sabés que mi carácter es difícil, y por eso me cuesta hacer amigas.",
+              "english": "You know that my character is difficult, and that is why it is hard for me to make friends."
+            },
+            {
+              "text": "Hasta me siento una chica rara, como si hablara otro idioma, y eso no es una cosa rara en esta ciudad.",
+              "english": "I even feel like a strange girl, as if I spoke another language, and that is not a strange thing in this city."
+            },
+            {
+              "text": "Pero hay una cosa buena: conocí a un chico muy bueno, que se llama Mauricio.",
+              "english": "But there is one good thing: I met a very good boy, whose name is Mauricio."
+            },
+            {
+              "text": "Es un chico alegre, y un lector de libros viejos, como a mí me gusta.",
+              "english": "He is a cheerful boy, and a reader of old books, the way I like."
+            },
+            {
+              "text": "Por eso lo quiero: no es de los que gritan, y su carácter es parecido al mío.",
+              "english": "That is why I love him: he is not one of those who shout, and his character is similar to mine."
+            },
+            {
+              "text": "Siempre procuraba ayudarme cuando yo estaba perdida, y nunca me pidió nada.",
+              "english": "He always tried to help me when I was lost, and he never asked me for anything."
+            },
+            {
+              "text": "Una tarde me entregó un papel que decía: «Ánimo, Karla, que el destino también se cansa».",
+              "english": "One afternoon he handed me a paper that said: \"Cheer up, Karla, for even fate gets tired.\""
+            },
+            {
+              "text": "Esas palabras se quedaron en mi memoria, y todavía las leo cada noche, con la cara húmeda.",
+              "english": "Those words stayed in my memory, and I still read them every night, with a damp face."
+            },
+            {
+              "text": "Mamá, quiero decirte algo con toda mi atención: nos queremos, y pensamos en una boda para diciembre.",
+              "english": "Mom, I want to tell you something with all my attention: we love each other, and we are thinking of a wedding for December."
+            },
+            {
+              "text": "Yo no pretendía casarme tan pronto, y Mauricio repuso que él tampoco, pero que el amor no pregunta.",
+              "english": "I did not intend to marry so soon, and Mauricio replied that neither did he, but that love does not ask."
+            },
+            {
+              "text": "No sé qué pensarás.",
+              "english": "I do not know what you will think."
+            },
+            {
+              "text": "Sé que dirás que somos dos enamorados que no conocen la vida.",
+              "english": "I know you will say that we are two people in love who do not know life."
+            },
+            {
+              "text": "Pero te lo repito: lo pienso con la conciencia tranquila, y sé que el destino no espera.",
+              "english": "But I repeat it to you: I am thinking it over with a clear conscience, and I know that fate does not wait."
+            },
+            {
+              "text": "Para la boda, tía Elena me prestaría un traje, y la renta de nuestro cuarto sobra para los dos hasta diciembre.",
+              "english": "For the wedding, Aunt Elena would lend me a dress, and the rent of our room is more than enough for the two of us until December."
+            },
+            {
+              "text": "Mauricio también quiere un traje, pero dice que podemos esperar.",
+              "english": "Mauricio also wants a suit, but he says we can wait."
+            },
+            {
+              "text": "Otro día lo vi parado bajo el sol, derritiéndose de calor, y me quedé admirada de lo feliz que parecía.",
+              "english": "Another day I saw him standing in the sun, melting with the heat, and I was amazed at how happy he looked."
+            },
+            {
+              "text": "Cada vez que me mira, me quedo admirada otra vez.",
+              "english": "Every time he looks at me, I am amazed again."
+            },
+            {
+              "text": "Te pido, mamá, que me contestes con una carta breve, pero con tu verdad.",
+              "english": "I ask you, Mom, to answer me with a short letter, but with your truth."
+            },
+            {
+              "text": "Tu hija que te quiere, Karla",
+              "english": "Your daughter who loves you, Karla"
+            },
+            {
+              "text": "Epílogo: ya sé que dirás «qué diablo de muchacha», y que el diablo siempre se sale con la suya.",
+              "english": "P.S.: I know you will say \"what a devil of a girl,\" and that the devil always gets his way."
+            },
+            {
+              "text": "Y yo pensé, al escribirlo: «¡qué diablo, que se enoje!», pero me dio risa.",
+              "english": "And I thought, writing it: \"what the devil, let her be angry!\", but it made me laugh."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Segunda carta: de don Tomás al vicario",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Tegucigalpa, 3 de abril",
+              "english": "Tegucigalpa, April 3"
+            },
+            {
+              "text": "Señor vicario:",
+              "english": "Dear Vicar:"
+            },
+            {
+              "text": "Con mi mayor respeto, me dirijo a usted para pedirle su atención sobre un problema de nuestra comunidad.",
+              "english": "With my greatest respect, I am writing to you to ask for your attention on a problem in our community."
+            },
+            {
+              "text": "La escuela de la iglesia sufre una gran necesidad, y la hermana monja que la dirige está muy cansada por el trabajo.",
+              "english": "The church school suffers a great need, and the nun who runs it is very tired from the work."
+            },
+            {
+              "text": "Es una mujer de carácter fuerte, pero también cansada por los años, y ya no puede acudir sola a todas las clases.",
+              "english": "She is a woman of strong character, but also tired from the years, and she can no longer attend all the classes alone."
+            },
+            {
+              "text": "Precisamente por eso, mi intención es pedirle que envíe a dos jóvenes para ayudar.",
+              "english": "Precisely for that reason, my intention is to ask you to send two young people to help."
+            },
+            {
+              "text": "No pretendía molestarlo con una carta larga, y por eso la haré breve y completa.",
+              "english": "I did not mean to bother you with a long letter, and therefore I will make it short and complete."
+            },
+            {
+              "text": "La monja repuso, cuando se lo pregunté, que no quería ayuda de nadie.",
+              "english": "The nun replied, when I asked her, that she did not want help from anyone."
+            },
+            {
+              "text": "Pero la verdad es que los niños, con sus gritos y sus risas, necesitan más de lo que una sola mujer puede dar.",
+              "english": "But the truth is that the children, with their shouts and their laughter, need more than a single woman can give."
+            },
+            {
+              "text": "Como lector de los evangelios, creo que la humanidad se ve en lo que hacemos por los más pequeños.",
+              "english": "As a reader of the gospels, I believe that humanity is seen in what we do for the smallest ones."
+            },
+            {
+              "text": "Soy un lector envejecido, y sin embargo todavía creo que cada niño es una humanidad entera.",
+              "english": "I am an aged reader, and yet I still believe that each child is a whole humanity."
+            },
+            {
+              "text": "Procuraba yo ser un hombre bueno, y es mi intención seguir así.",
+              "english": "I tried to be a good man, and my intention is to go on that way."
+            },
+            {
+              "text": "Le ofrezco, por mi parte, mi trabajo de dos tardes por semana, y mi gratitud por cualquier ayuda.",
+              "english": "I offer, for my part, my work two afternoons a week, and my gratitude for any help."
+            },
+            {
+              "text": "Sé que el vicario está harto de pedidos, y que la iglesia tiene poco dinero.",
+              "english": "I know that the vicar is fed up with requests, and that the church has little money."
+            },
+            {
+              "text": "Pero si usted estuviera conforme, sería una alegría para todos, y un ánimo para la monja.",
+              "english": "But if you were in agreement, it would be a joy for everyone, and an encouragement for the nun."
+            },
+            {
+              "text": "El vicario anterior, que ya murió, solía acudir a la escuela cada martes, y los niños todavía lo recuerdan.",
+              "english": "The previous vicar, who has since died, used to go to the school every Tuesday, and the children still remember him."
+            },
+            {
+              "text": "Era un hombre envejecido y cansado, pero ella decía que con él la escuela tenía un poco de desahogo.",
+              "english": "He was an aged and tired man, but she said that with him the school had a little relief."
+            },
+            {
+              "text": "Ese hombre envejecido me repuso una vez: «Hay que acudir allí donde se acaban las fuerzas».",
+              "english": "That man, already aged, once replied to me: \"One must go where strength runs out.\""
+            },
+            {
+              "text": "Ella le entregó entonces la llave de la escuela, y procuraba siempre agradecerle con una sonrisa.",
+              "english": "She then handed him the key to the school, and always tried to thank him with a smile."
+            },
+            {
+              "text": "Reconozco a esa mujer, y la calma de los niños, y todo lo que hace sin pedir nada, y mi conciencia me pide ayudarla.",
+              "english": "I recognize that woman, and the calm of the children, and everything she does without asking for anything, and my conscience asks me to help her."
+            },
+            {
+              "text": "Espero su respuesta, con mi gratitud.",
+              "english": "I remain awaiting your answer, with my gratitude."
+            },
+            {
+              "text": "Con respeto, Tomás",
+              "english": "With respect, Tomás"
+            },
+            {
+              "text": "Epílogo: ya sé que dirá que esto es una comedia, pero es una comedia con lágrimas.",
+              "english": "P.S.: I know you will say this is a comedy, but it is a comedy with tears."
+            },
+            {
+              "text": "Y si la monja se enoja con esta carta, sepa usted que en cada comedia hay un personaje que dice que no.",
+              "english": "And if the nun gets angry about this letter, know that in every comedy there is a character who says no."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Tercera carta: a la dueña de la casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Tegucigalpa, 20 de abril",
+              "english": "Tegucigalpa, April 20"
+            },
+            {
+              "text": "Señora Carmen:",
+              "english": "Mrs. Carmen:"
+            },
+            {
+              "text": "Le escribo para tratar la renta del cuarto que alquilo desde hace dos años.",
+              "english": "I am writing to discuss the rent for the room I have been renting for two years."
+            },
+            {
+              "text": "El término de mi papel está vencido desde marzo, y quiero saber si usted está conforme.",
+              "english": "The term of my paper has been expired since March, and I want to know if you are in agreement."
+            },
+            {
+              "text": "Le entregué el último dinero en febrero, y usted me dio un papel completo, con la renta de cada mes.",
+              "english": "I gave you the last payment in February, and you gave me a full paper, with the rent for each month."
+            },
+            {
+              "text": "Como usted sabe, mi trabajo en la ciudad es difícil, y mi destino también.",
+              "english": "As you know, my work in the city is hard, and so is my fate."
+            },
+            {
+              "text": "Mi intención, precisamente, es quedarme hasta diciembre, y pagar antes del término.",
+              "english": "My intention, precisely, is to stay until December, and to pay before the term."
+            },
+            {
+              "text": "Le pido que me conteste por escrito, con una respuesta breve: sí o no.",
+              "english": "I ask you to answer me in writing, with a short and precise reply: yes or no."
+            },
+            {
+              "text": "Necesito un día preciso, un momento preciso, y un papel completo con su nombre, preciso y claro.",
+              "english": "I need a precise date, a precise day, and a complete paper with your name."
+            },
+            {
+              "text": "Estoy harto de vivir con un papel vencido, y harto también de dudar.",
+              "english": "I am fed up with living with an expired plan, and fed up with doubting too."
+            },
+            {
+              "text": "Le escribo con la conciencia limpia: lo que sobra es tiempo, y lo que falta es una respuesta.",
+              "english": "I write to you with a clear conscience: what there is plenty of is time, and what is lacking is an answer."
+            },
+            {
+              "text": "No le pido nada difícil: sólo que sea clara.",
+              "english": "I ask nothing difficult of you: only that you be clear."
+            },
+            {
+              "text": "Si no estuviera conforme, buscaré otro cuarto, y le agradezco de todas formas su atención.",
+              "english": "If you were not in agreement, I will look for another room, and I thank you in any case for your attention."
+            },
+            {
+              "text": "Le doy ánimo para decidir, y le deseo un buen día.",
+              "english": "I encourage you to decide, and wish you a good day."
+            },
+            {
+              "text": "Con respeto, Marvin",
+              "english": "With respect, Marvin"
+            },
+            {
+              "text": "Epílogo: si dice que sí, le llevaré un pan dulce, sin gritos de alegría.",
+              "english": "P.S.: if you say yes, I will bring you a sweet bread, without shouts of joy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una respuesta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Querido Marvin:",
+              "english": "Dear Marvin:"
+            },
+            {
+              "text": "Recibí su carta, y estoy admirada de su calma.",
+              "english": "I received your letter, and I am amazed at your calm."
+            },
+            {
+              "text": "Estoy conforme con seguir por un año, y al término del año vemos otra vez.",
+              "english": "I am in agreement with continuing for a year, and at the end of the year we will see again."
+            },
+            {
+              "text": "Un chico como usted no tiene que irse a otro cuarto: aquí tiene casa, y es como un personaje de esta calle.",
+              "english": "A young man like you does not have to go to another room: here you have a home, and you are like a character of this street."
+            },
+            {
+              "text": "Precisamente hoy pretendía decirle esto antes, pero mi memoria, ya cansada, se olvida de cosas íntimas y de cosas importantes.",
+              "english": "I meant to tell you this earlier, but my memory, already tired, forgets intimate things and important things."
+            },
+            {
+              "text": "Esta carta es un desahogo, y le doy mi gratitud por la suya.",
+              "english": "This letter is a relief, and I give you my gratitude for yours."
+            },
+            {
+              "text": "Contemplando la calle, a veces me parece una cosa rara que un hombre tan joven escriba cartas, y una cosa rara también que yo las lea.",
+              "english": "Looking at the street, sometimes it seems a strange thing to me that such a young man writes letters, and a strange thing too that I read them."
+            },
+            {
+              "text": "Yo soy una mujer vieja, y por eso me gusta una carta íntima.",
+              "english": "I am an old woman, and for that reason I like an intimate letter."
+            },
+            {
+              "text": "Y si algún día se casa, como me dijo un vecino, me gustaría ver el traje de boda.",
+              "english": "And if some day you marry, as a neighbor told me, I would like to see the wedding suit."
+            },
+            {
+              "text": "Lo que sobra en esta casa no es dinero, sino un poco de humanidad, y mi intención es que usted la sienta.",
+              "english": "What there is plenty of in this house is not money, but a little humanity, and my intention is that you feel it."
+            },
+            {
+              "text": "Con cariño, Carmen",
+              "english": "With affection, Carmen"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,812 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-27",
+  "lang": "es",
+  "title": "El sendero de doña Aurora",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-27",
+    "title": "Doña Aurora's path (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Owner decision 1 (2026-10-06): Gutenberg texts (canModify: false) are not adapted; this is a NEW course-authored text, with no plot or wording borrowed from the work named in PLAN-B1. (Niebla ch22; the unit sits at slot 27 so that the Martí chapter that profits from its farm vocabulary comes after it.) A new rural story with dialogue; characters and plot are invented. Points for the Honduran reviewer: usted between neighbours and elders (voseo is not used here on purpose), \"alcalde auxiliar\", \"pulpería\", \"milpa\", \"chala\" (corn husk, for tamales), \"cipotes\", \"arado\" (ploughing with a buey), \"niebla\" in the mountains, the wording of the funeral and the condolence note. Owner decision 3: the 92 % entry line for authentic placements stays; new-lemmas warnings are acceptable. Vocabulary plan: PLAN-B1 pack for es-b1-30 (adapted from Niebla ch22; now es-b1-27): the plan's words that fit a rural Honduran story were kept (arado, chala, rabia, complicado, sendero, aterrado, pretexto, anciano, viuda, entierro, rumor, interior, confundir, tolerar, estallar, autoridad, destruir, lápiz, par, melancólico, solterón, tragedia, grosería, completamente, interesante, inútil, disposición, molestia, niebla, ritmo); the Niebla-only ones were dropped. Logged."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative",
+    "community"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "La niebla",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En las montañas de Honduras, la niebla baja cada mañana hasta las casas y no se va hasta que sale el sol.",
+              "english": "In the mountains of Honduras the fog comes down every morning as far as the houses and does not go until the sun comes up."
+            },
+            {
+              "text": "Aquella mañana la niebla cubría todo más que nunca, y la aldea parecía una isla dentro de una nube.",
+              "english": "That morning the fog covered everything more than ever, and the village looked like an island inside a cloud."
+            },
+            {
+              "text": "Doña Aurora salió al patio con una taza de café y miró hacia el sendero que cruzaba su terreno.",
+              "english": "Doña Aurora went out into the yard with a cup of coffee and looked towards the path that crossed her land."
+            },
+            {
+              "text": "Hacía una semana que había enterrado a su marido, y todavía no se acostumbraba al silencio de la casa.",
+              "english": "It was a week since she had buried her husband, and she still had not got used to the silence of the house."
+            },
+            {
+              "text": "Era viuda desde el lunes pasado, y el entierro había sido el más largo que la aldea recordaba.",
+              "english": "She had been a widow since last Monday, and the funeral had been the longest the village could remember."
+            },
+            {
+              "text": "Todos habían venido al entierro: los vecinos, los niños de la escuela y hasta el pastor de la otra aldea.",
+              "english": "Everyone had come to the funeral: the neighbours, the schoolchildren and even the pastor from the other village."
+            },
+            {
+              "text": "Cada vecino había traído un ramo de flores, y el ramo más grande era el de los niños de la escuela.",
+              "english": "Each neighbour had brought a bunch of flowers, and the biggest bunch was the one from the schoolchildren."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sobre la tumba todavía quedaba un ramo seco, y doña Aurora no se atrevía a quitarlo.",
+              "english": "On the grave there was still a dry bunch, and doña Aurora did not dare to remove it."
+            },
+            {
+              "text": "Sólo faltó una persona, y esa persona era don Miguel.",
+              "english": "Only one person was missing, and that person was don Miguel."
+            },
+            {
+              "text": "Nadie sabía por qué no había venido, y todo se complicó con eso.",
+              "english": "Nobody knew why he had not come, and everything got complicated because of it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El anciano y el arado",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Don Miguel era un anciano solterón, y vivía solo en la casa de arriba, al otro lado del sendero.",
+              "english": "Don Miguel was an old bachelor, and he lived alone in the house above, on the other side of the path."
+            },
+            {
+              "text": "Los vecinos decían que un solterón de su edad ya no tenía nada que esperar, pero él nunca contestaba.",
+              "english": "The neighbours said that a bachelor of his age had nothing left to look forward to, but he never answered."
+            },
+            {
+              "text": "Era un anciano melancólico, y tenía la costumbre de callar cuando algo le dolía.",
+              "english": "He was a melancholy old man, and he had the habit of keeping quiet when something hurt him."
+            },
+            {
+              "text": "Un hombre melancólico como él no pide nada, y por eso nadie le daba nada.",
+              "english": "A melancholy man like him asks for nothing, and that is why nobody gave him anything."
+            },
+            {
+              "text": "Cada mañana bajaba por el sendero con su arado al hombro, y cruzaba el terreno de doña Aurora para llegar a su milpa.",
+              "english": "Every morning he went down the path with his plough on his shoulder, and crossed doña Aurora's land to reach his cornfield."
+            },
+            {
+              "text": "Delante del arado caminaba su buey, un animal viejo que tenía un cuerno roto y el espinazo delgado.",
+              "english": "In front of the plough walked his ox, an old animal with a broken horn and a thin backbone."
+            },
+            {
+              "text": "Cuando el buey se cansaba, don Miguel le tocaba el espinazo y le hablaba bajito.",
+              "english": "When the ox got tired, don Miguel touched its backbone and spoke softly to it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Por la noche el buey dormía en el corral de la casa de arriba, y don Miguel le miraba el cuerno antes de acostarse.",
+              "english": "At night the ox slept in the pen of the house above, and don Miguel looked at its horn before going to bed."
+            },
+            {
+              "text": "Los cipotes se escondían a veces en el corral de doña Aurora para ver pasar al buey.",
+              "english": "The kids sometimes hid in doña Aurora's yard pen to watch the ox go by."
+            },
+            {
+              "text": "También el corral de doña Aurora estaba vacío desde la muerte de su marido, y el cerro parecía más callado.",
+              "english": "Doña Aurora's pen had also been empty since her husband's death, and the hill seemed quieter."
+            },
+            {
+              "text": "Allí, entre la niebla, empujaba el arado con un ritmo lento y seguro, y la tierra se abría como un libro.",
+              "english": "There, in the fog, he pushed the plough with a slow, sure rhythm, and the earth opened like a book."
+            },
+            {
+              "text": "Su trabajo parecía inútil a los jóvenes, que querían ir a la ciudad y no sembrar nada.",
+              "english": "His work seemed useless to the young people, who wanted to go to the city and not sow anything."
+            },
+            {
+              "text": "Un par de cipotes se reían de él, y le decían que su arado era inútil.",
+              "english": "A couple of kids laughed at him, and told him his plough was useless."
+            },
+            {
+              "text": "Don Miguel los miraba con un aire melancólico, y seguía arando al mismo ritmo.",
+              "english": "Don Miguel looked at them with a melancholy air, and went on ploughing at the same rhythm."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pero para don Miguel, el ritmo del arado era una oración, y la milpa era lo único interesante que le quedaba.",
+              "english": "But for don Miguel the rhythm of the plough was a prayer, and the cornfield was the only interesting thing he had left."
+            },
+            {
+              "text": "Para un anciano solterón no hay nada más interesante que una tierra que responde, y su milpa le respondía.",
+              "english": "For an old bachelor there is nothing more interesting than land that answers, and his cornfield answered him."
+            },
+            {
+              "text": "Nadie en la aldea recordaba cuándo había empezado esa costumbre, y nadie le había preguntado nunca por qué.",
+              "english": "Nobody in the village remembered when that custom had begun, and nobody had ever asked him why."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El rumor",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pero esa semana corrió un rumor: doña Aurora, ahora que era viuda, iba a cerrar el sendero.",
+              "english": "But that week a rumour went round: doña Aurora, now that she was a widow, was going to close the path."
+            },
+            {
+              "text": "El rumor llegó a la pulpería, y de la pulpería llegó a oídos de don Miguel.",
+              "english": "The rumour reached the shop, and from the shop it reached don Miguel's ears."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Dicen que la viuda va a poner una cerca —dijo la dueña de la pulpería—.",
+              "english": "\"They say the widow is going to put up a fence,\" said the owner of the shop."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Eso es un rumor, y nada más —contestó don Carlos, el alcalde auxiliar—.",
+              "english": "\"That is a rumour, and nothing more,\" answered don Carlos, the local mayor."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Un rumor es como el fuego en la chala seca —dijo la dueña—.",
+              "english": "\"A rumour is like fire in dry corn husks,\" said the owner."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Si cae en la chala, todo se quema, y no hay autoridad que lo apague.",
+              "english": "\"If it falls on the husks, everything burns, and no authority can put it out.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Ya vimos lo que pasa cuando un rumor se vuelve tragedia —dijo don Carlos—.",
+              "english": "\"We have already seen what happens when a rumour turns into a tragedy,\" said don Carlos."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Hace diez años, por un rumor, dos familias dejaron de hablarse para siempre.",
+              "english": "\"Ten years ago, because of a rumour, two families stopped speaking to each other for ever.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Todo rumor necesita un pretexto, y este todavía no lo sabemos.",
+              "english": "\"Every rumour needs a pretext, and we do not know this one yet.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—El pretexto de un rumor casi siempre es un negocio, don Carlos, y no digo más.",
+              "english": "\"The pretext for a rumour is almost always a deal, don Carlos, and I will say no more.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—No es una tragedia todavía, pero puede serlo.",
+              "english": "\"It is not a tragedy yet, but it could become one.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Don Miguel escuchó todo desde un rincón de la pulpería, y no dijo nada.",
+              "english": "Don Miguel listened to everything from a corner of the shop and said nothing."
+            },
+            {
+              "text": "Esa noche no durmió, y por la mañana bajó por el sendero con el arado y con una rabia que no era suya.",
+              "english": "That night he did not sleep, and in the morning he went down the path with the plough and with an anger that was not really his."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En el sendero",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Doña Aurora lo vio llegar entre la niebla y comprendió todo de golpe.",
+              "english": "Doña Aurora saw him coming through the fog and understood everything at once."
+            },
+            {
+              "text": "El anciano no se movió del sendero, y se quedó aterrado, con el arado en la mano.",
+              "english": "The old man did not move from the path, and stood terrified, with the plough in his hand."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Buenos días, don Miguel —dijo, sin moverse de la puerta—.",
+              "english": "\"Good morning, don Miguel,\" she said, without moving from the door."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—No tienen nada de buenos, doña Aurora —contestó él—.",
+              "english": "\"They are not good at all, doña Aurora,\" he answered."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Me dijeron que usted iba a cerrar el sendero, y que lo iba a cerrar ahora mismo.",
+              "english": "\"They told me you were going to close the path, and that you were going to close it right now.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¿Y usted lo creyó?",
+              "english": "\"And you believed it?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Yo no sé qué creer.",
+              "english": "\"I don't know what to believe.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Treinta años crucé este terreno, y ahora me entero por un rumor.",
+              "english": "\"I have crossed this land for thirty years, and now I find out through a rumour.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La voz de don Miguel temblaba, y doña Aurora vio que el viejo estaba aterrado.",
+              "english": "Don Miguel's voice trembled, and doña Aurora saw that the old man was terrified."
+            },
+            {
+              "text": "No tenía miedo de ella, sino de perder lo único que le quedaba: el camino hacia su milpa.",
+              "english": "He was not afraid of her but of losing the only thing he had left: the road to his cornfield."
+            },
+            {
+              "text": "Estaba aterrado, y en su interior sentía una rabia vieja que no sabía cómo decir.",
+              "english": "He was terrified, and inside him he felt an old anger that he did not know how to put into words."
+            },
+            {
+              "text": "En su interior, doña Aurora sentía lo mismo: una tristeza que no sabía cómo decir.",
+              "english": "Inside, doña Aurora felt the same: a sadness she did not know how to put into words."
+            },
+            {
+              "text": "En el interior de la casa, el café ya estaba frío.",
+              "english": "Inside the house, the coffee was already cold."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Don Miguel, yo no tolero que se hable así de mí en la aldea —dijo ella—.",
+              "english": "\"Don Miguel, I will not tolerate people talking about me like that in the village,\" she said."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Tampoco tolero la grosería, y menos en un día como éste.",
+              "english": "\"Nor do I tolerate rudeness, and least of all on a day like this.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Y no voy a tolerar que nadie nos separe por un rumor.",
+              "english": "\"And I am not going to tolerate anyone separating us over a rumour.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Pero tampoco voy a pelear con usted, y no le voy a decir una grosería.",
+              "english": "\"But neither am I going to fight with you, and I am not going to say a rude word to you.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Si yo estallo, usted estalla, y la aldea se pierde completamente.",
+              "english": "\"If I explode, you explode, and the village is completely lost.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Completamente, don Miguel: esto no puede seguir así.",
+              "english": "\"Completely, don Miguel: this cannot go on like this.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¿Quién le dijo eso de la cerca?",
+              "english": "\"Who told you that about the fence?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Fue una de las mujeres de la pulpería.",
+              "english": "\"It was one of the women at the shop.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Dijo que se lo contó un sobrino suyo.",
+              "english": "\"She said a nephew of yours told her.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Un sobrino mío —repitió doña Aurora, y se quedó callada un momento—.",
+              "english": "\"A nephew of mine,\" repeated doña Aurora, and she was quiet for a moment."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Entonces ya sé quién fue.",
+              "english": "\"Then I know who it was.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La autoridad",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa tarde, don Carlos, el alcalde auxiliar, llamó a todos a la pulpería.",
+              "english": "That afternoon don Carlos, the local mayor, called everyone to the shop."
+            },
+            {
+              "text": "Don Miguel vino, y vino también doña Aurora, con su sobrino Luis detrás de ella.",
+              "english": "Don Miguel came, and doña Aurora came too, with her nephew Luis behind her."
+            },
+            {
+              "text": "Luis tenía veinte años, y no parecía contento de estar allí.",
+              "english": "Luis was twenty, and he did not look happy to be there."
+            },
+            {
+              "text": "Todo se complicó más cuando Luis entró, porque nadie sabía qué hacer con él.",
+              "english": "Everything got more complicated when Luis came in, because nobody knew what to do with him."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Perdonen la molestia —dijo don Carlos, que sabía mantener la calma—.",
+              "english": "\"Forgive the trouble,\" said don Carlos, who knew how to keep calm."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pidió perdón por la molestia otra vez, porque sabía que nadie quería estar allí.",
+              "english": "He apologised for the trouble again, because he knew that nobody wanted to be there."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Soy la autoridad de la aldea, y estoy a la disposición de todos ustedes, pero esto se está complicando.",
+              "english": "\"I am the authority of the village, and I am at everyone's disposal, but this is getting complicated.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La autoridad de don Carlos no venía de su cargo, sino de su manera de escuchar, y su disposición se notaba.",
+              "english": "Don Carlos's authority did not come from his post but from his way of listening, and his readiness showed."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Alguien dijo que doña Aurora iba a cerrar el sendero, y la cosa se complicó.",
+              "english": "\"Someone said that doña Aurora was going to close the path, and things got complicated.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—No quiero destruir a nadie, y tampoco quiero confundir las cosas: primero hablamos y después decidimos.",
+              "english": "\"I do not want to destroy anybody, and I do not want to mix things up either: first we talk and then we decide.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Yo quiero saber quién lo dijo y para qué.",
+              "english": "\"I want to know who said it and what for.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Luis miró el piso, y por fin habló, confundido y con la voz baja.",
+              "english": "Luis looked at the floor, and at last he spoke, confused and in a low voice."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Fui yo, tía —dijo—.",
+              "english": "\"It was me, aunt,\" he said."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Yo pensé que si la gente creía que usted iba a cerrar el sendero, usted ya no iba a poder venderlo.",
+              "english": "\"I thought that if people believed you were going to close the path, you would no longer be able to sell it.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¿Vender qué? —preguntó doña Aurora, sorprendida.",
+              "english": "\"Sell what?\" asked doña Aurora, surprised."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—El terreno, tía.",
+              "english": "\"The land, aunt.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Un señor de la ciudad quiere comprarlo, y me dijo que me iba a dar una ganancia.",
+              "english": "\"A man from the city wants to buy it, and he told me he would give me a cut.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Pero usted nunca me preguntó si quería vender.",
+              "english": "\"But you never asked me if I wanted to sell.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—No le pregunté porque pensé que usted iba a decir que no.",
+              "english": "\"I didn't ask because I thought you would say no.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Y tenías razón —contestó ella—.",
+              "english": "\"And you were right,\" she answered."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Usted usó la muerte de mi marido como un pretexto, y ese pretexto me dolió más que el negocio.",
+              "english": "\"You used my husband's death as a pretext, and that pretext hurt me more than the deal.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Luis había confundido un negocio con un favor, y ahora toda la aldea lo sabía.",
+              "english": "Luis had mistaken a deal for a favour, and now the whole village knew it."
+            },
+            {
+              "text": "Era un joven confundido, y se sentía completamente solo en medio de la pulpería.",
+              "english": "He was a confused young man, and he felt completely alone in the middle of the shop."
+            },
+            {
+              "text": "Él mismo ya no sabía si había buscado un pretexto o una razón, y no sabía qué era más interesante: callar o hablar.",
+              "english": "He himself no longer knew whether he had looked for a pretext or a reason, and he did not know which was more interesting: to be silent or to speak."
+            },
+            {
+              "text": "Nadie dijo una grosería, pero el silencio fue peor que un grito.",
+              "english": "Nobody said a rude word, but the silence was worse than a shout."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La chala",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Entonces doña Aurora se puso de pie, y todos esperaron que estallara.",
+              "english": "Then doña Aurora stood up, and everyone expected her to explode."
+            },
+            {
+              "text": "Pero habló con una voz tranquila, la voz de una mujer que ya había llorado mucho.",
+              "english": "But she spoke in a quiet voice, the voice of a woman who had already cried a lot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Este terreno era de mi marido, y mi marido nunca cerró el sendero —dijo—.",
+              "english": "\"This land was my husband's, and my husband never closed the path,\" she said."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—No lo voy a cerrar yo tampoco, y menos para que lo destruyan con una casa de ciudad.",
+              "english": "\"I am not going to close it either, and least of all so that they can ruin it with a city house.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Es un terreno pequeño, pero destruirlo sería una tragedia.",
+              "english": "\"It is a small piece of land, but destroying it would be a tragedy.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Don Miguel, el sendero es suyo, y de todos los que lo necesiten.",
+              "english": "\"Don Miguel, the path is yours, and everybody's who needs it.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Mi casa y mi terreno están a su disposición, y no son una molestia para mí.",
+              "english": "\"My house and my land are at your disposal, and they are no trouble to me.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—No ha sido nunca una molestia, don Miguel, y nunca lo fue.",
+              "english": "\"You have never been a bother, don Miguel, and never were.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Don Miguel bajó la cabeza, y por primera vez en treinta años no supo qué decir.",
+              "english": "Don Miguel bowed his head, and for the first time in thirty years he did not know what to say."
+            },
+            {
+              "text": "Sacó del bolsillo un lápiz pequeño y un papel doblado, y escribió algo con una mano que temblaba.",
+              "english": "He took a small pencil and a folded paper from his pocket, and wrote something with a hand that trembled."
+            },
+            {
+              "text": "Después le dio el papel a doña Aurora, y ella lo leyó en voz alta: «Gracias por el entierro de su marido, que yo no pude ver porque me dio miedo».",
+              "english": "Then he gave the paper to doña Aurora, and she read it aloud: \"Thank you for your husband's funeral, which I could not see because I was afraid.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¿Miedo de qué, don Miguel? —preguntó ella—.",
+              "english": "\"Afraid of what, don Miguel?\" she asked."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Nadie debe tener miedo de llorar a un amigo.",
+              "english": "\"Nobody should be afraid of mourning a friend.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—De que usted pensara que yo era un par de pies que cruzaban su terreno, y nada más.",
+              "english": "\"That you might think I was just a pair of feet crossing your land, and nothing more.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Sólo un par de pies, y un solterón sin nada.",
+              "english": "\"Just a pair of feet, and a bachelor with nothing.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Usted fue siempre más que eso —dijo ella—.",
+              "english": "\"You were always more than that,\" she said."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Mi marido hablaba de usted cada vez que llovía, y decía que no había nadie que supiera mejor cuándo sembrar.",
+              "english": "\"My husband talked about you every time it rained, and said that nobody knew better when to sow.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Al día siguiente, la niebla bajó otra vez, y don Miguel cruzó el sendero con el arado al hombro, como siempre.",
+              "english": "The next day the fog came down again, and don Miguel crossed the path with the plough on his shoulder, as always."
+            },
+            {
+              "text": "Pero esta vez se detuvo en la puerta y dejó mucha chala seca, de la que se usa para envolver tamales.",
+              "english": "But this time he stopped at the door and left a lot of dry corn husks, the kind used for wrapping tamales."
+            },
+            {
+              "text": "Doña Aurora entendió el mensaje, y esa tarde envolvió tamales en la chala para toda la aldea.",
+              "english": "Doña Aurora understood the message, and that afternoon she wrapped tamales in the husks for the whole village."
+            },
+            {
+              "text": "Don Miguel fue el primero en comer, y el último en irse.",
+              "english": "Don Miguel was the first to eat, and the last to leave."
+            },
+            {
+              "text": "Luis lavó los platos, sin que nadie se lo pidiera, y cuando salió, el sendero se veía claro bajo el sol de la tarde.",
+              "english": "Luis washed the dishes without anyone asking him to, and when he went out the path looked bright under the afternoon sun."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

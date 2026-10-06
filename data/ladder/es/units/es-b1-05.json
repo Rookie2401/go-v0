@@ -1,0 +1,590 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-05",
+  "lang": "es",
+  "title": "El hilo rojo",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-05",
+    "title": "The red thread (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored Spanish for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is written for B1 learners (natural prose at the level of the bridge; its vocabulary is scheduled by the ladder) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. B1 bridge, unit 05: a NEW course-authored folktale (owner decision of 2026-10-06 (1): Gutenberg texts are not adapted, so this unit does not adapt Martí's La Edad de Oro ch03-04; it teaches the lemma pack planned for that adaptation, with an original plot). For the Honduran reviewer: (a) the pack deliberately includes receptive old-fashioned or Peninsular items (vuestra in the caballero's formal address to the duke, eh, ello, solía): they sit in quoted speech and are meant to read as fairy-tale language; (b) informal address between the young people is voseo (vos), the girl and the servant address the duke with usted; (c) \"chiquilla\" as the duke's affectionate word for his adult daughter, and \"novio\" for a young man courting her, are meant to read naturally in Honduran Spanish: please check; (d) all names are in the course name list."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "El duque y la niebla",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En un valle donde casi siempre había niebla, vivía un duque con su hija Laura.",
+              "english": "In a valley where there was almost always fog, a duke lived with his daughter Laura."
+            },
+            {
+              "text": "Él la llamaba «mi chiquilla», aunque ella ya tenía veinte años.",
+              "english": "He called her \"my little girl,\" although she was already twenty years old."
+            },
+            {
+              "text": "La madre de Laura estaba muerta desde hacía mucho tiempo, y en la casa nadie hablaba de ello.",
+              "english": "Laura's mother had been dead for a long time, and in the house nobody spoke of it."
+            },
+            {
+              "text": "Su padre no era malo, pero tenía el corazón cerrado, como todos los hombres que han perdido a una esposa.",
+              "english": "Her father was not bad, but he had a closed heart, like all men who have lost a wife."
+            },
+            {
+              "text": "Una criada, Juana, tenía a su cargo la cocina, y también cuidaba a la chiquilla desde que era bebé.",
+              "english": "A maid, Juana, was in charge of the kitchen, and she had also looked after the girl since she was a baby."
+            },
+            {
+              "text": "Por las tardes, Juana solía tocar el piano, y Laura solía sentarse en el balcón para escucharla.",
+              "english": "In the afternoons, Juana used to play the piano, and Laura used to sit on the balcony to listen to her."
+            },
+            {
+              "text": "Juana había nacido en el campo, y de noche cantaba a Laura un arrullo de su pueblo.",
+              "english": "Juana had been born in the countryside, and at night she sang Laura a lullaby from her village."
+            },
+            {
+              "text": "Desde allí, cuando el aire estaba claro, se veía el campo y el color verde de los cerros.",
+              "english": "From there, when the air was clear, one could see the countryside and the green color of the hills."
+            },
+            {
+              "text": "Pero la niebla llegaba cada mañana, y entonces nadie veía nada.",
+              "english": "But the fog came every morning, and then nobody saw anything."
+            },
+            {
+              "text": "—¿Por qué estás tan triste? —le preguntó un día la criada.",
+              "english": "\"Why are you so sad?\" the maid asked her one day."
+            },
+            {
+              "text": "—No estoy triste —replicó Laura—.",
+              "english": "\"I am not sad,\" Laura replied."
+            },
+            {
+              "text": "Soy infeliz, que no es lo mismo.",
+              "english": "\"I am unhappy, which is not the same."
+            },
+            {
+              "text": "Los dos somos infelices, ella y yo, aunque no lo digamos.",
+              "english": "We are both unhappy, she and I, even if we do not say so.\""
+            },
+            {
+              "text": "—¿Y cuál es la diferencia?",
+              "english": "\"And what is the difference?\""
+            },
+            {
+              "text": "—La tristeza pasa en un rato —añadió Laura—.",
+              "english": "\"Sadness passes in a while,\" Laura added."
+            },
+            {
+              "text": "Lo otro no pasa nunca.",
+              "english": "\"The other thing never passes.\""
+            },
+            {
+              "text": "Juana no dijo nada, pero esa noche tocó una canción más dulce que las otras.",
+              "english": "Juana said nothing, but that night she played a song sweeter than the others."
+            },
+            {
+              "text": "Laura se quedó en la cama, y en el techo vio, por un instante, la cara de su madre muerta.",
+              "english": "Laura stayed in bed, and on the ceiling she saw, for an instant, the face of her dead mother."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un caballero real",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Un domingo llegó a la casa un caballero a caballo.",
+              "english": "One Sunday a knight arrived at the house on horseback."
+            },
+            {
+              "text": "Se llamaba Rafael, y venía de la ciudad con una carta real.",
+              "english": "His name was Rafael, and he came from the city with a royal letter."
+            },
+            {
+              "text": "Era muy valiente, y todos decían que nunca había tenido miedo.",
+              "english": "He was very brave, and everyone said he had never been afraid."
+            },
+            {
+              "text": "Con él venía un mensaje real, y una figura de oro que el rey le mandaba a Laura.",
+              "english": "With him came a royal message, and a golden figure that the king was sending to Laura."
+            },
+            {
+              "text": "Entró a la sala, y el duque lo recibió con una sonrisa que Laura casi nunca veía.",
+              "english": "He entered the hall, and the duke received him with a smile that Laura hardly ever saw."
+            },
+            {
+              "text": "—Mi chiquilla —dijo su padre—, éste es tu novio.",
+              "english": "\"My little girl,\" her father said, \"this is your fiancé.\""
+            },
+            {
+              "text": "Laura sintió un golpe en el pecho.",
+              "english": "Laura felt a blow in her chest."
+            },
+            {
+              "text": "—No tengo novio, papá —dijo—.",
+              "english": "\"I do not have a fiancé, Dad,\" she said."
+            },
+            {
+              "text": "Nadie me preguntó nada.",
+              "english": "\"Nobody asked me anything.\""
+            },
+            {
+              "text": "—Señor duque —dijo el caballero—, vuestra hija es muy bonita, pero parece que no quiere hablar con nadie.",
+              "english": "\"Lord Duke,\" the knight said, \"your daughter is very pretty, but she seems not to want to talk to anyone.\""
+            },
+            {
+              "text": "—Vuestra hija es hermosa —repitió—, y yo puedo esperar.",
+              "english": "\"Your daughter is beautiful,\" he repeated, \"and I can wait.\""
+            },
+            {
+              "text": "Su padre estaba de acuerdo con todo, y Rafael volvía cada semana para ver a Laura.",
+              "english": "Her father agreed with everything, and Rafael came back every week to see Laura."
+            },
+            {
+              "text": "En la segunda semana, le llevó flores, y ella le dio las gracias sin mirarlo.",
+              "english": "In the second week, he brought her flowers, and she thanked him without looking at him."
+            },
+            {
+              "text": "—¿Lo decís de veras? —preguntó él—.",
+              "english": "\"Do you mean it?\" he asked."
+            },
+            {
+              "text": "¿No te gustan las flores?",
+              "english": "\"You do not like flowers?\""
+            },
+            {
+              "text": "—Me gustan —replicó ella—, pero no me importa quién las trae.",
+              "english": "\"I like them,\" she replied, \"but I do not care who brings them.\""
+            },
+            {
+              "text": "—No importa —dijo él—.",
+              "english": "\"It does not matter,\" he said."
+            },
+            {
+              "text": "Voy a esperar.",
+              "english": "\"I am going to wait.\""
+            },
+            {
+              "text": "Laura lo recibía con una cara triste, y él nunca sabía qué decir.",
+              "english": "Laura received him with a sad face, and he never knew what to say."
+            },
+            {
+              "text": "—Mi rostro no cambia —le decía ella—, porque mi corazón no está aquí.",
+              "english": "\"My face does not change,\" she told him, \"because my heart is not here.\""
+            },
+            {
+              "text": "Era verdad, y Rafael lo sentía, pero no hablaba de ello.",
+              "english": "It was true, and Rafael felt it, but he did not talk about it."
+            },
+            {
+              "text": "Una tarde, Laura habló con Juana de su madre.",
+              "english": "One afternoon, Laura talked with Juana about her mother."
+            },
+            {
+              "text": "Hacía diez años que estaba muerta, y en la casa no había lugar para esa tristeza.",
+              "english": "She had been dead for ten years, and in the house there was no place for that sadness."
+            },
+            {
+              "text": "—Mi madre solía cantar con una voz dulce —dijo—, y ahora en esta casa no se canta.",
+              "english": "\"My mother used to sing with a sweet voice,\" she said, \"and now in this house nobody sings.\""
+            },
+            {
+              "text": "—Por eso toco el piano —contestó Juana—.",
+              "english": "\"That is why I play the piano,\" Juana answered."
+            },
+            {
+              "text": "Alguien tiene que dar vida a la casa.",
+              "english": "\"Someone has to give life to the house.\""
+            },
+            {
+              "text": "Laura se quedó un rato callada, con la cabeza baja.",
+              "english": "Laura stayed silent for a while, with her head bowed."
+            },
+            {
+              "text": "—Quiero una vida diferente —añadió—.",
+              "english": "\"I want a different life,\" she added."
+            },
+            {
+              "text": "No una vida infeliz, delante de un caballero que no conozco.",
+              "english": "\"Not an unhappy life, in front of a knight I do not know.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Las señas del balcón",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Diego era un joven del campo, hijo de un pastor que tenía a su cargo cien ovejas, y Diego mismo tenía a su cargo las más pequeñas.",
+              "english": "Diego was a young man from the countryside, the son of a shepherd who had a hundred sheep in his care, and Diego himself took care of the smallest ones."
+            },
+            {
+              "text": "Laura lo conocía desde niña, y todas las tardes lo veía pasar con sus ovejas.",
+              "english": "Laura had known him since childhood, and every afternoon she saw him pass with his sheep."
+            },
+            {
+              "text": "Desde arriba, ella le hacía señas con la mano, y él le contestaba con una camisa roja, del color del fuego.",
+              "english": "From above, she made signs to him with her hand, and he answered with a red shirt, the color of fire."
+            },
+            {
+              "text": "Un día ella le echó un hilo rojo desde el balcón abierto, y el joven lo cogió.",
+              "english": "One day she threw him a red thread from the open balcony, and the young man caught it."
+            },
+            {
+              "text": "—Ese hilo es tuyo —le gritó—.",
+              "english": "\"That thread is yours,\" she shouted."
+            },
+            {
+              "text": "Guardalo, y no me olvides.",
+              "english": "\"Keep it, and do not forget me.\""
+            },
+            {
+              "text": "—Mi corazón también es tuyo —contestó él—.",
+              "english": "\"My heart is yours too,\" he answered."
+            },
+            {
+              "text": "¿Me oís?",
+              "english": "\"Can you hear me?"
+            },
+            {
+              "text": "¡Aunque tu padre no quiera!",
+              "english": "Even if your father does not want it!\""
+            },
+            {
+              "text": "—¿Lo decís de veras? —preguntó ella—.",
+              "english": "\"Do you mean it?\" she asked."
+            },
+            {
+              "text": "¿Me esperarías toda la vida?",
+              "english": "\"Would you wait for me all your life?\""
+            },
+            {
+              "text": "—Te lo digo de veras —replicó él—.",
+              "english": "\"I mean it,\" he replied."
+            },
+            {
+              "text": "Y no es un cuento.",
+              "english": "\"And it is not a tale.\""
+            },
+            {
+              "text": "Juana oyó todo desde la cocina y no dijo nada, pero había en su cara una señas de alegría, como las señas de un amigo que llega.",
+              "english": "Juana heard everything from the kitchen and said nothing, but there was a sign of joy on her face, like the signs of a friend arriving."
+            },
+            {
+              "text": "Rafael también lo vio, y sintió algo feo en el pecho: los celos.",
+              "english": "Rafael saw it too, and felt something ugly in his chest: jealousy."
+            },
+            {
+              "text": "Y los celos no cabían en su corazón.",
+              "english": "And jealousy did not fit in his heart."
+            },
+            {
+              "text": "Los celos le pusieron el rostro rojo, y por primera vez tuvo miedo, pero no de la guerra: tuvo miedo de perder.",
+              "english": "Jealousy turned his face red, and for the first time he was afraid, but not of war: he was afraid of losing."
+            },
+            {
+              "text": "—Voy a hablar con ese pastor —dijo—.",
+              "english": "\"I am going to talk to that shepherd,\" he said."
+            },
+            {
+              "text": "¡Eh, tú, el de las ovejas!",
+              "english": "\"Hey, you there, with the sheep!\""
+            },
+            {
+              "text": "Laura le pidió a Juana que lo detuviera, pero la criada contestó que los jóvenes tenían que resolver sus problemas ellos mismos, y que Rafael tenía en el pecho más ruido que valor.",
+              "english": "Laura asked Juana to stop him, but the maid answered that young people had to solve their own problems themselves, and that Rafael had more noise than courage in his chest."
+            },
+            {
+              "text": "—Y los hombres de guerra se ponen así a veces —añadió—.",
+              "english": "\"And men of war get like this at times,\" she added."
+            },
+            {
+              "text": "¡Eh!",
+              "english": "\"Hey!"
+            },
+            {
+              "text": "Después se les pasa.",
+              "english": "It passes afterwards.\""
+            },
+            {
+              "text": "Rafael subió a su caballo delante de todos, y los vecinos se pusieron en un grupo formado por hombres y mujeres.",
+              "english": "Rafael got on his horse in front of everyone, and the neighbors stood in a group formed by men and women."
+            },
+            {
+              "text": "Era la segunda vez que veían a Rafael así, y nadie decía una palabra.",
+              "english": "It was the second time they had seen Rafael like that, and nobody said a word."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La noche de la niebla",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche no se veía nada.",
+              "english": "That night nothing could be seen."
+            },
+            {
+              "text": "Rafael salió de la casa en su caballo y se perdió en la oscuridad.",
+              "english": "Rafael left the house on his horse and got lost in the darkness."
+            },
+            {
+              "text": "No veía ni sus propias manos, y el ruido era sólo el viento.",
+              "english": "He could not see even his own hands, and the noise was only the wind."
+            },
+            {
+              "text": "De pronto, una figura apareció delante de él, y el caballo se paró.",
+              "english": "Suddenly a figure appeared in front of him, and the horse stopped."
+            },
+            {
+              "text": "—¿Quién es? —gritó Rafael—.",
+              "english": "\"Who is it?\" Rafael shouted."
+            },
+            {
+              "text": "¡Eh!",
+              "english": "\"Hey!\""
+            },
+            {
+              "text": "¿Quién anda ahí?",
+              "english": "\"Who is out there?\""
+            },
+            {
+              "text": "Pero la figura era sólo un árbol, y él se dio cuenta de que estaba solo.",
+              "english": "But the figure was only a tree, and he realized he was alone."
+            },
+            {
+              "text": "En ese instante oyó un ruido lejano: una canción dulce de piano.",
+              "english": "At that instant he heard a distant noise: a sweet piano song."
+            },
+            {
+              "text": "Era Juana, que tocaba para ayudarlo, porque había oído salir al caballo.",
+              "english": "It was Juana, who was playing to help him, because she had heard the horse go out."
+            },
+            {
+              "text": "—No cabía duda —pensó Rafael—: la música viene de la casa.",
+              "english": "\"There was no doubt,\" Rafael thought: \"the music comes from the house.\""
+            },
+            {
+              "text": "Pero cada vez veía menos, y no sabía qué camino tomar.",
+              "english": "But he saw less and less, and he did not know which road to take."
+            },
+            {
+              "text": "Laura salió con una luz y no vio nada, pero se acordó de aquel regalo.",
+              "english": "Laura went out with a light and saw nothing, but she remembered that gift."
+            },
+            {
+              "text": "Bajó corriendo, puso una cuerda muy larga en la puerta, y caminó hacia la oscuridad con el otro lado en la mano.",
+              "english": "She ran down, put a very long rope on the door, and walked into the darkness with the other end in her hand."
+            },
+            {
+              "text": "—¡Rafael! —gritaba—.",
+              "english": "\"Rafael!\" she shouted."
+            },
+            {
+              "text": "¡Seguí la cuerda!",
+              "english": "\"Follow the rope!"
+            },
+            {
+              "text": "¡Seguí la cuerda, y llegarás a la casa!",
+              "english": "Follow the rope, and you will reach the house!\""
+            },
+            {
+              "text": "Rafael oyó su voz, y por unos momentos no pudo creerlo.",
+              "english": "Rafael heard her voice, and for a few moments he could not believe it."
+            },
+            {
+              "text": "En su pecho había una mezcla de miedo y de esperanza.",
+              "english": "In his chest there was a mixture of fear and hope."
+            },
+            {
+              "text": "Un camino formado por piedras blancas lo llevó cerca de la casa, y los árboles formaban una pared negra a los lados.",
+              "english": "A road formed by white stones led him close to the house, and the trees formed a black wall on both sides."
+            },
+            {
+              "text": "Y en ese momento tuvo el conocimiento de que no le importaba perder.",
+              "english": "And at that moment he knew that he no longer cared about losing."
+            },
+            {
+              "text": "Dejó atrás el árbol, y el arrullo de la lluvia le pareció una canción de otros tiempos.",
+              "english": "He left the tree behind, and the cooing of the rain seemed to him a song from other times."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El corazón de un valiente",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—¿Me ayuda?",
+              "english": "\"She is helping me?"
+            },
+            {
+              "text": "¿A mí? —dijo—.",
+              "english": "Me?\" he said."
+            },
+            {
+              "text": "Yo, que le hablé mal a su pastor...",
+              "english": "\"I, who spoke badly to her shepherd...\""
+            },
+            {
+              "text": "Tocó la cuerda con la mano, y la cuerda lo llevó, paso a paso, hasta la puerta.",
+              "english": "He touched the rope with his hand, and the rope led him, step by step, to the door."
+            },
+            {
+              "text": "Allí perdió el conocimiento y cayó al suelo, con el rostro blanco como la niebla.",
+              "english": "There he lost consciousness and fell to the ground, his face white as the fog."
+            },
+            {
+              "text": "Diego, que también había salido a buscarlo, lo llevó hasta la sala y lo puso cerca del fuego.",
+              "english": "Diego, who had also gone out to look for him, carried him into the hall and put him near the fire."
+            },
+            {
+              "text": "Cuando Rafael abrió los ojos, vio a Laura, a Diego y a Juana a su lado.",
+              "english": "When Rafael opened his eyes, he saw Laura, Diego and Juana beside him."
+            },
+            {
+              "text": "Juana también tenía lágrimas en los ojos, y Diego ya no era sólo un pastor: era el novio de Laura.",
+              "english": "Juana also had tears in her eyes, and Diego was no longer just a shepherd: he was Laura's fiancé."
+            },
+            {
+              "text": "—¿Qué me pasó? —preguntó.",
+              "english": "\"What happened to me?\" he asked."
+            },
+            {
+              "text": "—Estabas sin conocimiento —dijo Diego—.",
+              "english": "\"You were unconscious,\" Diego said."
+            },
+            {
+              "text": "La noche te perdió, pero Laura te sacó con una cuerda.",
+              "english": "\"The night lost you, but Laura pulled you out with a rope.\""
+            },
+            {
+              "text": "Rafael se quedó callado un largo rato.",
+              "english": "Rafael stayed silent for a long while."
+            },
+            {
+              "text": "—Soy un hombre de guerra —dijo por fin—, pero aquí hay gente con más corazón que yo.",
+              "english": "\"I am a man of war,\" he said at last, \"but here there are people with more heart than I.\""
+            },
+            {
+              "text": "Rafael cambió de color, porque ello era algo que nunca había dicho.",
+              "english": "Rafael changed color, because it was something he had never said."
+            },
+            {
+              "text": "Por un instante quiso volver a ser el de antes, pero no pudo.",
+              "english": "For an instant he wanted to be the old Rafael again, but he could not."
+            },
+            {
+              "text": "Se levantó, miró atrás una sola vez, y sacó de su bolsillo el hilo rojo que Diego había perdido.",
+              "english": "He got up, looked back just once, and took from his pocket the red thread that Diego had lost."
+            },
+            {
+              "text": "—Éste es tuyo —dijo—.",
+              "english": "\"This is yours,\" he said."
+            },
+            {
+              "text": "Y todo lo demás también, pastor: la casa, las ovejas y el corazón de Laura.",
+              "english": "\"And everything else too, shepherd: the house, the sheep and Laura's heart."
+            },
+            {
+              "text": "Lo demás no me importa.",
+              "english": "The rest does not matter to me.\""
+            },
+            {
+              "text": "Laura no cabía en sí de alegría, y sus lágrimas cayeron sobre la tierra.",
+              "english": "Laura could not contain her joy, and her tears fell on the ground."
+            },
+            {
+              "text": "Esa noche, su padre no dijo una palabra, pero al día siguiente, de acuerdo con ella, dijo que sí.",
+              "english": "That night, her father did not say a word, but the next day, in agreement with her, he said yes."
+            },
+            {
+              "text": "Rafael se fue de la casa temprano, y dejó atrás su caballo y sus celos.",
+              "english": "Rafael left the house early, and left behind his horse and his jealousy."
+            },
+            {
+              "text": "Volvió al camino real a pie, y de su pecho brotó una risa que no oía desde niño.",
+              "english": "He went back to the royal road on foot, and from his chest a laugh sprang that he had not heard since childhood."
+            },
+            {
+              "text": "Para todo lo demás, dijo, siempre habría tiempo.",
+              "english": "For everything else, he said, there would always be time."
+            },
+            {
+              "text": "En abril, de las lágrimas de Laura brotaron flores blancas en el jardín, y todos las llamaron «flores rojas».",
+              "english": "In April, white flowers sprouted from Laura's tears in the garden, and everyone called them \"red flowers.\""
+            },
+            {
+              "text": "Desde el balcón, Laura y Diego oían el arrullo del viento, y cada tarde Juana tocaba una canción para los dos.",
+              "english": "From the balcony, Laura and Diego heard the cooing of the wind, and every afternoon Juana played a song for the two of them."
+            },
+            {
+              "text": "Con el tiempo, también brotaron risas en la casa, y un día hasta el corazón cerrado del viejo se abrió.",
+              "english": "With time, laughter also sprouted in the house, and one day even the old man's closed heart opened."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

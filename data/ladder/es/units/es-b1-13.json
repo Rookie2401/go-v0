@@ -1,0 +1,506 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-13",
+  "lang": "es",
+  "title": "La maestra de las ranas",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-13",
+    "title": "The teacher of the frogs (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored Spanish for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is written for B1 learners (natural prose at the level of the bridge; its vocabulary is scheduled by the ladder) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. B1 bridge, unit 13: a NEW course-authored biography (owner decision of 2026-10-06 (1): Gutenberg texts are not adapted, so this unit does not adapt the Las Casas section of Martí's La Edad de Oro; it teaches the lemma pack planned for that adaptation; the plan allowed \"a new biography of a consenting person\", and since no consenting person exists, this is a COMPOSITE and invented life: the teacher, her village and her book are made up for the course, and the reviewer should decide whether it needs a visible \"invented biography\" label). For the Honduran reviewer: (a) the register is that of a short biographical note in a school anthology; (b) esperanto is a real constructed language that was popular for letter-writing in the 20th century; (c) the pack items \"ése\" (with accent), \"siglo\", \"mozuela\", \"entrañas\", \"cinismo\" are deliberate and placed in reported speech or the narrator's voice; (d) \"recojido\" and \"oir\" (old spellings in the pack) are not used: \"recogido\" is replaced and \"oír\" is already known; (e) informal address in the quotations is voseo."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "biography"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Una niña con un gato",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Carmen Mejía nació en 1903, en una aldea del norte de Honduras, y murió en 1987, casi al final del siglo.",
+              "english": "Carmen Mejía was born in 1903, in a village in northern Honduras, and died in 1987, almost at the end of the century."
+            },
+            {
+              "text": "Fue un siglo de cambios, pero su vida cambió poco: siempre vivió en la misma aldea.",
+              "english": "It was a century of changes, but her life changed little: she always lived in the same village."
+            },
+            {
+              "text": "Su padre era carpintero, y su madre vendía pan.",
+              "english": "Her father was a carpenter, and her mother sold bread."
+            },
+            {
+              "text": "De niña tenía un gato negro que la seguía a todas partes, y los vecinos la consideraban una niña muy callada.",
+              "english": "As a child she had a black cat that followed her everywhere, and the neighbors considered her a very quiet girl."
+            },
+            {
+              "text": "Su madre decía, entre risas, que el animal tenía más sentido que mucha gente.",
+              "english": "Her mother said, laughing, that the animal had more sense than many people."
+            },
+            {
+              "text": "En esos años el siglo apenas empezaba, y la aldea no tenía luz.",
+              "english": "In those years the century was just beginning, and the village had no light."
+            },
+            {
+              "text": "Tras la escuela, Carmen tenía la costumbre de salir a pasear por el río.",
+              "english": "After school, Carmen had the habit of going out for a walk by the river."
+            },
+            {
+              "text": "Por costumbre, se levantaba antes del sol, y tras el desayuno salía a pasear otra vez.",
+              "english": "By habit, she got up before the sun, and after breakfast she went out for a walk again."
+            },
+            {
+              "text": "Allí observaba todo con cuidado: las piedras, los pájaros, el agua.",
+              "english": "There she observed everything with care: the stones, the birds, the water."
+            },
+            {
+              "text": "En una ocasión, una rana saltó sobre su pie, y la niña la miró un largo rato sin moverse.",
+              "english": "On one occasion, a frog jumped onto her foot, and the girl looked at it for a long time without moving."
+            },
+            {
+              "text": "Ése fue el principio de todo: aquel animal y un cuaderno de hojas blancas.",
+              "english": "That was the beginning of everything: that animal and a notebook of white pages."
+            },
+            {
+              "text": "Aquella tarde tomó nota de lo que veía, y desde entonces escribió algo todos los días.",
+              "english": "That afternoon she took note of what she saw, and from then on she wrote something every day."
+            },
+            {
+              "text": "Su padre decía en broma que su hija iba a ser doctora de animales.",
+              "english": "Her father said as a joke that his daughter was going to be an animal doctor."
+            },
+            {
+              "text": "Otra broma de su padre fue poner un animal de piedra sobre la cama, y ella lo tomó por un animal de verdad.",
+              "english": "Another joke from her father was to put a stone animal on her bed, and she took it for a real animal."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La mozuela de la ciencia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "A los diecisiete años, Carmen era una mozuela alta, de ojos grandes y manos fuertes.",
+              "english": "At seventeen, Carmen was a tall young girl, with big eyes and strong hands."
+            },
+            {
+              "text": "Todos decían que era la mozuela más linda del lugar, pero ella no les prestaba cuidado.",
+              "english": "Everybody said she was the prettiest young girl in the place, but she paid them no heed."
+            },
+            {
+              "text": "Ése fue el día más feliz de su vida, y también el día en que ella consideró su futuro.",
+              "english": "That was the happiest day of her life, and also the day she considered her future."
+            },
+            {
+              "text": "Estaba enamorada de otra cosa: de la ciencia.",
+              "english": "She was in love with something else: science."
+            },
+            {
+              "text": "Era una enamorada de los ríos, de los libros y de los animales.",
+              "english": "She was a lover of rivers, of books and of animals."
+            },
+            {
+              "text": "Su maestra, doña Isabel, le prestó un libro de animales, y Carmen lo leyó en tres noches.",
+              "english": "Her teacher, doña Isabel, lent her a book about animals, and Carmen read it in three nights."
+            },
+            {
+              "text": "Cuando lo terminó, sintió algo nuevo: un sentimiento de hambre y de alegría a la vez.",
+              "english": "When she finished it, she felt something new: a feeling of hunger and joy at once."
+            },
+            {
+              "text": "Ése fue su primer sentimiento de verdad.",
+              "english": "That was her first real feeling."
+            },
+            {
+              "text": "—Eso son ganas de saber —le dijo doña Isabel—, y no tienen remedio.",
+              "english": "\"That is a wish to know,\" doña Isabel told her, \"and it has no cure.\""
+            },
+            {
+              "text": "—¿Y por qué no tienen remedio?",
+              "english": "\"And why does it have no cure?\""
+            },
+            {
+              "text": "—Porque cuanto más sabés, más querés saber.",
+              "english": "\"Because the more you know, the more you want to know."
+            },
+            {
+              "text": "Ese sentimiento no se acaba nunca.",
+              "english": "That feeling never ends.\""
+            },
+            {
+              "text": "Carmen estudió para maestra en la ciudad, y volvió a su aldea a los veinte años, con un sombrero y un paraguas viejo.",
+              "english": "Carmen studied to be a teacher in the city, and went back to her village at twenty, with a hat and an old umbrella."
+            },
+            {
+              "text": "Los alumnos la recibieron con respeto, aunque algunos se reían de ella.",
+              "english": "The students received her with respect, although some laughed at her."
+            },
+            {
+              "text": "—¿Para qué tanto paraguas, señorita? —le preguntaban—.",
+              "english": "\"Why so much umbrella, Miss?\" they asked her."
+            },
+            {
+              "text": "Hoy no llueve.",
+              "english": "\"It is not raining today.\""
+            },
+            {
+              "text": "—No es para la lluvia —contestaba ella—.",
+              "english": "\"It is not for the rain,\" she answered."
+            },
+            {
+              "text": "Es para las ranas.",
+              "english": "\"It is for the frogs.\""
+            },
+            {
+              "text": "Parecía una broma, pero era verdad: lo llevaba abierto, y los animales se ponían debajo.",
+              "english": "It seemed like a joke, but it was true: she carried it open, and the animals got under it."
+            },
+            {
+              "text": "La linda mozuela del río, como la llamaban, era ya una maestra grave, y los perros solían ladrar al paraguas y enseñarle los dientes.",
+              "english": "The pretty young girl of the river, as they called her, was already a serious teacher, and the dogs used to bark at the umbrella and show it their teeth."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una mujer soltera y solitaria",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Carmen nunca se casó, y en el pueblo la consideraban una soltera difícil.",
+              "english": "Carmen never married, and in the village they considered her a difficult unmarried woman."
+            },
+            {
+              "text": "Una soltera joven era una cosa difícil de ver en la aldea, y todos hablaban de eso.",
+              "english": "A young unmarried woman was a hard thing to see in the village, and everybody talked about it."
+            },
+            {
+              "text": "Una soltera con tantos libros, pensaban, no tiene remedio.",
+              "english": "An unmarried woman with so many books, they thought, has no cure."
+            },
+            {
+              "text": "Pero ella no se sentía sola: se sentía solitaria, que no es lo mismo.",
+              "english": "But she did not feel alone: she felt solitary, which is not the same."
+            },
+            {
+              "text": "Una mujer solitaria es la que busca, decía; una mujer sola es la que espera.",
+              "english": "A solitary woman is the one who looks, she said; a lonely woman is the one who waits."
+            },
+            {
+              "text": "Hablaba consigo misma, y se contestaba.",
+              "english": "She talked to herself, and answered herself."
+            },
+            {
+              "text": "Su amiga Isabel también era solitaria, y se entendían sin hablar.",
+              "english": "Her friend Isabel was also solitary, and they understood each other without talking."
+            },
+            {
+              "text": "A los veinticinco años, estuvo enamorada de un ingeniero que llegó al pueblo a construir un puente.",
+              "english": "At twenty-five, she was in love with an engineer who came to the village to build a bridge."
+            },
+            {
+              "text": "Se conocieron por azar: él perdió el camino, y ella lo encontró bajo la lluvia, con el paraguas abierto.",
+              "english": "They met by chance: he lost his way, and she found him in the rain, with her umbrella open."
+            },
+            {
+              "text": "Fue un azar, nada más, pero ella lo guardó con cuidado.",
+              "english": "It was chance, nothing more, but she kept it carefully."
+            },
+            {
+              "text": "Fue el azar quien le dio diez días de alegría.",
+              "english": "It was chance that gave her ten days of joy."
+            },
+            {
+              "text": "Caminaban por el río hablando de ciencia, y por primera vez ella experimentaba una alegría nueva.",
+              "english": "They walked by the river talking about science, and for the first time she was experiencing a new joy."
+            },
+            {
+              "text": "Experimentaba también una tristeza que no sabía explicar, y llevaba consigo el cuaderno a todas partes.",
+              "english": "She was also experiencing a sadness she could not explain, and carried her notebook with her everywhere."
+            },
+            {
+              "text": "Pero el ingeniero se fue cuando terminó el puente, y no volvió.",
+              "english": "But the engineer left when the bridge was finished, and did not come back."
+            },
+            {
+              "text": "Carmen lloró una noche, con los ojos abiertos en la oscuridad.",
+              "english": "Carmen cried one night, with her eyes open in the darkness."
+            },
+            {
+              "text": "Al día siguiente, una linda mañana de sol, se lavó la cara y fue a la escuela, como siempre.",
+              "english": "The next day, a lovely sunny morning, she washed her face and went to school, as always."
+            },
+            {
+              "text": "Nunca habló de ese amor, pero guardó su recuerdo en una caja pequeña, junto a un papel que decía una sola palabra: «Gracias».",
+              "english": "She never spoke of that love, but she kept its memory in a small box, next to a paper that said a single word: \"Thank you.\""
+            },
+            {
+              "text": "Algunos hablaban de ella con cinismo: «Esa mujer se quedó sola por sus libros».",
+              "english": "Some spoke of her with cynicism: \"That woman stayed alone because of her books.\""
+            },
+            {
+              "text": "Ese cinismo no la molestaba, y a veces ella misma lo repetía como una broma.",
+              "english": "That cynicism did not bother her, and sometimes she herself repeated it as a joke."
+            },
+            {
+              "text": "Pero quienes la conocían bien aseguraban que no había nadie con más compañía.",
+              "english": "But those who knew her well assured that nobody had more company."
+            },
+            {
+              "text": "Tenía consigo a sus animales y a sus alumnos, y tenía además mucha imaginación.",
+              "english": "She had her animals and her students with her, and she also had a lot of imagination."
+            },
+            {
+              "text": "Su imaginación la llevaba a los lugares más lejanos: veía el mundo en cada piedra del río.",
+              "english": "Her imagination took her to the farthest places: she saw the world in every stone of the river."
+            },
+            {
+              "text": "Caminaba con los pies desnudos por la arena, y sentía el mismo recuerdo en las entrañas.",
+              "english": "She walked with bare feet on the sand, and felt the same memory in her gut."
+            },
+            {
+              "text": "Con el oído pegado a la tierra, escuchaba el río, y los árboles desnudos del invierno le parecían brazos.",
+              "english": "With her ear pressed to the ground, she listened to the river, and the bare trees of winter looked like arms to her."
+            },
+            {
+              "text": "Dos niños desnudos jugaban a veces en el río, y ella se reía, porque su imaginación los convertía en pájaros.",
+              "english": "Two naked children sometimes played in the river, and she laughed, because her imagination turned them into birds."
+            },
+            {
+              "text": "Un día se rió de su propio cinismo, porque tampoco ella creía todo lo que decía.",
+              "english": "One day she laughed at her own cynicism, because she did not believe everything she said either."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un libro y muchas cartas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "A los treinta años, Carmen escribió un libro para niños: «Las ranas del río».",
+              "english": "At thirty, Carmen wrote a book for children: \"The Frogs of the River.\""
+            },
+            {
+              "text": "El libro produjo muchas preguntas en las escuelas, porque la autora era una maestra del lugar.",
+              "english": "The book produced many questions in the schools, because the author was a teacher from the area."
+            },
+            {
+              "text": "La autora explicaba en la primera página que no inventaba nada, sino que contaba lo que vio.",
+              "english": "The author explained on the first page that she invented nothing, but told what she saw."
+            },
+            {
+              "text": "Un hombre de la ciudad se equivocó, creyó que la autora era un profesor, y le escribió una carta muy larga.",
+              "english": "A man from the city made a mistake, believed the author was a professor, and wrote her a very long letter."
+            },
+            {
+              "text": "Era fácil confundir un nombre, y más fácil aún confundir un recuerdo con un sueño.",
+              "english": "It was easy to mix up a name, and even easier to mix up a memory with a dream."
+            },
+            {
+              "text": "Ella le contestó con una carta pequeña, y le pidió no confundir lo que se ve con lo que se cree.",
+              "english": "She answered him with a small letter, and asked him not to confuse what is seen with what is believed."
+            },
+            {
+              "text": "En el libro había una nota sobre los dientes de las ranas y otra sobre sus ojos.",
+              "english": "In the book there was a note about the teeth of frogs and another about their eyes."
+            },
+            {
+              "text": "Los niños aseguraron que esos dientes eran lo mejor del libro, y los maestros aseguraron que era un libro para gente que sabe.",
+              "english": "The children assured that those teeth were the best part of the book, and the teachers assured that it was a book for people who know."
+            },
+            {
+              "text": "Un libro así debía producir, decían, muchas preguntas, y las produjo.",
+              "english": "A book like that should produce, they said, many questions, and it produced them."
+            },
+            {
+              "text": "Siempre tuvo buen oído para los idiomas, y con el tiempo aprendió esperanto.",
+              "english": "She always had a good ear for languages, and in time she learned Esperanto."
+            },
+            {
+              "text": "Cada animal tiene su voz, y ella los distinguía con el oído, uno por uno.",
+              "english": "Every animal has its own voice, and she distinguished them by ear, one by one."
+            },
+            {
+              "text": "El esperanto es un idioma inventado para que todas las personas del mundo se entiendan.",
+              "english": "Esperanto is a language invented so that all the people of the world can understand one another."
+            },
+            {
+              "text": "Con ese idioma escribió a más de cien personas: a un maestro de Polonia, a una señora de Japón, a un niño de Brasil.",
+              "english": "With that language she wrote to more than a hundred people: to a teacher in Poland, to a lady in Japan, to a boy in Brazil."
+            },
+            {
+              "text": "Le gustaba el esperanto porque, decía, ninguna persona era dueña de esa lengua.",
+              "english": "She liked Esperanto because, she said, no person owned that language."
+            },
+            {
+              "text": "Cuando recibía una carta, la leía en voz alta, y soltó más de una risa.",
+              "english": "When she received a letter, she read it aloud, and let out more than one laugh."
+            },
+            {
+              "text": "Su amiga Isabel soltó otra.",
+              "english": "Her friend Isabel let out another."
+            },
+            {
+              "text": "Una vez soltó una frase que se hizo muy conocida en la escuela: «El mundo es una carta que todavía no hemos terminado de leer».",
+              "english": "Once she let out a sentence that became very well known at school: \"The world is a letter that we have not yet finished reading.\""
+            },
+            {
+              "text": "Sin saberlo, hacía con papel lo que hoy hacen millones de personas con una computadora.",
+              "english": "Without knowing it, she did with paper what millions of people do today with a computer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los últimos años",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "A los sesenta años dejó la escuela, pero no dejó de salir a pasear.",
+              "english": "At sixty she left the school, but she did not stop going out for walks."
+            },
+            {
+              "text": "Los niños de la aldea la veían pasar con su gato nuevo y le preguntaban qué buscaba.",
+              "english": "The children of the village saw her go by with her new cat and asked her what she was looking for."
+            },
+            {
+              "text": "—Busco lo que no se ve —les decía—.",
+              "english": "\"I am looking for what cannot be seen,\" she told them."
+            },
+            {
+              "text": "En el río hay un mundo, y más allá del mundo está el infinito.",
+              "english": "\"In the river there is a world, and beyond the world there is the infinite.\""
+            },
+            {
+              "text": "Para ella, el infinito empezaba en cada piedra, y todo animal era una puerta hacia el infinito.",
+              "english": "For her, the infinite began in every stone, and every animal was a door toward the infinite."
+            },
+            {
+              "text": "Nunca tuvo mucho dinero, y varias veces sintió vergüenza al pedir libros prestados, y la sintió en las entrañas.",
+              "english": "She never had much money, and several times she felt ashamed to ask for borrowed books, and she felt it in her gut."
+            },
+            {
+              "text": "Pero una vez un amigo le dijo: «No hay vergüenza en tener hambre de saber».",
+              "english": "But once a friend told her: \"There is no shame in being hungry for knowledge.\""
+            },
+            {
+              "text": "Desde ese día pidió libros sin vergüenza.",
+              "english": "From that day on she asked for books without shame."
+            },
+            {
+              "text": "En 1980, una noche de lluvia, un trueno sacudió la aldea, y el viento sacudió las puertas.",
+              "english": "In 1980, one rainy night, a thunderclap shook the village, and the wind shook the doors."
+            },
+            {
+              "text": "Carmen salió a la calle, y vio en el cielo una aparición extraña: una luz verde sobre el río.",
+              "english": "Carmen went out into the street, and saw in the sky a strange apparition: a green light over the river."
+            },
+            {
+              "text": "Muchos vecinos creyeron que era algo malo, pero ella escribió una nota: «aparición natural, de las ocho a las nueve».",
+              "english": "Many neighbors thought it was something bad, but she wrote a note: \"natural apparition, from eight to nine.\""
+            },
+            {
+              "text": "Cuando el perro del vecino empezó a ladrar, ella le dijo: «Tranquilo, amigo, que sólo es la luz».",
+              "english": "When the neighbor's dog began to bark, she said to it: \"Easy, friend, it is only the light.\""
+            },
+            {
+              "text": "Y el perro, que no dejaba de ladrar, se calló.",
+              "english": "And the dog, which would not stop barking, fell silent."
+            },
+            {
+              "text": "Esa noche ella experimentaba algo que no había sentido nunca.",
+              "english": "That night she was experiencing something she had never felt before."
+            },
+            {
+              "text": "Esa noche sintió, en las entrañas, que la vida era una aparición también, y que valía la pena mirarla con respeto.",
+              "english": "That night she felt, deep in her gut, that life was an apparition too, and that it was worth looking at with respect."
+            },
+            {
+              "text": "Murió en 1987, de noche, con las manos sobre su cuaderno y el viejo gato a los pies de la cama.",
+              "english": "She died in 1987, at night, with her hands on her notebook and the old cat at the foot of the bed."
+            },
+            {
+              "text": "La noticia de su muerte sacudió a toda la aldea.",
+              "english": "The news of her death shook the whole village."
+            },
+            {
+              "text": "Cuando la despidieron, un niño preguntó qué había dejado la maestra.",
+              "english": "When they said goodbye to her, a child asked what the teacher had left behind."
+            },
+            {
+              "text": "—Dejó un cuaderno lleno de animales —dijo un viejo, y soltó una sonrisa—.",
+              "english": "\"She left a notebook full of animals,\" said an old man, and let out a smile."
+            },
+            {
+              "text": "Pero también dejó la costumbre de mirar con respeto lo que otros no ven.",
+              "english": "\"But she also left the habit of looking with respect at what others do not see.\""
+            },
+            {
+              "text": "Tras su muerte, la escuela de la aldea tomó su nombre, y el principal premio de la zona lleva todavía el nombre de la maestra.",
+              "english": "After her death, the village school took her name, and the main prize of the area still bears the teacher's name."
+            },
+            {
+              "text": "Su principal lección fue ésta: lo principal de la ciencia no es saber, sino mirar.",
+              "english": "Her main lesson was this: the main thing about science is not knowing, but looking."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

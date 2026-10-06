@@ -1,0 +1,380 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-32",
+  "lang": "es",
+  "title": "El café, del cafetal a la taza",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-32",
+    "title": "Coffee, from the plantation to the cup (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Owner decision 2 (2026-10-06): Niebla is not used as the core of the bridge; the plan's Niebla slot is taken by this new course-authored unit (or by a library text that ladder:place shows readable at that point). FACTS TO BE CHECKED by a Honduran source (for example IHCAFE or a cooperative): altitude 1,000–2,000 m; harvest from November to March; one quintal = 100 pounds; payment by the quintal of cherries; two to three days of fermentation; ten to fifteen days of drying; the statement that Honduras is the largest coffee producer in Central America; the coffee-rust outbreak \"hace unos años\". Variety: \"cafetal\", \"beneficio\", \"recolectores / cortadores\", \"quintal\", voseo in the first and last paragraphs (tomás, agregás, probalo, tomés, pensá). Owner decision 3: the 92 % entry line for authentic placements stays; new-lemmas warnings are acceptable. Vocabulary plan: Not in PLAN-B1 as written: this unit takes the plan's Niebla slot es-b1-32 (Niebla ch16). Contemporary explanation (coffee in Honduras) with vocabulary of the harvest, the processing and the market. Logged."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "explanation",
+    "farming",
+    "economy"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Una bebida de montaña",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Cuando tomás una taza de café por la mañana, es difícil imaginar el camino que ese café ha hecho.",
+              "english": "When you drink a cup of coffee in the morning, it is hard to imagine the journey that coffee has made."
+            },
+            {
+              "text": "Antes de llegar a tu casa, pasó por muchas manos, y casi todas son manos de montaña.",
+              "english": "Before reaching your home it passed through many hands, and almost all of them are mountain hands."
+            },
+            {
+              "text": "Honduras es el país que más café produce en Centroamérica, y es uno de los productores más grandes del mundo.",
+              "english": "Honduras is the country that produces the most coffee in Central America, and it is one of the biggest producers in the world."
+            },
+            {
+              "text": "La producción de café da trabajo a muchas familias, y para muchas de ellas el café es la única fuente de dinero.",
+              "english": "Coffee production gives work to many families, and for many of them coffee is the only source of money."
+            },
+            {
+              "text": "Esa producción depende de la altura, porque el café crece mejor entre mil y dos mil metros.",
+              "english": "That production depends on altitude, because coffee grows best between one thousand and two thousand metres."
+            },
+            {
+              "text": "Un cafetal a mil metros da un café suave, y un cafetal a dos mil metros da un café más ácido.",
+              "english": "A plantation at a thousand metres gives a mild coffee, and a plantation at two thousand metres gives a more acid coffee."
+            },
+            {
+              "text": "A esa altura el clima es fresco, y la humedad es buena para la planta.",
+              "english": "At that altitude the climate is cool, and the humidity is good for the plant."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La humedad de la montaña es la que da al café su sabor, y sin esa humedad no hay café bueno.",
+              "english": "The humidity of the mountain is what gives coffee its flavour, and without that humidity there is no good coffee."
+            },
+            {
+              "text": "Por eso los cafetales no están en la costa ni en los valles calientes, sino en las laderas de los cerros.",
+              "english": "That is why the coffee plantations are not on the coast or in the hot valleys, but on the slopes of the hills."
+            },
+            {
+              "text": "Un cafetal se ve diferente de otras plantas, porque entre las plantas de café crecen árboles grandes que dan sombra.",
+              "english": "A coffee plantation looks different from other plants, because among the coffee plants grow big trees that give shade."
+            },
+            {
+              "text": "La sombra protege a las plantas del sol fuerte, y también protege el suelo de las lluvias.",
+              "english": "The shade protects the plants from the strong sun, and also protects the soil from the rains."
+            },
+            {
+              "text": "Los cafetales viejos de la montaña son, además, un buen lugar para los pájaros, y por eso los cafetales con sombra se llaman a veces bosques de café.",
+              "english": "The old coffee plantations of the mountain are, besides, a good place for the birds, and that is why shaded plantations are sometimes called coffee forests."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La cosecha",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después de los meses de lluvia, la planta de café se llena de pequeñas cerezas verdes, y poco a poco las cerezas se ponen rojas.",
+              "english": "After the months of rain the coffee plant fills with small green cherries, and little by little the cherries turn red."
+            },
+            {
+              "text": "Cuando una cereza está roja, está lista, y es el momento de la cosecha.",
+              "english": "When a cherry is red it is ready, and it is time for the harvest."
+            },
+            {
+              "text": "La cosecha dura varios meses, y en Honduras va más o menos de noviembre a marzo.",
+              "english": "The harvest lasts several months, and in Honduras it runs more or less from November to March."
+            },
+            {
+              "text": "En esos meses, los pueblos de la montaña se llenan de gente, porque llegan muchos recolectores de otras partes del país.",
+              "english": "In those months the mountain villages fill with people, because many pickers arrive from other parts of the country."
+            },
+            {
+              "text": "Los recolectores cortan las cerezas rojas una por una, con las manos, y no deben cortar las cerezas verdes.",
+              "english": "The pickers cut the red cherries one by one, by hand, and must not cut the green cherries."
+            },
+            {
+              "text": "Es un trabajo duro, porque las laderas son muy altas, y un buen recolector pasa el día entero con una canasta al hombro.",
+              "english": "It is hard work, because the slopes are very high, and a good picker spends the whole day with a basket on his shoulder."
+            },
+            {
+              "text": "En las laderas más altas, los recolectores trabajan con una cuerda, y una ladera mal cortada se nota en la cosecha.",
+              "english": "On the highest slopes the pickers work with a rope, and a badly picked slope shows in the harvest."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Muchas veces los niños ayudan a sus padres durante las vacaciones de la escuela, aunque cada vez más familias quieren que los niños estudien.",
+              "english": "Many times children help their parents during the school holidays, although more and more families want the children to study."
+            },
+            {
+              "text": "Las vacaciones de noviembre llegan con la cosecha, y para muchos niños esas vacaciones son tiempo de trabajo y no de juego.",
+              "english": "The November holidays come with the harvest, and for many children those holidays are a time for work and not for play."
+            },
+            {
+              "text": "Al final del día, los recolectores llevan las cerezas al beneficio, que es el lugar donde se prepara el grano.",
+              "english": "At the end of the day the pickers take the cherries to the processing plant, which is the place where the bean is prepared."
+            },
+            {
+              "text": "En el beneficio se pesan las cerezas, y el pago depende del peso: se paga por quintal, y un quintal son cien libras.",
+              "english": "At the processing plant the cherries are weighed, and the pay depends on the weight: they are paid by the quintal, and a quintal is a hundred pounds."
+            },
+            {
+              "text": "Un buen recolector puede cortar uno o dos quintales por día, y eso sólo se consigue con mucho tiempo en el cerro.",
+              "english": "A good picker can cut one or two quintals a day, and that is only achieved with a lot of time on the hill."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Del grano a la bolsa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dentro de cada cereza hay dos granos, y los granos están cubiertos por una pulpa dulce.",
+              "english": "Inside each cherry there are two beans, and the beans are covered with a sweet pulp."
+            },
+            {
+              "text": "Para sacar los granos, primero se quita la pulpa con una máquina, y después los granos se dejan en agua durante uno o dos días.",
+              "english": "To get the beans out, first the pulp is removed with a machine, and then the beans are left in water for a day or two."
+            },
+            {
+              "text": "La máquina es simple, pero sin esa máquina el trabajo de un día se haría en una semana.",
+              "english": "The machine is simple, but without that machine the work of one day would take a week."
+            },
+            {
+              "text": "Ese tiempo en el agua se llama fermentación, y es una parte importante del trabajo, porque la fermentación cambia el sabor del café.",
+              "english": "That time in the water is called fermentation, and it is an important part of the work, because fermentation changes the flavour of the coffee."
+            },
+            {
+              "text": "Si la fermentación dura demasiado, el café sabe amargo y ácido, y no hay manera de arreglarlo.",
+              "english": "If the fermentation lasts too long, the coffee tastes bitter and acid, and there is no way to fix it."
+            },
+            {
+              "text": "Si dura poco, el café tiene un sabor verde y un aroma pobre, y tampoco hay manera de arreglarlo.",
+              "english": "If it lasts too little, the coffee has a green taste and a poor aroma, and there is no way to fix that either."
+            },
+            {
+              "text": "Después los granos se lavan, y se ponen a secar al sol sobre grandes patios o sobre camas altas.",
+              "english": "Afterwards the beans are washed, and they are put out to dry in the sun on big yards or on raised beds."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Secar el café lleva diez o quince días, y hay que mover los granos varias veces al día para secar todos por igual.",
+              "english": "Drying coffee takes ten or fifteen days, and the beans must be turned several times a day to dry them all evenly."
+            },
+            {
+              "text": "Si llueve, hay que cubrir el café, y los productores no se separan del patio hasta que sale el sol.",
+              "english": "If it rains, the coffee has to be covered, and the producers do not leave the yard until the sun comes out."
+            },
+            {
+              "text": "Cuando el grano está seco, se guarda en sacos, y los sacos viajan al puerto en camiones.",
+              "english": "When the bean is dry it is kept in sacks, and the sacks travel to the port in trucks."
+            },
+            {
+              "text": "En el puerto, los sacos esperan al barco, y el puerto nunca duerme en esas semanas.",
+              "english": "At the port the sacks wait for the ship, and the port never sleeps in those weeks."
+            },
+            {
+              "text": "Un camión puede llevar doscientos sacos, y cada camión sale del beneficio con un papel que dice de qué finca viene el café.",
+              "english": "A truck can carry two hundred sacks, and each truck leaves the processing plant with a paper that says which farm the coffee comes from."
+            },
+            {
+              "text": "La exportación del café es una de las principales partes del dinero que entra al país, y los barcos llevan el café a Estados Unidos, a Europa y a otros mercados.",
+              "english": "The export of coffee is one of the main parts of the money that comes into the country, and ships take the coffee to the United States, to Europe and to other markets."
+            },
+            {
+              "text": "Esa exportación mueve mucho dinero, y la exportación de café pesa más que la exportación de muchas otras cosas.",
+              "english": "That export moves a lot of money, and coffee export weighs more than the export of many other things."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En el extranjero, el café se tuesta, y el tostado da el color y el aroma que conocemos.",
+              "english": "Abroad, the coffee is roasted, and the roasting gives the colour and the aroma that we know."
+            },
+            {
+              "text": "Un café ligero tiene un sabor más ácido, y un café muy tostado es más amargo y tiene más cuerpo.",
+              "english": "A light coffee has a more acid flavour, and a very dark roast is more bitter and has more body."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un negocio difícil",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El precio del café no lo deciden los productores, sino el mercado internacional, y ese precio cambia cada día.",
+              "english": "The price of coffee is not decided by the producers but by the international market, and that price changes every day."
+            },
+            {
+              "text": "Cuando el precio internacional sube, las familias de las fincas pueden pagar la escuela de los hijos y arreglar la casa.",
+              "english": "When the international price goes up, the families on the farms can pay for their children's school and fix the house."
+            },
+            {
+              "text": "Cuando el precio baja, muchos productores no pueden pagar sus deudas, y algunos piden un préstamo al banco para vivir hasta la próxima cosecha.",
+              "english": "When the price goes down, many producers cannot pay their debts, and some ask the bank for a loan to live until the next harvest."
+            },
+            {
+              "text": "Un préstamo es una ayuda, pero también es un peso, y un mal año puede dejar a una familia con un préstamo imposible de pagar.",
+              "english": "A loan is a help, but it is also a burden, and one bad year can leave a family with a loan it is impossible to pay."
+            },
+            {
+              "text": "Los productores pequeños tienen un problema más: no tienen cómo guardar el café ni cómo venderlo ellos mismos.",
+              "english": "Small producers have one more problem: they have no way to store the coffee or to sell it themselves."
+            },
+            {
+              "text": "Por eso muchos se juntan en una cooperativa, donde ellos mismos deciden cómo vender y cómo usar la ganancia.",
+              "english": "That is why many get together in a cooperative, where they themselves decide how to sell and how to use the profit."
+            },
+            {
+              "text": "Una cooperativa compra el café a los productores que son parte de ella, lo vende en el mercado internacional y le paga a cada familia lo que le toca.",
+              "english": "A cooperative buys the coffee from the producers who are part of it, sells it on the international market and pays each family what is its share."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La cooperativa no hace ricos a los productores, pero les da la fuerza de muchos, y esa fuerza es la que consigue un buen precio.",
+              "english": "The cooperative does not make the producers rich, but it gives them the strength of many, and that strength is what gets a good price."
+            },
+            {
+              "text": "Además del precio, hay otro enemigo: las plagas, y la peor de todas es la roya.",
+              "english": "Besides the price there is another enemy: pests, and the worst of all is the rust."
+            },
+            {
+              "text": "Las plagas del café son muchas, y las plagas dañan más cuando hay humedad.",
+              "english": "Coffee pests are many, and pests do more damage when there is humidity."
+            },
+            {
+              "text": "La roya es una enfermedad de las hojas, y hace unos años dejó sin cosecha a muchas familias en toda Centroamérica.",
+              "english": "Rust is a disease of the leaves, and a few years ago it left many families in the whole of Central America without a harvest."
+            },
+            {
+              "text": "Hoy los productores usan plantas nuevas que se defienden mejor de la roya, pero las plagas cambian, y el clima también cambia cada año.",
+              "english": "Today producers use new plants that defend themselves better against rust, but pests change, and the climate also changes every year."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una taza con carácter",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Un catador de café es una persona que prueba café todo el día, y su trabajo es decir lo que siente en la boca.",
+              "english": "A coffee taster is a person who tastes coffee all day, and whose job is to say what he feels in his mouth."
+            },
+            {
+              "text": "Un buen catador dice: «Este café tiene un aroma de chocolate, un sabor un poco ácido y un final dulce».",
+              "english": "A good taster says: \"This coffee has an aroma of chocolate, a slightly acid flavour and a sweet finish.\""
+            },
+            {
+              "text": "El chocolate es el aroma que más se busca, y el chocolate de un buen café huele a fiesta.",
+              "english": "Chocolate is the aroma most sought after, and the chocolate in a good coffee smells like a party."
+            },
+            {
+              "text": "Después de probar muchas tazas, el catador aprende a reconocer el clima y la altura de donde viene un grano, y hasta la finca.",
+              "english": "After tasting many cups, the taster learns to recognise the climate and the altitude a bean comes from, and even the farm."
+            },
+            {
+              "text": "Un catador conocido puede sentir el chocolate, la miel o el azúcar en una sola taza.",
+              "english": "A well-known taster can sense the chocolate, the honey or the sugar in a single cup."
+            },
+            {
+              "text": "Para preparar una taza en casa no hace falta ser un catador, pero hay que tener cuidado con la temperatura del agua.",
+              "english": "To prepare a cup at home you do not need to be a taster, but you must be careful with the temperature of the water."
+            },
+            {
+              "text": "La producción de una taza lleva años, y la preparación de una taza lleva un minuto, así que vale la pena hacerla bien.",
+              "english": "The production of a cup takes years, and the preparation of a cup takes a minute, so it is worth doing it well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El agua no debe hervir, porque el café se quema, y un café quemado sabe amargo.",
+              "english": "The water must not boil, because the coffee burns, and burnt coffee tastes bitter."
+            },
+            {
+              "text": "Si agregás leche o azúcar, probalo primero sin nada, porque a veces el mejor sabor es el más simple.",
+              "english": "If you add milk or sugar, try it first with nothing, because sometimes the best flavour is the simplest."
+            },
+            {
+              "text": "La próxima vez que tomés café, pensá en las manos de la montaña, en el sol del patio y en el largo camino de un grano pequeño.",
+              "english": "The next time you drink coffee, think of the mountain hands, the sun on the yard and the long journey of a small bean."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,578 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-26",
+  "lang": "es",
+  "title": "Avisos, reglas e instrucciones",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-26",
+    "title": "Notices, rules and instructions (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Clinic notices, waiting-room rules, a homemade oral rehydration sheet, instructions for volunteers and a short voseo message. HEALTH CONTENT TO BE CHECKED BY A HEALTH PROFESSIONAL BEFORE ANY USE: the home rehydration recipe (1 litre of boiled water, 8 small spoonfuls of sugar, 1 small spoonful of salt), the warning signs and the \"911\" emergency line. Register: notices use usted and \"favor + infinitive\"; the message from Ana to Sam uses voseo (podés, traé, tenés, llegás, avisame). \"ficha\" (ticket / form), \"turno\", \"butacas\", \"carné\" are used as in Honduran clinics, to be confirmed. Vocabulary plan: PLAN-B1 pack for es-b1-26 (practical communication) was mostly Niebla words (metafísica, inmortal, mendigo, ...); it was replaced by practical vocabulary (ficha, turno, apellido, fila, cobrar, carné, firma, guantes, ambulancia, dosis, ...) plus the Niebla-free words that remain useful (rigor, excelente, formalmente, enterado, comprometido, recobrar, línea, reposo). Logged."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "practical communication"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical-communication"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "En la puerta de la clínica",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Clínica de la aldea: horario de atención.",
+              "english": "Village clinic: opening hours."
+            },
+            {
+              "text": "De lunes a viernes, de siete de la mañana a cuatro de la tarde.",
+              "english": "Monday to Friday, from seven in the morning to four in the afternoon."
+            },
+            {
+              "text": "Los sábados atendemos sólo a un enfermo urgente a la vez, hasta el mediodía.",
+              "english": "On Saturdays we see only one urgent patient at a time, until noon."
+            },
+            {
+              "text": "La consulta es gratuita para los niños menores de cinco años.",
+              "english": "The consultation is free for children under five."
+            },
+            {
+              "text": "La consulta es gratuita también para las madres que esperan un hijo.",
+              "english": "The consultation is also free for mothers who are expecting a child."
+            },
+            {
+              "text": "Para los demás pacientes, la consulta cuesta veinte lempiras.",
+              "english": "For other patients the consultation costs twenty lempiras."
+            },
+            {
+              "text": "No cobramos nada por las vacunas, y no queremos cobrar a un enfermo grave que no puede pagar.",
+              "english": "We charge nothing for vaccines, and we do not want to charge a seriously ill person who cannot pay."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Cobramos sólo la consulta, y la ficha no cuesta nada.",
+              "english": "We charge only for the consultation, and the ticket costs nothing."
+            },
+            {
+              "text": "Si usted no puede pagar, hable con la enfermera, porque nadie se queda sin atención.",
+              "english": "If you cannot pay, speak to the nurse, because nobody is left without care."
+            },
+            {
+              "text": "Favor tomar una ficha en la entrada y esperar su turno en la sala.",
+              "english": "Please take a ticket at the entrance and wait for your turn in the hall."
+            },
+            {
+              "text": "Cada ficha tiene un número, y cada turno se llama por número, no por apellido.",
+              "english": "Each ticket has a number, and each turn is called by number, not by surname."
+            },
+            {
+              "text": "Si la pierde, avise en la entrada, y la enfermera le da otra con el mismo turno.",
+              "english": "If you lose it, tell us at the entrance, and the nurse gives you another with the same turn."
+            },
+            {
+              "text": "Escriba su apellido en la ficha, para que nadie la pierda.",
+              "english": "Write your surname on the ticket, so that nobody loses it."
+            },
+            {
+              "text": "Traiga su carné cuando venga, y muéstrelo en la entrada.",
+              "english": "Bring your identity card when you come, and show it at the entrance."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El carné ayuda a buscar la ficha, y el número de identidad es el mismo de siempre.",
+              "english": "The card helps to find the ticket, and the identity number is always the same."
+            },
+            {
+              "text": "La entrada principal está abierta de siete a cuatro.",
+              "english": "The main entrance is open from seven to four."
+            },
+            {
+              "text": "La salida de atrás está junto a la puerta de la cocina, y debe estar libre siempre.",
+              "english": "The back exit is next to the kitchen door, and must always be clear."
+            },
+            {
+              "text": "No se debe dejar nada en la salida, ni siquiera por un momento.",
+              "english": "Nothing should be left at the exit, not even for a moment."
+            },
+            {
+              "text": "Use la salida de atrás si hay fuego, y no vuelva por sus cosas.",
+              "english": "Use the back exit if there is a fire, and do not go back for your things."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Reglas de la sala de espera",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Se pide a todos respetar estas reglas.",
+              "english": "Everybody is asked to respect these rules."
+            },
+            {
+              "text": "Primera regla: formar una fila y esperar con paciencia.",
+              "english": "First rule: form a line and wait patiently."
+            },
+            {
+              "text": "Quien llega primero entra primero, pero un caso urgente pasa antes que todos.",
+              "english": "Whoever arrives first goes in first, but an urgent case goes before everyone."
+            },
+            {
+              "text": "La enfermera decide cuál es un caso urgente, y nadie debe discutir con ella.",
+              "english": "The nurse decides which is an urgent case, and nobody should argue with her."
+            },
+            {
+              "text": "Un caso urgente se atiende sin turno y sin ficha.",
+              "english": "An urgent case is seen without a turn and without a ticket."
+            },
+            {
+              "text": "Segunda regla: mantener la sala tranquila.",
+              "english": "Second rule: keep the hall calm."
+            },
+            {
+              "text": "Un bebé que llora no es un problema, pero una sala tranquila ayuda a los enfermos.",
+              "english": "A baby crying is not a problem, but a calm hall helps the sick."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Los niños pueden jugar fuera, pero dentro de la sala deben estar quietos.",
+              "english": "Children may play outside, but inside the hall they must stay still."
+            },
+            {
+              "text": "Los niños enfermos deben estar quietos, y las madres deben mantenerlos tranquilos.",
+              "english": "Sick children must be still, and mothers must keep them calm."
+            },
+            {
+              "text": "Tercera regla: prohibido fumar en toda la clínica, incluso en el patio.",
+              "english": "Third rule: smoking is forbidden in the whole clinic, even in the yard."
+            },
+            {
+              "text": "Fumar es un riesgo para los enfermos, y para los niños es peor.",
+              "english": "Smoking is a risk for the sick, and for children it is worse."
+            },
+            {
+              "text": "Está prohibido fumar también en la fila de afuera.",
+              "english": "Smoking is also forbidden in the line outside."
+            },
+            {
+              "text": "También está prohibido entrar con comida a la sala.",
+              "english": "It is also forbidden to come into the hall with food."
+            },
+            {
+              "text": "Cuarta regla: apagar el celular o ponerlo en silencio.",
+              "english": "Fourth rule: switch off your mobile phone or put it on silent."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Última regla: no dejar basura en el piso ni en las butacas.",
+              "english": "Last rule: do not leave rubbish on the floor or on the seats."
+            },
+            {
+              "text": "Las butacas de la sala son pocas, y es mejor dejarlas a los mayores y a las madres con bebés.",
+              "english": "The seats in the hall are few, and it is better to leave them to the elderly and to mothers with babies."
+            },
+            {
+              "text": "Un enfermo débil puede usar una butaca, aunque haya turno antes.",
+              "english": "A weak patient may use a seat, even if others are ahead."
+            },
+            {
+              "text": "Se pide cumplir estas reglas con rigor, y la enfermera puede pedir que salga quien no las cumpla.",
+              "english": "These rules are to be followed strictly, and the nurse may ask anyone who does not follow them to leave."
+            },
+            {
+              "text": "No es un castigo, es una regla de rigor para todos.",
+              "english": "It is not a punishment, it is a rule of strictness for everybody."
+            },
+            {
+              "text": "Pedimos paciencia, porque la fila se mueve despacio.",
+              "english": "We ask for patience, because the line moves slowly."
+            },
+            {
+              "text": "Una consulta tarda diez o quince minutos, y a veces más.",
+              "english": "A consultation takes ten or fifteen minutes, and sometimes more."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una hoja de la clínica: suero para la diarrea",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esta hoja explica cómo preparar en casa un suero para un niño con diarrea.",
+              "english": "This sheet explains how to prepare a rehydration drink at home for a child with diarrhoea."
+            },
+            {
+              "text": "Antes de empezar, lave bien sus manos con agua y jabón.",
+              "english": "Before you begin, wash your hands well with soap and water."
+            },
+            {
+              "text": "Primero, hierva un litro de agua durante diez minutos.",
+              "english": "First, boil a litre of water for ten minutes."
+            },
+            {
+              "text": "Hay que hervir el agua aunque parezca limpia, porque el agua que no hirvió puede enfermar al niño.",
+              "english": "You must boil the water even if it looks clean, because water that has not boiled can make the child ill."
+            },
+            {
+              "text": "Cuando el agua esté tibia, agregue ocho cucharadas pequeñas de azúcar y una cucharada pequeña de sal.",
+              "english": "When the water is warm, add eight small spoonfuls of sugar and one small spoonful of salt."
+            },
+            {
+              "text": "Es importante medir con cuidado el azúcar y la sal, porque una mala medida puede hacer más daño que bien.",
+              "english": "It is important to measure the sugar and the salt carefully, because a wrong measure can do more harm than good."
+            },
+            {
+              "text": "Si no puede medir bien, lleve el azúcar a la clínica y pida que la midan.",
+              "english": "If you cannot measure well, bring the sugar to the clinic and ask for it to be measured."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mezcle hasta que todo esté listo, y pruebe una gota en su mano.",
+              "english": "Mix until everything is ready, and try a drop on your hand."
+            },
+            {
+              "text": "Cuando el suero esté listo, debe saber como las lágrimas, y no tener más sal que eso.",
+              "english": "When the drink is ready, it should taste like tears and not have more salt than that."
+            },
+            {
+              "text": "Una gota en la lengua basta para probar la sal.",
+              "english": "A drop on the tongue is enough to taste the salt."
+            },
+            {
+              "text": "Una sola gota con demasiada sal es una mala señal, y hay que preparar otro litro.",
+              "english": "A single drop with too much salt is a bad sign, and you must prepare another litre."
+            },
+            {
+              "text": "Dé el suero con una cuchara pequeña, una cucharada cada pocos minutos.",
+              "english": "Give the drink with a small spoon, one spoonful every few minutes."
+            },
+            {
+              "text": "Si el niño devuelve lo que toma, espere diez minutos y vuelva a empezar, más despacio.",
+              "english": "If the child brings back what he drinks, wait ten minutes and start again, more slowly."
+            },
+            {
+              "text": "Dé la dosis completa durante el día, y no guarde el suero más de veinticuatro horas.",
+              "english": "Give the complete dose during the day, and do not keep the drink for more than twenty-four hours."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Un litro de suero dura un día para un niño pequeño.",
+              "english": "A litre of the drink lasts a day for a small child."
+            },
+            {
+              "text": "Los niños enfermos deben estar quietos, en un cuarto fresco y tranquilo.",
+              "english": "Sick children should be still, in a cool and calm room."
+            },
+            {
+              "text": "El reposo es parte de lo que cura al niño, y el niño necesita recobrar fuerzas.",
+              "english": "Rest is part of what heals the child, and the child needs to get his strength back."
+            },
+            {
+              "text": "Con reposo y con suero, casi todos los niños empiezan a recobrar el apetito en dos días.",
+              "english": "With rest and the drink, almost all children begin to recover their appetite within two days."
+            },
+            {
+              "text": "Un niño que no puede recobrar fuerzas en tres días necesita un doctor.",
+              "english": "A child who cannot get his strength back within three days needs a doctor."
+            },
+            {
+              "text": "Una dosis de reposo vale más que una dosis de pastillas.",
+              "english": "A dose of rest is worth more than a dose of pills."
+            },
+            {
+              "text": "Lleve al niño a la clínica ahora mismo si pasa una de estas cosas.",
+              "english": "Take the child to the clinic right now if one of these things happens."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Una: no puede beber nada.",
+              "english": "One: he cannot drink anything."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dos: tiene mucha fiebre, o está muy dormido.",
+              "english": "Two: he has a high fever, or he is very sleepy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Tres: la diarrea dura más de dos días.",
+              "english": "Three: the diarrhoea lasts more than two days."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Si pasa algo de eso, llame a la ambulancia de la aldea o pida a un vecino que lo lleve en carro.",
+              "english": "If any of that happens, call the village ambulance or ask a neighbour to take him by car."
+            },
+            {
+              "text": "La ambulancia sale de la clínica, y la línea de ayuda es el 911.",
+              "english": "The ambulance leaves from the clinic, and the helpline is 911."
+            },
+            {
+              "text": "Esa línea está abierta día y noche, y la llamada es gratuita.",
+              "english": "That line is open day and night, and the call is free."
+            },
+            {
+              "text": "Si la línea está ocupada, llame otra vez, y no cierre hasta que le contesten.",
+              "english": "If the line is busy, call again, and do not hang up until someone answers."
+            },
+            {
+              "text": "Para llamar a la ambulancia, diga su nombre, el nombre de la aldea y qué le pasa al niño.",
+              "english": "To call the ambulance, say your name, the name of the village and what is wrong with the child."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Instrucciones para los voluntarios",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Así se llena la ficha de cada paciente.",
+              "english": "This is how each patient's form is filled in."
+            },
+            {
+              "text": "Debe estar llena antes de la consulta.",
+              "english": "It must be filled in before the consultation."
+            },
+            {
+              "text": "Escriba el nombre y el apellido con letra clara.",
+              "english": "Write the first name and the surname in clear letters."
+            },
+            {
+              "text": "Escriba también el número de identidad, si el paciente tiene carné.",
+              "english": "Also write the identity number, if the patient has an identity card."
+            },
+            {
+              "text": "Si no tiene carné, escriba «sin documento», y no lo rechace por eso.",
+              "english": "If he has no card, write \"no document,\" and do not turn him away for that."
+            },
+            {
+              "text": "Con el número de identidad se busca la ficha de la semana anterior, y el voluntario copia el número de identidad sin errores.",
+              "english": "With the identity number the previous week's form is looked up, and the volunteer copies the identity number without mistakes."
+            },
+            {
+              "text": "Escriba la edad y la dirección en la aldea, y el apellido otra vez en la caja de arriba.",
+              "english": "Write the age and the address in the village, and the surname again in the box above."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pregunte con paciencia, y no haga las preguntas con prisa.",
+              "english": "Ask patiently, and do not ask the questions in a hurry."
+            },
+            {
+              "text": "Si está enfermo, déjelo sentarse, y use guantes cuando toque algo.",
+              "english": "If he is ill, let him sit down, and use gloves when you touch anything."
+            },
+            {
+              "text": "Cuando termine, tire los guantes a la basura, y lávese las manos.",
+              "english": "When you finish, throw the gloves in the rubbish and wash your hands."
+            },
+            {
+              "text": "Los guantes son pocos, y cada voluntario debe cuidarlos.",
+              "english": "The gloves are few, and each volunteer must take care of them."
+            },
+            {
+              "text": "Las fichas se guardan cada día en la caja azul, y la caja se cierra con llave.",
+              "english": "The forms are kept each day in the blue box, and the box is locked with a key."
+            },
+            {
+              "text": "Nadie puede abrir la caja si la enfermera no lo dice, porque los datos de los pacientes son privados.",
+              "english": "Nobody may open the box unless the nurse says so, because the patients' data are private."
+            },
+            {
+              "text": "Al final de cada día, firme la hoja y escriba su nombre al lado de la firma.",
+              "english": "At the end of each day, sign the sheet and write your name beside the signature."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La firma de la enfermera va abajo, y la firma del voluntario va arriba.",
+              "english": "The nurse's signature goes at the bottom, and the volunteer's signature goes at the top."
+            },
+            {
+              "text": "Una hoja sin firma no vale, y la enfermera la devuelve.",
+              "english": "A sheet without a signature is not valid, and the nurse returns it."
+            },
+            {
+              "text": "Cada voluntario está comprometido a llegar a tiempo y a avisar si no puede venir.",
+              "english": "Each volunteer is committed to arriving on time and to letting us know if he cannot come."
+            },
+            {
+              "text": "Formalmente, el trabajo empieza a las siete, pero la clínica abre mejor cuando llegamos a las seis y media.",
+              "english": "Formally, work begins at seven, but the clinic opens better when we arrive at half past six."
+            },
+            {
+              "text": "Estar comprometido no es sólo un papel que se firma, y la clínica depende de eso.",
+              "english": "Being committed is not just a paper you sign, and the clinic depends on it."
+            },
+            {
+              "text": "Un voluntario comprometido llega a tiempo, y ese compromiso se nota en la fila.",
+              "english": "A committed volunteer arrives on time, and that commitment shows in the line."
+            },
+            {
+              "text": "Los voluntarios deben enterarse de las reglas de la sala, y un voluntario enterado ayuda a los pacientes.",
+              "english": "Volunteers must find out about the hall's rules, and an informed volunteer helps the patients."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Formalmente, la clínica pide a los voluntarios que lean esta hoja una vez al mes.",
+              "english": "Formally, the clinic asks volunteers to read this sheet once a month."
+            },
+            {
+              "text": "Formalmente, la ficha es del paciente, y no de la clínica.",
+              "english": "Formally, the form belongs to the patient, and not to the clinic."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un mensaje de Ana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hola, Sam.",
+              "english": "Hi, Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Podés llegar mañana a las seis?",
+              "english": "Can you get here tomorrow at six?"
+            },
+            {
+              "text": "Traé guantes y una botella de agua que ya hirvió, por favor.",
+              "english": "Bring gloves and a bottle of water that has already boiled, please."
+            },
+            {
+              "text": "Sé que tenés otra reunión, pero hoy hay mucha gente.",
+              "english": "I know you have another meeting, but there are a lot of people today."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Estás enterado de que el sábado hay turno doble en la clínica?",
+              "english": "Are you aware that there is a double shift at the clinic on Saturday?"
+            },
+            {
+              "text": "Si llegás tarde, está bien, pero avisame.",
+              "english": "If you come late, that is fine, but let me know."
+            },
+            {
+              "text": "Gracias por todo.",
+              "english": "Thanks for everything."
+            },
+            {
+              "text": "Ya sé que estás cansado y comprometido con mil cosas, y estoy segura de que es un trabajo que se hace con cariño, no con rigor.",
+              "english": "I know you are tired and committed to a thousand things, and I am sure it is work done with affection, not with strictness."
+            },
+            {
+              "text": "Fue una excelente semana, y la gente de la fila lo dijo.",
+              "english": "It was an excellent week, and the people in the line said so."
+            },
+            {
+              "text": "Excelente trabajo, Sam, y que descanses.",
+              "english": "Excellent work, Sam, and get some rest."
+            },
+            {
+              "text": "Es una excelente noticia que vengas mañana.",
+              "english": "It is excellent news that you are coming tomorrow."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

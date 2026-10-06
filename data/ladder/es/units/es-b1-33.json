@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-33",
+  "lang": "es",
+  "title": "El maestro nuevo",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-33",
+    "title": "The new teacher (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Owner decision 1 (2026-10-06): Gutenberg texts (canModify: false) are not adapted; this is a NEW course-authored text, with no plot or wording borrowed from the work named in PLAN-B1. (Marianela ch12.) A new literary-register narrative with longer sentences (mean 18 words, imperfect subjunctive \"si le hubiera preguntado\", \"como si fueran\") to prepare the voice of es-b1-35; characters and plot are invented. Points for the Honduran reviewer: the register is deliberately more literary than spoken Honduran Spanish; usted between Mario and don José; \"cerro\", \"pinos\", \"carbón\" used as chalk; \"maestro / escuela rural\"; whether the scenery (palms, thorny bushes, pines, dew) is plausible for the Honduran highlands. Owner decision 3: the 92 % entry line for authentic placements stays; new-lemmas warnings are acceptable. Vocabulary plan: PLAN-B1 pack for es-b1-33 (adapted from Marianela ch12): the plan's descriptive and literary words were kept (rocío, vegetal, frescura, palmas, espinas, gozoso, entusiasmo, esencia, sensación, comparación, distinto, sabio, gobernar, absoluto, difunta, cesar, confuso, acento, educación, manía, demostrar, tonterías, fantasía, disparates, bondad, cavilar, facultad, apuntó); the Marianela-specific ones (lazarillo, ripio, timos, sinvergüenza) were dropped. Logged."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative",
+    "description"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "El amanecer en el cerro",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mario llegó al cerro cuando todavía no había salido el sol, y el aire tenía esa frescura que sólo se conoce en las montañas.",
+              "english": "Mario reached the hill before the sun had come up, and the air had that freshness that is only known in the mountains."
+            },
+            {
+              "text": "Había caminado toda la noche desde el pueblo de abajo, con una maleta en la mano y una carta en el bolsillo.",
+              "english": "He had walked all night from the town below, with a suitcase in his hand and a letter in his pocket."
+            },
+            {
+              "text": "No estaba cansado, sino que sentía una extraña sensación, la sensación de llegar a un lugar donde alguien lo esperaba.",
+              "english": "He was not tired, but felt a strange sensation, the sensation of arriving at a place where somebody was waiting for him."
+            },
+            {
+              "text": "El camino subía entre árboles de hojas grandes, y cada hoja estaba cubierta de rocío, de modo que la luz del primer sol caía sobre ellas como si cada hoja fuera una luz.",
+              "english": "The road climbed among trees with big leaves, and each leaf was covered with dew, so that the light of the first sun shone on them as if each leaf were a light."
+            },
+            {
+              "text": "El rocío cayó también sobre sus zapatos, y Mario sintió el rocío frío en los dedos.",
+              "english": "The dew also fell on his shoes, and Mario felt the cold dew on his fingers."
+            },
+            {
+              "text": "Había en todo una frescura de cosa nueva, y Mario sentía esa frescura en la cara y en las manos.",
+              "english": "There was in everything a freshness of something new, and Mario felt that freshness on his face and on his hands."
+            },
+            {
+              "text": "Todo era verde, pero era un verde distinto del verde de la ciudad.",
+              "english": "Everything was green, but it was a green different from the green of the city."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "No era el verde cansado de los parques, sino el verde vegetal de un mundo que respiraba.",
+              "english": "It was not the tired green of the parks, but the vegetal green of a world that breathed."
+            },
+            {
+              "text": "Hasta el aire era vegetal, y aquella vida vegetal parecía más grande que un hombre.",
+              "english": "Even the air was vegetal, and that vegetal life seemed bigger than a man."
+            },
+            {
+              "text": "No había un solo ruido que no fuera el de la vida vegetal, y la frescura del aire lo hacía todo más claro.",
+              "english": "There was not a single sound that was not that of vegetal life, and the freshness of the air made everything clearer."
+            },
+            {
+              "text": "A los lados del camino crecían palmas de hojas largas, y entre las palmas había matas de espinas que se agarraban a la ropa de quien pasaba.",
+              "english": "On both sides of the road grew palms with long leaves, and among the palms there were bushes of thorns that clung to the clothes of whoever passed."
+            },
+            {
+              "text": "Las espinas le rompieron la camisa, pero Mario no se quejó.",
+              "english": "The thorns tore his shirt, but Mario did not complain."
+            },
+            {
+              "text": "Las espinas, pensó, son la manera que tienen las plantas de defenderse.",
+              "english": "Thorns, he thought, are the way plants defend themselves."
+            },
+            {
+              "text": "Mario se detuvo y respiró hondo, y sintió que la esencia de aquel aire le llenaba el pecho de entusiasmo.",
+              "english": "Mario stopped and breathed deeply, and felt that the essence of that air filled his chest with enthusiasm."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Era una esencia hecha de tierra y de lluvia, de flores que no conocía y de leña lejana.",
+              "english": "It was an essence made of earth and rain, of flowers he did not know and of distant firewood."
+            },
+            {
+              "text": "Esa esencia le recordaba la casa de su abuela, y la esencia de una casa es la de las personas que viven en ella.",
+              "english": "That essence reminded him of his grandmother's house, and the essence of a house is that of the people who live in it."
+            },
+            {
+              "text": "Era un entusiasmo sin razón, y por eso mismo gozoso, como el de un niño que corre sin saber hacia dónde.",
+              "english": "It was an enthusiasm without a reason, and for that very reason joyful, like that of a child who runs without knowing where to."
+            },
+            {
+              "text": "Aquel entusiasmo duró todo el camino, y fue como un canto gozoso, un canto sin palabras.",
+              "english": "That enthusiasm lasted the whole way, and it was like a joyful song, a song without words."
+            },
+            {
+              "text": "Si alguien le hubiera preguntado qué esperaba del cerro, no habría sabido contestar.",
+              "english": "If anyone had asked him what he expected from the hill, he would not have known how to answer."
+            },
+            {
+              "text": "No hay comparación posible entre lo que uno imagina de un lugar y lo que ese lugar es.",
+              "english": "There is no possible comparison between what one imagines about a place and what that place is."
+            },
+            {
+              "text": "La comparación con la ciudad no era buena, y Mario lo sabía, pero la comparación no se le quitaba de la cabeza.",
+              "english": "The comparison with the city was not good, and Mario knew it, but the comparison would not leave his head."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la ciudad todo era distinto, y en el cerro todo era distinto de otra manera.",
+              "english": "In the city everything was different, and on the hill everything was different in another way."
+            },
+            {
+              "text": "La escuela estaba al final del camino, y no se parecía a ninguna escuela que Mario conociera.",
+              "english": "The school was at the end of the road, and it was not like any school Mario knew."
+            },
+            {
+              "text": "Era una casa baja, de paredes blancas y techo rojo, rodeada de un patio donde crecían tres pinos muy viejos.",
+              "english": "It was a low house with white walls and a red roof, surrounded by a yard where three very old pine trees grew."
+            },
+            {
+              "text": "Al ver la escuela sintió otra sensación, y ese momento fue gozoso, como si la casa lo reconociera.",
+              "english": "On seeing the school he felt another sensation, and that moment was joyful, as if the house recognised him."
+            },
+            {
+              "text": "Mario se sentó en la puerta, abrió la maleta y sacó la carta para leerla otra vez.",
+              "english": "Mario sat down at the door, opened the suitcase and took out the letter to read it again."
+            },
+            {
+              "text": "Era un lugar gozoso, aunque todavía no conocía a nadie.",
+              "english": "It was a joyful place, though he did not yet know anyone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La maestra difunta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La carta decía que la escuela no tenía maestro desde hacía un año, es decir, desde la muerte de la maestra.",
+              "english": "The letter said the school had had no teacher for a year, that is, since the death of the teacher."
+            },
+            {
+              "text": "La difunta había enseñado a leer a muchos niños, y en el cerro nadie la olvidaba.",
+              "english": "The late teacher had taught many children to read, and nobody on the hill forgot her."
+            },
+            {
+              "text": "Mario no la había conocido, pero en la ciudad se hablaba de ella como de una persona conocida por todos.",
+              "english": "Mario had not known her, but in the city people spoke of her as someone known to everybody."
+            },
+            {
+              "text": "Decían que la difunta no había estudiado en ninguna escuela, y que sin embargo su bondad era tan grande que los niños aprendían a leer sólo por no hacerla sufrir.",
+              "english": "They said the late teacher had not studied at any school, and that nevertheless her kindness was so great that the children learned to read just so as not to make her suffer."
+            },
+            {
+              "text": "Muchos se reían de esa bondad, y llamaban a las historias de la difunta una fantasía de gente sin educación.",
+              "english": "Many laughed at that kindness, and called the stories about the late teacher the fantasy of uneducated people."
+            },
+            {
+              "text": "Otros decían que era una fantasía, pero una fantasía necesaria, y que una educación sin cariño no enseña nada.",
+              "english": "Others said it was a fantasy, but a necessary fantasy, and that an education without affection teaches nothing."
+            },
+            {
+              "text": "Pero Mario tenía la manía de querer verlo todo con sus propios ojos, y por eso estaba allí, con su maleta.",
+              "english": "But Mario had the mania of wanting to see everything with his own eyes, and that was why he was there, with his suitcase."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sus amigos decían que esa manía algún día lo iba a meter en un problema, y que esa manía suya no tenía cura.",
+              "english": "His friends said that one day that mania would get him into trouble, and that this mania of his had no cure."
+            },
+            {
+              "text": "Mientras esperaba, empezó a cavilar sobre lo que iba a hacer.",
+              "english": "While he waited he began to ponder what he was going to do."
+            },
+            {
+              "text": "No sabía si los niños vendrían contentos o con pocas ganas, ni si los padres querrían demostrar que el maestro nuevo era tan bueno como la difunta.",
+              "english": "He did not know whether the children would come happily or reluctantly, nor whether the parents would want to demonstrate that the new teacher was as good as the late one."
+            },
+            {
+              "text": "Tendría que demostrar que sabía, y tendría que demostrar que quería.",
+              "english": "He would have to show that he knew, and he would have to show that he cared."
+            },
+            {
+              "text": "Un maestro, pensaba, no es sólo un hombre que enseña, sino un hombre que tiene que ganarse a la gente.",
+              "english": "A teacher, he thought, is not just a man who teaches, but a man who has to win people over."
+            },
+            {
+              "text": "Y ganarse a la gente es más difícil que enseñar las letras.",
+              "english": "And winning people over is harder than teaching letters."
+            },
+            {
+              "text": "Cavilar no le servía de nada, pero no podía dejar de cavilar, porque tenía miedo de que la difunta hubiera dejado un lugar demasiado grande.",
+              "english": "Pondering was of no use to him, but he could not stop pondering, because he was afraid that the late teacher had left too big a gap."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Entonces oyó un ruido de pasos, y vio a un anciano que se acercaba por el patio.",
+              "english": "Then he heard the sound of footsteps, and saw an old man coming across the yard."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Don José, el sabio del cerro",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El anciano tenía el pelo blanco, la espalda derecha y las manos temblorosas, y caminaba con un bastón que no parecía necesitar.",
+              "english": "The old man had white hair, a straight back and trembling hands, and he walked with a stick that he did not seem to need."
+            },
+            {
+              "text": "Era don José, y en todo el cerro nadie se atrevía a decirle que no.",
+              "english": "It was don José, and nobody on the whole hill dared to tell him no."
+            },
+            {
+              "text": "Llevaba cuarenta años gobernando la aldea, y gobernaba con un poder absoluto.",
+              "english": "He had been governing the village for forty years, and he governed with absolute power."
+            },
+            {
+              "text": "Su poder era absoluto, pero su respeto por la gente también era absoluto.",
+              "english": "His power was absolute, but his respect for the people was absolute too."
+            },
+            {
+              "text": "No era un hombre malo, pero tenía el acento duro de quien está acostumbrado a que se le obedezca.",
+              "english": "He was not a bad man, but he had the hard accent of someone who is used to being obeyed."
+            },
+            {
+              "text": "Era un acento del campo, sin ninguna prisa, y Mario, con su acento de ciudad, se sintió pequeño.",
+              "english": "It was a country accent, without any hurry, and Mario, with his city accent, felt small."
+            },
+            {
+              "text": "Los vecinos decían que era sabio, y que un sabio no necesita levantar la voz para gobernar.",
+              "english": "The neighbours said he was wise, and that a wise man does not need to raise his voice in order to govern."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Un sabio sabe cuándo callar, y don José hablaba poco.",
+              "english": "A wise man knows when to keep quiet, and don José spoke little."
+            },
+            {
+              "text": "Don José tenía también sus manías: no soportaba las tonterías, no soportaba la prisa y no soportaba a los que hablaban mucho.",
+              "english": "Don José also had his manias: he could not stand nonsense, could not stand haste and could not stand people who talked a lot."
+            },
+            {
+              "text": "Otra manía suya era mirar a la gente hasta que ésta se confundía y decía la verdad.",
+              "english": "Another mania of his was to look at people until they got confused and told the truth."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Usted debe de ser el maestro que mandaron de la ciudad —dijo, sin saludar.",
+              "english": "\"You must be the teacher they sent from the city,\" he said, without greeting him."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Tenga la bondad de perdonar mi falta de educación —contestó Mario, y se puso de pie—.",
+              "english": "\"Be so kind as to forgive my lack of manners,\" answered Mario, standing up."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Vengo de lejos, y me han dicho que esta escuela espera a alguien desde hace un año.",
+              "english": "\"I come from far away, and I have been told that this school has been waiting for someone for a year.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Esperando a alguien, y no a cualquiera —dijo el anciano—.",
+              "english": "\"Waiting for someone, and not just anyone,\" said the old man."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Aquí hemos tenido tres maestros en cincuenta años, y los tres se fueron antes del segundo invierno.",
+              "english": "\"Here we have had three teachers in fifty years, and all three left before the second winter.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Los jóvenes de la ciudad vienen con la cabeza llena de tonterías, y les parece que el cerro es poco para ellos.",
+              "english": "\"The young people from the city come with their heads full of nonsense, and they think the hill is too little for them.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Yo no vengo con tonterías —dijo Mario—, aunque tampoco pretendo saber más de lo que sé.",
+              "english": "\"I do not come with nonsense,\" said Mario, \"though neither do I claim to know more than I do.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Eso es un principio —dijo don José, y tocó el suelo con el bastón, y su voz se hizo menos dura—.",
+              "english": "\"That is a beginning,\" said don José, and he touched the ground with his stick, and his voice became less hard."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Los que creen que lo saben todo son los que dicen más disparates, y a mí me han dicho muchos disparates.",
+              "english": "\"Those who think they know everything are the ones who say the most absurd things, and I have been told many absurd things.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Los disparates de los jóvenes me hacen reír, pero los disparates de los viejos me preocupan —añadió don José—.",
+              "english": "\"The nonsense of the young makes me laugh, but the nonsense of the old worries me,\" added don José."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mario sonrió, porque vio que el viejo tenía la facultad de decir cosas verdaderas con pocas palabras.",
+              "english": "Mario smiled, because he saw that the old man had the gift of saying true things in few words."
+            },
+            {
+              "text": "Era una facultad rara, y don José lo sabía, y por eso gobernaba con tanta seguridad.",
+              "english": "It was a rare gift, and don José knew it, and that was why he governed with such confidence."
+            },
+            {
+              "text": "Esa facultad de mirar y callar valía más que muchos libros.",
+              "english": "That gift of looking and keeping quiet was worth more than many books."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Y yo, señor, soy joven, pero estoy dispuesto a aprender de los viejos.",
+              "english": "\"And I, sir, am young, but I am ready to learn from the old.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los niños",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "A las siete empezaron a llegar los niños, y el patio se llenó de voces, de risas y de pies sin zapatos.",
+              "english": "At seven the children began to arrive, and the yard filled with voices, laughter and feet without shoes."
+            },
+            {
+              "text": "Eran treinta o cuarenta, de todas las edades, y todos traían un cuaderno viejo o un papel.",
+              "english": "There were thirty or forty of them, of all ages, and all brought an old notebook or a piece of paper."
+            },
+            {
+              "text": "Los más pequeños se quedaron junto a la puerta, confusos y con miedo, como si no supieran si debían entrar o esperar.",
+              "english": "The smallest ones stayed by the door, confused and afraid, as if they did not know whether they should go in or wait."
+            },
+            {
+              "text": "Los mayores, en cambio, miraron a Mario de arriba abajo con ojos confusos y duros.",
+              "english": "The older ones, however, looked Mario up and down with confused and hard eyes."
+            },
+            {
+              "text": "Algunos, confusos, apuntaron a su maleta y se rieron.",
+              "english": "Some of them, confused, pointed at his suitcase and laughed."
+            },
+            {
+              "text": "Uno de ellos, un muchacho de ojos oscuros y manos grandes, dijo en voz baja que el maestro nuevo no iba a durar.",
+              "english": "One of them, a boy with dark eyes and big hands, said in a low voice that the new teacher was not going to last."
+            },
+            {
+              "text": "Don José lo oyó, y apuntó al muchacho con el bastón.",
+              "english": "Don José heard it, and pointed his stick at the boy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Eso lo vamos a demostrar —dijo—, y no lo vas a demostrar tú, sino él.",
+              "english": "\"We are going to prove that,\" he said, \"and you are not going to prove it, he is.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mario entró en la escuela, y vio las mesas largas, la pared negra de la clase y, en una esquina, una mesa con quince o veinte libros.",
+              "english": "Mario went into the school, and saw the long tables, the black wall of the classroom and, in a corner, a table with fifteen or twenty books."
+            },
+            {
+              "text": "Alguien había cuidado esos libros con cariño, y en la primera página de cada uno había una nota con letra pequeña y firme.",
+              "english": "Somebody had looked after those books lovingly, and on the first page of each one there was a note in small, firm handwriting."
+            },
+            {
+              "text": "Las palabras eran siempre las mismas: «Para quien las necesite».",
+              "english": "The words were always the same: \"For whoever needs them.\""
+            },
+            {
+              "text": "Mario las leyó una por una, y no tuvo ninguna duda de quién había sido la mano que las escribió.",
+              "english": "Mario read them one by one, and he had no doubt whose hand had written them."
+            },
+            {
+              "text": "Comprendió que la difunta no había muerto del todo, porque seguía enseñando en cada libro.",
+              "english": "He understood that the late teacher had not completely died, because she was still teaching in every book."
+            },
+            {
+              "text": "Entonces se acercó a la pared negra, tomó un carbón y escribió la primera palabra de la primera clase: «Buenos días».",
+              "english": "Then he went up to the black wall, took a piece of charcoal and wrote the first word of the first class: \"Good morning.\""
+            },
+            {
+              "text": "Su mano ya no temblaba, y su voz, que había sido temblorosa en la puerta, era ahora clara y fuerte.",
+              "english": "His hand no longer trembled, and his voice, which had been trembling at the door, was now clear and strong."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "También don José, con su mano temblorosa, apuntó a la pared negra y dijo: «Eso está bien».",
+              "english": "Don José, too, with his trembling hand, pointed to the black wall and said: \"That is good.\""
+            },
+            {
+              "text": "Afuera, el sol ya había quitado el rocío, y sobre los pinos los pájaros cesaron de cantar para escuchar la voz del maestro nuevo.",
+              "english": "Outside, the sun had already taken away the dew, and above the pine trees the birds ceased singing to listen to the voice of the new teacher."
+            },
+            {
+              "text": "El viento cesó también, y por un momento todo cesó, y el cerro entero pareció escuchar.",
+              "english": "The wind stopped too, and for a moment everything ceased, and the whole hill seemed to listen."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

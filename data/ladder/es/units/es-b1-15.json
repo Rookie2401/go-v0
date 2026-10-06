@@ -1,0 +1,457 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-15",
+  "lang": "es",
+  "title": "Don Rafael y el teatro del molino",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-15",
+    "title": "Don Rafael and the mill theater (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored Spanish for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is written for B1 learners (natural prose at the level of the bridge; its vocabulary is scheduled by the ladder) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. B1 bridge, unit 15: a NEW course-authored news-style profile of a person (the plan asked for \"a news-style profile of a Honduran person (composite or consenting)\"). It is a COMPOSITE and invented profile: the man, the town, the mill theater and every quotation are made up for the course, and the reviewer should decide whether it needs a visible \"invented profile\" label. For the Honduran reviewer: (a) the register is that of a feature in a regional magazine; (b) the stage terms (monólogo, representaba, místico, seductor, filósofo, dioses) describe characters in an amateur comedy; (c) \"aquél\" with accent, \"hombrada\", \"menester\" and \"disparate\" are deliberate pack items placed in quoted speech or comments; (d) informal address in the quotations is voseo; (e) \"molino\" is a corn mill, a familiar building in Honduran towns."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "biography"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Un teatro donde antes hubo un molino",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En un pueblo del norte de Honduras hay un teatro que antes fue un molino.",
+              "english": "In a town in northern Honduras there is a theater that used to be a mill."
+            },
+            {
+              "text": "Todavía se ve la vieja piedra detrás del escenario, y el piso tiene el color del maíz.",
+              "english": "The old stone can still be seen behind the stage, and the floor has the color of corn."
+            },
+            {
+              "text": "El hombre que lo hizo posible se llama Rafael, tiene sesenta y ocho años, y trabajó cuarenta en aquel lugar.",
+              "english": "The man who made it possible is called Rafael, is sixty-eight years old, and worked forty years in that place."
+            },
+            {
+              "text": "«Cuando lo cerraron, sentí que el pueblo perdía una parte de su cuerpo —cuenta—.",
+              "english": "\"When they closed it, I felt that the town was losing a part of its body,\" he says."
+            },
+            {
+              "text": "Pero yo tenía en la mente una idea fija.»",
+              "english": "\"But I had a fixed idea in my mind.\""
+            },
+            {
+              "text": "La idea era hacer obras para todos.",
+              "english": "The idea was to put on plays for everyone."
+            },
+            {
+              "text": "Don Rafael nunca estudió arte ni letras; sólo había leído, de noche, los pocos libros que tenía en su casa.",
+              "english": "Don Rafael never studied art or literature; he had only read, at night, the few books he had in his house."
+            },
+            {
+              "text": "Su propósito era fácil: darle un uso nuevo al lugar y a las personas que quedaron sin trabajo.",
+              "english": "His purpose was easy: to give a new use to the place and to the people who were left without work."
+            },
+            {
+              "text": "«Nadie me creyó —dice—.",
+              "english": "\"Nobody believed me,\" he says."
+            },
+            {
+              "text": "Dijeron que era un disparate, y que un molino sirve para trabajar, no para soñar.»",
+              "english": "\"They said it was nonsense, and that a mill is for working, not for dreaming.\""
+            },
+            {
+              "text": "Pero su voluntad era más fuerte que el desprecio de los que se reían.",
+              "english": "But his will was stronger than the contempt of those who laughed."
+            },
+            {
+              "text": "Con la ayuda de su primo Mario, que era carpintero, levantó un escenario alto.",
+              "english": "With the help of his cousin Mario, who was a carpenter, he built a high stage."
+            },
+            {
+              "text": "Ambos trabajaron seis meses, de noche y los domingos, sin pedir nada.",
+              "english": "The two of them worked for six months, at night and on Sundays, without asking for anything."
+            },
+            {
+              "text": "Mario tenía un propósito más pequeño: «Yo sólo quería que mi primo no se quedara solo».",
+              "english": "Mario had a smaller purpose: \"I only wanted my cousin not to be left alone.\""
+            },
+            {
+              "text": "—No sé de dónde sacó esa idea —dijo Mario—.",
+              "english": "\"I do not know where he got that idea,\" Mario said."
+            },
+            {
+              "text": "Pero ambos sabíamos que era un disparate bonito.",
+              "english": "\"But we both knew it was a lovely nonsense.\""
+            },
+            {
+              "text": "Su esposa insinuó una vez que debía descansar, y Mario insinuó que además faltaba dinero.",
+              "english": "His wife once hinted that he should rest, and Mario hinted that besides, money was lacking."
+            },
+            {
+              "text": "Los vecinos le tenían respeto, pero algunos aún hablaban con desprecio de aquel disparate.",
+              "english": "The neighbors respected him, but some still spoke with contempt of that nonsense."
+            },
+            {
+              "text": "Esos hombres tenían la mente cerrada, decía don Rafael, y la mente cerrada no deja entrar el arte.",
+              "english": "Those men had a closed mind, don Rafael said, and a closed mind does not let art in."
+            },
+            {
+              "text": "Para ellos, todo era un secreto, y nada era un esfuerzo.",
+              "english": "For them, everything was a secret, and nothing was an effort."
+            },
+            {
+              "text": "Entonces el propósito se volvió más grande: no sólo hacer una obra, sino ofrecerle al pueblo las letras que nunca tuvo.",
+              "english": "Then the purpose became bigger: not just to put on a play, but to offer the town the letters it never had."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los dioses, los soldados y el filósofo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La primera obra se llamó «La fiesta de los dioses», y fue una obra para reír, escrita por el propio don Rafael.",
+              "english": "The first play was called \"The Feast of the Gods,\" and it was a play for laughing, written by don Rafael himself."
+            },
+            {
+              "text": "Veinte vecinos ayudaron, y casi todos eran hombres del campo o amas de casa.",
+              "english": "Twenty neighbors helped, and almost all were men from the countryside or housewives."
+            },
+            {
+              "text": "En la obra, los dioses bajan del cielo a un pueblo como el de ellos, y se encuentran con soldados, ladrones y un filósofo.",
+              "english": "In the play, the gods come down from the sky to a town like theirs, and they meet soldiers, thieves and a philosopher."
+            },
+            {
+              "text": "El filósofo era Marvin, un mecánico de cuarenta años que nunca había leído un libro de teoría.",
+              "english": "The philosopher was Marvin, a mechanic of forty who had never read a book of theory."
+            },
+            {
+              "text": "«Yo representaba al filósofo sin saber qué era —dice Marvin, riéndose—.",
+              "english": "\"I played the philosopher without knowing what that was,\" says Marvin, laughing."
+            },
+            {
+              "text": "Don Rafael me dijo: \"Pensá algo difícil y decilo despacio\".",
+              "english": "\"Don Rafael told me: 'Think of something hard and say it slowly.'"
+            },
+            {
+              "text": "Y me salió bien.»",
+              "english": "And it went well for me.\""
+            },
+            {
+              "text": "Los soldados eran tres muchachos del pueblo, y uno de ellos lanzó una broma que hizo reír a toda la sala.",
+              "english": "The soldiers were three boys from the town, and one of them threw out a joke that made the whole room laugh."
+            },
+            {
+              "text": "Llevaban ollas en la cabeza, y representaban a los hombres de la guerra.",
+              "english": "They wore pots on their heads, and represented the men of the war."
+            },
+            {
+              "text": "Había también una mujer mística, que hablaba con las rocas, y un seductor que no conquistaba a nadie.",
+              "english": "There was also a mystical woman, who talked to the rocks, and a seducer who conquered nobody."
+            },
+            {
+              "text": "El seductor era Kevin, el hijo del panadero, y su gran hombrada era quitarse el sombrero con una sonrisa.",
+              "english": "The seducer was Kevin, the baker's son, and his great show of manliness was taking off his hat with a smile."
+            },
+            {
+              "text": "Otra hombrada suya fue cantar sin bajar los ojos, y una hombrada más fue no tener miedo a un perro grande.",
+              "english": "Another of his feats was singing without lowering his eyes, and one more feat was not being afraid of a big dog."
+            },
+            {
+              "text": "—Aquél que se cree seductor, nunca lo es —decía don Rafael, con su sonrisa de maestro—.",
+              "english": "\"He who thinks he is a seducer never is,\" don Rafael said, with his teacher's smile."
+            },
+            {
+              "text": "Lo más difícil es hacer reír sin reírse.",
+              "english": "\"The hardest thing is to make people laugh without laughing yourself.\""
+            },
+            {
+              "text": "Ese día, la gente llenó la sala entera, y muchos tuvieron que quedarse de pie, y el pueblo entero habló de eso.",
+              "english": "That day, the people filled the entire hall, and many had to stand, and the whole town talked about it."
+            },
+            {
+              "text": "Los dioses de la obra, vestidos de blanco, lanzaron flores al público, y un hombre místico lanzó una oración.",
+              "english": "The gods of the play, dressed in white, threw flowers to the audience, and a mystical man threw out a prayer."
+            },
+            {
+              "text": "Al final, don Rafael subió con las manos temblando, y dio las gracias.",
+              "english": "At the end, don Rafael went up with trembling hands, and gave thanks."
+            },
+            {
+              "text": "Don Rafael leyó la obra entera en voz alta a los vecinos, y el río, detrás del molino, trajo su corriente de siempre.",
+              "english": "Don Rafael read the whole play aloud to the neighbors, and the river, behind the mill, brought its usual current."
+            },
+            {
+              "text": "—Es menester —dijo— que el pueblo recuerde lo que somos: gente que sabe reír y sabe hacer.",
+              "english": "\"It is necessary,\" he said, \"that the town remember what we are: people who know how to laugh and know how to do.\""
+            },
+            {
+              "text": "Fue un momento en que nadie tuvo menester de nada más.",
+              "english": "It was a moment when nobody had need of anything more."
+            },
+            {
+              "text": "Todo lo demás era vago, y sólo la risa era fija.",
+              "english": "Everything else was vague, and only the laughter was fixed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El monólogo y la locura",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Con los años, el grupo creció, y don Rafael emprendió un trabajo más grande: un monólogo sobre la soledad.",
+              "english": "Over the years, the group grew, and don Rafael undertook a bigger job: a monologue about solitude."
+            },
+            {
+              "text": "Emprender algo así lleva mucho tiempo, y él quiso emprender otra obra más.",
+              "english": "To undertake something like that takes a lot of time, and he wanted to undertake one more play."
+            },
+            {
+              "text": "Lo escribió después de la muerte de su esposa, y lo representaba él mismo, de pie, sin ningún dios ni soldado a su lado.",
+              "english": "He wrote it after his wife's death, and performed it himself, standing, without any god or soldier at his side."
+            },
+            {
+              "text": "—Es la historia de un hombre que habla con una silla vacía —explica—.",
+              "english": "\"It is the story of a man who talks to an empty chair,\" he explains."
+            },
+            {
+              "text": "A veces el odio es sólo soledad sin nombre.",
+              "english": "\"Sometimes hatred is only loneliness without a name.\""
+            },
+            {
+              "text": "En el monólogo, el hombre pasa de la risa al horror, y del horror a una calma mística.",
+              "english": "In the monologue, the man goes from laughter to horror, and from horror to a mystical calm."
+            },
+            {
+              "text": "Al fin, el hombre vislumbraba una luz, y en esa luz vislumbraba el fin de su soledad.",
+              "english": "At last, the man glimpsed a light, and in that light he glimpsed the end of his solitude."
+            },
+            {
+              "text": "La gente lloró.",
+              "english": "People cried."
+            },
+            {
+              "text": "—Aquél fue el día en que entendí qué es el arte —dijo una vecina—.",
+              "english": "\"That was the day I understood what art is,\" said a neighbor."
+            },
+            {
+              "text": "Es cuando uno ve a otro y vislumbraba a sí mismo.",
+              "english": "\"It is when you see another person and glimpse yourself.\""
+            },
+            {
+              "text": "Don Rafael cuenta que esa noche respiró con calma por primera vez en un año.",
+              "english": "Don Rafael says that night he breathed calmly for the first time in a year."
+            },
+            {
+              "text": "—Respirar es una virtud —dijo—.",
+              "english": "\"Breathing is a virtue,\" he said."
+            },
+            {
+              "text": "Muchos de nosotros vivimos sin hacerlo, con el pecho cerrado.",
+              "english": "\"Many of us live without doing it, with a closed chest.\""
+            },
+            {
+              "text": "Y otra virtud, añadió, es perdonar el odio de los que no entienden.",
+              "english": "And another virtue, he added, is to forgive the hatred of those who do not understand."
+            },
+            {
+              "text": "Hay quien pretende que el teatro de gente sin oficio es una locura.",
+              "english": "There are those who claim that theater by people with no trade is madness."
+            },
+            {
+              "text": "Don Rafael se ríe: «Pretenden mucho, y hacen poco.",
+              "english": "Don Rafael laughs: \"They claim a lot, and do little."
+            },
+            {
+              "text": "Mi locura, por lo menos, trae gente al lugar».",
+              "english": "My madness, at least, brings people to the place.\""
+            },
+            {
+              "text": "No todo fue fácil.",
+              "english": "Not everything was easy."
+            },
+            {
+              "text": "Una vez, un joven que veía en esto un secreto para ser importante se apartó del grupo y lo dejó sin nadie para el papel principal.",
+              "english": "Once, a young man who saw in this a secret to becoming important left the group and left it with nobody for the main part."
+            },
+            {
+              "text": "Don Rafael lo dejó ir, sin odio: «Cada uno sigue la corriente que le toca —dijo—, y uno no puede detener el río».",
+              "english": "Don Rafael let him go, without hatred: \"Each one follows the current that falls to him,\" he said, \"and one cannot stop the river.\""
+            },
+            {
+              "text": "Otro se apartó con horror cuando supo que el monólogo hablaba de una muerte, y una mujer lo dejó por locura de amor.",
+              "english": "Another one drew away in horror when he learned that the monologue spoke of a death, and a woman left it out of lovesickness."
+            },
+            {
+              "text": "El grupo, sin embargo, siguió la corriente de siempre.",
+              "english": "The group, however, followed the usual current."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lo que pretende el teatro",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy hay cuarenta vecinos que actúan, cinco jóvenes que tocan música y cantan las letras que escribe don Rafael, y un público que llena cada viernes la sala.",
+              "english": "Today there are forty neighbors who act, five young people who play music and sing the lyrics don Rafael writes, and an audience that fills the hall every Friday."
+            },
+            {
+              "text": "Don Rafael ya no actúa; se queda detrás del escenario, mirando todo con la misma mirada fija de siempre.",
+              "english": "Don Rafael no longer acts; he stays behind the stage, watching everything with the same fixed look as always."
+            },
+            {
+              "text": "—¿Qué pretende usted? —le preguntó una vez un hombre, con cierto desprecio.",
+              "english": "\"What do you intend?\" a man once asked him, with a certain contempt."
+            },
+            {
+              "text": "—Nada grande —respondió—.",
+              "english": "\"Nothing big,\" he answered."
+            },
+            {
+              "text": "Resucitar lo que murió, aunque sea un molino.",
+              "english": "\"To bring back to life what died, even if it is a mill."
+            },
+            {
+              "text": "Mi sueño es resucitar el viejo oficio de contar.",
+              "english": "My dream is to bring back the old trade of telling stories.\""
+            },
+            {
+              "text": "El hombre insinuó que eso era una fantasía, y que los pueblos pequeños no vivían de obras para reír.",
+              "english": "The man hinted that this was a fantasy, and that small towns did not live on plays for laughing."
+            },
+            {
+              "text": "—La fantasía —contestó don Rafael— es la mitad de la fortuna de un pueblo.",
+              "english": "\"Fantasy,\" don Rafael answered, \"is half of a town's fortune."
+            },
+            {
+              "text": "La otra mitad es el empeño.",
+              "english": "The other half is effort."
+            },
+            {
+              "text": "Sin fantasía no se vive, y sin empeño no se resucita nada.",
+              "english": "Without fantasy one does not live, and without effort nothing is brought back to life.\""
+            },
+            {
+              "text": "Hasta ahora, la fortuna le ha sonreído: encontró un lugar y encontró amigos, y el pueblo regaló las luces.",
+              "english": "So far, fortune has smiled on him: he found a place and found friends, and the town gave the lights."
+            },
+            {
+              "text": "Pero él dice que su verdad no es la fortuna, sino el empeño de quienes lo acompañan.",
+              "english": "But he says that his truth is not fortune, but the effort of those who accompany him."
+            },
+            {
+              "text": "Su verdad es que nada es un secreto.",
+              "english": "His truth is that nothing is a secret."
+            },
+            {
+              "text": "—Ambos nos necesitamos —dice, y habla de su primo Mario, que ahora arregla las sillas—.",
+              "english": "\"We both need each other,\" he says, and speaks of his cousin Mario, who is now fixing the chairs."
+            },
+            {
+              "text": "Yo con mi cabeza, y él con sus manos.",
+              "english": "\"I with my head, and he with his hands.\""
+            },
+            {
+              "text": "Casi todos los vecinos no creen en la teoría, pero todos creen en la reunión del viernes.",
+              "english": "Almost all the neighbors do not believe in theory, but everybody believes in the Friday meeting."
+            },
+            {
+              "text": "Marvin dice que don Rafael tiene una virtud grande: sabe referir una historia sin cansar a nadie.",
+              "english": "Marvin says that don Rafael has a great virtue: he knows how to tell a story without tiring anyone."
+            },
+            {
+              "text": "—Cuando él se refiere al pasado —dice—, uno siente que el lugar todavía trabaja.",
+              "english": "\"When he refers to the past,\" he says, \"you feel the place is still working."
+            },
+            {
+              "text": "Sabe referir cuentos de su abuelo como nadie.",
+              "english": "He knows how to relate stories of his grandfather like no one else.\""
+            },
+            {
+              "text": "Hay algo vago en su sonrisa, dicen algunos, como si supiera una teoría que no cuenta.",
+              "english": "There is something vague in his smile, some say, as if he knew a theory he does not tell."
+            },
+            {
+              "text": "Don Rafael contesta que la vida es vaga hasta que uno la vive, y que lo vago le da miedo sólo a los que no actúan.",
+              "english": "Don Rafael answers that life is vague until one lives it, and that the vague scares only those who do not act."
+            },
+            {
+              "text": "La última obra, «La hermosura del maíz», cuenta la historia de los hombres que vivieron de aquel lugar.",
+              "english": "The latest play, \"The Beauty of Corn,\" tells the story of the men who lived off that place."
+            },
+            {
+              "text": "Ahí no hay dioses ni ladrones, sólo trabajadores, hombres y mujeres con la hermosura del trabajo.",
+              "english": "There are no gods or thieves there, only workers, men and women with the beauty of work."
+            },
+            {
+              "text": "Y la hermosura de la obra, dicen todos, es que nadie miente.",
+              "english": "And the beauty of the play, everyone says, is that nobody lies."
+            },
+            {
+              "text": "Al terminar, don Rafael se queda solo un momento en la sala vacía, con los ojos cerrados.",
+              "english": "When it ends, don Rafael stays alone for a moment in the empty hall, with his eyes closed."
+            },
+            {
+              "text": "Respira, mira la vieja piedra y sonríe: «Todo molino necesita su sueño».",
+              "english": "He breathes, looks at the old stone and smiles: \"Every mill needs its dream.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

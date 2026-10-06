@@ -1,0 +1,656 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-08",
+  "lang": "es",
+  "title": "¿Qué es internet?",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-08",
+    "title": "What is the internet? (ladder unit, adapted and machine-drafted)",
+    "author": "Go course authors (drafted by an AI model), adapted from an open-licence text",
+    "attribution": "Adapted from \"Dentro de la World Wide Web\" by Roopa Pai (illustrations by Delwyn Remedios), Pratham Books / StoryWeaver, via the Global Digital Library, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Changes: shortened, retold as a conversation between a young woman and her uncle in Honduras, Spain-isms replaced by Honduran words (computadora, celular), the character Nettikutti, the Indian examples and the name of the inventor left out, new passages added; adapted and machine-drafted for the course, not reviewed by a native speaker.",
+    "provenance": "Adapted by an AI model from an openly licensed text (Dentro de la World Wide Web (Roopa Pai; illustrations by Delwyn Remedios), Pratham Books / StoryWeaver, Global Digital Library gdl-1185, CC BY 4.0) for the course; not reviewed by a native speaker. Simplified and rewritten for learners (Spain-isms replaced by Honduran words) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licenseNote": "CC BY 4.0; attribution required and changes must be indicated. This unit is an adaptation: the changes are described in \"modifications\".",
+    "authorship": "generated",
+    "url": "https://content.digitallibrary.io/es-es/book/dentro-de-la-world-wide-web/",
+    "publisher": "StoryWeaver (Pratham Books); Global Digital Library",
+    "licence": "CC BY 4.0",
+    "modifications": "Shortened to about 1,300 words; retold as a dialogue (voseo) between a young woman and her uncle in a small Honduran town; Peninsular words replaced (ordenador to computadora, móvil to celular, vosotros forms removed); the character Nettikutti, the Indian examples and the inventor's name omitted; the idea of the web as a network of pages, the email and search examples, the CERN story and the \"hip hip hurra\" cheer kept in outline; new passages added about a farmer sharing a photograph of a banana harvest and a letter to a brother who has left the country. The English lines are the drafter's own."
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. B1 bridge, unit 08: an ADAPTATION of the open-licence (CC BY 4.0) Global Digital Library text \"Dentro de la World Wide Web\", as the plan allows (owner decision of 2026-10-06 (1) applies only to Gutenberg texts). The source credit and the list of changes are in the source block. For the Honduran reviewer: (a) computadora and celular replace the Peninsular ordenador and móvil; (b) the dialogue uses voseo between the young woman and her uncle; (c) \"jip, jip, hurra\" is kept from the source (the lemma pack asks for it): check that it reads naturally for a Honduran reader or replace it with the local cheer; (d) \"francés\", \"madura\", \"cosecha\", \"puya\", \"cáscara\" and \"envuelto\" prepare the next unit, a story about a farmer; (e) the farmer, the buyer and the family are invented."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "explanation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Una pregunta en el taller",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Karla es una muchacha de dieciséis años, y su tío Tomás trabaja en un taller de computadoras, en la esquina del parque.",
+              "english": "Karla is a sixteen-year-old girl, and her uncle Tomás works in a computer shop on the corner of the park."
+            },
+            {
+              "text": "Una tarde, ella llega al taller con una pregunta, y se queda mirando a su tío con una mirada de duda.",
+              "english": "One afternoon, she comes to the shop with a question, and she stays looking at her uncle with a look of doubt."
+            },
+            {
+              "text": "—Tío, todos hablan de internet, pero yo no sé qué es.",
+              "english": "\"Uncle, everybody talks about the internet, but I do not know what it is.\""
+            },
+            {
+              "text": "—¿Ni siquiera vos, que tenés celular? —le dice él, sonriendo.",
+              "english": "\"Not even you, who have a cell phone?\" he says, smiling."
+            },
+            {
+              "text": "—Lo uso, pero no lo entiendo.",
+              "english": "\"I use it, but I do not understand it."
+            },
+            {
+              "text": "Es como manejar un carro sin saber qué hay debajo.",
+              "english": "It is like driving a car without knowing what is underneath.\""
+            },
+            {
+              "text": "Tomás la mira con una mirada tranquila, todavía sonriendo.",
+              "english": "Tomás looks at her with a calm look, still smiling."
+            },
+            {
+              "text": "La muchacha se sienta delante de él, con calma.",
+              "english": "The girl sits in front of him, calmly."
+            },
+            {
+              "text": "—Es una buena pregunta —dice—.",
+              "english": "\"It is a good question,\" he says."
+            },
+            {
+              "text": "Sentate, y te lo explico.",
+              "english": "\"Sit down, and I will explain it to you.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una red de redes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Internet es una red muy grande de computadoras —empieza el tío—.",
+              "english": "\"The internet is a very large network of computers,\" the uncle begins."
+            },
+            {
+              "text": "Millones de ellas, conectados entre sí en todo el mundo.",
+              "english": "\"Millions of them, connected to each other all over the world.\""
+            },
+            {
+              "text": "—¿Sólo ellas? —pregunta Karla.",
+              "english": "\"Only them?\" Karla asks."
+            },
+            {
+              "text": "—No sólo.",
+              "english": "\"Not only."
+            },
+            {
+              "text": "Incluso un celular como el tuyo es una computadora pequeña, y está con todas las otras.",
+              "english": "Even a cell phone like yours is a small computer, and it is with all the others.\""
+            },
+            {
+              "text": "—Pero no veo nada entre ellas.",
+              "english": "\"But I see nothing between them."
+            },
+            {
+              "text": "Dicen que estamos conectados, ¿pero cómo?",
+              "english": "They say we are connected, but how?\""
+            },
+            {
+              "text": "—Algunas van por debajo de la tierra, incluso por el fondo del mar, y otras no necesitan nada.",
+              "english": "\"Some go under the ground, even through the bottom of the sea, and others need nothing."
+            },
+            {
+              "text": "Por eso podés caminar por la calle y seguir conectada.",
+              "english": "That is why you can walk down the street and stay connected.\""
+            },
+            {
+              "text": "—Es una realidad que no entiendo bien —dice ella—.",
+              "english": "\"It is a reality I do not understand well,\" she says."
+            },
+            {
+              "text": "Es una realidad muy grande.",
+              "english": "\"It is a very big reality."
+            },
+            {
+              "text": "¿Quién es el dueño de todo eso?",
+              "english": "Who owns all that?\""
+            },
+            {
+              "text": "—Nadie es el único dueño, y ese es el efecto más bonito.",
+              "english": "\"Nobody is the only owner, and that is the nicest effect."
+            },
+            {
+              "text": "Es una red libre, y cualquiera puede usarla.",
+              "english": "It is a free network, and anyone can use it.\""
+            },
+            {
+              "text": "Karla se queda callada, con la mano en la frente, frente a la mesa vacía.",
+              "english": "Karla stays quiet, with her hand on her forehead, in front of the empty table."
+            },
+            {
+              "text": "Es un pensamiento nuevo para ella: algo tan grande, sin un solo dueño.",
+              "english": "It is a new thought for her: something so big, without a single owner."
+            },
+            {
+              "text": "—Libre, sin un jefe, y con un solo efecto: todos podemos hablar.",
+              "english": "\"Free, without a boss, and with a single effect: all of us can talk.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La web y sus páginas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Pero la web no es internet —dice Tomás.",
+              "english": "\"But the web is not the internet,\" says Tomás."
+            },
+            {
+              "text": "—¿No?",
+              "english": "\"No?\""
+            },
+            {
+              "text": "—Karla levanta la frente—.",
+              "english": "Karla raises her brow."
+            },
+            {
+              "text": "¿Y entonces qué es?",
+              "english": "\"Then what is it?\""
+            },
+            {
+              "text": "—Internet es la red, y la web es lo que hay en ella: una colección muy grande de páginas.",
+              "english": "\"The internet is the network, and the web is what is in it: a very large collection of pages."
+            },
+            {
+              "text": "Hoy hay millones y millones.",
+              "english": "Today there are millions and millions.\""
+            },
+            {
+              "text": "—¿Y qué es una página?",
+              "english": "\"And what is a page?\""
+            },
+            {
+              "text": "—Es como un papel, pero con información: palabras, números, una imagen, una canción, una película.",
+              "english": "\"It is like a paper, but with information: words, numbers, an image, a song, a film.\""
+            },
+            {
+              "text": "—¿Y por qué se llama web?",
+              "english": "\"And why is it called web?\""
+            },
+            {
+              "text": "—Porque cada una va con otras, y esa palabra quiere decir red.",
+              "english": "\"Because each one goes with others, and that word means network.\""
+            },
+            {
+              "text": "—Pensalo varias veces, hasta que sea normal —dice Tomás—.",
+              "english": "\"Think about it several times, until it is normal,\" says Tomás."
+            },
+            {
+              "text": "Yo lo pensé varias horas.",
+              "english": "\"I thought about it for several hours.\""
+            },
+            {
+              "text": "—¿Y cómo llego a la página que quiero, entre tantas?",
+              "english": "\"And how do I get to the page I want, among so many?\""
+            },
+            {
+              "text": "—Cada una tiene una dirección, igual que tu casa.",
+              "english": "\"Each one has an address, just like your house."
+            },
+            {
+              "text": "Si conocés la dirección, vas ahí.",
+              "english": "If you know the address, you go there."
+            },
+            {
+              "text": "Y si no, se lo preguntás a ella, y te ayuda a buscar.",
+              "english": "And if not, you ask it, and it helps you search.\""
+            },
+            {
+              "text": "—¡Qué genial! —dice Karla—.",
+              "english": "\"How great!\" says Karla."
+            },
+            {
+              "text": "Es como preguntarle a alguien que lo sabe todo.",
+              "english": "\"It is like asking someone who knows everything.\""
+            },
+            {
+              "text": "Ante esa idea, Tomás ríe.",
+              "english": "Faced with that idea, Tomás laughs."
+            },
+            {
+              "text": "—Casi.",
+              "english": "\"Almost."
+            },
+            {
+              "text": "Pero también hay mentiras, y por eso, ante todo, uno tiene que pensar antes de creer.",
+              "english": "But there are also lies, and that is why, above all, one has to think before believing."
+            },
+            {
+              "text": "Eso no es nada genial.",
+              "english": "That is not great at all.\""
+            },
+            {
+              "text": "—¿Y cuánto cuesta todo eso? —pregunta Karla.",
+              "english": "\"And how much does all that cost?\" Karla asks."
+            },
+            {
+              "text": "—Cada mes hay que pagar por eso, pero lo que compartís no cuesta nada.",
+              "english": "\"Every month you have to pay for that, but what you share costs nothing."
+            },
+            {
+              "text": "Para muchos, eso ya es mucho.",
+              "english": "For many people, that is already a lot.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Compartir una cosecha",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Mirá este caso —sigue el tío—.",
+              "english": "\"Look at this case,\" the uncle goes on."
+            },
+            {
+              "text": "Don Mario es campesino, y tiene una finca de plátanos.",
+              "english": "\"Don Mario is a farmer, and he has a banana farm."
+            },
+            {
+              "text": "La cosecha de este año fue muy buena, y todo el plátano está maduro.",
+              "english": "This year's harvest was very good, and all the plantain is ripe.\""
+            },
+            {
+              "text": "—¿Y qué hace con eso?",
+              "english": "\"And what does he do with that?\""
+            },
+            {
+              "text": "—Ayer sacó una imagen de su cosecha con el celular, y la compartió.",
+              "english": "\"Yesterday he took a picture of his harvest with his cell phone, and shared it."
+            },
+            {
+              "text": "Se ve el plátano en su cáscara color sol, y alguno con una puya negra en la punta.",
+              "english": "You can see the plantain in its sun-colored peel, and one with a black thorn at the tip."
+            },
+            {
+              "text": "Una puya cuesta dinero, y la puya se corta antes de enviar la imagen.",
+              "english": "A thorn costs money, and the thorn is cut off before the image is sent.\""
+            },
+            {
+              "text": "—Don Mario no sabía ni siquiera escribir un correo, ni siquiera un mensaje.",
+              "english": "\"Don Mario did not even know how to write an email, not even a message."
+            },
+            {
+              "text": "Su hija le enseñó, y ahora él pone cada foto con su dirección.",
+              "english": "His daughter taught him, and now he puts each photo with its address.\""
+            },
+            {
+              "text": "—¿Y quién ve esa colección de fotos?",
+              "english": "\"And who sees that collection of photos?\""
+            },
+            {
+              "text": "—Cualquier persona, en cualquier lugar.",
+              "english": "\"Any person, anywhere."
+            },
+            {
+              "text": "Un señor de Francia ve que los plátanos están dulces, que el plátano está maduro, y manda un correo en francés para preguntar el precio.",
+              "english": "A man from France sees that the plantains are sweet, that the plantain is ripe, and sends an email in French to ask the price.\""
+            },
+            {
+              "text": "—Pero don Mario no habla francés.",
+              "english": "\"But don Mario does not speak French.\""
+            },
+            {
+              "text": "—Su hija sí habla francés, y la colección de fotos hace lo demás.",
+              "english": "\"His daughter speaks French, and the collection of photos does the rest."
+            },
+            {
+              "text": "También mandó unos dulces, en un paquete.",
+              "english": "He also sent some sweets, in a package.\""
+            },
+            {
+              "text": "—¿Y llega el mismo día?",
+              "english": "\"And it arrives the same day?\""
+            },
+            {
+              "text": "—En menos de un minuto, y no cuesta nada.",
+              "english": "\"In less than a minute, and it costs nothing."
+            },
+            {
+              "text": "Antes, una carta de papel tardaba semanas.",
+              "english": "Before, a paper letter took weeks."
+            },
+            {
+              "text": "Y un paquete envuelto tardaba más.",
+              "english": "And a wrapped package took longer.\""
+            },
+            {
+              "text": "—¿Y los plátanos también viajan así?",
+              "english": "\"And do the plantains also travel like that?\""
+            },
+            {
+              "text": "—No —ríe Tomás—.",
+              "english": "\"No,\" Tomás laughs."
+            },
+            {
+              "text": "Sólo la información.",
+              "english": "\"Only the information."
+            },
+            {
+              "text": "Los plátanos dulces van en un paquete, envuelto en papel, por el camino.",
+              "english": "The sweet plantains go in a package, wrapped in paper, along the road.\""
+            },
+            {
+              "text": "—Conque una imagen vende una cosecha —dice Karla—.",
+              "english": "\"So an image sells a harvest,\" says Karla."
+            },
+            {
+              "text": "Conque así empieza todo.",
+              "english": "\"So that is how everything starts.\""
+            },
+            {
+              "text": "—Así empieza.",
+              "english": "\"That is how it starts."
+            },
+            {
+              "text": "En una ocasión, don Mario vendió todo en un día.",
+              "english": "On one occasion, don Mario sold everything in a day."
+            },
+            {
+              "text": "En otra ocasión, ganó más que en el año.",
+              "english": "On another occasion, he earned more than in the whole year."
+            },
+            {
+              "text": "Para él, es puro gusto.",
+              "english": "For him, it is pure pleasure.\""
+            },
+            {
+              "text": "—Conque ya lo sabés —dice Tomás, y toca la mesa con la punta del dedo—.",
+              "english": "\"So now you know,\" says Tomás, and touches the table with the tip of his finger."
+            },
+            {
+              "text": "La web también sirve para trabajar.",
+              "english": "\"The web is also good for working.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cuidado con la red",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Pero hay peligros, ¿verdad? —dice ella.",
+              "english": "\"But there are dangers, right?\" she says."
+            },
+            {
+              "text": "—Sí.",
+              "english": "\"Yes."
+            },
+            {
+              "text": "Cualquiera puede escribir cualquier cosa, y no todo es verdad.",
+              "english": "Anyone can write anything, and not everything is true."
+            },
+            {
+              "text": "Una página puede mentir.",
+              "english": "A page can lie."
+            },
+            {
+              "text": "Ese es el único problema.",
+              "english": "That is the only problem.\""
+            },
+            {
+              "text": "—¿Y cómo sé qué es verdad?",
+              "english": "\"And how do I know what is true?\""
+            },
+            {
+              "text": "—Preguntá a una persona que sepa, y leé varias páginas.",
+              "english": "\"Ask a person who knows, and read several pages."
+            },
+            {
+              "text": "Un buen pensamiento vale más que cien fotos.",
+              "english": "A good thought is worth more than a hundred photos.\""
+            },
+            {
+              "text": "—También hay que cuidar la información propia —dice Tomás—.",
+              "english": "\"You also have to take care of your own information,\" says Tomás."
+            },
+            {
+              "text": "Tu nombre, tu casa, tus cosas.",
+              "english": "\"Your name, your house, your things.\""
+            },
+            {
+              "text": "—Eso lo sé: no se la doy a cualquiera.",
+              "english": "\"That I know: I do not give it to just anyone.\""
+            },
+            {
+              "text": "—Muy bien.",
+              "english": "\"Very good."
+            },
+            {
+              "text": "Así todo es más libre, pero tu información no tiene que serlo.",
+              "english": "That way everything is freer, but your information does not have to be."
+            },
+            {
+              "text": "Es lo único que no se comparte.",
+              "english": "It is the only thing you do not share.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Quién tuvo la idea",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—¿Y quién tuvo la idea de todo esto? —pregunta la muchacha.",
+              "english": "\"And who had the idea for all this?\" the girl asks."
+            },
+            {
+              "text": "—Un hombre que trabajaba en el CERN, un gran centro de Suiza.",
+              "english": "\"A man who worked at CERN, a large center in Switzerland."
+            },
+            {
+              "text": "Allí muchos trabajaban juntos, pero no podían compartir su trabajo rápido.",
+              "english": "Many people worked together there, but they could not share their work quickly."
+            },
+            {
+              "text": "Muchas veces tenían que viajar.",
+              "english": "Many times they had to travel.\""
+            },
+            {
+              "text": "—Y mandar cartas de papel —dice ella.",
+              "english": "\"And send paper letters,\" she says."
+            },
+            {
+              "text": "—Eso.",
+              "english": "\"Exactly."
+            },
+            {
+              "text": "Entonces él pensó en una manera de poner todo lo que sabían en una sola red.",
+              "english": "Then he thought of a way to put everything they knew into a single network."
+            },
+            {
+              "text": "Fue un efecto muy grande: todos podían leer lo mismo, a la vez.",
+              "english": "It was a very big effect: everybody could read the same thing at once.\""
+            },
+            {
+              "text": "—¿Y la idea fue buena?",
+              "english": "\"And was the idea good?\""
+            },
+            {
+              "text": "—Muy buena.",
+              "english": "\"Very good."
+            },
+            {
+              "text": "Y en una ocasión, ante todos, dijo que la idea no era sólo del CERN.",
+              "english": "And on one occasion, before everybody, he said the idea was not only CERN's."
+            },
+            {
+              "text": "La dio a todos, sin pedir dinero.",
+              "english": "He gave it to everyone, without asking for money."
+            },
+            {
+              "text": "Incluso los que no tenían nada pudieron usarla.",
+              "english": "Even those who had nothing could use it.\""
+            },
+            {
+              "text": "—¡Qué idea tan buena! —dice Karla—.",
+              "english": "\"What a good idea!\" says Karla."
+            },
+            {
+              "text": "Ese hombre tenía un pensamiento muy grande.",
+              "english": "\"That man had a very big thought.\""
+            },
+            {
+              "text": "—Por eso hoy millones de personas usan la web.",
+              "english": "\"That is why millions of people use the web today."
+            },
+            {
+              "text": "Si hubiera dicho que no, todo sería diferente.",
+              "english": "If he had said no, everything would be different.\""
+            },
+            {
+              "text": "—Entonces merece un buen jip —dice Karla.",
+              "english": "\"Then he deserves a good hip,\" says Karla."
+            },
+            {
+              "text": "—¡Jip, jip, hurra! —gritan los dos, y se ríen.",
+              "english": "\"Hip, hip, hooray!\" they both shout, and laugh."
+            },
+            {
+              "text": "Es una idea genial, piensan, y una realidad más bonita que un cuento.",
+              "english": "It is a great idea, they think, and a reality prettier than a tale."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una carta distinta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche, Karla se sienta delante de la computadora de su casa, y le tiembla la mano.",
+              "english": "That night, Karla sits in front of the computer at her house, and her hand trembles."
+            },
+            {
+              "text": "Una finca madura, un plátano maduro, un señor de Francia: todo eso cabe en un celular.",
+              "english": "A ripe farm, a ripe plantain, a man from France: all of that fits in a cell phone."
+            },
+            {
+              "text": "Su hermano mayor se fue hace dos años a otro país, y ella nunca le escribió.",
+              "english": "Her older brother went away two years ago to another country, and she never wrote to him."
+            },
+            {
+              "text": "Siempre pensaba: «¿Qué le voy a decir?».",
+              "english": "She always thought: \"What am I going to tell him?\""
+            },
+            {
+              "text": "Pero ahora no tiene miedo, y escribe: «Hola, hermano.",
+              "english": "But now she is not afraid, and she writes: \"Hello, brother."
+            },
+            {
+              "text": "Hoy aprendí qué es eso.»",
+              "english": "Today I learned what that is.\""
+            },
+            {
+              "text": "Piensa en la mirada de su hermano en el aeropuerto, y la mano le temblaba tanto que casi no podía escribir.",
+              "english": "She thinks of her brother's look at the airport, and her hand trembled so much that she could hardly write."
+            },
+            {
+              "text": "Agrega una frase sobre la novela que está leyendo, porque a él siempre le gustaban las novelas.",
+              "english": "She adds a sentence about the novel she is reading, because he always liked novels."
+            },
+            {
+              "text": "Y sigue con otra novela, la que él dejó a medias antes de marcharse.",
+              "english": "And she goes on with another novel, the one he left half-read before leaving."
+            },
+            {
+              "text": "Cuando termina, el mensaje se va, y ella se queda un rato sonriendo, con los ojos llenos de agua.",
+              "english": "When she finishes, the message goes, and she stays a while smiling, with her eyes full of water."
+            },
+            {
+              "text": "Ella tampoco quería marcharse de la silla: no quería marcharse hasta recibir una respuesta.",
+              "english": "She did not want to leave the chair either: she did not want to leave until she received an answer."
+            },
+            {
+              "text": "En menos de un minuto llega la respuesta: «Qué bueno, Karla.",
+              "english": "In less than a minute the answer arrives: \"How good, Karla."
+            },
+            {
+              "text": "¿Ya sabés que me alegraste el día?»",
+              "english": "Do you know you made my day?\""
+            },
+            {
+              "text": "La mano todavía le temblaba, pero ahora de alegría, y Karla pensó que todo eso era puro milagro.",
+              "english": "Her hand was still trembling, but now with joy, and Karla thought that all of that was pure miracle."
+            },
+            {
+              "text": "Y era puro gusto también.",
+              "english": "And it was pure pleasure too."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

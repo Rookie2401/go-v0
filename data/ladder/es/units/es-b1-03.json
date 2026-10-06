@@ -1,0 +1,474 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-03",
+  "lang": "es",
+  "title": "Los cuentos que la aldea no quiere olvidar",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-03",
+    "title": "The stories the village does not want to forget (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored Spanish for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is written for B1 learners (natural prose at the level of the bridge; its vocabulary is scheduled by the ladder) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. B1 bridge, unit 03: a NEW course-authored news feature in the style of an online news site (the plan's design: written to teach the missing words of the Global Voices excerpt that follows as unit 04). It is a COMPOSITE and invented report, not a real news item: the village, the teacher, the elders and every quotation are made up for the course, and the reviewer should decide whether it needs a visible \"invented feature\" label. For the Honduran reviewer: (a) news register (past tense, quotations, \"según\"); (b) the Tharu comparison paragraph refers to the people of eastern Nepal and their clay fire pot (the borais), which the next unit's excerpt also mentions; check that it reads as a natural aside; (c) \"cogió\" and \"aun\" (without accent) are deliberate, as the lemma pack asks; (d) informal address is voseo inside the quotations; (e) the \"señorita\" title for a teacher is common in Honduran schools."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "contemporary-nonfiction"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Una maestra y los cuentos de los abuelos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "NORTE DE HONDURAS.",
+              "english": "NORTHERN HONDURAS."
+            },
+            {
+              "text": "Cada viernes por la tarde, la señorita Elena llega a la escuela de la aldea con un cuaderno en la mano.",
+              "english": "Every Friday afternoon, Miss Elena arrives at the village school with a notebook in her hand."
+            },
+            {
+              "text": "No viene a dar clase: viene a escuchar.",
+              "english": "She does not come to teach a class: she comes to listen."
+            },
+            {
+              "text": "Desde hace dos años, la maestra reúne los cuentos que los abuelos cuentan de noche, y los escribe con sus alumnos.",
+              "english": "For two years, the teacher has been collecting the stories the grandparents tell at night, and writing them down with her students."
+            },
+            {
+              "text": "Según ella, el folclore de la zona está en peligro.",
+              "english": "According to her, the folklore of the area is in danger."
+            },
+            {
+              "text": "«Los jóvenes se van a la ciudad, y los viejos se mueren con sus historias —dijo—.",
+              "english": "\"The young people go to the city, and the old ones die with their stories,\" she said."
+            },
+            {
+              "text": "Cuando muere una abuela, es como si se quemara un libro.»",
+              "english": "\"When a grandmother dies, it is as if a book were burned.\""
+            },
+            {
+              "text": "La idea no fue suya, sino de una niña cuya abuela contaba cada noche una historia diferente.",
+              "english": "The idea was not hers, but a girl's, whose grandmother told a different story every night."
+            },
+            {
+              "text": "Hoy ayudan casi cuarenta niños y jóvenes, y la tradición oral de la aldea ya llena cuatro cuadernos grandes.",
+              "english": "Today almost forty children and young people help, and the village's oral tradition already fills four big notebooks."
+            },
+            {
+              "text": "Para la señorita Elena, el folclore y la cultura oral son una sola cosa: lo que un pueblo dice, canta y recuerda.",
+              "english": "For Miss Elena, folklore and oral culture are one and the same: what a people says, sings and remembers."
+            },
+            {
+              "text": "También dice que muchas historias indígenas se perdieron porque nadie las escribió.",
+              "english": "She also says that many indigenous stories were lost because nobody wrote them down."
+            },
+            {
+              "text": "Por eso el folclore de cada pueblo es, para ella, algo que hay que cuidar.",
+              "english": "That is why the folklore of every people is, for her, something that must be looked after."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Personajes del fuego y del río",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Los cuentos tienen personajes muy diferentes.",
+              "english": "The stories have very different characters."
+            },
+            {
+              "text": "Hay personajes benévolos, como la maga que sana a los enfermos, y otros malévolos, como el brujo que roba la voz de los niños.",
+              "english": "There are benevolent characters, like the sorceress who heals the sick, and malevolent ones, like the wizard who steals children's voices."
+            },
+            {
+              "text": "Los fantasmas caminan por el río de noche, y los genios viven en el fondo del lago.",
+              "english": "The ghosts walk along the river at night, and the spirits live at the bottom of the lake."
+            },
+            {
+              "text": "«En mi casa, el brujo les gustaba a todos —contó un estudiante—.",
+              "english": "\"In my house, everybody liked the wizard,\" a student said."
+            },
+            {
+              "text": "Mi abuelo decía que el brujo nunca ganaba, porque la maga siempre llegaba a tiempo.»",
+              "english": "\"My grandfather said that the wizard never won, because the sorceress always arrived in time.\""
+            },
+            {
+              "text": "Algunos de ellos son tristes.",
+              "english": "Some of them are sad."
+            },
+            {
+              "text": "Los genios malévolos, por ejemplo, lloran en el fondo del lago.",
+              "english": "The malevolent spirits, for example, cry at the bottom of the lake."
+            },
+            {
+              "text": "Los personajes benévolos, en cambio, ayudan a los pobres, y casi siempre son pequeños y callados.",
+              "english": "The benevolent characters, on the other hand, help the poor, and they are almost always small and quiet."
+            },
+            {
+              "text": "Los genios benévolos del lago, dicen los niños, cuidan a los pescadores.",
+              "english": "The benevolent spirits of the lake, the children say, look after the fishermen."
+            },
+            {
+              "text": "Pero los fantasmas malévolos sólo hablan de noche: nunca hacen nada malo.",
+              "english": "But the malevolent ghosts only talk at night: they never do anything bad."
+            },
+            {
+              "text": "Otra historia habla de un pescador y de los peces del río.",
+              "english": "Another story is about a fisherman and the fish of the river."
+            },
+            {
+              "text": "La abuela dice que los peces del río saben cuándo va a llover.",
+              "english": "The grandmother says that the fish of the river know when it is going to rain."
+            },
+            {
+              "text": "Un día el pescador cogió demasiados peces, y el río se llevó su barca.",
+              "english": "One day the fisherman caught too many fish, and the river took away his boat."
+            },
+            {
+              "text": "Así aprendió que no se debe pedir más de lo necesario.",
+              "english": "That is how he learned that one should not ask for more than is needed."
+            },
+            {
+              "text": "Otro cuento habla de un pájaro herido que llegó a una casa pobre.",
+              "english": "Another tale is about an injured bird that came to a poor house."
+            },
+            {
+              "text": "La familia cuidó al pájaro durante tres noches, y cuando se fue, volvió cada año con una semilla en el pico.",
+              "english": "The family took care of the bird for three nights, and when it left, it came back every year with a seed in its beak."
+            },
+            {
+              "text": "Según la maestra, ese cuento tiene un punto muy claro: lo bueno siempre regresa.",
+              "english": "According to the teacher, that tale has a very clear point: what is good always comes back."
+            },
+            {
+              "text": "Otro cuento más dice que un hombre cogió una piedra del fondo del lago y se la llevó a su casa.",
+              "english": "Yet another tale says that a man took a stone from the bottom of the lake and carried it to his house."
+            },
+            {
+              "text": "Esa noche, los fantasmas del lago le pidieron la piedra, y él se la devolvió con miedo.",
+              "english": "That night, the ghosts of the lake asked him for the stone, and he gave it back in fear."
+            },
+            {
+              "text": "Ya nadie sabe si el cuento es verdad, pero los niños aún lo repiten con la voz baja.",
+              "english": "Nobody knows any more whether the tale is true, but the children still repeat it in a low voice."
+            },
+            {
+              "text": "En ese punto, la maestra se queda mirando a los niños, porque sabe que ya no olvidan.",
+              "english": "At that point, the teacher stays looking at the children, because she knows they no longer forget."
+            },
+            {
+              "text": "Cada historia revelaba un miedo del pueblo, y cada final decía cómo salir del problema.",
+              "english": "Each story revealed a fear of the village, and each ending said how to get out of the problem."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una expresión que significa más de lo que dice",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Los alumnos no sólo escriben cuentos.",
+              "english": "The students do not only write down tales."
+            },
+            {
+              "text": "También reúnen las frases y las expresiones que los abuelos utilizan todos los días.",
+              "english": "They also gather the phrases and expressions that the grandparents use every day."
+            },
+            {
+              "text": "Una de ellas es «hablar con el fuego», que significa pensar en voz alta cuando uno está solo.",
+              "english": "One of them is \"talking to the fire,\" which means thinking aloud when one is alone."
+            },
+            {
+              "text": "Otra es «tener el corazón en el suelo», que significa estar muy triste.",
+              "english": "Another is \"having your heart on the ground,\" which means being very sad."
+            },
+            {
+              "text": "Otra frase dice que el viento del cerro trae noticias, y que el aire de la noche nunca miente.",
+              "english": "Another phrase says that the wind from the hill brings news, and that the night air never lies."
+            },
+            {
+              "text": "«Una sola expresión revelaba más sobre nuestra gente que un libro —dijo la maestra—.",
+              "english": "\"A single expression revealed more about our people than a book,\" said the teacher."
+            },
+            {
+              "text": "Por eso hay que escribirlas con cuidado.»",
+              "english": "\"That is why they have to be written carefully.\""
+            },
+            {
+              "text": "Cada expresión revelaba también cómo vive el pueblo: si hay hambre, si hay fiesta, si hay miedo.",
+              "english": "Each expression also revealed how the village lives: if there is hunger, if there is a feast, if there is fear."
+            },
+            {
+              "text": "La maestra explica a los niños que cada uno de los datos cuenta: el nombre de la persona, el lugar, la fecha y las palabras que usó.",
+              "english": "The teacher explains to the children that each piece of data counts: the person's name, the place, the date and the words she used."
+            },
+            {
+              "text": "Con esos datos, cada cuento se convierte en un documento que otras personas pueden estudiar.",
+              "english": "With this data, each tale becomes a document that other people can study."
+            },
+            {
+              "text": "Para ella, un documento así vale más que mucho dinero, y todo cuento tiene que decir quién lo contó.",
+              "english": "For her, a document like that is worth more than a lot of money, and every tale has to say who told it."
+            },
+            {
+              "text": "Los datos más importantes son los nombres, porque sin ellos no hay documento.",
+              "english": "The most important data are the names, because without them there is no document."
+            },
+            {
+              "text": "Son especialmente importantes las palabras de las abuelas, porque ellas conocen las frases más antiguas.",
+              "english": "The words of the grandmothers are especially important, because they know the oldest phrases."
+            },
+            {
+              "text": "Los niños escriben sobre el pájaro herido en sus cuadernos, y la maestra los deja.",
+              "english": "The children write about the injured bird in their notebooks, and the teacher lets them."
+            },
+            {
+              "text": "Los cuadernos mismos ya son invaluables para la escuela.",
+              "english": "The notebooks themselves are already invaluable for the school."
+            },
+            {
+              "text": "La reunión empieza a las tres en punto, y siempre hay alguien con una historia nueva.",
+              "english": "The meeting starts at three o'clock sharp, and there is always someone with a new story."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La sabiduría de la abuela",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Doña Mercedes tiene ochenta años y cuenta mejor que nadie.",
+              "english": "Doña Mercedes is eighty years old and tells stories better than anyone."
+            },
+            {
+              "text": "Doña Mercedes utiliza palabras muy antiguas, y le gusta la historia de la maga que vive en el cerro.",
+              "english": "Doña Mercedes uses very old words, and she likes the story of the sorceress who lives on the hill."
+            },
+            {
+              "text": "Se sienta en el suelo del patio, cerca del fuego, y los niños se sientan a su lado.",
+              "english": "She sits on the floor of the patio, near the fire, and the children sit beside her."
+            },
+            {
+              "text": "Cuando llueve, todos pasan a la cocina, pero siguen sentados en el suelo.",
+              "english": "When it rains, everyone moves to the kitchen, but they stay sitting on the floor."
+            },
+            {
+              "text": "El aire del cerro es frío en invierno, y la vasija de barro de doña Mercedes está siempre junto al fuego.",
+              "english": "The air from the hill is cold in winter, and doña Mercedes's clay vessel is always next to the fire."
+            },
+            {
+              "text": "«Cuando yo era niña, mi madre nos contaba estas historias —dice—.",
+              "english": "\"When I was a girl, my mother told us these stories,\" she says."
+            },
+            {
+              "text": "Su voz tenía tanta fuerza que aun los más pequeños escuchaban.»",
+              "english": "\"Her voice had so much strength that even the smallest children listened.\""
+            },
+            {
+              "text": "Doña Mercedes sabe que su experiencia vale mucho, pero no siempre lo pensó así.",
+              "english": "Doña Mercedes knows that her experience is worth a lot, but she did not always think so."
+            },
+            {
+              "text": "«Antes, mi hijo se reía y decía que mis cuentos eran cosas de viejos.",
+              "english": "\"Before, my son laughed and said that my stories were old people's things."
+            },
+            {
+              "text": "Eso me molestaba mucho.",
+              "english": "That bothered me a lot."
+            },
+            {
+              "text": "Ahora viene todas las noches a escuchar.»",
+              "english": "Now he comes every night to listen.\""
+            },
+            {
+              "text": "Para ella, la alegría más grande es ver que los niños repiten sus palabras.",
+              "english": "For her, the greatest joy is seeing the children repeat her words."
+            },
+            {
+              "text": "La maestra habla de la sabiduría de los abuelos, y dice que sus palabras son invaluables.",
+              "english": "The teacher speaks of the grandparents' wisdom, and says that their words are invaluable."
+            },
+            {
+              "text": "Dice que sus experiencias son invaluables para los jóvenes, y que la sabiduría no se compra en el mercado.",
+              "english": "She says that their experiences are invaluable for young people, and that wisdom is not bought at the market."
+            },
+            {
+              "text": "La canción es suya, pero la historia es de todos.",
+              "english": "The song is his, but the story belongs to everyone."
+            },
+            {
+              "text": "«La sabiduría de mi abuela era mejor que un libro, y esas experiencias eran suyas —dijo un joven—.",
+              "english": "\"My grandmother's wisdom was better than a book, and those experiences were hers,\" a young man said."
+            },
+            {
+              "text": "Ahora son de todos.»",
+              "english": "\"Now they belong to everybody.\""
+            },
+            {
+              "text": "Muchos abuelos añoraban el tiempo en que todos se reunían de noche a contar historias.",
+              "english": "Many grandparents longed for the time when everyone gathered at night to tell stories."
+            },
+            {
+              "text": "Los que se fueron a la ciudad también añoran esas noches.",
+              "english": "Those who left for the city also long for those nights."
+            },
+            {
+              "text": "Hoy, gracias a los cuadernos, esa tradición vuelve poco a poco, y las abuelas ya no añoran tanto aquellos años.",
+              "english": "Today, thanks to the notebooks, that tradition is coming back little by little, and the grandmothers no longer long so much for those years."
+            },
+            {
+              "text": "Una vecina cuya hija trabaja en la ciudad escuchó una historia y volvió a casa llorando.",
+              "english": "A neighbor whose daughter works in the city heard a story and went home crying."
+            },
+            {
+              "text": "Hay hasta un poeta en la aldea, don Mario, que escribe canciones sobre el río y sobre el pájaro de la historia.",
+              "english": "There is even a poet in the village, don Mario, who writes songs about the river and about the bird of the story."
+            },
+            {
+              "text": "Don Mario dice que los cuentos populares lo inspiraban desde niño, y que hoy los cuentos de los niños lo inspiran a él.",
+              "english": "Don Mario says that folk tales inspired him from childhood, and that today the children's stories inspire him."
+            },
+            {
+              "text": "Una de las historias del pescador inspiró su mejor canción.",
+              "english": "One of the fisherman's stories inspired his best song."
+            },
+            {
+              "text": "Ayer cantó una canción nueva, y el aire de la noche se llenó de alegría.",
+              "english": "Yesterday he sang a new song, and the night air filled with joy."
+            },
+            {
+              "text": "Para el poeta, los amantes de los cuentos populares son como una familia grande.",
+              "english": "For the poet, the lovers of folk tales are like a big family."
+            },
+            {
+              "text": "Los amantes de la cultura oral, dice, nunca están solos, porque siempre hay otro abuelo con otra historia.",
+              "english": "The lovers of oral culture, he says, are never alone, because there is always another grandfather with another story."
+            },
+            {
+              "text": "Cuando un poeta y una maestra se reúnen con los amantes de las historias, nace una escuela.",
+              "english": "When a poet and a teacher gather with the lovers of stories, a school is born."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lo que hacen otros pueblos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La maestra cuenta que su idea nació al leer sobre el pueblo tharu, un pueblo indígena del este de Nepal.",
+              "english": "The teacher says her idea was born when she read about the Tharu people, an indigenous people of eastern Nepal."
+            },
+            {
+              "text": "Allí, según lo que leyó, los abuelos se sientan junto a un borais, una vasija de barro que se utiliza para hacer fuego en los días fríos.",
+              "english": "There, according to what she read, the grandparents sit next to a borais, a clay vessel used to make fire on cold days."
+            },
+            {
+              "text": "Mientras el borais calienta la casa, las abuelas cantan canciones populares y explican lo que significa cada una.",
+              "english": "While the borais warms the house, the grandmothers sing popular songs and explain what each one means."
+            },
+            {
+              "text": "«Yo pensé: aquí tenemos lo mismo, pero con otra vasija —dijo—.",
+              "english": "\"I thought: we have the same thing here, but with a different vessel,\" she said."
+            },
+            {
+              "text": "En vez de borais, nosotros tenemos una olla de barro.»",
+              "english": "\"Instead of a borais, we have a clay pot.\""
+            },
+            {
+              "text": "Los pueblos indígenas de Honduras tienen también una tradición muy rica, especialmente en las montañas.",
+              "english": "The indigenous peoples of Honduras also have a very rich tradition, especially in the mountains."
+            },
+            {
+              "text": "Por eso, la maestra quiere que otras escuelas hagan lo mismo.",
+              "english": "That is why the teacher wants other schools to do the same."
+            },
+            {
+              "text": "El año pasado, una maestra de otra aldea se dirigió a ella por carta, y desde entonces trabajan juntas.",
+              "english": "Last year, a teacher from another village wrote to her by letter, and since then they have worked together."
+            },
+            {
+              "text": "«Cada comunidad debería tener su cuaderno —dijo—.",
+              "english": "\"Every community should have its notebook,\" she said."
+            },
+            {
+              "text": "Aun un cuaderno pequeño es mejor que nada.»",
+              "english": "\"Even a small notebook is better than nothing.\""
+            },
+            {
+              "text": "Cuando terminamos de hablar, la señorita Elena cogió sus cosas y se dirigió a la escuela, donde la esperaban los niños.",
+              "english": "When we finished talking, Miss Elena took her things and headed for the school, where the children were waiting."
+            },
+            {
+              "text": "Sus alumnos la saludaron con una canción sobre la muerte de un viejo árbol y su vuelta a la vida.",
+              "english": "Her students greeted her with a song about the death of an old tree and its return to life."
+            },
+            {
+              "text": "Esa tarde, un niño dirigió a los otros, y la maestra escribió la canción palabra por palabra.",
+              "english": "That afternoon, a boy led the others, and the teacher wrote the song down word by word."
+            },
+            {
+              "text": "La muerte de los viejos no tiene que ser la muerte de sus historias, dice ella.",
+              "english": "The death of the old does not have to be the death of their stories, she says."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

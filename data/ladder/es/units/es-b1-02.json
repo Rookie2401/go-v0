@@ -1,0 +1,670 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-02",
+  "lang": "es",
+  "title": "El pozo del gigante",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-02",
+    "title": "The giant's well (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored Spanish for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is written for B1 learners (natural prose at the level of the bridge; its vocabulary is scheduled by the ladder) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. B1 bridge, unit 02: a NEW course-authored folktale (owner decision of 2026-10-06 (1): Gutenberg texts are not adapted, so this unit does not adapt Martí's La Edad de Oro; it teaches the lemma pack planned for that adaptation, with an original plot and wording). For the Honduran reviewer: (a) the pack deliberately includes receptive Peninsular or old-fashioned items (os in the marqués's notice; tal, cual, sólo and ésta with the accent, e, oh, ah): they sit in the notice and in quoted speech and should read as old-style fairy-tale language, not as modern Honduran usage; (b) informal address is voseo (vos); the marqués is addressed with usted; (c) check the riddle, the register of the notice and the tone of the ending; (d) all names are in the course name list."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "El cartel del marqués",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hace mucho tiempo, al pie de una montaña, había un pueblo pequeño.",
+              "english": "Long ago, at the foot of a mountain, there was a small village."
+            },
+            {
+              "text": "En medio del pueblo había un pozo de piedra, y cerca de él corría un arroyo.",
+              "english": "In the middle of the village there was a stone well, and near it a stream ran."
+            },
+            {
+              "text": "Cada uno sacaba su agua de allí, y nunca faltaba agua, ni en verano.",
+              "english": "Everyone drew their own water from there, and the water never ran out, not even in summer."
+            },
+            {
+              "text": "Pero un año el pueblo comenzó a tener menos agua, y el arroyo ya no corría.",
+              "english": "But one year the village began to have less water, and the stream no longer ran."
+            },
+            {
+              "text": "—¿Qué pasa? —preguntaban los vecinos—.",
+              "english": "\"What is happening?\" the neighbors asked."
+            },
+            {
+              "text": "¿Dónde está el agua?",
+              "english": "\"Where is the water?\""
+            },
+            {
+              "text": "Nadie sabía la respuesta.",
+              "english": "Nobody knew the answer."
+            },
+            {
+              "text": "Sólo el abuelo Pedro decía algo: —Hay un gigante en lo alto del monte.",
+              "english": "Only old Pedro said something: \"There is a giant at the top of the mountain."
+            },
+            {
+              "text": "Vive debajo de una roca y bebe toda el agua.",
+              "english": "He lives under a rock and drinks all the water.\""
+            },
+            {
+              "text": "—¡Oh, qué cuento! —dijo una mujer—.",
+              "english": "\"Oh, what a tale!\" said a woman."
+            },
+            {
+              "text": "Ese hombre existe en la cabeza de los viejos, nada más.",
+              "english": "\"That man exists in the heads of old people, nothing more.\""
+            },
+            {
+              "text": "—Es tal su sed —contestó el abuelo— que se bebe un río.",
+              "english": "\"His thirst is such,\" the old man answered, \"that he drinks a river.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Un día llegó al pueblo el marqués, que era el dueño de toda la montaña.",
+              "english": "One day the marqués arrived in the village; he was the owner of the whole mountain."
+            },
+            {
+              "text": "Vivía en un palacio grande, y con él venía la princesa Sofía, una joven callada de ojos tristes.",
+              "english": "He lived in a big palace, and with him came Princess Sofía, a quiet young woman with sad eyes."
+            },
+            {
+              "text": "El marqués puso un cartel en la puerta de la iglesia, y los vecinos se reunieron para leerlo.",
+              "english": "The marqués put up a notice on the church door, and the neighbors gathered to read it."
+            },
+            {
+              "text": "Un hombre leyó en voz alta lo que estaba escrito en rojo:",
+              "english": "A man read aloud what was written in red:"
+            },
+            {
+              "text": "«Os hago saber que el hombre de la montaña es un peligro para el pueblo.",
+              "english": "\"I let you know that the man of the mountain is a danger to the village."
+            },
+            {
+              "text": "El que lo mate recibirá cien mil lempiras.",
+              "english": "Whoever kills him will receive a hundred thousand lempiras."
+            },
+            {
+              "text": "El agua de aquí es propia de mi casa.»",
+              "english": "The water here belongs to my house.\""
+            },
+            {
+              "text": "—¡De su casa! —dijo una mujer—.",
+              "english": "\"His house's!\" said a woman."
+            },
+            {
+              "text": "¡Esa agua es de todos!",
+              "english": "\"That water belongs to everyone!\""
+            },
+            {
+              "text": "—Calla, mujer —dijo su marido—.",
+              "english": "\"Be quiet, woman,\" her husband said."
+            },
+            {
+              "text": "Ya sabés cómo es ese señor.",
+              "english": "\"You already know what that man is like.\""
+            },
+            {
+              "text": "La princesa miraba a la gente y no decía nada.",
+              "english": "The princess looked at the people and said nothing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los señoritos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa semana, tres señoritos de la ciudad subieron a caballo.",
+              "english": "That week, three young gentlemen from the city rode up the mountain."
+            },
+            {
+              "text": "Uno de ellos estaba muy enamorado de la princesa y quería ganar el dinero para ella.",
+              "english": "One of them was very much in love with the princess and wanted to win the money for her."
+            },
+            {
+              "text": "—Voy a matar al gigante antes del domingo —decía—.",
+              "english": "\"I am going to kill the giant before Sunday,\" he said."
+            },
+            {
+              "text": "¡Un buen golpe y se acabó!",
+              "english": "\"One good blow and it is over!\""
+            },
+            {
+              "text": "Pero a los dos días los señoritos bajaron corriendo, sin caballos.",
+              "english": "But two days later the young gentlemen came running down, without their horses."
+            },
+            {
+              "text": "—¡Oh, qué miedo! —exclamó el enamorado—.",
+              "english": "\"Oh, how frightening!\" exclaimed the one in love."
+            },
+            {
+              "text": "Tiene brazos como un tronco.",
+              "english": "\"He has arms like a tree trunk.\""
+            },
+            {
+              "text": "—Y orejas como dos mantas —dijo otro.",
+              "english": "\"And ears like two blankets,\" said another."
+            },
+            {
+              "text": "—¡Y unas piernas tan largas como una casa! —exclamó el último—.",
+              "english": "\"And legs as long as a house!\" exclaimed the last one."
+            },
+            {
+              "text": "Estaba dormido, pero no quise pasar.",
+              "english": "\"He was asleep, but I did not want to pass.\""
+            },
+            {
+              "text": "Nadie más quiso subir.",
+              "english": "Nobody else wanted to go up."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Los días pasaban, y cada vez había menos agua.",
+              "english": "The days went by, and there was less and less water."
+            },
+            {
+              "text": "Una tarde, Marta, la hija de Tomás, echó el cubo con una cuerda, y el cubo volvió con medio vaso.",
+              "english": "One afternoon, Marta, Tomás's daughter, threw the bucket on a rope, and the bucket came back with half a glass."
+            },
+            {
+              "text": "—Así no podemos seguir —dijo Marta—.",
+              "english": "\"We cannot go on like this,\" Marta said."
+            },
+            {
+              "text": "Tengo que subir cuanto antes.",
+              "english": "\"I have to go up as soon as possible.\""
+            },
+            {
+              "text": "—¿Estás loca? —le dijo su padre—.",
+              "english": "\"Are you crazy?\" her father said to her."
+            },
+            {
+              "text": "Ya viste cómo volvieron los señoritos.",
+              "english": "\"You saw how the young gentlemen came back.\""
+            },
+            {
+              "text": "Tomás hacía zapatos de cuero, y su hija sabía usar el cuero y las herramientas mejor que nadie.",
+              "english": "Tomás made leather shoes, and his daughter knew how to use leather and tools better than anyone."
+            },
+            {
+              "text": "—Ellos llevaban caballos, y yo sólo llevo mi hacha y mi bolsa de cuero.",
+              "english": "\"They took horses, and I am taking only my axe and my leather bag.\""
+            },
+            {
+              "text": "—¿Para qué querés el hacha?",
+              "english": "\"What do you want the axe for?"
+            },
+            {
+              "text": "¿Acaso vas a matar a ese hombre?",
+              "english": "Are you going to kill that man?\""
+            },
+            {
+              "text": "—No, papá.",
+              "english": "\"No, Dad."
+            },
+            {
+              "text": "Un hacha no sirve sólo para eso: sirve también para abrir caminos.",
+              "english": "An axe is not only good for that: it is also good for opening paths.\""
+            },
+            {
+              "text": "Marta salió del pueblo temprano por la mañana, con el cielo todavía oscuro.",
+              "english": "Marta left the village early in the morning, with the sky still dark."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El roble del monte",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Subió por un camino, entre las piedras, y a medio día llegó a un bosque.",
+              "english": "She climbed along a path, among the stones, and at midday she reached a forest."
+            },
+            {
+              "text": "Allí se sentó en el tronco de un roble muy viejo.",
+              "english": "There she sat down on the trunk of a very old oak."
+            },
+            {
+              "text": "Las raíces salían de la tierra como serpientes, y las ramas llegaban hasta el río.",
+              "english": "The roots came out of the ground like snakes, and the branches reached as far as the river."
+            },
+            {
+              "text": "Marta tenía sueño, y echó la cabeza sobre una raíz.",
+              "english": "Marta was sleepy, and she laid her head on a root."
+            },
+            {
+              "text": "Entonces soñó que el roble le hablaba con voz de hombre: «Sigue, Marta.",
+              "english": "Then she dreamed that the oak spoke to her in a man's voice: \"Keep going, Marta."
+            },
+            {
+              "text": "El agua está más arriba.»",
+              "english": "The water is further up.\""
+            },
+            {
+              "text": "Se despertó y miró hacia arriba.",
+              "english": "She woke up and looked up."
+            },
+            {
+              "text": "—Ah, qué sueño —dijo en voz baja—.",
+              "english": "\"Ah, what a dream,\" she said quietly."
+            },
+            {
+              "text": "Ya había soñado con este lugar otras veces.",
+              "english": "\"I had dreamed of this place other times.\""
+            },
+            {
+              "text": "Siguió subiendo hasta el pico de la montaña.",
+              "english": "She kept climbing to the peak of the mountain."
+            },
+            {
+              "text": "En el pico hacía mucho viento, y desde allí vio todo el valle y una roca muy grande.",
+              "english": "On the peak it was very windy, and from there she saw the whole valley and a very big rock."
+            },
+            {
+              "text": "Debajo de ella, en el mismo pico, estaba sentado un viejo de pelo blanco.",
+              "english": "Under it, right on the peak, sat an old man with white hair."
+            },
+            {
+              "text": "Tenía los brazos sobre las rodillas y las orejas tan grandes como dos platos.",
+              "english": "He had his arms on his knees and ears as big as two plates."
+            },
+            {
+              "text": "Marta sintió miedo, pero no se fue.",
+              "english": "Marta felt fear, but she did not leave."
+            },
+            {
+              "text": "—Buenas tardes, señor gigante —dijo—.",
+              "english": "\"Good afternoon, Mister Giant,\" she said."
+            },
+            {
+              "text": "Perdone usted.",
+              "english": "\"Excuse me.\""
+            },
+            {
+              "text": "Él la miró con ojos tristes.",
+              "english": "He looked at her with sad eyes."
+            },
+            {
+              "text": "—No tengas miedo, niña —dijo con una voz fuerte—.",
+              "english": "\"Do not be afraid, girl,\" he said in a strong voice."
+            },
+            {
+              "text": "Ésta es mi casa desde hace cien años, y nadie me habla sin gritar.",
+              "english": "\"This has been my home for a hundred years, and nobody speaks to me without screaming.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El enigma",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—¿Quién sos?",
+              "english": "\"Who are you?"
+            },
+            {
+              "text": "¿Y por qué estás aquí abajo?",
+              "english": "And why are you down here?\""
+            },
+            {
+              "text": "—Me llamo Mateo, y soy un hombre encantado —dijo él—.",
+              "english": "\"My name is Mateo, and I am an enchanted man,\" he said."
+            },
+            {
+              "text": "Hace cien años que estoy encantado, y no es un cuento.",
+              "english": "\"I have been enchanted for a hundred years, and it is not a tale.\""
+            },
+            {
+              "text": "—Ah, ¿por eso estás tan triste?",
+              "english": "\"Ah, is that why you are so sad?"
+            },
+            {
+              "text": "¿Y es verdad que bebés toda el agua del pueblo?",
+              "english": "And is it true that you drink all the water of the village?\""
+            },
+            {
+              "text": "Mateo rió con tristeza, y todo el cerro se movió.",
+              "english": "Mateo laughed sadly, and the whole hill shook."
+            },
+            {
+              "text": "—¡Yo no bebo nada!",
+              "english": "\"I drink nothing!"
+            },
+            {
+              "text": "Aquí nace el arroyo, y yo estoy encima.",
+              "english": "The stream is born here, and I am on top of it."
+            },
+            {
+              "text": "Tengo el cuerpo duro como un tronco, y cuanto más trato de levantarme, más pesado me siento.",
+              "english": "My body is hard as a tree trunk, and the more I try to get up, the heavier I feel.\""
+            },
+            {
+              "text": "—El abuelo de ese señor quería todo el cerro —siguió—.",
+              "english": "\"That man's grandfather wanted the whole hill,\" he went on."
+            },
+            {
+              "text": "Me dejó encantado, de modo que el agua no puede salir.",
+              "english": "\"He left me enchanted, so that the water cannot come out.\""
+            },
+            {
+              "text": "—¿Y no hay modo de romper eso?",
+              "english": "\"And is there no way to break it?\""
+            },
+            {
+              "text": "—Hay un solo modo: alguien tiene que adivinar mi enigma.",
+              "english": "\"There is only one way: someone has to guess my riddle."
+            },
+            {
+              "text": "Muchos vinieron, pero ninguno adivinaba.",
+              "english": "Many came, but none could guess.\""
+            },
+            {
+              "text": "Marta se sentó en una piedra y lo miró.",
+              "english": "Marta sat down on a stone and looked at him."
+            },
+            {
+              "text": "—Decime el enigma —dijo—.",
+              "english": "\"Tell me the riddle,\" she said."
+            },
+            {
+              "text": "Voy a pensar con calma.",
+              "english": "\"I am going to think calmly.\""
+            },
+            {
+              "text": "Mateo cerró los ojos y habló despacio:",
+              "english": "Mateo closed his eyes and spoke slowly:"
+            },
+            {
+              "text": "«Tengo pie y no camino.",
+              "english": "\"I have a foot and do not walk."
+            },
+            {
+              "text": "Tengo brazos y no abrazo.",
+              "english": "I have arms and do not hug."
+            },
+            {
+              "text": "Debajo de la tierra tengo raíces, y arriba, cerca del cielo, tengo ramas.",
+              "english": "Under the ground I have roots, and above, near the sky, I have branches."
+            },
+            {
+              "text": "¿Quién soy?»",
+              "english": "Who am I?\""
+            },
+            {
+              "text": "Marta se quedó callada.",
+              "english": "Marta stayed silent."
+            },
+            {
+              "text": "El enigma no era fácil, y ella no sabía la respuesta.",
+              "english": "The riddle was not easy, and she did not know the answer."
+            },
+            {
+              "text": "Pensó en las ramas, en la tierra, en los árboles, y adivinar le pareció difícil.",
+              "english": "She thought about the branches, the ground, the trees, and guessing seemed difficult to her."
+            },
+            {
+              "text": "—¿Acaso no lo vi anoche? —dijo de pronto—.",
+              "english": "\"Didn't I see it last night?\" she said suddenly."
+            },
+            {
+              "text": "¡Ya sé!",
+              "english": "\"I know!"
+            },
+            {
+              "text": "Es un roble.",
+              "english": "It is an oak.\""
+            },
+            {
+              "text": "—¡Eso es! —exclamó Mateo, y se levantó con las manos arriba.",
+              "english": "\"That is it!\" Mateo exclaimed, and he stood up with his hands raised."
+            },
+            {
+              "text": "La roca cayó cuesta abajo, y de la tierra salió el agua, clara y fría.",
+              "english": "The rock fell downhill, and out of the ground came the water, clear and cold."
+            },
+            {
+              "text": "El agua corrió abajo por el cerro, hacia el pueblo.",
+              "english": "The water ran down the hill, toward the village."
+            },
+            {
+              "text": "—¡Ah, qué agua tan fría! —rió Mateo, con la cara llena de agua.",
+              "english": "\"Ah, what cold water!\" Mateo laughed, with his face full of water."
+            },
+            {
+              "text": "—Oh, niña —dijo Mateo—.",
+              "english": "\"Oh, girl,\" said Mateo."
+            },
+            {
+              "text": "Ahora puedo caminar.",
+              "english": "\"Now I can walk."
+            },
+            {
+              "text": "¿Cómo te llamás?",
+              "english": "What is your name?\""
+            },
+            {
+              "text": "—Marta.",
+              "english": "\"Marta."
+            },
+            {
+              "text": "Y a vos, ¿cómo te dicen?",
+              "english": "And you, what do they call you?"
+            },
+            {
+              "text": "Soñé con vos esta noche.",
+              "english": "I dreamed about you tonight.\""
+            },
+            {
+              "text": "Mateo se tocó las orejas y echó a reír.",
+              "english": "Mateo touched his ears and burst out laughing."
+            },
+            {
+              "text": "—Hace tanto tiempo que nadie me llama por mi nombre...",
+              "english": "\"It has been so long since anyone called me by my name...\""
+            },
+            {
+              "text": "—Bajemos, Mateo.",
+              "english": "\"Let's go down, Mateo."
+            },
+            {
+              "text": "Todos tienen sed.",
+              "english": "Everyone is thirsty.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un cartel nuevo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Cuando llegaron al pueblo, padres e hijos corrieron a sus casas.",
+              "english": "When they reached the village, parents and children ran to their houses."
+            },
+            {
+              "text": "—¡No tengan miedo! —gritó Marta—.",
+              "english": "\"Do not be afraid!\" Marta shouted."
+            },
+            {
+              "text": "Éste es Mateo, y no es malo.",
+              "english": "\"This is Mateo, and he is not bad.\""
+            },
+            {
+              "text": "Él trajo el agua.",
+              "english": "\"He brought the water.\""
+            },
+            {
+              "text": "Marta e Isabel pusieron cubos en cada casa, y todos bebieron.",
+              "english": "Marta and Isabel put buckets in every house, and everyone drank."
+            },
+            {
+              "text": "—Ésta es la verdad —dijo Isabel, la cocinera del palacio—.",
+              "english": "\"This is the truth,\" said Isabel, the palace cook."
+            },
+            {
+              "text": "Mi cocina siempre tuvo agua de allí.",
+              "english": "\"My kitchen always had water from there.\""
+            },
+            {
+              "text": "Los vecinos vieron correr el agua y empezaron a llorar de felicidad.",
+              "english": "The neighbors saw the water running and began to cry with happiness."
+            },
+            {
+              "text": "En ese momento llegó el marqués, rojo como un tomate.",
+              "english": "At that moment the marqués arrived, red as a tomato."
+            },
+            {
+              "text": "—¡Ese hombre es peligroso! —gritó—.",
+              "english": "\"That man is dangerous!\" he shouted."
+            },
+            {
+              "text": "¡Que se vaya de aquí!",
+              "english": "\"Let him go away from here!"
+            },
+            {
+              "text": "¡El agua es mía, y la montaña es mía!",
+              "english": "The water is mine, and the mountain is mine!\""
+            },
+            {
+              "text": "—Señor —dijo Mateo con voz tranquila—.",
+              "english": "\"Sir,\" said Mateo in a calm voice."
+            },
+            {
+              "text": "Mi padre era dueño de este cerro antes que su abuelo.",
+              "english": "\"My father was the owner of this hill before your grandfather.\""
+            },
+            {
+              "text": "El señor se puso como loco, y nadie en el pueblo se movió para ayudarlo.",
+              "english": "The man went mad, and nobody in the village moved to help him."
+            },
+            {
+              "text": "Entonces habló Sofía, que estaba con su tío.",
+              "english": "Then Sofía spoke; she was with her uncle."
+            },
+            {
+              "text": "—Tío, ya basta.",
+              "english": "\"Uncle, enough."
+            },
+            {
+              "text": "¿Acaso un cartel puede ser dueño del agua?",
+              "english": "Can a notice be the owner of water, perhaps?\""
+            },
+            {
+              "text": "Nadie esperaba eso de ella, y el pueblo se quedó callado.",
+              "english": "Nobody expected that from her, and the village fell silent."
+            },
+            {
+              "text": "—Yo vivo en su palacio —siguió—, en el cual cada noche oigo cómo sufren los criados.",
+              "english": "\"I live in your palace,\" she went on, \"in which every night I hear how the servants suffer."
+            },
+            {
+              "text": "Ésta es la hora de hacer lo bueno.",
+              "english": "This is the hour to do what is good.\""
+            },
+            {
+              "text": "El señor quiso contestar, pero no encontró palabras, y se fue en su carro sin decir adiós.",
+              "english": "The man wanted to answer, but found no words, and he left in his cart without saying goodbye."
+            },
+            {
+              "text": "Marta tomó el cartel de la puerta de la iglesia, y lo rompió en cuatro partes.",
+              "english": "Marta took the notice from the church door and tore it into four pieces."
+            },
+            {
+              "text": "Luego escribió otro en grande: «El agua es de todos.",
+              "english": "Then she wrote another one in big letters: \"The water belongs to everyone."
+            },
+            {
+              "text": "Quien tenga sed, que beba.»",
+              "english": "Whoever is thirsty, let him drink.\""
+            },
+            {
+              "text": "Aquel joven enamorado volvió al pueblo una semana después, y se quedó a ayudar con los cubos.",
+              "english": "That young man in love came back to the village a week later and stayed to help with the buckets."
+            },
+            {
+              "text": "—Tal vez no sirvo para pelear con nadie —dijo—.",
+              "english": "\"Maybe I am no good at fighting anyone,\" he said."
+            },
+            {
+              "text": "Pero cuanto más agua saco, mejor me siento.",
+              "english": "\"But the more water I draw, the better I feel.\""
+            },
+            {
+              "text": "Sofía e Isabel se quedaron en el pueblo, y Mateo vivió muchos años junto al río, cuidando el agua.",
+              "english": "Sofía and Isabel stayed in the village, and Mateo lived many years beside the river, looking after the water."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

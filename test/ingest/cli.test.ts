@@ -65,7 +65,7 @@ describe('corpus CLI (npm run corpus:validate / corpus:check / corpus:migrate)',
       const doc = JSON.parse(fs.readFileSync(p, 'utf8')) as { review: unknown; editorialTags: string[] };
       expect(doc.review).toEqual({ status: 'reviewed', reviewedBy: 'Ana Ruiz (native speaker)', reviewedAt: '2026-02-01', contentSignature: expect.stringMatching(/^[0-9a-f]{16}$/), notes: 'Checked wording and glosses.', level: 'native' });
       expect(r.out).toMatch(new RegExp(`review covers wording ${(doc.review as { contentSignature: string }).contentSignature.slice(0, 8)}`));
-      expect(doc.editorialTags).toEqual(['machine-drafted']);
+      expect(doc.editorialTags).toEqual(['machine-drafted', 'superseded-by-ladder']); // the review keeps the tags it found
       expect(sentenceTexts(p)).toEqual(before);
       // the bundled corpus itself is never touched, and the reviewed copy validates as publishable
       expect(story()).toBe(bundledBefore);

@@ -14,7 +14,7 @@ describe('Reading directory separation', () => {
   it('keeps Home to the three directory entries and utility links', async () => {
     const h = await makeHarness();
     mounted = await h.mount(app(), { router: '/' });
-    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((x) => x.textContent)).toEqual(['Reading', 'GoListen', 'Scripture', 'Testimony', 'Team Texts']);
+    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((x) => x.textContent)).toEqual(['Reading', 'Your path', 'GoListen', 'Scripture', 'Testimony', 'Team Texts']);
     expect(qa(mounted.container, 'a[href^="/read/"]')).toHaveLength(0);
     expect(q(mounted.container, '[data-testid="best-next"]')).toBeNull();
   });

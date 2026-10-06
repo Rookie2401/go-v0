@@ -66,7 +66,7 @@ describe('import of the bundled corpus', () => {
     }
     const es = (await store.texts.get(ids.text('es', 'story-01')))!;
     expect(es).toMatchObject({ reviewStatus: 'unreviewed', generated: true, tags: ['mission', 'testimony'], prepTargets: ['JHN.3.16', '1JN.1.8', '1JN.1.9'] });
-    expect(es.editorialTags).toEqual(['needs-native-review', 'machine-drafted']);
+    expect(es.editorialTags).toEqual(['needs-native-review', 'machine-drafted', 'superseded-by-ladder']); // absorbed by the ladder (data/corpus/es, 6e9b406)
     const th = (await store.texts.get(ids.text('th', 'bible-1john-1')))!;
     expect(th.unpublishedReasons.join(' ')).toMatch(/unverified/);
   });

@@ -13,7 +13,7 @@ describe('Spanish Home directory', () => {
   it('keeps reading navigation under the Reading surface', async () => {
     const h = await makeHarness({ courseId: SPANISH_COURSE_ID, streams: SPANISH_STREAMS });
     mounted = await h.mount(<Shell><AppRoutes /></Shell>);
-    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((x) => x.textContent)).toEqual(['Reading', 'GoListen', 'Scripture', 'Testimony', 'Team Texts']);
+    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((x) => x.textContent)).toEqual(['Reading', 'Your path', 'GoListen', 'Scripture', 'Testimony', 'Team Texts']);
     expect(qa(mounted.container, 'a.door')).toHaveLength(0);
   });
 });

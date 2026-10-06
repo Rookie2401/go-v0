@@ -240,6 +240,16 @@ describe('2. a soft cap on Scripture in what is READ', () => {
 // ───────────────────────────── 3. out of reach, front matter ─────────────────────────────
 
 describe('3. nothing out of reach while something in reach exists; front matter is never reading', () => {
+  it('a learner who has read nothing is not told every text is above his level: the library waits for something to measure him by', async () => {
+    const h = createHarness();
+    await h.seed(U, COURSE);
+    await h.store.stages.bulkPut([1, 2, 3].map((n) => stageRow(n, `g${n}`)));
+    const deps = await catalogue(h, [entry('aaa', 40), entry('bbb', 55), entry('ccc', 65)]);
+    const recs = await rec(h, deps);
+    expect(recs.some((r) => /above your level/.test(r.explanation))).toBe(false);
+    expect(recs.filter((r) => r.reason === 'next-input' && r.textId)).toEqual([]);
+  });
+
   it('offers no text below the floor when any text at or above it exists', async () => {
     const h = await world();
     const deps = await catalogue(h, [entry('aaa-near', 93), entry('bbb-far', 50), entry('ccc-mid', 60), entry('ddd-edge', 76)]);

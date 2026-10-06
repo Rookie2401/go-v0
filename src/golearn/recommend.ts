@@ -411,6 +411,10 @@ export async function recommend(
       const lowest = Math.min(...teaching);
       for (const id of inReach) if (tierOf(id) === 1) { const r = best.get(id)!; best.set(id, { ...r, score: cap(Math.min(r.score, lowest * 0.9)) }); }
     }
+  } else if (!hasReading) {
+    // he has read nothing yet: every text is "0 %", so reach says nothing. The first text (and Stage 0, the path) lead alone;
+    // the library waits until there is something to measure him by.
+    for (const id of fresh) best.delete(id);
   } else {
     // nothing is in reach: the closest few, said plainly to be above his level (the ladder's next unit, when there is one, still leads)
     const closest = [...fresh].sort((a, b) => reachById.get(b)!.coverage - reachById.get(a)!.coverage || best.get(b)!.score - best.get(a)!.score || (a < b ? -1 : 1));

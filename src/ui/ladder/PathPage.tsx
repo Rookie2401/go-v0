@@ -54,10 +54,10 @@ export function PathPage({ source }: { source?: LadderSource } = {}) {
         <p className="soft">
           The order Go suggests for reading, from your first words towards texts written for native readers. It is a default route, not a cage: you can always read something else from the library.
         </p>
-        <p className="note note--warn" role="note" data-testid="path-draft">
+        {view?.hasLadder && <p className="note note--warn" role="note" data-testid="path-draft">
           These units are written with the help of an AI model. Until a native speaker has reviewed a unit and a person has recorded it, it is a draft: Go keeps drafts closed
           {preview ? ' — but preview mode is on, so you can open them. Expect mistakes.' : ' unless you turn preview on in Settings.'}
-        </p>
+        </p>}
         {error && <p role="alert" className="error">{error}</p>}
         {!view && !error && <p className="muted" role="status">Reading your path…</p>}
         {view && !view.hasLadder && (

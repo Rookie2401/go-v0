@@ -110,6 +110,7 @@ describe('Your path (#/path)', () => {
     const h = await makeHarness();
     mounted = await h.mount(<PathPage source={makeLadderSource()} />, { router: '/path' });
     expect(q(mounted.container, '[data-testid="path-none"]')!.textContent).toMatch(/no ladder for Spanish yet/);
+    expect(q(mounted.container, '[data-testid="path-draft"]')).toBeNull(); // no units, so no draft warning
   });
 
   it('is routed at /path in the app', async () => {

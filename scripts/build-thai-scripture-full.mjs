@@ -14,6 +14,8 @@ const NAME = 'Biblica® Open Thai Common Version 2025';
 const ID = 'a62f327aa0179709';
 const REVISION = 2;
 const dry = process.argv.includes('--dry');
+/** U+200B (zero-width space, the publisher's word mark) and U+FEFF, written by code point so no invisible character sits in this file. */
+const ZERO_WIDTH = new RegExp(`[${String.fromCharCode(0x200b, 0xfeff)}]`, 'g');
 
 const decode = (s) => s.replace(/&(?:amp|lt|gt|quot|apos);/g, (x) => ({ '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&apos;': "'" }[x]));
 const clean = (s) => decode(s.normalize('NFC')
@@ -105,7 +107,10 @@ for (const b of books) {
   for (const row of b.chapters) (byChapter.get(row.chapter) ?? (byChapter.set(row.chapter, []), byChapter.get(row.chapter))).push(row);
   for (const [chapter, rows] of byChapter) {
     const slug = `bible-thai-otcv2025-${b.book.toLowerCase()}-${chapter}`;
-    const title = `${b.heading} ${chapter}`;
+    // The publisher marks word boundaries with U+200B in verse text, and a few book headings carry the marks too (Judges, Song of
+    // Solomon, Lamentations, Acts: 62 chapter titles). A title is shown and searched as it is written, so the marks come out of
+    // TITLES ONLY (the verse text keeps them: the Thai adapter reads them as the publisher's word division).
+    const title = `${b.heading.replace(ZERO_WIDTH, '').trim()} ${chapter}`;
     // Some published editions intentionally leave a verse number empty (for example ACT 8:37).
     // Preserve the source verse comparison, but do not emit blank library sentences.
     const sentences = rows.filter((r) => r.text.trim()).map((r) => ({ text: r.text, verseRefs: [`${b.book}.${chapter}.${r.n}`] }));

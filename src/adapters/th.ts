@@ -22,18 +22,20 @@ import { annotationKey, mergeAnnotations } from './thai/entries';
 import { CORE_ANNOTATIONS, CORE_ENTRIES } from './thai/lexicon-core';
 import { FUNCTION_ANNOTATIONS, FUNCTION_ENTRIES } from './thai/function-words';
 import { CLASSIFIER_ANNOTATIONS, CLASSIFIER_ENTRIES } from './thai/classifiers';
+import { EVERYDAY_ANNOTATIONS, EVERYDAY_ENTRIES } from './thai/lexicon-everyday';
+import { BIBLE_ANNOTATIONS, BIBLE_ENTRIES } from './thai/lexicon-bible';
 import { buildPhraseRules } from './thai/phrases';
 import { detectThaiConstructions } from './thai/constructions';
 import { segmentThaiProse } from './thai/prose';
 import {
-  SENTENCE_FINAL_PARTICLES, THAI_COMPOUNDS, normalizeThai, segmentThaiSentences, thaiTokenize,
+  SENTENCE_FINAL_PARTICLES, THAI_COMPOUNDS, isChunkToken, makeThaiTokenizer, normalizeThai, segmentThaiSentences, thaiTokenize,
 } from './thai/text';
 import {
   decodeThai, decodeThaiRespelling, describeThaiOrthFeature, thaiOrthFeatures, tonesFromIpa,
 } from './thai/orthography';
 
 const LANG = 'th' as const;
-const VERSION = '2';
+const VERSION = '3';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
@@ -175,24 +177,48 @@ const ENTRIES = [
  * Order matters: when a surface is ambiguous the earlier entry is listed first. The seed list above keeps its
  * place so analyses of the bundled texts do not change; the later lists only add words and second readings.
  */
-export const thLexicon = new Lexicon([...ENTRIES, ...CORE_ENTRIES, ...FUNCTION_ENTRIES, ...CLASSIFIER_ENTRIES], normalize);
+export const thLexicon = new Lexicon([...ENTRIES, ...CORE_ENTRIES, ...FUNCTION_ENTRIES, ...CLASSIFIER_ENTRIES, ...EVERYDAY_ENTRIES, ...BIBLE_ENTRIES], normalize);
+
+/**
+ * The adapter's tokenizer: ICU's segmentation of the text, except that a text which marks its words with U+200B (the Open
+ * Thai Common Version) keeps a chunk whole when ICU would cut it into pieces the word list does not all know (names).
+ */
+const tokenizeThai = makeThaiTokenizer((w) => thLexicon.has(w));
 
 /** Role / register / what-a-classifier-counts for lexicon entries, keyed lemma|pos (copied onto the candidates). */
-const ANNOTATIONS = mergeAnnotations(CORE_ANNOTATIONS, FUNCTION_ANNOTATIONS, CLASSIFIER_ANNOTATIONS);
+const ANNOTATIONS = mergeAnnotations(CORE_ANNOTATIONS, FUNCTION_ANNOTATIONS, CLASSIFIER_ANNOTATIONS, EVERYDAY_ANNOTATIONS, BIBLE_ANNOTATIONS);
 
 const DEMONSTRATIVES = new Set(['นี้', 'นั้น', 'โน้น']);
+// neighbours that decide a few everyday words whose common meanings differ (see lexicon-everyday.ts)
+const FALLING = new Set(['ฝน', 'หิมะ', 'ลูกเห็บ', 'น้ำค้าง', 'ใบไม้', 'ผลไม้']); // ฝนตกลงมา "the rain fell"
+const NORTH_OF = new Set(['ทิศ', 'ภาค', 'ทาง', 'ด้าน', 'ฝั่ง', 'แถบ']); // ทิศเหนือ, ภาคเหนือ, ทางเหนือ
+const SPREAD = new Set(['เสื่อ', 'ผ้า', 'พรม', 'ที่นอน', 'พื้น', 'กระเบื้อง']); // ปูเสื่อ "spread a mat"
+const CHOPPED = new Set(['ผัก', 'หอม', 'กระเทียม', 'หมู', 'เนื้อ', 'ต้นหอม', 'พริก']); // ซอยผัก "chop vegetables"
+const SCOOPED = new Set(['ขึ้น', 'ปลา', 'ลูกน้ำ']); // ช้อนปลา "scoop up fish"
 const DIGITS = /^[\d๐-๙]+$/u;
 
 function contextual(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): AnalysisCandidate[] {
   const cands = base[i];
-  if (cands.length < 2) return cands;
   const w = tokens[i].normalized;
+  // ตกลง is "to agree" (ตกลงกัน) and, after rain and the like or before มา / ไป, ตก + ลง "to fall down" (ฝนตกลงมา): ICU keeps it whole
+  if (w === 'ตกลง' && cands.length === 1 && (['มา', 'ไป', 'บน'].includes(tokens[i + 1]?.normalized ?? '') || FALLING.has(tokens[i - 1]?.normalized ?? ''))) {
+    return [{ ...cands[0], gloss: 'to fall down (ตก + ลง)', confidence: 0.75 }];
+  }
+  if (cands.length < 2) return cands;
   const pick = (pos: string, conf: number): AnalysisCandidate[] => {
     const idx = cands.findIndex((c) => c.pos === pos);
     if (idx < 0) return cands;
     return [{ ...cands[idx], confidence: conf }, ...cands.filter((_, k) => k !== idx).map((c) => ({ ...c, confidence: Math.min(c.confidence, 0.3) }))];
   };
   const prev = base[i - 1]?.[0];
+  const before = tokens[i - 1]?.normalized ?? '';
+  const after = tokens[i + 1]?.normalized ?? '';
+  if (w === 'เหนือ') return NORTH_OF.has(before) ? pick('NOUN', 0.8) : pick('ADP', 0.8);
+  if (w === 'ไว้') return base[i + 1]?.[0]?.pos === 'NOUN' && prev?.pos !== 'VERB' ? pick('VERB', 0.6) : pick('PART', 0.75);
+  if (w === 'เกาะ') return after === 'อยู่' ? pick('VERB', 0.7) : pick('NOUN', 0.7);
+  if (w === 'ปู') return SPREAD.has(after) ? pick('VERB', 0.75) : pick('NOUN', 0.7);
+  if (w === 'ซอย') return CHOPPED.has(after) ? pick('VERB', 0.75) : pick('NOUN', 0.7);
+  if (w === 'ช้อน') return SCOOPED.has(after) ? pick('VERB', 0.7) : pick('NOUN', 0.8);
   if (w === 'ตัว') return base[i + 1]?.some((c) => c.pos === 'PRON') ? pick('NOUN', 0.7) : prev?.pos === 'NUM' ? pick('CLF', 0.85) : cands;
   if (w === 'คน') return prev?.pos === 'NUM' || prev?.pos === 'DET' ? pick('CLF', 0.85) : pick('NOUN', 0.7);
   if (w === 'ให้') return prev?.pos === 'NOUN' || prev?.pos === 'PRON' || prev?.pos === 'VERB' ? pick('ADP', 0.6) : cands;
@@ -212,12 +238,38 @@ function contextual(i: number, tokens: RawToken[], base: AnalysisCandidate[][]):
   return cands;
 }
 
+/**
+ * A word the list does not have. Two readings by rule, both weaker than a lexicon word:
+ *  - a word written with the repetition mark (เด็กๆ, ช้าๆ) whose stem the list has: the stem's reading, marked as repeated;
+ *  - one whole U+200B-delimited chunk of a text that marks its words that the list does not know (a name, as a rule: อับราม,
+ *    เบธเอล, โมเสส): a proper-name GUESS with no gloss. It is `unconfirmed`, so a dictionary that has the form decides the word
+ *    and the guess stays only where it has not.
+ */
+function unknownThai(t: RawToken, _i: number, _tokens: RawToken[], lex: Lexicon): AnalysisCandidate[] {
+  if (t.normalized.length > 1 && t.normalized.endsWith('ๆ')) {
+    const stem = t.normalized.slice(0, -1);
+    const hits = lex.lookup(stem);
+    if (hits.length) {
+      return lex.toCandidates(hits).map((c) => {
+        const { translit: _stem, ...notes } = c.notes ?? {}; // the stem's romanization is not the written word's
+        return { ...c, confidence: Math.min(c.confidence, 0.6), notes: { ...notes, repeated: 'ๆ', source: 'rule' } };
+      });
+    }
+    return [];
+  }
+  if (isChunkToken(t)) {
+    return [{ lemma: t.normalized, pos: 'PROPN', morph: {}, confidence: 0.35, notes: { source: 'rule', nameGuess: 'yes' }, unconfirmed: true }];
+  }
+  return [];
+}
+
 /** Copy role, register and the classifier's "counts" from the annotation table onto the candidates. */
 function annotate(a: AnalyzedToken): AnalyzedToken {
   if (!a.candidates.length) return a;
   const candidates = a.candidates.map((c) => {
-    // every candidate here came from the hand lexicon (no rule produces a candidate)
-    const next: AnalysisCandidate = { ...c, origin: 'hand', sourceId: TH_SOURCE_IDS.hand };
+    // a candidate from `unknownThai` is a reading by rule; every other one came from the hand lexicon
+    const byRule = c.notes?.source === 'rule';
+    const next: AnalysisCandidate = { ...c, origin: byRule ? 'rule' : 'hand', sourceId: byRule ? TH_SOURCE_IDS.rules : TH_SOURCE_IDS.hand };
     const ann = c.lemma && c.pos ? ANNOTATIONS.get(annotationKey(c.lemma, c.pos)) : undefined;
     if (!ann) return next;
     if (ann.role) next.role = ann.role;
@@ -258,6 +310,7 @@ const SUPPORT: AdapterSupport = {
     'A full stop does not end a unit inside an abbreviation (พ.ศ. ดร. น. Dr. a.m.), a number or time (10.30), a list marker at the start of a unit (1.), or an ellipsis in the middle of a text; ฯ never ends a unit by itself. A short word of two or three letters followed by a full stop is read as a sentence end.',
     'Canonical text is never given spaces: segmentation reads the text as written and adds none.',
     'Word segmentation uses the ICU dictionary plus a short list of course compounds; other compounds may come out as parts. It has not been measured on running prose.',
+    'A text that marks its word boundaries with U+200B (the Open Thai Common Version) is read with the publisher word division where ICU would cut a name into fragments: a chunk the word list knows, or whose ICU pieces are not all known and include a fragment (under three letters, a final เอล, or an ending in ห์), stays one word. A name the list does not have is then a guess (proper noun, no gloss, low confidence) that a dictionary entry replaces; an ordinary word the dictionary lacks may be guessed a name too, and a name made of pieces that each look like a word may still come out in parts.',
     'Tone comes from the spelling rules (consonant class, vowel length, final, tone mark) and, when a dictionary is installed, from its pronunciation. A spelling the rules cannot settle is reported with low confidence and no tone, never a guess.',
     'Lemmatization is seed-only: the built-in word list is a machine-drafted seed (about 600 entries: content words, function words and classifiers) that has not been checked by a native speaker, and words outside it show as not analysed.',
     'Constructions and phrase units are listed patterns, found only where the neighbouring words are in the word list; they are not a grammar check.',
@@ -314,11 +367,11 @@ export const thAdapter: LanguageAdapter = {
   sources: TH_SOURCES,
 
   segmentSentences: segmentThaiProse,
-  tokenize: thaiTokenize,
+  tokenize: tokenizeThai,
   normalize,
   searchNormalize: (q) => normalize(q).trim(),
 
-  analyze: (tokens) => lexiconAnalyze(tokens, thLexicon, ANALYZER, { contextual }).map(annotate),
+  analyze: (tokens) => lexiconAnalyze(tokens, thLexicon, ANALYZER, { contextual, unknown: unknownThai }).map(annotate),
 
   detectPhrases: (tokens, analyses) => matchPhraseRules(tokens, analyses, PHRASES, normalize),
 
@@ -330,6 +383,13 @@ export const thAdapter: LanguageAdapter = {
   describeOrthFeature: (feature) => describeThaiOrthFeature(feature),
 
   pronunciation(token, analysis): PronunciationSupport {
+    // ๆ (mai yamok) has no sound of its own: it is read by saying the word before it again
+    if (token.surface === 'ๆ') {
+      return { transliteration: undefined, ipa: undefined, notes: [
+        'ๆ (mai yamok) is not read as a sound: it means "say the word before it again" (ช้าๆ is ช้า-ช้า "slowly", เด็กๆ is เด็ก-เด็ก "children").',
+        'It carries no tone or consonant of its own, so there is nothing to decode; the tone is the tone of the word it repeats.',
+      ] };
+    }
     const cand = analysis?.candidates[0];
     const lexTranslit = cand?.notes?.translit;
     const syl = decodeFor(thDecoder, token.surface, cand);

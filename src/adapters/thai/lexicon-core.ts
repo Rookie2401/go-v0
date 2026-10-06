@@ -348,7 +348,11 @@ const ROWS: ThaiRow[] = [
   ['ไหร่', 'PRON', 'what (informal spelling of ไร)', { role: 'question word', register: ['colloquial'] }],
   ['ฉะนั้น', 'CONJ', 'therefore', { role: 'result connective', register: ['formal'] }],
   ['ขณะ', 'NOUN', 'moment, time'],
+  // ── the repetition mark and a closing formula
+  ['ๆ', 'PART', '(repeat the previous word)', { role: 'repetition mark (mai yamok)' }],
+  ['ดังนี้', 'ADV', 'as follows; thus'],
   // ── names
+  ['ยาห์เวห์', 'PROPN', 'Yahweh (the LORD, the name of God)', { register: ['religious'] }],
   ['ไทย', 'PROPN', 'Thai; Thailand'],
   ['พระเยซู', 'PROPN', 'Jesus'],
   ['พระคัมภีร์', 'NOUN', 'Bible; scripture', { register: ['religious'] }],

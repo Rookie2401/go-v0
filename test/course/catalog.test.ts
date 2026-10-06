@@ -168,6 +168,27 @@ describe('texts, stage of a text, assistance', () => {
     expect(await bare.assistanceFor({ courseId: 'honduras-es', textId: 'text:es:x', currentStageId: 'stage:x' })).toEqual(DEFAULT_ASSISTANCE);
   });
 
+  it('assistanceFor: Scripture takes the profile of the stage the learner is working at, not that of the open shelf it is filed on', async () => {
+    const { store, catalog } = await installed();
+    const bible = await chapter(store, 'gen1', 'bible-thai-otcv2025', 1, 'gen1');
+    // the learner is at Stage 0 / Grade 1 / Grade 4: Scripture helps him exactly as much as the book of his own stage
+    expect(await catalog.assistanceFor({ courseId: THAI_COURSE_ID, textId: bible, currentStageId: s('0') })).toEqual(THAI_ASSISTANCE['0']);
+    expect(await catalog.assistanceFor({ courseId: THAI_COURSE_ID, textId: bible, currentStageId: s('g1') })).toEqual(THAI_ASSISTANCE.g1);
+    expect(await catalog.assistanceFor({ courseId: THAI_COURSE_ID, textId: bible, currentStageId: s('g4') })).toEqual(THAI_ASSISTANCE.g4);
+    // with no current stage (or an unknown one) it keeps the work's own stage ('open')
+    expect(await catalog.assistanceFor({ courseId: THAI_COURSE_ID, textId: bible })).toEqual(THAI_ASSISTANCE.open);
+    expect(await catalog.assistanceFor({ courseId: THAI_COURSE_ID, textId: bible, currentStageId: 'stage:nope' })).toEqual(THAI_ASSISTANCE.open);
+    // a stage of another course never applies
+    expect(await catalog.assistanceFor({ courseId: THAI_COURSE_ID, textId: bible, currentStageId: ids.stage('honduras-es', 'g1') })).toEqual(THAI_ASSISTANCE.open);
+    // a non-Scripture book of the ladder is unchanged: the text's own stage wins
+    const novel = await chapter(store, 'kaeo', 'kaeo-chom-kaen', 1, 'kaeo');
+    expect(await catalog.assistanceFor({ courseId: THAI_COURSE_ID, textId: novel, currentStageId: s('0') })).toEqual(THAI_ASSISTANCE.g4);
+    // and a copy is handed out
+    const p = await catalog.assistanceFor({ courseId: THAI_COURSE_ID, textId: bible, currentStageId: s('g1') });
+    p.layers.length = 0;
+    expect((await store.stages.get(s('g1')))!.assistance.layers.length).toBeGreaterThan(0);
+  });
+
   it('hands out copies: changing a returned profile changes neither the default nor the stored stage', async () => {
     const { store, catalog } = await installed();
     const bare = await createCourseCatalog({ store: createMemoryStore() }).assistanceFor({ courseId: 'x' });

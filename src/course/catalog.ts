@@ -145,6 +145,17 @@ export function createCourseCatalog(deps: CourseCatalogDeps): CourseCatalog {
       // the default profile (Spanish, German); a course whose script has to be decoded gives its first shelves more help.
       const profile = (s: Stage) => copy(s.assistance ?? DEFAULT_ASSISTANCE);
       if (textId) {
+        // Scripture is a continuous corpus beside the ladder (docs/THAI_COURSE.md section 3): the shelf its work is filed
+        // on says nothing about how hard the learner finds it, so it takes the profile of the stage HE is working at. A
+        // course whose learner has no current stage (shelf courses) falls through to the work's own stage.
+        if (currentStageId) {
+          const text = await store.texts.get(textId);
+          const work = text?.workId ? await store.works.get(text.workId) : undefined;
+          if (work?.role === 'scripture' && work.courseId === courseId) {
+            const current = await store.stages.get(currentStageId);
+            if (current && current.courseId === courseId) return profile(current);
+          }
+        }
         const stage = await catalog.stageOfText(textId);
         if (stage && stage.courseId === courseId) return profile(stage);
       }

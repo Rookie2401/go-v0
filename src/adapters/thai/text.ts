@@ -9,9 +9,90 @@ export const normalizeThai = (s: string) => nfc(s).replace(/ํา/gu, 'ำ').re
 
 /** Words ICU splits but the course treats as one lexical unit. */
 export const THAI_COMPOUNDS = ['นิรันดร์', 'พระบุตร', 'ตอนนี้', 'ทุกคน', 'วันหนึ่ง', 'หลอกลวง', 'สัตย์ซื่อ', 'ทั้งสิ้น',
-  'ผู้หญิง', 'โรงพยาบาล', 'ผลไม้', 'วันนี้', 'พรุ่งนี้', 'เมื่อวาน', 'พระเยซู', 'พระคัมภีร์', 'คริสตจักร', 'น่าจะ', 'ดังนั้น'];
+  'ผู้หญิง', 'โรงพยาบาล', 'ผลไม้', 'วันนี้', 'พรุ่งนี้', 'เมื่อวาน', 'พระเยซู', 'พระคัมภีร์', 'คริสตจักร', 'น่าจะ', 'ดังนั้น', 'ดังนี้', 'ของขวัญ'];
 
-export const thaiTokenize: (text: string) => RawToken[] = makeWordTokenizer({ locale: 'th', normalize: normalizeThai, compounds: THAI_COMPOUNDS });
+const icuTokenize = makeWordTokenizer({ locale: 'th', normalize: normalizeThai, compounds: THAI_COMPOUNDS });
+
+/**
+ * ICU joins across a word boundary here: ครูให้การบ้าน is ให้การ + บ้าน ("to testify" + "house"), never ให้ + การบ้าน
+ * ("to give" + "homework"). A pair of ICU tokens that is always the second reading is cut again at the right place.
+ */
+const REPAIRS: ReadonlyArray<{ first: string; second: string; cut: number }> = [{ first: 'ให้การ', second: 'บ้าน', cut: 'ให้'.length }];
+
+export const thaiTokenize: (text: string) => RawToken[] = (text) => {
+  const out = icuTokenize(text);
+  for (let i = 0; i + 1 < out.length; i++) {
+    const r = REPAIRS.find((x) => out[i].normalized === x.first && out[i + 1].normalized === x.second && out[i].end === out[i + 1].start);
+    if (!r) continue;
+    const a = out[i], b = out[i + 1];
+    const mid = a.start + r.cut;
+    const left = text.slice(a.start, mid), right = text.slice(mid, b.end);
+    out.splice(i, 2,
+      { surface: left, start: a.start, end: mid, isWord: true, normalized: normalizeThai(left) },
+      { surface: right, start: mid, end: b.end, isWord: true, normalized: normalizeThai(right) });
+  }
+  return out;
+};
+
+const THAI_PIECE = /^[ก-๛]+$/u;
+/** U+200B, the publisher's word mark (written by code point: no invisible character sits in this file), and the byte-order mark. */
+const ZWSP = String.fromCharCode(0x200b);
+const CHUNK_CUTS = new RegExp('[\\s' + ZWSP + String.fromCharCode(0xfeff) + ']', 'u');
+
+/**
+ * A word token that is one whole U+200B-delimited chunk of the text which the word list does not know (set only on texts
+ * that carry U+200B word marks, e.g. the Open Thai Common Version). The analyzer reads such a token as a name candidate.
+ */
+export interface ThaiChunkToken extends RawToken { chunk: 'unlisted' }
+export const isChunkToken = (t: RawToken): t is ThaiChunkToken => (t as Partial<ThaiChunkToken>).chunk === 'unlisted';
+
+/**
+ * The tokenizer for running text. Text WITHOUT U+200B is segmented exactly as `thaiTokenize` does it. Text that marks its
+ * word boundaries with U+200B (the Biblica OTCV: 1,189 of 1,189 chapters) carries the publisher's own word division, and
+ * ICU's dictionary splits what the publisher kept whole, above all names (อับราม -> อับ|ราม, เบธเอล -> เบธ|เอล, โสโดม ->
+ * โส|โดม). The chunk stays one token when the word list knows the whole chunk, or when ICU cuts it into pieces that are NOT
+ * all known words and do not all look like words of their own: a piece of fewer than three characters, a last piece เอล or
+ * a piece ending in ห์ is a name's fragment (อับ|ราม, โท|บี|ยาห์, เนธัน|เอล). Pieces that are all known (พระ|เจ้า), or all
+ * of a word's length (โกรธ|เกรี้ยว, ย่าง|ก้าว: an ordinary compound the list lacks), keep the ICU split as ever.
+ * `known` answers for a normalized form.
+ */
+export function makeThaiTokenizer(known: (normalized: string) => boolean): (text: string) => RawToken[] {
+  const isKnown = (t: RawToken) => known(t.normalized) || THAI_COMPOUNDS.includes(t.normalized) || t.normalized === 'ๆ';
+  return (text) => {
+    const base = thaiTokenize(text);
+    if (!text.includes(ZWSP)) return base;
+    const chunkOf = (at: number): [number, number] => {
+      let a = at; while (a > 0 && !CHUNK_CUTS.test(text[a - 1])) a--;
+      let b = at; while (b < text.length && !CHUNK_CUTS.test(text[b])) b++;
+      return [a, b];
+    };
+    const out: RawToken[] = [];
+    for (let i = 0; i < base.length; ) {
+      const t = base[i];
+      if (!t.isWord || !THAI_PIECE.test(t.surface)) { out.push(t); i++; continue; }
+      const [a, b] = chunkOf(t.start);
+      // the pieces of this chunk that are word tokens of plain Thai letters, up to the first token of another kind
+      let j = i;
+      while (j < base.length && base[j].end <= b && base[j].isWord && THAI_PIECE.test(base[j].surface)) j++;
+      const run = base.slice(i, j);
+      // the run is the whole word of the chunk: nothing but punctuation (quotation marks, brackets) lies beside it in the chunk
+      const beside = base.filter((x) => x.start >= a && x.end <= b && (x.end <= run[0].start || x.start >= run[run.length - 1].end));
+      const whole = beside.every((x) => !x.isWord);
+      const fragmentary = run.some((p) => p.normalized.length < 3 || p.normalized.endsWith('ห์')) || run[run.length - 1].normalized === 'เอล';
+      const joined = run.length >= 2 ? text.slice(run[0].start, run[run.length - 1].end) : '';
+      if (whole && run.length >= 2 && (known(normalizeThai(joined)) || (fragmentary && run.some((p) => !isKnown(p))))) {
+        const start = run[0].start, end = run[run.length - 1].end;
+        const surface = text.slice(start, end);
+        const token: RawToken = { surface, start, end, isWord: true, normalized: normalizeThai(surface) };
+        out.push(known(token.normalized) ? token : { ...token, chunk: 'unlisted' } as ThaiChunkToken);
+      } else if (whole && run.length === 1 && !isKnown(run[0])) {
+        out.push({ ...run[0], chunk: 'unlisted' } as ThaiChunkToken);
+      } else out.push(...run);
+      i = j;
+    }
+    return out;
+  };
+}
 
 /** Final particles after which a single space ends a reading unit. */
 export const SENTENCE_FINAL_PARTICLES = ['ครับ', 'ค่ะ', 'คะ', 'นะ', 'จ้ะ', 'จ๊ะ', 'ฮะ', 'เหรอ', 'ล่ะ'];

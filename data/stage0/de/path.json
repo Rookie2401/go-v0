@@ -43,6 +43,11 @@
       "ref": "de-s06"
     },
     {
+      "id": "snd5",
+      "kind": "sounds",
+      "ref": "de-snd5"
+    },
+    {
       "id": "r1",
       "kind": "review",
       "ref": "de-s04",

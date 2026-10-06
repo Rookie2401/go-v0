@@ -4,10 +4,11 @@
   "kind": "sounds",
   "version": 1,
   "title": {
-    "en": "ei, sch, w, ß, eu — and capital letters"
+    "en": "ei, au, eu, sch, w, ß — and capital letters"
   },
   "features": [
     "de:ei",
+    "de:au",
     "de:sch",
     "de:w-v",
     "de:ß",
@@ -46,11 +47,19 @@
       "audio": {
         "status": "needed"
       }
+    },
+    {
+      "text": "Haus",
+      "en": "house",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
     }
   ],
   "explanation": {
-    "short": "In German, ei sounds like English \"eye\" (heiße), sch like \"sh\" (Schwester), w like English \"v\" (Wasser) and eu like \"oy\" (freut). ß is a sharp s. Every noun starts with a capital letter: Schwester, Wasser.",
-    "more": "ie is the opposite of ei: it is a long \"ee\" (vier). German spelling is regular: once you know a few patterns, you can say any new word you read."
+    "short": "In German, ei sounds like English \"eye\" (heiße), au like \"ow\" in \"how\" (Haus), eu like \"oy\" (freut), sch like \"sh\" (Schwester) and w like English \"v\" (Wasser). ß is a sharp s. Every noun starts with a capital letter: Schwester, Wasser.",
+    "more": "ie is the opposite of ei: it is a long \"ee\" (vier). German spelling is fairly regular, and a few more patterns (long and short vowels, s, j, word endings) come in later steps. It is a guide, not a promise: some words are exceptions."
   },
   "checks": [
     {
@@ -105,6 +114,17 @@
       "options": [
         "Wasser",
         "wasser"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-reading",
+      "word": "Haus",
+      "prompt": "How does \"au\" sound in \"Haus\"?",
+      "options": [
+        "like \"ow\" in \"how\": HOWS",
+        "like \"aw\" in \"saw\": HAWS"
       ],
       "answer": 0
     }

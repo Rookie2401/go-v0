@@ -48,8 +48,8 @@
     }
   ],
   "explanation": {
-    "short": "Albanian has letters of its own. ë is a short, weak \"uh\" (and at the end of a word it is often hardly said). ç is ch as in \"church\". sh is as in \"ship\"; dh is the th of \"this\"; th is the th of \"think\".",
-    "more": "sh, dh and th are single letters of the Albanian alphabet, not two letters stuck together: dhe starts with one sound, dh. Albanian is spelled as it sounds, so once you know these letters you can say any word you see."
+    "short": "Albanian has letters of its own. ë is a short, weak \"uh\" (and at the end of a word it is often hardly said). ç is ch as in \"church\". sh is as in \"ship\"; dh is the th of \"this\"; th is the th of \"think\". In a word of two or more syllables, one syllable is said a little stronger: usually the last (shtë-PI), but if the word ends in ë, the one before it (THO-të).",
+    "more": "sh, dh and th are single letters of the Albanian alphabet, not two letters stuck together: dhe starts with one sound, dh. Albanian spelling is close to the sound, so these letters take you a long way, but it is a guide, not a promise: the spelling does not show which syllable is strong, and some words are exceptions. A rough rule for the strong syllable: it is the last syllable of the basic word (shtë-PI, je-TOJ). An ending added to a word (-a, -i, -t, -ja, as in drit-a, shkoll-a) is not strong, and neither is a syllable with ë, so a word that ends in ë (or in -ër, -ël) is strong one syllable earlier: SHU-më, LI-bër. Expect exceptions: faleminderit is fa-le-min-DE-rit, and two vowels written together can be two syllables (a-I, lu-AN). When a recording disagrees with the rule, trust the recording."
   },
   "checks": [
     {
@@ -58,8 +58,8 @@
       "word": "shtëpi",
       "prompt": "How is \"shtëpi\" said?",
       "options": [
-        "SHTUH-pee — sh as in \"ship\", ë a weak \"uh\"",
-        "STEH-pee — with a plain s"
+        "shtuh-PEE — sh as in \"ship\", ë a weak \"uh\"",
+        "steh-PEE — with a plain s"
       ],
       "answer": 0
     },
@@ -93,6 +93,28 @@
       "options": [
         "with the th of \"think\": THOH-tuh",
         "with a plain t: TOH-tuh"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-reading",
+      "word": "shtëpi",
+      "prompt": "Which syllable is strong in \"shtëpi\"?",
+      "options": [
+        "the last: shtuh-PEE",
+        "the first: SHTUH-pee"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-reading",
+      "word": "thotë",
+      "prompt": "Which syllable is strong in \"thotë\", which ends in ë?",
+      "options": [
+        "the one before ë: THOH-tuh",
+        "the last: thoh-TUH"
       ],
       "answer": 0
     }

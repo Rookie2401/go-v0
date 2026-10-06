@@ -10,6 +10,7 @@
     "de:sp-st",
     "de:ä",
     "de:final-devoicing",
+    "de:ig",
     "de:noun-capital"
   ],
   "words": [
@@ -44,11 +45,19 @@
       "audio": {
         "status": "needed"
       }
+    },
+    {
+      "text": "richtig",
+      "en": "right, correct",
+      "picture": "✔️",
+      "audio": {
+        "status": "needed"
+      }
     }
   ],
   "explanation": {
-    "short": "At the start of a word, sp and st sound like \"shp\" and \"sht\": Stadt is SHTAT, spät is SHPAYT. ä is like the e in \"bed\", but long in spät. At the end of a word, b, d and g are said p, t and k: Sonntag ends like \"tahk\", Abend like \"bent\".",
-    "more": "This \"hardening\" only happens at the end: in the plural Abende the d is soft again. You will hear it, not have to think about it."
+    "short": "At the start of a word, sp and st sound like \"shp\" and \"sht\": Stadt is SHTAT, spät is SHPAYT. ä is like the e in \"bed\", but long in spät. At the end of a word, b, d and g are said p, t and k: Sonntag ends like \"tahk\", Abend like \"bent\". A common exception is -ig: it is said like \"ich\" (richtig).",
+    "more": "This \"hardening\" only happens at the end: in the plural Abende the d is soft again. You will hear it, not have to think about it. -ig is the exception: it is said with the soft hiss of \"nicht\", not a k: richtig, wenig, König. Also, the s at the start of Sonntag is a buzzing z: ZON-tahk."
   },
   "checks": [
     {
@@ -103,6 +112,17 @@
       "options": [
         "like \"t\"",
         "like English \"d\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-reading",
+      "word": "richtig",
+      "prompt": "The ending -ig in \"richtig\" is said:",
+      "options": [
+        "like \"ich\": the soft hiss of \"nicht\"",
+        "like \"ik\", with a k"
       ],
       "answer": 0
     }

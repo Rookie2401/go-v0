@@ -47,7 +47,7 @@
   ],
   "explanation": {
     "short": "Spanish has five vowels — a, e, i, o, u — and each always sounds the same. The letter h is never said: hola sounds like \"ola\".",
-    "more": "An accent mark (á, é, í, ó, ú) shows the strong syllable: café is ca-FÉ. Without a mark, a word ending in a vowel is strong on the next-to-last syllable: A-gua, her-MA-no."
+    "more": "An accent mark (á, é, í, ó, ú) shows the strong syllable: café is ca-FÉ. Without a mark, a word ending in a vowel, n or s is strong on the next-to-last syllable: A-gua, her-MA-no, HA-blan. A word ending in any other consonant (y counts as one here) is strong on the last syllable: se-ÑOR, us-TED, ha-BLAR, es-TOY."
   },
   "checks": [
     {
@@ -80,6 +80,17 @@
       "options": [
         "A-gua",
         "a-GUA"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "estoy",
+      "prompt": "Which syllable is strong in \"estoy\"? (It ends in a consonant, y.)",
+      "options": [
+        "es-TOY (the end)",
+        "ES-toy (the start)"
       ],
       "answer": 0
     }

@@ -54,9 +54,17 @@ export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
         { id: 'de:eu', label: 'eu and äu — like "oy"', pattern: /eu|äu/ },
         { id: 'de:w-v', label: 'w — like English v; v — usually like f', pattern: /[wv]/ },
         { id: 'de:z', label: 'z — like ts', pattern: /z/ },
+        { id: 'de:au', label: 'au — like "ow" in "how" (Haus, auf)', pattern: /au/ },
+        { id: 'de:s-z', label: 's before a vowel — a buzzing z (sie, sehr, Sonntag)', pattern: /(?<!s)s(?=[aeiouäöüy])/ },
+        { id: 'de:j', label: 'j — like English y (ja)', pattern: /j/ },
         { id: 'de:sp-st', label: 'sp, st at the start — shp, sht', pattern: /^(sp|st)/ },
-        { id: 'de:final-devoicing', label: 'b, d, g at the end — said p, t, k (Hund = hunt)', pattern: /[bdg]$/ },
+        // -ig is not devoiced to k: it is said like ich (König, richtig), so it gets its own feature below
+        { id: 'de:final-devoicing', label: 'b, d, g at the end — said p, t, k (Hund = hunt)', pattern: /[bd]$|(?<!i)g$/ },
+        { id: 'de:ig', label: '-ig at the end — said like ich, not like k (richtig, wenig)', pattern: /ig$/ },
         { id: 'de:long-vowel', label: 'a vowel before h, or doubled — long (sehr, Tee)', pattern: /[aeiouäöü]h|aa|ee|oo/ },
+        // length by letters: one consonant (or none) after the strong vowel = long, two or a doubled letter = short
+        { id: 'de:vowel-length', label: 'a vowel before one consonant — long (gut, sagen); before two — short (bitte, Wasser)', pattern: /[aeiouäöü](?:[^aeiouäöüy]{2}|[^aeiouäöüy](?:[aeiouäöüy]|$)|$)/ },
+        { id: 'de:final-e', label: 'unstressed -e and -er at the end — a faint "uh" (bitte, Lehrer)', pattern: /[aeiouäöüy][^aeiouäöüy]+(?:e|er)$/ },
         { id: 'de:noun-capital', label: 'Every noun starts with a capital letter', pattern: /^[A-ZÄÖÜ]/, pos: 'NOUN', caseSensitive: true },
       ],
     },

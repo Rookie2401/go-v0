@@ -1,0 +1,145 @@
+{
+  "id": "de-snd5",
+  "lang": "de",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "Long and short vowels, s, j — and weak endings"
+  },
+  "features": [
+    "de:vowel-length",
+    "de:s-z",
+    "de:j",
+    "de:final-e"
+  ],
+  "words": [
+    {
+      "text": "gut",
+      "en": "good",
+      "picture": "👍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "bitte",
+      "en": "please; you're welcome",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "sie",
+      "en": "she, they (Sie: you, polite)",
+      "picture": "👩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ja",
+      "en": "yes",
+      "picture": "✅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "Lehrer",
+      "en": "teacher",
+      "picture": "🧑‍🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "richtig",
+      "en": "right, correct",
+      "picture": "✔️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "A vowel before one consonant, or at the end of a word, is long: gut is GOOT. Before two consonants it is short: bitte is BIT-uh. s before a vowel buzzes like English z (sie is ZEE) and j is English y (ja is YAH). An -e at the end of a word is a faint \"uh\" (bitte), and so is -er (Lehrer is LAY-ruh).",
+    "more": "Count the consonant letters after the strong vowel: none or one means long (der, zu, war, wir, Vater, sagen); two, or a doubled letter, means short (Wasser, Mann, kommen, nicht, richtig). Small words are exceptions and stay short: in, mit, an, das, was, ist, bin, hat, es. A few other words break the pattern too (Buch has a long u). s is a plain hiss at the end of a word or before a consonant: Haus, ist. The faint endings are the same in Name (NAH-muh), aber (AH-buh) and Vater (FAH-tuh). This is a guide, not a law: German has exceptions, so listen as you read."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "gut",
+      "prompt": "How is the \"u\" in \"gut\" said?",
+      "options": [
+        "long, as in \"moon\": GOOT",
+        "short, as in \"put\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "bitte",
+      "prompt": "How is \"bitte\" said?",
+      "options": [
+        "short i, faint \"uh\" at the end: BIT-uh",
+        "long ee, clear \"eh\" at the end: BEE-teh"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "Wasser",
+      "prompt": "How is the \"a\" in \"Wasser\" said? (two s's follow it)",
+      "options": [
+        "short: VAS-uh",
+        "long: VAH-suh"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "sie",
+      "prompt": "How is the \"s\" in \"sie\" said?",
+      "options": [
+        "buzzing, like English z: ZEE",
+        "hissing, like English s: SEE"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-reading",
+      "word": "ja",
+      "prompt": "How does \"ja\" start?",
+      "options": [
+        "like the y of \"yes\": YAH",
+        "like the j of \"jam\": JAH"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-reading",
+      "word": "Lehrer",
+      "prompt": "How does \"Lehrer\" end?",
+      "options": [
+        "with a faint \"uh\": LAY-ruh",
+        "with a clear English \"er\": LAY-rer"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-06",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker. Added 2026-10-06 after the listening test (docs/audits/LISTEN-TEST.md): vowel length, s = z, j and the weak -e / -er endings."
+    }
+  }
+}

@@ -8,7 +8,7 @@ export const VERB_ROWS = `
 # VERB
 // ── eating, drinking, sleeping, the body
 खाना = to eat [erg d:food] | @verb:v
-पीना = to drink [erg d:food] | @verb:ii
+पीना = to drink [erg d:food] | @verb:ii; पीऊँ:Mood=Sub Person=1 Number=Sing VerbForm=Fin; पीऊँगा:Tense=Fut Mood=Ind VerbForm=Fin Person=1 Number=Sing Gender=Masc; पीऊँगी:Tense=Fut Mood=Ind VerbForm=Fin Person=1 Number=Sing Gender=Fem; पीए:Mood=Sub Person=3 Number=Sing VerbForm=Fin; पीए:Mood=Sub Person=2 Number=Sing VerbForm=Fin; पीएगा:Tense=Fut Mood=Ind VerbForm=Fin Person=3 Number=Sing Gender=Masc; पीएगा:Tense=Fut Mood=Ind VerbForm=Fin Person=2 Number=Sing Gender=Masc; पीएगी:Tense=Fut Mood=Ind VerbForm=Fin Person=3 Number=Sing Gender=Fem; पीएगी:Tense=Fut Mood=Ind VerbForm=Fin Person=2 Number=Sing Gender=Fem; पीएँ:Mood=Sub Person=3 Number=Plur VerbForm=Fin; पीएँ:Mood=Sub Person=1 Number=Plur VerbForm=Fin; पीएँ:Mood=Sub Person=2 Number=Plur Polite=Form VerbForm=Fin; पीएँ:Mood=Imp Person=2 Polite=Form VerbForm=Fin; पीएँगे:Tense=Fut Mood=Ind VerbForm=Fin Person=3 Number=Plur Gender=Masc; पीएँगे:Tense=Fut Mood=Ind VerbForm=Fin Person=1 Number=Plur Gender=Masc; पीएँगे:Tense=Fut Mood=Ind VerbForm=Fin Person=2 Number=Plur Polite=Form Gender=Masc; पीएँगी:Tense=Fut Mood=Ind VerbForm=Fin Person=3 Number=Plur Gender=Fem; पीएँगी:Tense=Fut Mood=Ind VerbForm=Fin Person=1 Number=Plur Gender=Fem; पीएँगी:Tense=Fut Mood=Ind VerbForm=Fin Person=2 Number=Plur Polite=Form Gender=Fem; पीओ:Mood=Imp Person=2 Polite=Fam VerbForm=Fin; पीया:VerbForm=Part pfv m sg
 खिलाना = to feed [erg d:food cau:खाना] | @verb:v
 पिलाना = to give to drink [erg d:food cau:पीना] | @verb:v
 पकाना = to cook [erg d:food cau:पकना] | @verb:v

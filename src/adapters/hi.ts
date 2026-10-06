@@ -40,6 +40,7 @@ import { WORD_MORE_ROWS } from './hindi/lexicon-more-words';
 import { EXTRA_MORE_ROWS } from './hindi/lexicon-more-extra';
 import { FRAME_MORE_ROWS } from './hindi/lexicon-more-frames';
 import { GAP_FREQUENT_ROWS, GAP_NAME_ROWS, GAP_NUMBER_ROWS, GAP_ROWS } from './hindi/lexicon-gap-words';
+import { LADDER_FIX_ROWS } from './hindi/lexicon-ladder-fixes';
 import { registerOf } from './hindi/registers';
 import { isNounFirst } from './hindi/noun-first';
 import { HI_VARIETIES } from './hindi/varieties';
@@ -57,7 +58,8 @@ const LANG = 'hi' as const;
 // progressive, transitivity notes, the list-driven nukta relation, ~1,000 more lemmas), so imported Hindi texts are re-analysed
 // '4': the ladder plan's gaps (data/ladder/hi/PLAN.md 6-7): ~230 more lemmas (frame words, numerals 31-99, names), the everyday noun first
 // for words written like a verb form (गाड़ी, भाई, सही, फल, the name सीता: hindi/noun-first.ts), कमरों read as कमरा
-const VERSION = '4';
+// '5': the first reading of the ladder (101 units): जी after a name or title, ~20 more words, and the neighbour rules of hindi/ladder-context.ts (किरण, सीख, पूरी, सजा, सोता, बिल …)
+const VERSION = '5';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
@@ -93,6 +95,7 @@ const ROWS = [
   ...parseRows(FRAME_MORE_ROWS, 'more-frames', hiLexiconProblems),
   ...parseRows(GAP_ROWS, 'gap-words', hiLexiconProblems), ...parseRows(GAP_FREQUENT_ROWS, 'gap-frequent', hiLexiconProblems),
   ...parseRows(GAP_NUMBER_ROWS, 'gap-numbers', hiLexiconProblems), ...parseRows(GAP_NAME_ROWS, 'gap-names', hiLexiconProblems),
+  ...parseRows(LADDER_FIX_ROWS, 'ladder-fixes', hiLexiconProblems),
 ];
 const BUILT = buildRows(ROWS, new Set(), hiLexiconProblems);
 const ANNOTATIONS: Map<string, HiAnnotation> = BUILT.annotations;

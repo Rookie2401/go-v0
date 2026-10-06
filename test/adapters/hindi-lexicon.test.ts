@@ -20,6 +20,7 @@ import { WORD_MORE_ROWS } from '../../src/adapters/hindi/lexicon-more-words';
 import { EXTRA_MORE_ROWS } from '../../src/adapters/hindi/lexicon-more-extra';
 import { FRAME_MORE_ROWS } from '../../src/adapters/hindi/lexicon-more-frames';
 import { GAP_FREQUENT_ROWS, GAP_NAME_ROWS, GAP_NUMBER_ROWS, GAP_ROWS } from '../../src/adapters/hindi/lexicon-gap-words';
+import { LADDER_FIX_ROWS } from '../../src/adapters/hindi/lexicon-ladder-fixes';
 import { REGISTER_GROUPS, registerGroupOf, registerOf } from '../../src/adapters/hindi/registers';
 import { HI_VARIETIES } from '../../src/adapters/hindi/varieties';
 import { loadBundledCorpus } from '../../src/ingest';
@@ -28,7 +29,7 @@ import { run } from './helpers';
 const BLOCKS: Record<string, string> = {
   function: FUNCTION_ROWS, 'numbers-time': NUMBER_TIME_ROWS, verbs: VERB_ROWS, 'nouns-home': NOUN_HOME_ROWS,
   'nouns-world': NOUN_WORLD_ROWS, 'nouns-faith': NOUN_FAITH_ROWS, modifiers: ADJECTIVE_ROWS, course: COURSE_ROWS, 'more-verbs': VERB_MORE_ROWS, 'more-words': WORD_MORE_ROWS, 'more-extra': EXTRA_MORE_ROWS, 'more-frames': FRAME_MORE_ROWS,
-  'gap-words': GAP_ROWS, 'gap-frequent': GAP_FREQUENT_ROWS, 'gap-numbers': GAP_NUMBER_ROWS, 'gap-names': GAP_NAME_ROWS,
+  'gap-words': GAP_ROWS, 'gap-frequent': GAP_FREQUENT_ROWS, 'gap-numbers': GAP_NUMBER_ROWS, 'gap-names': GAP_NAME_ROWS, 'ladder-fixes': LADDER_FIX_ROWS,
 };
 const ROWS = Object.entries(BLOCKS).flatMap(([label, src]) => parseRows(src, label));
 

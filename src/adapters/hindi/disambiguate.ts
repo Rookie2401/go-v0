@@ -17,6 +17,7 @@
 import type { AnalysisCandidate, RawToken } from '../../core';
 import { HINDI_VECTOR_VERBS, subjunctiveTriggerBefore } from './verb-group';
 import { preferNounFirst } from './noun-first';
+import { ladderContext } from './ladder-context';
 
 type C = AnalysisCandidate;
 
@@ -163,6 +164,9 @@ function decide(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): Ana
   const w = tokens[i].normalized;
   if (w === 'कल') return cands; // one word; yesterday or tomorrow is for the sentence to say
   // a word whose everyday reading is a noun (गाड़ी, भाई, फल, सही, the name सीता), and two words that share an oblique plural (कमरों)
+  // the words the first reading of the ladder found read wrongly (जी after a name, किरण, सीख, पूरी, सजा, सोता, बिल, बैठे)
+  const ladder = ladderContext(i, tokens, base);
+  if (ladder) return ladder;
   const nounFirst = preferNounFirst(i, tokens, base);
   if (nounFirst) return nounFirst;
 

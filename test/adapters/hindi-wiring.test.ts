@@ -19,10 +19,10 @@ const sentencesOf = (d: ReturnType<typeof loadBundledCorpus>[number]): string[] 
 const hiDocs = () => loadBundledCorpus().filter((d) => d.lang === 'hi');
 
 describe('identity', () => {
-  it('the adapter is version 4 and its analyses name themselves', () => {
-    expect(hiAdapter.version).toBe('4');
-    expect(run('hi', 'घर').analyses[0].analyzer).toBe('adapter-hi@4');
-    expect(ANALYZER).toBe('adapter-hi@4');
+  it('the adapter is version 5 and its analyses name themselves', () => {
+    expect(hiAdapter.version).toBe('5');
+    expect(run('hi', 'घर').analyses[0].analyzer).toBe('adapter-hi@5');
+    expect(ANALYZER).toBe('adapter-hi@5');
   });
 
   it('normalize is NFC and nothing else: the nukta stays, case and marks are not folded', () => {

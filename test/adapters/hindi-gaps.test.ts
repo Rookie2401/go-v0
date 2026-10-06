@@ -194,6 +194,6 @@ describe('7.5 of the plan: oblique plurals and feminine plurals in -ें', () 
 
 describe('the adapter is version 4', () => {
   it('its readings name the version, so that imported Hindi texts are analysed again', () => {
-    expect(run('hi', 'घर').analyses[0].analyzer).toBe('adapter-hi@4');
+    expect(run('hi', 'घर').analyses[0].analyzer).toBe('adapter-hi@5');
   });
 });

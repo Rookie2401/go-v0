@@ -161,7 +161,7 @@ export const FUNCTION_ROWS = `
 मत = do not (a command) [everyday] | मत
 क्या = (marks a yes/no question) [everyday] | क्या:int
 सा = -ish; like, as if (after a word: थोड़ा सा, कौन सा) [everyday] | @adj
-वाला = one who, one that; -er (आने वाला = the coming one) [everyday] | @adj
+वाला = one who, one that; -er (आने वाला = the coming one) [everyday] | @adj; वालों:m pl obl; वालियों:f pl obl
 भर = all through, the whole of; only (दिन भर) [everyday] | भर
 सिर्फ़ = only, merely [perso-arabic everyday] | सिर्फ़
 केवल = only, merely [sanskritic] | केवल

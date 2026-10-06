@@ -90,3 +90,55 @@ unexpanded abbreviations (Vd., pág., S., shek., พ.ศ.); Roman numerals; Stro
 3. Pre-render the 778 Stage 0 audio slots once with a neural voice (labelled computer voice, practice only) so every
    device — Albanian included — hears the same thing. Needs the owner to choose a provider and accept its terms.
 4. Native recordings through `npm run audio:packet`: the only route to listening evidence.
+
+## Update, 2026-10-06 (later): Codex's work committed, step 1 done
+
+### Codex's work (491b934)
+
+Everything Codex left uncommitted was committed as found, at the owner's request (1,443 files: acquired library
+sources and the scripts that fetched them, curriculum remediation, Reading organised by book, the Curriculum page, Home
+as a small directory; scratch output left out). What it changes for sound:
+
+- **GoListen plumbing, tightened**: a learner's upload can no longer promote its own timings to reviewed; a recording
+  that reached its end is not resumed from an older mid-play position; a recording for a library text that is not yet
+  opened is found and listed; listening assessment and reading assessment are kept apart. All of it concerns
+  recordings, and there are none, so a reader still hears nothing outside Stage 0.
+- **Home lists "GoListen — Understand stories and Scripture by listening"** for every course. On a fresh install that
+  page is empty ("No approved listening audio is ready for this language yet"): the entry promises what no course can
+  give yet.
+
+The full suite on the committed tree (9,391 tests): 9,373 passed, 18 failed. Five were expectation failures caused by
+this session's own earlier commits (the superseded-by-ladder tag in two import tests, the new Home entry in three Home
+tests) — fixed in 1dd2493. The other 13 are time-outs in the Stage 0, GoTell and real-engine UI tests; the Stage 0 and
+GoTell ones also time out when run alone on plain HEAD (≈ 125 s per test against a 20 s limit) — slow tests, not
+wrong answers, but they hide whatever they would check. The four real-engine UI tests time out alone as well (one ran 828 s against its 20 s limit): the app over the real
+engines is slow enough in jsdom that these suites no longer check anything — worth its own look.
+
+Measuring the word sheet also found a German importer bug: with the dictionary installed, two course texts (Weg 3,
+chapters 1 and 2) cannot be imported — the German adapter's refine step changes a reading and the importer refuses.
+Flagged as its own task.
+
+### Step 1 (1984d46, 14ae6a1)
+
+- **Word sheet, Spanish / German / Albanian**: a "How it sounds" section — the dictionary's pronunciation, credited and
+  labelled when it is a variety's ("Wiktionary (Tosk): /ˈmiɾə/"), a key for ˈ and ː, and the adapter's notes (Spanish
+  stress first). Measured with the real importer on the beginner texts, a pronunciation now shows for **78.6 %** of
+  Spanish word tokens (inflected forms such as *está*, *tiene* have none in Wiktionary: they show the stress note),
+  **93.4 %** of German and **61.1 %** of Albanian. Thai and Hindi keep their decoding.
+- **Stage 0 lessons**: German gets a fifth sound step (long and short vowels by counting consonants, s = z before a
+  vowel, j, faint -e/-er) plus au and -ig; Spanish gets the consonant-final stress rule; Albanian gets a stress rule
+  (80 % of running polysyllables right against Wiktionary, against 62 % for a first-syllable habit) and loses "say any
+  word you see"; the two Hindi sentences now agree with the decoder.
+
+What the same learner model predicts with the new lessons (a projection from the earlier runs, not a new measurement):
+German rises from 41–57 % to about **90 %** of words right (the "six rules taught" scenario: open-syllable length,
+s = z, au, j, faint -e and -er); Spanish stress from 95.5 % to about **100 %** of referenced words; Albanian stress from
+62–65 % to about **80 %**.
+
+| language | sounds a reader gets now |
+|---|---|
+| Thai, Hindi | per-word decoding, ~98 % right, honest about doubt (unchanged) |
+| Spanish | the rules, now complete for stress; per-word IPA on 79 % of words and the stress note on the rest |
+| German | five sound steps (projected ~90 %); per-word IPA on 93 % of words |
+| Albanian | letters 99.5 %, a stress rule (~80 %); per-word IPA on 61 % of words |
+| all | still no audio outside Stage 0; steps 2–4 above remain |

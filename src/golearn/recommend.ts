@@ -35,7 +35,7 @@
  *   - front matter / prefaces and texts tagged `superseded-by-ladder` are never offered.
  */
 import type { LanguageCode, LearnerItemState, PersonalizedCoverage, Recommendation, RecommendationReason, Text, TextProfile } from '../core';
-import { isFrontMatterText, isSuperseded, learnerSnapshot, rankWholeLibrary, storePager } from './candidates';
+import { isFrontMatterText, isSuperseded, isStage0Text, learnerSnapshot, rankWholeLibrary, storePager } from './candidates';
 import type { LearnerSnapshot, WholeLibraryDeps } from './candidates';
 import { analyzeText, liveSentences, scriptureReadiness } from './coverage';
 import { hasHumanReviewedRecording } from './eligibility';
@@ -120,7 +120,7 @@ export async function recommend(
     && t.kind !== 'testimony' && !privateCorpusIds.has(t.corpusId)).sort((a, b) => (a.id < b.id ? -1 : 1));
   const visible = (t: Text) => includeUnpublished || t.published;
   // never offered as reading: a draft the ladder absorbed (`superseded-by-ladder`), and a work's front matter / preface
-  const notOffered = new Set(texts.filter((t) => isSuperseded(t) || isFrontMatterText(t)).map((t) => t.id));
+  const notOffered = new Set(texts.filter((t) => isSuperseded(t) || isStage0Text(t) || isFrontMatterText(t)).map((t) => t.id));
   const inputAll = texts.filter((t) => INPUT_KINDS.has(t.kind) && !notOffered.has(t.id));
   const input = inputAll.filter(visible);
   const withheld = inputAll.filter((t) => !visible(t));

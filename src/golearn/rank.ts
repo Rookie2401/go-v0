@@ -270,11 +270,16 @@ export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandida
   // RECOMMENDING: a text below the floor is offered only when NOTHING is in reach (then the closest few, never led with)
   let aboveLevel = false;
   if (opts.reach && rows.length > 0) {
-    if (rows.some((r) => r.tier < 2)) rows = rows.filter((r) => r.tier < 2);
-    else {
+    // "in reach" is asked of the texts he has NOT read: a text he read is in reach by definition, and must not push every unread
+    // one out (in preview, the drafts he read are catalogue rows too). Read rows stay for the caller's rereads.
+    const read = rows.filter((r) => r.c.alreadyRead);
+    const unread = rows.filter((r) => !r.c.alreadyRead);
+    if (unread.some((r) => r.tier < 2)) rows = [...read, ...unread.filter((r) => r.tier < 2)];
+    else if (unread.length > 0) {
       aboveLevel = true;
-      rows = [...rows].sort((a, b) => b.coverage - a.coverage || b.score - a.score || (a.c.profile.textId < b.c.profile.textId ? -1 : 1)).slice(0, REACH.closestFew);
-      rows.forEach((r, i) => { r.score = r.coverage * REACH.aboveLevelScore - i * 1e-4; }); // nearest first (ties by merit), never above what is not above his level
+      const closest = [...unread].sort((a, b) => b.coverage - a.coverage || b.score - a.score || (a.c.profile.textId < b.c.profile.textId ? -1 : 1)).slice(0, REACH.closestFew);
+      closest.forEach((r, i) => { r.score = r.coverage * REACH.aboveLevelScore - i * 1e-4; }); // nearest first (ties by merit), never above what is not above his level
+      rows = [...read, ...closest];
     }
   }
 

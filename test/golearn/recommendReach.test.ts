@@ -410,3 +410,26 @@ describe('5. a draft the ladder absorbed is not offered (it stays in the store)'
     expect(items.map((r) => r.id)).not.toContain(idOf('camino-1-01'));
   });
 });
+
+describe('6. what he has read never pushes the unread out; Stage 0 scenes are not library reading', () => {
+  it('a text he read (in reach by definition) does not hide every unread text: with nothing unread in reach, the closest few are still offered', async () => {
+    const h = await world();
+    // the text he read is a catalogue row with a profile too (in preview, the drafts he read are)
+    await putCatalogRows(h.store, [row('aaa', {}), row('bbb', {}), row('ccc', {})]);
+    const profiles = new Map<string, TextProfile>([[BASE, at(BASE, 100)], [idOf('aaa'), at(idOf('aaa'), 40)], [idOf('bbb'), at(idOf('bbb'), 60)], [idOf('ccc'), at(idOf('ccc'), 55)]]);
+    const recs = await rec(h, depsOf(h, profiles));
+    const fresh = recs.filter((r) => r.reason === 'next-input' && r.textId).map((r) => r.textId);
+    expect(fresh).toEqual([idOf('bbb'), idOf('ccc'), idOf('aaa')]); // nearest first, all said to be above his level
+    expect(fresh).not.toContain(BASE);
+  });
+
+  it('a Stage 0 scene in the store (tagged stage0) is never offered, read or not', async () => {
+    const h = await world();
+    await buildFixtureText(h.store, { lang: 'es', slug: 'stage0-es-s01', editorialTags: ['stage0'], sentences: [{ tokens: [{ surface: 'hijo', lemma: 'hijo', pos: 'NOUN' as const }] }] });
+    await h.understood(U, 'es', idOf('stage0-es-s01'), [0], 'b'); // seen, never "finished" (Stage 0 does not finish texts)
+    const deps = await catalogue(h, [entry('stage0-es-s01', 99), entry('other', 90)]);
+    const recs = idsOf(await rec(h, deps));
+    expect(recs).not.toContain(idOf('stage0-es-s01'));
+    expect(recs).toContain(idOf('other'));
+  });
+});

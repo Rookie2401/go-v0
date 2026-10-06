@@ -150,6 +150,8 @@ export const isFrontMatterText = (t: Pick<Text, 'title' | 'chapter' | 'kind'>): 
   isFrontMatterTitle(t.title) || /^front matter$/i.test(t.chapter?.title ?? '') || (t.chapter?.index === 0 && t.kind !== 'scripture');
 /** Absorbed by the ladder (`editorialTags` carries `superseded-by-ladder`): it stays in the store, it is not offered. */
 export const isSuperseded = (t: Pick<Text, 'editorialTags'>): boolean => (t.editorialTags ?? []).includes(REACH.supersededTag);
+/** A Stage 0 scene (src/stage0/documents.ts): read on the Stage 0 path, never offered as library or ladder reading. */
+export const isStage0Text = (t: Pick<Text, 'editorialTags'>): boolean => (t.editorialTags ?? []).includes('stage0');
 
 // ───────────────────────────── the prefilter ─────────────────────────────
 
@@ -329,7 +331,7 @@ export async function candidateFilter(ctx: Ctx): Promise<(rows: CatalogText[]) =
     const stored = await ctx.store.texts.getMany(rows.map((r) => r.id));
     return rows.filter((_, i) => {
       const t = stored[i];
-      return !t || (t.kind !== 'testimony' && !privateCorpusIds.has(t.corpusId) && !isHeldOut(t) && !isSuperseded(t) && !isFrontMatterText(t));
+      return !t || (t.kind !== 'testimony' && !privateCorpusIds.has(t.corpusId) && !isHeldOut(t) && !isSuperseded(t) && !isStage0Text(t) && !isFrontMatterText(t));
     });
   };
 }

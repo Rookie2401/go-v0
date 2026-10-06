@@ -41,7 +41,7 @@ export const FUNCTION_ROWS = `
 आप = you (polite); oneself (in अपने आप) [everyday] | आप:Person=2 dir prs Polite=Form; आप:Person=2 obl prs Polite=Form; आपने:Person=2 prs Case=Erg Polite=Form; आपको:Person=2 prs Case=Dat Polite=Form; आपसे:Person=2 obl prs Polite=Form; आपमें:Person=2 obl prs Polite=Form; आपपर:Person=2 obl prs Polite=Form
 यह = this; he, she, it (near) [everyday] | यह:3s dir dem; इस:3s obl dem; इसे:3s dem Case=Dat; इसको:3s dem Case=Dat; इसने:3s dem Case=Erg; इससे:3s obl dem; इसमें:3s obl dem; इसपर:3s obl dem
 ये = these; they (near); this [everyday] | ये:3p dir dem; इन:3p obl dem; इन्हें:3p dem Case=Dat; इनको:3p dem Case=Dat; इन्होंने:3p dem Case=Erg; इनसे:3p obl dem; इनमें:3p obl dem; इनपर:3p obl dem
-वह = that; he, she, it (far) [everyday] | वह:3s dir dem; उस:3s obl dem; उसे:3s dem Case=Dat; उसको:3s dem Case=Dat; उसने:3s dem Case=Erg; उससे:3s obl dem; उसमें:3s obl dem; उसपर:3s obl dem
+वह = that; he, she, it (far) [everyday also:वो] | वह:3s dir dem; उस:3s obl dem; उसे:3s dem Case=Dat; उसको:3s dem Case=Dat; उसने:3s dem Case=Erg; उससे:3s obl dem; उसमें:3s obl dem; उसपर:3s obl dem
 वे = those; they (far) [everyday] | वे:3p dir dem; उन:3p obl dem; उन्हें:3p dem Case=Dat; उनको:3p dem Case=Dat; उन्होंने:3p dem Case=Erg; उनसे:3p obl dem; उनमें:3p obl dem; उनपर:3p obl dem
 यही = this very one (यह + ही) [everyday] | यही:3s dir dem; इसी:3s obl dem; इन्हीं:3p obl dem
 वही = that very one (वह + ही) [everyday] | वही:3s dir dem; उसी:3s obl dem; उन्हीं:3p obl dem
@@ -134,7 +134,7 @@ export const FUNCTION_ROWS = `
 अथवा = or [sanskritic formal] | अथवा
 तथा = and [sanskritic formal] | तथा
 एवं = and [sanskritic formal] | एवं
-यानी = that is, in other words [perso-arabic everyday] | यानी
+यानी = that is, in other words [perso-arabic everyday also:यानि] | यानी
 अर्थात् = that is, namely [sanskritic formal] | अर्थात्
 वरना = otherwise, or else [perso-arabic everyday] | वरना
 अन्यथा = otherwise [sanskritic formal] | अन्यथा

@@ -16,6 +16,7 @@
  */
 import type { AnalysisCandidate, RawToken } from '../../core';
 import { HINDI_VECTOR_VERBS, subjunctiveTriggerBefore } from './verb-group';
+import { preferNounFirst } from './noun-first';
 
 type C = AnalysisCandidate;
 
@@ -161,6 +162,9 @@ function decide(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): Ana
   if (cands.length < 2 && !mergedNP) return cands;
   const w = tokens[i].normalized;
   if (w === 'कल') return cands; // one word; yesterday or tomorrow is for the sentence to say
+  // a word whose everyday reading is a noun (गाड़ी, भाई, फल, सही, the name सीता), and two words that share an oblique plural (कमरों)
+  const nounFirst = preferNounFirst(i, tokens, base);
+  if (nounFirst) return nounFirst;
 
   const word = (j: number): number | undefined => (j >= 0 && j < tokens.length && tokens[j].isWord ? j : undefined);
   const prev = word(i - 1);
@@ -275,6 +279,8 @@ function decide(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): Ana
     const prevMarks = prev !== undefined && (any(prev, (c) => has(c, 'Case', 'Dat')) || isPost(prev));
     if (prevMarks && next !== undefined && any(next, (c) => isNominal(c) || c.pos === 'ADJ' || c.pos === 'NUM')) return choose(moreReading, 'after a word with को / से and before a noun: "more"') ?? cands;
     if (prev !== undefined && pk && isVerbal(pk) && (has(pk, 'VerbForm', 'Fin') || pk.pos === 'AUX' || has(pk, 'Aspect', 'Perf')) && nk?.pos === 'PRON') return choose(and, 'a new clause with its own subject follows: "and"') ?? cands;
+    // a finished clause (… है, … किया) and a noun after और: the next clause or the next object, not "more" (an imperative before it can still mean "more": दो और रोटी)
+    if (prev !== undefined && pk && isVerbal(pk) && (has(pk, 'VerbForm', 'Fin') || pk.pos === 'AUX' || has(pk, 'Aspect', 'Perf')) && !has(pk, 'Mood', 'Imp') && nk && isNominal(nk) && !isPost(next)) return choose(and, 'a clause ends before it and a noun follows: "and"') ?? cands;
     if (prev !== undefined && next !== undefined && pk && nk) {
       if (group(pk) === group(nk) && group(pk) !== '') return choose(and, 'joins two words of the same kind: "and"') ?? cands;
       if (['ADJ', 'NUM'].includes(nk.pos ?? '') || (isNominal(nk) && group(pk) !== 'nominal')) return choose(moreReading, 'no left word of the same kind to join: "more, another"') ?? cands;

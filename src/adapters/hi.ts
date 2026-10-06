@@ -39,7 +39,9 @@ import { VERB_MORE_ROWS } from './hindi/lexicon-more-verbs';
 import { WORD_MORE_ROWS } from './hindi/lexicon-more-words';
 import { EXTRA_MORE_ROWS } from './hindi/lexicon-more-extra';
 import { FRAME_MORE_ROWS } from './hindi/lexicon-more-frames';
+import { GAP_FREQUENT_ROWS, GAP_NAME_ROWS, GAP_NUMBER_ROWS, GAP_ROWS } from './hindi/lexicon-gap-words';
 import { registerOf } from './hindi/registers';
+import { isNounFirst } from './hindi/noun-first';
 import { HI_VARIETIES } from './hindi/varieties';
 import { hindiSearchForm, hindiSpellingVariants } from './hindi/script';
 import { decodeHindi, decodeHindiWithPronunciation, describeHindiOrthFeature, hindiOrthFeatures } from './hindi/pronunciation';
@@ -53,7 +55,9 @@ import { checkHindiProduction } from './hindi/production';
 const LANG = 'hi' as const;
 // '3': the fix batches after '2' changed what is stored (persons and cells as separate readings, causatives, the
 // progressive, transitivity notes, the list-driven nukta relation, ~1,000 more lemmas), so imported Hindi texts are re-analysed
-const VERSION = '3';
+// '4': the ladder plan's gaps (data/ladder/hi/PLAN.md 6-7): ~230 more lemmas (frame words, numerals 31-99, names), the everyday noun first
+// for words written like a verb form (गाड़ी, भाई, सही, फल, the name सीता: hindi/noun-first.ts), कमरों read as कमरा
+const VERSION = '4';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
@@ -87,6 +91,8 @@ const ROWS = [
   ...parseRows(VERB_MORE_ROWS, 'more-verbs', hiLexiconProblems), ...parseRows(WORD_MORE_ROWS, 'more-words', hiLexiconProblems),
   ...parseRows(EXTRA_MORE_ROWS, 'more-extra', hiLexiconProblems),
   ...parseRows(FRAME_MORE_ROWS, 'more-frames', hiLexiconProblems),
+  ...parseRows(GAP_ROWS, 'gap-words', hiLexiconProblems), ...parseRows(GAP_FREQUENT_ROWS, 'gap-frequent', hiLexiconProblems),
+  ...parseRows(GAP_NUMBER_ROWS, 'gap-numbers', hiLexiconProblems), ...parseRows(GAP_NAME_ROWS, 'gap-names', hiLexiconProblems),
 ];
 const BUILT = buildRows(ROWS, new Set(), hiLexiconProblems);
 const ANNOTATIONS: Map<string, HiAnnotation> = BUILT.annotations;
@@ -309,7 +315,9 @@ function handCandidates(form: string): AnalysisCandidate[] {
       }));
     });
   }
-  return out;
+  // the written form of an everyday noun that is also a verb form (गाड़ी, फल, भाई, सही, सीता) comes before the verb readings: the list's order puts verbs first
+  const lead = (c: AnalysisCandidate): number => (c.lemma === form && c.pos && isNounFirst(c.lemma, c.pos) ? 0 : 1);
+  return out.some((c) => lead(c) === 0) ? [...out].sort((a, b) => lead(a) - lead(b)) : out;
 }
 
 /**
@@ -353,6 +361,19 @@ const cloneCandidate = (c: AnalysisCandidate): AnalysisCandidate => {
 const FORM_CACHE = new Map<string, AnalysisCandidate[]>();
 const FORM_CACHE_MAX = 40000;
 
+/**
+ * A feminine plural written with the anusvara (गायें, सोचें, बातें) is also the other spelling of a verb form (गाएँ, सोचें): the word list
+ * reaches the verb through the variant and used to stop there. The noun plural the rules make of a listed noun stands beside it, below it:
+ * the neighbour rules choose (hindi/noun-first.ts), and where nothing decides the verb stays first, as before.
+ */
+function withPluralNouns(form: string, readings: AnalysisCandidate[]): AnalysisCandidate[] {
+  if (!form.endsWith('ें')) return readings;
+  const nouns = engineKnown(form).filter((c) => c.pos === 'NOUN' && c.morph.Number === 'Plur' && !readings.some((r) => r.lemma === c.lemma && r.pos === c.pos));
+  if (!nouns.length) return readings;
+  const top = Math.min(0.75, Math.max(...readings.map((r) => r.confidence)));
+  return [...readings, ...nouns.map((c) => ({ ...c, confidence: Math.min(c.confidence, top - 0.05) }))];
+}
+
 /** Everything the adapter can say about one normalized form, best first. Empty when nothing is derivable. */
 function analyzeForm(form: string): AnalysisCandidate[] {
   let hit = FORM_CACHE.get(form);
@@ -372,7 +393,7 @@ function analyzeFormUncached(form: string): AnalysisCandidate[] {
   const others = alternativeSpellings(form);
   for (const v of others) {
     const r = handReadings(v);
-    if (r.length) return r.map((c) => viaVariant(c, v, form));
+    if (r.length) return withPluralNouns(form, r.map((c) => viaVariant(c, v, form)));
   }
   // 3. the rules on lemmas the list holds (a lemma spelled differently comes back in the list's spelling), here and at the other spellings
   const known = engineKnown(form);

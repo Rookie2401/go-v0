@@ -19,10 +19,10 @@ const sentencesOf = (d: ReturnType<typeof loadBundledCorpus>[number]): string[] 
 const hiDocs = () => loadBundledCorpus().filter((d) => d.lang === 'hi');
 
 describe('identity', () => {
-  it('the adapter is version 2 and its analyses name themselves', () => {
-    expect(hiAdapter.version).toBe('3');
-    expect(run('hi', 'घर').analyses[0].analyzer).toBe('adapter-hi@3');
-    expect(ANALYZER).toBe('adapter-hi@3');
+  it('the adapter is version 4 and its analyses name themselves', () => {
+    expect(hiAdapter.version).toBe('4');
+    expect(run('hi', 'घर').analyses[0].analyzer).toBe('adapter-hi@4');
+    expect(ANALYZER).toBe('adapter-hi@4');
   });
 
   it('normalize is NFC and nothing else: the nukta stays, case and marks are not folded', () => {
@@ -126,7 +126,7 @@ describe('the layers of one form: hand list → rules → spelling variants → 
   });
 
   it('a word outside the list gets either rule readings flagged unconfirmed (0.6 at most, no gloss) or an empty list - never a confident guess', () => {
-    const outside = ['कंप्यूटर', 'ज़ेबरा', 'त्रिभुज', 'मेंढकियाँ', 'ब्लॉगरों', 'फ़ुटबॉलर', 'खर्राटेबाज़', 'xyzzy'];
+    const outside = ['लैपटॉप', 'ज़ेबरा', 'त्रिभुज', 'मेंढकियाँ', 'ब्लॉगरों', 'फ़ुटबॉलर', 'खर्राटेबाज़', 'xyzzy'];
     for (const w of outside) {
       const c = readings(w);
       for (const x of c) {
@@ -517,7 +517,7 @@ describe('a word written with or without its nukta is reached through the list, 
   });
 
   it('a word the list cannot reach by any spelling is still unread or an unconfirmed guess, never a nukta guess', () => {
-    for (const w of ['ज़ेबरा', 'फ़ुटबॉलर', 'कंप्यूटर']) {
+    for (const w of ['ज़ेबरा', 'फ़ुटबॉलर', 'लैपटॉप']) {
       for (const c of run('hi', w).analyses[0].candidates) {
         expect(c.unconfirmed, w).toBe(true);
         expect(c.notes?.variantOf, w).toBeUndefined();

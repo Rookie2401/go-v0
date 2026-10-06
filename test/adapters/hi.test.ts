@@ -96,7 +96,7 @@ describe('Hindi adapter', () => {
     expect(hi.pronunciation(d.tokens[0], d.analyses[0]).transliteration).toBe(dilTr.confidence >= 0.6 && dilTr.text ? dilTr.text : undefined);
     // CHANGED: a word outside the list gets either no reading or rule readings flagged unconfirmed, never a confident guess;
     // the transliteration module may now romanize it (by rule), or say nothing when it is not sure.
-    const u = run('hi', 'कंप्यूटर');
+    const u = run('hi', 'लैपटॉप');
     for (const c of u.analyses[0].candidates) {
       expect(c.unconfirmed, 'a guess is flagged').toBe(true);
       expect(c.confidence).toBeLessThanOrEqual(0.6);

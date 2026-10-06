@@ -1,0 +1,523 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-16",
+  "lang": "de",
+  "title": "Wie ich Krankenschwester wurde",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-16",
+    "title": "\"Wie ich Krankenschwester wurde\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Anna's life in the first person, written for a church newsletter (\"Menschen in unserer Gemeinde\"). Invented biography of a composite person; no real person is meant. All past tenses are used on purpose (Präteritum for the story, Perfekt for the present link, Plusquamperfekt for earlier events). The apprenticeship and exam details are simplified; please check \"Ausbildung\", \"Prüfung\", \"Abitur\" against the usual path in Germany (a nurse needs a Realschulabschluss or Abitur; the Abitur is not required)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Meine Kindheit und die Schule",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ich heiße Anna, und ich bin 31 Jahre alt.",
+              "english": "My name is Anna, and I am 31 years old."
+            },
+            {
+              "text": "Ich erzähle hier, wie ich Krankenschwester wurde.",
+              "english": "Here I tell how I became a nurse."
+            },
+            {
+              "text": "Ich bin in Leipzig geboren und aufgewachsen.",
+              "english": "I was born and grew up in Leipzig."
+            },
+            {
+              "text": "Mein Vater war Lehrer, meine Mutter hat im Büro gearbeitet.",
+              "english": "My father was a teacher, my mother worked in an office."
+            },
+            {
+              "text": "Mein Bruder Lukas und ich hatten eine schöne Kindheit, auch wenn wir nicht viel Geld hatten.",
+              "english": "My brother Lukas and I had a lovely childhood, even if we did not have much money."
+            },
+            {
+              "text": "Meine Großmutter Marta, die bis heute auf dem Markt Brot verkauft, hat oft auf uns aufgepasst.",
+              "english": "My grandmother Marta, who still sells bread at the market to this day, often looked after us."
+            },
+            {
+              "text": "In der Schule war ich nicht die Beste, aber ich war fleißig.",
+              "english": "At school I was not the best, but I was hard-working."
+            },
+            {
+              "text": "Ich hatte schon als Kind einen Traum: Ich wollte Menschen helfen.",
+              "english": "Even as a child I had a dream: I wanted to help people."
+            },
+            {
+              "text": "Als ich acht war, hatte sich meine Oma den Arm gebrochen.",
+              "english": "When I was eight my granny had broken her arm."
+            },
+            {
+              "text": "Ich durfte sie im Krankenhaus besuchen.",
+              "english": "I was allowed to visit her in the hospital."
+            },
+            {
+              "text": "Dort habe ich zum ersten Mal eine Krankenschwester beobachtet.",
+              "english": "There I observed a nurse for the first time."
+            },
+            {
+              "text": "Sie hat meiner Oma Wasser gebracht und ihre Hand gehalten.",
+              "english": "She brought my granny water and held her hand."
+            },
+            {
+              "text": "Ich habe mir gedacht: Das möchte ich auch können.",
+              "english": "I thought: I would like to be able to do that too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Abitur",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mit sechzehn habe ich die Schule gewechselt.",
+              "english": "At sixteen I changed school."
+            },
+            {
+              "text": "Ich wollte das Abitur machen.",
+              "english": "I wanted to take the Abitur."
+            },
+            {
+              "text": "Mein Vater hat sich gefreut.",
+              "english": "My father was pleased."
+            },
+            {
+              "text": "Er hat gesagt: Wer das Abitur hat, kann alles werden.",
+              "english": "He said: whoever has the Abitur can become anything."
+            },
+            {
+              "text": "Ich war nicht so sicher.",
+              "english": "I was not so sure."
+            },
+            {
+              "text": "Ich hatte Angst vor der Prüfung, und ich hatte wenig Lust zu lernen.",
+              "english": "I was afraid of the exam, and I had little desire to study."
+            },
+            {
+              "text": "Aber meine Lehrerin hat mir geholfen.",
+              "english": "But my teacher helped me."
+            },
+            {
+              "text": "Sie war streng, doch sie hat mich nie allein gelassen.",
+              "english": "She was strict, but she never left me alone."
+            },
+            {
+              "text": "Sie hat gesagt: Nur wer träumt, kann auch etwas erreichen.",
+              "english": "She said: only those who dream can also achieve something."
+            },
+            {
+              "text": "Aber man muss auch arbeiten.",
+              "english": "But you also have to work."
+            },
+            {
+              "text": "Zwei Jahre lang habe ich abends gelernt, und am Wochenende habe ich in einem Laden gearbeitet.",
+              "english": "For two years I studied in the evenings, and at the weekend I worked in a shop."
+            },
+            {
+              "text": "Ich habe Flaschen sortiert und Plastik getrennt.",
+              "english": "I sorted bottles and separated plastic."
+            },
+            {
+              "text": "Das war meine erste Begegnung mit der Mülltrennung.",
+              "english": "That was my first encounter with waste separation."
+            },
+            {
+              "text": "Die Arbeit war hart, aber ich habe etwas gelernt: Man muss seine Pflicht tun, auch wenn sie nicht schön ist.",
+              "english": "The work was hard, but I learned something: one must do one's duty even when it is not pleasant."
+            },
+            {
+              "text": "Die Prüfung war im Frühling.",
+              "english": "The exam was in spring."
+            },
+            {
+              "text": "Ich war so nervös, dass ich nachts nicht schlafen konnte.",
+              "english": "I was so nervous that I could not sleep at night."
+            },
+            {
+              "text": "Aber ich habe tatsächlich bestanden.",
+              "english": "But I really passed."
+            },
+            {
+              "text": "Ich war überrascht, und meine Eltern waren sehr stolz.",
+              "english": "I was surprised, and my parents were very proud."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das freie Jahr",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Abitur wollte ich nicht gleich studieren, sondern ein Jahr lang reisen.",
+              "english": "After the Abitur I did not want to start studying at once but to travel for a year."
+            },
+            {
+              "text": "Ich bin mit einer Freundin nach Österreich gefahren.",
+              "english": "I went to Austria with a friend."
+            },
+            {
+              "text": "Wir waren zwei Monate lang unterwegs.",
+              "english": "We were on the road for two months."
+            },
+            {
+              "text": "Unsere Ankunft in der ersten Stadt war schwierig, weil wir keine Unterkunft hatten.",
+              "english": "Our arrival in the first town was difficult because we had no accommodation."
+            },
+            {
+              "text": "Schließlich hat uns eine Gastfamilie aufgenommen.",
+              "english": "In the end a host family took us in."
+            },
+            {
+              "text": "Das war eine Überraschung, und es war ein großes Erlebnis.",
+              "english": "That was a surprise, and it was a great experience."
+            },
+            {
+              "text": "Die Gastfreundschaft dieser Menschen habe ich nie vergessen.",
+              "english": "I have never forgotten the hospitality of these people."
+            },
+            {
+              "text": "Sie haben uns alles gegeben, was sie hatten.",
+              "english": "They gave us everything they had."
+            },
+            {
+              "text": "Wir hatten einen Reiseführer dabei und haben viele Sehenswürdigkeiten besucht: eine Burg, ein altes Schloss, einen Dom.",
+              "english": "We had a travel guide with us and visited many sights: a castle, an old palace, a cathedral."
+            },
+            {
+              "text": "Je mehr ich sah, desto mehr wollte ich wissen.",
+              "english": "The more I saw, the more I wanted to know."
+            },
+            {
+              "text": "Meine Freundin hat einen Blog über die Reise geschrieben, und ich habe oft davon geträumt, noch weiter zu fahren.",
+              "english": "My friend wrote a blog about the journey, and I often dreamed of travelling even further."
+            },
+            {
+              "text": "Am schönsten war die Altstadt mit dem großen Marktplatz.",
+              "english": "The most beautiful was the old town with the big market square."
+            },
+            {
+              "text": "Dort habe ich oft in meinem Tagebuch geschrieben.",
+              "english": "There I often wrote in my diary."
+            },
+            {
+              "text": "Mein erster Eindruck war: Die Welt ist größer, als ich dachte.",
+              "english": "My first impression was: the world is bigger than I thought."
+            },
+            {
+              "text": "Die Landschaft war anders als bei uns.",
+              "english": "The landscape was different from ours."
+            },
+            {
+              "text": "Manchmal lag der Nebel so dicht auf den Bergen, dass man nichts sah.",
+              "english": "Sometimes the fog lay so thickly on the mountains that you could not see anything."
+            },
+            {
+              "text": "Nach zwei Monaten kam die Abreise.",
+              "english": "After two months came the departure."
+            },
+            {
+              "text": "Ich war traurig, aber inzwischen wusste ich genau, was ich wollte.",
+              "english": "I was sad, but by then I knew exactly what I wanted."
+            },
+            {
+              "text": "Ich wollte lieber mit Menschen arbeiten als mit Büchern.",
+              "english": "I preferred to work with people rather than with books."
+            },
+            {
+              "text": "Deshalb habe ich mich für die Ausbildung beworben.",
+              "english": "That is why I applied for the apprenticeship."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Ausbildung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Die Ausbildung zur Krankenschwester dauerte drei Jahre.",
+              "english": "The training to become a nurse lasted three years."
+            },
+            {
+              "text": "Sie hatte zwei Teile: die Schule und die Praxis.",
+              "english": "It had two parts: school and practice."
+            },
+            {
+              "text": "Während dieser Zeit wohnte ich noch bei meinen Eltern.",
+              "english": "During this time I still lived with my parents."
+            },
+            {
+              "text": "Zwar war die Qualität der Schule gut, aber das Lernen war schwer.",
+              "english": "The quality of the school was good, to be sure, but the studying was hard."
+            },
+            {
+              "text": "Ich musste viele Wörter lernen.",
+              "english": "I had to learn many words."
+            },
+            {
+              "text": "Außerdem war die Praxis anstrengend.",
+              "english": "Besides, the practical work was tiring."
+            },
+            {
+              "text": "Ich arbeitete in Schichten und oft auch nachts.",
+              "english": "I worked in shifts and often at night too."
+            },
+            {
+              "text": "Auf der ersten Station lernte ich meine Kollegin Lena kennen.",
+              "english": "On the first ward I got to know my colleague Lena."
+            },
+            {
+              "text": "Sie war schon zehn Jahre dabei.",
+              "english": "She had been there ten years already."
+            },
+            {
+              "text": "Die Kollegin war streng, und gleichzeitig war sie gütig.",
+              "english": "The colleague was strict, and at the same time she was kind."
+            },
+            {
+              "text": "Sie sagte: Eine gute Schwester beobachtet, bevor sie spricht.",
+              "english": "She said: a good nurse observes before she speaks."
+            },
+            {
+              "text": "Ich habe das nie vergessen.",
+              "english": "I have never forgotten that."
+            },
+            {
+              "text": "Wer gut beobachtet, sieht, was ein Mensch braucht, auch wenn er es nicht sagt.",
+              "english": "Whoever observes well sees what a person needs even if he does not say it."
+            },
+            {
+              "text": "Am Ende des zweiten Jahres hatte ich fast aufgegeben.",
+              "english": "At the end of the second year I had almost given up."
+            },
+            {
+              "text": "Ich war müde, und ich hatte keine Energie mehr.",
+              "english": "I was tired, and I had no energy left."
+            },
+            {
+              "text": "Lena hat mir damals einen Ratschlag gegeben, der mein Leben verändert hat: Mach eine Pause, aber gib nicht auf.",
+              "english": "Lena then gave me advice that changed my life: take a break, but do not give up."
+            },
+            {
+              "text": "Nachdem ich zwei Wochen Urlaub genommen hatte, ging es wieder.",
+              "english": "After I had taken two weeks' holiday, things went well again."
+            },
+            {
+              "text": "Deswegen bin ich noch heute dankbar.",
+              "english": "That is why I am still grateful today."
+            },
+            {
+              "text": "Am Ende der Ausbildung gab es noch eine Prüfung.",
+              "english": "At the end of the training there was another exam."
+            },
+            {
+              "text": "Lena sagte: Du wirst bestehen.",
+              "english": "Lena said: you will pass."
+            },
+            {
+              "text": "Ich bin stolz auf dich.",
+              "english": "I am proud of you."
+            },
+            {
+              "text": "Ich habe auch diese bestanden.",
+              "english": "I passed this one too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Eine Begegnung, die ich nicht vergesse",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "In meinem ersten Jahr als fertige Krankenschwester kam ein alter Mann auf die Station.",
+              "english": "In my first year as a qualified nurse an old man came to the ward."
+            },
+            {
+              "text": "Man hatte ihn auf der Straße überfallen und ausgeraubt.",
+              "english": "He had been attacked and robbed in the street."
+            },
+            {
+              "text": "Er hatte nichts mehr, nicht einmal seine Brille.",
+              "english": "He had nothing left, not even his glasses."
+            },
+            {
+              "text": "Ich habe seine Wunden verbunden und ihn gepflegt, wie ich es gelernt hatte.",
+              "english": "I bandaged his wounds and cared for him as I had learned."
+            },
+            {
+              "text": "Er hat viel geschlafen, aber am vierten Tag ist er aufgewacht und hat mir die Hand gedrückt.",
+              "english": "He slept a lot, but on the fourth day he woke up and pressed my hand."
+            },
+            {
+              "text": "Er sagte: Junge Frau, Sie sind wie der Wirt in der Geschichte.",
+              "english": "He said: young woman, you are like the innkeeper in the story."
+            },
+            {
+              "text": "Kennen Sie die Geschichte vom guten Samariter?",
+              "english": "Do you know the story of the good Samaritan?"
+            },
+            {
+              "text": "Ich fragte: Welche Geschichte meinen Sie?",
+              "english": "I asked: which story do you mean?"
+            },
+            {
+              "text": "Und er erzählte sie mir in seinen eigenen Worten.",
+              "english": "And he told it to me in his own words."
+            },
+            {
+              "text": "Er erzählte von dem Mann, den Räuber überfallen hatten.",
+              "english": "He told about the man whom robbers had attacked."
+            },
+            {
+              "text": "Ein Gesetzeslehrer hatte Jesus gefragt: Was steht im Gesetz?",
+              "english": "A teacher of the law had asked Jesus: what does the law say?"
+            },
+            {
+              "text": "Ein Priester war vorbeigegangen, und ein Gesetzeslehrer auch.",
+              "english": "A priest had gone past, and a teacher of the law too."
+            },
+            {
+              "text": "Dann war ein Fremder mit einem Esel gekommen.",
+              "english": "Then a stranger had come with a donkey."
+            },
+            {
+              "text": "Er hatte Wein auf die Wunden getan und den Mann zu einer Herberge gebracht.",
+              "english": "He had put wine on the wounds and taken the man to an inn."
+            },
+            {
+              "text": "Der Fremde war barmherzig gewesen.",
+              "english": "The stranger had been merciful."
+            },
+            {
+              "text": "Er hatte Mitleid gehabt, und er hatte gehandelt.",
+              "english": "He had had pity, and he had acted."
+            },
+            {
+              "text": "Als der alte Mann fertig war, sagte er: Das ewige Leben beginnt hier, bei den kleinen Dingen.",
+              "english": "When the old man had finished he said: eternal life begins here, in the small things."
+            },
+            {
+              "text": "Ich konnte nichts sagen.",
+              "english": "I could not say anything."
+            },
+            {
+              "text": "Mir liefen die Tränen über das Gesicht.",
+              "english": "Tears ran down my face."
+            },
+            {
+              "text": "Seit diesem Tag weiß ich, was mein Beruf ist.",
+              "english": "Since that day I know what my profession is."
+            },
+            {
+              "text": "Er ist mehr als eine Arbeit, er ist ein Teil meines Glaubens.",
+              "english": "It is more than a job, it is a part of my faith."
+            },
+            {
+              "text": "Ich erinnere mich oft an ihn, und ich frage mich, wo er jetzt ist.",
+              "english": "I often remember him, and I wonder where he is now."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Heute",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Heute arbeite ich seit sieben Jahren auf derselben Station, und die Arbeit ist immer noch hart.",
+              "english": "Today I have been working on the same ward for seven years, and the work is still hard."
+            },
+            {
+              "text": "Eine junge Kollegin fragt mich oft um Rat.",
+              "english": "A young colleague often asks me for advice."
+            },
+            {
+              "text": "Es gibt Tage voller Stress, und es gibt Tage voller Freude.",
+              "english": "There are days full of stress, and there are days full of joy."
+            },
+            {
+              "text": "Mein Traum von damals ist wahr geworden, und ich träume heute von neuen Dingen.",
+              "english": "My dream from back then has come true, and today I dream of new things."
+            },
+            {
+              "text": "Vielleicht möchte ich einmal in einem fremden Land arbeiten, vielleicht im Ausland, vielleicht in einer Mission.",
+              "english": "Perhaps I would one day like to work in a foreign country, perhaps abroad, perhaps in a mission."
+            },
+            {
+              "text": "Aber das ist ein anderer Traum, und er hat noch Zeit.",
+              "english": "But that is another dream, and it still has time."
+            },
+            {
+              "text": "Am Ende bleibt eines: Ich bin dankbar für das, was ich erlebt habe, und ich bin stolz auf meinen Beruf.",
+              "english": "In the end one thing remains: I am grateful for what I have experienced, and I am proud of my profession."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,418 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-12",
+  "lang": "de",
+  "title": "Ben is sick",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-12",
+    "title": "Ben is sick (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Narrative with dialogue. \"Der Kopf tut weh\" / \"Mir tut der Bauch weh\" is the usual way to name pain; \"Ich bin krank\" and \"Du hast Fieber\" are basic. Anna (a nurse) says what to do, without giving a diagnosis; no medicine names are used. \"Gute Besserung\" is the usual wish but is left for a later unit. Herr Schmidt (Sie to adults, du to the child Ben) brings rolls, which is friendly, not usual."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "health",
+    "body",
+    "illness",
+    "medicine"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ben": "Ben",
+    "marta": "Marta",
+    "anna": "Anna",
+    "lukas": "Lukas",
+    "schmidt": "Herr Schmidt"
+  },
+  "sections": [
+    {
+      "title": "Am Morgen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist halb acht.",
+              "english": "It is half past seven."
+            },
+            {
+              "text": "Ben ist im Bett.",
+              "english": "Ben is in bed."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ben, steh auf!",
+              "english": "Ben, get up!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Die Klasse fängt um acht Uhr an.",
+              "english": "Class starts at eight o'clock."
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma, ich bin krank.",
+              "english": "Grandma, I am ill."
+            },
+            {
+              "speaker": "marta",
+              "text": "Du bist krank?",
+              "english": "You are ill?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Wo tut es weh?",
+              "english": "Where does it hurt?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Kopf tut weh.",
+              "english": "My head hurts."
+            },
+            {
+              "speaker": "marta",
+              "text": "Und der Bauch?",
+              "english": "And your stomach?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Bauch auch, und der Hals auch.",
+              "english": "My stomach too, and my throat too."
+            },
+            {
+              "text": "Marta sagt: \"Ben, du hast Fieber.\"",
+              "english": "Marta says: \"Ben, you have a fever.\""
+            },
+            {
+              "speaker": "marta",
+              "text": "Leg dich ins Bett!",
+              "english": "Lie down in bed!"
+            },
+            {
+              "text": "Ben möchte sich nicht legen.",
+              "english": "Ben does not want to lie down."
+            },
+            {
+              "text": "Er legt sich ins Bett.",
+              "english": "He lies down in bed."
+            },
+            {
+              "speaker": "ben",
+              "text": "Mir ist kalt, Oma.",
+              "english": "I am cold, Grandma."
+            },
+            {
+              "speaker": "marta",
+              "text": "Das Wetter ist kalt.",
+              "english": "The weather is cold."
+            },
+            {
+              "speaker": "marta",
+              "text": "Du bleibst im Bett.",
+              "english": "You are staying in bed."
+            },
+            {
+              "speaker": "marta",
+              "text": "Du darfst heute nicht in die Schule.",
+              "english": "You may not go to school today."
+            },
+            {
+              "speaker": "ben",
+              "text": "Aber ich bin ein guter Schüler!",
+              "english": "But I am a good pupil!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ja, aber du hast Fieber.",
+              "english": "Yes, but you have a fever."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich lerne gern, ich möchte in die Schule!",
+              "english": "I like learning, I want to go to school!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ben braucht heute das Bett.",
+              "english": "Ben needs his bed today."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Anna kommt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta geht zu Anna.",
+              "english": "Marta goes to Anna."
+            },
+            {
+              "text": "Anna ist Krankenschwester.",
+              "english": "Anna is a nurse."
+            },
+            {
+              "text": "Anna kommt in einer Stunde zu Ben.",
+              "english": "Anna comes to Ben in an hour."
+            },
+            {
+              "speaker": "marta",
+              "text": "Krankenschwester ist ein guter Beruf.",
+              "english": "Nurse is a good job."
+            },
+            {
+              "speaker": "anna",
+              "text": "Hallo, Ben!",
+              "english": "Hello, Ben!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Wie geht es dir?",
+              "english": "How are you?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ja, mir tut alles weh.",
+              "english": "Yes, everything hurts."
+            },
+            {
+              "speaker": "anna",
+              "text": "Du brauchst eine Tablette und Wasser.",
+              "english": "You need a tablet and water."
+            },
+            {
+              "speaker": "anna",
+              "text": "Nimm sie mit Wasser.",
+              "english": "Take it with water."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich möchte keine Tablette.",
+              "english": "I do not want a tablet."
+            },
+            {
+              "speaker": "anna",
+              "text": "Die Tablette ist gut für den Kopf und für den Bauch.",
+              "english": "The tablet is good for the head and for the stomach."
+            },
+            {
+              "speaker": "anna",
+              "text": "Du brauchst auch Tee.",
+              "english": "You need tea too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das ist gut für den Hals.",
+              "english": "That is good for the throat."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ben ist krank, aber nicht sehr.",
+              "english": "Ben is ill, but not very."
+            },
+            {
+              "speaker": "anna",
+              "text": "Du hast Fieber.",
+              "english": "You have a fever."
+            },
+            {
+              "speaker": "anna",
+              "text": "Dann ist alles gut.",
+              "english": "Then everything is fine."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich möchte gesund sein!",
+              "english": "I want to be well!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Du bleibst im Bett, dann bist du in einer Woche gesund.",
+              "english": "You stay in bed, then you will be well in a week."
+            },
+            {
+              "speaker": "ben",
+              "text": "Eine Woche?",
+              "english": "A week?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Das ist viel!",
+              "english": "That is a lot!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Besuch",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Lukas kommt nach der Schule.",
+              "english": "Lukas comes after school."
+            },
+            {
+              "text": "Er ist Lehrer.",
+              "english": "He is a teacher."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Hallo, Ben! In der Pause sagen alle Schüler: \"Wo ist Ben?\"",
+              "english": "Hello, Ben! In the break all the pupils say: \"Where is Ben?\""
+            },
+            {
+              "text": "Herr Schmidt kommt auch, mit Brötchen und Kuchen.",
+              "english": "Herr Schmidt comes too, with rolls and cake."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Guten Tag, Ben!",
+              "english": "Good day, Ben!"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Ich bin Bäcker, und ich habe Kuchen.",
+              "english": "I am a baker, and I have cake."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Als Chef darf ich Brötchen für Ben machen.",
+              "english": "As the boss I may make rolls for Ben."
+            },
+            {
+              "text": "Pastor Thomas kommt auch und betet für Ben.",
+              "english": "Pastor Thomas comes too and prays for Ben."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich kaufe Äpfel für Ben, ein Kilo.",
+              "english": "I am buying apples for Ben, a kilo."
+            },
+            {
+              "speaker": "marta",
+              "text": "Der Preis ist gut.",
+              "english": "The price is good."
+            },
+            {
+              "speaker": "marta",
+              "text": "Und Tomaten für die Suppe.",
+              "english": "And tomatoes for the soup."
+            },
+            {
+              "text": "Anna und Marta kochen zusammen Suppe.",
+              "english": "Anna and Marta cook soup together."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Abend",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Abend.",
+              "english": "It is evening."
+            },
+            {
+              "text": "Ben hat kein Fieber.",
+              "english": "Ben has no fever."
+            },
+            {
+              "text": "Der Kopf ist gut.",
+              "english": "His head is fine."
+            },
+            {
+              "text": "Ben isst Suppe.",
+              "english": "Ben eats soup."
+            },
+            {
+              "text": "Sie ist lecker.",
+              "english": "It is tasty."
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma, ich bin gesund!",
+              "english": "Grandma, I am well!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Nein, Ben, du brauchst Tee und das Bett.",
+              "english": "No, Ben, you need tea and your bed."
+            },
+            {
+              "speaker": "marta",
+              "text": "Der Tee ist gut für den Hals.",
+              "english": "The tea is good for the throat."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann stehe ich nicht auf.",
+              "english": "Then I will not get up."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gut.",
+              "english": "Good."
+            },
+            {
+              "speaker": "marta",
+              "text": "Mama und Papa kommen am Abend.",
+              "english": "Mama and Papa are coming in the evening."
+            },
+            {
+              "text": "Ben legt sich ins Bett, und er ist müde.",
+              "english": "Ben lies down in bed, and he is tired."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,541 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-17",
+  "lang": "de",
+  "title": "So geht die Anmeldung",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-17",
+    "title": "So geht die Anmeldung (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: the registration process (Anmeldung at the Bürgeramt, Bescheinigung from the landlord or host, Ausweis, Formular, no fee) is the drafter's simplified reading, not checked against the real rules of Leipzig; the residence permit for foreigners (Antrag, Behörde, Aufenthalt, Erlaubnis) is only named, not explained; \"man\" is used exactly where the plan schedules it and otherwise avoided (imperatives with Sie, the passive and \"wer ... muss\" carry the instructions); Sie to the official, du between Jonas and Sam; the colleague's job at the Amt is called \"Mitarbeiter\" (a feminine form is not used on purpose); the numbers, rooms and times are invented."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "instructions",
+    "registering an address",
+    "authorities",
+    "foreigners in Germany"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Eine Frage an Jonas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam wohnt seit drei Monaten bei Frau Weber.",
+              "english": "Sam has been living at Frau Weber's for three months."
+            },
+            {
+              "text": "Aber er muss sich noch anmelden.",
+              "english": "But he still has to register."
+            },
+            {
+              "text": "Frau Weber sagt: „Das müssen Sie bald machen, Sam.“",
+              "english": "Frau Weber says, \"You must do that soon, Sam.\""
+            },
+            {
+              "text": "Sam fragt Jonas: „Wie geht das?“",
+              "english": "Sam asks Jonas, \"How does that work?\""
+            },
+            {
+              "text": "„Ich zeige dir, wie es geht“, sagt Jonas.",
+              "english": "\"I will show you how it works,\" says Jonas."
+            },
+            {
+              "text": "„Zuerst gehst du zum Amt. Es heißt Bürgeramt.“",
+              "english": "\"First you go to the office. It is called the Bürgeramt.\""
+            },
+            {
+              "text": "„Die Öffnungszeit steht im Internet. Sieh auf die Seite.“",
+              "english": "\"The opening time is on the internet. Look at the page.\""
+            },
+            {
+              "text": "„Du brauchst deinen Ausweis und eine Bescheinigung von Frau Weber.“",
+              "english": "\"You need your ID and a certificate from Frau Weber.\""
+            },
+            {
+              "text": "„Frau Weber schreibt, dass du bei ihr wohnst.“",
+              "english": "\"Frau Weber writes that you live with her.\""
+            },
+            {
+              "text": "„Das Formular bekommst du am Schalter.“",
+              "english": "\"You get the form at the counter.\""
+            },
+            {
+              "text": "„Du füllst es aus und schreibst deine Unterschrift auf die Seite.“",
+              "english": "\"You fill it in and write your signature on the page.\""
+            },
+            {
+              "text": "„Dann musst du alles abgeben.“",
+              "english": "\"Then you have to hand everything in.\""
+            },
+            {
+              "text": "„Das macht man in Deutschland so“, sagt Jonas.",
+              "english": "\"That is how it is done in Germany,\" says Jonas."
+            },
+            {
+              "text": "„Ein Mitarbeiter prüft alles.“",
+              "english": "\"An employee checks everything.\""
+            },
+            {
+              "text": "„Es kostet keine Gebühr.“",
+              "english": "\"It costs no fee.\""
+            },
+            {
+              "text": "„Danach ist dein Wohnsitz in Leipzig.“",
+              "english": "\"After that your place of residence is in Leipzig.\""
+            },
+            {
+              "text": "„Ein Brief kommt dann in den Briefkasten.“",
+              "english": "\"A letter then comes into the letterbox.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Weg zum Amt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Dienstag fährt Sam mit der Straßenbahn.",
+              "english": "On Tuesday Sam goes by tram."
+            },
+            {
+              "text": "Der Fahrplan sagt: Die Bahn fährt um halb neun ab.",
+              "english": "The timetable says: the tram leaves at half past eight."
+            },
+            {
+              "text": "Aber die Bahn hat Verspätung.",
+              "english": "But the tram is late."
+            },
+            {
+              "text": "Auf dem Bahnsteig kommt eine Durchsage.",
+              "english": "On the platform there is an announcement."
+            },
+            {
+              "text": "Sam hat seinen Anschluss nicht mehr.",
+              "english": "Sam no longer has his connection."
+            },
+            {
+              "text": "Es gibt Ersatz: einen Bus.",
+              "english": "There is a replacement: a bus."
+            },
+            {
+              "text": "Aber auf der Straße ist Stau.",
+              "english": "But there is a traffic jam on the road."
+            },
+            {
+              "text": "Sam ärgert sich, denn er will pünktlich sein.",
+              "english": "Sam is annoyed, because he wants to be on time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Im Amt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam geht in das Haus.",
+              "english": "Sam goes into the building."
+            },
+            {
+              "text": "Hinter der Tür ist die Auskunft.",
+              "english": "Behind the door there is the information desk."
+            },
+            {
+              "text": "„Wo muss ich mich anmelden?“, fragt Sam.",
+              "english": "\"Where do I have to register?\" asks Sam."
+            },
+            {
+              "text": "Ein Mann sagt: „Raum 204. Nehmen Sie eine Nummer.“",
+              "english": "A man says, \"Room 204. Take a number.\""
+            },
+            {
+              "text": "Sam zieht die Nummer 54.",
+              "english": "Sam draws number 54."
+            },
+            {
+              "text": "Im Raum 204 warten viele Menschen.",
+              "english": "In room 204 many people are waiting."
+            },
+            {
+              "text": "Hier heißen alle Kunden.",
+              "english": "Here everybody is called a customer."
+            },
+            {
+              "text": "Eine Frau hat ein Kind.",
+              "english": "A woman has a child."
+            },
+            {
+              "text": "Das Kind malt ein Bild und spielt mit einem Spielzeug.",
+              "english": "The child is painting a picture and playing with a toy."
+            },
+            {
+              "text": "Für Kinder gibt es hier auch ein Spiel.",
+              "english": "For children there is a game here too."
+            },
+            {
+              "text": "Die Frau küsst es und liest ihm ein Märchen vor.",
+              "english": "The woman kisses it and reads it a fairy tale."
+            },
+            {
+              "text": "Sie ist Erzieherin in einem Kindergarten.",
+              "english": "She is a nursery teacher in a kindergarten."
+            },
+            {
+              "text": "Ein Mann ist wütend: „Ich warte schon eine Stunde!“",
+              "english": "A man is angry: \"I have been waiting for an hour already!\""
+            },
+            {
+              "text": "Er hat Futter für sein Tier in der Tasche.",
+              "english": "He has food for his animal in his bag."
+            },
+            {
+              "text": "Eine Durchsage ruft: „Nummer 52, bitte zum Schalter drei.“",
+              "english": "An announcement calls, \"Number 52, please go to counter three.\""
+            },
+            {
+              "text": "Sam wartet noch eine Stunde.",
+              "english": "Sam waits another hour."
+            },
+            {
+              "text": "Dann ruft die Durchsage: „Nummer 54!“",
+              "english": "Then the announcement calls, \"Number 54!\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Beim Mitarbeiter",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ein Mitarbeiter sitzt hinter dem Fenster.",
+              "english": "An employee sits behind the window."
+            },
+            {
+              "text": "„Guten Tag. Was kann ich für Sie tun?“",
+              "english": "\"Good day. What can I do for you?\""
+            },
+            {
+              "text": "„Ich möchte mich anmelden“, sagt Sam.",
+              "english": "\"I would like to register,\" says Sam."
+            },
+            {
+              "text": "„Zeigen Sie mir bitte Ihren Ausweis.“",
+              "english": "\"Please show me your ID.\""
+            },
+            {
+              "text": "Sam gibt ihm den Ausweis.",
+              "english": "Sam gives him the ID."
+            },
+            {
+              "text": "„Sie sind aus den USA. Das heißt: Sie sind Ausländer.“",
+              "english": "\"You are from the USA. That means: you are a foreigner.\""
+            },
+            {
+              "text": "„Ausländer brauchen eine Erlaubnis für den Aufenthalt.“",
+              "english": "\"Foreigners need a permit for their stay.\""
+            },
+            {
+              "text": "„Das macht eine andere Behörde.“",
+              "english": "\"Another authority does that.\""
+            },
+            {
+              "text": "„Sie müssen dort einen Antrag stellen.“",
+              "english": "\"You have to submit an application there.\""
+            },
+            {
+              "text": "„Wie lange bleiben Sie?“",
+              "english": "\"How long are you staying?\""
+            },
+            {
+              "text": "„Mein Aufenthalt ist ein Jahr“, sagt Sam.",
+              "english": "\"My stay is one year,\" says Sam."
+            },
+            {
+              "text": "„Haben Sie das Formular ausgefüllt?“",
+              "english": "\"Have you filled in the form?\""
+            },
+            {
+              "text": "„Ja, hier ist es.“",
+              "english": "\"Yes, here it is.\""
+            },
+            {
+              "text": "„Ihre Unterschrift ist nicht da.“",
+              "english": "\"Your signature is not there.\""
+            },
+            {
+              "text": "Sam macht seine Unterschrift.",
+              "english": "Sam makes his signature."
+            },
+            {
+              "text": "„Und die Bescheinigung von Frau Weber?“",
+              "english": "\"And the certificate from Frau Weber?\""
+            },
+            {
+              "text": "„Hier ist sie.“",
+              "english": "\"Here it is.\""
+            },
+            {
+              "text": "Der Mitarbeiter prüft alles und gibt Sam das Formular zurück.",
+              "english": "The employee checks everything and gives Sam the form back."
+            },
+            {
+              "text": "„Ich gebe es ab“, sagt Sam.",
+              "english": "\"I will hand it in,\" says Sam."
+            },
+            {
+              "text": "„Dann ist alles gut. Also ist Leipzig jetzt Ihr Wohnsitz.“",
+              "english": "\"Then everything is fine. So Leipzig is now your place of residence.\""
+            },
+            {
+              "text": "„Was kostet das?“, fragt Sam.",
+              "english": "\"What does it cost?\" asks Sam."
+            },
+            {
+              "text": "„Es gibt keine Gebühr.“",
+              "english": "\"There is no fee.\""
+            },
+            {
+              "text": "„Also keine Gebühr? Das ist gut“, sagt Sam.",
+              "english": "\"So no fee? That is good,\" says Sam."
+            },
+            {
+              "text": "„In einer Woche kommt ein Brief in den Briefkasten.“",
+              "english": "\"In a week a letter will come into the letterbox.\""
+            },
+            {
+              "text": "„Nehmen Sie ihn aus dem Briefkasten, und lesen Sie ihn gut.“",
+              "english": "\"Take it out of the letterbox, and read it carefully.\""
+            },
+            {
+              "text": "„Der Brief ist Ihre Bescheinigung.“",
+              "english": "\"The letter is your certificate.\""
+            },
+            {
+              "text": "„Und wenn ich einmal in die USA zurückkehre?“, fragt Sam.",
+              "english": "\"And if I ever go back to the USA?\" asks Sam."
+            },
+            {
+              "text": "„Dann sagen Sie es dem Amt.“",
+              "english": "\"Then tell the office.\""
+            },
+            {
+              "text": "„Die Öffnungszeit ist Montag bis Mittwoch, von acht bis zwölf.“",
+              "english": "\"The opening time is Monday to Wednesday, from eight to twelve.\""
+            },
+            {
+              "text": "„Die Öffnungszeiten stehen auch im Internet.“",
+              "english": "\"The opening times are on the internet too.\""
+            },
+            {
+              "text": "„Der Schalter schließt um zwölf Uhr.“",
+              "english": "\"The counter closes at twelve o'clock.\""
+            },
+            {
+              "text": "„Die Behörde für Ausländer ist in Raum 12 im Osten der Stadt.“",
+              "english": "\"The authority for foreigners is in room 12 in the east of the city.\""
+            },
+            {
+              "text": "„Dort bekommen Sie die Erlaubnis für den Aufenthalt.“",
+              "english": "\"There you get the permit for your stay.\""
+            },
+            {
+              "text": "„Für die Erlaubnis brauchen Sie auch ein Foto.“",
+              "english": "\"For the permit you also need a photo.\""
+            },
+            {
+              "text": "„Wie macht man das mit dem Antrag?“, fragt Sam.",
+              "english": "\"How do you do that with the application?\" asks Sam."
+            },
+            {
+              "text": "„Das fragt man bei der Behörde“, sagt er.",
+              "english": "\"You ask at the authority,\" he says."
+            },
+            {
+              "text": "„Der Antrag kostet Geld, und Sie bringen ihn in zwei Wochen.“",
+              "english": "\"The application costs money, and you bring it in two weeks.\""
+            },
+            {
+              "text": "„Danke“, sagt Sam.",
+              "english": "\"Thank you,\" says Sam."
+            },
+            {
+              "text": "„Tschüs!“",
+              "english": "\"Bye!\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nach dem Amt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jonas wartet vor dem Haus.",
+              "english": "Jonas is waiting in front of the building."
+            },
+            {
+              "text": "„Und? War alles gut?“, fragt er.",
+              "english": "\"Well? Was everything fine?\" he asks."
+            },
+            {
+              "text": "„Ja“, sagt Sam.",
+              "english": "\"Yes,\" says Sam."
+            },
+            {
+              "text": "„Ich habe jetzt einen Wohnsitz in Leipzig.“",
+              "english": "\"I now have a place of residence in Leipzig.\""
+            },
+            {
+              "text": "„Also, komm, wir feiern!“, sagt Jonas.",
+              "english": "\"So, come on, let us celebrate!\" says Jonas."
+            },
+            {
+              "text": "„Heute habe ich früh Feierabend.“",
+              "english": "\"Today I finish work early.\""
+            },
+            {
+              "text": "„In der Werkstatt war viel Arbeit. Bei einem Auto war ein Reifen kaputt.“",
+              "english": "\"There was a lot of work at the workshop. On one car a tyre was broken.\""
+            },
+            {
+              "text": "„Wir haben ihn ausgetauscht, und der Kunde hat die Rechnung bezahlt.“",
+              "english": "\"We replaced it, and the customer paid the invoice.\""
+            },
+            {
+              "text": "„Ich bin tot müde, aber meine Ausbildung gefällt mir.“",
+              "english": "\"I am dead tired, but I like my apprenticeship.\""
+            },
+            {
+              "text": "„Mein Lohn ist klein, aber das ist nicht schlimm.“",
+              "english": "\"My pay is small, but that is not a problem.\""
+            },
+            {
+              "text": "„Danach repariere ich noch dein Fahrrad.“",
+              "english": "\"Afterwards I will repair your bike too.\""
+            },
+            {
+              "text": "„Darauf freue ich mich“, sagt Sam.",
+              "english": "\"I am looking forward to that,\" says Sam."
+            },
+            {
+              "text": "„Schließ die Tür, es ist kalt“, sagt Jonas.",
+              "english": "\"Close the door, it is cold,\" says Jonas."
+            },
+            {
+              "text": "Sie gehen zur Haltestelle.",
+              "english": "They walk to the stop."
+            },
+            {
+              "text": "Das Amt liegt im Westen der Stadt, und Frau Weber wohnt im Osten.",
+              "english": "The office is in the west of the city, and Frau Weber lives in the east."
+            },
+            {
+              "text": "Es sind fast vier Kilometer.",
+              "english": "It is almost four kilometres."
+            },
+            {
+              "text": "Die Straßenbahn fährt vom Norden in den Süden und vom Westen in den Osten.",
+              "english": "The tram goes from the north to the south and from the west to the east."
+            },
+            {
+              "text": "„In den USA ist alles weit“, sagt Sam.",
+              "english": "\"In the USA everything is far,\" says Sam."
+            },
+            {
+              "text": "„Von Osten nach Westen sind es mehr als 4000 Kilometer.“",
+              "english": "\"From east to west it is more than 4000 kilometres.\""
+            },
+            {
+              "text": "„Hier sind es von Norden nach Süden nur 800 Kilometer“, sagt Jonas.",
+              "english": "\"Here it is only 800 kilometres from north to south,\" says Jonas."
+            },
+            {
+              "text": "„Die Hauptstadt ist Berlin, und Leipzig liegt in Sachsen, einem Bundesland.“",
+              "english": "\"The capital is Berlin, and Leipzig is in Saxony, a federal state.\""
+            },
+            {
+              "text": "„Der Fluss in Leipzig ist klein, und das Meer ist weit.“",
+              "english": "\"The river in Leipzig is small, and the sea is far away.\""
+            },
+            {
+              "text": "„Mehr als zehn Millionen Menschen in Deutschland kommen aus einem anderen Land.“",
+              "english": "\"More than ten million people in Germany come from another country.\""
+            },
+            {
+              "text": "„Du bist über die Grenze gekommen, und deine Währung ist nicht der Euro.“",
+              "english": "\"You came across the border, and your currency is not the euro.\""
+            },
+            {
+              "text": "„Wählen darfst du hier nicht. Aber den Kanzler kennst du schon?“",
+              "english": "\"You may not vote here. But do you know the chancellor already?\""
+            },
+            {
+              "text": "Sam lacht.",
+              "english": "Sam laughs."
+            },
+            {
+              "text": "„Nein, aber ich kenne Frau Weber. Das ist besser.“",
+              "english": "\"No, but I know Frau Weber. That is better.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-10",
+  "lang": "de",
+  "title": "The lost sheep (Luke 15)",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-10",
+    "title": "The lost sheep (Luke 15) (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A plain retelling of the parable of the lost sheep (Luke 15:1-7) told by Pastor Thomas in the narrative present with a few Perfekt sentences; it is not a quotation of Luther's text and uses no Bible-German forms. The humour (no car, no bicycle, no tram) is the pastor's, to keep the children's attention. The application is brief: God seeks the one who is lost; there is joy over one who comes back. Needs a Scripture-competent reviewer as well as a linguistic one. \"Sünder\" is the word the usual German Bible translations have in this parable."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "Scripture retelling",
+    "parable",
+    "shepherd",
+    "joy"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "scripture"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "thomas": "Pastor Thomas",
+    "sam": "Sam",
+    "ben": "Ben"
+  },
+  "sections": [
+    {
+      "title": "Eine Geschichte von Jesus",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Sonntag sitzen die Kinder und die Freunde in der Gemeinde.",
+              "english": "On Sunday the children and the friends are sitting in the church."
+            },
+            {
+              "text": "Pastor Thomas spricht über Jesus.",
+              "english": "Pastor Thomas speaks about Jesus."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Jesus hat über einen Hirten gesprochen.",
+              "english": "Jesus spoke about a shepherd."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Der Hirte hat hundert Schafe.",
+              "english": "The shepherd has a hundred sheep."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er hat kein Auto und kein Fahrrad.",
+              "english": "He has no car and no bicycle."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er geht mit den Tieren auf dem Gras.",
+              "english": "He goes with the animals on the grass."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Sie essen Gras, und er sitzt da.",
+              "english": "They eat grass, and he sits there."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ein Schaf ist nicht da",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "thomas",
+              "text": "Am Abend sieht der Hirte seine Tiere.",
+              "english": "In the evening the shepherd looks at his animals."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er hat nicht hundert, er hat nur 99.",
+              "english": "He does not have a hundred, he has only 99."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Eins ist leider nicht da.",
+              "english": "One is not there, unfortunately."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er fragt: \"Wo ist es?\"",
+              "english": "He asks: \"Where is it?\""
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er lässt die 99 auf dem Gras.",
+              "english": "He leaves the 99 on the grass."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er geht und sucht das Schaf.",
+              "english": "He goes and looks for the sheep."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er hat keinen Bus, er geht zu Fuß.",
+              "english": "He has no bus, he goes on foot."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er läuft schnell, ohne Hilfe.",
+              "english": "He runs fast, without help."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Die Reise ist lang, und die Nacht kommt.",
+              "english": "The journey is long, and the night comes."
+            },
+            {
+              "speaker": "ben",
+              "text": "Muss er umsteigen?",
+              "english": "Does he have to change?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Nein, Ben!",
+              "english": "No, Ben!"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er braucht kein Gleis und keinen Koffer.",
+              "english": "He needs no platform and no suitcase."
+            },
+            {
+              "text": "Alle lachen.",
+              "english": "Everyone laughs."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er hat kein Hotel.",
+              "english": "He has no hotel."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er übernachtet draußen, ohne Bett.",
+              "english": "He stays outside overnight, without a bed."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er ruft: \"Wo bist du?\"",
+              "english": "He calls: \"Where are you?\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Er findet es",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "thomas",
+              "text": "Dort ist es!",
+              "english": "There it is!"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Es sitzt dort im Gras, und es hat Husten.",
+              "english": "It is sitting there in the grass, and it has a cough."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Der Husten ist nicht gut, und das Schaf ist müde.",
+              "english": "The cough is not good, and the sheep is tired."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Der Hirte ist froh.",
+              "english": "The shepherd is glad."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er lacht, und er weint.",
+              "english": "He laughs, and he cries."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er nimmt es auf die Schulter.",
+              "english": "He puts it on his shoulder."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er trägt es nach Hause.",
+              "english": "He carries it home."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Es ist nicht leicht, aber er trägt es gern.",
+              "english": "It is not light, but he gladly carries it."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er hält es gut auf der Schulter.",
+              "english": "He holds it well on his shoulder."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Der Himmel ist groß, und es ist Nacht.",
+              "english": "The sky is big, and it is night."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Die anderen Tiere sind auf dem Gras.",
+              "english": "The other animals are on the grass."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er findet es dort, im Gras.",
+              "english": "He finds it there, in the grass."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Am Morgen hat es keinen Husten.",
+              "english": "In the morning it has no cough."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Die Schulter tut ihm weh, aber er ist glücklich.",
+              "english": "His shoulder hurts, but he is happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Fest",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "thomas",
+              "text": "Er ist zurück, und er ruft seine Freunde und Nachbarn.",
+              "english": "He is back, and he calls his friends and neighbours."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er sagt: \"Kommt! Ich habe mein Schaf gefunden!\"",
+              "english": "He says: \"Come! I have found my sheep!\""
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er macht ein Fest.",
+              "english": "He holds a feast."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Alle bekommen Brot und Fleisch, und alle tanzen.",
+              "english": "Everyone gets bread and meat, and everyone dances."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er schenkt dem Schaf Wasser.",
+              "english": "He gives the sheep water."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Das Fest ist schön.",
+              "english": "The feast is lovely."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Was Jesus sagt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "thomas",
+              "text": "Gott ist wie der Hirte.",
+              "english": "God is like the shepherd."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Wir sind wie das Schaf.",
+              "english": "We are like the sheep."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ein Sünder ist weit von Gott.",
+              "english": "A sinner is far from God."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Gott sucht den Sünder, und er findet ihn.",
+              "english": "God looks for the sinner, and he finds him."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Gott trägt dich.",
+              "english": "God carries you."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Wir sind ohne Gott wie das Schaf ohne den Hirten.",
+              "english": "Without God we are like the sheep without the shepherd."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Wenn ein Sünder bei Gott ist, ist im Himmel ein Fest.",
+              "english": "When a sinner is with God, there is a feast in heaven."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Im Himmel ist Freude.",
+              "english": "In heaven there is joy."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Gott ruft dich, Ben.",
+              "english": "God calls you, Ben."
+            },
+            {
+              "speaker": "sam",
+              "text": "Früher war ich weit von Gott.",
+              "english": "Before, I was far from God."
+            },
+            {
+              "speaker": "sam",
+              "text": "Jetzt bin ich zurück.",
+              "english": "Now I am back."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich bin auch wie das Schaf!",
+              "english": "I am like the sheep too!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich verliere immer etwas.",
+              "english": "I always lose something."
+            },
+            {
+              "speaker": "ben",
+              "text": "Aber Gott findet mich.",
+              "english": "But God finds me."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ja, Ben, Gott findet dich.",
+              "english": "Yes, Ben, God finds you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Fest in der Gemeinde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "thomas",
+              "text": "Heute machen wir auch ein Fest.",
+              "english": "Today we are having a feast too."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Viele Freunde sind mit dem Bus gekommen.",
+              "english": "Many friends came by bus."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Sie sind eingestiegen, und hier sind sie ausgestiegen.",
+              "english": "They got on, and here they got off."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Die Gemeinde ist voll, und wir haben nicht genug Platz.",
+              "english": "The church is full, and we do not have enough room."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Alle haben gearbeitet.",
+              "english": "Everyone has worked."
+            },
+            {
+              "speaker": "thomas",
+              "text": "David hat vorgestern im Büro gearbeitet.",
+              "english": "David worked in the office the day before yesterday."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ruth hat gestern im Supermarkt Brot gekauft.",
+              "english": "Ruth bought bread at the supermarket yesterday."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Anna hat die Küche geputzt.",
+              "english": "Anna cleaned the kitchen."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Sam hat Ben besucht, und er hat Anna getroffen.",
+              "english": "Sam visited Ben, and he met Anna."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Marta hat das Abendessen gekocht, und es ist fertig.",
+              "english": "Marta has cooked dinner, and it is ready."
+            },
+            {
+              "text": "Alle gehen in die Küche und essen.",
+              "english": "Everyone goes into the kitchen and eats."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Wir wollen beten.",
+              "english": "We want to pray."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Danke, Gott, du suchst uns, und du findest uns.",
+              "english": "Thank you, God, you look for us, and you find us."
+            },
+            {
+              "text": "Die Kinder trinken Tee und essen Brot und Kuchen.",
+              "english": "The children drink tea and eat bread and cake."
+            },
+            {
+              "text": "Sie sind froh, und der Tag ist schön.",
+              "english": "They are glad, and the day is lovely."
+            },
+            {
+              "text": "Dann gehen alle nach Hause.",
+              "english": "Then everyone goes home."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

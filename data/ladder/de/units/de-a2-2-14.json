@@ -1,0 +1,532 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-14",
+  "lang": "de",
+  "title": "Warum trennen die Deutschen ihren Müll?",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-14",
+    "title": "\"Warum trennen die Deutschen ihren Müll?\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. A factual explanation for learners; facts are simplified and must be checked by a native reviewer (the colours of the bins differ between cities; the Pfand amount, collection routines and the legal duty are given only in simple terms). The column by Pastor Thomas near the end is the course's own writing and plays on the parable of the earlier Scripture unit. Passive and participles are used on purpose."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "contemporary-nonfiction"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Eine Frage von Besuchern",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Wer nach Deutschland kommt, hat bald eine Frage: Warum trennen die Menschen in Deutschland ihren Müll?",
+              "english": "Whoever comes to Germany soon has a question: why do people in Germany separate their rubbish?"
+            },
+            {
+              "text": "Viele Besucher finden die Mülltrennung kompliziert.",
+              "english": "Many visitors find waste separation complicated."
+            },
+            {
+              "text": "Deswegen sind sie neugierig auf die Gründe.",
+              "english": "That is why they are curious about the reasons."
+            },
+            {
+              "text": "Auch Sam hat diese Frage gestellt, als er in Leipzig angekommen ist.",
+              "english": "Sam also asked this question when he arrived in Leipzig."
+            },
+            {
+              "text": "Frau Weber hat ihm einen Ratschlag gegeben: Frag nicht zu früh, sondern warte erst eine Woche.",
+              "english": "Frau Weber gave him some advice: do not ask too early, but first wait for a week."
+            },
+            {
+              "text": "Sam hat das getan.",
+              "english": "Sam did that."
+            },
+            {
+              "text": "Jeden Morgen hat er gesehen, wie Frau Weber ihre kleinen Tüten nach unten bringt.",
+              "english": "Every morning he saw how Frau Weber takes her little bags downstairs."
+            },
+            {
+              "text": "Sie hat ihm nichts erklärt, aber sie hat ihm alles gezeigt.",
+              "english": "She explained nothing to him, but she showed him everything."
+            },
+            {
+              "text": "Nach einer Woche hat er es auch gemacht, und er hat sich nicht mehr gefragt, warum.",
+              "english": "After a week he did it too, and he no longer asked himself why."
+            },
+            {
+              "text": "Dieser Text erklärt, wie das System funktioniert und warum es wichtig ist.",
+              "english": "This text explains how the system works and why it is important."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Wie das System funktioniert",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "In den meisten deutschen Häusern gibt es mehrere Mülltonnen.",
+              "english": "In most German houses there are several bins."
+            },
+            {
+              "text": "Eine Mülltonne ist für Papier, eine für Plastik, und eine ist für alles andere.",
+              "english": "One bin is for paper, one for plastic, and one is for everything else."
+            },
+            {
+              "text": "Das Papier kommt in die blaue Mülltonne.",
+              "english": "The paper goes into the blue bin."
+            },
+            {
+              "text": "Dazu gehören Zeitungen und auch Flyer.",
+              "english": "That includes newspapers and also flyers."
+            },
+            {
+              "text": "Das Plastik kommt in die gelbe Mülltonne.",
+              "english": "The plastic goes into the yellow bin."
+            },
+            {
+              "text": "Dort sammelt man zum Beispiel Verpackungen.",
+              "english": "There one collects packaging, for example."
+            },
+            {
+              "text": "Das Glas bringt man zu einem großen Behälter auf der Straße.",
+              "english": "The glass is taken to a big container on the street."
+            },
+            {
+              "text": "Das Glas wird später neu gemacht.",
+              "english": "The glass is later made anew."
+            },
+            {
+              "text": "Aus altem Glas macht man neues.",
+              "english": "From old glass one makes new."
+            },
+            {
+              "text": "Aus altem Papier macht man wieder neues.",
+              "english": "From old paper one makes new again."
+            },
+            {
+              "text": "Alles andere ist Restmüll.",
+              "english": "Everything else is general waste."
+            },
+            {
+              "text": "Er kommt in die graue Mülltonne.",
+              "english": "It goes into the grey bin."
+            },
+            {
+              "text": "Viele Städte haben noch eine braune Mülltonne für Essen.",
+              "english": "Many cities have a brown bin for food."
+            },
+            {
+              "text": "Dieser Abfall wird zu Erde gemacht oder zu Energie.",
+              "english": "This waste is turned into soil or into energy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Pfand",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Beim Einkaufen begegnet man einem zweiten System, dem Pfand.",
+              "english": "When shopping you meet a second system, the deposit."
+            },
+            {
+              "text": "Auf vielen Flaschen liegt Pfand.",
+              "english": "On many bottles there is a deposit."
+            },
+            {
+              "text": "Bei Plastik sind es 25 Cent.",
+              "english": "For plastic it is 25 cents."
+            },
+            {
+              "text": "Man bezahlt es beim Kauf, und man bekommt das Pfand wieder, wenn man die leere Flasche bringt.",
+              "english": "You pay it when buying, and you get the deposit again when you bring the empty bottle."
+            },
+            {
+              "text": "Im Supermarkt steht ein Automat.",
+              "english": "In the supermarket there is a machine."
+            },
+            {
+              "text": "Man gibt sie dort ab und bekommt einen Zettel.",
+              "english": "You hand it in there and receive a slip."
+            },
+            {
+              "text": "Mit dem Zettel geht man zur Kasse und bekommt sein Geld.",
+              "english": "With the slip you go to the checkout and get your money."
+            },
+            {
+              "text": "Manche Menschen sammeln, was andere weggeworfen haben, und verdienen so etwas Geld.",
+              "english": "Some people collect what others have thrown away, and earn a little money that way."
+            },
+            {
+              "text": "Auch der Jugendkreis aus der Gemeinde hat das einmal gemacht.",
+              "english": "The youth group from the church did that once too."
+            },
+            {
+              "text": "Die Jugend hat eine Aktion im Park organisiert und das Geld für eine Reise gespart.",
+              "english": "The young people organised a campaign in the park and saved the money for a trip."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Gründe",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Warum macht man das alles?",
+              "english": "Why does one do all this?"
+            },
+            {
+              "text": "Es gibt vier wichtige Gründe.",
+              "english": "There are four important reasons."
+            },
+            {
+              "text": "Der Müll soll weniger werden.",
+              "english": "The amount of rubbish is to become smaller."
+            },
+            {
+              "text": "Außerdem schützt man dadurch die Umwelt.",
+              "english": "Besides, one protects the environment this way."
+            },
+            {
+              "text": "Es wird Energie gespart.",
+              "english": "Energy is saved."
+            },
+            {
+              "text": "Aus alten Dingen macht man neue, und das braucht weniger Energie.",
+              "english": "From old things one makes new ones, and that needs less energy."
+            },
+            {
+              "text": "Und es geht um das Klima.",
+              "english": "And it is about the climate."
+            },
+            {
+              "text": "Wenn man weniger verbrennt, kommt weniger schlechte Luft in die Welt.",
+              "english": "When less is burned, less bad air gets into the world."
+            },
+            {
+              "text": "Wir wollen das Klima schützen.",
+              "english": "We want to protect the climate."
+            },
+            {
+              "text": "Das klingt vernünftig, und trotzdem gibt es Menschen, die das System nicht mögen.",
+              "english": "That sounds reasonable, and nevertheless there are people who do not like the system."
+            },
+            {
+              "text": "Sie sagen: Die Mülltrennung kostet Zeit, und man weiß nie genau, wohin ein Stück gehört.",
+              "english": "They say: waste separation costs time, and you never know exactly where a piece belongs."
+            },
+            {
+              "text": "Falls man nicht sicher ist, fragt man die Nachbarn.",
+              "english": "If you are not sure, you ask the neighbours."
+            },
+            {
+              "text": "Obwohl die meisten Menschen sorgfältig trennen, machen viele Fehler.",
+              "english": "Although most people separate carefully, many make mistakes."
+            },
+            {
+              "text": "In der gelben Mülltonne liegt oft Abfall, der nicht hineingehört.",
+              "english": "In the yellow bin there is often waste that does not belong in it."
+            },
+            {
+              "text": "Deshalb werden die Mülltonnen manchmal kontrolliert.",
+              "english": "That is why the bins are sometimes checked."
+            },
+            {
+              "text": "Wer es falsch macht, bekommt einen Hinweis.",
+              "english": "Whoever does it wrong gets a notice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Pflicht und Gesetz",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "In Deutschland ist die Mülltrennung eine Pflicht.",
+              "english": "In Germany waste separation is a duty."
+            },
+            {
+              "text": "Sie steht im Gesetz.",
+              "english": "It is in the law."
+            },
+            {
+              "text": "Wer Abfall auf die Straße wirft oder sich nicht daran hält, kann eine Strafe bekommen.",
+              "english": "Whoever throws waste on the street or does not stick to it can get a fine."
+            },
+            {
+              "text": "Das passiert aber selten.",
+              "english": "But that happens rarely."
+            },
+            {
+              "text": "Trotzdem trennen die meisten Menschen gern.",
+              "english": "Nevertheless most people separate gladly."
+            },
+            {
+              "text": "Die Verantwortung liegt bei jedem Haus und bei jedem Mieter.",
+              "english": "The responsibility lies with every house and every tenant."
+            },
+            {
+              "text": "Es ist auch die Pflicht der Mieter, den Müll nach unten zu bringen.",
+              "english": "It is also the duty of the tenants to take the rubbish downstairs."
+            },
+            {
+              "text": "Deswegen steht in jeder Hausordnung etwas über den Müll.",
+              "english": "That is why every set of house rules says something about rubbish."
+            },
+            {
+              "text": "Auch Frau Weber hat dazu eine Regel.",
+              "english": "Frau Weber too has a rule about it."
+            },
+            {
+              "text": "Obwohl die Regeln streng sind, gibt es keinen großen Streit.",
+              "english": "Although the rules are strict, there is no big argument."
+            },
+            {
+              "text": "Die meisten halten sich daran.",
+              "english": "Most people stick to them."
+            },
+            {
+              "text": "Man tut es, damit die Stadt sauber bleibt, und weil man weiß, dass es gut ist.",
+              "english": "You do it so that the city stays clean and because you know that it is good."
+            },
+            {
+              "text": "Deswegen ist es keine Last, sondern eine Gewohnheit.",
+              "english": "That is why it is not a burden but a habit."
+            },
+            {
+              "text": "Die Aufgabe ist nicht schwer, sie braucht aber ein wenig Mut und viel Geduld.",
+              "english": "The task is not hard, but it needs a little courage and a lot of patience."
+            },
+            {
+              "text": "Es ist ein Dienst für alle, die nach uns kommen.",
+              "english": "It is a service for all who come after us."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Müll und Gesundheit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Manche Dinge gehören in keine dieser Mülltonnen.",
+              "english": "Some things belong in none of these bins."
+            },
+            {
+              "text": "Alte Medikamente bringt man zur Apotheke.",
+              "english": "Old medicines you take to the pharmacy."
+            },
+            {
+              "text": "Auch ein altes Thermometer ist ein Fall für sich.",
+              "english": "An old thermometer is also a case of its own."
+            },
+            {
+              "text": "Man benutzt es nicht mehr, um die Temperatur zu messen.",
+              "english": "You no longer use it to measure the temperature."
+            },
+            {
+              "text": "Wer sich dabei an einer Scherbe schneidet, soll die Wunde sauber halten.",
+              "english": "Whoever cuts himself on a shard doing that should keep the wound clean."
+            },
+            {
+              "text": "Obwohl es nur ein kleiner Schnitt ist, soll man zum Hausarzt gehen.",
+              "english": "Although it is only a small cut, one should go to the family doctor."
+            },
+            {
+              "text": "Deshalb sollte man vorsichtig sein.",
+              "english": "That is why one should be careful."
+            },
+            {
+              "text": "Nur wenn es ernst ist, geht man in die Notaufnahme.",
+              "english": "Only if it is serious does one go to the emergency room."
+            },
+            {
+              "text": "Das ist ein guter Rat.",
+              "english": "That is good advice."
+            },
+            {
+              "text": "Wer nach dem Aufräumen Symptome wie Übelkeit, Durchfall oder Schmerzen im Magen hat, soll sich ausruhen.",
+              "english": "Whoever has symptoms like nausea, diarrhoea or pain in the stomach after tidying up should rest."
+            },
+            {
+              "text": "Bei einer Grippe schwitzt man und friert, man hat Durst, und man atmet schwer.",
+              "english": "With flu you sweat and shiver, you are thirsty, and you breathe with difficulty."
+            },
+            {
+              "text": "Dann helfen Ruhe und Pflege, und die Besserung kommt langsam.",
+              "english": "Then rest and care help, and the recovery comes slowly."
+            },
+            {
+              "text": "Trotzdem soll man an einem Kranken nicht vorbeigehen.",
+              "english": "All the same one should not walk past a sick person."
+            },
+            {
+              "text": "Man soll ihn pflegen.",
+              "english": "One should care for him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Aus der Gemeindezeitung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "In der Zeitung der Gemeinde schreibt Pastor Thomas jeden Monat eine kurze Spalte.",
+              "english": "In the church newspaper Pastor Thomas writes a short column every month."
+            },
+            {
+              "text": "Diesmal heißt sie: „Der Müll und der gute Samariter“.",
+              "english": "This time it is called: \"The rubbish and the good Samaritan\"."
+            },
+            {
+              "text": "Er schreibt: Ein Priester und ein Gesetzeslehrer gingen an einem Verletzten vorbei.",
+              "english": "He writes: a priest and a teacher of the law walked past an injured man."
+            },
+            {
+              "text": "Erst ein Fremder blieb stehen.",
+              "english": "Only a stranger stopped."
+            },
+            {
+              "text": "Er kam mit seinem Esel, tat Wein auf die Wunde und brachte den Mann zu einer Herberge.",
+              "english": "He came with his donkey, put wine on the wound and took the man to an inn."
+            },
+            {
+              "text": "Dort bezahlte er den Wirt.",
+              "english": "There he paid the innkeeper."
+            },
+            {
+              "text": "Die Räuber hatten alles genommen, aber der Fremde gab.",
+              "english": "The robbers had taken everything, but the stranger gave."
+            },
+            {
+              "text": "Thomas fragt: Was haben Räuber, Priester und Müll gemeinsam?",
+              "english": "Thomas asks: what do robbers, priests and rubbish have in common?"
+            },
+            {
+              "text": "Er antwortet: Man kann an allem vorbeigehen.",
+              "english": "He answers: one can walk past everything."
+            },
+            {
+              "text": "Müll zum Beispiel verschwindet nicht von selbst, und er ist schlecht für das Klima.",
+              "english": "Rubbish, for example, does not disappear by itself, and it is bad for the climate."
+            },
+            {
+              "text": "Eine Flasche bleibt fast ewig, wenn niemand sie aufhebt.",
+              "english": "A bottle stays almost for ever if nobody picks it up."
+            },
+            {
+              "text": "Wer die Umwelt schützt, tut einen kleinen Dienst am Nächsten.",
+              "english": "Whoever protects the environment does a small service to his neighbour."
+            },
+            {
+              "text": "Das ist keine Pflicht aus Angst, sondern ein Zeichen von Liebe.",
+              "english": "That is not a duty out of fear but a sign of love."
+            },
+            {
+              "text": "Deshalb lädt der Jugendkreis alle ein, sich in eine Liste einzutragen und am Samstag zu helfen.",
+              "english": "That is why the youth group invites everybody to put their name on a list and to help on Saturday."
+            },
+            {
+              "text": "Das Ziel ist ein sauberer Park.",
+              "english": "The goal is a clean park."
+            },
+            {
+              "text": "Der Erfolg zeigt sich schon am Abend.",
+              "english": "The success is visible by the evening."
+            },
+            {
+              "text": "Wer will, kann sich vorher im Büro melden oder Flyer verteilen oder drucken.",
+              "english": "Whoever wants can register at the office beforehand or hand out or print flyers."
+            },
+            {
+              "text": "Gute Vorbereitung ist alles.",
+              "english": "Good preparation is everything."
+            },
+            {
+              "text": "Wer Interesse hat, soll Leute ansprechen.",
+              "english": "Whoever is interested should speak to people."
+            },
+            {
+              "text": "Eine einfache Frage genügt: Haben Sie Zeit?",
+              "english": "A simple question is enough: do you have time?"
+            },
+            {
+              "text": "Man kann beim Aufräumen auch zuhören und viel lernen.",
+              "english": "While tidying up one can also listen and learn a lot."
+            },
+            {
+              "text": "Das Evangelium sagt: Geh und handle ebenso.",
+              "english": "The gospel says: go and do likewise."
+            },
+            {
+              "text": "Das ist der Auftrag für die Umwelt und für die Menschen.",
+              "english": "That is the task for the environment and for people."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

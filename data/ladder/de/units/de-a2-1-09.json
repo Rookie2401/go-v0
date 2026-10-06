@@ -1,0 +1,547 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-09",
+  "lang": "de",
+  "title": "Vorbereitung auf den Gottesdienst",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-09",
+    "title": "Vorbereitung auf den Gottesdienst (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: Freikirche vocabulary as the drafter's reading: Gemeindehaus, Gesangbuch, Andacht, Ablauf, Kollekte, Segen; du in the Gemeinde (\"In unserer Gemeinde sagen wir meistens du\" is kept from the earlier draft Nach dem Gottesdienst) and Sie to strangers at first; Pastor Thomas uses the Bible phrase \"Fürchte dich nicht\" (the exact wording of a Bible translation is not given on purpose; a Scripture-competent reviewer may want to see it); the damage to the Gemeindehaus roof from the earlier storm is invented; \"Helfer\" is used for helpers of both sexes (no feminine form); the short conversation at the end follows the earlier draft with new names."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "church life",
+    "volunteers",
+    "hospitality",
+    "service preparation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Am Sonntagmorgen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Morgen, am Sonntag, acht Uhr.",
+              "english": "It is morning, on Sunday, eight o'clock."
+            },
+            {
+              "text": "Im Gemeindehaus ist es noch still.",
+              "english": "In the church hall it is still quiet."
+            },
+            {
+              "text": "Thomas öffnet die Tür.",
+              "english": "Thomas opens the door."
+            },
+            {
+              "text": "Heute kommen viele Gäste in den Gottesdienst.",
+              "english": "Today many guests are coming to the service."
+            },
+            {
+              "text": "„Wir müssen den Saal vorbereiten“, sagt er.",
+              "english": "\"We have to prepare the hall,\" he says."
+            },
+            {
+              "text": "„Ich brauche Helfer.“",
+              "english": "\"I need helpers.\""
+            },
+            {
+              "text": "„Ich bin gern Helfer“, sagt Sam.",
+              "english": "\"I like being a helper,\" says Sam."
+            },
+            {
+              "text": "Sam, Daniel und Ruth sind schon da.",
+              "english": "Sam, Daniel and Ruth are already there."
+            },
+            {
+              "text": "Marta kommt mit dem Kaffee und den Tassen.",
+              "english": "Marta comes with the coffee and the cups."
+            },
+            {
+              "text": "„Guten Morgen, ihr Helfer!“, sagt sie.",
+              "english": "\"Good morning, you helpers!\" she says."
+            },
+            {
+              "text": "Thomas sagt: „Der Sturm hat Schaden am Dach des Gemeindehauses gemacht.“",
+              "english": "Thomas says, \"The storm did damage to the roof of the church hall.\""
+            },
+            {
+              "text": "„Die Feuerwehr war schon hier. Im Saal ist alles gut.“",
+              "english": "\"The fire brigade has already been here. In the hall everything is fine.\""
+            },
+            {
+              "text": "„Ein Baum ist gebrochen, und der Strom ist ausgefallen, aber jetzt ist alles wieder gut.“",
+              "english": "\"A tree broke, and the power went out, but now everything is fine again.\""
+            },
+            {
+              "text": "„Die Kollekte ist heute für das Dach.“",
+              "english": "\"Today the collection is for the roof.\""
+            },
+            {
+              "text": "„Am Samstag kommen Jonas und seine Kollegen mit Hammer und Leiter.“",
+              "english": "\"On Saturday Jonas and his colleagues are coming with hammer and ladder.\""
+            },
+            {
+              "text": "„Das Gemeindehaus ist dann bald wieder ganz.“",
+              "english": "\"The church hall will soon be whole again.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Ablauf",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Thomas hat das Programm für den Gottesdienst.",
+              "english": "Thomas has the programme for the service."
+            },
+            {
+              "text": "Daniel sagt: „Ich lerne den Ablauf noch.“",
+              "english": "Daniel says, \"I am still learning the order.\""
+            },
+            {
+              "text": "„Hier ist der Ablauf“, sagt er.",
+              "english": "\"Here is the order of events,\" he says."
+            },
+            {
+              "text": "„Zuerst begrüße ich die Gäste.“",
+              "english": "\"First I welcome the guests.\""
+            },
+            {
+              "text": "„Danach singen wir ein Lied aus dem Gesangbuch.“",
+              "english": "\"Then we sing a song from the hymn book.\""
+            },
+            {
+              "text": "„Dann beten wir, und dann kommt die Andacht.“",
+              "english": "\"Then we pray, and then comes the short devotion.\""
+            },
+            {
+              "text": "„Nach der Andacht gibt es die Kollekte und den Segen.“",
+              "english": "\"After the devotion there is the collection and the blessing.\""
+            },
+            {
+              "text": "„Der Ablauf ist nicht schwer.“",
+              "english": "\"The order is not hard.\""
+            },
+            {
+              "text": "„Um zehn Uhr beginnen wir. Seid bitte pünktlich!“",
+              "english": "\"We begin at ten o'clock. Please be on time!\""
+            },
+            {
+              "text": "Ruth nimmt das Programm und liest es.",
+              "english": "Ruth takes the programme and reads it."
+            },
+            {
+              "text": "„Wer macht was?“, fragt sie.",
+              "english": "\"Who does what?\" she asks."
+            },
+            {
+              "text": "„Sam und Daniel stellen die Stühle auf“, sagt Thomas.",
+              "english": "\"Sam and Daniel set up the chairs,\" says Thomas."
+            },
+            {
+              "text": "„Ruth bringt die Blumen und stellt sie neben die Kerze.“",
+              "english": "\"Ruth brings the flowers and puts them beside the candle.\""
+            },
+            {
+              "text": "„Marta bereitet den Kaffee vor.“",
+              "english": "\"Marta prepares the coffee.\""
+            },
+            {
+              "text": "„Und ich lege das Gesangbuch auf jeden Stuhl.“",
+              "english": "\"And I put the hymn book on every chair.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Im Keller",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Die Stühle sind im Keller.",
+              "english": "The chairs are in the cellar."
+            },
+            {
+              "text": "Sam und Daniel gehen in den Keller.",
+              "english": "Sam and Daniel go down to the cellar."
+            },
+            {
+              "text": "Dort ist es dunkel, und das Licht geht nicht.",
+              "english": "It is dark there, and the light does not work."
+            },
+            {
+              "text": "Plötzlich hören sie ein Geräusch.",
+              "english": "Suddenly they hear a noise."
+            },
+            {
+              "text": "Daniel zittert.",
+              "english": "Daniel is trembling."
+            },
+            {
+              "text": "„Ich habe noch Angst, wenn es dunkel ist“, sagt er leise.",
+              "english": "\"I am still afraid when it is dark,\" he says quietly."
+            },
+            {
+              "text": "„Seit der Nacht mit dem Sturm.“",
+              "english": "\"Since the night of the storm.\""
+            },
+            {
+              "text": "Sam lacht: „Das ist nur der Wind an der Tür.“",
+              "english": "Sam laughs, \"That is only the wind at the door.\""
+            },
+            {
+              "text": "Er nimmt die Taschenlampe, und Daniel beruhigt sich.",
+              "english": "He takes the torch, and Daniel calms down."
+            },
+            {
+              "text": "„Nun ist es nicht mehr schlimm“, sagt Daniel.",
+              "english": "\"Now it is not bad any more,\" says Daniel."
+            },
+            {
+              "text": "Zuerst tragen sie zwanzig Stühle in den Saal.",
+              "english": "First they carry twenty chairs into the hall."
+            },
+            {
+              "text": "Danach holen sie noch zwanzig.",
+              "english": "Then they fetch another twenty."
+            },
+            {
+              "text": "„Hier passen achtzig Stühle“, sagt Sam.",
+              "english": "\"Eighty chairs fit here,\" says Sam."
+            },
+            {
+              "text": "Bald sind alle Stühle aufgestellt.",
+              "english": "Soon all the chairs are set up."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Blumen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ruth hat Blumen mitgebracht.",
+              "english": "Ruth has brought flowers."
+            },
+            {
+              "text": "Sie sind rot, blau, weiß und gelb.",
+              "english": "They are red, blue, white and yellow."
+            },
+            {
+              "text": "„Die Farben sind schön“, sagt Daniel.",
+              "english": "\"The colours are lovely,\" says Daniel."
+            },
+            {
+              "text": "„Und sie waren nicht teuer“, sagt Ruth.",
+              "english": "\"And they were not expensive,\" says Ruth."
+            },
+            {
+              "text": "„Sie waren sogar billig.“",
+              "english": "\"They were even cheap.\""
+            },
+            {
+              "text": "Sie stellt die Blumen vor die Kerze.",
+              "english": "She puts the flowers in front of the candle."
+            },
+            {
+              "text": "Die Kerze ist weiß, und der Tisch ist braun.",
+              "english": "The candle is white, and the table is brown."
+            },
+            {
+              "text": "„Die Farben sind sehr schön“, sagt Marta.",
+              "english": "\"The colours are very lovely,\" says Marta."
+            },
+            {
+              "text": "Marta stellt die Tassen in die Küche.",
+              "english": "Marta puts the cups in the kitchen."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Gäste",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Um halb zehn kommen die ersten Menschen.",
+              "english": "At half past nine the first people arrive."
+            },
+            {
+              "text": "Sam steht an der Tür und begrüßt sie.",
+              "english": "Sam stands at the door and welcomes them."
+            },
+            {
+              "text": "„Willkommen bei uns!“, sagt er.",
+              "english": "\"Welcome to us!\" he says."
+            },
+            {
+              "text": "Frau Weber kommt mit Ben.",
+              "english": "Frau Weber arrives with Ben."
+            },
+            {
+              "text": "Sie trägt eine schwarze Jacke.",
+              "english": "She is wearing a black jacket."
+            },
+            {
+              "text": "Ein Gast kommt zum ersten Mal.",
+              "english": "A guest comes for the first time."
+            },
+            {
+              "text": "Er setzt sich auf den letzten Stuhl und sagt nichts.",
+              "english": "He sits down on the last chair and says nothing."
+            },
+            {
+              "text": "Sam geht zu ihm: „Wie heißt du?“",
+              "english": "Sam goes to him: \"What is your name?\""
+            },
+            {
+              "text": "„Ich bin Michael“, sagt er leise.",
+              "english": "\"I am Marko,\" says the guest quietly."
+            },
+            {
+              "text": "„Ich bin neu in Leipzig.“",
+              "english": "\"I am new in Leipzig.\""
+            },
+            {
+              "text": "„Dann sind wir zwei“, sagt Sam.",
+              "english": "\"Then there are two of us,\" says Sam."
+            },
+            {
+              "text": "„Ich bin auch neu.“",
+              "english": "\"I am new too.\""
+            },
+            {
+              "text": "Ben hat eine grüne Mütze, aber er verliert sie.",
+              "english": "Ben has a green hat, but he loses it."
+            },
+            {
+              "text": "Sam findet die Mütze und gibt sie ihm.",
+              "english": "Sam finds the hat and gives it to him."
+            },
+            {
+              "text": "„Willkommen, Frau Weber“, sagt Sam.",
+              "english": "\"Welcome, Frau Weber,\" says Sam."
+            },
+            {
+              "text": "Sam trägt sein weißes Hemd und braune Schuhe.",
+              "english": "Sam is wearing his white shirt and brown shoes."
+            },
+            {
+              "text": "„Das Hemd passt gut“, sagt Frau Weber.",
+              "english": "\"The shirt fits well,\" says Frau Weber."
+            },
+            {
+              "text": "„Die Größe ist richtig.“",
+              "english": "\"The size is right.\""
+            },
+            {
+              "text": "„Ich habe es im Geschäft anprobiert“, sagt Sam.",
+              "english": "\"I tried it on in the shop,\" says Sam."
+            },
+            {
+              "text": "„Die Kleidung ist hier nicht wichtig“, sagt Thomas.",
+              "english": "\"Clothes are not important here,\" says Thomas."
+            },
+            {
+              "text": "„Manche tragen eine Hose und einen Pullover. Alle sind willkommen.“",
+              "english": "\"Some wear trousers and a pullover. Everyone is welcome.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Andacht",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Um zehn Uhr sind alle Stühle voll.",
+              "english": "At ten o'clock all the chairs are full."
+            },
+            {
+              "text": "Thomas begrüßt alle Menschen.",
+              "english": "Thomas welcomes everybody."
+            },
+            {
+              "text": "Im Programm steht: Lied, Kollekte, Segen.",
+              "english": "The programme says: song, collection, blessing."
+            },
+            {
+              "text": "Danach singen sie aus dem Gesangbuch.",
+              "english": "Then they sing from the hymn book."
+            },
+            {
+              "text": "Dann kommt die Andacht.",
+              "english": "Then comes the short devotion."
+            },
+            {
+              "text": "Thomas redet ruhig und langsam.",
+              "english": "Thomas speaks calmly and slowly."
+            },
+            {
+              "text": "„Heute erzähle ich keine Märchen“, sagt er.",
+              "english": "\"Today I am not telling any fairy tales,\" he says."
+            },
+            {
+              "text": "„In der Nacht des Sturms hatten viele Angst.“",
+              "english": "\"On the night of the storm many people were afraid.\""
+            },
+            {
+              "text": "„Der Donner war sehr laut, und plötzlich war das Licht aus.“",
+              "english": "\"The thunder was very loud, and suddenly the light was off.\""
+            },
+            {
+              "text": "„Es gab auch einen Blitz.“",
+              "english": "\"There was lightning too.\""
+            },
+            {
+              "text": "„Aber Gott sagt: Fürchte dich nicht!“",
+              "english": "\"But God says: Do not be afraid!\""
+            },
+            {
+              "text": "„Er hat den Mond und die Sterne gemacht.“",
+              "english": "\"He made the moon and the stars.\""
+            },
+            {
+              "text": "„Er beruhigt uns, wenn die Nacht lang ist.“",
+              "english": "\"He calms us when the night is long.\""
+            },
+            {
+              "text": "Sie ist kurz.",
+              "english": "It is short."
+            },
+            {
+              "text": "Danach kommt die Kollekte, und endlich singen alle noch ein Lied.",
+              "english": "Then comes the collection, and at last everyone sings one more song."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nach dem Gottesdienst",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Gottesdienst gibt es Kaffee.",
+              "english": "After the service there is coffee."
+            },
+            {
+              "text": "Alle haben eine Tasse.",
+              "english": "Everyone has a cup."
+            },
+            {
+              "text": "Ein Mann spricht mit Daniel.",
+              "english": "A man talks to Daniel."
+            },
+            {
+              "text": "Er heißt Herr Schmidt.",
+              "english": "He is called Herr Schmidt."
+            },
+            {
+              "text": "„Wie hat Ihnen der Gottesdienst gefallen?“",
+              "english": "\"How did you like the service?\""
+            },
+            {
+              "text": "„Sehr gut! Ich habe nicht alles verstanden, aber die Lieder waren schön“, sagt Daniel.",
+              "english": "\"Very good! I did not understand everything, but the songs were lovely,\" says Daniel."
+            },
+            {
+              "text": "„Das kommt schon noch. Mit der Zeit verstehen Sie immer mehr.“",
+              "english": "\"That will come. In time you will understand more and more.\""
+            },
+            {
+              "text": "„Hoffentlich! Die Worte von Thomas waren schwer für mich.“",
+              "english": "\"I hope so! Thomas's words were hard for me.\""
+            },
+            {
+              "text": "„Das ist nicht schlimm. Thomas spricht manchmal schnell.“",
+              "english": "\"That is not a problem. Thomas sometimes speaks fast.\""
+            },
+            {
+              "text": "„Ja, ein bisschen. Aber ich habe ein Wort verstanden: Vergebung.“",
+              "english": "\"Yes, a little. But I understood one word: forgiveness.\""
+            },
+            {
+              "text": "„Das ist ein wichtiges Wort! Setzen Sie sich doch zu mir.“",
+              "english": "\"That is an important word! Do sit down with me.\""
+            },
+            {
+              "text": "„Gern! Darf ich mich zu Ihnen setzen?“",
+              "english": "\"Gladly! May I sit with you?\""
+            },
+            {
+              "text": "„Aber natürlich. Ich bin Hans. In unserer Gemeinde sagen wir meistens du.“",
+              "english": "\"But of course. I am Hans. In our congregation we mostly say du.\""
+            },
+            {
+              "text": "„Sehr gern. Ich bin Daniel.“",
+              "english": "\"Very gladly. I am Daniel.\""
+            },
+            {
+              "text": "„Gut, Daniel. Dann komm mit.“",
+              "english": "\"Good, Daniel. Then come along.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

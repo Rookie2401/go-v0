@@ -1,0 +1,790 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-07",
+  "lang": "de",
+  "title": "Die Gruppe „Wir in Leipzig“",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-07",
+    "title": "Die Gruppe „Wir in Leipzig“ (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: chat register: du among the team, short sentences, greetings like \"Guten Morgen zusammen!\" and \"Gute Nacht\"; the modal particles mal, doch, ja are used on purpose; \"zusagen / absagen / vorschlagen / bestätigen\" are the verbs of arranging a meeting; the telephone numbers are invented (0341 is the Leipzig area code) and the \"Link\" is the everyday word for a web link; Daniel is American, so his German stays simple; the night-time joke echoes the earlier night story; the group's name is invented."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "correspondence",
+    "group chat",
+    "planning",
+    "humour"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "D": "David",
+    "R": "Ruth",
+    "S": "Sam",
+    "N": "Daniel"
+  },
+  "sections": [
+    {
+      "title": "Montag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Montag.",
+              "english": "It is Monday."
+            },
+            {
+              "text": "Die Gruppe heißt „Wir in Leipzig“.",
+              "english": "The group is called \"We in Leipzig\"."
+            },
+            {
+              "speaker": "D",
+              "text": "Guten Morgen zusammen!",
+              "english": "Good morning, everybody!"
+            },
+            {
+              "speaker": "D",
+              "text": "Ich habe eine Idee.",
+              "english": "I have an idea."
+            },
+            {
+              "speaker": "D",
+              "text": "Wir treffen uns diese Woche bei Pastor Thomas.",
+              "english": "We are meeting at Pastor Thomas's this week."
+            },
+            {
+              "speaker": "D",
+              "text": "Ich schlage Mittwoch um sieben vor.",
+              "english": "I suggest Wednesday at seven."
+            },
+            {
+              "speaker": "R",
+              "text": "Gute Idee, David!",
+              "english": "Good idea, David!"
+            },
+            {
+              "speaker": "R",
+              "text": "Ich sage zu.",
+              "english": "I accept."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich komme auch.",
+              "english": "I am coming too."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich fahre mit dem Fahrrad.",
+              "english": "I will cycle."
+            },
+            {
+              "speaker": "N",
+              "text": "Leider muss ich absagen.",
+              "english": "Unfortunately I have to decline."
+            },
+            {
+              "speaker": "N",
+              "text": "Mein Kurs ist am Mittwoch.",
+              "english": "My course is on Wednesday."
+            },
+            {
+              "speaker": "D",
+              "text": "Das ist nicht schön, Daniel.",
+              "english": "That is not nice, Daniel."
+            },
+            {
+              "speaker": "D",
+              "text": "Kann ich Donnerstag vorschlagen?",
+              "english": "May I suggest Thursday?"
+            },
+            {
+              "speaker": "N",
+              "text": "Donnerstag geht gut!",
+              "english": "Thursday works well!"
+            },
+            {
+              "speaker": "N",
+              "text": "Ich bestätige das.",
+              "english": "I confirm that."
+            },
+            {
+              "speaker": "R",
+              "text": "Ich bestätige auch: Donnerstag, sieben Uhr.",
+              "english": "I confirm too: Thursday, seven o'clock."
+            },
+            {
+              "speaker": "S",
+              "text": "Donnerstag passt mir auch.",
+              "english": "Thursday suits me too."
+            },
+            {
+              "speaker": "D",
+              "text": "Dann ist alles gut.",
+              "english": "Then everything is fine."
+            },
+            {
+              "speaker": "D",
+              "text": "Bis dann!",
+              "english": "See you!"
+            },
+            {
+              "speaker": "R",
+              "text": "Ich antworte Thomas und sage, wir kommen.",
+              "english": "I will answer Thomas and say that we are coming."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dienstag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Wer hat die Nummer von Pastor Thomas?",
+              "english": "Who has Pastor Thomas's number?"
+            },
+            {
+              "speaker": "R",
+              "text": "Ich habe sie.",
+              "english": "I have it."
+            },
+            {
+              "speaker": "R",
+              "text": "Seine Nummer ist 0341 5551234.",
+              "english": "His number is 0341 5551234."
+            },
+            {
+              "speaker": "S",
+              "text": "Danke, Ruth!",
+              "english": "Thanks, Ruth!"
+            },
+            {
+              "speaker": "S",
+              "text": "Und meine Nummer ist neu: 0151 5559876.",
+              "english": "And my number is new: 0151 5559876."
+            },
+            {
+              "speaker": "D",
+              "text": "Hier ist der Link zur Kirche.",
+              "english": "Here is the link to the church."
+            },
+            {
+              "speaker": "N",
+              "text": "Der Link öffnet nicht.",
+              "english": "The link does not open."
+            },
+            {
+              "speaker": "S",
+              "text": "Nimm mal den zweiten Link.",
+              "english": "Just take the second link."
+            },
+            {
+              "speaker": "N",
+              "text": "Jetzt ist er offen.",
+              "english": "Now it is open."
+            },
+            {
+              "speaker": "N",
+              "text": "Danke!",
+              "english": "Thanks!"
+            },
+            {
+              "speaker": "R",
+              "text": "Nehmt die gelbe Straßenbahn bis zur Kirche.",
+              "english": "Take the yellow tram to the church."
+            },
+            {
+              "speaker": "D",
+              "text": "Am Abend gibt es kaum Verkehr.",
+              "english": "In the evening there is hardly any traffic."
+            },
+            {
+              "speaker": "N",
+              "text": "Ich bin oft zu spät.",
+              "english": "I am often late."
+            },
+            {
+              "speaker": "N",
+              "text": "Ich fahre eine Stunde früher.",
+              "english": "I will leave an hour earlier."
+            },
+            {
+              "speaker": "S",
+              "text": "Das ist gut, Daniel.",
+              "english": "That is good, Daniel."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich schreibe dir morgen noch einmal.",
+              "english": "I will write to you again tomorrow."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Mittwoch",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "D",
+              "text": "Ich habe noch eine Idee für die Gruppe.",
+              "english": "I have another idea for the group."
+            },
+            {
+              "speaker": "D",
+              "text": "Am Samstag öffnen wir die kleine Bibliothek auf dem Spielplatz.",
+              "english": "On Saturday we are opening the little library on the playground."
+            },
+            {
+              "speaker": "D",
+              "text": "Jonas und Anna haben sie gebaut.",
+              "english": "Jonas and Anna built it."
+            },
+            {
+              "speaker": "R",
+              "text": "Sehr schön!",
+              "english": "Lovely!"
+            },
+            {
+              "speaker": "R",
+              "text": "Ich bringe Kuchen mit.",
+              "english": "I will bring cake."
+            },
+            {
+              "speaker": "S",
+              "text": "Natürlich komme ich.",
+              "english": "Of course I am coming."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich bringe Kaffee.",
+              "english": "I will bring coffee."
+            },
+            {
+              "speaker": "N",
+              "text": "Ich bringe einen Ball für die Kinder.",
+              "english": "I will bring a ball for the children."
+            },
+            {
+              "speaker": "R",
+              "text": "Auch die Einwohner der Straße kommen.",
+              "english": "The residents of the street are coming too."
+            },
+            {
+              "speaker": "R",
+              "text": "Das ist eine gute Veränderung.",
+              "english": "That is a good change."
+            },
+            {
+              "speaker": "S",
+              "text": "Der Spielplatz ist jetzt sauber, und es gibt kaum Lärm.",
+              "english": "The playground is clean now, and there is hardly any noise."
+            },
+            {
+              "speaker": "D",
+              "text": "Schlimm ist nur der Regen.",
+              "english": "The only bad thing is the rain."
+            },
+            {
+              "speaker": "R",
+              "text": "Beruhigt euch, das Wetter ist gut.",
+              "english": "Calm down, the weather will be fine."
+            },
+            {
+              "speaker": "D",
+              "text": "Meistens ist der Mai warm.",
+              "english": "May is mostly warm."
+            },
+            {
+              "speaker": "D",
+              "text": "Nur manchmal regnet es.",
+              "english": "It only rains sometimes."
+            },
+            {
+              "speaker": "N",
+              "text": "Natürlich kaufe ich den Kuchen im Laden.",
+              "english": "Of course I buy the cake in the shop."
+            },
+            {
+              "speaker": "N",
+              "text": "Aber der Laden schließt um sechs.",
+              "english": "But the shop closes at six."
+            },
+            {
+              "speaker": "R",
+              "text": "Dann kaufst du ihn heute.",
+              "english": "Then buy it today."
+            },
+            {
+              "speaker": "R",
+              "text": "Meistens ist es am Abend voll.",
+              "english": "It is mostly crowded in the evening."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nachts im Chat",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "N",
+              "text": "Ich kann nicht schlafen.",
+              "english": "I cannot sleep."
+            },
+            {
+              "speaker": "N",
+              "text": "Der Mond ist hell, und ich sehe die Sterne.",
+              "english": "The moon is bright, and I can see the stars."
+            },
+            {
+              "speaker": "N",
+              "text": "Plötzlich höre ich ein Geräusch an der Tür.",
+              "english": "Suddenly I hear a noise at the door."
+            },
+            {
+              "speaker": "N",
+              "text": "Ich habe Angst!",
+              "english": "I am afraid!"
+            },
+            {
+              "speaker": "R",
+              "text": "Erzähl keine Märchen, Daniel!",
+              "english": "Don't tell fairy tales, Daniel!"
+            },
+            {
+              "speaker": "N",
+              "text": "Es ist kein Märchen!",
+              "english": "It is not a fairy tale!"
+            },
+            {
+              "speaker": "N",
+              "text": "Das Licht geht nicht.",
+              "english": "The light does not work."
+            },
+            {
+              "speaker": "N",
+              "text": "Zuerst war es still.",
+              "english": "First it was quiet."
+            },
+            {
+              "speaker": "N",
+              "text": "Danach kam ein kleines Tier.",
+              "english": "Then a little animal came."
+            },
+            {
+              "speaker": "D",
+              "text": "Beruhige dich.",
+              "english": "Calm down."
+            },
+            {
+              "speaker": "D",
+              "text": "Es war nur der Nachbar.",
+              "english": "It was only the neighbour."
+            },
+            {
+              "speaker": "N",
+              "text": "Nun bin ich wieder ruhig.",
+              "english": "Now I am calm again."
+            },
+            {
+              "speaker": "N",
+              "text": "Damals in den Ferien war ich auf dem Bauernhof meiner Großeltern.",
+              "english": "Back then in the holidays I was at my grandparents' farm."
+            },
+            {
+              "speaker": "N",
+              "text": "Mein Opa hatte Kühe und Pferde.",
+              "english": "My grandpa had cows and horses."
+            },
+            {
+              "speaker": "N",
+              "text": "Mein Onkel und meine Tante wohnten im Dorf.",
+              "english": "My uncle and aunt lived in the village."
+            },
+            {
+              "speaker": "N",
+              "text": "Wir Geschwister sind mit dem Ball gerannt.",
+              "english": "We brothers and sisters ran with the ball."
+            },
+            {
+              "speaker": "N",
+              "text": "Unter dem Baum hat Opa eine Geschichte erzählt.",
+              "english": "Under the tree Grandpa told a story."
+            },
+            {
+              "speaker": "N",
+              "text": "Sonst haben wir nichts gemacht, sogar im Regen nicht.",
+              "english": "Otherwise we did nothing, not even in the rain."
+            },
+            {
+              "speaker": "R",
+              "text": "Das ist ein schönes Märchen, Daniel.",
+              "english": "That is a lovely fairy tale, Daniel."
+            },
+            {
+              "speaker": "R",
+              "text": "Gute Nacht!",
+              "english": "Good night!"
+            },
+            {
+              "speaker": "D",
+              "text": "Jetzt beginnt die Nacht.",
+              "english": "Now the night begins."
+            },
+            {
+              "speaker": "D",
+              "text": "Schlaft gut!",
+              "english": "Sleep well!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Donnerstag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "D",
+              "text": "Danke für das Treffen heute!",
+              "english": "Thanks for the meeting today!"
+            },
+            {
+              "speaker": "D",
+              "text": "Hier ist, was wir gemacht haben:",
+              "english": "Here is what we did:"
+            },
+            {
+              "speaker": "D",
+              "text": "Zuerst haben wir gebetet und ein Lied gesungen.",
+              "english": "First we prayed and sang a song."
+            },
+            {
+              "speaker": "D",
+              "text": "Danach hat Thomas über die Gemeinde gesprochen.",
+              "english": "Then Thomas spoke about the congregation."
+            },
+            {
+              "speaker": "D",
+              "text": "Nun wissen wir, wer am Sonntag hilft.",
+              "english": "Now we know who is helping on Sunday."
+            },
+            {
+              "speaker": "R",
+              "text": "Wer antwortet noch Pastor Thomas?",
+              "english": "Who is still answering Pastor Thomas?"
+            },
+            {
+              "speaker": "S",
+              "text": "Ich antworte ihm heute Abend.",
+              "english": "I will answer him this evening."
+            },
+            {
+              "speaker": "R",
+              "text": "Schickt mir bitte die Bilder von Samstag.",
+              "english": "Please send me the pictures from Saturday."
+            },
+            {
+              "speaker": "N",
+              "text": "Sag mal, Sam, kommt Anna auch?",
+              "english": "Tell me, Sam, is Anna coming too?"
+            },
+            {
+              "speaker": "S",
+              "text": "Natürlich.",
+              "english": "Of course."
+            },
+            {
+              "speaker": "S",
+              "text": "Sie hat mir schon zugesagt.",
+              "english": "She has already said yes to me."
+            },
+            {
+              "speaker": "D",
+              "text": "Dann sind wir viele.",
+              "english": "Then there will be many of us."
+            },
+            {
+              "speaker": "D",
+              "text": "Bis Samstag!",
+              "english": "See you on Saturday!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Freitag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "D",
+              "text": "Und noch etwas: Wir treffen uns um neun Uhr.",
+              "english": "And one more thing: we meet at nine."
+            },
+            {
+              "speaker": "D",
+              "text": "Zuerst bringen wir die Bücher zum Spielplatz.",
+              "english": "First we bring the books to the playground."
+            },
+            {
+              "speaker": "D",
+              "text": "Danach öffnen wir die Tür.",
+              "english": "Then we open the door."
+            },
+            {
+              "speaker": "D",
+              "text": "Um elf Uhr gibt es Kaffee und Kuchen.",
+              "english": "At eleven there is coffee and cake."
+            },
+            {
+              "speaker": "S",
+              "text": "Das ist gut.",
+              "english": "That is good."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich bestätige.",
+              "english": "I confirm."
+            },
+            {
+              "speaker": "N",
+              "text": "Ich sage leider ab.",
+              "english": "Unfortunately I have to cancel."
+            },
+            {
+              "speaker": "N",
+              "text": "Ich habe Kurs.",
+              "english": "I have a course."
+            },
+            {
+              "speaker": "R",
+              "text": "Das ist nicht schlimm, Daniel.",
+              "english": "That is not a problem, Daniel."
+            },
+            {
+              "speaker": "R",
+              "text": "Du kommst am Abend.",
+              "english": "You come in the evening."
+            },
+            {
+              "speaker": "N",
+              "text": "Gern.",
+              "english": "Gladly."
+            },
+            {
+              "speaker": "N",
+              "text": "Ich habe meistens am Abend Zeit.",
+              "english": "I mostly have time in the evening."
+            },
+            {
+              "speaker": "R",
+              "text": "Wer kann am Abend aufräumen?",
+              "english": "Who can tidy up in the evening?"
+            },
+            {
+              "speaker": "S",
+              "text": "Das mache ich mit Jonas.",
+              "english": "I will do that with Jonas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Samstag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "R",
+              "text": "Seht mal, die Bibliothek ist offen!",
+              "english": "Look, the library is open!"
+            },
+            {
+              "speaker": "R",
+              "text": "Alle aus der Gruppe sind da.",
+              "english": "Everyone from the group is here."
+            },
+            {
+              "speaker": "R",
+              "text": "Es kommen immer mehr Einwohner, und sie bringen Bücher.",
+              "english": "More and more residents are coming, and they are bringing books."
+            },
+            {
+              "speaker": "D",
+              "text": "Hier war früher ein Schwimmbad.",
+              "english": "There used to be a swimming pool here."
+            },
+            {
+              "speaker": "D",
+              "text": "Heute ist hier eine Bibliothek.",
+              "english": "Today there is a library here."
+            },
+            {
+              "speaker": "R",
+              "text": "Das ist eine große Veränderung, aber eine schöne.",
+              "english": "That is a big change, but a lovely one."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich bin oft hier.",
+              "english": "I am here often."
+            },
+            {
+              "speaker": "S",
+              "text": "Das Licht in der Bibliothek ist am Abend sehr schön.",
+              "english": "The light in the library is very lovely in the evening."
+            },
+            {
+              "speaker": "S",
+              "text": "Hier ist ein Foto von Ben.",
+              "english": "Here is a photo of Ben."
+            },
+            {
+              "speaker": "S",
+              "text": "Er rennt mit dem Ball!",
+              "english": "He is running with the ball!"
+            },
+            {
+              "speaker": "D",
+              "text": "Und hier ist Frau Weber.",
+              "english": "And here is Frau Weber."
+            },
+            {
+              "speaker": "D",
+              "text": "Sie hat ein Buch gebracht.",
+              "english": "She has brought a book."
+            },
+            {
+              "speaker": "S",
+              "text": "Sie hat gesagt: „Das gefällt mir sehr.“",
+              "english": "She said, \"I like that very much.\""
+            },
+            {
+              "speaker": "N",
+              "text": "Ich komme später.",
+              "english": "I will come later."
+            },
+            {
+              "speaker": "N",
+              "text": "Ich habe zwei Bälle, und ich renne gern!",
+              "english": "I have two balls, and I like running!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sonntag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "R",
+              "text": "Guten Morgen!",
+              "english": "Good morning!"
+            },
+            {
+              "speaker": "R",
+              "text": "Gestern war ein schöner Tag.",
+              "english": "Yesterday was a lovely day."
+            },
+            {
+              "speaker": "R",
+              "text": "Die Kinder haben gelesen, und die Einwohner haben mit uns Kaffee getrunken.",
+              "english": "The children read, and the residents drank coffee with us."
+            },
+            {
+              "speaker": "D",
+              "text": "Wir haben jetzt viele neue Freunde.",
+              "english": "We have lots of new friends now."
+            },
+            {
+              "speaker": "S",
+              "text": "Frau Weber hat uns zum Essen eingeladen.",
+              "english": "Frau Weber has invited us to dinner."
+            },
+            {
+              "speaker": "S",
+              "text": "Sie kocht Suppe.",
+              "english": "She is cooking soup."
+            },
+            {
+              "speaker": "N",
+              "text": "Um wie viel Uhr?",
+              "english": "At what time?"
+            },
+            {
+              "speaker": "N",
+              "text": "Ich bringe Brot mit.",
+              "english": "I will bring bread."
+            },
+            {
+              "speaker": "S",
+              "text": "Um zwölf Uhr.",
+              "english": "At twelve o'clock."
+            },
+            {
+              "speaker": "S",
+              "text": "Alle kommen!",
+              "english": "Everyone is coming!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

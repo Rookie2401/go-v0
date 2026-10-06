@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-14",
+  "lang": "de",
+  "title": "A message and a notice",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-14",
+    "title": "A message and a notice (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Short written messages (du among friends) and a notice on the church. The weekdays are written with \"am\" (am Montag). \"Doch\" is the answer to a negative question (\"Hast du keine Klasse? - Doch!\") and a particle in \"Kommt doch!\". The notice uses the imperative (\"Kommt alle!\"). The times of the notice are examples, not a real programme."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "messages",
+    "phone",
+    "days of the week",
+    "appointments",
+    "notices"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical-communication"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "thomas": "Thomas",
+    "anna": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Eine Nachricht von Thomas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Abend.",
+              "english": "It is evening."
+            },
+            {
+              "text": "Sam hat sein Handy.",
+              "english": "Sam has his phone."
+            },
+            {
+              "text": "Er hat eine Nachricht von Thomas.",
+              "english": "He has a message from Thomas."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Hallo Sam!",
+              "english": "Hello Sam!"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Am Samstag ist Frühstück in der Gemeinde.",
+              "english": "On Saturday there is breakfast at the church."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Kommst du?",
+              "english": "Are you coming?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Am Freitag koche ich Suppe.",
+              "english": "On Friday I am cooking soup."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Kannst du helfen?",
+              "english": "Can you help?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ich bin Pastor, das ist mein Beruf.",
+              "english": "I am a pastor, that is my job."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Herr Schmidt ist Bäcker, und er ist Chef.",
+              "english": "Herr Schmidt is a baker, and he is the boss."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er macht Brötchen für alle.",
+              "english": "He makes rolls for everyone."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Das Wetter ist warm, dann essen wir im Park.",
+              "english": "The weather is warm, then we eat in the park."
+            },
+            {
+              "text": "Sam schreibt mit dem Handy.",
+              "english": "Sam writes on his phone."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hallo Thomas!",
+              "english": "Hello Thomas!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Am Freitag habe ich einen Termin.",
+              "english": "On Friday I have an appointment."
+            },
+            {
+              "speaker": "sam",
+              "text": "Aber am Samstag komme ich gern.",
+              "english": "But on Saturday I will gladly come."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Du kannst nicht kommen?",
+              "english": "You cannot come?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Doch, ich komme am Abend.",
+              "english": "Yes I can, I will come in the evening."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Eine Nachricht von Anna",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna schreibt auch.",
+              "english": "Anna writes too."
+            },
+            {
+              "text": "Sie hat auch ein Handy.",
+              "english": "She has a phone too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Hallo Sam!",
+              "english": "Hello Sam!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Hast du am Montag und am Dienstag Klasse?",
+              "english": "Do you have class on Monday and Tuesday?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich bin Krankenschwester, ich arbeite immer am Montag und am Dienstag.",
+              "english": "I am a nurse, I always work on Monday and Tuesday."
+            },
+            {
+              "speaker": "anna",
+              "text": "Am Mittwoch habe ich einen Termin beim Arzt.",
+              "english": "On Wednesday I have an appointment with the doctor."
+            },
+            {
+              "speaker": "anna",
+              "text": "Der Arzt ist ein guter Mann, ich bin gesund.",
+              "english": "The doctor is a good man, I am well."
+            },
+            {
+              "speaker": "anna",
+              "text": "Am Donnerstag ruf mich an!",
+              "english": "Call me on Thursday!"
+            },
+            {
+              "text": "Sam schreibt wieder.",
+              "english": "Sam writes again."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hallo Anna!",
+              "english": "Hello Anna!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bin Student.",
+              "english": "I am a student."
+            },
+            {
+              "speaker": "sam",
+              "text": "Am Montag und am Dienstag habe ich Klasse.",
+              "english": "On Monday and Tuesday I have class."
+            },
+            {
+              "speaker": "sam",
+              "text": "Am Mittwoch habe ich einen Termin in der Schule.",
+              "english": "On Wednesday I have an appointment at the school."
+            },
+            {
+              "speaker": "sam",
+              "text": "Soll ich dich am Donnerstag anrufen?",
+              "english": "Shall I call you on Thursday?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Hast du keine Klasse?",
+              "english": "Do you not have class?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Doch, aber am Abend bin ich wieder zu Hause.",
+              "english": "Yes I do, but in the evening I am at home again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Daniel kommt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Daniel ist ein Freund aus den USA.",
+              "english": "Daniel is a friend from the USA."
+            },
+            {
+              "text": "Er spricht nicht gut Deutsch, aber er lernt gern.",
+              "english": "He does not speak German well, but he likes learning."
+            },
+            {
+              "text": "Daniel kommt am Donnerstag mit dem Zug an.",
+              "english": "Daniel is arriving by train on Thursday."
+            },
+            {
+              "text": "Sam muss zum Bahnhof fahren.",
+              "english": "Sam has to go to the station."
+            },
+            {
+              "text": "Die Haltestelle ist in der Straße.",
+              "english": "The stop is in the street."
+            },
+            {
+              "text": "Die Straßenbahn kommt in fünf Minuten.",
+              "english": "The tram comes in five minutes."
+            },
+            {
+              "text": "Sam braucht eine Fahrkarte.",
+              "english": "Sam needs a ticket."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "An der Kirche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam geht in die Stadt.",
+              "english": "Sam goes into the city."
+            },
+            {
+              "text": "An der Kirche ist eine Nachricht für die Gemeinde.",
+              "english": "At the church there is a notice for the congregation."
+            },
+            {
+              "text": "Sam sieht die Nachricht.",
+              "english": "Sam sees the notice."
+            },
+            {
+              "text": "Mittwoch, 19 Uhr: Bibel und Lieder.",
+              "english": "Wednesday, 7 p.m.: Bible and songs."
+            },
+            {
+              "text": "Freitag, 12 Uhr: Suppe und Brot.",
+              "english": "Friday, 12 noon: soup and bread."
+            },
+            {
+              "text": "Samstag, 9 Uhr: Frühstück im Park.",
+              "english": "Saturday, 9 a.m.: breakfast in the park."
+            },
+            {
+              "text": "Kommt alle!",
+              "english": "Everyone come!"
+            },
+            {
+              "text": "Kommt doch!",
+              "english": "Do come!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist gut.",
+              "english": "That is good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Sonne ist warm, und es ist nicht kalt.",
+              "english": "The sun is warm, and it is not cold."
+            },
+            {
+              "speaker": "sam",
+              "text": "Dann sind wir wieder in der Gemeinde.",
+              "english": "Then we are back in the church again."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Danke, Sam!",
+              "english": "Thank you, Sam!"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Du bist ein guter Freund.",
+              "english": "You are a good friend."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich helfe gern, Thomas.",
+              "english": "I like helping, Thomas."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich möchte immer helfen.",
+              "english": "I always want to help."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

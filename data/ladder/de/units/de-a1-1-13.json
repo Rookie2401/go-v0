@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-13",
+  "lang": "de",
+  "title": "Ben's lost school bag",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-13",
+    "title": "Ben's lost school bag (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Narrative with dialogue. The two-way prepositions (unter, neben, hinter) are used only with the dative of place in fixed, simple phrases (unter dem Bett, neben dem Tisch, hinter dem Stuhl). \"Rucksack\" is the usual word for a school bag (Schulranzen is the primary-school word and is left out). Ben loses things (a Stage 0 trait). Ben uses du with adults he knows well (Marta, Lukas, Thomas, Sam) and Sie with Herr Schmidt."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "lost things",
+    "searching",
+    "places",
+    "prepositions of place"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ben": "Ben",
+    "marta": "Marta",
+    "lukas": "Lukas",
+    "thomas": "Pastor Thomas",
+    "sam": "Sam",
+    "schmidt": "Herr Schmidt",
+    "anna": "Anna",
+    "michael": "Michael",
+    "mann": "Ein Mann"
+  },
+  "sections": [
+    {
+      "title": "Wo ist der Rucksack?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist halb acht.",
+              "english": "It is half past seven."
+            },
+            {
+              "text": "Ben steht auf.",
+              "english": "Ben gets up."
+            },
+            {
+              "text": "Er hat kein Fieber, er ist gesund.",
+              "english": "He has no fever, he is well."
+            },
+            {
+              "text": "Heute geht Ben wieder in die Schule.",
+              "english": "Today Ben goes back to school."
+            },
+            {
+              "text": "Aber wo ist der Rucksack?",
+              "english": "But where is the school bag?"
+            },
+            {
+              "text": "Ben sucht.",
+              "english": "Ben looks for it."
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma, wo ist mein Rucksack?",
+              "english": "Grandma, where is my school bag?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich weiß nicht, Ben.",
+              "english": "I do not know, Ben."
+            },
+            {
+              "speaker": "marta",
+              "text": "Du verlierst immer etwas!",
+              "english": "You are always losing something!"
+            },
+            {
+              "text": "Ben sucht unter dem Bett, neben dem Tisch und hinter dem Stuhl.",
+              "english": "Ben looks under the bed, next to the table and behind the chair."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich sehe ihn nicht!",
+              "english": "I cannot see it!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Dein Schlüssel liegt auf dem Tisch.",
+              "english": "Your key is on the table."
+            },
+            {
+              "speaker": "marta",
+              "text": "Dein Buch liegt unter dem Tisch, und deine Tasche ist neben dem Bett.",
+              "english": "Your book is under the table, and your bag is next to the bed."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich brauche ihn, nicht die Tasche!",
+              "english": "I need it, not the bag!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich finde ihn nicht!",
+              "english": "I cannot find it!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "In der Schule",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist acht Uhr, und die Klasse fängt an.",
+              "english": "It is eight o'clock, and the class begins."
+            },
+            {
+              "text": "Ben hat kein Heft.",
+              "english": "Ben has no exercise book."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Guten Morgen, Ben!",
+              "english": "Good morning, Ben!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wo ist es?",
+              "english": "Where is it?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich habe ihn verloren.",
+              "english": "I have lost it."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Du bist ein guter Schüler, aber du verlierst immer etwas.",
+              "english": "You are a good pupil, but you are always losing something."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Er liegt nicht in der Klasse.",
+              "english": "It is not in the classroom."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Was machen wir?",
+              "english": "What do we do?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Der Stuhl steht hinter dem Tisch.",
+              "english": "The chair is behind the table."
+            },
+            {
+              "text": "In der Pause sagt Ben: \"Ich möchte ihn finden.\"",
+              "english": "During the break Ben says: \"I want to find it.\""
+            },
+            {
+              "speaker": "lukas",
+              "text": "Nach der Schule suchen wir ihn.",
+              "english": "After school we will look for it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Wir suchen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach der Schule gehen Ben, Lukas und Sam in die Stadt.",
+              "english": "After school Ben, Lukas and Sam go into the city."
+            },
+            {
+              "text": "Sam ist ein Freund von Ben.",
+              "english": "Sam is a friend of Ben's."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bin Student, ich habe eine Stunde.",
+              "english": "I am a student, I have an hour."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich kann helfen.",
+              "english": "I can help."
+            },
+            {
+              "text": "Sie gehen zu Herrn Schmidt in die Bäckerei.",
+              "english": "They go to Herr Schmidt at the bakery."
+            },
+            {
+              "speaker": "ben",
+              "text": "Herr Schmidt, haben Sie ihn?",
+              "english": "Herr Schmidt, do you have it?"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Nein, Ben.",
+              "english": "No, Ben."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Ich bin Bäcker und Chef von der Bäckerei, ich finde Brötchen.",
+              "english": "I am a baker and the boss of the bakery, I find rolls."
+            },
+            {
+              "text": "Dann gehen sie in die Klinik.",
+              "english": "Then they go to the clinic."
+            },
+            {
+              "text": "Anna ist Krankenschwester, und Michael ist Arzt.",
+              "english": "Anna is a nurse, and Michael is a doctor."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ben, du bist gesund!",
+              "english": "Ben, you are well!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Das ist schön.",
+              "english": "That is nice."
+            },
+            {
+              "speaker": "anna",
+              "text": "Aber ich sehe ihn nicht.",
+              "english": "But I cannot see it."
+            },
+            {
+              "speaker": "michael",
+              "text": "Ich sehe hier keinen Rucksack.",
+              "english": "I see no school bag here."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ihr habt alle einen guten Beruf, aber ihr habt ihn nicht.",
+              "english": "You all have a good job, but you do not have it."
+            },
+            {
+              "text": "Im Park ist ein Mann.",
+              "english": "There is a man in the park."
+            },
+            {
+              "speaker": "ben",
+              "text": "Haben Sie ihn?",
+              "english": "Do you have it?"
+            },
+            {
+              "speaker": "mann",
+              "text": "Nein, hier nicht.",
+              "english": "No, not here."
+            },
+            {
+              "text": "Es ist warm, und die Sonne ist da.",
+              "english": "It is warm, and the sun is out."
+            },
+            {
+              "text": "Ben ist müde.",
+              "english": "Ben is tired."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ben, am Sonntag bist du in der Gemeinde.",
+              "english": "Ben, on Sunday you are at the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ist er in der Gemeinde?",
+              "english": "Is it at the church?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ja, das ist gut!",
+              "english": "Yes, that is good!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Wir gehen!",
+              "english": "Let us go!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "In der Gemeinde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pastor Thomas ist in der Gemeinde.",
+              "english": "Pastor Thomas is at the church."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Hallo, Ben!",
+              "english": "Hello, Ben!"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Suchst du ihn?",
+              "english": "Are you looking for it?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er steht hinter dem Stuhl, unter dem Fenster.",
+              "english": "It is behind the chair, under the window."
+            },
+            {
+              "text": "Und da ist er!",
+              "english": "And there it is!"
+            },
+            {
+              "text": "Ben findet den Rucksack.",
+              "english": "Ben finds the school bag."
+            },
+            {
+              "text": "Das Heft liegt neben dem Rucksack.",
+              "english": "The exercise book is lying next to the school bag."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Leg das Heft in den Rucksack, Ben!",
+              "english": "Put the exercise book in the school bag, Ben!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Mein Heft ist auch da!",
+              "english": "My exercise book is there too!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Danke, Thomas!",
+              "english": "Thank you, Thomas!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich möchte ihn nicht verlieren.",
+              "english": "I do not want to lose it."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Gut, Ben.",
+              "english": "Good, Ben."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Und morgen lernen wir wieder.",
+              "english": "And tomorrow we are learning again."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

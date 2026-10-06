@@ -1,0 +1,490 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-11",
+  "lang": "de",
+  "title": "Frau Weber's life",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-11",
+    "title": "Frau Weber's life (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Frau Weber tells Sam her life story on a Sunday evening in her kitchen; Sam and Frau Weber say Sie to each other. Years are digits. The setting is East Germany until 1990 (no car, a bicycle, work in a factory), mentioned without comment; the German session should check it. \"Seit\" is used with the present (\"seit 2012 bin ich in Rente\"); \"lange\" is the adverb. Frau Weber is about 75 in 2025."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "biography",
+    "Perfekt and present",
+    "years",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "weber": "Frau Weber"
+  },
+  "sections": [
+    {
+      "title": "Frau Weber erzählt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Sonntag, am Abend.",
+              "english": "It is Sunday evening."
+            },
+            {
+              "text": "Sam und Frau Weber sitzen in der Küche.",
+              "english": "Sam and Mrs Weber are sitting in the kitchen."
+            },
+            {
+              "text": "Frau Weber hat Tee gekocht.",
+              "english": "Mrs Weber has made tea."
+            },
+            {
+              "speaker": "sam",
+              "text": "Frau Weber, wo sind Sie geboren?",
+              "english": "Mrs Weber, where were you born?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich bin 1950 in Leipzig geboren.",
+              "english": "I was born in Leipzig in 1950."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich bin in Leipzig aufgewachsen.",
+              "english": "I grew up in Leipzig."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie war Ihre Kindheit?",
+              "english": "What was your childhood like?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Meine Kindheit war schön.",
+              "english": "My childhood was lovely."
+            },
+            {
+              "speaker": "weber",
+              "text": "Meine Eltern hatten kein Auto, nur ein Fahrrad.",
+              "english": "My parents had no car, only a bicycle."
+            },
+            {
+              "speaker": "weber",
+              "text": "Am Wochenende haben wir einen Ausflug gemacht.",
+              "english": "At the weekend we made an excursion."
+            },
+            {
+              "speaker": "weber",
+              "text": "Der See war nicht weit, und wir sind auch auf einen Berg gelaufen.",
+              "english": "The lake was not far, and we also walked up a hill."
+            },
+            {
+              "speaker": "weber",
+              "text": "Wir haben ein Picknick gemacht, wir sind geschwommen, und wir sind in den Wald gelaufen.",
+              "english": "We had a picnic, we swam, and we walked into the forest."
+            },
+            {
+              "speaker": "weber",
+              "text": "Mein Vater hat gern fotografiert.",
+              "english": "My father liked taking photographs."
+            },
+            {
+              "speaker": "weber",
+              "text": "Die anderen Kinder haben gespielt.",
+              "english": "The other children played."
+            },
+            {
+              "speaker": "weber",
+              "text": "Mein Bruder ist ins Wasser gesprungen.",
+              "english": "My brother jumped into the water."
+            },
+            {
+              "speaker": "weber",
+              "text": "Er hat den Ball geworfen, und ich habe ihn gefangen.",
+              "english": "He threw the ball, and I caught it."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ja, meine Kindheit war sehr schön.",
+              "english": "Yes, my childhood was very lovely."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Jugend",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Und Ihre Jugend?",
+              "english": "And your youth?"
+            },
+            {
+              "speaker": "weber",
+              "text": "In meiner Jugend habe ich viel getanzt.",
+              "english": "In my youth I danced a lot."
+            },
+            {
+              "speaker": "weber",
+              "text": "Am Wochenende bin ich ins Café und zum Konzert gegangen.",
+              "english": "At the weekend I went to the café and to the concert."
+            },
+            {
+              "speaker": "weber",
+              "text": "Dort habe ich Hans getroffen.",
+              "english": "There I met Hans."
+            },
+            {
+              "speaker": "weber",
+              "text": "Wir haben Kaffee getrunken, und wir haben getanzt.",
+              "english": "We drank coffee, and we danced."
+            },
+            {
+              "speaker": "weber",
+              "text": "Hans ist mein Ehemann geworden.",
+              "english": "Hans became my husband."
+            },
+            {
+              "speaker": "weber",
+              "text": "Er war Lehrer.",
+              "english": "He was a teacher."
+            },
+            {
+              "speaker": "weber",
+              "text": "Die Eltern von Hans haben ein Geschäft gehabt.",
+              "english": "Hans's parents had a shop."
+            },
+            {
+              "speaker": "weber",
+              "text": "Meine Jugend war nicht lang, aber schön.",
+              "english": "My youth was not long, but lovely."
+            },
+            {
+              "speaker": "weber",
+              "text": "1972 haben wir geheiratet.",
+              "english": "In 1972 we got married."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ein Ehemann ist auch ein Freund.",
+              "english": "A husband is also a friend."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie war die Hochzeit?",
+              "english": "What was the wedding like?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Die Hochzeit war schön.",
+              "english": "The wedding was lovely."
+            },
+            {
+              "speaker": "weber",
+              "text": "Wir haben ein Fest gemacht.",
+              "english": "We had a party."
+            },
+            {
+              "speaker": "weber",
+              "text": "Die Hochzeit von Martin war auch schön.",
+              "english": "Martin's wedding was lovely too."
+            },
+            {
+              "speaker": "weber",
+              "text": "Alle haben uns etwas geschenkt.",
+              "english": "Everyone gave us something."
+            },
+            {
+              "speaker": "weber",
+              "text": "Dann sind wir mit dem Zug nach Dresden gefahren.",
+              "english": "Then we went to Dresden by train."
+            },
+            {
+              "speaker": "weber",
+              "text": "Die Reise war lang, denn der Zug war nicht schnell.",
+              "english": "The journey was long, because the train was not fast."
+            },
+            {
+              "speaker": "weber",
+              "text": "Wir hatten einen Platz, und mein Koffer war voll.",
+              "english": "We had a seat, and my suitcase was full."
+            },
+            {
+              "speaker": "weber",
+              "text": "Wir mussten umsteigen, und das Gleis war leer.",
+              "english": "We had to change trains, and the platform was empty."
+            },
+            {
+              "speaker": "weber",
+              "text": "In Dresden sind wir ausgestiegen und in den Bus eingestiegen.",
+              "english": "In Dresden we got off and got on the bus."
+            },
+            {
+              "speaker": "weber",
+              "text": "Der Bus hat gehalten, und da war das Hotel.",
+              "english": "The bus stopped, and there was the hotel."
+            },
+            {
+              "speaker": "weber",
+              "text": "Wir haben im Hotel übernachtet, und wir haben ein Museum besucht.",
+              "english": "We stayed overnight at the hotel, and we visited a museum."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Arbeit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Haben Sie gearbeitet?",
+              "english": "Did you work?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Ja, ich habe lange in der Fabrik gearbeitet.",
+              "english": "Yes, I worked in the factory for a long time."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich habe 35 Jahre in der Fabrik gearbeitet.",
+              "english": "I worked in the factory for 35 years."
+            },
+            {
+              "speaker": "weber",
+              "text": "Hans und ich haben lange in einer kleinen Wohnung gewohnt.",
+              "english": "Hans and I lived in a small flat for a long time."
+            },
+            {
+              "speaker": "weber",
+              "text": "Die Arbeit war schwer, und die Fabrik war groß.",
+              "english": "The work was hard, and the factory was big."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich habe die Fabrik nicht gern gehabt, aber ich habe gern gearbeitet.",
+              "english": "I did not like the factory, but I liked working."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Familie",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "weber",
+              "text": "Wir haben zwei Kinder: einen Sohn und eine Tochter.",
+              "english": "We have two children: a son and a daughter."
+            },
+            {
+              "speaker": "weber",
+              "text": "Mein Sohn heißt Martin.",
+              "english": "My son is called Martin."
+            },
+            {
+              "speaker": "weber",
+              "text": "Er ist 1975 geboren.",
+              "english": "He was born in 1975."
+            },
+            {
+              "speaker": "weber",
+              "text": "Er hat 2000 geheiratet.",
+              "english": "He got married in 2000."
+            },
+            {
+              "speaker": "weber",
+              "text": "Er wohnt in München.",
+              "english": "He lives in Munich."
+            },
+            {
+              "speaker": "weber",
+              "text": "Meine Kinder sind in Leipzig aufgewachsen.",
+              "english": "My children grew up in Leipzig."
+            },
+            {
+              "speaker": "weber",
+              "text": "Meine Enkel wachsen in München auf.",
+              "english": "My grandchildren are growing up in Munich."
+            },
+            {
+              "speaker": "weber",
+              "text": "Meine Tochter war ein kleines Mädchen, und sie hat viel gelacht.",
+              "english": "My daughter was a little girl, and she laughed a lot."
+            },
+            {
+              "speaker": "weber",
+              "text": "Mein Sohn hat zwei Kinder.",
+              "english": "My son has two children."
+            },
+            {
+              "speaker": "weber",
+              "text": "Das sind meine Enkel.",
+              "english": "They are my grandchildren."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich habe drei Enkel.",
+              "english": "I have three grandchildren."
+            },
+            {
+              "speaker": "weber",
+              "text": "Meine Enkel besuchen mich, und sie bekommen Kuchen.",
+              "english": "My grandchildren visit me, and they get cake."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Heute",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "weber",
+              "text": "Seit 2012 bin ich in Rente.",
+              "english": "Since 2012 I have been retired."
+            },
+            {
+              "speaker": "weber",
+              "text": "Die Rente ist nicht groß, aber ich habe genug.",
+              "english": "The pension is not big, but I have enough."
+            },
+            {
+              "speaker": "weber",
+              "text": "In der Rente habe ich Zeit.",
+              "english": "In retirement I have time."
+            },
+            {
+              "speaker": "weber",
+              "text": "2015 ist Hans gestorben, im Winter.",
+              "english": "In 2015 Hans died, in winter."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich habe lange geweint.",
+              "english": "I cried for a long time."
+            },
+            {
+              "speaker": "weber",
+              "text": "Meine Eltern sind auch gestorben, und mein Bruder auch.",
+              "english": "My parents have died too, and my brother too."
+            },
+            {
+              "speaker": "weber",
+              "text": "Mein Ehemann war ein guter Mann.",
+              "english": "My husband was a good man."
+            },
+            {
+              "speaker": "weber",
+              "text": "Er ist im Winter gestorben.",
+              "english": "He died in winter."
+            },
+            {
+              "speaker": "weber",
+              "text": "Meine Tochter hat auch geheiratet.",
+              "english": "My daughter got married too."
+            },
+            {
+              "speaker": "weber",
+              "text": "Seit 2015 bin ich ohne Hans.",
+              "english": "Since 2015 I have been without Hans."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und seit zwei Wochen bin ich bei Ihnen.",
+              "english": "And for two weeks I have been with you."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ja, Herr Miller, das ist schön.",
+              "english": "Yes, Mr Miller, that is lovely."
+            },
+            {
+              "speaker": "weber",
+              "text": "Jetzt habe ich einen Garten.",
+              "english": "Now I have a garden."
+            },
+            {
+              "speaker": "weber",
+              "text": "Im Garten habe ich Tomaten und Äpfel.",
+              "english": "In the garden I have tomatoes and apples."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich möchte im Garten sitzen, wenn die Sonne scheint.",
+              "english": "I like to sit in the garden when the sun shines."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich kenne Leipzig sehr gut.",
+              "english": "I know Leipzig very well."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich möchte Leipzig auch kennen.",
+              "english": "I would like to know Leipzig too."
+            },
+            {
+              "speaker": "weber",
+              "text": "Gott hat mir ein langes Leben gegeben.",
+              "english": "God has given me a long life."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

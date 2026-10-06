@@ -1,0 +1,522 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-04",
+  "lang": "de",
+  "title": "Die Nacht des Sturms",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-04",
+    "title": "Die Nacht des Sturms (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: Narration in the Präteritum (regular and strong verbs) with Perfekt in the speech; Frau Weber says du to Jonas but Sie to Sam as in the earlier units (a reviewer should say whether an older woman would say du to a 22-year-old of the Gemeinde); the Feuerwehr is called by phone (the emergency number is not mentioned on purpose); Jonas's job words (Stelle, Bewerbung, Vertrag, Mechaniker) recall his search in the earlier unit; the weather and the damage are invented for the lesson."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative",
+    "storm",
+    "neighbours",
+    "community"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Ein Abend im Oktober",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es war Samstag, und es war Abend im Oktober.",
+              "english": "It was Saturday, and it was an evening in October."
+            },
+            {
+              "text": "Frau Weber hatte Lukas und Ben zum Essen eingeladen.",
+              "english": "Frau Weber had invited Lukas and Ben to dinner."
+            },
+            {
+              "text": "Das war ihre Einladung für diesen Abend.",
+              "english": "That was her invitation for this evening."
+            },
+            {
+              "text": "Sie hatte eine Suppe gekocht.",
+              "english": "She had cooked a soup."
+            },
+            {
+              "text": "Auch Jonas war da.",
+              "english": "Jonas was there too."
+            },
+            {
+              "text": "Er hatte gute Nachrichten.",
+              "english": "He had good news."
+            },
+            {
+              "text": "„Ich habe eine Stelle!“, sagte er.",
+              "english": "\"I have a job!\" he said."
+            },
+            {
+              "text": "„Ich habe eine Bewerbung geschrieben, mit Lebenslauf.“",
+              "english": "\"I wrote an application, with a CV.\""
+            },
+            {
+              "text": "„Dann hatte ich ein Gespräch in einer Firma.“",
+              "english": "\"Then I had an interview at a company.\""
+            },
+            {
+              "text": "„Ich habe schon Erfahrung, und die Kollegen sind nett.“",
+              "english": "\"I already have experience, and the colleagues are nice.\""
+            },
+            {
+              "text": "„Als Mechaniker verdiene ich dort gut.“",
+              "english": "\"As a mechanic I earn well there.\""
+            },
+            {
+              "text": "„Am Montag unterschreibe ich den Vertrag.“",
+              "english": "\"On Monday I sign the contract.\""
+            },
+            {
+              "text": "„Das ist schön, Jonas“, sagte Frau Weber.",
+              "english": "\"That is lovely, Jonas,\" said Frau Weber."
+            },
+            {
+              "text": "„Ich wünsche dir alles Gute.“",
+              "english": "\"I wish you all the best.\""
+            },
+            {
+              "text": "Sam hatte einen Kuchen mitgebracht.",
+              "english": "Sam had brought a cake."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Sturm beginnt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Draußen wurde es dunkel.",
+              "english": "Outside it was getting dark."
+            },
+            {
+              "text": "Der Wind war stark, und die Bäume waren nicht still.",
+              "english": "The wind was strong, and the trees were not still."
+            },
+            {
+              "text": "„Das wird ein Sturm“, sagte Lukas.",
+              "english": "\"That is going to be a storm,\" said Lukas."
+            },
+            {
+              "text": "Der Sturm begann um acht Uhr.",
+              "english": "The storm began at eight o'clock."
+            },
+            {
+              "text": "Der erste Blitz kam, und danach kam der Donner.",
+              "english": "The first flash of lightning came, and then came the thunder."
+            },
+            {
+              "text": "Der Donner war sehr laut.",
+              "english": "The thunder was very loud."
+            },
+            {
+              "text": "Ben saß still am Tisch.",
+              "english": "Ben sat quietly at the table."
+            },
+            {
+              "text": "Er zitterte.",
+              "english": "He was trembling."
+            },
+            {
+              "text": "„Ich fürchte mich“, sagte er leise.",
+              "english": "\"I am afraid,\" he said quietly."
+            },
+            {
+              "text": "Da fiel der Strom aus.",
+              "english": "Then the power went out."
+            },
+            {
+              "text": "Im Haus war es ganz dunkel.",
+              "english": "In the house it was completely dark."
+            },
+            {
+              "text": "Alle waren still.",
+              "english": "Everyone was quiet."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Im Keller",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„Wir gehen in den Keller“, sagte Frau Weber.",
+              "english": "\"We are going down to the cellar,\" said Frau Weber."
+            },
+            {
+              "text": "Lukas hatte eine Taschenlampe mitgebracht.",
+              "english": "Lukas had brought a torch."
+            },
+            {
+              "text": "Frau Weber ging langsam, und Sam ging hinter ihr.",
+              "english": "Frau Weber went slowly, and Sam went behind her."
+            },
+            {
+              "text": "Er hatte eine Kerze, und Lukas hielt die Taschenlampe.",
+              "english": "He had a candle, and Lukas held the torch."
+            },
+            {
+              "text": "Im Keller war es kalt.",
+              "english": "In the cellar it was cold."
+            },
+            {
+              "text": "Draußen war es laut, aber hier war es still.",
+              "english": "Outside it was loud, but here it was quiet."
+            },
+            {
+              "text": "Ein zweiter Blitz kam, und ein dritter.",
+              "english": "A second flash came, and a third."
+            },
+            {
+              "text": "Ben zitterte noch.",
+              "english": "Ben was still trembling."
+            },
+            {
+              "text": "Sam wollte ihn beruhigen.",
+              "english": "Sam wanted to calm him."
+            },
+            {
+              "text": "„Ich sage dir etwas“, sagte Sam leise.",
+              "english": "\"I will tell you something,\" said Sam quietly."
+            },
+            {
+              "text": "„Meine Großeltern wohnen in den USA, und dort ist der Wind oft sehr stark.“",
+              "english": "\"My grandparents live in the USA, and the wind there is often very strong.\""
+            },
+            {
+              "text": "„Ich habe mich auch gefürchtet. Dann habe ich die Monate gesagt.“",
+              "english": "\"I was afraid too. Then I said the months.\""
+            },
+            {
+              "text": "„Januar, Februar, März, April, Mai, Juni“, sagte Ben langsam.",
+              "english": "\"January, February, March, April, May, June,\" said Ben slowly."
+            },
+            {
+              "text": "„Juli, August, September, Oktober, November, Dezember.“",
+              "english": "\"July, August, September, October, November, December.\""
+            },
+            {
+              "text": "Das beruhigte ihn.",
+              "english": "That calmed him."
+            },
+            {
+              "text": "„Wie heißt dieser Monat?“, fragte Sam.",
+              "english": "\"What is this month called?\" asked Sam."
+            },
+            {
+              "text": "„Oktober“, sagte Ben.",
+              "english": "\"October,\" said Ben."
+            },
+            {
+              "text": "„Im Dezember habe ich Geburtstag.“",
+              "english": "\"In December it is my birthday.\""
+            },
+            {
+              "text": "Alle lachten.",
+              "english": "Everyone laughed."
+            },
+            {
+              "text": "Sie blieben lange im Keller.",
+              "english": "They stayed in the cellar for a long time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Baum",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Plötzlich hörten sie einen großen Lärm.",
+              "english": "Suddenly they heard a great noise."
+            },
+            {
+              "text": "„Das war nicht der Donner“, sagte Lukas.",
+              "english": "\"That was not the thunder,\" said Lukas."
+            },
+            {
+              "text": "Sie gingen mit der Taschenlampe in den Garten.",
+              "english": "They went into the garden with the torch."
+            },
+            {
+              "text": "Dort lag ein Baum.",
+              "english": "There lay a tree."
+            },
+            {
+              "text": "Er war gebrochen und auf das Dach gefallen.",
+              "english": "It had broken and fallen onto the roof."
+            },
+            {
+              "text": "„Das ist das Dach von unserem Nachbarn“, sagte Frau Weber.",
+              "english": "\"That is our neighbour's roof,\" said Frau Weber."
+            },
+            {
+              "text": "„Ist er im Haus?“, fragte Sam.",
+              "english": "\"Is he in the house?\" asked Sam."
+            },
+            {
+              "text": "„Nein, er ist bei seiner Tochter“, sagte sie.",
+              "english": "\"No, he is at his daughter's,\" she said."
+            },
+            {
+              "text": "Jonas zitterte auch, aber er rief die Feuerwehr.",
+              "english": "Jonas was trembling too, but he called the fire brigade."
+            },
+            {
+              "text": "Sie kam nach zehn Minuten.",
+              "english": "It came after ten minutes."
+            },
+            {
+              "text": "Der Regen fiel, und der Wind war noch sehr stark.",
+              "english": "The rain fell, and the wind was still very strong."
+            },
+            {
+              "text": "„Der Schaden ist nicht so schlimm“, sagte einer von der Feuerwehr.",
+              "english": "\"The damage is not so bad,\" said one of the fire brigade."
+            },
+            {
+              "text": "„Aber der Regen ist schlimmer.“",
+              "english": "\"But the rain is worse.\""
+            },
+            {
+              "text": "Er musste laut sprechen, denn der Wind war sehr stark.",
+              "english": "He had to speak loudly, because the wind was very strong."
+            },
+            {
+              "text": "Sie nahmen den Baum von dem Haus.",
+              "english": "They took the tree off the house."
+            },
+            {
+              "text": "Das war eine schwere Arbeit.",
+              "english": "That was hard work."
+            },
+            {
+              "text": "Endlich war der Baum nicht mehr auf dem Haus.",
+              "english": "At last the tree was no longer on the house."
+            },
+            {
+              "text": "„War es richtig, die Feuerwehr zu rufen?“, fragte Jonas.",
+              "english": "\"Was it right to call the fire brigade?\" asked Jonas."
+            },
+            {
+              "text": "„Ja, das war richtig“, sagte Lukas.",
+              "english": "\"Yes, that was right,\" said Lukas."
+            },
+            {
+              "text": "„Der Baum ist gebrochen, aber das Haus ist ganz“, sagte Jonas.",
+              "english": "\"The tree is broken, but the house is whole,\" said Jonas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die lange Nacht",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Im Haus war es immer noch dunkel.",
+              "english": "In the house it was still dark."
+            },
+            {
+              "text": "Der Strom war in der ganzen Straße ausgefallen.",
+              "english": "The power had gone out in the whole street."
+            },
+            {
+              "text": "Die Uhr in der Küche ging falsch.",
+              "english": "The clock in the kitchen was wrong."
+            },
+            {
+              "text": "„Wie spät ist es?“, fragte Ben.",
+              "english": "\"What time is it?\" asked Ben."
+            },
+            {
+              "text": "„Ich weiß es nicht genau“, sagte Sam.",
+              "english": "\"I do not know exactly,\" said Sam."
+            },
+            {
+              "text": "Sie saßen mit den Kerzen am Tisch.",
+              "english": "They sat at the table with the candles."
+            },
+            {
+              "text": "Später rief Anna an.",
+              "english": "Later Anna called."
+            },
+            {
+              "text": "Sie arbeitete in der Nacht in der Klinik.",
+              "english": "She was working at the clinic during the night."
+            },
+            {
+              "text": "„Habt ihr Licht?“, fragte sie.",
+              "english": "\"Do you have light?\" she asked."
+            },
+            {
+              "text": "„Ist alles gut?“",
+              "english": "\"Is everything all right?\""
+            },
+            {
+              "text": "„Wir haben kein Licht, aber wir sind alle zusammen“, sagte Lukas.",
+              "english": "\"We have no light, but we are all together,\" said Lukas."
+            },
+            {
+              "text": "Auf der anderen Seite der Straße stand eine Kerze im Fenster.",
+              "english": "On the other side of the street a candle stood in the window."
+            },
+            {
+              "text": "Der letzte Blitz kam um elf Uhr.",
+              "english": "The last flash of lightning came at eleven o'clock."
+            },
+            {
+              "text": "Danach war es nur noch leise.",
+              "english": "After that it was only quiet."
+            },
+            {
+              "text": "Ben schlief auf dem Stuhl.",
+              "english": "Ben slept on the chair."
+            },
+            {
+              "text": "Endlich war es ruhig.",
+              "english": "At last it was calm."
+            },
+            {
+              "text": "Um zwei Uhr war der Strom wieder da.",
+              "english": "At two o'clock the power was back."
+            },
+            {
+              "text": "Im Park waren noch zwei Bäume gefallen, und ein Baum war gebrochen.",
+              "english": "In the park two more trees had fallen, and one tree had broken."
+            },
+            {
+              "text": "Das wussten sie nicht.",
+              "english": "They did not know that."
+            },
+            {
+              "text": "Das war eine schlimme Nacht, und sie hatten kaum geschlafen.",
+              "english": "That was a bad night, and they had hardly slept."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Sonntag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am nächsten Tag, am Sonntag, schien endlich wieder die Sonne.",
+              "english": "The next day, on Sunday, the sun was finally shining again."
+            },
+            {
+              "text": "Draußen war alles ruhig.",
+              "english": "Outside everything was calm."
+            },
+            {
+              "text": "Frau Weber sah den Schaden und sagte: „Der Schaden ist nicht groß.“",
+              "english": "Frau Weber saw the damage and said, \"The damage is not big.\""
+            },
+            {
+              "text": "Sie beruhigte Ben und gab ihm Brötchen.",
+              "english": "She calmed Ben and gave him a roll."
+            },
+            {
+              "text": "Jonas rief seinen neuen Kollegen an.",
+              "english": "Jonas called his new colleague."
+            },
+            {
+              "text": "„Am Montag unterschreibe ich noch den Vertrag“, sagte er.",
+              "english": "\"On Monday I will still sign the contract,\" he said."
+            },
+            {
+              "text": "Frau Weber ging mit Sam in die Kirche.",
+              "english": "Frau Weber went to church with Sam."
+            },
+            {
+              "text": "Pastor Thomas sprach in der Predigt über den Sturm.",
+              "english": "In the sermon Pastor Thomas spoke about the storm."
+            },
+            {
+              "text": "Nach dem Segen gab es die Kollekte.",
+              "english": "After the blessing there was the collection."
+            },
+            {
+              "text": "Sie war für das Dach von Frau Webers Nachbarn.",
+              "english": "It was for the roof of Frau Weber's neighbour."
+            },
+            {
+              "text": "Die Orgel war noch gut.",
+              "english": "The organ was still fine."
+            },
+            {
+              "text": "„Manchmal ist so eine Nacht auch gut“, sagte Frau Weber.",
+              "english": "\"Sometimes a night like that is good too,\" said Frau Weber."
+            },
+            {
+              "text": "„Dann sind die Nachbarn zusammen.“",
+              "english": "\"Then the neighbours are together.\""
+            },
+            {
+              "text": "Ben sagte zu Sam: „Ich habe mich nicht mehr gefürchtet.“",
+              "english": "Ben said to Sam, \"I was not afraid any more.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

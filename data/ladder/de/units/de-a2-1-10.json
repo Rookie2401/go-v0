@@ -1,0 +1,558 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-10",
+  "lang": "de",
+  "title": "In der Apotheke und bei der Krankenkasse",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-10",
+    "title": "In der Apotheke und bei der Krankenkasse (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: the health system as the drafter's reading, not checked against real practice: the ambulance called from the scene, the injection after an open wound (the word Tetanus is not used on purpose), the Rezept from the doctor and the Apotheke, a Krankenkasse that is rung up (the card and the exact procedure are simplified); Sie to the doctor, the pharmacist and the Krankenkasse, du among friends; \"sich verletzen\" (reflexive), \"sich impfen lassen\" and sollen / müssen / dürfen are the grammar of the unit; the accident and all names are invented for the lesson. Adapter note: \"tut weh\" is read as the single lemma \"wehtun\"."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "health",
+    "emergency",
+    "pharmacy",
+    "health insurance"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "S": "Sam",
+    "K": "Mitarbeiterin"
+  },
+  "sections": [
+    {
+      "title": "Ein Unfall am Dach",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Samstag.",
+              "english": "It is Saturday."
+            },
+            {
+              "text": "Der Sturm, der Blitz und der Donner haben viel Schaden gemacht.",
+              "english": "The storm, the lightning and the thunder have done a lot of damage."
+            },
+            {
+              "text": "Die Feuerwehr hat schon geholfen, und heute arbeiten die Helfer am Dach des Gemeindehauses.",
+              "english": "The fire brigade has already helped, and today the helpers are working on the roof of the church hall."
+            },
+            {
+              "text": "Jonas hat sein Werkzeug mitgebracht.",
+              "english": "Jonas has brought his tools."
+            },
+            {
+              "text": "Die Leiter gehört der Firma, und er hat sie geliehen.",
+              "english": "The ladder belongs to the company, and he has borrowed it."
+            },
+            {
+              "text": "Sam steht auf der Leiter und hat den Hammer in der Hand.",
+              "english": "Sam is standing on the ladder with the hammer in his hand."
+            },
+            {
+              "text": "Es ist laut, denn fast alle arbeiten.",
+              "english": "It is loud, because almost everyone is working."
+            },
+            {
+              "text": "Plötzlich fällt Sam von der Leiter.",
+              "english": "Suddenly Sam falls off the ladder."
+            },
+            {
+              "text": "Er liegt im Gras.",
+              "english": "He is lying in the grass."
+            },
+            {
+              "text": "Sein Bein tut weh, sein Rücken tut weh, und an seinem Arm ist Blut.",
+              "english": "His leg hurts, his back hurts, and there is blood on his arm."
+            },
+            {
+              "text": "Daniel zittert.",
+              "english": "Daniel is trembling."
+            },
+            {
+              "text": "„Das ist ein Notfall!“, ruft er.",
+              "english": "\"This is an emergency!\" he calls."
+            },
+            {
+              "text": "„Ruf sofort den Krankenwagen!“, sagt Jonas.",
+              "english": "\"Call the ambulance at once!\" says Jonas."
+            },
+            {
+              "text": "„Wir tauschen: Du bleibst bei Sam, und ich rufe an.“",
+              "english": "\"Let us swap: you stay with Sam, and I will make the call.\""
+            },
+            {
+              "text": "Daniel bleibt bei Sam und beruhigt ihn.",
+              "english": "Daniel stays with Sam and calms him."
+            },
+            {
+              "text": "„Du darfst jetzt nicht aufstehen“, sagt er.",
+              "english": "\"You must not get up now,\" he says."
+            },
+            {
+              "text": "„Ich fürchte, es ist nicht gut“, sagt Sam leise.",
+              "english": "\"I am afraid it is not good,\" says Sam quietly."
+            },
+            {
+              "text": "„Ich habe mich verletzt, aber ich lebe.“",
+              "english": "\"I have hurt myself, but I am alive.\""
+            },
+            {
+              "text": "Daniel läuft in den Keller.",
+              "english": "Daniel runs to the cellar."
+            },
+            {
+              "text": "Dort ist der Strom ausgefallen, und er braucht eine Taschenlampe.",
+              "english": "The power has gone out there, and he needs a torch."
+            },
+            {
+              "text": "Er holt das Pflaster und läuft wieder zu Sam.",
+              "english": "He fetches the plaster and runs back to Sam."
+            },
+            {
+              "text": "„Ist der Arm gebrochen?“, fragt er.",
+              "english": "\"Is the arm broken?\" he asks."
+            },
+            {
+              "text": "„Das weiß ich nicht“, sagt Jonas.",
+              "english": "\"I do not know,\" says Jonas."
+            },
+            {
+              "text": "„Ein Arzt muss ihn untersuchen.“",
+              "english": "\"A doctor has to examine him.\""
+            },
+            {
+              "text": "Endlich ist der Krankenwagen da.",
+              "english": "At last the ambulance is there."
+            },
+            {
+              "text": "Zwei Männer tragen Sam ganz langsam.",
+              "english": "Two men carry Sam very slowly."
+            },
+            {
+              "text": "Dann fährt der Krankenwagen sofort zum Krankenhaus.",
+              "english": "Then the ambulance goes straight to the hospital."
+            },
+            {
+              "text": "Jonas muss die Leiter der Firma zurückgeben.",
+              "english": "Jonas has to give the ladder back to the company."
+            },
+            {
+              "text": "Danach kommt er auch.",
+              "english": "After that he comes too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Im Krankenhaus",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna arbeitet in der Klinik, aber sie kommt sofort ins Krankenhaus.",
+              "english": "Anna works at the clinic, but she comes to the hospital at once."
+            },
+            {
+              "text": "„Wie geht es dir?“, fragt sie.",
+              "english": "\"How are you?\" she asks."
+            },
+            {
+              "text": "Sams Kleidung ist rot vom Blut.",
+              "english": "Sam's clothes are red with blood."
+            },
+            {
+              "text": "Sein Hemd ist nicht mehr weiß, und die Hose ist braun.",
+              "english": "His shirt is no longer white, and the trousers are brown."
+            },
+            {
+              "text": "Ein Schuh liegt noch im Gras.",
+              "english": "One shoe is still lying in the grass."
+            },
+            {
+              "text": "„Mein Rücken und mein Bein tun weh“, sagt Sam.",
+              "english": "\"My back and my leg hurt,\" says Sam."
+            },
+            {
+              "text": "Eine Ärztin untersucht ihn.",
+              "english": "A doctor examines him."
+            },
+            {
+              "text": "Sie untersucht den Arm, den Rücken und das Bein.",
+              "english": "She examines the arm, the back and the leg."
+            },
+            {
+              "text": "„Nichts ist gebrochen“, sagt sie.",
+              "english": "\"Nothing is broken,\" she says."
+            },
+            {
+              "text": "„Aber Sie haben eine Wunde.“",
+              "english": "\"But you have a wound.\""
+            },
+            {
+              "text": "„Wie haben Sie sich verletzt?“",
+              "english": "\"How did you hurt yourself?\""
+            },
+            {
+              "text": "„Ich bin vom Dach gefallen“, sagt Sam.",
+              "english": "\"I fell off the roof,\" says Sam."
+            },
+            {
+              "text": "„Das war ein Notfall, aber jetzt ist alles gut“, sagt die Ärztin.",
+              "english": "\"That was an emergency, but now everything is fine,\" says the doctor."
+            },
+            {
+              "text": "„Die Haut ist offen, und es gibt viel Blut.“",
+              "english": "\"The skin is open, and there is a lot of blood.\""
+            },
+            {
+              "text": "„Ich mache die Wunde sauber und lege ein großes Pflaster auf die Stelle.“",
+              "english": "\"I will clean the wound and put a big plaster on the spot.\""
+            },
+            {
+              "text": "„Sie bekommen auch eine Spritze.“",
+              "english": "\"You are also getting an injection.\""
+            },
+            {
+              "text": "Sam hat Angst vor der Spritze.",
+              "english": "Sam is afraid of the injection."
+            },
+            {
+              "text": "„Das ist eine Impfung“, sagt die Ärztin.",
+              "english": "\"That is a vaccination,\" says the doctor."
+            },
+            {
+              "text": "„Ich impfe Sie, weil Ihre Haut offen ist.“",
+              "english": "\"I am vaccinating you because your skin is open.\""
+            },
+            {
+              "text": "„Ihre Freunde sollen sich auch impfen lassen.“",
+              "english": "\"Your friends should have themselves vaccinated too.\""
+            },
+            {
+              "text": "„Jeder Helfer muss sich impfen lassen.“",
+              "english": "\"Every helper must have a vaccination.\""
+            },
+            {
+              "text": "„Die Spritze tut kaum weh“, sagt Anna.",
+              "english": "\"The injection hardly hurts,\" says Anna."
+            },
+            {
+              "text": "„Die Impfung ist gut für Ihre Gesundheit.“",
+              "english": "\"The vaccination is good for your health.\""
+            },
+            {
+              "text": "Nach der Impfung trinkt Sam Wasser und Tee.",
+              "english": "After the vaccination Sam drinks water and tea."
+            },
+            {
+              "text": "Danach ist Sam fast fertig.",
+              "english": "After that Sam is almost done."
+            },
+            {
+              "text": "„Die anderen sind nicht verletzt“, sagt Anna.",
+              "english": "\"The others are not hurt,\" says Anna."
+            },
+            {
+              "text": "Am Abend bringt Anna ihm Kleidung von zu Hause.",
+              "english": "In the evening Anna brings him clothes from home."
+            },
+            {
+              "text": "Sie hat eine Hose, einen Pullover und eine Mütze mitgebracht.",
+              "english": "She has brought trousers, a pullover and a hat."
+            },
+            {
+              "text": "Sam probiert den Pullover an.",
+              "english": "Sam tries the pullover on."
+            },
+            {
+              "text": "Er passt gut, und die Größe ist richtig.",
+              "english": "It fits well, and the size is right."
+            },
+            {
+              "text": "Die Mütze gehört Lukas, und sie ist braun.",
+              "english": "The hat belongs to Lukas, and it is brown."
+            },
+            {
+              "text": "Sams Haut ist blau und grün, aber das ist nicht schlimm.",
+              "english": "Sam's skin is blue and green, but that is not bad."
+            },
+            {
+              "text": "Es ist fast zwölf Uhr, und Sam darf nach Hause gehen.",
+              "english": "It is almost twelve o'clock, and Sam may go home."
+            },
+            {
+              "text": "Er soll eine Woche nicht arbeiten.",
+              "english": "He is not to work for a week."
+            },
+            {
+              "text": "Thomas ruft an: „Ich bete für deine Gesundheit.“",
+              "english": "Thomas calls: \"I am praying for your health.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Versicherung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna fragt: „Hast du eine Versicherung?“",
+              "english": "Anna asks, \"Do you have insurance?\""
+            },
+            {
+              "text": "„Meine Versicherung ist in den USA“, sagt Sam.",
+              "english": "\"My insurance is in the USA,\" says Sam."
+            },
+            {
+              "text": "„Hier habe ich die Krankenkasse.“",
+              "english": "\"Here I have the health insurance fund.\""
+            },
+            {
+              "text": "„Sie gibt das Geld für das Krankenhaus“, sagt Anna.",
+              "english": "\"It pays for the hospital,\" says Anna."
+            },
+            {
+              "text": "„Du musst die Krankenkasse anrufen.“",
+              "english": "\"You have to call the health insurance fund.\""
+            },
+            {
+              "text": "„Und vergiss deine Nummer nicht.“",
+              "english": "\"And do not forget your number.\""
+            },
+            {
+              "text": "„Ich verspreche es“, sagt Sam.",
+              "english": "\"I promise,\" says Sam."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "In der Apotheke",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Montag geht Sam in die Apotheke.",
+              "english": "On Monday Sam goes to the pharmacy."
+            },
+            {
+              "text": "Er hat ein Rezept von der Ärztin.",
+              "english": "He has a prescription from the doctor."
+            },
+            {
+              "text": "„Guten Tag. Was wünschen Sie?“",
+              "english": "\"Good day. What would you like?\""
+            },
+            {
+              "text": "„Ich brauche Pflaster und ein Medikament“, sagt Sam.",
+              "english": "\"I need plasters and a medicine,\" says Sam."
+            },
+            {
+              "text": "„Zeigen Sie mir bitte das Rezept.“",
+              "english": "\"Please show me the prescription.\""
+            },
+            {
+              "text": "„Sie sollen das Medikament am Morgen und am Abend nehmen.“",
+              "english": "\"You should take the medicine in the morning and in the evening.\""
+            },
+            {
+              "text": "„Die Wunde muss sauber bleiben.“",
+              "english": "\"The wound must stay clean.\""
+            },
+            {
+              "text": "„Es gibt sie in vielen Farben: blau, gelb, grün und schwarz.“",
+              "english": "\"There are many colours: blue, yellow, green and black.\""
+            },
+            {
+              "text": "„Welche Größe brauchen Sie?“",
+              "english": "\"What size do you need?\""
+            },
+            {
+              "text": "„Das blaue gefällt mir“, sagt Sam.",
+              "english": "\"I like the blue one,\" says Sam."
+            },
+            {
+              "text": "„Ist es groß genug?“",
+              "english": "\"Is it big enough?\""
+            },
+            {
+              "text": "„Ja, es passt gut. Es ist billig, aber das graue ist teuer.“",
+              "english": "\"Yes, it fits well. It is cheap, but the grey one is expensive.\""
+            },
+            {
+              "text": "„Ich muss auch zum Zahnarzt“, sagt Sam.",
+              "english": "\"I also have to go to the dentist,\" says Sam."
+            },
+            {
+              "text": "„Mein Zahn tut weh.“",
+              "english": "\"My tooth hurts.\""
+            },
+            {
+              "text": "„Der Zahnarzt ist neben der Kirche“, sagt die Frau.",
+              "english": "\"The dentist is next to the church,\" says the woman."
+            },
+            {
+              "text": "„Sie müssen schnell einen Termin machen. Ein Zahnarzt hat nicht immer Zeit.“",
+              "english": "\"You must make an appointment quickly. A dentist does not always have time.\""
+            },
+            {
+              "text": "„Ich bitte Sie, mir die Nummer zu schicken.“",
+              "english": "\"I ask you to send me the number.\""
+            },
+            {
+              "text": "„Ich verspreche, ich schicke sie Ihnen heute.“",
+              "english": "\"I promise I will send it to you today.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Telefon",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Dienstag ruft Sam die Krankenkasse an.",
+              "english": "On Tuesday Sam calls the health insurance fund."
+            },
+            {
+              "speaker": "K",
+              "text": "Guten Tag.",
+              "english": "Good day."
+            },
+            {
+              "speaker": "K",
+              "text": "Wie ist Ihr Name?",
+              "english": "What is your name?"
+            },
+            {
+              "speaker": "S",
+              "text": "Ich bin Sam.",
+              "english": "I am Sam."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich habe eine Versicherung bei Ihnen.",
+              "english": "I have insurance with you."
+            },
+            {
+              "speaker": "K",
+              "text": "Was ist denn mit Ihnen?",
+              "english": "What is the matter with you?"
+            },
+            {
+              "speaker": "S",
+              "text": "Ich bin vom Dach gefallen.",
+              "english": "I fell off the roof."
+            },
+            {
+              "speaker": "S",
+              "text": "Es war ein Notfall.",
+              "english": "It was an emergency."
+            },
+            {
+              "speaker": "K",
+              "text": "Das ist schlimm.",
+              "english": "That is bad."
+            },
+            {
+              "speaker": "K",
+              "text": "Wie geht es Ihnen jetzt?",
+              "english": "How are you now?"
+            },
+            {
+              "speaker": "S",
+              "text": "Es geht mir gut, aber ich soll nicht arbeiten.",
+              "english": "I am fine, but I am not supposed to work."
+            },
+            {
+              "speaker": "K",
+              "text": "Wir schicken Ihnen eine Nachricht.",
+              "english": "We will send you a message."
+            },
+            {
+              "speaker": "K",
+              "text": "Sie müssen uns die Nummer und den Namen von der Ärztin sagen.",
+              "english": "You have to give us the number and the name of the doctor."
+            },
+            {
+              "speaker": "S",
+              "text": "Danke.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich entschuldige mich, ich habe die Nummer vergessen.",
+              "english": "I apologise, I have forgotten the number."
+            },
+            {
+              "speaker": "K",
+              "text": "Das ist nicht schlimm.",
+              "english": "That is not a problem."
+            },
+            {
+              "speaker": "K",
+              "text": "Rufen Sie bitte noch einmal an.",
+              "english": "Please call again."
+            },
+            {
+              "speaker": "K",
+              "text": "Wir wünschen Ihnen gute Gesundheit.",
+              "english": "We wish you good health."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

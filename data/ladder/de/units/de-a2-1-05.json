@@ -1,0 +1,719 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-05",
+  "lang": "de",
+  "title": "Kleidung kaufen",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-05",
+    "title": "Kleidung kaufen (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: Sie from the shop assistant to Sam and du between Sam, Anna and Jonas; \"Was wünschen Sie?\" as the shop assistant's opening; sizes and prices are invented (euros); the first adjective endings after ein / der / die (eine blaue Jacke, die schwarzen Schuhe) are used on purpose; \"nächste\" is read by the adapter as \"nah\", not \"nächst\" (a word-list point for the German session)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation",
+    "shopping",
+    "clothes",
+    "colours"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "S": "Sam",
+    "A": "Anna",
+    "V": "Verkäuferin",
+    "J": "Jonas"
+  },
+  "sections": [
+    {
+      "title": "In der Straßenbahn",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Samstag im November, und es ist kalt.",
+              "english": "It is Saturday in November, and it is cold."
+            },
+            {
+              "text": "Sam fährt mit Anna in die Stadt.",
+              "english": "Sam is going into town with Anna."
+            },
+            {
+              "speaker": "A",
+              "text": "Wie war der Sommer in Leipzig?",
+              "english": "How was the summer in Leipzig?"
+            },
+            {
+              "speaker": "S",
+              "text": "Er war schön.",
+              "english": "It was lovely."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich war oft draußen, und ich hatte nur dünne Kleidung.",
+              "english": "I was often outside, and I only had thin clothes."
+            },
+            {
+              "speaker": "A",
+              "text": "Der Winter ist lang und dunkel, und es ist oft sehr kalt.",
+              "english": "The winter is long and dark, and it is often very cold."
+            },
+            {
+              "speaker": "A",
+              "text": "Um vier Uhr ist es schon dunkel.",
+              "english": "At four o'clock it is already dark."
+            },
+            {
+              "speaker": "S",
+              "text": "In den USA ist der Winter nicht so lang.",
+              "english": "In the USA the winter is not so long."
+            },
+            {
+              "speaker": "S",
+              "text": "Dann brauche ich eine Hose und eine Jacke.",
+              "english": "Then I need trousers and a jacket."
+            },
+            {
+              "speaker": "A",
+              "text": "Ich kenne ein gutes Geschäft in der Stadt.",
+              "english": "I know a good shop in town."
+            },
+            {
+              "speaker": "A",
+              "text": "Die Preise sind dort gut, und es gibt viel für den Winter.",
+              "english": "The prices there are good, and there is a lot for winter."
+            },
+            {
+              "speaker": "S",
+              "text": "Das ist gut.",
+              "english": "That is good."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich habe nicht viel Zeit.",
+              "english": "I do not have much time."
+            },
+            {
+              "speaker": "A",
+              "text": "Wir haben Zeit.",
+              "english": "We have time."
+            },
+            {
+              "speaker": "A",
+              "text": "Das Geschäft ist am Markt.",
+              "english": "The shop is at the market."
+            },
+            {
+              "speaker": "S",
+              "text": "Wie lange fahren wir?",
+              "english": "How long will we be on the tram?"
+            },
+            {
+              "speaker": "A",
+              "text": "Zehn Minuten.",
+              "english": "Ten minutes."
+            },
+            {
+              "speaker": "A",
+              "text": "Dort ist schon die Haltestelle.",
+              "english": "There is the stop already."
+            },
+            {
+              "text": "Sie steigen aus.",
+              "english": "They get off."
+            },
+            {
+              "text": "Es regnet, und Sam hat keinen Regenschirm.",
+              "english": "It is raining, and Sam has no umbrella."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Im Geschäft",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Das Geschäft ist groß, und es gibt sehr viel Kleidung.",
+              "english": "The shop is big, and there are a lot of clothes."
+            },
+            {
+              "speaker": "V",
+              "text": "Guten Tag!",
+              "english": "Good day!"
+            },
+            {
+              "speaker": "V",
+              "text": "Was wünschen Sie?",
+              "english": "What would you like?"
+            },
+            {
+              "speaker": "S",
+              "text": "Guten Tag.",
+              "english": "Good day."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich brauche eine warme Jacke.",
+              "english": "I need a warm jacket."
+            },
+            {
+              "speaker": "A",
+              "text": "Und einen Pullover.",
+              "english": "And a pullover."
+            },
+            {
+              "speaker": "V",
+              "text": "Die Hosen finden Sie dort.",
+              "english": "You will find the trousers over there."
+            },
+            {
+              "speaker": "V",
+              "text": "Gern.",
+              "english": "Gladly."
+            },
+            {
+              "speaker": "V",
+              "text": "Welche Größe haben Sie?",
+              "english": "What size are you?"
+            },
+            {
+              "speaker": "S",
+              "text": "Ich weiß es nicht genau.",
+              "english": "I do not know exactly."
+            },
+            {
+              "speaker": "V",
+              "text": "Das ist nicht schlimm.",
+              "english": "That is not a problem."
+            },
+            {
+              "speaker": "V",
+              "text": "Probieren Sie diese Jacke an.",
+              "english": "Try this jacket on."
+            },
+            {
+              "text": "Sam nimmt die Jacke.",
+              "english": "Sam takes the jacket."
+            },
+            {
+              "speaker": "S",
+              "text": "Sie ist zu groß.",
+              "english": "It is too big."
+            },
+            {
+              "speaker": "V",
+              "text": "Dann nehmen wir eine kleinere Größe.",
+              "english": "Then we will take a smaller size."
+            },
+            {
+              "speaker": "V",
+              "text": "Die Jacke gibt es in Blau, Schwarz und Grau.",
+              "english": "The jacket comes in blue, black and grey."
+            },
+            {
+              "speaker": "A",
+              "text": "Blau passt zu dir.",
+              "english": "Blue suits you."
+            },
+            {
+              "speaker": "V",
+              "text": "Die Jacke passt sehr gut.",
+              "english": "The jacket fits very well."
+            },
+            {
+              "speaker": "S",
+              "text": "Was kostet sie?",
+              "english": "What does it cost?"
+            },
+            {
+              "speaker": "V",
+              "text": "Sie kostet hundert Euro.",
+              "english": "It costs a hundred euros."
+            },
+            {
+              "speaker": "S",
+              "text": "Das ist teuer!",
+              "english": "That is expensive!"
+            },
+            {
+              "speaker": "A",
+              "text": "Die graue Jacke ist billiger.",
+              "english": "The grey jacket is cheaper."
+            },
+            {
+              "speaker": "V",
+              "text": "Ja, sie kostet nur sechzig Euro.",
+              "english": "Yes, it costs only sixty euros."
+            },
+            {
+              "speaker": "S",
+              "text": "Das ist billig, aber die Farbe ist nicht schön.",
+              "english": "That is cheap, but the colour is not nice."
+            },
+            {
+              "speaker": "A",
+              "text": "Welche Farbe magst du?",
+              "english": "Which colour do you like?"
+            },
+            {
+              "speaker": "S",
+              "text": "Ich mag Grün.",
+              "english": "I like green."
+            },
+            {
+              "speaker": "S",
+              "text": "Die Jacke gibt es nicht in Grün.",
+              "english": "The jacket does not come in green."
+            },
+            {
+              "speaker": "V",
+              "text": "Sonst haben wir sie nur in Rot und Gelb.",
+              "english": "Otherwise we only have it in red and yellow."
+            },
+            {
+              "speaker": "S",
+              "text": "Rot und Gelb sind nicht meine Farben.",
+              "english": "Red and yellow are not my colours."
+            },
+            {
+              "speaker": "A",
+              "text": "Dann nimm die blaue Jacke.",
+              "english": "Then take the blue jacket."
+            },
+            {
+              "speaker": "A",
+              "text": "Sie ist teuer, aber sie ist gut.",
+              "english": "It is expensive, but it is good."
+            },
+            {
+              "speaker": "S",
+              "text": "Gut, ich nehme sie.",
+              "english": "All right, I will take it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Mütze und die Geschichte",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna sieht eine Mütze.",
+              "english": "Anna sees a hat."
+            },
+            {
+              "speaker": "A",
+              "text": "Diese Mütze war braun, und mein Opa hat sie immer getragen.",
+              "english": "This hat was brown, and my grandpa always wore it."
+            },
+            {
+              "speaker": "S",
+              "text": "Sie ist schön.",
+              "english": "It is lovely."
+            },
+            {
+              "speaker": "S",
+              "text": "Wie alt ist sie?",
+              "english": "How old is it?"
+            },
+            {
+              "speaker": "A",
+              "text": "Sehr alt.",
+              "english": "Very old."
+            },
+            {
+              "speaker": "A",
+              "text": "Opa ist vor zehn Jahren gestorben.",
+              "english": "Grandpa died ten years ago."
+            },
+            {
+              "speaker": "S",
+              "text": "Das ist traurig.",
+              "english": "That is sad."
+            },
+            {
+              "speaker": "A",
+              "text": "Das war damals im Dorf.",
+              "english": "That was back then in the village."
+            },
+            {
+              "speaker": "S",
+              "text": "Hat sie eine Geschichte?",
+              "english": "Does it have a story?"
+            },
+            {
+              "speaker": "A",
+              "text": "Ja.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "A",
+              "text": "Mein Onkel hat sie ihm zum Geburtstag geschenkt.",
+              "english": "My uncle gave it to him for his birthday."
+            },
+            {
+              "speaker": "A",
+              "text": "Meine Tante hat für uns Kinder grüne Pullover gemacht.",
+              "english": "My aunt made green pullovers for us children."
+            },
+            {
+              "speaker": "A",
+              "text": "Wir haben die Hosen und die Jacken von unseren Geschwistern getragen.",
+              "english": "We wore our brothers' and sisters' trousers and jackets."
+            },
+            {
+              "speaker": "S",
+              "text": "Wie auf einem Bauernhof!",
+              "english": "Like on a farm!"
+            },
+            {
+              "speaker": "A",
+              "text": "Sieh, hier ist ein Pullover mit einer Kuh.",
+              "english": "Look, here is a pullover with a cow."
+            },
+            {
+              "speaker": "A",
+              "text": "Er ist gelb.",
+              "english": "It is yellow."
+            },
+            {
+              "speaker": "A",
+              "text": "Und hier ist eine Jacke mit einem Pferd.",
+              "english": "And here is a jacket with a horse."
+            },
+            {
+              "speaker": "A",
+              "text": "Das Pferd ist braun.",
+              "english": "The horse is brown."
+            },
+            {
+              "speaker": "S",
+              "text": "Wie in den Ferien auf dem Bauernhof!",
+              "english": "Like in the holidays on the farm!"
+            },
+            {
+              "speaker": "A",
+              "text": "Ben rennt oft mit dem roten Ball.",
+              "english": "Ben often runs with the red ball."
+            },
+            {
+              "speaker": "A",
+              "text": "Seine braunen Schuhe sind alt.",
+              "english": "His brown shoes are old."
+            },
+            {
+              "speaker": "A",
+              "text": "Er braucht neue Schuhe.",
+              "english": "He needs new shoes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ein Hemd für die Einladung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Ich brauche noch ein weißes Hemd.",
+              "english": "I still need a white shirt."
+            },
+            {
+              "speaker": "S",
+              "text": "Pastor Thomas hat uns zu seinem Geburtstag eingeladen.",
+              "english": "Pastor Thomas has invited us to his birthday."
+            },
+            {
+              "speaker": "S",
+              "text": "Er hat am dritten Dezember Geburtstag.",
+              "english": "His birthday is on the third of December."
+            },
+            {
+              "speaker": "A",
+              "text": "Die Einladung habe ich auch.",
+              "english": "I have the invitation too."
+            },
+            {
+              "speaker": "S",
+              "text": "Ja.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "S",
+              "text": "Der Dezember ist der letzte Monat im Jahr, und Februar ist erst der zweite.",
+              "english": "December is the last month of the year, and February is only the second."
+            },
+            {
+              "speaker": "V",
+              "text": "Wir haben dieses Hemd in Weiß und in Grau.",
+              "english": "We have this shirt in white and in grey."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich nehme das weiße.",
+              "english": "I will take the white one."
+            },
+            {
+              "speaker": "S",
+              "text": "Darf ich es anprobieren?",
+              "english": "May I try it on?"
+            },
+            {
+              "speaker": "V",
+              "text": "Ja, gern.",
+              "english": "Yes, gladly."
+            },
+            {
+              "speaker": "S",
+              "text": "Es ist zu klein.",
+              "english": "It is too small."
+            },
+            {
+              "speaker": "V",
+              "text": "Dann nehmen wir eine größere Größe.",
+              "english": "Then we will take a bigger size."
+            },
+            {
+              "speaker": "S",
+              "text": "Jetzt passt es.",
+              "english": "Now it fits."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich nehme das Hemd.",
+              "english": "I will take the shirt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Jonas im Geschäft",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Auf einmal ist Jonas da.",
+              "english": "All at once Jonas is there."
+            },
+            {
+              "speaker": "J",
+              "text": "Hallo!",
+              "english": "Hello!"
+            },
+            {
+              "speaker": "J",
+              "text": "Ich suche schwarze Schuhe für die Firma.",
+              "english": "I am looking for black shoes for the company."
+            },
+            {
+              "speaker": "S",
+              "text": "Hast du den Vertrag unterschrieben?",
+              "english": "Did you sign the contract?"
+            },
+            {
+              "speaker": "J",
+              "text": "Ja!",
+              "english": "Yes!"
+            },
+            {
+              "speaker": "J",
+              "text": "Ich bin jetzt Mechaniker.",
+              "english": "I am a mechanic now."
+            },
+            {
+              "speaker": "J",
+              "text": "Die Stelle ist gut.",
+              "english": "The job is good."
+            },
+            {
+              "speaker": "A",
+              "text": "Wo arbeitest du?",
+              "english": "Where do you work?"
+            },
+            {
+              "speaker": "J",
+              "text": "In einer kleinen Firma am Bahnhof.",
+              "english": "In a small company at the station."
+            },
+            {
+              "speaker": "J",
+              "text": "Am Montag beginne ich.",
+              "english": "I start on Monday."
+            },
+            {
+              "speaker": "J",
+              "text": "Mein Lebenslauf und meine Bewerbung waren richtig, und das Gespräch war auch gut.",
+              "english": "My CV and my application were right, and the interview was good too."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich habe schon Erfahrung, und ich verdiene gut.",
+              "english": "I already have experience, and I earn well."
+            },
+            {
+              "speaker": "J",
+              "text": "Meine Kollegen tragen alle Schwarz.",
+              "english": "My colleagues all wear black."
+            },
+            {
+              "speaker": "A",
+              "text": "Dann nimm die da.",
+              "english": "Then take those there."
+            },
+            {
+              "speaker": "A",
+              "text": "Sie sind nicht teuer.",
+              "english": "They are not expensive."
+            },
+            {
+              "speaker": "J",
+              "text": "Sie sind sogar billig.",
+              "english": "They are even cheap."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich habe sie erst eine Minute, aber ich mag sie.",
+              "english": "I have had them only a minute, but I like them."
+            },
+            {
+              "speaker": "V",
+              "text": "Zusammen sind das 140 Euro.",
+              "english": "Together that is 140 euros."
+            },
+            {
+              "text": "Sam gibt ihr die Euro.",
+              "english": "Sam gives her the euros."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Später im Café",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Später sitzen Sam und Anna im Café.",
+              "english": "Later Sam and Anna sit in the café."
+            },
+            {
+              "speaker": "A",
+              "text": "Jetzt hast du Kleidung für das ganze Jahr.",
+              "english": "Now you have clothes for the whole year."
+            },
+            {
+              "speaker": "A",
+              "text": "Im Januar und Februar ist es sehr kalt, und im März und April regnet es.",
+              "english": "In January and February it is very cold, and in March and April it rains."
+            },
+            {
+              "speaker": "A",
+              "text": "Im Mai, Juni, Juli und August ist es warm, und die Sonne scheint oft.",
+              "english": "In May, June, July and August it is warm, and the sun often shines."
+            },
+            {
+              "speaker": "A",
+              "text": "Im September, Oktober und November wird es wieder kalt.",
+              "english": "In September, October and November it gets cold again."
+            },
+            {
+              "speaker": "A",
+              "text": "Im Dezember kommt der Schnee.",
+              "english": "In December the snow comes."
+            },
+            {
+              "speaker": "A",
+              "text": "In unserem Dorf stand dann immer ein großer Baum auf dem Platz.",
+              "english": "In our village there was always a big tree in the square then."
+            },
+            {
+              "speaker": "S",
+              "text": "Das sind zwölf Monate!",
+              "english": "That is twelve months!"
+            },
+            {
+              "speaker": "A",
+              "text": "Und nächste Woche kaufst du eine Mütze.",
+              "english": "And next week you will buy a hat."
+            },
+            {
+              "speaker": "A",
+              "text": "Wir haben eine Einladung.",
+              "english": "We have an invitation."
+            },
+            {
+              "speaker": "A",
+              "text": "Was kaufen wir für Thomas?",
+              "english": "What shall we buy for Thomas?"
+            },
+            {
+              "speaker": "S",
+              "text": "Welchen Kuchen backen wir?",
+              "english": "Which cake shall we bake?"
+            },
+            {
+              "speaker": "S",
+              "text": "Wir backen einen Kuchen.",
+              "english": "We will bake a cake."
+            },
+            {
+              "speaker": "A",
+              "text": "Gut, ich backe ihn, und du kaufst Kaffee.",
+              "english": "Good, I will bake it, and you buy coffee."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

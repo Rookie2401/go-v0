@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-11",
+  "lang": "de",
+  "title": "The team meeting",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-11",
+    "title": "The team meeting (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. du throughout (the team and the Gemeinde use first names and du; a free church). \"Gemeinde\" = the local congregation; \"Gottesdienst\" = the Sunday service. A church vocabulary of the Freikirchen (Hauskreis, Lobpreis) is not used yet; a Landeskirche would say \"Pfarrer\" for Pastor. \"Das ist eine gute Woche\" is a plain, mild remark."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "church",
+    "team",
+    "planning",
+    "modal verbs",
+    "prayer",
+    "singing"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "thomas": "Pastor Thomas",
+    "david": "David",
+    "ruth": "Ruth",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Die Woche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Abend in der Gemeinde.",
+              "english": "It is evening at the church."
+            },
+            {
+              "text": "Thomas, David, Ruth und Sam sind da.",
+              "english": "Thomas, David, Ruth and Sam are there."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Guten Abend!",
+              "english": "Good evening!"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Wir sind in der Küche der Kirche.",
+              "english": "We are in the church kitchen."
+            },
+            {
+              "speaker": "david",
+              "text": "Hallo, Thomas!",
+              "english": "Hello, Thomas!"
+            },
+            {
+              "speaker": "david",
+              "text": "Hallo, Sam!",
+              "english": "Hello, Sam!"
+            },
+            {
+              "speaker": "ruth",
+              "text": "Guten Abend, Sam!",
+              "english": "Good evening, Sam!"
+            },
+            {
+              "speaker": "ruth",
+              "text": "Du bist da, das ist gut!",
+              "english": "You are here, that is good!"
+            },
+            {
+              "speaker": "david",
+              "text": "Was machen wir in der Woche?",
+              "english": "What are we doing this week?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Am Sonntag ist der Gottesdienst.",
+              "english": "On Sunday there is the service."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Der Gottesdienst fängt um zehn Uhr an.",
+              "english": "The service starts at ten o'clock."
+            },
+            {
+              "speaker": "thomas",
+              "text": "In der Gemeinde wollen wir Lieder singen.",
+              "english": "In the church we want to sing songs."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Wer kann ein Lied singen?",
+              "english": "Who can sing a song?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich kann nicht gut singen, aber ich will lernen.",
+              "english": "I cannot sing well, but I want to learn."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Das ist gut, Sam.",
+              "english": "That is good, Sam."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Wir können zusammen lernen.",
+              "english": "We can learn together."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Das Lied ist in der Bibel.",
+              "english": "The song is in the Bible."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Hier ist die Bibel.",
+              "english": "Here is the Bible."
+            },
+            {
+              "speaker": "david",
+              "text": "Wir lernen in der Bibel.",
+              "english": "We learn in the Bible."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Du kannst auch beten, Sam.",
+              "english": "You can pray too, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bete gern, aber ich spreche nicht viel Deutsch.",
+              "english": "I like praying, but I do not speak much German."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Sprich gern, auch nicht gut.",
+              "english": "Speak freely, even if it is not good."
+            },
+            {
+              "speaker": "ruth",
+              "text": "David ist mein Freund, und du bist auch ein Freund, Sam.",
+              "english": "David is my friend, and you are a friend too, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Ruth.",
+              "english": "Thank you, Ruth."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist sehr schön.",
+              "english": "That is very nice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Mittagessen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "thomas",
+              "text": "Nach dem Gottesdienst ist das Mittagessen.",
+              "english": "After the service there is lunch."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Wer soll kochen?",
+              "english": "Who is to cook?"
+            },
+            {
+              "speaker": "david",
+              "text": "Marta kocht gern.",
+              "english": "Marta likes cooking."
+            },
+            {
+              "speaker": "david",
+              "text": "Sie macht Suppe und Fleisch.",
+              "english": "She makes soup and meat."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Ich koche Kartoffeln.",
+              "english": "I will cook potatoes."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Und wer macht Kuchen?",
+              "english": "And who makes cake?"
+            },
+            {
+              "speaker": "david",
+              "text": "Marta macht auch Kuchen.",
+              "english": "Marta makes cake too."
+            },
+            {
+              "speaker": "david",
+              "text": "Er ist so lecker!",
+              "english": "It is so tasty!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Was soll ich machen?",
+              "english": "What should I do?"
+            },
+            {
+              "speaker": "ruth",
+              "text": "Kannst du einkaufen?",
+              "english": "Can you do the shopping?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, ich kann einkaufen.",
+              "english": "Yes, I can do the shopping."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Du kaufst Tomaten und Äpfel, zwei Kilo.",
+              "english": "You buy tomatoes and apples, two kilos."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie ist der Preis?",
+              "english": "What is the price?"
+            },
+            {
+              "speaker": "david",
+              "text": "Du darfst nicht zu viel kaufen.",
+              "english": "You must not buy too much."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gut, ich kaufe zwei Kilo Tomaten und ein Kilo Äpfel.",
+              "english": "Good, I will buy two kilos of tomatoes and one kilo of apples."
+            },
+            {
+              "speaker": "sam",
+              "text": "Soll ich um zehn Uhr da sein?",
+              "english": "Should I be there at ten o'clock?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ja, Sam.",
+              "english": "Yes, Sam."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Wir wollen helfen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "thomas",
+              "text": "Wir sind alle hier, wir wollen helfen.",
+              "english": "We are all here, we want to help."
+            },
+            {
+              "speaker": "david",
+              "text": "Ich helfe in der Küche.",
+              "english": "I will help in the kitchen."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich helfe auch.",
+              "english": "I will help too."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Sam ist ein guter Freund von der Gemeinde.",
+              "english": "Sam is a good friend of the church."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Das ist eine gute Woche!",
+              "english": "That is a good week!"
+            },
+            {
+              "text": "Es ist halb neun.",
+              "english": "It is half past eight."
+            },
+            {
+              "text": "Sie haben eine Stunde.",
+              "english": "They have one hour."
+            },
+            {
+              "text": "Dann ist Pause mit Kaffee und Kuchen.",
+              "english": "Then there is a break with coffee and cake."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ben kommt mit Mama und Papa in die Kirche.",
+              "english": "Ben is coming to church with Mama and Papa."
+            },
+            {
+              "speaker": "david",
+              "text": "Das ist schön!",
+              "english": "That is nice!"
+            },
+            {
+              "speaker": "david",
+              "text": "Ben ist immer so gut.",
+              "english": "Ben is always so good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Am Sonntag fahre ich mit der Straßenbahn.",
+              "english": "On Sunday I will take the tram."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Straßenbahn fährt um neun Uhr ab.",
+              "english": "The tram leaves at nine o'clock."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Gut.",
+              "english": "Good."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Die Sonne ist am Sonntag warm, das ist immer schön.",
+              "english": "The sun is warm on Sunday, that is always nice."
+            },
+            {
+              "speaker": "david",
+              "text": "Auf der Straße ist es am Sonntag schön.",
+              "english": "On the street it is nice on Sunday."
+            },
+            {
+              "text": "Sie beten für die Woche.",
+              "english": "They pray for the week."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Anna und Lukas kommen auch in die Kirche.",
+              "english": "Anna and Lukas are coming to church too."
+            },
+            {
+              "speaker": "david",
+              "text": "Anna ist müde, sie arbeitet viel in der Klinik.",
+              "english": "Anna is tired, she works a lot at the clinic."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Lukas ist Lehrer, er hat Schule am Morgen.",
+              "english": "Lukas is a teacher, he has school in the morning."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

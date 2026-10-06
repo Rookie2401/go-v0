@@ -1,0 +1,459 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-07",
+  "lang": "de",
+  "title": "Last weekend",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-07",
+    "title": "Last weekend (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A narrative in the Perfekt with short spoken lines in the present (du throughout). The Gemeinde's excursion is a day trip by bus to a lake near Leipzig. \"Ball\" is an ordinary word not on the plan (one unscheduled lemma) and is used because throwing and catching need an object; the dog and bread of the old draft are not used. The season is summer; the mountain of the plan is a hill with a view, called \"Berg\" as in the plan."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "excursion",
+    "lake",
+    "picnic",
+    "photos",
+    "Perfekt",
+    "weather"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "ben": "Ben",
+    "lukas": "Lukas",
+    "david": "David",
+    "ruth": "Ruth",
+    "anna": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Der Ausflug",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Samstag hat die Gemeinde einen Ausflug gemacht.",
+              "english": "On Saturday the church made an excursion."
+            },
+            {
+              "text": "Sam, Ben, Lukas, David, Ruth und Max sind mit dem Bus zum See gefahren.",
+              "english": "Sam, Ben, Lukas, David, Ruth and Max took the bus to the lake."
+            },
+            {
+              "text": "Es war Sommer, und es war heiß, 28 Grad.",
+              "english": "It was summer, and it was hot, 28 degrees."
+            },
+            {
+              "text": "Der Bus war voll, und alle haben gelacht.",
+              "english": "The bus was full, and everyone laughed."
+            },
+            {
+              "text": "Im Bus hat Ruth gesungen.",
+              "english": "On the bus Ruth sang."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich habe schon Hunger!",
+              "english": "I am hungry already!"
+            },
+            {
+              "speaker": "ruth",
+              "text": "Nur noch zehn Minuten, Ben!",
+              "english": "Only ten more minutes, Ben!"
+            },
+            {
+              "speaker": "david",
+              "text": "Es ist nicht weit.",
+              "english": "It is not far."
+            },
+            {
+              "text": "Der Ausflug war schön, und das Wochenende war gut.",
+              "english": "The excursion was lovely, and the weekend was good."
+            },
+            {
+              "text": "Im Bus hat David Musik gespielt.",
+              "english": "On the bus David played music."
+            },
+            {
+              "text": "Ruth und David waren beide müde.",
+              "english": "Ruth and David were both tired."
+            },
+            {
+              "text": "Ben und Max sind beide zehn Jahre alt.",
+              "english": "Ben and Max are both ten years old."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am See",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am See ist ein Wald, und hinter dem Wald ist ein Berg.",
+              "english": "At the lake there is a forest, and behind the forest there is a hill."
+            },
+            {
+              "text": "Lukas ist im See geschwommen.",
+              "english": "Lukas swam in the lake."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich kann nicht gut schwimmen.",
+              "english": "I cannot swim well."
+            },
+            {
+              "text": "Max ist ins Wasser gesprungen.",
+              "english": "Max jumped into the water."
+            },
+            {
+              "text": "Ben ist auch gesprungen.",
+              "english": "Ben jumped too."
+            },
+            {
+              "text": "Max hat den Ball geworfen, und Ben hat ihn gefangen.",
+              "english": "Max threw the ball, and Ben caught it."
+            },
+            {
+              "speaker": "ben",
+              "text": "Wirf den Ball weit!",
+              "english": "Throw the ball far!"
+            },
+            {
+              "text": "Lukas hat ihn gefangen und weit geworfen.",
+              "english": "Lukas caught it and threw it far."
+            },
+            {
+              "text": "Max ist gesprungen und hat ihn gefangen.",
+              "english": "Max jumped and caught it."
+            },
+            {
+              "text": "Beide haben gelacht.",
+              "english": "Both laughed."
+            },
+            {
+              "text": "Die anderen Kinder haben auch gespielt.",
+              "english": "The other children played too."
+            },
+            {
+              "text": "Die anderen sind in den Wald gelaufen.",
+              "english": "The others walked into the forest."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Picknick",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dann haben sie ein Picknick gemacht.",
+              "english": "Then they had a picnic."
+            },
+            {
+              "text": "Der Rucksack von Sam war voll: Brot, Käse, Tomaten und Äpfel.",
+              "english": "Sam's school bag was full: bread, cheese, tomatoes and apples."
+            },
+            {
+              "text": "Die Tasche von Ruth war auch voll.",
+              "english": "Ruth's bag was full too."
+            },
+            {
+              "text": "Ruth hat Kuchen gehabt, und David hat Kaffee und Tee gehabt.",
+              "english": "Ruth had cake, and David had coffee and tea."
+            },
+            {
+              "text": "Max hat Pizza gehabt.",
+              "english": "Max had pizza."
+            },
+            {
+              "text": "Sie war kalt, aber lecker.",
+              "english": "It was cold, but tasty."
+            },
+            {
+              "text": "Das Picknick war schön.",
+              "english": "The picnic was lovely."
+            },
+            {
+              "text": "Es hat um zwölf Uhr angefangen.",
+              "english": "It began at twelve o'clock."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Haben wir genug?",
+              "english": "Do we have enough?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, wir haben genug Brot und genug Käse.",
+              "english": "Yes, we have enough bread and enough cheese."
+            },
+            {
+              "text": "Dann war der Rucksack leer.",
+              "english": "Then the school bag was empty."
+            },
+            {
+              "text": "Am Abend war der Bus am Bahnhof auch leer.",
+              "english": "In the evening the bus at the station was empty too."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich habe noch Hunger!",
+              "english": "I am still hungry!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Nein, Ben, das ist genug.",
+              "english": "No, Ben, that is enough."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Der Rucksack ist leer.",
+              "english": "The school bag is empty."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Fotos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "david",
+              "text": "Ich möchte ein Foto machen.",
+              "english": "I would like to take a photo."
+            },
+            {
+              "text": "David hat den See fotografiert.",
+              "english": "David photographed the lake."
+            },
+            {
+              "text": "Ruth hat auch fotografiert.",
+              "english": "Ruth took photos too."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Das Foto von dem Berg ist schön.",
+              "english": "The photo of the hill is lovely."
+            },
+            {
+              "speaker": "david",
+              "text": "Darf ich euch fotografieren?",
+              "english": "May I photograph you?"
+            },
+            {
+              "text": "Sam hat die Fotos auf dem Handy gesehen.",
+              "english": "Sam looked at the photos on his phone."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Im Winter liegt Schnee auf dem Berg.",
+              "english": "In winter there is snow on the hill."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Im Herbst ist der Wald schön, und im Frühling auch.",
+              "english": "In autumn the forest is lovely, and in spring too."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Jede Jahreszeit ist hier schön.",
+              "english": "Every season is lovely here."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Regen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dann ist der Wind gekommen, und es hat geregnet.",
+              "english": "Then the wind came, and it rained."
+            },
+            {
+              "text": "Der Regen war kalt.",
+              "english": "The rain was cold."
+            },
+            {
+              "text": "Ben hört den Regen und sagt: \"Ich möchte nach Hause!\"",
+              "english": "Ben hears the rain and says: \"I want to go home!\""
+            },
+            {
+              "text": "Sie haben die Jacken und den Regenschirm genommen.",
+              "english": "They took the jackets and the umbrella."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich bin nicht traurig!",
+              "english": "I am not sad!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich bin glücklich!",
+              "english": "I am happy!"
+            },
+            {
+              "text": "Aber Max hat geweint, denn er hat den Ball verloren.",
+              "english": "But Max cried, because he lost the ball."
+            },
+            {
+              "text": "Max war traurig, und dann war er wieder froh.",
+              "english": "Max was sad, and then he was happy again."
+            },
+            {
+              "text": "Das Wetter ist bald gut geworden, und die Sonne hat wieder geschienen.",
+              "english": "The weather soon got better, and the sun shone again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Zurück",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend sind alle in den Bus eingestiegen.",
+              "english": "In the evening everyone got on the bus."
+            },
+            {
+              "text": "Der Bus hat noch einmal gehalten.",
+              "english": "The bus stopped once more."
+            },
+            {
+              "text": "Sie haben in einem Café Kaffee getrunken.",
+              "english": "They drank coffee in a café."
+            },
+            {
+              "text": "Im Geschäft haben sie Brot gekauft.",
+              "english": "In the shop they bought bread."
+            },
+            {
+              "text": "Im Bus haben alle geschlafen, nur Ben nicht.",
+              "english": "On the bus everyone slept, only Ben did not."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wir haben jetzt neue Freunde, Max und die anderen!",
+              "english": "We have new friends now, Max and the others!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich habe im Kino einen Film gesehen, aber das war neu für mich.",
+              "english": "I saw a film at the cinema, but this was new to me."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wir gehen bald wieder, im Herbst.",
+              "english": "We will go again soon, in autumn."
+            },
+            {
+              "text": "Zu Hause hat Sam geduscht und die Wäsche gemacht.",
+              "english": "At home Sam showered and did the washing."
+            },
+            {
+              "text": "In der Wohnung war es ruhig.",
+              "english": "In the flat it was quiet."
+            },
+            {
+              "text": "Am Montag hat die Arbeit wieder angefangen.",
+              "english": "On Monday work began again."
+            },
+            {
+              "text": "Am Abend hat Anna Sam angerufen.",
+              "english": "In the evening Anna called Sam."
+            },
+            {
+              "text": "Sam hat gerade gelesen.",
+              "english": "Sam was just reading."
+            },
+            {
+              "speaker": "anna",
+              "text": "Hast du Zeit?",
+              "english": "Do you have time?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Wie war der Ausflug?",
+              "english": "How was the excursion?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Schön! Ich habe geschwommen, und ich habe viel gelacht.",
+              "english": "Lovely! I swam, and I laughed a lot. || Lovely! I swam, and I laughed a lot."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das ist gut.",
+              "english": "That is good."
+            },
+            {
+              "speaker": "anna",
+              "text": "Tschüs, Sam!",
+              "english": "Bye, Sam!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Tschüs, Anna!",
+              "english": "Bye, Anna!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

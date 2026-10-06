@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-14",
+  "lang": "de",
+  "title": "A service through Ben's eyes",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-14",
+    "title": "A service through Ben's eyes (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. The narrator is Ben, ten years old, speaking in the first person in the present tense; a few spoken lines in dialogue (du in the Gemeinde, Ben to Marta, Sam and Thomas). The service is a free-church Sunday service (organ, candles, sermon, offering, blessing); a Landeskirche service would have a liturgy that the unit does not describe. \"Kollekte\" (the offering) is used because the plan lists it. \"Richtig oder falsch?\" is Thomas's game for the children. \"Sei still\" is the usual command to a child."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "church service",
+    "child's view",
+    "sermon",
+    "offering",
+    "blessing"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "thomas": "Pastor Thomas",
+    "marta": "Marta",
+    "sam": "Sam",
+    "ben": "Ben"
+  },
+  "sections": [
+    {
+      "title": "Ich sitze in der Kirche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Sonntag, und ich bin in der Gemeinde.",
+              "english": "It is Sunday, and I am at the church."
+            },
+            {
+              "text": "Ich sitze neben Oma.",
+              "english": "I am sitting next to Grandma."
+            },
+            {
+              "text": "Sie hat die Bibel in der Hand.",
+              "english": "She has the Bible in her hand."
+            },
+            {
+              "text": "Die Orgel spielt, und die Musik ist groß.",
+              "english": "The organ plays, and the music is big."
+            },
+            {
+              "text": "Die Orgel ist so groß!",
+              "english": "The organ is so big!"
+            },
+            {
+              "text": "Mein Ohr tut weh.",
+              "english": "My ear hurts."
+            },
+            {
+              "text": "Auf dem Tisch sind Kerzen.",
+              "english": "There are candles on the table."
+            },
+            {
+              "text": "Eine Kerze ist groß, und die andere Kerze ist klein.",
+              "english": "One candle is big, and the other candle is small."
+            },
+            {
+              "speaker": "marta",
+              "text": "Sei still, Ben.",
+              "english": "Be quiet, Ben."
+            },
+            {
+              "text": "Ich bin ruhig.",
+              "english": "I am calm."
+            },
+            {
+              "text": "Es ist still in der Gemeinde.",
+              "english": "It is quiet in the church."
+            },
+            {
+              "text": "Neben mir sitzt der Nachbar, Herr Schmidt.",
+              "english": "Next to me sits the neighbour, Herr Schmidt."
+            },
+            {
+              "text": "Sam ist auch da.",
+              "english": "Sam is here too."
+            },
+            {
+              "text": "Er ist bei Frau Weber eingezogen.",
+              "english": "He has moved in with Mrs Weber."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Predigt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dann kommt die Predigt.",
+              "english": "Then comes the sermon."
+            },
+            {
+              "text": "Thomas spricht langsam, und die Predigt ist lang.",
+              "english": "Thomas speaks slowly, and the sermon is long."
+            },
+            {
+              "text": "Sam spricht auch langsam, denn er ist neu.",
+              "english": "Sam speaks slowly too, because he is new."
+            },
+            {
+              "text": "Ich lese langsam.",
+              "english": "I read slowly."
+            },
+            {
+              "text": "Ich höre genau, aber ich verstehe nicht alle Wörter genau.",
+              "english": "I listen carefully, but I do not understand all the words exactly."
+            },
+            {
+              "text": "Ein Wort habe ich falsch gesagt, aber Oma sagt: \"Das ist richtig!\"",
+              "english": "I said one word wrong, but Grandma says: \"That is right!\""
+            },
+            {
+              "text": "Die Sprache der Bibel ist schwer.",
+              "english": "The language of the Bible is hard."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Heute spreche ich über einen Hirten und ein Schaf.",
+              "english": "Today I am talking about a shepherd and a sheep."
+            },
+            {
+              "text": "Ich kenne den Hirten und das Schaf.",
+              "english": "I know the shepherd and the sheep."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Der Hirte hat hundert Schafe: richtig oder falsch?",
+              "english": "The shepherd has a hundred sheep: right or wrong?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Richtig!",
+              "english": "Right!"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Eins ist nicht da.",
+              "english": "One is not there."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er hat nur 99.",
+              "english": "He has only 99."
+            },
+            {
+              "speaker": "ben",
+              "text": "Nein, falsch!",
+              "english": "No, wrong!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Er hat hundert!",
+              "english": "He has a hundred!"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Genau, Ben: Er hat hundert, aber eins ist nicht da.",
+              "english": "Exactly, Ben: he has a hundred, but one is not there."
+            },
+            {
+              "text": "Alle lachen. Oma sagt: \"Still, Ben!\"",
+              "english": "Everyone laughs. Grandma says: \"Quiet, Ben!\""
+            },
+            {
+              "text": "Es ist Nacht, und der Hirte ruft.",
+              "english": "It is night, and the shepherd calls."
+            },
+            {
+              "text": "Er findet das Schaf dort im Gras.",
+              "english": "He finds the sheep there in the grass."
+            },
+            {
+              "text": "Es hat Husten, und der Hirte trägt es auf der Schulter.",
+              "english": "It has a cough, and the shepherd carries it on his shoulder."
+            },
+            {
+              "text": "Ich sehe die Tiere auf dem Gras.",
+              "english": "I see the animals on the grass."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Im Himmel ist ein Fest für einen Sünder.",
+              "english": "In heaven there is a feast for a sinner."
+            },
+            {
+              "text": "Ich frage Sam: \"Was heißt Sünder?\"",
+              "english": "I ask Sam: \"What does Sünder mean?\""
+            },
+            {
+              "speaker": "sam",
+              "text": "Thomas erklärt es.",
+              "english": "Thomas will explain it."
+            },
+            {
+              "speaker": "sam",
+              "text": "Es ist ein schweres Wort.",
+              "english": "It is a hard word."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Lest auf Seite 15.",
+              "english": "Read on page 15."
+            },
+            {
+              "text": "Ich lese auf Seite 15.",
+              "english": "I read on page 15."
+            },
+            {
+              "text": "Die Seite ist dünn, und die Wörter sind klein.",
+              "english": "The page is thin, and the words are small."
+            },
+            {
+              "text": "Sam übt Deutsch im Kurs.",
+              "english": "Sam practises German in the course."
+            },
+            {
+              "text": "Er macht Fehler, und seine Lehrerin erklärt die Grammatik.",
+              "english": "He makes mistakes, and his teacher explains the grammar."
+            },
+            {
+              "text": "Für mich ist die Sprache leicht, für Sam ist sie schwer.",
+              "english": "For me the language is easy, for Sam it is hard."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Kollekte",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dann kommt die Kollekte.",
+              "english": "Then comes the offering."
+            },
+            {
+              "text": "Ein Mann geht in der Gemeinde, und alle geben etwas.",
+              "english": "A man goes around the church, and everyone gives something."
+            },
+            {
+              "text": "Oma gibt einen Euro, und ich gebe auch einen Euro.",
+              "english": "Grandma gives a euro, and I give a euro too."
+            },
+            {
+              "text": "Die Kollekte ist für die Kinder in Dresden.",
+              "english": "The offering is for the children in Dresden."
+            },
+            {
+              "speaker": "marta",
+              "text": "Die Kollekte ist für Hilfe.",
+              "english": "The offering is for help."
+            },
+            {
+              "text": "Nach dem Gottesdienst gibt es Kaffee.",
+              "english": "After the service there is coffee."
+            },
+            {
+              "text": "Oma bringt Kuchen mit.",
+              "english": "Grandma brings cake."
+            },
+            {
+              "text": "Ich soll den Kuchen auch mitbringen.",
+              "english": "I am to bring the cake too."
+            },
+            {
+              "text": "Ich sitze lange.",
+              "english": "I sit for a long time."
+            },
+            {
+              "text": "Mein Fuß tut weh, und meine Augen sind müde.",
+              "english": "My foot hurts, and my eyes are tired."
+            },
+            {
+              "text": "Ich fühle mich nicht gut.",
+              "english": "I do not feel well."
+            },
+            {
+              "text": "Ich habe eine Erkältung.",
+              "english": "I have a cold."
+            },
+            {
+              "text": "Gestern war ich in der Praxis bei der Ärztin.",
+              "english": "Yesterday I was at the doctor's practice."
+            },
+            {
+              "text": "Sie hat ein Rezept geschrieben.",
+              "english": "She wrote a prescription."
+            },
+            {
+              "text": "Oma war in der Apotheke, und das Medikament ist gut.",
+              "english": "Grandma was at the pharmacy, and the medicine is good."
+            },
+            {
+              "text": "Die Schmerzen sind nicht groß.",
+              "english": "The pain is not big."
+            },
+            {
+              "text": "Oma lässt mich nicht zu Hause, denn ich möchte in die Gemeinde.",
+              "english": "Grandma does not leave me at home, because I want to go to church."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Segen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dann steht Thomas vor der Gemeinde.",
+              "english": "Then Thomas stands in front of the church."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Wir bekommen den Segen von Gott.",
+              "english": "We receive the blessing of God."
+            },
+            {
+              "text": "Der Segen ist für alle.",
+              "english": "The blessing is for everyone."
+            },
+            {
+              "text": "Ich habe die Hand von Oma, und ich bin froh.",
+              "english": "I have Grandma's hand, and I am happy."
+            },
+            {
+              "text": "Ich sehe die Orgel und höre die Musik.",
+              "english": "I see the organ and hear the music."
+            },
+            {
+              "text": "Ich mag den Segen.",
+              "english": "I like the blessing."
+            },
+            {
+              "text": "Die Predigt war lang, aber der Gottesdienst war schön.",
+              "english": "The sermon was long, but the service was lovely."
+            },
+            {
+              "text": "Ich bin gern in der Gemeinde.",
+              "english": "I like being in the church."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

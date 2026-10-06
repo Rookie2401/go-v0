@@ -1,0 +1,491 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-12",
+  "lang": "de",
+  "title": "Ein Tag in der Werkstatt und im Kindergarten",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-12",
+    "title": "Ein Tag in der Werkstatt und im Kindergarten (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: narration in the Präteritum with the Perfekt in the speech; the German workplaces as the drafter's reading, not checked against real practice: the Kfz-Ausbildung in a Werkstatt, the Erzieherin in a Kindergarten, \"Feierabend\"; \"Kunde\" and \"Rechnung\" as everyday business words; Sie to customers and parents, du among Sabine, Jonas and Sam; als / wenn clauses and Dativ after mit / bei / von are the grammar of the unit; the names and the day are invented for the lesson."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "work",
+    "workplaces",
+    "apprenticeship",
+    "kindergarten"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Am Morgen im Kindergarten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam wollte sehen, wie Menschen in Deutschland arbeiten.",
+              "english": "Sam wanted to see how people work in Germany."
+            },
+            {
+              "text": "Am Dienstag besuchte er zuerst Sabine im Kindergarten.",
+              "english": "On Tuesday he first visited Sabine at the kindergarten."
+            },
+            {
+              "text": "Sabine war Erzieherin, und sie hatte zwölf Kinder.",
+              "english": "Sabine was a nursery teacher, and she had twelve children."
+            },
+            {
+              "text": "Der Tag begann früh, schon um sieben Uhr.",
+              "english": "The day began early, at seven o'clock already."
+            },
+            {
+              "text": "Als Sam kam, standen die ersten Kinder schon an der Tür.",
+              "english": "When Sam came, the first children were already standing at the door."
+            },
+            {
+              "text": "Die Eltern brachten die Kinder und die Brotdosen.",
+              "english": "The parents brought the children and the lunch boxes."
+            },
+            {
+              "text": "Die Kinder zogen die Jacken und die Schuhe aus.",
+              "english": "The children took off their jackets and shoes."
+            },
+            {
+              "text": "„Wer holt die Seife?“, fragte Sabine.",
+              "english": "\"Who is fetching the soap?\" asked Sabine."
+            },
+            {
+              "text": "Alle Kinder wuschen sich die Hände mit Seife und nahmen das Handtuch.",
+              "english": "All the children washed their hands with soap and took the towel."
+            },
+            {
+              "text": "Danach setzten sie sich an den Tisch.",
+              "english": "Then they sat down at the table."
+            },
+            {
+              "text": "Ein Mädchen hatte lange Haare, und Sabine kämmte ihr die Haare.",
+              "english": "A girl had long hair, and Sabine combed her hair."
+            },
+            {
+              "text": "Dann las Sabine ein Märchen vor.",
+              "english": "Then Sabine read a fairy tale aloud."
+            },
+            {
+              "text": "Die Kinder waren still, und alle waren froh.",
+              "english": "The children were quiet, and everyone was happy."
+            },
+            {
+              "text": "Danach malten sie rote, blaue und gelbe Bilder.",
+              "english": "After that they painted red, blue and yellow pictures."
+            },
+            {
+              "text": "Auch Sam malte ein Bild.",
+              "english": "Sam painted a picture too."
+            },
+            {
+              "text": "Nach dem Malen gab es ein Spiel.",
+              "english": "After the painting there was a game."
+            },
+            {
+              "text": "Ein Kind hatte sein Spielzeug mitgebracht, ein kleines Auto.",
+              "english": "One child had brought his toy, a little car."
+            },
+            {
+              "text": "„Mein Auto ist kaputt“, sagte das Kind.",
+              "english": "\"My car is broken,\" said the child."
+            },
+            {
+              "text": "„Ich kann es reparieren“, sagte Sam.",
+              "english": "\"I can repair it,\" said Sam."
+            },
+            {
+              "text": "„Ich brauche nur Werkzeug.“",
+              "english": "\"I only need tools.\""
+            },
+            {
+              "text": "„Im Keller ist ein Hammer“, sagte Sabine.",
+              "english": "\"There is a hammer in the cellar,\" said Sabine."
+            },
+            {
+              "text": "Nach dem Essen putzten alle die Zähne.",
+              "english": "After the meal everybody brushed their teeth."
+            },
+            {
+              "text": "Jedes Kind hatte eine Zahnbürste und ein bisschen Zahnpasta.",
+              "english": "Every child had a toothbrush and a little toothpaste."
+            },
+            {
+              "text": "Um halb eins schliefen die Kinder.",
+              "english": "At half past twelve the children slept."
+            },
+            {
+              "text": "Sabine stellte den Wecker auf zwei Uhr.",
+              "english": "Sabine set the alarm clock for two o'clock."
+            },
+            {
+              "text": "Als der Wecker klingelte, wachten die Kinder auf.",
+              "english": "When the alarm clock rang, the children woke up."
+            },
+            {
+              "text": "Ein Kind hatte verschlafen und musste sich beeilen.",
+              "english": "One child had overslept and had to hurry."
+            },
+            {
+              "text": "Sabine hat noch ein Märchen vorgelesen.",
+              "english": "Sabine read one more fairy tale aloud."
+            },
+            {
+              "text": "Die Eltern kamen pünktlich um vier Uhr.",
+              "english": "The parents came on time at four o'clock."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Nachmittag in der Werkstatt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dann ging Sam zu Jonas in die Werkstatt.",
+              "english": "Then Sam went to Jonas at the workshop."
+            },
+            {
+              "text": "Jonas machte dort eine Ausbildung zum Mechaniker.",
+              "english": "Jonas was doing an apprenticeship as a mechanic there."
+            },
+            {
+              "text": "Er arbeitete mit vier Kollegen, und der Chef war freundlich.",
+              "english": "He worked with four colleagues, and the boss was friendly."
+            },
+            {
+              "text": "Alles dort war groß und laut.",
+              "english": "Everything there was big and loud."
+            },
+            {
+              "text": "Dort lag Werkzeug, und an der Tür stand eine lange Leiter.",
+              "english": "Tools were lying there, and a long ladder stood by the door."
+            },
+            {
+              "text": "Das Werkzeug gehörte dem Chef, aber Jonas durfte es leihen.",
+              "english": "The tools belonged to the boss, but Jonas was allowed to borrow them."
+            },
+            {
+              "text": "Jonas war pünktlich um drei Uhr in der Werkstatt.",
+              "english": "Jonas was in the workshop on time at three o'clock."
+            },
+            {
+              "text": "Der Kunde kam um zehn nach drei.",
+              "english": "The customer came at ten past three."
+            },
+            {
+              "text": "„Entschuldigen Sie, ich war im Stau“, sagte er.",
+              "english": "\"Excuse me, I was stuck in traffic,\" he said."
+            },
+            {
+              "text": "Ein Reifen an seinem Auto war kaputt.",
+              "english": "A tyre on his car was broken."
+            },
+            {
+              "text": "„Wir müssen die Reifen prüfen“, sagte Jonas.",
+              "english": "\"We have to check the tyres,\" said Jonas."
+            },
+            {
+              "text": "Er prüfte alle vier Reifen.",
+              "english": "He checked all four tyres."
+            },
+            {
+              "text": "„Ich tausche ihn heute aus“, sagte er.",
+              "english": "\"I will replace it today,\" he said."
+            },
+            {
+              "text": "Jonas zog ihn vom Auto.",
+              "english": "Jonas pulled it off the car."
+            },
+            {
+              "text": "Nach einer Stunde war er ausgetauscht.",
+              "english": "After an hour it had been replaced."
+            },
+            {
+              "text": "„Gib mir bitte den Hammer und das Werkzeug“, sagte er zu Sam.",
+              "english": "\"Please give me the hammer and the tools,\" he said to Sam."
+            },
+            {
+              "text": "Sam zeigte auf den Tisch.",
+              "english": "Sam pointed at the table."
+            },
+            {
+              "text": "„Wir tauschen“, sagte Jonas.",
+              "english": "\"Let us swap,\" said Jonas."
+            },
+            {
+              "text": "„Du hältst die Taschenlampe, und ich arbeite.“",
+              "english": "\"You hold the torch, and I work.\""
+            },
+            {
+              "text": "Das Licht in der Werkstatt war kaputt.",
+              "english": "The light in the workshop was broken."
+            },
+            {
+              "text": "Sam holte die Leiter, und Jonas reparierte es.",
+              "english": "Sam fetched the ladder, and Jonas repaired it."
+            },
+            {
+              "text": "„Ich repariere gern Autos“, sagte Jonas.",
+              "english": "\"I like repairing cars,\" said Jonas."
+            },
+            {
+              "text": "„Die Arbeit gefällt mir, aber die Ausbildung ist nicht leicht.“",
+              "english": "\"I like the work, but the apprenticeship is not easy.\""
+            },
+            {
+              "text": "Der Chef schrieb die Rechnung.",
+              "english": "The boss wrote the invoice."
+            },
+            {
+              "text": "Der Kunde las die Rechnung.",
+              "english": "The customer read the invoice."
+            },
+            {
+              "text": "„Kann ich später bezahlen?“, fragte er.",
+              "english": "\"Can I pay later?\" he asked."
+            },
+            {
+              "text": "„Nein“, sagte der Chef.",
+              "english": "\"No,\" said the boss."
+            },
+            {
+              "text": "„Aber Sie können jetzt bezahlen.“",
+              "english": "\"But you can pay now.\""
+            },
+            {
+              "text": "Der Kunde hatte nicht genug Geld, und er bezahlte die Rechnung am Abend.",
+              "english": "The customer did not have enough money, and he paid the invoice in the evening."
+            },
+            {
+              "text": "Um fünf Uhr war Feierabend.",
+              "english": "At five o'clock it was the end of the working day."
+            },
+            {
+              "text": "Jonas freute sich auf den Feierabend.",
+              "english": "Jonas looked forward to the end of the working day."
+            },
+            {
+              "text": "Er wusch sich die Hände mit Seife.",
+              "english": "He washed his hands with soap."
+            },
+            {
+              "text": "„Wenn ich Feierabend habe, bin ich müde“, sagte er.",
+              "english": "\"When I finish work I am tired,\" he said."
+            },
+            {
+              "text": "„Aber heute nicht.“",
+              "english": "\"But not today.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Abend im Café",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach der Arbeit trafen sich Sabine, Jonas und Sam im Café.",
+              "english": "After work Sabine, Jonas and Sam met at the café."
+            },
+            {
+              "text": "Sie redeten über den Tag.",
+              "english": "They talked about the day."
+            },
+            {
+              "text": "„Ich bin gern Erzieherin“, sagte Sabine.",
+              "english": "\"I like being a nursery teacher,\" said Sabine."
+            },
+            {
+              "text": "„Die Arbeit im Kindergarten gefällt mir.“",
+              "english": "\"I like the work at the kindergarten.\""
+            },
+            {
+              "text": "„Die Kinder malen und spielen den ganzen Tag, und ich bin müde.“",
+              "english": "\"The children paint and play all day, and I am tired.\""
+            },
+            {
+              "text": "„Heute hatten wir ein Spiel, und alle haben gelacht.“",
+              "english": "\"Today we had a game, and everybody laughed.\""
+            },
+            {
+              "text": "„Das Spielzeug ist wieder gut, und alle Kinder wollen es haben.“",
+              "english": "\"The toy is fine again, and all the children want to have it.\""
+            },
+            {
+              "text": "„Ein Kind hat an den Haaren gezogen“, sagte sie.",
+              "english": "\"A child pulled hair,\" she said."
+            },
+            {
+              "text": "„Ich habe gesagt: Nicht ziehen!“",
+              "english": "\"I said: Do not pull!\""
+            },
+            {
+              "text": "„Ein anderes Kind sagte: Mein Bruder hat einen langen Schulweg.“",
+              "english": "\"Another child said: My brother has a long way to school.\""
+            },
+            {
+              "text": "Sam sagte: „Ich habe eine Idee: Wir machen ein Fest im Kindergarten.“",
+              "english": "Sam said, \"I have an idea: let us have a party at the kindergarten.\""
+            },
+            {
+              "text": "„Ich schlage Samstag vor“, sagte Jonas.",
+              "english": "\"I suggest Saturday,\" said Jonas."
+            },
+            {
+              "text": "„Ich sage zu“, sagte Sabine.",
+              "english": "\"I accept,\" said Sabine."
+            },
+            {
+              "text": "„Aber ich muss mit dem Chef reden.“",
+              "english": "\"But I have to talk to the boss.\""
+            },
+            {
+              "text": "„Ich muss leider absagen“, sagte Jonas.",
+              "english": "\"Unfortunately I have to decline,\" said Jonas."
+            },
+            {
+              "text": "„Ich habe am Samstag Arbeit.“",
+              "english": "\"I have work on Saturday.\""
+            },
+            {
+              "text": "„Dann bestätige ich“, sagte Sam.",
+              "english": "\"Then I confirm,\" said Sam."
+            },
+            {
+              "text": "„Ich bringe Kaffee.“",
+              "english": "\"I will bring coffee.\""
+            },
+            {
+              "text": "„Antwortet bitte in der Gruppe“, sagte Sabine.",
+              "english": "\"Please answer in the group,\" said Sabine."
+            },
+            {
+              "text": "„Ich schicke euch den Link, und das ist meine Nummer: 0341 5550123.“",
+              "english": "\"I will send you the link, and this is my number: 0341 5550123.\""
+            },
+            {
+              "text": "„Das Fest kostet Geld“, sagte Jonas.",
+              "english": "\"The party costs money,\" said Jonas."
+            },
+            {
+              "text": "„Ich gebe dir das Geld morgen zurück“, sagte Sam.",
+              "english": "\"I will give you the money back tomorrow,\" said Sam."
+            },
+            {
+              "text": "„Wir machen auch ein Spiel mit den Eltern“, sagte Sabine.",
+              "english": "\"We will also have a game with the parents,\" said Sabine."
+            },
+            {
+              "text": "„Wir brauchen mehr Spielzeug.“",
+              "english": "\"We need more toys.\""
+            },
+            {
+              "text": "„Du bist eine gute Erzieherin“, sagte Sam.",
+              "english": "\"You are a good nursery teacher,\" said Sam."
+            },
+            {
+              "text": "„Hoffentlich regnet es nicht“, sagte Sabine.",
+              "english": "\"I hope it does not rain,\" said Sabine."
+            },
+            {
+              "text": "„Natürlich nicht“, sagte Jonas.",
+              "english": "\"Of course not,\" said Jonas."
+            },
+            {
+              "text": "„Im Mai ist das Wetter meistens gut.“",
+              "english": "\"In May the weather is mostly good.\""
+            },
+            {
+              "text": "„Nach der Ausbildung bin ich Mechaniker“, sagte er.",
+              "english": "\"After the apprenticeship I am a mechanic,\" he said."
+            },
+            {
+              "text": "„Dann habe ich mehr Zeit.“",
+              "english": "\"Then I will have more time.\""
+            },
+            {
+              "text": "„Ich verspreche, ich vergesse es nicht“, sagte Sam.",
+              "english": "\"I promise I will not forget it,\" said Sam."
+            },
+            {
+              "text": "„Und seid pünktlich! Ich bitte euch.“",
+              "english": "\"And be on time! I am asking you.\""
+            },
+            {
+              "text": "Sam prüfte den Fahrplan der Straßenbahn.",
+              "english": "Sam checked the tram timetable."
+            },
+            {
+              "text": "„Meine Bahn fährt um sechs“, sagte er.",
+              "english": "\"My tram leaves at six,\" he said."
+            },
+            {
+              "text": "„Entschuldigt, ich muss gehen.“",
+              "english": "\"Excuse me, I have to go.\""
+            },
+            {
+              "text": "Jonas sagte: „Zieh dich warm an!“",
+              "english": "Jonas said, \"Dress warmly!\""
+            },
+            {
+              "text": "Sam sagte Tschüs und ging.",
+              "english": "Sam said goodbye and left."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

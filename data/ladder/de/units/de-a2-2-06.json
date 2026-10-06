@@ -1,0 +1,942 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-06",
+  "lang": "de",
+  "title": "Die Versammlung im Stadtteil",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-06",
+    "title": "\"Die Versammlung im Stadtteil\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. An invented neighbourhood meeting of a Verein in an old school hall. Please check the meeting vocabulary (Tagesordnung, Sitzung, Protokoll, beschließen, Abstimmung, Mehrheit) and whether \"Bürgermeister\" is right for a city district in Leipzig (an Ortsvorsteher or Stadtbezirksbeirat might be more accurate; the plan fixes the word). The speed limit is written as \"30 Kilometer pro Stunde\" on purpose."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "community"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "S": "Sam",
+    "W": "Frau Weber",
+    "J": "Jonas",
+    "B": "Bürgermeister",
+    "H": "Herr Schmidt",
+    "N": "Nachbarin"
+  },
+  "sections": [
+    {
+      "title": "Die Einladung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Im Briefkasten liegt ein Blatt: „Einladung zur Versammlung des Vereins ‚Unser Stadtteil‘“.",
+              "english": "In the letterbox there is a sheet: \"Invitation to the meeting of the association 'Our District'\"."
+            },
+            {
+              "text": "Frau Weber hat Sam gefragt, ob er mitkommen möchte.",
+              "english": "Frau Weber has asked Sam whether he would like to come along."
+            },
+            {
+              "text": "Es ist die letzte Versammlung vor dem Winter, und es gibt eine lange Tagesordnung.",
+              "english": "It is the last meeting before winter, and there is a long agenda.",
+              "speaker": "W"
+            },
+            {
+              "text": "Was ist das, ein Verein, Frau Weber?",
+              "english": "What is that, an association, Frau Weber?",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist eine Gruppe von Menschen, die etwas zusammen machen wollen.",
+              "english": "That is a group of people who want to do something together.",
+              "speaker": "W"
+            },
+            {
+              "text": "Bei uns sind es Nachbarn, die etwas für den Stadtteil tun.",
+              "english": "With us they are neighbours who do something for the district.",
+              "speaker": "W"
+            },
+            {
+              "text": "Und was machen die Nachbarn dort?",
+              "english": "And what do the neighbours do there?",
+              "speaker": "S"
+            },
+            {
+              "text": "Sie reden, sie hören zu, und am Ende stimmen sie ab.",
+              "english": "They talk, they listen, and at the end they vote.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das klingt gut.",
+              "english": "That sounds good.",
+              "speaker": "S"
+            },
+            {
+              "text": "Und was mache ich?",
+              "english": "And what do I do?",
+              "speaker": "S"
+            },
+            {
+              "text": "Sie schreiben das Protokoll.",
+              "english": "You write the minutes.",
+              "speaker": "W"
+            },
+            {
+              "text": "Der Mann, den wir sonst haben, ist krank.",
+              "english": "The man we usually have is ill.",
+              "speaker": "W"
+            },
+            {
+              "text": "Ich?",
+              "english": "Me?",
+              "speaker": "S"
+            },
+            {
+              "text": "Mein Deutsch ist eigentlich nicht gut genug.",
+              "english": "My German is not really good enough.",
+              "speaker": "S"
+            },
+            {
+              "text": "Es ist ein Wunsch von mir, und ich habe Vertrauen zu Ihnen.",
+              "english": "It is a wish of mine, and I have confidence in you.",
+              "speaker": "W"
+            },
+            {
+              "text": "Sie hören gut zu.",
+              "english": "You listen well.",
+              "speaker": "W"
+            },
+            {
+              "text": "Gut.",
+              "english": "Good.",
+              "speaker": "S"
+            },
+            {
+              "text": "Vielleicht kann Jonas mir helfen.",
+              "english": "Perhaps Jonas can help me.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich sage Ihnen noch etwas: Mein Mann hat diesen Verein gegründet.",
+              "english": "I will tell you something else: my husband founded this association.",
+              "speaker": "W"
+            },
+            {
+              "text": "Sein Tod war schwer für mich.",
+              "english": "His death was hard for me.",
+              "speaker": "W"
+            },
+            {
+              "text": "Aber er war mein Trost, und er gibt mir Kraft.",
+              "english": "But it was my comfort, and it gives me strength.",
+              "speaker": "W"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Sitzung beginnt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Der Abend ist in der alten Schule.",
+              "english": "The evening is in the old school."
+            },
+            {
+              "text": "Man geht die Straße entlang bis zum großen Tor.",
+              "english": "You walk along the street to the big gate."
+            },
+            {
+              "text": "Es sind etwa dreißig Menschen da.",
+              "english": "About thirty people are there."
+            },
+            {
+              "text": "Frau Weber steht vorn und klopft auf den Tisch.",
+              "english": "Frau Weber stands at the front and taps on the table."
+            },
+            {
+              "text": "Guten Abend, liebe Nachbarn.",
+              "english": "Good evening, dear neighbours.",
+              "speaker": "W"
+            },
+            {
+              "text": "Ich eröffne die Sitzung.",
+              "english": "I open the session.",
+              "speaker": "W"
+            },
+            {
+              "text": "Ich begrüße den Bürgermeister, der heute zu uns gekommen ist.",
+              "english": "I welcome the mayor, who has come to us today.",
+              "speaker": "W"
+            },
+            {
+              "text": "Sam schreibt heute das Protokoll.",
+              "english": "Sam is writing the minutes today.",
+              "speaker": "W"
+            },
+            {
+              "text": "Er ist der junge Mann, den ich in meinem Haus habe.",
+              "english": "He is the young man whom I have in my house.",
+              "speaker": "W"
+            },
+            {
+              "text": "Die Tagesordnung hat drei Teile.",
+              "english": "The agenda has three parts.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das Erste ist die Baustelle neben dem Spielplatz.",
+              "english": "The first is the building site next to the playground.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das Zweite ist die Straße.",
+              "english": "The second is the street.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das Dritte ist das Fest im Juni.",
+              "english": "The third is the festival in June.",
+              "speaker": "W"
+            },
+            {
+              "text": "Hat jemand eine Frage zur Tagesordnung?",
+              "english": "Does anybody have a question about the agenda?",
+              "speaker": "W"
+            },
+            {
+              "text": "Ja.",
+              "english": "Yes.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich habe noch einen Beitrag.",
+              "english": "I have another contribution.",
+              "speaker": "H"
+            },
+            {
+              "text": "Er ist zu lang für das Dritte.",
+              "english": "It is too long for the third.",
+              "speaker": "H"
+            },
+            {
+              "text": "Dann nehmen wir ihn nach dem Fest dazu.",
+              "english": "Then we will add it after the festival.",
+              "speaker": "W"
+            },
+            {
+              "text": "Sam, schreiben Sie das?",
+              "english": "Sam, will you write that?",
+              "speaker": "W"
+            },
+            {
+              "text": "Ja, Frau Weber.",
+              "english": "Yes, Frau Weber.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich schreibe es.",
+              "english": "I am writing it.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Baustelle",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Das Erste ist die Baustelle.",
+              "english": "The first is the building site.",
+              "speaker": "W"
+            },
+            {
+              "text": "Der Bürgermeister hat uns einen Brief geschrieben.",
+              "english": "The mayor has written us a letter.",
+              "speaker": "W"
+            },
+            {
+              "text": "Danke, Frau Weber.",
+              "english": "Thank you, Frau Weber.",
+              "speaker": "B"
+            },
+            {
+              "text": "Ich möchte alles erklären.",
+              "english": "I would like to explain everything.",
+              "speaker": "B"
+            },
+            {
+              "text": "Neben dem Spielplatz ist ein neues Haus im Bau.",
+              "english": "Next to the playground a new house is being built.",
+              "speaker": "B"
+            },
+            {
+              "text": "Es ist eine Baustelle für sechs Monate.",
+              "english": "It is a building site for six months.",
+              "speaker": "B"
+            },
+            {
+              "text": "Wir wissen, dass der Lärm ein Problem ist.",
+              "english": "We know that the noise is a problem.",
+              "speaker": "B"
+            },
+            {
+              "text": "Wir wollen eine Lösung finden.",
+              "english": "We want to find a solution.",
+              "speaker": "B"
+            },
+            {
+              "text": "Das ist nicht in Ordnung.",
+              "english": "That is not all right.",
+              "speaker": "N"
+            },
+            {
+              "text": "Meine Enkelin spielt jeden Tag dort.",
+              "english": "My granddaughter plays there every day.",
+              "speaker": "N"
+            },
+            {
+              "text": "Mein Sohn kann nicht mehr lernen.",
+              "english": "My son cannot study any more.",
+              "speaker": "N"
+            },
+            {
+              "text": "Das Zeugnis war schlecht, weil es so laut ist.",
+              "english": "His report was bad because it is so loud.",
+              "speaker": "N"
+            },
+            {
+              "text": "Ich denke an die Kinder.",
+              "english": "I think of the children.",
+              "speaker": "N"
+            },
+            {
+              "text": "Was meinen Sie, Herr Schmidt?",
+              "english": "What do you think, Herr Schmidt?",
+              "speaker": "N"
+            },
+            {
+              "text": "Ich verstehe Ihre Sorge.",
+              "english": "I understand your concern.",
+              "speaker": "B"
+            },
+            {
+              "text": "Wir sind der Meinung, dass der Spielplatz offen bleiben muss.",
+              "english": "We are of the opinion that the playground has to stay open.",
+              "speaker": "B"
+            },
+            {
+              "text": "Wir haben einen Vorschlag: Die Firma arbeitet nur bis 16 Uhr.",
+              "english": "We have a suggestion: the company works only until four o'clock.",
+              "speaker": "B"
+            },
+            {
+              "text": "Das ist möglich, aber was ist am Wochenende?",
+              "english": "That is possible, but what about the weekend?",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich bin nicht sicher.",
+              "english": "I am not sure.",
+              "speaker": "J"
+            },
+            {
+              "text": "Am Wochenende wird nicht gearbeitet.",
+              "english": "On the weekend no work is done.",
+              "speaker": "B"
+            },
+            {
+              "text": "Das ist eine Neuigkeit, die ich gern bringe.",
+              "english": "That is news that I am glad to bring.",
+              "speaker": "B"
+            },
+            {
+              "text": "Ich habe ein Video gemacht.",
+              "english": "I have made a video.",
+              "speaker": "J"
+            },
+            {
+              "text": "Man sieht, wie die Lastwagen vor dem Spielplatz halten.",
+              "english": "You can see how the lorries stop in front of the playground.",
+              "speaker": "J"
+            },
+            {
+              "text": "Danke.",
+              "english": "Thank you.",
+              "speaker": "B"
+            },
+            {
+              "text": "Ich möchte das Video gern sehen.",
+              "english": "I would like to see the video.",
+              "speaker": "B"
+            },
+            {
+              "text": "Es ist eine wichtige Antwort auf unsere Frage.",
+              "english": "It is an important answer to our question.",
+              "speaker": "B"
+            },
+            {
+              "text": "Ich habe bei der Stadt angerufen.",
+              "english": "I called the city.",
+              "speaker": "N"
+            },
+            {
+              "text": "Ich habe am Telefon keine Antwort bekommen.",
+              "english": "I did not get an answer on the phone.",
+              "speaker": "N"
+            },
+            {
+              "text": "Das Telefon im Amt ist oft besetzt.",
+              "english": "The phone at the office is often busy.",
+              "speaker": "B"
+            },
+            {
+              "text": "Das ist ein Grund zur Entschuldigung.",
+              "english": "That is a reason to apologise.",
+              "speaker": "B"
+            },
+            {
+              "text": "Dann müssen wir abstimmen.",
+              "english": "Then we have to vote.",
+              "speaker": "W"
+            },
+            {
+              "text": "Wer ist dafür, dass der Spielplatz offen bleibt?",
+              "english": "Who is in favour of the playground staying open?",
+              "speaker": "W"
+            },
+            {
+              "text": "Die Hände gehen hoch.",
+              "english": "Hands go up."
+            },
+            {
+              "text": "Sam zählt 28 Hände.",
+              "english": "Sam counts 28 hands."
+            },
+            {
+              "text": "Wer ist dagegen?",
+              "english": "Who is against?",
+              "speaker": "W"
+            },
+            {
+              "text": "Niemand.",
+              "english": "Nobody.",
+              "speaker": "W"
+            },
+            {
+              "text": "Die Abstimmung ist deutlich.",
+              "english": "The vote is clear.",
+              "speaker": "W"
+            },
+            {
+              "text": "Dann schreibe ich: Die Mehrheit ist dafür.",
+              "english": "Then I write: the majority is in favour.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist ganz deutlich.",
+              "english": "That is quite clear.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich war vorher nicht freundlich.",
+              "english": "I was not friendly before.",
+              "speaker": "N"
+            },
+            {
+              "text": "Herr Schmidt, ich bitte um Vergebung.",
+              "english": "Herr Schmidt, I ask for forgiveness.",
+              "speaker": "N"
+            },
+            {
+              "text": "Ich habe Ihnen längst vergeben.",
+              "english": "I forgave you long ago.",
+              "speaker": "H"
+            },
+            {
+              "text": "Wir sind doch Nachbarn.",
+              "english": "We are neighbours, after all.",
+              "speaker": "H"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Straße und das Fest",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Das Zweite ist die Straße.",
+              "english": "The second is the street.",
+              "speaker": "W"
+            },
+            {
+              "text": "Herr Schmidt, Sie haben das Wort.",
+              "english": "Herr Schmidt, you have the floor.",
+              "speaker": "W"
+            },
+            {
+              "text": "Ich bin der Bäcker, dessen Laden an der Ecke liegt.",
+              "english": "I am the baker whose shop is on the corner.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich sehe jeden Tag, wie schnell die Autos fahren.",
+              "english": "Every day I see how fast the cars go.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich wünsche mir 30 Kilometer pro Stunde, nicht mehr.",
+              "english": "I would like 30 kilometres per hour, not more.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich habe lange überlegt.",
+              "english": "I have thought about it for a long time.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich habe Hoffnung, aber ich zweifle auch.",
+              "english": "I have hope, but I also doubt.",
+              "speaker": "H"
+            },
+            {
+              "text": "Die Stadt hört nicht immer zu.",
+              "english": "The city does not always listen.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ihr Wunsch ist verständlich.",
+              "english": "Your wish is understandable.",
+              "speaker": "B"
+            },
+            {
+              "text": "Aber wir können das nicht allein beschließen.",
+              "english": "But we cannot decide that alone.",
+              "speaker": "B"
+            },
+            {
+              "text": "Die Mehrheit im Stadtrat entscheidet.",
+              "english": "The majority in the city council decides.",
+              "speaker": "B"
+            },
+            {
+              "text": "Eine Entscheidung kommt wahrscheinlich erst im Frühling.",
+              "english": "A decision will probably only come in spring.",
+              "speaker": "B"
+            },
+            {
+              "text": "Dann geben Sie bitte unseren Beitrag weiter.",
+              "english": "Then please pass on our contribution.",
+              "speaker": "H"
+            },
+            {
+              "text": "Wir hoffen auf eine Antwort bis zum Winter.",
+              "english": "We hope for an answer by winter.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich verspreche, dass ich ihn weitergebe.",
+              "english": "I promise that I will pass it on.",
+              "speaker": "B"
+            },
+            {
+              "text": "Aber ich kann nichts versprechen.",
+              "english": "But I cannot promise anything.",
+              "speaker": "B"
+            },
+            {
+              "text": "Gut.",
+              "english": "Good.",
+              "speaker": "W"
+            },
+            {
+              "text": "Wer ist für den Brief an die Stadt?",
+              "english": "Who is for the letter to the city?",
+              "speaker": "W"
+            },
+            {
+              "text": "Fast alle sind dafür.",
+              "english": "Almost everybody is for it."
+            },
+            {
+              "text": "Nur zwei Nachbarn sind dagegen.",
+              "english": "Only two neighbours are against."
+            },
+            {
+              "text": "Ein alter Herr ruft: Ich bin dagegen!",
+              "english": "An old gentleman calls out: I am against it!"
+            },
+            {
+              "text": "Briefe helfen nie.",
+              "english": "Letters never help."
+            },
+            {
+              "text": "Die Mehrheit hat gesprochen.",
+              "english": "The majority has spoken.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das ist beschlossen.",
+              "english": "That is decided.",
+              "speaker": "W"
+            },
+            {
+              "text": "Dann kommen wir zum Dritten, dem Fest.",
+              "english": "Then we come to the third, the festival.",
+              "speaker": "W"
+            },
+            {
+              "text": "Ich möchte das Fest organisieren.",
+              "english": "I would like to organise the festival.",
+              "speaker": "J"
+            },
+            {
+              "text": "Es soll ein Fest für den ganzen Stadtteil werden.",
+              "english": "It should become a festival for the whole district.",
+              "speaker": "J"
+            },
+            {
+              "text": "Mit Musik, mit Essen, mit Spielen für die Kinder.",
+              "english": "With music, with food, with games for the children.",
+              "speaker": "J"
+            },
+            {
+              "text": "Es ist eine Veranstaltung für alle.",
+              "english": "It is an event for everybody.",
+              "speaker": "J"
+            },
+            {
+              "text": "Das ist eine schöne Idee.",
+              "english": "That is a nice idea.",
+              "speaker": "W"
+            },
+            {
+              "text": "Wer organisiert die Getränke?",
+              "english": "Who is organising the drinks?",
+              "speaker": "W"
+            },
+            {
+              "text": "Habt ihr Lust, mitzuhelfen?",
+              "english": "Do you feel like helping?",
+              "speaker": "W"
+            },
+            {
+              "text": "Ich helfe gern.",
+              "english": "I am glad to help.",
+              "speaker": "S"
+            },
+            {
+              "text": "Meine Gemeinde hat einen Hauskreis, der bestimmt Lust hat.",
+              "english": "My church has a house group that certainly feels like it.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist wunderbar.",
+              "english": "That is wonderful.",
+              "speaker": "J"
+            },
+            {
+              "text": "Wir müssen die Veranstaltung gut organisieren, und wir brauchen Zeit.",
+              "english": "We have to organise the event well, and we need time.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich bringe Brot und Kuchen mit.",
+              "english": "I will bring bread and cake.",
+              "speaker": "H"
+            },
+            {
+              "text": "Das ist mein Beitrag.",
+              "english": "That is my contribution.",
+              "speaker": "H"
+            },
+            {
+              "text": "Und wer bezahlt das alles?",
+              "english": "And who pays for all that?",
+              "speaker": "N"
+            },
+            {
+              "text": "Ich frage nur.",
+              "english": "I am only asking.",
+              "speaker": "N"
+            },
+            {
+              "text": "Jeder Euro zählt, auch zehn Euro.",
+              "english": "Every euro counts, even ten euros.",
+              "speaker": "W"
+            },
+            {
+              "text": "Wir sammeln eine Spende, und wir legen etwas dazu.",
+              "english": "We collect a donation, and we add something.",
+              "speaker": "W"
+            },
+            {
+              "text": "Die Veranstaltung ist für alle, nicht für wenige.",
+              "english": "The event is for all, not for a few.",
+              "speaker": "W"
+            },
+            {
+              "text": "Wir verabreden uns nächste Woche noch einmal.",
+              "english": "We will arrange to meet again next week.",
+              "speaker": "W"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ein Zimmer für Jonas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Fest kommt noch ein kleiner Punkt.",
+              "english": "After the festival there is still a small point."
+            },
+            {
+              "text": "Jonas steht auf.",
+              "english": "Jonas stands up."
+            },
+            {
+              "text": "Ich habe eine Bitte.",
+              "english": "I have a request.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich suche ein Zimmer.",
+              "english": "I am looking for a room.",
+              "speaker": "J"
+            },
+            {
+              "text": "Es soll möbliert sein und monatlich nicht mehr als 300 Euro kosten.",
+              "english": "It should be furnished and cost no more than 300 euros a month.",
+              "speaker": "J"
+            },
+            {
+              "text": "Das Zimmer über meinem Laden ist frei.",
+              "english": "The room above my shop is free.",
+              "speaker": "H"
+            },
+            {
+              "text": "Es hat 16 Quadratmeter.",
+              "english": "It has 16 square metres.",
+              "speaker": "H"
+            },
+            {
+              "text": "Die Miete ist günstig, und die Nebenkosten sind klein.",
+              "english": "The rent is cheap, and the extra costs are small.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich bin selbst der Vermieter.",
+              "english": "I am the landlord myself.",
+              "speaker": "H"
+            },
+            {
+              "text": "Und die Kaution?",
+              "english": "And the deposit?",
+              "speaker": "J"
+            },
+            {
+              "text": "Zwei Monatsmieten.",
+              "english": "Two months' rent.",
+              "speaker": "H"
+            },
+            {
+              "text": "Aber darüber können wir reden.",
+              "english": "But we can talk about that.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ist das wirklich möglich?",
+              "english": "Is that really possible?",
+              "speaker": "J"
+            },
+            {
+              "text": "Das ist die beste Neuigkeit des Abends.",
+              "english": "That is the best piece of news of the evening.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich glaube, wir verstehen uns bestimmt.",
+              "english": "I believe we will certainly get on.",
+              "speaker": "H"
+            },
+            {
+              "text": "Kommen Sie morgen vorbei.",
+              "english": "Come by tomorrow.",
+              "speaker": "H"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nach der Abstimmung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach der letzten Abstimmung ist es spät.",
+              "english": "After the last vote it is late."
+            },
+            {
+              "text": "Draußen regnet es leise.",
+              "english": "Outside it is raining softly."
+            },
+            {
+              "text": "Die Sitzung hat zwei Stunden gedauert.",
+              "english": "The meeting has lasted two hours."
+            },
+            {
+              "text": "Der Bürgermeister kommt zu Sam und gibt ihm die Hand.",
+              "english": "The mayor comes to Sam and shakes his hand."
+            },
+            {
+              "text": "Und was wurde beschlossen?",
+              "english": "And what was decided?",
+              "speaker": "B"
+            },
+            {
+              "text": "Sie schreiben das ja alles auf, nicht wahr?",
+              "english": "You are writing all of it down, aren't you?",
+              "speaker": "B"
+            },
+            {
+              "text": "Ja, ich schicke es morgen.",
+              "english": "Yes, I will send it tomorrow.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich hoffe, dass ich nichts vergesse.",
+              "english": "I hope that I forget nothing.",
+              "speaker": "S"
+            },
+            {
+              "text": "Wenn Sie einen Fehler machen, wird er korrigiert.",
+              "english": "If you make a mistake it will be corrected.",
+              "speaker": "B"
+            },
+            {
+              "text": "Das ist kein Grund zur Angst.",
+              "english": "That is no reason to be afraid.",
+              "speaker": "B"
+            },
+            {
+              "text": "Danke.",
+              "english": "Thank you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich hatte Zweifel, ob ich das kann.",
+              "english": "I had doubts whether I could do it.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich habe gesehen, dass man mit Geduld wirklich etwas verändern kann.",
+              "english": "I have seen that with patience one can really change something.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich glaube, dass das Sinn hat.",
+              "english": "I think that makes sense.",
+              "speaker": "S"
+            },
+            {
+              "text": "Für mich ist das auch ein Stück Glaube.",
+              "english": "For me that is also a piece of faith.",
+              "speaker": "S"
+            },
+            {
+              "text": "Vertrauen ist das Wichtigste.",
+              "english": "Trust is the most important thing.",
+              "speaker": "B"
+            },
+            {
+              "text": "Wenn die Menschen einander vertrauen, kann man vieles retten.",
+              "english": "When people trust each other, a lot can be saved.",
+              "speaker": "B"
+            },
+            {
+              "text": "Frau Weber tritt dazu.",
+              "english": "Frau Weber joins them."
+            },
+            {
+              "text": "Sie lächelt.",
+              "english": "She smiles."
+            },
+            {
+              "text": "Das war eine gute Sitzung.",
+              "english": "That was a good meeting.",
+              "speaker": "W"
+            },
+            {
+              "text": "Es ist nämlich kein Wunder, dass wir hier Frieden haben.",
+              "english": "It is no miracle, you see, that we have peace here.",
+              "speaker": "W"
+            },
+            {
+              "text": "Wir hören einander zu, und wir sagen die Wahrheit.",
+              "english": "We listen to each other, and we tell the truth.",
+              "speaker": "W"
+            },
+            {
+              "text": "Am Ende schreibt Sam in sein Heft: „Protokoll der Versammlung. Ergebnis der Abstimmung: Der Spielplatz bleibt offen. Der Brief geht an die Stadt. Das Fest ist geplant.“",
+              "english": "At the end Sam writes in his notebook: \"Minutes of the meeting. Result of the vote: The playground stays open. The letter goes to the city. The festival is planned.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

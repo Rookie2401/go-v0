@@ -1,0 +1,855 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-04",
+  "lang": "de",
+  "title": "Den Weg finden",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-04",
+    "title": "\"Den Weg finden\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Sie for the passer-by and the clerk, du between Sam and Daniel. The office is invented (a generic Amt für Ausländer; no real address). The wording of the form is simplified; please check \"Erlaubnis für den Aufenthalt\" (officially Aufenthaltserlaubnis), \"Wohnsitz\", \"Antrag\", \"Gebühr\" and the way the clerk gives numbered instructions."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "instructions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "S": "Sam",
+    "P": "Passantin",
+    "M": "Mitarbeiter",
+    "D": "Daniel"
+  },
+  "sections": [
+    {
+      "title": "Auf der Straße",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam steht an einer großen Kreuzung vor dem Bahnhof in Leipzig.",
+              "english": "Sam is standing at a big crossing in front of the station in Leipzig."
+            },
+            {
+              "text": "Er muss heute zum Amt für Ausländer, aber er kennt den Weg nicht.",
+              "english": "Today he has to go to the office for foreigners, but he does not know the way."
+            },
+            {
+              "text": "In der Tasche hat er seinen Antrag.",
+              "english": "He has his application in his bag."
+            },
+            {
+              "text": "Eine ältere Frau geht in Richtung Bahnhof.",
+              "english": "An older woman is walking towards the station."
+            },
+            {
+              "text": "Hallo, können Sie mir bitte helfen?",
+              "english": "Hello, can you help me, please?",
+              "speaker": "S"
+            },
+            {
+              "text": "Wie komme ich zum Amt für Ausländer?",
+              "english": "How do I get to the office for foreigners?",
+              "speaker": "S"
+            },
+            {
+              "text": "Wo muss ich abbiegen?",
+              "english": "Where do I have to turn off?",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist nicht weit.",
+              "english": "It is not far.",
+              "speaker": "P"
+            },
+            {
+              "text": "Es sind nur etwa 800 Meter.",
+              "english": "It is only about 800 metres.",
+              "speaker": "P"
+            },
+            {
+              "text": "Gehen Sie hier geradeaus, bis Sie zur nächsten Kreuzung kommen.",
+              "english": "Go straight on here until you come to the next crossing.",
+              "speaker": "P"
+            },
+            {
+              "text": "An der Ampel biegen Sie links ab.",
+              "english": "At the traffic light you turn left.",
+              "speaker": "P"
+            },
+            {
+              "text": "Links an der Ampel.",
+              "english": "Left at the traffic light.",
+              "speaker": "S"
+            },
+            {
+              "text": "Und dann?",
+              "english": "And then?",
+              "speaker": "S"
+            },
+            {
+              "text": "Dann gehen Sie die Straße entlang, immer in Richtung Fluss.",
+              "english": "Then you walk along the street, always in the direction of the river.",
+              "speaker": "P"
+            },
+            {
+              "text": "Bald sehen Sie eine Brücke.",
+              "english": "Soon you will see a bridge.",
+              "speaker": "P"
+            },
+            {
+              "text": "Überqueren Sie die Brücke, und gehen Sie den Fluss entlang.",
+              "english": "Cross the bridge, and walk along the river.",
+              "speaker": "P"
+            },
+            {
+              "text": "Überqueren Sie dort bitte vorsichtig die Straße.",
+              "english": "Please cross the street carefully there.",
+              "speaker": "P"
+            },
+            {
+              "text": "Da fahren viele Autos.",
+              "english": "A lot of cars go there.",
+              "speaker": "P"
+            },
+            {
+              "text": "Und dann?",
+              "english": "And then?",
+              "speaker": "S"
+            },
+            {
+              "text": "Gehen Sie noch etwas geradeaus, und nehmen Sie nicht die erste Straße.",
+              "english": "Go a little further straight ahead, and do not take the first street.",
+              "speaker": "P"
+            },
+            {
+              "text": "Erst an der Ecke.",
+              "english": "Only at the corner.",
+              "speaker": "P"
+            },
+            {
+              "text": "An der Ecke ist ein Café.",
+              "english": "At the corner there is a café.",
+              "speaker": "P"
+            },
+            {
+              "text": "Dort ist rechts ein Parkplatz.",
+              "english": "There on the right is a car park.",
+              "speaker": "P"
+            },
+            {
+              "text": "Gegenüber vom Parkplatz ist das Gebäude.",
+              "english": "Opposite the car park is the building.",
+              "speaker": "P"
+            },
+            {
+              "text": "Es ist grau, und es ist groß.",
+              "english": "It is grey, and it is big.",
+              "speaker": "P"
+            },
+            {
+              "text": "Also: geradeaus, links, die Brücke, dann rechts.",
+              "english": "So: straight ahead, left, the bridge, then right.",
+              "speaker": "S"
+            },
+            {
+              "text": "Habe ich das richtig verstanden?",
+              "english": "Did I understand that correctly?",
+              "speaker": "S"
+            },
+            {
+              "text": "Ja, genau.",
+              "english": "Yes, exactly.",
+              "speaker": "P"
+            },
+            {
+              "text": "Sie können es nicht übersehen.",
+              "english": "You cannot miss it.",
+              "speaker": "P"
+            },
+            {
+              "text": "Ist es nah?",
+              "english": "Is it close?",
+              "speaker": "S"
+            },
+            {
+              "text": "Ja, es ist nah.",
+              "english": "Yes, it is close.",
+              "speaker": "P"
+            },
+            {
+              "text": "Noch 300 Meter nach dem Fluss.",
+              "english": "Another 300 metres after the river.",
+              "speaker": "P"
+            },
+            {
+              "text": "Danke schön.",
+              "english": "Thank you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Sie waren sehr freundlich.",
+              "english": "You were very kind.",
+              "speaker": "S"
+            },
+            {
+              "text": "Gern geschehen.",
+              "english": "You are welcome.",
+              "speaker": "P"
+            },
+            {
+              "text": "Viel Glück!",
+              "english": "Good luck!",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Im Gebäude",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam findet das Haus.",
+              "english": "Sam finds the house."
+            },
+            {
+              "text": "Gegenüber vom Eingang steht ein Auto.",
+              "english": "Opposite the entrance stands a car."
+            },
+            {
+              "text": "Am Eingang ist es hell und still.",
+              "english": "At the entrance it is bright and quiet."
+            },
+            {
+              "text": "Auf der Tür steht ein Hinweis: „Bitte ziehen Sie eine Nummer.“",
+              "english": "On the door there is a notice: \"Please take a number.\""
+            },
+            {
+              "text": "Hinter dem Eingang sind der Aufzug und die Treppe.",
+              "english": "Behind the entrance are the lift and the stairs."
+            },
+            {
+              "text": "Ein Mann zeigt nach oben und sagt etwas, das Sam nicht gleich versteht.",
+              "english": "A man points upwards and says something that Sam does not understand at once."
+            },
+            {
+              "text": "Wo ist die Abteilung für Ausländer?",
+              "english": "Where is the department for foreigners?",
+              "speaker": "S"
+            },
+            {
+              "text": "Im Erdgeschoss?",
+              "english": "On the ground floor?",
+              "speaker": "S"
+            },
+            {
+              "text": "Nein, im zweiten Stock.",
+              "english": "No, on the second floor.",
+              "speaker": "M"
+            },
+            {
+              "text": "Nehmen Sie den Aufzug, oder gehen Sie die Treppe hoch.",
+              "english": "Take the lift, or walk up the stairs.",
+              "speaker": "M"
+            },
+            {
+              "text": "Unten ist nichts für Sie.",
+              "english": "Down here there is nothing for you.",
+              "speaker": "M"
+            },
+            {
+              "text": "Die Büros sind alle oben.",
+              "english": "The offices are all upstairs.",
+              "speaker": "M"
+            },
+            {
+              "text": "Und hinten?",
+              "english": "And at the back?",
+              "speaker": "S"
+            },
+            {
+              "text": "Was ist dort?",
+              "english": "What is there?",
+              "speaker": "S"
+            },
+            {
+              "text": "Hinten ist der Ausgang zum Hof.",
+              "english": "At the back is the exit to the yard.",
+              "speaker": "M"
+            },
+            {
+              "text": "Dort dürfen Sie nicht durch.",
+              "english": "You are not allowed through there.",
+              "speaker": "M"
+            },
+            {
+              "text": "Das ist nur für Mitarbeiter.",
+              "english": "That is only for staff.",
+              "speaker": "M"
+            },
+            {
+              "text": "Danke.",
+              "english": "Thank you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich nehme die Treppe, nicht den Aufzug.",
+              "english": "I will take the stairs, not the lift.",
+              "speaker": "S"
+            },
+            {
+              "text": "Im zweiten Stock zieht Sam eine Nummer und setzt sich in den Raum, in dem man wartet.",
+              "english": "On the second floor Sam takes a number and sits down in the room where people wait."
+            },
+            {
+              "text": "Der Raum hat eine große Uhr und zwanzig Stühle.",
+              "english": "The room has a big clock and twenty chairs."
+            },
+            {
+              "text": "Nach einer halben Stunde ruft eine Stimme: „Nummer 47 bitte zum Schalter 3.“",
+              "english": "After half an hour a voice calls: \"Number 47 please to counter 3.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Schalter",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Guten Tag.",
+              "english": "Good afternoon.",
+              "speaker": "M"
+            },
+            {
+              "text": "Was kann ich für Sie tun?",
+              "english": "What can I do for you?",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich möchte meinen Antrag abgeben.",
+              "english": "I would like to hand in my application.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich brauche die Erlaubnis für den Aufenthalt.",
+              "english": "I need the permit for my stay.",
+              "speaker": "S"
+            },
+            {
+              "text": "Haben Sie alle Papiere?",
+              "english": "Do you have all the papers?",
+              "speaker": "M"
+            },
+            {
+              "text": "Ihren Ausweis, bitte.",
+              "english": "Your identity card, please.",
+              "speaker": "M"
+            },
+            {
+              "text": "Hier, bitte.",
+              "english": "Here you are.",
+              "speaker": "S"
+            },
+            {
+              "text": "Und hier ist die Bescheinigung für meinen Wohnsitz.",
+              "english": "And here is the certificate for my place of residence.",
+              "speaker": "S"
+            },
+            {
+              "text": "Gut.",
+              "english": "Good.",
+              "speaker": "M"
+            },
+            {
+              "text": "Dann brauche ich noch das Formular.",
+              "english": "Then I still need the form.",
+              "speaker": "M"
+            },
+            {
+              "text": "Haben Sie es schon ausgefüllt?",
+              "english": "Have you filled it in already?",
+              "speaker": "M"
+            },
+            {
+              "text": "Nicht ganz.",
+              "english": "Not completely.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich habe nicht alles verstanden.",
+              "english": "I did not understand everything.",
+              "speaker": "S"
+            },
+            {
+              "text": "Kein Problem.",
+              "english": "No problem.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich erkläre es Ihnen.",
+              "english": "I will explain it to you.",
+              "speaker": "M"
+            },
+            {
+              "text": "Setzen Sie sich bitte.",
+              "english": "Please sit down.",
+              "speaker": "M"
+            },
+            {
+              "text": "Schreiben Sie bitte in großen Buchstaben.",
+              "english": "Please write in capital letters.",
+              "speaker": "M"
+            },
+            {
+              "text": "Das ist ein wichtiger Hinweis.",
+              "english": "That is an important piece of advice.",
+              "speaker": "M"
+            },
+            {
+              "text": "Vergessen Sie nicht, auf jeder Seite Ihren Namen zu schreiben.",
+              "english": "Do not forget to write your name on every page.",
+              "speaker": "M"
+            },
+            {
+              "text": "Zuerst: Ihr Name.",
+              "english": "First: your name.",
+              "speaker": "M"
+            },
+            {
+              "text": "Danach: Ihr Wohnsitz in Leipzig.",
+              "english": "After that: your place of residence in Leipzig.",
+              "speaker": "M"
+            },
+            {
+              "text": "Wer ist Ihr Vermieter?",
+              "english": "Who is your landlord?",
+              "speaker": "M"
+            },
+            {
+              "text": "Frau Weber.",
+              "english": "Frau Weber.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich bezahle 280 Euro Miete, und die Nebenkosten sind dabei.",
+              "english": "I pay 280 euros rent, and the extra costs are included.",
+              "speaker": "S"
+            },
+            {
+              "text": "Wie groß ist das Zimmer?",
+              "english": "How big is the room?",
+              "speaker": "M"
+            },
+            {
+              "text": "Wie viele Quadratmeter?",
+              "english": "How many square metres?",
+              "speaker": "M"
+            },
+            {
+              "text": "Vierzehn Quadratmeter.",
+              "english": "Fourteen square metres.",
+              "speaker": "S"
+            },
+            {
+              "text": "Es ist sehr klein, aber es ist nicht teuer.",
+              "english": "It is very small, but it is not expensive.",
+              "speaker": "S"
+            },
+            {
+              "text": "Dann: Warum sind Sie in Deutschland?",
+              "english": "Then: why are you in Germany?",
+              "speaker": "M"
+            },
+            {
+              "text": "Schreiben Sie das bitte hier.",
+              "english": "Please write that here.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich arbeite mit einem Ehepaar, das eine Gemeinde gründen will.",
+              "english": "I work with a married couple who want to found a church.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich bin kein Missionar von Beruf, aber ich möchte der Mission helfen.",
+              "english": "I am not a missionary by profession, but I would like to help the mission.",
+              "speaker": "S"
+            },
+            {
+              "text": "Haben Sie studiert?",
+              "english": "Did you study?",
+              "speaker": "M"
+            },
+            {
+              "text": "Bitte schreiben Sie, wo.",
+              "english": "Please write where.",
+              "speaker": "M"
+            },
+            {
+              "text": "Nein, ich nicht.",
+              "english": "No, not me.",
+              "speaker": "S"
+            },
+            {
+              "text": "Aber mein Freund Daniel hat an einer Universität im Ausland Theologie studiert, und sein Studium war gut.",
+              "english": "But my friend Daniel studied theology at a university abroad, and his studies were good.",
+              "speaker": "S"
+            },
+            {
+              "text": "Und wovon leben Sie?",
+              "english": "And what do you live on?",
+              "speaker": "M"
+            },
+            {
+              "text": "Meine Freunde und meine Gemeinde unterstützen mich mit einer Spende jeden Monat.",
+              "english": "My friends and my church support me with a donation every month.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das schreiben Sie bitte auch.",
+              "english": "Please write that too.",
+              "speaker": "M"
+            },
+            {
+              "text": "Dann kommt Ihre Unterschrift.",
+              "english": "Then comes your signature.",
+              "speaker": "M"
+            },
+            {
+              "text": "Vergessen Sie nicht, unter den Strich zu schreiben, nicht daneben.",
+              "english": "Do not forget to write under the line, not next to it.",
+              "speaker": "M"
+            },
+            {
+              "text": "Hier?",
+              "english": "Here?",
+              "speaker": "S"
+            },
+            {
+              "text": "Ist das richtig?",
+              "english": "Is that right?",
+              "speaker": "S"
+            },
+            {
+              "text": "Genau.",
+              "english": "Exactly.",
+              "speaker": "M"
+            },
+            {
+              "text": "Jetzt die Gebühr: Sie kostet 100 Euro.",
+              "english": "Now the fee: it costs 100 euros.",
+              "speaker": "M"
+            },
+            {
+              "text": "Bitte bezahlen Sie unten.",
+              "english": "Please pay downstairs.",
+              "speaker": "M"
+            },
+            {
+              "text": "Der Automat ist im Erdgeschoss.",
+              "english": "The machine is on the ground floor.",
+              "speaker": "M"
+            },
+            {
+              "text": "Gehen Sie nach unten, und kommen Sie dann wieder nach oben.",
+              "english": "Go downstairs, and then come back up.",
+              "speaker": "M"
+            },
+            {
+              "text": "Gehen Sie auch kurz ins Erdgeschoss, wenn Sie Hilfe brauchen.",
+              "english": "Also go briefly to the ground floor if you need help.",
+              "speaker": "M"
+            },
+            {
+              "text": "Dort sitzt jemand, der Ihnen hilft.",
+              "english": "Someone sits there who will help you.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ihre Nummer bleibt gültig.",
+              "english": "Your number stays valid.",
+              "speaker": "M"
+            },
+            {
+              "text": "Sie müssen nicht neu warten.",
+              "english": "You do not have to wait again.",
+              "speaker": "M"
+            },
+            {
+              "text": "Danke.",
+              "english": "Thank you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist eine große Hilfe.",
+              "english": "That is a great help.",
+              "speaker": "S"
+            },
+            {
+              "text": "Am Ausgang bleibt Sam kurz stehen und liest den Hinweis auf der Tür: „Ausgang“.",
+              "english": "At the exit Sam stops briefly and reads the notice on the door: \"Exit\"."
+            },
+            {
+              "text": "Er geht nach Hause, und er ist froh, dass es vorbei ist.",
+              "english": "He goes home, and he is glad that it is over."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ein Anruf bei Daniel",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend ruft Daniel an.",
+              "english": "In the evening Daniel calls."
+            },
+            {
+              "text": "Er muss auch bald zum Amt.",
+              "english": "He too has to go to the office soon."
+            },
+            {
+              "text": "Wie war es?",
+              "english": "How was it?",
+              "speaker": "D"
+            },
+            {
+              "text": "Hast du den Weg gefunden?",
+              "english": "Did you find the way?",
+              "speaker": "D"
+            },
+            {
+              "text": "Ja, nach einer Frage.",
+              "english": "Yes, after one question.",
+              "speaker": "S"
+            },
+            {
+              "text": "Es war nicht schwer, aber es war lang.",
+              "english": "It was not hard, but it was long.",
+              "speaker": "S"
+            },
+            {
+              "text": "Dann erklär mir bitte den Weg.",
+              "english": "Then please explain the way to me.",
+              "speaker": "D"
+            },
+            {
+              "text": "Steig am Bahnhof aus und geh bis zur Kreuzung.",
+              "english": "Get off at the station and go to the crossing.",
+              "speaker": "S"
+            },
+            {
+              "text": "Dort ist eine Ampel.",
+              "english": "There is a traffic light.",
+              "speaker": "S"
+            },
+            {
+              "text": "Dahinter kommst du an den Fluss.",
+              "english": "Behind it you get to the river.",
+              "speaker": "S"
+            },
+            {
+              "text": "Geh am Fluss entlang.",
+              "english": "Walk along the river.",
+              "speaker": "S"
+            },
+            {
+              "text": "Du musst eine Straße überqueren.",
+              "english": "You have to cross a street.",
+              "speaker": "S"
+            },
+            {
+              "text": "Dort stehen viele Autos.",
+              "english": "There are many cars there.",
+              "speaker": "S"
+            },
+            {
+              "text": "Nach 200 Meter nimmst du die zweite Straße rechts.",
+              "english": "After 200 metres you take the second street on the right.",
+              "speaker": "S"
+            },
+            {
+              "text": "Um die Ecke ist ein Parkplatz gegenüber vom Café, und das Gebäude ist grau.",
+              "english": "Around the corner is a car park opposite the café, and the building is grey.",
+              "speaker": "S"
+            },
+            {
+              "text": "Und wo ist das Amt im Gebäude?",
+              "english": "And where is the office in the building?",
+              "speaker": "D"
+            },
+            {
+              "text": "Im zweiten Stock.",
+              "english": "On the second floor.",
+              "speaker": "S"
+            },
+            {
+              "text": "Die Tür ist hinten, wenn du von der anderen Seite kommst.",
+              "english": "The door is at the back if you come from the other side.",
+              "speaker": "S"
+            },
+            {
+              "text": "Und wenn ich in die falsche Richtung gehe?",
+              "english": "And if I go in the wrong direction?",
+              "speaker": "D"
+            },
+            {
+              "text": "Dann fragst du jemanden.",
+              "english": "Then you ask somebody.",
+              "speaker": "S"
+            },
+            {
+              "text": "Die Leute sind nett.",
+              "english": "The people are nice.",
+              "speaker": "S"
+            },
+            {
+              "text": "Die Öffnungszeit ist nur bis zwölf, also komm früh.",
+              "english": "The opening time is only until twelve, so come early.",
+              "speaker": "S"
+            },
+            {
+              "text": "Nimm dein Visum, deinen Ausweis und das Geld mit.",
+              "english": "Take your visa, your identity card and the money.",
+              "speaker": "S"
+            },
+            {
+              "text": "Wunderbar.",
+              "english": "Wonderful.",
+              "speaker": "D"
+            },
+            {
+              "text": "Ich schreibe alles.",
+              "english": "I am writing it all down.",
+              "speaker": "D"
+            },
+            {
+              "text": "Und noch etwas: Der Antrag braucht Zeit.",
+              "english": "And one more thing: the application takes time.",
+              "speaker": "S"
+            },
+            {
+              "text": "Der Mitarbeiter hat gesagt: Sie hören in vier bis sechs Wochen von uns.",
+              "english": "The employee told me: you will hear from us in four to six weeks.",
+              "speaker": "S"
+            },
+            {
+              "text": "Die Behörde schickt einen Brief in den Briefkasten.",
+              "english": "The authority will send a letter to the letterbox.",
+              "speaker": "S"
+            },
+            {
+              "text": "Dann bin ich beruhigt.",
+              "english": "Then I am reassured.",
+              "speaker": "D"
+            },
+            {
+              "text": "Danke für den Rat.",
+              "english": "Thank you for the advice.",
+              "speaker": "D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Abend",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Später sitzt Sam in seinem Zimmer und denkt an den Tag.",
+              "english": "Later Sam sits in his room and thinks about the day."
+            },
+            {
+              "text": "Frau Weber nennt das Papierkram, und sie lacht darüber.",
+              "english": "Frau Weber calls that paperwork, and she laughs about it."
+            },
+            {
+              "text": "Er hat sich angemeldet, er hat den Antrag abgegeben, und er hat die Gebühr bezahlt.",
+              "english": "He has registered, he has handed in the application, and he has paid the fee."
+            },
+            {
+              "text": "Die Kultur ist ihm noch fremd, aber er gewöhnt sich langsam daran.",
+              "english": "The culture is still strange to him, but he is slowly getting used to it."
+            },
+            {
+              "text": "Manchmal hat er Heimweh, und dann denkt er an den Abschied von seiner Familie.",
+              "english": "Sometimes he is homesick, and then he thinks of the farewell from his family."
+            },
+            {
+              "text": "Er hatte eine Berufung gespürt, und die Entscheidung war nicht leicht.",
+              "english": "He had felt a calling, and the decision was not easy."
+            },
+            {
+              "text": "Er musste umziehen und alles neu lernen.",
+              "english": "He had to move and learn everything anew."
+            },
+            {
+              "text": "Aber er muss sich nicht mehr entscheiden.",
+              "english": "But he does not have to decide any more."
+            },
+            {
+              "text": "Am Samstag ist er endlich frei, und Freunde kommen zu Besuch.",
+              "english": "On Saturday he is finally free, and friends come to visit."
+            },
+            {
+              "text": "Vielleicht ist das die beste Freundschaft: Man hilft sich, wenn man nicht weiter weiß.",
+              "english": "Perhaps that is the best kind of friendship: you help each other when you do not know how to go on."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

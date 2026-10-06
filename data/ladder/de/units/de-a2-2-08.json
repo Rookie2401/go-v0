@@ -1,0 +1,917 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-08",
+  "lang": "de",
+  "title": "Die nächste Aktion",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-08",
+    "title": "\"Die nächste Aktion\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. The team speaks du with each other and uses church words of a free church (Evangelium, Dienst, Jugendkreis, Aktion). Please check these for a Landeskirche reader and check \"um … zu / damit\" and \"werden + Infinitiv\" for natural spoken German."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "church-and-mission-life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "SA": "Sam",
+    "TH": "Pastor Thomas",
+    "DA": "David",
+    "RU": "Ruth",
+    "DN": "Daniel"
+  },
+  "sections": [
+    {
+      "title": "Wo ist das Treffen?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Donnerstagabend trifft sich das Team im Haus der Gemeinde.",
+              "english": "On Thursday evening the team meets in the church building."
+            },
+            {
+              "text": "Daniel ist zum ersten Mal dabei.",
+              "english": "Daniel is there for the first time."
+            },
+            {
+              "text": "Er hat Sam angerufen und gefragt, wo das Haus ist.",
+              "english": "He called Sam and asked where the building is."
+            },
+            {
+              "text": "Das ist einfach.",
+              "english": "That is easy.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Geh vom Bahnhof aus geradeaus bis zur Kreuzung.",
+              "english": "From the station go straight ahead to the crossing.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Dort ist eine Ampel.",
+              "english": "There is a traffic light.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Überquere die Straße und geh nach links, in Richtung Brücke.",
+              "english": "Cross the street and go left, in the direction of the bridge.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Vor der Brücke biegst du rechts ab.",
+              "english": "Before the bridge you turn right.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Dann gehst du die Straße entlang.",
+              "english": "Then you walk along the street.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Das Haus ist an der Ecke, gegenüber vom Parkplatz.",
+              "english": "The building is on the corner, opposite the car park.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Es ist nah, nur 300 Meter.",
+              "english": "It is close, only 300 metres.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Und wo ist das Treffen im Gebäude?",
+              "english": "And where is the meeting in the building?",
+              "speaker": "DN"
+            },
+            {
+              "text": "Der Eingang ist hinten.",
+              "english": "The entrance is at the back.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Im Erdgeschoss ist nur der Saal.",
+              "english": "On the ground floor there is only the hall.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Du musst nach oben.",
+              "english": "You have to go up.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Es gibt einen Aufzug, aber er ist langsam.",
+              "english": "There is a lift, but it is slow.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Nimm lieber die Treppe in den ersten Stock.",
+              "english": "Better take the stairs to the first floor.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Auf der Tür hängt ein Hinweis: „Team-Treffen, bitte nicht stören.“",
+              "english": "On the door hangs a notice: \"Team meeting, please do not disturb.\"",
+              "speaker": "SA"
+            },
+            {
+              "text": "Bitte beachte ihn.",
+              "english": "Please pay attention to it.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Gut.",
+              "english": "Good.",
+              "speaker": "DN"
+            },
+            {
+              "text": "Dann sehe ich dich gleich.",
+              "english": "Then I will see you in a moment.",
+              "speaker": "DN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Ziel",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Um halb acht sind alle da.",
+              "english": "At half past seven everybody is there."
+            },
+            {
+              "text": "Thomas, David und Ruth sitzen am Tisch.",
+              "english": "Thomas, David and Ruth are sitting at the table."
+            },
+            {
+              "text": "Auf dem Tisch liegen Kaffee, Kuchen und ein Papier mit einer Liste.",
+              "english": "On the table are coffee, cake and a paper with a list."
+            },
+            {
+              "text": "Guten Abend, ihr Lieben.",
+              "english": "Good evening, dear ones.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wir haben heute nur ein Ziel.",
+              "english": "Today we have only one goal.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wir wollen für das Fest im Juni einen Stand planen.",
+              "english": "We want to plan a stand for the festival in June.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Jonas hat die Veranstaltung gut organisiert, und der Verein hat uns eingeladen.",
+              "english": "Jonas has organised the event well, and the association has invited us.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Das ist eine große Chance.",
+              "english": "That is a big chance.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Wir werden mit vielen Menschen sprechen können.",
+              "english": "We will be able to speak with many people.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Aber wir müssen alles gut vorbereiten.",
+              "english": "But we have to prepare everything well.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Die Vorbereitung ist wichtig, damit nichts schiefgeht.",
+              "english": "The preparation is important so that nothing goes wrong.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Ihr habt recht.",
+              "english": "You are right.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Gute Vorbereitung braucht Zeit, und wir haben nur noch sechs Wochen.",
+              "english": "Good preparation takes time, and we have only six weeks left.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Unsere Aktion heißt „Kaffee und Gespräch“.",
+              "english": "Our campaign is called \"Coffee and Conversation\".",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wir geben Kaffee, damit die Leute stehen bleiben.",
+              "english": "We give coffee so that people stop.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Und wir stellen Fragen.",
+              "english": "And we ask questions.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Wir wollen nicht reden, sondern fragen.",
+              "english": "We do not want to talk but to ask.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Das ist unser Dienst: Wir hören zu, und wir sagen, was uns wichtig ist.",
+              "english": "That is our service: we listen, and we say what is important to us.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Und das Evangelium?",
+              "english": "And the gospel?",
+              "speaker": "DN"
+            },
+            {
+              "text": "Sagen wir davon auch etwas?",
+              "english": "Do we say something about that too?",
+              "speaker": "DN"
+            },
+            {
+              "text": "Natürlich.",
+              "english": "Of course.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Aber wir wollen es nicht aufdrängen.",
+              "english": "But we do not want to impose it.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Das Evangelium ist eine Einladung, kein Zwang.",
+              "english": "The gospel is an invitation, not a compulsion.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wer Interesse hat, kann mehr hören.",
+              "english": "Whoever is interested can hear more.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Evangelium heißt „gute Nachricht“.",
+              "english": "Gospel means \"good news\".",
+              "speaker": "RU"
+            },
+            {
+              "text": "Das ist kein Druck, das ist ein Geschenk.",
+              "english": "That is not pressure, that is a gift.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Ein Zeugnis ist genug.",
+              "english": "One testimony is enough.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Menschen wollen die Wahrheit hören, aber ohne Druck.",
+              "english": "People want to hear the truth, but without pressure.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Dann ist unser Ziel nicht Erfolg, sondern Freundschaft.",
+              "english": "Then our goal is not success but friendship.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Genau.",
+              "english": "Exactly.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Der Erfolg kommt später, oder er kommt nicht.",
+              "english": "Success comes later, or it does not come.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Das ist nicht unsere Verantwortung.",
+              "english": "That is not our responsibility.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Erfolg können wir nicht planen.",
+              "english": "We cannot plan success.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Aber wir können gute Gastgeber sein.",
+              "english": "But we can be good hosts.",
+              "speaker": "RU"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Aufgaben",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jetzt kommt die Aufgabe für jeden.",
+              "english": "Now comes the task for everyone.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wer macht was?",
+              "english": "Who does what?",
+              "speaker": "TH"
+            },
+            {
+              "text": "Ich habe eine Liste gemacht.",
+              "english": "I have made a list.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Jeder kann sich eintragen.",
+              "english": "Everyone can put their name down.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Wer eine Aufgabe nimmt, trägt auch Verantwortung.",
+              "english": "Whoever takes a task also bears responsibility.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Das ist fair.",
+              "english": "That is fair.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Wir brauchen jemanden für den Kaffee, jemanden für die Musik und jemanden für die Flyer.",
+              "english": "We need someone for the coffee, someone for the music and someone for the flyers.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Ich trage mich ein.",
+              "english": "I will put myself down.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Ich mache die Flyer.",
+              "english": "I will make the flyers.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Ich habe eine Idee, wie sie aussehen sollen.",
+              "english": "I have an idea of what they should look like.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Auf der Vorderseite ein Foto vom Stadtteil, auf der anderen Seite die Zeit und der Ort.",
+              "english": "On the front a photo of the district, on the other side the time and the place.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Meine Verantwortung ist der Text.",
+              "english": "My responsibility is the text.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Dafür brauche ich ein paar Tage.",
+              "english": "I need a few days for that.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Und wer druckt sie?",
+              "english": "And who prints them?",
+              "speaker": "RU"
+            },
+            {
+              "text": "Ich kann sie im Büro drucken.",
+              "english": "I can print them in the office.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Aber ich brauche den Text bis nächsten Mittwoch.",
+              "english": "But I need the text by next Wednesday.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Das ist möglich.",
+              "english": "That is possible.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Ich erkläre ihn dir am Telefon oder im Video.",
+              "english": "I will explain it to you on the phone or by video.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Nein, bitte schreib ihn, sonst ist die Verbindung wieder schlecht.",
+              "english": "No, please write it, otherwise the connection will be bad again.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Du hast recht.",
+              "english": "You are right.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Ich schreibe ihn, und Thomas druckt ihn.",
+              "english": "I will write it, and Thomas will print it.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Wer verteilt die Flyer am Fest?",
+              "english": "Who will hand out the flyers at the festival?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Das machen wir alle, aber vorher auch im Stadtteil.",
+              "english": "We all do that, but beforehand in the district too.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wir wollen sie in den Briefkästen verteilen.",
+              "english": "We want to distribute them in the letterboxes.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Und die Jugend?",
+              "english": "And the young people?",
+              "speaker": "DN"
+            },
+            {
+              "text": "Der Jugendkreis kann bestimmt helfen.",
+              "english": "The youth group can certainly help.",
+              "speaker": "DN"
+            },
+            {
+              "text": "Der Jugendkreis ist begeistert.",
+              "english": "The youth group is enthusiastic.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Die jungen Leute werden sogar singen.",
+              "english": "The young people will even sing.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Für sie ist das ein Dienst, aber auch ein Spaß.",
+              "english": "For them it is a service but also fun.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wir tun den Dienst gern.",
+              "english": "We do the service gladly.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Ich habe Interesse an der Musik, aber ich singe schlecht.",
+              "english": "I am interested in the music, but I sing badly.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Ich organisiere lieber den Kaffee.",
+              "english": "I would rather organise the coffee.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Und ich?",
+              "english": "And me?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Was kann ich tun?",
+              "english": "What can I do?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Ich helfe auch bei der Vorbereitung.",
+              "english": "I will help with the preparation too.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Du kannst Menschen ansprechen.",
+              "english": "You can speak to people.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Du kennst viele im Stadtteil.",
+              "english": "You know many in the district.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Ich habe keinen Mut.",
+              "english": "I do not have the courage.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Mein Deutsch ist noch nicht gut genug.",
+              "english": "My German is not good enough yet.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Dazu braucht man auch Mut, nicht nur Deutsch.",
+              "english": "One needs courage for that too, not only German.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Aber du hast ihn.",
+              "english": "But you have it.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Und du musst nicht viel sagen.",
+              "english": "And you do not have to say much.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Frag einfach: Wie geht es Ihnen?",
+              "english": "Just ask: how are you?",
+              "speaker": "RU"
+            },
+            {
+              "text": "Dann spreche ich die Menschen an, um zu hören, wie es ihnen geht.",
+              "english": "Then I will speak to people in order to hear how they are doing.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Genau.",
+              "english": "Exactly.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Du hast Mut, um zuzuhören.",
+              "english": "You have courage in order to listen.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Das ist das ganze Geheimnis.",
+              "english": "That is the whole secret.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Und wenn jemand kein Interesse hat?",
+              "english": "And if somebody is not interested?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Dann lassen wir ihn in Ruhe.",
+              "english": "Then we leave him in peace.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wir werden niemanden drängen.",
+              "english": "We will not push anybody.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Zweifel sind erlaubt, auch bei uns.",
+              "english": "Doubts are allowed, with us too.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Wir müssen nicht auf alles eine Antwort haben.",
+              "english": "We do not have to have an answer to everything.",
+              "speaker": "RU"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Zeit der Fragen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ich habe eine Frage zur Aktion.",
+              "english": "I have a question about the campaign.",
+              "speaker": "DN"
+            },
+            {
+              "text": "Wie viele Leute kommen?",
+              "english": "How many people come?",
+              "speaker": "DN"
+            },
+            {
+              "text": "Letztes Jahr waren es etwa tausend.",
+              "english": "Last year there were about a thousand.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Viele kamen, weil sie neugierig waren.",
+              "english": "Many came because they were curious.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Es ist gut, dass die Leute neugierig sind.",
+              "english": "It is good that people are curious.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Das ist ein erster Schritt.",
+              "english": "That is a first step.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Neugierig sein heißt: Man möchte mehr wissen.",
+              "english": "Being curious means: you want to know more.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Daran können wir anknüpfen.",
+              "english": "We can build on that.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Wir haben schon oft erlebt, dass das Beste ein gutes Gespräch ist.",
+              "english": "We have often experienced that the best is a good conversation.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Manche suchen Vergebung.",
+              "english": "Some seek forgiveness.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Manche möchten, dass Gott ihnen vergeben kann.",
+              "english": "Some would like God to be able to forgive them.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Manche sprechen über den Tod eines Menschen.",
+              "english": "Some speak about the death of a person.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Niemand soll mit so etwas allein bleiben.",
+              "english": "Nobody should be left alone with something like that.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Ich habe in Amerika gesehen, dass solche Gespräche viel verändern können.",
+              "english": "I have seen in America that such conversations can change a lot.",
+              "speaker": "DN"
+            },
+            {
+              "text": "Menschen finden Trost oder Hoffnung, und manche zweifeln auch nach Jahren noch, aber sie haben Vertrauen.",
+              "english": "People find comfort or hope, and some still doubt after years, but they have trust.",
+              "speaker": "DN"
+            },
+            {
+              "text": "Wir wollen niemanden retten.",
+              "english": "We do not want to save anybody.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Wir wollen nur Freunde sein.",
+              "english": "We only want to be friends.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Wir werden Geduld brauchen, und wir werden Kraft brauchen.",
+              "english": "We will need patience, and we will need strength.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Dafür beten wir.",
+              "english": "We pray for that.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Und viel Gebet.",
+              "english": "And much prayer.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Ohne Gebet hat die Aktion keinen Sinn.",
+              "english": "Without prayer the campaign has no meaning.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Frieden gibt es nur, wenn Gott ihn gibt.",
+              "english": "There is peace only if God gives it.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Das ist unser Glaube.",
+              "english": "That is our faith.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Gibt es noch eine Frage?",
+              "english": "Is there another question?",
+              "speaker": "TH"
+            },
+            {
+              "text": "Sonst fassen wir den Tag zusammen.",
+              "english": "If not, we will go through the day.",
+              "speaker": "TH"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Ablauf",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Um zehn Uhr werden wir den Stand aufbauen.",
+              "english": "At ten o'clock we will set up the stand.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Der Kaffee wird um elf bereit sein.",
+              "english": "The coffee will be ready at eleven.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Um zwölf kommt die Musik.",
+              "english": "At twelve comes the music.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Die Jugend wird zwei Lieder singen.",
+              "english": "The young people will sing two songs.",
+              "speaker": "RU"
+            },
+            {
+              "text": "Von zwei bis vier wird es ein Spiel für die Kinder geben.",
+              "english": "From two to four there will be a game for the children.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Ihre Eltern können dann bei uns sitzen.",
+              "english": "Their parents can then sit with us.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Und der Hauskreis von Sabine backt Kuchen.",
+              "english": "And Sabine's house group is baking cake.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Sie hat schon gefragt, ob sie helfen darf.",
+              "english": "She has already asked whether she may help.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Gut.",
+              "english": "Good.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Ihr braucht alle Kraft für diesen Tag, also geht früh schlafen.",
+              "english": "You all need strength for this day, so go to bed early.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Und denkt daran: Wir sind nicht allein.",
+              "english": "And remember: we are not alone.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Vielleicht sehen wir sogar ein Wunder.",
+              "english": "Perhaps we will even see a miracle.",
+              "speaker": "TH"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Ergebnis",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Wer schreibt das Protokoll?",
+              "english": "Who writes the minutes?",
+              "speaker": "TH"
+            },
+            {
+              "text": "Das mache ich.",
+              "english": "I will do that.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Ich bin darin schon geübt.",
+              "english": "I am already practised at it.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Ich schreibe: Das Ziel ist ein Stand beim Fest.",
+              "english": "I write: the goal is a stand at the festival.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Jede Aufgabe steht auf der Liste.",
+              "english": "Every task is on the list.",
+              "speaker": "SA"
+            },
+            {
+              "text": "David schreibt den Text, und der Jugendkreis verteilt alles.",
+              "english": "David writes the text, and the youth group hands everything out.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Ruth organisiert den Kaffee, und Daniel kümmert sich um die Musik.",
+              "english": "Ruth organises the coffee, and Daniel takes care of the music.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Wir warten noch auf die Antwort der Stadt, ob wir einen Stand haben dürfen.",
+              "english": "We are still waiting for the answer from the city, whether we may have a stand.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Und wir beten, damit alles gut wird.",
+              "english": "And we pray so that everything goes well.",
+              "speaker": "DA"
+            },
+            {
+              "text": "Hast du eine Neuigkeit von Anna, Sam?",
+              "english": "Do you have news from Anna, Sam?",
+              "speaker": "RU"
+            },
+            {
+              "text": "Sie ist doch die Enkelin von Marta, die auf dem Markt Brot verkauft.",
+              "english": "She is the granddaughter of Marta who sells bread at the market, isn't she?",
+              "speaker": "RU"
+            },
+            {
+              "text": "Ja, sie kommt auch zum Fest.",
+              "english": "Yes, she is coming to the festival too.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Sie bringt ihre Oma mit.",
+              "english": "She is bringing her grandmother.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Nach dem Gebet geht Sam nach Hause.",
+              "english": "After the prayer Sam goes home."
+            },
+            {
+              "text": "Er schreibt seinen Namen ganz unten dazu.",
+              "english": "He adds his name right at the bottom."
+            },
+            {
+              "text": "Er weiß noch nicht, ob es gelingt.",
+              "english": "He does not yet know whether it will work."
+            },
+            {
+              "text": "Aber er weiß, dass er es versuchen will.",
+              "english": "But he knows that he wants to try."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

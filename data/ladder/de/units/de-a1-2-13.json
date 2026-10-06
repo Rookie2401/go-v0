@@ -1,0 +1,546 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-13",
+  "lang": "de",
+  "title": "Describing people and places",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-13",
+    "title": "Describing people and places (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Eva (Sie to Sam in class) asks the students to talk about people and places; Sam describes the team (Thomas, Ruth, David) and the lake and the hill. The comparative with \"als\" (größer als, älter als) and the superlative with \"am\" (am stärksten) are taught here, with the vowel change in älter, größer, stärker. After the lesson the team teases each other (du). \"Sieht ... aus\" is split in a main clause. No judgement of beauty or body is meant beyond friendly description; \"dick\" is used for a book, \"dünn\" for a coat and a man in a harmless way."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "description",
+    "comparison",
+    "adjectives",
+    "aussehen",
+    "course"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "eva": "Eva",
+    "sam": "Sam",
+    "thomas": "Thomas",
+    "ruth": "Ruth",
+    "david": "David"
+  },
+  "sections": [
+    {
+      "title": "Im Kurs",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Im Kurs sagt Eva: \"Sprechen Sie heute über Menschen.\"",
+              "english": "In the course Eva says: \"Talk about people today.\""
+            },
+            {
+              "speaker": "eva",
+              "text": "Wie sind die Menschen?",
+              "english": "What are the people like?"
+            },
+            {
+              "speaker": "eva",
+              "text": "Sprechen Sie auch über die Stadt.",
+              "english": "Talk about the city too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich möchte über meine Freunde sprechen.",
+              "english": "I would like to talk about my friends."
+            },
+            {
+              "speaker": "eva",
+              "text": "Gut.",
+              "english": "Good."
+            },
+            {
+              "speaker": "eva",
+              "text": "Haben Sie ein Foto?",
+              "english": "Do you have a photo?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, hier ist ein Foto von der Gemeinde.",
+              "english": "Yes, here is a photo of the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist Thomas.",
+              "english": "That is Thomas."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er ist Pastor.",
+              "english": "He is a pastor."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er ist freundlich und ruhig.",
+              "english": "He is friendly and calm."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er sieht nett aus.",
+              "english": "He looks nice."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er hat kurzes Haar und helle Augen.",
+              "english": "He has short hair and light eyes."
+            },
+            {
+              "speaker": "eva",
+              "text": "Wie alt ist er?",
+              "english": "How old is he?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Er ist älter als David.",
+              "english": "He is older than David."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist Ruth.",
+              "english": "That is Ruth."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sie ist jung, aber Thomas ist älter als sie.",
+              "english": "She is young, but Thomas is older than she is."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sie hat dunkles Haar und ein freundliches Gesicht.",
+              "english": "She has dark hair and a friendly face."
+            },
+            {
+              "speaker": "sam",
+              "text": "Frau Weber hat kurzes Haar, und die Jacke von David ist dunkel.",
+              "english": "Mrs Weber has short hair, and David's jacket is dark."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sie ist größer als David.",
+              "english": "She is taller than David."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und das ist David.",
+              "english": "And this is David."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er hat eine Brille.",
+              "english": "He has glasses."
+            },
+            {
+              "speaker": "sam",
+              "text": "Thomas hat auch eine Brille.",
+              "english": "Thomas has glasses too."
+            },
+            {
+              "speaker": "sam",
+              "text": "David ist stark.",
+              "english": "David is strong."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er ist am stärksten.",
+              "english": "He is the strongest."
+            },
+            {
+              "speaker": "eva",
+              "text": "Sehr gut.",
+              "english": "Very good."
+            },
+            {
+              "speaker": "eva",
+              "text": "Man sagt: groß, größer, am größten.",
+              "english": "You say: big, bigger, the biggest."
+            },
+            {
+              "speaker": "eva",
+              "text": "Das ist die Grammatik.",
+              "english": "That is the grammar."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich verstehe.",
+              "english": "I understand."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich übe das, aber ich mache noch Fehler.",
+              "english": "I am practising it, but I still make mistakes."
+            },
+            {
+              "speaker": "eva",
+              "text": "Das ist nicht schwer.",
+              "english": "That is not hard."
+            },
+            {
+              "speaker": "eva",
+              "text": "Ich erkläre es noch einmal.",
+              "english": "I will explain it once more."
+            },
+            {
+              "speaker": "eva",
+              "text": "Das Wort \"nett\" ist ein gutes Wort.",
+              "english": "The word \"nett\" is a good word."
+            },
+            {
+              "speaker": "sam",
+              "text": "Frau Weber ist eine nette Frau.",
+              "english": "Mrs Weber is a nice woman."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bin bei ihr eingezogen.",
+              "english": "I moved in with her."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sie ist alt, aber sie ist gesund.",
+              "english": "She is old, but she is well."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sie hat helles Haar und ein freundliches Gesicht.",
+              "english": "She has light hair and a friendly face."
+            },
+            {
+              "speaker": "sam",
+              "text": "Frau Weber hat ein dickes Buch, und die Jacke von Ben ist dünn.",
+              "english": "Mrs Weber has a thick book, and Ben's jacket is thin."
+            },
+            {
+              "speaker": "sam",
+              "text": "Anna ist jünger als Lukas.",
+              "english": "Anna is younger than Lukas."
+            },
+            {
+              "speaker": "sam",
+              "text": "Lukas ist lustig, und er hat eine Brille.",
+              "english": "Lukas is funny, and he has glasses."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ben ist ein Kind.",
+              "english": "Ben is a child."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er hat ein lustiges Gesicht.",
+              "english": "He has a funny face."
+            },
+            {
+              "speaker": "sam",
+              "text": "Eva ist eine nette Lehrerin.",
+              "english": "Eva is a nice teacher."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ihr Buch ist dick, und mein Heft ist dünn.",
+              "english": "Her book is thick, and my exercise book is thin."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich glaube, dass jeder Mensch einen Freund braucht.",
+              "english": "I believe that every person needs a friend."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich möchte auch nett aussehen.",
+              "english": "I want to look nice too."
+            },
+            {
+              "speaker": "eva",
+              "text": "Ja, Herr Miller.",
+              "english": "Yes, Mr Miller."
+            },
+            {
+              "speaker": "eva",
+              "text": "Sehr gut.",
+              "english": "Very good."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Orte",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "eva",
+              "text": "Und wie sind der See und der Berg?",
+              "english": "And what are the lake and the hill like?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Berg ist hoch, und der Berg ist höher als der Wald.",
+              "english": "The hill is high, and the hill is higher than the forest."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der See ist am schönsten.",
+              "english": "The lake is the loveliest."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er ist nicht weit von Leipzig.",
+              "english": "It is not far from Leipzig."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Wald ist ruhiger als die Stadt, und er ist dunkel.",
+              "english": "The forest is calmer than the city, and it is dark."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Himmel am See ist hell, und der Berg ist am höchsten.",
+              "english": "The sky at the lake is bright, and the hill is the highest."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Stunde im Wald ist kurz, aber schön.",
+              "english": "The hour in the forest is short, but lovely."
+            },
+            {
+              "speaker": "sam",
+              "text": "Dort haben wir einen Ausflug gemacht.",
+              "english": "We made an excursion there."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wir haben ein Picknick gemacht und fotografiert.",
+              "english": "We had a picnic and took photographs."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ben ist ins Wasser gesprungen, und wir sind geschwommen.",
+              "english": "Ben jumped into the water, and we swam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Max hat den Ball geworfen, und Ben hat ihn gefangen.",
+              "english": "Max threw the ball, and Ben caught it."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die anderen Kinder haben gespielt.",
+              "english": "The other children played."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Bus war voll, aber der Wald war leer.",
+              "english": "The bus was full, but the forest was empty."
+            },
+            {
+              "speaker": "eva",
+              "text": "Sie sprechen gut.",
+              "english": "You speak well."
+            },
+            {
+              "speaker": "eva",
+              "text": "Ich verstehe alles.",
+              "english": "I understand everything."
+            },
+            {
+              "speaker": "eva",
+              "text": "Die Sprache ist für Sie leichter als vor zwei Wochen.",
+              "english": "The language is easier for you than two weeks ago."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mein Nachbar, Herr Schmidt, ist freundlicher als ich.",
+              "english": "My neighbour, Herr Schmidt, is friendlier than I am."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nach dem Kurs",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Kurs treffen sich Sam, Thomas, Ruth und David.",
+              "english": "After the course Sam, Thomas, Ruth and David meet."
+            },
+            {
+              "speaker": "david",
+              "text": "Hallo, Sam!",
+              "english": "Hello, Sam!"
+            },
+            {
+              "speaker": "david",
+              "text": "Wie war der Kurs?",
+              "english": "How was the course?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Gut!",
+              "english": "Good!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe über euch gesprochen.",
+              "english": "I talked about you."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Was sagst du über uns?",
+              "english": "What do you say about us?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Thomas ist freundlich, Ruth ist jünger als er, und David ist am stärksten.",
+              "english": "Thomas is friendly, Ruth is younger than he is, and David is the strongest."
+            },
+            {
+              "speaker": "david",
+              "text": "Ja!",
+              "english": "Yes!"
+            },
+            {
+              "speaker": "david",
+              "text": "Ich bin stärker als Thomas!",
+              "english": "I am stronger than Thomas!"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Nein, ich bin lustiger als du, David.",
+              "english": "No, I am funnier than you, David."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Du bist nicht lustig, du bist ruhig.",
+              "english": "You are not funny, you are calm."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Meine Bibel ist dick, und dein Buch ist dünn, David.",
+              "english": "My Bible is thick, and your book is thin, David."
+            },
+            {
+              "speaker": "david",
+              "text": "Hilfe!",
+              "english": "Help!"
+            },
+            {
+              "speaker": "david",
+              "text": "Meine Hand tut weh, ich brauche Hilfe mit der Bibel!",
+              "english": "My hand hurts, I need help with the Bible!"
+            },
+            {
+              "text": "Alle lachen.",
+              "english": "Everyone laughs."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich war in der Praxis.",
+              "english": "I was at the doctor's."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe ein Rezept und ein Medikament bekommen.",
+              "english": "I got a prescription and a medicine."
+            },
+            {
+              "speaker": "sam",
+              "text": "In der Apotheke habe ich das Medikament gekauft.",
+              "english": "I bought the medicine at the pharmacy."
+            },
+            {
+              "speaker": "sam",
+              "text": "Jetzt habe ich keine Erkältung und keine Schmerzen.",
+              "english": "Now I have no cold and no pain."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mein Fuß tut auch nicht weh.",
+              "english": "My foot does not hurt either."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich fühle mich besser als gestern.",
+              "english": "I feel better than yesterday."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Du bist wieder gesund, Sam.",
+              "english": "You are well again, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke!",
+              "english": "Thank you!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich frage dich: Wie fühlst du dich, Ruth?",
+              "english": "I ask you: how do you feel, Ruth?"
+            },
+            {
+              "speaker": "ruth",
+              "text": "Gut!",
+              "english": "Good!"
+            },
+            {
+              "speaker": "ruth",
+              "text": "Ich kenne dich nur zwei Wochen, aber du bist ein Freund.",
+              "english": "I have known you only two weeks, but you are a friend."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

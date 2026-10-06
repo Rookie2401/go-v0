@@ -1,0 +1,583 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-16",
+  "lang": "de",
+  "title": "Ein Ehepaar in der Mission",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-16",
+    "title": "Ein Ehepaar in der Mission (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: a biography of David and Ruth in the Präteritum (with the Plusquamperfekt once or twice and the Perfekt at the end), written by Sam for his German course; the missionary vocabulary (Mission, Missionar, Berufung, Spende, unterstützen, gründen) is the drafter's reading of Freikirche usage and should be checked by the reviewer; the practical details (visa, health insurance for the visa, vaccination) are simplified and not checked against real rules; places are kept to the USA and German cities; names and dates are invented."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography",
+    "missionary life",
+    "calling",
+    "moving abroad",
+    "homesickness"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Eine Aufgabe für den Kurs",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam schreibt für seinen Kurs über David und Ruth.",
+              "english": "Sam is writing about David and Ruth for his course."
+            },
+            {
+              "text": "Er fragt David und Ruth, und sie erzählen.",
+              "english": "He asks David and Ruth, and they tell him."
+            },
+            {
+              "text": "David und Ruth sind ein Ehepaar.",
+              "english": "David and Ruth are a married couple."
+            },
+            {
+              "text": "Sie sind Missionare in Leipzig.",
+              "english": "They are missionaries in Leipzig."
+            },
+            {
+              "text": "Hier ist ihre Geschichte.",
+              "english": "Here is their story."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "David",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "David wurde in den USA geboren.",
+              "english": "David was born in the USA."
+            },
+            {
+              "text": "Sein Vater hatte eine Werkstatt, und David war oft dort.",
+              "english": "His father had a workshop, and David was often there."
+            },
+            {
+              "text": "Nach der Schule machte er eine Ausbildung zum Mechaniker.",
+              "english": "After school he did an apprenticeship as a mechanic."
+            },
+            {
+              "text": "Er reparierte Autos, und er sprach gern mit den Kunden.",
+              "english": "He repaired cars, and he liked talking to the customers."
+            },
+            {
+              "text": "Er zog kaputte Reifen von den Autos und tauschte sie aus.",
+              "english": "He pulled broken tyres off the cars and replaced them."
+            },
+            {
+              "text": "Er schrieb auch die Rechnungen, und die Kunden bezahlten.",
+              "english": "He also wrote the invoices, and the customers paid."
+            },
+            {
+              "text": "Aber David wusste: Gott ruft mich.",
+              "english": "But David knew: God is calling me."
+            },
+            {
+              "text": "Das war seine Berufung.",
+              "english": "That was his calling."
+            },
+            {
+              "text": "Er musste sich entscheiden.",
+              "english": "He had to decide."
+            },
+            {
+              "text": "Die Entscheidung war nicht leicht.",
+              "english": "The decision was not easy."
+            },
+            {
+              "text": "Er begann ein Studium der Theologie an einer Universität.",
+              "english": "He began studying theology at a university."
+            },
+            {
+              "text": "Er studierte vier Jahre, und er las viele Bücher.",
+              "english": "He studied for four years, and he read many books."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ruth",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ruth wuchs an der Küste auf.",
+              "english": "Ruth grew up on the coast."
+            },
+            {
+              "text": "Sie war Erzieherin in einem Kindergarten.",
+              "english": "She was a nursery teacher in a kindergarten."
+            },
+            {
+              "text": "Sie malte mit den Kindern, und sie las ihnen jeden Tag etwas vor.",
+              "english": "She painted with the children, and she read to them every day."
+            },
+            {
+              "text": "Die Kinder hatten Spiele und viel Spielzeug.",
+              "english": "The children had games and many toys."
+            },
+            {
+              "text": "Am Wochenende arbeitete Ruth im Krankenhaus.",
+              "english": "At the weekend Ruth worked in the hospital."
+            },
+            {
+              "text": "Dort las sie kranken Kindern vor.",
+              "english": "There she read to sick children."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Wie sie sich kennenlernten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Eines Tages hatte David einen Notfall in der Werkstatt.",
+              "english": "One day David had an emergency in the workshop."
+            },
+            {
+              "text": "Er hatte sich am Arm und am Bein verletzt.",
+              "english": "He had hurt his arm and his leg."
+            },
+            {
+              "text": "Er hatte Blut an der Haut und eine Wunde.",
+              "english": "He had blood on his skin and a wound."
+            },
+            {
+              "text": "Der Krankenwagen brachte ihn sofort ins Krankenhaus.",
+              "english": "The ambulance took him to the hospital at once."
+            },
+            {
+              "text": "Eine Ärztin untersuchte ihn.",
+              "english": "A doctor examined him."
+            },
+            {
+              "text": "Sie legte ein Pflaster auf die Wunde und gab ihm eine Spritze.",
+              "english": "She put a plaster on the wound and gave him an injection."
+            },
+            {
+              "text": "David hatte auch Schmerzen im Rücken.",
+              "english": "David also had pain in his back."
+            },
+            {
+              "text": "Am Samstag kam Ruth, und sie las den Kindern vor.",
+              "english": "On Saturday Ruth came, and she read to the children."
+            },
+            {
+              "text": "David saß im Bett, und er war ganz still.",
+              "english": "David sat in bed, and he was completely quiet."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Mission",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach einem Jahr heirateten die beiden.",
+              "english": "After a year the two of them got married."
+            },
+            {
+              "text": "Die Hochzeit war im Sommer.",
+              "english": "The wedding was in the summer."
+            },
+            {
+              "text": "Ruth wollte auch studieren, und sie ging an die Universität.",
+              "english": "Ruth wanted to study too, and she went to the university."
+            },
+            {
+              "text": "Das Studium war lang, aber es war schön.",
+              "english": "The studies were long, but they were lovely."
+            },
+            {
+              "text": "Beide liebten die Theologie.",
+              "english": "Both loved theology."
+            },
+            {
+              "text": "Sie studierten dann zusammen ein Jahr.",
+              "english": "Then they studied together for a year."
+            },
+            {
+              "text": "Nach dem Studium wollten sie nach Deutschland.",
+              "english": "After their studies they wanted to go to Germany."
+            },
+            {
+              "text": "An der Universität kam eines Tages ein Pastor aus Leipzig.",
+              "english": "One day a pastor from Leipzig came to the university."
+            },
+            {
+              "text": "Er suchte Missionare für die Mission in Leipzig.",
+              "english": "He was looking for missionaries for the mission in Leipzig."
+            },
+            {
+              "text": "David und Ruth redeten viele Abende.",
+              "english": "David and Ruth talked on many evenings."
+            },
+            {
+              "text": "Sie mussten sich wieder entscheiden.",
+              "english": "They had to decide again."
+            },
+            {
+              "text": "Es war eine große Entscheidung: ein neues Land, eine neue Sprache, ein neues Leben.",
+              "english": "It was a big decision: a new country, a new language, a new life."
+            },
+            {
+              "text": "Aber die Berufung war da, und sie sagten Ja.",
+              "english": "But the calling was there, and they said yes."
+            },
+            {
+              "text": "Das Ehepaar wollte als Missionare nach Deutschland gehen.",
+              "english": "The couple wanted to go to Germany as missionaries."
+            },
+            {
+              "text": "Ihre Freunde in der Heimat unterstützten sie.",
+              "english": "Their friends at home supported them."
+            },
+            {
+              "text": "Die Gemeinde gab Spenden.",
+              "english": "The congregation gave donations."
+            },
+            {
+              "text": "Jeden Monat kam eine Spende, und eine Spende war für die Reise.",
+              "english": "Every month a donation came, and one donation was for the journey."
+            },
+            {
+              "text": "Das Geld unterstützt die Familie noch heute.",
+              "english": "The money still supports the family today."
+            },
+            {
+              "text": "Alle unterstützten sie, und sie hatten viele Freunde.",
+              "english": "Everyone supported them, and they had many friends."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Visum und Gesundheit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Für Deutschland brauchten sie ein Visum.",
+              "english": "For Germany they needed a visa."
+            },
+            {
+              "text": "Als Bürger der USA bekamen sie es von der Regierung.",
+              "english": "As citizens of the USA they got it from the government."
+            },
+            {
+              "text": "Die Mission schrieb einen Brief für sie.",
+              "english": "The mission wrote a letter for them."
+            },
+            {
+              "text": "Sie schrieben viele Mails, und sie warteten drei Monate.",
+              "english": "They wrote many e-mails, and they waited three months."
+            },
+            {
+              "text": "Für das Visum brauchten sie eine Versicherung und eine Krankenkasse.",
+              "english": "For the visa they needed insurance and a health insurance fund."
+            },
+            {
+              "text": "Sie mussten sich auch impfen lassen.",
+              "english": "They also had to be vaccinated."
+            },
+            {
+              "text": "Die Impfung war schnell, und die Spritze tat kaum weh.",
+              "english": "The vaccination was quick, and the injection hardly hurt."
+            },
+            {
+              "text": "Ruth ging noch zum Zahnarzt, denn die Gesundheit war wichtig.",
+              "english": "Ruth also went to the dentist, because health was important."
+            },
+            {
+              "text": "Dann kam das Visum.",
+              "english": "Then the visa came."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Abschied",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Der Abschied war schwer.",
+              "english": "The farewell was hard."
+            },
+            {
+              "text": "Ruth weinte, und auch David weinte.",
+              "english": "Ruth cried, and David cried too."
+            },
+            {
+              "text": "Der Abschied von der Heimat war nicht leicht.",
+              "english": "Leaving home was not easy."
+            },
+            {
+              "text": "Nach dem Abschied zogen sie im Herbst nach Leipzig um.",
+              "english": "After the farewell they moved to Leipzig in the autumn."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Reise",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Der Zug von Frankfurt nach Leipzig hatte Verspätung.",
+              "english": "The train from Frankfurt to Leipzig was late."
+            },
+            {
+              "text": "Auf dem Bahnsteig kam eine Durchsage.",
+              "english": "On the platform there was an announcement."
+            },
+            {
+              "text": "Der Anschluss war schon gefahren.",
+              "english": "The connection had already gone."
+            },
+            {
+              "text": "Sie ärgerten sich, aber sie waren zu müde.",
+              "english": "They were annoyed, but they were too tired."
+            },
+            {
+              "text": "Bei der Auskunft fragten sie nach dem Fahrplan.",
+              "english": "At the information desk they asked about the timetable."
+            },
+            {
+              "text": "Es gab Ersatz: einen Bus.",
+              "english": "There was a replacement: a bus."
+            },
+            {
+              "text": "Aber auf der Straße war Stau, und sie mussten warten.",
+              "english": "But on the road there was a traffic jam, and they had to wait."
+            },
+            {
+              "text": "So kamen sie spät in der Nacht an.",
+              "english": "So they arrived late at night."
+            },
+            {
+              "text": "„Die Bahn in Deutschland ist nicht immer pünktlich“, sagte Ruth später lachend.",
+              "english": "\"The railway in Germany is not always on time,\" said Ruth later, laughing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das fremde Leben",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Die Kultur war neu für sie.",
+              "english": "The culture was new to them."
+            },
+            {
+              "text": "Das Essen war fremd, das Wetter war fremd, und die Sprache war fremd.",
+              "english": "The food was strange, the weather was strange, and the language was strange."
+            },
+            {
+              "text": "Das Leben im Ausland war nicht leicht.",
+              "english": "Life abroad was not easy."
+            },
+            {
+              "text": "Sie lernten viel über die Kultur und über das Ausland.",
+              "english": "They learned a lot about the culture and about being abroad."
+            },
+            {
+              "text": "Ruth hatte Heimweh, und David hatte auch Heimweh.",
+              "english": "Ruth was homesick, and David was homesick too."
+            },
+            {
+              "text": "Am Abend war das Heimweh am schlimmsten.",
+              "english": "In the evening the homesickness was at its worst."
+            },
+            {
+              "text": "Sie mussten sich an alles gewöhnen.",
+              "english": "They had to get used to everything."
+            },
+            {
+              "text": "Sie gewöhnten sich langsam an das Wetter und an das Brot.",
+              "english": "They slowly got used to the weather and to the bread."
+            },
+            {
+              "text": "Nach einem Jahr hatten sie sich fast an die Kultur gewöhnt.",
+              "english": "After a year they had almost got used to the culture."
+            },
+            {
+              "text": "Mit Thomas begann eine Freundschaft.",
+              "english": "A friendship began with Thomas."
+            },
+            {
+              "text": "Freundschaften brauchen Zeit, sagte David.",
+              "english": "Friendships need time, said David."
+            },
+            {
+              "text": "Eine gute Freundschaft ist wie ein Haus.",
+              "english": "A good friendship is like a house."
+            },
+            {
+              "text": "Mit Thomas gründeten sie eine kleine Gruppe.",
+              "english": "With Thomas they founded a small group."
+            },
+            {
+              "text": "Sie wollten eine Gemeinde gründen, aber sie hatten viel Zeit.",
+              "english": "They wanted to found a congregation, but they had plenty of time."
+            },
+            {
+              "text": "Sie haben die Gruppe gegründet, und sie nennen sie „Wir in Leipzig“.",
+              "english": "They have founded the group, and they call it \"We in Leipzig\"."
+            },
+            {
+              "text": "Die Kinder nennen David „Onkel David“.",
+              "english": "The children call David \"Uncle David\"."
+            },
+            {
+              "text": "Thomas nennt sie seine Freunde.",
+              "english": "Thomas calls them his friends."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Heute",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "David und Ruth haben zwei Kinder.",
+              "english": "David and Ruth have two children."
+            },
+            {
+              "text": "Die Kinder gehen in den Kindergarten, und Sabine ist ihre Erzieherin.",
+              "english": "The children go to the kindergarten, and Sabine is their nursery teacher."
+            },
+            {
+              "text": "Der Sohn malt gern, und Ruth liest ihm jeden Abend etwas vor.",
+              "english": "The son likes painting, and Ruth reads to him every evening."
+            },
+            {
+              "text": "Sein liebstes Spielzeug ist ein Auto.",
+              "english": "His favourite toy is a car."
+            },
+            {
+              "text": "Es ist kaputt, aber David repariert es.",
+              "english": "It is broken, but David repairs it."
+            },
+            {
+              "text": "Am Abend machen sie zusammen ein Spiel.",
+              "english": "In the evening they play a game together."
+            },
+            {
+              "text": "Heute fühlt sich das Ehepaar in Leipzig wohl.",
+              "english": "Today the couple feels at home in Leipzig."
+            },
+            {
+              "text": "Die Mission ist klein, aber alle sind froh.",
+              "english": "The mission is small, but everyone is glad."
+            },
+            {
+              "text": "Ihre Berufung ist noch da, und sie haben sich nicht falsch entschieden.",
+              "english": "Their calling is still there, and they did not decide wrongly."
+            },
+            {
+              "text": "Die Entscheidung war richtig, sagt Ruth.",
+              "english": "The decision was right, says Ruth."
+            },
+            {
+              "text": "Sie sind in eine neue Wohnung umgezogen.",
+              "english": "They have moved to a new flat."
+            },
+            {
+              "text": "Heute sind sie gern im Ausland.",
+              "english": "Today they are happy abroad."
+            },
+            {
+              "text": "Am Abend liest Ruth ein Buch über Theologie.",
+              "english": "In the evening Ruth reads a book about theology."
+            },
+            {
+              "text": "Was haben sie gelernt?",
+              "english": "What have they learned?"
+            },
+            {
+              "text": "Menschen sind wichtiger als Programme.",
+              "english": "People are more important than programmes."
+            },
+            {
+              "text": "Gott ruft, aber er geht mit.",
+              "english": "God calls, but he goes along."
+            },
+            {
+              "text": "Sam schreibt: „Ich habe viel gelernt, und ich bin froh.“",
+              "english": "Sam writes, \"I have learned a lot, and I am glad.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-15",
+  "lang": "de",
+  "title": "Sam's first testimony",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-15",
+    "title": "Sam's first testimony (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A short testimony in the first person, spoken by Sam in a small group at the church (du among all). The contrast \"früher / jetzt\" is carried by a few uses of \"war\" and \"hatte\" (and \"glaubte\"), which the ladder has not taught yet; they are short and common and are left in because a testimony cannot be told in the present only. The vocabulary is plain: \"glauben an Gott\", \"Gott liebt mich\", \"ich bin froh\", \"ich danke Gott\". A Scripture-competent reviewer should read the theology (Freikirche); Sam's words are simple on purpose."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "testimony",
+    "faith",
+    "before and after",
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "thomas": "Thomas",
+    "sam": "Sam",
+    "anna": "Anna",
+    "marta": "Marta",
+    "ben": "Ben"
+  },
+  "sections": [
+    {
+      "title": "Mittwoch in der Gemeinde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Mittwoch, 19 Uhr.",
+              "english": "It is Wednesday, 7 p.m."
+            },
+            {
+              "text": "Die Gemeinde ist da, und alle singen ein Lied.",
+              "english": "The congregation is there, and everyone sings a song."
+            },
+            {
+              "text": "Dann beten alle.",
+              "english": "Then everyone prays."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Heute will Sam etwas sagen.",
+              "english": "Today Sam wants to say something."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Sam, du kannst sprechen.",
+              "english": "Sam, you can speak."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Thomas.",
+              "english": "Thank you, Thomas."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mein Deutsch ist nicht gut.",
+              "english": "My German is not good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Aber ich will sprechen.",
+              "english": "But I want to speak."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Früher",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Ich heiße Sam.",
+              "english": "My name is Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich komme aus den USA.",
+              "english": "I come from the USA."
+            },
+            {
+              "speaker": "sam",
+              "text": "Früher war ich nie froh.",
+              "english": "Before, I was never happy."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich hatte viel, aber nie Freude.",
+              "english": "I had a lot, but never joy."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mein Herz war kalt, wie das Wetter.",
+              "english": "My heart was cold, like the weather."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich war nie in der Gemeinde.",
+              "english": "I was never in a church."
+            },
+            {
+              "speaker": "sam",
+              "text": "Früher war ich immer müde.",
+              "english": "Before, I was always tired."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das Leben war nicht gut.",
+              "english": "Life was not good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Früher glaubte ich nicht.",
+              "english": "Before, I did not believe."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Jetzt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Jetzt glaube ich an Gott.",
+              "english": "Now I believe in God."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gott liebt mich.",
+              "english": "God loves me."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich liebe meine Freunde.",
+              "english": "I love my friends."
+            },
+            {
+              "speaker": "sam",
+              "text": "Jetzt bin ich froh.",
+              "english": "Now I am happy."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe Freude, und die Freude ist groß.",
+              "english": "I have joy, and the joy is great."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Liebe von Gott ist groß.",
+              "english": "God's love is great."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bin ein Christ.",
+              "english": "I am a Christian."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ein Christ glaubt und dankt.",
+              "english": "A Christian believes and gives thanks."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich danke Gott für das Leben.",
+              "english": "I thank God for life."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das Leben ist jetzt gut.",
+              "english": "Life is good now."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er ist da, in der Bibel, im Lied, in der Gemeinde.",
+              "english": "He is there, in the Bible, in the song, in the church."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Mein Weg",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Die Liebe ist hier, in meinem Herzen.",
+              "english": "Love is here, in my heart."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich komme mit dem Zug in Leipzig an.",
+              "english": "I arrive in Leipzig by train."
+            },
+            {
+              "speaker": "sam",
+              "text": "Am Bahnhof kaufe ich eine Fahrkarte.",
+              "english": "At the station I buy a ticket."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Straßenbahn fährt in fünf Minuten ab.",
+              "english": "The tram leaves in five minutes."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich fahre bis zur Haltestelle in der Straße von Frau Weber.",
+              "english": "I ride to the stop in Mrs Weber's street."
+            },
+            {
+              "speaker": "sam",
+              "text": "Dann bin ich bei Frau Weber.",
+              "english": "Then I am at Mrs Weber's."
+            },
+            {
+              "speaker": "sam",
+              "text": "Am Sonntag gehe ich in die Gemeinde.",
+              "english": "On Sunday I go to the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Gottesdienst ist wieder so gut!",
+              "english": "The service is so good again!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich will beten, ich will singen, ich will helfen.",
+              "english": "I want to pray, I want to sing, I want to help."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich kann nicht gut singen, aber das Lied ist schön.",
+              "english": "I cannot sing well, but the song is lovely."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich muss lernen, und ich lerne gern.",
+              "english": "I must learn, and I like learning."
+            },
+            {
+              "speaker": "sam",
+              "text": "Im Park ist die Sonne warm, und mein Herz ist auch warm.",
+              "english": "In the park the sun is warm, and my heart is warm too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Danke",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Alle sagen: \"Danke, Sam!\"",
+              "english": "Everyone says: \"Thank you, Sam!\""
+            },
+            {
+              "speaker": "thomas",
+              "text": "Du sollst wieder sprechen, Sam.",
+              "english": "You should speak again, Sam."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Du bist ein guter Christ.",
+              "english": "You are a good Christian."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Wir danken Gott für Sam.",
+              "english": "We thank God for Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mein Deutsch ist nicht gut.",
+              "english": "My German is not good."
+            },
+            {
+              "speaker": "anna",
+              "text": "Doch, du sprichst gut!",
+              "english": "Yes you do, you speak well!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Gott liebt dich, Sam.",
+              "english": "God loves you, Sam."
+            },
+            {
+              "speaker": "anna",
+              "text": "Die Liebe ist für alle da.",
+              "english": "Love is there for everyone."
+            },
+            {
+              "text": "Alle singen wieder ein Lied.",
+              "english": "Everyone sings a song again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nach dem Abend",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dann gibt es Kaffee, Tee und Kuchen in der Küche.",
+              "english": "Then there is coffee, tea and cake in the kitchen."
+            },
+            {
+              "speaker": "marta",
+              "text": "Sam, das war sehr gut!",
+              "english": "Sam, that was very good!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Sam, ich bin wieder gesund, und ich habe Hunger!",
+              "english": "Sam, I am well again, and I am hungry!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Du hast immer Hunger, Ben.",
+              "english": "You are always hungry, Ben."
+            },
+            {
+              "speaker": "marta",
+              "text": "Nimm Kuchen.",
+              "english": "Take some cake."
+            },
+            {
+              "speaker": "ben",
+              "text": "Mein Papa sagt: \"Sam spricht gern Deutsch.\"",
+              "english": "My papa says: \"Sam likes speaking German.\""
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Ben.",
+              "english": "Thank you, Ben."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich möchte Kaffee mit Milch.",
+              "english": "I would like coffee with milk."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Hier, Sam.",
+              "english": "Here, Sam."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Möchtest du auch Brot?",
+              "english": "Would you like some bread too?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, gern.",
+              "english": "Yes, gladly."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bin müde, aber ich bin sehr froh.",
+              "english": "I am tired, but I am very happy."
+            },
+            {
+              "speaker": "anna",
+              "text": "Wir gehen zusammen nach Hause, Sam.",
+              "english": "We are going home together, Sam."
+            },
+            {
+              "text": "Es ist spät, und der Abend ist gut.",
+              "english": "It is late, and the evening is good."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

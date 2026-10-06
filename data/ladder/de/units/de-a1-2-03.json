@@ -1,0 +1,491 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-03",
+  "lang": "de",
+  "title": "A rainy Saturday",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-03",
+    "title": "A rainy Saturday (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Narrative with dialogue. Ben says du to Lukas outside school (Lukas is Anna's brother and Ben's teacher; Ben is Marta's grandson). \"Ich war noch nie im Kino\" uses \"war\", which has been met since a1-1-15. \"Regenschirm\" and \"Jacke\" are the plain words for an umbrella and a jacket. \"Mitkommen\" is split in a main clause (\"Kommst du mit?\")."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "weekend",
+    "cinema",
+    "weather",
+    "feelings",
+    "lost things"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ben": "Ben",
+    "lukas": "Lukas",
+    "anna": "Anna",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Es regnet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Samstag, und es regnet.",
+              "english": "It is Saturday, and it rains."
+            },
+            {
+              "text": "Es ist Wochenende, aber das Wetter ist schlecht.",
+              "english": "It is the weekend, but the weather is bad."
+            },
+            {
+              "text": "Ben ist bei Lukas.",
+              "english": "Ben is at Lukas's."
+            },
+            {
+              "text": "Am Morgen essen sie Brötchen mit Butter und Ei.",
+              "english": "In the morning they eat rolls with butter and egg."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Am Wochenende ist die Schule aus.",
+              "english": "At the weekend school is out."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ja, aber was machen wir heute?",
+              "english": "Yes, but what are we doing today?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Das Wetter ist schlecht.",
+              "english": "The weather is bad."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wir bleiben zu Hause.",
+              "english": "We are staying at home."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich möchte nicht zu Hause bleiben.",
+              "english": "I do not want to stay at home."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich bin traurig.",
+              "english": "I am sad."
+            },
+            {
+              "speaker": "ben",
+              "text": "Mein Kopf tut weh, und mein Bauch auch.",
+              "english": "My head hurts, and my stomach too."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Hast du Fieber?",
+              "english": "Do you have a fever?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Tut der Hals weh?",
+              "english": "Does your throat hurt?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Nein, aber ich bin traurig.",
+              "english": "No, but I am sad."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Du bist gesund, Ben.",
+              "english": "You are well, Ben."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Du brauchst keine Tablette.",
+              "english": "You do not need a tablet."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Du bist nicht krank.",
+              "english": "You are not ill."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Leg dich nicht ins Bett!",
+              "english": "Do not lie down in bed!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wir können einmal ins Kino gehen.",
+              "english": "We could go to the cinema for once."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich war noch nie im Kino!",
+              "english": "I have never been to the cinema!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Dann gehen wir einmal.",
+              "english": "Then let us go for once."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Es gibt einen neuen Film.",
+              "english": "There is a new film."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ein neuer Film!",
+              "english": "A new film!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich bin glücklich!",
+              "english": "I am happy!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Jacke und Regenschirm",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "lukas",
+              "text": "Nimm die Jacke und den Regenschirm.",
+              "english": "Take the jacket and the umbrella."
+            },
+            {
+              "text": "Ben legt sein Heft in den Rucksack.",
+              "english": "Ben puts his exercise book in his school bag."
+            },
+            {
+              "text": "Er sucht die Jacke und den Regenschirm.",
+              "english": "He looks for the jacket and the umbrella."
+            },
+            {
+              "text": "Die Jacke liegt unter dem Bett.",
+              "english": "The jacket is under the bed."
+            },
+            {
+              "speaker": "ben",
+              "text": "Wo ist der Regenschirm?",
+              "english": "Where is the umbrella?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich verliere alles!",
+              "english": "I lose everything!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Er steht neben dem Rucksack.",
+              "english": "It is next to the school bag."
+            },
+            {
+              "text": "Ben findet ihn, und er nimmt sie.",
+              "english": "Ben finds it, and he takes it."
+            },
+            {
+              "text": "Lukas nimmt sein Handy.",
+              "english": "Lukas takes his phone."
+            },
+            {
+              "text": "Er schreibt eine Nachricht an Anna.",
+              "english": "He writes a message to Anna."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Hallo Anna!",
+              "english": "Hello Anna!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ben und ich gehen heute ins Kino.",
+              "english": "Ben and I are going to the cinema today."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Kommst du mit?",
+              "english": "Are you coming?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich kann nicht.",
+              "english": "I cannot."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich arbeite am Samstag und am Sonntag.",
+              "english": "I work on Saturday and Sunday."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich habe am Montag einen Termin, aber ruf mich bald an!",
+              "english": "I have an appointment on Monday, but call me soon!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Im Kino",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ben und Lukas sehen den Film.",
+              "english": "Ben and Lukas watch the film."
+            },
+            {
+              "text": "Ben lacht.",
+              "english": "Ben laughs."
+            },
+            {
+              "text": "Lukas lacht auch.",
+              "english": "Lukas laughs too."
+            },
+            {
+              "text": "Dann ist es traurig.",
+              "english": "Then it is sad."
+            },
+            {
+              "text": "Ben weint.",
+              "english": "Ben cries."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich weine nicht!",
+              "english": "I am not crying!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich lache!",
+              "english": "I am laughing!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Du musst nicht weinen, Ben.",
+              "english": "You do not have to cry, Ben."
+            },
+            {
+              "text": "Dann sind alle glücklich.",
+              "english": "Then everyone is happy."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich war noch nie so glücklich!",
+              "english": "I have never been so happy!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Pizza",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dann essen Ben und Lukas Pizza.",
+              "english": "Then Ben and Lukas eat pizza."
+            },
+            {
+              "speaker": "ben",
+              "text": "Die Pizza ist lecker!",
+              "english": "The pizza is tasty!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ich habe genug.",
+              "english": "I have enough."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Hast du auch genug?",
+              "english": "Do you have enough too?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Nein, ich habe nicht genug!",
+              "english": "No, I do not have enough!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich möchte einmal eine große Pizza!",
+              "english": "I would like a big pizza for once!"
+            },
+            {
+              "text": "Lukas ruft Anna an.",
+              "english": "Lukas calls Anna."
+            },
+            {
+              "text": "Anna möchte auch mitkommen.",
+              "english": "Anna would like to come along too."
+            },
+            {
+              "text": "Sam ist auch da, mit seinem neuen Handy.",
+              "english": "Sam is there too, with his new phone."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hallo, Ben!",
+              "english": "Hello, Ben!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Hallo, Lukas!",
+              "english": "Hello, Lukas!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie war es?",
+              "english": "How was it?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Gut!",
+              "english": "Good!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Und es ist so lecker hier!",
+              "english": "And it is so tasty here!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Das Wetter ist schlecht, aber ihr seid froh.",
+              "english": "The weather is bad, but you are happy."
+            },
+            {
+              "text": "Lukas liest das Wetter auf dem Handy.",
+              "english": "Lukas reads the weather on his phone."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Am Montag regnet es, am Dienstag auch.",
+              "english": "On Monday it rains, on Tuesday too."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Am Mittwoch gibt es Wind, und am Donnerstag scheint die Sonne.",
+              "english": "On Wednesday there is wind, and on Thursday the sun shines."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Am Freitag wird es warm.",
+              "english": "On Friday it gets warm."
+            },
+            {
+              "speaker": "ben",
+              "text": "Gut!",
+              "english": "Good!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich möchte bald wieder gehen, am Wochenende!",
+              "english": "I would like to go again soon, at the weekend!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Wir gehen jetzt zusammen nach Hause.",
+              "english": "We are going home together now."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich bin müde.",
+              "english": "I am tired."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich möchte schlafen.",
+              "english": "I want to sleep."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich komme auch mit.",
+              "english": "I am coming along too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Straßenbahn fährt um acht Uhr ab.",
+              "english": "The tram leaves at eight o'clock."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Tschüs, Ben!",
+              "english": "Bye, Ben!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Morgen ist Sonntag.",
+              "english": "Tomorrow is Sunday."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann gehen wir in die Kirche, mit Oma!",
+              "english": "Then we go to church, with Grandma!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Gut, wir bleiben nicht zu Hause.",
+              "english": "Good, we are not staying at home."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wir gehen morgen wieder.",
+              "english": "We are going again tomorrow."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

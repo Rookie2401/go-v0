@@ -1,0 +1,392 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-07",
+  "lang": "de",
+  "title": "Lukas's school day",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-07",
+    "title": "Lukas's school day (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A short narrative with a little dialogue. Clock times use \"um sieben Uhr\" and \"halb sieben\" (half past six is \"halb sieben\" in German: half an hour before seven). The class is a Klasse 4 (about ten years old), as in Stage 0. The pupils answer a teacher together with \"Guten Morgen!\"; a teacher would normally be addressed with a surname, which the unit avoids. \"Die Schule ist aus\" = school is over."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "school",
+    "time",
+    "daily routine",
+    "separable verbs"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "lukas": "Lukas",
+    "ben": "Ben",
+    "marta": "Marta",
+    "sam": "Sam",
+    "anna": "Anna",
+    "klasse": "Die Klasse",
+    "schueler": "Ein Schüler"
+  },
+  "sections": [
+    {
+      "title": "Am Morgen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist sechs Uhr.",
+              "english": "It is six o'clock."
+            },
+            {
+              "text": "Lukas ist müde.",
+              "english": "Lukas is tired."
+            },
+            {
+              "text": "Er steht um halb sieben auf.",
+              "english": "He gets up at half past six."
+            },
+            {
+              "text": "Lukas geht in die Küche.",
+              "english": "Lukas goes into the kitchen."
+            },
+            {
+              "text": "Er nimmt Kaffee und ein Brötchen mit Käse.",
+              "english": "He takes coffee and a roll with cheese."
+            },
+            {
+              "text": "Das Fenster in der Küche ist groß.",
+              "english": "The window in the kitchen is big."
+            },
+            {
+              "text": "Das Frühstück ist so gut!",
+              "english": "The breakfast is so good!"
+            },
+            {
+              "text": "Um sieben Uhr geht Lukas in die Schule.",
+              "english": "At seven o'clock Lukas goes to school."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ben",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ben ist bei Oma.",
+              "english": "Ben is at Grandma's."
+            },
+            {
+              "text": "Er ist im Bett.",
+              "english": "He is in bed."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ben, es ist spät!",
+              "english": "Ben, it is late!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Die Schule fängt um acht Uhr an.",
+              "english": "School starts at eight o'clock."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich bin müde, Oma.",
+              "english": "I am tired, Grandma."
+            },
+            {
+              "text": "Ben möchte nicht aufstehen.",
+              "english": "Ben does not want to get up."
+            },
+            {
+              "text": "Er ist ein Kind, und er ist spät.",
+              "english": "He is a child, and he is late."
+            },
+            {
+              "speaker": "marta",
+              "text": "Nimm ein Brötchen, Ben!",
+              "english": "Take a roll, Ben!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Papa sagt: \"Gute Schüler lernen gern.\"",
+              "english": "Papa says: \"Good pupils like to learn.\""
+            },
+            {
+              "speaker": "marta",
+              "text": "Ja, Papa ist gut.",
+              "english": "Yes, Papa is good."
+            },
+            {
+              "speaker": "marta",
+              "text": "Geh in die Schule!",
+              "english": "Go to school!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "In der Klasse",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Die Schule ist groß, und die Klasse von Lukas ist auch groß.",
+              "english": "The school is big, and Lukas's class is big too."
+            },
+            {
+              "text": "Im Zimmer gibt es zwanzig Stühle.",
+              "english": "In the room there are twenty chairs."
+            },
+            {
+              "text": "Die Schüler sind alle da.",
+              "english": "The pupils are all there."
+            },
+            {
+              "text": "Lukas möchte anfangen.",
+              "english": "Lukas wants to start."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Guten Morgen, Klasse!",
+              "english": "Good morning, class!"
+            },
+            {
+              "speaker": "klasse",
+              "text": "Guten Morgen!",
+              "english": "Good morning!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wir lernen heute Deutsch.",
+              "english": "Today we are learning German."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Nehmt das Buch!",
+              "english": "Take the book!"
+            },
+            {
+              "text": "Die Stunde ist ganz gut.",
+              "english": "The lesson is quite good."
+            },
+            {
+              "text": "Nach der Stunde ist Pause.",
+              "english": "After the lesson there is a break."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sam kommt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam ist auch in der Schule.",
+              "english": "Sam is at the school too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Guten Tag, Klasse!",
+              "english": "Good day, class!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Mein Name ist Sam.",
+              "english": "My name is Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich spreche Deutsch, wie ihr.",
+              "english": "I speak German, like you."
+            },
+            {
+              "speaker": "schueler",
+              "text": "Woher kommen Sie?",
+              "english": "Where do you come from?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich komme aus den USA.",
+              "english": "I come from the USA."
+            },
+            {
+              "text": "Sam sagt: \"Ich möchte gern lernen.\"",
+              "english": "Sam says: \"I would like to learn.\""
+            },
+            {
+              "text": "Die Kinder sind sehr gut.",
+              "english": "The children are very good."
+            },
+            {
+              "text": "In der Pause sind Sam und Ben zusammen.",
+              "english": "During the break Sam and Ben are together."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das Brötchen ist so lecker!",
+              "english": "The roll is so tasty!"
+            },
+            {
+              "text": "Nach der Pause lernen die Schüler gern.",
+              "english": "After the break the pupils like learning."
+            },
+            {
+              "text": "Um halb eins ist die Schule aus.",
+              "english": "At half past twelve school is over."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nach der Schule",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach der Schule geht Ben nach Hause.",
+              "english": "After school Ben goes home."
+            },
+            {
+              "text": "Sam und Lukas haben zusammen Mittagessen.",
+              "english": "Sam and Lukas have lunch together."
+            },
+            {
+              "text": "Sie nehmen Suppe und Kartoffeln.",
+              "english": "They have soup and potatoes."
+            },
+            {
+              "text": "Anna arbeitet in der Klinik.",
+              "english": "Anna works at the clinic."
+            },
+            {
+              "text": "Sie ist müde, aber sie arbeitet gern.",
+              "english": "She is tired, but she likes working."
+            },
+            {
+              "text": "Anna kommt nach Hause.",
+              "english": "Anna comes home."
+            },
+            {
+              "text": "Lukas ist da.",
+              "english": "Lukas is there."
+            },
+            {
+              "speaker": "anna",
+              "text": "Hallo, Lukas!",
+              "english": "Hello, Lukas!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Wie ist die Schule?",
+              "english": "How is school?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Sehr gut, die Klasse ist groß, aber sehr gut.",
+              "english": "Very good, the class is big, but very good."
+            },
+            {
+              "speaker": "anna",
+              "text": "Und Sam?",
+              "english": "And Sam?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Sam kommt gern in die Schule.",
+              "english": "Sam likes coming to the school."
+            },
+            {
+              "text": "Lukas ist auch müde, und er geht in sein Zimmer.",
+              "english": "Lukas is tired too, and he goes to his room."
+            },
+            {
+              "speaker": "sam",
+              "text": "Am Abend gehe ich zu Frau Weber.",
+              "english": "In the evening I go to Mrs Weber's."
+            },
+            {
+              "speaker": "sam",
+              "text": "Am Abend habe ich eine Stunde Deutsch.",
+              "english": "In the evening I have a German lesson."
+            },
+            {
+              "speaker": "sam",
+              "text": "Frau Weber ist sehr gut.",
+              "english": "Mrs Weber is very good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wir sind in der Küche, am Tisch, mit Kaffee.",
+              "english": "We are in the kitchen, at the table, with coffee."
+            },
+            {
+              "text": "Es ist halb acht.",
+              "english": "It is half past seven."
+            },
+            {
+              "text": "Lukas trinkt Tee und sagt: \"Das ist ein schöner Tag.\"",
+              "english": "Lukas drinks tea and says: \"That was a lovely day.\""
+            },
+            {
+              "text": "Er geht ins Bett.",
+              "english": "He goes to bed."
+            },
+            {
+              "text": "Es war ein guter Tag in der Schule.",
+              "english": "It was a good day at school."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

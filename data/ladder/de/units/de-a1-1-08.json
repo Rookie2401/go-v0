@@ -1,0 +1,470 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-08",
+  "lang": "de",
+  "title": "Who works where",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-08",
+    "title": "Who works where (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Pastor Thomas uses du with Sam (a free church; first names in the Gemeinde); Sam and Herr Schmidt say Sie. \"Student\" is the learner of German at a language course (a \"Sprachkurs\" student). Occupation after sein has no article (\"Er ist Bäcker\"); \"als\" is used with arbeiten (\"Ich arbeite als Lehrer\"). \"Chef\" is used for the boss in a bakery or clinic; at a school the usual word would be \"Schulleiter\", which the ladder does not use yet. Michael, a doctor at Anna's clinic, is new in the cast."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "jobs",
+    "workplaces",
+    "present tense",
+    "church coffee"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "thomas": "Pastor Thomas",
+    "schmidt": "Herr Schmidt",
+    "anna": "Anna",
+    "lukas": "Lukas",
+    "ben": "Ben"
+  },
+  "sections": [
+    {
+      "title": "Nach der Kirche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Sonntag.",
+              "english": "It is Sunday."
+            },
+            {
+              "text": "Die Kirche ist aus.",
+              "english": "Church is over."
+            },
+            {
+              "text": "Alle sind in der Küche der Kirche.",
+              "english": "Everyone is in the church kitchen."
+            },
+            {
+              "text": "Es gibt Kaffee, Milch und Kuchen.",
+              "english": "There is coffee, milk and cake."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Hallo, Sam!",
+              "english": "Hello, Sam!"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ich bin Thomas.",
+              "english": "I am Thomas."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ich arbeite hier als Pastor.",
+              "english": "I work here as a pastor."
+            },
+            {
+              "speaker": "sam",
+              "text": "Guten Tag, Thomas!",
+              "english": "Good day, Thomas!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Wer ist das?",
+              "english": "Who is that?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Das ist Herr Schmidt.",
+              "english": "That is Herr Schmidt."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Er ist Bäcker.",
+              "english": "He is a baker."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Ja, ich bin Bäcker.",
+              "english": "Yes, I am a baker."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Und ich bin auch Chef.",
+              "english": "And I am the boss too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ihr Beruf ist schön, Herr Schmidt.",
+              "english": "Your job is nice, Herr Schmidt."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Danke.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Und was machen Sie, Herr Miller?",
+              "english": "And what do you do, Mr Miller?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bin Student.",
+              "english": "I am a student."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich lerne Deutsch.",
+              "english": "I am learning German."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Sehr gut!",
+              "english": "Very good!"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Student ist ein guter Beruf.",
+              "english": "Student is a good job."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Anna und Lukas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna und Lukas kommen in die Küche.",
+              "english": "Anna and Lukas come into the kitchen."
+            },
+            {
+              "speaker": "sam",
+              "text": "Anna, was machst du?",
+              "english": "Anna, what do you do?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich arbeite als Krankenschwester in der Klinik.",
+              "english": "I work as a nurse at the clinic."
+            },
+            {
+              "speaker": "anna",
+              "text": "Mein Chef ist Michael.",
+              "english": "My boss is Michael."
+            },
+            {
+              "speaker": "anna",
+              "text": "Er arbeitet als Arzt.",
+              "english": "He works as a doctor."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und du, Lukas?",
+              "english": "And you, Lukas?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ich bin Lehrer.",
+              "english": "I am a teacher."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ich arbeite in der Schule.",
+              "english": "I work at the school."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ich habe eine Klasse mit zwanzig Schülern.",
+              "english": "I have a class with twenty pupils."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Und wir?",
+              "english": "And us?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Wir arbeiten auch.",
+              "english": "We work too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Du arbeitest in der Kirche, Thomas.",
+              "english": "You work in the church, Thomas."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ja, ein Pastor arbeitet am Sonntag.",
+              "english": "Yes, a pastor works on Sunday."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ihr arbeitet alle sehr viel.",
+              "english": "You all work a great deal."
+            },
+            {
+              "speaker": "sam",
+              "text": "Thomas ist Pastor, Anna ist Krankenschwester, Lukas ist Lehrer, und Herr Schmidt ist Bäcker.",
+              "english": "Thomas is a pastor, Anna is a nurse, Lukas is a teacher, and Herr Schmidt is a baker."
+            },
+            {
+              "speaker": "sam",
+              "text": "Meine Mutter ist auch Krankenschwester.",
+              "english": "My mother is a nurse too."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Krankenschwester ist ein guter Beruf.",
+              "english": "Nurse is a good job."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Ja, wir arbeiten gern.",
+              "english": "Yes, we like working."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Wer ist das?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Wer ist der Mann da?",
+              "english": "Who is the man there?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Das ist Michael.",
+              "english": "That is Michael."
+            },
+            {
+              "speaker": "anna",
+              "text": "Er ist Arzt, und er ist 50 Jahre alt.",
+              "english": "He is a doctor, and he is 50 years old."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ein Arzt arbeitet sehr viel.",
+              "english": "A doctor works a great deal."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er ist ein sehr guter Mann.",
+              "english": "He is a very good man."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Der Mann ist auch in der Kirche.",
+              "english": "The man is in the church too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja, das ist er.",
+              "english": "Yes, he is."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wer kocht hier den Kaffee?",
+              "english": "Who is making the coffee here?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Marta.",
+              "english": "Marta."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Sie kocht den Kaffee und den Kuchen.",
+              "english": "She makes the coffee and the cake."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Und Ben?",
+              "english": "And Ben?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Wo ist er?",
+              "english": "Where is he?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Er ist bei Marta, in der Küche.",
+              "english": "He is with Marta, in the kitchen."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ein Tag von Herrn Schmidt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Herr Schmidt, wie ist Ihr Tag?",
+              "english": "Herr Schmidt, what is your day like?"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Ich stehe um vier Uhr auf.",
+              "english": "I get up at four o'clock."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Ich mache den ganzen Tag Brötchen, Brot und Kuchen.",
+              "english": "I make rolls, bread and cake all day."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und der Preis für ein Brötchen?",
+              "english": "And the price for a roll?"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Ein Euro.",
+              "english": "One euro."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Meine Tochter arbeitet auch in der Bäckerei.",
+              "english": "My daughter works in the bakery too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist eine gute Familie, Herr Schmidt.",
+              "english": "That is a good family, Herr Schmidt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ben kommt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ben kommt in die Küche.",
+              "english": "Ben comes into the kitchen."
+            },
+            {
+              "text": "Er hat Hunger.",
+              "english": "He is hungry."
+            },
+            {
+              "speaker": "ben",
+              "text": "Was gibt es hier?",
+              "english": "What is there here?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich möchte ein Ei und Kartoffeln.",
+              "english": "I would like an egg and potatoes."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ben, du bist ein Kind.",
+              "english": "Ben, you are a child."
+            },
+            {
+              "speaker": "anna",
+              "text": "Du kochst nicht.",
+              "english": "You do not cook."
+            },
+            {
+              "speaker": "ben",
+              "text": "Meine Mama ist Chef von der Küche!",
+              "english": "My mama is the boss of the kitchen!"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Die Küche ist groß, das ist gut.",
+              "english": "The kitchen is big, that is good."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Wir möchten die Küche aufräumen.",
+              "english": "We would like to tidy up the kitchen."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich möchte heute auch mein Zimmer aufräumen.",
+              "english": "I would like to tidy my room today too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das Bett, der Stuhl, der Tisch, alles ist da.",
+              "english": "The bed, the chair, the table, everything is there."
+            },
+            {
+              "speaker": "anna",
+              "text": "Wir gehen nach Hause.",
+              "english": "We are going home."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Sehr gut, Sam!",
+              "english": "Very good, Sam!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Du bist ein guter Student.",
+              "english": "You are a good student."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

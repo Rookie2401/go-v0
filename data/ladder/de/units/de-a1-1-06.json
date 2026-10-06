@@ -1,0 +1,458 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-06",
+  "lang": "de",
+  "title": "At the market",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-06",
+    "title": "At the market (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. du between Sam and Marta, Sie between Sam and Herr Schmidt. \"Was darf es sein?\" and \"Darf ich ... haben?\" are the usual market phrases. Herr Schmidt (the baker) and his brother have a fruit stall on market day; Marta sells bread. Round numbers (siebzig, hundert) are taught through ages; the fifty-euro note is a small joke, and a seller would grumble a little."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "market",
+    "shopping",
+    "prices",
+    "quantities",
+    "numbers"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "marta": "Marta",
+    "schmidt": "Herr Schmidt"
+  },
+  "sections": [
+    {
+      "title": "Auf dem Markt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Heute ist Markt in Leipzig.",
+              "english": "Today is market day in Leipzig."
+            },
+            {
+              "text": "Sam möchte einkaufen.",
+              "english": "Sam wants to go shopping."
+            },
+            {
+              "text": "Marta verkauft Brot.",
+              "english": "Marta sells bread."
+            },
+            {
+              "speaker": "sam",
+              "text": "Guten Tag, Marta!",
+              "english": "Good day, Marta!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Guten Tag, Sam!",
+              "english": "Good day, Sam!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Was kaufst du heute?",
+              "english": "What are you buying today?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich kaufe Brot, Käse, Tomaten und Äpfel.",
+              "english": "I am buying bread, cheese, tomatoes and apples."
+            },
+            {
+              "speaker": "sam",
+              "text": "Frau Weber kocht heute Suppe.",
+              "english": "Mrs Weber is cooking soup today."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hier ist das Brot.",
+              "english": "Here is the bread."
+            },
+            {
+              "speaker": "marta",
+              "text": "Was möchtest du?",
+              "english": "What would you like?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ein Brot, bitte.",
+              "english": "One loaf, please."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie viel kostet das?",
+              "english": "How much does that cost?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Vier Euro.",
+              "english": "Four euros."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist gut.",
+              "english": "That is good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Preis ist sehr gut.",
+              "english": "The price is very good."
+            },
+            {
+              "speaker": "marta",
+              "text": "Und etwas Kuchen?",
+              "english": "And some cake?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Der Kuchen ist so lecker.",
+              "english": "The cake is so tasty."
+            },
+            {
+              "speaker": "sam",
+              "text": "Darf ich etwas Kuchen haben?",
+              "english": "May I have some cake?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ja, gern.",
+              "english": "Yes, gladly."
+            },
+            {
+              "speaker": "marta",
+              "text": "Da ist ein Stuhl für dich.",
+              "english": "There is a chair for you."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich bin siebzig Jahre alt, ich bin den ganzen Tag hier.",
+              "english": "I am seventy years old, I am here all day."
+            },
+            {
+              "speaker": "sam",
+              "text": "Du bist siebzig?",
+              "english": "You are seventy?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist nicht alt!",
+              "english": "That is not old!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Der Markt ist hundert Jahre alt!",
+              "english": "The market is a hundred years old!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Alle kommen gern auf den Markt.",
+              "english": "Everyone likes coming to the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich spreche Deutsch auf dem Markt, das ist gut für mein Deutsch.",
+              "english": "I speak German at the market, that is good for my German."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ben ist heute bei Papa.",
+              "english": "Ben is with his father today."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bei Herr Schmidt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Herr Schmidt ist auch hier.",
+              "english": "Herr Schmidt is here too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Guten Tag, Herr Schmidt!",
+              "english": "Good day, Herr Schmidt!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sie sind auch hier?",
+              "english": "You are here too?"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Ja, mein Bruder und ich sind zusammen auf dem Markt.",
+              "english": "Yes, my brother and I are at the market together."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Das ist mein Bruder.",
+              "english": "This is my brother."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Sein Name ist Jakob.",
+              "english": "His name is Jakob."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Was darf es sein, Herr Miller?",
+              "english": "What can I get you, Mr Miller?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Zwei Kilo Tomaten und ein Kilo Äpfel, bitte.",
+              "english": "Two kilos of tomatoes and one kilo of apples, please."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und ein Kilo Käse.",
+              "english": "And a kilo of cheese."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Gern.",
+              "english": "Gladly."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Alle sind sehr gut.",
+              "english": "They are all very good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Woher sind die Äpfel?",
+              "english": "Where are the apples from?"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Aus Sachsen.",
+              "english": "From Saxony."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Sie sind groß.",
+              "english": "They are big."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Der Preis für Äpfel ist gut.",
+              "english": "The price for apples is good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie viel kostet alles?",
+              "english": "How much is everything?"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Zusammen acht Euro.",
+              "english": "Eight euros altogether."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe fünfzig Euro.",
+              "english": "I have fifty euros."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Fünfzig Euro?",
+              "english": "Fifty euros?"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Das ist viel!",
+              "english": "That is a lot!"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Aber es geht.",
+              "english": "But it is all right."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Hier sind 42 Euro.",
+              "english": "Here are 42 euros."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Herr Schmidt!",
+              "english": "Thank you, Herr Schmidt!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Darf ich ein Bild für meine Mutter und meine Familie haben?",
+              "english": "May I have a picture for my mother and my family?"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Ja, gern.",
+              "english": "Yes, gladly."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Ein Bild vom Markt?",
+              "english": "A picture of the market?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja!",
+              "english": "Yes!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Frau Weber und ich essen heute zusammen Suppe.",
+              "english": "Mrs Weber and I are eating soup together today."
+            },
+            {
+              "speaker": "sam",
+              "text": "Im Bad von Frau Weber ist ein Fenster, da sind Tomaten.",
+              "english": "In Mrs Weber's bathroom there is a window, there are tomatoes there."
+            },
+            {
+              "speaker": "sam",
+              "text": "Aber sie sind klein.",
+              "english": "But they are small."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bei Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Sam, hier sind das Brot und der Kuchen.",
+              "english": "Sam, here are the bread and the cake."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Marta!",
+              "english": "Thank you, Marta!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie ist dein Kuchen?",
+              "english": "What is your cake like?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Er ist ganz lecker.",
+              "english": "It is quite tasty."
+            },
+            {
+              "speaker": "marta",
+              "text": "Nimm etwas Kuchen für Frau Weber.",
+              "english": "Take some cake for Mrs Weber."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich nehme auch Kuchen für Anna und Lukas.",
+              "english": "I am taking cake for Anna and Lukas too."
+            },
+            {
+              "speaker": "marta",
+              "text": "Das ist schön.",
+              "english": "That is nice."
+            },
+            {
+              "speaker": "marta",
+              "text": "Du kaufst gut, Sam!",
+              "english": "You shop well, Sam!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Marta!",
+              "english": "Thank you, Marta!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Auf Wiedersehen!",
+              "english": "Goodbye!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Sam, du bist heute sehr gut.",
+              "english": "Sam, you are very good today."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hier ist Wasser für dich.",
+              "english": "Here is water for you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Marta.",
+              "english": "Thank you, Marta."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe Hunger, und das Brot ist so lecker.",
+              "english": "I am hungry, and the bread is so tasty."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ja, das ist mein Brot.",
+              "english": "Yes, that is my bread."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich koche gern.",
+              "english": "I like cooking."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

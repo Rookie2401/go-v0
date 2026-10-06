@@ -1,0 +1,463 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-06",
+  "lang": "de",
+  "title": "Anna's weekend in Berlin",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-06",
+    "title": "Anna's weekend in Berlin (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A third-person story in the Perfekt about Anna's weekend in Berlin, with a little dialogue in the present. Strong participles (gesehen, getroffen, gelaufen, gegessen, gesungen, geschlafen) next to weak ones (besucht, getanzt, geschenkt, übernachtet). Sabine is Anna's friend who lives in Berlin; du between them. The season is spring. \"Jeder\" appears as jeder / jedes / jeden. The sentence about God's love is a plain statement of a pastor, kept short."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "weekend",
+    "travel",
+    "Perfekt with strong verbs",
+    "Berlin"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "anna": "Anna",
+    "sabine": "Sabine"
+  },
+  "sections": [
+    {
+      "title": "Die Reise",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna hat am Wochenende Berlin besucht.",
+              "english": "Anna visited Berlin at the weekend."
+            },
+            {
+              "text": "Die Sonne war schon warm, denn es war Frühling.",
+              "english": "The sun was already warm, because it was spring."
+            },
+            {
+              "text": "Anna ist am Freitag mit dem Zug gefahren.",
+              "english": "Anna took the train on Friday."
+            },
+            {
+              "text": "Sabine hat sie am Bahnhof getroffen.",
+              "english": "Sabine met her at the station."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Hallo, Anna!",
+              "english": "Hello, Anna!"
+            },
+            {
+              "speaker": "sabine",
+              "text": "Wie war die Reise?",
+              "english": "How was the trip?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Gut!",
+              "english": "Good!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich habe im Zug gelesen und geschlafen.",
+              "english": "I read and slept on the train."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Das ist schön.",
+              "english": "That is nice."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Ich freue mich!",
+              "english": "I am so glad!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Hotel",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna hat im Hotel übernachtet.",
+              "english": "Anna stayed overnight in a hotel."
+            },
+            {
+              "text": "Das Hotel war nicht groß, aber das Bett war gut.",
+              "english": "The hotel was not big, but the bed was good."
+            },
+            {
+              "text": "Anna hat auch am Samstag im Hotel übernachtet.",
+              "english": "Anna stayed at the hotel on Saturday night too."
+            },
+            {
+              "text": "Jeder Tag hat ein Frühstück im Hotel.",
+              "english": "Every day has a breakfast at the hotel."
+            },
+            {
+              "text": "Anna hat mit Lukas telefoniert.",
+              "english": "Anna phoned Lukas."
+            },
+            {
+              "speaker": "anna",
+              "text": "Lukas, ich bin im Hotel!",
+              "english": "Lukas, I am at the hotel!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Berlin ist schön!",
+              "english": "Berlin is lovely!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Aber ich habe nur zwei Tage.",
+              "english": "But I only have two days."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Museum",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Samstag haben Anna und Sabine ein Museum besucht.",
+              "english": "On Saturday Anna and Sabine visited a museum."
+            },
+            {
+              "text": "Sie sind viele Stunden gelaufen.",
+              "english": "They walked for many hours."
+            },
+            {
+              "text": "Das Museum war groß.",
+              "english": "The museum was big."
+            },
+            {
+              "text": "Anna ist gern gelaufen.",
+              "english": "Anna liked walking."
+            },
+            {
+              "text": "Sie haben viele Freunde von Sabine getroffen.",
+              "english": "They met many friends of Sabine's."
+            },
+            {
+              "text": "Anna hat auch den Pastor getroffen.",
+              "english": "Anna also met the pastor."
+            },
+            {
+              "text": "Im Museum haben sie viele Bilder gesehen.",
+              "english": "In the museum they saw many pictures."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Jedes Bild ist schön, oder?",
+              "english": "Every picture is lovely, is it not?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja!",
+              "english": "Yes!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Da ist ein Bild mit einem Mädchen im Park.",
+              "english": "There is a picture with a girl in the park."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Das Mädchen ist glücklich.",
+              "english": "The girl is happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Café und das Geschäft",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dann sind sie in die Stadt gelaufen.",
+              "english": "Then they walked into the city."
+            },
+            {
+              "text": "Dann sind sie in ein Café gegangen.",
+              "english": "Then they went into a café."
+            },
+            {
+              "text": "Das Café war klein.",
+              "english": "The café was small."
+            },
+            {
+              "text": "Sie haben Kaffee und Kuchen bekommen.",
+              "english": "They got coffee and cake."
+            },
+            {
+              "text": "Im Café hat ein Mädchen gesungen.",
+              "english": "In the café a girl sang."
+            },
+            {
+              "text": "Dann sind sie in ein Geschäft gegangen.",
+              "english": "Then they went into a shop."
+            },
+            {
+              "text": "Das Geschäft war groß.",
+              "english": "The shop was big."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich möchte etwas für Ben schenken.",
+              "english": "I want to give something to Ben."
+            },
+            {
+              "text": "Anna hat Ben ein Heft geschenkt.",
+              "english": "Anna gave Ben an exercise book."
+            },
+            {
+              "text": "Sabine hat Anna ein Buch geschenkt.",
+              "english": "Sabine gave Anna a book."
+            },
+            {
+              "text": "Anna hat im Geschäft noch ein Buch für Marta gekauft.",
+              "english": "In the shop Anna also bought a book for Marta."
+            },
+            {
+              "text": "Im Park haben Kinder gespielt, und das Wetter war nicht schlecht.",
+              "english": "Children played in the park, and the weather was not bad."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Konzert",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend haben sie ein Konzert besucht.",
+              "english": "In the evening they went to a concert."
+            },
+            {
+              "text": "Das Konzert war schön, und die Musik war sehr gut.",
+              "english": "The concert was lovely, and the music was very good."
+            },
+            {
+              "text": "Es hat um acht Uhr angefangen.",
+              "english": "It started at eight o'clock."
+            },
+            {
+              "text": "Anna und Sabine haben getanzt.",
+              "english": "Anna and Sabine danced."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Tanzt du gern?",
+              "english": "Do you like dancing?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja, ich tanze gern!",
+              "english": "Yes, I like dancing!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich höre auch gern Musik.",
+              "english": "I like listening to music too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich war nie in Berlin, aber jetzt bin ich glücklich.",
+              "english": "I had never been to Berlin, but now I am happy."
+            },
+            {
+              "text": "Draußen hat es gerade geregnet, aber sie waren froh.",
+              "english": "Outside it had just rained, but they were happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Sonntag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Sonntag sind Anna und Sabine in die Gemeinde gegangen.",
+              "english": "On Sunday Anna and Sabine went to the church."
+            },
+            {
+              "text": "Sie haben gesungen und gebetet.",
+              "english": "They sang and prayed."
+            },
+            {
+              "text": "Der Pastor hat gesagt: \"Gott liebt jeden von uns.\"",
+              "english": "The pastor said: \"God loves every one of us.\""
+            },
+            {
+              "text": "Anna hat Gott gedankt.",
+              "english": "Anna thanked God."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Du bist ein Christ, Anna.",
+              "english": "You are a Christian, Anna."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich glaube, und ich habe Freude.",
+              "english": "I believe, and I have joy."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das Leben ist gut, und die Liebe von Gott ist groß.",
+              "english": "Life is good, and God's love is great."
+            },
+            {
+              "speaker": "anna",
+              "text": "Mein Herz ist froh.",
+              "english": "My heart is glad."
+            },
+            {
+              "speaker": "anna",
+              "text": "Früher habe ich nur gearbeitet.",
+              "english": "Before, I only worked."
+            },
+            {
+              "speaker": "anna",
+              "text": "Jetzt habe ich Zeit für Gott.",
+              "english": "Now I have time for God."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Wetter in Berlin",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sabine",
+              "text": "Berlin ist im Sommer heiß, 30 Grad.",
+              "english": "Berlin is hot in summer, 30 degrees."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Im Herbst gibt es Regen, und im Winter gibt es Schnee und Wind.",
+              "english": "In autumn there is rain, and in winter there is snow and wind."
+            },
+            {
+              "speaker": "anna",
+              "text": "Im Frühling ist es schön, die Sonne scheint.",
+              "english": "In spring it is lovely, the sun shines."
+            },
+            {
+              "speaker": "anna",
+              "text": "Der Frühling ist meine Jahreszeit.",
+              "english": "Spring is my season."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Rückreise",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend ist Anna wieder nach Leipzig gefahren.",
+              "english": "In the evening Anna travelled back to Leipzig."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Besuchst du mich bald?",
+              "english": "Will you visit me soon?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja, ich habe bald Zeit.",
+              "english": "Yes, I will have time soon."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Dann kommt Lukas mit!",
+              "english": "Then Lukas can come along!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja, gern!",
+              "english": "Yes, gladly!"
+            },
+            {
+              "speaker": "sabine",
+              "text": "Tschüs, Anna!",
+              "english": "Bye, Anna!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Tschüs, Sabine!",
+              "english": "Bye, Sabine!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

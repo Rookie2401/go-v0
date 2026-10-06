@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-09",
+  "lang": "de",
+  "title": "A Sunday morning on the street",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-09",
+    "title": "A Sunday morning on the street (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A quiet narrative with short dialogues; weather and the words \"immer\", \"wieder\" and \"dann\" are the focus. Sam uses Sie with Frau Weber, du with Marta and Ben. \"Am Sonntag kaufe ich nichts\" reflects that shops are closed on Sunday in Germany."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "street",
+    "park",
+    "weather",
+    "Sunday",
+    "greetings"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "weber": "Frau Weber",
+    "marta": "Marta",
+    "ben": "Ben"
+  },
+  "sections": [
+    {
+      "title": "Am Morgen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Sonntag, und es ist Morgen.",
+              "english": "It is Sunday, and it is morning."
+            },
+            {
+              "text": "Die Straße ist klein und schön.",
+              "english": "The street is small and nice."
+            },
+            {
+              "text": "Das Wetter ist heute gut.",
+              "english": "The weather is good today."
+            },
+            {
+              "text": "Es ist kalt am Morgen.",
+              "english": "It is cold in the morning."
+            },
+            {
+              "text": "Aber die Sonne ist da, und sie ist warm.",
+              "english": "But the sun is out, and it is warm."
+            },
+            {
+              "text": "Sam geht auf der Straße.",
+              "english": "Sam walks along the street."
+            },
+            {
+              "text": "Er geht in den Park.",
+              "english": "He goes into the park."
+            },
+            {
+              "text": "Er sagt: \"Das Wetter ist schön!\"",
+              "english": "He says: \"The weather is lovely!\""
+            },
+            {
+              "text": "In Leipzig ist das Wetter nicht immer so.",
+              "english": "In Leipzig the weather is not always like this."
+            },
+            {
+              "text": "Der Park ist groß.",
+              "english": "The park is big."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Im Park",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Eine Familie ist im Park.",
+              "english": "A family is in the park."
+            },
+            {
+              "text": "Da sind der Vater, die Mutter und ein Kind.",
+              "english": "There are the father, the mother and a child."
+            },
+            {
+              "text": "Die Tochter ist fünf Jahre alt.",
+              "english": "The daughter is five years old."
+            },
+            {
+              "text": "Die Familie hat ein Frühstück.",
+              "english": "The family is having breakfast."
+            },
+            {
+              "text": "Es gibt Brötchen mit Butter, Eier und Milch.",
+              "english": "There are rolls with butter, eggs and milk."
+            },
+            {
+              "speaker": "sam",
+              "text": "Guten Tag!",
+              "english": "Good day!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist ein schöner Tag.",
+              "english": "That is a lovely day."
+            },
+            {
+              "speaker": "sam",
+              "text": "Darf ich ein Bild machen?",
+              "english": "May I take a picture?"
+            },
+            {
+              "text": "Der Vater sagt: \"Ja, gern!\"",
+              "english": "The father says: \"Yes, gladly!\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Frau Weber",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Frau Weber ist auf der Straße.",
+              "english": "Mrs Weber is on the street."
+            },
+            {
+              "speaker": "weber",
+              "text": "Guten Tag, Herr Miller!",
+              "english": "Good day, Mr Miller!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Es ist heute so schön.",
+              "english": "It is so lovely today."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, und die Sonne ist wieder warm.",
+              "english": "Yes, and the sun is warm again."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich bin am Sonntag immer hier.",
+              "english": "I am always here on Sundays."
+            },
+            {
+              "speaker": "weber",
+              "text": "Dann gehe ich in die Kirche.",
+              "english": "Then I go to church."
+            },
+            {
+              "speaker": "sam",
+              "text": "Haben Sie auch ein Frühstück?",
+              "english": "Do you have breakfast too?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Am Sonntag kaufe ich nichts.",
+              "english": "On Sundays I do not buy anything."
+            },
+            {
+              "speaker": "weber",
+              "text": "Aber ich habe Tomaten, ein Kilo vom Markt.",
+              "english": "But I have tomatoes, a kilo from the market."
+            },
+            {
+              "speaker": "weber",
+              "text": "Und ein Brötchen mit Butter und Ei.",
+              "english": "And a roll with butter and egg."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist ein gutes Frühstück.",
+              "english": "That is a good breakfast."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Marta und Ben",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta und Ben kommen auf die Straße.",
+              "english": "Marta and Ben come onto the street."
+            },
+            {
+              "text": "Ben hat wieder Hunger.",
+              "english": "Ben is hungry again."
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma, ich habe wieder Hunger!",
+              "english": "Grandma, I am hungry again!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Du hast immer Hunger, Ben!",
+              "english": "You are always hungry, Ben!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Hier ist Milch und ein Ei.",
+              "english": "Here is milk and an egg."
+            },
+            {
+              "speaker": "ben",
+              "text": "Die Milch ist kalt, und das Ei ist auch kalt!",
+              "english": "The milk is cold, and the egg is cold too!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich möchte Fleisch.",
+              "english": "I want meat."
+            },
+            {
+              "speaker": "marta",
+              "text": "Dann nimm Brot, Ben.",
+              "english": "Then take bread, Ben."
+            },
+            {
+              "speaker": "marta",
+              "text": "Fleisch gibt es zum Mittagessen.",
+              "english": "There is meat for lunch."
+            },
+            {
+              "speaker": "ben",
+              "text": "Mama sagt: \"Ben, du isst zu viel!\"",
+              "english": "Mama says: \"Ben, you eat too much!\""
+            },
+            {
+              "speaker": "marta",
+              "text": "Mama ist heute nicht da.",
+              "english": "Mama is not here today."
+            },
+            {
+              "speaker": "marta",
+              "text": "Meine Tochter ist Bens Mama.",
+              "english": "My daughter is Ben's mama."
+            },
+            {
+              "text": "Ben ist zehn Jahre alt.",
+              "english": "Ben is ten years old."
+            },
+            {
+              "text": "Er ist ein Kind, aber er isst wie sein Papa.",
+              "english": "He is a child, but he eats like his papa."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ben, darf ich ein Bild von dir machen?",
+              "english": "Ben, may I take a picture of you?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ja, mit Oma!",
+              "english": "Yes, with Grandma!"
+            },
+            {
+              "text": "Sam macht ein Bild von Marta und Ben.",
+              "english": "Sam takes a picture of Marta and Ben."
+            },
+            {
+              "text": "Die Sonne ist warm, und der Tag ist schön.",
+              "english": "The sun is warm, and the day is lovely."
+            },
+            {
+              "text": "Dann gehen alle in die Kirche.",
+              "english": "Then everyone goes to church."
+            },
+            {
+              "speaker": "marta",
+              "text": "Einen schönen Tag, Frau Weber!",
+              "english": "Have a nice day, Mrs Weber!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Danke, Marta!",
+              "english": "Thank you, Marta!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Ihnen auch!",
+              "english": "You too!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

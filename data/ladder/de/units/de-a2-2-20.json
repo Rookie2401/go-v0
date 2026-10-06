@@ -1,0 +1,547 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-20",
+  "lang": "de",
+  "title": "Warum ich nach Deutschland gekommen bin",
+  "contentType": "testimony",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-20",
+    "title": "\"Warum ich nach Deutschland gekommen bin\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Sam's testimony in the first person, written for the church where he will speak at the end of the year; all tenses are used on purpose, with Konjunktiv II for unreal conditions (hätte, wäre, würde). It deliberately recalls many words of the earlier units. Church language of a free church (Auftrag, Gnade, senden); please check the register for a Landeskirche reader and that the testimony sounds like real spoken German."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "testimony"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Der Anfang",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ich heiße Sam, und ich möchte Ihnen erzählen, warum ich nach Deutschland gekommen bin.",
+              "english": "My name is Sam, and I would like to tell you why I came to Germany."
+            },
+            {
+              "text": "Ich komme nicht aus einer besonderen Familie.",
+              "english": "I do not come from a special family."
+            },
+            {
+              "text": "Meine Eltern haben nie im Ausland gewohnt.",
+              "english": "My parents have never lived abroad."
+            },
+            {
+              "text": "Als Kind hatte ich einen Traum, aber es war kein Traum von Deutschland.",
+              "english": "As a child I had a dream, but it was not a dream of Germany."
+            },
+            {
+              "text": "Ich wollte Mechaniker werden.",
+              "english": "I wanted to become a mechanic."
+            },
+            {
+              "text": "Mein Anfang war ganz normal: Schule, Arbeit, Kirche am Sonntag.",
+              "english": "My beginning was quite normal: school, work, church on Sunday."
+            },
+            {
+              "text": "Nach dem Abitur habe ich in einem Krankenhaus gearbeitet, im Nachtdienst, in einer Schicht von zehn bis sechs.",
+              "english": "After the Abitur I worked in a hospital, in the night service, in a shift from ten to six."
+            },
+            {
+              "text": "Ich habe Patienten gefahren und Betten gemacht.",
+              "english": "I drove patients and made beds."
+            },
+            {
+              "text": "Die Arbeit war hart, und der Stress war groß.",
+              "english": "The work was hard, and the stress was great."
+            },
+            {
+              "text": "Aber ich habe es geschafft, und ich habe viel gelernt.",
+              "english": "But I managed it, and I learned a lot."
+            },
+            {
+              "text": "Auf der Station habe ich beobachtet, wie die Schwestern und meine Kollegin mit den Menschen umgingen.",
+              "english": "On the ward I observed how the nurses and my colleague dealt with the people."
+            },
+            {
+              "text": "Sie hatten viel Geduld, und das hat mich geprägt.",
+              "english": "They had a lot of patience, and that shaped me."
+            },
+            {
+              "text": "Zu dieser Zeit habe ich mich für die Pflege interessiert, aber ich habe die Prüfung nicht bestanden.",
+              "english": "At that time I was interested in nursing, but I did not pass the exam."
+            },
+            {
+              "text": "Meine Eltern waren trotzdem stolz auf mich.",
+              "english": "My parents were proud of me all the same."
+            },
+            {
+              "text": "Ich habe nie von Deutschland geträumt.",
+              "english": "I never dreamed of Germany."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Auftrag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mit zwanzig war ich zum ersten Mal auf einer Missionskonferenz.",
+              "english": "At twenty I was at a missions conference for the first time."
+            },
+            {
+              "text": "Dort hat ein Pastor von Deutschland gesprochen.",
+              "english": "There a pastor spoke about Germany."
+            },
+            {
+              "text": "Er sagte: Viele Menschen in Deutschland sind nicht gegen Gott, aber sie haben ihn vergessen.",
+              "english": "He said: many people in Germany are not against God, but they have forgotten him."
+            },
+            {
+              "text": "Es gab im Saal viele Besucher, und viele Teilnehmer haben geweint.",
+              "english": "In the hall there were many visitors, and many participants cried."
+            },
+            {
+              "text": "Ich selbst habe nichts gespürt.",
+              "english": "I myself felt nothing."
+            },
+            {
+              "text": "Ich saß nur da und habe zugehört.",
+              "english": "I only sat there and listened."
+            },
+            {
+              "text": "Aber am nächsten Morgen, als ich im Bus saß, kam ein Gedanke: Du wirst gesendet.",
+              "english": "But the next morning, when I was sitting in the bus, a thought came: you are being sent."
+            },
+            {
+              "text": "Ich habe gedacht: Das ist ein Zufall, ein dummer Gedanke.",
+              "english": "I thought: that is a coincidence, a stupid thought."
+            },
+            {
+              "text": "Aber er ist nicht weggegangen.",
+              "english": "But it did not go away."
+            },
+            {
+              "text": "Es war wie eine Spur, der ich folgen musste, auch wenn ich das Ende nicht sah.",
+              "english": "It was like a trace that I had to follow, even if I could not see the end."
+            },
+            {
+              "text": "Wochenlang habe ich gebetet.",
+              "english": "For weeks I prayed."
+            },
+            {
+              "text": "Ich habe gefragt: Herr, ist das ein Auftrag?",
+              "english": "I asked: Lord, is this an assignment?"
+            },
+            {
+              "text": "Bei einem Interview mit der Mission habe ich alles erzählt.",
+              "english": "In an interview with the mission I told everything."
+            },
+            {
+              "text": "Mein Pastor hat mir einen Ratschlag gegeben.",
+              "english": "My pastor gave me advice."
+            },
+            {
+              "text": "Er sagte: Warte nicht auf ein Zeichen.",
+              "english": "He said: do not wait for a sign."
+            },
+            {
+              "text": "Geh den ersten Schritt.",
+              "english": "Take the first step."
+            },
+            {
+              "text": "Ich habe es getan.",
+              "english": "I did it."
+            },
+            {
+              "text": "Ich habe mich beworben, ich habe Briefe geschrieben, und ich habe gewartet.",
+              "english": "I applied, I wrote letters, and I waited."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Meine Angst",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ich hatte große Angst.",
+              "english": "I was very afraid."
+            },
+            {
+              "text": "Ich hatte Angst, meine Familie zu verlassen, und ich hatte Angst vor der Zukunft.",
+              "english": "I was afraid of leaving my family, and I was afraid of the future."
+            },
+            {
+              "text": "Ich war nicht mutig.",
+              "english": "I was not brave."
+            },
+            {
+              "text": "Der Auftrag war größer als ich.",
+              "english": "The assignment was bigger than I was."
+            },
+            {
+              "text": "Mein Bruder hat gesagt: Wenn du gehst, bleibt eine Lücke.",
+              "english": "My brother said: if you go, a gap remains."
+            },
+            {
+              "text": "Mein Vater hat nichts gesagt, aber ich habe seine Sorge gesehen.",
+              "english": "My father said nothing, but I saw his worry."
+            },
+            {
+              "text": "Dazu kam das Geld.",
+              "english": "Then there was the money."
+            },
+            {
+              "text": "Ich hatte kein Konto mit viel Geld, und die Reise war teuer.",
+              "english": "I did not have an account with much money, and the journey was expensive."
+            },
+            {
+              "text": "Die Bank wollte mir einen Kredit geben, aber die Zinsen waren hoch.",
+              "english": "The bank wanted to give me a loan, but the interest was high."
+            },
+            {
+              "text": "Ich war ehrlich zu meiner Gemeinde und habe gesagt: Ich kann es nicht allein schaffen.",
+              "english": "I was honest with my church and said: I cannot do it alone."
+            },
+            {
+              "text": "Sie hat mich gesendet, und ich muss den Kredit der Bank nicht zurückzahlen.",
+              "english": "It sent me, and I do not have to pay back the loan from the bank."
+            },
+            {
+              "text": "Sie hatten Verständnis, und sie haben gesagt: Wir werden dich unterstützen.",
+              "english": "They understood, and they said: we will support you."
+            },
+            {
+              "text": "Die Unterstützung kam schneller, als ich dachte.",
+              "english": "The support came faster than I thought."
+            },
+            {
+              "text": "Ohne diese Menschen hätte ich es nicht gewagt.",
+              "english": "Without these people I would not have dared."
+            },
+            {
+              "text": "Wenn sie mir nicht geholfen hätten, wäre ich heute nicht hier.",
+              "english": "If they had not helped me, I would not be here today."
+            },
+            {
+              "text": "Deshalb ist meine Dankbarkeit so groß, besonders gegenüber meiner Heimatgemeinde.",
+              "english": "That is why my gratitude is so great, especially towards my home church."
+            },
+            {
+              "text": "Ihnen allen gilt mein Dank.",
+              "english": "To all of you goes my thanks."
+            },
+            {
+              "text": "Trotzdem war der Abschied schwer.",
+              "english": "All the same the farewell was hard."
+            },
+            {
+              "text": "Meine Mutter hat mir einen Mantel geschenkt, den sie selbst gekauft hatte.",
+              "english": "My mother gave me a coat that she had bought herself."
+            },
+            {
+              "text": "In der Tasche steckte ein Schlüsselbund mit dem Schlüssel von zu Hause.",
+              "english": "In the pocket there was a bunch of keys with the key from home."
+            },
+            {
+              "text": "Ich habe ihn heute noch.",
+              "english": "I still have it today."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Ankunft und die Überraschungen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Als ich in Leipzig ankam, habe ich fast alles falsch gemacht.",
+              "english": "When I arrived in Leipzig I did almost everything wrong."
+            },
+            {
+              "text": "Ich habe mich verlaufen, ich habe das Fundbüro gesucht und die Bank, und ich habe den falschen Zug genommen.",
+              "english": "I got lost, I looked for the lost property office and the bank, and I took the wrong train."
+            },
+            {
+              "text": "Es war ein Rätsel für mich, wie dieses Land funktioniert.",
+              "english": "It was a puzzle to me how this country works."
+            },
+            {
+              "text": "Die Deutschen haben für alles ein System.",
+              "english": "The Germans have a system for everything."
+            },
+            {
+              "text": "Ich habe die Mülltrennung gelernt, das Pfand für jede Flasche, das Glas, das Papier und das Plastik.",
+              "english": "I learned waste separation, the deposit for every bottle, the glass, the paper and the plastic."
+            },
+            {
+              "text": "Ich habe nicht verstanden, warum man so viel Abfall trennt.",
+              "english": "I did not understand why one separates so much waste."
+            },
+            {
+              "text": "Inzwischen weiß ich: Man schützt damit die Umwelt, die Energie und das Klima.",
+              "english": "By now I know: one protects the environment, energy and the climate with it."
+            },
+            {
+              "text": "Es ist fast eine Pflicht.",
+              "english": "It is almost a duty."
+            },
+            {
+              "text": "Aber deswegen sind die Straßen sauber, und das hat mich beeindruckt.",
+              "english": "But that is why the streets are clean, and that impressed me."
+            },
+            {
+              "text": "Die größte Überraschung war aber nicht die Mülltrennung.",
+              "english": "The biggest surprise was not waste separation, however."
+            },
+            {
+              "text": "Es waren die Menschen.",
+              "english": "It was the people."
+            },
+            {
+              "text": "Ich dachte, die Deutschen seien kalt.",
+              "english": "I thought Germans were cold."
+            },
+            {
+              "text": "Ich habe tatsächlich viel Wärme gefunden.",
+              "english": "I really found a lot of warmth."
+            },
+            {
+              "text": "Frau Weber hat mir ein Zimmer gegeben und mich gepflegt, als ich krank war.",
+              "english": "Frau Weber gave me a room and cared for me when I was ill."
+            },
+            {
+              "text": "Herr Schmidt hat einem Freund von mir Geld geliehen, ohne Zinsen.",
+              "english": "Herr Schmidt lent a friend of mine money without interest."
+            },
+            {
+              "text": "Für ihn war mein Freund nicht fremd, sondern ein Nachbar.",
+              "english": "To him my friend was not strange but a neighbour."
+            },
+            {
+              "text": "Anna hat im Radio gesagt, dass man auch im Nachtdienst Mensch bleiben kann.",
+              "english": "Anna said on the radio that one can stay human even in the night service."
+            },
+            {
+              "text": "Sie ist besonders ein Vorbild für mich.",
+              "english": "She is a special example to me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Was mich geprägt hat",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jede dieser Begegnungen hat mich geprägt, aber ich möchte drei besonders nennen.",
+              "english": "Each of these encounters has shaped me, but I would like to mention three in particular."
+            },
+            {
+              "text": "Erstens: das Vorbild von Frau Weber.",
+              "english": "First: the example of Frau Weber."
+            },
+            {
+              "text": "Sie war lange allein, und sie hat Frieden gefunden.",
+              "english": "She was alone for a long time, and she found peace."
+            },
+            {
+              "text": "Zweitens: das Beispiel von Marta, die ihren Schlüssel verloren und von einer Fremden zurückbekommen hat.",
+              "english": "Second: the example of Marta, who lost her key and got it back from a stranger."
+            },
+            {
+              "text": "Sie hat einen Zufall erlebt, und sie war dankbar.",
+              "english": "She experienced a coincidence, and she was grateful."
+            },
+            {
+              "text": "Das Rätsel um den Mantel und die Spur im Fundbüro haben mich überrascht.",
+              "english": "The puzzle about the coat and the trace in the lost property office surprised me."
+            },
+            {
+              "text": "Ich habe entdeckt: Gott arbeitet auch durch kleine Dinge.",
+              "english": "I discovered: God works through small things too."
+            },
+            {
+              "text": "Drittens: die Herausforderung, jeden Tag ehrlich zu bleiben.",
+              "english": "Third: the challenge of staying honest every day."
+            },
+            {
+              "text": "Ich muss jede Woche einen Wochenbericht schreiben.",
+              "english": "I have to write a weekly report every week."
+            },
+            {
+              "text": "Ich nenne darin die Besucher und die Teilnehmer, den Bedarf und das Ergebnis.",
+              "english": "In it I name the visitors and the participants, the need and the result."
+            },
+            {
+              "text": "Es ist nicht leicht, ehrlich zu schreiben, wenn der Fortschritt klein ist.",
+              "english": "It is not easy to write honestly when the progress is small."
+            },
+            {
+              "text": "Aber es ist eine gute Übung.",
+              "english": "But it is a good exercise."
+            },
+            {
+              "text": "Ich habe auch gelernt, dass die Zusammenarbeit mit anderen Gemeinden nicht einfach ist.",
+              "english": "I have also learned that cooperation with other churches is not simple."
+            },
+            {
+              "text": "Die Entwicklung braucht Zeit.",
+              "english": "The development takes time."
+            },
+            {
+              "text": "Und ich habe gelernt: Ein Gebetsanliegen ist kein Wunsch, sondern ein Gespräch mit Gott.",
+              "english": "And I have learned: a prayer request is not a wish but a conversation with God."
+            },
+            {
+              "text": "Das war meine größte Herausforderung.",
+              "english": "That was my greatest challenge."
+            },
+            {
+              "text": "Ich bin lange ein Mensch der Tat gewesen, kein Mensch des Gebets.",
+              "english": "For a long time I was a person of action, not a person of prayer."
+            },
+            {
+              "text": "Das Leben hier ist eine tägliche Herausforderung, und das hat mich geprägt.",
+              "english": "Life here is a daily challenge, and that has shaped me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Meine Hoffnung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Manchmal frage ich mich: Was wäre aus mir geworden, wenn ich nicht gegangen wäre?",
+              "english": "Sometimes I ask myself: what would have become of me if I had not gone?"
+            },
+            {
+              "text": "Wahrscheinlich wäre ich zufrieden gewesen.",
+              "english": "Probably I would have been content."
+            },
+            {
+              "text": "Aber ich hätte nie erlebt, was ich hier erlebt habe.",
+              "english": "But I would never have experienced what I have experienced here."
+            },
+            {
+              "text": "Ich würde jederzeit wieder gehen.",
+              "english": "I would go again at any time."
+            },
+            {
+              "text": "Denn ich weiß: Es ist Gnade, wenn Gott einen Menschen sendet.",
+              "english": "For I know: it is grace when God sends a person."
+            },
+            {
+              "text": "Ich habe es nicht verdient, ich habe es nur angenommen.",
+              "english": "I did not earn it, I only accepted it."
+            },
+            {
+              "text": "Das ist die Gnade, und sie ist mein ganzes Zeugnis.",
+              "english": "That is grace, and it is my whole testimony."
+            },
+            {
+              "text": "Was wird die Zukunft bringen?",
+              "english": "What will the future bring?"
+            },
+            {
+              "text": "Ich weiß es nicht.",
+              "english": "I do not know."
+            },
+            {
+              "text": "Vielleicht bleibe ich ein Jahr, vielleicht fünf.",
+              "english": "Perhaps I will stay a year, perhaps five."
+            },
+            {
+              "text": "Ich werde weiter lernen, ich werde weiter hören, und ich werde mutig bleiben, auch wenn es schwer ist.",
+              "english": "I will keep learning, I will keep listening, and I will stay brave, even when it is hard."
+            },
+            {
+              "text": "Man muss nicht mutig geboren sein, nur ehrlich.",
+              "english": "One does not have to be born brave, only honest."
+            },
+            {
+              "text": "Meine Hoffnung ist, dass ich in der Zukunft selbst ein Vorbild werden kann, nicht für Deutschland, sondern für Menschen, die Angst haben.",
+              "english": "My hope is that in the future I can become an example myself, not for Germany but for people who are afraid."
+            },
+            {
+              "text": "Wenn jemand von Ihnen heute denkt: Vielleicht ist das auch mein Auftrag, dann sage ich: Haben Sie keine Angst.",
+              "english": "If one of you thinks today: perhaps this is my assignment too, then I say: do not be afraid."
+            },
+            {
+              "text": "Der Anfang ist klein, aber er ist ein Anfang.",
+              "english": "The beginning is small, but it is a beginning."
+            },
+            {
+              "text": "Am Ende steht nicht Erfolg, sondern Gnade.",
+              "english": "At the end stands not success but grace."
+            },
+            {
+              "text": "Und ich bin dankbar, dass ich ein Teil davon sein darf.",
+              "english": "And I am grateful that I may be a part of it."
+            },
+            {
+              "text": "Ich fühle große Dankbarkeit, und mit dieser Dankbarkeit höre ich auf.",
+              "english": "I feel great gratitude, and with this gratitude I close."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

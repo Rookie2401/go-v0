@@ -1,0 +1,450 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-02",
+  "lang": "de",
+  "title": "Unsere Straße früher und heute",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-02",
+    "title": "Unsere Straße früher und heute (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: Sie between Sam and Frau Weber; \"Laden\" (a small shop), \"Geschäft\", \"Schwimmbad\", \"Bibliothek\" and \"Spielplatz\" are everyday words; the street, the shops and the dates are invented for the lesson; konnte / musste / wollte are the first modal Präteritum forms, and \"nicht mehr / noch\" and \"früher / heute\" carry the comparison; \"Einwohner\" as a plain plural (no -in form)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "explanation",
+    "neighbourhood",
+    "change over time"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Ein Geburtstag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Heute hat Frau Weber Geburtstag.",
+              "english": "Today is Frau Weber's birthday."
+            },
+            {
+              "text": "Sam hat einen Kuchen mitgebracht.",
+              "english": "Sam has brought a cake."
+            },
+            {
+              "text": "Anna hat den Kuchen gebacken.",
+              "english": "Anna baked the cake."
+            },
+            {
+              "text": "„Ich wünsche Ihnen alles Gute zum Geburtstag“, sagt Sam.",
+              "english": "\"I wish you all the best for your birthday,\" says Sam."
+            },
+            {
+              "text": "„Wie nett von Ihnen!“, sagt Frau Weber.",
+              "english": "\"How nice of you!\" says Frau Weber."
+            },
+            {
+              "text": "Sam schneidet den Kuchen mit einem Messer.",
+              "english": "Sam cuts the cake with a knife."
+            },
+            {
+              "text": "Frau Weber ist nicht mehr jung, aber ihr Gesicht ist freundlich.",
+              "english": "Frau Weber is not young any more, but her face is friendly."
+            },
+            {
+              "text": "Ihre Haare sind hell und kurz, und sie hat eine Brille.",
+              "english": "Her hair is light and short, and she wears glasses."
+            },
+            {
+              "text": "„Früher war ich dünn“, sagt sie lustig, „heute bin ich ein bisschen dick.“",
+              "english": "\"I used to be thin,\" she says jokingly, \"today I am a little fat.\""
+            },
+            {
+              "text": "Sie lacht, und Sam lacht auch.",
+              "english": "She laughs, and Sam laughs too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Blick aus dem Fenster",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sie sitzen am Fenster und trinken Kaffee.",
+              "english": "They sit at the window and drink coffee."
+            },
+            {
+              "text": "„Sehen Sie die Straße?“, fragt Frau Weber.",
+              "english": "\"Do you see the street?\" asks Frau Weber."
+            },
+            {
+              "text": "„Heute gibt es viel Verkehr, und der Lärm ist groß.“",
+              "english": "\"Today there is a lot of traffic, and the noise is great.\""
+            },
+            {
+              "text": "„Früher gab es wenig Verkehr, und wir hatten kaum Autos.“",
+              "english": "\"In the past there was little traffic, and we hardly had any cars.\""
+            },
+            {
+              "text": "„Wir konnten in der Nacht bei offenem Fenster schlafen.“",
+              "english": "\"We could sleep at night with the window open.\""
+            },
+            {
+              "text": "„Es war ruhig, und die Straße war sauber.“",
+              "english": "\"It was quiet, and the street was clean.\""
+            },
+            {
+              "text": "Sam hört den Lärm auch in seinem Zimmer.",
+              "english": "Sam hears the noise in his room too."
+            },
+            {
+              "text": "„Heute ist es manchmal schön, aber oft ist der Lärm sehr groß.“",
+              "english": "\"Today it is sometimes nice, but often the noise is very great.\""
+            },
+            {
+              "text": "„In der Nacht ist er manchmal noch größer.“",
+              "english": "\"At night it is sometimes even greater.\""
+            },
+            {
+              "text": "„Der Verkehr ist sogar am Sonntag groß.“",
+              "english": "\"The traffic is heavy even on Sunday.\""
+            },
+            {
+              "text": "„Und die Straße ist nicht immer sauber“, sagt sie.",
+              "english": "\"And the street is not always clean,\" she says."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Blick zurück",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Frau Weber hat ein altes Foto.",
+              "english": "Frau Weber has an old photo."
+            },
+            {
+              "text": "„Das ist unsere Straße im Jahr 1985“, sagt sie.",
+              "english": "\"That is our street in 1985,\" she says."
+            },
+            {
+              "text": "„Wie sah sie aus?“, fragt Sam.",
+              "english": "\"What did it look like?\" asks Sam."
+            },
+            {
+              "text": "„Die Häuser sind dunkel“, sagt er.",
+              "english": "\"The houses are dark,\" he says."
+            },
+            {
+              "text": "„Die Straße ist ganz leer.“",
+              "english": "\"The street is quite empty.\""
+            },
+            {
+              "text": "„Habe ich das richtig verstanden? Es gab keinen Supermarkt?“",
+              "english": "\"Have I understood that correctly? There was no supermarket?\""
+            },
+            {
+              "text": "„Richtig“, sagt Frau Weber.",
+              "english": "\"Right,\" says Frau Weber."
+            },
+            {
+              "text": "„Wir hatten nur kleine Geschäfte.“",
+              "english": "\"We only had small shops.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Läden, Schwimmbad und Bibliothek",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„Auf der anderen Seite der Straße war ein Laden.“",
+              "english": "\"On the other side of the street there was a shop.\""
+            },
+            {
+              "text": "„Dort gab es alle Zutaten: Salz, Pfeffer, Öl, Zwiebeln, Gemüse und Salat.“",
+              "english": "\"There you could find all the ingredients: salt, pepper, oil, onions, vegetables and salad.\""
+            },
+            {
+              "text": "„Im zweiten Laden haben sie Töpfe, Pfannen, Messer, Löffel und Teller verkauft.“",
+              "english": "\"In the second shop they sold pots, pans, knives, spoons and plates.\""
+            },
+            {
+              "text": "„Diese Läden gibt es nicht mehr.“",
+              "english": "\"These shops do not exist any more.\""
+            },
+            {
+              "text": "„Die Geschäfte haben sechs Tage in der Woche geöffnet.“",
+              "english": "\"The shops were open six days a week.\""
+            },
+            {
+              "text": "„Das letzte Geschäft hat 1995 geschlossen.“",
+              "english": "\"The last business closed in 1995.\""
+            },
+            {
+              "text": "„Heute haben alle wenig Zeit und kaufen im Supermarkt.“",
+              "english": "\"Today everybody has little time and buys in the supermarket.\""
+            },
+            {
+              "text": "„Dort ist es oft voll.“",
+              "english": "\"It is often crowded there.\""
+            },
+            {
+              "text": "Sam fragt: „Und was gab es noch?“",
+              "english": "Sam asks, \"And what else was there?\""
+            },
+            {
+              "text": "„Wir hatten ein Schwimmbad“, sagt Frau Weber.",
+              "english": "\"We had a swimming pool,\" says Frau Weber."
+            },
+            {
+              "text": "„Das Wasser war immer sauber, und die Kinder konnten dort schwimmen.“",
+              "english": "\"The water was always clean, and the children could swim there.\""
+            },
+            {
+              "text": "„Im Sommer war es jeden Tag offen.“",
+              "english": "\"In summer it was open every day.\""
+            },
+            {
+              "text": "„Dann musste das Schwimmbad schließen.“",
+              "english": "\"Then the swimming pool had to close.\""
+            },
+            {
+              "text": "„Es war zu alt und zu klein.“",
+              "english": "\"It was too old and too small.\""
+            },
+            {
+              "text": "„Das Schwimmbad gibt es nicht mehr.“",
+              "english": "\"The swimming pool does not exist any more.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Bibliothek und der Spielplatz",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„Neben der Kirche war eine Bibliothek“, sagt sie.",
+              "english": "\"Next to the church there was a library,\" she says."
+            },
+            {
+              "text": "„Sie hat um acht geöffnet und um sechs geschlossen.“",
+              "english": "\"It opened at eight and closed at six.\""
+            },
+            {
+              "text": "„Ich war oft in der Bibliothek und habe viele Bücher gelesen.“",
+              "english": "\"I was often in the library and read many books.\""
+            },
+            {
+              "text": "„Heute ist die Bibliothek in der Stadt.“",
+              "english": "\"Today the library is in the city.\""
+            },
+            {
+              "text": "„Und hinter dem Haus war ein Spielplatz.“",
+              "english": "\"And behind the house there was a playground.\""
+            },
+            {
+              "text": "„Dort waren immer viele Kinder, und sie wollten nicht nach Hause gehen.“",
+              "english": "\"There were always many children there, and they did not want to go home.\""
+            },
+            {
+              "text": "„Heute sind dort kaum Kinder“, sagt Frau Weber.",
+              "english": "\"Today there are hardly any children there,\" says Frau Weber."
+            },
+            {
+              "text": "„Der Spielplatz ist nicht schön und hat wenig Platz.“",
+              "english": "\"The playground is not nice and has little room.\""
+            },
+            {
+              "text": "„Manchmal sitze ich dort und sehe die Kinder.“",
+              "english": "\"Sometimes I sit there and watch the children.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Kirche an der Ecke",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam fragt nach der Kirche.",
+              "english": "Sam asks about the church."
+            },
+            {
+              "text": "„Am Sonntag war die Kirche voll“, sagt Frau Weber.",
+              "english": "\"On Sundays the church was full,\" says Frau Weber."
+            },
+            {
+              "text": "„Die Orgel war hoch und stark.“",
+              "english": "\"The organ was high and powerful.\""
+            },
+            {
+              "text": "„Die Predigt war lang, und nach der Predigt kam der Segen.“",
+              "english": "\"The sermon was long, and after the sermon came the blessing.\""
+            },
+            {
+              "text": "„Dann gab es die Kollekte.“",
+              "english": "\"Then there was the collection.\""
+            },
+            {
+              "text": "„Ich habe immer eine Kerze mitgebracht.“",
+              "english": "\"I always brought a candle.\""
+            },
+            {
+              "text": "„Heute ist es still in der Kirche.“",
+              "english": "\"Today it is quiet in the church.\""
+            },
+            {
+              "text": "„Die Orgel ist kaum noch zu hören, und sogar die Uhr geht falsch.“",
+              "english": "\"The organ can hardly be heard any more, and even the clock goes wrong.\""
+            },
+            {
+              "text": "„Die Kirche ist aber noch offen, auch am Sonntag.“",
+              "english": "\"But the church is still open, on Sundays too.\""
+            },
+            {
+              "text": "„Kommen Sie doch mit!“, sagt sie.",
+              "english": "\"Do come along!\" she says."
+            },
+            {
+              "text": "„Gern“, sagt Sam.",
+              "english": "\"Gladly,\" says Sam."
+            },
+            {
+              "text": "„Um wie viel Uhr beginnt der Gottesdienst genau?“",
+              "english": "\"At what time exactly does the service begin?\""
+            },
+            {
+              "text": "„Um zehn Uhr“, sagt Frau Weber.",
+              "english": "\"At ten o'clock,\" says Frau Weber."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Veränderungen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Frau Weber spricht langsam, und Sam versteht alles.",
+              "english": "Frau Weber speaks slowly, and Sam understands everything."
+            },
+            {
+              "text": "„Es gibt viele Veränderungen“, sagt sie.",
+              "english": "\"There are many changes,\" she says."
+            },
+            {
+              "text": "„Mein Mann hat dieses Haus gebaut.“",
+              "english": "\"My husband built this house.\""
+            },
+            {
+              "text": "„Heute bauen sie neue Häuser, sogar auf dem Spielplatz.“",
+              "english": "\"Today they are building new houses, even on the playground.\""
+            },
+            {
+              "text": "„Hinter der Kirche haben sie ein neues Haus gebaut.“",
+              "english": "\"Behind the church they have built a new house.\""
+            },
+            {
+              "text": "„Die Straße hat heute hundert Einwohner.“",
+              "english": "\"The street has a hundred inhabitants today.\""
+            },
+            {
+              "text": "„Jedes Jahr kommen neue Einwohner in die Straße.“",
+              "english": "\"Every year new inhabitants come to the street.\""
+            },
+            {
+              "text": "„Das sind große Veränderungen“, sagt Sam.",
+              "english": "\"Those are big changes,\" says Sam."
+            },
+            {
+              "text": "„Sind sie schlecht?“",
+              "english": "\"Are they bad?\""
+            },
+            {
+              "text": "„Nicht alle“, sagt Frau Weber.",
+              "english": "\"Not all of them,\" says Frau Weber."
+            },
+            {
+              "text": "„Junge Menschen sind gut für die Straße.“",
+              "english": "\"Young people are good for the street.\""
+            },
+            {
+              "text": "„Bald wird ein Café öffnen, und alle Einwohner können dort Kaffee trinken.“",
+              "english": "\"Soon a café will open, and all the inhabitants can drink coffee there.\""
+            },
+            {
+              "text": "„Das ist auch eine Veränderung, und sie ist gut.“",
+              "english": "\"That is a change too, and it is a good one.\""
+            },
+            {
+              "text": "Sam sagt: „Danke für die Geschichte.“",
+              "english": "Sam says, \"Thank you for the story.\""
+            },
+            {
+              "text": "„Ich kenne diese Straße genau“, sagt Frau Weber, „aber ich lerne noch jeden Tag.“",
+              "english": "\"I know this street exactly,\" says Frau Weber, \"but I still learn something every day.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

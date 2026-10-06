@@ -1,0 +1,521 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-14",
+  "lang": "de",
+  "title": "Der Sohn, der wegging",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-14",
+    "title": "Der Sohn, der wegging (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: a retelling of Luke 15:11-32 written for the course (not a quotation of any Bible translation): the Scripture wording, the order of the parable and the end that stays open must be checked by a reviewer who knows the passage; the frame (Ben's Sunday morning, Pastor Thomas's short devotion, Sam's thanks) is invented and recycles the vocabulary of the earlier units, so it carries a few modern words (Krankenhaus, Versicherung) outside the parable; Präteritum in the parable and the Plusquamperfekt once or twice (hatte ... ausgegeben, war weggegangen); \"Helfer\" is used for the servants of the parable and \"Arbeiter\" for the workers on the father's farm."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "scripture retelling",
+    "forgiveness",
+    "family",
+    "church life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "scripture"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Sonntagmorgen bei Ben",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Sonntag.",
+              "english": "It is Sunday."
+            },
+            {
+              "text": "Um sieben Uhr klingelt der Wecker.",
+              "english": "At seven o'clock the alarm clock rings."
+            },
+            {
+              "text": "Ben wacht früh auf, und er hat nicht verschlafen.",
+              "english": "Ben wakes up early, and he has not overslept."
+            },
+            {
+              "text": "Er wäscht sich mit Seife und nimmt das Handtuch.",
+              "english": "He washes with soap and takes the towel."
+            },
+            {
+              "text": "Dann putzt er sich die Zähne mit der Zahnbürste und der Zahnpasta.",
+              "english": "Then he brushes his teeth with the toothbrush and the toothpaste."
+            },
+            {
+              "text": "Er kämmt sich und zieht sich an.",
+              "english": "He combs his hair and gets dressed."
+            },
+            {
+              "text": "„Beeil dich, Ben!“, ruft Marta.",
+              "english": "\"Hurry up, Ben!\" calls Marta."
+            },
+            {
+              "text": "Marta holt den Kuchen und legt ihn in die Brotdose.",
+              "english": "Marta fetches the cake and puts it in the lunch box."
+            },
+            {
+              "text": "Die Kirche ist nicht weit, und der Schulweg ist länger.",
+              "english": "The church is not far, and the way to school is longer."
+            },
+            {
+              "text": "Im Gemeindehaus sind schon die Helfer da.",
+              "english": "In the church hall the helpers are already there."
+            },
+            {
+              "text": "Sie bereiten den Saal vor.",
+              "english": "They prepare the hall."
+            },
+            {
+              "text": "Sie stellen die Stühle auf.",
+              "english": "They set up the chairs."
+            },
+            {
+              "text": "Sie legen das Gesangbuch auf jeden Stuhl.",
+              "english": "They put the hymn book on every chair."
+            },
+            {
+              "text": "Auf dem Tisch stehen Blumen und Tassen.",
+              "english": "On the table there are flowers and cups."
+            },
+            {
+              "text": "Ben setzt sich neben Sam.",
+              "english": "Ben sits down next to Sam."
+            },
+            {
+              "text": "Thomas hat das Programm und den Ablauf.",
+              "english": "Thomas has the programme and the order of events."
+            },
+            {
+              "text": "Zuerst begrüßt er die Gäste: „Seid alle willkommen!“",
+              "english": "First he welcomes the guests: \"All of you are welcome!\""
+            },
+            {
+              "text": "Dann kommt die Andacht.",
+              "english": "Then comes the short devotion."
+            },
+            {
+              "text": "„Heute erzähle ich eine Geschichte von Jesus“, sagt Thomas.",
+              "english": "\"Today I will tell a story of Jesus,\" says Thomas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Vater und seine Söhne",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ein Mann hatte zwei Söhne.",
+              "english": "A man had two sons."
+            },
+            {
+              "text": "Er war reich, und er hatte viele Felder.",
+              "english": "He was rich, and he had many fields."
+            },
+            {
+              "text": "Der jüngere Sohn sagte: „Vater, gib mir mein Erbe. Ich will die Welt sehen.“",
+              "english": "The younger son said, \"Father, give me my inheritance. I want to see the world.\""
+            },
+            {
+              "text": "Der Vater war traurig, aber er gab ihm das Erbe.",
+              "english": "The father was sad, but he gave him the inheritance."
+            },
+            {
+              "text": "Der Sohn nahm das Erbe und ging nach drei Tagen weg.",
+              "english": "The son took the inheritance and went away after three days."
+            },
+            {
+              "text": "Er ging in ein Land, das sehr weit von zu Hause war.",
+              "english": "He went to a country that was very far from home."
+            },
+            {
+              "text": "Dort gab er sein Geld aus.",
+              "english": "There he spent his money."
+            },
+            {
+              "text": "Er feierte jeden Tag mit seinen Freunden.",
+              "english": "He celebrated every day with his friends."
+            },
+            {
+              "text": "Bald hatte er alles ausgegeben.",
+              "english": "Soon he had spent everything."
+            },
+            {
+              "text": "Dann kam eine schlimme Zeit: Es gab nicht genug zu essen.",
+              "english": "Then came a bad time: there was not enough to eat."
+            },
+            {
+              "text": "Der Sohn hatte Hunger und kein Geld.",
+              "english": "The son was hungry and had no money."
+            },
+            {
+              "text": "Er suchte Arbeit bei einem reichen Mann.",
+              "english": "He looked for work with a rich man."
+            },
+            {
+              "text": "Der Mann schickte ihn aufs Feld.",
+              "english": "The man sent him to the field."
+            },
+            {
+              "text": "Dort arbeitete er bei den Schweinen.",
+              "english": "There he worked with the pigs."
+            },
+            {
+              "text": "Der Lohn war klein, und oft bekam er kaum Lohn.",
+              "english": "The pay was small, and often he hardly got any pay."
+            },
+            {
+              "text": "Es ging ihm dort nicht wohl.",
+              "english": "He was not well off there."
+            },
+            {
+              "text": "Er hatte so großen Hunger, dass er das Futter der Schweine essen wollte.",
+              "english": "He was so hungry that he wanted to eat the pigs' food."
+            },
+            {
+              "text": "Aber das Futter war nicht für ihn, und keiner gab ihm etwas.",
+              "english": "But the food was not for him, and nobody gave him anything."
+            },
+            {
+              "text": "Er bekam nicht einmal das Futter.",
+              "english": "He did not even get the food."
+            },
+            {
+              "text": "Er lag bei den Schweinen und fühlte sich nicht wohl.",
+              "english": "He lay with the pigs and did not feel well."
+            },
+            {
+              "text": "Da sagte er zu sich:",
+              "english": "Then he said to himself:"
+            },
+            {
+              "text": "„Bei meinem Vater haben sogar die Arbeiter genug Brot.“",
+              "english": "\"At my father's even the workers have enough bread.\""
+            },
+            {
+              "text": "„Und ich sterbe hier vor Hunger.“",
+              "english": "\"And I am dying of hunger here.\""
+            },
+            {
+              "text": "„Ich will zurückkehren und zu meinem Vater sagen: Vater, ich habe Schuld vor Gott und vor dir.“",
+              "english": "\"I want to go back and say to my father: Father, I am guilty before God and before you.\""
+            },
+            {
+              "text": "„Ich darf nicht mehr dein Sohn sein. Mach mich zu einem deiner Arbeiter.“",
+              "english": "\"I may not be your son any more. Make me one of your workers.\""
+            },
+            {
+              "text": "Er bereute alles.",
+              "english": "He regretted everything."
+            },
+            {
+              "text": "Er kehrte zurück und ging nach Hause.",
+              "english": "He went back and set off for home."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Rückkehr",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Der Vater hatte jeden Tag gewartet, denn sein Sohn war weggegangen.",
+              "english": "The father had waited every day, because his son had gone away."
+            },
+            {
+              "text": "Jetzt sah er ihn schon von weitem.",
+              "english": "Now he saw him from far away."
+            },
+            {
+              "text": "Darauf lief er zu ihm, er umarmte ihn und küsste ihn.",
+              "english": "Then he ran to him, he embraced him and kissed him."
+            },
+            {
+              "text": "Er umarmte ihn noch einmal und küsste ihn noch einmal, und der Sohn küsste die Hand des Vaters.",
+              "english": "He embraced him once more and kissed him once more, and the son kissed his father's hand."
+            },
+            {
+              "text": "Der Sohn sagte: „Vater, ich habe Schuld vor Gott und vor dir. Ich darf nicht mehr dein Sohn sein.“",
+              "english": "The son said, \"Father, I am guilty before God and before you. I may not be your son any more.\""
+            },
+            {
+              "text": "Aber der Vater sagte zu seinen Helfern:",
+              "english": "But the father said to his helpers:"
+            },
+            {
+              "text": "„Zieht ihm die alte Kleidung aus.“",
+              "english": "\"Take off his old clothes.\""
+            },
+            {
+              "text": "„Zieht ihm das beste Hemd an.“",
+              "english": "\"Put the best shirt on him.\""
+            },
+            {
+              "text": "„Gebt ihm einen Ring und neue Schuhe.“",
+              "english": "\"Give him a ring and new shoes.\""
+            },
+            {
+              "text": "„Er soll sich waschen und ein Handtuch nehmen.“",
+              "english": "\"He should wash and take a towel.\""
+            },
+            {
+              "text": "„Bereitet ein Essen vor. Stellt die Tische in den Saal.“",
+              "english": "\"Prepare a meal. Put the tables in the hall.\""
+            },
+            {
+              "text": "„Wir wollen essen und feiern, denn mein Sohn war tot, und jetzt ist er lebendig.“",
+              "english": "\"Let us eat and celebrate, for my son was dead, and now he is alive.\""
+            },
+            {
+              "text": "„Er war verloren, und jetzt ist er gefunden.“",
+              "english": "\"He was lost, and now he is found.\""
+            },
+            {
+              "text": "Die Helfer legten Blumen auf die Tische, und alle feierten.",
+              "english": "The helpers put flowers on the tables, and everybody celebrated."
+            },
+            {
+              "text": "Der Ring war groß, und der Sohn zeigte ihn allen Gästen.",
+              "english": "The ring was big, and the son showed it to all the guests."
+            },
+            {
+              "text": "Alle sahen: Der Sohn war lebendig.",
+              "english": "Everyone saw: The son was alive."
+            },
+            {
+              "text": "Er trug den Ring jeden Tag.",
+              "english": "He wore the ring every day."
+            },
+            {
+              "text": "Für den Vater war der Sohn wie tot gewesen.",
+              "english": "For the father the son had been like one dead."
+            },
+            {
+              "text": "Der Sohn bereute nichts mehr, und im Haus des Vaters fühlte er sich wieder wohl.",
+              "english": "The son regretted nothing any more, and in his father's house he felt well again."
+            },
+            {
+              "text": "Er bereute seine Schuld.",
+              "english": "He regretted his guilt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der ältere Sohn",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Der ältere Sohn war auf dem Feld.",
+              "english": "The older son was in the field."
+            },
+            {
+              "text": "Als er nach Hause kam, hörte er Musik.",
+              "english": "When he came home, he heard music."
+            },
+            {
+              "text": "Er fragte einen Helfer: „Was ist denn hier?“",
+              "english": "He asked a helper, \"What is going on here?\""
+            },
+            {
+              "text": "„Dein Bruder ist wieder da“, sagte der Helfer.",
+              "english": "\"Your brother is back,\" said the helper."
+            },
+            {
+              "text": "„Dein Vater macht ein Fest.“",
+              "english": "\"Your father is having a party.\""
+            },
+            {
+              "text": "Darauf wurde der ältere Sohn wütend.",
+              "english": "Then the older son became angry."
+            },
+            {
+              "text": "Er wollte nicht ins Haus gehen.",
+              "english": "He did not want to go into the house."
+            },
+            {
+              "text": "Der Vater kam zu ihm und bat ihn: „Komm ins Haus!“",
+              "english": "The father came to him and begged him, \"Come into the house!\""
+            },
+            {
+              "text": "Der ältere Sohn sagte wütend: „Ich arbeite seit Jahren für dich, wie ein Arbeiter.“",
+              "english": "The older son said angrily, \"I have been working for you for years, like a worker.\""
+            },
+            {
+              "text": "„Aber du hast mir nie einen Lohn gegeben, kein Fest, nichts.“",
+              "english": "\"But you never gave me any pay, no party, nothing.\""
+            },
+            {
+              "text": "„Und jetzt ist er da, und du machst ein Fest mit ihm?“",
+              "english": "\"And now he is here, and you make a party with him?\""
+            },
+            {
+              "text": "Er war so wütend, dass er kein Wort mehr sagte.",
+              "english": "He was so angry that he did not say another word."
+            },
+            {
+              "text": "„Mein Sohn“, sagte der Vater, „du bist immer bei mir.“",
+              "english": "\"My son,\" said the father, \"you are always with me.\""
+            },
+            {
+              "text": "„Du bist reich, denn alles, was ich habe, gehört dir.“",
+              "english": "\"You are rich, for everything I have belongs to you.\""
+            },
+            {
+              "text": "„Aber wir müssen uns freuen. Dein Bruder war tot, und jetzt ist er lebendig.“",
+              "english": "\"But we must be glad. Your brother was dead, and now he is alive.\""
+            },
+            {
+              "text": "Der Vater wollte auch den älteren Sohn umarmen.",
+              "english": "The father wanted to embrace the older son too."
+            },
+            {
+              "text": "Er wartete darauf, dass der Sohn ins Haus kam.",
+              "english": "He waited for the son to come into the house."
+            },
+            {
+              "text": "Was hat der ältere Sohn gemacht?",
+              "english": "What did the older son do?"
+            },
+            {
+              "text": "Die Geschichte sagt es nicht.",
+              "english": "The story does not say."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nach der Andacht",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach der Andacht ist es still im Saal.",
+              "english": "After the devotion it is quiet in the hall."
+            },
+            {
+              "text": "Sam sitzt noch auf seinem Stuhl.",
+              "english": "Sam is still sitting on his chair."
+            },
+            {
+              "text": "Er ist fast wieder gesund.",
+              "english": "He is almost well again."
+            },
+            {
+              "text": "Sein Rücken und sein Bein tun nicht mehr weh.",
+              "english": "His back and his leg do not hurt any more."
+            },
+            {
+              "text": "Die Wunde am Arm ist noch da, aber das Pflaster ist klein.",
+              "english": "The wound on his arm is still there, but the plaster is small."
+            },
+            {
+              "text": "Seine Haut ist nicht mehr blau.",
+              "english": "His skin is no longer blue."
+            },
+            {
+              "text": "„Ich war im Krankenhaus“, sagt er zu Ben.",
+              "english": "\"I was in hospital,\" he says to Ben."
+            },
+            {
+              "text": "„Es war ein Notfall, und der Krankenwagen kam sofort.“",
+              "english": "\"It was an emergency, and the ambulance came at once.\""
+            },
+            {
+              "text": "„Ich hatte Blut am Arm und große Angst.“",
+              "english": "\"I had blood on my arm and was very afraid.\""
+            },
+            {
+              "text": "„Dann bekam ich eine Spritze, eine Impfung.“",
+              "english": "\"Then I got an injection, a vaccination.\""
+            },
+            {
+              "text": "„Jeder Helfer musste sich impfen lassen.“",
+              "english": "\"Every helper had to be vaccinated.\""
+            },
+            {
+              "text": "„Meine Versicherung ist in den USA, aber die Krankenkasse hat geholfen.“",
+              "english": "\"My insurance is in the USA, but the health insurance fund helped.\""
+            },
+            {
+              "text": "„Jetzt muss ich noch zum Zahnarzt, für meine Gesundheit.“",
+              "english": "\"Now I still have to go to the dentist, for my health.\""
+            },
+            {
+              "text": "„Ich war sehr weit von zu Hause“, sagt Sam, „wie der Sohn.“",
+              "english": "\"I was very far from home,\" says Sam, \"like the son.\""
+            },
+            {
+              "text": "„Aber meine Freunde waren da, wie der Vater.“",
+              "english": "\"But my friends were there, like the father.\""
+            },
+            {
+              "text": "Ben sagt: „Ich mag die Geschichte.“",
+              "english": "Ben says, \"I like the story.\""
+            },
+            {
+              "text": "Marta bringt Kaffee in den Tassen.",
+              "english": "Marta brings coffee in the cups."
+            },
+            {
+              "text": "Alle singen noch ein Lied aus dem Gesangbuch.",
+              "english": "Everyone sings one more song from the hymn book."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

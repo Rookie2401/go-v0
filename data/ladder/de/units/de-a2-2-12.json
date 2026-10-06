@@ -1,0 +1,659 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-12",
+  "lang": "de",
+  "title": "Tagebuch der Reise",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-12",
+    "title": "\"Tagebuch der Reise\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Diary entries in the first person (Sam), mixing Perfekt and Präteritum as spoken and written German do. The village in Thüringen is not named (the adapter reads most small town names as common nouns). The host couple Maria and Klaus are invented. The tone of the free-church outreach (\"Kaffee und Gespräch\") continues from the previous units. Please check the verb forms after \"nachdem\" and \"bevor\" and the Plusquamperfekt."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "travel"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Montag: die Ankunft",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Heute fange ich ein neues Tagebuch an.",
+              "english": "Today I am starting a new diary."
+            },
+            {
+              "text": "Ich schreibe es für mich, aber vielleicht lese ich es später meinen Kindern vor.",
+              "english": "I am writing it for myself, but perhaps I will read it to my children later."
+            },
+            {
+              "text": "Unser Team ist heute nach Thüringen gefahren, in ein kleines Dorf.",
+              "english": "Our team travelled to Thüringen today, to a small village."
+            },
+            {
+              "text": "Wir wollen eine Woche bleiben und dort die Aktion „Kaffee und Gespräch“ machen.",
+              "english": "We want to stay a week and do the campaign \"Coffee and Conversation\" there."
+            },
+            {
+              "text": "Die Ankunft war schwierig.",
+              "english": "The arrival was difficult."
+            },
+            {
+              "text": "Es war schon dunkel, als wir ankamen.",
+              "english": "It was already dark when we arrived."
+            },
+            {
+              "text": "Nachdem wir lange nach dem Haus gesucht hatten, haben wir endlich einen Hinweis gefunden.",
+              "english": "After we had searched a long time for the house, we finally found a sign."
+            },
+            {
+              "text": "Während David das Auto parkte, hat Ruth an der Tür geklingelt.",
+              "english": "While David was parking the car, Ruth rang the doorbell."
+            },
+            {
+              "text": "Die Tür ging auf, und eine Frau hat uns umarmt, obwohl sie uns nicht kannte.",
+              "english": "The door opened, and a woman hugged us although she did not know us."
+            },
+            {
+              "text": "Das war die erste Überraschung des Abends.",
+              "english": "That was the first surprise of the evening."
+            },
+            {
+              "text": "Sie heißt Maria, und ihr Mann heißt Klaus.",
+              "english": "Her name is Maria, and her husband is called Klaus."
+            },
+            {
+              "text": "Sie sind unsere Gastfamilie.",
+              "english": "They are our host family."
+            },
+            {
+              "text": "Die Unterkunft ist einfach, aber sehr gemütlich.",
+              "english": "The accommodation is simple but very cosy."
+            },
+            {
+              "text": "Ich schlafe auf dem Dachboden.",
+              "english": "I sleep in the attic."
+            },
+            {
+              "text": "Bevor ich einschlafe, schreibe ich noch schnell in mein Tagebuch.",
+              "english": "Before I fall asleep I quickly write in my diary."
+            },
+            {
+              "text": "Mein erster Eindruck von diesem Dorf: Es ist still, und es riecht nach Holz und Regen.",
+              "english": "My first impression of this village: it is quiet, and it smells of wood and rain."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dienstag: der Nebel",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Morgen lag dichter Nebel über dem Dorf.",
+              "english": "In the morning thick fog lay over the village."
+            },
+            {
+              "text": "Man konnte kaum zehn Meter sehen.",
+              "english": "You could hardly see ten metres."
+            },
+            {
+              "text": "Die Landschaft war verschwunden.",
+              "english": "The landscape had disappeared."
+            },
+            {
+              "text": "Seit unserer Ankunft hatte es kaum aufgehört zu regnen.",
+              "english": "Since our arrival it had hardly stopped raining."
+            },
+            {
+              "text": "Nach dem Frühstück bin ich vor die Tür gegangen.",
+              "english": "After breakfast I went out of the door."
+            },
+            {
+              "text": "Der Nebel hat alles weich gemacht, die Häuser, die Bäume und sogar die Geräusche.",
+              "english": "The fog made everything soft, the houses, the trees and even the sounds."
+            },
+            {
+              "text": "Ich habe einen Spaziergang gemacht, während die anderen noch tranken.",
+              "english": "I went for a walk while the others were still drinking."
+            },
+            {
+              "text": "Die Stille war nicht schlecht, ich habe Ruhe gefunden.",
+              "english": "The silence was not bad, I found peace."
+            },
+            {
+              "text": "Der Spaziergang war kurz, aber ich werde ihn nicht vergessen.",
+              "english": "The walk was short, but I will not forget it."
+            },
+            {
+              "text": "Auf dem Marktplatz habe ich einen alten Mann getroffen.",
+              "english": "On the market square I met an old man."
+            },
+            {
+              "text": "Er hat mich angesprochen.",
+              "english": "He spoke to me."
+            },
+            {
+              "text": "Er hat gefragt: Sind Sie der Amerikaner?",
+              "english": "He asked: are you the American?"
+            },
+            {
+              "text": "Man hat in der Zeitung über Sie geschrieben.",
+              "english": "There was something about you in the newspaper."
+            },
+            {
+              "text": "Ich war überrascht.",
+              "english": "I was surprised."
+            },
+            {
+              "text": "Der Bericht war klein, aber alle im Dorf haben ihn gelesen.",
+              "english": "The report was small, but everybody in the village had read it."
+            },
+            {
+              "text": "Dort stand: Eine Gruppe aus Leipzig kommt, und sie will mit den Leuten sprechen.",
+              "english": "It said: a group from Leipzig is coming, and it wants to talk to the people."
+            },
+            {
+              "text": "Das war für mich eine zweite Überraschung, aber keine schlechte.",
+              "english": "For me that was a second surprise, but not a bad one."
+            },
+            {
+              "text": "Die Begegnung hat mich gefreut.",
+              "english": "The encounter pleased me."
+            },
+            {
+              "text": "Mein Eindruck von den Menschen hier ist gut.",
+              "english": "My impression of the people here is good."
+            },
+            {
+              "text": "Ich habe dem Mann einen Flyer gegeben, und er hat ihn eingesteckt.",
+              "english": "I gave the man a flyer, and he put it in his pocket."
+            },
+            {
+              "text": "Wir wollten Flyer verteilen, aber im Nebel kam kaum jemand heraus.",
+              "english": "We wanted to hand out flyers, but in the fog hardly anyone came out."
+            },
+            {
+              "text": "Unser Ziel war ein kleiner Stand, aber der Wind hat den Tisch fast umgeworfen.",
+              "english": "Our goal was a small stand, but the wind almost knocked the table over."
+            },
+            {
+              "text": "Schließlich haben wir alles im Gemeindehaus aufgebaut, damit es trocken bleibt.",
+              "english": "In the end we set everything up in the community hall so that it stays dry."
+            },
+            {
+              "text": "Wir haben eine Liste gemacht, und jeder konnte sich eintragen.",
+              "english": "We made a list, and everyone could put their name down."
+            },
+            {
+              "text": "Verantwortung hatten alle.",
+              "english": "Everybody had responsibility."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Mittwoch: Menschen und Gespräche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Heute war ein guter Tag.",
+              "english": "Today was a good day."
+            },
+            {
+              "text": "Inzwischen kennen uns schon viele im Dorf.",
+              "english": "By now many in the village know us."
+            },
+            {
+              "text": "Die Flyer hatten wir in Leipzig gedruckt.",
+              "english": "We had printed the flyers in Leipzig."
+            },
+            {
+              "text": "Der Jugendkreis des Dorfes hat sie verteilt.",
+              "english": "The village youth group handed them out."
+            },
+            {
+              "text": "Der Bürgermeister hat uns persönlich begrüßt.",
+              "english": "The mayor welcomed us personally."
+            },
+            {
+              "text": "Er hat gesagt: Hier ist alles ein bisschen langsamer.",
+              "english": "He said: here everything is a little slower."
+            },
+            {
+              "text": "Aber wer hier wohnt, hat Zeit zum Zuhören.",
+              "english": "But whoever lives here has time to listen."
+            },
+            {
+              "text": "Das ist unsere Chance.",
+              "english": "That is our chance."
+            },
+            {
+              "text": "Wir haben die Aktion gut vorbereitet.",
+              "english": "We prepared the campaign well."
+            },
+            {
+              "text": "Die Vorbereitung hat sich gelohnt.",
+              "english": "The preparation was worth it."
+            },
+            {
+              "text": "Jeder von uns hatte seine Aufgabe.",
+              "english": "Each of us had his task."
+            },
+            {
+              "text": "David hat den Kaffee gekocht, Ruth hat Kuchen verkauft, und ich habe Menschen angesprochen.",
+              "english": "David made the coffee, Ruth sold cake, and I spoke to people."
+            },
+            {
+              "text": "Ich hatte erst keinen Mut.",
+              "english": "At first I had no courage."
+            },
+            {
+              "text": "Aber nachdem ich die erste Frau angesprochen hatte, ging es leichter.",
+              "english": "But after I had spoken to the first woman, it got easier."
+            },
+            {
+              "text": "Sie war neugierig und hat gefragt, warum wir hier sind.",
+              "english": "She was curious and asked why we are here."
+            },
+            {
+              "text": "Ich habe zugehört und dann erzählt.",
+              "english": "I listened and then told her."
+            },
+            {
+              "text": "Am Ende hat sie gesagt: Danke für das Gespräch.",
+              "english": "In the end she said: thank you for the conversation."
+            },
+            {
+              "text": "Das Evangelium hat mich nie interessiert, aber Sie schon.",
+              "english": "The gospel never interested me, but you do."
+            },
+            {
+              "text": "Das war eine große Begegnung für mich.",
+              "english": "That was a big encounter for me."
+            },
+            {
+              "text": "Ich habe verstanden, dass Interesse ein Geschenk ist.",
+              "english": "I understood that interest is a gift."
+            },
+            {
+              "text": "Das Erlebnis hat mich beeindruckt, und inzwischen weiß ich, wie man zuhört.",
+              "english": "The experience impressed me, and by now I know how to listen."
+            },
+            {
+              "text": "Am Abend haben wir in unserer Unterkunft lange gesprochen.",
+              "english": "In the evening we talked for a long time in our accommodation."
+            },
+            {
+              "text": "Es war ein Dienst, aber es war auch ein Erlebnis.",
+              "english": "It was a service, but it was also an experience."
+            },
+            {
+              "text": "So etwas kann man nicht planen.",
+              "english": "You cannot plan something like this."
+            },
+            {
+              "text": "Man kann es nur erleben, wenn man mutig ist.",
+              "english": "You can only experience it if you are courageous."
+            },
+            {
+              "text": "Der Erfolg war nicht groß, aber echt.",
+              "english": "The success was not big, but real."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Donnerstag: die Gastfreundschaft",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Unsere Gastfamilie hat mir gezeigt, was Gastfreundschaft wirklich heißt.",
+              "english": "Our host family has shown me what hospitality really means."
+            },
+            {
+              "text": "Sie wollten für die Unterkunft kein Geld nehmen.",
+              "english": "They did not want to take any money for the accommodation."
+            },
+            {
+              "text": "Maria und Klaus haben uns jeden Abend ein großes Essen gekocht, obwohl sie wenig Geld haben.",
+              "english": "Maria and Klaus have cooked us a big meal every evening, although they have little money."
+            },
+            {
+              "text": "Es gab Kartoffeln, Fleisch und einen Kuchen mit Äpfeln, der besser war als jeder Kuchen in Leipzig.",
+              "english": "There were potatoes, meat and a cake with apples that was better than any cake in Leipzig."
+            },
+            {
+              "text": "Er erinnert mich an zu Hause.",
+              "english": "It reminds me of home."
+            },
+            {
+              "text": "Während wir aßen, hat Klaus erzählt, wie das Dorf früher war.",
+              "english": "While we ate, Klaus told us what the village used to be like."
+            },
+            {
+              "text": "Er sagte: Wir haben nicht viel, aber wer zu uns kommt, soll nicht hungrig gehen.",
+              "english": "He said: we do not have much, but whoever comes to us should not leave hungry."
+            },
+            {
+              "text": "Diese Gastfreundschaft hat mich tief beeindruckt.",
+              "english": "This hospitality impressed me deeply."
+            },
+            {
+              "text": "Ich will so sein, wenn ich einmal ein Haus habe.",
+              "english": "I want to be like that when I have a house some day."
+            },
+            {
+              "text": "Was ich hier erlebt habe, vergesse ich nicht.",
+              "english": "What I have experienced here I will not forget."
+            },
+            {
+              "text": "Ich war beeindruckt.",
+              "english": "I was impressed."
+            },
+            {
+              "text": "Nach dem Essen hat Daniel sich in die Hand geschnitten, als er das Brot geschnitten hat.",
+              "english": "After the meal Daniel cut his hand when he was cutting the bread."
+            },
+            {
+              "text": "Klaus hat die Wunde sofort verbunden.",
+              "english": "Klaus bandaged the wound at once."
+            },
+            {
+              "text": "Er hat gesagt: Das habe ich bei der Feuerwehr gelernt.",
+              "english": "He said: I learned that in the fire brigade."
+            },
+            {
+              "text": "Ich musste an die Geschichte vom Samariter denken.",
+              "english": "I had to think of the story of the Samaritan."
+            },
+            {
+              "text": "Ich habe sie Klaus erzählt.",
+              "english": "I told it to Klaus."
+            },
+            {
+              "text": "Er kannte sie.",
+              "english": "He knew it."
+            },
+            {
+              "text": "Er sagte: Das ist die Geschichte, nach der man handeln muss, nicht nur lesen.",
+              "english": "He said: that is the story that one has to act on, not only read."
+            },
+            {
+              "text": "Er hat uns auch erzählt, dass man im Dorf vor Jahren einen Mann ausgeraubt hat.",
+              "english": "He also told us that years ago a man was robbed in the village."
+            },
+            {
+              "text": "Das Gesetz konnte dem Mann damals nicht helfen, aber die Nachbarn haben ihm trotzdem geholfen.",
+              "english": "The law could not help the man at that time, but the neighbours helped him all the same."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Freitag und Samstag: unterwegs",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Freitag waren wir unterwegs in die Nachbarorte.",
+              "english": "On Friday we were out and about in the neighbouring villages."
+            },
+            {
+              "text": "Bevor wir abfuhren, haben wir noch Kaffee getrunken.",
+              "english": "Before we left we drank some more coffee."
+            },
+            {
+              "text": "Unterwegs haben wir viel erlebt.",
+              "english": "On the way we experienced a lot."
+            },
+            {
+              "text": "Wir haben die Landschaft gesehen: Wälder, Hügel und kleine Wiesen.",
+              "english": "We saw the landscape: forests, hills and small meadows."
+            },
+            {
+              "text": "Die Landschaft in Thüringen ist ruhig, und sie erinnert mich an meine Heimat.",
+              "english": "The landscape in Thüringen is calm, and it reminds me of my home country."
+            },
+            {
+              "text": "Wir haben eine Burg besucht, dann ein altes Schloss.",
+              "english": "We visited a castle, then an old palace."
+            },
+            {
+              "text": "Mein Reiseführer hat sie auf der Karte gezeigt.",
+              "english": "My travel guide showed them on the map."
+            },
+            {
+              "text": "Die Burg war sehr schön.",
+              "english": "The castle was very beautiful."
+            },
+            {
+              "text": "Ich habe auch ein Foto für meinen Blog gemacht.",
+              "english": "I also took a photo for my blog."
+            },
+            {
+              "text": "Es ist ein schönes Foto, aber es ist leider verwackelt.",
+              "english": "It is a nice photo, but it is unfortunately blurred."
+            },
+            {
+              "text": "Am Samstag hat der Verein des Dorfes eine Versammlung gehalten.",
+              "english": "On Saturday the village association held a meeting."
+            },
+            {
+              "text": "Wir waren eingeladen.",
+              "english": "We were invited."
+            },
+            {
+              "text": "Es gab eine Tagesordnung, ein Protokoll und sogar eine Sitzung mit einem Beitrag von uns.",
+              "english": "There was an agenda, minutes and even a session with a contribution from us."
+            },
+            {
+              "text": "Man hat abgestimmt.",
+              "english": "They voted."
+            },
+            {
+              "text": "Die Abstimmung war klar.",
+              "english": "The vote was clear."
+            },
+            {
+              "text": "Die Mehrheit war dafür, dass wir die Veranstaltung am Sonntag im Gemeindehaus machen dürfen.",
+              "english": "The majority was in favour of us being allowed to hold the event on Sunday in the community hall."
+            },
+            {
+              "text": "Nur zwei Leute waren dagegen.",
+              "english": "Only two people were against."
+            },
+            {
+              "text": "Sie hatten Angst, dass es zu laut wird, wegen der Baustelle neben der Kirche.",
+              "english": "They were afraid that it would be too loud, because of the building site next to the church."
+            },
+            {
+              "text": "Schließlich hat der Bürgermeister beschlossen, die Antwort sofort zu geben.",
+              "english": "In the end the mayor decided to give the answer at once."
+            },
+            {
+              "text": "Hier gibt es keinen Stadtteil, hat er gesagt, hier ist jeder ein Nachbar.",
+              "english": "There is no district here, he said, here everyone is a neighbour."
+            },
+            {
+              "text": "Er hat gesagt: Das Dorf soll die Veranstaltung organisieren, und wir geben einen Beitrag.",
+              "english": "He said: the village should organise the event, and we will give a contribution."
+            },
+            {
+              "text": "Wir hatten das nicht erwartet.",
+              "english": "We had not expected that."
+            },
+            {
+              "text": "Es war die dritte Überraschung dieser Woche.",
+              "english": "It was the third surprise of this week."
+            },
+            {
+              "text": "Inzwischen hatte sich das Wetter gebessert.",
+              "english": "By then the weather had improved."
+            },
+            {
+              "text": "Danach haben wir mit Klaus über die Abreise gesprochen.",
+              "english": "After that we talked with Klaus about the departure."
+            },
+            {
+              "text": "Jede Begegnung im Dorf war ein Geschenk.",
+              "english": "Every encounter in the village was a gift."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sonntag: die Abreise",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Heute war der letzte Tag.",
+              "english": "Today was the last day."
+            },
+            {
+              "text": "Vor der Abreise habe ich noch einen Spaziergang gemacht.",
+              "english": "Before the departure I went for one more walk."
+            },
+            {
+              "text": "Seit der Ankunft habe ich viel gelernt.",
+              "english": "Since the arrival I have learned a lot."
+            },
+            {
+              "text": "Die Heimreise begann nach dem Frühstück.",
+              "english": "The journey home began after breakfast."
+            },
+            {
+              "text": "Bevor wir fuhren, haben wir mit der Gastfamilie gebetet.",
+              "english": "Before we left we prayed with the host family."
+            },
+            {
+              "text": "Maria hat geweint, und Klaus hat uns umarmt.",
+              "english": "Maria cried, and Klaus hugged us."
+            },
+            {
+              "text": "Die Abreise war traurig, aber ich bin dankbar für die Gastfreundschaft.",
+              "english": "The departure was sad, but I am grateful for the hospitality."
+            },
+            {
+              "text": "Ich nehme viele Erinnerungen mit, und jede Erinnerung hat einen Namen.",
+              "english": "I am taking many memories with me, and every memory has a name."
+            },
+            {
+              "text": "Das ist eine Erinnerung für das ganze Leben.",
+              "english": "That is a memory for the whole of life."
+            },
+            {
+              "text": "Das war das schönste Erlebnis der Woche.",
+              "english": "That was the most beautiful experience of the week."
+            },
+            {
+              "text": "Der letzte Eindruck bleibt: Es ist ein guter Ort.",
+              "english": "The last impression remains: it is a good place."
+            },
+            {
+              "text": "Ich werde mich immer daran erinnern.",
+              "english": "I will always remember it."
+            },
+            {
+              "text": "Auf der Heimreise haben wir kaum gesprochen.",
+              "english": "On the journey home we hardly spoke."
+            },
+            {
+              "text": "Wir waren alle müde und glücklich.",
+              "english": "We were all tired and happy."
+            },
+            {
+              "text": "Die Heimreise hat vier Stunden gedauert.",
+              "english": "The journey home took four hours."
+            },
+            {
+              "text": "Wir waren lange unterwegs.",
+              "english": "We were on the road for a long time."
+            },
+            {
+              "text": "Im Radio gab es eine Meldung über einen Unfall auf der Straße, aber wir haben nichts gesehen.",
+              "english": "On the radio there was a report about an accident on the road, but we saw nothing."
+            },
+            {
+              "text": "Die Polizei hat berichtet, dass ein Feuer im Wald war, aber es ist niemand verletzt worden.",
+              "english": "The police reported that there was a fire in the forest, but nobody was injured."
+            },
+            {
+              "text": "Schließlich sind wir in Leipzig angekommen.",
+              "english": "In the end we arrived in Leipzig."
+            },
+            {
+              "text": "Nachdem wir angekommen waren, habe ich mich sofort hingesetzt.",
+              "english": "After we had arrived I sat down at once."
+            },
+            {
+              "text": "Ich habe mein Tagebuch geöffnet, und ich habe diese Zeilen geschrieben.",
+              "english": "I opened my diary, and I wrote these lines."
+            },
+            {
+              "text": "Ich wollte nichts vergessen.",
+              "english": "I did not want to forget anything."
+            },
+            {
+              "text": "Es war eine Woche, die ich nicht planen konnte, und genau das hat sie so schön gemacht.",
+              "english": "It was a week that I could not plan, and exactly that made it so beautiful."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

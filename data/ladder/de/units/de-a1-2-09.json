@@ -1,0 +1,572 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-09",
+  "lang": "de",
+  "title": "At the doctor's",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-09",
+    "title": "At the doctor's (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. The doctor says du to Ben (a child) and Sie to Marta and Sam; Marta and Sam say Sie to the doctor. \"Wie fühlen Sie sich?\" and \"Mir tut ... weh\" are the usual forms. The prescription (\"Rezept\") is taken to the pharmacy. The doctor's practice is a \"Praxis\"; no doctor's surname is used. The medical advice is deliberately plain (bed, fluids, tablets morning and evening) and is not to be taken as advice; it needs a medical reader as well as a language reviewer."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "health",
+    "doctor",
+    "pharmacy",
+    "body parts",
+    "sich fühlen",
+    "sollen and müssen"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "marta": "Marta",
+    "ben": "Ben",
+    "arztin": "Die Ärztin",
+    "sam": "Sam",
+    "apotheke": "Die Frau in der Apotheke",
+    "weber": "Frau Weber"
+  },
+  "sections": [
+    {
+      "title": "Der Termin",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Wochenende hat Ben draußen gespielt.",
+              "english": "At the weekend Ben played outside."
+            },
+            {
+              "text": "Es hat geregnet, und er hatte keine Jacke.",
+              "english": "It rained, and he had no jacket."
+            },
+            {
+              "text": "Er hat auch den Regenschirm verloren.",
+              "english": "He also lost the umbrella."
+            },
+            {
+              "text": "Jetzt hat er Fieber, und das Ohr tut weh.",
+              "english": "Now he has a fever, and his ear hurts."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ben, du bist krank.",
+              "english": "Ben, you are ill."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich rufe in der Praxis an.",
+              "english": "I am calling the practice."
+            },
+            {
+              "speaker": "marta",
+              "text": "Guten Tag!",
+              "english": "Good day!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich möchte einen Termin, bitte.",
+              "english": "I would like an appointment, please."
+            },
+            {
+              "text": "Die Praxis hat heute um zehn Uhr einen Termin.",
+              "english": "The practice has an appointment today at ten o'clock."
+            },
+            {
+              "text": "Lukas hat kein Auto.",
+              "english": "Lukas has no car."
+            },
+            {
+              "text": "Marta und Ben fahren mit dem Bus.",
+              "english": "Marta and Ben take the bus."
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma, kommst du mit?",
+              "english": "Grandma, are you coming along?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ja, ich komme mit, Ben.",
+              "english": "Yes, I am coming along, Ben."
+            },
+            {
+              "text": "Sie steigen in den Bus ein.",
+              "english": "They get on the bus."
+            },
+            {
+              "text": "Der Bus ist schnell.",
+              "english": "The bus is fast."
+            },
+            {
+              "text": "Sie müssen einmal umsteigen.",
+              "english": "They have to change once."
+            },
+            {
+              "text": "Im Bus bekommen sie einen Platz.",
+              "english": "On the bus they get a seat."
+            },
+            {
+              "text": "Marta hat keinen Koffer, nur eine Tasche.",
+              "english": "Marta has no suitcase, only a bag."
+            },
+            {
+              "text": "Die Reise ist nicht lang.",
+              "english": "The trip is not long."
+            },
+            {
+              "text": "Sie steigen aus, und die Praxis ist da.",
+              "english": "They get off, and the practice is there."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "In der Praxis",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Die Ärztin sitzt im Büro.",
+              "english": "The doctor is sitting in the office."
+            },
+            {
+              "speaker": "marta",
+              "text": "Guten Tag!",
+              "english": "Good day!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ben ist krank.",
+              "english": "Ben is ill."
+            },
+            {
+              "speaker": "marta",
+              "text": "Er hat eine Erkältung, das ist nicht schön.",
+              "english": "He has a cold, that is not nice."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Guten Tag, Ben!",
+              "english": "Good day, Ben!"
+            },
+            {
+              "speaker": "arztin",
+              "text": "Du kannst hier sitzen.",
+              "english": "You can sit here."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Wie fühlst du dich?",
+              "english": "How do you feel?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich fühle mich schlecht.",
+              "english": "I feel bad."
+            },
+            {
+              "speaker": "ben",
+              "text": "Mir tut das Ohr weh, und der Kopf auch.",
+              "english": "My ear hurts, and my head too."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Lass mich dein Ohr sehen.",
+              "english": "Let me see your ear."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Lass mich auch dein Auge sehen.",
+              "english": "Let me see your eye too."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Das Auge ist gut.",
+              "english": "The eye is fine."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Und die Hand?",
+              "english": "And your hand?"
+            },
+            {
+              "speaker": "arztin",
+              "text": "Tut die Hand auch weh?",
+              "english": "Does your hand hurt too?"
+            },
+            {
+              "speaker": "arztin",
+              "text": "Die Hand ist gut.",
+              "english": "Your hand is fine."
+            },
+            {
+              "speaker": "ben",
+              "text": "Nein, aber der Fuß tut weh, vom Fahrrad.",
+              "english": "No, but my foot hurts, from the bicycle."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Der Fuß ist nicht schlecht.",
+              "english": "Your foot is not bad."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Was hast du am Wochenende gemacht?",
+              "english": "What did you do at the weekend?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich war im Kino und habe Pizza gegessen.",
+              "english": "I was at the cinema and ate pizza."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Film war traurig.",
+              "english": "The film was sad."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich war glücklich, aber dann habe ich draußen gespielt.",
+              "english": "I was happy, but then I played outside."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich habe geweint, und leider war mir auch kalt.",
+              "english": "I cried, and unfortunately I was cold too."
+            },
+            {
+              "speaker": "ben",
+              "text": "Meine Jacke ist neu, aber ich habe sie verloren.",
+              "english": "My jacket is new, but I lost it."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Das ist nur eine Erkältung.",
+              "english": "That is only a cold."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Du hast Fieber, und du hast Schmerzen im Ohr.",
+              "english": "You have a fever, and you have pain in your ear."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Das Medikament ist für die Schmerzen.",
+              "english": "The medicine is for the pain."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Du sollst das Medikament am Morgen und am Abend nehmen.",
+              "english": "You should take the medicine in the morning and in the evening."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Du musst im Bett bleiben und genug Wasser und Tee trinken.",
+              "english": "You must stay in bed and drink enough water and tea."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Und du sollst nicht in die Schule gehen.",
+              "english": "And you should not go to school."
+            },
+            {
+              "text": "Die Ärztin schreibt das Rezept.",
+              "english": "The doctor writes the prescription."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Hier ist das Rezept.",
+              "english": "Here is the prescription."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Gehen Sie in die Apotheke.",
+              "english": "Go to the pharmacy."
+            },
+            {
+              "speaker": "marta",
+              "text": "Danke für die Hilfe!",
+              "english": "Thank you for the help!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "In der Apotheke",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta und Ben gehen in die Apotheke.",
+              "english": "Marta and Ben go to the pharmacy."
+            },
+            {
+              "speaker": "apotheke",
+              "text": "Guten Tag!",
+              "english": "Good day!"
+            },
+            {
+              "speaker": "apotheke",
+              "text": "Haben Sie ein Rezept?",
+              "english": "Do you have a prescription?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ja, hier ist das Rezept.",
+              "english": "Yes, here is the prescription."
+            },
+            {
+              "speaker": "apotheke",
+              "text": "Das Medikament kostet fünf Euro.",
+              "english": "The medicine costs five euros."
+            },
+            {
+              "speaker": "marta",
+              "text": "Danke.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "marta",
+              "text": "Brauchen wir noch etwas?",
+              "english": "Do we need anything else?"
+            },
+            {
+              "speaker": "apotheke",
+              "text": "Nein, das ist genug.",
+              "english": "No, that is enough."
+            },
+            {
+              "text": "Zu Hause legt sich Ben ins Bett.",
+              "english": "At home Ben lies down in bed."
+            },
+            {
+              "text": "Marta kocht Suppe und Tee, und Ben lacht wieder.",
+              "english": "Marta cooks soup and tea, and Ben laughs again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sam in der Praxis",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Dienstag ist auch Sam in der Praxis.",
+              "english": "On Tuesday Sam is in the practice too."
+            },
+            {
+              "text": "Er hat Fieber, und der Hals tut weh.",
+              "english": "He has a fever, and his throat hurts."
+            },
+            {
+              "speaker": "sam",
+              "text": "Guten Tag!",
+              "english": "Good day!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Mein Name ist Sam Miller.",
+              "english": "My name is Sam Miller."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe einen Termin.",
+              "english": "I have an appointment."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Guten Tag, Herr Miller.",
+              "english": "Good day, Mr Miller."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Wie fühlen Sie sich?",
+              "english": "How do you feel?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich fühle mich nicht gut.",
+              "english": "I do not feel well."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Hals tut weh, und ich habe Fieber.",
+              "english": "My throat hurts, and I have a fever."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe auch Schmerzen im Hals.",
+              "english": "I also have pain in my throat."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mein Auge ist gut.",
+              "english": "My eye is fine."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Waren Sie am Wochenende draußen?",
+              "english": "Were you outside at the weekend?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, wir waren am See, und es hat geregnet.",
+              "english": "Yes, we were at the lake, and it rained."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Haben Sie gearbeitet?",
+              "english": "Have you been working?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, gestern habe ich im Büro von Thomas gearbeitet.",
+              "english": "Yes, yesterday I worked in Thomas's office."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe viel Arbeit gehabt.",
+              "english": "I had a lot of work."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe im Supermarkt eingekauft, die Wohnung geputzt, die Wäsche gemacht und geduscht.",
+              "english": "I did the shopping at the supermarket, cleaned the flat, did the washing and showered."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das Abendessen war fertig, aber ich habe nichts gegessen.",
+              "english": "Dinner was ready, but I ate nothing."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Und vorgestern?",
+              "english": "And the day before yesterday?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Vorgestern war ich noch gesund.",
+              "english": "The day before yesterday I was still well."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Das ist eine Erkältung.",
+              "english": "That is a cold."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Sie müssen im Bett bleiben.",
+              "english": "You must stay in bed."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Sie sollen das Medikament nehmen.",
+              "english": "You should take the medicine."
+            },
+            {
+              "speaker": "arztin",
+              "text": "Hier ist das Rezept.",
+              "english": "Here is the prescription."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ist die Apotheke weit?",
+              "english": "Is the pharmacy far?"
+            },
+            {
+              "speaker": "arztin",
+              "text": "Nein, Sie können zu Fuß gehen.",
+              "english": "No, you can walk."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke für die Hilfe!",
+              "english": "Thank you for the help!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Ärztin ist sehr gut.",
+              "english": "The doctor is very good."
+            },
+            {
+              "text": "Sam ist zurück bei Frau Weber.",
+              "english": "Sam is back at Mrs Weber's."
+            },
+            {
+              "speaker": "weber",
+              "text": "Herr Miller, Sie sind krank!",
+              "english": "Mr Miller, you are ill!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich lasse Sie nicht gehen.",
+              "english": "I will not let you go."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich habe Tee gekocht.",
+              "english": "I have made tea."
+            },
+            {
+              "speaker": "weber",
+              "text": "Brauchen Sie Hilfe?",
+              "english": "Do you need help?"
+            },
+            {
+              "text": "Frau Weber lässt Sam im Bett schlafen.",
+              "english": "Mrs Weber lets Sam sleep in bed."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

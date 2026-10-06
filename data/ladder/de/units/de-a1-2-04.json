@@ -1,0 +1,455 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-04",
+  "lang": "de",
+  "title": "Yesterday after work",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-04",
+    "title": "Yesterday after work (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A phone call told in the Perfekt with haben (regular verbs and a few common strong participles that the word list knows: gefunden, geschrieben, gegangen). Today is Thursday in the story; \"vorgestern\" is Tuesday. Anna, a nurse, had an office day (paperwork in Michael's office) and then shopped and cleaned; \"Wäsche machen\" is the everyday phrase. Colloquial \"ich bin um sechs zurück\" is correct."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "Perfekt with haben",
+    "daily routine",
+    "work",
+    "household"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "anna": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Der Anruf",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Abend, es ist Donnerstag.",
+              "english": "It is evening, it is Thursday."
+            },
+            {
+              "text": "Sam hat sein Handy.",
+              "english": "Sam has his phone."
+            },
+            {
+              "text": "Er ruft Anna an.",
+              "english": "He calls Anna."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hallo, Anna!",
+              "english": "Hello, Anna!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Bist du schon zurück?",
+              "english": "Are you back already?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja, ich bin um sechs Uhr zurück.",
+              "english": "Yes, I got back at six o'clock."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich bin müde, aber ich bin froh.",
+              "english": "I am tired, but I am happy."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie war dein Tag?",
+              "english": "How was your day?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Und wie war gestern?",
+              "english": "And how was yesterday?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Gestern habe ich viel gearbeitet.",
+              "english": "Yesterday I worked a lot."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gestern",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anna",
+              "text": "Ich habe gestern im Büro von Michael gearbeitet.",
+              "english": "Yesterday I worked in Michael's office."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das Büro von Michael ist klein.",
+              "english": "Michael's office is small."
+            },
+            {
+              "speaker": "anna",
+              "text": "Die Arbeit fängt um sieben Uhr an.",
+              "english": "Work starts at seven o'clock."
+            },
+            {
+              "speaker": "anna",
+              "text": "Die Arbeit ist gut.",
+              "english": "The work is good."
+            },
+            {
+              "speaker": "anna",
+              "text": "Nach der Arbeit habe ich im Supermarkt Brot und Milch gekauft.",
+              "english": "After work I bought bread and milk at the supermarket."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich habe auch Käse, Tomaten und Kartoffeln gekauft.",
+              "english": "I also bought cheese, tomatoes and potatoes."
+            },
+            {
+              "speaker": "anna",
+              "text": "Der Supermarkt ist groß, und der Preis ist gut.",
+              "english": "The supermarket is big, and the price is good."
+            },
+            {
+              "speaker": "anna",
+              "text": "Im Supermarkt gibt es auch Kuchen.",
+              "english": "In the supermarket there is cake too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Leider habe ich meinen Schlüssel verloren!",
+              "english": "Unfortunately I lost my key!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich habe ihn gesucht, und ich habe ihn gefunden.",
+              "english": "I looked for it, and I found it."
+            },
+            {
+              "speaker": "anna",
+              "text": "Er hat im Büro gelegen.",
+              "english": "It was lying in the office."
+            },
+            {
+              "speaker": "anna",
+              "text": "Jetzt liegt er in meiner Tasche.",
+              "english": "Now it is in my bag."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Wohnung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anna",
+              "text": "Dann bin ich in die Wohnung gegangen.",
+              "english": "Then I went to the flat."
+            },
+            {
+              "speaker": "anna",
+              "text": "Die Wohnung ist nicht groß, aber ich habe sie geputzt.",
+              "english": "The flat is not big, but I cleaned it."
+            },
+            {
+              "speaker": "anna",
+              "text": "Putzen ist nicht schön, aber es ist gut.",
+              "english": "Cleaning is not nice, but it is good."
+            },
+            {
+              "speaker": "anna",
+              "text": "In der Wohnung ist auch Lukas.",
+              "english": "Lukas is in the flat too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich habe die Wäsche gemacht.",
+              "english": "I did the washing."
+            },
+            {
+              "speaker": "anna",
+              "text": "Dann habe ich geduscht.",
+              "english": "Then I had a shower."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und das Abendessen?",
+              "english": "And dinner?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Lukas hat das Abendessen gekocht.",
+              "english": "Lukas cooked dinner."
+            },
+            {
+              "speaker": "anna",
+              "text": "Wir haben zusammen gegessen: Suppe mit Kartoffeln.",
+              "english": "We ate together: soup with potatoes."
+            },
+            {
+              "speaker": "anna",
+              "text": "Leider war die Suppe kalt.",
+              "english": "Unfortunately the soup was cold."
+            },
+            {
+              "speaker": "anna",
+              "text": "Dann war ich fertig.",
+              "english": "Then I was done."
+            },
+            {
+              "speaker": "anna",
+              "text": "Jetzt sitze ich draußen und telefoniere mit dir.",
+              "english": "Now I am sitting outside and phoning you."
+            },
+            {
+              "speaker": "anna",
+              "text": "Draußen ist es warm, und die Wäsche ist auch fertig.",
+              "english": "It is warm outside, and the washing is done too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Vorgestern",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Und vorgestern?",
+              "english": "And the day before yesterday?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Das war Dienstag.",
+              "english": "That was Tuesday."
+            },
+            {
+              "speaker": "anna",
+              "text": "Vorgestern habe ich einen Termin gehabt, beim Arzt.",
+              "english": "The day before yesterday I had an appointment, at the doctor's."
+            },
+            {
+              "speaker": "anna",
+              "text": "Der Arzt hat gesagt: \"Du bist gesund.\"",
+              "english": "The doctor said: \"You are well.\""
+            },
+            {
+              "speaker": "anna",
+              "text": "Vorgestern habe ich leider nicht geduscht!",
+              "english": "The day before yesterday I did not shower, unfortunately!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Du hast viel gearbeitet.",
+              "english": "You worked a lot."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe gestern Deutsch gelernt.",
+              "english": "Yesterday I learned German."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bin auch schon zurück.",
+              "english": "I am back already too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich sitze am Tisch in der Küche.",
+              "english": "I am sitting at the table in the kitchen."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe auch geputzt: das Zimmer, das Bad und die Küche.",
+              "english": "I cleaned too: the room, the bathroom and the kitchen."
+            },
+            {
+              "speaker": "sam",
+              "text": "Meine Wäsche liegt auf dem Bett.",
+              "english": "My washing is on the bed."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich muss noch duschen.",
+              "english": "I still have to shower."
+            },
+            {
+              "speaker": "sam",
+              "text": "Frau Weber hat das Abendessen gekocht, und es ist fertig.",
+              "english": "Mrs Weber cooked dinner, and it is ready."
+            },
+            {
+              "speaker": "sam",
+              "text": "Draußen regnet es, aber wir sitzen in der Küche.",
+              "english": "It is raining outside, but we are sitting in the kitchen."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe in der Gemeinde geholfen.",
+              "english": "I helped at the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe eine Nachricht an Daniel geschrieben, und ich habe ihn angerufen.",
+              "english": "I wrote a message to Daniel, and I called him."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wir haben Lieder gesungen und gebetet.",
+              "english": "We sang songs and prayed."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe Ben im Park gesehen.",
+              "english": "I saw Ben in the park."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er hat wieder sein Heft verloren.",
+              "english": "He has lost his exercise book again."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wir haben es gesucht und gefunden.",
+              "english": "We looked for it and found it."
+            },
+            {
+              "speaker": "sam",
+              "text": "Es hat neben dem Rucksack gelegen.",
+              "english": "It was next to the school bag."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Rucksack steht hinter dem Stuhl.",
+              "english": "The school bag is behind the chair."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gott und das Leben",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Ich glaube, Gott liebt dich, Anna.",
+              "english": "I believe God loves you, Anna."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich danke Gott für dich.",
+              "english": "I thank God for you."
+            },
+            {
+              "speaker": "anna",
+              "text": "Danke, Sam.",
+              "english": "Thank you, Sam."
+            },
+            {
+              "speaker": "anna",
+              "text": "Du bist ein guter Christ.",
+              "english": "You are a good Christian."
+            },
+            {
+              "speaker": "sam",
+              "text": "Früher hatte ich keine Freunde.",
+              "english": "Before, I had no friends."
+            },
+            {
+              "speaker": "sam",
+              "text": "Jetzt habe ich Freunde, und ich habe Freude.",
+              "english": "Now I have friends, and I have joy."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das Leben ist schön, und Gott ist Liebe.",
+              "english": "Life is lovely, and God is love."
+            },
+            {
+              "speaker": "anna",
+              "text": "Mein Herz ist froh.",
+              "english": "My heart is glad."
+            },
+            {
+              "speaker": "sam",
+              "text": "Am Montag und am Mittwoch habe ich Klasse.",
+              "english": "On Monday and Wednesday I have class."
+            },
+            {
+              "speaker": "sam",
+              "text": "Am Freitag koche ich Suppe, und am Samstag ist das Frühstück in der Gemeinde.",
+              "english": "On Friday I cook soup, and on Saturday there is breakfast at the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "Bist du nicht müde?",
+              "english": "Are you not tired?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Doch, sehr müde.",
+              "english": "Yes I am, very tired."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

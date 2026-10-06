@@ -1,0 +1,514 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-08",
+  "lang": "de",
+  "title": "Bens Morgen",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-08",
+    "title": "Bens Morgen (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: reflexive verbs in the present and Perfekt (sich waschen, sich beeilen, sich setzen, sich anziehen, sich kämmen) and the dative reflexive with a body part (Er putzt sich die Zähne); \"Brotdose\" and \"Schulweg\" are everyday words; the school starts late because of the storm night of the earlier unit (invented); Lukas is Ben's father and a teacher at his school; the unit uses the Präsens and the Perfekt for the night before."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily life",
+    "morning routine",
+    "reflexive verbs",
+    "school"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Der Wecker klingelt nicht",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Morgen im Oktober, und es ist Montag.",
+              "english": "It is a morning in October, and it is Monday."
+            },
+            {
+              "text": "In der Nacht ist der Strom noch einmal ausgefallen.",
+              "english": "In the night the power went out once more."
+            },
+            {
+              "text": "Sonst klingelt Bens Wecker um sieben Uhr.",
+              "english": "Normally Ben's alarm clock rings at seven."
+            },
+            {
+              "text": "Heute hat der Wecker nicht geklingelt.",
+              "english": "Today the alarm clock did not ring."
+            },
+            {
+              "text": "Er zeigt noch drei Uhr, denn er ist stehen geblieben.",
+              "english": "It still says three o'clock, because it has stopped."
+            },
+            {
+              "text": "Ben wacht erst um halb acht auf.",
+              "english": "Ben only wakes up at half past seven."
+            },
+            {
+              "text": "Draußen ist es schon hell.",
+              "english": "Outside it is already light."
+            },
+            {
+              "text": "„Ich habe verschlafen!“, ruft Ben.",
+              "english": "\"I have overslept!\" calls Ben."
+            },
+            {
+              "text": "Er hat Angst, zu spät zu kommen.",
+              "english": "He is afraid of being late."
+            },
+            {
+              "text": "Er springt aus dem Bett und läuft ins Bad.",
+              "english": "He jumps out of bed and runs into the bathroom."
+            },
+            {
+              "text": "Im Bad liegt eine Nachricht von Lukas.",
+              "english": "In the bathroom there is a note from Lukas."
+            },
+            {
+              "text": "Sie sagt: „Gesicht, Hände, Haare! Guten Tag, mein Sohn!“",
+              "english": "It says, \"Face, hands, hair! Have a good day, my son!\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Im Bad",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Zuerst wäscht Ben sich mit Wasser und Seife.",
+              "english": "First Ben washes with water and soap."
+            },
+            {
+              "text": "Die Seife fällt ins Wasser.",
+              "english": "The soap falls into the water."
+            },
+            {
+              "text": "Er nimmt die Seife wieder und wäscht sich die Hände.",
+              "english": "He takes the soap again and washes his hands."
+            },
+            {
+              "text": "Danach nimmt er das Handtuch.",
+              "english": "Then he takes the towel."
+            },
+            {
+              "text": "Das Handtuch ist blau, und es ist noch warm.",
+              "english": "The towel is blue, and it is still warm."
+            },
+            {
+              "text": "Er legt das Handtuch auf den Stuhl.",
+              "english": "He puts the towel on the chair."
+            },
+            {
+              "text": "Dann putzt er sich die Zähne.",
+              "english": "Then he brushes his teeth."
+            },
+            {
+              "text": "Er nimmt die Zahnbürste und die Zahnpasta.",
+              "english": "He takes the toothbrush and the toothpaste."
+            },
+            {
+              "text": "Die Zahnpasta ist leer.",
+              "english": "The toothpaste is empty."
+            },
+            {
+              "text": "„Das ist nicht schlimm“, sagt er.",
+              "english": "\"That is not a problem,\" he says."
+            },
+            {
+              "text": "„Ich nehme die Zahnpasta von Papa.“",
+              "english": "\"I will take Dad's toothpaste.\""
+            },
+            {
+              "text": "Die Zahnbürste von Papa ist rot, und seine ist grün.",
+              "english": "Dad's toothbrush is red, and his is green."
+            },
+            {
+              "text": "Ben putzt lange, und seine Zähne sind sauber.",
+              "english": "Ben brushes for a long time, and his teeth are clean."
+            },
+            {
+              "text": "Dann kämmt er sich die Haare.",
+              "english": "Then he combs his hair."
+            },
+            {
+              "text": "Seine Haare sind kurz, aber sie sehen schlimm aus.",
+              "english": "His hair is short, but it looks awful."
+            },
+            {
+              "text": "Er kämmt sich noch einmal, und er beeilt sich.",
+              "english": "He combs it once more, and he hurries."
+            },
+            {
+              "text": "Er hat kaum Zeit.",
+              "english": "He hardly has any time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "In der Küche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta ist schon in der Küche.",
+              "english": "Marta is already in the kitchen."
+            },
+            {
+              "text": "Sie ist früh aufgestanden.",
+              "english": "She got up early."
+            },
+            {
+              "text": "„Guten Morgen, Ben“, sagt sie.",
+              "english": "\"Good morning, Ben,\" she says."
+            },
+            {
+              "text": "„Du hast verschlafen.“",
+              "english": "\"You have overslept.\""
+            },
+            {
+              "text": "„Der Strom war aus, und der Wecker hat nicht geklingelt“, sagt Ben.",
+              "english": "\"The power was off, and the alarm clock did not ring,\" says Ben."
+            },
+            {
+              "text": "„Ich bin erst um halb acht aufgewacht.“",
+              "english": "\"I only woke up at half past seven.\""
+            },
+            {
+              "text": "„Ich weiß“, sagt Marta.",
+              "english": "\"I know,\" says Marta."
+            },
+            {
+              "text": "„Am Samstag war der Sturm, und er hat noch Schaden gemacht.“",
+              "english": "\"On Saturday there was the storm, and it is still causing damage.\""
+            },
+            {
+              "text": "„Der Blitz und der Donner waren sehr laut.“",
+              "english": "\"The lightning and the thunder were very loud.\""
+            },
+            {
+              "text": "„Am Samstag war plötzlich das Licht aus, und wir haben die Taschenlampe geholt.“",
+              "english": "\"On Saturday the light was suddenly off, and we fetched the torch.\""
+            },
+            {
+              "text": "„Im Keller hast du gezittert, aber Sam hat dich beruhigt.“",
+              "english": "\"In the cellar you were trembling, but Sam calmed you.\""
+            },
+            {
+              "text": "„Ich habe mich gefürchtet“, sagt Ben leise.",
+              "english": "\"I was afraid,\" says Ben quietly."
+            },
+            {
+              "text": "„Jetzt nicht mehr.“",
+              "english": "\"Not any more.\""
+            },
+            {
+              "text": "„Dann beeil dich!“, sagt Marta.",
+              "english": "\"Then hurry up!\" says Marta."
+            },
+            {
+              "text": "„Hast du dich gewaschen?“",
+              "english": "\"Have you washed?\""
+            },
+            {
+              "text": "„Ja“, sagt Ben.",
+              "english": "\"Yes,\" says Ben."
+            },
+            {
+              "text": "„Und ich habe mir die Zähne mit der Zahnbürste von Papa geputzt.“",
+              "english": "\"And I have brushed my teeth with Dad's toothbrush.\""
+            },
+            {
+              "text": "„Und deine Haare?“, fragt sie.",
+              "english": "\"And your hair?\" she asks."
+            },
+            {
+              "text": "„Hast du dich gekämmt?“",
+              "english": "\"Have you combed it?\""
+            },
+            {
+              "text": "Ben setzt sich an den Tisch.",
+              "english": "Ben sits down at the table."
+            },
+            {
+              "text": "Auch Marta setzt sich.",
+              "english": "Marta sits down too."
+            },
+            {
+              "text": "Auf dem Tisch sind Brot, Butter und Käse.",
+              "english": "On the table there are bread, butter and cheese."
+            },
+            {
+              "text": "Ben trinkt Milch und isst ein Brötchen.",
+              "english": "Ben drinks milk and eats a roll."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Anziehen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„Du bist ja noch nicht angezogen!“, sagt Marta.",
+              "english": "\"You are not dressed yet!\" says Marta."
+            },
+            {
+              "text": "„Zieh dich an!“",
+              "english": "\"Get dressed!\""
+            },
+            {
+              "text": "Ben läuft in sein Zimmer und holt die Hose, den Pullover und die graue Jacke.",
+              "english": "Ben runs to his room and gets his trousers, his pullover and his grey jacket."
+            },
+            {
+              "text": "Ben setzt sich noch einmal auf das Bett.",
+              "english": "Ben sits down on the bed once more."
+            },
+            {
+              "text": "„Ich muss mich beeilen“, sagt er.",
+              "english": "\"I have to hurry,\" he says."
+            },
+            {
+              "text": "„Ich habe keine Zeit.“",
+              "english": "\"I have no time.\""
+            },
+            {
+              "text": "Marta holt die Brotdose.",
+              "english": "Marta gets the lunch box."
+            },
+            {
+              "text": "„Hier ist dein Frühstück für die Schule“, sagt sie.",
+              "english": "\"Here is your breakfast for school,\" she says."
+            },
+            {
+              "text": "„Zwei Brote und ein Apfel liegen dort.“",
+              "english": "\"Two sandwiches and an apple are in there.\""
+            },
+            {
+              "text": "Ben nimmt die Brotdose und läuft zur Tür.",
+              "english": "Ben takes the lunch box and runs to the door."
+            },
+            {
+              "text": "„Ben!“, sagt Marta.",
+              "english": "\"Ben!\" says Marta."
+            },
+            {
+              "text": "„Hast du alles?“",
+              "english": "\"Have you got everything?\""
+            },
+            {
+              "text": "„Die Jacke, die Brotdose, das Heft ...“",
+              "english": "\"The jacket, the lunch box, the exercise book ...\""
+            },
+            {
+              "text": "Marta betet kurz: „Danke, Gott, für diesen Morgen.“",
+              "english": "Marta prays briefly: \"Thank you, God, for this morning.\""
+            },
+            {
+              "text": "„Und gib Ben einen guten Tag.“",
+              "english": "\"And give Ben a good day.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Schulweg",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Der Schulweg ist kurz, aber Ben rennt.",
+              "english": "The way to school is short, but Ben runs."
+            },
+            {
+              "text": "Es regnet, und der Himmel ist grau.",
+              "english": "It is raining, and the sky is grey."
+            },
+            {
+              "text": "Auf dem Schulweg sieht Ben viele Veränderungen.",
+              "english": "On the way to school Ben sees many changes."
+            },
+            {
+              "text": "Im Park sind zwei Bäume gefallen, und ein Baum ist gebrochen.",
+              "english": "In the park two trees have fallen, and one tree has broken."
+            },
+            {
+              "text": "Die Feuerwehr ist noch dort, und sie hat eine lange Leiter.",
+              "english": "The fire brigade is still there, and it has a long ladder."
+            },
+            {
+              "text": "Der Sturm hat viel Schaden gemacht, sogar am Dach einer Kirche.",
+              "english": "The storm did a lot of damage, even to the roof of a church."
+            },
+            {
+              "text": "Der Laden am Park schließt am Abend um sechs.",
+              "english": "The shop by the park closes at six in the evening."
+            },
+            {
+              "text": "Jetzt öffnet er gerade die Tür.",
+              "english": "Now he is just opening the door."
+            },
+            {
+              "text": "Es gibt viel Verkehr, und der Lärm ist groß.",
+              "english": "There is a lot of traffic, and the noise is great."
+            },
+            {
+              "text": "Der Spielplatz ist sauber, und die kleine Bibliothek ist offen.",
+              "english": "The playground is clean, and the little library is open."
+            },
+            {
+              "text": "Hier war früher ein Schwimmbad.",
+              "english": "There used to be a swimming pool here."
+            },
+            {
+              "text": "Die Einwohner wollen mehr Häuser bauen, aber manchmal sagen sie nein.",
+              "english": "The residents want to build more houses, but sometimes they say no."
+            },
+            {
+              "text": "Ben ist oft hier, und er kennt alle Häuser.",
+              "english": "Ben is often here, and he knows all the houses."
+            },
+            {
+              "text": "Heute ist der Schulweg lang.",
+              "english": "Today the way to school is long."
+            },
+            {
+              "text": "Nun ist es acht Uhr.",
+              "english": "Now it is eight o'clock."
+            },
+            {
+              "text": "Hoffentlich ist die Tür der Schule noch offen!",
+              "english": "Hopefully the door of the school is still open!"
+            },
+            {
+              "text": "Endlich ist er da.",
+              "english": "At last he is there."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "In der Schule",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "An der Schule steht Lukas.",
+              "english": "Lukas is standing at the school."
+            },
+            {
+              "text": "Er ist Bens Vater und Lehrer.",
+              "english": "He is Ben's father and a teacher."
+            },
+            {
+              "text": "„Guten Morgen, Ben“, sagt er.",
+              "english": "\"Good morning, Ben,\" he says."
+            },
+            {
+              "text": "„Du bist nicht zu spät, und du bist auch nicht zu früh.“",
+              "english": "\"You are not late, and you are not too early either.\""
+            },
+            {
+              "text": "„Der Strom war auch hier aus. Wir beginnen später.“",
+              "english": "\"The power was out here too. We will start later.\""
+            },
+            {
+              "text": "„Ich habe auch verschlafen, und ich bin sehr früh gelaufen.“",
+              "english": "\"I overslept too, and I ran very early.\""
+            },
+            {
+              "text": "Ben ist froh.",
+              "english": "Ben is glad."
+            },
+            {
+              "text": "Er zieht die Schuhe aus.",
+              "english": "He takes off his shoes."
+            },
+            {
+              "text": "Er hat die Schuhe schon ausgezogen, als die Klasse kommt.",
+              "english": "He has already taken his shoes off when the class arrives."
+            },
+            {
+              "text": "„Wie war deine Nacht?“, fragt ein Freund.",
+              "english": "\"How was your night?\" asks a friend."
+            },
+            {
+              "text": "„Es war schlimm“, sagt Ben.",
+              "english": "\"It was bad,\" says Ben."
+            },
+            {
+              "text": "„Ich erzähle es dir in der Pause.“",
+              "english": "\"I will tell you in the break.\""
+            },
+            {
+              "text": "Am Abend erzählt Marta ihm ein Märchen.",
+              "english": "In the evening Marta tells him a fairy tale."
+            },
+            {
+              "text": "Ein Geräusch am Dach macht ihm keine Angst mehr.",
+              "english": "A noise on the roof does not frighten him any more."
+            },
+            {
+              "text": "Er sieht den Mond und die Sterne und schläft gut.",
+              "english": "He sees the moon and the stars and sleeps well."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

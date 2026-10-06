@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-10",
+  "lang": "de",
+  "title": "Wer ist mein Nächster?",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-10",
+    "title": "\"Wer ist mein Nächster?\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. A retelling in the course's own plain German of the parable of the Good Samaritan (Luke 10:25-37). It follows the sequence of the story but quotes no translation; it needs a reader who knows the passage (and ideally a Scripture-competent as well as a linguistic reviewer). The modern frame (Thomas teaching the youth group, with the Hausordnung as a contrast) is the course's own. Please check the church terms \"Gesetzeslehrer\", \"Priester\", \"Samariter\"."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "scripture"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "scripture"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "TH": "Pastor Thomas",
+    "SA": "Sam",
+    "GL": "Gesetzeslehrer",
+    "JE": "Jesus"
+  },
+  "sections": [
+    {
+      "title": "Eine Regel für alles",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Mittwochabend sitzt der Jugendkreis im Haus der Gemeinde.",
+              "english": "On Wednesday evening the youth group sits in the church building."
+            },
+            {
+              "text": "Auch Sam ist dabei.",
+              "english": "Sam is there too."
+            },
+            {
+              "text": "Pastor Thomas hat heute ein Blatt mitgebracht.",
+              "english": "Pastor Thomas has brought a sheet today."
+            },
+            {
+              "text": "Es ist die Hausordnung von seinem alten Haus.",
+              "english": "It is the house rules from his old house."
+            },
+            {
+              "text": "Hört zu.",
+              "english": "Listen.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Hier steht, dass man den Müll trennen muss.",
+              "english": "It says here that one has to separate the rubbish.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Jeder Mieter hat eine Mülltonne.",
+              "english": "Every tenant has a bin.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Im Treppenhaus und im Flur darf man nichts abstellen.",
+              "english": "In the stairwell and the hall one may not leave anything.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Das Rauchen ist verboten.",
+              "english": "Smoking is forbidden.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Parken ist nur auf dem Parkplatz erlaubt.",
+              "english": "Parking is only allowed on the car park.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Man muss lüften, und man soll Heizung und Strom sparen.",
+              "english": "One has to air the rooms, and one should save heating and electricity.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Der Hausmeister liest jede Mitteilung genau.",
+              "english": "The caretaker reads every notice carefully.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er beachtet jede Regel.",
+              "english": "He notes every rule.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Das ist ja wie bei Frau Weber.",
+              "english": "That is just like at Frau Weber's.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Ja.",
+              "english": "Yes.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Regeln sind gut.",
+              "english": "Rules are good.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Sie helfen uns, in der Nachbarschaft in Frieden zu leben.",
+              "english": "They help us to live in peace in the neighbourhood.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Man braucht Rücksicht und Geduld.",
+              "english": "One needs consideration and patience.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Aber eine Hausordnung sagt nicht alles.",
+              "english": "But house rules do not say everything.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Sie sagt nicht, was wir tun sollen, wenn jemand Hilfe braucht.",
+              "english": "They do not say what we should do when someone needs help.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Darüber hat Jesus einmal eine Geschichte erzählt.",
+              "english": "Jesus once told a story about this.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Sie ist sehr alt, und sie ist doch ganz neu.",
+              "english": "It is very old, and yet it is quite new.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Ich erzähle sie euch mit meinen Worten.",
+              "english": "I will tell it to you in my own words.",
+              "speaker": "TH"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Frage des Lehrers",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Eines Tages kam ein Gesetzeslehrer zu Jesus.",
+              "english": "One day a teacher of the law came to Jesus.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Ein Gesetzeslehrer kannte das Gesetz sehr gut.",
+              "english": "A teacher of the law knew the law very well.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er hatte das Gesetz viele Jahre lang gelernt.",
+              "english": "He had studied the law for many years.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er wollte Jesus prüfen und fragte: Was muss ich tun, um das ewige Leben zu bekommen?",
+              "english": "He wanted to test Jesus and asked: what must I do to receive eternal life?",
+              "speaker": "TH"
+            },
+            {
+              "text": "Jesus fragte zurück: Was steht im Gesetz?",
+              "english": "Jesus asked back: what does the law say?",
+              "speaker": "TH"
+            },
+            {
+              "text": "Was liest du dort?",
+              "english": "What do you read there?",
+              "speaker": "TH"
+            },
+            {
+              "text": "Ich lese: Du sollst Gott lieben mit ganzem Herzen.",
+              "english": "I read: you shall love God with all your heart.",
+              "speaker": "GL"
+            },
+            {
+              "text": "Und du sollst deinen Nächsten lieben wie dich selbst.",
+              "english": "And you shall love your neighbour as yourself.",
+              "speaker": "GL"
+            },
+            {
+              "text": "Du hast richtig geantwortet.",
+              "english": "You have answered correctly.",
+              "speaker": "JE"
+            },
+            {
+              "text": "Tu das, und du wirst leben.",
+              "english": "Do that, and you will live.",
+              "speaker": "JE"
+            },
+            {
+              "text": "Aber er war noch nicht zufrieden.",
+              "english": "But he was not yet satisfied.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er wollte sich vor den Leuten gut zeigen.",
+              "english": "He wanted to look good in front of the people.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wer ist denn mein Nächster?",
+              "english": "Who then is my neighbour?",
+              "speaker": "GL"
+            },
+            {
+              "text": "Das war die Frage.",
+              "english": "That was the question.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Jesus gab keine Regel als Antwort.",
+              "english": "Jesus did not give a rule as an answer.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er erzählte eine Geschichte.",
+              "english": "He told a story.",
+              "speaker": "TH"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Weg nach Jericho",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ein Mann ging von Jerusalem nach Jericho hinunter.",
+              "english": "A man was going down from Jerusalem to Jericho.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Der Weg war lang und einsam.",
+              "english": "The way was long and lonely.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Man konnte nur geradeaus gehen.",
+              "english": "You could only go straight ahead.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Es gab keinen Hinweis, keine Brücke, keine Ampel und keine Kreuzung.",
+              "english": "There was no sign, no bridge, no traffic light and no crossing.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Nur Steine, links und rechts.",
+              "english": "Only stones, left and right.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er musste einen kleinen Bach überqueren.",
+              "english": "He had to cross a small stream.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Danach bog der Weg an einer Ecke ab, in Richtung Tal.",
+              "english": "After that the way turned off at a corner, in the direction of the valley.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Hundert Meter weiter war kein Haus mehr zu sehen.",
+              "english": "A hundred metres further on no house could be seen any more.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Es war ein gefährlicher Weg.",
+              "english": "It was a dangerous way.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Niemand ging ihn allein.",
+              "english": "Nobody went it alone.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Aber der Mann war allein.",
+              "english": "But the man was alone.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Plötzlich kamen Räuber hinter den Steinen hervor.",
+              "english": "Suddenly robbers came out from behind the stones.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Sie überfielen ihn.",
+              "english": "They attacked him.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Die Räuber hatten den Mann schon lange gesehen.",
+              "english": "The robbers had seen the man for a long time.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Sie schlugen ihn und raubten ihn aus.",
+              "english": "They beat him and robbed him.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Sie nahmen sein Geld, seine Kleider und sein Essen.",
+              "english": "They took his money, his clothes and his food.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Dann liefen sie weg.",
+              "english": "Then they ran away.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Der Mann, den die Räuber überfallen hatten, lag halb tot am Rand des Weges.",
+              "english": "The man whom the robbers had attacked lay half dead at the side of the road.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er konnte nicht mehr aufstehen.",
+              "english": "He could not get up any more.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Unten im Tal sah man das Wasser.",
+              "english": "Down in the valley one could see the water.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Das ist schrecklich.",
+              "english": "That is terrible.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Sie wollten ihn nur ausrauben, und sie haben ihn fast tot gelassen.",
+              "english": "They only wanted to rob him, and they almost left him dead.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Man konnte ihn überfallen, weil er allein war.",
+              "english": "They could attack him because he was alone.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Hat ihn niemand gesehen?",
+              "english": "Did nobody see him?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Doch.",
+              "english": "Yes.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Es kamen drei Menschen.",
+              "english": "Three people came.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Aber es kamen nicht alle, die man erwartet hätte.",
+              "english": "But not all of those came whom one would have expected.",
+              "speaker": "TH"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Zwei gehen vorbei",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Zuerst kam ein Priester.",
+              "english": "First came a priest.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er war ein frommer Mann und kam vom Tempel.",
+              "english": "He was a pious man and came from the temple.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Der Priester sah den Mann liegen.",
+              "english": "The priest saw the man lying there.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Aber er ging auf der anderen Seite vorbei.",
+              "english": "But he passed by on the other side.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Vielleicht hatte er Angst.",
+              "english": "Perhaps he was afraid.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Vielleicht hatte er keine Zeit.",
+              "english": "Perhaps he had no time.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Vielleicht dachte er: Ich darf nichts Unreines berühren.",
+              "english": "Perhaps he thought: I must not touch anything unclean.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Dann kam ein zweiter Mann, auch vom Tempel.",
+              "english": "Then came a second man, also from the temple.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er blieb kurz stehen und schaute den Mann an.",
+              "english": "He stopped briefly and looked at the man.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Aber er wollte nicht helfen.",
+              "english": "But he did not want to help.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er wollte nur vorbeigehen und schnell nach Hause.",
+              "english": "He only wanted to go by and quickly get home.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Beide hatten doch bestimmt die Regeln gelernt.",
+              "english": "Both had certainly learned the rules.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Das ist der Punkt, Sam.",
+              "english": "That is the point, Sam.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Die Regeln halfen dem Mann nicht.",
+              "english": "The rules did not help the man.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er lag allein auf dem Weg.",
+              "english": "He lay alone on the road.",
+              "speaker": "TH"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Samariter",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Und dann kam ein Samariter.",
+              "english": "And then came a Samaritan.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Die Leute mochten die Samariter nicht.",
+              "english": "People did not like the Samaritans.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Sie waren Fremde und Feinde.",
+              "english": "They were strangers and enemies.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er hatte eine weite Reise vor sich.",
+              "english": "He had a long journey ahead of him.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er ritt auf einem Esel und hatte Wein dabei.",
+              "english": "He rode on a donkey and had wine with him.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er sah den Mann, und er hatte Mitleid.",
+              "english": "He saw the man, and he had pity.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Sein Herz tat ihm weh.",
+              "english": "His heart hurt.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Dieses Mitleid war keine Regel.",
+              "english": "This pity was not a rule.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er stieg vom Esel und ging zu dem Mann.",
+              "english": "He got off the donkey and went to the man.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er fragte nicht, wer er war oder woher er kam.",
+              "english": "He did not ask who he was or where he came from.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er hatte Wein dabei und tat ihn auf die Wunden.",
+              "english": "He had wine with him and put it on the wounds.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Der Wein brannte, aber er half.",
+              "english": "The wine stung, but it helped.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Dann verband er sie mit einem Tuch.",
+              "english": "Then he bandaged them with a cloth.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er hob den Mann auf seinen Esel und brachte ihn langsam zur nächsten Herberge.",
+              "english": "He lifted the man on to his donkey and slowly took him to the next inn.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Die Herberge war ein großes Gebäude an der Straße.",
+              "english": "The inn was a big building on the road.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Hinten war der Stall mit dem Ausgang zum Hof, und vorn war der Eingang.",
+              "english": "At the back was the stable with the exit to the yard, and at the front was the entrance.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Im Erdgeschoss war die Küche, und oben im ersten Stock waren die Zimmer.",
+              "english": "On the ground floor was the kitchen, and upstairs on the first floor were the rooms.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Es gab keinen Aufzug.",
+              "english": "There was no lift.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er trug den Mann die Treppe hinauf und legte ihn in ein Bett.",
+              "english": "He carried the man up the stairs and laid him in a bed.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Die ganze Nacht blieb er bei ihm.",
+              "english": "He stayed with him all night.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er pflegte ihn und gab ihm Wasser und Brot.",
+              "english": "He cared for him and gave him water and bread.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Am Morgen musste er weiterreisen.",
+              "english": "In the morning he had to travel on.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er ging zum Wirt der Herberge.",
+              "english": "He went to the innkeeper of the inn.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Der Wirt war überrascht.",
+              "english": "The innkeeper was surprised.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Der Samariter gab ihm zwei Münzen.",
+              "english": "The Samaritan gave him two coins.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er sagte: Pflege ihn für mich.",
+              "english": "He said: care for him for me.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wenn es mehr kostet, bezahle ich es später.",
+              "english": "If it costs more, I will pay later.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Der Wirt nickte.",
+              "english": "The innkeeper nodded.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er hatte so etwas noch nie erlebt.",
+              "english": "He had never experienced anything like it.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er hat die Wunden verbunden und den Mann sogar bezahlt.",
+              "english": "He bandaged the wounds and even paid for the man.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Er hat keine Regel gebraucht.",
+              "english": "He did not need a rule.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Nein.",
+              "english": "No.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Er hatte ein Herz, das barmherzig war.",
+              "english": "He had a heart that was merciful.",
+              "speaker": "TH"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Und wir?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dann fragte Jesus den Gesetzeslehrer: Wer von den dreien war der Nächste des Mannes?",
+              "english": "Then Jesus asked the teacher of the law: which of the three was the neighbour of the man?",
+              "speaker": "TH"
+            },
+            {
+              "text": "Der, der barmherzig zu ihm war.",
+              "english": "The one who was merciful to him.",
+              "speaker": "GL"
+            },
+            {
+              "text": "Dann geh und handle ebenso.",
+              "english": "Then go and do likewise.",
+              "speaker": "JE"
+            },
+            {
+              "text": "Sei barmherzig.",
+              "english": "Be merciful.",
+              "speaker": "JE"
+            },
+            {
+              "text": "Das ist die Geschichte.",
+              "english": "That is the story.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Sie ist kurz, aber sie stellt uns eine große Frage.",
+              "english": "It is short, but it asks us a big question.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wir haben viele Regeln: im Haus, im Verein, in der Stadt.",
+              "english": "We have many rules: in the house, in the association, in the city.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wir stimmen ab, und die Mehrheit entscheidet.",
+              "english": "We vote, and the majority decides.",
+              "speaker": "TH"
+            },
+            {
+              "text": "In der letzten Versammlung hat der Bürgermeister das gesagt.",
+              "english": "At the last meeting the mayor said that.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Das ist gut so.",
+              "english": "That is good.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Aber ein Beitrag zur Liebe steht in keiner Hausordnung.",
+              "english": "But a contribution to love is in no house rules.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Man muss ihn selbst geben.",
+              "english": "One has to give it oneself.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Und wer ist heute so ein Mann?",
+              "english": "And who is such a man today?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Vielleicht die Frau, die dem Nachbarn einen Kuchen bringt.",
+              "english": "Perhaps the woman who brings her neighbour a cake.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Vielleicht der Mann, der abends anruft.",
+              "english": "Perhaps the man who phones in the evening.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Eine Krankenschwester wie Anna pflegt jeden Tag Menschen.",
+              "english": "A nurse like Anna cares for people every day.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Sie fragt nicht, wer es ist.",
+              "english": "She does not ask who it is.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Es ist jeder, der Zeit und Mitleid für einen anderen hat.",
+              "english": "It is everyone who has time and pity for somebody else.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wir müssen anders handeln als bisher.",
+              "english": "We have to act differently than before.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Das ewige Leben beginnt nicht erst nach dem Tod.",
+              "english": "Eternal life does not begin only after death.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Es ist die Liebe, die ewig bleibt.",
+              "english": "It is love that remains for ever.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wer so handelt, hat Jesus verstanden.",
+              "english": "Whoever acts like that has understood Jesus.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Aber es ist nicht leicht.",
+              "english": "But it is not easy.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Man hat Angst, man ist müde, man hat selbst genug Probleme.",
+              "english": "You are afraid, you are tired, you have enough problems yourself.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Das stimmt.",
+              "english": "That is true.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Darum brauchen wir Mut.",
+              "english": "That is why we need courage.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Der Priester hatte vielleicht Gründe.",
+              "english": "The priest perhaps had reasons.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Aber er hat nicht geholfen.",
+              "english": "But he did not help.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Wer die Wunde eines anderen verbinden will, muss sich selbst die Hände schmutzig machen.",
+              "english": "Whoever wants to bandage another's wound has to get his own hands dirty.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Am Ende wird es still im Raum.",
+              "english": "At the end it becomes quiet in the room."
+            },
+            {
+              "text": "Jemand fragt: Und wenn man selbst Hilfe braucht?",
+              "english": "Somebody asks: and what if one needs help oneself?"
+            },
+            {
+              "text": "Dann soll man sie annehmen.",
+              "english": "Then one should accept it.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Auch das ist eine Form von Liebe.",
+              "english": "That too is a form of love.",
+              "speaker": "TH"
+            },
+            {
+              "text": "Nach dem Treffen geht Sam allein nach Hause.",
+              "english": "After the meeting Sam goes home alone."
+            },
+            {
+              "text": "Er kommt am Haus von Frau Weber vorbei und bleibt stehen.",
+              "english": "He passes Frau Weber's house and stops."
+            },
+            {
+              "text": "Im Fenster brennt noch Licht.",
+              "english": "A light is still burning in the window."
+            },
+            {
+              "text": "Er klingelt und fragt, ob sie etwas braucht.",
+              "english": "He rings and asks whether she needs anything."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

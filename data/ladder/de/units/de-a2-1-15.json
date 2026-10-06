@@ -1,0 +1,538 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-15",
+  "lang": "de",
+  "title": "Ein Brief in die Heimat",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-15",
+    "title": "Ein Brief in die Heimat (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: a personal letter in du / ihr form to friends at home, in the Perfekt; letter formulae (Liebe ..., Viele Grüße, Euer Sam, P.S.) are the drafter's reading; \"Liebe\" is read by the adapter as the adjective \"lieb\"; \"Mail\" is used instead of \"E-Mail\" because the adapter splits \"E-Mail\" into two tokens; the dates and places are invented; the thanks for prayer is simple church-life language that a reviewer should check for natural register."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "correspondence",
+    "letter",
+    "home church",
+    "first impressions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Der Anfang des Briefes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Leipzig, den 20. November",
+              "english": "Leipzig, 20 November"
+            },
+            {
+              "text": "Liebe Freunde in der Heimat,",
+              "english": "Dear friends back home,"
+            },
+            {
+              "text": "ich schreibe euch heute einen Brief.",
+              "english": "today I am writing you a letter."
+            },
+            {
+              "text": "Das ist keine Mail.",
+              "english": "It is not an e-mail."
+            },
+            {
+              "text": "Mein Computer ist kaputt, und das Internet im Zimmer ist langsam.",
+              "english": "My computer is broken, and the internet in my room is slow."
+            },
+            {
+              "text": "Jonas hat den Computer geprüft, aber er kann ihn nicht reparieren.",
+              "english": "Jonas checked the computer, but he cannot repair it."
+            },
+            {
+              "text": "Ich schreibe kaum Mails, und ich lese kaum etwas im Internet.",
+              "english": "I hardly write e-mails, and I hardly read anything on the internet."
+            },
+            {
+              "text": "Ein neuer Computer ist teuer.",
+              "english": "A new computer is expensive."
+            },
+            {
+              "text": "Das Internet in der Bibliothek ist gut, und dort schreibe ich manchmal.",
+              "english": "The internet in the library is good, and I sometimes write there."
+            },
+            {
+              "text": "Aber ich mag Briefe.",
+              "english": "But I like letters."
+            },
+            {
+              "text": "Frau Weber hat mir eine Briefmarke gegeben.",
+              "english": "Frau Weber gave me a stamp."
+            },
+            {
+              "text": "Sie sagt: „Eine Briefmarke ist nicht teuer.“",
+              "english": "She says, \"A stamp is not expensive.\""
+            },
+            {
+              "text": "„Aber die Post braucht eine Woche bis zu euch.“",
+              "english": "\"But the post takes a week to reach you.\""
+            },
+            {
+              "text": "Ich bringe den Brief heute zur Post.",
+              "english": "I am taking the letter to the post office today."
+            },
+            {
+              "text": "Die Briefmarke hat ein Bild von Leipzig.",
+              "english": "The stamp has a picture of Leipzig."
+            },
+            {
+              "text": "Hoffentlich kommt er pünktlich an.",
+              "english": "I hope it arrives on time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Mein Leben in Leipzig",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ich bin jetzt schon drei Monate hier.",
+              "english": "I have been here for three months now."
+            },
+            {
+              "text": "Ich wohne bei Frau Weber, und sie ist wie eine Oma für mich.",
+              "english": "I live with Frau Weber, and she is like a grandmother to me."
+            },
+            {
+              "text": "Die Straße ist laut, aber die Menschen sind freundlich.",
+              "english": "The street is loud, but the people are friendly."
+            },
+            {
+              "text": "Ich lerne jeden Tag Deutsch, und meine Lehrerin Eva ist nett und spricht langsam.",
+              "english": "I learn German every day, and my teacher Eva is nice and speaks slowly."
+            },
+            {
+              "text": "Manchmal verstehe ich fast nichts.",
+              "english": "Sometimes I understand almost nothing."
+            },
+            {
+              "text": "Ich vermisse euch und die Heimat.",
+              "english": "I miss you and my home."
+            },
+            {
+              "text": "Ich vermisse auch die Lieder aus dem Gesangbuch.",
+              "english": "I miss the songs from the hymn book too."
+            },
+            {
+              "text": "Meine Mutter vermisst mich, sagt sie.",
+              "english": "My mother misses me, she says."
+            },
+            {
+              "text": "In der Heimat ist es jetzt noch Nacht, und ihr schlaft.",
+              "english": "At home it is still night now, and you are asleep."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Reise nach Hamburg",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Im Oktober bin ich mit der Bahn nach Hamburg gefahren.",
+              "english": "In October I went to Hamburg by train."
+            },
+            {
+              "text": "Der Zug hatte Verspätung.",
+              "english": "The train was late."
+            },
+            {
+              "text": "Auf dem Bahnsteig kam eine Durchsage.",
+              "english": "On the platform there was an announcement."
+            },
+            {
+              "text": "Ich habe mich sehr geärgert.",
+              "english": "I was very annoyed."
+            },
+            {
+              "text": "Ich habe den Anschluss nicht bekommen.",
+              "english": "I did not get my connection."
+            },
+            {
+              "text": "Ich habe lange gewartet.",
+              "english": "I waited a long time."
+            },
+            {
+              "text": "Bei der Auskunft hat ein Mann den Fahrplan geprüft.",
+              "english": "At the information desk a man checked the timetable."
+            },
+            {
+              "text": "Es gab Ersatz: einen Bus.",
+              "english": "There was a replacement: a bus."
+            },
+            {
+              "text": "Die Bahn ist nicht immer pünktlich, aber die Menschen helfen.",
+              "english": "The railway is not always on time, but the people help."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Frau Weber und mein Zimmer",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mein Zimmer ist klein, aber es hat ein großes Fenster.",
+              "english": "My room is small, but it has a big window."
+            },
+            {
+              "text": "Im Bett ist es warm, und ich schlafe gut.",
+              "english": "In bed it is warm, and I sleep well."
+            },
+            {
+              "text": "Frau Weber kocht oft Suppe, und wir sitzen zusammen am Tisch.",
+              "english": "Frau Weber often cooks soup, and we sit together at the table."
+            },
+            {
+              "text": "Am Sonntag backt sie Kuchen, und die Nachbarn kommen.",
+              "english": "On Sundays she bakes cake, and the neighbours come."
+            },
+            {
+              "text": "Sie erzählt mir von früher, von ihrem Mann und von der Straße.",
+              "english": "She tells me about the old days, about her husband and about the street."
+            },
+            {
+              "text": "Ich bin gern bei ihr, und ich lerne viele Wörter.",
+              "english": "I like being with her, and I learn many words."
+            },
+            {
+              "text": "Sie sagt: „Sam, Sie sprechen schon gut.“",
+              "english": "She says, \"Sam, you already speak well.\""
+            },
+            {
+              "text": "Das ist nett, aber es ist nicht ganz richtig.",
+              "english": "That is kind, but it is not quite right."
+            },
+            {
+              "text": "Ich mache noch viele Fehler, und manchmal sage ich etwas Falsches.",
+              "english": "I still make many mistakes, and sometimes I say something wrong."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Meine Tage",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Morgen habe ich Kurs.",
+              "english": "In the morning I have my course."
+            },
+            {
+              "text": "Dann helfe ich auf dem Spielplatz und in der kleinen Bibliothek.",
+              "english": "Then I help at the playground and in the little library."
+            },
+            {
+              "text": "Die Kinder rennen und spielen, und ich spreche mit ihnen Deutsch.",
+              "english": "The children run and play, and I speak German with them."
+            },
+            {
+              "text": "Es ist kalt, und ich trage meine neue Jacke und eine Mütze.",
+              "english": "It is cold, and I am wearing my new jacket and a hat."
+            },
+            {
+              "text": "Im Dezember kommt der Schnee, sagen alle.",
+              "english": "In December the snow comes, everybody says."
+            },
+            {
+              "text": "Am Abend sind wir oft in der Gruppe zusammen, mit David, Ruth und Daniel.",
+              "english": "In the evening we are often together in the group, with David, Ruth and Daniel."
+            },
+            {
+              "text": "Wir beten, wir singen, und wir reden viel.",
+              "english": "We pray, we sing, and we talk a lot."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Unfall",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ich muss euch noch etwas sagen.",
+              "english": "I still have to tell you something."
+            },
+            {
+              "text": "Ich bin vom Dach gefallen.",
+              "english": "I fell off the roof."
+            },
+            {
+              "text": "Es war ein Notfall, und der Krankenwagen war sofort da.",
+              "english": "It was an emergency, and the ambulance was there at once."
+            },
+            {
+              "text": "Im Krankenhaus hat mich eine Ärztin untersucht.",
+              "english": "In the hospital a doctor examined me."
+            },
+            {
+              "text": "Ich habe mich am Arm, am Rücken und am Bein verletzt.",
+              "english": "I hurt my arm, my back and my leg."
+            },
+            {
+              "text": "Es war Blut an der Haut, und ich hatte eine Wunde.",
+              "english": "There was blood on my skin, and I had a wound."
+            },
+            {
+              "text": "Die Ärztin hat ein Pflaster auf die Wunde gelegt.",
+              "english": "The doctor put a plaster on the wound."
+            },
+            {
+              "text": "Ich habe auch eine Spritze bekommen, eine Impfung.",
+              "english": "I also got an injection, a vaccination."
+            },
+            {
+              "text": "Jeder Helfer soll sich impfen lassen, sagt sie.",
+              "english": "Every helper should be vaccinated, she says."
+            },
+            {
+              "text": "Meine Versicherung ist bei euch, aber hier hilft die Krankenkasse.",
+              "english": "My insurance is with you, but here the health insurance fund helps."
+            },
+            {
+              "text": "Jetzt bin ich fast gesund.",
+              "english": "Now I am almost well."
+            },
+            {
+              "text": "Nur zum Zahnarzt muss ich noch gehen.",
+              "english": "I only still have to go to the dentist."
+            },
+            {
+              "text": "Danke, dass ihr für mich betet.",
+              "english": "Thank you for praying for me."
+            },
+            {
+              "text": "Das ist gut für meine Gesundheit.",
+              "english": "That is good for my health."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Gemeinde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Sonntag gehe ich in die Gemeinde.",
+              "english": "On Sundays I go to the congregation."
+            },
+            {
+              "text": "Wir sind nicht viele, aber jeder Gast ist willkommen.",
+              "english": "We are not many, but every guest is welcome."
+            },
+            {
+              "text": "Am Morgen bereiten wir den Saal vor.",
+              "english": "In the morning we prepare the hall."
+            },
+            {
+              "text": "Wir stellen die Stühle auf.",
+              "english": "We set up the chairs."
+            },
+            {
+              "text": "Wir legen das Programm auf jeden Stuhl.",
+              "english": "We put the programme on every chair."
+            },
+            {
+              "text": "Eine Frau bringt Blumen, und ich stelle die Tassen in die Küche.",
+              "english": "A woman brings flowers, and I put the cups in the kitchen."
+            },
+            {
+              "text": "Das Gemeindehaus ist klein, aber es ist schön.",
+              "english": "The church hall is small, but it is lovely."
+            },
+            {
+              "text": "Ich bin auch Helfer: Ich begrüße die Gäste an der Tür.",
+              "english": "I am a helper too: I welcome the guests at the door."
+            },
+            {
+              "text": "Der Ablauf ist nicht schwer: ein Lied, die Andacht, die Kollekte.",
+              "english": "The order is not hard: a song, the short devotion, the collection."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Staat und die Welt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mein Freund Jonas ist Mechaniker.",
+              "english": "My friend Jonas is a mechanic."
+            },
+            {
+              "text": "Nach Feierabend sind wir oft zusammen.",
+              "english": "After work we are often together."
+            },
+            {
+              "text": "Im September war Wahl, und ich habe viel über den Staat gehört.",
+              "english": "In September there was an election, and I heard a lot about the state."
+            },
+            {
+              "text": "Deutschland ist ein reiches Land, aber auch hier gibt es Menschen ohne Geld.",
+              "english": "Germany is a rich country, but here too there are people without money."
+            },
+            {
+              "text": "In der Gemeinde sind Menschen aus der ganzen Welt.",
+              "english": "In the congregation there are people from all over the world."
+            },
+            {
+              "text": "Im Sommer will ich ans Meer fahren und auf eine Insel.",
+              "english": "In summer I want to go to the sea and to an island."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Fragen an euch",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Wie geht es der Gemeinde?",
+              "english": "How is the congregation?"
+            },
+            {
+              "text": "Ist Pastor Michael noch gesund?",
+              "english": "Is Pastor Michael still well?"
+            },
+            {
+              "text": "Wer spielt jetzt die Orgel?",
+              "english": "Who plays the organ now?"
+            },
+            {
+              "text": "Habt ihr noch den Kuchen mit dem roten Apfel?",
+              "english": "Do you still have the cake with the red apple?"
+            },
+            {
+              "text": "Ich mag ihn, und hier gibt es ihn nicht.",
+              "english": "I like it, and here there is none."
+            },
+            {
+              "text": "Schickt mir Bilder, wenn ihr etwas Schönes habt.",
+              "english": "Send me pictures if you have something nice."
+            },
+            {
+              "text": "Ich möchte alles wissen.",
+              "english": "I want to know everything."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Päckchen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Danke für das Päckchen!",
+              "english": "Thank you for the parcel!"
+            },
+            {
+              "text": "Im Päckchen waren Kaffee und Kuchen.",
+              "english": "In the parcel there were coffee and cake."
+            },
+            {
+              "text": "Das Päckchen war schnell da, und alle haben gegessen.",
+              "english": "The parcel arrived quickly, and everybody ate."
+            },
+            {
+              "text": "Viele Grüße von Frau Weber.",
+              "english": "Many greetings from Frau Weber."
+            },
+            {
+              "text": "Und viele Grüße von mir.",
+              "english": "And many greetings from me."
+            },
+            {
+              "text": "Ein Gruß an alle in der Gemeinde.",
+              "english": "A greeting to everyone in the congregation."
+            },
+            {
+              "text": "Sam",
+              "english": "Sam"
+            },
+            {
+              "text": "Noch etwas: Schreibt mir bald!",
+              "english": "One more thing: write to me soon!"
+            },
+            {
+              "text": "Ich warte schon auf Post von euch.",
+              "english": "I am already waiting for post from you."
+            },
+            {
+              "text": "Antwortet gern mit einer Mail, wenn ihr nicht warten wollt.",
+              "english": "Do answer with an e-mail if you do not want to wait."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

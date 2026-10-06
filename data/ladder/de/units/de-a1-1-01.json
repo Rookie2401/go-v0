@@ -1,0 +1,491 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-01",
+  "lang": "de",
+  "title": "Meeting in the street",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-01",
+    "title": "Meeting in the street (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. du/Sie: Frau Weber and Sam use Sie; Anna and Sam use du; Anna says Sie to Frau Weber. \"Sam Miller\" is the learner's surname in the course. \"Freut mich\" and \"Wie geht's?\" are plain spoken forms. \"Wie ist Ihr Name?\" is correct and a little formal (\"Wie heißen Sie?\" is the other common form). \"Ich bin aus Leipzig\" and \"Ich komme aus Leipzig\" are both natural. Anna lives with her brother Lukas; Marta is the older neighbour (Stage 0), not Anna's grandmother."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "greetings",
+    "introductions",
+    "names",
+    "origin",
+    "Sunday"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "weber": "Frau Weber",
+    "anna": "Anna",
+    "marta": "Marta",
+    "ben": "Ben"
+  },
+  "sections": [
+    {
+      "title": "Auf der Straße",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Sonntag.",
+              "english": "It is Sunday."
+            },
+            {
+              "text": "Es ist Morgen in Leipzig.",
+              "english": "It is morning in Leipzig."
+            },
+            {
+              "text": "Sam ist in der Stadt.",
+              "english": "Sam is in the city."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "weber",
+              "text": "Guten Morgen!",
+              "english": "Good morning!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Guten Morgen!",
+              "english": "Good morning!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Wie ist Ihr Name, bitte?",
+              "english": "What is your name, please?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Mein Name ist Sam Miller.",
+              "english": "My name is Sam Miller."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und Sie?",
+              "english": "And you?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie heißen Sie?",
+              "english": "What is your name?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Mein Name ist Weber.",
+              "english": "My name is Weber."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich bin Frau Weber.",
+              "english": "I am Mrs Weber."
+            },
+            {
+              "speaker": "sam",
+              "text": "Freut mich, Frau Weber.",
+              "english": "Nice to meet you, Mrs Weber."
+            },
+            {
+              "speaker": "weber",
+              "text": "Freut mich auch, Herr Miller.",
+              "english": "Nice to meet you too, Mr Miller."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "weber",
+              "text": "Sprechen Sie Deutsch?",
+              "english": "Do you speak German?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, ich spreche Deutsch.",
+              "english": "Yes, I speak German."
+            },
+            {
+              "speaker": "sam",
+              "text": "Aber nicht gut.",
+              "english": "But not well."
+            },
+            {
+              "speaker": "weber",
+              "text": "Sehr gut, Herr Miller!",
+              "english": "Very well, Mr Miller!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Woher kommen Sie?",
+              "english": "Where do you come from?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich komme aus den USA.",
+              "english": "I come from the USA."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und Sie?",
+              "english": "And you?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Wohnen Sie hier?",
+              "english": "Do you live here?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Ja, ich wohne hier in der Stadt.",
+              "english": "Yes, I live here in the city."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich bin aus Leipzig.",
+              "english": "I am from Leipzig."
+            },
+            {
+              "speaker": "weber",
+              "text": "Und Sie sind in der Stadt.",
+              "english": "And you are in the city."
+            },
+            {
+              "speaker": "weber",
+              "text": "Das ist gut.",
+              "english": "That is good."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Anna ist auch hier",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna ist auch hier.",
+              "english": "Anna is here too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Hallo, Sam!",
+              "english": "Hello, Sam!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Wie geht's?",
+              "english": "How are you?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Gut, danke.",
+              "english": "Fine, thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und dir?",
+              "english": "And you?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Auch gut, danke.",
+              "english": "Also fine, thank you."
+            },
+            {
+              "speaker": "anna",
+              "text": "Guten Morgen!",
+              "english": "Good morning!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Hallo!",
+              "english": "Hello!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Guten Morgen, Anna.",
+              "english": "Good morning, Anna."
+            },
+            {
+              "speaker": "weber",
+              "text": "Das ist Herr Miller.",
+              "english": "This is Mr Miller."
+            },
+            {
+              "speaker": "anna",
+              "text": "Heute ist Sonntag, Sam.",
+              "english": "Today is Sunday, Sam."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich gehe in die Kirche.",
+              "english": "I am going to church."
+            },
+            {
+              "speaker": "anna",
+              "text": "Gehst du mit?",
+              "english": "Are you coming along?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, gern!",
+              "english": "Yes, gladly!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Gehen Sie auch mit?",
+              "english": "Are you coming along too?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Nein, ich bin heute müde.",
+              "english": "No, I am tired today."
+            },
+            {
+              "speaker": "sam",
+              "text": "Auf Wiedersehen, Frau Weber!",
+              "english": "Goodbye, Mrs Weber!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Auf dem Weg",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anna",
+              "text": "Du sprichst gut Deutsch.",
+              "english": "You speak good German."
+            },
+            {
+              "speaker": "sam",
+              "text": "Nein, nein, nicht sehr gut.",
+              "english": "No, no, not very well."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das ist schön, Sam!",
+              "english": "That is lovely, Sam!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich wohne bei Lukas.",
+              "english": "I live with Lukas."
+            },
+            {
+              "speaker": "anna",
+              "text": "Lukas ist mein Bruder.",
+              "english": "Lukas is my brother."
+            },
+            {
+              "speaker": "sam",
+              "text": "Woher kommt Lukas?",
+              "english": "Where does Lukas come from?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Er kommt aus Dresden.",
+              "english": "He comes from Dresden."
+            },
+            {
+              "speaker": "anna",
+              "text": "Er ist Lehrer in der Schule.",
+              "english": "He is a teacher at the school."
+            },
+            {
+              "speaker": "anna",
+              "text": "Heute ist er zu Hause.",
+              "english": "Today he is at home."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das Haus ist hier.",
+              "english": "The house is here."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe Hunger.",
+              "english": "I am hungry."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich auch!",
+              "english": "Me too!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Hier ist Brot.",
+              "english": "Here is bread."
+            },
+            {
+              "speaker": "anna",
+              "text": "Möchtest du Kaffee?",
+              "english": "Would you like coffee?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, bitte!",
+              "english": "Yes, please!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich trinke gern Kaffee.",
+              "english": "I like drinking coffee."
+            },
+            {
+              "speaker": "anna",
+              "text": "Bitte, hier ist Kaffee.",
+              "english": "Here you are, here is coffee."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Anna.",
+              "english": "Thank you, Anna."
+            },
+            {
+              "speaker": "anna",
+              "text": "Bitte, Sam.",
+              "english": "You are welcome, Sam."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bei der Kirche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta und Ben sind auch hier.",
+              "english": "Marta and Ben are here too."
+            },
+            {
+              "speaker": "marta",
+              "text": "Guten Morgen, Anna!",
+              "english": "Good morning, Anna!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Hallo, Sam!",
+              "english": "Hello, Sam!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Guten Morgen, Marta!",
+              "english": "Good morning, Marta!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Hallo, Ben!",
+              "english": "Hello, Ben!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Hallo, Sam!",
+              "english": "Hello, Sam!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Gehst du mit in die Kirche?",
+              "english": "Are you coming to church?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, ich gehe mit.",
+              "english": "Yes, I am coming."
+            },
+            {
+              "speaker": "marta",
+              "text": "Das ist sehr schön.",
+              "english": "That is very nice."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich bin müde und ich habe Hunger.",
+              "english": "I am tired and I am hungry."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hier ist Brot, Ben.",
+              "english": "Here is bread, Ben."
+            },
+            {
+              "speaker": "marta",
+              "text": "Und Wasser.",
+              "english": "And water."
+            },
+            {
+              "speaker": "ben",
+              "text": "Danke, Oma.",
+              "english": "Thank you, Grandma."
+            },
+            {
+              "speaker": "marta",
+              "text": "Bitte.",
+              "english": "You are welcome."
+            },
+            {
+              "speaker": "marta",
+              "text": "Wir gehen in die Kirche.",
+              "english": "We are going to church."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,959 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-17",
+  "lang": "de",
+  "title": "Eine Bitte, höflich gestellt",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-17",
+    "title": "\"Eine Bitte, höflich gestellt\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. A polite request for a private loan between a young apprentice (22) and an older neighbour (Sie). Konjunktiv II is used for politeness and for unreal conditions (hätte, wäre, würde, könnte). Please check that the way Jonas asks, the hesitations and the answers sound natural and not too formal, and that the money matters (Kredit, Zinsen, Konto, zurückzahlen) are used correctly; the sums are invented."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "J": "Jonas",
+    "H": "Herr Schmidt",
+    "S": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Nach Ladenschluss",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Samstagabend, kurz nach sieben.",
+              "english": "It is Saturday evening, shortly after seven."
+            },
+            {
+              "text": "Das Café von Herrn Schmidt ist schon fast leer.",
+              "english": "Herr Schmidt's café is already almost empty."
+            },
+            {
+              "text": "Sam hilft beim Aufräumen, und Jonas sitzt an einem Tisch und dreht seine Tasse in den Händen.",
+              "english": "Sam is helping to tidy up, and Jonas is sitting at a table turning his cup in his hands."
+            },
+            {
+              "text": "Er möchte etwas sagen, aber er traut sich nicht.",
+              "english": "He wants to say something, but he does not dare."
+            },
+            {
+              "text": "Jonas, was ist los?",
+              "english": "Jonas, what is the matter?",
+              "speaker": "S"
+            },
+            {
+              "text": "Du siehst aus, als hättest du schlecht geschlafen.",
+              "english": "You look as if you had slept badly.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich habe eine Bitte an Herrn Schmidt.",
+              "english": "I have a request for Herr Schmidt.",
+              "speaker": "J"
+            },
+            {
+              "text": "Aber ich weiß nicht, wie ich anfangen soll.",
+              "english": "But I do not know how to begin.",
+              "speaker": "J"
+            },
+            {
+              "text": "Sag es einfach höflich und ehrlich.",
+              "english": "Just say it politely and honestly.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist immer am besten.",
+              "english": "That is always best.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist leicht gesagt.",
+              "english": "That is easily said.",
+              "speaker": "J"
+            },
+            {
+              "text": "Es geht um Geld.",
+              "english": "It is about money.",
+              "speaker": "J"
+            },
+            {
+              "text": "Herr Schmidt kommt mit einem Tuch aus der Küche.",
+              "english": "Herr Schmidt comes from the kitchen with a cloth."
+            },
+            {
+              "text": "Er sieht die beiden und lächelt.",
+              "english": "He sees the two and smiles."
+            },
+            {
+              "text": "Na, ihr zwei?",
+              "english": "Well, you two?",
+              "speaker": "H"
+            },
+            {
+              "text": "Ihr sitzt da wie bei einer Beerdigung.",
+              "english": "You are sitting there as at a funeral.",
+              "speaker": "H"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Bitte",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Herr Schmidt, hätten Sie einen Moment Zeit?",
+              "english": "Herr Schmidt, would you have a moment?",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich hätte eine Frage.",
+              "english": "I have a question.",
+              "speaker": "J"
+            },
+            {
+              "text": "Natürlich.",
+              "english": "Of course.",
+              "speaker": "H"
+            },
+            {
+              "text": "Setzen Sie sich, ich meine: Setz dich.",
+              "english": "Sit down, I mean: sit down.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich bin noch nicht so alt, dass ich Sie sagen muss.",
+              "english": "I am not yet so old that I have to say Sie.",
+              "speaker": "H"
+            },
+            {
+              "text": "Danke.",
+              "english": "Thank you.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich weiß, dass es eine unhöfliche Frage ist.",
+              "english": "I know that it is an impolite question.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich möchte Sie nicht verlegen machen.",
+              "english": "I do not want to embarrass you.",
+              "speaker": "J"
+            },
+            {
+              "text": "Nur zu.",
+              "english": "Go ahead.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich beiße nicht.",
+              "english": "I do not bite.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich würde gern eine kleine Werkstatt aufmachen.",
+              "english": "I would like to open a small workshop.",
+              "speaker": "J"
+            },
+            {
+              "text": "Für Fahrräder, am Wochenende, neben meiner Arbeit.",
+              "english": "For bicycles, at the weekend, alongside my work.",
+              "speaker": "J"
+            },
+            {
+              "text": "Dafür brauche ich Werkzeug.",
+              "english": "For that I need tools.",
+              "speaker": "J"
+            },
+            {
+              "text": "Es kostet etwa 1.200 Euro.",
+              "english": "It costs about 1,200 euros.",
+              "speaker": "J"
+            },
+            {
+              "text": "Könnten Sie mir vielleicht etwas Geld leihen?",
+              "english": "Could you perhaps lend me some money?",
+              "speaker": "J"
+            },
+            {
+              "text": "Es wäre ein kleiner Kredit, nur für ein Jahr.",
+              "english": "It would be a small loan, only for one year.",
+              "speaker": "J"
+            },
+            {
+              "text": "Es wird still im Café.",
+              "english": "It becomes quiet in the café."
+            },
+            {
+              "text": "Sam hört auf zu spülen.",
+              "english": "Sam stops washing up."
+            },
+            {
+              "text": "Das ist keine kleine Frage, Jonas.",
+              "english": "That is not a small question, Jonas.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich möchte erst verstehen, warum du nicht zur Bank gehst.",
+              "english": "I would first like to understand why you do not go to the bank.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich war schon dort.",
+              "english": "I have already been there.",
+              "speaker": "J"
+            },
+            {
+              "text": "Die Bank hat gesagt, mein Konto ist zu klein, und mein Lohn ist zu niedrig.",
+              "english": "The bank said my account is too small and my wage is too low.",
+              "speaker": "J"
+            },
+            {
+              "text": "Sie wollten mir keinen Kredit geben.",
+              "english": "They did not want to give me a loan.",
+              "speaker": "J"
+            },
+            {
+              "text": "Und wenn, dann nur mit hohen Zinsen.",
+              "english": "And if so, then only with high interest.",
+              "speaker": "J"
+            },
+            {
+              "text": "Wie hoch?",
+              "english": "How high?",
+              "speaker": "H"
+            },
+            {
+              "text": "Neun Prozent.",
+              "english": "Nine per cent.",
+              "speaker": "J"
+            },
+            {
+              "text": "Das ist viel für mich.",
+              "english": "That is a lot for me.",
+              "speaker": "J"
+            },
+            {
+              "text": "Es ist anders als bei Freunden.",
+              "english": "It is different from friends.",
+              "speaker": "J"
+            },
+            {
+              "text": "Das ist tatsächlich viel.",
+              "english": "That really is a lot.",
+              "speaker": "H"
+            },
+            {
+              "text": "Dafür habe ich Verständnis.",
+              "english": "I have understanding for that.",
+              "speaker": "H"
+            },
+            {
+              "text": "Aber ein Kredit zwischen Freunden ist etwas anderes.",
+              "english": "But a loan between friends is something different.",
+              "speaker": "H"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gründe und Sorgen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Erzähl mir, wofür du das Geld brauchst.",
+              "english": "Tell me what you need the money for.",
+              "speaker": "H"
+            },
+            {
+              "text": "Und erzähl mir alles.",
+              "english": "And tell me everything.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich bin Mechaniker, wie Sie wissen.",
+              "english": "I am a mechanic, as you know.",
+              "speaker": "J"
+            },
+            {
+              "text": "Aber ich habe einen Traum.",
+              "english": "But I have a dream.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich möchte mich irgendwann selbstständig machen.",
+              "english": "Some day I would like to become self-employed.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich wäre dann mein eigener Chef.",
+              "english": "I would then be my own boss.",
+              "speaker": "J"
+            },
+            {
+              "text": "Das wäre schön, auch wenn es schwer wäre.",
+              "english": "That would be nice, even if it were hard.",
+              "speaker": "J"
+            },
+            {
+              "text": "Wenn ich die Prüfung im Sommer bestehe, bekomme ich einen besseren Lohn.",
+              "english": "If I pass the exam in the summer, I will get a better wage.",
+              "speaker": "J"
+            },
+            {
+              "text": "Dann könnte ich schneller zurückzahlen.",
+              "english": "Then I could pay back faster.",
+              "speaker": "J"
+            },
+            {
+              "text": "Und wenn du nicht bestehst?",
+              "english": "And if you do not pass?",
+              "speaker": "H"
+            },
+            {
+              "text": "Dann würde ich es trotzdem versuchen.",
+              "english": "Then I would try it all the same.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich würde die Prüfung im Herbst wiederholen.",
+              "english": "I would repeat the exam in the autumn.",
+              "speaker": "J"
+            },
+            {
+              "text": "Du hast eine Sorge, die ich nicht habe: Du bist jung.",
+              "english": "You have a worry that I do not have: you are young.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich habe eine andere Sorge.",
+              "english": "I have a different worry.",
+              "speaker": "H"
+            },
+            {
+              "text": "Mach dir keine Sorgen um mich, aber um das Geld.",
+              "english": "Do not worry about me, but about the money.",
+              "speaker": "H"
+            },
+            {
+              "text": "Welche denn?",
+              "english": "Which one?",
+              "speaker": "J"
+            },
+            {
+              "text": "Wenn ich dir Geld leihe, und du gibst es nicht wieder, dann habe ich ein Problem.",
+              "english": "If I lend you money, and you do not give it back, then I have a problem.",
+              "speaker": "H"
+            },
+            {
+              "text": "Dann verlasse ich mich auf dich, und du bist weg.",
+              "english": "Then I rely on you, and you are gone.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich würde nie weggehen.",
+              "english": "I would never go away.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich habe vor, in Leipzig zu bleiben.",
+              "english": "I intend to stay in Leipzig.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich würde die Stadt nicht verlassen.",
+              "english": "I would not leave the city.",
+              "speaker": "J"
+            },
+            {
+              "text": "Das sagen alle.",
+              "english": "Everybody says that.",
+              "speaker": "H"
+            },
+            {
+              "text": "Aber ich glaube dir, weil du ehrlich aussiehst.",
+              "english": "But I believe you because you look honest.",
+              "speaker": "H"
+            },
+            {
+              "text": "Darf ich auch etwas sagen?",
+              "english": "May I say something too?",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich kenne Jonas, seit ich in Leipzig bin.",
+              "english": "I have known Jonas since I came to Leipzig.",
+              "speaker": "S"
+            },
+            {
+              "text": "Er ist ehrlich, und er arbeitet hart.",
+              "english": "He is honest, and he works hard.",
+              "speaker": "S"
+            },
+            {
+              "text": "Er würde sein Wort nie brechen.",
+              "english": "He would never break his word.",
+              "speaker": "S"
+            },
+            {
+              "text": "Danke, Sam.",
+              "english": "Thank you, Sam.",
+              "speaker": "H"
+            },
+            {
+              "text": "Das ist ein Argument.",
+              "english": "That is an argument.",
+              "speaker": "H"
+            },
+            {
+              "text": "Aber es ist kein Vertrag.",
+              "english": "But it is not a contract.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ein Vertrag steht auf Papier.",
+              "english": "A contract is on paper.",
+              "speaker": "H"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Plan",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Erklär mir deinen Plan.",
+              "english": "Explain your plan to me.",
+              "speaker": "H"
+            },
+            {
+              "text": "Wo willst du die Werkstatt aufmachen?",
+              "english": "Where do you want to open the workshop?",
+              "speaker": "H"
+            },
+            {
+              "text": "Im Hof meines Hauses, nah bei den Studenten.",
+              "english": "In the yard of my house, close to the students.",
+              "speaker": "J"
+            },
+            {
+              "text": "Der Wohnort ist wichtig: Wer Rad fährt, repariert nah.",
+              "english": "The place where you live is important: whoever rides a bike has it repaired nearby.",
+              "speaker": "J"
+            },
+            {
+              "text": "Die Auswahl an Werkstätten ist groß, jedoch sind die meisten teuer.",
+              "english": "The choice of workshops is big, but most of them are expensive.",
+              "speaker": "J"
+            },
+            {
+              "text": "Der Unterschied ist: Ich bin günstig, praktisch und bequem für die Leute.",
+              "english": "The difference is: I am cheap, practical and convenient for the people.",
+              "speaker": "J"
+            },
+            {
+              "text": "Und was ist der Vorteil für dich?",
+              "english": "And what is the advantage for you?",
+              "speaker": "H"
+            },
+            {
+              "text": "Und was ist der Nachteil?",
+              "english": "And what is the disadvantage?",
+              "speaker": "H"
+            },
+            {
+              "text": "Der Vorteil ist die Freiheit.",
+              "english": "The advantage is freedom.",
+              "speaker": "J"
+            },
+            {
+              "text": "Der Nachteil ist, dass ich am Wochenende arbeite.",
+              "english": "The disadvantage is that I work at the weekend.",
+              "speaker": "J"
+            },
+            {
+              "text": "Zwar bin ich dann müde, aber ich schaffe das.",
+              "english": "I will be tired then, to be sure, but I can manage it.",
+              "speaker": "J"
+            },
+            {
+              "text": "Warum gerade Fahrräder?",
+              "english": "Why bicycles in particular?",
+              "speaker": "H"
+            },
+            {
+              "text": "Weil das gut für die Umwelt und für das Klima ist.",
+              "english": "Because that is good for the environment and for the climate.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ein repariertes Rad ist besser als ein neues.",
+              "english": "A repaired bike is better than a new one.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich trenne auch den Müll: Metall, Plastik und Glas.",
+              "english": "I also separate the rubbish: metal, plastic and glass.",
+              "speaker": "J"
+            },
+            {
+              "text": "Man nennt das Mülltrennung.",
+              "english": "It is called waste separation.",
+              "speaker": "J"
+            },
+            {
+              "text": "Das ist mein System.",
+              "english": "That is my system.",
+              "speaker": "J"
+            },
+            {
+              "text": "Das ist ähnlich wie bei mir.",
+              "english": "That is similar to mine.",
+              "speaker": "H"
+            },
+            {
+              "text": "Mein Laden und deine Werkstatt sind verschieden, aber der Gedanke ist gleich: nichts wegwerfen.",
+              "english": "My shop and your workshop are different, but the thought is the same: throw nothing away.",
+              "speaker": "H"
+            },
+            {
+              "text": "Genau.",
+              "english": "Exactly.",
+              "speaker": "J"
+            },
+            {
+              "text": "Deshalb ist jedes Rad wie ein Patient.",
+              "english": "That is why every bike is like a patient.",
+              "speaker": "J"
+            },
+            {
+              "text": "Man muss zuerst beobachten, dann reparieren.",
+              "english": "You first have to observe, then repair.",
+              "speaker": "J"
+            },
+            {
+              "text": "Das hat mir Anna gesagt.",
+              "english": "Anna told me that.",
+              "speaker": "J"
+            },
+            {
+              "text": "Sie macht im Nachtdienst dasselbe, nur mit Menschen.",
+              "english": "In the night service she does the same, only with people.",
+              "speaker": "J"
+            },
+            {
+              "text": "Das ist ein schöner Vergleich.",
+              "english": "That is a nice comparison.",
+              "speaker": "H"
+            },
+            {
+              "text": "Und es ist ein wichtiger Gedanke.",
+              "english": "And it is an important thought.",
+              "speaker": "H"
+            },
+            {
+              "text": "Je besser die Werkstatt läuft, desto leichter wird es.",
+              "english": "The better the workshop runs, the easier it will be.",
+              "speaker": "H"
+            },
+            {
+              "text": "Es ist trotzdem schwierig, ganz allein anzufangen.",
+              "english": "It is nevertheless difficult to start all alone.",
+              "speaker": "J"
+            },
+            {
+              "text": "Allerdings habe ich keine andere Wahl.",
+              "english": "However I have no other choice.",
+              "speaker": "J"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Herrn Schmidts Geschichte",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Weißt du, ich war einmal in deiner Lage.",
+              "english": "You know, I was once in your situation.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich war zwanzig und wollte Bäcker werden.",
+              "english": "I was twenty and wanted to become a baker.",
+              "speaker": "H"
+            },
+            {
+              "text": "Damals habe ich mein Dorf verlassen und eine Reise gemacht, um zu lernen.",
+              "english": "At that time I left my village and made a journey in order to learn.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich war mit dem Zug unterwegs, mit einem alten Reiseführer in der Tasche.",
+              "english": "I was on the road by train, with an old travel guide in my pocket.",
+              "speaker": "H"
+            },
+            {
+              "text": "Meine Ankunft in der fremden Stadt war ein Schock.",
+              "english": "My arrival in the foreign city was a shock.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich hatte keine Unterkunft und kaum Geld.",
+              "english": "I had no accommodation and hardly any money.",
+              "speaker": "H"
+            },
+            {
+              "text": "Eine Gastfamilie hat mich aufgenommen.",
+              "english": "A host family took me in.",
+              "speaker": "H"
+            },
+            {
+              "text": "Das war eine Überraschung, und es war ein Erlebnis, das ich nie vergessen habe.",
+              "english": "That was a surprise, and it was an experience that I have never forgotten.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ihre Gastfreundschaft hat mich tief beeindruckt.",
+              "english": "Their hospitality impressed me deeply.",
+              "speaker": "H"
+            },
+            {
+              "text": "Auf dem Marktplatz habe ich die Familie kennengelernt, und die Begegnung hat mein Leben verändert.",
+              "english": "On the market square I got to know the family, and the encounter changed my life.",
+              "speaker": "H"
+            },
+            {
+              "text": "Der Vater hat mir jede Sehenswürdigkeit gezeigt, das Schloss, die Burg und den Dom.",
+              "english": "The father showed me every sight, the palace, the castle and the cathedral.",
+              "speaker": "H"
+            },
+            {
+              "text": "Der Eindruck war riesig.",
+              "english": "The impression was huge.",
+              "speaker": "H"
+            },
+            {
+              "text": "Bei einem Spaziergang durch die Altstadt hat er mir Geld geliehen, damit ich weiterfahren konnte.",
+              "english": "On a walk through the old town he lent me money so that I could travel on.",
+              "speaker": "H"
+            },
+            {
+              "text": "Und haben Sie das Geld wiedergegeben?",
+              "english": "And did you give the money back?",
+              "speaker": "J"
+            },
+            {
+              "text": "Natürlich.",
+              "english": "Of course.",
+              "speaker": "H"
+            },
+            {
+              "text": "Nach einem Jahr, mit einem Brief und mit einem Brot, das ich selbst gebacken hatte.",
+              "english": "After a year, with a letter and with a loaf that I had baked myself.",
+              "speaker": "H"
+            },
+            {
+              "text": "Bevor ich weiterfuhr, habe ich mich bedankt.",
+              "english": "Before I travelled on I thanked him.",
+              "speaker": "H"
+            },
+            {
+              "text": "Er hat gelacht und gesagt: Das Brot war mehr wert als das Geld.",
+              "english": "He laughed and said: the bread was worth more than the money.",
+              "speaker": "H"
+            },
+            {
+              "text": "Eine schöne Erinnerung.",
+              "english": "A beautiful memory.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich hoffe, dass ich auch einmal so etwas erlebe.",
+              "english": "I hope that I will experience something like that too.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ja.",
+              "english": "Yes.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich habe damals ein Tagebuch geführt.",
+              "english": "At that time I kept a diary.",
+              "speaker": "H"
+            },
+            {
+              "text": "Vor der Abreise habe ich alles aufgeschrieben, und schließlich auch die Heimreise.",
+              "english": "Before the departure I wrote everything down, and in the end the journey home too.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich habe viel erlebt: die Landschaft, die Altstadt, die Burg und den Dom.",
+              "english": "I experienced a lot: the landscape, the old town, the castle and the cathedral.",
+              "speaker": "H"
+            },
+            {
+              "text": "Inzwischen ist das Heft ganz gelb.",
+              "english": "By now the notebook is quite yellow.",
+              "speaker": "H"
+            },
+            {
+              "text": "Aber ich lese es manchmal, wenn der Nebel über der Stadt liegt.",
+              "english": "But I read it sometimes when the fog lies over the city.",
+              "speaker": "H"
+            },
+            {
+              "text": "Das möchte ich in meinen Blog schreiben.",
+              "english": "I would like to write that in my blog.",
+              "speaker": "S"
+            },
+            {
+              "text": "Dürfte ich?",
+              "english": "May I?",
+              "speaker": "S"
+            },
+            {
+              "text": "Meinetwegen.",
+              "english": "If you like.",
+              "speaker": "H"
+            },
+            {
+              "text": "Aber nur, wenn du das Ende der Geschichte auch erzählst: dass man Hilfe zurückgibt.",
+              "english": "But only if you also tell the end of the story: that one gives help back.",
+              "speaker": "H"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Bedingungen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jonas, ich werde dir das Geld leihen.",
+              "english": "Jonas, I will lend you the money.",
+              "speaker": "H"
+            },
+            {
+              "text": "Aber ich habe Bedingungen.",
+              "english": "But I have conditions.",
+              "speaker": "H"
+            },
+            {
+              "text": "Danke!",
+              "english": "Thank you!",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich bin sprachlos.",
+              "english": "I am speechless.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich danke Ihnen für das Verständnis.",
+              "english": "I thank you for the understanding.",
+              "speaker": "J"
+            },
+            {
+              "text": "Was für Bedingungen?",
+              "english": "What kind of conditions?",
+              "speaker": "J"
+            },
+            {
+              "text": "Erstens: keine Zinsen.",
+              "english": "First: no interest.",
+              "speaker": "H"
+            },
+            {
+              "text": "Zwischen Freunden gibt es keine Zinsen.",
+              "english": "Between friends there is no interest.",
+              "speaker": "H"
+            },
+            {
+              "text": "Zweitens: Du zahlst monatlich hundert Euro zurück.",
+              "english": "Second: you pay back a hundred euros a month.",
+              "speaker": "H"
+            },
+            {
+              "text": "Das ist leicht zu rechnen.",
+              "english": "That is easy to calculate.",
+              "speaker": "H"
+            },
+            {
+              "text": "Drittens: Wir schreiben alles auf, mit Datum und Unterschrift.",
+              "english": "Third: we write everything down, with date and signature.",
+              "speaker": "H"
+            },
+            {
+              "text": "Damit es später keinen Streit gibt.",
+              "english": "So that there is no argument later.",
+              "speaker": "H"
+            },
+            {
+              "text": "Und viertens: Du legst das Geld auf ein eigenes Konto, damit man alles sieht.",
+              "english": "And fourth: you put the money on a separate account so that one can see everything.",
+              "speaker": "H"
+            },
+            {
+              "text": "Das ist mehr als fair.",
+              "english": "That is more than fair.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich hätte nie gedacht, dass Sie so großzügig sind.",
+              "english": "I would never have thought that you are so generous.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ich bin nicht großzügig.",
+              "english": "I am not generous.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich habe Verständnis, und ich erinnere mich, wie es war.",
+              "english": "I have understanding, and I remember how it was.",
+              "speaker": "H"
+            },
+            {
+              "text": "Wenn jemand dir einmal geholfen hat, hilfst du später anderen.",
+              "english": "When someone has once helped you, you help others later.",
+              "speaker": "H"
+            },
+            {
+              "text": "Das ist das ganze System.",
+              "english": "That is the whole system.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich würde Ihnen gern etwas zurückgeben, nicht nur Geld.",
+              "english": "I would like to give you something back, not only money.",
+              "speaker": "J"
+            },
+            {
+              "text": "Dann repariere mir bitte mein Fahrrad.",
+              "english": "Then please repair my bicycle for me.",
+              "speaker": "H"
+            },
+            {
+              "text": "Es steht seit Jahren im Keller, und es ist ein alter Freund.",
+              "english": "It has stood in the cellar for years, and it is an old friend.",
+              "speaker": "H"
+            },
+            {
+              "text": "Das mache ich sofort.",
+              "english": "I will do that at once.",
+              "speaker": "J"
+            },
+            {
+              "text": "Es wäre mir eine Ehre.",
+              "english": "It would be an honour for me.",
+              "speaker": "J"
+            },
+            {
+              "text": "Und ich schreibe darüber, damit es alle lesen.",
+              "english": "And I will write about it so that everybody can read it.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das Bargeld habe ich nicht im Laden.",
+              "english": "I do not have the cash in the shop.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich gebe es dir am Montag, wenn ich bei der Bank war.",
+              "english": "I will give it to you on Monday, when I have been to the bank.",
+              "speaker": "H"
+            },
+            {
+              "text": "Dann legst du es gleich auf dein Konto.",
+              "english": "Then you put it on your account straight away.",
+              "speaker": "H"
+            },
+            {
+              "text": "Und jetzt: Wer will noch einen Kaffee?",
+              "english": "And now: who wants another coffee?",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich habe Durst, und ihr habt ihn auch verdient.",
+              "english": "I am thirsty, and you have earned it too.",
+              "speaker": "H"
+            },
+            {
+              "text": "Jonas lacht zum ersten Mal an diesem Abend.",
+              "english": "Jonas laughs for the first time this evening."
+            },
+            {
+              "text": "Er sagt: Ja, bitte.",
+              "english": "He says: yes, please."
+            },
+            {
+              "text": "Und dann noch ein Stück Kuchen.",
+              "english": "And then a piece of cake too."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

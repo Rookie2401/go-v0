@@ -1,0 +1,846 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-18",
+  "lang": "de",
+  "title": "Ein Zimmer zur Miete",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-18",
+    "title": "Ein Zimmer zur Miete (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: Sie to the landlord, du among the friends; the polite Konjunktiv II chunks (Könnte ich ...?, Ich hätte gern ..., Würden Sie ...?) are the grammar of the unit; Herr Schmidt is the baker of the earlier units and the landlord of a flat above his bakery (a reviewer should say whether that is plausible); rent, deposit, additional costs (Nebenkosten) and square metres are invented and not checked against real Leipzig prices; \"möbliert\" is read by the adapter as \"möblieren\"; the unit also recycles words of the parable (Erbe, Schwein, Feld) in Jonas's talk about his parents' farm."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation",
+    "renting a room",
+    "flat share",
+    "landlord"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "S": "Sam",
+    "J": "Jonas",
+    "V": "Herr Schmidt",
+    "B": "Sabine",
+    "M": "Jonas's Mutter"
+  },
+  "sections": [
+    {
+      "title": "Jonas will weggehen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jonas und Sam sitzen im Café.",
+              "english": "Jonas and Sam are sitting in the café."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich suche ein Zimmer in Leipzig.",
+              "english": "I am looking for a room in Leipzig."
+            },
+            {
+              "speaker": "S",
+              "text": "Du wohnst doch bei deinen Eltern?",
+              "english": "Don't you live with your parents?"
+            },
+            {
+              "speaker": "J",
+              "text": "Ja, auf dem Land.",
+              "english": "Yes, in the country."
+            },
+            {
+              "speaker": "J",
+              "text": "Meine Eltern haben einen Bauernhof.",
+              "english": "My parents have a farm."
+            },
+            {
+              "speaker": "J",
+              "text": "Sie haben Felder und Schweine, und zwei Arbeiter helfen ihnen.",
+              "english": "They have fields and pigs, and two workers help them."
+            },
+            {
+              "speaker": "J",
+              "text": "Mein Dorf liegt im Osten, nicht weit von der Grenze.",
+              "english": "My village is in the east, not far from the border."
+            },
+            {
+              "speaker": "J",
+              "text": "Mein Bruder bekommt einmal das Erbe.",
+              "english": "My brother will get the inheritance one day."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich gehe weg, wie der Sohn in der Geschichte von Thomas.",
+              "english": "I am going away, like the son in Thomas's story."
+            },
+            {
+              "speaker": "S",
+              "text": "Aber du gibst kein Geld aus, das du nicht hast, oder?",
+              "english": "But you do not spend money that you do not have, do you?"
+            },
+            {
+              "speaker": "J",
+              "text": "Nein.",
+              "english": "No."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich bereue nichts.",
+              "english": "I regret nothing."
+            },
+            {
+              "speaker": "S",
+              "text": "Und deine Eltern?",
+              "english": "And your parents?"
+            },
+            {
+              "speaker": "J",
+              "text": "Meine Mutter hat mich umarmt.",
+              "english": "My mother embraced me."
+            },
+            {
+              "speaker": "J",
+              "text": "Mein Vater sagt: „Es ist nicht deine Schuld.“",
+              "english": "My father says, \"It is not your fault.\""
+            },
+            {
+              "speaker": "J",
+              "text": "Er trägt noch den Ring von Opa.",
+              "english": "He still wears Grandpa's ring."
+            },
+            {
+              "speaker": "J",
+              "text": "Er ist ein guter Mann.",
+              "english": "He is a good man."
+            },
+            {
+              "speaker": "S",
+              "text": "Und was willst du in der Stadt?",
+              "english": "And what do you want in the city?"
+            },
+            {
+              "speaker": "J",
+              "text": "Die Stadt ist lebendig, und das Dorf ist still.",
+              "english": "The city is lively, and the village is quiet."
+            },
+            {
+              "speaker": "J",
+              "text": "Meine Werkstatt ist in Leipzig, und ich brauche fast eine Stunde.",
+              "english": "My workshop is in Leipzig, and I need almost an hour."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Im Internet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "J",
+              "text": "Im Internet habe ich ein Zimmer gefunden.",
+              "english": "I found a room on the internet."
+            },
+            {
+              "speaker": "J",
+              "text": "Es hat vierzehn Quadratmeter.",
+              "english": "It has fourteen square metres."
+            },
+            {
+              "speaker": "J",
+              "text": "Es ist möbliert: Es hat ein Bett, einen Tisch und einen Stuhl.",
+              "english": "It is furnished: it has a bed, a table and a chair."
+            },
+            {
+              "speaker": "J",
+              "text": "Die Miete ist 280 Euro monatlich.",
+              "english": "The rent is 280 euros a month."
+            },
+            {
+              "speaker": "J",
+              "text": "Und es gibt noch Nebenkosten.",
+              "english": "And there are extra costs as well."
+            },
+            {
+              "speaker": "J",
+              "text": "Das Zimmer ist im Dezember frei.",
+              "english": "The room is free in December."
+            },
+            {
+              "speaker": "S",
+              "text": "Wo ist es?",
+              "english": "Where is it?"
+            },
+            {
+              "speaker": "J",
+              "text": "Im Norden der Stadt, vier Kilometer von der Werkstatt.",
+              "english": "In the north of the city, four kilometres from the workshop."
+            },
+            {
+              "speaker": "J",
+              "text": "Die Straßenbahn fährt vom Westen bis in den Norden.",
+              "english": "The tram goes from the west to the north."
+            },
+            {
+              "speaker": "S",
+              "text": "Und der Vermieter?",
+              "english": "And the landlord?"
+            },
+            {
+              "speaker": "J",
+              "text": "Das ist Herr Schmidt, der Bäcker.",
+              "english": "That is Herr Schmidt, the baker."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Beim Vermieter",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Samstag gehen Jonas und Sam zum Haus.",
+              "english": "On Saturday Jonas and Sam go to the house."
+            },
+            {
+              "text": "Der Vermieter wartet an der Tür.",
+              "english": "The landlord is waiting at the door."
+            },
+            {
+              "speaker": "V",
+              "text": "Guten Tag, Jonas.",
+              "english": "Good day, Jonas."
+            },
+            {
+              "speaker": "V",
+              "text": "Guten Tag, Sam.",
+              "english": "Good day, Sam."
+            },
+            {
+              "speaker": "J",
+              "text": "Guten Tag, Herr Schmidt.",
+              "english": "Good day, Herr Schmidt."
+            },
+            {
+              "speaker": "J",
+              "text": "Könnte ich das Zimmer sehen?",
+              "english": "Could I see the room?"
+            },
+            {
+              "speaker": "V",
+              "text": "Ja, kommen Sie bitte.",
+              "english": "Yes, please come in."
+            },
+            {
+              "text": "Im Haus ist auch Sabine.",
+              "english": "Sabine is in the house too."
+            },
+            {
+              "speaker": "S",
+              "text": "Sabine!",
+              "english": "Sabine!"
+            },
+            {
+              "speaker": "S",
+              "text": "Du wohnst hier?",
+              "english": "You live here?"
+            },
+            {
+              "speaker": "B",
+              "text": "Ja, mit zwei Freunden.",
+              "english": "Yes, with two friends."
+            },
+            {
+              "speaker": "B",
+              "text": "Ich komme von der Küste, von einer Insel im Meer.",
+              "english": "I come from the coast, from an island in the sea."
+            },
+            {
+              "speaker": "B",
+              "text": "Ich bin Erzieherin im Kindergarten.",
+              "english": "I am a nursery teacher at the kindergarten."
+            },
+            {
+              "speaker": "B",
+              "text": "Die Kinder malen oft Bilder für mich.",
+              "english": "The children often paint pictures for me."
+            },
+            {
+              "speaker": "B",
+              "text": "Ein Spielzeug liegt noch im Zimmer.",
+              "english": "A toy is still lying in the room."
+            },
+            {
+              "speaker": "B",
+              "text": "Wir machen am Abend oft Spiele.",
+              "english": "In the evening we often play games."
+            },
+            {
+              "speaker": "B",
+              "text": "Und ich lese noch ein Märchen vor.",
+              "english": "And I read a fairy tale aloud."
+            },
+            {
+              "speaker": "V",
+              "text": "Das Zimmer hat vierzehn Quadratmeter, und es ist möbliert.",
+              "english": "The room has fourteen square metres, and it is furnished."
+            },
+            {
+              "speaker": "J",
+              "text": "Wie hoch ist die Miete?",
+              "english": "How high is the rent?"
+            },
+            {
+              "speaker": "V",
+              "text": "280 Euro monatlich.",
+              "english": "280 euros a month."
+            },
+            {
+              "speaker": "V",
+              "text": "Es gibt auch Nebenkosten: Wasser, Strom und Internet.",
+              "english": "There are extra costs too: water, electricity and internet."
+            },
+            {
+              "speaker": "J",
+              "text": "Und die Kaution?",
+              "english": "And the deposit?"
+            },
+            {
+              "speaker": "V",
+              "text": "Die Kaution ist 560 Euro.",
+              "english": "The deposit is 560 euros."
+            },
+            {
+              "speaker": "J",
+              "text": "Das ist viel Geld für mich.",
+              "english": "That is a lot of money for me."
+            },
+            {
+              "speaker": "J",
+              "text": "Mein Lohn ist klein.",
+              "english": "My pay is small."
+            },
+            {
+              "speaker": "J",
+              "text": "Meine Eltern unterstützen mich, aber ich muss mich noch entscheiden.",
+              "english": "My parents support me, but I still have to decide."
+            },
+            {
+              "speaker": "V",
+              "text": "Wo arbeiten Sie denn?",
+              "english": "Where do you work, then?"
+            },
+            {
+              "speaker": "J",
+              "text": "Ich mache eine Ausbildung in einer Werkstatt.",
+              "english": "I am doing an apprenticeship in a workshop."
+            },
+            {
+              "speaker": "J",
+              "text": "Wir reparieren Autos.",
+              "english": "We repair cars."
+            },
+            {
+              "speaker": "V",
+              "text": "Eine Werkstatt?",
+              "english": "A workshop?"
+            },
+            {
+              "speaker": "V",
+              "text": "Mein Auto hat einen kaputten Reifen!",
+              "english": "My car has a broken tyre!"
+            },
+            {
+              "speaker": "J",
+              "text": "Ich kann ihn prüfen und austauschen.",
+              "english": "I can check it and replace it."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich komme nach Feierabend.",
+              "english": "I will come after work."
+            },
+            {
+              "speaker": "V",
+              "text": "Und die Rechnung?",
+              "english": "And the invoice?"
+            },
+            {
+              "speaker": "J",
+              "text": "Sie sind dann ein Kunde.",
+              "english": "You are a customer then."
+            },
+            {
+              "speaker": "J",
+              "text": "Sie müssen nichts bezahlen.",
+              "english": "You do not have to pay anything."
+            },
+            {
+              "speaker": "V",
+              "text": "Gut, das gefällt mir.",
+              "english": "Good, I like that."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Zimmer ansehen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sabine zeigt Jonas das Zimmer.",
+              "english": "Sabine shows Jonas the room."
+            },
+            {
+              "speaker": "B",
+              "text": "Das wäre dein Zimmer.",
+              "english": "This would be your room."
+            },
+            {
+              "text": "Das Zimmer hat ein großes Fenster, ein Bett, einen Tisch und einen Stuhl.",
+              "english": "The room has a big window, a bed, a table and a chair."
+            },
+            {
+              "speaker": "J",
+              "text": "Es ist hell und ruhig.",
+              "english": "It is bright and quiet."
+            },
+            {
+              "speaker": "B",
+              "text": "Die Küche ist neben dem Bad.",
+              "english": "The kitchen is next to the bathroom."
+            },
+            {
+              "speaker": "B",
+              "text": "Wir kochen oft, und am Sonntag backen wir Kuchen.",
+              "english": "We often cook, and on Sundays we bake a cake."
+            },
+            {
+              "speaker": "J",
+              "text": "Könnte ich auch kochen?",
+              "english": "Could I cook too?"
+            },
+            {
+              "speaker": "J",
+              "text": "Ich koche gern Suppe.",
+              "english": "I like cooking soup."
+            },
+            {
+              "speaker": "B",
+              "text": "Natürlich!",
+              "english": "Of course!"
+            },
+            {
+              "speaker": "B",
+              "text": "Aber wir putzen alle, am Samstag.",
+              "english": "But we all clean, on Saturday."
+            },
+            {
+              "speaker": "J",
+              "text": "Das ist gut.",
+              "english": "That is good."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich hätte gern ein Fahrrad im Keller.",
+              "english": "I would like to keep a bike in the cellar."
+            },
+            {
+              "speaker": "J",
+              "text": "Ist dort Platz?",
+              "english": "Is there room?"
+            },
+            {
+              "speaker": "V",
+              "text": "Der Keller ist groß.",
+              "english": "The cellar is big."
+            },
+            {
+              "speaker": "V",
+              "text": "Dort ist Platz für drei Fahrräder.",
+              "english": "There is room for three bikes there."
+            },
+            {
+              "speaker": "J",
+              "text": "Würden Sie mir bitte noch das Bad zeigen?",
+              "english": "Would you please show me the bathroom as well?"
+            },
+            {
+              "speaker": "V",
+              "text": "Gern.",
+              "english": "Gladly."
+            },
+            {
+              "speaker": "V",
+              "text": "Das Bad ist klein, aber sauber.",
+              "english": "The bathroom is small, but clean."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich finde das Zimmer schön, Jonas.",
+              "english": "I think the room is lovely, Jonas."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich auch.",
+              "english": "Me too."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich möchte nur noch ein bisschen warten.",
+              "english": "I just want to wait a little longer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Wohnung und die Welt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "V",
+              "text": "Immer mehr Menschen ziehen nach Leipzig.",
+              "english": "More and more people are moving to Leipzig."
+            },
+            {
+              "speaker": "V",
+              "text": "Sachsen ist ein Bundesland, das nicht so teuer ist wie Berlin, die Hauptstadt.",
+              "english": "Saxony is a federal state that is not as expensive as Berlin, the capital."
+            },
+            {
+              "speaker": "J",
+              "text": "Millionen Menschen in Deutschland suchen ein Zimmer.",
+              "english": "Millions of people in Germany are looking for a room."
+            },
+            {
+              "speaker": "V",
+              "text": "Vor der Wahl sprechen alle über Wohnungen.",
+              "english": "Before the election everyone talks about flats."
+            },
+            {
+              "speaker": "V",
+              "text": "Die Regierung will bauen, und der Staat soll helfen.",
+              "english": "The government wants to build, and the state should help."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich darf wählen, aber wen?",
+              "english": "I may vote, but for whom?"
+            },
+            {
+              "speaker": "J",
+              "text": "Der Kanzler hilft mir nicht bei der Kaution.",
+              "english": "The chancellor does not help me with the deposit."
+            },
+            {
+              "speaker": "V",
+              "text": "Die Bürger reden viel, aber ein Zimmer finden sie nicht.",
+              "english": "The citizens talk a lot, but they do not find a room."
+            },
+            {
+              "speaker": "S",
+              "text": "In der ganzen Welt suchen Menschen eine Wohnung.",
+              "english": "All over the world people are looking for a flat."
+            },
+            {
+              "speaker": "S",
+              "text": "Auch in den USA, im Norden und im Süden.",
+              "english": "In the USA too, in the north and in the south."
+            },
+            {
+              "speaker": "V",
+              "text": "Dieses Zimmer ist noch frei.",
+              "english": "This room is still free."
+            },
+            {
+              "speaker": "V",
+              "text": "Als Vermieter sage ich: Entscheiden Sie sich schnell.",
+              "english": "As a landlord I say: decide quickly."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich nehme es.",
+              "english": "I will take it."
+            },
+            {
+              "speaker": "V",
+              "text": "Gut.",
+              "english": "Good."
+            },
+            {
+              "speaker": "V",
+              "text": "Dann ist es im Dezember für Sie frei.",
+              "english": "Then it is free for you in December."
+            },
+            {
+              "speaker": "V",
+              "text": "Es ist möbliert, aber die Bilder bringen Sie mit.",
+              "english": "It is furnished, but you bring the pictures yourself."
+            },
+            {
+              "speaker": "V",
+              "text": "Vierzehn Quadratmeter sind nicht groß, aber es ist warm.",
+              "english": "Fourteen square metres are not big, but it is warm."
+            },
+            {
+              "speaker": "V",
+              "text": "Die Nebenkosten bezahlen Sie auch monatlich.",
+              "english": "You also pay the extra costs monthly."
+            },
+            {
+              "speaker": "V",
+              "text": "Der Fluss ist nah, und Sie können dort Fahrrad fahren.",
+              "english": "The river is near, and you can ride a bike there."
+            },
+            {
+              "speaker": "V",
+              "text": "In Deutschland bezahlen alle in einer Währung: in Euro.",
+              "english": "In Germany everyone pays in one currency: in euros."
+            },
+            {
+              "speaker": "B",
+              "text": "Willkommen im Haus, Jonas!",
+              "english": "Welcome to the house, Jonas!"
+            },
+            {
+              "speaker": "S",
+              "text": "Jetzt wohnst du in der Stadt.",
+              "english": "Now you live in the city."
+            },
+            {
+              "speaker": "J",
+              "text": "Und ich bin froh.",
+              "english": "And I am glad."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich habe ein Zimmer!",
+              "english": "I have a room!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Auf dem Heimweg",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam und Jonas gehen zur Haltestelle.",
+              "english": "Sam and Jonas walk to the stop."
+            },
+            {
+              "speaker": "S",
+              "text": "Ziehst du im Dezember ein?",
+              "english": "Are you moving in in December?"
+            },
+            {
+              "speaker": "J",
+              "text": "Ja, im Dezember.",
+              "english": "Yes, in December."
+            },
+            {
+              "speaker": "J",
+              "text": "Dann habe ich vier Wochen Zeit.",
+              "english": "Then I have four weeks."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich muss noch viel machen.",
+              "english": "I still have a lot to do."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich brauche Taschen und Koffer.",
+              "english": "I need bags and suitcases."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich helfe dir.",
+              "english": "I will help you."
+            },
+            {
+              "speaker": "S",
+              "text": "Mein Rücken ist wieder gut.",
+              "english": "My back is fine again."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich frage auch Daniel und David.",
+              "english": "I will ask Daniel and David too."
+            },
+            {
+              "speaker": "J",
+              "text": "Danke.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "J",
+              "text": "Das ist eine große Hilfe.",
+              "english": "That is a great help."
+            },
+            {
+              "speaker": "S",
+              "text": "Und wir feiern in deinem Zimmer.",
+              "english": "And we will celebrate in your room."
+            },
+            {
+              "speaker": "J",
+              "text": "Mit Kaffee und Kuchen!",
+              "english": "With coffee and cake!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ein Anruf",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend ruft Jonas seine Mutter an.",
+              "english": "In the evening Jonas calls his mother."
+            },
+            {
+              "speaker": "M",
+              "text": "Hallo, Jonas!",
+              "english": "Hello, Jonas!"
+            },
+            {
+              "speaker": "M",
+              "text": "Wie geht es dir?",
+              "english": "How are you?"
+            },
+            {
+              "speaker": "J",
+              "text": "Mama, ich habe ein Zimmer in Leipzig!",
+              "english": "Mum, I have a room in Leipzig!"
+            },
+            {
+              "speaker": "M",
+              "text": "Das ist schön!",
+              "english": "That is lovely!"
+            },
+            {
+              "speaker": "M",
+              "text": "Wie ist es?",
+              "english": "What is it like?"
+            },
+            {
+              "speaker": "J",
+              "text": "Die Miete ist nicht hoch, und das Zimmer ist warm.",
+              "english": "The rent is not high, and the room is warm."
+            },
+            {
+              "speaker": "M",
+              "text": "Würdest du am Sonntag zum Essen kommen?",
+              "english": "Would you come to dinner on Sunday?"
+            },
+            {
+              "speaker": "J",
+              "text": "Natürlich.",
+              "english": "Of course."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich komme mit Sam.",
+              "english": "I will come with Sam."
+            },
+            {
+              "speaker": "M",
+              "text": "Dein Vater ist traurig, aber er sagt es nicht.",
+              "english": "Your father is sad, but he does not say so."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich weiß.",
+              "english": "I know."
+            },
+            {
+              "speaker": "J",
+              "text": "Sag ihm, dass ich ihn gern habe.",
+              "english": "Tell him I am fond of him."
+            },
+            {
+              "speaker": "M",
+              "text": "Das sage ich ihm.",
+              "english": "I will tell him."
+            },
+            {
+              "speaker": "M",
+              "text": "Wir sind froh, dass du einen Platz hast.",
+              "english": "We are glad that you have a place."
+            },
+            {
+              "speaker": "J",
+              "text": "Gute Nacht, Mama.",
+              "english": "Good night, Mum."
+            },
+            {
+              "speaker": "M",
+              "text": "Gute Nacht, mein Sohn.",
+              "english": "Good night, my son."
+            },
+            {
+              "speaker": "M",
+              "text": "Gott ist mit dir.",
+              "english": "God is with you."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

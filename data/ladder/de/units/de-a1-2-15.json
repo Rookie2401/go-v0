@@ -1,0 +1,580 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-15",
+  "lang": "de",
+  "title": "Invitations and the calendar",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-15",
+    "title": "Invitations and the calendar (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. The months are met in the church calendar (twelve birthdays, one for each month, read out in the elliptical way people read a calendar), in Sam's invitations and in a lesson. Dates are written with a digit and a full stop (\"am 9. Oktober\"); the ordinal words (der dritte ...) are left to the next unit. Letter formulae: \"Hallo Anna,\" and \"Viele Grüße, Sam\" (the adapter reads a capital \"Liebe\" at the beginning of a sentence as the verb lieben, so the unit uses \"Hallo ...\" for the salutation; a reviewer may prefer \"Liebe Anna,\"). \"Einladen\" is split in a main clause (ich lade dich ein). \"Kalender\" and \"Gruß\" are ordinary words the plan did not schedule. Du between friends, Sie in the course (Eva - Sam)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "invitations",
+    "months",
+    "dates",
+    "birthdays",
+    "letters"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "thomas": "Thomas",
+    "sam": "Sam",
+    "anna": "Anna",
+    "eva": "Eva",
+    "weber": "Frau Weber"
+  },
+  "sections": [
+    {
+      "title": "Der Kalender",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Thomas hat einen Kalender in der Gemeinde.",
+              "english": "Thomas has a calendar at the church."
+            },
+            {
+              "text": "Im Kalender sind die Geburtstage der Freunde.",
+              "english": "In the calendar are the friends' birthdays."
+            },
+            {
+              "text": "Thomas und Sam sehen den Kalender.",
+              "english": "Thomas and Sam look at the calendar."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ein Jahr hat zwölf Monate.",
+              "english": "A year has twelve months."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Im Januar habe ich Geburtstag.",
+              "english": "In January I have my birthday."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Im Februar Ruth, im März Ben, im April David.",
+              "english": "In February Ruth, in March Ben, in April David."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Im Mai Anna, im Juni Frau Weber, im Juli Eva.",
+              "english": "In May Anna, in June Mrs Weber, in July Eva."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Im August Daniel, im September Lukas.",
+              "english": "In August Daniel, in September Lukas."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Im Oktober hast du Geburtstag, Sam.",
+              "english": "In October you have your birthday, Sam."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Im November Herr Schmidt, im Dezember Marta.",
+              "english": "In November Herr Schmidt, in December Marta."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das sind zwölf Freunde!",
+              "english": "That is twelve friends!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich möchte alle einladen.",
+              "english": "I would like to invite everyone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Einladung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam schreibt eine Einladung.",
+              "english": "Sam writes an invitation."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hallo Anna, ich lade dich ein.",
+              "english": "Hello Anna, I am inviting you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Am 9. Oktober habe ich Geburtstag.",
+              "english": "On 9 October I have my birthday."
+            },
+            {
+              "speaker": "sam",
+              "text": "Kommst du zu Frau Weber?",
+              "english": "Are you coming to Mrs Weber's?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Viele Grüße, Sam",
+              "english": "Best wishes, Sam"
+            },
+            {
+              "text": "Dann schreibt er an Thomas.",
+              "english": "Then he writes to Thomas."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hallo Thomas, ich möchte dich einladen.",
+              "english": "Hello Thomas, I would like to invite you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Bring Ruth und David mit!",
+              "english": "Bring Ruth and David along!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Viele Grüße, Sam",
+              "english": "Best wishes, Sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Anna antwortet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna schreibt eine Nachricht.",
+              "english": "Anna writes a message."
+            },
+            {
+              "speaker": "anna",
+              "text": "Hallo Sam!",
+              "english": "Hello Sam!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Danke für die Einladung!",
+              "english": "Thank you for the invitation!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich komme gern.",
+              "english": "I will gladly come."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich wünsche dir einen schönen Geburtstag.",
+              "english": "I wish you a lovely birthday."
+            },
+            {
+              "speaker": "anna",
+              "text": "Im Mai habe ich Geburtstag.",
+              "english": "In May I have my birthday."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich möchte dich auch einladen.",
+              "english": "I would like to invite you too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Später habe ich Zeit, dann rufe ich an.",
+              "english": "Later I will have time, then I will call."
+            },
+            {
+              "speaker": "anna",
+              "text": "Viele Grüße, Anna",
+              "english": "Best wishes, Anna"
+            },
+            {
+              "text": "Thomas schreibt auch: \"Ich wünsche dir einen guten Tag und ein gutes Jahr!\"",
+              "english": "Thomas writes too: \"I wish you a good day and a good year!\""
+            },
+            {
+              "text": "Sam wünscht Anna einen schönen Tag.",
+              "english": "Sam wishes Anna a lovely day."
+            },
+            {
+              "text": "Später kommt David.",
+              "english": "Later David comes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Jahr im Kurs",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Im Kurs lernen die Studenten die Monate.",
+              "english": "In the course the students learn the months."
+            },
+            {
+              "speaker": "eva",
+              "text": "Das Jahr hat zwölf Monate: Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember.",
+              "english": "The year has twelve months: January, February, March, April, May, June, July, August, September, October, November, December."
+            },
+            {
+              "speaker": "eva",
+              "text": "Im Frühling sind es März, April und Mai.",
+              "english": "In spring they are March, April and May."
+            },
+            {
+              "speaker": "eva",
+              "text": "Im Sommer sind es Juni, Juli und August.",
+              "english": "In summer they are June, July and August."
+            },
+            {
+              "speaker": "eva",
+              "text": "Im Herbst sind es September, Oktober und November.",
+              "english": "In autumn they are September, October and November."
+            },
+            {
+              "speaker": "eva",
+              "text": "Im Winter sind es Dezember, Januar und Februar.",
+              "english": "In winter they are December, January and February."
+            },
+            {
+              "speaker": "eva",
+              "text": "Später üben wir das noch einmal.",
+              "english": "Later we practise it once more."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Feier planen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anna",
+              "text": "Wer kommt zu deinem Fest, Sam?",
+              "english": "Who is coming to your party, Sam?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Thomas, Ruth und David kommen.",
+              "english": "Thomas, Ruth and David are coming."
+            },
+            {
+              "speaker": "sam",
+              "text": "Auch Marta und Ben.",
+              "english": "Marta and Ben too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Und Lukas?",
+              "english": "And Lukas?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Er hat Schule, aber er kommt am Abend.",
+              "english": "He has school, but he is coming in the evening."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich koche Suppe mit Kartoffeln.",
+              "english": "I am cooking soup with potatoes."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das Rezept ist von Marta.",
+              "english": "The recipe is Marta's."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich backe einen Kuchen und bringe ihn mit.",
+              "english": "I am baking a cake and will bring it."
+            },
+            {
+              "speaker": "sam",
+              "text": "Herr Schmidt bringt Brötchen mit.",
+              "english": "Herr Schmidt brings rolls."
+            },
+            {
+              "speaker": "anna",
+              "text": "Und was trinken wir?",
+              "english": "And what do we drink?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Wasser, Tee und Kaffee mit Milch.",
+              "english": "Water, tea and coffee with milk."
+            },
+            {
+              "speaker": "anna",
+              "text": "Wir sitzen draußen, wenn die Sonne scheint.",
+              "english": "We sit outside when the sun shines."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und wenn es regnet, sitzen wir in der Küche.",
+              "english": "And when it rains, we sit in the kitchen."
+            },
+            {
+              "speaker": "anna",
+              "text": "Die Küche ist klein, aber das Zimmer von Frau Weber ist groß.",
+              "english": "The kitchen is small, but Mrs Weber's room is big."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, sie hat einen Tisch und viele Stühle.",
+              "english": "Yes, she has a table and many chairs."
+            },
+            {
+              "speaker": "anna",
+              "text": "Um wie viel Uhr kommen wir?",
+              "english": "At what time do we come?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Um fünf Uhr.",
+              "english": "At five o'clock."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Straßenbahn fährt um halb fünf ab.",
+              "english": "The tram leaves at half past four."
+            },
+            {
+              "speaker": "anna",
+              "text": "Gut.",
+              "english": "Good."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich fahre mit der Straßenbahn.",
+              "english": "I will take the tram."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bin an der Haltestelle.",
+              "english": "I will be at the stop."
+            },
+            {
+              "speaker": "anna",
+              "text": "Danke, Sam!",
+              "english": "Thank you, Sam!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Du bist ein guter Freund.",
+              "english": "You are a good friend."
+            },
+            {
+              "speaker": "sam",
+              "text": "Du auch, Anna.",
+              "english": "You too, Anna."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das wird ein schönes Fest!",
+              "english": "That will be a lovely party!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ein Fest im Garten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Frau Weber hat auch eine Einladung geschrieben.",
+              "english": "Mrs Weber has also written an invitation."
+            },
+            {
+              "text": "Es ist ein Fest im Garten, für den Geburtstag.",
+              "english": "It is a party in the garden, for the birthday."
+            },
+            {
+              "text": "Sam möchte etwas über Frau Weber sagen.",
+              "english": "Sam would like to say something about Mrs Weber."
+            },
+            {
+              "speaker": "sam",
+              "text": "Frau Weber ist 1950 geboren, und sie ist in Leipzig aufgewachsen.",
+              "english": "Mrs Weber was born in 1950, and she grew up in Leipzig."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ihre Kindheit und ihre Jugend waren schön.",
+              "english": "Her childhood and her youth were lovely."
+            },
+            {
+              "speaker": "sam",
+              "text": "1972 hat sie geheiratet.",
+              "english": "In 1972 she got married."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Hochzeit war ein Fest.",
+              "english": "The wedding was a party."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ihr Ehemann Hans ist gestorben, und ihre Eltern auch.",
+              "english": "Her husband Hans has died, and her parents too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sie hat lange in der Fabrik gearbeitet, und jetzt ist sie in Rente.",
+              "english": "She worked in the factory for a long time, and now she is retired."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ihr Sohn Martin und die Enkel kommen auch.",
+              "english": "Her son Martin and the grandchildren are coming too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Im Garten ist es ruhig, und die Tomaten sind hoch.",
+              "english": "In the garden it is quiet, and the tomatoes are tall."
+            },
+            {
+              "speaker": "sam",
+              "text": "Dort sitzen wir im Gras, und Frau Weber hat keine Tiere.",
+              "english": "We will sit there on the grass, and Mrs Weber has no animals."
+            },
+            {
+              "speaker": "weber",
+              "text": "Herr Miller, helfen Sie mir im Garten?",
+              "english": "Mr Miller, will you help me in the garden?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, gern.",
+              "english": "Yes, gladly."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich trage die Tische und die Stühle.",
+              "english": "I will carry the tables and the chairs."
+            },
+            {
+              "speaker": "weber",
+              "text": "Danke!",
+              "english": "Thank you!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich koche Tee und Kaffee.",
+              "english": "I will make tea and coffee."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Noch mehr Feste",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Im Winter macht Thomas ein Fest für die Kinder.",
+              "english": "In winter Thomas holds a party for the children."
+            },
+            {
+              "text": "Er spricht über den Hirten und das Schaf in der Nacht.",
+              "english": "He talks about the shepherd and the sheep in the night."
+            },
+            {
+              "text": "Im Himmel ist ein Fest für den Sünder, sagt er.",
+              "english": "In heaven there is a feast for the sinner, he says."
+            },
+            {
+              "text": "Marta braucht Hilfe.",
+              "english": "Marta needs help."
+            },
+            {
+              "text": "Anna hilft Marta, und Lukas trägt Ben auf der Schulter.",
+              "english": "Anna helps Marta, and Lukas carries Ben on his shoulder."
+            },
+            {
+              "text": "Thomas ruft: \"Kommt alle!\"",
+              "english": "Thomas calls: \"Come, everyone!\""
+            },
+            {
+              "text": "Im Frühling soll Ben gesund sein.",
+              "english": "In spring Ben should be well."
+            },
+            {
+              "text": "Er fühlt sich gut.",
+              "english": "He feels fine."
+            },
+            {
+              "text": "Er braucht keine Praxis, kein Rezept, kein Medikament und keine Apotheke.",
+              "english": "He needs no practice, no prescription, no medicine and no pharmacy."
+            },
+            {
+              "text": "Er hat keine Erkältung, keinen Husten und keine Schmerzen.",
+              "english": "He has no cold, no cough and no pain."
+            },
+            {
+              "text": "Fuß, Hand, Auge und Ohr sind gut.",
+              "english": "Foot, hand, eye and ear are fine."
+            },
+            {
+              "text": "Die Ärztin lässt Ben kommen, und er lacht.",
+              "english": "The doctor lets Ben come, and he laughs."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

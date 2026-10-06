@@ -1,0 +1,840 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-05",
+  "lang": "de",
+  "title": "Regeln im Haus",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-05",
+    "title": "\"Regeln im Haus\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Frau Weber and the Hausmeister address Sam as \"Herr Sam\" (Sie + first name); a native reviewer should say whether a surname or a bare \"Sam\" would be more natural. The house rules and the notice use the typical official register (Passiv, man darf, Infinitiv as an order, Sie). Please check the quiet hours, the bin routine and the wording \"Es wird gebeten\". The recipe is a simple Apfelkuchen; check the words Mehl, Zucker, Ofen and the oven time."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "practical-communication"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical-communication"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "S": "Sam",
+    "W": "Frau Weber",
+    "H": "Hausmeister",
+    "T": "Pastor Thomas"
+  },
+  "sections": [
+    {
+      "title": "Im Treppenhaus",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam kommt am Abend nach Hause.",
+              "english": "Sam comes home in the evening."
+            },
+            {
+              "text": "Im Treppenhaus ist ein großes Blatt: die Hausordnung.",
+              "english": "In the stairwell there is a big sheet: the house rules."
+            },
+            {
+              "text": "Er hat es schon oft gesehen, aber nie gelesen.",
+              "english": "He has often seen it but never read it."
+            },
+            {
+              "text": "Heute liest er es genau.",
+              "english": "Today he reads it carefully."
+            },
+            {
+              "text": "„Hausordnung für alle Mieter. Bitte beachten Sie:“",
+              "english": "\"House rules for all tenants. Please note:\""
+            },
+            {
+              "text": "„1. Das Rauchen ist im ganzen Haus verboten.“",
+              "english": "\"1. Smoking is forbidden in the whole house.\""
+            },
+            {
+              "text": "„2. Der Müll wird getrennt. Jeder Müll gehört in die richtige Mülltonne.“",
+              "english": "\"2. Rubbish is sorted. Every kind of rubbish belongs in the right bin.\""
+            },
+            {
+              "text": "„3. Im Flur und im Treppenhaus dürfen keine Fahrräder stehen.“",
+              "english": "\"3. No bicycles may stand in the hall or the stairwell.\""
+            },
+            {
+              "text": "„4. Von 22 bis 6 Uhr bitte leise sein. Es wird um Rücksicht gebeten.“",
+              "english": "\"4. From 10 p.m. to 6 a.m. please be quiet. Consideration is requested.\""
+            },
+            {
+              "text": "„5. Das Parken ist nur auf dem Parkplatz erlaubt.“",
+              "english": "\"5. Parking is only allowed on the car park.\""
+            },
+            {
+              "text": "„6. Im Winter bitte nicht die Heizung hoch stellen, sondern kurz lüften.“",
+              "english": "\"6. In winter please do not turn the heating up, but air the room briefly.\""
+            },
+            {
+              "text": "„7. Der Hausmeister ist am Montag von 8 bis 10 Uhr im Haus.“",
+              "english": "\"7. The caretaker is in the house on Monday from 8 to 10.\""
+            },
+            {
+              "text": "Sam liest alles noch einmal.",
+              "english": "Sam reads everything once more."
+            },
+            {
+              "text": "Dann geht er zu Frau Weber.",
+              "english": "Then he goes to Frau Weber."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bei Frau Weber",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Frau Weber, darf ich Sie etwas fragen?",
+              "english": "Frau Weber, may I ask you something?",
+              "speaker": "S"
+            },
+            {
+              "text": "Natürlich.",
+              "english": "Of course.",
+              "speaker": "W"
+            },
+            {
+              "text": "Setzen Sie sich bitte.",
+              "english": "Please sit down.",
+              "speaker": "W"
+            },
+            {
+              "text": "Was gibt es?",
+              "english": "What is it?",
+              "speaker": "W"
+            },
+            {
+              "text": "Ich habe die Hausordnung gelesen.",
+              "english": "I have read the house rules.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich habe nicht alles verstanden.",
+              "english": "I did not understand everything.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist nicht schlimm.",
+              "english": "That is not bad.",
+              "speaker": "W"
+            },
+            {
+              "text": "Fragen Sie nur.",
+              "english": "Just ask.",
+              "speaker": "W"
+            },
+            {
+              "text": "Warum ist das Rauchen im Haus verboten?",
+              "english": "Why is smoking forbidden in the house?",
+              "speaker": "S"
+            },
+            {
+              "text": "Ist das eine deutsche Regel?",
+              "english": "Is that a German rule?",
+              "speaker": "S"
+            },
+            {
+              "text": "Nein, das ist keine deutsche, sondern meine Regel.",
+              "english": "No, that is not a German rule but my rule.",
+              "speaker": "W"
+            },
+            {
+              "text": "Man riecht es im ganzen Haus.",
+              "english": "You can smell it in the whole house.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das Treppenhaus ist für alle da, nicht nur für einen.",
+              "english": "The stairwell is there for everybody, not only for one person.",
+              "speaker": "W"
+            },
+            {
+              "text": "Ich verstehe.",
+              "english": "I understand.",
+              "speaker": "S"
+            },
+            {
+              "text": "Und was heißt „abstellen“?",
+              "english": "And what does \"abstellen\" mean?",
+              "speaker": "S"
+            },
+            {
+              "text": "Wenn man etwas im Flur stehen lässt, zum Beispiel ein Fahrrad.",
+              "english": "When you leave something standing in the hall, for example a bicycle.",
+              "speaker": "W"
+            },
+            {
+              "text": "Stellen Sie Ihr Fahrrad bitte im Keller ab, nicht im Flur.",
+              "english": "Please put your bicycle down in the cellar, not in the hall.",
+              "speaker": "W"
+            },
+            {
+              "text": "Sonst kann im Notfall keiner durch.",
+              "english": "Otherwise nobody can get through in an emergency.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das ist ein guter Grund.",
+              "english": "That is a good reason.",
+              "speaker": "S"
+            },
+            {
+              "text": "Und der Müll?",
+              "english": "And the rubbish?",
+              "speaker": "S"
+            },
+            {
+              "text": "Im Hof steht eine Mülltonne für das Essen und eine für alles andere.",
+              "english": "In the yard there is a bin for food and one for everything else.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das ist viel Arbeit.",
+              "english": "That is a lot of work.",
+              "speaker": "S"
+            },
+            {
+              "text": "Warum trennt man alles?",
+              "english": "Why does one sort everything?",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist gut für die Stadt, und es spart Geld.",
+              "english": "That is good for the city, and it saves money.",
+              "speaker": "W"
+            },
+            {
+              "text": "Wir trennen das Essen, und wir nehmen die graue Tonne für den Rest.",
+              "english": "We separate the food, and we take the grey bin for the rest.",
+              "speaker": "W"
+            },
+            {
+              "text": "Ist Besuch auch erlaubt?",
+              "english": "Is it allowed to have visitors too?",
+              "speaker": "S"
+            },
+            {
+              "text": "Natürlich.",
+              "english": "Of course.",
+              "speaker": "W"
+            },
+            {
+              "text": "Gäste dürfen kommen, aber nach zehn Uhr bitte leise.",
+              "english": "Guests may come, but after ten o'clock please quietly.",
+              "speaker": "W"
+            },
+            {
+              "text": "Und was heißt „lüften“?",
+              "english": "And what does \"lüften\" mean?",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich öffne im Winter auch das Fenster.",
+              "english": "I open the window in winter too.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist es ja!",
+              "english": "That is just it!",
+              "speaker": "W"
+            },
+            {
+              "text": "Lüften Sie kurz, aber ganz: Fenster auf, fünf Minuten, Fenster zu.",
+              "english": "Air briefly but fully: window open, five minutes, window shut.",
+              "speaker": "W"
+            },
+            {
+              "text": "Nicht den ganzen Tag, sonst wird es kalt, und die Heizung läuft für nichts.",
+              "english": "Not all day, otherwise it gets cold and the heating runs for nothing.",
+              "speaker": "W"
+            },
+            {
+              "text": "Die Heizung ist teuer, nicht wahr?",
+              "english": "The heating is expensive, isn't it?",
+              "speaker": "S"
+            },
+            {
+              "text": "Sehr.",
+              "english": "Very.",
+              "speaker": "W"
+            },
+            {
+              "text": "Ich bezahle monatlich fast hundert Euro Nebenkosten allein dafür.",
+              "english": "I pay almost a hundred euros a month in extra costs for that alone.",
+              "speaker": "W"
+            },
+            {
+              "text": "Wenn Sie also sparen, sparen wir alle.",
+              "english": "So if you save, we all save.",
+              "speaker": "W"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Hausmeister",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Montag früh klopft es an Sams Tür.",
+              "english": "On Monday morning there is a knock at Sam's door."
+            },
+            {
+              "text": "Draußen steht der Hausmeister.",
+              "english": "Outside stands the caretaker."
+            },
+            {
+              "text": "Er hat einen Brief in der Hand.",
+              "english": "He has a letter in his hand."
+            },
+            {
+              "text": "Guten Morgen, Herr Sam.",
+              "english": "Good morning, Herr Sam.",
+              "speaker": "H"
+            },
+            {
+              "text": "Haben Sie kurz Zeit?",
+              "english": "Do you have a moment?",
+              "speaker": "H"
+            },
+            {
+              "text": "Guten Morgen.",
+              "english": "Good morning.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ja, natürlich.",
+              "english": "Yes, of course.",
+              "speaker": "S"
+            },
+            {
+              "text": "Setzen Sie sich.",
+              "english": "Sit down.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich habe eine Mitteilung vom Vermieter.",
+              "english": "I have a message from the landlord.",
+              "speaker": "H"
+            },
+            {
+              "text": "Sie ist für alle Mieter.",
+              "english": "It is for all tenants.",
+              "speaker": "H"
+            },
+            {
+              "text": "Im Brief steht, dass die Miete im neuen Jahr nicht höher wird.",
+              "english": "The letter says that the rent will not go up in the new year.",
+              "speaker": "H"
+            },
+            {
+              "text": "Aber die Nebenkosten werden höher.",
+              "english": "But the extra costs will go up.",
+              "speaker": "H"
+            },
+            {
+              "text": "Warum werden sie höher?",
+              "english": "Why do they go up?",
+              "speaker": "S"
+            },
+            {
+              "text": "Das Haus ist alt.",
+              "english": "The house is old.",
+              "speaker": "H"
+            },
+            {
+              "text": "Der Vermieter plant viel, aber das braucht Zeit.",
+              "english": "The landlord is planning a lot, but that takes time.",
+              "speaker": "H"
+            },
+            {
+              "text": "Bis dahin brauchen wir alle Geduld.",
+              "english": "Until then we all need patience.",
+              "speaker": "H"
+            },
+            {
+              "text": "Und wir müssen alle mithelfen.",
+              "english": "And we all have to help.",
+              "speaker": "H"
+            },
+            {
+              "text": "Was kann ich tun?",
+              "english": "What can I do?",
+              "speaker": "S"
+            },
+            {
+              "text": "Schließen Sie nachts die Tür richtig.",
+              "english": "At night close the door properly.",
+              "speaker": "H"
+            },
+            {
+              "text": "Bitte beachten Sie das.",
+              "english": "Please note that.",
+              "speaker": "H"
+            },
+            {
+              "text": "Und noch etwas: Ihre Musik ist abends manchmal zu laut.",
+              "english": "And one more thing: your music is sometimes too loud in the evening.",
+              "speaker": "H"
+            },
+            {
+              "text": "Das wusste ich nicht.",
+              "english": "I did not know that.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich möchte niemanden stören.",
+              "english": "I do not want to disturb anybody.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich meine das nicht böse.",
+              "english": "I do not mean it badly.",
+              "speaker": "H"
+            },
+            {
+              "text": "Rücksicht ist das Wichtigste in der Nachbarschaft.",
+              "english": "Consideration is the most important thing in the neighbourhood.",
+              "speaker": "H"
+            },
+            {
+              "text": "Erlaubt ist, was die anderen nicht stört.",
+              "english": "What is allowed is what does not disturb the others.",
+              "speaker": "H"
+            },
+            {
+              "text": "So sagt man bei uns.",
+              "english": "That is what we say.",
+              "speaker": "H"
+            },
+            {
+              "text": "Ich verstehe.",
+              "english": "I understand.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ab jetzt höre ich die Musik leiser.",
+              "english": "From now on I will listen to the music more quietly.",
+              "speaker": "S"
+            },
+            {
+              "text": "Danke.",
+              "english": "Thank you.",
+              "speaker": "H"
+            },
+            {
+              "text": "Und stellen Sie nichts vor die Tür.",
+              "english": "And do not put anything in front of the door.",
+              "speaker": "H"
+            },
+            {
+              "text": "Das ist ein Problem für alle.",
+              "english": "That is a problem for everybody.",
+              "speaker": "H"
+            },
+            {
+              "text": "Der Weg zur Mülltonne ist nicht weit, also bringen Sie alles nach unten.",
+              "english": "The way to the bin is not far, so take everything downstairs.",
+              "speaker": "H"
+            },
+            {
+              "text": "Das mache ich.",
+              "english": "I will do that.",
+              "speaker": "S"
+            },
+            {
+              "text": "Muss ich noch ein Formular ausfüllen?",
+              "english": "Do I have to fill in another form?",
+              "speaker": "S"
+            },
+            {
+              "text": "Nein, diesmal nicht.",
+              "english": "No, not this time.",
+              "speaker": "H"
+            },
+            {
+              "text": "Eine Unterschrift brauche ich nicht.",
+              "english": "I do not need a signature.",
+              "speaker": "H"
+            },
+            {
+              "text": "Meine Öffnungszeit ist am Montag von acht bis zehn.",
+              "english": "My opening time is Monday from eight to ten.",
+              "speaker": "H"
+            },
+            {
+              "text": "Kommen Sie dann, wenn Sie etwas brauchen.",
+              "english": "Come then if you need something.",
+              "speaker": "H"
+            },
+            {
+              "text": "Der Vermieter hat mich geschickt, aber ich bin eigentlich nur ein Nachbar mit vielen Schlüsseln.",
+              "english": "The landlord sent me, but I am really just a neighbour with many keys.",
+              "speaker": "H"
+            },
+            {
+              "text": "Das gefällt mir.",
+              "english": "I like that.",
+              "speaker": "S"
+            },
+            {
+              "text": "Danke für die Hilfe.",
+              "english": "Thank you for the help.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Mitteilung in der Gemeinde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Sonntag liest Pastor Thomas im Gottesdienst die Mitteilung der Gemeinde vor.",
+              "english": "On Sunday Pastor Thomas reads out the church announcement in the service."
+            },
+            {
+              "text": "Zuerst eine Mitteilung: Nach dem Gottesdienst gibt es Kaffee im Raum neben dem Ausgang.",
+              "english": "First an announcement: after the service there is coffee in the room next to the exit.",
+              "speaker": "T"
+            },
+            {
+              "text": "Bitte parken Sie nicht vor der Kirche.",
+              "english": "Please do not park in front of the church.",
+              "speaker": "T"
+            },
+            {
+              "text": "Es wird gebeten, hinten zu parken.",
+              "english": "You are asked to park at the back.",
+              "speaker": "T"
+            },
+            {
+              "text": "Nehmen Sie bitte Rücksicht auf die Nachbarn.",
+              "english": "Please be considerate of the neighbours.",
+              "speaker": "T"
+            },
+            {
+              "text": "Sie haben viel Geduld mit uns.",
+              "english": "They have a lot of patience with us.",
+              "speaker": "T"
+            },
+            {
+              "text": "Auch Mieter mit einem Problem sind bei uns willkommen.",
+              "english": "Tenants with a problem are also welcome here.",
+              "speaker": "T"
+            },
+            {
+              "text": "Wer ein Zimmer sucht, kann bei uns fragen.",
+              "english": "Whoever is looking for a room can ask us.",
+              "speaker": "T"
+            },
+            {
+              "text": "Wir haben ein möbliertes Zimmer mit 14 Quadratmetern.",
+              "english": "We have a furnished room with 14 square metres.",
+              "speaker": "T"
+            },
+            {
+              "text": "Es ist frei, und die Miete ist günstig.",
+              "english": "It is free, and the rent is cheap.",
+              "speaker": "T"
+            },
+            {
+              "text": "Die Kaution ist klein.",
+              "english": "The deposit is small.",
+              "speaker": "T"
+            },
+            {
+              "text": "Wer ein Formular braucht, kann es am Schalter im Büro abholen.",
+              "english": "Whoever needs a form can pick it up at the counter in the office.",
+              "speaker": "T"
+            },
+            {
+              "text": "Und wer sich anmelden will, darf den Ausweis nicht vergessen.",
+              "english": "And whoever wants to register must not forget the identity card.",
+              "speaker": "T"
+            },
+            {
+              "text": "Man muss ihn beim Amt zeigen.",
+              "english": "One has to show it at the office.",
+              "speaker": "T"
+            },
+            {
+              "text": "Nach dem Gottesdienst fragt Sam Thomas, ob er das Rauchen vor der Kirche verbieten kann.",
+              "english": "After the service Sam asks Thomas whether he can forbid smoking in front of the church."
+            },
+            {
+              "text": "Das ist ein Wunsch, den viele haben.",
+              "english": "That is a wish many people have.",
+              "speaker": "T"
+            },
+            {
+              "text": "Aber ich kann nur bitten.",
+              "english": "But I can only ask.",
+              "speaker": "T"
+            },
+            {
+              "text": "Das ist die Regel der Gemeinde: Wir bitten, wir befehlen nicht.",
+              "english": "That is the rule of the church: we ask, we do not command.",
+              "speaker": "T"
+            },
+            {
+              "text": "Das ist wahrscheinlich besser.",
+              "english": "That is probably better.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich hoffe, die Leute verstehen es.",
+              "english": "I hope the people understand.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Frau Webers Kuchen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Nachmittag backt Frau Weber einen Apfelkuchen.",
+              "english": "In the afternoon Frau Weber bakes an apple cake."
+            },
+            {
+              "text": "Sam hilft in der Küche.",
+              "english": "Sam helps in the kitchen."
+            },
+            {
+              "text": "Haben Sie Lust, ein Rezept zu lernen?",
+              "english": "Do you feel like learning a recipe?",
+              "speaker": "W"
+            },
+            {
+              "text": "Es ist einfach.",
+              "english": "It is simple.",
+              "speaker": "W"
+            },
+            {
+              "text": "Gern.",
+              "english": "Gladly.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich habe nämlich noch nie einen Kuchen gebacken.",
+              "english": "You see, I have never baked a cake before.",
+              "speaker": "S"
+            },
+            {
+              "text": "Dann hören Sie zu.",
+              "english": "Then listen.",
+              "speaker": "W"
+            },
+            {
+              "text": "Zuerst die Äpfel waschen und schneiden.",
+              "english": "First wash and cut the apples.",
+              "speaker": "W"
+            },
+            {
+              "text": "Dann Mehl, Zucker, Butter und ein Ei in eine Schüssel geben.",
+              "english": "Then put flour, sugar, butter and an egg into a bowl.",
+              "speaker": "W"
+            },
+            {
+              "text": "Alles gut mischen.",
+              "english": "Mix everything well.",
+              "speaker": "W"
+            },
+            {
+              "text": "Dann kommen die Äpfel in die Form.",
+              "english": "Then the apples go into the tin.",
+              "speaker": "W"
+            },
+            {
+              "text": "Den Ofen auf 180 Grad stellen.",
+              "english": "Set the oven to 180 degrees.",
+              "speaker": "W"
+            },
+            {
+              "text": "Der Kuchen bleibt 40 Minuten im Ofen.",
+              "english": "The cake stays in the oven for 40 minutes.",
+              "speaker": "W"
+            },
+            {
+              "text": "Beachten Sie die Zeit.",
+              "english": "Note the time.",
+              "speaker": "W"
+            },
+            {
+              "text": "Zu lange im Ofen ist zu viel.",
+              "english": "Too long in the oven is too much.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das ist wirklich einfach.",
+              "english": "That is really simple.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich habe fast alles verstanden.",
+              "english": "I understood almost everything.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ein Rezept hat eine Ordnung: Man macht es langsam und nimmt keine Abkürzung.",
+              "english": "A recipe has an order: you do it slowly and take no shortcut.",
+              "speaker": "W"
+            },
+            {
+              "text": "Eine Nachbarschaft braucht auch Geduld.",
+              "english": "A neighbourhood needs patience too.",
+              "speaker": "W"
+            },
+            {
+              "text": "Meiner Meinung nach ist beides ein Weg zum Frieden.",
+              "english": "In my opinion both are a way to peace.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich denke das auch.",
+              "english": "I think so too.",
+              "speaker": "W"
+            },
+            {
+              "text": "Wir können den Kuchen verteilen, damit die Nachbarschaft sich freut.",
+              "english": "We can hand the cake out so that the neighbourhood is pleased.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das ist ein guter Vorschlag.",
+              "english": "That is a good suggestion.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich überlege nur, wer zuerst bekommt.",
+              "english": "I am only thinking about who gets one first.",
+              "speaker": "S"
+            },
+            {
+              "text": "Es ist bestimmt möglich, mit der Frau unten anzufangen.",
+              "english": "It is certainly possible to begin with the woman downstairs.",
+              "speaker": "W"
+            },
+            {
+              "text": "Sie ist sicher zu Hause.",
+              "english": "She is surely at home.",
+              "speaker": "W"
+            },
+            {
+              "text": "Und vielleicht verabreden wir uns mit allen zu einem Kaffee.",
+              "english": "And perhaps we can arrange a coffee with everybody.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das wäre eine Lösung für die Musik.",
+              "english": "That would be a solution for the music.",
+              "speaker": "S"
+            },
+            {
+              "text": "Als der Kuchen fertig ist, liegt ein Brief im Briefkasten.",
+              "english": "When the cake is ready there is a letter in the letterbox."
+            },
+            {
+              "text": "Er kommt von der Behörde.",
+              "english": "It comes from the authority."
+            },
+            {
+              "text": "Sam öffnet ihn mit zitternden Händen.",
+              "english": "Sam opens it with trembling hands."
+            },
+            {
+              "text": "Seine Erlaubnis für den Aufenthalt ist da.",
+              "english": "His permit for his stay has arrived."
+            },
+            {
+              "text": "Der Antrag war in Ordnung.",
+              "english": "The application was fine."
+            },
+            {
+              "text": "Ein Mitarbeiter hat auch eine Bescheinigung für seinen Wohnsitz dazugelegt.",
+              "english": "An employee has also added a certificate for his place of residence."
+            },
+            {
+              "text": "Die Gebühr hat er schon bezahlt, nur den alten Ausweis muss er noch am Amt abgeben.",
+              "english": "He has already paid the fee, only the old identity card he still has to hand in at the office."
+            },
+            {
+              "text": "Sam ist kein Ausländer mehr ohne Papiere.",
+              "english": "Sam is no longer a foreigner without papers."
+            },
+            {
+              "text": "Er ist ein Gast, der bleiben darf.",
+              "english": "He is a guest who may stay."
+            },
+            {
+              "text": "Er sieht den Hausmeister im Hof und gibt ihm ein Stück Kuchen.",
+              "english": "He sees the caretaker in the yard and gives him a piece of cake."
+            },
+            {
+              "text": "Dann nimmt er den Rest und klopft bei der Frau unten an die Tür.",
+              "english": "Then he takes the rest and knocks on the door of the woman downstairs."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

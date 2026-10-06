@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-08",
+  "lang": "de",
+  "title": "Sam's first week",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-08",
+    "title": "Sam's first week (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A narrative in the Perfekt told day by day, with short dialogue. Eva (the teacher of the language course, Sie to her students) uses Sie with Sam in class; Sam and Frau Weber say Sie. \"Dass\" sends the finite verb to the end (\"Ich glaube, dass Deutsch schwer ist\"); the first dass-clauses are short. The first dinner with a German neighbour (a topic of the old Lesungen draft) is only hinted at: the habit of bringing something for the host is mentioned, not described."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "first week",
+    "language course",
+    "neighbours",
+    "Perfekt in narration",
+    "dass-clauses"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "weber": "Frau Weber",
+    "eva": "Eva"
+  },
+  "sections": [
+    {
+      "title": "Montag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam ist am Montag bei Frau Weber eingezogen.",
+              "english": "On Monday Sam moved in at Mrs Weber's."
+            },
+            {
+              "text": "Er hat zwei Koffer und seinen Rucksack gehabt.",
+              "english": "He had two suitcases and his school bag."
+            },
+            {
+              "speaker": "weber",
+              "text": "Herr Miller, ich bin froh, dass Sie da sind.",
+              "english": "Mr Miller, I am glad that you are here."
+            },
+            {
+              "text": "Frau Weber hat die Wohnung geputzt.",
+              "english": "Mrs Weber had cleaned the flat."
+            },
+            {
+              "text": "Sie hat gesagt: \"Hier ist Ihr Schlüssel.\"",
+              "english": "She said: \"Here is your key.\""
+            },
+            {
+              "text": "Sam zieht heute ein, und er ist glücklich.",
+              "english": "Sam is moving in today, and he is happy."
+            },
+            {
+              "text": "Der Nachbar von Frau Weber ist Herr Schmidt, der Bäcker.",
+              "english": "Mrs Weber's neighbour is Herr Schmidt, the baker."
+            },
+            {
+              "speaker": "weber",
+              "text": "Die Nachbarn sind gut, Herr Miller.",
+              "english": "The neighbours are good, Mr Miller."
+            },
+            {
+              "speaker": "weber",
+              "text": "Deutsch ist eine schöne Sprache.",
+              "english": "German is a lovely language."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dienstag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Dienstag hat der Kurs angefangen.",
+              "english": "On Tuesday the course began."
+            },
+            {
+              "text": "Die Lehrerin heißt Eva.",
+              "english": "The teacher is called Eva."
+            },
+            {
+              "text": "Dieser Kurs ist neu für Sam.",
+              "english": "This course is new for Sam."
+            },
+            {
+              "speaker": "eva",
+              "text": "Guten Morgen!",
+              "english": "Good morning!"
+            },
+            {
+              "speaker": "eva",
+              "text": "Ich bin Eva, die Lehrerin.",
+              "english": "I am Eva, the teacher."
+            },
+            {
+              "speaker": "sam",
+              "text": "Eva ist eine gute Lehrerin.",
+              "english": "Eva is a good teacher."
+            },
+            {
+              "speaker": "eva",
+              "text": "Deutsch ist eine Sprache für alle.",
+              "english": "German is a language for everyone."
+            },
+            {
+              "speaker": "eva",
+              "text": "Eine neue Sprache ist nicht leicht, aber es geht.",
+              "english": "A new language is not easy, but it works."
+            },
+            {
+              "speaker": "eva",
+              "text": "Ich erkläre, und Sie üben.",
+              "english": "I explain, and you practise."
+            },
+            {
+              "text": "Im Kurs sind zwölf Studenten.",
+              "english": "There are twelve students in the course."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich verstehe nicht.",
+              "english": "I do not understand."
+            },
+            {
+              "speaker": "eva",
+              "text": "Das Wort \"Haus\" ist leicht.",
+              "english": "The word \"Haus\" is easy."
+            },
+            {
+              "speaker": "eva",
+              "text": "Das Wort \"Straßenbahn\" ist schwer! Und \"Donnerstag\" ist auch schwer.",
+              "english": "The word \"Straßenbahn\" is hard! And \"Donnerstag\" is hard too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Mittwoch",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Mittwoch haben sie Grammatik gelernt.",
+              "english": "On Wednesday they learned grammar."
+            },
+            {
+              "text": "Grammatik ist schwer für Sam.",
+              "english": "Grammar is hard for Sam."
+            },
+            {
+              "speaker": "eva",
+              "text": "Sie machen Fehler?",
+              "english": "You make mistakes?"
+            },
+            {
+              "speaker": "eva",
+              "text": "Das ist gut!",
+              "english": "That is good!"
+            },
+            {
+              "speaker": "eva",
+              "text": "Fehler sind nicht schlecht.",
+              "english": "Mistakes are not bad."
+            },
+            {
+              "speaker": "eva",
+              "text": "Ich mache auch Fehler.",
+              "english": "I make mistakes too."
+            },
+            {
+              "text": "Sam hat gefragt: \"Was ist dieses Wort?\"",
+              "english": "Sam asked: \"What is this word?\""
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich verstehe es nicht.",
+              "english": "I do not understand it."
+            },
+            {
+              "speaker": "eva",
+              "text": "Ich erkläre es noch einmal.",
+              "english": "I will explain it once more."
+            },
+            {
+              "text": "Sam war traurig, aber dann hat er gelacht.",
+              "english": "Sam was sad, but then he laughed."
+            },
+            {
+              "text": "Am Abend erklärt Sam Frau Weber ein Wort.",
+              "english": "In the evening Sam explains a word to Mrs Weber."
+            },
+            {
+              "text": "Frau Weber übt mit Sam, und die Grammatik ist leicht für sie.",
+              "english": "Mrs Weber practises with Sam, and the grammar is easy for her."
+            },
+            {
+              "speaker": "eva",
+              "text": "Sie sprechen gut.",
+              "english": "You speak well."
+            },
+            {
+              "speaker": "eva",
+              "text": "Ich glaube, dass Sie bald alles verstehen.",
+              "english": "I believe that you will soon understand everything."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Donnerstag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Donnerstag hat Sam im Supermarkt eingekauft.",
+              "english": "On Thursday Sam went shopping in the supermarket."
+            },
+            {
+              "text": "Er kennt den Supermarkt nicht, und er fragt eine Frau.",
+              "english": "He does not know the supermarket, and he asks a woman."
+            },
+            {
+              "speaker": "sam",
+              "text": "Bitte, wo ist der Käse?",
+              "english": "Please, where is the cheese?"
+            },
+            {
+              "text": "Die Frau hat gesagt: \"Der Käse ist hinter dem Brot.\"",
+              "english": "The woman said: \"The cheese is behind the bread.\""
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke!",
+              "english": "Thank you!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich kenne diesen Supermarkt noch nicht.",
+              "english": "I do not know this supermarket yet."
+            },
+            {
+              "text": "Zu Hause hat er das Abendessen gekocht: Suppe mit Kartoffeln.",
+              "english": "At home he cooked dinner: soup with potatoes."
+            },
+            {
+              "speaker": "weber",
+              "text": "Sie kochen gut!",
+              "english": "You cook well!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Kennen Sie meinen Nachbarn?",
+              "english": "Do you know my neighbour?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, er ist Bäcker.",
+              "english": "Yes, he is a baker."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Freitag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Freitag sind Sam und die anderen ins Kino gegangen.",
+              "english": "On Friday Sam and the others went to the cinema."
+            },
+            {
+              "text": "Sie haben einen neuen Film gesehen.",
+              "english": "They saw a new film."
+            },
+            {
+              "text": "Ein Mädchen in der Klasse hat geweint, aber die anderen haben gelacht.",
+              "english": "A girl in the class cried, but the others laughed."
+            },
+            {
+              "text": "Dann haben sie Pizza gegessen.",
+              "english": "Then they ate pizza."
+            },
+            {
+              "text": "Draußen hat es geregnet.",
+              "english": "Outside it rained."
+            },
+            {
+              "text": "Sie haben die Jacken und den Regenschirm genommen.",
+              "english": "They took the jackets and the umbrella."
+            },
+            {
+              "text": "Es war leider heiß im Kino, und der Film war lang.",
+              "english": "Unfortunately it was hot in the cinema, and the film was long."
+            },
+            {
+              "text": "Sam ist spät zurück gewesen.",
+              "english": "Sam got back late."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Samstag und Sonntag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Wochenende hat Sam Zeit.",
+              "english": "At the weekend Sam has time."
+            },
+            {
+              "text": "Am Samstag hat Sam sein Zimmer geputzt und die Wäsche gemacht.",
+              "english": "On Saturday Sam cleaned his room and did the washing."
+            },
+            {
+              "text": "Dann hat er geduscht.",
+              "english": "Then he showered."
+            },
+            {
+              "text": "Er hat im Büro von Thomas gearbeitet.",
+              "english": "He worked in Thomas's office."
+            },
+            {
+              "text": "Er hat genug Arbeit gehabt, aber er hat gern gearbeitet.",
+              "english": "He had enough work, but he liked working."
+            },
+            {
+              "text": "Am Abend hat er am Tisch gesessen und Deutsch geübt.",
+              "english": "In the evening he sat at the table and practised German."
+            },
+            {
+              "text": "Am Sonntag hat Anna gefragt: \"Kommst du mit?\"",
+              "english": "On Sunday Anna asked: \"Are you coming along?\""
+            },
+            {
+              "text": "Sam ist mitgekommen, und sie sind zum Konzert gelaufen.",
+              "english": "Sam came along, and they walked to the concert."
+            },
+            {
+              "text": "Die Musik war schön.",
+              "english": "The music was lovely."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Wetter im Kurs",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "eva",
+              "text": "Heute lernen wir die Jahreszeiten.",
+              "english": "Today we are learning the seasons."
+            },
+            {
+              "speaker": "eva",
+              "text": "Im Frühling scheint die Sonne.",
+              "english": "In spring the sun shines."
+            },
+            {
+              "speaker": "eva",
+              "text": "Im Sommer wird es heiß: 30 Grad.",
+              "english": "In summer it gets hot: 30 degrees."
+            },
+            {
+              "speaker": "eva",
+              "text": "Im Herbst gibt es Regen und Wind.",
+              "english": "In autumn there is rain and wind."
+            },
+            {
+              "speaker": "eva",
+              "text": "Im Winter gibt es Schnee.",
+              "english": "In winter there is snow."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich glaube, dass der Winter in Leipzig kalt ist.",
+              "english": "I believe that winter in Leipzig is cold."
+            },
+            {
+              "speaker": "eva",
+              "text": "Ja, Herr Miller.",
+              "english": "Yes, Mr Miller."
+            },
+            {
+              "speaker": "eva",
+              "text": "Gestern war es schon kalt.",
+              "english": "Yesterday it was already cold."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,426 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-03",
+  "lang": "de",
+  "title": "Omas Geschichte in der Nacht",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-03",
+    "title": "Omas Geschichte in der Nacht (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: Marta tells in the Präteritum (war, hatte, kam, sah, hörte, blieb); \"Oma\" for Ben's grandmother Marta; the months are recited in order as a bedtime ritual (a reviewer may suggest a better ritual); the church words Orgel, Predigt, Kollekte, Segen are used for a village church of Marta's childhood; the story is invented for the lesson. Note for the data: the participle \"gehört\" (of hören) is read by the adapter as \"gehören\", so the text uses \"verstanden\" instead."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative",
+    "night",
+    "childhood memory",
+    "grandmother"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Ben kann nicht schlafen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Nacht.",
+              "english": "It is night."
+            },
+            {
+              "text": "Der Mond scheint ins Zimmer.",
+              "english": "The moon is shining into the room."
+            },
+            {
+              "text": "Ben liegt im Bett, aber er schläft nicht.",
+              "english": "Ben is lying in bed, but he is not sleeping."
+            },
+            {
+              "text": "Plötzlich hört er ein Geräusch.",
+              "english": "Suddenly he hears a noise."
+            },
+            {
+              "text": "Es kommt von der Tür.",
+              "english": "It comes from the door."
+            },
+            {
+              "text": "Ben hat Angst.",
+              "english": "Ben is afraid."
+            },
+            {
+              "text": "„Oma!“, ruft er.",
+              "english": "\"Grandma!\" he calls."
+            },
+            {
+              "text": "Marta kommt ins Zimmer.",
+              "english": "Marta comes into the room."
+            },
+            {
+              "text": "Sie hat ein Licht in der Hand.",
+              "english": "She has a light in her hand."
+            },
+            {
+              "text": "„Es war nur der Wind“, sagt sie.",
+              "english": "\"It was only the wind,\" she says."
+            },
+            {
+              "text": "„Alles ist ruhig, und ich bin bei dir.“",
+              "english": "\"Everything is calm, and I am with you.\""
+            },
+            {
+              "text": "Sie sitzt am Bett.",
+              "english": "She sits by the bed."
+            },
+            {
+              "text": "„Jeder hat manchmal Angst“, sagt sie.",
+              "english": "\"Everyone is afraid sometimes,\" she says."
+            },
+            {
+              "text": "„Ich erzähle dir eine Geschichte aus meiner Kindheit.“",
+              "english": "\"I will tell you a story from my childhood.\""
+            },
+            {
+              "text": "„Ist das ein Märchen?“, fragt Ben.",
+              "english": "\"Is that a fairy tale?\" asks Ben."
+            },
+            {
+              "text": "„Nein, das ist kein Märchen“, sagt Marta.",
+              "english": "\"No, it is not a fairy tale,\" says Marta."
+            },
+            {
+              "text": "„Es ist eine richtige Geschichte.“",
+              "english": "\"It is a real story.\""
+            },
+            {
+              "text": "„Bitte, Oma!“, sagt Ben.",
+              "english": "\"Please, Grandma!\" says Ben."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Nacht im November",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„Zuerst muss ich dir sagen, wie alt ich war“, erzählt Marta.",
+              "english": "\"First I must tell you how old I was,\" Marta tells him."
+            },
+            {
+              "text": "„Ich war zehn Jahre alt.“",
+              "english": "\"I was ten years old.\""
+            },
+            {
+              "text": "„Es war eine Nacht im November.“",
+              "english": "\"It was a night in November.\""
+            },
+            {
+              "text": "„Der Mond war hell, und am Himmel standen viele Sterne.“",
+              "english": "\"The moon was bright, and many stars were in the sky.\""
+            },
+            {
+              "text": "„Meine Eltern waren in der Kirche.“",
+              "english": "\"My parents were at church.\""
+            },
+            {
+              "text": "„Mein Vater hat die Orgel gespielt.“",
+              "english": "\"My father played the organ.\""
+            },
+            {
+              "text": "„Er war immer lange dort: die Predigt, die Kollekte, der Segen.“",
+              "english": "\"He was always there for a long time: the sermon, the collection, the blessing.\""
+            },
+            {
+              "text": "„Es war kalt, und im Haus war es ganz still.“",
+              "english": "\"It was cold, and in the house it was completely quiet.\""
+            },
+            {
+              "text": "„Ich war mit meinem Bruder zu Hause, und er schlief.“",
+              "english": "\"I was at home with my brother, and he was asleep.\""
+            },
+            {
+              "text": "„Ich lag im Bett, und ich habe die Sterne gesehen.“",
+              "english": "\"I lay in bed, and I saw the stars.\""
+            },
+            {
+              "text": "„Ich hatte Angst.“",
+              "english": "\"I was afraid.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Geräusch an der Tür",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„Plötzlich hörte ich ein Geräusch“, sagt Marta.",
+              "english": "\"Suddenly I heard a noise,\" says Marta."
+            },
+            {
+              "text": "„Es kam von der anderen Seite der Tür.“",
+              "english": "\"It came from the other side of the door.\""
+            },
+            {
+              "text": "„Zuerst hörte ich nichts mehr.“",
+              "english": "\"At first I heard nothing more.\""
+            },
+            {
+              "text": "„Dann sah ich unter der Tür ein Licht.“",
+              "english": "\"Then I saw a light under the door.\""
+            },
+            {
+              "text": "„Ich bin ganz still geblieben.“",
+              "english": "\"I stayed completely still.\""
+            },
+            {
+              "text": "Ben fragt: „Und das Licht?“",
+              "english": "Ben asks, \"And the light?\""
+            },
+            {
+              "text": "„Es blieb stehen“, sagt Marta.",
+              "english": "\"It stopped,\" says Marta."
+            },
+            {
+              "text": "„Ich habe zuerst geglaubt, es ist ein Tier.“",
+              "english": "\"At first I thought it was an animal.\""
+            },
+            {
+              "text": "„Das war falsch. Aber nun musste ich etwas tun.“",
+              "english": "\"That was wrong. But now I had to do something.\""
+            },
+            {
+              "text": "„Danach hörte ich meinen Namen: ‚Marta!‘“",
+              "english": "\"Then I heard my name: 'Marta!'\""
+            },
+            {
+              "text": "„Es war mein Vater.“",
+              "english": "\"It was my father.\""
+            },
+            {
+              "text": "„Er hatte eine Kerze mitgebracht, denn die Straße war dunkel.“",
+              "english": "\"He had brought a candle, because the street was dark.\""
+            },
+            {
+              "text": "„Plötzlich war ich nicht mehr müde, und ich war sehr froh.“",
+              "english": "\"Suddenly I was not tired any more, and I was very glad.\""
+            },
+            {
+              "text": "Ben fragt: „Und danach? Was hast du gemacht?“",
+              "english": "Ben asks, \"And after that? What did you do?\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Weg zur Kirche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„Meine Mutter war noch in der Kirche“, erzählt Marta.",
+              "english": "\"My mother was still at church,\" Marta tells him."
+            },
+            {
+              "text": "„Mein Bruder war müde, aber er wollte mitgehen.“",
+              "english": "\"My brother was tired, but he wanted to come along.\""
+            },
+            {
+              "text": "„Mein Bruder hat meine Hand genommen.“",
+              "english": "\"My brother took my hand.\""
+            },
+            {
+              "text": "„Mein Vater hat die Kerze genommen, und wir sind zur Kirche gegangen.“",
+              "english": "\"My father took the candle, and we went to the church.\""
+            },
+            {
+              "text": "„Der Mond stand hoch, und die Straße war still.“",
+              "english": "\"The moon stood high, and the street was quiet.\""
+            },
+            {
+              "text": "„Die Kirche war groß, und die Fenster waren hell.“",
+              "english": "\"The church was big, and the windows were bright.\""
+            },
+            {
+              "text": "„Meine Mutter hat noch gesungen, und sie hat uns gesehen.“",
+              "english": "\"My mother was still singing, and she saw us.\""
+            },
+            {
+              "text": "„Sie hat gelacht, und wir haben noch den Segen bekommen.“",
+              "english": "\"She laughed, and we still received the blessing.\""
+            },
+            {
+              "text": "„Danach sind wir alle nach Hause gegangen.“",
+              "english": "\"After that we all went home.\""
+            },
+            {
+              "text": "„Hat dein Vater die Kerze noch?“, fragt Ben.",
+              "english": "\"Does your father still have the candle?\" asks Ben."
+            },
+            {
+              "text": "„Ich weiß es nicht genau“, sagt Marta.",
+              "english": "\"I do not know exactly,\" says Marta."
+            },
+            {
+              "text": "„Aber ich weiß: Die Nacht war schön, und mein Vater war nett.“",
+              "english": "\"But I know the night was lovely, and my father was kind.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Wie sah dein Vater aus?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„Wie sah dein Vater aus?“, fragt Ben.",
+              "english": "\"What did your father look like?\" asks Ben."
+            },
+            {
+              "text": "„Er war groß und stark, nicht dick und nicht dünn“, sagt Marta.",
+              "english": "\"He was tall and strong, not fat and not thin,\" says Marta."
+            },
+            {
+              "text": "„Er hatte kurze, dunkle Haare, eine Brille und ein freundliches Gesicht.“",
+              "english": "\"He had short, dark hair, glasses and a friendly face.\""
+            },
+            {
+              "text": "„Er war ein ruhiger, netter Mensch, und er war auch lustig.“",
+              "english": "\"He was a calm, nice person, and he was funny too.\""
+            },
+            {
+              "text": "„War er noch jung?“, fragt Ben.",
+              "english": "\"Was he still young?\" asks Ben."
+            },
+            {
+              "text": "„Ja, er war dreißig“, sagt Marta.",
+              "english": "\"Yes, he was thirty,\" says Marta."
+            },
+            {
+              "text": "„Habe ich das richtig verstanden? Dein Vater war das?“, fragt Ben.",
+              "english": "\"Did I understand that right? That was your father?\" asks Ben."
+            },
+            {
+              "text": "„Ja“, sagt Marta und lacht.",
+              "english": "\"Yes,\" says Marta, and laughs."
+            },
+            {
+              "text": "„Das Geräusch war nur ein Mann mit einer Kerze.“",
+              "english": "\"The noise was only a man with a candle.\""
+            },
+            {
+              "text": "„Zu Hause haben wir zusammen Suppe gegessen.“",
+              "english": "\"At home we ate soup together.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Monate",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„Nun gut“, sagt Ben.",
+              "english": "\"All right,\" says Ben."
+            },
+            {
+              "text": "„Aber ich bin noch nicht müde.“",
+              "english": "\"But I am not tired yet.\""
+            },
+            {
+              "text": "„Dann sag die Monate“, sagt Marta, „und du schläfst.“",
+              "english": "\"Then say the months,\" says Marta, \"and you will sleep.\""
+            },
+            {
+              "text": "Ben sagt langsam: „Januar, Februar, März, April, Mai, Juni.“",
+              "english": "Ben says slowly, \"January, February, March, April, May, June.\""
+            },
+            {
+              "text": "„Juli, August, September, Oktober, November, Dezember.“",
+              "english": "\"July, August, September, October, November, December.\""
+            },
+            {
+              "text": "Er sieht die Sterne am Fenster.",
+              "english": "He sees the stars at the window."
+            },
+            {
+              "text": "„Ich mag Märchen“, sagt er, „aber deine Geschichte ist besser.“",
+              "english": "\"I like fairy tales,\" he says, \"but your story is better.\""
+            },
+            {
+              "text": "Marta lacht.",
+              "english": "Marta laughs."
+            },
+            {
+              "text": "„Morgen lade ich dich zum Frühstück ein“, sagt sie.",
+              "english": "\"Tomorrow I will invite you to breakfast,\" she says."
+            },
+            {
+              "text": "„Das ist meine Einladung für einen müden Ben.“",
+              "english": "\"That is my invitation for a tired Ben.\""
+            },
+            {
+              "text": "Später ist es still im Zimmer.",
+              "english": "Later it is quiet in the room."
+            },
+            {
+              "text": "Nun schläft Ben.",
+              "english": "Now Ben is asleep."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

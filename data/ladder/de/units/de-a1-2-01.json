@@ -1,0 +1,513 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-01",
+  "lang": "de",
+  "title": "\"Was machst du gerade?\"",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-01",
+    "title": "\"Was machst du gerade?\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A phone call and a short chat; du among friends. \"Was machst du gerade?\" and \"Ich lese gerade\" are the usual present-for-now forms; \"tschüs\" is informal. Daniel (Daniel Miller, a second American on the team) arrives by train and is new in the cast. The call is in the evening; the Gemeinde and Gottesdienst words recycle from earlier units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "phone",
+    "present tense for now",
+    "free time",
+    "plans"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "anna": "Anna",
+    "daniel": "Daniel",
+    "schmidt": "Herr Schmidt"
+  },
+  "sections": [
+    {
+      "title": "Anna ruft an",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Abend.",
+              "english": "It is evening."
+            },
+            {
+              "text": "Sam ist in seinem Zimmer.",
+              "english": "Sam is in his room."
+            },
+            {
+              "text": "Das Handy ist da, und Anna ruft an.",
+              "english": "The phone is there, and Anna calls."
+            },
+            {
+              "speaker": "anna",
+              "text": "Hallo, Sam!",
+              "english": "Hello, Sam!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Was machst du gerade?",
+              "english": "What are you doing right now?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Hallo, Anna!",
+              "english": "Hello, Anna!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich lese gerade.",
+              "english": "I am reading right now."
+            },
+            {
+              "speaker": "anna",
+              "text": "Was liest du?",
+              "english": "What are you reading?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich lese nur die Bibel.",
+              "english": "I am only reading the Bible."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und ich höre Musik.",
+              "english": "And I am listening to music."
+            },
+            {
+              "speaker": "anna",
+              "text": "Hörst du mich?",
+              "english": "Can you hear me?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Das Handy ist nicht gut.",
+              "english": "The phone is not good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, ich höre dich gut.",
+              "english": "Yes, I can hear you well."
+            },
+            {
+              "speaker": "anna",
+              "text": "Hast du Zeit?",
+              "english": "Do you have time?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, ich habe Zeit.",
+              "english": "Yes, I have time."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich telefoniere gern mit dir, Sam.",
+              "english": "I like phoning you, Sam."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich telefoniere auch mit Marta.",
+              "english": "I phone Marta too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich auch.",
+              "english": "Me too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Aber es ist schon spät.",
+              "english": "But it is already late."
+            },
+            {
+              "speaker": "anna",
+              "text": "Hast du noch Zeit?",
+              "english": "Do you still have time?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, ich bin noch nicht müde.",
+              "english": "Yes, I am not tired yet."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich bin schon müde.",
+              "english": "I am already tired."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich lege mich bald ins Bett.",
+              "english": "I will lie down in bed soon."
+            },
+            {
+              "speaker": "anna",
+              "text": "Mein Kopf und mein Hals tun weh.",
+              "english": "My head and my throat hurt."
+            },
+            {
+              "speaker": "sam",
+              "text": "Du bist krank?",
+              "english": "You are ill?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Hast du Fieber?",
+              "english": "Do you have a fever?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich habe nur eine Tablette, danke.",
+              "english": "I have just one tablet, thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Dann schlaf gut!",
+              "english": "Then sleep well!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Und du?",
+              "english": "And you?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Schläfst du auch bald?",
+              "english": "Are you going to sleep soon too?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich lese noch, dann höre ich Musik, und dann schlafe ich.",
+              "english": "I will read a bit more, then I listen to music, and then I sleep."
+            },
+            {
+              "speaker": "anna",
+              "text": "Lukas spielt mit Ben im Park.",
+              "english": "Lukas is playing with Ben in the park."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ben spielt immer, auch am Abend!",
+              "english": "Ben always plays, even in the evening!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Tschüs, Sam!",
+              "english": "Bye, Sam!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Bis bald!",
+              "english": "See you soon!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Tschüs, Anna!",
+              "english": "Bye, Anna!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Bahnhof",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Morgen fährt Sam gerade mit der Straßenbahn zum Bahnhof.",
+              "english": "In the morning Sam is just taking the tram to the station."
+            },
+            {
+              "text": "Er hat eine Fahrkarte.",
+              "english": "He has a ticket."
+            },
+            {
+              "text": "Die Haltestelle ist in der Straße.",
+              "english": "The stop is in the street."
+            },
+            {
+              "text": "Die Straßenbahn fährt in zwei Minuten ab.",
+              "english": "The tram leaves in two minutes."
+            },
+            {
+              "text": "Der Zug aus Berlin kommt um acht Uhr an.",
+              "english": "The train from Berlin arrives at eight o'clock."
+            },
+            {
+              "text": "Sam muss um acht Uhr da sein.",
+              "english": "Sam has to be there at eight o'clock."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hallo, Daniel!",
+              "english": "Hello, Daniel!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bin Sam.",
+              "english": "I am Sam."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Hallo, Sam!",
+              "english": "Hello, Sam!"
+            },
+            {
+              "speaker": "daniel",
+              "text": "Freut mich!",
+              "english": "Nice to meet you!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Zug ist schon da.",
+              "english": "How are you?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Soll ich deine Tasche nehmen?",
+              "english": "Shall I take your bag?"
+            },
+            {
+              "speaker": "daniel",
+              "text": "Gut, danke.",
+              "english": "Fine, thank you."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Ich bin müde, aber ich bin da.",
+              "english": "I am tired, but I am here."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Ich spreche nur: Hallo!",
+              "english": "I only speak: hello!"
+            },
+            {
+              "speaker": "daniel",
+              "text": "Ich telefoniere mit meiner Mama in den USA.",
+              "english": "I phone my mama in the USA."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich lerne auch noch.",
+              "english": "I am still learning too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wir können zusammen lernen.",
+              "english": "We can learn together."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Wo ist unsere Gemeinde?",
+              "english": "Where is our church?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Unsere Gemeinde ist in der Stadt.",
+              "english": "Our church is in the city."
+            },
+            {
+              "speaker": "sam",
+              "text": "Da siehst du sie.",
+              "english": "There you can see it."
+            },
+            {
+              "speaker": "sam",
+              "text": "Thomas ist unser Pastor.",
+              "english": "Thomas is our pastor."
+            },
+            {
+              "speaker": "sam",
+              "text": "In der Woche helfen wir in der Gemeinde.",
+              "english": "During the week we help at the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "Am Sonntag fängt der Gottesdienst um zehn Uhr an.",
+              "english": "On Sunday the service starts at ten o'clock."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wir singen Lieder und beten.",
+              "english": "We sing songs and pray."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Musik ist schön.",
+              "english": "The music is lovely."
+            },
+            {
+              "speaker": "sam",
+              "text": "Du kannst auch singen.",
+              "english": "You can sing too."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Ich habe auch eine Bibel.",
+              "english": "I have a Bible too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gut.",
+              "english": "Good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Du bist ein Freund, Daniel!",
+              "english": "You are a friend, Daniel!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Wir spielen auch gern im Park.",
+              "english": "We like playing in the park too."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Das ist schön.",
+              "english": "That is nice."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Aber ich habe Hunger, und mein Bauch tut weh.",
+              "english": "But I am hungry, and my stomach hurts."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Ich will Brot!",
+              "english": "I want bread!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Wir gehen in die Bäckerei zu Herrn Schmidt.",
+              "english": "We are going to the bakery to Herr Schmidt."
+            },
+            {
+              "speaker": "sam",
+              "text": "Da gibt es Brötchen mit Butter und Käse, und Kaffee mit Milch.",
+              "english": "There are rolls with butter and cheese, and coffee with milk."
+            },
+            {
+              "speaker": "sam",
+              "text": "Dann schläfst du.",
+              "english": "Then you sleep."
+            },
+            {
+              "speaker": "sam",
+              "text": "Unser Haus ist nicht groß, aber das Bett ist da.",
+              "english": "Our house is not big, but the bed is there."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Danke, Sam!",
+              "english": "Thank you, Sam!"
+            },
+            {
+              "speaker": "daniel",
+              "text": "Tschüs!",
+              "english": "Bye!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Beim Bäcker",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "schmidt",
+              "text": "Guten Morgen, Herr Miller!",
+              "english": "Good morning, Mr Miller!"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Wer ist das?",
+              "english": "Who is that?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist Daniel, mein Freund aus den USA.",
+              "english": "This is Daniel, my friend from the USA."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Guten Tag, Daniel!",
+              "english": "Good day, Daniel!"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Das Frühstück kostet sieben Euro.",
+              "english": "The breakfast costs seven euros."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Ja, bitte!",
+              "english": "Yes, please!"
+            },
+            {
+              "speaker": "daniel",
+              "text": "Danke, Herr Schmidt.",
+              "english": "Thank you, Herr Schmidt."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Anna!",
+              "english": "Thank you, Anna!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist gut.",
+              "english": "That is good."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

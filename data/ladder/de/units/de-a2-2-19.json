@@ -1,0 +1,512 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-19",
+  "lang": "de",
+  "title": "Der Wochenbericht",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-19",
+    "title": "\"Der Wochenbericht\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. A formal weekly report of the Leipzig team to its sending church, written by Sam and David (formal-friendly register: Sie to the church, nominal style, Genitiv, wegen + Genitiv). All persons and events are those of the previous units; the numbers are invented. Please check the register of the opening and closing formulae (\"Liebe Freunde und Unterstützer\", \"Mit herzlichen Grüßen\"), which differ between churches, and the nominal style."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "correspondence"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Anrede",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Liebe Freunde und Unterstützer unserer Arbeit in Leipzig,",
+              "english": "Dear friends and supporters of our work in Leipzig,"
+            },
+            {
+              "text": "dies ist der Wochenbericht des Leipziger Teams für die vergangene Woche.",
+              "english": "this is the weekly report of the Leipzig team for the past week."
+            },
+            {
+              "text": "Wir schreiben ihn gemeinsam: David hat die Zahlen gesammelt, und ich habe den Text verfasst.",
+              "english": "We write it together: David collected the figures, and I wrote the text."
+            },
+            {
+              "text": "Wir bitten um Verständnis, wenn der Wochenbericht etwas lang geworden ist.",
+              "english": "We ask for your understanding if the weekly report has become somewhat long."
+            },
+            {
+              "text": "Es ist viel passiert.",
+              "english": "A lot has happened."
+            },
+            {
+              "text": "Ohne Ihre Unterstützung wäre das nicht möglich gewesen.",
+              "english": "Without your support this would not have been possible."
+            },
+            {
+              "text": "Wir möchten Ihnen von den Besuchern und Teilnehmern berichten, von den Ergebnissen der Woche und von unseren Gebetsanliegen.",
+              "english": "We would like to tell you about the visitors and participants, about the results of the week and about our prayer requests."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Besucher und Teilnehmer",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Samstag hatten wir die große Aktion „Kaffee und Gespräch“ am Marktplatz.",
+              "english": "On Saturday we had the big campaign \"Coffee and Conversation\" at the market square."
+            },
+            {
+              "text": "Wegen des guten Wetters kamen etwa 300 Besucher.",
+              "english": "Because of the good weather about 300 visitors came."
+            },
+            {
+              "text": "Das waren mehr als im letzten Jahr.",
+              "english": "That was more than last year."
+            },
+            {
+              "text": "Die Zahl der Teilnehmer an unseren Gesprächen war größer als erwartet.",
+              "english": "The number of participants in our conversations was bigger than expected."
+            },
+            {
+              "text": "64 Menschen haben ein längeres Gespräch geführt.",
+              "english": "64 people had a longer conversation."
+            },
+            {
+              "text": "Davon waren 21 zum ersten Mal in Kontakt mit einer Gemeinde.",
+              "english": "Of these 21 were in contact with a church for the first time."
+            },
+            {
+              "text": "Der Hauskreis von Sabine hat acht neue Teilnehmer bekommen.",
+              "english": "Sabine's house group has gained eight new participants."
+            },
+            {
+              "text": "Der Jugendkreis hat die Aktion mit einem kleinen Konzert unterstützt.",
+              "english": "The youth group supported the campaign with a small concert."
+            },
+            {
+              "text": "Dafür sagen wir herzlich Dank.",
+              "english": "For that we say heartfelt thanks."
+            },
+            {
+              "text": "Auch am Mittwochabend und am Sonntag war die Zahl der Besucher in der Gemeinde höher als sonst.",
+              "english": "On Wednesday evening and on Sunday too the number of visitors in the church was higher than usual."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Ergebnisse",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Das Ergebnis der Woche lässt sich in drei Punkten zusammenfassen.",
+              "english": "The result of the week can be summed up in three points."
+            },
+            {
+              "text": "Erstens: Die Zusammenarbeit mit dem Verein und mit der Nachbarschaft ist gewachsen.",
+              "english": "First: the cooperation with the association and with the neighbourhood has grown."
+            },
+            {
+              "text": "Zweitens: Wir haben tatsächlich neue Freundschaften geschlossen, und einige sind wichtig geworden.",
+              "english": "Second: we have really made new friendships, and some have become important."
+            },
+            {
+              "text": "Drittens: Die Entwicklung im Hauskreis und im Jugendkreis ist gut.",
+              "english": "Third: the development in the house group and in the youth group is good."
+            },
+            {
+              "text": "Es gibt einen deutlichen Fortschritt.",
+              "english": "There is clear progress."
+            },
+            {
+              "text": "Die Entwicklung der Stadt verändert auch unsere Arbeit, und wir sehen darin einen Teil unserer Aufgabe.",
+              "english": "The development of the city also changes our work, and we see in it a part of our task."
+            },
+            {
+              "text": "Der Fortschritt zeigt sich nicht nur an den Zahlen.",
+              "english": "The progress shows itself not only in the figures."
+            },
+            {
+              "text": "Er zeigt sich an den Menschen.",
+              "english": "It shows itself in the people."
+            },
+            {
+              "text": "Bei der Aktion hat der Jugendkreis außerdem gezeigt, wie man die Umwelt schützt.",
+              "english": "At the campaign the youth group also showed how to protect the environment."
+            },
+            {
+              "text": "Die Jugendlichen haben Flaschen aus Glas und Plastik gesammelt, Papier getrennt und den Abfall im Park aufgeräumt.",
+              "english": "The young people collected bottles of glass and plastic, separated paper and tidied the rubbish in the park."
+            },
+            {
+              "text": "Das Pfand haben sie der Gemeindekasse gegeben.",
+              "english": "They gave the deposit to the church's funds."
+            },
+            {
+              "text": "Die Mülltrennung ist für sie inzwischen eine Pflicht.",
+              "english": "Waste separation is by now a duty for them."
+            },
+            {
+              "text": "Deshalb sparen sie auch Energie, und sie reden über das Klima.",
+              "english": "That is why they also save energy, and they talk about the climate."
+            },
+            {
+              "text": "Das System ist ähnlich wie in den Häusern der Nachbarn, aber nicht überall gleich.",
+              "english": "The system is similar to that in the neighbours' houses, but not the same everywhere."
+            },
+            {
+              "text": "Die Qualität ist verschieden.",
+              "english": "The quality differs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Zusammenarbeit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Die Zusammenarbeit mit unserer Heimatgemeinde ist uns wichtig.",
+              "english": "The cooperation with our home church is important to us."
+            },
+            {
+              "text": "Wir sind Ihnen dafür dankbar.",
+              "english": "We are grateful to you for that."
+            },
+            {
+              "text": "Die Zusammenarbeit mit den Leipziger Gemeinden hat Vorteile, aber auch Nachteile.",
+              "english": "The cooperation with the Leipzig churches has advantages but also disadvantages."
+            },
+            {
+              "text": "Der Vorteil ist die Auswahl an Gaben und Menschen.",
+              "english": "The advantage is the choice of gifts and people."
+            },
+            {
+              "text": "Der Nachteil ist, dass vieles langsam geht.",
+              "english": "The disadvantage is that many things go slowly."
+            },
+            {
+              "text": "Zwar sind die Leipziger Gemeinden sehr verschieden, jedoch ist ihr Ziel ähnlich.",
+              "english": "The Leipzig churches are very different, to be sure, but their goal is similar."
+            },
+            {
+              "text": "Der Unterschied liegt vor allem im Stil der Gottesdienste und im Wohnort der Mitglieder.",
+              "english": "The difference lies mainly in the style of the services and in the place where the members live."
+            },
+            {
+              "text": "Das ist praktisch, aber auch schwierig, weil es keinen bequemen Weg gibt.",
+              "english": "That is practical, but also difficult, because there is no comfortable way."
+            },
+            {
+              "text": "Wir haben lieber einen kleinen Schritt gemacht als einen großen.",
+              "english": "We have preferred to take a small step rather than a big one."
+            },
+            {
+              "text": "Je mehr wir einander kennen, desto einfacher wird es.",
+              "english": "The more we know each other, the easier it becomes."
+            },
+            {
+              "text": "Allerdings ist das Verständnis nicht überall gleich.",
+              "english": "However, the understanding is not the same everywhere."
+            },
+            {
+              "text": "Wir hoffen, dass es besser wird.",
+              "english": "We hope that it will get better."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Einzelne Geschichten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Wir möchten Ihnen auch von einigen Begegnungen berichten, die uns bewegt haben.",
+              "english": "We would also like to tell you of some encounters that moved us."
+            },
+            {
+              "text": "Jonas, ein junger Mechaniker aus unserer Gemeinde, hat einen Kredit bekommen.",
+              "english": "Jonas, a young mechanic from our church, has received a loan."
+            },
+            {
+              "text": "Er wird die Summe ehrlich zurückzahlen.",
+              "english": "He will pay the sum back honestly."
+            },
+            {
+              "text": "Herr Schmidt, der Bäcker, hat ihm das Geld ohne Zinsen geliehen.",
+              "english": "Herr Schmidt, the baker, lent him the money without interest."
+            },
+            {
+              "text": "Die Bank hatte die Bitte abgelehnt.",
+              "english": "The bank had turned down the request."
+            },
+            {
+              "text": "Das Konto für den Kredit ist offen.",
+              "english": "The account for the loan is open."
+            },
+            {
+              "text": "Die Sorge um das Geld ist damit kleiner geworden.",
+              "english": "The worry about the money has become smaller as a result."
+            },
+            {
+              "text": "Jonas hat im Sommer eine Prüfung.",
+              "english": "Jonas has an exam in the summer."
+            },
+            {
+              "text": "Wenn er sie besteht, ist sein Traum von der eigenen Werkstatt möglich.",
+              "english": "If he passes it, his dream of his own workshop is possible."
+            },
+            {
+              "text": "Anna, die Krankenschwester unserer Gemeinde, hat in dieser Woche einen Nachtdienst und eine lange Schicht gehabt.",
+              "english": "Anna, the nurse of our church, had a night service and a long shift this week."
+            },
+            {
+              "text": "Sie hat auch im Radio ein Interview gegeben.",
+              "english": "She also gave an interview on the radio."
+            },
+            {
+              "text": "Die Arbeit auf der Station ist hart, und der Stress ist groß.",
+              "english": "The work on the ward is hard, and the stress is great."
+            },
+            {
+              "text": "Trotzdem schafft sie es, und sie bleibt freundlich.",
+              "english": "All the same she manages it, and she stays friendly."
+            },
+            {
+              "text": "Deswegen beten wir für sie.",
+              "english": "That is why we pray for her."
+            },
+            {
+              "text": "Die Pflege der Patienten ist für sie ein Dienst, den sie gern tut.",
+              "english": "The care of the patients is a service for her that she does gladly."
+            },
+            {
+              "text": "Wir sind stolz auf sie.",
+              "english": "We are proud of her."
+            },
+            {
+              "text": "Sie hat auch eine neue Kollegin bekommen, die tatsächlich aus Hamburg kommt.",
+              "english": "She also got a new colleague who really comes from Hamburg."
+            },
+            {
+              "text": "Das ist die Geschichte: Marta, die Großmutter von Anna, hatte ihren Schlüsselbund verloren.",
+              "english": "That is the story: Marta, Anna's grandmother, had lost her bunch of keys."
+            },
+            {
+              "text": "Das Fundbüro konnte nicht helfen.",
+              "english": "The lost property office could not help."
+            },
+            {
+              "text": "Aber eine Fremde entdeckte den Schlüsselbund im Mantel, und sie folgte der Spur nach Leipzig.",
+              "english": "But a stranger discovered the bunch of keys in the coat, and she followed the trail to Leipzig."
+            },
+            {
+              "text": "Das Rätsel wurde gelöst, und der Zufall hat alle überrascht.",
+              "english": "The puzzle was solved, and the coincidence surprised everybody."
+            },
+            {
+              "text": "Marta ist dankbar, und wir sind es auch.",
+              "english": "Marta is grateful, and so are we."
+            },
+            {
+              "text": "Nebenbei möchten wir erwähnen: Lukas, ein Lehrer aus unserer Gemeinde, denkt über den Wechsel auf das Land nach.",
+              "english": "By the way we would like to mention: Lukas, a teacher from our church, is thinking about moving to the country."
+            },
+            {
+              "text": "Er will die Stadt nicht gleich verlassen, aber er beobachtet, was sich ändert.",
+              "english": "He does not want to leave the city at once, but he is observing what changes."
+            },
+            {
+              "text": "Er träumt von einer kleinen Schule.",
+              "english": "He dreams of a small school."
+            },
+            {
+              "text": "Sein Abitur liegt Jahre zurück, aber er lernt noch heute gern.",
+              "english": "His Abitur is years behind him, but he still likes learning today."
+            },
+            {
+              "text": "Am Ende der Woche haben wir ihn im Gebet gesegnet.",
+              "english": "At the end of the week we blessed him in prayer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Bedarf und die Unterstützung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Der finanzielle Bedarf des Teams ist unverändert.",
+              "english": "The financial need of the team is unchanged."
+            },
+            {
+              "text": "Wir brauchen jeden Monat etwa 3.200 Euro.",
+              "english": "We need about 3,200 euros every month."
+            },
+            {
+              "text": "Der Bedarf an Material für die Aktion ist gestiegen.",
+              "english": "The need for material for the campaign has gone up."
+            },
+            {
+              "text": "Wir brauchen Flyer, Papier, Gläser und Becher.",
+              "english": "We need flyers, paper, glasses and cups."
+            },
+            {
+              "text": "Der Bedarf an Gebet ist ebenso groß.",
+              "english": "The need for prayer is just as great."
+            },
+            {
+              "text": "Die Unterstützung unserer Heimatgemeinde ist dabei eine große Hilfe.",
+              "english": "The support of our home church is a great help in this."
+            },
+            {
+              "text": "Wegen der Preise der Mieten in Leipzig suchen wir außerdem eine günstigere Unterkunft für die Gäste.",
+              "english": "Because of the rents in Leipzig we are also looking for cheaper accommodation for the guests."
+            },
+            {
+              "text": "Die Unterstützung durch Spenden und Gebete ist für uns wichtig.",
+              "english": "The support through donations and prayers is important to us."
+            },
+            {
+              "text": "Wir bedanken uns herzlich bei allen, die uns tragen.",
+              "english": "We heartily thank all who carry us."
+            },
+            {
+              "text": "Ihr Dank ist unser Antrieb, und wir danken Ihnen sehr.",
+              "english": "Your thanks is our motivation, and we thank you very much."
+            },
+            {
+              "text": "Ihre Treue gibt uns Kraft.",
+              "english": "Your faithfulness gives us strength."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gebetsanliegen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Wir bitten Sie, für die folgenden Gebetsanliegen zu beten:",
+              "english": "We ask you to pray for the following prayer requests:"
+            },
+            {
+              "text": "Das erste Gebetsanliegen ist die Einheit mit den anderen Gemeinden.",
+              "english": "The first prayer request is the unity with the other churches."
+            },
+            {
+              "text": "Wir wünschen uns mehr Nähe.",
+              "english": "We wish for more closeness."
+            },
+            {
+              "text": "Das zweite Anliegen ist die Gesundheit.",
+              "english": "The second request is health."
+            },
+            {
+              "text": "Anna und David waren in dieser Woche erkältet, und ich habe noch Husten.",
+              "english": "Anna and David were down with colds this week, and I still have a cough."
+            },
+            {
+              "text": "Das dritte Anliegen ist die Entwicklung im Hauskreis.",
+              "english": "The third request is the development in the house group."
+            },
+            {
+              "text": "Wir bitten um Weisheit und um gute Leiter.",
+              "english": "We ask for wisdom and for good leaders."
+            },
+            {
+              "text": "Das vierte: Die Menschen, die wir getroffen haben, sollen offen bleiben.",
+              "english": "The fourth: the people we have met should stay open."
+            },
+            {
+              "text": "Manche suchen eine Spur von Gott und wissen es nicht.",
+              "english": "Some are looking for a trace of God and do not know it."
+            },
+            {
+              "text": "Zum Schluss: Wir danken Gott für jeden Fortschritt, auch für den kleinsten.",
+              "english": "In conclusion: we thank God for every step forward, even the smallest."
+            },
+            {
+              "text": "Es ist anders als in einer großen Stadt: Man sieht jeden Schritt.",
+              "english": "It is different from a big city: you see every step."
+            },
+            {
+              "text": "Den nächsten Wochenbericht schicken wir am Montag.",
+              "english": "We will send the next weekly report on Monday."
+            },
+            {
+              "text": "Das Ergebnis dieser Woche ist vor allem ein großer Dank.",
+              "english": "The result of this week is above all a great thank-you."
+            },
+            {
+              "text": "Mit herzlichen Grüßen aus Leipzig",
+              "english": "With heartfelt greetings from Leipzig"
+            },
+            {
+              "text": "Ihr Team: David, Ruth, Daniel und Sam",
+              "english": "Your team: David, Ruth, Daniel and Sam"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

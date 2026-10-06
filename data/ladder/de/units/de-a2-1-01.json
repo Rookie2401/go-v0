@@ -1,0 +1,471 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-01",
+  "lang": "de",
+  "title": "Als ich ein Kind war",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-01",
+    "title": "Als ich ein Kind war (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: the first Präteritum is war / hatte / wurde / es gab only (other past events stay in the Perfekt on purpose); \"Opa\" and \"Oma\" (regional alternatives: Großvater / Großmutter); \"Bauernhof\", \"Kuh / Kühe\"; \"Hochzeit\"; \"Ehemann\"; \"in Rente sein\"; \"wurde ... geboren\" (the plan schedules the lemma gebären); family and place names are invented for the lesson."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography",
+    "childhood",
+    "village life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Eine Frage von Ben",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Sonntag, und die Sonne scheint.",
+              "english": "It is Sunday, and the sun is shining."
+            },
+            {
+              "text": "Ben hat Ferien.",
+              "english": "Ben is on holiday."
+            },
+            {
+              "text": "Anna, Lukas, Ben und Sam sitzen im Garten.",
+              "english": "Anna, Lukas, Ben and Sam are sitting in the garden."
+            },
+            {
+              "text": "„Wie war das damals, als ihr Kinder wart?“, fragt Ben.",
+              "english": "\"What was it like back then, when you were children?\" asks Ben."
+            },
+            {
+              "text": "Lukas lacht und sagt: „Damals war es nicht wie heute.“",
+              "english": "Lukas laughs and says, \"Back then it was not like today.\""
+            },
+            {
+              "text": "„Wir hatten kein Handy, aber wir hatten Zeit.“",
+              "english": "\"We had no mobile phone, but we had time.\""
+            },
+            {
+              "text": "Anna sagt: „Ich habe eine Geschichte für dich.“",
+              "english": "Anna says, \"I have a story for you.\""
+            },
+            {
+              "text": "„Es ist eine lange Geschichte“, sagt Lukas.",
+              "english": "\"It is a long story,\" says Lukas."
+            },
+            {
+              "text": "„Sie ist vierzig Jahre alt.“",
+              "english": "\"It is forty years old.\""
+            },
+            {
+              "text": "Ben liebt Geschichten.",
+              "english": "Ben loves stories."
+            },
+            {
+              "text": "„Gut, ich höre!“, sagt er.",
+              "english": "\"Good, I am listening!\" he says."
+            },
+            {
+              "text": "„Sie beginnt in einem Dorf“, sagt Anna.",
+              "english": "\"It begins in a village,\" says Anna."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Dorf",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna und Lukas sind Geschwister.",
+              "english": "Anna and Lukas are brother and sister."
+            },
+            {
+              "text": "Sie sind in einem Dorf aufgewachsen.",
+              "english": "They grew up in a village."
+            },
+            {
+              "text": "„Das Dorf war klein“, sagt Lukas.",
+              "english": "\"The village was small,\" says Lukas."
+            },
+            {
+              "text": "„Es hatte eine Kirche, eine Schule und einen Bäcker.“",
+              "english": "\"It had a church, a school and a baker.\""
+            },
+            {
+              "text": "„Einen Supermarkt hatte es nicht. Sonst gab es nicht viel.“",
+              "english": "\"It did not have a supermarket. There was not much else.\""
+            },
+            {
+              "text": "„Die Schule hatte nur zwei Klassen.“",
+              "english": "\"The school only had two classes.\""
+            },
+            {
+              "text": "„Unser Lehrer war freundlich, aber wir hatten viel zu lernen.“",
+              "english": "\"Our teacher was friendly, but we had a lot to learn.\""
+            },
+            {
+              "text": "„Nach der Schule waren wir immer draußen.“",
+              "english": "\"After school we were always outside.\""
+            },
+            {
+              "text": "„Im Sommer waren wir lange draußen.“",
+              "english": "\"In the summer we were outside for a long time.\""
+            },
+            {
+              "text": "„Unsere Großeltern haben auf einem Bauernhof gewohnt.“",
+              "english": "\"Our grandparents lived on a farm.\""
+            },
+            {
+              "text": "„Er war groß, und es gab viel Arbeit.“",
+              "english": "\"It was big, and there was a lot of work.\""
+            },
+            {
+              "text": "Ben fragt: „War das weit?“",
+              "english": "Ben asks, \"Was it far?\""
+            },
+            {
+              "text": "„Nein“, sagt Anna.",
+              "english": "\"No,\" says Anna."
+            },
+            {
+              "text": "„Wir sind zu Fuß gegangen.“",
+              "english": "\"We went on foot.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Opa und die Tiere",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„Opa hatte vier Kühe und zwei Pferde“, sagt Lukas.",
+              "english": "\"Grandpa had four cows and two horses,\" says Lukas."
+            },
+            {
+              "text": "„Die Kühe haben jeden Tag Milch gegeben.“",
+              "english": "\"The cows gave milk every day.\""
+            },
+            {
+              "text": "„Ein Pferd hieß Max.“",
+              "english": "\"One horse was called Max.\""
+            },
+            {
+              "text": "„Sonst hatte er nur Schafe.“",
+              "english": "\"Otherwise he only had sheep.\""
+            },
+            {
+              "text": "„Onkel Klaus und Tante Eva haben auch dort gewohnt.“",
+              "english": "\"Uncle Klaus and Aunt Eva also lived there.\""
+            },
+            {
+              "text": "„Onkel Klaus war der Sohn von Opa und Oma.“",
+              "english": "\"Uncle Klaus was the son of Grandpa and Grandma.\""
+            },
+            {
+              "text": "„Tante Eva war nett, und sie hatte immer Kuchen.“",
+              "english": "\"Aunt Eva was nice, and she always had cake.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Ferien",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„In den Ferien waren wir jeden Tag auf dem Bauernhof bei den Großeltern“, sagt Anna.",
+              "english": "\"In the holidays we were at the farm with our grandparents every day,\" says Anna."
+            },
+            {
+              "text": "„Wir sind gerannt und gesprungen, und wir haben viel gelacht.“",
+              "english": "\"We ran and jumped, and we laughed a lot.\""
+            },
+            {
+              "text": "„Ich bin schnell gerannt“, sagt Lukas.",
+              "english": "\"I ran fast,\" says Lukas."
+            },
+            {
+              "text": "„Aber Anna war schneller.“",
+              "english": "\"But Anna was faster.\""
+            },
+            {
+              "text": "Lukas hatte einen großen Ball.",
+              "english": "Lukas had a big ball."
+            },
+            {
+              "text": "„Einmal lag der Ball hoch in einem Baum.“",
+              "english": "\"Once the ball lay high up in a tree.\""
+            },
+            {
+              "text": "„Er war groß und stark. Er hat den Ball aus dem Baum genommen.“",
+              "english": "\"He was tall and strong. He took the ball out of the tree.\""
+            },
+            {
+              "text": "„Unter diesem Baum haben wir gegessen.“",
+              "english": "\"Under this tree we ate.\""
+            },
+            {
+              "text": "„Sonst haben wir den ganzen Tag gespielt.“",
+              "english": "\"Otherwise we played the whole day.\""
+            },
+            {
+              "text": "„Die Ferien waren immer zu kurz.“",
+              "english": "\"The holidays were always too short.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Opa auf dem Foto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna hat ein Foto.",
+              "english": "Anna has a photo."
+            },
+            {
+              "text": "„Wie sieht Opa aus?“, fragt Ben.",
+              "english": "\"What does Grandpa look like?\" asks Ben."
+            },
+            {
+              "text": "„Er war nicht dick und nicht dünn“, sagt Anna.",
+              "english": "\"He was not fat and not thin,\" says Anna."
+            },
+            {
+              "text": "„Er hatte kurze, dunkle Haare, ein freundliches Gesicht und eine Brille.“",
+              "english": "\"He had short, dark hair, a friendly face and glasses.\""
+            },
+            {
+              "text": "„Oma hatte helle Haare.“",
+              "english": "\"Grandma had light hair.\""
+            },
+            {
+              "text": "„Auf dem Foto sind sie noch jung.“",
+              "english": "\"In the photo they are still young.\""
+            },
+            {
+              "text": "„Er war ein lustiger Mensch“, sagt Lukas.",
+              "english": "\"He was a funny person,\" says Lukas."
+            },
+            {
+              "text": "„Er war immer nett zu den Kindern.“",
+              "english": "\"He was always nice to the children.\""
+            },
+            {
+              "text": "„Er ist vor zehn Jahren gestorben. Er hatte vier Enkel.“",
+              "english": "\"He died ten years ago. He had four grandchildren.\""
+            },
+            {
+              "text": "Ben ist still.",
+              "english": "Ben is quiet."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Oma in der Küche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„Und Oma?“, fragt Sam.",
+              "english": "\"And Grandma?\" asks Sam."
+            },
+            {
+              "text": "„Oma hat jeden Tag gekocht“, sagt Anna.",
+              "english": "\"Grandma cooked every day,\" says Anna."
+            },
+            {
+              "text": "„Sie hatte einen großen Topf und eine Pfanne.“",
+              "english": "\"She had a big pot and a frying pan.\""
+            },
+            {
+              "text": "„Die Zutaten waren aus dem Garten: Zwiebeln, Gemüse und Kartoffeln.“",
+              "english": "\"The ingredients came from the garden: onions, vegetables and potatoes.\""
+            },
+            {
+              "text": "„Sie hat alles mit einem Messer geschnitten.“",
+              "english": "\"She cut everything with a knife.\""
+            },
+            {
+              "text": "„Dann hat sie ein bisschen Öl in die Pfanne gegeben.“",
+              "english": "\"Then she put a little oil in the pan.\""
+            },
+            {
+              "text": "„Salz und Pfeffer hat sie immer genommen.“",
+              "english": "\"She always used salt and pepper.\""
+            },
+            {
+              "text": "„Jedes Kind hatte einen Teller und einen Löffel.“",
+              "english": "\"Every child had a plate and a spoon.\""
+            },
+            {
+              "text": "„Zum Essen gab es Suppe und Salat.“",
+              "english": "\"For the meal there was soup and salad.\""
+            },
+            {
+              "text": "„Am Sonntag hat Oma auch Kuchen gebacken.“",
+              "english": "\"On Sundays Grandma also baked a cake.\""
+            },
+            {
+              "text": "„Das Essen hat immer um zwölf Uhr begonnen.“",
+              "english": "\"The meal always began at twelve o'clock.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Eltern und Jugend",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„Und die Eltern?“, fragt Sam.",
+              "english": "\"And your parents?\" asks Sam."
+            },
+            {
+              "text": "„Unser Vater hat in einer Fabrik gearbeitet“, sagt Lukas.",
+              "english": "\"Our father worked in a factory,\" says Lukas."
+            },
+            {
+              "text": "„Heute ist er in Rente und hat einen Garten.“",
+              "english": "\"Today he is retired and has a garden.\""
+            },
+            {
+              "text": "„Unsere Mutter verkauft noch heute Brot auf dem Markt.“",
+              "english": "\"Our mother still sells bread at the market today.\""
+            },
+            {
+              "text": "„Sie haben vor vierzig Jahren geheiratet.“",
+              "english": "\"They got married forty years ago.\""
+            },
+            {
+              "text": "„Die Hochzeit war im Sommer.“",
+              "english": "\"The wedding was in the summer.\""
+            },
+            {
+              "text": "„Onkel Klaus war der Ehemann von Tante Eva, und sie hatten keine Kinder.“",
+              "english": "\"Uncle Klaus was Aunt Eva's husband, and they had no children.\""
+            },
+            {
+              "text": "„Ich wurde im Mai geboren, und Lukas war damals drei Jahre alt“, sagt Anna.",
+              "english": "\"I was born in May, and Lukas was three years old then,\" says Anna."
+            },
+            {
+              "text": "„Das war meine Kindheit“, sagt sie.",
+              "english": "\"That was my childhood,\" she says."
+            },
+            {
+              "text": "„In meiner Jugend haben wir in der Stadt gewohnt.“",
+              "english": "\"In my youth we lived in the city.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Und Sam?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "„Und du, Sam?“, fragt Ben.",
+              "english": "\"And you, Sam?\" asks Ben."
+            },
+            {
+              "text": "„Hattest du Kühe und Pferde?“",
+              "english": "\"Did you have cows and horses?\""
+            },
+            {
+              "text": "Sam lacht.",
+              "english": "Sam laughs."
+            },
+            {
+              "text": "„Nein, ich hatte keinen Bauernhof, nur ein Fahrrad.“",
+              "english": "\"No, I did not have a farm, only a bike.\""
+            },
+            {
+              "text": "„Aber ich hatte auch Geschwister, und wir waren nie still.“",
+              "english": "\"But I had brothers and sisters too, and we were never quiet.\""
+            },
+            {
+              "text": "„Meine Großeltern hatten eine Wohnung in der Stadt.“",
+              "english": "\"My grandparents had a flat in the city.\""
+            },
+            {
+              "text": "„Ich habe keine Geschwister“, sagt Ben.",
+              "english": "\"I have no brothers or sisters,\" says Ben."
+            },
+            {
+              "text": "„Danke, Anna, das war schön.“",
+              "english": "\"Thank you, Anna, that was lovely.\""
+            },
+            {
+              "text": "Da ruft Marta aus der Küche: „Das Essen beginnt!“",
+              "english": "Then Marta calls from the kitchen, \"The meal is beginning!\""
+            },
+            {
+              "text": "Ben rennt zum Tisch.",
+              "english": "Ben runs to the table."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

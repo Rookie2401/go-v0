@@ -1,0 +1,431 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-02",
+  "lang": "de",
+  "title": "Summer, winter: the seasons in Leipzig",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-02",
+    "title": "Summer, winter: the seasons in Leipzig (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Lukas explains the weather of Leipzig to Sam (du among them; Ben is a child). The temperatures are plausible, not exact. \"Wenn\" and \"denn\" are the new connectors: \"wenn\" sends the verb to the end, \"denn\" does not. \"Es schneit\" is avoided (the noun Schnee and \"es gibt Schnee\" are used instead). Leipzig has a continental climate (cold winters, warm summers)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "weather",
+    "seasons",
+    "explanation",
+    "wenn clauses"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "lukas": "Lukas",
+    "ben": "Ben",
+    "weber": "Frau Weber"
+  },
+  "sections": [
+    {
+      "title": "Vier Jahreszeiten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam, Lukas und Ben sind in der Küche.",
+              "english": "Sam, Lukas and Ben are in the kitchen."
+            },
+            {
+              "text": "Es regnet.",
+              "english": "It is raining."
+            },
+            {
+              "speaker": "sam",
+              "text": "Lukas, wie ist das Wetter in Leipzig?",
+              "english": "Lukas, what is the weather like in Leipzig?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Es gibt vier Jahreszeiten: Frühling, Sommer, Herbst und Winter.",
+              "english": "There are four seasons: spring, summer, autumn and winter."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich habe den Sommer gern!",
+              "english": "I like the summer!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Und was ist deine Jahreszeit, Sam?",
+              "english": "And what is your season, Sam?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe den Herbst gern.",
+              "english": "I like the autumn."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Frühling und Sommer",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "lukas",
+              "text": "Im Frühling wird es warm.",
+              "english": "In spring it gets warm."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Die Sonne scheint, und es ist schön im Park.",
+              "english": "The sun shines, and it is lovely in the park."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Aber es regnet auch, und der Regen ist kalt.",
+              "english": "But it also rains, and the rain is cold."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich mag den Regen nicht.",
+              "english": "I do not like the rain."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Im Sommer wird es heiß.",
+              "english": "In summer it gets hot."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Dann sind es 30 Grad.",
+              "english": "Then it is 30 degrees."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wenn die Sonne scheint, ist es heiß.",
+              "english": "When the sun shines, it is hot."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wenn es heiß ist, trinken wir viel Wasser.",
+              "english": "When it is hot, we drink a lot of water."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann spiele ich im Park.",
+              "english": "Then I play in the park."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Im Frühling sind es 15 Grad.",
+              "english": "In spring it is 15 degrees."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich brauche dann auch viel Wasser!",
+              "english": "Then I need a lot of water too!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Herbst und Winter",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "lukas",
+              "text": "Im Herbst regnet es viel, denn der Wind kommt.",
+              "english": "In autumn it rains a lot, because the wind comes."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Der Wind ist kalt, und das Wetter wird kalt.",
+              "english": "The wind is cold, and the weather gets cold."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Wind in Leipzig ist kalt!",
+              "english": "The wind in Leipzig is cold!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wenn es kalt ist, bleiben wir zu Hause.",
+              "english": "When it is cold, we stay at home."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Im Winter gibt es Schnee.",
+              "english": "In winter there is snow."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Es sind nur zwei Grad.",
+              "english": "It is only two degrees."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich möchte Schnee!",
+              "english": "I want snow!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Wir können im Schnee spielen.",
+              "english": "We can play in the snow."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Dann scheint die Sonne nicht viel.",
+              "english": "Then the sun does not shine much."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Dann sind die Kinder krank.",
+              "english": "Then the children are ill."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Kopf, Hals und Bauch tun weh.",
+              "english": "Head, throat and stomach hurt."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Sie haben Fieber und brauchen eine Tablette.",
+              "english": "They have a fever and need a tablet."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Sie legen sich ins Bett, und bald sind sie wieder gesund.",
+              "english": "They lie down in bed, and soon they are well again."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe immer kalt.",
+              "english": "I am always cold."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "In der Gemeinde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "lukas",
+              "text": "Im Winter ist die Gemeinde warm.",
+              "english": "In winter the church is warm."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wir singen Lieder, wir beten, und wir lesen die Bibel.",
+              "english": "We sing songs, we pray, and we read the Bible."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Gottesdienst ist immer schön.",
+              "english": "The service is always lovely."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich verliere immer etwas.",
+              "english": "I always lose something."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich suche den Rucksack und das Heft.",
+              "english": "I look for the school bag and the exercise book."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ben findet nichts!",
+              "english": "Ben finds nothing!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Der Rucksack liegt hinter dem Stuhl.",
+              "english": "The school bag is behind the chair."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Das Heft liegt unter dem Tisch.",
+              "english": "The exercise book is under the table."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich höre den Regen, und ich bin müde, denn es ist spät.",
+              "english": "I hear the rain, and I am tired, because it is late."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hast du schon Zeit, Lukas?",
+              "english": "Do you have time already, Lukas?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich möchte alle Jahreszeiten in Leipzig sehen, denn ich komme aus den USA.",
+              "english": "I would like to see all the seasons in Leipzig, because I come from the USA."
+            },
+            {
+              "speaker": "lukas",
+              "text": "In der Woche sollen wir Frau Weber helfen.",
+              "english": "This week we are to help Mrs Weber."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Du bist ein Freund von Frau Weber, Sam.",
+              "english": "You are a friend of Mrs Weber's, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, und sie hat gern die Sonne.",
+              "english": "Yes, and she likes the sun."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Dann gehen wir im Frühling in den Park.",
+              "english": "Then we will go to the park in spring."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wir trinken Kaffee, und ich koche Suppe.",
+              "english": "We drink coffee, and I cook soup."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich habe Hunger!",
+              "english": "I am hungry!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Gibt es Kuchen?",
+              "english": "Is there cake?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ja, es gibt Kuchen von Marta.",
+              "english": "Yes, there is cake from Marta."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ben, hier ist ein Stuhl.",
+              "english": "Ben, here is a chair."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er steht neben dem Tisch.",
+              "english": "It is next to the table."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bei Frau Weber",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Abend.",
+              "english": "It is evening."
+            },
+            {
+              "text": "Sam und Lukas sind bei Frau Weber.",
+              "english": "Sam and Lukas are at Mrs Weber's."
+            },
+            {
+              "speaker": "weber",
+              "text": "Guten Abend, Herr Miller!",
+              "english": "Good evening, Mr Miller!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Guten Abend, Lukas!",
+              "english": "Good evening, Lukas!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Das Haus ist warm, und der Kaffee ist da.",
+              "english": "The house is warm, and the coffee is there."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Frau Weber!",
+              "english": "Thank you, Mrs Weber!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie geht es Ihnen?",
+              "english": "How are you?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Gut, danke.",
+              "english": "Fine, thank you."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich habe Suppe, Brot und Käse.",
+              "english": "I have soup, bread and cheese."
+            },
+            {
+              "speaker": "weber",
+              "text": "Möchten Sie essen?",
+              "english": "Would you like to eat?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ja, gern, wir haben Hunger.",
+              "english": "Yes, gladly, we are hungry."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,776 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-06",
+  "lang": "de",
+  "title": "Fragen, leihen, versprechen",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-06",
+    "title": "Fragen, leihen, versprechen (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: Sie between Sam and Frau Weber, du among Sam, Jonas and the children; \"leihen\" is used for both lending and borrowing, with the dative (\"Können Sie mir Ihre Leiter leihen?\"); \"gehört mir\", \"gefällt mir\", \"bitten\" and \"versprechen\" are the verbs with objects that the unit practises; \"sich entschuldigen\" is used as a reflexive; \"Leiter\", \"Werkzeug\" and \"Hammer\" are everyday words; the little street library (a book-swap house) and all names and times are invented for the lesson."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "practical communication",
+    "borrowing",
+    "promises",
+    "neighbours"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical-communication"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "S": "Sam",
+    "W": "Frau Weber",
+    "J": "Jonas",
+    "B": "Ben",
+    "L": "Lena"
+  },
+  "sections": [
+    {
+      "title": "Bens Ball",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Samstag, und die Sonne scheint.",
+              "english": "It is Saturday, and the sun is shining."
+            },
+            {
+              "text": "Sam geht mit Ben zum Spielplatz.",
+              "english": "Sam goes to the playground with Ben."
+            },
+            {
+              "text": "Ben rennt zum Baum.",
+              "english": "Ben runs to the tree."
+            },
+            {
+              "text": "Sein roter Ball liegt hoch im Baum.",
+              "english": "His red ball is lying high up in the tree."
+            },
+            {
+              "speaker": "B",
+              "text": "Mein Ball ist im Baum!",
+              "english": "My ball is in the tree!"
+            },
+            {
+              "speaker": "S",
+              "text": "Er ist zu hoch.",
+              "english": "It is too high."
+            },
+            {
+              "speaker": "S",
+              "text": "Wir brauchen eine Leiter.",
+              "english": "We need a ladder."
+            },
+            {
+              "speaker": "B",
+              "text": "Hat Frau Weber eine?",
+              "english": "Does Frau Weber have one?"
+            },
+            {
+              "speaker": "S",
+              "text": "Ich frage sie.",
+              "english": "I will ask her."
+            },
+            {
+              "speaker": "S",
+              "text": "Bleib hier.",
+              "english": "Stay here."
+            },
+            {
+              "text": "Lena kommt zu Ben.",
+              "english": "Lena comes up to Ben."
+            },
+            {
+              "speaker": "L",
+              "text": "Zeig mir deinen Ball!",
+              "english": "Show me your ball!"
+            },
+            {
+              "speaker": "B",
+              "text": "Er ist nicht hier.",
+              "english": "It is not here."
+            },
+            {
+              "speaker": "B",
+              "text": "Er ist im Baum.",
+              "english": "It is in the tree."
+            },
+            {
+              "speaker": "L",
+              "text": "Ich habe auch einen Ball.",
+              "english": "I have a ball too."
+            },
+            {
+              "speaker": "L",
+              "text": "Tauschen wir?",
+              "english": "Shall we swap?"
+            },
+            {
+              "speaker": "B",
+              "text": "Nein, ich möchte meinen Ball.",
+              "english": "No, I want my ball."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bei Frau Weber",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam geht zu Frau Weber.",
+              "english": "Sam goes to Frau Weber."
+            },
+            {
+              "speaker": "S",
+              "text": "Frau Weber, kann ich Sie etwas bitten?",
+              "english": "Frau Weber, may I ask you something?"
+            },
+            {
+              "speaker": "W",
+              "text": "Ja, was ist denn, Sam?",
+              "english": "Yes, what is it, Sam?"
+            },
+            {
+              "speaker": "S",
+              "text": "Bens Ball ist im Baum.",
+              "english": "Ben's ball is in the tree."
+            },
+            {
+              "speaker": "S",
+              "text": "Können Sie mir Ihre Leiter leihen?",
+              "english": "Can you lend me your ladder?"
+            },
+            {
+              "speaker": "W",
+              "text": "Sie ist im Keller und gehört meinem Mann.",
+              "english": "It is in the cellar and belongs to my husband."
+            },
+            {
+              "speaker": "W",
+              "text": "Er hat sie damals von seinem Opa bekommen.",
+              "english": "He got it from his grandfather back then."
+            },
+            {
+              "speaker": "W",
+              "text": "Seine Großeltern hatten einen Bauernhof im Dorf.",
+              "english": "His grandparents had a farm in the village."
+            },
+            {
+              "speaker": "W",
+              "text": "Sie hat schon Kühe und Pferde gesehen.",
+              "english": "It has already seen cows and horses."
+            },
+            {
+              "speaker": "S",
+              "text": "Dann hat sie eine Geschichte!",
+              "english": "Then it has a story!"
+            },
+            {
+              "speaker": "W",
+              "text": "Ja.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "W",
+              "text": "Mein Mann hatte vier Geschwister, und sein Onkel und seine Tante haben sie oft geliehen.",
+              "english": "My husband had four brothers and sisters, and his uncle and aunt often borrowed it."
+            },
+            {
+              "speaker": "W",
+              "text": "Sie dürfen sie nehmen.",
+              "english": "You may take it."
+            },
+            {
+              "speaker": "W",
+              "text": "Ich brauche sie am Abend wieder.",
+              "english": "I need it again in the evening."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich verspreche es.",
+              "english": "I promise."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich will sie nicht vergessen.",
+              "english": "I will not forget it."
+            },
+            {
+              "speaker": "W",
+              "text": "Dann gehen Sie in den Keller.",
+              "english": "Then go down to the cellar."
+            },
+            {
+              "speaker": "W",
+              "text": "Die Tür ist offen.",
+              "english": "The door is open."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Auf dem Spielplatz",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam trägt die Leiter zum Spielplatz.",
+              "english": "Sam carries the ladder to the playground."
+            },
+            {
+              "text": "Dort ist auch Jonas.",
+              "english": "Jonas is there too."
+            },
+            {
+              "speaker": "J",
+              "text": "Hallo!",
+              "english": "Hello!"
+            },
+            {
+              "speaker": "J",
+              "text": "Was hast du da?",
+              "english": "What have you got there?"
+            },
+            {
+              "speaker": "S",
+              "text": "Bens Ball ist im Baum.",
+              "english": "Ben's ball is in the tree."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich halte sie, und du gehst zum Baum.",
+              "english": "I will hold it, and you go to the tree."
+            },
+            {
+              "speaker": "S",
+              "text": "Tauschen wir?",
+              "english": "Shall we swap?"
+            },
+            {
+              "speaker": "S",
+              "text": "Du bist stärker, aber ich bin leichter.",
+              "english": "You are stronger, but I am lighter."
+            },
+            {
+              "speaker": "J",
+              "text": "Gut.",
+              "english": "Good."
+            },
+            {
+              "speaker": "J",
+              "text": "Dann gehe ich zum Baum.",
+              "english": "Then I will go up."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich habe ihn!",
+              "english": "I have it!"
+            },
+            {
+              "speaker": "J",
+              "text": "Ben, fang!",
+              "english": "Ben, catch!"
+            },
+            {
+              "speaker": "B",
+              "text": "Danke, Jonas!",
+              "english": "Thank you, Jonas!"
+            },
+            {
+              "text": "Ben rennt mit dem Ball zu Lena.",
+              "english": "Ben runs to Lena with the ball."
+            },
+            {
+              "speaker": "B",
+              "text": "Sieh, hier ist er!",
+              "english": "Look, here it is!"
+            },
+            {
+              "speaker": "B",
+              "text": "Ich zeige ihn dir.",
+              "english": "I will show it to you."
+            },
+            {
+              "speaker": "L",
+              "text": "Der ist schön!",
+              "english": "That is lovely!"
+            },
+            {
+              "speaker": "L",
+              "text": "Du darfst ihn mir bringen, wenn du fertig bist.",
+              "english": "You may bring it to me when you are done."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die kleine Bibliothek",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "J",
+              "text": "Weißt du es schon?",
+              "english": "Do you know it already?"
+            },
+            {
+              "speaker": "J",
+              "text": "Die Einwohner wollen hier eine kleine Bibliothek bauen.",
+              "english": "The residents want to build a small library here."
+            },
+            {
+              "speaker": "J",
+              "text": "Jeder kann ein Buch bringen, und jeder kann ein Buch nehmen.",
+              "english": "Anyone can bring a book, and anyone can take a book."
+            },
+            {
+              "speaker": "J",
+              "text": "Alle können Bücher tauschen.",
+              "english": "Everybody can swap books."
+            },
+            {
+              "speaker": "J",
+              "text": "Die Bücher gehören allen.",
+              "english": "The books belong to everybody."
+            },
+            {
+              "speaker": "S",
+              "text": "Das ist eine gute Veränderung!",
+              "english": "That is a good change!"
+            },
+            {
+              "speaker": "S",
+              "text": "Der Spielplatz ist nicht sauber, und es gibt viel Lärm von der Straße.",
+              "english": "The playground is not clean, and there is a lot of noise from the street."
+            },
+            {
+              "speaker": "J",
+              "text": "Ja, der Verkehr ist zu laut.",
+              "english": "Yes, the traffic is too loud."
+            },
+            {
+              "speaker": "J",
+              "text": "Früher war in der Straße ein Schwimmbad.",
+              "english": "There used to be a swimming pool in the street."
+            },
+            {
+              "speaker": "J",
+              "text": "Heute baut die Stadt mehr Häuser, und die Straße hat mehr Einwohner.",
+              "english": "Today the city is building more houses, and the street has more residents."
+            },
+            {
+              "speaker": "J",
+              "text": "Aber die Kinder brauchen Platz, und sie wollen rennen und spielen.",
+              "english": "But the children need room, and they want to run and play."
+            },
+            {
+              "speaker": "S",
+              "text": "Wir reden mit Pastor Thomas.",
+              "english": "We will talk to Pastor Thomas."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich rede morgen auch mit Frau Weber.",
+              "english": "Tomorrow I will talk to Frau Weber too."
+            },
+            {
+              "speaker": "J",
+              "text": "Hoffentlich hilft er uns.",
+              "english": "Hopefully he will help us."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich schicke dir heute Abend ein Bild vom Haus.",
+              "english": "I will send you a picture of the house this evening."
+            },
+            {
+              "speaker": "S",
+              "text": "Und was machen wir in den Ferien?",
+              "english": "And what shall we do in the holidays?"
+            },
+            {
+              "speaker": "J",
+              "text": "Dann arbeiten wir jeden Tag am Haus.",
+              "english": "Then we will work on the house every day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Werkzeug",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Und das Werkzeug?",
+              "english": "And the tools?"
+            },
+            {
+              "speaker": "J",
+              "text": "Mein Kollege hat in der Firma viel Werkzeug.",
+              "english": "My colleague has a lot of tools at the company."
+            },
+            {
+              "speaker": "J",
+              "text": "Er bringt uns den Hammer.",
+              "english": "He is bringing us the hammer."
+            },
+            {
+              "speaker": "J",
+              "text": "Als Mechaniker habe ich Erfahrung, aber der Hammer ist von ihm.",
+              "english": "As a mechanic I have experience, but the hammer is his."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich habe die Stelle erst eine Woche, aber ich verdiene schon.",
+              "english": "I have had the job for only a week, but I am already earning."
+            },
+            {
+              "speaker": "J",
+              "text": "Meine Bewerbung hatte nur eine Seite, und mein Lebenslauf war kurz.",
+              "english": "My application had only one page, and my CV was short."
+            },
+            {
+              "speaker": "J",
+              "text": "Im Gespräch hat der Chef gefragt: „Haben Sie Werkzeug?“",
+              "english": "In the interview the boss asked, \"Do you have tools?\""
+            },
+            {
+              "speaker": "J",
+              "text": "Dann habe ich den Vertrag unterschrieben.",
+              "english": "Then I signed the contract."
+            },
+            {
+              "speaker": "J",
+              "text": "Die Firma ist jetzt mein zweites Haus.",
+              "english": "The company is now my second home."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ohne Geld",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "J",
+              "text": "Wir gehen jetzt in den Laden.",
+              "english": "We are going to the shop now."
+            },
+            {
+              "speaker": "J",
+              "text": "Wir brauchen noch einen Hammer.",
+              "english": "We still need a hammer."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich habe mein Geld vergessen!",
+              "english": "I have forgotten my money!"
+            },
+            {
+              "speaker": "J",
+              "text": "Das ist nicht schlimm.",
+              "english": "That is not a problem."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich leihe dir Geld.",
+              "english": "I will lend you money."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich verspreche es.",
+              "english": "I promise."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich gebe dir das Geld morgen zurück.",
+              "english": "I will give you the money back tomorrow."
+            },
+            {
+              "speaker": "J",
+              "text": "Der Laden öffnet um neun und schließt um zwölf.",
+              "english": "The shop opens at nine and closes at twelve."
+            },
+            {
+              "speaker": "J",
+              "text": "Ich bitte dich: Sei pünktlich!",
+              "english": "I am asking you: be on time!"
+            },
+            {
+              "speaker": "S",
+              "text": "Ja, ja.",
+              "english": "Yes, yes."
+            },
+            {
+              "speaker": "J",
+              "text": "Das letzte Treffen war um neun.",
+              "english": "The last meeting was at nine."
+            },
+            {
+              "speaker": "J",
+              "text": "Du warst nicht pünktlich.",
+              "english": "You were not on time."
+            },
+            {
+              "speaker": "J",
+              "text": "Das war schon das dritte Treffen.",
+              "english": "That was already the third meeting."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich entschuldige mich noch einmal.",
+              "english": "I apologise once more."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Abend",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Aber Sam ist wieder nicht pünktlich.",
+              "english": "But Sam is not on time again."
+            },
+            {
+              "text": "Er kommt erst um sieben Uhr zu Frau Weber.",
+              "english": "He only gets to Frau Weber at seven o'clock."
+            },
+            {
+              "speaker": "S",
+              "text": "Entschuldigen Sie bitte.",
+              "english": "Please excuse me."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich bin zu spät.",
+              "english": "I am late."
+            },
+            {
+              "speaker": "S",
+              "text": "Es gab viel Verkehr und viel Lärm in der Stadt.",
+              "english": "There was a lot of traffic and noise in town."
+            },
+            {
+              "speaker": "W",
+              "text": "Das ist nicht schlimm.",
+              "english": "That is not a problem."
+            },
+            {
+              "speaker": "W",
+              "text": "Sie müssen sich nicht entschuldigen.",
+              "english": "You do not have to apologise."
+            },
+            {
+              "speaker": "W",
+              "text": "Ist der Ball wieder da?",
+              "english": "Is the ball back?"
+            },
+            {
+              "speaker": "S",
+              "text": "Ja, Ben hat ihn.",
+              "english": "Yes, Ben has it."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich muss sie zurückgeben.",
+              "english": "I have to give it back."
+            },
+            {
+              "speaker": "S",
+              "text": "Danke für Ihre Hilfe.",
+              "english": "Thank you for your help."
+            },
+            {
+              "speaker": "W",
+              "text": "Ich habe etwas für Sie.",
+              "english": "I have something for you."
+            },
+            {
+              "speaker": "W",
+              "text": "Dieses Buch gehört mir.",
+              "english": "This book belongs to me."
+            },
+            {
+              "speaker": "W",
+              "text": "Ich schenke es der kleinen Bibliothek.",
+              "english": "I am giving it to the little library."
+            },
+            {
+              "speaker": "W",
+              "text": "Gefällt Ihnen das?",
+              "english": "Do you like that?"
+            },
+            {
+              "speaker": "S",
+              "text": "Ja, es gefällt mir sehr.",
+              "english": "Yes, I like it very much."
+            },
+            {
+              "speaker": "S",
+              "text": "Sonst noch etwas?",
+              "english": "Anything else?"
+            },
+            {
+              "speaker": "S",
+              "text": "Es gefällt auch den Kindern.",
+              "english": "The children like it too."
+            },
+            {
+              "speaker": "S",
+              "text": "Ich schicke Ihnen ein Foto, wenn das Haus fertig ist.",
+              "english": "I will send you a photo when the house is finished."
+            },
+            {
+              "speaker": "W",
+              "text": "Zeigen Sie mir dann das Haus?",
+              "english": "Will you show me the house then?"
+            },
+            {
+              "speaker": "W",
+              "text": "Hoffentlich regnet es nicht.",
+              "english": "Hopefully it will not rain."
+            },
+            {
+              "speaker": "S",
+              "text": "Ja, ich verspreche es.",
+              "english": "Yes, I promise."
+            },
+            {
+              "speaker": "S",
+              "text": "Am Samstag beginnen wir.",
+              "english": "On Saturday we begin."
+            },
+            {
+              "speaker": "W",
+              "text": "Ich bitte Sie nur um eins: Vergessen Sie nicht, mir das Foto zu schicken.",
+              "english": "I only ask one thing of you: do not forget to send me the photo."
+            },
+            {
+              "speaker": "S",
+              "text": "Hoffentlich nicht.",
+              "english": "Hopefully not."
+            },
+            {
+              "speaker": "S",
+              "text": "Aber wir reden ja nächste Woche noch einmal.",
+              "english": "But we will talk again next week."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Eine Nachricht",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend schreibt Jonas eine Nachricht.",
+              "english": "In the evening Jonas writes a message."
+            },
+            {
+              "speaker": "J",
+              "text": "Hallo Sam!",
+              "english": "Hello Sam!"
+            },
+            {
+              "speaker": "J",
+              "text": "Danke für deine Hilfe heute.",
+              "english": "Thanks for your help today."
+            },
+            {
+              "speaker": "J",
+              "text": "Pastor Thomas hat Ja gesagt.",
+              "english": "Pastor Thomas said yes."
+            },
+            {
+              "speaker": "J",
+              "text": "Wir dürfen auf dem Spielplatz bauen.",
+              "english": "We may build on the playground."
+            },
+            {
+              "speaker": "J",
+              "text": "Am Samstag um neun Uhr treffen wir uns.",
+              "english": "On Saturday at nine we meet."
+            },
+            {
+              "speaker": "J",
+              "text": "Kann Anna auch kommen?",
+              "english": "Can Anna come too?"
+            },
+            {
+              "speaker": "J",
+              "text": "Frag sie bitte.",
+              "english": "Please ask her."
+            },
+            {
+              "speaker": "S",
+              "text": "Ja, ich frage sie noch heute Abend.",
+              "english": "Yes, I will ask her this very evening."
+            },
+            {
+              "speaker": "J",
+              "text": "Und noch etwas: Du kannst es mir am Montag geben.",
+              "english": "And one more thing: you can give it to me on Monday."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

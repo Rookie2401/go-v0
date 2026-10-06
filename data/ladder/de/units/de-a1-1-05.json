@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-05",
+  "lang": "de",
+  "title": "Sunday lunch",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-05",
+    "title": "Sunday lunch (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. du throughout (friends and family; Marta says du to Sam). \"Mittagessen\", \"Suppe, Kartoffeln und Fleisch\" and \"Kuchen\" are the ordinary Sunday midday meal. \"Mama / Papa\" are the child's words (Ben); the adults say \"Mutter / Vater\" earlier in the ladder."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "food",
+    "family",
+    "meals",
+    "Sunday lunch"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "food"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "anna": "Anna",
+    "lukas": "Lukas",
+    "ben": "Ben",
+    "marta": "Marta"
+  },
+  "sections": [
+    {
+      "title": "Bei Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Sonntag.",
+              "english": "It is Sunday."
+            },
+            {
+              "text": "Anna, Lukas, Ben und Sam sind bei Marta.",
+              "english": "Anna, Lukas, Ben and Sam are at Marta's."
+            },
+            {
+              "speaker": "marta",
+              "text": "Guten Tag!",
+              "english": "Good day!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Kommt, kommt!",
+              "english": "Come in, come in!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Das Mittagessen ist da!",
+              "english": "Lunch is ready!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma, ich habe Hunger!",
+              "english": "Grandma, I am hungry!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich weiß, Ben.",
+              "english": "I know, Ben."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich koche gern am Sonntag.",
+              "english": "I like cooking on Sundays."
+            },
+            {
+              "speaker": "sam",
+              "text": "Es ist sehr schön hier, Marta.",
+              "english": "It is very nice here, Marta."
+            },
+            {
+              "speaker": "marta",
+              "text": "Danke, Sam.",
+              "english": "Thank you, Sam."
+            },
+            {
+              "speaker": "marta",
+              "text": "Das Haus ist klein, aber so schön.",
+              "english": "The house is small, but so nice."
+            },
+            {
+              "speaker": "anna",
+              "text": "Was gibt es heute zum Mittagessen?",
+              "english": "What is there for lunch today?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Es gibt Suppe, Kartoffeln und Fleisch.",
+              "english": "There is soup, potatoes and meat."
+            },
+            {
+              "speaker": "ben",
+              "text": "Und Kuchen!",
+              "english": "And cake!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ja!",
+              "english": "Yes!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Tisch",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Nehmt Suppe!",
+              "english": "Take some soup!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Marta.",
+              "english": "Thank you, Marta."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Suppe ist so lecker!",
+              "english": "The soup is so tasty!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Du kochst sehr gut, Marta.",
+              "english": "You cook very well, Marta."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das Fleisch ist auch lecker.",
+              "english": "The meat is tasty too."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich esse Kartoffeln, aber ich esse kein Fleisch.",
+              "english": "I eat potatoes, but I do not eat meat."
+            },
+            {
+              "speaker": "marta",
+              "text": "Nimm Kartoffeln, Ben.",
+              "english": "Take potatoes, Ben."
+            },
+            {
+              "speaker": "sam",
+              "text": "Zum Frühstück esse ich ein Brötchen mit Butter.",
+              "english": "For breakfast I eat a roll with butter."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das Mittagessen ist so lecker!",
+              "english": "Lunch is so tasty!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Und das Bett bei Frau Weber, Sam?",
+              "english": "And the bed at Mrs Weber's, Sam?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ist es gut?",
+              "english": "Is it good?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, es ist sehr gut.",
+              "english": "Yes, it is very good."
+            },
+            {
+              "speaker": "anna",
+              "text": "Sam spricht sehr gut Deutsch, Marta.",
+              "english": "Sam speaks German very well, Marta."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ja, das ist gut.",
+              "english": "Yes, that is good."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ben ist ein schöner Name, Sam.",
+              "english": "Ben is a lovely name, Sam."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wo ist das Bad, Marta?",
+              "english": "Where is the bathroom, Marta?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Da, bei der Küche.",
+              "english": "There, by the kitchen."
+            },
+            {
+              "speaker": "marta",
+              "text": "Das Bad ist klein.",
+              "english": "The bathroom is small."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ben und Mama und Papa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Wo ist Mama?",
+              "english": "Where is Mama?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Mama arbeitet heute, Ben.",
+              "english": "Mama is working today, Ben."
+            },
+            {
+              "speaker": "ben",
+              "text": "Und Papa?",
+              "english": "And Papa?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Papa ist in Dresden.",
+              "english": "Papa is in Dresden."
+            },
+            {
+              "speaker": "ben",
+              "text": "Mama und Papa sind nicht hier.",
+              "english": "Mama and Papa are not here."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich weiß.",
+              "english": "I know."
+            },
+            {
+              "speaker": "marta",
+              "text": "Aber deine Mutter ist meine Tochter.",
+              "english": "But your mother is my daughter."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich bin alt, aber ich bin hier, Ben.",
+              "english": "I am old, but I am here, Ben."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ja, Oma.",
+              "english": "Yes, Grandma."
+            },
+            {
+              "speaker": "ben",
+              "text": "Du bist sehr gut.",
+              "english": "You are very good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Marta, ich habe ein Bild von meiner Familie.",
+              "english": "Marta, I have a picture of my family."
+            },
+            {
+              "speaker": "marta",
+              "text": "Wie schön!",
+              "english": "How lovely!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Das ist dein Vater?",
+              "english": "That is your father?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er kocht auch am Sonntag, wie du.",
+              "english": "He cooks on Sundays too, like you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Kuchen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Möchtet ihr Kuchen?",
+              "english": "Would you like cake?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ja, bitte!",
+              "english": "Yes, please!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ben, du isst nichts?",
+              "english": "Ben, you are eating nothing?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Du hast keinen Hunger?",
+              "english": "You are not hungry?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Hier, Ben.",
+              "english": "Here, Ben."
+            },
+            {
+              "speaker": "marta",
+              "text": "Nimm!",
+              "english": "Take some!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Woher ist der Kuchen, Marta?",
+              "english": "Where is the cake from, Marta?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Aus der Bäckerei von Herrn Schmidt.",
+              "english": "From Herr Schmidt's bakery."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Marta.",
+              "english": "Thank you, Marta."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bleibe gern hier.",
+              "english": "I like staying here."
+            },
+            {
+              "speaker": "marta",
+              "text": "Bleib, Sam!",
+              "english": "Stay, Sam!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Der Tag ist schön.",
+              "english": "The day is lovely."
+            },
+            {
+              "speaker": "ben",
+              "text": "Wir bleiben den ganzen Tag bei Oma!",
+              "english": "We stay with Grandma all day!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Abend",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Der Tag ist schön, aber Anna ist müde.",
+              "english": "The day is lovely, but Anna is tired."
+            },
+            {
+              "speaker": "anna",
+              "text": "Morgen arbeite ich in der Klinik.",
+              "english": "Tomorrow I am working at the clinic."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Und morgen gehe ich in die Schule.",
+              "english": "And tomorrow I am going to school."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich auch, aber ich möchte nicht!",
+              "english": "Me too, but I do not want to!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Du gehst gern in die Schule, Ben.",
+              "english": "You like going to school, Ben."
+            },
+            {
+              "speaker": "ben",
+              "text": "Nein, nein!",
+              "english": "No, no!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Morgen gehe ich in die Stadt.",
+              "english": "Tomorrow I am going into the city."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

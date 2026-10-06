@@ -1,0 +1,559 @@
+{
+  "lang": "de",
+  "version": 1,
+  "after": "stage0",
+  "units": [
+    {
+      "id": "de-a1-1-01",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-01.json",
+      "domain": "conversation",
+      "title": "Meeting in the street"
+    },
+    {
+      "id": "de-a1-1-02",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-02.json",
+      "domain": "daily-life",
+      "title": "Sam's room"
+    },
+    {
+      "id": "de-a1-1-03",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-03.json",
+      "domain": "family",
+      "title": "A family photograph"
+    },
+    {
+      "id": "de-a1-1-04",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-04.json",
+      "domain": "food",
+      "title": "Breakfast at the bakery café"
+    },
+    {
+      "id": "de-a1-1-05",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-05.json",
+      "domain": "food",
+      "title": "Sunday lunch"
+    },
+    {
+      "id": "de-a1-1-06",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-06.json",
+      "domain": "community",
+      "title": "At the market"
+    },
+    {
+      "id": "de-a1-1-07",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-07.json",
+      "domain": "daily-life",
+      "title": "Lukas's school day"
+    },
+    {
+      "id": "de-a1-1-08",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-08.json",
+      "domain": "work",
+      "title": "Who works where"
+    },
+    {
+      "id": "de-a1-1-09",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-09.json",
+      "domain": "community",
+      "title": "A Sunday morning on the street"
+    },
+    {
+      "id": "de-a1-1-10",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-10.json",
+      "domain": "travel",
+      "title": "The tram to the Hauptbahnhof"
+    },
+    {
+      "id": "de-a1-1-11",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-11.json",
+      "domain": "church-and-mission-life",
+      "title": "The team meeting"
+    },
+    {
+      "id": "de-a1-1-12",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-12.json",
+      "domain": "health",
+      "title": "Ben is sick"
+    },
+    {
+      "id": "de-a1-1-13",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-13.json",
+      "domain": "narrative",
+      "title": "Ben's lost school bag"
+    },
+    {
+      "id": "de-a1-1-14",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-14.json",
+      "domain": "practical-communication",
+      "title": "A message and a notice"
+    },
+    {
+      "id": "de-a1-1-15",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/de-a1-1-15.json",
+      "domain": "testimony",
+      "title": "Sam's first testimony"
+    },
+    {
+      "id": "de-a1-2-01",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-01.json",
+      "domain": "conversation",
+      "title": "\"Was machst du gerade?\""
+    },
+    {
+      "id": "de-a1-2-02",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-02.json",
+      "domain": "explanation",
+      "title": "Summer, winter: the seasons in Leipzig"
+    },
+    {
+      "id": "de-a1-2-03",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-03.json",
+      "domain": "narrative",
+      "title": "A rainy Saturday"
+    },
+    {
+      "id": "de-a1-2-04",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-04.json",
+      "domain": "daily-life",
+      "title": "Yesterday after work"
+    },
+    {
+      "id": "de-a1-2-05",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-05.json",
+      "domain": "travel",
+      "title": "By train to Dresden"
+    },
+    {
+      "id": "de-a1-2-06",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-06.json",
+      "domain": "narrative",
+      "title": "Anna's weekend in Berlin"
+    },
+    {
+      "id": "de-a1-2-07",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-07.json",
+      "domain": "narrative",
+      "title": "Last weekend"
+    },
+    {
+      "id": "de-a1-2-08",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-08.json",
+      "domain": "narrative",
+      "title": "Sam's first week"
+    },
+    {
+      "id": "de-a1-2-09",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-09.json",
+      "domain": "health",
+      "title": "At the doctor's"
+    },
+    {
+      "id": "de-a1-2-10",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-10.json",
+      "domain": "scripture",
+      "title": "The lost sheep (Luke 15)"
+    },
+    {
+      "id": "de-a1-2-11",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-11.json",
+      "domain": "biography",
+      "title": "Frau Weber's life"
+    },
+    {
+      "id": "de-a1-2-12",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-12.json",
+      "domain": "instructions",
+      "title": "How to make potato soup"
+    },
+    {
+      "id": "de-a1-2-13",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-13.json",
+      "domain": "explanation",
+      "title": "Describing people and places"
+    },
+    {
+      "id": "de-a1-2-14",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-14.json",
+      "domain": "church-and-mission-life",
+      "title": "A service through Ben's eyes"
+    },
+    {
+      "id": "de-a1-2-15",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-15.json",
+      "domain": "correspondence",
+      "title": "Invitations and the calendar"
+    },
+    {
+      "id": "de-a1-2-16",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/de-a1-2-16.json",
+      "domain": "work",
+      "title": "Jonas looks for work"
+    },
+    {
+      "id": "de-a2-1-01",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-01.json",
+      "domain": "biography",
+      "title": "Als ich ein Kind war"
+    },
+    {
+      "id": "de-a2-1-02",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-02.json",
+      "domain": "explanation",
+      "title": "Our neighbourhood before and now"
+    },
+    {
+      "id": "de-a2-1-03",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-03.json",
+      "domain": "narrative",
+      "title": "Grandmother's night story"
+    },
+    {
+      "id": "de-a2-1-04",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-04.json",
+      "domain": "narrative",
+      "title": "The night of the storm"
+    },
+    {
+      "id": "de-a2-1-05",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-05.json",
+      "domain": "conversation",
+      "title": "Buying clothes"
+    },
+    {
+      "id": "de-a2-1-06",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-06.json",
+      "domain": "practical-communication",
+      "title": "Asking, telling, lending"
+    },
+    {
+      "id": "de-a2-1-07",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-07.json",
+      "domain": "correspondence",
+      "title": "The team's group chat"
+    },
+    {
+      "id": "de-a2-1-08",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-08.json",
+      "domain": "daily-life",
+      "title": "Ben's morning"
+    },
+    {
+      "id": "de-a2-1-09",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-09.json",
+      "domain": "church-and-mission-life",
+      "title": "Getting ready for church"
+    },
+    {
+      "id": "de-a2-1-10",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-10.json",
+      "domain": "health",
+      "title": "At the pharmacy and the health insurance"
+    },
+    {
+      "id": "de-a2-1-11",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-11.json",
+      "domain": "travel",
+      "title": "A delayed train"
+    },
+    {
+      "id": "de-a2-1-12",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-12.json",
+      "domain": "work",
+      "title": "A day in the workshop and in the Kindergarten"
+    },
+    {
+      "id": "de-a2-1-13",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-13.json",
+      "domain": "contemporary-nonfiction",
+      "title": "Germany in facts"
+    },
+    {
+      "id": "de-a2-1-14",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-14.json",
+      "domain": "scripture",
+      "title": "The son who left (Luke 15)"
+    },
+    {
+      "id": "de-a2-1-15",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-15.json",
+      "domain": "correspondence",
+      "title": "A letter abroad"
+    },
+    {
+      "id": "de-a2-1-16",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-16.json",
+      "domain": "biography",
+      "title": "A missionary couple"
+    },
+    {
+      "id": "de-a2-1-17",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-17.json",
+      "domain": "instructions",
+      "title": "How it is done"
+    },
+    {
+      "id": "de-a2-1-18",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/de-a2-1-18.json",
+      "domain": "conversation",
+      "title": "Renting a room"
+    },
+    {
+      "id": "de-a2-2-01",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-01.json",
+      "domain": "conversation",
+      "title": "Making plans and giving reasons"
+    },
+    {
+      "id": "de-a2-2-02",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-02.json",
+      "domain": "testimony",
+      "title": "Small-group testimonies"
+    },
+    {
+      "id": "de-a2-2-03",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-03.json",
+      "domain": "family",
+      "title": "A long phone call"
+    },
+    {
+      "id": "de-a2-2-04",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-04.json",
+      "domain": "instructions",
+      "title": "Directions and forms"
+    },
+    {
+      "id": "de-a2-2-05",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-05.json",
+      "domain": "practical-communication",
+      "title": "Notices, rules, recipes"
+    },
+    {
+      "id": "de-a2-2-06",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-06.json",
+      "domain": "community",
+      "title": "The neighbourhood meeting"
+    },
+    {
+      "id": "de-a2-2-07",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-07.json",
+      "domain": "contemporary-nonfiction",
+      "title": "Neighbourhood news"
+    },
+    {
+      "id": "de-a2-2-08",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-08.json",
+      "domain": "church-and-mission-life",
+      "title": "Planning the next outreach"
+    },
+    {
+      "id": "de-a2-2-09",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-09.json",
+      "domain": "health",
+      "title": "If you have a fever"
+    },
+    {
+      "id": "de-a2-2-10",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-10.json",
+      "domain": "scripture",
+      "title": "The Good Samaritan"
+    },
+    {
+      "id": "de-a2-2-11",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-11.json",
+      "domain": "travel",
+      "title": "A traveller's blog"
+    },
+    {
+      "id": "de-a2-2-12",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-12.json",
+      "domain": "travel",
+      "title": "Diary of the mission trip"
+    },
+    {
+      "id": "de-a2-2-13",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-13.json",
+      "domain": "explanation",
+      "title": "Opinions and comparisons"
+    },
+    {
+      "id": "de-a2-2-14",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-14.json",
+      "domain": "contemporary-nonfiction",
+      "title": "Why Germans sort their rubbish"
+    },
+    {
+      "id": "de-a2-2-15",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-15.json",
+      "domain": "work",
+      "title": "Interview with a nurse"
+    },
+    {
+      "id": "de-a2-2-16",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-16.json",
+      "domain": "biography",
+      "title": "A nurse's life"
+    },
+    {
+      "id": "de-a2-2-17",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-17.json",
+      "domain": "conversation",
+      "title": "A loan, politely"
+    },
+    {
+      "id": "de-a2-2-18",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-18.json",
+      "domain": "narrative",
+      "title": "The key that came back"
+    },
+    {
+      "id": "de-a2-2-19",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-19.json",
+      "domain": "correspondence",
+      "title": "The weekly report"
+    },
+    {
+      "id": "de-a2-2-20",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/de-a2-2-20.json",
+      "domain": "testimony",
+      "title": "Why I came to Germany"
+    }
+  ]
+}

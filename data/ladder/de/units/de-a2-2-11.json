@@ -1,0 +1,560 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-11",
+  "lang": "de",
+  "title": "Sams Reiseblog",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-11",
+    "title": "\"Sams Reiseblog\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. A personal blog in the first person (Sam, a newcomer). The places are real (Dresden, Meißen) but described in general terms; facts about the buildings should be checked by a native reviewer (the Frauenkirche, the Zwinger, the Albrechtsburg and the cathedral in Meißen are alluded to without names). The list at the end (\"Zehn Dinge, die ich gelernt habe\") deliberately repeats the vocabulary of the previous units. Numbers are written as digits."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "travel"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Hallo und willkommen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hallo zusammen!",
+              "english": "Hello everyone!"
+            },
+            {
+              "text": "Ich bin Sam, und das ist mein erster Eintrag in meinem neuen Blog.",
+              "english": "I am Sam, and this is my first entry in my new blog."
+            },
+            {
+              "text": "Ich lebe seit einigen Monaten in Leipzig.",
+              "english": "I have been living in Leipzig for a few months."
+            },
+            {
+              "text": "Meine Gemeinde und meine Freunde haben gesagt: Du musst mehr von Sachsen sehen!",
+              "english": "My church and my friends said: you must see more of Saxony!"
+            },
+            {
+              "text": "Darum bin ich am Wochenende nach Dresden und Meißen gefahren.",
+              "english": "That is why I went to Dresden and Meißen at the weekend."
+            },
+            {
+              "text": "Mein Blog ist für alle, die Deutschland besuchen wollen, und für alle, die Deutsch lernen.",
+              "english": "My blog is for everybody who wants to visit Germany and for everybody learning German."
+            },
+            {
+              "text": "Ich schreibe einfach, und ich mache bestimmt Fehler.",
+              "english": "I write simply, and I certainly make mistakes."
+            },
+            {
+              "text": "Bitte schreibt mir!",
+              "english": "Please write to me!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Reise",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Samstag früh bin ich mit dem Zug von Leipzig nach Dresden gefahren.",
+              "english": "On Saturday early I travelled by train from Leipzig to Dresden."
+            },
+            {
+              "text": "Die Reise hat etwa eine Stunde und zwanzig Minuten gedauert.",
+              "english": "The journey took about an hour and twenty minutes."
+            },
+            {
+              "text": "Ich habe ein günstiges Ticket für das Wochenende gekauft, und ich habe einen Reiseführer mitgenommen.",
+              "english": "I bought a cheap ticket for the weekend, and I took a travel guide with me."
+            },
+            {
+              "text": "Der Reiseführer ist ein kleines Buch.",
+              "english": "The travel guide is a small book."
+            },
+            {
+              "text": "Er gehört Frau Weber.",
+              "english": "It belongs to Frau Weber."
+            },
+            {
+              "text": "Sie hat gesagt: Lies erst den Reiseführer, und dann geh los.",
+              "english": "She said: first read the travel guide, and then set off."
+            },
+            {
+              "text": "Sie hat eine Seite markiert.",
+              "english": "She has marked a page."
+            },
+            {
+              "text": "Darauf stehen alle wichtigen Sehenswürdigkeiten.",
+              "english": "On it are all the important sights."
+            },
+            {
+              "text": "Im Zug habe ich eine Zeitung gelesen.",
+              "english": "On the train I read a newspaper."
+            },
+            {
+              "text": "Ein Bericht hat mir gefallen, ein anderer nicht.",
+              "english": "I liked one report, but not another."
+            },
+            {
+              "text": "In einer Meldung stand: Ein Unfall auf der Straße, die Polizei ist da.",
+              "english": "A report said: an accident on the road, the police are there."
+            },
+            {
+              "text": "Das hat mir Angst gemacht.",
+              "english": "That frightened me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dresden: die Altstadt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "In Dresden bin ich vom Bahnhof zu Fuß in die Altstadt gegangen.",
+              "english": "In Dresden I walked from the station into the old town."
+            },
+            {
+              "text": "Die Altstadt ist der schönste Teil der Stadt, und sie liegt direkt am Fluss.",
+              "english": "The old town is the most beautiful part of the city, and it lies directly on the river."
+            },
+            {
+              "text": "Sie ist nicht sehr groß, aber man braucht einen ganzen Tag, um alles zu sehen.",
+              "english": "It is not very big, but you need a whole day to see everything."
+            },
+            {
+              "text": "Im Krieg wurde sie zerstört, und man hat sie später wieder gebaut.",
+              "english": "In the war it was destroyed, and later it was rebuilt."
+            },
+            {
+              "text": "Das hat viele Jahre gedauert, und viele Menschen haben geholfen.",
+              "english": "That took many years, and many people helped."
+            },
+            {
+              "text": "Heute sieht man fast nichts mehr davon.",
+              "english": "Today you hardly see anything of it."
+            },
+            {
+              "text": "Die Häuser sehen alt aus, aber sie sind neu.",
+              "english": "The houses look old, but they are new."
+            },
+            {
+              "text": "Die erste Sehenswürdigkeit, die ich gesehen habe, war eine große Kirche mit einem runden Dach.",
+              "english": "The first sight I saw was a big church with a round roof."
+            },
+            {
+              "text": "Ich habe lange davor gestanden und nichts gesagt.",
+              "english": "I stood in front of it for a long time and said nothing."
+            },
+            {
+              "text": "Dann bin ich zum Marktplatz gegangen.",
+              "english": "Then I went to the market square."
+            },
+            {
+              "text": "Der Marktplatz war voll von Menschen.",
+              "english": "The market square was full of people."
+            },
+            {
+              "text": "Es gab Stände mit Brot, Käse und Äpfeln, und man hat überall Musik gehört.",
+              "english": "There were stalls with bread, cheese and apples, and you could hear music everywhere."
+            },
+            {
+              "text": "Ein Mann hat mir gezeigt, wie man eine Wurst richtig isst.",
+              "english": "A man showed me how to eat a sausage properly."
+            },
+            {
+              "text": "Das war lustig.",
+              "english": "That was funny."
+            },
+            {
+              "text": "Ich habe auch ein Foto vom Marktplatz gemacht.",
+              "english": "I also took a photo of the market square."
+            },
+            {
+              "text": "Es ist das beste Foto des Tages.",
+              "english": "It is the best photo of the day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dresden: das Schloss",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Nachmittag habe ich das Schloss besucht.",
+              "english": "In the afternoon I visited the palace."
+            },
+            {
+              "text": "Das Schloss ist groß, und es hat viele Museen.",
+              "english": "The palace is big, and it has many museums."
+            },
+            {
+              "text": "Ich habe nur ein Museum besucht, denn die Füße haben mir wehgetan.",
+              "english": "I visited only one museum, because my feet hurt."
+            },
+            {
+              "text": "Im Schloss war es kalt, aber die Bilder waren sehr schön.",
+              "english": "In the palace it was cold, but the pictures were very beautiful."
+            },
+            {
+              "text": "Ich habe zwei Stunden gebraucht.",
+              "english": "I needed two hours."
+            },
+            {
+              "text": "Der Eintritt war nicht teuer.",
+              "english": "The admission was not expensive."
+            },
+            {
+              "text": "Als Student habe ich weniger bezahlt.",
+              "english": "As a student I paid less."
+            },
+            {
+              "text": "Ich bin kein Student mehr, aber mein Ausweis ist noch gut.",
+              "english": "I am no longer a student, but my identity card is still good."
+            },
+            {
+              "text": "Ich hoffe, das ist erlaubt.",
+              "english": "I hope that is allowed."
+            },
+            {
+              "text": "Im Museum gab es eine Regel: Fotos sind nicht erlaubt.",
+              "english": "In the museum there was a rule: photos are not allowed."
+            },
+            {
+              "text": "Das Rauchen ist natürlich verboten.",
+              "english": "Smoking is of course forbidden."
+            },
+            {
+              "text": "Ich habe die Regel gelesen und beachtet.",
+              "english": "I read the rule and observed it."
+            },
+            {
+              "text": "Man soll Rücksicht auf die anderen Gäste nehmen.",
+              "english": "One should be considerate of the other visitors."
+            },
+            {
+              "text": "Am Abend bin ich zum Hostel gegangen.",
+              "english": "In the evening I went to the hostel."
+            },
+            {
+              "text": "Es war ein altes Haus mit einem Treppenhaus und einem langen Flur.",
+              "english": "It was an old house with a stairwell and a long hall."
+            },
+            {
+              "text": "Dort hing eine Hausordnung.",
+              "english": "A set of house rules was hanging there."
+            },
+            {
+              "text": "Der Hausmeister hat sie mir erklärt.",
+              "english": "The caretaker explained it to me."
+            },
+            {
+              "text": "Man muss den Müll trennen, man darf nichts im Flur abstellen, und man muss die Heizung sparen.",
+              "english": "One has to separate the rubbish, one may not leave anything in the hall, and one has to save the heating."
+            },
+            {
+              "text": "Wenn es zu warm ist, soll man lüften.",
+              "english": "When it is too warm one should air the room."
+            },
+            {
+              "text": "Das habe ich schon bei Frau Weber gelernt.",
+              "english": "I already learned that at Frau Weber's."
+            },
+            {
+              "text": "Auf dem Parkplatz vor dem Hostel dürfen nur Gäste parken.",
+              "english": "On the car park in front of the hostel only guests may park."
+            },
+            {
+              "text": "Das war auch eine Regel.",
+              "english": "That was also a rule."
+            },
+            {
+              "text": "An der Tür hing eine Mitteilung vom Hausmeister: Frühstück ab sieben Uhr, bitte leise sein.",
+              "english": "On the door hung a notice from the caretaker: breakfast from seven, please be quiet."
+            },
+            {
+              "text": "Im Zimmer waren drei andere Reisende.",
+              "english": "In the room there were three other travellers."
+            },
+            {
+              "text": "Sie kamen aus Polen, aus Spanien und aus Frankreich.",
+              "english": "They came from Poland, from Spain and from France."
+            },
+            {
+              "text": "Wir haben bis spät am Abend gesprochen, auf Deutsch, weil das unsere einzige gemeinsame Sprache war.",
+              "english": "We talked until late in the evening, in German, because that was our only common language."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Meißen: die Burg und der Dom",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Sonntag bin ich mit dem Zug in die kleine Stadt gefahren, nach Meißen.",
+              "english": "On Sunday I went by train to the small town, to Meißen."
+            },
+            {
+              "text": "Es gibt dort viel zu sehen, und alles liegt nah beieinander.",
+              "english": "There is a lot to see there, and everything lies close together."
+            },
+            {
+              "text": "Die berühmteste Sehenswürdigkeit ist die Burg auf dem Berg.",
+              "english": "The most famous sight is the castle on the hill."
+            },
+            {
+              "text": "Von der Burg aus sieht man die ganze Stadt, den Fluss und die Dächer.",
+              "english": "From the castle you can see the whole town, the river and the roofs."
+            },
+            {
+              "text": "Ich bin zu Fuß hinaufgestiegen, über viele Treppen und durch enge Wege.",
+              "english": "I climbed up on foot, over many stairs and along narrow paths."
+            },
+            {
+              "text": "Neben der Burg steht der Dom.",
+              "english": "Next to the castle stands the cathedral."
+            },
+            {
+              "text": "Er ist sehr alt, und er ist größer als alle Häuser.",
+              "english": "It is very old, and it is bigger than all the houses."
+            },
+            {
+              "text": "Im Dom habe ich eine Weile gesessen.",
+              "english": "I sat in the cathedral for a while."
+            },
+            {
+              "text": "Es war sehr still.",
+              "english": "It was very quiet."
+            },
+            {
+              "text": "Ich habe gebetet, und ich habe an meine Familie in Amerika gedacht.",
+              "english": "I prayed, and I thought of my family in America."
+            },
+            {
+              "text": "Auch hier gibt es eine Altstadt, mit kleinen Läden und alten Häusern.",
+              "english": "Here too there is an old town, with small shops and old houses."
+            },
+            {
+              "text": "Danach habe ich im Café am Fluss einen Kaffee getrunken und Kuchen gegessen.",
+              "english": "After that I drank a coffee and ate cake in the café by the river."
+            },
+            {
+              "text": "Der Platz vor dem Café ist kleiner als in Dresden, aber er ist ruhiger.",
+              "english": "The square in front of the café is smaller than in Dresden, but it is quieter."
+            },
+            {
+              "text": "Dort habe ich ein Plakat gesehen: „Versammlung am Donnerstag. Tagesordnung im Rathaus.“",
+              "english": "There I saw a poster: \"Meeting on Thursday. Agenda at the town hall.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Meine Tipps",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Wer nach Dresden fährt, sollte früh am Morgen losfahren.",
+              "english": "Whoever goes to Dresden should set off early in the morning."
+            },
+            {
+              "text": "Falls es regnet, nimm einen Schirm mit.",
+              "english": "If it rains, take an umbrella with you."
+            },
+            {
+              "text": "Nimm ein gutes Buch mit, und frag die Leute nach dem Weg.",
+              "english": "Take a good book with you, and ask people the way."
+            },
+            {
+              "text": "Sie sind meistens nett.",
+              "english": "They are mostly nice."
+            },
+            {
+              "text": "Das beste Essen gibt es nicht im Restaurant, sondern auf dem Markt.",
+              "english": "The best food is not in a restaurant but at the market."
+            },
+            {
+              "text": "Und sieh dir in Meißen den Dom an.",
+              "english": "And look at the cathedral in Meißen."
+            },
+            {
+              "text": "Die schönste Zeit ist der Abend, wenn die Sonne auf den Häusern liegt.",
+              "english": "The most beautiful time is the evening, when the sun lies on the houses."
+            },
+            {
+              "text": "Aber Vorsicht: Am Sonntag sind viele Läden zu.",
+              "english": "But be careful: on Sunday many shops are closed."
+            },
+            {
+              "text": "Das ist eine deutsche Regel.",
+              "english": "That is a German rule."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Zehn Dinge, die ich gelernt habe",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Auf der Rückfahrt habe ich mein Heft herausgeholt und eine Liste gemacht.",
+              "english": "On the way back I took out my notebook and made a list."
+            },
+            {
+              "text": "Es sind zehn Dinge, die ich in diesem Land gelernt habe.",
+              "english": "There are ten things I have learned in this country."
+            },
+            {
+              "text": "1: Die Deutschen haben für alles eine Regel, aber die Regeln sind meistens gut.",
+              "english": "1: The Germans have a rule for everything, but the rules are mostly good."
+            },
+            {
+              "text": "2: Man trennt den Müll in vier Mülltonnen.",
+              "english": "2: You sort the rubbish into four bins."
+            },
+            {
+              "text": "Frau Weber sieht es sofort, wenn man einen Fehler macht.",
+              "english": "Frau Weber sees at once if you make a mistake."
+            },
+            {
+              "text": "3: Das Haus hat einen Mieter, einen Hausmeister und eine Hausordnung.",
+              "english": "3: The house has a tenant, a caretaker and house rules."
+            },
+            {
+              "text": "4: Viele Menschen sind in einem Verein.",
+              "english": "4: Many people are in an association."
+            },
+            {
+              "text": "Das ist eine Gruppe, die zusammen etwas organisiert.",
+              "english": "That is a group that organises something together."
+            },
+            {
+              "text": "5: Im Stadtteil gibt es Versammlungen.",
+              "english": "5: There are meetings in the district."
+            },
+            {
+              "text": "Dort gibt es eine Tagesordnung, eine Sitzung und ein Protokoll.",
+              "english": "There is an agenda, a session and minutes."
+            },
+            {
+              "text": "6: Man stimmt ab.",
+              "english": "6: You vote."
+            },
+            {
+              "text": "Bei der Abstimmung sind die einen dafür, die anderen dagegen, und die Mehrheit entscheidet.",
+              "english": "At the vote some are for it, some against it, and the majority decides."
+            },
+            {
+              "text": "7: Der Bürgermeister kommt zu den Menschen.",
+              "english": "7: The mayor comes to the people."
+            },
+            {
+              "text": "Er hört zu und schreibt eine Antwort.",
+              "english": "He listens and writes an answer."
+            },
+            {
+              "text": "8: Jeder Beitrag zählt, auch ein kleiner.",
+              "english": "8: Every contribution counts, even a small one."
+            },
+            {
+              "text": "Das gilt für eine Veranstaltung und für die Nachbarschaft.",
+              "english": "That goes for an event and for the neighbourhood."
+            },
+            {
+              "text": "9: Man braucht Geduld, besonders bei einer Baustelle.",
+              "english": "9: You need patience, especially with a building site."
+            },
+            {
+              "text": "Sie dauert immer länger, als man denkt.",
+              "english": "It always takes longer than you think."
+            },
+            {
+              "text": "10: Die Zeitung berichtet jede Woche, was passiert.",
+              "english": "10: The newspaper reports every week what happens."
+            },
+            {
+              "text": "Es gibt eine Meldung über die Polizei, einen Unfall oder ein Feuer.",
+              "english": "There is a report about the police, an accident or a fire."
+            },
+            {
+              "text": "Das alles habe ich gelernt, und ich habe noch viel vor mir.",
+              "english": "I have learned all that, and I still have a lot ahead of me."
+            },
+            {
+              "text": "Beschlossen ist jetzt nur eins: Ich fahre nächstes Wochenende wieder los!",
+              "english": "Only one thing is decided now: next weekend I am setting off again!"
+            },
+            {
+              "text": "Schreibt mir bitte in den Kommentaren zu meinem Blog.",
+              "english": "Please write to me in the comments on my blog."
+            },
+            {
+              "text": "Bis bald, euer Sam.",
+              "english": "See you soon, your Sam."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

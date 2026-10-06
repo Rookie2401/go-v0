@@ -1,0 +1,481 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-12",
+  "lang": "de",
+  "title": "How to make potato soup",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-12",
+    "title": "How to make potato soup (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Marta explains the soup in the kitchen (du to Ben and Sam). The imperative forms are du (schneide, nimm, gib), ihr (nehmt) and Sie (nehmen Sie, a joke between friends, in a recipe voice). \"Man\" is a plain, ordinary word that the plan did not schedule (three uses); \"bisschen\" is only used in \"ein bisschen\". The recipe is plain (soup with potatoes, onion, oil, salt, pepper, water) and has no quantities except twenty minutes. The talk at the table recycles the earlier weekend and trip vocabulary."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "instructions",
+    "recipe",
+    "imperative",
+    "man",
+    "kitchen"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "marta": "Marta",
+    "ben": "Ben",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Die Zutaten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Samstag.",
+              "english": "It is Saturday."
+            },
+            {
+              "text": "Marta, Ben und Sam sind in der Küche.",
+              "english": "Marta, Ben and Sam are in the kitchen."
+            },
+            {
+              "speaker": "marta",
+              "text": "Heute kochen wir Suppe mit Kartoffeln.",
+              "english": "Today we are making soup with potatoes."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hier sind die Zutaten.",
+              "english": "Here are the ingredients."
+            },
+            {
+              "speaker": "marta",
+              "text": "Man braucht Kartoffeln, eine Zwiebel, Salz, Pfeffer, Öl und Wasser.",
+              "english": "You need potatoes, an onion, salt, pepper, oil and water."
+            },
+            {
+              "speaker": "marta",
+              "text": "Und ein Gemüse: Tomaten.",
+              "english": "And a vegetable: tomatoes."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gemüse ist gut für Ben.",
+              "english": "Vegetables are good for Ben."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich verstehe das Wort \"Zutat\" nicht.",
+              "english": "I do not understand the word \"Zutat\"."
+            },
+            {
+              "speaker": "marta",
+              "text": "Eine Zutat ist etwas für die Suppe.",
+              "english": "An ingredient is something for the soup."
+            },
+            {
+              "speaker": "sam",
+              "text": "Im Kurs hat Eva das erklärt, aber ich habe es nicht gut verstanden.",
+              "english": "In the course Eva explained it, but I did not understand it well."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich möchte helfen!",
+              "english": "I want to help!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Topf, Pfanne, Messer",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Nimm den Topf, Ben.",
+              "english": "Take the pot, Ben."
+            },
+            {
+              "speaker": "marta",
+              "text": "Nimm auch die Pfanne.",
+              "english": "Take the pan too."
+            },
+            {
+              "speaker": "marta",
+              "text": "Das Messer ist für mich, nicht für Kinder.",
+              "english": "The knife is for me, not for children."
+            },
+            {
+              "speaker": "marta",
+              "text": "Nimm das Messer nicht, Ben!",
+              "english": "Do not take the knife, Ben!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Sam, hier ist ein Löffel.",
+              "english": "Sam, here is a spoon."
+            },
+            {
+              "speaker": "marta",
+              "text": "Und hier sind die Teller.",
+              "english": "And here are the plates."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Rezept",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Schneide die Zwiebel.",
+              "english": "Cut the onion."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gib ein bisschen Öl in die Pfanne.",
+              "english": "Put a little oil in the pan."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gib die Zwiebel in die Pfanne.",
+              "english": "Put the onion in the pan."
+            },
+            {
+              "speaker": "marta",
+              "text": "Schneide die Kartoffeln.",
+              "english": "Cut the potatoes."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gib die Kartoffeln in den Topf.",
+              "english": "Put the potatoes in the pot."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gib Wasser in den Topf, und koche die Kartoffeln.",
+              "english": "Put water in the pot, and cook the potatoes."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gib ein bisschen Salz und ein bisschen Pfeffer in die Suppe.",
+              "english": "Put a little salt and a little pepper in the soup."
+            },
+            {
+              "speaker": "marta",
+              "text": "Man kocht die Suppe 20 Minuten.",
+              "english": "You cook the soup for 20 minutes."
+            },
+            {
+              "speaker": "ben",
+              "text": "Hörst du?",
+              "english": "Do you hear?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Das Wasser kocht!",
+              "english": "The water is boiling!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich höre es mit dem Ohr.",
+              "english": "I can hear it with my ear."
+            },
+            {
+              "speaker": "marta",
+              "text": "Nimm einen Löffel, Sam, und koste die Suppe.",
+              "english": "Take a spoon, Sam, and taste the soup."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sie ist sehr lecker!",
+              "english": "It is very tasty!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Tisch",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Ihr könnt den Tisch machen: Nehmt die Teller und die Löffel.",
+              "english": "You can set the table: take the plates and the spoons."
+            },
+            {
+              "speaker": "marta",
+              "text": "Und jetzt, Herr Miller, nehmen Sie bitte den Salat.",
+              "english": "And now, Mr Miller, please take the salad."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gern!",
+              "english": "Gladly!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Aber wo ist der Salat?",
+              "english": "But where is the salad?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Wir machen ihn jetzt.",
+              "english": "We are making it now."
+            },
+            {
+              "speaker": "marta",
+              "text": "Schneide die Tomaten, Sam.",
+              "english": "Cut the tomatoes, Sam."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gib Salz und Öl in den Salat.",
+              "english": "Put salt and oil in the salad."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hier ist auch der Pfeffer.",
+              "english": "Here is the pepper too."
+            },
+            {
+              "speaker": "marta",
+              "text": "Das Gemüse ist im Salat, und das Messer liegt neben dem Teller.",
+              "english": "The vegetables are in the salad, and the knife is next to the plate."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und das Brot?",
+              "english": "And the bread?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich backe das Brot.",
+              "english": "I bake the bread."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gestern habe ich Brot gebacken.",
+              "english": "Yesterday I baked bread."
+            },
+            {
+              "speaker": "marta",
+              "text": "Backen ist nicht leicht.",
+              "english": "Baking is not easy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Essen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Die Suppe ist fertig.",
+              "english": "The soup is ready."
+            },
+            {
+              "speaker": "ben",
+              "text": "Die Suppe ist so lecker!",
+              "english": "The soup is so tasty!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Mein Teller ist voll, aber dein Teller ist leer, Sam.",
+              "english": "My plate is full, but your plate is empty, Sam."
+            },
+            {
+              "speaker": "marta",
+              "text": "Wir essen die Suppe heiß.",
+              "english": "We eat the soup hot."
+            },
+            {
+              "speaker": "marta",
+              "text": "Wir können sie auch beim Picknick am See essen, nach einem Ausflug in den Wald.",
+              "english": "We can also eat it at a picnic at the lake, after an excursion in the forest."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich koche sie, wenn Freunde mich besuchen.",
+              "english": "I cook it when friends visit me."
+            },
+            {
+              "speaker": "marta",
+              "text": "Der Nachbar kommt heute auch.",
+              "english": "The neighbour is coming today too."
+            },
+            {
+              "speaker": "marta",
+              "text": "Meine Ärztin sagt: Suppe ist gut, wenn man krank ist.",
+              "english": "My doctor says: soup is good when you are ill."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich fotografiere die Suppe!",
+              "english": "I am photographing the soup!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Nimm dein Foto, Ben, und iss die Suppe!",
+              "english": "Take your photo, Ben, and eat the soup!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Tisch",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Ben, was hast du am Wochenende gemacht?",
+              "english": "Ben, what did you do at the weekend?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich bin im Wald gelaufen, und ich bin ins Wasser gesprungen.",
+              "english": "I walked in the forest, and I jumped into the water."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich habe den Ball geworfen, und Max hat ihn gefangen.",
+              "english": "I threw the ball, and Max caught it."
+            },
+            {
+              "speaker": "ben",
+              "text": "Wir sind auch geschwommen.",
+              "english": "We also swam."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Berg war weit, aber wir sind gelaufen.",
+              "english": "The hill was far, but we walked."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich habe ein Mädchen getroffen.",
+              "english": "I met a girl."
+            },
+            {
+              "speaker": "marta",
+              "text": "Das ist schön.",
+              "english": "That is nice."
+            },
+            {
+              "speaker": "marta",
+              "text": "Und was macht Papa?",
+              "english": "And what is Papa doing?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Papa hat in Dresden im Hotel übernachtet, und er hat ein Museum besucht.",
+              "english": "Papa stayed in a hotel in Dresden, and he visited a museum."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich habe im Geschäft am Bahnhof Salz gekauft.",
+              "english": "I bought salt at the shop at the station."
+            },
+            {
+              "speaker": "marta",
+              "text": "Und ich habe Frau Weber Tomaten geschenkt.",
+              "english": "And I gave Mrs Weber tomatoes."
+            },
+            {
+              "speaker": "marta",
+              "text": "Viele Freunde kommen, und jeder bringt etwas mit.",
+              "english": "Many friends come, and everyone brings something."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich war einmal im Café und im Museum, und nach dem Konzert hatte ich Hunger.",
+              "english": "I was once in a café and in a museum, and after the concert I was hungry."
+            },
+            {
+              "speaker": "sam",
+              "text": "Du bist ein guter Nachbar, Marta.",
+              "english": "You are a good neighbour, Marta."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bin bei Frau Weber eingezogen.",
+              "english": "I have moved in at Mrs Weber's."
+            },
+            {
+              "speaker": "sam",
+              "text": "Im Kurs habe ich viele Fehler gemacht, aber die Lehrerin ist gut.",
+              "english": "In the course I made many mistakes, but the teacher is good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sie erklärt die Grammatik, und ich übe die Sprache jeden Tag.",
+              "english": "She explains the grammar, and I practise the language every day."
+            },
+            {
+              "speaker": "marta",
+              "text": "Du sprichst gut, Sam.",
+              "english": "You speak well, Sam."
+            },
+            {
+              "speaker": "marta",
+              "text": "Das ist ein guter Kurs.",
+              "english": "That is a good course."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

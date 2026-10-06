@@ -1,0 +1,647 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-02",
+  "lang": "de",
+  "title": "Was sich verändert hat",
+  "contentType": "testimony",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-02",
+    "title": "\"Was sich verändert hat\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Church language of a free church (Freikirche) in Leipzig: Hauskreis, Zeugnis, Berufung, Gemeinde. A Landeskirche reviewer may prefer other words. Frau Weber is addressed with Sie by Sam, with du by the others. Please check that the testimonies sound like real German small-group speech, and that \"Zeugnis\" (testimony) is not mistaken for school report."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "testimony"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "S": "Sam",
+    "D": "Daniel",
+    "B": "Sabine",
+    "W": "Frau Weber"
+  },
+  "sections": [
+    {
+      "title": "Dienstagabend bei Sabine",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeden Dienstag trifft sich der Hauskreis bei Sabine.",
+              "english": "Every Tuesday the house group meets at Sabine's."
+            },
+            {
+              "text": "Ein Hauskreis ist eine kleine Gruppe aus der Gemeinde, die sich zu Hause trifft.",
+              "english": "A house group is a small group from the church that meets in someone's home."
+            },
+            {
+              "text": "Man isst zusammen, man singt, man liest in der Bibel und spricht über das Leben.",
+              "english": "You eat together, you sing, you read in the Bible and talk about life."
+            },
+            {
+              "text": "Heute erzählen drei Menschen ihr Zeugnis.",
+              "english": "Today three people tell their testimony."
+            },
+            {
+              "text": "Sam sitzt auf dem Sofa und hört zu.",
+              "english": "Sam is sitting on the sofa listening."
+            },
+            {
+              "text": "Ein Zeugnis, hat Daniel ihm gesagt, ist keine Rede, sondern eine Geschichte, die man selbst erlebt hat.",
+              "english": "A testimony, Daniel told him, is not a speech but a story that one has experienced oneself."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Daniel erzählt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ich bin in den USA in einer kleinen Stadt aufgewachsen.",
+              "english": "I grew up in a small town in the USA.",
+              "speaker": "D"
+            },
+            {
+              "text": "Meine Familie ist nicht reich, aber wir waren zufrieden.",
+              "english": "My family is not rich, but we were content.",
+              "speaker": "D"
+            },
+            {
+              "text": "Nach der Schule habe ich an der Universität Theologie studiert.",
+              "english": "After school I studied theology at the university.",
+              "speaker": "D"
+            },
+            {
+              "text": "Das Studium war lang, und ich habe viel über die Mission in anderen Ländern gelernt.",
+              "english": "The studies were long, and I learned a lot about mission in other countries.",
+              "speaker": "D"
+            },
+            {
+              "text": "Ich hatte damals viele Zweifel, und ich habe laut gezweifelt.",
+              "english": "I had many doubts at that time, and I doubted out loud.",
+              "speaker": "D"
+            },
+            {
+              "text": "Mein Glaube war damals klein.",
+              "english": "My faith was small at that time.",
+              "speaker": "D"
+            },
+            {
+              "text": "Ich habe gefragt: Ist der Glaube nur ein Gefühl?",
+              "english": "I asked: is faith only a feeling?",
+              "speaker": "D"
+            },
+            {
+              "text": "Ich habe nach der Wahrheit gesucht und nach dem Sinn von allem.",
+              "english": "I looked for the truth and for the meaning of everything.",
+              "speaker": "D"
+            },
+            {
+              "text": "Ein Missionar, der aus Deutschland kam, hat bei uns in der Gemeinde gesprochen.",
+              "english": "A missionary who came from Germany spoke at our church.",
+              "speaker": "D"
+            },
+            {
+              "text": "Er hat von den Menschen erzählt, die hier nicht an Gott denken.",
+              "english": "He told us about the people who do not think about God here.",
+              "speaker": "D"
+            },
+            {
+              "text": "Er hat auch gesagt, dass Jesus uns gerettet hat.",
+              "english": "He also said that Jesus has saved us.",
+              "speaker": "D"
+            },
+            {
+              "text": "Das war meine Berufung.",
+              "english": "That was my calling.",
+              "speaker": "D"
+            },
+            {
+              "text": "Ich habe es sofort gewusst.",
+              "english": "I knew it at once.",
+              "speaker": "D"
+            },
+            {
+              "text": "Ich wollte aber nicht im Ausland leben.",
+              "english": "But I did not want to live abroad.",
+              "speaker": "D"
+            },
+            {
+              "text": "Das war mir zu weit weg.",
+              "english": "That was too far away for me.",
+              "speaker": "D"
+            },
+            {
+              "text": "Die Entscheidung war trotzdem schwer, denn ich musste meine Eltern verlassen.",
+              "english": "The decision was hard all the same, because I had to leave my parents.",
+              "speaker": "D"
+            },
+            {
+              "text": "Ich habe ein Visum bekommen und bin nach Leipzig umgezogen.",
+              "english": "I got a visa and moved to Leipzig.",
+              "speaker": "D"
+            },
+            {
+              "text": "Hier hat mir ein Ehepaar geholfen, das schon lange in der Stadt lebt.",
+              "english": "Here a married couple who have lived in the city for a long time helped me.",
+              "speaker": "D"
+            },
+            {
+              "text": "Der Abschied am Flughafen war schlimm.",
+              "english": "The farewell at the airport was terrible.",
+              "speaker": "D"
+            },
+            {
+              "text": "Meine Mutter hat geweint.",
+              "english": "My mother cried.",
+              "speaker": "D"
+            },
+            {
+              "text": "In den ersten Monaten hatte ich so großes Heimweh, dass ich nachts nicht schlafen konnte.",
+              "english": "In the first months I was so homesick that I could not sleep at night.",
+              "speaker": "D"
+            },
+            {
+              "text": "Die Kultur war mir fremd, und ich musste mich an vieles gewöhnen.",
+              "english": "The culture was strange to me, and I had to get used to a lot.",
+              "speaker": "D"
+            },
+            {
+              "text": "Jede Woche kam Post aus meiner Heimat.",
+              "english": "Every week mail came from my home country.",
+              "speaker": "D"
+            },
+            {
+              "text": "Die Briefe meiner Mutter waren ein Trost.",
+              "english": "My mother's letters were a comfort.",
+              "speaker": "D"
+            },
+            {
+              "text": "Manchmal hatte ich keine Kraft mehr und wollte nach Hause.",
+              "english": "Sometimes I had no strength left and wanted to go home.",
+              "speaker": "D"
+            },
+            {
+              "text": "Also bin ich geblieben und habe weitergemacht.",
+              "english": "So I stayed and carried on.",
+              "speaker": "D"
+            },
+            {
+              "text": "Aber ich habe gelernt, dass Gott nicht nur in Amerika wohnt.",
+              "english": "But I have learned that God does not live only in America.",
+              "speaker": "D"
+            },
+            {
+              "text": "Dieses Leben hat mich verändert.",
+              "english": "This life has changed me.",
+              "speaker": "D"
+            },
+            {
+              "text": "Und wie ging es dann weiter?",
+              "english": "And how did it go on?",
+              "speaker": "S"
+            },
+            {
+              "text": "Wir wollen hier eine neue Gemeinde gründen, und das ist ein Wunder für mich.",
+              "english": "We want to found a new church here, and that is a miracle for me.",
+              "speaker": "D"
+            },
+            {
+              "text": "Mein Zweifel ist nicht ganz weg.",
+              "english": "My doubt has not completely gone.",
+              "speaker": "D"
+            },
+            {
+              "text": "Aber ich habe Vertrauen gelernt.",
+              "english": "But I have learned trust.",
+              "speaker": "D"
+            },
+            {
+              "text": "Heute weiß ich, dass die Hoffnung stärker ist als die Angst.",
+              "english": "Today I know that hope is stronger than fear.",
+              "speaker": "D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sabine erzählt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Meine Geschichte handelt von Vergebung.",
+              "english": "My story is about forgiveness.",
+              "speaker": "B"
+            },
+            {
+              "text": "Meine Eltern hatten einen Hof mit Feldern und Schweinen.",
+              "english": "My parents had a farm with fields and pigs.",
+              "speaker": "B"
+            },
+            {
+              "text": "Für die Tiere gab es immer Futter.",
+              "english": "There was always food for the animals.",
+              "speaker": "B"
+            },
+            {
+              "text": "Mein Bruder wollte nicht auf dem Hof arbeiten.",
+              "english": "My brother did not want to work on the farm.",
+              "speaker": "B"
+            },
+            {
+              "text": "Er wollte weggehen.",
+              "english": "He wanted to go away.",
+              "speaker": "B"
+            },
+            {
+              "text": "Nach dem Tod unseres Vaters hat er sein Erbe genommen und ist nach Hamburg gefahren.",
+              "english": "After our father's death he took his inheritance and went to Hamburg.",
+              "speaker": "B"
+            },
+            {
+              "text": "Er hat das ganze Geld ausgegeben, und danach war er wohl sehr arm.",
+              "english": "He spent all the money, and after that he was probably very poor.",
+              "speaker": "B"
+            },
+            {
+              "text": "Ich war so wütend!",
+              "english": "I was so angry!",
+              "speaker": "B"
+            },
+            {
+              "text": "Ich habe nie wieder einen Brief geschrieben.",
+              "english": "I never wrote a letter again.",
+              "speaker": "B"
+            },
+            {
+              "text": "Für mich war er tot.",
+              "english": "For me he was dead.",
+              "speaker": "B"
+            },
+            {
+              "text": "Ich wollte ihm nicht vergeben.",
+              "english": "I did not want to forgive him.",
+              "speaker": "B"
+            },
+            {
+              "text": "Zehn Jahre lang habe ich keinen Gruß von ihm bekommen, und ich habe keinen geschickt.",
+              "english": "For ten years I got no greeting from him, and I sent none.",
+              "speaker": "B"
+            },
+            {
+              "text": "Er hat in Hamburg als Arbeiter gearbeitet und nur einen kleinen Lohn bekommen.",
+              "english": "In Hamburg he worked as a labourer and only got a small wage.",
+              "speaker": "B"
+            },
+            {
+              "text": "Dann habe ich im Internet eine Mail von ihm gefunden.",
+              "english": "Then I found an email from him on the internet.",
+              "speaker": "B"
+            },
+            {
+              "text": "Er hat geschrieben: „Ich bereue meine Schuld. Kann ich nach Hause kommen?“",
+              "english": "He wrote: \"I regret my guilt. May I come home?\"",
+              "speaker": "B"
+            },
+            {
+              "text": "Ich habe lange vor dem Computer gesessen.",
+              "english": "I sat in front of the computer for a long time.",
+              "speaker": "B"
+            },
+            {
+              "text": "Ich hatte keine Kraft zu antworten.",
+              "english": "I had no strength to answer.",
+              "speaker": "B"
+            },
+            {
+              "text": "Darauf habe ich vier Tage nicht geantwortet.",
+              "english": "To that I did not reply for four days.",
+              "speaker": "B"
+            },
+            {
+              "text": "Die Wahrheit ist: Ich wollte es nicht.",
+              "english": "The truth is: I did not want to.",
+              "speaker": "B"
+            },
+            {
+              "text": "Vergebung ist schwer, wenn man allein ist, und ich war allein.",
+              "english": "Forgiveness is hard when you are alone, and I was alone.",
+              "speaker": "B"
+            },
+            {
+              "text": "Mein Herz hatte keinen Frieden.",
+              "english": "My heart had no peace.",
+              "speaker": "B"
+            },
+            {
+              "text": "Dann habe ich gebetet.",
+              "english": "Then I prayed.",
+              "speaker": "B"
+            },
+            {
+              "text": "Gott hat mir vergeben, und ich konnte meinem Bruder vergeben.",
+              "english": "God had forgiven me, and I could forgive my brother.",
+              "speaker": "B"
+            },
+            {
+              "text": "Er ist zurückgekehrt.",
+              "english": "He came back.",
+              "speaker": "B"
+            },
+            {
+              "text": "Ich habe ihn umarmt und geküsst, und wir haben gefeiert.",
+              "english": "I hugged him and kissed him, and we celebrated.",
+              "speaker": "B"
+            },
+            {
+              "text": "Er war tot und ist wieder lebendig, so wie in der Geschichte aus der Bibel.",
+              "english": "He was dead and is alive again, just like in the story from the Bible.",
+              "speaker": "B"
+            },
+            {
+              "text": "Dass er zurückkam, war ein Wunder.",
+              "english": "That he came back was a miracle.",
+              "speaker": "B"
+            },
+            {
+              "text": "Ich habe ihm den Ring unseres Vaters gegeben.",
+              "english": "I gave him our father's ring.",
+              "speaker": "B"
+            },
+            {
+              "text": "Heute schreiben wir uns jede Woche.",
+              "english": "Today we write to each other every week.",
+              "speaker": "B"
+            },
+            {
+              "text": "Manchmal schickt er mir ein Päckchen mit einer Briefmarke aus Hamburg.",
+              "english": "Sometimes he sends me a parcel with a stamp from Hamburg.",
+              "speaker": "B"
+            },
+            {
+              "text": "Seine Freundschaft ist mir wichtiger als das Erbe.",
+              "english": "His friendship is more important to me than the inheritance.",
+              "speaker": "B"
+            },
+            {
+              "text": "Das hat mich verändert.",
+              "english": "That has changed me.",
+              "speaker": "B"
+            },
+            {
+              "text": "Gott hat meine Familie gerettet, und mit meinem Bruder ist alles gut.",
+              "english": "God has saved my family, and everything is good with my brother.",
+              "speaker": "B"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Frau Weber erzählt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Meine Geschichte ist kurz, aber sie ist wahr.",
+              "english": "My story is short, but it is true.",
+              "speaker": "W"
+            },
+            {
+              "text": "Mein Mann ist vor acht Jahren gestorben.",
+              "english": "My husband died eight years ago.",
+              "speaker": "W"
+            },
+            {
+              "text": "Sein Tod war ein großer Schmerz.",
+              "english": "His death was a great pain.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das Haus war so leer, und ich habe jede Nacht geweint.",
+              "english": "The house was so empty, and I cried every night.",
+              "speaker": "W"
+            },
+            {
+              "text": "Ich habe gedacht: Was ist der Sinn von allem?",
+              "english": "I thought: what is the meaning of it all?",
+              "speaker": "W"
+            },
+            {
+              "text": "Eine Frau, die ich kaum kannte, hat mich zum Hauskreis eingeladen.",
+              "english": "A woman whom I hardly knew invited me to the house group.",
+              "speaker": "W"
+            },
+            {
+              "text": "Dort habe ich Trost gefunden, und das war ein kleines Wunder.",
+              "english": "There I found comfort, and that was a small miracle.",
+              "speaker": "W"
+            },
+            {
+              "text": "Niemand hat mir gesagt: Hör auf zu weinen.",
+              "english": "Nobody said to me: stop crying.",
+              "speaker": "W"
+            },
+            {
+              "text": "Man hat mich einfach in den Arm genommen.",
+              "english": "They simply took me in their arms.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das Wichtigste, das ich gelernt habe, ist dieses: Ich bin nie allein.",
+              "english": "The most important thing I have learned is this: I am never alone.",
+              "speaker": "W"
+            },
+            {
+              "text": "Gott hat mir Kraft gegeben, und ich habe Frieden gefunden.",
+              "english": "God gave me strength, and I found peace.",
+              "speaker": "W"
+            },
+            {
+              "text": "Ich weiß heute, dass das Leben einen Sinn hat.",
+              "english": "Today I know that life has a meaning.",
+              "speaker": "W"
+            },
+            {
+              "text": "Der Tod macht mir keine Angst mehr.",
+              "english": "Death no longer frightens me.",
+              "speaker": "W"
+            },
+            {
+              "text": "Den Frieden, den ich jetzt habe, kann mir niemand nehmen.",
+              "english": "The peace that I have now, nobody can take from me.",
+              "speaker": "W"
+            },
+            {
+              "text": "Ich glaube, dass Gott die Menschen rettet, die ihm vertrauen.",
+              "english": "I believe that God saves the people who trust him.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das ist die Wahrheit, die mein Leben verändert hat.",
+              "english": "That is the truth that has changed my life.",
+              "speaker": "W"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sams Gedanken",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist still im Zimmer.",
+              "english": "It is quiet in the room."
+            },
+            {
+              "text": "Sabine hat Tee gemacht, und alle trinken.",
+              "english": "Sabine has made tea, and everybody drinks."
+            },
+            {
+              "text": "Sam denkt an sein Zuhause und an die Menschen, die er vermisst.",
+              "english": "Sam thinks of his home and of the people he misses."
+            },
+            {
+              "text": "Er hat eine Frage und stellt sie leise.",
+              "english": "He has a question and asks it quietly."
+            },
+            {
+              "text": "Frau Weber, haben Sie nie gezweifelt?",
+              "english": "Frau Weber, did you never doubt?",
+              "speaker": "S"
+            },
+            {
+              "text": "Doch, mein Junge.",
+              "english": "Yes, my boy.",
+              "speaker": "W"
+            },
+            {
+              "text": "Jeden Tag habe ich ein bisschen gezweifelt.",
+              "english": "Every day I doubted a little.",
+              "speaker": "W"
+            },
+            {
+              "text": "Aber mein Glaube ist trotzdem stärker geworden.",
+              "english": "But my faith has grown stronger all the same.",
+              "speaker": "W"
+            },
+            {
+              "text": "Zweifel und Vertrauen können zusammen in einem Herzen wohnen.",
+              "english": "Doubt and trust can live together in one heart.",
+              "speaker": "W"
+            },
+            {
+              "text": "Das hilft mir.",
+              "english": "That helps me.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich habe heute viel gelernt.",
+              "english": "I have learned a lot today.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich habe von Vergebung und von Hoffnung gehört.",
+              "english": "I have heard about forgiveness and about hope.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist ein großer Trost für mich.",
+              "english": "That is a great comfort for me.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich habe gelernt, dass ein Zeugnis keine perfekte Geschichte ist.",
+              "english": "I have learned that a testimony is not a perfect story.",
+              "speaker": "S"
+            },
+            {
+              "text": "Es ist ein Weg, den jemand gegangen ist, und es ist die Hoffnung, die er auf dem Weg gefunden hat.",
+              "english": "It is a road someone has walked, and the hope he found on the way.",
+              "speaker": "S"
+            },
+            {
+              "text": "Vielleicht hast du bald auch eine Geschichte zu erzählen.",
+              "english": "Perhaps you will soon have a story to tell too.",
+              "speaker": "D"
+            },
+            {
+              "text": "Ich weiß nicht.",
+              "english": "I don't know.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ich möchte erst mehr verstehen.",
+              "english": "I would like to understand more first.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist in Ordnung.",
+              "english": "That is fine.",
+              "speaker": "B"
+            },
+            {
+              "text": "Wir haben Zeit.",
+              "english": "We have time.",
+              "speaker": "B"
+            },
+            {
+              "text": "Und wir sind alle da, wenn du etwas sagen willst.",
+              "english": "And we are all here if you want to say something.",
+              "speaker": "D"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,568 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-2-16",
+  "lang": "de",
+  "title": "Jonas looks for work",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-2-16",
+    "title": "Jonas looks for work (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Jonas (22, from the Gemeinde, a trained mechanic) looks for a job. Sam helps him with his application (du); Jonas and Herr Schmidt the baker say Sie to each other; Jonas says Sie to Jakob, Herr Schmidt's brother, who owns a small firm and is also called Schmidt (\"Wir heißen beide Schmidt\"). The ordinals erste, zweite, dritte, letzte appear; \"nächste Woche\" is read by the adapter as the lemma \"nah\" (a gate quirk the word list should fix). A reference from Herr Schmidt (Jonas once worked in the bakery) brings in the kitchen words of the previous units. The salary is plausible, not a real offer."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "work",
+    "application",
+    "CV",
+    "interview",
+    "contract",
+    "ordinal numbers"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "jonas": "Jonas",
+    "sam": "Sam",
+    "schmidt": "Herr Schmidt",
+    "jakob": "Jakob",
+    "thomas": "Pastor Thomas"
+  },
+  "sections": [
+    {
+      "title": "Die Stelle",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jonas ist 22 Jahre alt.",
+              "english": "Jonas is 22 years old."
+            },
+            {
+              "text": "Er ist Mechaniker.",
+              "english": "He is a mechanic."
+            },
+            {
+              "text": "Er sucht eine Stelle.",
+              "english": "He is looking for a job."
+            },
+            {
+              "text": "Er hat Erfahrung mit Autos und Fahrrädern.",
+              "english": "He has experience with cars and bicycles."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Sam, ich brauche eine Stelle.",
+              "english": "Sam, I need a job."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Es ist schwer, eine Stelle zu finden.",
+              "english": "It is hard to find a job."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich helfe dir.",
+              "english": "I will help you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wo ist die Stelle?",
+              "english": "Where is the job?"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Hier auf dem Handy.",
+              "english": "Here on my phone."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Eine Firma sucht einen Mechaniker.",
+              "english": "A firm is looking for a mechanic."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Die Firma ist nicht weit von hier.",
+              "english": "The firm is not far from here."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist deine erste Bewerbung in Leipzig?",
+              "english": "Is that your first application in Leipzig?"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Ja, das ist meine erste Bewerbung.",
+              "english": "Yes, that is my first application."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Bewerbung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "jonas",
+              "text": "Ich schreibe jetzt die Bewerbung.",
+              "english": "I am writing the application now."
+            },
+            {
+              "speaker": "sam",
+              "text": "Du brauchst auch einen Lebenslauf.",
+              "english": "You need a CV too."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Ja, aber das ist schwer.",
+              "english": "Yes, but that is hard."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich helfe dir.",
+              "english": "I will help you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wo bist du geboren?",
+              "english": "Where were you born?"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Ich bin 2003 in Leipzig geboren und in Leipzig aufgewachsen.",
+              "english": "I was born in Leipzig in 2003 and grew up in Leipzig."
+            },
+            {
+              "speaker": "sam",
+              "text": "Schreibe das in den Lebenslauf.",
+              "english": "Write that in the CV."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Meine Kindheit war schön, und meine Jugend auch.",
+              "english": "My childhood was lovely, and my youth too."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Meine Eltern haben in der Fabrik gearbeitet.",
+              "english": "My parents worked in a factory."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Meine Oma hat vier Enkel, und ich bin ein Enkel.",
+              "english": "My grandmother has four grandchildren, and I am one."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das schreibt man nicht in den Lebenslauf!",
+              "english": "You do not write that in a CV!"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Gut, dann schreibe ich nur das: Ich habe drei Jahre gelernt, und ich habe zwei Jahre gearbeitet.",
+              "english": "Good, then I will only write this: I trained for three years, and I have worked for two years."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Mit 15 Jahren habe ich bei Herrn Schmidt in der Bäckerei gearbeitet.",
+              "english": "At 15 I worked at Herr Schmidt's bakery."
+            },
+            {
+              "speaker": "sam",
+              "text": "Dann frag Herrn Schmidt!",
+              "english": "Then ask Herr Schmidt!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Herr Schmidt hilft",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Herr Schmidt hat eine Nachricht für seinen Bruder geschrieben.",
+              "english": "Herr Schmidt has written a message for his brother."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Jonas hat bei mir gearbeitet.",
+              "english": "Jonas worked for me."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Er hat Brot gebacken, die Zwiebeln und das Gemüse geschnitten.",
+              "english": "He baked bread, cut the onions and the vegetables."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Er hat die Pfanne, den Topf, das Messer und den Löffel immer gefunden.",
+              "english": "He always found the pan, the pot, the knife and the spoon."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Er hat auch den Salat gemacht und die Teller getragen.",
+              "english": "He also made the salad and carried the plates."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Er kennt die Zutaten: Öl, Salz und Pfeffer, ein bisschen von allem.",
+              "english": "He knows the ingredients: oil, salt and pepper, a little of everything."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Mein Bruder Jakob hat eine Firma.",
+              "english": "My brother Jakob has a firm."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Er sucht einen Kollegen.",
+              "english": "He is looking for a colleague."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Gespräch",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jonas hat ein Gespräch bei der Firma.",
+              "english": "Jonas has an interview at the firm."
+            },
+            {
+              "text": "Es ist sein erstes Gespräch.",
+              "english": "It is his first interview."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Guten Tag, Jonas!",
+              "english": "Good day, Jonas!"
+            },
+            {
+              "speaker": "jakob",
+              "text": "Ich bin Jakob Schmidt.",
+              "english": "I am Jakob Schmidt."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Guten Tag, Herr Schmidt.",
+              "english": "Good day, Herr Schmidt."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Sie kennen meinen Chef, Herr Schmidt?",
+              "english": "You know my boss, Herr Schmidt?"
+            },
+            {
+              "speaker": "jakob",
+              "text": "Ja!",
+              "english": "Yes!"
+            },
+            {
+              "speaker": "jakob",
+              "text": "Mein Bruder und ich heißen beide Schmidt.",
+              "english": "My brother and I are both called Schmidt."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Sie haben Erfahrung?",
+              "english": "Do you have experience?"
+            },
+            {
+              "speaker": "jakob",
+              "text": "Erfahrung ist gut.",
+              "english": "Experience is good."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Ich suche einen Mechaniker für Autos.",
+              "english": "I am looking for a mechanic for cars."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Ja.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Die erste Firma war in Dresden, die zweite war in Berlin, und das hier ist die dritte.",
+              "english": "The first firm was in Dresden, the second was in Berlin, and this one is the third."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Und letzte Woche?",
+              "english": "And last week?"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Letzte Woche habe ich nicht gearbeitet.",
+              "english": "Last week I did not work."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Ich habe die Bewerbung geschrieben.",
+              "english": "I wrote the application."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Was möchten Sie verdienen?",
+              "english": "What would you like to earn?"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Ich möchte gut verdienen, aber ich bin für 2000 Euro im Monat froh.",
+              "english": "I would like to earn well, but I would be happy with 2000 euros a month."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Das geht.",
+              "english": "That is possible."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Sie verdienen bei uns 2200 Euro.",
+              "english": "You will earn 2200 euros with us."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Sie haben drei Kollegen: Paul, Klaus und Andreas.",
+              "english": "You will have three colleagues: Paul, Klaus and Andreas."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Der zweite Kollege ist Klaus, und der dritte ist Andreas.",
+              "english": "The second colleague is Klaus, and the third is Andreas."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Die Kollegen sind nett.",
+              "english": "The colleagues are nice."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Das Gespräch ist gut.",
+              "english": "The interview is good."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Der dritte Tag ist Mittwoch.",
+              "english": "The third day is Wednesday."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Der letzte Tag in der Woche ist Freitag.",
+              "english": "The last day of the week is Friday."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Können Sie nächste Woche anfangen?",
+              "english": "Can you start next week?"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Ja, gern!",
+              "english": "Yes, gladly!"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Nächste Woche habe ich Zeit.",
+              "english": "Next week I have time."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Dann ist hier der Vertrag.",
+              "english": "Then here is the contract."
+            },
+            {
+              "speaker": "jakob",
+              "text": "Bitte lesen Sie ihn.",
+              "english": "Please read it."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Ich lese den Vertrag.",
+              "english": "I am reading the contract."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Das ist mein zweiter Vertrag.",
+              "english": "This is my second contract."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Hier unterschreibe ich?",
+              "english": "Do I sign here?"
+            },
+            {
+              "speaker": "jakob",
+              "text": "Ja, hier unterschreiben, bitte.",
+              "english": "Yes, please sign here."
+            },
+            {
+              "text": "Jonas hat den Vertrag unterschrieben.",
+              "english": "Jonas has signed the contract."
+            },
+            {
+              "text": "Sein erster Tag ist nächste Woche, am Montag.",
+              "english": "His first day is next week, on Monday."
+            },
+            {
+              "text": "Es ist schön, eine Stelle zu haben.",
+              "english": "It is lovely to have a job."
+            },
+            {
+              "text": "Der Vater von Jonas arbeitet noch in der Fabrik, aber bald ist er in Rente.",
+              "english": "Jonas's father still works in the factory, but soon he will be retired."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Spiel im Winter",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jonas hat auch Zeit für die Gemeinde.",
+              "english": "Jonas also has time for the church."
+            },
+            {
+              "text": "Im Winter macht die Gemeinde ein Fest für die Kinder, mit einem Spiel.",
+              "english": "In winter the church holds a party for the children, with a play."
+            },
+            {
+              "text": "Jonas ist der Hirte, und Ben ist das Schaf.",
+              "english": "Jonas is the shepherd, and Ben is the sheep."
+            },
+            {
+              "text": "Ben hat Husten, aber er spielt gern.",
+              "english": "Ben has a cough, but he likes playing."
+            },
+            {
+              "text": "Das Spiel ist schön.",
+              "english": "The play is lovely."
+            },
+            {
+              "text": "Im Spiel ist es Nacht, und die Tiere sitzen im Gras.",
+              "english": "In the play it is night, and the animals sit in the grass."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Wo bist du, Schaf?",
+              "english": "Where are you, sheep?"
+            },
+            {
+              "text": "Der Hirte ruft, und dann sagt er: \"Dort ist es!\"",
+              "english": "The shepherd calls, and then he says: \"There it is!\""
+            },
+            {
+              "text": "Er trägt Ben auf der Schulter.",
+              "english": "He carries Ben on his shoulder."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Im Himmel ist ein Fest für den Sünder.",
+              "english": "In heaven there is a feast for the sinner."
+            },
+            {
+              "text": "Jonas hat eine Freundin und möchte bald heiraten.",
+              "english": "Jonas has a girlfriend and would like to get married soon."
+            },
+            {
+              "text": "Die Hochzeit soll im Garten sein.",
+              "english": "The wedding is to be in the garden."
+            },
+            {
+              "text": "Er möchte ein guter Ehemann sein.",
+              "english": "He wants to be a good husband."
+            },
+            {
+              "text": "Sein Vater und seine Mutter sind froh, und ihr Sohn ist es auch.",
+              "english": "His father and his mother are glad, and their son is too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Danke",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "jonas",
+              "text": "Danke, Sam!",
+              "english": "Thank you, Sam!"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Danke, Herr Schmidt!",
+              "english": "Thank you, Herr Schmidt!"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Ich danke auch Gott.",
+              "english": "I thank God too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Du hast eine Stelle, und ich habe einen Freund.",
+              "english": "You have a job, and I have a friend."
+            },
+            {
+              "text": "Sie gehen in die Bäckerei, und Herr Schmidt gibt ihnen Brötchen mit Butter und Käse.",
+              "english": "They go to the bakery, and Herr Schmidt gives them rolls with butter and cheese."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

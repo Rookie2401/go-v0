@@ -1,0 +1,911 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-03",
+  "lang": "de",
+  "title": "Ein langer Anruf",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-03",
+    "title": "\"Ein langer Anruf\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Marta is Anna's grandmother and speaks to her with du; she is about eighty, warm and curious, uses short sentences and some everyday phrases (\"Ach, Kind\"). The relation of Ben to the family is left open. Please check phone-call phrases (Ich bin dran, Bist du noch da?)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "A": "Anna",
+    "M": "Marta"
+  },
+  "sections": [
+    {
+      "title": "In der Pause",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Mittwoch, zwei Uhr nachmittags.",
+              "english": "It is Wednesday, two o'clock in the afternoon."
+            },
+            {
+              "text": "Anna hat im Krankenhaus eine halbe Stunde Pause.",
+              "english": "Anna has a half hour break at the hospital."
+            },
+            {
+              "text": "Sie sitzt allein im Aufenthaltsraum und trinkt Kaffee.",
+              "english": "She is sitting alone in the staff room drinking coffee."
+            },
+            {
+              "text": "Dann nimmt sie ihr Telefon und ruft ihre Großmutter an.",
+              "english": "Then she takes her phone and calls her grandmother."
+            },
+            {
+              "text": "Marta ist schon über achtzig und wohnt noch in ihrem Haus.",
+              "english": "Marta is over eighty already and still lives in her house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hallo?",
+              "english": "Hello?",
+              "speaker": "M"
+            },
+            {
+              "text": "Wer ist da?",
+              "english": "Who is there?",
+              "speaker": "M"
+            },
+            {
+              "text": "Hallo, Oma, ich bin es, Anna.",
+              "english": "Hello, Oma, it is me, Anna.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ach, meine Enkelin!",
+              "english": "Ah, my granddaughter!",
+              "speaker": "M"
+            },
+            {
+              "text": "Wie schön, dass du anrufst.",
+              "english": "How nice that you are calling.",
+              "speaker": "M"
+            },
+            {
+              "text": "Wie geht es dir?",
+              "english": "How are you?",
+              "speaker": "A"
+            },
+            {
+              "text": "Hörst du mich gut?",
+              "english": "Can you hear me well?",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich höre dich schlecht.",
+              "english": "I can hear you badly.",
+              "speaker": "M"
+            },
+            {
+              "text": "Die Verbindung ist nicht gut.",
+              "english": "The connection is not good.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich gehe ans Fenster.",
+              "english": "I am going to the window.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ist es jetzt besser?",
+              "english": "Is it better now?",
+              "speaker": "A"
+            },
+            {
+              "text": "Ja, jetzt höre ich dich.",
+              "english": "Yes, now I can hear you.",
+              "speaker": "M"
+            },
+            {
+              "text": "Mir geht es gut, Kind.",
+              "english": "I am fine, child.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich war heute Morgen auf dem Markt, und ich habe alles Brot verkauft.",
+              "english": "This morning I was at the market, and I sold all the bread.",
+              "speaker": "M"
+            },
+            {
+              "text": "Das ist wunderbar.",
+              "english": "That is wonderful.",
+              "speaker": "A"
+            },
+            {
+              "text": "War viel los?",
+              "english": "Was it busy?",
+              "speaker": "A"
+            },
+            {
+              "text": "Sehr viel.",
+              "english": "Very.",
+              "speaker": "M"
+            },
+            {
+              "text": "Die Leute kaufen jetzt wieder gern Brot.",
+              "english": "People like buying bread again now.",
+              "speaker": "M"
+            },
+            {
+              "text": "Aber sag mir, was gibt es bei euch Neues?",
+              "english": "But tell me, what is new with you?",
+              "speaker": "M"
+            },
+            {
+              "text": "Hast du eine Neuigkeit für mich?",
+              "english": "Do you have any news for me?",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich habe sogar zwei, aber eine ist nicht von mir.",
+              "english": "I have even two, but one is not from me.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Neuigkeiten von Sam",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Die erste Neuigkeit ist von Sam: Er hat sich diese Woche angemeldet.",
+              "english": "The first piece of news is about Sam: he registered this week.",
+              "speaker": "A"
+            },
+            {
+              "text": "Angemeldet?",
+              "english": "Registered?",
+              "speaker": "M"
+            },
+            {
+              "text": "Wo denn?",
+              "english": "Where?",
+              "speaker": "M"
+            },
+            {
+              "text": "Beim Amt.",
+              "english": "At the office.",
+              "speaker": "A"
+            },
+            {
+              "text": "Jeder, der in Deutschland wohnt, muss das tun.",
+              "english": "Everyone who lives in Germany has to do that.",
+              "speaker": "A"
+            },
+            {
+              "text": "Das ist ein Ausländer, nicht wahr?",
+              "english": "He is a foreigner, isn't he?",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich meine, er kommt nicht aus Deutschland.",
+              "english": "I mean, he does not come from Germany.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ja, Sam ist ein Ausländer.",
+              "english": "Yes, Sam is a foreigner.",
+              "speaker": "A"
+            },
+            {
+              "text": "Er braucht deshalb auch eine Erlaubnis für den Aufenthalt.",
+              "english": "So he also needs a permit for his stay.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ein Visum hatte er schon aus Amerika, aber das reicht hier nicht.",
+              "english": "He already had a visa from America, but that is not enough here.",
+              "speaker": "A"
+            },
+            {
+              "text": "Das klingt kompliziert.",
+              "english": "That sounds complicated.",
+              "speaker": "M"
+            },
+            {
+              "text": "Es war nicht einfach.",
+              "english": "It was not easy.",
+              "speaker": "A"
+            },
+            {
+              "text": "Er musste ein Formular ausfüllen.",
+              "english": "He had to fill in a form.",
+              "speaker": "A"
+            },
+            {
+              "text": "Dann musste er seinen Ausweis zeigen und seine Unterschrift daruntersetzen.",
+              "english": "Then he had to show his identity card and put his signature underneath.",
+              "speaker": "A"
+            },
+            {
+              "text": "Und das Geld?",
+              "english": "And the money?",
+              "speaker": "M"
+            },
+            {
+              "text": "Gibt es eine Gebühr?",
+              "english": "Is there a fee?",
+              "speaker": "M"
+            },
+            {
+              "text": "Für die Anmeldung nicht.",
+              "english": "Not for the registration.",
+              "speaker": "A"
+            },
+            {
+              "text": "Für den Antrag auf die Erlaubnis schon.",
+              "english": "For the application for the permit, yes.",
+              "speaker": "A"
+            },
+            {
+              "text": "Bei der Behörde hat ein Mitarbeiter am Schalter gewartet.",
+              "english": "At the authority an employee was waiting at the counter.",
+              "speaker": "A"
+            },
+            {
+              "text": "Er war nett, aber die Öffnungszeit war kurz, nur bis zwölf Uhr.",
+              "english": "He was nice, but the opening time was short, only until twelve.",
+              "speaker": "A"
+            },
+            {
+              "text": "Mein Gott, und dann?",
+              "english": "Goodness, and then?",
+              "speaker": "M"
+            },
+            {
+              "text": "Dann hat Sam eine Bescheinigung bekommen.",
+              "english": "Then Sam got a certificate.",
+              "speaker": "A"
+            },
+            {
+              "text": "Darauf steht sein Wohnsitz: Frau Webers Haus.",
+              "english": "His place of residence is on it: Frau Weber's house.",
+              "speaker": "A"
+            },
+            {
+              "text": "Frau Weber!",
+              "english": "Frau Weber!",
+              "speaker": "M"
+            },
+            {
+              "text": "Das ist die nette Dame, die ein Zimmer vermietet.",
+              "english": "That is the nice lady who rents out a room.",
+              "speaker": "M"
+            },
+            {
+              "text": "Genau.",
+              "english": "Exactly.",
+              "speaker": "A"
+            },
+            {
+              "text": "Die Post von der Behörde kommt jetzt in ihren Briefkasten.",
+              "english": "The post from the authority now comes into her letterbox.",
+              "speaker": "A"
+            },
+            {
+              "text": "Wenn man seine Papiere nicht abgibt, gibt es doch bestimmt Ärger.",
+              "english": "If you do not hand in your papers there is surely trouble.",
+              "speaker": "M"
+            },
+            {
+              "text": "Sam hat alles abgegeben.",
+              "english": "Sam handed everything in.",
+              "speaker": "A"
+            },
+            {
+              "text": "Er hat sogar im Raum 12 gewartet, bis man ihn aufgerufen hat.",
+              "english": "He even waited in room 12 until they called him.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ein guter Junge.",
+              "english": "A good boy.",
+              "speaker": "M"
+            },
+            {
+              "text": "Und wie geht es ihm sonst?",
+              "english": "And how is he otherwise?",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sam und die Gemeinde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Er ist erst im Sommer nach Leipzig umgezogen.",
+              "english": "He only moved to Leipzig in the summer.",
+              "speaker": "A"
+            },
+            {
+              "text": "Er lernt viel und gewöhnt sich langsam an alles.",
+              "english": "He is learning a lot and slowly getting used to everything.",
+              "speaker": "A"
+            },
+            {
+              "text": "Die Kultur ist ihm noch ein bisschen fremd.",
+              "english": "The culture is still a little strange to him.",
+              "speaker": "A"
+            },
+            {
+              "text": "Manchmal hat er noch Heimweh, und er vermisst seine Mutter und seine Heimat.",
+              "english": "Sometimes he is still homesick, and he misses his mother and his home country.",
+              "speaker": "A"
+            },
+            {
+              "text": "Der Abschied von ihr war schwer.",
+              "english": "The farewell from her was hard.",
+              "speaker": "A"
+            },
+            {
+              "text": "Er muss sich noch entscheiden, ob er ein zweites Jahr bleibt.",
+              "english": "He still has to decide whether he will stay a second year.",
+              "speaker": "A"
+            },
+            {
+              "text": "Er hat ihr gestern ein Päckchen geschickt, mit einem Brief und einem Gruß von Frau Weber.",
+              "english": "He sent her a parcel yesterday, with a letter and a greeting from Frau Weber.",
+              "speaker": "A"
+            },
+            {
+              "text": "Mit einer Briefmarke, hoffe ich.",
+              "english": "With a stamp, I hope.",
+              "speaker": "M"
+            },
+            {
+              "text": "Sonst kommt es nicht an.",
+              "english": "Otherwise it will not arrive.",
+              "speaker": "M"
+            },
+            {
+              "text": "Natürlich mit einer Briefmarke, Oma.",
+              "english": "Of course with a stamp, Oma.",
+              "speaker": "A"
+            },
+            {
+              "text": "Wir sind doch in Deutschland.",
+              "english": "We are in Germany, after all.",
+              "speaker": "A"
+            },
+            {
+              "text": "Und was macht er sonst den ganzen Tag?",
+              "english": "And what does he do all day otherwise?",
+              "speaker": "M"
+            },
+            {
+              "text": "Er geht zum Sprachkurs, und am Abend sitzt er oft am Computer.",
+              "english": "He goes to the language course, and in the evening he often sits at the computer.",
+              "speaker": "A"
+            },
+            {
+              "text": "Er schreibt seiner Familie Mails und sucht im Internet nach Wörtern.",
+              "english": "He writes emails to his family and looks for words on the internet.",
+              "speaker": "A"
+            },
+            {
+              "text": "Früher hat man Briefe geschrieben und Post bekommen.",
+              "english": "In the old days you wrote letters and received post.",
+              "speaker": "M"
+            },
+            {
+              "text": "Das macht er auch noch, Oma.",
+              "english": "He still does that too, Oma.",
+              "speaker": "A"
+            },
+            {
+              "text": "Er liebt Briefe.",
+              "english": "He loves letters.",
+              "speaker": "A"
+            },
+            {
+              "text": "Und warum ist er hier?",
+              "english": "And why is he here?",
+              "speaker": "M"
+            },
+            {
+              "text": "Studiert er?",
+              "english": "Is he studying?",
+              "speaker": "M"
+            },
+            {
+              "text": "Er lernt Deutsch, aber er ist nicht an der Universität.",
+              "english": "He is learning German, but he is not at the university.",
+              "speaker": "A"
+            },
+            {
+              "text": "Er gehört zu einem Team.",
+              "english": "He belongs to a team.",
+              "speaker": "A"
+            },
+            {
+              "text": "Die Leute dort kommen aus dem Ausland.",
+              "english": "The people there come from abroad.",
+              "speaker": "A"
+            },
+            {
+              "text": "Sie wollen hier eine Gemeinde gründen.",
+              "english": "They want to found a church here.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ach, ein Missionar!",
+              "english": "Ah, a missionary!",
+              "speaker": "M"
+            },
+            {
+              "text": "In meiner Kindheit gab es so etwas bei uns nicht.",
+              "english": "When I was a child we had nothing like that.",
+              "speaker": "M"
+            },
+            {
+              "text": "David und Ruth sind ein Ehepaar.",
+              "english": "David and Ruth are a married couple.",
+              "speaker": "A"
+            },
+            {
+              "text": "Sie sind schon lange in dieser Mission.",
+              "english": "They have been in this mission for a long time.",
+              "speaker": "A"
+            },
+            {
+              "text": "Daniel hat Theologie studiert.",
+              "english": "Daniel studied theology.",
+              "speaker": "A"
+            },
+            {
+              "text": "Nach dem Studium hat er eine Berufung gespürt und eine Entscheidung getroffen.",
+              "english": "After his studies he felt a calling and made a decision.",
+              "speaker": "A"
+            },
+            {
+              "text": "Das sind mutige Leute.",
+              "english": "Those are brave people.",
+              "speaker": "M"
+            },
+            {
+              "text": "Wer unterstützt sie?",
+              "english": "Who supports them?",
+              "speaker": "M"
+            },
+            {
+              "text": "Ihre Heimatgemeinden schicken Spenden.",
+              "english": "Their home churches send donations.",
+              "speaker": "A"
+            },
+            {
+              "text": "Und unsere Gemeinde hilft auch.",
+              "english": "And our church helps too.",
+              "speaker": "A"
+            },
+            {
+              "text": "Dann gebe ich auch etwas.",
+              "english": "Then I will give something too.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich nenne es meine Freundschaft in Euro.",
+              "english": "I call it my friendship in euros.",
+              "speaker": "M"
+            },
+            {
+              "text": "Das ist lieb, Oma.",
+              "english": "That is kind, Oma.",
+              "speaker": "A"
+            },
+            {
+              "text": "Du hast ein großes Herz.",
+              "english": "You have a big heart.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich bin froh, dass ich eine Enkelin im Krankenhaus habe.",
+              "english": "I am glad that I have a granddaughter in the hospital.",
+              "speaker": "M"
+            },
+            {
+              "text": "Da bin ich nie allein.",
+              "english": "Then I am never alone.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich bin ja deine Enkelin, Oma.",
+              "english": "I am your granddaughter, after all, Oma.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich denke jeden Tag an dich.",
+              "english": "I think of you every day.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ein bisschen Freundschaft kann nicht schaden.",
+              "english": "A little friendship cannot hurt.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Video",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jetzt habe ich noch eine Neuigkeit, und die ist von Ben.",
+              "english": "Now I have one more piece of news, and it is from Ben.",
+              "speaker": "A"
+            },
+            {
+              "text": "Er hat in der Kinderkirche gespielt.",
+              "english": "He acted in the children's church.",
+              "speaker": "A"
+            },
+            {
+              "text": "Lukas hat ein Video gemacht.",
+              "english": "Lukas made a video.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ein Video?",
+              "english": "A video?",
+              "speaker": "M"
+            },
+            {
+              "text": "Was ist denn das?",
+              "english": "What is that?",
+              "speaker": "M"
+            },
+            {
+              "text": "Ein Film auf dem Telefon, Oma.",
+              "english": "A film on the phone, Oma.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich schicke es dir heute Abend.",
+              "english": "I will send it to you this evening.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich weiß nicht, ob ich es sehen kann.",
+              "english": "I do not know if I can watch it.",
+              "speaker": "M"
+            },
+            {
+              "text": "Mein Telefon ist alt.",
+              "english": "My phone is old.",
+              "speaker": "M"
+            },
+            {
+              "text": "Dann zeige ich es dir am Sonntag.",
+              "english": "Then I will show you on Sunday.",
+              "speaker": "A"
+            },
+            {
+              "text": "Du kommst zu uns, ja?",
+              "english": "You are coming to us, aren't you?",
+              "speaker": "A"
+            },
+            {
+              "text": "Sehr gern.",
+              "english": "Gladly.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ben spielt wohl den Sohn, der heimkehrt?",
+              "english": "I suppose Ben plays the son who comes home?",
+              "speaker": "M"
+            },
+            {
+              "text": "Nein, den jüngeren Sohn, der weggeht.",
+              "english": "No, the younger son, who goes away.",
+              "speaker": "A"
+            },
+            {
+              "text": "Er hat sich sehr gefreut.",
+              "english": "He was very pleased.",
+              "speaker": "A"
+            },
+            {
+              "text": "Der Junge ist wie sein Vater: Er redet gern und viel.",
+              "english": "The boy is like his father: he likes to talk, and a lot.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ja, und er vergisst immer seine Tasche.",
+              "english": "Yes, and he always forgets his bag.",
+              "speaker": "A"
+            },
+            {
+              "text": "Das war bei dir früher auch so.",
+              "english": "That was the same with you in the past.",
+              "speaker": "M"
+            },
+            {
+              "text": "Oma!",
+              "english": "Oma!",
+              "speaker": "A"
+            },
+            {
+              "text": "Das stimmt nicht!",
+              "english": "That is not true!",
+              "speaker": "A"
+            },
+            {
+              "text": "Doch, doch.",
+              "english": "Yes, yes.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich weiß alles über dich.",
+              "english": "I know everything about you.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Garten und Wetter",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Wie ist das Wetter bei euch in der Stadt?",
+              "english": "What is the weather like with you in the city?",
+              "speaker": "M"
+            },
+            {
+              "text": "Es regnet seit zwei Tagen.",
+              "english": "It has been raining for two days.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich habe keinen Schirm dabei.",
+              "english": "I do not have an umbrella with me.",
+              "speaker": "A"
+            },
+            {
+              "text": "Hier scheint die Sonne.",
+              "english": "Here the sun is shining.",
+              "speaker": "M"
+            },
+            {
+              "text": "Im Garten hängen noch viele Äpfel am Baum.",
+              "english": "In the garden there are still many apples on the tree.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich gebe dir einen Korb mit, den kannst du Lukas bringen.",
+              "english": "I will give you a basket that you can take to Lukas.",
+              "speaker": "M"
+            },
+            {
+              "text": "Sehr gern.",
+              "english": "Gladly.",
+              "speaker": "A"
+            },
+            {
+              "text": "Lukas isst bestimmt zehn Äpfel auf einmal.",
+              "english": "Lukas will certainly eat ten apples at once.",
+              "speaker": "A"
+            },
+            {
+              "text": "Und wie geht es ihm sonst?",
+              "english": "And how is he otherwise?",
+              "speaker": "M"
+            },
+            {
+              "text": "Schläft er genug?",
+              "english": "Does he sleep enough?",
+              "speaker": "M"
+            },
+            {
+              "text": "Er ist oft müde, weil er früh aufsteht und am Abend noch für die Schule arbeitet.",
+              "english": "He is often tired because he gets up early and in the evening still works for school.",
+              "speaker": "A"
+            },
+            {
+              "text": "Er soll mehr schlafen.",
+              "english": "He should sleep more.",
+              "speaker": "M"
+            },
+            {
+              "text": "Du auch, Anna.",
+              "english": "You too, Anna.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich schlafe, wenn ich frei habe.",
+              "english": "I will sleep when I am off.",
+              "speaker": "A"
+            },
+            {
+              "text": "Versprochen.",
+              "english": "I promise.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Zum Schluss",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Meine Pause ist gleich vorbei.",
+              "english": "My break is nearly over.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich muss wieder auf die Station.",
+              "english": "I have to go back to the ward.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ach schade.",
+              "english": "Oh, what a pity.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich habe noch so viele Fragen.",
+              "english": "I still have so many questions.",
+              "speaker": "M"
+            },
+            {
+              "text": "Frag mich am Sonntag.",
+              "english": "Ask me on Sunday.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich habe dann Zeit.",
+              "english": "I will have time then.",
+              "speaker": "A"
+            },
+            {
+              "text": "Gut.",
+              "english": "Good.",
+              "speaker": "M"
+            },
+            {
+              "text": "Soll ich einen Kuchen mitbringen?",
+              "english": "Shall I bring a cake?",
+              "speaker": "M"
+            },
+            {
+              "text": "Ja, bitte.",
+              "english": "Yes, please.",
+              "speaker": "A"
+            },
+            {
+              "text": "Und bring bitte auch Brot mit, wenn du noch welches hast.",
+              "english": "And please bring some bread, too, if you still have any.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich habe immer Brot.",
+              "english": "I always have bread.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich bin doch deine Oma.",
+              "english": "I am your Oma, after all.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ich muss jetzt auflegen.",
+              "english": "I have to hang up now.",
+              "speaker": "A"
+            },
+            {
+              "text": "Bist du noch da?",
+              "english": "Are you still there?",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich bin noch da.",
+              "english": "I am still here.",
+              "speaker": "M"
+            },
+            {
+              "text": "Die Verbindung ist jetzt wieder sehr gut.",
+              "english": "The connection is very good again now.",
+              "speaker": "M"
+            },
+            {
+              "text": "Tschüs, Oma.",
+              "english": "Bye, Oma.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich rufe dich morgen wieder an.",
+              "english": "I will call you again tomorrow.",
+              "speaker": "A"
+            },
+            {
+              "text": "Tschüs, mein Kind.",
+              "english": "Bye, my child.",
+              "speaker": "M"
+            },
+            {
+              "text": "Gott behüte dich.",
+              "english": "God keep you.",
+              "speaker": "M"
+            },
+            {
+              "text": "Anna legt auf, nimmt ihre Tasche und geht zurück zur Arbeit.",
+              "english": "Anna hangs up, takes her bag and goes back to work."
+            },
+            {
+              "text": "Am Abend wird sie ihrer Großmutter das Video schicken, auch wenn die Verbindung nicht gut ist.",
+              "english": "In the evening she will send her grandmother the video, even if the connection is not good."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

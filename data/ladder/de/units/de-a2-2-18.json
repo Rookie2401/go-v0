@@ -1,0 +1,676 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-18",
+  "lang": "de",
+  "title": "Der Schlüssel, der zurückkam",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-18",
+    "title": "\"Der Schlüssel, der zurückkam\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. A story in the Präteritum (with Plusquamperfekt for earlier events) built from the lost-object draft weg-3-01, with a new plot about Marta's keys. All persons are invented. The Fundbüro and the second-hand clothes collection are described simply; please check German practice (a finder normally hands a found key to the Fundbüro, but leaving it in the letterbox is plausible when the finder knows the address)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "MA": "Marta",
+    "BE": "Ben",
+    "FW": "Frau Weber",
+    "AN": "Anna",
+    "FR": "Fremde"
+  },
+  "sections": [
+    {
+      "title": "Auf dem Markt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta verkauft seit vierzig Jahren Brot auf dem Markt, und seit vierzig Jahren hat sie immer denselben Schlüsselbund.",
+              "english": "Marta has sold bread at the market for forty years, and for forty years she has always had the same bunch of keys."
+            },
+            {
+              "text": "Es sind drei alte Schlüssel mit einem kleinen Anhänger aus Holz.",
+              "english": "They are three old keys with a small wooden tag."
+            },
+            {
+              "text": "Auf dem Anhänger steht der Name ihrer Bäckerei, und er ist schon ganz dunkel geworden.",
+              "english": "On the tag is the name of her bakery, and it has already become quite dark."
+            },
+            {
+              "text": "An einem Samstag im Herbst war Marta mit Ben auf dem Markt.",
+              "english": "On a Saturday in autumn Marta was at the market with Ben."
+            },
+            {
+              "text": "Ben war damals zehn Jahre alt.",
+              "english": "Ben was ten years old at that time."
+            },
+            {
+              "text": "Es war kalt, und Marta trug ihren alten Mantel.",
+              "english": "It was cold, and Marta was wearing her old coat."
+            },
+            {
+              "text": "Am Abend, als sie nach Hause kamen, waren die Schlüssel nicht mehr da.",
+              "english": "In the evening, when they came home, the keys were gone."
+            },
+            {
+              "text": "Wo ist mein Schlüsselbund?",
+              "english": "Where is my bunch of keys?",
+              "speaker": "MA"
+            },
+            {
+              "text": "Ich hatte ihn doch in der Tasche!",
+              "english": "I did have it in my pocket!",
+              "speaker": "MA"
+            },
+            {
+              "text": "Hast du wirklich in der Tasche gesucht, Oma?",
+              "english": "Did you really look in your pocket, Oma?",
+              "speaker": "BE"
+            },
+            {
+              "text": "Ich habe in allen Taschen gesucht.",
+              "english": "I looked in all the pockets.",
+              "speaker": "MA"
+            },
+            {
+              "text": "Sie sind weg.",
+              "english": "They are gone.",
+              "speaker": "MA"
+            },
+            {
+              "text": "Zum Glück hatte Frau Weber, ihre alte Nachbarin, einen Ersatzschlüssel.",
+              "english": "Fortunately Frau Weber, her old neighbour, had a spare key."
+            },
+            {
+              "text": "Marta kam ins Haus, aber sie schlief schlecht.",
+              "english": "Marta got into the house, but she slept badly."
+            },
+            {
+              "text": "Sie hatte Sorge, und sie hatte das Gefühl, etwas Wichtiges verloren zu haben.",
+              "english": "She was worried, and she had the feeling of having lost something important."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Im Fundbüro",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Montag gingen Marta und Ben zum Fundbüro.",
+              "english": "On Monday Marta and Ben went to the lost property office."
+            },
+            {
+              "text": "Das Fundbüro lag in einem grauen Gebäude.",
+              "english": "The lost property office was in a grey building."
+            },
+            {
+              "text": "Drinnen war es still.",
+              "english": "Inside it was quiet."
+            },
+            {
+              "text": "Hinter dem Schalter saß ein Mann mit einer Brille.",
+              "english": "Behind the counter sat a man with glasses."
+            },
+            {
+              "text": "Er schrieb etwas auf ein Blatt Papier.",
+              "english": "He was writing something on a sheet of paper."
+            },
+            {
+              "text": "Neben ihm standen viele Regale, und darin lagen Mützen, Handys und Taschen.",
+              "english": "Next to him stood many shelves, and in them lay hats, phones and bags."
+            },
+            {
+              "text": "Es war eine große Auswahl an verlorenen Dingen.",
+              "english": "It was a big selection of lost things."
+            },
+            {
+              "text": "Oma, schau, so viele Sachen!",
+              "english": "Oma, look, so many things!",
+              "speaker": "BE"
+            },
+            {
+              "text": "Gehört das alles jemandem?",
+              "english": "Does all of that belong to somebody?",
+              "speaker": "BE"
+            },
+            {
+              "text": "Ja, Ben.",
+              "english": "Yes, Ben.",
+              "speaker": "MA"
+            },
+            {
+              "text": "Aber die Leute holen sie oft nicht ab.",
+              "english": "But people often do not collect them.",
+              "speaker": "MA"
+            },
+            {
+              "text": "Der Mann fragte: Was haben Sie verloren?",
+              "english": "The man asked: what have you lost?"
+            },
+            {
+              "text": "Marta sagte, was es war, und sie zeichnete den Anhänger.",
+              "english": "Marta said what it was, and she drew the tag."
+            },
+            {
+              "text": "Er suchte in einem großen Buch, aber er fand nichts.",
+              "english": "He searched in a big book, but he found nothing."
+            },
+            {
+              "text": "Das tut mir leid, sagte er.",
+              "english": "I am sorry, he said."
+            },
+            {
+              "text": "Kommen Sie nächste Woche wieder.",
+              "english": "Come again next week."
+            },
+            {
+              "text": "Vielleicht gibt es eine Spur.",
+              "english": "Perhaps there will be a trace."
+            },
+            {
+              "text": "Marta ging nach Hause, und sie war traurig.",
+              "english": "Marta went home, and she was sad."
+            },
+            {
+              "text": "Sie dachte: Ein alter Schlüssel, und niemand findet ihn.",
+              "english": "She thought: an old key, and nobody finds it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Eine Frage des Geldes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Während die Wochen vergingen, gab es von den Schlüsseln keine Spur.",
+              "english": "While the weeks passed there was no trace of the keys."
+            },
+            {
+              "text": "Frau Weber sagte: Rufen Sie im Fundbüro noch einmal an.",
+              "english": "Frau Weber said: call the lost property office once more."
+            },
+            {
+              "text": "Und lassen Sie das Schloss austauschen.",
+              "english": "And have the lock replaced."
+            },
+            {
+              "text": "Das ist sicherer.",
+              "english": "That is safer."
+            },
+            {
+              "text": "Marta fragte: Was kostet das?",
+              "english": "Marta asked: what does that cost?"
+            },
+            {
+              "text": "Frau Weber antwortete: Ungefähr 180 Euro.",
+              "english": "Frau Weber answered: about 180 euros."
+            },
+            {
+              "text": "Das war viel Geld für Marta.",
+              "english": "That was a lot of money for Marta."
+            },
+            {
+              "text": "Ihre Rente war klein, und auf ihrem Konto war nicht viel.",
+              "english": "Her pension was small, and there was not much in her account."
+            },
+            {
+              "text": "Sie wollte nicht zur Bank gehen und einen Kredit nehmen.",
+              "english": "She did not want to go to the bank and take a loan."
+            },
+            {
+              "text": "Sie hatte Angst vor den Zinsen.",
+              "english": "She was afraid of the interest."
+            },
+            {
+              "text": "Frau Weber bot ihr an, das Geld zu leihen.",
+              "english": "Frau Weber offered to lend her the money."
+            },
+            {
+              "text": "Sie sagte: Sie können es später zurückzahlen.",
+              "english": "She said: you can pay it back later."
+            },
+            {
+              "text": "Aber Marta war ehrlich und stolz.",
+              "english": "But Marta was honest and proud."
+            },
+            {
+              "text": "Sie sagte: Ich nehme kein Geld, das ich vielleicht nicht wiedergeben kann.",
+              "english": "She said: I do not take money that I perhaps cannot give back."
+            },
+            {
+              "text": "Frau Weber hatte Verständnis.",
+              "english": "Frau Weber understood."
+            },
+            {
+              "text": "Sie sagte: Dann warten wir noch eine Woche.",
+              "english": "She said: then we will wait another week."
+            },
+            {
+              "text": "Man kann sich auf Geduld verlassen.",
+              "english": "One can rely on patience."
+            },
+            {
+              "text": "Ben wollte helfen.",
+              "english": "Ben wanted to help."
+            },
+            {
+              "text": "Er sammelte nach der Schule leere Flaschen und brachte das Pfand zurück.",
+              "english": "After school he collected empty bottles and brought back the deposit."
+            },
+            {
+              "text": "Er sammelte auch altes Papier und Abfall im Park, damit er die Umwelt schützt und etwas Geld verdient.",
+              "english": "He also collected old paper and rubbish in the park so that he protects the environment and earns some money."
+            },
+            {
+              "text": "Trotzdem war das Geld nicht genug.",
+              "english": "All the same the money was not enough."
+            },
+            {
+              "text": "Marta schüttelte den Kopf und sagte: Du bist ein guter Junge, aber das ist nicht deine Sorge.",
+              "english": "Marta shook her head and said: you are a good boy, but that is not your worry."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Fremde aus Hamburg",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "In Hamburg lebte zur gleichen Zeit eine junge Frau, die gerade das Abitur gemacht hatte.",
+              "english": "In Hamburg at the same time lived a young woman who had just taken her Abitur."
+            },
+            {
+              "text": "Sie träumte davon, Krankenschwester zu werden und in der Pflege zu arbeiten, und sie wollte in einer anderen Stadt neu anfangen.",
+              "english": "She dreamed of becoming a nurse and working in nursing, and she wanted to start anew in another city."
+            },
+            {
+              "text": "Sie hatte im Internet einen schönen Mantel gekauft, der günstig war.",
+              "english": "She had bought a beautiful coat on the internet that was cheap."
+            },
+            {
+              "text": "Er kam aus Leipzig, aus einer Kleidersammlung der Gemeinde.",
+              "english": "It came from Leipzig, from a clothes collection of the church."
+            },
+            {
+              "text": "Marta hatte ihn dort abgegeben, weil sie einen neuen bekommen hatte.",
+              "english": "Marta had handed it in there because she had received a new one."
+            },
+            {
+              "text": "Eines Tages entdeckte die junge Frau in einer Tasche etwas Hartes.",
+              "english": "One day the young woman discovered something hard in a pocket."
+            },
+            {
+              "text": "Es waren drei Schlüssel, und daran hing ein Anhänger aus Holz.",
+              "english": "It was three keys, and on them hung a wooden tag."
+            },
+            {
+              "text": "Auf dem Anhänger stand: „Brot aus Martas Backstube, Markt Leipzig“.",
+              "english": "On the tag it said: \"Bread from Marta's bakery, market Leipzig\"."
+            },
+            {
+              "text": "Die junge Frau war überrascht.",
+              "english": "The young woman was surprised."
+            },
+            {
+              "text": "Sie dachte: Das ist kein Zufall.",
+              "english": "She thought: this is no coincidence."
+            },
+            {
+              "text": "Das ist eine Spur, und ich muss ihr folgen.",
+              "english": "This is a trace, and I must follow it."
+            },
+            {
+              "text": "Bald darauf bekam sie eine Einladung zu einem Interview in Leipzig, bei einem Krankenhaus.",
+              "english": "Soon afterwards she received an invitation to an interview in Leipzig, at a hospital."
+            },
+            {
+              "text": "Sie sah das als Zeichen, und sie sagte sich: Wenn ich ohnehin dorthin fahre, nehme ich die Schlüssel mit.",
+              "english": "She saw that as a sign, and she told herself: if I am going there anyway, I will take the keys with me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Ankunft in Leipzig",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Die Reise war lang, und die Landschaft draußen war grau.",
+              "english": "The journey was long, and the landscape outside was grey."
+            },
+            {
+              "text": "Sie hatte Stress, weil sie das Interview bestehen wollte.",
+              "english": "She was stressed because she wanted to do well in the interview."
+            },
+            {
+              "text": "In Leipzig bekam sie eine Unterkunft bei einer Gastfamilie.",
+              "english": "In Leipzig she got accommodation with a host family."
+            },
+            {
+              "text": "Die Gastfreundschaft dort beeindruckte sie.",
+              "english": "The hospitality there impressed her."
+            },
+            {
+              "text": "Am Abend schrieb sie in ihr Tagebuch: Heute Ankunft in Leipzig.",
+              "english": "In the evening she wrote in her diary: today arrival in Leipzig."
+            },
+            {
+              "text": "Mein erster Eindruck: Die Stadt ist ähnlich wie Hamburg, aber doch verschieden.",
+              "english": "My first impression: the city is similar to Hamburg, but still different."
+            },
+            {
+              "text": "Sie schrieb weiter: Ich erlebe viel.",
+              "english": "She went on writing: I am experiencing a lot."
+            },
+            {
+              "text": "Der Unterschied zu zu Hause ist groß, aber es ist ein schönes Erlebnis.",
+              "english": "The difference from home is great, but it is a nice experience."
+            },
+            {
+              "text": "Am Morgen machte sie einen Spaziergang im Nebel.",
+              "english": "In the morning she took a walk in the fog."
+            },
+            {
+              "text": "Die Begegnung mit der Stadt war eine Überraschung.",
+              "english": "The encounter with the city was a surprise."
+            },
+            {
+              "text": "Beim Interview traf sie Anna, die dort im Krankenhaus arbeitet.",
+              "english": "At the interview she met Anna, who works there in the hospital."
+            },
+            {
+              "text": "Anna zeigte ihr die Station.",
+              "english": "Anna showed her the ward."
+            },
+            {
+              "text": "Wie gefällt Ihnen Leipzig?",
+              "english": "How do you like Leipzig?",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ist es anders als Hamburg?",
+              "english": "Is it different from Hamburg?",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ja, es ist ruhiger, aber es hat tatsächlich Vorteile.",
+              "english": "Yes, it is quieter, but it really has advantages.",
+              "speaker": "FR"
+            },
+            {
+              "text": "Das Leben ist günstiger, bequemer und einfacher.",
+              "english": "Life is cheaper, more comfortable and simpler.",
+              "speaker": "FR"
+            },
+            {
+              "text": "Außerdem ist die Qualität der Stadt gut.",
+              "english": "Besides, the quality of the city is good.",
+              "speaker": "FR"
+            },
+            {
+              "text": "Es gibt viel Auswahl und praktische Wege.",
+              "english": "There is much choice and practical routes.",
+              "speaker": "FR"
+            },
+            {
+              "text": "Jedoch kenne ich hier niemanden.",
+              "english": "However, I know nobody here.",
+              "speaker": "FR"
+            },
+            {
+              "text": "Das ist ein Nachteil, aber er ist nicht schwer zu lösen.",
+              "english": "That is a disadvantage, but it is not hard to solve.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Wir haben eine Gemeinde, die gern neue Menschen aufnimmt.",
+              "english": "We have a church that gladly takes in new people.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Allerdings ist der Wohnort wichtig.",
+              "english": "However the place where one lives is important.",
+              "speaker": "FR"
+            },
+            {
+              "text": "Ich glaube, ich wohne lieber hier.",
+              "english": "I think I would rather live here.",
+              "speaker": "FR"
+            },
+            {
+              "text": "Je mehr ich sehe, desto besser gefällt es mir.",
+              "english": "The more I see, the more I like it.",
+              "speaker": "FR"
+            },
+            {
+              "text": "Nach dem Gespräch ging die junge Frau auf den Markt.",
+              "english": "After the conversation the young woman went to the market."
+            },
+            {
+              "text": "Sie wollte ihre Aufgabe erfüllen, bevor die Abreise kam.",
+              "english": "She wanted to fulfil her task before the departure came."
+            },
+            {
+              "text": "Marta war an diesem Tag nicht da.",
+              "english": "Marta was not there that day."
+            },
+            {
+              "text": "Aber ein Bäcker, der nebenan stand, erkannte den Anhänger sofort.",
+              "english": "But a baker who stood next door recognised the tag at once."
+            },
+            {
+              "text": "Er sagte: Das ist Martas.",
+              "english": "He said: that is Marta's."
+            },
+            {
+              "text": "Sie wohnt in der Hauptstraße.",
+              "english": "She lives in the main street."
+            },
+            {
+              "text": "Die junge Frau ging zum Haus, aber niemand öffnete.",
+              "english": "The young woman went to the house, but nobody opened."
+            },
+            {
+              "text": "Da warf sie die Schlüssel in den Briefkasten.",
+              "english": "So she threw the keys into the letterbox."
+            },
+            {
+              "text": "Sie schrieb einen kurzen Zettel dazu: „Gefunden in einer Tasche. Alles Gute! Eine Fremde aus Hamburg.“",
+              "english": "She wrote a short note to go with it: \"Found in a pocket. All the best! A stranger from Hamburg.\""
+            },
+            {
+              "text": "Schließlich fuhr sie am Abend zurück.",
+              "english": "In the end she travelled back in the evening."
+            },
+            {
+              "text": "Die Heimreise war lang, aber sie war unterwegs sehr glücklich.",
+              "english": "The journey home was long, but on the way she was very happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Rätsel wird gelöst",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Als Marta am Abend nach Hause kam, entdeckte sie etwas Schweres im Briefkasten.",
+              "english": "When Marta came home in the evening, she discovered something heavy in the letterbox."
+            },
+            {
+              "text": "Sie nahm es heraus und erkannte es sofort.",
+              "english": "She took it out and recognised it at once."
+            },
+            {
+              "text": "Ihr Herz klopfte laut.",
+              "english": "Her heart beat loudly."
+            },
+            {
+              "text": "Marta war überrascht und konnte kaum sprechen.",
+              "english": "Marta was surprised and could hardly speak."
+            },
+            {
+              "text": "Mein Schlüsselbund!",
+              "english": "My bunch of keys!",
+              "speaker": "MA"
+            },
+            {
+              "text": "Wie ist er hierher gekommen?",
+              "english": "How did it get here?",
+              "speaker": "MA"
+            },
+            {
+              "text": "Nachdem sie den Zettel gelesen hatte, verstand sie noch nicht alles.",
+              "english": "After she had read the note she still did not understand everything."
+            },
+            {
+              "text": "Sie war nur dankbar und glücklich.",
+              "english": "She was simply grateful and happy."
+            },
+            {
+              "text": "Ben kam hereingelaufen.",
+              "english": "Ben came running in."
+            },
+            {
+              "text": "Er hatte den Zettel entdeckt und rief: Oma, das ist ein Wunder!",
+              "english": "He had discovered the note and shouted: Oma, that is a miracle!"
+            },
+            {
+              "text": "Es ist kein Wunder, Ben, es ist ein Zufall.",
+              "english": "It is no miracle, Ben, it is a coincidence.",
+              "speaker": "MA"
+            },
+            {
+              "text": "Aber es ist ein gutes Rätsel.",
+              "english": "But it is a good puzzle.",
+              "speaker": "MA"
+            },
+            {
+              "text": "Am nächsten Tag erzählte Marta die Geschichte Frau Weber.",
+              "english": "The next day Marta told the story to Frau Weber."
+            },
+            {
+              "text": "Beide lachten und weinten zugleich.",
+              "english": "Both laughed and cried at the same time."
+            },
+            {
+              "text": "Das Rätsel ist gelöst: Sie haben den Mantel verschenkt, und die Schlüssel waren noch drin.",
+              "english": "The puzzle is solved: you gave the coat away, and the keys were still in it.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Und die Fremde hat sie gefunden, und sie hat sie zurückgebracht.",
+              "english": "And the stranger found them, and she brought them back.",
+              "speaker": "MA"
+            },
+            {
+              "text": "Das ist wie ein Märchen.",
+              "english": "That is like a fairy tale.",
+              "speaker": "MA"
+            },
+            {
+              "text": "Eine Woche später erfuhr Anna, dass die junge Frau die Stelle bekommen hatte.",
+              "english": "A week later Anna heard that the young woman had got the job."
+            },
+            {
+              "text": "Die Fremde ist jetzt unsere Kollegin.",
+              "english": "The stranger is now our colleague.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Das hat mich sehr überrascht, und es war nicht schwierig, sie zu mögen.",
+              "english": "That surprised me very much, and it was not difficult to like her.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Marta lud sie zum Essen ein, damit sie sich persönlich bedanken konnte.",
+              "english": "Marta invited her to dinner so that she could thank her in person."
+            },
+            {
+              "text": "Die junge Frau war dankbar für die Einladung, und Marta ist ihr bis heute dankbar.",
+              "english": "The young woman was grateful for the invitation, and Marta is grateful to her to this day."
+            },
+            {
+              "text": "Inzwischen hängen die Schlüssel an einem Nagel neben der Tür.",
+              "english": "By now the keys hang on a nail next to the door."
+            },
+            {
+              "text": "Sie sind für Marta eine Erinnerung an Hamburg.",
+              "english": "For Marta they are a memory of Hamburg."
+            },
+            {
+              "text": "Sie sieht sie jeden Tag, und sie erinnert sich.",
+              "english": "She sees them every day, and she remembers."
+            },
+            {
+              "text": "Es war ein glücklicher Zufall, und es war ein Rätsel für alle.",
+              "english": "It was a happy coincidence, and it was a puzzle for everybody."
+            },
+            {
+              "text": "Aber ein Teil der Geschichte bleibt: Man kann sich auf gute Menschen verlassen.",
+              "english": "But a part of the story remains: one can rely on good people."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

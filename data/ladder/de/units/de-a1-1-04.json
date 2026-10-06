@@ -1,0 +1,455 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-04",
+  "lang": "de",
+  "title": "Breakfast at the bakery café",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-04",
+    "title": "Breakfast at the bakery café (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Sie between Sam or Anna and Herr Schmidt; du between Sam and Anna. \"Brötchen\" is the word used in Leipzig (not Semmel or Schrippe). \"Was möchten Sie?\" and \"Ich nehme ...\" are the usual bakery phrases; \"ein Frühstück\" is a set breakfast on the menu. The bakery has a small corner with tables; \"Café\" is avoided in this unit on purpose."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "food",
+    "ordering",
+    "bakery",
+    "breakfast"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "food"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "anna": "Anna",
+    "schmidt": "Herr Schmidt",
+    "lukas": "Lukas"
+  },
+  "sections": [
+    {
+      "title": "In der Bäckerei",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam und Anna sind in der Bäckerei.",
+              "english": "Sam and Anna are in the bakery."
+            },
+            {
+              "text": "Es ist Morgen.",
+              "english": "It is morning."
+            },
+            {
+              "text": "Sam hat Hunger.",
+              "english": "Sam is hungry."
+            },
+            {
+              "speaker": "anna",
+              "text": "Guten Tag, Herr Schmidt!",
+              "english": "Good day, Herr Schmidt!"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Guten Tag, Anna!",
+              "english": "Good day, Anna!"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Und wie ist Ihr Name?",
+              "english": "And what is your name?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bin Sam Miller.",
+              "english": "I am Sam Miller."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Herr Miller, Sie sprechen gut Deutsch!",
+              "english": "Mr Miller, you speak good German!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Nein, nein, ganz klein.",
+              "english": "No, no, very little."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Woher kommen Sie?",
+              "english": "Where do you come from?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich komme aus den USA.",
+              "english": "I come from the USA."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Das ist schön.",
+              "english": "That is nice."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Das ist meine Bäckerei.",
+              "english": "This is my bakery."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Frühstück",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "schmidt",
+              "text": "Was möchten Sie?",
+              "english": "What would you like?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe Hunger.",
+              "english": "I am hungry."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich möchte ein Frühstück.",
+              "english": "I would like a breakfast."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Gern.",
+              "english": "Gladly."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Das Frühstück kostet sieben Euro.",
+              "english": "The breakfast costs seven euros."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Es ist ein Brötchen mit Butter und Käse, ein Ei und Kaffee oder Tee.",
+              "english": "It is a roll with butter and cheese, an egg, and coffee or tea."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist gut.",
+              "english": "That is good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich nehme das Frühstück.",
+              "english": "I will take the breakfast."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich nehme ein Brötchen mit Butter und Käse.",
+              "english": "I will take a roll with butter and cheese."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich esse kein Ei.",
+              "english": "I do not eat egg."
+            },
+            {
+              "speaker": "anna",
+              "text": "Möchtest du Kaffee oder Tee, Sam?",
+              "english": "Would you like coffee or tea, Sam?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich nehme Kaffee mit Milch.",
+              "english": "I will take coffee with milk."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und ich möchte Tee mit Milch, bitte.",
+              "english": "And I would like tea with milk, please."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Gern. Kommen Sie, da ist ein Tisch.",
+              "english": "Come, there is a table."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Tisch",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna und Sam sind am Tisch.",
+              "english": "Anna and Sam are at the table."
+            },
+            {
+              "speaker": "anna",
+              "text": "Wie ist das Brötchen?",
+              "english": "How is the roll?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Es ist ganz gut!",
+              "english": "It is quite good!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Und der Käse ist sehr gut!",
+              "english": "And the cheese is very good!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Das Ei ist auch gut.",
+              "english": "The egg is good too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Hier ist Butter, Sam.",
+              "english": "Here is butter, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Zu Hause esse ich in der Küche von Frau Weber.",
+              "english": "At home I eat in Mrs Weber's kitchen."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Küche ist klein, und in meinem Zimmer gibt es keinen Kaffee.",
+              "english": "The kitchen is small, and in my room there is no coffee."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich arbeite heute in der Klinik.",
+              "english": "I am working at the clinic today."
+            },
+            {
+              "speaker": "anna",
+              "text": "Und du, Sam?",
+              "english": "And you, Sam?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Gehst du in die Stadt?",
+              "english": "Are you going into the city?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, ich gehe in die Stadt.",
+              "english": "Yes, I am going into the city."
+            },
+            {
+              "text": "Herr Schmidt kommt zum Tisch.",
+              "english": "Herr Schmidt comes to the table."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Hier, bitte.",
+              "english": "Here you are."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Da ist meine Tochter.",
+              "english": "There is my daughter."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Sie arbeitet auch hier.",
+              "english": "She works here too."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Und mein Vater ist 80 Jahre alt.",
+              "english": "And my father is 80 years old."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ihre Familie ist hier, das ist schön!",
+              "english": "Your family is here, that is lovely!"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Ja, ja.",
+              "english": "Yes, yes."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Ich trinke den ganzen Tag Kaffee mit Milch.",
+              "english": "I drink coffee with milk all day."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das ist gut, Herr Schmidt.",
+              "english": "That is good, Herr Schmidt."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Danke, Anna!",
+              "english": "Thank you, Anna!"
+            },
+            {
+              "text": "Lukas kommt in die Bäckerei.",
+              "english": "Lukas comes into the bakery."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Guten Morgen, Anna!",
+              "english": "Good morning, Anna!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Hallo, Sam!",
+              "english": "Hello, Sam!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Hallo, Lukas!",
+              "english": "Hello, Lukas!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Möchtest du Wasser oder Kaffee?",
+              "english": "Would you like water or coffee?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Nein, danke.",
+              "english": "No, thank you."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ich gehe in die Schule.",
+              "english": "I am going to school."
+            },
+            {
+              "text": "Anna und Sam gehen.",
+              "english": "Anna and Sam leave."
+            },
+            {
+              "speaker": "anna",
+              "text": "Einen schönen Tag, Herr Schmidt!",
+              "english": "Have a nice day, Herr Schmidt!"
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Danke, Ihnen auch!",
+              "english": "Thank you, you too!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Herr Schmidt!",
+              "english": "Thank you, Herr Schmidt!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Auf Wiedersehen!",
+              "english": "Goodbye!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich gehe in die Klinik, ich arbeite heute.",
+              "english": "I am going to the clinic, I am working today."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich bin müde, aber ich arbeite gern.",
+              "english": "I am tired, but I like working."
+            },
+            {
+              "speaker": "sam",
+              "text": "Du bist sehr gut, Anna.",
+              "english": "You are very good, Anna."
+            },
+            {
+              "speaker": "anna",
+              "text": "Danke, Sam.",
+              "english": "Thank you, Sam."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das ist schön.",
+              "english": "That is nice."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich gehe in die Stadt, zu Frau Weber.",
+              "english": "I am going into the city, to Mrs Weber's."
+            },
+            {
+              "speaker": "sam",
+              "text": "Es ist schön hier, Herr Schmidt.",
+              "english": "It is lovely here, Herr Schmidt."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Danke, Herr Miller.",
+              "english": "Thank you, Mr Miller."
+            },
+            {
+              "speaker": "schmidt",
+              "text": "Und Anna, du bist auch sehr gut.",
+              "english": "And Anna, you are very good too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Danke, Herr Schmidt!",
+              "english": "Thank you, Herr Schmidt!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Der Kaffee ist gut.",
+              "english": "The coffee is good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Es ist sehr schön hier, und ich bin gern in der Stadt.",
+              "english": "It is very lovely here, and I like being in the city."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,371 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-10",
+  "lang": "de",
+  "title": "The tram to the Hauptbahnhof",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-10",
+    "title": "The tram to the Hauptbahnhof (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A mixed narrative and dialogue. du among Sam, Anna and David (the team). In Leipzig the tram is \"die Straßenbahn\" (everyday: \"die Bahn\"); the main station is the Hauptbahnhof, here simply \"der Bahnhof\". Tickets are bought at the stop or in the tram; a ticket costs about three euros. David arrives from Berlin by train."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "travel",
+    "tram",
+    "train",
+    "tickets",
+    "müssen"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "anna": "Anna",
+    "david": "David"
+  },
+  "sections": [
+    {
+      "title": "An der Haltestelle",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist halb neun, und der Tag ist schön.",
+              "english": "It is half past eight, and the day is lovely."
+            },
+            {
+              "text": "Sam und Anna sind an der Haltestelle.",
+              "english": "Sam and Anna are at the stop."
+            },
+            {
+              "text": "Es ist kalt an der Haltestelle, aber die Sonne ist warm.",
+              "english": "It is cold at the stop, but the sun is warm."
+            },
+            {
+              "text": "David kommt heute mit dem Zug aus Berlin.",
+              "english": "David is coming today by train from Berlin."
+            },
+            {
+              "text": "Sam und Anna möchten zum Bahnhof fahren.",
+              "english": "Sam and Anna want to go to the station."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie fahren wir zum Bahnhof?",
+              "english": "How do we get to the station?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Mit der Straßenbahn.",
+              "english": "By tram."
+            },
+            {
+              "speaker": "anna",
+              "text": "Hier ist die Haltestelle.",
+              "english": "Here is the stop."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe kein Frühstück.",
+              "english": "I have not had breakfast."
+            },
+            {
+              "speaker": "sam",
+              "text": "Darf ich ein Brötchen nehmen?",
+              "english": "May I take a roll?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja, hier ist ein Brötchen mit Butter und Käse.",
+              "english": "Yes, here is a roll with butter and cheese."
+            },
+            {
+              "speaker": "anna",
+              "text": "Und hier ist ein Ei und ein Apfel.",
+              "english": "And here is an egg and an apple."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke!",
+              "english": "Thank you!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich nehme auch einen Apfel.",
+              "english": "I will take an apple too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Fahrkarte",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Müssen wir eine Fahrkarte kaufen?",
+              "english": "Do we have to buy a ticket?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja, wir müssen eine Fahrkarte kaufen.",
+              "english": "Yes, we have to buy a ticket."
+            },
+            {
+              "speaker": "anna",
+              "text": "Eine Fahrkarte kostet drei Euro.",
+              "english": "A ticket costs three euros."
+            },
+            {
+              "text": "Die Straßenbahn kommt in drei Minuten.",
+              "english": "The tram is coming in three minutes."
+            },
+            {
+              "speaker": "anna",
+              "text": "Der Zug aus Berlin kommt um zehn Uhr an.",
+              "english": "The train from Berlin arrives at ten o'clock."
+            },
+            {
+              "speaker": "anna",
+              "text": "Wir müssen bis zehn Uhr ankommen.",
+              "english": "We have to arrive by ten o'clock."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "In der Straßenbahn",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam und Anna fahren mit der Straßenbahn.",
+              "english": "Sam and Anna ride the tram."
+            },
+            {
+              "text": "Es sind zehn Minuten bis zum Bahnhof.",
+              "english": "It is ten minutes to the station."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das Wetter ist heute gut, Anna.",
+              "english": "The weather is good today, Anna."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja, und die Straße ist so schön in der Sonne.",
+              "english": "Yes, and the street is so lovely in the sun."
+            },
+            {
+              "speaker": "sam",
+              "text": "Was machst du heute, Anna?",
+              "english": "What are you doing today, Anna?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Um zwei Uhr gehe ich in die Klinik.",
+              "english": "At two o'clock I am going to the clinic."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich bin Krankenschwester, und Michael ist Arzt.",
+              "english": "I am a nurse, and Michael is a doctor."
+            },
+            {
+              "speaker": "anna",
+              "text": "Er ist ein sehr guter Mann.",
+              "english": "He is a very good man."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe um elf Uhr Klasse.",
+              "english": "I have class at eleven o'clock."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Klasse fängt um elf Uhr an.",
+              "english": "The class starts at eleven o'clock."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich bin Student, und ich lerne gern.",
+              "english": "I am a student, and I like learning."
+            },
+            {
+              "speaker": "anna",
+              "text": "Dann gehst du in die Klasse.",
+              "english": "Then you go to your class."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Bahnhof",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Der Bahnhof ist ganz groß.",
+              "english": "The station is very big."
+            },
+            {
+              "text": "Der Zug nach Dresden muss in drei Minuten abfahren.",
+              "english": "The train to Dresden has to leave in three minutes."
+            },
+            {
+              "text": "Er fährt nach Dresden ab.",
+              "english": "It leaves for Dresden."
+            },
+            {
+              "text": "Und da ist der Zug aus Berlin.",
+              "english": "And there is the train from Berlin."
+            },
+            {
+              "speaker": "david",
+              "text": "Hallo, Sam!",
+              "english": "Hello, Sam!"
+            },
+            {
+              "speaker": "david",
+              "text": "Hallo, Anna!",
+              "english": "Hello, Anna!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Hallo, David!",
+              "english": "Hello, David!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie geht's?",
+              "english": "How are you?"
+            },
+            {
+              "speaker": "david",
+              "text": "Gut, danke.",
+              "english": "Fine, thank you."
+            },
+            {
+              "speaker": "david",
+              "text": "Ich bin müde, aber ich bin hier.",
+              "english": "I am tired, but I am here."
+            },
+            {
+              "speaker": "anna",
+              "text": "Du hast Hunger, David?",
+              "english": "You are hungry, David?"
+            },
+            {
+              "speaker": "david",
+              "text": "Ja, ich habe großen Hunger.",
+              "english": "Yes, I am very hungry."
+            },
+            {
+              "speaker": "sam",
+              "text": "Möchtest du Kaffee mit Milch?",
+              "english": "Would you like coffee with milk?"
+            },
+            {
+              "speaker": "david",
+              "text": "Ja, bitte.",
+              "english": "Yes, please."
+            },
+            {
+              "speaker": "david",
+              "text": "Und ein Brötchen.",
+              "english": "And a roll."
+            },
+            {
+              "speaker": "anna",
+              "text": "Zu Hause koche ich das Mittagessen.",
+              "english": "At home I will cook lunch."
+            },
+            {
+              "speaker": "anna",
+              "text": "Es gibt Suppe, Kartoffeln und Fleisch.",
+              "english": "There is soup, potatoes and meat."
+            },
+            {
+              "speaker": "anna",
+              "text": "Und es gibt Kuchen.",
+              "english": "And there is cake."
+            },
+            {
+              "speaker": "david",
+              "text": "Das ist sehr gut!",
+              "english": "That is very good!"
+            },
+            {
+              "text": "Sam geht um elf Uhr in die Klasse.",
+              "english": "Sam goes to class at eleven o clock."
+            },
+            {
+              "speaker": "sam",
+              "text": "Bis morgen, David!",
+              "english": "See you tomorrow, David!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Anna!",
+              "english": "Thank you, Anna!"
+            },
+            {
+              "text": "Anna und David gehen nach Hause.",
+              "english": "Anna and David go home."
+            },
+            {
+              "text": "Sam geht in die Klasse.",
+              "english": "Sam goes to his class."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

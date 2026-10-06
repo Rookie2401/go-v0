@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-03",
+  "lang": "de",
+  "title": "A family photograph",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-03",
+    "title": "A family photograph (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. du between Sam, Anna, Lukas and Ben. Ages are written as digits where the number word is a long compound (62, 58). Anna's parents are called Klaus and Maria; Sam's sister is called Lena. \"Wie alt ist ...?\" and \"... Jahre alt\" are the normal forms. Ben is Marta's grandson; his mother is Marta's daughter."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "family",
+    "ages",
+    "possessives",
+    "numbers"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "anna": "Anna",
+    "lukas": "Lukas",
+    "ben": "Ben",
+    "marta": "Marta"
+  },
+  "sections": [
+    {
+      "title": "Ein Bild von der Familie",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam ist bei Anna und Lukas im Haus.",
+              "english": "Sam is at Anna and Lukas's house."
+            },
+            {
+              "text": "Es ist Sonntag.",
+              "english": "It is Sunday."
+            },
+            {
+              "speaker": "anna",
+              "text": "Sam, komm!",
+              "english": "Sam, come here!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Hier ist ein Bild von meiner Familie.",
+              "english": "Here is a picture of my family."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist ein schönes Bild!",
+              "english": "That is a lovely picture!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist Lukas, dein Bruder?",
+              "english": "That is Lukas, your brother?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja, das ist Lukas.",
+              "english": "Yes, that is Lukas."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das ist mein Vater und das ist meine Mutter.",
+              "english": "That is my father and that is my mother."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie heißen sie?",
+              "english": "What are they called?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Klaus und Maria.",
+              "english": "Klaus and Maria."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie alt ist dein Vater?",
+              "english": "How old is your father?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Er ist 62 Jahre alt.",
+              "english": "He is 62 years old."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und deine Mutter?",
+              "english": "And your mother?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Sie ist 58 Jahre alt.",
+              "english": "She is 58 years old."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich bin die Tochter von Klaus und Maria.",
+              "english": "I am the daughter of Klaus and Maria."
+            },
+            {
+              "speaker": "anna",
+              "text": "Lukas und ich sind ihre Kinder.",
+              "english": "Lukas and I are their children."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und du, Anna?",
+              "english": "And you, Anna?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ich bin 30.",
+              "english": "I am 30."
+            },
+            {
+              "speaker": "anna",
+              "text": "Lukas ist 33.",
+              "english": "Lukas is 33."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sams Familie",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anna",
+              "text": "Und deine Familie, Sam?",
+              "english": "And your family, Sam?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sie ist in den USA.",
+              "english": "They are in the USA."
+            },
+            {
+              "speaker": "sam",
+              "text": "Aber ich habe ein Bild in meiner Tasche.",
+              "english": "But I have a picture in my bag."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mein Vater ist 60.",
+              "english": "My father is 60."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er spricht kein Deutsch.",
+              "english": "He does not speak German."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und das ist meine Schwester.",
+              "english": "And that is my sister."
+            },
+            {
+              "speaker": "anna",
+              "text": "Deine Schwester ist schön!",
+              "english": "Your sister is lovely!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Wie heißt sie?",
+              "english": "What is she called?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sie heißt Lena.",
+              "english": "She is called Lena."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sie ist 25.",
+              "english": "She is 25."
+            },
+            {
+              "speaker": "anna",
+              "text": "Wo wohnt deine Schwester?",
+              "english": "Where does your sister live?"
+            },
+            {
+              "speaker": "sam",
+              "text": "In den USA, bei meiner Familie.",
+              "english": "In the USA, with my family."
+            },
+            {
+              "speaker": "anna",
+              "text": "Kommt sie auch nach Leipzig?",
+              "english": "Is she coming to Leipzig too?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, sie kommt gern, aber nicht heute.",
+              "english": "Yes, she would like to come, but not today."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lukas und Ben",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Lukas kommt aus dem Bad.",
+              "english": "Lukas comes out of the bathroom."
+            },
+            {
+              "text": "Das Bad ist klein, und das Haus ist auch klein.",
+              "english": "The bathroom is small, and the house is small too."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Hallo, Herr Miller!",
+              "english": "Hello, Mr Miller!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Nein, nein, ich bin Sam!",
+              "english": "No, no, I am Sam!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ja, Sam.",
+              "english": "Yes, Sam."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Hallo!",
+              "english": "Hello!"
+            },
+            {
+              "text": "Ben ist auch hier, beim Fenster.",
+              "english": "Ben is here too, by the window."
+            },
+            {
+              "speaker": "ben",
+              "text": "Hallo, Anna!",
+              "english": "Hello, Anna!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Hallo, Sam!",
+              "english": "Hello, Sam!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Hallo, Ben!",
+              "english": "Hello, Ben!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Du bist zehn Jahre alt?",
+              "english": "You are ten years old?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Du bist ein Kind!",
+              "english": "You are a child!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Nein, ich bin kein Kind!",
+              "english": "No, I am not a child!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Meine Mutter ist die Tochter von Oma.",
+              "english": "My mother is Grandma's daughter."
+            },
+            {
+              "speaker": "ben",
+              "text": "Meine Oma ist alt, aber sie ist sehr gut!",
+              "english": "My grandma is old, but she is very good!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Hallo, Ben!",
+              "english": "Hello, Ben!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Wo bist du?",
+              "english": "Where are you?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Hier, Oma!",
+              "english": "Here, Grandma!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Bei Anna und Sam.",
+              "english": "With Anna and Sam."
+            },
+            {
+              "speaker": "marta",
+              "text": "Guten Morgen, Anna!",
+              "english": "Good morning, Anna!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Guten Morgen, Sam!",
+              "english": "Good morning, Sam!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ben, kommt deine Mutter auch?",
+              "english": "Ben, is your mother coming too?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Meine Tochter ist heute müde.",
+              "english": "My daughter is tired today."
+            },
+            {
+              "speaker": "ben",
+              "text": "Nein, sie ist müde.",
+              "english": "No, she is tired."
+            },
+            {
+              "speaker": "marta",
+              "text": "Möchtet ihr Kaffee?",
+              "english": "Would you like coffee?"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja, gern, danke.",
+              "english": "Yes, gladly, thank you."
+            },
+            {
+              "speaker": "anna",
+              "text": "Gehen wir in die Küche!",
+              "english": "Let us go into the kitchen!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma, ich habe Hunger.",
+              "english": "Grandma, I am hungry."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hier ist Brot, Ben.",
+              "english": "Here is bread, Ben."
+            },
+            {
+              "speaker": "ben",
+              "text": "Danke!",
+              "english": "Thank you!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich trinke gern Wasser.",
+              "english": "I like drinking water."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich trinke Kaffee.",
+              "english": "I am drinking coffee."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Marta!",
+              "english": "Thank you, Marta!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Bitte, Sam.",
+              "english": "You are welcome, Sam."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ich trinke auch gern Kaffee.",
+              "english": "I like drinking coffee too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Es ist Sonntag, das ist gut.",
+              "english": "It is Sunday, that is good."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

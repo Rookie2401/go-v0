@@ -1,0 +1,933 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-13",
+  "lang": "de",
+  "title": "Stadt oder Dorf?",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-13",
+    "title": "\"Stadt oder Dorf?\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. An everyday argument about city and village life in Germany (rent, shops, car, doctor, school). The comparisons are general and invented; please check that they sound fair and not stereotyped, and that \"je ... desto\" and the zwar ... aber / jedoch / allerdings sentences are natural. Du between the three friends."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "explanation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "L": "Lukas",
+    "A": "Anna",
+    "S": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Eine Frage am Sonntag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Sonntagnachmittag.",
+              "english": "It is Sunday afternoon."
+            },
+            {
+              "text": "Anna, Lukas und Sam sitzen in Annas Küche und trinken Kaffee.",
+              "english": "Anna, Lukas and Sam are sitting in Anna's kitchen drinking coffee."
+            },
+            {
+              "text": "Lukas ist heute ungewöhnlich still.",
+              "english": "Lukas is unusually quiet today."
+            },
+            {
+              "text": "Er schaut lange in seine Tasse.",
+              "english": "He looks into his cup for a long time."
+            },
+            {
+              "text": "Was ist los, Lukas?",
+              "english": "What is the matter, Lukas?",
+              "speaker": "A"
+            },
+            {
+              "text": "Du hast etwas auf dem Herzen.",
+              "english": "You have something on your mind.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich habe ein Angebot bekommen.",
+              "english": "I have received an offer.",
+              "speaker": "L"
+            },
+            {
+              "text": "Eine Schule auf dem Land sucht einen Lehrer.",
+              "english": "A school in the country is looking for a teacher.",
+              "speaker": "L"
+            },
+            {
+              "text": "Es ist ein Dorf in Thüringen, nicht weit von dem Ort, wo Sam letzte Woche war.",
+              "english": "It is a village in Thüringen, not far from the place where Sam was last week.",
+              "speaker": "L"
+            },
+            {
+              "text": "Wirklich?",
+              "english": "Really?",
+              "speaker": "S"
+            },
+            {
+              "text": "Dort ist es sehr schön, aber auch sehr ruhig.",
+              "english": "It is very beautiful there, but also very quiet.",
+              "speaker": "S"
+            },
+            {
+              "text": "Genau das ist die Frage.",
+              "english": "That is exactly the question.",
+              "speaker": "L"
+            },
+            {
+              "text": "Soll ich in der Stadt bleiben oder aufs Land ziehen?",
+              "english": "Should I stay in the city or move to the country?",
+              "speaker": "L"
+            },
+            {
+              "text": "Ich möchte eure Meinung hören.",
+              "english": "I would like to hear your opinion.",
+              "speaker": "L"
+            },
+            {
+              "text": "Ich habe schon eine Liste gemacht: Vorteil links, Nachteil rechts.",
+              "english": "I have already made a list: advantage on the left, disadvantage on the right.",
+              "speaker": "L"
+            },
+            {
+              "text": "Dann fang an.",
+              "english": "Then begin.",
+              "speaker": "A"
+            },
+            {
+              "text": "Was ist der größte Vorteil?",
+              "english": "What is the biggest advantage?",
+              "speaker": "A"
+            },
+            {
+              "text": "Der Wohnort ist günstig.",
+              "english": "The place to live is cheap.",
+              "speaker": "L"
+            },
+            {
+              "text": "Die Miete ist nur halb so hoch wie hier.",
+              "english": "The rent is only half as high as here.",
+              "speaker": "L"
+            },
+            {
+              "text": "Auch das Essen ist günstig.",
+              "english": "The food is cheap too.",
+              "speaker": "L"
+            },
+            {
+              "text": "Das ist tatsächlich ein großer Vorteil.",
+              "english": "That really is a big advantage.",
+              "speaker": "A"
+            },
+            {
+              "text": "Aber was ist der Nachteil?",
+              "english": "But what is the disadvantage?",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich kenne dort niemanden.",
+              "english": "I do not know anybody there.",
+              "speaker": "L"
+            },
+            {
+              "text": "Ich wäre allein, und das ist der größte Nachteil.",
+              "english": "I would be alone, and that is the biggest disadvantage.",
+              "speaker": "L"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Auswahl",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ich finde, der Unterschied zwischen Stadt und Dorf ist vor allem die Auswahl.",
+              "english": "I think the difference between city and village is above all the choice.",
+              "speaker": "S"
+            },
+            {
+              "text": "In Leipzig gibt es zehn Bäckereien, im Dorf vielleicht eine.",
+              "english": "In Leipzig there are ten bakeries, in the village perhaps one.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das stimmt.",
+              "english": "That is true.",
+              "speaker": "A"
+            },
+            {
+              "text": "Je größer die Stadt, desto größer ist die Auswahl.",
+              "english": "The bigger the city, the bigger the choice.",
+              "speaker": "A"
+            },
+            {
+              "text": "Du hast in der Stadt viele Läden, viele Cafés und viele Ärzte.",
+              "english": "In the city you have many shops, many cafés and many doctors.",
+              "speaker": "A"
+            },
+            {
+              "text": "Aber ist mehr Auswahl wirklich besser?",
+              "english": "But is more choice really better?",
+              "speaker": "L"
+            },
+            {
+              "text": "Ich brauche nicht zehn Bäckereien.",
+              "english": "I do not need ten bakeries.",
+              "speaker": "L"
+            },
+            {
+              "text": "Mir reicht eine, wenn das Brot gut ist.",
+              "english": "One is enough for me if the bread is good.",
+              "speaker": "L"
+            },
+            {
+              "text": "Die Qualität ist wichtiger als die Menge.",
+              "english": "Quality is more important than quantity.",
+              "speaker": "L"
+            },
+            {
+              "text": "Das ist auch meine Meinung.",
+              "english": "That is my opinion too.",
+              "speaker": "S"
+            },
+            {
+              "text": "Allerdings ist die Qualität nicht überall gleich.",
+              "english": "However, the quality is not the same everywhere.",
+              "speaker": "S"
+            },
+            {
+              "text": "Während ihr überlegt, hole ich noch Kaffee.",
+              "english": "While you think, I will fetch more coffee.",
+              "speaker": "S"
+            },
+            {
+              "text": "Herr Schmidt zum Beispiel hat das beste Brot, und seine Bäckerei ist ganz klein.",
+              "english": "Herr Schmidt for example has the best bread, and his bakery is quite small.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ja, aber er ist ein Teil der Stadt, in der es viele andere Läden gibt.",
+              "english": "Yes, but he is a part of the city in which there are many other shops.",
+              "speaker": "A"
+            },
+            {
+              "text": "Im Dorf ist man vom Laden abhängig.",
+              "english": "In the village you depend on the shop.",
+              "speaker": "A"
+            },
+            {
+              "text": "Wenn er zumacht, ist alles weg.",
+              "english": "If it closes, everything is gone.",
+              "speaker": "A"
+            },
+            {
+              "text": "Das ist schlecht, zugegeben.",
+              "english": "That is bad, admittedly.",
+              "speaker": "L"
+            },
+            {
+              "text": "Dafür kennt man dort seinen Bäcker.",
+              "english": "On the other hand you know your baker there.",
+              "speaker": "L"
+            },
+            {
+              "text": "Man kennt ihn hier auch, wenn man oft kommt.",
+              "english": "You know him here too if you come often.",
+              "speaker": "S"
+            },
+            {
+              "text": "Jedoch spricht man im Dorf nicht nur über das Wetter.",
+              "english": "However, in the village you do not only talk about the weather.",
+              "speaker": "L"
+            },
+            {
+              "text": "Man spricht über die Menschen.",
+              "english": "You talk about the people.",
+              "speaker": "L"
+            },
+            {
+              "text": "Und die Qualität des Lebens?",
+              "english": "And the quality of life?",
+              "speaker": "A"
+            },
+            {
+              "text": "Ist sie dort anders als hier?",
+              "english": "Is it different there from here?",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich glaube, ja.",
+              "english": "I think so.",
+              "speaker": "L"
+            },
+            {
+              "text": "Es ist ein anderes Leben, ruhiger und langsamer.",
+              "english": "It is a different life, calmer and slower.",
+              "speaker": "L"
+            },
+            {
+              "text": "Der größte Unterschied ist die Ruhe.",
+              "english": "The biggest difference is the quiet.",
+              "speaker": "L"
+            },
+            {
+              "text": "Stadt und Dorf sind eben verschieden, wie zwei Sprachen.",
+              "english": "City and village are simply different, like two languages.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Fahrrad, Auto und Bahn",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Und wie willst du zur Arbeit kommen?",
+              "english": "And how do you want to get to work?",
+              "speaker": "A"
+            },
+            {
+              "text": "Mit dem Auto?",
+              "english": "By car?",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich habe zwar kein Auto, aber ein gutes Fahrrad.",
+              "english": "I have no car, to be sure, but a good bike.",
+              "speaker": "L"
+            },
+            {
+              "text": "Ich fahre lieber Fahrrad, das ist einfacher.",
+              "english": "I prefer to ride a bike, that is simpler.",
+              "speaker": "L"
+            },
+            {
+              "text": "Auf dem Dorf ist das schwierig.",
+              "english": "In a village that is difficult.",
+              "speaker": "A"
+            },
+            {
+              "text": "Die Wege sind lang, und es gibt kaum Busse.",
+              "english": "The distances are long, and there are hardly any buses.",
+              "speaker": "A"
+            },
+            {
+              "text": "In Leipzig fährt die Straßenbahn alle zehn Minuten.",
+              "english": "In Leipzig the tram runs every ten minutes.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist sehr praktisch.",
+              "english": "That is very practical.",
+              "speaker": "S"
+            },
+            {
+              "text": "Zwar ist das Auto bequemer, aber in der Stadt ist es teuer und langsam.",
+              "english": "The car is more comfortable, to be sure, but in the city it is expensive and slow.",
+              "speaker": "A"
+            },
+            {
+              "text": "Man steht im Stau, man sucht einen Parkplatz, und man bezahlt viel dafür.",
+              "english": "You stand in a traffic jam, you look for a parking space, and you pay a lot for it.",
+              "speaker": "A"
+            },
+            {
+              "text": "Auf dem Land ist es genau umgekehrt.",
+              "english": "In the country it is exactly the opposite.",
+              "speaker": "L"
+            },
+            {
+              "text": "Dort braucht man ein Auto, aber es ist günstig.",
+              "english": "There you need a car, but it is cheap.",
+              "speaker": "L"
+            },
+            {
+              "text": "Je weiter weg man wohnt, desto wichtiger ist das Auto.",
+              "english": "The further away you live, the more important the car is.",
+              "speaker": "L"
+            },
+            {
+              "text": "Und im kleinen Dorf fahren weniger Busse.",
+              "english": "And in a small village fewer buses run.",
+              "speaker": "S"
+            },
+            {
+              "text": "Dort wäre ein Fahrrad praktisch, aber nicht im Winter.",
+              "english": "A bicycle would be practical there, but not in winter.",
+              "speaker": "S"
+            },
+            {
+              "text": "Das ist wahr.",
+              "english": "That is true.",
+              "speaker": "L"
+            },
+            {
+              "text": "Außerdem muss ich den Führerschein machen, und das kostet viel.",
+              "english": "Also I have to get a driving licence, and that costs a lot.",
+              "speaker": "L"
+            },
+            {
+              "text": "Dann ist die Rechnung einfach: Du sparst bei der Miete und gibst es beim Auto wieder aus.",
+              "english": "Then the sum is simple: you save on the rent and spend it again on the car.",
+              "speaker": "A"
+            },
+            {
+              "text": "Das stimmt, aber ich habe wenigstens Ruhe.",
+              "english": "That is true, but at least I have peace.",
+              "speaker": "L"
+            },
+            {
+              "text": "Das ist ein bequemes Leben.",
+              "english": "That is a comfortable life.",
+              "speaker": "L"
+            },
+            {
+              "text": "Allerdings ist das Leben in der Stadt auch bequem und praktisch.",
+              "english": "However, life in the city is comfortable and practical too.",
+              "speaker": "A"
+            },
+            {
+              "text": "Man hat alles nah.",
+              "english": "You have everything close by.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich wohne lieber hier.",
+              "english": "I would rather live here.",
+              "speaker": "A"
+            },
+            {
+              "text": "Aber der Unterschied beim Geld ist groß.",
+              "english": "But the difference in money is big.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Schule und Gesundheit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Wie sieht es mit der Schule aus?",
+              "english": "What about the school?",
+              "speaker": "A"
+            },
+            {
+              "text": "Ist sie gut?",
+              "english": "Is it good?",
+              "speaker": "A"
+            },
+            {
+              "text": "Die Schule ist klein, aber sie hat einen guten Ruf.",
+              "english": "The school is small, but it has a good reputation.",
+              "speaker": "L"
+            },
+            {
+              "text": "Die Klassen sind kleiner.",
+              "english": "The classes are smaller.",
+              "speaker": "L"
+            },
+            {
+              "text": "In Leipzig habe ich dreißig Schüler in einer Klasse.",
+              "english": "In Leipzig I have thirty pupils in a class.",
+              "speaker": "L"
+            },
+            {
+              "text": "Dort wären es zwölf.",
+              "english": "There it would be twelve.",
+              "speaker": "L"
+            },
+            {
+              "text": "In kleinen Klassen hat man mehr Zeit für jedes Kind.",
+              "english": "In small classes you have more time for every child.",
+              "speaker": "S"
+            },
+            {
+              "text": "Eine Schule ist überall ähnlich, nur kleiner.",
+              "english": "A school is similar everywhere, only smaller.",
+              "speaker": "S"
+            },
+            {
+              "text": "Die Arbeit ist dort gleich, nur die Klasse ist kleiner.",
+              "english": "The work is the same there, only the class is smaller.",
+              "speaker": "L"
+            },
+            {
+              "text": "Aber ich sehe auch ein Problem: Das Dorf ist sehr weit vom Krankenhaus.",
+              "english": "But I also see a problem: the village is very far from the hospital.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich bin Krankenschwester, und ich weiß, was das heißt.",
+              "english": "I am a nurse, and I know what that means.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich muss es dir sagen.",
+              "english": "I have to tell you.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ein Hausarzt ist dort vielleicht nur zweimal in der Woche da.",
+              "english": "A family doctor is perhaps there only twice a week.",
+              "speaker": "A"
+            },
+            {
+              "text": "Wenn du ernst krank bist, brauchst du die Notaufnahme, und die ist weit weg.",
+              "english": "If you are seriously ill you need the emergency room, and it is far away.",
+              "speaker": "A"
+            },
+            {
+              "text": "Wer schneller Hilfe bekommt, hat bessere Chancen.",
+              "english": "Whoever gets help faster has better chances.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich verstehe das.",
+              "english": "I understand that.",
+              "speaker": "L"
+            },
+            {
+              "text": "Aber ich bin gesund, und ich habe selten eine Grippe.",
+              "english": "But I am healthy, and I seldom have the flu.",
+              "speaker": "L"
+            },
+            {
+              "text": "Das sagt jeder, bis die Temperatur auf 39 steigt.",
+              "english": "Everybody says that until the temperature rises to 39.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ich messe sie jeden Tag bei meinen Patienten.",
+              "english": "I measure it every day with my patients.",
+              "speaker": "A"
+            },
+            {
+              "text": "Sie frieren, dann schwitzen sie, und sie haben Durst.",
+              "english": "They shiver, then they sweat, and they are thirsty.",
+              "speaker": "A"
+            },
+            {
+              "text": "Manche können kaum atmen.",
+              "english": "Some can hardly breathe.",
+              "speaker": "A"
+            },
+            {
+              "text": "Andere haben Probleme mit dem Magen, mit Übelkeit oder mit Durchfall.",
+              "english": "Others have trouble with the stomach, with nausea or with diarrhoea.",
+              "speaker": "A"
+            },
+            {
+              "text": "Dann ist die Besserung oft langsam.",
+              "english": "Then the recovery is often slow.",
+              "speaker": "A"
+            },
+            {
+              "text": "Anna hat recht.",
+              "english": "Anna is right.",
+              "speaker": "S"
+            },
+            {
+              "text": "Aber wenn man ein Symptom hat, kann man auch anrufen.",
+              "english": "But if you have a symptom you can phone too.",
+              "speaker": "S"
+            },
+            {
+              "text": "Zwar ja, jedoch nicht, wenn man bei Nebel auf dem Land steckt.",
+              "english": "Yes, to be sure, but not if you are stuck in the fog in the country.",
+              "speaker": "A"
+            },
+            {
+              "text": "Es ist schwierig, alles richtig zu entscheiden.",
+              "english": "It is difficult to decide everything correctly.",
+              "speaker": "L"
+            },
+            {
+              "text": "Beides hat gute Seiten, jedoch auch schlechte.",
+              "english": "Both have good sides, but also bad ones.",
+              "speaker": "L"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Menschen und Gemeinde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Und die Gemeinde?",
+              "english": "And the church?",
+              "speaker": "S"
+            },
+            {
+              "text": "Gibt es dort eine?",
+              "english": "Is there one there?",
+              "speaker": "S"
+            },
+            {
+              "text": "Eine kleine Gemeinde, ja.",
+              "english": "A small church, yes.",
+              "speaker": "L"
+            },
+            {
+              "text": "Sie ist anders als unsere.",
+              "english": "It is different from ours.",
+              "speaker": "L"
+            },
+            {
+              "text": "Es kommen nur zwanzig Leute.",
+              "english": "Only twenty people come.",
+              "speaker": "L"
+            },
+            {
+              "text": "Der Jugendkreis hat nur fünf Mitglieder, und sie sind verschieden von den jungen Leuten bei uns.",
+              "english": "The youth group has only five members, and they are different from the young people with us.",
+              "speaker": "L"
+            },
+            {
+              "text": "Aber die Menschen sind herzlich.",
+              "english": "But the people are warm.",
+              "speaker": "L"
+            },
+            {
+              "text": "Sie lesen das Evangelium, und sie haben Zeit zum Zuhören.",
+              "english": "They read the gospel, and they have time to listen.",
+              "speaker": "L"
+            },
+            {
+              "text": "Die Lieder sind ähnlich wie bei uns.",
+              "english": "The songs are similar to ours.",
+              "speaker": "L"
+            },
+            {
+              "text": "Ich glaube, dass die Menschen im Dorf neugierig sind.",
+              "english": "I think the people in the village are curious.",
+              "speaker": "S"
+            },
+            {
+              "text": "In der Stadt hat jeder Eile.",
+              "english": "In the city everyone is in a hurry.",
+              "speaker": "S"
+            },
+            {
+              "text": "Bei der Aktion im Dorf hatten wir einen guten Erfolg, weil sich jemand wirklich für uns interessiert hat.",
+              "english": "In the campaign in the village we had good success because someone was really interested in us.",
+              "speaker": "S"
+            },
+            {
+              "text": "Man konnte Menschen ansprechen, und das Interesse war groß.",
+              "english": "You could speak to people, and the interest was great.",
+              "speaker": "S"
+            },
+            {
+              "text": "In der Stadt ist es schwierig, das ist wahr.",
+              "english": "In the city it is difficult, that is true.",
+              "speaker": "A"
+            },
+            {
+              "text": "Hier druckt man Flyer, man verteilt sie, und niemand liest sie.",
+              "english": "Here you print flyers, you hand them out, and nobody reads them.",
+              "speaker": "A"
+            },
+            {
+              "text": "Die Vorbereitung ist dieselbe, aber das Ziel ist im Dorf leichter, weil jeder jeden kennt.",
+              "english": "The preparation is the same, but the goal is easier in the village because everybody knows everybody.",
+              "speaker": "A"
+            },
+            {
+              "text": "Aber das ist auch schlecht: Jeder weiß alles über dich.",
+              "english": "But that is bad too: everybody knows everything about you.",
+              "speaker": "L"
+            },
+            {
+              "text": "Man liest alles in der Zeitung.",
+              "english": "You read everything in the newspaper.",
+              "speaker": "L"
+            },
+            {
+              "text": "Ein Bericht über einen Unfall, ein Feuer, eine Meldung der Polizei, und alle sprechen drei Tage davon.",
+              "english": "A report about an accident, a fire, a notice from the police, and everyone talks about it for three days.",
+              "speaker": "L"
+            },
+            {
+              "text": "In der Stadt berichtet die Zeitung jeden Tag so etwas, und keiner liest es.",
+              "english": "In the city the newspaper reports something like that every day, and nobody reads it.",
+              "speaker": "A"
+            },
+            {
+              "text": "Man hört auch öfter, dass jemand überfallen wurde.",
+              "english": "You also hear more often that somebody has been attacked.",
+              "speaker": "A"
+            },
+            {
+              "text": "Man hat Mitleid, aber man geht weiter.",
+              "english": "You have pity, but you walk on.",
+              "speaker": "A"
+            },
+            {
+              "text": "Im Dorf wäre man vielleicht barmherziger.",
+              "english": "In the village people might be more merciful.",
+              "speaker": "L"
+            },
+            {
+              "text": "Das ist eine Aufgabe und eine Verantwortung.",
+              "english": "That is a task and a responsibility.",
+              "speaker": "S"
+            },
+            {
+              "text": "Man muss Mut haben, auch zu helfen.",
+              "english": "You have to have courage, also to help.",
+              "speaker": "S"
+            },
+            {
+              "text": "Und man hat einen Dienst, den man nicht aussuchen kann.",
+              "english": "And you have a service that you cannot choose.",
+              "speaker": "L"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Entscheidung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ich will dir einen Ratschlag geben, Lukas.",
+              "english": "I want to give you some advice, Lukas.",
+              "speaker": "A"
+            },
+            {
+              "text": "Mach eine Liste, und trag alles ein.",
+              "english": "Make a list and enter everything.",
+              "speaker": "A"
+            },
+            {
+              "text": "Schreib links das Gute und rechts das Schlechte.",
+              "english": "Write the good on the left and the bad on the right.",
+              "speaker": "A"
+            },
+            {
+              "text": "Das habe ich schon getan.",
+              "english": "I have already done that.",
+              "speaker": "L"
+            },
+            {
+              "text": "Es steht zwölf zu zehn.",
+              "english": "It is twelve to ten.",
+              "speaker": "L"
+            },
+            {
+              "text": "Das ist ziemlich ähnlich.",
+              "english": "That is fairly similar.",
+              "speaker": "L"
+            },
+            {
+              "text": "Die Menschen sind verschieden, aber die Liste ist gleich lang.",
+              "english": "People are different, but the list is equally long.",
+              "speaker": "L"
+            },
+            {
+              "text": "Dann geh ein Wochenende hin, um dich auszuruhen und alles anzusehen.",
+              "english": "Then go there for a weekend to rest and look at everything.",
+              "speaker": "A"
+            },
+            {
+              "text": "Und bring etwas Geduld mit.",
+              "english": "And bring some patience with you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Eine Entscheidung ist nicht einfach, sie braucht Zeit.",
+              "english": "A decision is not simple, it takes time.",
+              "speaker": "S"
+            },
+            {
+              "text": "Allerdings ist die Stelle nur für ein Jahr.",
+              "english": "However, the post is only for one year.",
+              "speaker": "L"
+            },
+            {
+              "text": "Danach sehen wir weiter.",
+              "english": "After that we will see.",
+              "speaker": "L"
+            },
+            {
+              "text": "Ich werde es versuchen, damit ich keinen Fehler mache.",
+              "english": "I will try so that I do not make a mistake.",
+              "speaker": "L"
+            },
+            {
+              "text": "Ich wollte nur euren Rat hören.",
+              "english": "I only wanted to hear your advice.",
+              "speaker": "L"
+            },
+            {
+              "text": "Zum Teil möchte ich gehen, weil ich etwas Neues brauche.",
+              "english": "In part I would like to go because I need something new.",
+              "speaker": "L"
+            },
+            {
+              "text": "Ein Teil von mir will bleiben.",
+              "english": "A part of me wants to stay.",
+              "speaker": "L"
+            },
+            {
+              "text": "Außerdem ist die Luft dort besser.",
+              "english": "Also the air is better there.",
+              "speaker": "L"
+            },
+            {
+              "text": "Und ich wohne lieber in einem eigenen Haus als ewig in einer Wohnung mit Nachbarn über mir.",
+              "english": "And I would rather live in a house of my own than forever in a flat with neighbours above me.",
+              "speaker": "L"
+            },
+            {
+              "text": "Dann geh.",
+              "english": "Then go.",
+              "speaker": "A"
+            },
+            {
+              "text": "Wichtig ist nur, dass du ehrlich bist.",
+              "english": "The important thing is only that you are honest.",
+              "speaker": "A"
+            },
+            {
+              "text": "Aber falls du gehst: Vergiss uns nicht.",
+              "english": "But if you go: do not forget us.",
+              "speaker": "A"
+            },
+            {
+              "text": "Das werde ich nicht.",
+              "english": "I will not.",
+              "speaker": "L"
+            },
+            {
+              "text": "Ich bin ja nicht aus der Welt.",
+              "english": "I am not leaving the world, after all.",
+              "speaker": "L"
+            },
+            {
+              "text": "Der Wohnort ist nicht alles.",
+              "english": "Where you live is not everything.",
+              "speaker": "L"
+            },
+            {
+              "text": "Danke, ihr beiden.",
+              "english": "Thank you, both of you.",
+              "speaker": "L"
+            },
+            {
+              "text": "Je mehr ich mit euch spreche, desto klarer wird mir alles.",
+              "english": "The more I talk with you, the clearer everything becomes.",
+              "speaker": "L"
+            },
+            {
+              "text": "Anders gesagt: Ihr seid mein Wohnort, egal wo ich wohne.",
+              "english": "In other words: you are my home, no matter where I live.",
+              "speaker": "L"
+            },
+            {
+              "text": "Das ist schön gesagt.",
+              "english": "That is nicely said.",
+              "speaker": "S"
+            },
+            {
+              "text": "Aber ist es tatsächlich wahr?",
+              "english": "But is it really true?",
+              "speaker": "S"
+            },
+            {
+              "text": "Ja, das ist tatsächlich wahr.",
+              "english": "Yes, that is really true.",
+              "speaker": "A"
+            },
+            {
+              "text": "Die Freundschaft zählt.",
+              "english": "Friendship counts.",
+              "speaker": "A"
+            },
+            {
+              "text": "Außerdem fährt ein Zug dorthin.",
+              "english": "Besides, a train goes there.",
+              "speaker": "A"
+            },
+            {
+              "text": "Nachdem Lukas gegangen ist, trinkt Sam seinen Kaffee aus.",
+              "english": "After Lukas has gone, Sam finishes his coffee."
+            },
+            {
+              "text": "Er denkt: Ich wohne in einer Stadt und mag es.",
+              "english": "He thinks: I live in a city and like it."
+            },
+            {
+              "text": "Aber ein Dorf hat auch seine Seele.",
+              "english": "But a village has its soul too."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

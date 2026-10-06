@@ -1,0 +1,620 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-1-13",
+  "lang": "de",
+  "title": "Deutschland in Fakten",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-1-13",
+    "title": "Deutschland in Fakten (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled German written for learners and may contain unnatural phrasing; the German of every situation, the du/Sie choices and the church vocabulary are the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the native reviewer: the facts are the drafter's reading and are given in round numbers (about 84 million inhabitants, 16 Bundesländer, nine neighbours, an election every four years, the right to vote from 18, the euro); they must be checked against a current source before release and may change; no person is named (no chancellor, no president); \"Kanzler\" is the head of the government; the Bundesländer, their capitals and the border statements are simplified; the second half (morning routine, Sunday in the Gemeinde, health, arranging dates) is a text \"for newcomers\" and recycles the vocabulary of the earlier units; \"weiß\" is avoided because the adapter sometimes reads it as \"wissen\"."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "nonfiction",
+    "geography",
+    "politics",
+    "everyday life in Germany"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Das Land",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Deutschland liegt in Europa.",
+              "english": "Germany lies in Europe."
+            },
+            {
+              "text": "Es ist ein Land mit mehr als 80 Millionen Einwohnern.",
+              "english": "It is a country with more than 80 million inhabitants."
+            },
+            {
+              "text": "Die Hauptstadt ist Berlin.",
+              "english": "The capital is Berlin."
+            },
+            {
+              "text": "Dort wohnen fast vier Millionen Menschen.",
+              "english": "Almost four million people live there."
+            },
+            {
+              "text": "Andere große Städte sind Hamburg, München und Köln.",
+              "english": "Other big cities are Hamburg, Munich and Cologne."
+            },
+            {
+              "text": "Deutschland hat sechzehn Bundesländer.",
+              "english": "Germany has sixteen federal states."
+            },
+            {
+              "text": "Sachsen ist ein Bundesland, und Leipzig liegt in Sachsen.",
+              "english": "Saxony is a federal state, and Leipzig lies in Saxony."
+            },
+            {
+              "text": "Dresden ist die Hauptstadt von Sachsen.",
+              "english": "Dresden is the capital of Saxony."
+            },
+            {
+              "text": "Jedes Bundesland hat eine Hauptstadt.",
+              "english": "Every federal state has a capital."
+            },
+            {
+              "text": "Die Währung in Deutschland ist der Euro.",
+              "english": "The currency in Germany is the euro."
+            },
+            {
+              "text": "Auch Österreich hat diese Währung.",
+              "english": "Austria has this currency too."
+            },
+            {
+              "text": "Der Euro ist die Währung von mehr als 300 Millionen Menschen.",
+              "english": "The euro is the currency of more than 300 million people."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Im Norden, Süden, Osten und Westen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Im Norden liegt das Meer.",
+              "english": "In the north lies the sea."
+            },
+            {
+              "text": "Dort gibt es eine lange Küste und viele Inseln.",
+              "english": "There is a long coast there and many islands."
+            },
+            {
+              "text": "Im Süden liegen hohe Berge.",
+              "english": "In the south there are high mountains."
+            },
+            {
+              "text": "Im Osten liegt Sachsen, und im Westen liegt der Rhein.",
+              "english": "In the east lies Saxony, and in the west lies the Rhine."
+            },
+            {
+              "text": "Von Norden nach Süden sind es mehr als 800 Kilometer.",
+              "english": "From north to south it is more than 800 kilometres."
+            },
+            {
+              "text": "Von Osten nach Westen sind es fast 650 Kilometer.",
+              "english": "From east to west it is almost 650 kilometres."
+            },
+            {
+              "text": "Der Rhein ist ein großer Fluss.",
+              "english": "The Rhine is a big river."
+            },
+            {
+              "text": "Er ist mehr als 1000 Kilometer lang.",
+              "english": "It is more than 1000 kilometres long."
+            },
+            {
+              "text": "Es gibt noch viele andere Flüsse.",
+              "english": "There are many other rivers as well."
+            },
+            {
+              "text": "Viele Flüsse gehen zum Meer.",
+              "english": "Many rivers go to the sea."
+            },
+            {
+              "text": "Im Norden ist es oft kalt, und im Westen regnet es oft.",
+              "english": "In the north it is often cold, and in the west it often rains."
+            },
+            {
+              "text": "Im Osten ist der Winter kalt.",
+              "english": "In the east the winter is cold."
+            },
+            {
+              "text": "Menschen machen an der Küste Ferien.",
+              "english": "People take holidays on the coast."
+            },
+            {
+              "text": "Sie fahren gern zu den Inseln im Meer.",
+              "english": "They like to go to the islands in the sea."
+            },
+            {
+              "text": "Die Küste ist lang, aber die Inseln sind klein.",
+              "english": "The coast is long, but the islands are small."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Nachbarn",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Deutschland hat neun Nachbarn.",
+              "english": "Germany has nine neighbours."
+            },
+            {
+              "text": "Österreich und die Schweiz sind die Nachbarn im Süden.",
+              "english": "Austria and Switzerland are the neighbours in the south."
+            },
+            {
+              "text": "Die Grenze zu Österreich und zur Schweiz ist lang.",
+              "english": "The border with Austria and Switzerland is long."
+            },
+            {
+              "text": "Die Grenzen zu den Nachbarn sind offen.",
+              "english": "The borders with the neighbours are open."
+            },
+            {
+              "text": "Viele Menschen fahren jeden Tag über die Grenze, zur Arbeit oder zum Einkaufen.",
+              "english": "Many people cross the border every day, to work or to go shopping."
+            },
+            {
+              "text": "Menschen aus der ganzen Welt leben in Deutschland.",
+              "english": "People from all over the world live in Germany."
+            },
+            {
+              "text": "Viele Studenten aus der Welt kommen nach Leipzig.",
+              "english": "Many students from around the world come to Leipzig."
+            },
+            {
+              "text": "Die Welt ist hier klein, denn alle sprechen mit allen.",
+              "english": "The world is small here, because everybody talks to everybody."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Staat und die Wahl",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Deutschland ist ein Staat, und die Bürger wählen.",
+              "english": "Germany is a state, and the citizens vote."
+            },
+            {
+              "text": "Alle vier Jahre ist Wahl.",
+              "english": "Every four years there is an election."
+            },
+            {
+              "text": "Vor der Wahl reden alle viel.",
+              "english": "Before the election everybody talks a lot."
+            },
+            {
+              "text": "Bei der Wahl dürfen alle Bürger wählen, die achtzehn Jahre alt sind.",
+              "english": "In the election all citizens who are eighteen years old may vote."
+            },
+            {
+              "text": "Sie wählen die Menschen, die für sie sprechen.",
+              "english": "They elect the people who speak for them."
+            },
+            {
+              "text": "In diesem Land darf jeder reden.",
+              "english": "In this country everybody may speak."
+            },
+            {
+              "text": "Die Regierung arbeitet in Berlin.",
+              "english": "The government works in Berlin."
+            },
+            {
+              "text": "Die Regierung arbeitet für alle Menschen in Deutschland.",
+              "english": "The government works for all the people in Germany."
+            },
+            {
+              "text": "Der Kanzler ist der Chef der Regierung.",
+              "english": "The chancellor is the head of the government."
+            },
+            {
+              "text": "Der Kanzler hat viele Helfer.",
+              "english": "The chancellor has many helpers."
+            },
+            {
+              "text": "Alle in Deutschland kennen den Kanzler, aber nicht alle sagen ja zu ihm.",
+              "english": "Everybody in Germany knows the chancellor, but not everybody says yes to him."
+            },
+            {
+              "text": "Der Staat braucht Geld für Schulen und für Krankenhäuser.",
+              "english": "The state needs money for schools and for hospitals."
+            },
+            {
+              "text": "Die Bürger geben dem Staat Geld.",
+              "english": "The citizens give the state money."
+            },
+            {
+              "text": "Er gibt es zurück: für Straßen, für Schulen und für die Gesundheit.",
+              "english": "It gives it back: for roads, for schools and for health."
+            },
+            {
+              "text": "Das Land ist groß, aber jeder darf sprechen.",
+              "english": "The country is big, but everybody may speak."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sprache und Anrede",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Die Menschen in Deutschland sprechen Deutsch.",
+              "english": "The people in Germany speak German."
+            },
+            {
+              "text": "Zu Freunden und zu Kindern sagen sie du.",
+              "english": "To friends and to children they say du."
+            },
+            {
+              "text": "Zu Menschen, die sie nicht kennen, sagen sie Sie.",
+              "english": "To people they do not know they say Sie."
+            },
+            {
+              "text": "Auch zum Arzt und zum Chef sagen sie Sie.",
+              "english": "They say Sie to the doctor and to the boss as well."
+            },
+            {
+              "text": "In der Gemeinde sagen viele Menschen auch du.",
+              "english": "In the congregation many people say du as well."
+            },
+            {
+              "text": "Wer neu ist, macht oft Fehler, aber das ist nicht schlimm.",
+              "english": "Anyone who is new often makes mistakes, but that is not a problem."
+            },
+            {
+              "text": "Die Menschen helfen gern, wenn ein Gast die Sprache lernt.",
+              "english": "People are happy to help when a guest is learning the language."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Morgen in Deutschland",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "In vielen Familien klingelt früh der Wecker.",
+              "english": "In many families the alarm clock rings early."
+            },
+            {
+              "text": "Wer verschlafen hat, muss sich beeilen.",
+              "english": "Anyone who has overslept has to hurry."
+            },
+            {
+              "text": "Die Kinder wachen früh auf.",
+              "english": "The children wake up early."
+            },
+            {
+              "text": "Sie waschen sich mit Seife.",
+              "english": "They wash with soap."
+            },
+            {
+              "text": "Sie nehmen das Handtuch und putzen sich die Zähne.",
+              "english": "They take the towel and brush their teeth."
+            },
+            {
+              "text": "Jedes Kind hat eine Zahnbürste und Zahnpasta.",
+              "english": "Every child has a toothbrush and toothpaste."
+            },
+            {
+              "text": "Danach kämmen sie sich und ziehen sich an.",
+              "english": "Then they comb their hair and get dressed."
+            },
+            {
+              "text": "Der Vater holt Brötchen, und die Familie setzt sich an den Tisch.",
+              "english": "The father fetches rolls, and the family sits down at the table."
+            },
+            {
+              "text": "Das Frühstück ist meistens Brot mit Butter und Käse.",
+              "english": "Breakfast is mostly bread with butter and cheese."
+            },
+            {
+              "text": "In der Brotdose ist das Essen für die Schule.",
+              "english": "In the lunch box is the food for school."
+            },
+            {
+              "text": "Der Schulweg ist für viele Kinder kurz.",
+              "english": "The way to school is short for many children."
+            },
+            {
+              "text": "Vor der Tür ziehen viele die Schuhe aus.",
+              "english": "At the door many take off their shoes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Essen und Trinken",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Zum Frühstück essen viele Menschen Brötchen mit Butter und Käse.",
+              "english": "For breakfast many people eat rolls with butter and cheese."
+            },
+            {
+              "text": "Der Bäcker öffnet früh, oft schon um sechs Uhr.",
+              "english": "The baker opens early, often at six o'clock already."
+            },
+            {
+              "text": "Das Mittagessen ist oft warm: Es gibt Suppe, Kartoffeln, Fleisch und Gemüse.",
+              "english": "Lunch is often hot: there is soup, potatoes, meat and vegetables."
+            },
+            {
+              "text": "Am Abend essen viele Familien Brot, Käse und Salat.",
+              "english": "In the evening many families eat bread, cheese and salad."
+            },
+            {
+              "text": "Am Sonntag gibt es Kaffee und Kuchen.",
+              "english": "On Sundays there is coffee and cake."
+            },
+            {
+              "text": "Brot ist wichtig, und es gibt sehr viele Brote.",
+              "english": "Bread is important, and there are very many kinds of bread."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Geschäfte und Wochenende",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Sonntag sind fast alle Geschäfte zu.",
+              "english": "On Sundays almost all the shops are closed."
+            },
+            {
+              "text": "Nur die Cafés und manchmal der Bäcker sind offen.",
+              "english": "Only the cafés and sometimes the baker are open."
+            },
+            {
+              "text": "Am Samstag ist der Markt voll.",
+              "english": "On Saturdays the market is full."
+            },
+            {
+              "text": "Im Supermarkt kaufen viele Menschen für die ganze Woche.",
+              "english": "In the supermarket many people shop for the whole week."
+            },
+            {
+              "text": "Die Preise sind nicht billig, aber auch nicht sehr teuer.",
+              "english": "The prices are not cheap, but not very expensive either."
+            },
+            {
+              "text": "Am Wochenende fahren viele in die Berge.",
+              "english": "At the weekend many go to the mountains."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Reisen und Wetter",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Der Zug fährt durch ganz Deutschland.",
+              "english": "The train goes through the whole of Germany."
+            },
+            {
+              "text": "Von Leipzig nach Berlin fährt der Zug mehr als eine Stunde.",
+              "english": "From Leipzig to Berlin the train takes more than an hour."
+            },
+            {
+              "text": "In den Städten fahren Straßenbahn und Bus, und viele Menschen fahren Fahrrad.",
+              "english": "In the cities trams and buses run, and many people ride bicycles."
+            },
+            {
+              "text": "Der Fahrplan ist wichtig, und die Züge sind meistens pünktlich.",
+              "english": "The timetable is important, and the trains are mostly on time."
+            },
+            {
+              "text": "Wenn es Verspätung gibt, ärgern sich viele.",
+              "english": "When there is a delay, many people get annoyed."
+            },
+            {
+              "text": "Im Frühling wird es warm, und im Sommer ist es heiß.",
+              "english": "In spring it gets warm, and in summer it is hot."
+            },
+            {
+              "text": "Im Herbst regnet es oft, und im Winter gibt es Schnee.",
+              "english": "In autumn it often rains, and in winter there is snow."
+            },
+            {
+              "text": "Im Sommer haben die Schulen Ferien.",
+              "english": "In summer the schools have holidays."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Sonntag in der Gemeinde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Sonntag gehen viele Menschen in die Kirche.",
+              "english": "On Sundays many people go to church."
+            },
+            {
+              "text": "In der Gemeinde ist jeder Gast willkommen.",
+              "english": "In the congregation every guest is welcome."
+            },
+            {
+              "text": "Die Helfer bereiten den Saal vor.",
+              "english": "The helpers prepare the hall."
+            },
+            {
+              "text": "Sie stellen die Stühle auf.",
+              "english": "They set up the chairs."
+            },
+            {
+              "text": "Sie legen das Gesangbuch auf jeden Stuhl.",
+              "english": "They put the hymn book on every chair."
+            },
+            {
+              "text": "Auf dem Tisch stehen Blumen.",
+              "english": "There are flowers on the table."
+            },
+            {
+              "text": "Jede Gemeinde hat ihr Programm und ihren Ablauf.",
+              "english": "Every congregation has its programme and its order."
+            },
+            {
+              "text": "Zuerst begrüßt der Pastor die Gäste.",
+              "english": "First the pastor welcomes the guests."
+            },
+            {
+              "text": "Danach kommt die Andacht.",
+              "english": "Then comes the short devotion."
+            },
+            {
+              "text": "Nach dem Gottesdienst gibt es Kaffee im Gemeindehaus.",
+              "english": "After the service there is coffee in the church hall."
+            },
+            {
+              "text": "Jeder bekommt eine Tasse.",
+              "english": "Everybody gets a cup."
+            },
+            {
+              "text": "Der Pastor stellt eine Frage, und alle reden.",
+              "english": "The pastor asks a question, and everybody talks."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gesundheit und Notfall",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Wer sich verletzt, ruft sofort den Krankenwagen.",
+              "english": "Anyone who gets hurt calls the ambulance at once."
+            },
+            {
+              "text": "Im Krankenhaus untersucht ein Arzt den Arm oder das Bein.",
+              "english": "In the hospital a doctor examines the arm or the leg."
+            },
+            {
+              "text": "Die Krankenkasse hilft mit dem Geld.",
+              "english": "The health insurance fund helps with the money."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Termine und Nachrichten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Viele Gruppen schreiben sich Nachrichten.",
+              "english": "Many groups write each other messages."
+            },
+            {
+              "text": "Wer einen Termin vorschlägt, will, dass die anderen antworten.",
+              "english": "Anyone who suggests a date wants the others to answer."
+            },
+            {
+              "text": "Die einen sagen zu.",
+              "english": "Some accept."
+            },
+            {
+              "text": "Die anderen sagen ab.",
+              "english": "The others decline."
+            },
+            {
+              "text": "Dann bestätigt einer den Termin.",
+              "english": "Then somebody confirms the date."
+            },
+            {
+              "text": "Die Nummer und der Link stehen in der Nachricht.",
+              "english": "The number and the link are in the message."
+            },
+            {
+              "text": "Eine gute Idee ist, mal schnell zu antworten.",
+              "english": "A good idea is to answer quickly for once."
+            },
+            {
+              "text": "Natürlich ist das nicht immer so, aber es ist gut für alle.",
+              "english": "Of course that is not always so, but it is good for everyone."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

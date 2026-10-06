@@ -1,0 +1,517 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-07",
+  "lang": "de",
+  "title": "Aus dem Stadtteil",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-07",
+    "title": "\"Aus dem Stadtteil\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. An invented district newspaper (\"Stadtteil-Anzeiger\") written in a plain newspaper register (Perfekt and Präteritum in reports, Passiv, Genitiv). All events and persons are fictional; no real Leipzig newspaper, street or police office is named. Please check the news style (headlines without articles) and the safety advice about telephone fraud, which is the usual German advice (auflegen, nie Geld oder Daten geben)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "contemporary-nonfiction"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Die Zeitung für den Stadtteil",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeden Donnerstag liegt die neue Zeitung im Briefkasten.",
+              "english": "Every Thursday the new newspaper lies in the letterbox."
+            },
+            {
+              "text": "Sie ist klein, aber viele Nachbarn lesen sie gern.",
+              "english": "It is small, but many neighbours like to read it."
+            },
+            {
+              "text": "Hier steht, was im Stadtteil passiert ist und was bald stattfinden wird.",
+              "english": "It says what has happened in the district and what will take place soon."
+            },
+            {
+              "text": "Diese Woche gibt es einen Bericht über einen Unfall, ein Feuer und ein neues Café.",
+              "english": "This week there is a report about an accident, a fire and a new café."
+            },
+            {
+              "text": "Außerdem steht eine Warnung der Polizei in der Zeitung.",
+              "english": "There is also a warning from the police in the newspaper."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Unfall an der Kreuzung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hier der Bericht von Montag: Am Morgen gab es an der großen Kreuzung einen Unfall.",
+              "english": "Here is the report from Monday: in the morning there was an accident at the big crossing."
+            },
+            {
+              "text": "Ein Junge auf dem Fahrrad wollte über die Straße fahren.",
+              "english": "A boy on a bicycle wanted to ride across the street."
+            },
+            {
+              "text": "Ein Auto kam die Straße entlang.",
+              "english": "A car came along the street."
+            },
+            {
+              "text": "Die Ampel war rot, aber der Junge hat sie wahrscheinlich nicht gesehen.",
+              "english": "The light was red, but the boy probably did not see it."
+            },
+            {
+              "text": "Ein Auto konnte nicht mehr halten und hat das Fahrrad getroffen.",
+              "english": "A car could not stop any more and hit the bicycle."
+            },
+            {
+              "text": "Der Junge ist gefallen, aber er hatte Glück.",
+              "english": "The boy fell, but he was lucky."
+            },
+            {
+              "text": "Er wurde ins Krankenhaus gebracht und noch am Abend wieder nach Hause geschickt.",
+              "english": "He was taken to the hospital and sent home again in the evening."
+            },
+            {
+              "text": "Der Fahrer ist sofort stehen geblieben und hat Hilfe geholt.",
+              "english": "The driver stopped at once and fetched help."
+            },
+            {
+              "text": "Eine Frau aus dem Haus gegenüber hat sofort Hilfe gerufen.",
+              "english": "A woman from the house opposite called for help at once."
+            },
+            {
+              "text": "Sie berichtete, dass das Auto nicht zu schnell war.",
+              "english": "She reported that the car was not going too fast."
+            },
+            {
+              "text": "„Der Junge ist einfach gefahren“, sagte sie.",
+              "english": "\"The boy simply rode,\" she said."
+            },
+            {
+              "text": "„Er hat nicht gedacht.“",
+              "english": "\"He did not think.\""
+            },
+            {
+              "text": "Der Unfall ist für viele Nachbarn ein Grund zur Sorge.",
+              "english": "The accident is a reason for concern for many neighbours."
+            },
+            {
+              "text": "Schon lange wünschen sie sich 30 Kilometer pro Stunde in dieser Straße.",
+              "english": "They have long wished for 30 kilometres per hour in this street."
+            },
+            {
+              "text": "Der Bäcker an der Ecke sagt: „Das ist kein Zufall. Wir haben es oft gesagt.“",
+              "english": "The baker on the corner says: \"That is no coincidence. We have said it often.\""
+            },
+            {
+              "text": "Die Stadt hat noch nicht geantwortet.",
+              "english": "The city has not answered yet."
+            },
+            {
+              "text": "Der Brief des Vereins liegt dort seit drei Wochen.",
+              "english": "The association's letter has been lying there for three weeks."
+            },
+            {
+              "text": "Wer das gesehen hat, kann sich beim Amt melden.",
+              "english": "Whoever saw it can contact the office."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Feuer im Keller",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "In der Nacht zu Dienstag gab es ein Feuer in einem Haus in der Parkstraße.",
+              "english": "In the night to Tuesday there was a fire in a house in Parkstraße."
+            },
+            {
+              "text": "Es begann im Keller, wie ein Nachbar berichtet.",
+              "english": "It began in the cellar, as a neighbour reports."
+            },
+            {
+              "text": "Das Feuer war nach einer Stunde aus.",
+              "english": "The fire was out after an hour."
+            },
+            {
+              "text": "Eine Nachbarin hat den Rauch gerochen und die Feuerwehr angerufen.",
+              "english": "A neighbour smelled the smoke and called the fire brigade."
+            },
+            {
+              "text": "Die Verbindung war schlecht, aber man hat sie verstanden.",
+              "english": "The connection was bad, but she was understood."
+            },
+            {
+              "text": "Alle Bewohner konnten das Haus rechtzeitig verlassen.",
+              "english": "All residents were able to leave the house in time."
+            },
+            {
+              "text": "Niemand ist verletzt worden.",
+              "english": "Nobody was hurt."
+            },
+            {
+              "text": "Es gab keinen Tod, und das ist ein Wunder, sagt ein Nachbar.",
+              "english": "There was no death, and that is a miracle, says a neighbour."
+            },
+            {
+              "text": "Man sucht noch den Grund dafür.",
+              "english": "They are still looking for the reason."
+            },
+            {
+              "text": "Vielleicht war es ein Problem mit einer alten Leitung.",
+              "english": "Perhaps it was a problem with an old cable."
+            },
+            {
+              "text": "Vielleicht hat auch jemand unten im Keller geraucht.",
+              "english": "Perhaps somebody also smoked down in the cellar."
+            },
+            {
+              "text": "Das Rauchen ist dort verboten.",
+              "english": "Smoking is forbidden there."
+            },
+            {
+              "text": "Eine Familie hat ihre Wohnung verloren, und mit ihr fast alles.",
+              "english": "One family has lost their flat, and with it almost everything."
+            },
+            {
+              "text": "Die Nachbarschaft hilft.",
+              "english": "The neighbourhood is helping."
+            },
+            {
+              "text": "Die Nachbarn haben Kleider, Essen und Betten gebracht.",
+              "english": "The neighbours have brought clothes, food and beds."
+            },
+            {
+              "text": "Auch die Gemeinde hat geholfen.",
+              "english": "The church has helped too."
+            },
+            {
+              "text": "Pastor Thomas hat die Familie besucht und mit ihr gebetet.",
+              "english": "Pastor Thomas visited the family and prayed with them."
+            },
+            {
+              "text": "Er sagte, dass man in so einer Zeit Trost braucht und keine großen Worte.",
+              "english": "He said that in such a time one needs comfort and no big words."
+            },
+            {
+              "text": "Der Hauskreis aus der Nachbarstraße sammelt jetzt eine Spende für die Familie.",
+              "english": "The house group from the next street is now collecting donations for the family."
+            },
+            {
+              "text": "Die Hoffnung der Familie ist, bald wieder ein Zuhause zu haben.",
+              "english": "The family's hope is to have a home again soon."
+            },
+            {
+              "text": "Es ist wirklich nicht leicht, sagt die Mutter.",
+              "english": "It really is not easy, says the mother."
+            },
+            {
+              "text": "Aber wir sind nicht allein.",
+              "english": "But we are not alone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Neu im Stadtteil: ein kleines Café",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Die Zeitung berichtet heute auch von einer Eröffnung.",
+              "english": "The newspaper also reports today on an opening."
+            },
+            {
+              "text": "Herr Schmidt, der Bäcker an der Ecke, hat nebenan ein kleines Café eröffnet.",
+              "english": "Herr Schmidt, the baker on the corner, has opened a small café next door."
+            },
+            {
+              "text": "Er hat lange überlegt, ob sich das lohnt.",
+              "english": "He thought for a long time about whether it would pay off."
+            },
+            {
+              "text": "„Ich hatte Zweifel“, sagt er.",
+              "english": "\"I had doubts,\" he says."
+            },
+            {
+              "text": "„Ich habe gezweifelt, ob die Leute kommen.“",
+              "english": "\"I doubted whether people would come.\""
+            },
+            {
+              "text": "Aber die Nachbarn haben ihm Vertrauen geschenkt.",
+              "english": "But the neighbours gave him their trust."
+            },
+            {
+              "text": "Am ersten Tag waren alle Tische besetzt.",
+              "english": "On the first day all the tables were taken."
+            },
+            {
+              "text": "Es gibt Kaffee, Kuchen und Brot aus dem eigenen Ofen.",
+              "english": "There is coffee, cake and bread from his own oven."
+            },
+            {
+              "text": "Das Café hat acht Tische und einen kleinen Garten.",
+              "english": "The café has eight tables and a small garden."
+            },
+            {
+              "text": "Die Preise sind günstig, und die Kuchen sind jeden Tag frisch.",
+              "english": "The prices are low, and the cakes are fresh every day."
+            },
+            {
+              "text": "Das Café öffnet um sieben Uhr, auch am Sonntag.",
+              "english": "The café opens at seven o'clock, on Sunday too."
+            },
+            {
+              "text": "„Das Café ist ein Wunsch, den ich schon lange hatte“, sagt Herr Schmidt.",
+              "english": "\"The café is a wish I have had for a long time,\" says Herr Schmidt."
+            },
+            {
+              "text": "„Eigentlich wollte ich nur backen.“",
+              "english": "\"Actually I only wanted to bake.\""
+            },
+            {
+              "text": "„Ich möchte, dass die Menschen hier miteinander sprechen.“",
+              "english": "\"I would like people here to talk with each other.\""
+            },
+            {
+              "text": "Ein Gast meint: „Das war nämlich nötig. Man hat im Stadtteil keinen Platz zum Sitzen gehabt.“",
+              "english": "A guest thinks: \"That was necessary, you see. There was no place to sit in the district.\""
+            },
+            {
+              "text": "Eine Frau, die jeden Morgen kommt, sagt: „Hier findet man Frieden. Hier hört man zu.“",
+              "english": "A woman who comes every morning says: \"Here you find peace. Here people listen.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Warnung der Polizei",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Die Polizei warnt vor Anrufen am Telefon.",
+              "english": "The police warn against phone calls."
+            },
+            {
+              "text": "In den letzten Wochen haben viele ältere Menschen im Stadtteil einen Anruf bekommen.",
+              "english": "In the last weeks many older people in the district have received a call."
+            },
+            {
+              "text": "Ein Mann sagt: „Ich bin von der Polizei. Ihr Geld ist nicht sicher.“",
+              "english": "A man says: \"I am from the police. Your money is not safe.\""
+            },
+            {
+              "text": "Er will, dass man das Geld vor die Tür legt.",
+              "english": "He wants you to put the money in front of the door."
+            },
+            {
+              "text": "Das ist nicht die Wahrheit.",
+              "english": "That is not the truth."
+            },
+            {
+              "text": "So ruft niemand von einer Behörde an.",
+              "english": "Nobody from an authority calls like that."
+            },
+            {
+              "text": "Hier sind die Hinweise für alle:",
+              "english": "Here is the advice for everybody:"
+            },
+            {
+              "text": "Legen Sie sofort auf, wenn Sie Zweifel haben.",
+              "english": "Hang up at once if you have doubts."
+            },
+            {
+              "text": "Geben Sie nie Geld, Ausweis oder Schlüssel an Fremde.",
+              "english": "Never give money, identity card or keys to strangers."
+            },
+            {
+              "text": "Sprechen Sie mit Ihren Nachbarn und mit Ihrer Familie über so einen Anruf.",
+              "english": "Talk to your neighbours and your family about such a call."
+            },
+            {
+              "text": "Wenn Sie nicht allein sind, ist es schwerer für die Täter.",
+              "english": "If you are not alone, it is harder for the offenders."
+            },
+            {
+              "text": "Wer einen solchen Anruf bekommen hat, soll es dem Amt sagen.",
+              "english": "Whoever has received such a call should tell the office."
+            },
+            {
+              "text": "Das hilft anderen, und es rettet vielleicht Geld.",
+              "english": "That helps others, and it perhaps saves money."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Termine und Schule",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Freitag bekommen die Schüler im Stadtteil ihr Zeugnis.",
+              "english": "On Friday the pupils in the district get their report."
+            },
+            {
+              "text": "Viele Eltern haben Angst davor, und die Schüler auch.",
+              "english": "Many parents are afraid of it, and so are the pupils."
+            },
+            {
+              "text": "Pastor Thomas spricht am Sonntag im Gottesdienst über Vergebung.",
+              "english": "On Sunday Pastor Thomas speaks about forgiveness in the service."
+            },
+            {
+              "text": "Er sagt: „Wer nicht vergeben kann, hat keine Kraft für das Neue. Der Glaube fängt bei der Vergebung an.“",
+              "english": "He says: \"Whoever cannot forgive has no strength for the new. Faith begins with forgiveness.\""
+            },
+            {
+              "text": "Wer Lust hat, kann nach dem Gottesdienst mit ihm sprechen.",
+              "english": "Whoever feels like it can talk to him after the service."
+            },
+            {
+              "text": "Der Verein plant für Juni ein Fest für den ganzen Stadtteil.",
+              "english": "The association is planning a festival for the whole district for June."
+            },
+            {
+              "text": "Es ist möglich, noch zu helfen.",
+              "english": "It is still possible to help."
+            },
+            {
+              "text": "Jonas organisiert das Fest und braucht noch Menschen.",
+              "english": "Jonas is organising the festival and still needs people."
+            },
+            {
+              "text": "Wer mitmachen möchte, kann sich vor dem Café mit ihm verabreden.",
+              "english": "Whoever wants to join in can arrange to meet him in front of the café."
+            },
+            {
+              "text": "Das Wetter wird bestimmt schön, sagen die Leute.",
+              "english": "The weather will certainly be nice, people say."
+            },
+            {
+              "text": "Wir werden sehen.",
+              "english": "We will see."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Kurz gemeldet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Eine Meldung vom Spielplatz: Die Baustelle ist ruhiger geworden.",
+              "english": "A report from the playground: the building site has become quieter."
+            },
+            {
+              "text": "Die Arbeiter hören um 16 Uhr auf.",
+              "english": "The workers stop at four."
+            },
+            {
+              "text": "Eine Meldung vom Verein: Nach der letzten Sitzung hat man beschlossen, ein Fest zu feiern.",
+              "english": "A report from the association: after the last meeting it was decided to hold a festival."
+            },
+            {
+              "text": "Die Abstimmung war klar.",
+              "english": "The vote was clear."
+            },
+            {
+              "text": "Eine kurze Meldung noch: In der Straßenbahn gibt es eine neue Verbindung zum Hauptbahnhof.",
+              "english": "One more short report: there is a new tram connection to the main station."
+            },
+            {
+              "text": "Sie fährt alle zehn Minuten, auch am Abend.",
+              "english": "It runs every ten minutes, in the evening too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ein Leserbrief",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Eine Leserin schreibt: „Ich habe den Bericht gelesen und möchte meine Meinung sagen.“",
+              "english": "A reader writes: \"I have read the report and would like to give my opinion.\""
+            },
+            {
+              "text": "„Wir brauchen eine Lösung. Mein Vorschlag ist eine kleine Mauer vor dem Spielplatz und eine zweite Ampel.“",
+              "english": "\"We need a solution. My suggestion is a small wall in front of the playground and a second traffic light.\""
+            },
+            {
+              "text": "„Ich weiß, dass das Geld kostet. Aber was ist ein Kind wert?“",
+              "english": "\"I know that costs money. But what is a child worth?\""
+            },
+            {
+              "text": "„Ich hoffe, dass die Stadt jetzt zuhört. Es hat Sinn, wenn alle zusammen sprechen.“",
+              "english": "\"I hope the city is listening now. It makes sense when everyone speaks together.\""
+            },
+            {
+              "text": "„So etwas kann das Leben eines Kindes verändern. Das darf nicht noch einmal passieren.“",
+              "english": "\"Something like that can change a child's life. That must not happen again.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

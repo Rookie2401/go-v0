@@ -1,0 +1,429 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a1-1-02",
+  "lang": "de",
+  "title": "Sam's room",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a1-1-02",
+    "title": "Sam's room (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Frau Weber and Sam say Sie to each other (she calls him Herr Miller). \"Es gibt\" is used for what is in a room; \"Ich gebe Ihnen den Schlüssel\" is plain and polite. Sam rents one room in Frau Weber's house; the bathroom and kitchen are shared. Anna and Frau Weber know each other from church."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "home",
+    "rooms",
+    "furniture",
+    "es gibt"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "weber": "Frau Weber"
+  },
+  "sections": [
+    {
+      "title": "Das Haus",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam ist bei Frau Weber.",
+              "english": "Sam is at Mrs Weber's."
+            },
+            {
+              "text": "Das Haus ist in der Stadt.",
+              "english": "The house is in the city."
+            },
+            {
+              "speaker": "weber",
+              "text": "Guten Morgen, Herr Miller!",
+              "english": "Good morning, Mr Miller!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Kommen Sie!",
+              "english": "Come in!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Guten Morgen, Frau Weber.",
+              "english": "Good morning, Mrs Weber."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke!",
+              "english": "Thank you!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Wie geht es Ihnen?",
+              "english": "How are you?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Gut, danke.",
+              "english": "Fine, thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und Ihnen?",
+              "english": "And you?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Auch gut, danke.",
+              "english": "Also fine, thank you."
+            },
+            {
+              "speaker": "weber",
+              "text": "Das Haus ist klein.",
+              "english": "The house is small."
+            },
+            {
+              "speaker": "weber",
+              "text": "Aber es ist schön.",
+              "english": "But it is nice."
+            },
+            {
+              "speaker": "weber",
+              "text": "Und da ist das Zimmer für Sie.",
+              "english": "And there is the room for you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist sehr schön!",
+              "english": "That is very nice!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Zimmer",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Das Zimmer ist klein, aber schön.",
+              "english": "The room is small, but nice."
+            },
+            {
+              "speaker": "weber",
+              "text": "Da ist das Fenster.",
+              "english": "There is the window."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das Fenster ist groß.",
+              "english": "The window is big."
+            },
+            {
+              "speaker": "weber",
+              "text": "Das Bett ist beim Fenster.",
+              "english": "The bed is by the window."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und das Bett ist auch groß.",
+              "english": "And the bed is big too."
+            },
+            {
+              "speaker": "weber",
+              "text": "Es gibt einen Tisch und einen Stuhl.",
+              "english": "There is a table and a chair."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Stuhl ist beim Tisch.",
+              "english": "The chair is by the table."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und da ist ein Buch.",
+              "english": "And there is a book."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ja, das Buch ist für Sie.",
+              "english": "Yes, the book is for you."
+            },
+            {
+              "speaker": "weber",
+              "text": "Es ist in Deutsch.",
+              "english": "It is in German."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist sehr gut, danke!",
+              "english": "That is very good, thank you!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich möchte gern Deutsch sprechen.",
+              "english": "I would like to speak German."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Küche und das Bad",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "weber",
+              "text": "Kommen Sie, Herr Miller.",
+              "english": "Come, Mr Miller."
+            },
+            {
+              "speaker": "weber",
+              "text": "Hier ist die Küche.",
+              "english": "Here is the kitchen."
+            },
+            {
+              "speaker": "weber",
+              "text": "Die Küche ist groß.",
+              "english": "The kitchen is big."
+            },
+            {
+              "speaker": "weber",
+              "text": "Hier gibt es drei Stühle.",
+              "english": "There are three chairs here."
+            },
+            {
+              "speaker": "weber",
+              "text": "Hier ist Kaffee und Brot.",
+              "english": "Here is coffee and bread."
+            },
+            {
+              "speaker": "weber",
+              "text": "Und hier ist das Bad.",
+              "english": "And here is the bathroom."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das Bad ist klein.",
+              "english": "The bathroom is small."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ja, aber es ist gut.",
+              "english": "Yes, but it is good."
+            },
+            {
+              "speaker": "weber",
+              "text": "Es gibt kein Bad im Zimmer.",
+              "english": "There is no bathroom in the room."
+            },
+            {
+              "speaker": "sam",
+              "text": "Nein?",
+              "english": "No?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Wo?",
+              "english": "Where?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Hier, im Haus.",
+              "english": "Here, in the house."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist gut.",
+              "english": "That is good."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Schlüssel",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "weber",
+              "text": "Ich gebe Ihnen den Schlüssel für das Haus.",
+              "english": "I give you the key for the house."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke, Frau Weber!",
+              "english": "Thank you, Mrs Weber!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Ihre Tasche ist auf dem Bett.",
+              "english": "Your bag is on the bed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Kaffee in der Küche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam und Frau Weber sind in der Küche.",
+              "english": "Sam and Mrs Weber are in the kitchen."
+            },
+            {
+              "speaker": "weber",
+              "text": "Möchten Sie einen Kaffee?",
+              "english": "Would you like a coffee?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, gern.",
+              "english": "Yes, gladly."
+            },
+            {
+              "speaker": "sam",
+              "text": "Danke.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "weber",
+              "text": "Anna kommt heute auch in die Kirche.",
+              "english": "Anna is coming to church today too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist schön, Anna ist auch in der Kirche.",
+              "english": "That is nice, Anna is in church too."
+            },
+            {
+              "speaker": "weber",
+              "text": "Anna ist sehr gut.",
+              "english": "Anna is very good."
+            },
+            {
+              "speaker": "weber",
+              "text": "Sie arbeitet in der Klinik.",
+              "english": "She works at the clinic."
+            },
+            {
+              "speaker": "weber",
+              "text": "Und Lukas ist Lehrer in der Schule.",
+              "english": "And Lukas is a teacher at the school."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, ich weiß.",
+              "english": "Yes, I know."
+            },
+            {
+              "speaker": "weber",
+              "text": "Heute ist Sonntag.",
+              "english": "Today is Sunday."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ich gehe in die Kirche.",
+              "english": "I am going to church."
+            },
+            {
+              "speaker": "weber",
+              "text": "Gehen Sie mit, Herr Miller?",
+              "english": "Are you coming along, Mr Miller?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, ich gehe gern mit.",
+              "english": "Yes, I will gladly come along."
+            },
+            {
+              "speaker": "weber",
+              "text": "Haben Sie Hunger?",
+              "english": "Are you hungry?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, ich habe Hunger.",
+              "english": "Yes, I am hungry."
+            },
+            {
+              "speaker": "weber",
+              "text": "Hier ist Brot.",
+              "english": "Here is bread."
+            },
+            {
+              "speaker": "weber",
+              "text": "Und möchten Sie Wasser?",
+              "english": "And would you like water?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, bitte.",
+              "english": "Yes, please."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich trinke gern Wasser.",
+              "english": "I like drinking water."
+            },
+            {
+              "speaker": "weber",
+              "text": "Gut.",
+              "english": "Good."
+            },
+            {
+              "speaker": "weber",
+              "text": "Wir gehen in die Kirche.",
+              "english": "We are going to church."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

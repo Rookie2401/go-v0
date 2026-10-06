@@ -1,0 +1,955 @@
+{
+  "schemaVersion": 2,
+  "id": "de-a2-2-09",
+  "lang": "de",
+  "title": "Wenn man Fieber hat",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-a2-2-09",
+    "title": "\"Wenn man Fieber hat\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Frau Weber calls Sam \"Herr Sam\" (Sie + first name): reviewer to confirm. Advice is given by a nurse to a friend (du). The medical advice is simple, everyday and cautious (rest, drink, call the family doctor, emergency room only for serious symptoms); a medical reviewer should confirm the thresholds (39.5 degrees, three days). \"Hausarzt\", \"Notaufnahme\" and the phone call to the practice use the German system (Krankenkasse card). The Hausmeister's notice at the end repeats the house-rule vocabulary of the previous units."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "health"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "SA": "Sam",
+    "AN": "Anna",
+    "FW": "Frau Weber",
+    "PR": "Praxis"
+  },
+  "sections": [
+    {
+      "title": "Eine schlechte Nacht",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam ist krank.",
+              "english": "Sam is ill."
+            },
+            {
+              "text": "Er hat die ganze Nacht nicht geschlafen.",
+              "english": "He has not slept the whole night."
+            },
+            {
+              "text": "Sein Kopf tut weh, sein Hals tut weh, und er hat Fieber.",
+              "english": "His head hurts, his throat hurts, and he has a fever."
+            },
+            {
+              "text": "Am Morgen klopft Frau Weber an die Tür.",
+              "english": "In the morning Frau Weber knocks on the door."
+            },
+            {
+              "text": "Sie sieht sofort, dass er sehr krank ist.",
+              "english": "She sees at once that he is very ill."
+            },
+            {
+              "text": "Sie sehen schlecht aus, Herr Sam.",
+              "english": "You look bad, Herr Sam.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Ich rufe Anna an.",
+              "english": "I will call Anna.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Sie ist Krankenschwester.",
+              "english": "She is a nurse.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Sie weiß, was man tun muss.",
+              "english": "She knows what has to be done.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Nach einer Stunde sitzt Anna an seinem Bett.",
+              "english": "After an hour Anna is sitting at his bed."
+            },
+            {
+              "text": "Sie hat ihre Tasche mitgebracht.",
+              "english": "She has brought her bag."
+            },
+            {
+              "text": "Guten Morgen, Sam.",
+              "english": "Good morning, Sam.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Du hast bestimmt die Grippe.",
+              "english": "You certainly have the flu.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Wie lange geht das schon?",
+              "english": "How long has this been going on?",
+              "speaker": "AN"
+            },
+            {
+              "text": "Seit gestern Abend.",
+              "english": "Since yesterday evening.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Ich war so müde, und dann kam das Fieber.",
+              "english": "I was so tired, and then the fever came.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Zuerst müssen wir die Temperatur messen.",
+              "english": "First we have to measure the temperature.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Hier ist ein Thermometer.",
+              "english": "Here is a thermometer.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Leg es bitte unter den Arm und warte zwei Minuten.",
+              "english": "Put it under your arm please and wait two minutes.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Sam wartet.",
+              "english": "Sam waits."
+            },
+            {
+              "text": "Anna schaut auf ihre Uhr.",
+              "english": "Anna looks at her watch."
+            },
+            {
+              "text": "38,9 Grad.",
+              "english": "38.9 degrees.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Die Temperatur ist hoch, aber das kommt oft vor.",
+              "english": "The temperature is high, but that often happens.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Muss ich ins Krankenhaus?",
+              "english": "Do I have to go to the hospital?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Nein, nicht sofort.",
+              "english": "No, not at once.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Fieber ist ein Symptom, nicht mehr.",
+              "english": "Fever is a symptom, nothing more.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ich gebe dir erst einmal einen Ratschlag.",
+              "english": "First I will give you some advice.",
+              "speaker": "AN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Ratschlag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Du solltest im Bett bleiben und dich ausruhen.",
+              "english": "You should stay in bed and rest.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ein Tag Ruhe ist wichtig.",
+              "english": "A day of rest is important.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ruh dich aus, auch wenn du dich besser fühlst.",
+              "english": "Rest, even when you feel better.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Der Körper braucht Zeit.",
+              "english": "The body needs time.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ich kann nicht lange im Bett liegen.",
+              "english": "I cannot lie in bed for long.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Ich habe viel zu tun.",
+              "english": "I have a lot to do.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Das ist ein typischer Fehler.",
+              "english": "That is a typical mistake.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ein guter Ratschlag ist: Die Arbeit kann warten, die Gesundheit nicht.",
+              "english": "Good advice is: work can wait, health cannot.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Danke für den Ratschlag.",
+              "english": "Thank you for the advice.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Ich bleibe liegen.",
+              "english": "I will stay lying down.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Du hast sicher Durst.",
+              "english": "You are surely thirsty.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Du musst viel trinken, zwei Liter am Tag.",
+              "english": "You must drink a lot, two litres a day.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ja, ich habe sehr großen Durst.",
+              "english": "Yes, I am very thirsty.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Mein Mund ist ganz trocken.",
+              "english": "My mouth is quite dry.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Bei Fieber hat man mehr Durst, als man denkt.",
+              "english": "With a fever you are thirstier than you think.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Trink Wasser und Tee.",
+              "english": "Drink water and tea.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ich würde keinen Kaffee trinken, er ist nicht gut für den Magen.",
+              "english": "I would not drink coffee, it is not good for the stomach.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Mein Magen tut auch ein bisschen weh.",
+              "english": "My stomach hurts a little too.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Hast du Übelkeit?",
+              "english": "Do you have nausea?",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ist dir schlecht?",
+              "english": "Do you feel sick?",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ein wenig.",
+              "english": "A little.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Aber ich muss nicht brechen.",
+              "english": "But I do not have to be sick.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Übelkeit ist dabei normal.",
+              "english": "Nausea is normal with it.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Der Magen braucht jetzt Ruhe.",
+              "english": "The stomach needs rest now.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Und hast du Durchfall?",
+              "english": "And do you have diarrhoea?",
+              "speaker": "AN"
+            },
+            {
+              "text": "Nein, zum Glück nicht.",
+              "english": "No, luckily not.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Gut.",
+              "english": "Good.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Bei Durchfall musst du noch mehr trinken.",
+              "english": "With diarrhoea you have to drink even more.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Aber das hast du nicht.",
+              "english": "But you do not have that.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Dann iss nur leichte Sachen: Suppe, Brot, vielleicht eine Banane.",
+              "english": "Then eat only light things: soup, bread, maybe a banana.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Bei Übelkeit hilft warmer Tee.",
+              "english": "With nausea warm tea helps.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Ich koche gleich einen.",
+              "english": "I will make some right away.",
+              "speaker": "FW"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Heiß und kalt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mir ist so kalt, und dann ist mir wieder heiß.",
+              "english": "I feel so cold, and then hot again.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Was ist das?",
+              "english": "What is that?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Das ist normal.",
+              "english": "That is normal.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Man friert, und danach schwitzt man.",
+              "english": "You shiver, and afterwards you sweat.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ich friere schon wieder.",
+              "english": "I am shivering again.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Kann ich noch eine Decke haben?",
+              "english": "Can I have another blanket?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Wenn du frierst, nimm eine Decke.",
+              "english": "When you are shivering take a blanket.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Wenn du schwitzt, leg sie zur Seite.",
+              "english": "When you are sweating put it aside.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Und wenn ich schwitze?",
+              "english": "And when I sweat?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Muss ich das Fenster öffnen?",
+              "english": "Do I have to open the window?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Du solltest das Zimmer kurz lüften, aber nicht lange.",
+              "english": "You should air the room briefly, but not for long.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Der Zug ist nicht gut.",
+              "english": "A draught is not good.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Und stell die Heizung nicht zu hoch.",
+              "english": "And do not turn the heating too high.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Das ist wie in der Hausordnung.",
+              "english": "It is like in the house rules.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Das ist richtig.",
+              "english": "That is right.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Ich spare immer, aber bei einem kranken Mann mache ich eine Ausnahme.",
+              "english": "I always save, but for a sick man I make an exception.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Danke, Frau Weber.",
+              "english": "Thank you, Frau Weber.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Zeig mir, wie du atmest.",
+              "english": "Show me how you breathe.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Atme tief ein und aus.",
+              "english": "Breathe deeply in and out.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Sam atmet tief.",
+              "english": "Sam breathes deeply."
+            },
+            {
+              "text": "Er muss husten.",
+              "english": "He has to cough."
+            },
+            {
+              "text": "Das klingt nicht schlecht.",
+              "english": "That does not sound bad.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Deine Lunge ist frei, glaube ich.",
+              "english": "Your lungs are clear, I think.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Aber wenn du schwer atmen musst oder Schmerzen in der Brust hast, ist das ernst.",
+              "english": "But if you have to breathe with difficulty or have pain in the chest, that is serious.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Was soll ich dann tun?",
+              "english": "What should I do then?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Dann geh nicht erst zum Hausarzt, sondern gleich in die Notaufnahme.",
+              "english": "Then do not go to the family doctor first, but straight to the emergency room.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Auch wenn der Durchfall mehr als drei Tage dauert, ist das ernst.",
+              "english": "Even if the diarrhoea lasts more than three days, that is serious.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Nimm das nicht leicht.",
+              "english": "Do not take that lightly.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ich habe übrigens eine Neuigkeit: Ben hat die Grippe auch.",
+              "english": "By the way I have some news: Ben has the flu too.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Er hat mir ein Video geschickt.",
+              "english": "He sent me a video.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Darin hustet er wie ein kleiner Löwe.",
+              "english": "In it he coughs like a little lion.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Lukas bringt ihn heute zum Arzt.",
+              "english": "Lukas is taking him to the doctor today.",
+              "speaker": "AN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Wann zum Arzt?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Wann muss ich zum Hausarzt gehen?",
+              "english": "When do I have to go to the family doctor?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Falls das Fieber nach drei Tagen noch da ist, solltest du den Hausarzt anrufen.",
+              "english": "If the fever is still there after three days, you should call the family doctor.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Falls es höher als 39,5 Grad wird, auch.",
+              "english": "If it gets higher than 39.5 degrees too.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Und falls du nicht mehr trinken kannst.",
+              "english": "And if you can no longer drink.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Dann ist es ernst, und du darfst nicht warten.",
+              "english": "Then it is serious, and you must not wait.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Und wie sage ich das am Telefon?",
+              "english": "And how do I say that on the phone?",
+              "speaker": "SA"
+            },
+            {
+              "text": "Du sagst: Ich habe seit drei Tagen Fieber und Husten.",
+              "english": "You say: I have had a fever and a cough for three days.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Und du sagst, wie hoch die Temperatur ist.",
+              "english": "And you say how high the temperature is.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Husten ist auch ein Symptom, das der Arzt wissen muss.",
+              "english": "A cough is also a symptom that the doctor needs to know.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Wir können gleich anrufen.",
+              "english": "We can call at once.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Ich habe die Nummer der Praxis.",
+              "english": "I have the number of the practice.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Sie ist links neben der Apotheke.",
+              "english": "It is to the left of the pharmacy.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Frau Weber nimmt das Telefon.",
+              "english": "Frau Weber takes the phone."
+            },
+            {
+              "text": "Nach einer Weile spricht sie mit der Praxis.",
+              "english": "After a while she speaks to the practice."
+            },
+            {
+              "text": "Guten Tag.",
+              "english": "Good day.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Ich rufe für einen Patienten an.",
+              "english": "I am calling for a patient.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Die Verbindung ist schlecht, hören Sie mich?",
+              "english": "The connection is bad, can you hear me?",
+              "speaker": "FW"
+            },
+            {
+              "text": "Ja, jetzt höre ich Sie besser.",
+              "english": "Yes, now I can hear you better.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Wie lange hat er dieses Symptom schon?",
+              "english": "How long has he had this symptom?",
+              "speaker": "PR"
+            },
+            {
+              "text": "Seit gestern Abend.",
+              "english": "Since yesterday evening.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Es ist wahrscheinlich eine Grippe.",
+              "english": "It is probably the flu.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Wenn es nicht besser wird, soll er am Montag kommen.",
+              "english": "If it does not get better, he should come on Monday.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Er muss die Krankenkassenkarte mitbringen.",
+              "english": "He must bring his health-insurance card.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Danke.",
+              "english": "Thank you.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Und was machen wir, wenn es am Wochenende schlimmer wird?",
+              "english": "And what do we do if it gets worse over the weekend?",
+              "speaker": "FW"
+            },
+            {
+              "text": "Dann kann er in die Notaufnahme im Krankenhaus gehen.",
+              "english": "Then he can go to the emergency room at the hospital.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Sie ist Tag und Nacht offen.",
+              "english": "It is open day and night.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Und wie komme ich dahin?",
+              "english": "And how do I get there?",
+              "speaker": "FW"
+            },
+            {
+              "text": "Gehen Sie von der Praxis geradeaus bis zur Kreuzung.",
+              "english": "From the practice go straight ahead to the crossing.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Dort ist eine Ampel.",
+              "english": "There is a traffic light there.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Biegen Sie rechts ab, in Richtung Fluss.",
+              "english": "Turn right, in the direction of the river.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Überqueren Sie die Brücke, dann ist es nah, nur etwa 200 Meter.",
+              "english": "Cross the bridge, then it is close, only about 200 metres.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Das Krankenhaus ist ein großes Gebäude an der Ecke.",
+              "english": "The hospital is a big building on the corner.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Gegenüber ist ein Parkplatz.",
+              "english": "Opposite is a car park.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Der Eingang ist hinten.",
+              "english": "The entrance is at the back.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Der Weg dorthin ist leicht.",
+              "english": "The way there is easy.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Oben hängt ein Hinweis.",
+              "english": "Up above there is a sign.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Im Erdgeschoss ist die Notaufnahme.",
+              "english": "The emergency room is on the ground floor.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Unten finden Sie sie schnell.",
+              "english": "Down there you find it quickly.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Und wenn der Aufzug nicht geht?",
+              "english": "And if the lift is not working?",
+              "speaker": "FW"
+            },
+            {
+              "text": "Dann nehmen Sie die Treppe.",
+              "english": "Then take the stairs.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Aber in den ersten Stock müssen Sie nicht.",
+              "english": "But you do not have to go to the first floor.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Und der Ausgang?",
+              "english": "And the exit?",
+              "speaker": "FW"
+            },
+            {
+              "text": "Kann ich dort auch hinaus?",
+              "english": "Can I go out there too?",
+              "speaker": "FW"
+            },
+            {
+              "text": "Ja, am Ausgang ist ein zweiter Parkplatz.",
+              "english": "Yes, at the exit there is a second car park.",
+              "speaker": "PR"
+            },
+            {
+              "text": "Vielen Dank.",
+              "english": "Thank you very much.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Ich hoffe, wir müssen nicht kommen.",
+              "english": "I hope we do not have to come.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Gute Besserung an Ihren Patienten.",
+              "english": "Get well soon to your patient.",
+              "speaker": "PR"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Was man nicht tun sollte",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ich möchte dir noch ein paar Dinge sagen.",
+              "english": "I would like to tell you a few more things.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Du solltest nicht rauchen, und du solltest keinen Alkohol trinken.",
+              "english": "You should not smoke, and you should not drink alcohol.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Eine Tablette gegen das Fieber ist erlaubt, aber nicht mehr als drei am Tag.",
+              "english": "A tablet against the fever is allowed, but not more than three a day.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Ich würde auch keine Besuche machen.",
+              "english": "I would not pay visits either.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Das ist ansteckend.",
+              "english": "It is infectious.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Dann kann ich am Sonntag nicht in die Gemeinde gehen.",
+              "english": "Then I cannot go to church on Sunday.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Das ist leider so.",
+              "english": "That is how it is, unfortunately.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Thomas versteht das bestimmt.",
+              "english": "Thomas will certainly understand.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Und miss am Abend noch einmal.",
+              "english": "And measure again in the evening.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Die Besserung kommt langsam.",
+              "english": "The recovery comes slowly.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Wir messen morgen früh wieder.",
+              "english": "We will measure again tomorrow morning.",
+              "speaker": "AN"
+            },
+            {
+              "text": "Und ich werde Suppe kochen.",
+              "english": "And I will cook soup.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Ruhe und eine heiße Suppe helfen am meisten.",
+              "english": "Rest and a hot soup help most.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Meine Enkelin hatte letztes Jahr das Gleiche, und sie war nach einer Woche wieder gesund.",
+              "english": "My granddaughter had the same last year, and she was well again after a week.",
+              "speaker": "FW"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Brief vom Hausmeister",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ach, fast hätte ich es vergessen.",
+              "english": "Oh, I almost forgot.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Der Hausmeister hat eine Mitteilung gebracht.",
+              "english": "The caretaker has brought a notice.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Alle Mieter sollen den Müll trennen und nichts im Flur oder im Treppenhaus abstellen.",
+              "english": "All tenants are supposed to separate the rubbish and not leave anything in the hall or the stairwell.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Sie soll bei der Mülltonne im Hof aufgehängt werden, damit niemand es vergisst.",
+              "english": "It is to be hung up at the bin in the yard so that nobody forgets.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Und vor dem Haus ist Parken verboten.",
+              "english": "And parking in front of the house is forbidden.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Das ist eine neue Regel.",
+              "english": "That is a new rule.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Das ist richtig.",
+              "english": "That is right.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Man muss Rücksicht nehmen.",
+              "english": "One has to be considerate.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Der Verein hat auch geschrieben.",
+              "english": "The association has written too.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Die Tagesordnung für nächste Woche ist schon da.",
+              "english": "The agenda for next week is already here.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Der Stadtteil möchte ein Fest organisieren.",
+              "english": "The district would like to organise a festival.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Ich bin nicht dagegen, aber ich bin auch nicht sicher.",
+              "english": "I am not against it, but I am not sure either.",
+              "speaker": "FW"
+            },
+            {
+              "text": "Ich bin dafür.",
+              "english": "I am for it.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Aber erst wenn ich wieder gesund bin.",
+              "english": "But only when I am well again.",
+              "speaker": "SA"
+            },
+            {
+              "text": "Am Abend ist das Fieber etwas niedriger.",
+              "english": "In the evening the fever is somewhat lower."
+            },
+            {
+              "text": "Sam schläft schon, als Frau Weber leise die Tür schließt.",
+              "english": "Sam is already asleep as Frau Weber quietly closes the door."
+            },
+            {
+              "text": "Auf dem Tisch liegt ein Zettel von Anna: „Gute Besserung! Ruf an, wenn es schlimmer wird.“",
+              "english": "On the table lies a note from Anna: \"Get well soon! Call if it gets worse.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

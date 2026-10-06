@@ -60,8 +60,8 @@ import { createViewDetector } from './viewDetection';
 import type { ViewDetector, ViewDetectorFactory } from './viewDetection';
 import { useTextData } from './useTextData';
 import type { TextData } from './useTextData';
-import { dictionaryName, englishBehindMenu, hasClauseSpans, hasSeveralReadings, isLegacyProfile, maxLevel, nextLayer, pick, planLayers, unitStretches, unitText, visibleNotes, rescueRomanization } from './assistance';
-import type { LayerFacts } from './assistance';
+import { dictionaryName, englishBehindMenu, hasClauseSpans, hasSeveralReadings, isLegacyProfile, maxLevel, nextLayer, pick, planLayers, pickReading, soundView, unitStretches, unitText, visibleNotes, rescueRomanization } from './assistance';
+import type { LayerFacts, PickedReading, SoundView } from './assistance';
 import type { DictionaryInfo, LexiconSource } from '../../core';
 import { dictionaryView } from '../../ingest';
 import type { DictionaryView } from './assistance';
@@ -245,6 +245,8 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
   /** The installed dictionary's attribution, and what it lists per form (asked once per form per page; a failed or empty ask is kept as nothing). */
   const [dictionary, setDictionary] = useState<DictionaryInfo | undefined>();
   const [dictViews, setDictViews] = useState<ReadonlyMap<string, DictionaryView>>(new Map());
+  /** The dictionary's pronunciation of a form whose analysis has no IPA (Spanish, German, Albanian), by normalized form. */
+  const [dictSounds, setDictSounds] = useState<ReadonlyMap<string, PickedReading>>(new Map());
   const dictAsked = useRef(new Set<string>());
 
   const verses = useMemo(() => (mode === 'scripture' ? buildVerses(data.sentences) : new Map<string, VerseInfo>()), [mode, data.sentences]);
@@ -388,7 +390,9 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
 
   /** Ask the dictionary what it lists for this form. Never blocks the sheet: the disclosure appears when (and if) the answer comes. */
   const askDictionary = useCallback((token: Token) => {
-    if (legacy || typeof lexicon !== 'function' || dictAsked.current.has(token.normalized)) return;
+    // A course without a ladder asks only for a language with no decoding: the lookup then feeds "How it sounds", nothing else.
+    const forSound = !adapter?.decode && !adapter?.decodeWithPronunciation;
+    if ((legacy && !forSound) || typeof lexicon !== 'function' || dictAsked.current.has(token.normalized)) return;
     dictAsked.current.add(token.normalized);
     void (async () => {
       const source = (lexicon as (lang: string) => LexiconSource | undefined)(text.lang);
@@ -396,9 +400,11 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
       if (!source || !info) return; // no dictionary installed for this language: no lookup
       setDictionary(info);
       const entries = (await source.lookup([token.normalized])).get(token.normalized) ?? [];
-      if (entries.length) setDictViews((m) => new Map(m).set(token.normalized, dictionaryView(entries)));
+      if (entries.length && !legacy) setDictViews((m) => new Map(m).set(token.normalized, dictionaryView(entries)));
+      const reading = forSound ? pickReading(text.lang, entries) : undefined;
+      if (reading) setDictSounds((m) => new Map(m).set(token.normalized, reading));
     })().catch(() => undefined);
-  }, [legacy, lexicon, text.lang]);
+  }, [legacy, lexicon, text.lang, adapter]);
 
   const openToken = useCallback(async (token: Token) => {
     if (card && sheetOpen && card.subject.kind === 'word' && card.subject.token.id === token.id) { setSheetOpen(false); return; }
@@ -661,8 +667,24 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
     // Only a reviewed override that itself supplies the syllables lets the decoding say who checked it.
     reviewedBy: cardAnalysis?.origin === 'reviewed' && cardAnalysis.syllables?.length ? (cardAnalysis.sourceId?.replace(/^human:/, '').trim() || 'a person') : undefined,
   };
-  // The dictionary's attribution, read only when the analysis on show (or its alternatives) came from it.
-  const needsDictionary = !!cardAnalysis && (cardAnalysis.origin === 'dictionary' || cardAnalysis.alternatives?.some((a) => a.origin === 'dictionary'));
+  /** The adapter can decode this script at all (or the analysis carries a decoding). */
+  const canDecode = !!adapter?.decode || !!adapter?.decodeWithPronunciation || !!cardAnalysis?.syllables?.length;
+  // A language with no decoding (Spanish, German, Albanian) still says how the word sounds: the dictionary's IPA and the adapter's own
+  // notes, shown with the word and never as a help event. Waits for the analysis (the detail fetch) so the IPA does not arrive late.
+  const sound = useMemo<SoundView | undefined>(() => {
+    if (!adapter || !cardToken || !wordCard || canDecode || !loaded || !wordCard.detailDone) return undefined;
+    let notes: string[] | undefined;
+    try { notes = adapter.pronunciation({ surface: cardToken.surface, start: 0, end: cardToken.surface.length, isWord: true, normalized: cardToken.normalized }).notes; } catch { notes = undefined; }
+    // `notes.ipa` is only ever a dictionary's: it says so (`pronunciationSource`) or the analysis is the dictionary's own
+    const fromDictionary = cardAnalysis?.origin === 'dictionary' || typeof cardAnalysis?.notes?.pronunciationSource === 'string';
+    const named = dictionaryName(dictionary) ?? 'Dictionary';
+    if (cardAnalysis?.notes?.ipa) return soundView(cardAnalysis.notes.ipa, notes, fromDictionary ? named : undefined);
+    // no IPA on the analysis: the dictionary's own listing for this form, chosen by pickReading, with its labels
+    const picked = dictSounds.get(cardToken.normalized);
+    return soundView(picked?.ipa, notes, picked ? named : undefined, picked?.tags.join(', ') || undefined);
+  }, [adapter, cardToken, wordCard, canDecode, loaded, cardAnalysis, dictionary, dictSounds]);
+  // The dictionary's attribution, read only when the analysis on show (or its alternatives) came from it, or lent it its pronunciation.
+  const needsDictionary = !!cardAnalysis && (cardAnalysis.origin === 'dictionary' || cardAnalysis.alternatives?.some((a) => a.origin === 'dictionary') || typeof cardAnalysis.notes?.pronunciationSource === 'string');
   useEffect(() => {
     if (!needsDictionary || typeof lexicon !== 'function') return;
     let live = true;
@@ -682,14 +704,14 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
       phrases: (pick(wordCard.supports, 'phrases') ?? []).length,
       patterns: (pick(wordCard.supports, 'patterns') ?? []).length,
       morphologyLine: pick(wordCard.supports, 'morphologyLine'),
-      canDecode: !!adapter?.decode || !!adapter?.decodeWithPronunciation || !!cardAnalysis?.syllables?.length,
+      canDecode,
       explanation: sentence ? data.support.get(sentence.id)?.explanation : undefined,
       notes,
       clauseNotes: sentence ? cardNotes.filter((n) => n.kind === 'clause-structure' && hasClauseSpans(sentence.text, n.spans)) : [],
       history: wordCard.history,
     };
     return nextLayer(plan.steps, wordCard.opened, facts);
-  }, [wordCard, loaded, legacy, plan, cardNotes, clauseView, cardSentence, cardAnalysis, adapter, data.support]);
+  }, [wordCard, loaded, legacy, plan, cardNotes, clauseView, cardSentence, cardAnalysis, adapter, canDecode, data.support]);
 
   // Where the reader's own controls live: in the text's header area (full, reduced) or behind one quiet menu (minimal).
   const highlightTool = (
@@ -754,6 +776,7 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
           notes={cardNotes}
           clauseView={clauseView}
           decoding={decodingView}
+          sound={sound}
           sources={legacy ? undefined : adapter?.sources}
           describeMorph={adapter?.describeMorph?.bind(adapter)}
           varietyPolicy={course.variety}

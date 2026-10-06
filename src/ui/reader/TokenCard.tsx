@@ -11,7 +11,7 @@
  * Nothing here emits events or fetches evidence: the Reader opens layers and emits (see Reader.tsx).
  */
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { DescribeMorph, DictionaryView } from './assistance';
+import type { DescribeMorph, DictionaryView, SoundView } from './assistance';
 import { varietyLine as courseVarietyLine } from '../../core';
 import type { Variety, VarietyPolicy } from '../../core';
 import type { AnalysisSourceInfo, ContentNote, DictionaryInfo, HelpLayer, LanguageCode, Sentence, SyllableAnalysis, Token, TokenSupport } from '../../core';
@@ -64,6 +64,8 @@ export interface TokenCardProps {
   /** Whether the profile shows clause-structure notes as a labelled view. */
   clauseView: boolean;
   decoding: DecodingView;
+  /** How the word sounds, for a language with no decoding (Spanish, German, Albanian); shown with the word, not behind a layer. Absent ⇒ no section. */
+  sound?: SoundView;
   /** The adapter's own sources (`adapter.sources`), to name where a hand-written analysis comes from. */
   sources?: Readonly<Record<string, AnalysisSourceInfo>>;
   /** The dictionary beside the hand lexicon, when the analysis or its alternatives came from it. */
@@ -89,7 +91,7 @@ export interface TokenCardProps {
 }
 
 export function TokenCard(props: TokenCardProps) {
-  const { subject, legacy, opened, next, supports, loaded, explanation, english, why, lang, sentence, notes, clauseView, decoding, sources, dictionary, dictionaryView, describeMorph, varietyPolicy, varieties, history, unitPieces, open, onMore, onRescue, onClose, onExited } = props;
+  const { subject, legacy, opened, next, supports, loaded, explanation, english, why, lang, sentence, notes, clauseView, decoding, sound, sources, dictionary, dictionaryView, describeMorph, varietyPolicy, varieties, history, unitPieces, open, onMore, onRescue, onClose, onExited } = props;
   const { store } = useApp();
   const token = subject.kind === 'word' ? subject.token : undefined;
   const level = maxLevel(opened);
@@ -268,6 +270,8 @@ export function TokenCard(props: TokenCardProps) {
             {why && <p className="card__prov" aria-label="What Go knows about this word" data-testid="word-why">{why}</p>}
           </section>
 
+          {sound && <SoundSection sound={sound} />}
+
           {opened.filter((l) => l !== 'gloss').map((layer) => {
             switch (layer) {
               case 'decoding':
@@ -428,6 +432,24 @@ function DecodingSection({ decoding, loaded, lang, onRescue }: { decoding: Decod
             <button type="button" className="btn btn--small btn--quiet" onClick={onRescue}>Show romanization (rescue)</button>
           </div>
         )
+      )}
+    </section>
+  );
+}
+
+/** How a word sounds when Go has no decoding for the language: the dictionary's IPA, then the adapter's notes. */
+function SoundSection({ sound }: { sound: SoundView }) {
+  return (
+    <section className="card__section" aria-label="How it sounds">
+      <h3 className="label">How it sounds</h3>
+      {sound.ipa && (
+        <>
+          <p className="card__text" data-testid="sound-ipa">{sound.source ? `${sound.source}: ` : ''}<span>{sound.ipa}</span></p>
+          {sound.key && <p className="card__note" data-testid="sound-key">{sound.key}</p>}
+        </>
+      )}
+      {sound.notes.length > 0 && (
+        <ul className="sheet__list" aria-label="Sound notes" data-testid="sound-notes">{sound.notes.map((n) => <li key={n} className="card__text">{n}</li>)}</ul>
       )}
     </section>
   );

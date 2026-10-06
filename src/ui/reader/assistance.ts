@@ -7,7 +7,7 @@
  * DEFAULT_ASSISTANCE, and the reader then keeps its original behaviour exactly (see `isLegacyProfile`).
  */
 import { DEFAULT_ASSISTANCE, LAYER_ASSISTANCE_LEVEL, REVIEW_OK } from '../../core';
-import type { AnalysisSourceInfo, AssistanceLevel, AssistanceProfile, ContentNote, DictionaryInfo, HelpLayer, OrthographyRelation, PartOfSpeech, RegisterTag, SyllableAnalysis, TokenAnalysis, TokenSupport, Variety, WordPart } from '../../core';
+import type { AnalysisSourceInfo, AssistanceLevel, AssistanceProfile, ContentNote, DictionaryEntry, DictionaryInfo, HelpLayer, LanguageCode, OrthographyRelation, PartOfSpeech, RegisterTag, SyllableAnalysis, TokenAnalysis, TokenSupport, Variety, WordPart } from '../../core';
 
 /** The profile of a course without a ladder: the reader looks and behaves exactly as it always did. */
 export function isLegacyProfile(profile: AssistanceProfile): boolean {
@@ -475,4 +475,97 @@ export function rescueRomanization(units: readonly SyllableAnalysis[], whole: ()
     if (w) return w;
   }
   return joined || fromNotes || undefined;
+}
+
+// ───────────────────────────── how a word sounds (languages with no decoding) ─────────────────────────────
+
+/** What the sheet shows under "How it sounds" for a language the engine does not decode: the dictionary's IPA and the adapter's own notes. */
+export interface SoundView {
+  /** The dictionary's first IPA, as stored (slashes and all); never made up. */
+  ipa?: string;
+  /** Where the IPA came from, said as it is shown ("Wiktionary"). */
+  source?: string;
+  /** One line explaining the marks the IPA actually contains; absent when it contains none of them. */
+  key?: string;
+  /** The adapter's plain-English notes for this spelling, in the adapter's order (stress first for Spanish). */
+  notes: string[];
+}
+
+/** The marks of an IPA string a beginner cannot read: only those present are explained. */
+export function ipaKey(ipa: string): string | undefined {
+  const parts = [ipa.includes('ˈ') ? 'ˈ marks the strong syllable' : '', ipa.includes('ː') ? 'ː a long vowel' : ''].filter(Boolean);
+  return parts.length ? parts.join('; ') : undefined;
+}
+
+/** At most this many adapter notes: a long word can touch every letter rule, and the sheet is a glance. */
+const SOUND_NOTES_MAX = 4;
+
+/**
+ * The sound help for one word, or undefined when there is nothing to say (no empty section). `ipa` is the analysis's
+ * `notes.ipa`; `source` names the dictionary it came from when the analysis says so.
+ */
+export function soundView(ipa: unknown, notes: readonly string[] | undefined, source?: string, tag?: string): SoundView | undefined {
+  const first = (Array.isArray(ipa) ? ipa[0] : ipa);
+  const text = typeof first === 'string' ? first.trim() : '';
+  const lines = [...new Set((notes ?? []).map((n) => n.trim()).filter(Boolean))].slice(0, SOUND_NOTES_MAX);
+  if (!text && lines.length === 0) return undefined;
+  return { ...(text ? { ipa: text, ...(source ? { source: tag ? `${source} (${tag})` : source } : {}), key: ipaKey(text) } : {}), notes: lines };
+}
+
+/** A dictionary reading picked for the sheet: its IPA and the source's own labels for it ("stressed", "Tosk"), when it had any. */
+export interface PickedReading { ipa: string; tags: string[] }
+
+const has = (tags: readonly string[], re: RegExp): boolean => tags.some((t) => re.test(t));
+
+/**
+ * How much a labelled reading is to be avoided for this course's learner: 0 is best. Untagged is always 0. The labels are the
+ * source's own and are never interpreted beyond these ranks (no variety is guessed).
+ *  - es (the course is Honduran): Latin American / standard readings, then other labels, then other countries' readings;
+ *    readings of Spain and its dialect areas last (they differ: θ).
+ *  - de: stressed / standard / Germany readings; then unstressed; the Austrian, Swiss and southern readings last.
+ *  - sq: standard or Tosk without "dialectal"; then Tosk dialectal; then other labels; Gheg-only readings last.
+ */
+function readingRank(lang: LanguageCode, tags: readonly string[]): number {
+  if (tags.length === 0) return 0;
+  const t = tags.map((x) => x.toLowerCase());
+  switch (lang) {
+    case 'es':
+      if (has(t, /^(latin-america|central-america|mexico|standard)$/)) return 1;
+      if (has(t, /spain|castil|andalus|canary/)) return 9;
+      if (has(t, /argentin|uruguay|chile|caribbean|dominican|puerto|texas|philippines|colombia|peru|venezuela|cuba/)) return 6;
+      return 3;
+    case 'de':
+      if (has(t, /austria|switzerland|swiss|southern|bavaria|southwest|swabia|saxon/)) return 9;
+      if (has(t, /^unstressed$/)) return 4;
+      if (has(t, /^(stressed|standard|standard-german|germany|northern|northern-germany)$/)) return 1;
+      return 3;
+    case 'sq': {
+      const gheg = has(t, /gheg/);
+      if (gheg && !has(t, /tosk|^standard$/)) return 9;
+      if (has(t, /^standard$/) || (has(t, /tosk/) && !has(t, /dialectal/) && !gheg)) return 1;
+      if (has(t, /tosk/) && !gheg) return 2;
+      return 3;
+    }
+    default: return 0;
+  }
+}
+
+/**
+ * The pronunciation of a form from the entries the dictionary lists for it, for a word whose analysis carries no `notes.ipa`
+ * (the importer promotes only untagged readings). Deterministic: the lowest rank wins, and among equals the first listed. Entries
+ * with no IPA (inflected forms of another word) give nothing. A reading that only has labels (a dialect) is still shown, with them.
+ */
+export function pickReading(lang: LanguageCode, entries: readonly Pick<DictionaryEntry, 'ipa' | 'pronunciations'>[]): PickedReading | undefined {
+  let best: { reading: PickedReading; rank: number } | undefined;
+  for (const e of entries) {
+    const list = e.pronunciations?.length ? e.pronunciations : e.ipa ? [{ ipa: e.ipa }] : [];
+    for (const p of list) {
+      const ipa = p.ipa?.trim();
+      if (!ipa) continue;
+      const tags = ('tags' in p && p.tags) || [];
+      const rank = readingRank(lang, tags);
+      if (!best || rank < best.rank) best = { reading: { ipa, tags: [...tags] }, rank };
+    }
+  }
+  return best?.reading;
 }

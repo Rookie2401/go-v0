@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-06",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "At the market",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-06",
+    "title": "At the market (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม … ครับ), daeng=Auntie Daeng (woman; calls herself ป้า; ค่ะ / คะ), seller=The fruit seller (woman; ค่ะ / คะ). For the reviewer - prices (spoken and in digits, with and without บาท: \"สองลูกสามสิบ\"); bargaining with \"ลดหน่อยนะคะ\"; ลูก as the classifier for round fruit; the seller's politeness; นะ / นะคะ as a softener."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "market",
+    "fruit",
+    "prices",
+    "bargaining"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "daeng": "Auntie Daeng",
+    "seller": "The fruit seller"
+  },
+  "sections": [
+    {
+      "title": "At the market",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "วันนี้ไปตลาดกันนะคะ",
+              "english": "Let's go to the market today."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ ผมอยากซื้อผลไม้ครับ",
+              "english": "Yes. I'd like to buy some fruit."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ที่ตลาดมีมะม่วง มีกล้วย มีส้มค่ะ",
+              "english": "At the market there are mangoes, bananas and oranges."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบมะม่วงครับ",
+              "english": "I like mangoes."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าชอบกล้วยค่ะ",
+              "english": "I like bananas."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "seller",
+              "text": "สวัสดีค่ะ ซื้ออะไรคะ",
+              "english": "Hello. What would you like to buy?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากซื้อครับ",
+              "english": "I would like to buy some."
+            },
+            {
+              "speaker": "sam",
+              "text": "มะม่วงราคาเท่าไรครับ",
+              "english": "How much are the mangoes?"
+            },
+            {
+              "speaker": "seller",
+              "text": "สองลูกสามสิบค่ะ",
+              "english": "Two for thirty."
+            },
+            {
+              "speaker": "sam",
+              "text": "แพงครับ",
+              "english": "That's expensive."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ลดหน่อยนะคะ",
+              "english": "Could you lower it a little?"
+            },
+            {
+              "speaker": "seller",
+              "text": "ลดได้ค่ะ",
+              "english": "Yes, I can."
+            },
+            {
+              "speaker": "seller",
+              "text": "สองลูกยี่สิบห้าค่ะ",
+              "english": "Two for twenty-five."
+            },
+            {
+              "speaker": "sam",
+              "text": "ราคานี้ไม่แพงครับ",
+              "english": "This price isn't expensive."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเอาสองลูกครับ",
+              "english": "I'll take two."
+            },
+            {
+              "speaker": "seller",
+              "text": "ขอบคุณค่ะ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ส้มราคาเท่าไรคะ",
+              "english": "How much are the oranges?"
+            },
+            {
+              "speaker": "seller",
+              "text": "สามลูกสิบบาทค่ะ",
+              "english": "Three for ten baht."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ถูกค่ะ",
+              "english": "That's cheap."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเอาส้มกับกล้วยค่ะ",
+              "english": "I'll take oranges and bananas."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ลดได้ไหมคะ",
+              "english": "Can you lower it?"
+            },
+            {
+              "speaker": "seller",
+              "text": "ไม่ได้ค่ะ",
+              "english": "No."
+            },
+            {
+              "speaker": "seller",
+              "text": "ถูกแล้วค่ะ",
+              "english": "It is cheap already."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ได้ค่ะ",
+              "english": "All right."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขอบคุณค่ะ",
+              "english": "Thank you."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ผมมีเงินครับ",
+              "english": "I have money."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าไม่มีเงินค่ะ",
+              "english": "I have no money."
+            },
+            {
+              "speaker": "sam",
+              "text": "เงินของผมครับ",
+              "english": "Here is my money."
+            },
+            {
+              "speaker": "seller",
+              "text": "ขอบคุณค่ะ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ที่ตลาดมีร้านขายปลา ขายผักค่ะ",
+              "english": "At the market there are shops that sell fish and vegetables."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าซื้อไข่ ซื้อหมู ซื้อไก่ที่ร้านนั้นค่ะ",
+              "english": "I buy eggs, pork and chicken at that shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากสั่งข้าวผัดหมูหนึ่งจานครับ",
+              "english": "I'd like to order one plate of pork fried rice."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ข้าวผัดที่ตลาดอร่อยค่ะ",
+              "english": "The fried rice at the market is tasty."
+            },
+            {
+              "speaker": "daeng",
+              "text": "แต่เผ็ดค่ะ",
+              "english": "But it's spicy."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบเผ็ดครับ",
+              "english": "I like spicy food."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ไปค่ะ",
+              "english": "Let's go."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปกับป้าครับ",
+              "english": "I'm coming with you, Auntie."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อผลไม้ไปที่ห้องครับ",
+              "english": "I'm buying fruit to take to my room."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีรูปครอบครัวในห้องครับ",
+              "english": "I have a photo of my family in my room."
+            },
+            {
+              "speaker": "sam",
+              "text": "ประตูห้องของผมไม่ดีครับ",
+              "english": "The door of my room isn't good."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าขอดูได้ไหมคะ",
+              "english": "May I take a look?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ได้ครับ",
+              "english": "Of course."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมพูดภาษาไทยได้นิดหน่อยครับ",
+              "english": "I can speak a little Thai."
+            },
+            {
+              "speaker": "daeng",
+              "text": "คุณพูดดีค่ะ",
+              "english": "You speak well."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกินผลไม้กับขนมครับ",
+              "english": "I eat fruit with sweets."
+            },
+            {
+              "speaker": "daeng",
+              "text": "อร่อยค่ะ",
+              "english": "Delicious."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ที่ตลาดไม่แพงค่ะ",
+              "english": "The market isn't expensive."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่ตลาดถูกมากครับ",
+              "english": "The market is very cheap."
+            },
+            {
+              "speaker": "seller",
+              "text": "คุณมาจากอเมริกาใช่ไหมคะ",
+              "english": "You come from America, don't you?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ใช่ครับ ผมมาจากอเมริกา",
+              "english": "Yes, I come from America."
+            },
+            {
+              "speaker": "seller",
+              "text": "คุณพูดภาษาไทยได้ดีค่ะ",
+              "english": "You speak Thai well."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเรียนที่เชียงใหม่ครับ",
+              "english": "I study in Chiang Mai."
+            },
+            {
+              "speaker": "seller",
+              "text": "ที่ร้านมีชา มีกาแฟ มีขนมค่ะ",
+              "english": "At my shop there is tea, coffee and sweets."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากดื่มชาครับ",
+              "english": "I'd like to drink tea."
+            },
+            {
+              "speaker": "sam",
+              "text": "ป้าดื่มกาแฟไหมครับ",
+              "english": "Auntie, will you drink coffee?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ดื่มค่ะ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "seller",
+              "text": "คุณชอบชาไหมคะ",
+              "english": "Do you like tea?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ชอบครับ",
+              "english": "Yes, I do."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่ดื่มกาแฟครับ",
+              "english": "I don't drink coffee."
+            },
+            {
+              "speaker": "seller",
+              "text": "ชาร้อนอร่อยค่ะ",
+              "english": "Hot tea is tasty."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเหนื่อยนิดหน่อยครับ",
+              "english": "I'm a little tired."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าก็เหนื่อยค่ะ",
+              "english": "I'm tired too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อชามและช้อนที่ตลาดครับ",
+              "english": "I'll buy a bowl and a spoon at the market."
+            },
+            {
+              "speaker": "daeng",
+              "text": "บนโต๊ะมีส้มค่ะ",
+              "english": "On the table there are oranges."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ใต้โต๊ะมีกล้วยค่ะ",
+              "english": "Under the table there are bananas."
+            },
+            {
+              "speaker": "daeng",
+              "text": "พรุ่งนี้ไปโบสถ์กันนะคะ",
+              "english": "Let's go to church tomorrow."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ",
+              "english": "Yes."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

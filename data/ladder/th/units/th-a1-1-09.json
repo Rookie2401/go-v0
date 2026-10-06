@@ -1,0 +1,353 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-09",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "A Sunday morning in the soi",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-09",
+    "title": "A Sunday morning in the soi (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม … ครับ), neighbour=A neighbour (woman; calls herself พี่; ค่ะ / คะ), ball=Ball (boy, ten; ผม … ครับ), daeng=Auntie Daeng (woman; calls herself ป้า; ค่ะ / คะ). For the reviewer - the neighbours' temple and the monks are mentioned neutrally and respectfully; the neighbour calls herself พี่ and Sam calls her พี่; \"ให้ข้าวพระ\" (neighbours giving food to the monks in the morning) should be checked for the right everyday wording; colours: สีขาว, สีแดง, ไข่ขาว, ไข่แดง."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "neighbours",
+    "the lane",
+    "monks",
+    "colours"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "neighbour": "A neighbour",
+    "ball": "Ball",
+    "daeng": "Auntie Daeng"
+  },
+  "sections": [
+    {
+      "title": "A Sunday morning in the soi",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "neighbour",
+              "text": "สวัสดีค่ะ แซม",
+              "english": "Good morning, Sam."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "วันนี้ตื่นเช้านะคะ",
+              "english": "You are up early today."
+            },
+            {
+              "speaker": "sam",
+              "text": "ครับ ผมเดินในซอยครับ",
+              "english": "Yes, I'm walking in the soi."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบทักเพื่อนบ้านครับ",
+              "english": "I like greeting the neighbours."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "เพื่อนบ้านชอบยิ้มค่ะ",
+              "english": "The neighbours like to smile."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมก็ชอบยิ้มครับ",
+              "english": "I like to smile too."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "พี่ชอบซอยนี้ค่ะ",
+              "english": "I like this soi."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "แซมทักพี่แล้วค่ะ",
+              "english": "Sam has greeted me."
+            },
+            {
+              "speaker": "sam",
+              "text": "ครับ ผมเดินไปถนนครับ",
+              "english": "Yes. I'm walking to the road."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "ที่ถนนมีร้านขายผลไม้ค่ะ",
+              "english": "On the road there is a fruit shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเห็นพระครับ",
+              "english": "I see monks."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "พระเดินตอนเช้าค่ะ",
+              "english": "The monks walk in the morning."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "เพื่อนบ้านให้ข้าวพระค่ะ",
+              "english": "The neighbours give rice to the monks."
+            },
+            {
+              "speaker": "sam",
+              "text": "เขายิ้มครับ",
+              "english": "They are smiling."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "วัดอยู่ที่ถนนค่ะ",
+              "english": "The temple is on the road."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากไปวัดครับ",
+              "english": "I'd like to go to the temple."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "พรุ่งนี้พี่ไปวัดค่ะ",
+              "english": "Tomorrow I'm going to the temple."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "คุณอยากไปไหมคะ",
+              "english": "Would you like to go?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "ดื่มชาไหมคะ",
+              "english": "Would you like some tea?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ดื่มครับ ขอบคุณครับ",
+              "english": "Yes, thank you."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ball",
+              "text": "สวัสดีครับพี่ สวัสดีครับแซม",
+              "english": "Hello, and hello Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "สวัสดีครับ",
+              "english": "Hello."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมทักแซมแล้วครับ",
+              "english": "I've greeted Sam."
+            },
+            {
+              "speaker": "ball",
+              "text": "ครอบครัวของผมอยู่ในซอยนี้ครับ",
+              "english": "My family lives in this soi."
+            },
+            {
+              "speaker": "ball",
+              "text": "พ่อของผมสอนที่โรงเรียนครับ",
+              "english": "My father teaches at the school."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอยากเป็นพยาบาลครับ",
+              "english": "I want to be a nurse."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "น้องของพี่ช่วยพี่ที่ร้านค่ะ",
+              "english": "My younger sister helps me at the shop."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "พี่ทำข้าวผัดผักค่ะ",
+              "english": "I make fried rice with vegetables."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "ข้าวผัดผักหนึ่งชามค่ะ",
+              "english": "A bowl of vegetable fried rice."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ อร่อยมากครับ",
+              "english": "Thank you, it's very tasty."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอิ่มแล้วครับ",
+              "english": "I'm full."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไม่อิ่มครับ",
+              "english": "I'm not full."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอยากกินขนมครับ",
+              "english": "I want sweets."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "บอลมาแล้วค่ะ สวัสดีค่ะ แซม",
+              "english": "Ball has come. Hello, Sam."
+            },
+            {
+              "speaker": "daeng",
+              "text": "วันนี้ป้าไม่มีงานค่ะ",
+              "english": "I have no work today."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าทำขนมสีขาว สีแดงค่ะ",
+              "english": "I made white and red sweets."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขนมอร่อยค่ะ",
+              "english": "The sweets are tasty."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าซื้อไข่ที่ตลาดค่ะ",
+              "english": "I buy eggs at the market."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ไข่ขาวไข่แดงอร่อยค่ะ",
+              "english": "Egg white and egg yolk are tasty."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบไข่แดงครับ",
+              "english": "I like the yolk."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่ตลาดส้มลดราคาครับ",
+              "english": "At the market the oranges are cheaper."
+            },
+            {
+              "speaker": "daeng",
+              "text": "แต่วันนี้ป้าไม่มีเงินค่ะ",
+              "english": "But today I have no money."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อให้ป้าครับ",
+              "english": "I'll buy them for you."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมมีรูปครับ",
+              "english": "I have a picture."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขอป้าดูได้ไหมคะ",
+              "english": "May I see it?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ได้ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมกลับบ้านแล้วครับ",
+              "english": "I'm going home now."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าก็กลับร้านค่ะ",
+              "english": "I'm going back to the shop too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกลับห้องครับ",
+              "english": "I'm going back to my room."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมตื่นเช้า ผมเหนื่อยนิดหน่อยครับ",
+              "english": "I got up early and I'm a little tired."
+            },
+            {
+              "speaker": "neighbour",
+              "text": "น้องของพี่เป็นพยาบาลค่ะ",
+              "english": "My younger sister is a nurse."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ไปค่ะ",
+              "english": "Off you go."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

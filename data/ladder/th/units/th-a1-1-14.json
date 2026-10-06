@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-14",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "A message and a notice",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-14",
+    "title": "A message and a notice (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม … ครับ), mali=Mali (woman; ฉัน … ค่ะ / คะ), daeng=Auntie Daeng (woman; calls herself ป้า; ค่ะ / คะ), msg=The message on Sam's phone (a friend from the church; ครับ). For the reviewer - a chat message (ครับ allowed in messages) and a shop notice read aloud; ห้าม + verb (a rule), อย่า + verb (a request); วันเสาร์ and \"เดือนนี้\" (this month; dates in digits come later); \"บ่ายสามโมง\" for 3 p.m."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "phone message",
+    "notice on the door",
+    "rules",
+    "days"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical-communication"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "mali": "Mali",
+    "daeng": "Auntie Daeng",
+    "msg": "The message on Sam's phone"
+  },
+  "sections": [
+    {
+      "title": "A message and a notice",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "สวัสดีค่ะ แซม",
+              "english": "Hello, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "สวัสดีครับ",
+              "english": "Hello."
+            },
+            {
+              "speaker": "sam",
+              "text": "โทรศัพท์ของผมมีข้อความครับ",
+              "english": "My phone has a message."
+            },
+            {
+              "speaker": "mali",
+              "text": "จากใครคะ",
+              "english": "From whom?"
+            },
+            {
+              "speaker": "sam",
+              "text": "เพื่อนที่โบสถ์ส่งครับ",
+              "english": "A friend from the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอ่านภาษาไทยได้นิดหน่อยครับ",
+              "english": "I can read a little Thai."
+            },
+            {
+              "speaker": "mali",
+              "text": "อ่านข้อความไหมคะ",
+              "english": "Will you read the message?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "msg",
+              "text": "สวัสดีครับแซม",
+              "english": "Hello, Sam."
+            },
+            {
+              "speaker": "msg",
+              "text": "วันเสาร์เรามีงานที่โบสถ์ครับ",
+              "english": "On Saturday we have an event at the church."
+            },
+            {
+              "speaker": "msg",
+              "text": "ตอนบ่ายสามโมงมาที่โบสถ์นะครับ",
+              "english": "Come to the church at three in the afternoon."
+            },
+            {
+              "speaker": "msg",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันทำงานวันเสาร์ค่ะ",
+              "english": "I work on Saturday."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเป็นพยาบาลค่ะ",
+              "english": "I'm a nurse."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเขียนภาษาไทยไม่ได้ครับ",
+              "english": "I can't write Thai."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณช่วยผมได้ไหมครับ",
+              "english": "Can you help me?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ได้ค่ะ ฉันเขียนให้ค่ะ",
+              "english": "Yes, I'll write it for you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมส่งแล้วครับ",
+              "english": "I've sent it."
+            },
+            {
+              "speaker": "mali",
+              "text": "ดีค่ะ",
+              "english": "Good."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "แซม ป้าเขียนที่ประตูร้านค่ะ",
+              "english": "Sam, I wrote something on the shop door."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ร้านป้าปิดวันเสาร์ค่ะ",
+              "english": "My shop is closed on Saturday."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่เห็นครับ",
+              "english": "I can't see it."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าอ่านให้ค่ะ",
+              "english": "I'll read it for you."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ห้ามเข้าตอนร้านปิดค่ะ",
+              "english": "No entry when the shop is closed."
+            },
+            {
+              "speaker": "daeng",
+              "text": "อย่ารอที่ร้านค่ะ",
+              "english": "Please don't wait at the shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดูแล้วครับ",
+              "english": "I have looked."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เดือนนี้ป้ามีงานมากค่ะ",
+              "english": "This month I have a lot of work."
+            },
+            {
+              "speaker": "mali",
+              "text": "เดือนนี้ฉันไม่มีเวลาค่ะ",
+              "english": "This month I have no time."
+            },
+            {
+              "speaker": "sam",
+              "text": "เดือนนี้ผมอยู่ที่เชียงใหม่ครับ",
+              "english": "This month I'm in Chiang Mai."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "ที่โบสถ์ห้ามพูดโทรศัพท์ค่ะ",
+              "english": "At the church there is no talking on the phone."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ปิดโทรศัพท์นะคะ",
+              "english": "Please switch off your phone."
+            },
+            {
+              "speaker": "sam",
+              "text": "ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "daeng",
+              "text": "อย่าส่งข้อความตอนอธิษฐานนะคะ",
+              "english": "Please don't send messages during prayer."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากอธิษฐานครับ",
+              "english": "I want to pray."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ที่ซอยห้ามเอารถเข้าค่ะ",
+              "english": "In the soi no cars may come in."
+            },
+            {
+              "speaker": "daeng",
+              "text": "อย่าไปไกลนะคะ",
+              "english": "Please don't go far."
+            },
+            {
+              "speaker": "sam",
+              "text": "โบสถ์อยู่ใกล้ซอยครับ",
+              "english": "The church is near the soi."
+            },
+            {
+              "speaker": "mali",
+              "text": "ไปรถสองแถวคันสีแดงค่ะ",
+              "english": "Take the red songthaew."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมรอรถที่ถนนครับ",
+              "english": "I will wait for the songthaew on the road."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมขึ้นรถสองแถวคันสีแดงครับ",
+              "english": "I will take the red songthaew."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมลงที่โบสถ์ครับ",
+              "english": "I will get off at the church."
+            },
+            {
+              "speaker": "mali",
+              "text": "รถถึงโบสถ์บ่ายสองค่ะ",
+              "english": "The songthaew gets to the church at two."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าไปโบสถ์ด้วยค่ะ",
+              "english": "I'm going to the church too."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าขายขนมที่โบสถ์ค่ะ",
+              "english": "I'll sell sweets at the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อขนมครับ",
+              "english": "I'll buy some sweets."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขนมสีขาว สีแดงค่ะ",
+              "english": "White and red sweets."
+            },
+            {
+              "speaker": "sam",
+              "text": "เด็กที่โบสถ์ชอบขนมไหมครับ",
+              "english": "Do the children at the church like sweets?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ชอบมากค่ะ",
+              "english": "Very much."
+            },
+            {
+              "speaker": "daeng",
+              "text": "นักเรียนของคุณต้นร้องเพลงที่โบสถ์ค่ะ",
+              "english": "Ton's pupils sing at the church."
+            },
+            {
+              "speaker": "mali",
+              "text": "ผู้หญิงที่โบสถ์ชอบร้องเพลงค่ะ",
+              "english": "The women at the church like to sing."
+            },
+            {
+              "speaker": "mali",
+              "text": "ผู้ชายที่โบสถ์ชอบทักเด็กค่ะ",
+              "english": "The men at the church like to greet the children."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนเช้าผมจะไปวัดครับ",
+              "english": "In the morning I'll go to the temple."
+            },
+            {
+              "speaker": "daeng",
+              "text": "วัดอยู่ไกลไหมคะ",
+              "english": "Is the temple far?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ไม่ไกลครับ อยู่ใกล้ถนนครับ",
+              "english": "Not far; it's near the road."
+            },
+            {
+              "speaker": "sam",
+              "text": "พระเดินที่ถนนตอนเช้าครับ",
+              "english": "The monks walk on the road in the morning."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ตอนเย็นแซมพักที่ห้องค่ะ",
+              "english": "In the evening Sam rests in his room."
+            },
+            {
+              "speaker": "mali",
+              "text": "วันเสาร์คุณจะไปไหนคะ",
+              "english": "Where will you go on Saturday?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปโบสถ์ครับ",
+              "english": "I'll go to the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปถึงตอนบ่ายสามโมงครับ",
+              "english": "I'll get there at three."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

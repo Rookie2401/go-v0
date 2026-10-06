@@ -1,0 +1,263 @@
+{
+  "lang": "th",
+  "version": 1,
+  "after": "stage0",
+  "units": [
+    {
+      "id": "th-a1-1-01",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-01.json",
+      "domain": "conversation",
+      "title": "Where are you from?"
+    },
+    {
+      "id": "th-a1-1-02",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-02.json",
+      "domain": "daily-life",
+      "title": "Sam's room"
+    },
+    {
+      "id": "th-a1-1-03",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-03.json",
+      "domain": "family",
+      "title": "Mali's family photograph"
+    },
+    {
+      "id": "th-a1-1-04",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-04.json",
+      "domain": "food",
+      "title": "Breakfast at Auntie Daeng's shop"
+    },
+    {
+      "id": "th-a1-1-05",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-05.json",
+      "domain": "food",
+      "title": "Sunday lunch at Auntie's table"
+    },
+    {
+      "id": "th-a1-1-06",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-06.json",
+      "domain": "community",
+      "title": "At the market"
+    },
+    {
+      "id": "th-a1-1-07",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-07.json",
+      "domain": "daily-life",
+      "title": "Ton's school day"
+    },
+    {
+      "id": "th-a1-1-08",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-08.json",
+      "domain": "work",
+      "title": "Who works where"
+    },
+    {
+      "id": "th-a1-1-09",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-09.json",
+      "domain": "community",
+      "title": "A Sunday morning in the soi"
+    },
+    {
+      "id": "th-a1-1-10",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-10.json",
+      "domain": "travel",
+      "title": "By songthaew to the Sunday market"
+    },
+    {
+      "id": "th-a1-1-11",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-11.json",
+      "domain": "church-and-mission-life",
+      "title": "Sunday at the church"
+    },
+    {
+      "id": "th-a1-1-12",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-12.json",
+      "domain": "health",
+      "title": "Ball is ill"
+    },
+    {
+      "id": "th-a1-1-13",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-13.json",
+      "domain": "narrative",
+      "title": "The lost school bag"
+    },
+    {
+      "id": "th-a1-1-14",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-14.json",
+      "domain": "practical-communication",
+      "title": "A message and a notice"
+    },
+    {
+      "id": "th-a1-1-15",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-15.json",
+      "domain": "testimony",
+      "title": "Sam's first testimony"
+    },
+    {
+      "id": "th-a1-1-16",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/th-a1-1-16.json",
+      "domain": "narrative",
+      "title": "Sam's first week"
+    },
+    {
+      "id": "th-a1-2-01",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-01.json",
+      "domain": "conversation",
+      "title": "\"What are you doing?\""
+    },
+    {
+      "id": "th-a1-2-02",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-02.json",
+      "domain": "explanation",
+      "title": "Hot season, rainy season, cool season"
+    },
+    {
+      "id": "th-a1-2-03",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-03.json",
+      "domain": "narrative",
+      "title": "A rainy Saturday"
+    },
+    {
+      "id": "th-a1-2-04",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-04.json",
+      "domain": "daily-life",
+      "title": "Yesterday after work"
+    },
+    {
+      "id": "th-a1-2-05",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-05.json",
+      "domain": "travel",
+      "title": "The night bus to Bangkok"
+    },
+    {
+      "id": "th-a1-2-06",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-06.json",
+      "domain": "narrative",
+      "title": "Mali's weekend in the village"
+    },
+    {
+      "id": "th-a1-2-07",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-07.json",
+      "domain": "narrative",
+      "title": "The temple fair"
+    },
+    {
+      "id": "th-a1-2-08",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-08.json",
+      "domain": "narrative",
+      "title": "Sam's second month"
+    },
+    {
+      "id": "th-a1-2-09",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-09.json",
+      "domain": "health",
+      "title": "At the clinic"
+    },
+    {
+      "id": "th-a1-2-10",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-10.json",
+      "domain": "scripture",
+      "title": "The lost sheep (a retelling of Luke 15)"
+    },
+    {
+      "id": "th-a1-2-11",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-11.json",
+      "domain": "biography",
+      "title": "Auntie Daeng's life"
+    },
+    {
+      "id": "th-a1-2-12",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-12.json",
+      "domain": "instructions",
+      "title": "How to make som tam"
+    },
+    {
+      "id": "th-a1-2-13",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-13.json",
+      "domain": "explanation",
+      "title": "Describing people and places"
+    },
+    {
+      "id": "th-a1-2-14",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-14.json",
+      "domain": "church-and-mission-life",
+      "title": "A service through Ball's eyes"
+    },
+    {
+      "id": "th-a1-2-15",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-15.json",
+      "domain": "correspondence",
+      "title": "Invitations and the calendar"
+    },
+    {
+      "id": "th-a1-2-16",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/th-a1-2-16.json",
+      "domain": "work",
+      "title": "Ton looks for a second job"
+    }
+  ]
+}

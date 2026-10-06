@@ -1,0 +1,596 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-08",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Sam's second month",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-08",
+    "title": "Sam's second month (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม; narrates without particles), daeng=Auntie Daeng (woman; calls herself ป้า; ค่ะ / คะ). For the reviewer - Sam looks back on his second month in plain first-person narration (ผม, no particles) with one short quotation from Auntie; ยัง + verb for \"still\"; เคย + verb for \"have (never) done\"; ความ in ความหมาย (\"meaning\"); the joke is the near-sound ไก่ / ไข่ (chicken / egg) - check that a learner could really mix them up; the unit does not use กว่า yet (comparatives start in th-a1-2-13)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "learning Thai",
+    "mistakes",
+    "memory",
+    "loneliness",
+    "a month in Chiang Mai"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "daeng": "Auntie Daeng"
+  },
+  "sections": [
+    {
+      "title": "Sam's second month",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ผมอยู่ที่เชียงใหม่สองเดือนแล้ว",
+              "english": "I have been in Chiang Mai for two months."
+            },
+            {
+              "speaker": "sam",
+              "text": "เดือนที่หนึ่งผมไม่เข้าใจเลย",
+              "english": "In the first month I understood nothing."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนนี้ผมเข้าใจนิดหน่อย",
+              "english": "Now I understand a little."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเคยพูดไม่ได้",
+              "english": "I could not speak at all once."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่เคยอ่านภาษาไทย",
+              "english": "I had never read Thai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเคยเหนื่อยมาก",
+              "english": "I used to be very tired."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเริ่มเรียนที่โรงเรียนของคุณต้น",
+              "english": "I began to study at Ton's school."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเริ่มพูดกับเพื่อน",
+              "english": "I began to talk with friends."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเริ่มอ่านข้อความภาษาไทย",
+              "english": "I began to read Thai messages."
+            },
+            {
+              "speaker": "sam",
+              "text": "ข้อความของแม่ง่าย",
+              "english": "My mother's messages are easy."
+            },
+            {
+              "speaker": "sam",
+              "text": "ข้อความของคุณต้นยาก",
+              "english": "Ton's messages are hard."
+            },
+            {
+              "speaker": "sam",
+              "text": "บางคำง่าย",
+              "english": "Some words are easy."
+            },
+            {
+              "speaker": "sam",
+              "text": "บางคำยาก",
+              "english": "Some words are hard."
+            },
+            {
+              "speaker": "sam",
+              "text": "ภาษาไทยไม่ง่าย",
+              "english": "Thai is not easy."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมยังพูดไม่ดี",
+              "english": "I still don't speak well."
+            },
+            {
+              "speaker": "sam",
+              "text": "คนไทยพูดเร็ว",
+              "english": "Thai people speak fast."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมพูดช้า",
+              "english": "I speak slowly."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมยังไม่เข้าใจหลายคำ",
+              "english": "I still don't understand many words."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากรู้ความหมาย",
+              "english": "I want to know the meaning."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณต้นสอนความหมายให้ผม",
+              "english": "Ton teaches me the meaning."
+            },
+            {
+              "speaker": "sam",
+              "text": "ความหมายไม่ยาก",
+              "english": "The meaning is not hard."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมพยายามจำทุกวัน",
+              "english": "I try to remember every day."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมจำได้นิดหน่อย",
+              "english": "I remember a little."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมลืมบ่อย",
+              "english": "I often forget."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมลืมหนังสือที่ห้อง",
+              "english": "I forgot my book in my room."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมลืมกระเป๋าที่ร้านป้า",
+              "english": "I forgot my bag at Auntie's shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมจำไม่ได้บ่อย",
+              "english": "I often can't remember."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมพยายามอีก",
+              "english": "I try again."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณต้นพยายามช่วยผม",
+              "english": "Ton tries to help me."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "เมื่อวานผมไปร้านป้า",
+              "english": "Yesterday I went to Auntie's shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากกินไก่",
+              "english": "I wanted to eat chicken."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมพูดผิด",
+              "english": "I said it wrongly."
+            },
+            {
+              "speaker": "sam",
+              "text": "ป้าเอาไข่ให้ผม",
+              "english": "Auntie gave me eggs."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมพูดผิดอีก",
+              "english": "I said it wrongly again."
+            },
+            {
+              "speaker": "sam",
+              "text": "ป้าหัวเราะ",
+              "english": "Auntie laughed."
+            },
+            {
+              "speaker": "sam",
+              "text": "ป้าหัวเราะบ่อย",
+              "english": "Auntie laughs often."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ไก่ ไม่ใช่ไข่ค่ะ แซม",
+              "english": "Chicken, not egg, Sam."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ไม่ผิดมากค่ะ",
+              "english": "It's not a big mistake."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมหัวเราะด้วย",
+              "english": "I laughed too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่เบื่อ",
+              "english": "I was not bored."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกินไข่",
+              "english": "I ate the eggs."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "คืนหนึ่งผมนั่งที่ห้อง",
+              "english": "One night I sat in my room."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่ห้องไม่มีใคร",
+              "english": "There was nobody in the room."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเบื่อ",
+              "english": "I was bored."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากเจอแม่",
+              "english": "I wanted to see my mother."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมโทรหาแม่",
+              "english": "I phoned my mother."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมได้ยินเสียงแม่",
+              "english": "I heard my mother's voice."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเล่าให้แม่ฟัง",
+              "english": "I told my mother everything."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอธิษฐาน",
+              "english": "I prayed."
+            },
+            {
+              "speaker": "sam",
+              "text": "คืนนั้นผมหลับช้า",
+              "english": "That night I fell asleep late."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ฤดูฝนมาแล้ว",
+              "english": "The rainy season has come."
+            },
+            {
+              "speaker": "sam",
+              "text": "ฝนตกหลายวัน",
+              "english": "It rains for many days."
+            },
+            {
+              "speaker": "sam",
+              "text": "ท้องฟ้ามีเมฆ",
+              "english": "The sky has clouds."
+            },
+            {
+              "speaker": "sam",
+              "text": "ลมเย็น อากาศดี",
+              "english": "The wind is cool and the air is good."
+            },
+            {
+              "speaker": "sam",
+              "text": "แดดไม่ร้อน",
+              "english": "The sun is not hot."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเปียก",
+              "english": "I got wet."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเล่นกับเด็ก",
+              "english": "I played with the child."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณต้นเล่านิทาน",
+              "english": "Ton told a story."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมวาดรูปแมว",
+              "english": "I drew a cat."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอาบน้ำ",
+              "english": "I take a bath."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซักผ้า",
+              "english": "I wash clothes."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกวาดห้อง",
+              "english": "I sweep my room."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเช็ดโต๊ะ",
+              "english": "I wipe the table."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมนั่งคุยกับป้า",
+              "english": "I sit and talk with Auntie."
+            },
+            {
+              "speaker": "sam",
+              "text": "รถเต็มทุกคัน",
+              "english": "Every bus is full."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมผ่านร้านป้าตอนเช้า",
+              "english": "I pass Auntie's shop in the morning."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่ซอยมีแมวสองตัว",
+              "english": "In the soi there are two cats."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเห็นควายที่นา",
+              "english": "I see a buffalo in the field."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเก็บดอกไม้",
+              "english": "I pick flowers."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมถ่ายรูปแมว",
+              "english": "I take a picture of the cat."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปเที่ยวกับคุณต้นเสมอ",
+              "english": "I always go out with Ton."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมตื่นตีห้าครึ่ง",
+              "english": "I got up at half past five."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบเชียงใหม่",
+              "english": "I like Chiang Mai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนเช้าผมไปโบสถ์",
+              "english": "In the morning I go to the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมร้องเพลงกับเพื่อน",
+              "english": "I sing with friends."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบเพลงไทย",
+              "english": "I like Thai songs."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมฟังเพลงที่ห้อง",
+              "english": "I listen to songs in my room."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกินข้าวที่ร้านป้า",
+              "english": "I eat at Auntie's shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "ป้าทำข้าวผัดให้ผม",
+              "english": "Auntie makes me fried rice."
+            },
+            {
+              "speaker": "sam",
+              "text": "ข้าวผัดอร่อยเสมอ",
+              "english": "The fried rice is always tasty."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปตลาดกับป้า",
+              "english": "I go to the market with Auntie."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อผลไม้ที่ตลาด",
+              "english": "I buy fruit at the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "ราคาผลไม้ถูก",
+              "english": "Fruit is cheap."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมส่งรูปให้แม่",
+              "english": "I send pictures to my mother."
+            },
+            {
+              "speaker": "sam",
+              "text": "แม่ดีใจมาก",
+              "english": "My mother is very happy."
+            },
+            {
+              "speaker": "sam",
+              "text": "แม่รักผม",
+              "english": "My mother loves me."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมรักแม่",
+              "english": "I love my mother."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเชื่อว่าพระเจ้าช่วยผม",
+              "english": "I believe God helps me."
+            },
+            {
+              "speaker": "sam",
+              "text": "ชีวิตของผมที่เชียงใหม่ดี",
+              "english": "My life in Chiang Mai is good."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมถ่ายรูปไฟที่วัด",
+              "english": "I took a picture of the lights at the temple."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปเที่ยวทั้งวัน",
+              "english": "I went out the whole day."
+            },
+            {
+              "speaker": "sam",
+              "text": "คนทำบุญและไหว้พระที่วัด",
+              "english": "People make merit and wai at the temple."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อของขวัญให้แม่",
+              "english": "I bought a present for my mother."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเห็นม้าที่นา",
+              "english": "I saw a horse in the field."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปกรุงเทพหนึ่งวัน",
+              "english": "I went to Bangkok for one day."
+            },
+            {
+              "speaker": "sam",
+              "text": "รถไปห้านาที",
+              "english": "The bus ran for five minutes."
+            },
+            {
+              "speaker": "sam",
+              "text": "รถเต็มทั้งคัน",
+              "english": "The whole bus was full."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเห็นวัวทั้งสองตัว",
+              "english": "I saw both cows."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอ่านข้อความจบแล้ว",
+              "english": "I have finished reading the message."
+            },
+            {
+              "speaker": "sam",
+              "text": "โรงเรียนจบตอนบ่าย",
+              "english": "School ends in the afternoon."
+            },
+            {
+              "speaker": "sam",
+              "text": "งานที่โบสถ์จบตอนเย็น",
+              "english": "The event at the church ends in the evening."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

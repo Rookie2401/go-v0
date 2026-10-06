@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-07",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Ton's school day",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-07",
+    "title": "Ton's school day (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม … ครับ), ton=Ton (man; ผม … ครับ), mali=Mali (woman; ฉัน … ค่ะ / คะ). For the reviewer - the Thai clock (หกโมงเช้า, สี่โมงเย็น, บ่ายสอง); Mali calls her brother พี่ต้น; \"ตื่นแล้ว\" for \"is up\"; ตอน + part of the day."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily routine",
+    "time of day",
+    "school"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "ton": "Ton",
+    "mali": "Mali"
+  },
+  "sections": [
+    {
+      "title": "Ton's school day",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "พี่ต้นตื่นแล้วค่ะ",
+              "english": "Ton is up."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณต้นครับ วันนี้คุณตื่นกี่โมงครับ",
+              "english": "Ton, what time did you get up today?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมตื่นหกโมงเช้าครับ",
+              "english": "I got up at six in the morning."
+            },
+            {
+              "speaker": "sam",
+              "text": "เช้ามากครับ",
+              "english": "That's very early."
+            },
+            {
+              "speaker": "ton",
+              "text": "ใช่ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมดื่มกาแฟครับ",
+              "english": "I drink coffee."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมไม่กินข้าวครับ",
+              "english": "I don't eat rice."
+            },
+            {
+              "speaker": "sam",
+              "text": "ทำไมครับ",
+              "english": "Why?"
+            },
+            {
+              "speaker": "ton",
+              "text": "เพราะผมไม่หิวครับ",
+              "english": "Because I'm not hungry."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนเช้าผมหิวมากครับ",
+              "english": "In the morning I'm very hungry."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "ผมไปโรงเรียนครับ",
+              "english": "I go to the school."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมสอนที่โรงเรียนครับ",
+              "english": "I teach at the school."
+            },
+            {
+              "speaker": "mali",
+              "text": "พี่ต้นสอนภาษาไทยค่ะ",
+              "english": "Ton teaches Thai."
+            },
+            {
+              "speaker": "mali",
+              "text": "พี่ต้นสอนแซมพูดภาษาไทยค่ะ",
+              "english": "Ton teaches Sam to speak Thai."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณต้นเป็นครูที่ดีครับ",
+              "english": "Ton is a good teacher."
+            },
+            {
+              "speaker": "ton",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนบ่ายคุณอยู่ที่โรงเรียนไหมครับ",
+              "english": "Are you at the school in the afternoon?"
+            },
+            {
+              "speaker": "ton",
+              "text": "บ่ายนี้ผมอยู่ครับ",
+              "english": "This afternoon I am."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมกลับบ้านสี่โมงเย็นครับ",
+              "english": "I go home at four in the evening."
+            },
+            {
+              "speaker": "mali",
+              "text": "บ่ายสองฉันไปโรงพยาบาลค่ะ",
+              "english": "At two in the afternoon I go to the hospital."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันทำงานที่โรงพยาบาลค่ะ",
+              "english": "I work at the hospital."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนเย็นคุณอยู่ที่บ้านไหมครับ",
+              "english": "Are you at home in the evening?"
+            },
+            {
+              "speaker": "ton",
+              "text": "อยู่ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมกินข้าวกับครอบครัวครับ",
+              "english": "I eat with my family."
+            },
+            {
+              "speaker": "ton",
+              "text": "ที่บ้านมีลูกของผมและแม่ของผมครับ",
+              "english": "At home there are my child and my mother."
+            },
+            {
+              "speaker": "ton",
+              "text": "ลูกของผมสิบปีครับ",
+              "english": "My child is ten."
+            },
+            {
+              "speaker": "mali",
+              "text": "บอลกินข้าวที่บ้านค่ะ",
+              "english": "Ball eats at home."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกินข้าวที่ร้านป้าครับ",
+              "english": "I eat at Auntie's shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบข้าวผัดหมูครับ",
+              "english": "I like pork fried rice."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "เย็นนี้คุณมีเวลาไหมคะ",
+              "english": "Do you have time this evening?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีเวลาครับ",
+              "english": "Yes, I have time."
+            },
+            {
+              "speaker": "mali",
+              "text": "ไปตลาดกับฉันไหมคะ",
+              "english": "Will you go to the market with me?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่ตลาดมีมะม่วงค่ะ",
+              "english": "At the market there are mangoes."
+            },
+            {
+              "speaker": "sam",
+              "text": "มะม่วงที่ตลาดถูกครับ",
+              "english": "Mangoes at the market are cheap."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมไม่มีเวลาครับ",
+              "english": "I don't have time."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมกลับบ้านครับ",
+              "english": "I'm going home."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกลับไปที่ห้องครับ",
+              "english": "I'm going back to my room."
+            },
+            {
+              "speaker": "sam",
+              "text": "เตียงของผมอยู่ใต้หน้าต่างครับ",
+              "english": "My bed is under the window."
+            },
+            {
+              "speaker": "sam",
+              "text": "ประตูห้องไม่ดีครับ",
+              "english": "The door of the room isn't good."
+            },
+            {
+              "speaker": "ton",
+              "text": "ครอบครัวของคุณอยู่ที่อเมริกาไหมครับ",
+              "english": "Does your family live in America?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ครับ มีพ่อ มีแม่ มีน้องครับ",
+              "english": "Yes. There are my father, my mother and my younger sibling."
+            },
+            {
+              "speaker": "ton",
+              "text": "คุณเรียนภาษาไทยที่เชียงใหม่ครับ",
+              "english": "You study Thai in Chiang Mai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ใช่ครับ ผมเรียนกับคุณต้นครับ",
+              "english": "Yes, I study with Ton."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมชอบเป็นครูครับ",
+              "english": "I like being a teacher."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันชอบทำงานที่โรงพยาบาลค่ะ",
+              "english": "I like working at the hospital."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบเรียนภาษาไทยครับ",
+              "english": "I like studying Thai."
+            },
+            {
+              "speaker": "mali",
+              "text": "พรุ่งนี้ไปโบสถ์กันนะคะ",
+              "english": "Let's go to church tomorrow."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไปครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ",
+              "english": "Yes."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

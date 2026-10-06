@@ -1,0 +1,517 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-13",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Describing people and places",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-13",
+    "title": "Describing people and places (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม … ครับ), friend=Sam's friend on the phone (man; ผม … ครับ). For the reviewer - descriptions (สูง, เตี้ย, ใหญ่, เล็ก, สวย, สะอาด, เก่า, colours) and the first comparisons: adjective + กว่า, adjective + ที่สุด, เหมือน / เหมือนกัน, เดียว; the friend is a Thai friend of Sam's from the church network, speaking ผม … ครับ; check \"สะอาดที่สุด\", \"เหมือนกัน\" and \"ใหญ่กว่า\" for naturalness."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "describing people",
+    "places and things; comparing; colours; a phone call with a friend"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "friend": "Sam's friend on the phone"
+  },
+  "sections": [
+    {
+      "title": "Describing people and places",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "friend",
+              "text": "สวัสดีครับแซม",
+              "english": "Hello, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "สวัสดีครับ",
+              "english": "Hello."
+            },
+            {
+              "speaker": "friend",
+              "text": "ห้องของคุณใหญ่ไหมครับ",
+              "english": "Is your room big?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ไม่ครับ",
+              "english": "No."
+            },
+            {
+              "speaker": "sam",
+              "text": "ห้องเล็กครับ",
+              "english": "The room is small."
+            },
+            {
+              "speaker": "sam",
+              "text": "ห้องสะอาดครับ",
+              "english": "It is clean."
+            },
+            {
+              "speaker": "friend",
+              "text": "ห้องมีเตียงไหมครับ",
+              "english": "Is there a bed?"
+            },
+            {
+              "speaker": "sam",
+              "text": "มีเตียงหนึ่งอัน มีโต๊ะหนึ่งอันครับ",
+              "english": "One bed and one table."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบหน้าต่างครับ",
+              "english": "I like the window."
+            },
+            {
+              "speaker": "friend",
+              "text": "ห้องของคุณเหมือนห้องของผมไหมครับ",
+              "english": "Is your room like mine?"
+            },
+            {
+              "speaker": "sam",
+              "text": "เหมือนครับ",
+              "english": "Yes, like it."
+            },
+            {
+              "speaker": "sam",
+              "text": "ห้องของเราเหมือนกันครับ",
+              "english": "Our rooms are the same."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีห้องเดียวครับ",
+              "english": "I have a single room."
+            },
+            {
+              "speaker": "friend",
+              "text": "คุณอยู่ที่ห้องไหมครับ",
+              "english": "Do you stay in the room?"
+            },
+            {
+              "speaker": "sam",
+              "text": "คนเดียวครับ",
+              "english": "Alone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "friend",
+              "text": "โบสถ์ที่เชียงใหม่สวยไหมครับ",
+              "english": "Is the church in Chiang Mai beautiful?"
+            },
+            {
+              "speaker": "sam",
+              "text": "สวยครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "sam",
+              "text": "แต่โบสถ์เก่าครับ",
+              "english": "But the church is old."
+            },
+            {
+              "speaker": "sam",
+              "text": "โบสถ์ใหญ่กว่าบ้านป้าครับ",
+              "english": "The church is bigger than Auntie's house."
+            },
+            {
+              "speaker": "sam",
+              "text": "บ้านเล็กครับ",
+              "english": "The house is small."
+            },
+            {
+              "speaker": "friend",
+              "text": "ตลาดล่ะครับ",
+              "english": "And the market?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ตลาดใหญ่ที่สุดครับ",
+              "english": "The market is the biggest."
+            },
+            {
+              "speaker": "friend",
+              "text": "ที่ตลาดมีอะไรครับ",
+              "english": "What is there at the market?"
+            },
+            {
+              "speaker": "sam",
+              "text": "มีผลไม้ มีผัก มีปลาครับ",
+              "english": "Fruit, vegetables, fish."
+            },
+            {
+              "speaker": "sam",
+              "text": "มะละกอสีเหลืองครับ",
+              "english": "The papayas are yellow."
+            },
+            {
+              "speaker": "sam",
+              "text": "กล้วยสีเหลืองด้วยครับ",
+              "english": "The bananas are yellow too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผักสีเขียวครับ",
+              "english": "The vegetables are green."
+            },
+            {
+              "speaker": "sam",
+              "text": "มะนาวสีเขียวครับ",
+              "english": "The limes are green."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "friend",
+              "text": "ที่เชียงใหม่ใครสูงครับ",
+              "english": "Who is tall in Chiang Mai?"
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณต้นสูงที่สุดครับ",
+              "english": "Ton is the tallest."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณต้นสูงกว่าผมครับ",
+              "english": "Ton is taller than me."
+            },
+            {
+              "speaker": "friend",
+              "text": "ป้าล่ะครับ",
+              "english": "And Auntie?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ป้าเตี้ยกว่าผมครับ",
+              "english": "Auntie is shorter than me."
+            },
+            {
+              "speaker": "sam",
+              "text": "เด็กที่บ้านเตี้ยครับ",
+              "english": "The child at the house is short."
+            },
+            {
+              "speaker": "sam",
+              "text": "เด็กที่โบสถ์เตี้ยครับ",
+              "english": "The children at the church are short."
+            },
+            {
+              "speaker": "sam",
+              "text": "แมวสีดำอยู่บนเก้าอี้ครับ",
+              "english": "A black cat is on the chair."
+            },
+            {
+              "speaker": "sam",
+              "text": "แมวตัวเดียวครับ",
+              "english": "Just one cat."
+            },
+            {
+              "speaker": "sam",
+              "text": "ม้าสีดำอยู่ที่ไร่ครับ",
+              "english": "The black horse is on the farm."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผ้าสีดำของป้าเก่าครับ",
+              "english": "Auntie's black cloth is old."
+            },
+            {
+              "speaker": "sam",
+              "text": "นาฬิกาของป้าเก่าด้วยครับ",
+              "english": "Her clock is old too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบของของป้าครับ",
+              "english": "I like Auntie's things."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "friend",
+              "text": "คลินิกที่เชียงใหม่ดีไหมครับ",
+              "english": "Is the clinic in Chiang Mai good?"
+            },
+            {
+              "speaker": "sam",
+              "text": "คลินิกสะอาดที่สุดครับ",
+              "english": "The clinic is the cleanest."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่คลินิกหมอตรวจคนไข้ครับ",
+              "english": "At the clinic the doctor examines patients."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผ้าที่คลินิกสะอาดครับ",
+              "english": "The cloths at the clinic are clean."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่แพ้ยาเลยครับ",
+              "english": "I am not allergic to medicine at all."
+            },
+            {
+              "speaker": "sam",
+              "text": "สุขภาพของผมดีครับ",
+              "english": "My health is good."
+            },
+            {
+              "speaker": "sam",
+              "text": "มือและหูของผมดีครับ",
+              "english": "My hands and ears are fine."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "friend",
+              "text": "ร้านเล็กไหมครับ",
+              "english": "Is the shop small?"
+            },
+            {
+              "speaker": "sam",
+              "text": "เล็กครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่ร้านมีขวดสีเขียวครับ",
+              "english": "At the shop there is a green bottle."
+            },
+            {
+              "speaker": "sam",
+              "text": "ในขวดมีน้ำตาลครับ",
+              "english": "There is sugar in the bottle."
+            },
+            {
+              "speaker": "sam",
+              "text": "ถั่วสีเหลืองอยู่ในถุงครับ",
+              "english": "The yellow peanuts are in a bag."
+            },
+            {
+              "speaker": "sam",
+              "text": "ของป้าหวานครับ",
+              "english": "Auntie's sweets are sweet."
+            },
+            {
+              "speaker": "sam",
+              "text": "หญ้าอยู่ที่ซอยครับ",
+              "english": "There is grass in the soi."
+            },
+            {
+              "speaker": "sam",
+              "text": "ต้นไม้อยู่ที่ถนนครับ",
+              "english": "There are trees on the road."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไฟที่โบสถ์สวยครับ",
+              "english": "The lights at the church are beautiful."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมถ่ายรูปไฟครับ",
+              "english": "I took a picture of the lights."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อของขวัญสีแดงให้เพื่อนครับ",
+              "english": "I bought a red present for a friend."
+            },
+            {
+              "speaker": "friend",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปเที่ยวบ่อยครับ",
+              "english": "I often go out."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมพยายามจำคำไทยครับ",
+              "english": "I try to remember Thai words."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมลืมบ่อยครับ",
+              "english": "I forget often."
+            },
+            {
+              "speaker": "sam",
+              "text": "ภาษาไทยไม่ง่ายครับ",
+              "english": "Thai is not easy."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบภาษาไทยครับ",
+              "english": "I like Thai."
+            },
+            {
+              "speaker": "friend",
+              "text": "คุณพูดดีครับ",
+              "english": "You speak well."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณมากครับ",
+              "english": "Thank you very much."
+            },
+            {
+              "speaker": "friend",
+              "text": "คุณไปโบสถ์วันอาทิตย์ไหมครับ",
+              "english": "Do you go to church on Sunday?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ ผมไปกับป้าและคุณต้น",
+              "english": "Yes, I go with Auntie and Ton."
+            },
+            {
+              "speaker": "friend",
+              "text": "พรุ่งนี้ผมไปเชียงใหม่ครับ",
+              "english": "Tomorrow I'm coming to Chiang Mai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ดีครับ เรากินข้าวด้วยกันนะครับ",
+              "english": "Good, let's eat together."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากรู้ความหมายครับ",
+              "english": "I want to know the meaning."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเห็นคนทำบุญที่วัดครับ",
+              "english": "I saw people making merit at the temple."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไหว้ยายครับ",
+              "english": "I greeted an old woman with a wai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเรียนจนเย็นครับ",
+              "english": "I studied until evening."
+            },
+            {
+              "speaker": "sam",
+              "text": "เมื่อผมกินเผ็ด ผมก็ไอครับ",
+              "english": "When I eat spicy food, I cough."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมขออธิบายครับ",
+              "english": "Let me explain."
+            },
+            {
+              "speaker": "sam",
+              "text": "คนเลี้ยงแกะปล่อยฝูงที่ภูเขาครับ",
+              "english": "The shepherd lets the flock loose on the mountain."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเคยหลงทางครับ",
+              "english": "I once lost my way."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตาของผมดีครับ",
+              "english": "My eyes are fine."
+            },
+            {
+              "speaker": "sam",
+              "text": "เด็กไม่ชอบฉีดยาครับ",
+              "english": "Children don't like injections."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกินยาวันละสองครั้งครับ",
+              "english": "I take medicine twice a day."
+            },
+            {
+              "speaker": "friend",
+              "text": "ได้ครับ ผมอยากกินข้าวผัดไก่ครับ",
+              "english": "Yes, I'd like chicken fried rice."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่ร้านป้าอร่อยครับ",
+              "english": "Auntie's shop is tasty."
+            },
+            {
+              "speaker": "friend",
+              "text": "เจอกันพรุ่งนี้ครับ",
+              "english": "See you tomorrow."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

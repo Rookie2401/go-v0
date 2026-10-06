@@ -1,0 +1,478 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-07",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "The temple fair",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-07",
+    "title": "The temple fair (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม; narrates without particles, ครับ in quoted speech), ton=Ton (man; ผม … ครับ), ball=Ball (boy, ten; ผม … ครับ). For the reviewer - Sam describes an evening fair at the neighbours' temple (งานวัด) respectfully and from the outside: neighbours make merit (ทำบุญ) and wai the monks (ไหว้พระ); Sam smiles, watches and greets an older woman with a wai. Please check that nothing here reads as praise or criticism of Buddhism, and that ทำบุญ and ไหว้ are used as a neighbour would say them."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "temple fair",
+    "neighbours",
+    "lights",
+    "an evening out",
+    "respect"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "ton": "Ton",
+    "ball": "Ball"
+  },
+  "sections": [
+    {
+      "title": "The temple fair",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "วันเสาร์ตอนเย็นผมไปงานวัด",
+              "english": "On Saturday evening I went to the temple fair."
+            },
+            {
+              "speaker": "sam",
+              "text": "วัดอยู่ในซอยของเรา",
+              "english": "The temple is in our soi."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปกับต้นและบอล",
+              "english": "I went with Ton and Ball."
+            },
+            {
+              "speaker": "sam",
+              "text": "บอลดีใจมาก",
+              "english": "Ball was very happy."
+            },
+            {
+              "speaker": "sam",
+              "text": "เราเดินจากบ้านไปวัด",
+              "english": "We walked from the house to the temple."
+            },
+            {
+              "speaker": "sam",
+              "text": "ถนนมีไฟสีแดง สีขาว",
+              "english": "The road had red and white lights."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไฟอยู่ทั่วซอย",
+              "english": "There were lights all over the soi."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไฟอยู่บนต้นไม้",
+              "english": "There were lights in the trees."
+            },
+            {
+              "speaker": "sam",
+              "text": "ท้องฟ้าไม่มีเมฆ",
+              "english": "The sky had no clouds."
+            },
+            {
+              "speaker": "sam",
+              "text": "ลมเย็นและอากาศดี",
+              "english": "The wind was cool and the air was good."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่วัดมีคนมาก",
+              "english": "There were many people at the temple."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผู้หญิง ผู้ชาย และเด็กมาเที่ยว",
+              "english": "Women, men and children came to enjoy the fair."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบเที่ยวงานวัด",
+              "english": "I like going to the temple fair."
+            },
+            {
+              "speaker": "sam",
+              "text": "เพื่อนบ้านทำบุญที่วัด",
+              "english": "The neighbours made merit at the temple."
+            },
+            {
+              "speaker": "sam",
+              "text": "เขาให้อาหารและผลไม้กับพระ",
+              "english": "They gave food and fruit to the monks."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเห็นพระที่วัด",
+              "english": "I saw the monks at the temple."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผู้หญิงคนหนึ่งไหว้พระ",
+              "english": "A woman paid respect to the monks."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณต้นไหว้พระด้วย",
+              "english": "Ton did too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่ได้ทำบุญ",
+              "english": "I did not make merit."
+            },
+            {
+              "speaker": "sam",
+              "text": "ป้าทำบุญตอนเช้า",
+              "english": "Auntie made merit in the morning."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมยิ้มและดูอยู่",
+              "english": "I smiled and watched."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไหว้ยายคนหนึ่ง",
+              "english": "I greeted an old woman with a wai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ยายยิ้มให้ผม",
+              "english": "She smiled at me."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ball",
+              "text": "คุณแซมครับ ผมอยากถ่ายรูปครับ",
+              "english": "Sam, I want to take a picture."
+            },
+            {
+              "speaker": "sam",
+              "text": "ถ่ายรูปอะไรครับ",
+              "english": "A picture of what?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ถ่ายรูปซอยครับ",
+              "english": "The soi."
+            },
+            {
+              "speaker": "sam",
+              "text": "เขายิ้มกับผม",
+              "english": "He smiled with me."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีรูปหลายรูป",
+              "english": "I have many pictures."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมส่งรูปให้แม่",
+              "english": "I sent the pictures to my mother."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมโทรหาแม่",
+              "english": "I phoned my mother."
+            },
+            {
+              "speaker": "sam",
+              "text": "แม่ได้ยินเสียงเพลง",
+              "english": "She heard the music."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่ยุ่ง ผมว่าง",
+              "english": "I was not busy; I was free."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ที่งานมีร้านขายของขวัญ",
+              "english": "At the fair there was a shop selling presents."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อของขวัญให้เขา",
+              "english": "I bought him a present."
+            },
+            {
+              "speaker": "sam",
+              "text": "บอลดีใจที่ได้ของขวัญ",
+              "english": "Ball was happy to get a present."
+            },
+            {
+              "speaker": "ball",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่งานมีร้านอาหาร",
+              "english": "There were food shops at the fair."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกินข้าวผัดหมูเสมอ",
+              "english": "I always eat pork fried rice."
+            },
+            {
+              "speaker": "sam",
+              "text": "บอลชอบขนมเสมอ",
+              "english": "Ball always likes sweets."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณต้นช่วยผมเสมอ",
+              "english": "Ton always helps me."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเล่านิทานให้เขาฟังครับ",
+              "english": "I told him a story."
+            },
+            {
+              "speaker": "sam",
+              "text": "เราเดินเที่ยวทั้งวัน",
+              "english": "We walked around the whole day."
+            },
+            {
+              "speaker": "sam",
+              "text": "ทั้งสองคนหัวเราะ",
+              "english": "The two of them laughed."
+            },
+            {
+              "speaker": "sam",
+              "text": "เด็กวาดรูปบนกระดาษ",
+              "english": "The child drew on paper."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเก็บกระดาษของเขา",
+              "english": "I kept his paper."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่งานมีม้าและโทรทัศน์",
+              "english": "At the fair there were horses and a television."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผู้หญิงคนหนึ่งมีผ้าสีแดง",
+              "english": "A woman had a red cloth."
+            },
+            {
+              "speaker": "sam",
+              "text": "ทั้งซอยมีคนมาก",
+              "english": "The whole soi was full of people."
+            },
+            {
+              "speaker": "sam",
+              "text": "ฤดูฝนฝนตก เราเปียก",
+              "english": "In the rainy season it rains and we get wet."
+            },
+            {
+              "speaker": "sam",
+              "text": "วันนี้ฝนไม่ตก ผมไม่ต้องมีร่ม",
+              "english": "Today it didn't rain; I didn't need an umbrella."
+            },
+            {
+              "speaker": "sam",
+              "text": "ฤดูร้อนแดดร้อน",
+              "english": "In the hot season the sun is hot."
+            },
+            {
+              "speaker": "sam",
+              "text": "ป้าอยู่ที่ครัวตอนเย็น",
+              "english": "Auntie was in the kitchen in the evening."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดูนาฬิกา",
+              "english": "I looked at the clock."
+            },
+            {
+              "speaker": "sam",
+              "text": "หลังสามทุ่มเรากลับบ้าน",
+              "english": "After nine we went home."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไม่อยากกลับครับ",
+              "english": "I don't want to go home."
+            },
+            {
+              "speaker": "ton",
+              "text": "เดี๋ยวเรากลับครับ",
+              "english": "We're going home in a moment."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนนี้ผมสุขใจ",
+              "english": "Now I am glad at heart."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบเชียงใหม่",
+              "english": "I like Chiang Mai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่วัดมีเด็กนักเรียนหลายคน",
+              "english": "At the temple there were many schoolchildren."
+            },
+            {
+              "speaker": "sam",
+              "text": "เด็กนักเรียนร้องเพลงที่วัด",
+              "english": "The schoolchildren sang at the temple."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบเสียงเพลงของเขา",
+              "english": "I liked their singing."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมฟังเพลงและยิ้ม",
+              "english": "I listened to the music and smiled."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดื่มชากับคุณต้น",
+              "english": "I drank tea with Ton."
+            },
+            {
+              "speaker": "ton",
+              "text": "ชาที่นี่ถูกครับ",
+              "english": "The tea here is cheap."
+            },
+            {
+              "speaker": "sam",
+              "text": "ราคาไม่แพงเลย",
+              "english": "The price is not expensive at all."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอาบน้ำก่อนไปงานวัด",
+              "english": "I bathed before going to the fair."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเห็นวัวและม้าที่งาน",
+              "english": "I saw cows and horses at the fair."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเห็นนกบนต้นไม้",
+              "english": "I saw birds in a tree."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณต้นดูนาฬิกา",
+              "english": "Ton looked at the clock."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมนั่งคุยกับคุณต้น",
+              "english": "I sat and talked with Ton."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดูโทรทัศน์ที่ร้านป้า",
+              "english": "I watched television at Auntie's shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "หญ้าที่วัดเปียก",
+              "english": "The grass at the temple was wet."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนตีห้าผมตื่น",
+              "english": "At five I woke up."
+            },
+            {
+              "speaker": "sam",
+              "text": "เรากลับตอนสามทุ่มครึ่ง",
+              "english": "We went home at half past nine."
+            },
+            {
+              "speaker": "sam",
+              "text": "บางคนมีร่ม",
+              "english": "Some people had umbrellas."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่ได้ซื้ออะไรอีก",
+              "english": "I did not buy anything else."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกลับห้องและหลับสบาย",
+              "english": "I went back to my room and slept well."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอธิษฐานก่อนนอน",
+              "english": "I prayed before sleeping."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

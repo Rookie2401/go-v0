@@ -1,0 +1,493 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-11",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Auntie Daeng's life",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-11",
+    "title": "Auntie Daeng's life (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: daeng=Auntie Daeng (woman; calls herself ป้า; narrates without particles), sam=Sam (man; ผม … ครับ). For the reviewer - Auntie Daeng tells her life to Sam in plain first-person narration (ป้า …, no particles); ages are spoken (อายุ + number + ปี; ยี่สิบ, สามสิบ … as words); husband (สามี) and his death are told simply and respectfully; check \"โต\" for \"grew up\" and \"แต่งงานกับ\" for \"married\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "biography",
+    "life story",
+    "family",
+    "ages"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "daeng": "Auntie Daeng",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Auntie Daeng's life",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ป้าครับ ผมอยากรู้ชีวิตของป้า",
+              "english": "Auntie, I'd like to know about your life."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ได้ค่ะ แซม",
+              "english": "Of course, Sam."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเกิดที่หมู่บ้านใกล้ลำพูน",
+              "english": "I was born in a village near Lamphun."
+            },
+            {
+              "speaker": "daeng",
+              "text": "บ้านของป้าอยู่ใกล้แม่น้ำ",
+              "english": "My house was near the river."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ที่หมู่บ้านมีนา มีไร่ มีภูเขา",
+              "english": "The village had rice fields, farms and mountains."
+            },
+            {
+              "speaker": "daeng",
+              "text": "พ่อกับแม่ทำงานที่นา",
+              "english": "My father and mother worked in the fields."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้ามียายหนึ่งคน",
+              "english": "I had a grandmother."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ยายชอบทำบุญที่วัด",
+              "english": "She liked to make merit at the temple."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ยายไหว้พระทุกเช้า",
+              "english": "She paid respect to the monks every morning."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "ตอนเด็กป้าโตที่หมู่บ้าน",
+              "english": "As a child I grew up in the village."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเลี้ยงควายและวัว",
+              "english": "I looked after buffaloes and cows."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ควายกินหญ้าที่ใกล้แม่น้ำ",
+              "english": "The buffaloes ate grass by the river."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเก็บดอกไม้ที่ต้นไม้",
+              "english": "I picked flowers from the trees."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้ามีหมาหนึ่งตัว",
+              "english": "I had one dog."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเรียนที่โรงเรียนสี่ปี",
+              "english": "I went to school for four years."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าอ่านและเขียนภาษาไทยได้",
+              "english": "I could read and write Thai."
+            },
+            {
+              "speaker": "daeng",
+              "text": "หลังโรงเรียนป้าช่วยพ่อแม่",
+              "english": "After school I helped my parents."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "ป้ายี่สิบปี",
+              "english": "I was twenty."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าย้ายมาเมืองเชียงใหม่",
+              "english": "I moved to the city of Chiang Mai."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าซื้อตั๋วที่สถานี",
+              "english": "I bought a ticket at the station."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้านั่งรถสามชั่วโมง",
+              "english": "I rode the bus for three hours."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้ามีถุงใบหนึ่ง",
+              "english": "I had one bag."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ในถุงมีผ้า ขนม และของขวัญ",
+              "english": "In the bag there was cloth, sweets and a present."
+            },
+            {
+              "speaker": "daeng",
+              "text": "แม่ให้ของขวัญป้า",
+              "english": "My mother gave me a present."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าถึงเมืองตอนเย็น",
+              "english": "I reached the city in the evening."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าชอบที่นั่น",
+              "english": "I liked it there."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ในเมืองมีรถมาก",
+              "english": "In the city there were many cars."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าทำงานที่ร้านข้าว",
+              "english": "I worked at a rice shop."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าทำงานสิบชั่วโมง",
+              "english": "I worked ten hours."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเหนื่อยมาก",
+              "english": "I was very tired."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้ากลับห้องตอนสามทุ่มครึ่ง",
+              "english": "I went back to my room at half past nine."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าไปลำพูนบ่อย",
+              "english": "I often went to Lamphun."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ลำพูนอยู่ไม่ไกลจากเชียงใหม่",
+              "english": "Lamphun is not far from Chiang Mai."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "ป้าเจอสามีที่ร้านข้าว",
+              "english": "I met my husband at the rice shop."
+            },
+            {
+              "speaker": "daeng",
+              "text": "สามีของป้าเป็นครู",
+              "english": "My husband was a teacher."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าแต่งงานตอนยี่สิบสองปี",
+              "english": "I married at twenty-two."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เราแต่งงานที่โบสถ์",
+              "english": "We married at the church."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เรามีลูกสี่คน",
+              "english": "We had four children."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ลูกคนหนึ่งเกิดตอนป้าสามสิบปี",
+              "english": "One child was born when I was thirty."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ลูกเกิดที่โรงพยาบาล",
+              "english": "The child was born at the hospital."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เด็กโตเร็ว",
+              "english": "The children grew up fast."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเปิดร้านตอนอายุสามสิบห้าปี",
+              "english": "I opened the shop when I was thirty-five."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ร้านอยู่ที่ซอย",
+              "english": "The shop is in the soi."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เราย้ายมาอยู่ที่บ้านหลังนี้",
+              "english": "We moved into this house."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าขายขนมและข้าวผัด",
+              "english": "I sold sweets and fried rice."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เขาช่วยป้าที่ร้าน",
+              "english": "He helped me at the shop."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "หมาของป้าตายตอนป้าสิบสองปี",
+              "english": "My dog died when I was twelve."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ต้นไม้ที่หมู่บ้านตายเพราะฝนไม่ตก",
+              "english": "The trees in the village died because it did not rain."
+            },
+            {
+              "speaker": "daeng",
+              "text": "สามีของป้าตายตอนป้าอายุห้าสิบปี",
+              "english": "My husband died when I was fifty."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ใจของป้าไม่ดี",
+              "english": "I was very sad."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าไปโบสถ์กับเพื่อน",
+              "english": "I went to the church with a friend."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เพื่อนช่วยป้า",
+              "english": "My friends helped me."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าอธิษฐาน",
+              "english": "I prayed."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเชื่อว่าพระเจ้ารักป้า",
+              "english": "I believe that God loves me."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "ลูกคนหนึ่งย้ายไปกรุงเทพ",
+              "english": "One child moved to Bangkok."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ลูกของป้าแต่งงานแล้ว",
+              "english": "My children are married now."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ตอนนี้ป้ามีหลานสิบคน",
+              "english": "Now I have ten grandchildren."
+            },
+            {
+              "speaker": "daeng",
+              "text": "หลานของป้าชอบขนม",
+              "english": "My grandchildren like sweets."
+            },
+            {
+              "speaker": "daeng",
+              "text": "หลานโตเร็ว",
+              "english": "My grandchildren grow fast."
+            },
+            {
+              "speaker": "daeng",
+              "text": "หลานชอบมาที่ร้าน",
+              "english": "They like to come to the shop."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าอายุหกสิบห้าปี",
+              "english": "I am sixty-five."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้ามีชีวิตที่ดี",
+              "english": "I have a good life."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าไปคลินิกตอนป่วย",
+              "english": "I went to the clinic when I was ill."
+            },
+            {
+              "speaker": "daeng",
+              "text": "หมอตรวจคนไข้หลายคน",
+              "english": "The doctor examined many patients."
+            },
+            {
+              "speaker": "daeng",
+              "text": "หมอฉีดยาให้ป้า",
+              "english": "The doctor gave me an injection."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าไม่ชอบฉีดยา",
+              "english": "I don't like injections."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าซื้อตั๋วอีกใบหนึ่ง",
+              "english": "I bought another ticket."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าทำงานจนเย็น",
+              "english": "I worked until evening."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ควายหลงที่นา",
+              "english": "A buffalo got lost in the field."
+            },
+            {
+              "speaker": "daeng",
+              "text": "พ่อเลี้ยงแกะและควาย",
+              "english": "My father kept sheep and buffaloes."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ฝูงแกะอยู่ที่ภูเขา",
+              "english": "The flock of sheep was on the mountain."
+            },
+            {
+              "speaker": "daeng",
+              "text": "พ่อปล่อยควายที่นา",
+              "english": "Father let the buffaloes loose in the field."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าไม่ทิ้งบ้าน",
+              "english": "I did not leave the house."
+            },
+            {
+              "speaker": "daeng",
+              "text": "แม่เรียกป้าไปกินข้าว",
+              "english": "Mother called me to eat."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เมื่อพ่อกลับบ้าน ป้าก็ดีใจ",
+              "english": "When Father came home I was happy."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เมื่อแม่ยิ้ม ป้าก็ยิ้ม",
+              "english": "When Mother smiled I smiled."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าสุขใจ",
+              "english": "I am glad at heart."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดีใจที่ได้ฟังครับ",
+              "english": "I'm glad to have listened."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับป้า",
+              "english": "Thank you, Auntie."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

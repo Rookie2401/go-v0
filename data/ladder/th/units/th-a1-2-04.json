@@ -1,0 +1,542 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-04",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Yesterday after work",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-04",
+    "title": "Yesterday after work (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: mali=Mali (woman; ฉัน; narrates without particles), mother=Mali's mother (woman; calls herself แม่; ค่ะ / คะ). For the reviewer - Mali tells her evening in plain first-person narration (ฉัน, no particles; the past is shown by เมื่อวาน, หลัง, ก่อน and แล้ว), with her mother's quoted words (แม่ … ค่ะ); \"ยังไม่\" for \"not yet\"; \"ลูก\" is what the mother calls Mali; chores: อาบน้ำ, ซักผ้า, กวาดครัว, เช็ดโต๊ะ."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily life",
+    "housework",
+    "evening at home",
+    "mother and daughter"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "mali": "Mali",
+    "mother": "Mali's mother"
+  },
+  "sections": [
+    {
+      "title": "Yesterday after work",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "เมื่อวานฉันทำงานที่โรงพยาบาล",
+              "english": "Yesterday I worked at the hospital."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเหนื่อยมาก",
+              "english": "I was very tired."
+            },
+            {
+              "speaker": "mali",
+              "text": "หลังทำงานฉันกลับบ้าน",
+              "english": "After work I went home."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันถึงบ้านตอนเย็น",
+              "english": "I got home in the evening."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่อยู่ที่ครัว",
+              "english": "Mother was in the kitchen."
+            },
+            {
+              "speaker": "mother",
+              "text": "ลูกกลับมาแล้วค่ะ",
+              "english": "You're back, dear."
+            },
+            {
+              "speaker": "mother",
+              "text": "ลูกหิวไหมคะ",
+              "english": "Are you hungry?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันยังไม่หิวค่ะ",
+              "english": "I'm not hungry yet."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันอาบน้ำก่อนกินข้าว",
+              "english": "I took a bath before eating."
+            },
+            {
+              "speaker": "mali",
+              "text": "หลังอาบน้ำฉันสบาย",
+              "english": "After the bath I felt good."
+            },
+            {
+              "speaker": "mother",
+              "text": "ซักผ้าไหมคะ",
+              "english": "Shall we wash the clothes?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันซักผ้า",
+              "english": "I washed the clothes."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่ช่วยฉันซักผ้า",
+              "english": "Mother helped me wash the clothes."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันกวาดครัว",
+              "english": "I swept the kitchen."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเช็ดโต๊ะ",
+              "english": "I wiped the table."
+            },
+            {
+              "speaker": "mother",
+              "text": "แม่เช็ดเก้าอี้ค่ะ",
+              "english": "I wiped the chairs."
+            },
+            {
+              "speaker": "mali",
+              "text": "เราเช็ดหน้าต่าง",
+              "english": "We wiped the window."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่กวาดห้องของฉัน",
+              "english": "Mother swept my room."
+            },
+            {
+              "speaker": "mali",
+              "text": "เราช่วยกันกวาดบ้าน",
+              "english": "We swept the house together."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันกินข้าวที่ครัว",
+              "english": "I ate in the kitchen."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่อาบน้ำด้วย",
+              "english": "Mother bathed too."
+            },
+            {
+              "speaker": "mali",
+              "text": "หลังกินข้าวฉันล้างจาน",
+              "english": "After eating I washed the dishes."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันกับแม่นั่งคุยกัน",
+              "english": "Mother and I sat and talked."
+            },
+            {
+              "speaker": "mali",
+              "text": "เรานั่งที่เก้าอี้",
+              "english": "We sat on the chairs."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่นั่งที่โต๊ะ",
+              "english": "Mother sat at the table."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่ชอบคุย",
+              "english": "Mother likes to chat."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่ดูนาฬิกา",
+              "english": "Mother looked at the clock."
+            },
+            {
+              "speaker": "mali",
+              "text": "เราคุยกันที่โต๊ะ",
+              "english": "We chatted at the table."
+            },
+            {
+              "speaker": "mother",
+              "text": "แม่ยังไม่นอนค่ะ",
+              "english": "I'm not going to bed yet."
+            },
+            {
+              "speaker": "mother",
+              "text": "แม่เล่านิทานให้ลูกตอนเด็กค่ะ",
+              "english": "I told you stories when you were a child."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันรักแม่",
+              "english": "I love my mother."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่รู้ว่าฉันเหนื่อย",
+              "english": "Mother knew I was tired."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเข้าใจแม่",
+              "english": "I understood her."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเปิดโทรทัศน์",
+              "english": "I turned on the television."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันดูโทรทัศน์กับแม่",
+              "english": "I watched television with Mother."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันได้ยินเสียงโทรทัศน์",
+              "english": "I heard the television."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันดูนาฬิกา",
+              "english": "I looked at the clock."
+            },
+            {
+              "speaker": "mali",
+              "text": "นาฬิกาอยู่บนโต๊ะ",
+              "english": "The clock was on the table."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่หลับก่อนฉัน",
+              "english": "Mother fell asleep before me."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันหลับที่เก้าอี้",
+              "english": "I fell asleep on the chair."
+            },
+            {
+              "speaker": "mali",
+              "text": "คืนนั้นฉันหลับสบาย",
+              "english": "That night I slept well."
+            },
+            {
+              "speaker": "mali",
+              "text": "คืนวันเสาร์ฉันทำงาน",
+              "english": "On Saturday night I work."
+            },
+            {
+              "speaker": "mali",
+              "text": "คืนนี้ฉันจะไปนอนที่ห้อง",
+              "english": "Tonight I will sleep in my room."
+            },
+            {
+              "speaker": "mali",
+              "text": "ก่อนนอนฉันอธิษฐาน",
+              "english": "Before bed I prayed."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันปิดโทรศัพท์",
+              "english": "I switched off my phone."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันอ่านข้อความจากแซม",
+              "english": "I read a message from Sam."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันยังไม่ส่งข้อความ",
+              "english": "I had not yet sent a message."
+            },
+            {
+              "speaker": "mali",
+              "text": "เดี๋ยวฉันเขียนข้อความ",
+              "english": "In a moment I'll write one."
+            },
+            {
+              "speaker": "mother",
+              "text": "ห้ามเล่นโทรศัพท์ตอนกินข้าวนะคะ",
+              "english": "No phones at meals."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันรู้ค่ะ",
+              "english": "I know."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนนี้ฉันสบายแล้ว",
+              "english": "Now I feel fine."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันมีชีวิตที่ดี",
+              "english": "I have a good life."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันสุขใจ",
+              "english": "I am glad at heart."
+            },
+            {
+              "speaker": "mali",
+              "text": "ใจของแม่ดี",
+              "english": "Mother has a good heart."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่เขียนบนกระดาษ",
+              "english": "Mother wrote on paper."
+            },
+            {
+              "speaker": "mali",
+              "text": "วันอาทิตย์ฉันไปโบสถ์กับแม่",
+              "english": "On Sunday I go to the church with Mother."
+            },
+            {
+              "speaker": "mali",
+              "text": "สัปดาห์นี้ฉันทำงานมาก",
+              "english": "This week I work a lot."
+            },
+            {
+              "speaker": "mali",
+              "text": "เดือนนี้ฝนตก ฉันไม่มีร่ม",
+              "english": "This month it rains and I have no umbrella."
+            },
+            {
+              "speaker": "mali",
+              "text": "แซมมีชีวิตใหม่ที่เชียงใหม่",
+              "english": "Sam has a new life in Chiang Mai."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mother",
+              "text": "พรุ่งนี้แม่ไปโรงเรียนค่ะ",
+              "english": "Tomorrow I go to the school."
+            },
+            {
+              "speaker": "mother",
+              "text": "นักเรียนของแม่ชอบนิทานค่ะ",
+              "english": "My pupils like stories."
+            },
+            {
+              "speaker": "mali",
+              "text": "พ่อไปตลาดตอนเช้า",
+              "english": "Father goes to the market in the morning."
+            },
+            {
+              "speaker": "mali",
+              "text": "พ่อซื้อผัก ซื้อปลา ซื้อไข่ที่ตลาด",
+              "english": "Father buys vegetables, fish and eggs at the market."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่ทำอาหารให้เรา",
+              "english": "Mother cooks for us."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันกินข้าวผัดหมูสองจาน",
+              "english": "I ate two plates of pork fried rice."
+            },
+            {
+              "speaker": "mali",
+              "text": "พี่ต้นกับบอลมากินข้าวที่บ้านวันอาทิตย์",
+              "english": "Ton and Ball come to eat at home on Sunday."
+            },
+            {
+              "speaker": "mali",
+              "text": "เด็กชอบขนมของแม่",
+              "english": "The child likes Mother's sweets."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาหัวเราะ",
+              "english": "He laughs."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่ยิ้ม",
+              "english": "Mother smiles."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันดีใจ",
+              "english": "I am happy."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันอยากอยู่ที่บ้านกับแม่",
+              "english": "I want to stay at home with Mother."
+            },
+            {
+              "speaker": "mali",
+              "text": "แต่พรุ่งนี้ฉันต้องไปโรงพยาบาล",
+              "english": "But tomorrow I have to go to the hospital."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันต้องตื่นหกโมงเช้า",
+              "english": "I have to get up at six."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเดินไปที่ถนน",
+              "english": "I walk to the road."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันกำลังกินข้าว",
+              "english": "I was eating."
+            },
+            {
+              "speaker": "mali",
+              "text": "นี่บ้านของฉัน",
+              "english": "This is my house."
+            },
+            {
+              "speaker": "mali",
+              "text": "นั่นแม่ของฉัน",
+              "english": "That is my mother."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่มักกินชา",
+              "english": "Mother usually drinks tea."
+            },
+            {
+              "speaker": "mali",
+              "text": "บางวันแม่ไปตลาด",
+              "english": "Some days Mother goes to the market."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันกินข้าวทุกเย็น",
+              "english": "I eat every evening."
+            },
+            {
+              "speaker": "mother",
+              "text": "ดื่มชาสิคะ",
+              "english": "Please have some tea."
+            },
+            {
+              "speaker": "mother",
+              "text": "แล้วลูกล่ะคะ",
+              "english": "And you?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันวาดรูปแม่",
+              "english": "I drew a picture of Mother."
+            },
+            {
+              "speaker": "mali",
+              "text": "ร่มของแม่อยู่ที่ประตู",
+              "english": "Mother's umbrella is at the door."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฝนตกทั่วเชียงใหม่",
+              "english": "It rains all over Chiang Mai."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันไม่หิวเลย",
+              "english": "I am not hungry at all."
+            },
+            {
+              "speaker": "mali",
+              "text": "อย่านอนก่อนกินข้าวนะคะ",
+              "english": "Don't go to bed before eating."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขนมหมดแล้ว",
+              "english": "The sweets are all gone."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันรอรถสองแถว",
+              "english": "I wait for the songthaew."
+            },
+            {
+              "speaker": "mali",
+              "text": "รถสองแถวคันสีแดงมาถึงเจ็ดโมง",
+              "english": "The red songthaew arrives at seven."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันไม่ได้ซื้อกาแฟ",
+              "english": "I did not buy any coffee."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันไม่ได้ดื่มชา",
+              "english": "I did not drink any tea."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

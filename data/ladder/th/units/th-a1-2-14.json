@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-14",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "A service through Ball's eyes",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-14",
+    "title": "A service through Ball's eyes (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: ball=Ball (boy, ten; ผม; narrates without particles, ครับ in quoted speech), pastor=The pastor (man; ผม … ครับ). For the reviewer - a ten-year-old tells what he saw at church, in plain first-person narration (ผม, no particles) with a short quotation from the pastor; the pastor's talk is the lost-sheep story in a few lines (kept free of Scripture quotation); the plan wanted ๆ taught here, but the adapter reads a glued ๆ as no token at all (and splits เพลงช้าๆ wrongly into เพ + ลง), so the unit does not use ๆ; \"ร้องไห้\" is one token."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "church service",
+    "a child's view",
+    "guitar",
+    "singing",
+    "prayer",
+    "the pastor's story"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ball": "Ball",
+    "pastor": "The pastor"
+  },
+  "sections": [
+    {
+      "title": "A service through Ball's eyes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ball",
+              "text": "วันอาทิตย์ผมไปโบสถ์กับพ่อ",
+              "english": "On Sunday I went to church with my father."
+            },
+            {
+              "speaker": "ball",
+              "text": "ที่โบสถ์มีคนมาก",
+              "english": "There were many people at the church."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมนั่งที่เก้าอี้ใกล้ประตู",
+              "english": "I sat on a chair near the door."
+            },
+            {
+              "speaker": "ball",
+              "text": "ตอนสิบโมงเช้าเราเริ่มร้องเพลง",
+              "english": "At ten in the morning we began to sing."
+            },
+            {
+              "speaker": "ball",
+              "text": "คุณแซมเล่นกีตาร์",
+              "english": "Sam played the guitar."
+            },
+            {
+              "speaker": "ball",
+              "text": "เสียงกีตาร์ดี",
+              "english": "The guitar sounded good."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมชอบเสียงกีตาร์",
+              "english": "I like the sound of the guitar."
+            },
+            {
+              "speaker": "ball",
+              "text": "คนร้องเพลงช้า",
+              "english": "People sang slowly."
+            },
+            {
+              "speaker": "ball",
+              "text": "เพลงนี้ผมชอบที่สุด",
+              "english": "This song I like best."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมร้องได้นิดหน่อย",
+              "english": "I can sing a little."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมจำคำไม่ได้",
+              "english": "I couldn't remember the words."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมลืมบ่อย",
+              "english": "I often forget."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมพยายามร้อง",
+              "english": "I tried to sing."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมร้องผิด",
+              "english": "I sang it wrongly."
+            },
+            {
+              "speaker": "ball",
+              "text": "เด็กที่นั่งใกล้ผมหัวเราะ",
+              "english": "The child sitting near me laughed."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมเปิดปากร้องเพลง",
+              "english": "I opened my mouth and sang."
+            },
+            {
+              "speaker": "ball",
+              "text": "หูของผมได้ยินเสียงเพลง",
+              "english": "My ears heard the music."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ball",
+              "text": "ผู้ชายคนหนึ่งยืนอธิษฐาน",
+              "english": "A man stood and prayed."
+            },
+            {
+              "speaker": "ball",
+              "text": "เขาอธิษฐานเสียงใหญ่",
+              "english": "He prayed in a loud voice."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมได้ยินเสียงเขา",
+              "english": "I heard his voice."
+            },
+            {
+              "speaker": "ball",
+              "text": "คนทั้งโบสถ์ยืน",
+              "english": "The whole church stood."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมยืนด้วย",
+              "english": "I stood too."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผู้หญิงคนหนึ่งร้องไห้",
+              "english": "A woman cried."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไม่รู้ว่าทำไม",
+              "english": "I did not know why."
+            },
+            {
+              "speaker": "ball",
+              "text": "คนที่นั่งใกล้เขากอดเขา",
+              "english": "The person sitting near her hugged her."
+            },
+            {
+              "speaker": "ball",
+              "text": "เด็กเล็กร้องไห้ด้วย",
+              "english": "A little child cried too."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผู้หญิงให้ขนมเด็ก",
+              "english": "A woman gave the child a sweet."
+            },
+            {
+              "speaker": "ball",
+              "text": "เขาไม่ร้องไห้แล้ว",
+              "english": "He did not cry any more."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ball",
+              "text": "ศิษยาภิบาลพูดนิดหน่อย",
+              "english": "The pastor spoke briefly."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ผมเล่านิทานครับ",
+              "english": "Let me tell a story."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ผู้ชายคนหนึ่งเลี้ยงแกะหนึ่งร้อยตัวครับ",
+              "english": "A man kept a hundred sheep."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ตัวหนึ่งหลงครับ",
+              "english": "One of them got lost."
+            },
+            {
+              "speaker": "pastor",
+              "text": "เขาปล่อยฝูงที่ภูเขาครับ",
+              "english": "He left the flock on the mountain."
+            },
+            {
+              "speaker": "pastor",
+              "text": "เขาไปหาตัวนั้นครับ",
+              "english": "He went to look for that one."
+            },
+            {
+              "speaker": "pastor",
+              "text": "เมื่อเขาเจอ เขาก็กอดครับ",
+              "english": "When he found it he hugged it."
+            },
+            {
+              "speaker": "pastor",
+              "text": "เขาไม่ทิ้งตัวนั้นครับ",
+              "english": "He did not give up on it."
+            },
+            {
+              "speaker": "pastor",
+              "text": "เขาเรียกเพื่อนมายินดีครับ",
+              "english": "He called his friends to be glad with him."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมชอบนิทานนี้",
+              "english": "I like this story."
+            },
+            {
+              "speaker": "ball",
+              "text": "ศิษยาภิบาลอธิบายให้เราฟัง",
+              "english": "The pastor explained it to us."
+            },
+            {
+              "speaker": "ball",
+              "text": "เขาแนะนำให้เรารักเพื่อน",
+              "english": "He advised us to love our friends."
+            },
+            {
+              "speaker": "ball",
+              "text": "เขาเตือนเราว่าอย่าลืมเพื่อน",
+              "english": "He warned us not to forget our friends."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมเคยลืมเพื่อนครั้งหนึ่ง",
+              "english": "Once I forgot a friend."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมจำนิทานได้ง่าย",
+              "english": "I remember the story easily."
+            },
+            {
+              "speaker": "ball",
+              "text": "นิทานไม่ยาก",
+              "english": "The story is not hard."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ball",
+              "text": "เราจบตอนสิบเอ็ดโมง",
+              "english": "We finished at eleven."
+            },
+            {
+              "speaker": "ball",
+              "text": "หลังโบสถ์เรากินขนม",
+              "english": "After church we ate sweets."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมกินขนมสองจาน",
+              "english": "I ate two plates of sweets."
+            },
+            {
+              "speaker": "ball",
+              "text": "ขนมสีขาวและสีแดงอร่อย",
+              "english": "The white and red sweets were tasty."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมแพ้ถั่ว",
+              "english": "I am allergic to peanuts."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไม่กินถั่ว",
+              "english": "I don't eat peanuts."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไปล้างมือ",
+              "english": "I went to wash my hands."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไม่ป่วย",
+              "english": "I am not ill."
+            },
+            {
+              "speaker": "ball",
+              "text": "สุขภาพของผมดี",
+              "english": "My health is good."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมรักพ่อ",
+              "english": "I love my father."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไม่ชอบฉีดยา",
+              "english": "I don't like injections."
+            },
+            {
+              "speaker": "ball",
+              "text": "เมื่อผมป่วย ผมก็ไปคลินิก",
+              "english": "When I'm ill I go to the clinic."
+            },
+            {
+              "speaker": "ball",
+              "text": "หมอตรวจตาผม",
+              "english": "The doctor checks my eyes."
+            },
+            {
+              "speaker": "ball",
+              "text": "คนเลี้ยงแกะเรียกเพื่อน",
+              "english": "The shepherd called his friends."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมเรียนจนเย็น",
+              "english": "I study until evening."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมกลับบ้านตอนบ่าย",
+              "english": "I went home in the afternoon."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมสุขใจ",
+              "english": "I am glad at heart."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

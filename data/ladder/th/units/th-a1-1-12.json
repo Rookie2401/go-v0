@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-12",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Ball is ill",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-12",
+    "title": "Ball is ill (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: ton=Ton (man; ผม … ครับ), mali=Mali (woman, a nurse; ฉัน … ค่ะ / คะ), ball=Ball (boy, ten; ผม … ครับ). For the reviewer - ปวด / เจ็บ + body part (ปวดหัว, ปวดท้อง, เจ็บคอ), เป็นไข้, ไม่สบาย, กินยา; Mali the nurse uses polite, caring forms (… นะคะ); Ton says ผม … ครับ to his sister; \"ตอนเช้า ตอนเย็น กินนะคะ\" (take it morning and evening)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "illness",
+    "body parts",
+    "medicine",
+    "rest"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ton": "Ton",
+    "mali": "Mali",
+    "ball": "Ball"
+  },
+  "sections": [
+    {
+      "title": "Ball is ill",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "บอลไม่สบายครับ",
+              "english": "Ball isn't well."
+            },
+            {
+              "speaker": "ton",
+              "text": "เขาป่วยครับ",
+              "english": "He is ill."
+            },
+            {
+              "speaker": "mali",
+              "text": "วันนี้บอลเป็นอะไรคะ",
+              "english": "What's wrong with Ball today?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมปวดหัวครับ",
+              "english": "I have a headache."
+            },
+            {
+              "speaker": "mali",
+              "text": "ปวดท้องไหมคะ",
+              "english": "Do you have a stomach ache?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ไม่ปวดท้องครับ",
+              "english": "No stomach ache."
+            },
+            {
+              "speaker": "mali",
+              "text": "เจ็บคอไหมคะ",
+              "english": "Is your throat sore?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไอด้วยครับ",
+              "english": "I'm coughing too."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมหนาวครับ",
+              "english": "I'm cold."
+            },
+            {
+              "speaker": "ton",
+              "text": "เจ็บมากไหมครับ",
+              "english": "Does it hurt a lot?"
+            },
+            {
+              "speaker": "ball",
+              "text": "เจ็บมากครับ",
+              "english": "Yes, a lot."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันขอดูคอหน่อยนะคะ",
+              "english": "Let me look at your throat."
+            },
+            {
+              "speaker": "mali",
+              "text": "คอของเขาแดงค่ะ",
+              "english": "His throat is red."
+            },
+            {
+              "speaker": "mali",
+              "text": "ไอมากไหมคะ",
+              "english": "Do you cough a lot?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ไอมากครับ",
+              "english": "A lot."
+            },
+            {
+              "speaker": "ton",
+              "text": "บอลเป็นไข้ไหมครับ",
+              "english": "Does Ball have a fever?"
+            },
+            {
+              "speaker": "mali",
+              "text": "เป็นไข้ค่ะ",
+              "english": "Yes, he has a fever."
+            },
+            {
+              "speaker": "mali",
+              "text": "ไข้ไม่มากค่ะ",
+              "english": "Not a high one."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันขอดูหัวด้วยค่ะ",
+              "english": "I'd like to look at his head too."
+            },
+            {
+              "speaker": "ball",
+              "text": "หัวของผมร้อนครับ",
+              "english": "My head is hot."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมหนาวมากครับ",
+              "english": "I'm very cold."
+            },
+            {
+              "speaker": "mali",
+              "text": "ท้องดีไหมคะ",
+              "english": "Is your stomach all right?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ดีครับ",
+              "english": "Yes."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "ต้องกินยาค่ะ",
+              "english": "He has to take medicine."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่โรงพยาบาลมียาค่ะ",
+              "english": "There is medicine at the hospital."
+            },
+            {
+              "speaker": "ton",
+              "text": "โรงพยาบาลอยู่ไกลไหมครับ",
+              "english": "Is the hospital far?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ไม่ไกลค่ะ",
+              "english": "Not far."
+            },
+            {
+              "speaker": "mali",
+              "text": "อยู่ที่ถนนค่ะ",
+              "english": "It's on the road."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมซื้อยาให้เขาครับ",
+              "english": "I'll buy the medicine for him."
+            },
+            {
+              "speaker": "ton",
+              "text": "ราคาแพงไหมครับ",
+              "english": "Is it expensive?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ราคาไม่แพงค่ะ ถูกค่ะ",
+              "english": "It's not expensive; it's cheap."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่ร้านลดให้ค่ะ",
+              "english": "The shop gives a discount."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมมีเงินครับ",
+              "english": "I have money."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนเช้า ตอนเย็น กินนะคะ",
+              "english": "Take it in the morning and in the evening."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "บอลต้องนอนค่ะ",
+              "english": "Ball has to lie down."
+            },
+            {
+              "speaker": "mali",
+              "text": "ต้องพักที่บ้านค่ะ",
+              "english": "He has to rest at home."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอยากไปโรงเรียนครับ",
+              "english": "I want to go to school."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไม่ได้ครับ ต้องพักครับ",
+              "english": "You can't. You must rest."
+            },
+            {
+              "speaker": "mali",
+              "text": "นอนที่เตียงนะคะ",
+              "english": "Lie down on the bed."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไม่ชอบป่วยครับ",
+              "english": "I don't like being ill."
+            },
+            {
+              "speaker": "mali",
+              "text": "พรุ่งนี้เขาพักที่บ้านค่ะ",
+              "english": "Tomorrow he rests at home."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอยากกินผลไม้ครับ",
+              "english": "I'd like some fruit."
+            },
+            {
+              "speaker": "mali",
+              "text": "ป่วยต้องกินส้มค่ะ",
+              "english": "When you're ill you should eat oranges."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมซื้อส้มและกล้วยครับ",
+              "english": "I'll buy oranges and bananas."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมซื้อมะม่วงด้วยครับ",
+              "english": "I'll buy a mango too."
+            },
+            {
+              "speaker": "ball",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอยากกินข้าวผัดไก่ครับ",
+              "english": "I'd like chicken fried rice."
+            },
+            {
+              "speaker": "mali",
+              "text": "กินข้าวและผักค่ะ",
+              "english": "Eat rice and vegetables."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไม่ชอบผักครับ",
+              "english": "I don't like vegetables."
+            },
+            {
+              "speaker": "mali",
+              "text": "ผักดีค่ะ",
+              "english": "Vegetables are good."
+            },
+            {
+              "speaker": "ball",
+              "text": "ครับ ผมกินครับ",
+              "english": "All right, I'll eat them."
+            },
+            {
+              "speaker": "ball",
+              "text": "ตอนเช้าผมเห็นพระที่ซอยครับ",
+              "english": "In the morning I saw monks in the soi."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไปวัดกับพ่อครับ",
+              "english": "I go to the temple with my father."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมสบายแล้วครับ",
+              "english": "I feel better now."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมชอบอยู่ที่บ้านครับ",
+              "english": "I like being at home."
+            },
+            {
+              "speaker": "ton",
+              "text": "พรุ่งนี้ผมสอนที่โรงเรียนครับ",
+              "english": "Tomorrow I teach at the school."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมกลับบ้านตอนเย็นครับ",
+              "english": "I come home in the evening."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันทำงานที่โรงพยาบาลค่ะ",
+              "english": "I'm working at the hospital."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนเย็นฉันมาดูค่ะ",
+              "english": "I'll come and see him in the evening."
+            },
+            {
+              "speaker": "ton",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมออกจากบ้านไม่ได้ครับ",
+              "english": "I cannot go out of the house."
+            },
+            {
+              "speaker": "ball",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "mali",
+              "text": "ดื่มน้ำนะคะ",
+              "english": "Drink some water."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

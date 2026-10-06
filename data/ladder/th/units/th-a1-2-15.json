@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-15",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Invitations and the calendar",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-15",
+    "title": "Invitations and the calendar (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: mali=Mali (woman; ฉัน … ค่ะ / คะ), sam=Sam (man; ผม … ครับ), ton=Ton (man; ผม … ครับ), ball=Ball (boy, ten; ผม … ครับ). For the reviewer - messages in the team group chat (particles allowed in chat), a card, and a spoken talk about the calendar; dates written in digits (วันที่ 12 ตุลาคม) and as words (สิบสอง); the twelve months are taught as single tokens, each used three times (in the list, in a birthday list and in a seasons list); \"เชิญ … มา\" for an invitation, \"ขอโทษ\" for a polite refusal, \"ไปได้ครับ / ไปไม่ได้ค่ะ\" for accepting and declining; the Western month names are the ones in everyday use."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "birthday invitation",
+    "group chat",
+    "replies",
+    "months and dates",
+    "seasons"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "mali": "Mali",
+    "sam": "Sam",
+    "ton": "Ton",
+    "ball": "Ball"
+  },
+  "sections": [
+    {
+      "title": "Invitations and the calendar",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "สวัสดีค่ะ",
+              "english": "Hello."
+            },
+            {
+              "speaker": "mali",
+              "text": "วันที่ 12 ตุลาคมเป็นวันเกิดของฉันค่ะ",
+              "english": "12 October is my birthday."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขอเชิญแซม ต้น และบอลมาที่บ้านค่ะ",
+              "english": "I'd like to invite Sam, Ton and Ball to my house."
+            },
+            {
+              "speaker": "mali",
+              "text": "เวลาห้าโมงเย็นค่ะ",
+              "english": "At five in the afternoon."
+            },
+            {
+              "speaker": "mali",
+              "text": "มาได้ไหมคะ",
+              "english": "Can you come?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ ผมไปได้ครับ",
+              "english": "Thank you, I can come."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อของขวัญให้คุณครับ",
+              "english": "I'll buy you a present."
+            },
+            {
+              "speaker": "ton",
+              "text": "ขอโทษครับ",
+              "english": "Sorry."
+            },
+            {
+              "speaker": "ton",
+              "text": "วันที่สิบสอง ผมไม่ว่างครับ",
+              "english": "On the twelfth I'm not free."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมต้องสอนที่โรงเรียนครับ",
+              "english": "I have to teach at the school."
+            },
+            {
+              "speaker": "mali",
+              "text": "ได้ค่ะ",
+              "english": "That's fine."
+            },
+            {
+              "speaker": "ton",
+              "text": "บอลไปได้ครับ",
+              "english": "Ball can go."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไปได้ครับ ขอบคุณครับ",
+              "english": "I can go, thank you."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมแพ้ถั่วครับ",
+              "english": "I'm allergic to peanuts."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันไม่ซื้อถั่วค่ะ",
+              "english": "I won't buy any peanuts."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันซื้อขนมหวานค่ะ",
+              "english": "I'll buy sweet treats."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันซื้อมะนาวและน้ำตาลค่ะ",
+              "english": "I'll buy limes and sugar."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเขียนที่กระดาษสีเหลืองค่ะ",
+              "english": "I wrote on yellow paper."
+            },
+            {
+              "speaker": "mali",
+              "text": "ในกระดาษเขียนว่า เชิญมาวันที่ 12 ค่ะ",
+              "english": "The paper says: please come on the 12th."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขอโทษค่ะ ฉันลืมเขียนเวลา",
+              "english": "Sorry, I forgot to write the time."
+            },
+            {
+              "speaker": "mali",
+              "text": "เวลาห้าโมงเย็นค่ะ",
+              "english": "The time is five in the afternoon."
+            },
+            {
+              "speaker": "sam",
+              "text": "เชิญคุณต้นมาด้วยครับ",
+              "english": "Please do invite Ton too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเรียกคุณต้นมาที่บ้านครับ",
+              "english": "I'll ask Ton to come to the house."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเตือนทั้งสามคนวันที่ 11 ค่ะ",
+              "english": "I will remind all three of you on the 11th."
+            },
+            {
+              "speaker": "sam",
+              "text": "ยินดีด้วยครับ",
+              "english": "Congratulations."
+            },
+            {
+              "speaker": "mali",
+              "text": "ปีนี้ฉันอายุยี่สิบแปดปีค่ะ",
+              "english": "This year I am twenty-eight."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ปีหนึ่งมีกี่เดือนครับ",
+              "english": "How many months are there in a year?"
+            },
+            {
+              "speaker": "mali",
+              "text": "มีสิบสองเดือนค่ะ",
+              "english": "Twelve."
+            },
+            {
+              "speaker": "mali",
+              "text": "มกราคม กุมภาพันธ์ มีนาคม เมษายน พฤษภาคม มิถุนายนค่ะ",
+              "english": "January, February, March, April, May, June."
+            },
+            {
+              "speaker": "mali",
+              "text": "กรกฎาคม สิงหาคม กันยายน ตุลาคม พฤศจิกายน ธันวาคมค่ะ",
+              "english": "July, August, September, October, November, December."
+            },
+            {
+              "speaker": "mali",
+              "text": "พ่อเกิดเดือนมกราคมค่ะ",
+              "english": "My father was born in January."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่เกิดเดือนกุมภาพันธ์ค่ะ",
+              "english": "My mother was born in February."
+            },
+            {
+              "speaker": "mali",
+              "text": "พี่ต้นเกิดเดือนมีนาคมค่ะ",
+              "english": "Ton was born in March."
+            },
+            {
+              "speaker": "mali",
+              "text": "ป้าเกิดเดือนเมษายนค่ะ",
+              "english": "Auntie was born in April."
+            },
+            {
+              "speaker": "mali",
+              "text": "ยายเกิดเดือนพฤษภาคมค่ะ",
+              "english": "Grandmother was born in May."
+            },
+            {
+              "speaker": "mali",
+              "text": "น้องเกิดเดือนมิถุนายนค่ะ",
+              "english": "My little sister was born in June."
+            },
+            {
+              "speaker": "mali",
+              "text": "ศิษยาภิบาลเกิดเดือนกรกฎาคมค่ะ",
+              "english": "The pastor was born in July."
+            },
+            {
+              "speaker": "mali",
+              "text": "บอลเกิดเดือนสิงหาคมค่ะ",
+              "english": "Ball was born in August."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเกิดเดือนกันยายนครับ",
+              "english": "I was born in September."
+            },
+            {
+              "speaker": "mali",
+              "text": "เพื่อนของฉันเกิดเดือนพฤศจิกายนค่ะ",
+              "english": "My friend was born in November."
+            },
+            {
+              "speaker": "mali",
+              "text": "หมอที่คลินิกเกิดเดือนธันวาคมค่ะ",
+              "english": "The doctor at the clinic was born in December."
+            },
+            {
+              "speaker": "sam",
+              "text": "วันเกิดปีละครั้งครับ",
+              "english": "A birthday comes once a year."
+            },
+            {
+              "speaker": "mali",
+              "text": "ใช่ค่ะ",
+              "english": "Yes."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "เดือนมีนาคม เมษายน พฤษภาคม ร้อนมากค่ะ",
+              "english": "March, April and May are very hot."
+            },
+            {
+              "speaker": "mali",
+              "text": "มิถุนายน กรกฎาคม สิงหาคม กันยายน ตุลาคม ฝนตกค่ะ",
+              "english": "From June to October it rains."
+            },
+            {
+              "speaker": "mali",
+              "text": "พฤศจิกายน ธันวาคม มกราคม กุมภาพันธ์ หนาวค่ะ",
+              "english": "From November to February it is cool."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบเดือนที่ฝนตกครับ",
+              "english": "I like the months when it rains."
+            },
+            {
+              "speaker": "mali",
+              "text": "เมืองเชียงใหม่สวยทุกเดือนค่ะ",
+              "english": "The city of Chiang Mai is beautiful every month."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมขอแนะนำร้านขนมได้ไหมครับ",
+              "english": "May I suggest a sweet shop?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ได้ค่ะ ร้านของป้าอร่อยค่ะ",
+              "english": "Yes, Auntie's shop is tasty."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันกอดแม่ตอนวันเกิดค่ะ",
+              "english": "I hug my mother on my birthday."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมจะไปที่บ้านคุณตอนห้าโมงเย็นครับ",
+              "english": "I'll come to your house at five."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอโทษครับ ผมไปช้านิดหน่อยครับ",
+              "english": "Sorry, I may be a little late."
+            },
+            {
+              "speaker": "mali",
+              "text": "ได้ค่ะ เรากินข้าวด้วยกันค่ะ",
+              "english": "That's fine; we'll eat together."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเอาผลไม้ไปด้วยครับ",
+              "english": "I will bring fruit."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่บ้านมีชา มีกาแฟ มีน้ำค่ะ",
+              "english": "At home there is tea, coffee and water."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดื่มชาครับ ผมอยากกินขนมครับ",
+              "english": "I will have tea and some sweets."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอยากกินข้าวผัดไก่ครับ",
+              "english": "I would like chicken fried rice."
+            },
+            {
+              "speaker": "mali",
+              "text": "ได้ค่ะ ฉันซื้อไก่ที่ตลาดค่ะ",
+              "english": "Yes, I will buy chicken at the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่ทิ้งเพื่อนครับ",
+              "english": "I won't leave my friends."
+            },
+            {
+              "speaker": "mali",
+              "text": "หมอตรวจคนไข้ตอนเย็นค่ะ",
+              "english": "The doctor sees patients in the evening."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขอบคุณค่ะ แซม",
+              "english": "Thank you, Sam."
+            },
+            {
+              "speaker": "mali",
+              "text": "เจอกันวันที่ 12 ค่ะ",
+              "english": "See you on the 12th."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

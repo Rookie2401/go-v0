@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-03",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "A rainy Saturday",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-03",
+    "title": "A rainy Saturday (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: ball=Ball (boy, ten; ผม … ครับ), ton=Ton (man; ผม … ครับ), mali=Mali (woman; ฉัน … ค่ะ / คะ), sam=Sam (man; ผม … ครับ). For the reviewer - a short present-tense story with dialogue; sentence particles สิ (urging: \"วาดรูปสิครับ\") and ล่ะ (\"แล้วคุณล่ะ\") appear here for the first time; \"เล่านิทาน\" (tell a story), \"วาดรูป\" and \"เขียนรูป\" (draw a picture - check that เขียนรูป is natural); the narration has no particles."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "story",
+    "rain",
+    "playing indoors",
+    "drawing",
+    "a story told aloud"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ball": "Ball",
+    "ton": "Ton",
+    "mali": "Mali",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "A rainy Saturday",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันเสาร์ฝนตก",
+              "english": "On Saturday it is raining."
+            },
+            {
+              "text": "ฝนตกที่ซอย",
+              "english": "It rains in the soi."
+            },
+            {
+              "text": "บอลอยู่ที่บ้าน",
+              "english": "Ball is at home."
+            },
+            {
+              "text": "บอลไม่มีร่ม",
+              "english": "Ball has no umbrella."
+            },
+            {
+              "text": "ต้นกับมะลิและแซมอยู่ที่บ้านด้วย",
+              "english": "Ton, Mali and Sam are at home too."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมเบื่อครับ",
+              "english": "I'm bored."
+            },
+            {
+              "speaker": "ton",
+              "text": "ฝนตกอยู่ ไปไหนไม่ได้ครับ",
+              "english": "It's raining; we can't go anywhere."
+            },
+            {
+              "speaker": "ball",
+              "text": "ร่มของผมอยู่ที่โรงเรียนครับ",
+              "english": "My umbrella is at school."
+            },
+            {
+              "speaker": "mali",
+              "text": "อย่าไปเลยค่ะ",
+              "english": "Don't go."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอยากเล่นครับ",
+              "english": "I want to play."
+            },
+            {
+              "speaker": "sam",
+              "text": "เราเล่นอะไรกันครับ",
+              "english": "What shall we play?"
+            },
+            {
+              "speaker": "ball",
+              "text": "คุณแซมวาดรูปสิครับ",
+              "english": "Sam, draw a picture!"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมทำไม่ได้ครับ",
+              "english": "I can't do it."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมมีกระดาษครับ",
+              "english": "I have some paper."
+            },
+            {
+              "text": "แซมวาดรูปบ้านบนกระดาษ",
+              "english": "Sam draws a house on the paper."
+            },
+            {
+              "text": "บอลหัวเราะ",
+              "english": "Ball laughs."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมชอบรูปของคุณครับ",
+              "english": "I like your picture."
+            },
+            {
+              "speaker": "sam",
+              "text": "แล้วคุณล่ะครับ",
+              "english": "And you?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมวาดรูปป้าครับ",
+              "english": "I'll draw Auntie."
+            },
+            {
+              "text": "เด็กทำรูปบนกระดาษ",
+              "english": "The child makes a picture on the paper."
+            },
+            {
+              "speaker": "mali",
+              "text": "คุณทำอะไรคะ",
+              "english": "What are you doing?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมเขียนรูปผู้หญิงกับผู้ชายครับ",
+              "english": "I'm drawing a woman and a man."
+            },
+            {
+              "speaker": "mali",
+              "text": "ผู้หญิงคนนั้นเป็นใครคะ",
+              "english": "Who is that woman?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ป้าครับ",
+              "english": "Auntie."
+            },
+            {
+              "speaker": "mali",
+              "text": "แล้วผู้ชายล่ะคะ",
+              "english": "And the man?"
+            },
+            {
+              "speaker": "ball",
+              "text": "คุณแซมครับ",
+              "english": "Sam."
+            },
+            {
+              "text": "เราหัวเราะ",
+              "english": "We laugh."
+            },
+            {
+              "speaker": "mali",
+              "text": "คุณเบื่อไหมคะ",
+              "english": "Are you bored?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ไม่เบื่อแล้วครับ",
+              "english": "Not any more."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "ผมเล่านิทานให้เด็กฟังไหมครับ",
+              "english": "Shall I tell the child a story?"
+            },
+            {
+              "speaker": "ball",
+              "text": "เล่าสิครับ",
+              "english": "Yes, tell it!"
+            },
+            {
+              "text": "เขาเล่านิทาน",
+              "english": "He tells a story."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผู้ชายคนหนึ่งไม่มีร่ม",
+              "english": "A man had no umbrella."
+            },
+            {
+              "speaker": "ton",
+              "text": "ฝนตกทั่วถนน",
+              "english": "It rained all over the road."
+            },
+            {
+              "speaker": "ton",
+              "text": "เขาเปียกมาก",
+              "english": "He got very wet."
+            },
+            {
+              "speaker": "ball",
+              "text": "แล้วเขาล่ะครับ",
+              "english": "And then?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ผู้หญิงคนหนึ่งเปิดประตูบ้าน",
+              "english": "A woman opened the door of her house."
+            },
+            {
+              "speaker": "ton",
+              "text": "เขาให้ผู้ชายคนนั้นเข้าบ้าน",
+              "english": "She let the man come into the house."
+            },
+            {
+              "speaker": "ball",
+              "text": "เขาดีใจไหมครับ",
+              "english": "Was he happy?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ดีใจมากครับ",
+              "english": "Very happy."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผู้หญิงคนนั้นดีมาก",
+              "english": "That woman was very good."
+            },
+            {
+              "text": "แซมฟังนิทาน",
+              "english": "Sam listens to the story."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบครับ",
+              "english": "I like it."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันทำชาให้คุณค่ะ",
+              "english": "I'll make you some tea."
+            },
+            {
+              "speaker": "mali",
+              "text": "ดื่มสิคะ",
+              "english": "Please drink."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ผมส่งรูปให้แม่ครับ",
+              "english": "I send a picture to my mother."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเขียนข้อความให้แม่ครับ",
+              "english": "I write a message for my mother."
+            },
+            {
+              "speaker": "mali",
+              "text": "ห้ามเล่นโทรศัพท์ตอนกินข้าวนะคะ",
+              "english": "No playing with phones while eating."
+            },
+            {
+              "speaker": "ball",
+              "text": "ครับ ผมปิดโทรศัพท์แล้วครับ",
+              "english": "Yes, I've switched my phone off."
+            },
+            {
+              "speaker": "ton",
+              "text": "วันนี้เราสุขใจครับ",
+              "english": "Today we are happy."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันรักครอบครัวของเราค่ะ",
+              "english": "I love our family."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเชื่อว่าพระเจ้าดีครับ",
+              "english": "I believe that God is good."
+            },
+            {
+              "speaker": "ton",
+              "text": "ชีวิตที่เชียงใหม่ดีครับ",
+              "english": "Life in Chiang Mai is good."
+            },
+            {
+              "speaker": "mali",
+              "text": "เดือนนี้ฝนตกมากค่ะ",
+              "english": "This month it rains a lot."
+            },
+            {
+              "speaker": "mali",
+              "text": "กระเป๋าของเขาเปียกค่ะ",
+              "english": "His bag is wet."
+            },
+            {
+              "speaker": "ton",
+              "text": "พรุ่งนี้ผมอ่านหนังสือให้เด็กฟังครับ",
+              "english": "Tomorrow I'll read a book to the child."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอยากฟังครับ",
+              "english": "I want to listen."
+            },
+            {
+              "speaker": "ton",
+              "text": "โทรศัพท์ของผมหายครับ",
+              "english": "My phone is lost."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมกำลังหาครับ",
+              "english": "I'm looking for it."
+            },
+            {
+              "speaker": "mali",
+              "text": "อย่าเล่นโทรศัพท์นะคะ",
+              "english": "Please don't play on the phone."
+            },
+            {
+              "speaker": "ton",
+              "text": "ใจของผมสบายครับ",
+              "english": "I'm at ease."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันกำลังทำชาค่ะ",
+              "english": "I'm making tea."
+            },
+            {
+              "speaker": "ball",
+              "text": "นี่รูปของผมครับ",
+              "english": "This is my picture."
+            },
+            {
+              "speaker": "sam",
+              "text": "นั่นอะไรครับ",
+              "english": "What is that?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมโทรหาแม่ครับ",
+              "english": "I'll phone Mother."
+            },
+            {
+              "speaker": "mali",
+              "text": "วันนี้ฉันว่างค่ะ",
+              "english": "Today I'm free."
+            },
+            {
+              "speaker": "ball",
+              "text": "ขนมหมดแล้วครับ",
+              "english": "The sweets are all gone."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไม่มีเลยครับ",
+              "english": "There are none at all."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมกินข้าวกับครอบครัวตอนเย็นครับ",
+              "english": "I eat with my family in the evening."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกินข้าวผัดไก่ที่ร้านป้าครับ",
+              "english": "I eat chicken fried rice at Auntie's shop."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนเย็นฝนไม่ตกค่ะ",
+              "english": "In the evening it doesn't rain."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

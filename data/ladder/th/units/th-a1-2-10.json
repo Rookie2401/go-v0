@@ -1,0 +1,365 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-10",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "The lost sheep (a retelling of Luke 15)",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-10",
+    "title": "The lost sheep (a retelling of Luke 15) (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: shepherd=The shepherd (man; ผม). For the reviewer - a plain retelling for learners, written for the course; it quotes neither the OTCV nor THSV11 and is not a translation of Luke 15. Needs a Scripture-competent reviewer as well as a linguistic one: check that \"ยินดี\" and the neighbours' joy read naturally, that the wording does not claim more than the parable, and that no Thai Bible phrase has been copied by accident. The narration has no particles; the shepherd's speech says ผม without ครับ."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "Scripture retelling",
+    "parable",
+    "shepherd",
+    "rejoicing"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "scripture"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "shepherd": "The shepherd"
+  },
+  "sections": [
+    {
+      "title": "The lost sheep (a retelling of Luke 15)",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผู้ชายคนหนึ่งเลี้ยงแกะ",
+              "english": "A man kept sheep."
+            },
+            {
+              "text": "เขามีหนึ่งร้อยตัว",
+              "english": "He had a hundred again."
+            },
+            {
+              "text": "เขาเลี้ยงฝูงที่ภูเขา",
+              "english": "He kept the flock on the mountain."
+            },
+            {
+              "text": "ที่ภูเขามีหญ้ามาก",
+              "english": "On the mountain there was a lot of grass."
+            },
+            {
+              "text": "ที่ภูเขามีต้นไม้ ดอกไม้ และนก",
+              "english": "There were trees, flowers and birds."
+            },
+            {
+              "text": "ตอนเช้าเขาไปที่ภูเขา",
+              "english": "In the morning he went to the mountain."
+            },
+            {
+              "text": "ตอนเย็นเขากลับบ้าน",
+              "english": "In the evening he went home."
+            },
+            {
+              "text": "เขารักฝูงของเขา",
+              "english": "He loved his flock."
+            },
+            {
+              "text": "เขาชอบเลี้ยงฝูง",
+              "english": "He liked keeping the flock."
+            },
+            {
+              "text": "วันนั้นฝนตก",
+              "english": "That day it rained."
+            },
+            {
+              "text": "ท้องฟ้ามีเมฆ",
+              "english": "The sky had clouds."
+            },
+            {
+              "text": "ลมเย็น",
+              "english": "The wind was cold."
+            },
+            {
+              "text": "ตัวหนึ่งหลงทาง",
+              "english": "One of them lost its way."
+            },
+            {
+              "text": "ตัวนั้นหลงที่ภูเขา",
+              "english": "It was lost on the mountain."
+            },
+            {
+              "text": "ตัวนั้นเปียกและหนาว",
+              "english": "It was wet and cold."
+            },
+            {
+              "text": "ตอนเย็นเขาดูแกะ",
+              "english": "In the evening he looked at the sheep."
+            },
+            {
+              "text": "เขาเห็นว่ามีเก้าสิบเก้าตัว",
+              "english": "He saw there were ninety-nine."
+            },
+            {
+              "text": "เขารู้ว่าหายหนึ่งตัว",
+              "english": "He knew that one was missing."
+            },
+            {
+              "text": "ใจของเขาไม่ดี",
+              "english": "He was troubled."
+            },
+            {
+              "text": "เขาปล่อยเก้าสิบเก้าตัวที่ไร่",
+              "english": "He left the ninety-nine in the field."
+            },
+            {
+              "text": "เขาไปหาตัวนั้น",
+              "english": "He went to look for that one."
+            },
+            {
+              "text": "เขาไม่ทิ้งตัวนั้น",
+              "english": "He would not give up on it."
+            },
+            {
+              "text": "เขาเดินที่ถนนและที่นา",
+              "english": "He walked on the road and in the fields."
+            },
+            {
+              "text": "เขาเดินหลายชั่วโมง",
+              "english": "He walked for many hours."
+            },
+            {
+              "text": "เขาเรียก",
+              "english": "He called."
+            },
+            {
+              "text": "เขาฟังเสียง",
+              "english": "He listened."
+            },
+            {
+              "text": "เขาไม่ได้ยินเสียง",
+              "english": "He heard nothing."
+            },
+            {
+              "text": "ฝนตกทั่วภูเขา",
+              "english": "It rained all over the mountain."
+            },
+            {
+              "text": "เขาเปียกมาก",
+              "english": "He was very wet."
+            },
+            {
+              "text": "เขาเหนื่อยแต่เขาไม่กลับ",
+              "english": "He was tired but he did not go back."
+            },
+            {
+              "text": "เขาหาจนเย็น",
+              "english": "He searched until evening."
+            },
+            {
+              "text": "เขาหาจนคืน",
+              "english": "He searched until night."
+            },
+            {
+              "text": "เขาเรียกจนเหนื่อย",
+              "english": "He called until he was tired."
+            },
+            {
+              "text": "เขาฟังอีก",
+              "english": "He listened again."
+            },
+            {
+              "text": "เขาได้ยินเสียงแกะ",
+              "english": "He heard a sheep."
+            },
+            {
+              "text": "เขาเดินไปที่เสียง",
+              "english": "He walked towards the sound."
+            },
+            {
+              "text": "เมื่อเขาถึง เขาก็เห็นตัวนั้น",
+              "english": "When he arrived he saw it."
+            },
+            {
+              "text": "เมื่อเขาเห็น เขาก็ยิ้ม",
+              "english": "When he saw it he smiled."
+            },
+            {
+              "text": "เขายินดีมาก",
+              "english": "He was very glad."
+            },
+            {
+              "text": "เขากอดตัวนั้น",
+              "english": "He held it close."
+            },
+            {
+              "text": "ตัวนั้นเปียกและเหนื่อย",
+              "english": "It was wet and tired."
+            },
+            {
+              "text": "เขากอดอีก",
+              "english": "He held it again."
+            },
+            {
+              "text": "เขาไม่ปล่อยตัวนั้น",
+              "english": "He did not let it go."
+            },
+            {
+              "text": "เขาปล่อยให้ตัวนั้นพัก",
+              "english": "He let it rest."
+            },
+            {
+              "text": "เขาเดินกลับบ้านกับตัวนั้น",
+              "english": "He walked home with it."
+            },
+            {
+              "text": "ตอนเดินเขาร้องเพลง",
+              "english": "While walking he sang."
+            },
+            {
+              "text": "เขาเดินเร็ว",
+              "english": "He walked fast."
+            },
+            {
+              "text": "เมื่อเขาถึงบ้าน เขาก็เรียกเพื่อน",
+              "english": "When he reached home he called his friends."
+            },
+            {
+              "text": "เขาให้เพื่อนบ้านมาด้วย",
+              "english": "He asked his neighbours to come too."
+            },
+            {
+              "speaker": "shepherd",
+              "text": "มายินดีกับผม",
+              "english": "Come and be glad with me."
+            },
+            {
+              "speaker": "shepherd",
+              "text": "ผมไม่เคยทิ้งตัวที่หาย",
+              "english": "I never give up on one that is lost."
+            },
+            {
+              "speaker": "shepherd",
+              "text": "ผมเจอแล้ว",
+              "english": "I have found it."
+            },
+            {
+              "speaker": "shepherd",
+              "text": "ผมดีใจมาก",
+              "english": "I am so happy."
+            },
+            {
+              "text": "เพื่อนมายินดีกับเขา",
+              "english": "His friends came and were glad with him."
+            },
+            {
+              "text": "เขาให้ข้าว ผลไม้ และขนม",
+              "english": "He gave rice, fruit and sweets."
+            },
+            {
+              "text": "เขากอดเพื่อน",
+              "english": "He hugged his friends."
+            },
+            {
+              "text": "เขานั่งคุยกับเพื่อน",
+              "english": "He sat and talked with his friends."
+            },
+            {
+              "text": "เขาเล่าให้เพื่อนฟัง",
+              "english": "He told his friends the story."
+            },
+            {
+              "text": "เขาอธิบายว่าตัวนั้นหลงทาง",
+              "english": "He explained that it had lost its way."
+            },
+            {
+              "text": "เพื่อนเตือนเขาว่าอย่าไปไกล",
+              "english": "His friends warned him not to go far."
+            },
+            {
+              "text": "เขาแนะนำเพื่อนให้พัก",
+              "english": "He advised his friends to rest."
+            },
+            {
+              "text": "ตอนคืนเขาไม่หลับ",
+              "english": "At night he did not sleep."
+            },
+            {
+              "text": "เขามีหนึ่งร้อยตัว",
+              "english": "He had a hundred again."
+            },
+            {
+              "text": "เขาหัวเราะและร้องเพลง",
+              "english": "He laughed and sang."
+            },
+            {
+              "text": "เขาดูด้วยตา",
+              "english": "He looked with his eyes."
+            },
+            {
+              "text": "เขาฟังด้วยหู",
+              "english": "He listened with his ears."
+            },
+            {
+              "text": "เขาร้องเพลงด้วยปาก",
+              "english": "He sang with his mouth."
+            },
+            {
+              "text": "เขามีมือสองมือ",
+              "english": "He had two hands."
+            },
+            {
+              "text": "เพื่อนและเพื่อนบ้านดีใจ",
+              "english": "His friends and neighbours were happy."
+            },
+            {
+              "text": "เพื่อนไม่ทิ้งเขา",
+              "english": "His friends did not leave him."
+            },
+            {
+              "text": "เขาสุขใจ",
+              "english": "He was happy at heart."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

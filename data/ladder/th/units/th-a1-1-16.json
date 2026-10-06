@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-16",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Sam's first week",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-16",
+    "title": "Sam's first week (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: daeng=Auntie Daeng (woman; calls herself ป้า; ค่ะ / คะ), mali=Mali (woman; ฉัน … ค่ะ / คะ). For the reviewer - Sam's week told by himself in plain narration (ผม, no particles), with two short quotations; ไม่ได้ + verb for \"did not\", ไม่ ... เลย for \"not at all\", แล้ว ... ก็ ... for sequence; \"อาทิตย์\" as both \"Sunday\" (วันอาทิตย์) and the root of \"สัปดาห์\" is not claimed - the two words are taught separately."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "first week",
+    "learning Thai",
+    "daily life",
+    "laughter"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "daeng": "Auntie Daeng",
+    "mali": "Mali"
+  },
+  "sections": [
+    {
+      "title": "Sam's first week",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "สัปดาห์นี้ผมอยู่ที่เชียงใหม่",
+              "english": "This week I am in Chiang Mai."
+            },
+            {
+              "text": "ผมมาถึงวันอาทิตย์",
+              "english": "I arrived on Sunday."
+            },
+            {
+              "text": "ผมไม่รู้อะไรเลย",
+              "english": "I knew nothing."
+            },
+            {
+              "text": "ผมพูดภาษาไทยไม่ได้",
+              "english": "I could not speak Thai."
+            },
+            {
+              "text": "ผมไม่เข้าใจเลย",
+              "english": "I understood nothing."
+            },
+            {
+              "text": "แล้วผมก็ไปโบสถ์",
+              "english": "Then I went to the church."
+            },
+            {
+              "text": "ผมได้ยินเพลง",
+              "english": "I heard the singing."
+            },
+            {
+              "text": "ผมไม่เข้าใจ แต่ผมชอบ",
+              "english": "I didn't understand, but I liked it."
+            },
+            {
+              "text": "ศิษยาภิบาลทักผม",
+              "english": "The pastor greeted me."
+            },
+            {
+              "text": "ผมยิ้ม",
+              "english": "I smiled."
+            },
+            {
+              "text": "ผู้หญิงที่โบสถ์ช่วยผม",
+              "english": "The women at the church helped me."
+            },
+            {
+              "text": "ผู้ชายที่โบสถ์ช่วยผม",
+              "english": "The men at the church helped me."
+            },
+            {
+              "text": "ผมอธิษฐาน",
+              "english": "I prayed."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ผมกินข้าวผัดที่ร้านป้า",
+              "english": "I ate fried rice at Auntie's shop."
+            },
+            {
+              "text": "ผมไม่ได้สั่งเผ็ดเลย",
+              "english": "I did not order it spicy at all."
+            },
+            {
+              "text": "แต่ข้าวผัดเผ็ดมาก",
+              "english": "But the fried rice was very spicy."
+            },
+            {
+              "text": "ผมไอมาก",
+              "english": "I coughed a lot."
+            },
+            {
+              "text": "ป้าหัวเราะ",
+              "english": "Auntie laughed."
+            },
+            {
+              "speaker": "daeng",
+              "text": "แซมกินเผ็ดไม่ได้ค่ะ",
+              "english": "Sam can't eat spicy food."
+            },
+            {
+              "text": "ผมหัวเราะด้วย",
+              "english": "I laughed too."
+            },
+            {
+              "text": "ผมดื่มน้ำหมดแล้ว",
+              "english": "I drank all the water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เมื่อวานผมไปตลาดกับป้า",
+              "english": "Yesterday I went to the market with Auntie."
+            },
+            {
+              "text": "ผมไม่ได้ซื้อขนม",
+              "english": "I did not buy sweets."
+            },
+            {
+              "text": "เงินของผมหมด",
+              "english": "My money was gone."
+            },
+            {
+              "text": "ป้าซื้อให้ผม",
+              "english": "Auntie bought some for me."
+            },
+            {
+              "text": "ผมอยากกินอีก",
+              "english": "I wanted to eat more."
+            },
+            {
+              "text": "เมื่อวานผมเปิดกระเป๋า",
+              "english": "Yesterday I opened my bag."
+            },
+            {
+              "text": "โทรศัพท์ของผมหาย",
+              "english": "My phone was missing."
+            },
+            {
+              "text": "ผมไม่เจอ",
+              "english": "I could not find it."
+            },
+            {
+              "text": "ผมหาที่ห้อง",
+              "english": "I looked in my room."
+            },
+            {
+              "text": "ผมหาที่ร้านป้า",
+              "english": "I looked at Auntie's shop."
+            },
+            {
+              "text": "ผมเจอแล้ว",
+              "english": "I found it."
+            },
+            {
+              "text": "ผมดีใจ",
+              "english": "I was happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "เมื่อวานผมป่วย",
+              "english": "Yesterday I was ill."
+            },
+            {
+              "text": "ผมปวดหัว",
+              "english": "I had a headache."
+            },
+            {
+              "text": "ผมปวดท้อง",
+              "english": "I had a stomach ache."
+            },
+            {
+              "text": "ผมเจ็บคอ",
+              "english": "I had a sore throat."
+            },
+            {
+              "text": "ผมเป็นไข้",
+              "english": "I had a fever."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันให้ยาแซมค่ะ",
+              "english": "I gave Sam some medicine."
+            },
+            {
+              "speaker": "mali",
+              "text": "แซมต้องพักค่ะ",
+              "english": "Sam has to rest."
+            },
+            {
+              "text": "ผมพักที่ห้อง",
+              "english": "I rested in my room."
+            },
+            {
+              "text": "ผมได้ยินป้าหัวเราะ",
+              "english": "I heard Auntie laughing."
+            },
+            {
+              "text": "ผมไม่ได้ยินเพลงที่โบสถ์",
+              "english": "I did not hear the singing at the church."
+            },
+            {
+              "text": "ผมรู้ชื่อป้า",
+              "english": "I knew Auntie's name."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "วันนี้ผมสบายแล้ว",
+              "english": "Today I am well."
+            },
+            {
+              "text": "ผมอยู่ที่เชียงใหม่หนึ่งสัปดาห์แล้ว",
+              "english": "I have been in Chiang Mai for one week."
+            },
+            {
+              "text": "ผมรอรถสองแถวที่ถนน",
+              "english": "I waited for the songthaew on the road."
+            },
+            {
+              "text": "รถสองแถวคันสีแดงถึงแล้ว",
+              "english": "The red songthaew arrived."
+            },
+            {
+              "text": "ผมขึ้นรถ",
+              "english": "I got on."
+            },
+            {
+              "text": "ผมลงที่โบสถ์",
+              "english": "I got off at the church."
+            },
+            {
+              "text": "ผมเข้าโบสถ์",
+              "english": "I went into the church."
+            },
+            {
+              "text": "โบสถ์อยู่ใกล้",
+              "english": "The church was near."
+            },
+            {
+              "text": "ผมไปคริสตจักรวันอาทิตย์",
+              "english": "I went to the church on Sunday."
+            },
+            {
+              "text": "ผมร้องเพลงกับเพื่อน",
+              "english": "I sang with friends."
+            },
+            {
+              "text": "ศิษยาภิบาลยิ้ม",
+              "english": "The pastor smiled."
+            },
+            {
+              "text": "ผมเข้าใจนิดหน่อย",
+              "english": "I understood a little."
+            },
+            {
+              "text": "ผมรู้แล้ว",
+              "english": "Now I know."
+            },
+            {
+              "text": "ผมออกจากห้องตอนเช้า",
+              "english": "I leave my room in the morning."
+            },
+            {
+              "text": "ผมอยากไปอีก",
+              "english": "I want to go again."
+            },
+            {
+              "text": "ผมกินข้าวอีกหนึ่งชาม",
+              "english": "I ate one more bowl of rice."
+            },
+            {
+              "text": "ขนมหมดแล้ว",
+              "english": "The sweets were all gone."
+            },
+            {
+              "text": "สัปดาห์ของผมดีมาก",
+              "english": "My week was very good."
+            },
+            {
+              "text": "วันอาทิตย์ผมไปโบสถ์กับป้า",
+              "english": "On Sunday I went to the church with Auntie."
+            },
+            {
+              "text": "ตอนเช้าผมตื่นหกโมง",
+              "english": "In the morning I got up at six."
+            },
+            {
+              "text": "ผมกินข้าวที่ร้านป้า",
+              "english": "I ate at Auntie's shop."
+            },
+            {
+              "text": "แล้วผมก็ดื่มชา",
+              "english": "Then I drank tea."
+            },
+            {
+              "text": "ผมไม่ได้ดื่มกาแฟ",
+              "english": "I did not drink coffee."
+            },
+            {
+              "text": "ผมไม่ได้ไปโรงเรียน",
+              "english": "I did not go to school."
+            },
+            {
+              "text": "ต้นสอนผมพูดภาษาไทย",
+              "english": "Ton taught me to speak Thai."
+            },
+            {
+              "text": "ผมพูดนิดหน่อย แล้วต้นก็ยิ้ม",
+              "english": "I spoke a little, and then Ton smiled."
+            },
+            {
+              "text": "ผมอยากรู้ภาษาไทยมาก",
+              "english": "I want to know Thai very well."
+            },
+            {
+              "text": "ต้นอยู่ใกล้ร้านป้า",
+              "english": "Ton lives near Auntie's shop."
+            },
+            {
+              "text": "โรงพยาบาลอยู่ไกล",
+              "english": "The hospital is far."
+            },
+            {
+              "text": "ผมเปิดประตูห้องตอนเย็น",
+              "english": "I opened the door of my room in the evening."
+            },
+            {
+              "text": "ผมไม่ได้นอนที่เตียง",
+              "english": "I did not sleep in the bed."
+            },
+            {
+              "text": "วันเสาร์ผมไปตลาดกับป้า",
+              "english": "On Saturday I went to the market with Auntie."
+            },
+            {
+              "text": "ขอบคุณพระเจ้า",
+              "english": "Thank God."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

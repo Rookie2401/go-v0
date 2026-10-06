@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-01",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "\"What are you doing?\"",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-01",
+    "title": "\"What are you doing?\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม … ครับ), mali=Mali (woman; ฉัน … ค่ะ / คะ), ball=Ball (boy, ten; ผม … ครับ). For the reviewer - a phone call on a Sunday afternoon (the plan said Saturday; Mali works on Saturday in th-a1-1-14); กำลัง + verb and verb + อยู่ for \"is doing\"; \"นี่แซมครับ\" as the way to say who is calling; \"เดี๋ยวครับ\" (just a moment); คุณมะลิ is how Ball addresses Mali (check: อา would be the real kin term)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "phone call",
+    "what are you doing",
+    "being busy or free",
+    "the pastor is ill"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "mali": "Mali",
+    "ball": "Ball"
+  },
+  "sections": [
+    {
+      "title": "\"What are you doing?\"",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ball",
+              "text": "สวัสดีครับ นี่บ้านคุณมะลิครับ",
+              "english": "Hello, this is Mali's house."
+            },
+            {
+              "speaker": "sam",
+              "text": "สวัสดีครับ นี่แซมครับ",
+              "english": "Hello, this is Sam."
+            },
+            {
+              "speaker": "ball",
+              "text": "สวัสดีครับแซม",
+              "english": "Hello, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณมะลิอยู่ไหมครับ",
+              "english": "Is Mali there?"
+            },
+            {
+              "speaker": "ball",
+              "text": "อยู่ครับ เดี๋ยวครับ",
+              "english": "Yes, just a moment."
+            },
+            {
+              "speaker": "ball",
+              "text": "คุณมะลิครับ แซมโทรมาครับ",
+              "english": "Mali, Sam is calling."
+            },
+            {
+              "speaker": "mali",
+              "text": "สวัสดีค่ะ นี่แซมใช่ไหมคะ",
+              "english": "Hello, is this Sam?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ใช่ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนนี้คุณว่างไหมครับ",
+              "english": "Are you free now?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนนี้ฉันกำลังทำอาหารค่ะ",
+              "english": "I'm cooking now."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันยุ่งนิดหน่อยค่ะ",
+              "english": "I'm a little busy."
+            },
+            {
+              "speaker": "mali",
+              "text": "คุณทำอะไรอยู่คะ",
+              "english": "What are you doing?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกำลังอ่านหนังสือครับ",
+              "english": "I'm reading a book."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่ยุ่งครับ",
+              "english": "I'm not busy."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมว่างครับ",
+              "english": "I'm free."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณยุ่งไหมครับ",
+              "english": "Are you busy?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ใช่ค่ะ",
+              "english": "Yes."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "เสียงของคุณไม่ดีครับ",
+              "english": "Your voice isn't clear."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันฟังไม่ได้ยินค่ะ",
+              "english": "I can't hear you."
+            },
+            {
+              "speaker": "sam",
+              "text": "เดี๋ยวครับ",
+              "english": "Just a moment."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปที่ถนนครับ",
+              "english": "I'm going out to the road."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนนี้ได้ยินไหมครับ",
+              "english": "Can you hear now?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ได้ยินแล้วค่ะ",
+              "english": "Yes, now I can."
+            },
+            {
+              "speaker": "sam",
+              "text": "นั่นเสียงอะไรครับ",
+              "english": "What's that sound?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันกำลังร้องเพลงค่ะ",
+              "english": "I'm singing."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมได้ยินเสียงเพลงครับ",
+              "english": "I can hear the singing."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบฟังครับ",
+              "english": "I like listening."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันชอบฟังเพลงตอนทำอาหารค่ะ",
+              "english": "I like listening to music while cooking."
+            },
+            {
+              "speaker": "sam",
+              "text": "อาหารอร่อยไหมครับ",
+              "english": "Is the food tasty?"
+            },
+            {
+              "speaker": "mali",
+              "text": "อร่อยค่ะ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันทำข้าวผัดไก่ค่ะ",
+              "english": "I'm making chicken fried rice."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากกินครับ",
+              "english": "I'd like some."
+            },
+            {
+              "speaker": "mali",
+              "text": "นั่นข้าวผัดไก่ค่ะ",
+              "english": "That is the chicken fried rice."
+            },
+            {
+              "speaker": "sam",
+              "text": "นั่นอร่อยมากครับ",
+              "english": "That looks very tasty."
+            },
+            {
+              "speaker": "sam",
+              "text": "ใครล้างจานครับ",
+              "english": "Who is washing dishes?"
+            },
+            {
+              "speaker": "mali",
+              "text": "บอลล้างจานค่ะ",
+              "english": "Ball is washing dishes."
+            },
+            {
+              "speaker": "mali",
+              "text": "บอลช่วยฉันค่ะ",
+              "english": "Ball is helping me."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมล้างจานอยู่ครับ",
+              "english": "I'm washing the dishes."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไม่ว่างครับ",
+              "english": "I'm not free."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ผมโทรมาเพราะศิษยาภิบาลป่วยครับ",
+              "english": "I'm calling because the pastor is ill."
+            },
+            {
+              "speaker": "mali",
+              "text": "ศิษยาภิบาลเป็นอะไรคะ",
+              "english": "What's wrong with the pastor?"
+            },
+            {
+              "speaker": "sam",
+              "text": "เขาปวดหัวครับ",
+              "english": "He has a headache."
+            },
+            {
+              "speaker": "sam",
+              "text": "เขาไอ เจ็บคอ เป็นไข้ครับ",
+              "english": "He coughs, has a sore throat and a fever."
+            },
+            {
+              "speaker": "sam",
+              "text": "เขาปวดท้องด้วยครับ",
+              "english": "He has a stomach ache too."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาต้องกินยาค่ะ",
+              "english": "He has to take medicine."
+            },
+            {
+              "speaker": "mali",
+              "text": "ยาใหม่ดีค่ะ",
+              "english": "The new medicine is good."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาต้องพักค่ะ",
+              "english": "He has to rest."
+            },
+            {
+              "speaker": "sam",
+              "text": "ศิษยาภิบาลห้ามกินเผ็ดไหมครับ",
+              "english": "Is the pastor forbidden to eat spicy food?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ห้ามค่ะ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "sam",
+              "text": "พรุ่งนี้ที่คริสตจักรเราอธิษฐานให้เขาครับ",
+              "english": "Tomorrow at the church we'll pray for him."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันก็อธิษฐานให้เขาค่ะ",
+              "english": "I'll pray for him too."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันทำข้าวผัดให้เขาค่ะ",
+              "english": "I'll make fried rice for him."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อส้มกับกล้วยให้เขาครับ",
+              "english": "I'll buy oranges and bananas for him."
+            },
+            {
+              "speaker": "mali",
+              "text": "พรุ่งนี้เราไปหาเขากันไหมคะ",
+              "english": "Shall we go to see him tomorrow?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขอบคุณที่โทรมาค่ะ",
+              "english": "Thank you for calling."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอยากกินข้าวผัดไก่ครับ",
+              "english": "I would like chicken fried rice."
+            },
+            {
+              "speaker": "mali",
+              "text": "บอลหิวแล้วค่ะ",
+              "english": "Ball is hungry now."
+            },
+            {
+              "speaker": "mali",
+              "text": "วันนี้ฉันทำสองจานค่ะ",
+              "english": "Today I made two plates."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยู่ที่ห้องครับ",
+              "english": "I am in my room."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนเย็นผมไปโบสถ์ครับ",
+              "english": "In the evening I go to the church."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันไปด้วยค่ะ",
+              "english": "I will come too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเชื่อว่าศิษยาภิบาลหายครับ",
+              "english": "I believe the pastor will get well."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันก็เชื่อค่ะ",
+              "english": "I believe so too."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขนมหมดแล้วค่ะ",
+              "english": "The sweets are all gone."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่หิวเลยครับ",
+              "english": "I'm not hungry at all."
+            },
+            {
+              "speaker": "mali",
+              "text": "อย่าไปไกลนะคะ",
+              "english": "Please don't go far."
+            },
+            {
+              "speaker": "sam",
+              "text": "เดี๋ยวผมไปที่โบสถ์ครับ",
+              "english": "In a moment I will go to the church."
+            },
+            {
+              "speaker": "mali",
+              "text": "ไปค่ะ",
+              "english": "Go ahead."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

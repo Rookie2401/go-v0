@@ -1,0 +1,462 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-02",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Hot season, rainy season, cool season",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-02",
+    "title": "Hot season, rainy season, cool season (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม … ครับ), mali=Mali (woman; ฉัน … ค่ะ / คะ). For the reviewer - the three seasons of Chiang Mai as ordinary people say them (ฤดูร้อน, ฤดูฝน, ฤดูหนาว); \"อากาศเย็น\" here means \"cool weather\" (เย็น is also \"evening\"); ทุก + noun, มัก + verb, \"ฝนตก\"; a quiet explanation from Mali to Sam."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "seasons",
+    "weather",
+    "Chiang Mai"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "mali": "Mali"
+  },
+  "sections": [
+    {
+      "title": "Hot season, rainy season, cool season",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ที่เชียงใหม่มีกี่ฤดูครับ",
+              "english": "How many seasons are there in Chiang Mai?"
+            },
+            {
+              "speaker": "mali",
+              "text": "มีสามฤดูค่ะ",
+              "english": "There are three."
+            },
+            {
+              "speaker": "mali",
+              "text": "ร้อน ฝน และหนาวค่ะ",
+              "english": "Hot, rainy and cool."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนนี้ร้อนไหมครับ",
+              "english": "Is it hot now?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนนี้ร้อนมากค่ะ",
+              "english": "Now it is very hot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "ฤดูร้อนอากาศร้อนมากค่ะ",
+              "english": "In the hot season the weather is very hot."
+            },
+            {
+              "speaker": "mali",
+              "text": "แดดร้อนทุกวันค่ะ",
+              "english": "The sun is hot every day."
+            },
+            {
+              "speaker": "mali",
+              "text": "ท้องฟ้าไม่มีเมฆค่ะ",
+              "english": "The sky has no clouds."
+            },
+            {
+              "speaker": "mali",
+              "text": "ลมก็ร้อนค่ะ",
+              "english": "The wind is hot too."
+            },
+            {
+              "speaker": "mali",
+              "text": "คนมักดื่มน้ำมากค่ะ",
+              "english": "People usually drink a lot of water."
+            },
+            {
+              "speaker": "mali",
+              "text": "คนกินมะม่วงและส้มค่ะ",
+              "english": "People eat mangoes and oranges."
+            },
+            {
+              "speaker": "mali",
+              "text": "บางคนไม่ชอบร้อนค่ะ",
+              "english": "Some people don't like the heat."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่ชอบร้อนครับ",
+              "english": "I don't like the heat."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันก็ไม่ชอบค่ะ",
+              "english": "I don't either."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนร้อนคนมักปวดหัวค่ะ",
+              "english": "When it's hot people often have headaches."
+            },
+            {
+              "speaker": "mali",
+              "text": "คนเป็นไข้ค่ะ",
+              "english": "People get a fever."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันดื่มน้ำทุกเช้าค่ะ",
+              "english": "I drink water every morning."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "ฤดูฝนฝนตกทุกวันค่ะ",
+              "english": "In the rainy season it rains every day."
+            },
+            {
+              "speaker": "mali",
+              "text": "ท้องฟ้ามีเมฆสีขาวค่ะ",
+              "english": "The sky has white clouds."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฝนตกทั่วเชียงใหม่ค่ะ",
+              "english": "It rains all over Chiang Mai."
+            },
+            {
+              "speaker": "mali",
+              "text": "น้ำอยู่ทั่วถนนค่ะ",
+              "english": "There is water all over the road."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฝนมาหลายวันค่ะ",
+              "english": "The rain comes for many days."
+            },
+            {
+              "speaker": "mali",
+              "text": "หลายร้านปิดค่ะ",
+              "english": "Many shops close."
+            },
+            {
+              "speaker": "mali",
+              "text": "หลายคนชอบฝนค่ะ",
+              "english": "Many people like the rain."
+            },
+            {
+              "speaker": "mali",
+              "text": "คนมักเปียกค่ะ",
+              "english": "People often get wet."
+            },
+            {
+              "speaker": "mali",
+              "text": "กระเป๋าเปียกค่ะ",
+              "english": "Bags get wet."
+            },
+            {
+              "speaker": "mali",
+              "text": "โทรศัพท์ก็เปียกค่ะ",
+              "english": "Phones get wet too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบฝนครับ",
+              "english": "I like the rain."
+            },
+            {
+              "speaker": "mali",
+              "text": "ลมเย็นค่ะ",
+              "english": "The wind is cool."
+            },
+            {
+              "speaker": "mali",
+              "text": "อากาศดีค่ะ",
+              "english": "The weather is good."
+            },
+            {
+              "speaker": "mali",
+              "text": "บางวันมีแดดค่ะ",
+              "english": "Some days there is sun."
+            },
+            {
+              "speaker": "mali",
+              "text": "แดดไม่ร้อนค่ะ",
+              "english": "The sun is not hot."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฝนล้างถนนค่ะ",
+              "english": "The rain washes the roads."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนมีฝนเราปิดหน้าต่างค่ะ",
+              "english": "When there is rain we close the windows."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมส่งรูปฝนให้แม่ครับ",
+              "english": "I sent my mother a picture of the rain."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเขียนข้อความให้แม่ครับ",
+              "english": "I wrote my mother a message."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "ฤดูหนาวอากาศเย็นค่ะ",
+              "english": "In the cool season the weather is cool."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนเช้าลมเย็นมากค่ะ",
+              "english": "In the morning the wind is very cool."
+            },
+            {
+              "speaker": "mali",
+              "text": "บางวันฉันหนาวค่ะ",
+              "english": "Some days I feel cold."
+            },
+            {
+              "speaker": "mali",
+              "text": "คนไอค่ะ",
+              "english": "People cough."
+            },
+            {
+              "speaker": "mali",
+              "text": "คนเจ็บคอค่ะ",
+              "english": "People get sore throats."
+            },
+            {
+              "speaker": "mali",
+              "text": "คนต้องกินยาและพักค่ะ",
+              "english": "They have to take medicine and rest."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่อยากป่วยครับ",
+              "english": "I don't want to be ill."
+            },
+            {
+              "speaker": "mali",
+              "text": "คนชอบกินส้มค่ะ",
+              "english": "People like eating oranges."
+            },
+            {
+              "speaker": "mali",
+              "text": "เมฆอยู่บนท้องฟ้าค่ะ",
+              "english": "The clouds are in the sky."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดีใจที่อยู่ที่เชียงใหม่ครับ",
+              "english": "I'm glad to be in Chiang Mai."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ที่อเมริกาหนาวมากครับ",
+              "english": "In America it is very cold."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่ชอบหนาวมากครับ",
+              "english": "I don't like the cold much."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่เชียงใหม่ไม่หนาวมากค่ะ",
+              "english": "In Chiang Mai it isn't very cold."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนเช้าหนาวนิดหน่อยค่ะ",
+              "english": "In the morning it is a little cold."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนบ่ายสบายค่ะ",
+              "english": "In the afternoon it is pleasant."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบตอนเช้า ตอนเย็นครับ",
+              "english": "I like the morning and the evening."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปโบสถ์ตอนเช้าครับ",
+              "english": "I go to the church in the morning."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันกลับบ้านตอนเย็นค่ะ",
+              "english": "I go home in the evening."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนเย็นคนอยู่ทั่วตลาดค่ะ",
+              "english": "In the evening there are people all over the market."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนร้อนมะม่วงถูกค่ะ",
+              "english": "When it is hot, mangoes are cheap."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนหนาวส้มถูกค่ะ",
+              "english": "When it is cool, oranges are cheap."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากกินมะม่วงครับ",
+              "english": "I would like to eat mangoes."
+            },
+            {
+              "speaker": "mali",
+              "text": "ราคาไม่แพงค่ะ",
+              "english": "The price isn't high."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อมะม่วงสองลูกครับ",
+              "english": "I'll buy two mangoes."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันซื้อส้มค่ะ",
+              "english": "I'll buy oranges."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดื่มชาร้อนครับ",
+              "english": "I'm drinking hot tea."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันดื่มกาแฟเย็นค่ะ",
+              "english": "I'm drinking iced coffee."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนฝนมาผมอยู่ที่ห้องครับ",
+              "english": "When the rain comes I stay in my room."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอ่านหนังสือครับ",
+              "english": "I read a book."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันพักที่บ้านค่ะ",
+              "english": "I rest at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ฝนมาแล้ว ผมไปไหนไม่ได้ครับ",
+              "english": "The rain has come; I can't go anywhere."
+            },
+            {
+              "speaker": "mali",
+              "text": "อย่าไปไหนนะคะ",
+              "english": "Please don't go anywhere."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันไม่เห็นเลยค่ะ",
+              "english": "I can't see anything."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากกินอีกครับ",
+              "english": "I'd like to eat more."
+            },
+            {
+              "speaker": "mali",
+              "text": "เดือนนี้ฉันยุ่งค่ะ",
+              "english": "This month I'm busy."
+            },
+            {
+              "speaker": "mali",
+              "text": "เดี๋ยวฝนตกค่ะ",
+              "english": "The rain will fall soon."
+            },
+            {
+              "speaker": "sam",
+              "text": "เดี๋ยวผมปิดหน้าต่างครับ",
+              "english": "I'll close the window in a moment."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

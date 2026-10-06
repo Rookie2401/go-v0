@@ -1,0 +1,512 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-05",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "The night bus to Bangkok",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-05",
+    "title": "The night bus to Bangkok (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม … ครับ), ton=Ton (man; ผม … ครับ), seller=The ticket seller (woman; ค่ะ / คะ). For the reviewer - the Thai clock after noon and at night (สองทุ่มครึ่ง = 20.30, ตีห้า = 5 a.m., ตีหกครึ่ง = 6.30 a.m.); ใบ as the classifier for tickets; durations (สิบชั่วโมง, สามสิบนาที); ตั๋ว at the bus station; the plan wanted ใช้เวลา for \"takes (time)\" but ใช้ is not taught yet, so the unit says \"รถไปสิบชั่วโมง\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "night bus",
+    "tickets",
+    "time of day",
+    "journey",
+    "Bangkok"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "ton": "Ton",
+    "seller": "The ticket seller"
+  },
+  "sections": [
+    {
+      "title": "The night bus to Bangkok",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "พรุ่งนี้เราไปกรุงเทพครับ",
+              "english": "Tomorrow we go to Bangkok."
+            },
+            {
+              "speaker": "ton",
+              "text": "ใช่ครับ เราไปงานที่โบสถ์",
+              "english": "Yes, we're going to an event at a church."
+            },
+            {
+              "speaker": "sam",
+              "text": "ทางไปไกลไหมครับ",
+              "english": "Is the way far?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ไกลครับ",
+              "english": "Yes, it's far."
+            },
+            {
+              "speaker": "ton",
+              "text": "รถไปสิบชั่วโมงครับ",
+              "english": "The bus takes ten hours."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่เบื่อครับ",
+              "english": "I won't be bored."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบเดินทางครับ",
+              "english": "I like travelling."
+            },
+            {
+              "speaker": "ton",
+              "text": "เมื่อวานผมโทรไปที่สถานีครับ",
+              "english": "Yesterday I phoned the station."
+            },
+            {
+              "speaker": "ton",
+              "text": "รถออกสองทุ่มครึ่งครับ",
+              "english": "The bus leaves at half past eight in the evening."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมรู้แล้วครับ",
+              "english": "I know."
+            },
+            {
+              "speaker": "ton",
+              "text": "เราถึงตีหกครึ่งครับ",
+              "english": "We arrive at half past six in the morning."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตีหกครึ่งเช้ามากครับ",
+              "english": "Half past six is very early."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "มีคนมากครับ",
+              "english": "There are a lot of people."
+            },
+            {
+              "speaker": "seller",
+              "text": "สวัสดีค่ะ ไปที่ไหนคะ",
+              "english": "Hello. Where are you going?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ไปกรุงเทพครับ",
+              "english": "To Bangkok."
+            },
+            {
+              "speaker": "seller",
+              "text": "กี่คนคะ",
+              "english": "How many people?"
+            },
+            {
+              "speaker": "ton",
+              "text": "สองคนครับ ตั๋วสองใบครับ",
+              "english": "Two people, two tickets."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตั๋วเท่าไรครับ",
+              "english": "How much is a ticket?"
+            },
+            {
+              "speaker": "seller",
+              "text": "สองใบห้าร้อยบาทค่ะ",
+              "english": "Five hundred baht for two."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไม่แพงครับ",
+              "english": "That's not expensive."
+            },
+            {
+              "speaker": "seller",
+              "text": "รถออกที่สถานีค่ะ",
+              "english": "The bus leaves from the station."
+            },
+            {
+              "speaker": "seller",
+              "text": "ตอนนี้ห้าโมงเย็นค่ะ",
+              "english": "It is five o'clock now."
+            },
+            {
+              "speaker": "sam",
+              "text": "เรารอสามชั่วโมงครับ",
+              "english": "We wait three hours."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมไปกินอาหารที่ตลาดครับ",
+              "english": "I'll go and eat at the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปด้วยครับ",
+              "english": "I'll come."
+            },
+            {
+              "speaker": "ton",
+              "text": "สถานีรถอยู่ใกล้ตลาดครับ",
+              "english": "The bus station is near the market."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไปตลาดสิบนาทีครับ",
+              "english": "It is ten minutes to the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมรอสามสิบนาทีได้ครับ",
+              "english": "I can wait thirty minutes."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมกินอาหารหนึ่งชั่วโมงครับ",
+              "english": "I will eat for an hour."
+            },
+            {
+              "speaker": "seller",
+              "text": "ร้านปิดสี่ทุ่มค่ะ",
+              "english": "The shop closes at ten."
+            },
+            {
+              "speaker": "seller",
+              "text": "รถผ่านตลาดค่ะ",
+              "english": "The bus passes the market."
+            },
+            {
+              "speaker": "ton",
+              "text": "ครับ",
+              "english": "I see."
+            },
+            {
+              "speaker": "seller",
+              "text": "ตั๋วใบนี้ของคุณค่ะ",
+              "english": "This ticket is yours."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ผมมีถุงสองถุงครับ",
+              "english": "I have two bags."
+            },
+            {
+              "speaker": "sam",
+              "text": "ถุงของผมเต็มครับ",
+              "english": "My bag is full."
+            },
+            {
+              "speaker": "ton",
+              "text": "คุณมีขนมไหมครับ",
+              "english": "Do you have any sweets?"
+            },
+            {
+              "speaker": "sam",
+              "text": "มีครับ ผมซื้อขนมที่ตลาดครับ",
+              "english": "Yes, I bought sweets at the market."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "รถจะออกอีกห้านาทีครับ",
+              "english": "The bus will leave in five minutes."
+            },
+            {
+              "speaker": "sam",
+              "text": "รถเต็มครับ",
+              "english": "The bus is full."
+            },
+            {
+              "speaker": "ton",
+              "text": "ที่นั่งของเราเต็มแล้วครับ",
+              "english": "Our seats are taken."
+            },
+            {
+              "speaker": "ton",
+              "text": "ที่นั่งของเราอยู่ใกล้หน้าต่างครับ",
+              "english": "Our seats are near the window."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมนั่งที่หน้าต่างครับ",
+              "english": "I'll sit by the window."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมนั่งกับคุณครับ",
+              "english": "I'll sit with you."
+            },
+            {
+              "speaker": "sam",
+              "text": "รถไปเร็วไหมครับ",
+              "english": "Does the bus go fast?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ไม่เร็ว ไม่ช้าครับ",
+              "english": "Not fast, not slow."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่ชอบช้าครับ",
+              "english": "I don't like slow."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตอนเช้ารถช้าครับ",
+              "english": "In the morning the bus is slow."
+            },
+            {
+              "speaker": "ton",
+              "text": "ทางไปกรุงเทพเร็วมากครับ",
+              "english": "The road to Bangkok is very fast."
+            },
+            {
+              "speaker": "sam",
+              "text": "รถผ่านหลายร้านครับ",
+              "english": "The bus passes many shops."
+            },
+            {
+              "speaker": "ton",
+              "text": "รถผ่านโรงพยาบาลครับ",
+              "english": "The bus passes the hospital."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมได้ยินเสียงเพลงครับ",
+              "english": "I can hear music."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมฟังเพลงครับ",
+              "english": "I'm listening to music."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเล่นโทรศัพท์ครับ",
+              "english": "I'm playing with my phone."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเล่านิทานให้คุณฟังไหมครับ",
+              "english": "Shall I tell you a story?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมหัวเราะครับ",
+              "english": "I'm laughing."
+            },
+            {
+              "speaker": "sam",
+              "text": "คืนนี้ผมอยากนอนครับ",
+              "english": "Tonight I want to sleep."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมก็อยากนอนครับ",
+              "english": "I want to sleep too."
+            },
+            {
+              "speaker": "ton",
+              "text": "สามทุ่มเรายังอยู่บนรถครับ",
+              "english": "At nine we are still on the bus."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตีห้าเรายังอยู่บนรถครับ",
+              "english": "At five in the morning we are still on the bus."
+            },
+            {
+              "speaker": "sam",
+              "text": "สัปดาห์นี้เรายุ่งครับ",
+              "english": "We're busy this week."
+            },
+            {
+              "speaker": "ton",
+              "text": "วันอาทิตย์เรากลับครับ",
+              "english": "On Sunday we come back."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเชื่อว่าเรามีเพื่อนใหม่ครับ",
+              "english": "I believe we'll have new friends."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมรักงานของเราครับ",
+              "english": "I love our work."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมสุขใจครับ",
+              "english": "I'm glad at heart."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเข้าใจครับ",
+              "english": "I understand."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมหิวครับ",
+              "english": "I'm hungry."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมซื้ออาหารให้คุณครับ",
+              "english": "I'll buy some food for you."
+            },
+            {
+              "speaker": "sam",
+              "text": "อาหารอร่อยไหมครับ",
+              "english": "Is the food tasty?"
+            },
+            {
+              "speaker": "ton",
+              "text": "อร่อยครับ ผมกินข้าวผัดไก่ครับ",
+              "english": "Yes, I ate chicken fried rice."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกินปลากับผักครับ",
+              "english": "I ate fish and vegetables."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมดื่มกาแฟ คุณดื่มชาครับ",
+              "english": "I drank coffee, you drank tea."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมปวดท้องนิดหน่อยครับ",
+              "english": "I have a slight stomach ache."
+            },
+            {
+              "speaker": "sam",
+              "text": "ใจของผมสบายครับ",
+              "english": "I feel at ease."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมมักอาบน้ำตอนเย็นครับ",
+              "english": "I usually bathe in the evening."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซักผ้าก่อนไปครับ",
+              "english": "I washed clothes before leaving."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกวาดห้องและเช็ดโต๊ะครับ",
+              "english": "I swept the room and wiped the table."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมดูนาฬิกาครับ",
+              "english": "I am looking at the clock."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมนั่งคุยกับคุณครับ",
+              "english": "I sit and talk with you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่ได้ดูโทรทัศน์ครับ",
+              "english": "I haven't watched television."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไปกินข้าวสิครับ",
+              "english": "Come and eat!"
+            },
+            {
+              "speaker": "ton",
+              "text": "แล้วคุณล่ะครับ",
+              "english": "And you?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากไปโบสถ์ที่นั่นครับ",
+              "english": "I want to go to the church there."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไปกันครับ",
+              "english": "Let's go."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

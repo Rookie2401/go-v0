@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-05",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Sunday lunch at Auntie's table",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-05",
+    "title": "Sunday lunch at Auntie's table (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: daeng=Auntie Daeng (woman; calls herself ป้า; ค่ะ / คะ), sam=Sam (man; ผม … ครับ), mali=Mali (woman; ฉัน … ค่ะ / คะ), ton=Ton (man; ผม … ครับ), ball=Ball (boy, ten; ผม … ครับ). For the reviewer - \"กินข้าวกันค่ะ\" as the invitation to start eating; ชาม as both \"bowl\" and its own classifier (ข้าวสองชาม); นี้ / นั้น after the noun; \"อันนั้น\"; และ is a little written for spoken Thai - check."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "food",
+    "meals",
+    "the family table"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "food"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "daeng": "Auntie Daeng",
+    "sam": "Sam",
+    "mali": "Mali",
+    "ton": "Ton",
+    "ball": "Ball"
+  },
+  "sections": [
+    {
+      "title": "Sunday lunch at Auntie's table",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "กินข้าวกันค่ะ",
+              "english": "Let's eat."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับป้า",
+              "english": "Thank you, Auntie."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ที่โต๊ะมีข้าวผัดไก่ มีปลา มีผักค่ะ",
+              "english": "On the table there is chicken fried rice, fish and vegetables."
+            },
+            {
+              "speaker": "sam",
+              "text": "ปลาอร่อยไหมครับ",
+              "english": "Is the fish tasty?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "อร่อยค่ะ ปลานี้ไม่เผ็ดค่ะ",
+              "english": "Yes. This fish isn't spicy."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมไม่ชอบเผ็ดครับ",
+              "english": "I don't like spicy food."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ผักนี้ก็ไม่เผ็ดค่ะ",
+              "english": "This vegetable isn't spicy either."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันชอบผักและไข่ค่ะ",
+              "english": "I like vegetables and eggs."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบไข่และไก่ครับ",
+              "english": "I like egg and chicken."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ข้าวผัดหมูก็อร่อยค่ะ",
+              "english": "The pork fried rice is tasty too."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไม่กินครับ",
+              "english": "I'm not eating."
+            },
+            {
+              "speaker": "sam",
+              "text": "ทำไมครับ",
+              "english": "Why?"
+            },
+            {
+              "speaker": "ball",
+              "text": "เพราะผมไม่ชอบครับ",
+              "english": "Because I don't like it."
+            },
+            {
+              "speaker": "daeng",
+              "text": "บอลชอบไข่ค่ะ",
+              "english": "Ball likes eggs."
+            },
+            {
+              "speaker": "ball",
+              "text": "ใช่ครับ ผมชอบไข่",
+              "english": "Yes, I like eggs."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "ผมขอข้าวสองชามครับ",
+              "english": "May I have two bowls of rice?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ชามนั้นของป้าค่ะ",
+              "english": "That bowl is mine."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ชามนี้ของคุณค่ะ",
+              "english": "This bowl is yours."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมขอช้อนหน่อยครับ",
+              "english": "May I have a spoon?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ช้อนอยู่บนโต๊ะค่ะ",
+              "english": "The spoons are on the table."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่เห็นครับ",
+              "english": "I can't see one."
+            },
+            {
+              "speaker": "daeng",
+              "text": "อันนั้นค่ะ",
+              "english": "That one."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "mali",
+              "text": "ช้อนอันนั้นของฉันค่ะ",
+              "english": "That spoon is mine."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ต้นหิวมากค่ะ",
+              "english": "Ton is very hungry."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เผ็ดไหมคะ",
+              "english": "Is it spicy?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ไม่เผ็ดครับ",
+              "english": "Not spicy."
+            },
+            {
+              "speaker": "daeng",
+              "text": "อร่อยไหมคะ",
+              "english": "Is it tasty?"
+            },
+            {
+              "speaker": "ton",
+              "text": "อร่อยครับ",
+              "english": "Yes."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ผมอิ่มแล้วครับ",
+              "english": "I'm full."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอิ่มแล้วครับ",
+              "english": "I'm full."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันอิ่มแล้วค่ะ",
+              "english": "I'm full."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมไม่หิวแล้วครับ",
+              "english": "I'm not hungry any more."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ดื่มน้ำและชากันไหมคะ",
+              "english": "Shall we have water and tea?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ดื่มครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมดื่มกาแฟครับ",
+              "english": "I'll have coffee."
+            },
+            {
+              "speaker": "mali",
+              "text": "วันนี้ร้อนค่ะ",
+              "english": "It's hot today."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบฝนครับ",
+              "english": "I like the rain."
+            },
+            {
+              "speaker": "mali",
+              "text": "คุณไปโบสถ์วันนี้สนุกไหมคะ",
+              "english": "Did you enjoy church today?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ชอบมากครับ",
+              "english": "Very much."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมพูดภาษาไทยได้นิดหน่อยครับ",
+              "english": "I can speak a little Thai."
+            },
+            {
+              "speaker": "mali",
+              "text": "คุณพูดดีค่ะ",
+              "english": "You speak well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "ป้ามีลูกสามคนค่ะ",
+              "english": "I have three children."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ลูกของป้าสามสิบปีค่ะ",
+              "english": "My child is thirty."
+            },
+            {
+              "speaker": "sam",
+              "text": "ลูกของป้าอยู่ที่ไหนครับ",
+              "english": "Where do your children live?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "อยู่ที่เชียงใหม่ค่ะ",
+              "english": "In Chiang Mai."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ลูกของป้าทำงานที่โรงเรียนค่ะ",
+              "english": "My children work at a school."
+            },
+            {
+              "speaker": "ball",
+              "text": "ห้องของผมมีเก้าอี้ครับ",
+              "english": "My room has a chair."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอยากสั่งข้าวผัดไก่ที่ร้านป้าครับ",
+              "english": "I'd like to order chicken fried rice at Auntie's shop."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ได้ค่ะ",
+              "english": "Of course."
+            },
+            {
+              "speaker": "daeng",
+              "text": "พรุ่งนี้ป้าขายข้าวผัดหมูค่ะ",
+              "english": "Tomorrow I'll sell pork fried rice."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อสองจานครับ",
+              "english": "I'll buy two plates."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมก็ซื้อครับ",
+              "english": "I'll buy some too."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขอบคุณค่ะ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "mali",
+              "text": "พรุ่งนี้ฉันทำงานที่โรงพยาบาลค่ะ",
+              "english": "Tomorrow I work at the hospital."
+            },
+            {
+              "speaker": "ton",
+              "text": "พรุ่งนี้ผมไปโรงเรียนครับ",
+              "english": "Tomorrow I go to the school."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมก็ไปโรงเรียนครับ",
+              "english": "I go to school too."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมอยากกินขนมครับ",
+              "english": "I'd like some sweets."
+            },
+            {
+              "speaker": "daeng",
+              "text": "มีขนมค่ะ",
+              "english": "There are sweets."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ไปกันค่ะ",
+              "english": "Let's go."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ",
+              "english": "Let's go."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

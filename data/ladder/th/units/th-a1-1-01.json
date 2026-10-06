@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-01",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Where are you from?",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-01",
+    "title": "Where are you from? (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม … ครับ), mali=Mali (woman; ฉัน … ค่ะ / คะ), ton=Ton (man; ผม … ครับ). For the reviewer - polite particles by speaker (Sam and Ton ผม … ครับ; Mali ฉัน … ค่ะ, and คะ in questions); address by คุณ + name; \"ได้ครับ\" as the answer to \"can you speak Thai?\"; \"มาจาก\" for \"come from\"; \"นิดหน่อย\" for \"a little\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "greetings",
+    "introductions",
+    "origin"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "mali": "Mali",
+    "ton": "Ton"
+  },
+  "sections": [
+    {
+      "title": "Where are you from?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "สวัสดีค่ะ แซม",
+              "english": "Hello, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "สวัสดีครับ คุณมะลิ",
+              "english": "Hello, Mali."
+            },
+            {
+              "speaker": "mali",
+              "text": "สบายดีไหมคะ",
+              "english": "Are you well?"
+            },
+            {
+              "speaker": "sam",
+              "text": "สบายดีครับ ขอบคุณมากครับ",
+              "english": "I'm well, thank you very much."
+            },
+            {
+              "speaker": "ton",
+              "text": "สวัสดีครับ แซม",
+              "english": "Hello, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "สวัสดีครับ คุณต้น",
+              "english": "Hello, Ton."
+            },
+            {
+              "speaker": "ton",
+              "text": "วันนี้เหนื่อยไหมครับ",
+              "english": "Are you tired today?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเหนื่อยนิดหน่อยครับ",
+              "english": "I'm a little tired."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณเหนื่อยไหมครับ",
+              "english": "Are you tired?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ไม่เหนื่อยครับ",
+              "english": "No, I'm not tired."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเหนื่อยนิดหน่อยค่ะ",
+              "english": "I'm a little tired."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "คุณมาจากอเมริกา ใช่ไหมคะ",
+              "english": "You come from America, right?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ครับ ผมมาจากอเมริกาครับ",
+              "english": "Yes, I come from America."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณมะลิมาจากที่ไหนครับ",
+              "english": "Mali, where do you come from?"
+            },
+            {
+              "speaker": "mali",
+              "text": "เชียงใหม่ค่ะ",
+              "english": "Chiang Mai."
+            },
+            {
+              "speaker": "mali",
+              "text": "ต้นก็อยู่ที่เชียงใหม่ค่ะ",
+              "english": "Ton lives in Chiang Mai too."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมชอบอเมริกาครับ",
+              "english": "I like America."
+            },
+            {
+              "speaker": "ton",
+              "text": "คุณชอบเชียงใหม่ไหมครับ",
+              "english": "Do you like Chiang Mai?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ชอบครับ",
+              "english": "Yes, I do."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "คุณพูดภาษาไทยได้ไหมคะ",
+              "english": "Can you speak Thai?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ได้ครับ",
+              "english": "Yes, I can."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมพูดได้นิดหน่อยครับ",
+              "english": "I can speak a little."
+            },
+            {
+              "speaker": "ton",
+              "text": "คุณพูดดีครับ",
+              "english": "You speak well."
+            },
+            {
+              "speaker": "ton",
+              "text": "คุณเรียนภาษาไทยที่ไหนครับ",
+              "english": "Where do you study Thai?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเรียนที่โรงเรียนครับ",
+              "english": "I study at a school."
+            },
+            {
+              "speaker": "sam",
+              "text": "วันนี้ผมเรียนภาษาไทยครับ",
+              "english": "Today I am studying Thai."
+            },
+            {
+              "speaker": "mali",
+              "text": "ดีค่ะ",
+              "english": "Good."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "คุณเป็นหมอไหมครับ",
+              "english": "Are you a doctor?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ไม่ใช่ค่ะ",
+              "english": "No."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันทำงานที่โรงพยาบาลค่ะ",
+              "english": "I work at the hospital."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเป็นครูที่โรงเรียนครับ",
+              "english": "I am a teacher at the school."
+            },
+            {
+              "speaker": "mali",
+              "text": "คุณแซมอยู่ที่ไหนคะ",
+              "english": "Where are you staying, Sam?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยู่ที่บ้านป้าครับ",
+              "english": "I stay at Auntie's house."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่บ้านป้ามีชาครับ",
+              "english": "At Auntie's house there is tea."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่บ้านป้ามีกาแฟครับ",
+              "english": "At Auntie's house there is coffee."
+            },
+            {
+              "speaker": "ton",
+              "text": "ป้าชอบกาแฟไหมครับ",
+              "english": "Does Auntie like coffee?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ชอบครับ",
+              "english": "Yes, she does."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "พรุ่งนี้คุณไปโบสถ์ไหมครับ",
+              "english": "Are you going to church tomorrow?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ ผมอยากไปโบสถ์ครับ",
+              "english": "Yes, I want to go to church."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันก็ไปโบสถ์ค่ะ",
+              "english": "I'm going to church too."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่โบสถ์มีน้ำค่ะ",
+              "english": "At the church there is water."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่โบสถ์มีชาค่ะ",
+              "english": "At the church there is tea."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่โบสถ์มีขนมค่ะ",
+              "english": "At the church there are sweets."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมชอบขนมครับ",
+              "english": "I like sweets."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมก็ชอบครับ",
+              "english": "I like them too."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมอยากกินขนมครับ",
+              "english": "I want to eat sweets."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันก็อยากกินค่ะ",
+              "english": "I want to eat some too."
+            },
+            {
+              "speaker": "mali",
+              "text": "พรุ่งนี้ไปโบสถ์ไหมคะ",
+              "english": "Shall we go to church tomorrow?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ไปครับ",
+              "english": "Yes, let's go."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ",
+              "english": "Yes, let's go."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "คุณดื่มกาแฟไหมคะ",
+              "english": "Do you drink coffee?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่ดื่มกาแฟครับ",
+              "english": "I don't drink coffee."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดื่มชาครับ",
+              "english": "I drink tea."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันก็ดื่มชาค่ะ",
+              "english": "I drink tea too."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมดื่มกาแฟครับ",
+              "english": "I drink coffee."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

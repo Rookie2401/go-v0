@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-16",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Ton looks for a second job",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-16",
+    "title": "Ton looks for a second job (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: ton=Ton (man; ผม … ครับ), sam=Sam (man; ผม … ครับ), director=The school director (woman; ฉัน … ค่ะ / คะ). For the reviewer - a job interview at a language school; ผู้อำนวยการ is read by the adapter as ผู้ + อำนวย + การ (three lemmas); \"หัวหน้า\", \"นาย\" (as in นายต้น on a form), \"ตำรวจ\" (Ton's friend, who told him about the job), \"สมัครงาน\", \"สัมภาษณ์\", \"ประสบการณ์\", \"ต้องการ\", \"จ่าย\", \"เงินเดือน\"; the director speaks politely (… ค่ะ) and calls Ton คุณต้น."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "job",
+    "interview",
+    "pay",
+    "experience",
+    "helping family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ton": "Ton",
+    "sam": "Sam",
+    "director": "The school director"
+  },
+  "sections": [
+    {
+      "title": "Ton looks for a second job",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "แซมครับ ผมต้องการงานตอนเย็นครับ",
+              "english": "Sam, I need work in the evening."
+            },
+            {
+              "speaker": "sam",
+              "text": "ทำไมครับ",
+              "english": "Why?"
+            },
+            {
+              "speaker": "ton",
+              "text": "แม่ป่วยครับ",
+              "english": "My mother is ill."
+            },
+            {
+              "speaker": "ton",
+              "text": "แม่ต้องกินยานะครับ",
+              "english": "She has to take medicine."
+            },
+            {
+              "speaker": "ton",
+              "text": "ยาราคาแพงครับ",
+              "english": "The medicine is expensive."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมต้องจ่ายเงินครับ",
+              "english": "I have to pay."
+            },
+            {
+              "speaker": "ton",
+              "text": "เงินเดือนที่โรงเรียนไม่มากครับ",
+              "english": "The salary at the school is not much."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมช่วยได้ไหมครับ",
+              "english": "Can I help?"
+            },
+            {
+              "speaker": "ton",
+              "text": "เพื่อนของผมเป็นตำรวจครับ",
+              "english": "A friend of mine is a policeman."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตำรวจเล่าให้ผมฟังครับ",
+              "english": "The policeman told me."
+            },
+            {
+              "speaker": "ton",
+              "text": "โรงเรียนสอนภาษาต้องการครูตอนเย็นครับ",
+              "english": "A language school needs a teacher in the evening."
+            },
+            {
+              "speaker": "ton",
+              "text": "พรุ่งนี้ผมจะไปสมัครครับ",
+              "english": "Tomorrow I'll go and apply."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปด้วยครับ",
+              "english": "I'll come with you."
+            },
+            {
+              "speaker": "ton",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "สวัสดีครับ",
+              "english": "Hello."
+            },
+            {
+              "speaker": "director",
+              "text": "สวัสดีค่ะ เชิญนั่งค่ะ",
+              "english": "Hello, please sit down."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมอยากสมัครงานครับ",
+              "english": "I would like to apply for the job."
+            },
+            {
+              "speaker": "director",
+              "text": "ฉันเป็นผู้อำนวยการค่ะ",
+              "english": "I am the director."
+            },
+            {
+              "speaker": "director",
+              "text": "ชื่ออะไรคะ",
+              "english": "What is your name?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมชื่อต้นครับ",
+              "english": "My name is Ton."
+            },
+            {
+              "speaker": "director",
+              "text": "เขียนชื่อที่กระดาษค่ะ",
+              "english": "Write your name on the paper."
+            },
+            {
+              "speaker": "director",
+              "text": "เขียนว่านายต้นใช่ไหมคะ",
+              "english": "Is it written Mr. Ton?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ใช่ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "director",
+              "text": "ฉันขอสัมภาษณ์คุณต้นค่ะ",
+              "english": "Let me interview you, Ton."
+            },
+            {
+              "speaker": "director",
+              "text": "คุณต้นอายุเท่าไรคะ",
+              "english": "How old are you?"
+            },
+            {
+              "speaker": "ton",
+              "text": "สามสิบแปดปีครับ",
+              "english": "Thirty-eight."
+            },
+            {
+              "speaker": "director",
+              "text": "คุณเกิดที่ไหนคะ",
+              "english": "Where were you born?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเกิดที่ลำพูนครับ",
+              "english": "I was born in Lamphun."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมโตที่เชียงใหม่ครับ",
+              "english": "I grew up in Chiang Mai."
+            },
+            {
+              "speaker": "director",
+              "text": "คุณแต่งงานแล้วไหมคะ",
+              "english": "Are you married?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมแต่งงานแล้วครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเลี้ยงลูกหนึ่งคนครับ",
+              "english": "I am raising one child."
+            },
+            {
+              "speaker": "director",
+              "text": "คุณเคยสอนไหมคะ",
+              "english": "Have you taught before?"
+            },
+            {
+              "speaker": "ton",
+              "text": "เคยครับ ผมสอนที่โรงเรียนสิบสองปี",
+              "english": "Yes, I have taught at a school for twelve years."
+            },
+            {
+              "speaker": "director",
+              "text": "คุณมีประสบการณ์มากค่ะ",
+              "english": "You have a lot of experience."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมมีประสบการณ์สอนภาษาไทยครับ",
+              "english": "I have experience teaching Thai."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมมีประสบการณ์เลี้ยงเด็กครับ",
+              "english": "I have experience looking after children."
+            },
+            {
+              "speaker": "director",
+              "text": "ใครเป็นหัวหน้าของคุณคะ",
+              "english": "Who is your boss?"
+            },
+            {
+              "speaker": "ton",
+              "text": "หัวหน้าของผมเป็นครูครับ",
+              "english": "My boss is a teacher."
+            },
+            {
+              "speaker": "director",
+              "text": "ผู้อำนวยการที่โรงเรียนเก่าชื่ออะไรคะ",
+              "english": "What is the director's name at your old school?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมไม่ได้ทิ้งโรงเรียนเก่าครับ",
+              "english": "I have not left my old school."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมสอนที่นั่นตอนเช้าครับ",
+              "english": "I teach there in the morning."
+            },
+            {
+              "speaker": "director",
+              "text": "คุณว่างวันไหนคะ",
+              "english": "Which days are you free?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมว่างตอนเย็นครับ",
+              "english": "I'm free in the evening."
+            },
+            {
+              "speaker": "director",
+              "text": "เราต้องการครูสอนวันละสามชั่วโมงค่ะ",
+              "english": "We need a teacher for three hours a day."
+            },
+            {
+              "speaker": "ton",
+              "text": "ได้ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ton",
+              "text": "เงินเดือนเท่าไรครับ",
+              "english": "How much is the salary?"
+            },
+            {
+              "speaker": "director",
+              "text": "เดือนละเจ็ดพันบาทค่ะ",
+              "english": "Seven thousand baht a month."
+            },
+            {
+              "speaker": "director",
+              "text": "เราจ่ายเงินทุกเดือนค่ะ",
+              "english": "We pay every month."
+            },
+            {
+              "speaker": "ton",
+              "text": "เงินนี้ช่วยแม่ของผมครับ",
+              "english": "This money will help my mother."
+            },
+            {
+              "speaker": "director",
+              "text": "ฉันยินดีค่ะ",
+              "english": "I'm glad."
+            },
+            {
+              "speaker": "director",
+              "text": "ถ้าคุณว่าง ก็เริ่มพรุ่งนี้ค่ะ",
+              "english": "If you are free, start tomorrow."
+            },
+            {
+              "speaker": "director",
+              "text": "ฉันขอแนะนำหัวหน้าของเราค่ะ",
+              "english": "Let me introduce our head teacher."
+            },
+            {
+              "speaker": "director",
+              "text": "เขียนชื่อนายต้นที่กระดาษค่ะ",
+              "english": "Write Mr. Ton's name on the paper."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมสมัครแล้วครับ",
+              "english": "I have applied."
+            },
+            {
+              "speaker": "ton",
+              "text": "ขอบคุณผู้อำนวยการครับ",
+              "english": "Thank you, director."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเขียนชื่อว่านายต้นครับ",
+              "english": "I wrote the name as Mr. Ton."
+            },
+            {
+              "speaker": "ton",
+              "text": "สัมภาษณ์ไม่ยากครับ",
+              "english": "The interview was not hard."
+            },
+            {
+              "speaker": "director",
+              "text": "สัมภาษณ์จบแล้วค่ะ",
+              "english": "The interview is over."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ยินดีด้วยครับ",
+              "english": "Congratulations."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมขอบคุณตำรวจครับ",
+              "english": "I thank the policeman."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมจะจ่ายเงินให้ร้านยานะครับ",
+              "english": "I will pay the chemist."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดีใจครับ",
+              "english": "I'm glad."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมจะกอดแม่ครับ",
+              "english": "I will hug my mother."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตอนเย็นผมจะเล่าให้ครอบครัวฟังครับ",
+              "english": "In the evening I'll tell the family."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอธิษฐานให้คุณครับ",
+              "english": "I'll pray for you."
+            },
+            {
+              "speaker": "ton",
+              "text": "ขอบคุณมากครับ แซม",
+              "english": "Thank you very much, Sam."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมสอนจนเย็นครับ",
+              "english": "I teach until evening."
+            },
+            {
+              "speaker": "ton",
+              "text": "เมื่อผมกลับบ้าน ผมก็กอดลูกครับ",
+              "english": "When I get home I hug my child."
+            },
+            {
+              "speaker": "ton",
+              "text": "หมอฉีดยาให้แม่ครับ",
+              "english": "The doctor gave Mother an injection."
+            },
+            {
+              "speaker": "ton",
+              "text": "หมอตรวจคนไข้ที่คลินิกครับ",
+              "english": "The doctor examines patients at the clinic."
+            },
+            {
+              "speaker": "sam",
+              "text": "เรากินข้าวด้วยกันไหมครับ",
+              "english": "Shall we eat together?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ไปครับ",
+              "english": "Let's go."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

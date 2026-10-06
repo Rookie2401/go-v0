@@ -1,0 +1,625 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-06",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Mali's weekend in the village",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-06",
+    "title": "Mali's weekend in the village (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: mali=Mali (woman; ฉัน; narrates without particles), grandmother=Mali's grandmother (woman; calls herself ยาย; ค่ะ / คะ), ball=Ball (boy, ten; ผม … ครับ). For the reviewer - Mali tells a past weekend in plain first-person narration (no particles; the past is clear from วันเสาร์ and the story itself); the grandmother's village near Lamphun is called only \"หมู่บ้านของยาย\"; ตัว as the classifier for animals; Central Thai is used for the grandmother's quoted words (a Chiang Mai reviewer may want a northern flavour added or kept out); the house on stilts is not named because เรือน is not taught."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "village",
+    "grandmother",
+    "animals",
+    "countryside",
+    "a weekend"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "mali": "Mali",
+    "grandmother": "Mali's grandmother",
+    "ball": "Ball"
+  },
+  "sections": [
+    {
+      "title": "Mali's weekend in the village",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "วันเสาร์ฉันไปหมู่บ้านของยาย",
+              "english": "On Saturday I went to my grandmother's village."
+            },
+            {
+              "speaker": "mali",
+              "text": "หมู่บ้านอยู่ไกลจากเชียงใหม่",
+              "english": "The village is far from Chiang Mai."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันไปสถานีรถ",
+              "english": "I went to the bus station."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันซื้อตั๋วที่สถานี",
+              "english": "I bought a ticket at the station."
+            },
+            {
+              "speaker": "mali",
+              "text": "รถไปสองชั่วโมง",
+              "english": "The bus took two hours."
+            },
+            {
+              "speaker": "mali",
+              "text": "รถผ่านถนนและตลาด",
+              "english": "The bus passed roads and markets."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันถึงตอนบ่าย",
+              "english": "I arrived in the afternoon."
+            },
+            {
+              "speaker": "mali",
+              "text": "ยายรอฉันที่ถนน",
+              "english": "Grandmother waited for me on the road."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขายิ้มและทักฉัน",
+              "english": "She smiled and greeted me."
+            },
+            {
+              "speaker": "grandmother",
+              "text": "ดีใจมากค่ะ",
+              "english": "I am so happy."
+            },
+            {
+              "speaker": "mali",
+              "text": "บ้านของเขาอยู่ใกล้นา",
+              "english": "Her house is near the rice field."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่นามีควายสองตัว",
+              "english": "In the field there are two buffaloes."
+            },
+            {
+              "speaker": "mali",
+              "text": "ควายนอนอยู่",
+              "english": "The buffaloes are lying down."
+            },
+            {
+              "speaker": "mali",
+              "text": "ควายกินหญ้า",
+              "english": "The buffaloes eat grass."
+            },
+            {
+              "speaker": "mali",
+              "text": "หญ้าเปียก",
+              "english": "The grass is wet."
+            },
+            {
+              "speaker": "mali",
+              "text": "เมื่อวานฝนตก",
+              "english": "Yesterday it rained."
+            },
+            {
+              "speaker": "mali",
+              "text": "ท้องฟ้ามีเมฆ",
+              "english": "The sky has clouds."
+            },
+            {
+              "speaker": "mali",
+              "text": "ลมเย็น",
+              "english": "The wind is cool."
+            },
+            {
+              "speaker": "mali",
+              "text": "แดดไม่ร้อน",
+              "english": "The sun is not hot."
+            },
+            {
+              "speaker": "mali",
+              "text": "อากาศดีมาก",
+              "english": "The weather is very good."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเดินไปที่แม่น้ำ",
+              "english": "I walked to the river."
+            },
+            {
+              "speaker": "mali",
+              "text": "น้ำในแม่น้ำเย็น",
+              "english": "The water in the river is cool."
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่น้ำอยู่ใกล้ไร่",
+              "english": "The river is near the farm."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่ไร่มีต้นไม้",
+              "english": "On the farm there are trees."
+            },
+            {
+              "speaker": "mali",
+              "text": "ดอกไม้อยู่บนต้นไม้",
+              "english": "The flowers are on the trees."
+            },
+            {
+              "speaker": "mali",
+              "text": "ดอกไม้สีขาว สีแดง",
+              "english": "The flowers are white and red."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเก็บดอกไม้",
+              "english": "I picked flowers."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเห็นภูเขา",
+              "english": "I saw the mountains."
+            },
+            {
+              "speaker": "mali",
+              "text": "ภูเขาอยู่ไกล",
+              "english": "The mountains are far."
+            },
+            {
+              "speaker": "mali",
+              "text": "เมฆอยู่บนภูเขา",
+              "english": "The clouds are on the mountains."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่บ้านมีหมาและแมว",
+              "english": "At the house there are a dog and a cat."
+            },
+            {
+              "speaker": "mali",
+              "text": "หมาสองตัวนอนที่ประตู",
+              "english": "Two dogs sleep at the door."
+            },
+            {
+              "speaker": "mali",
+              "text": "แมวหนึ่งตัวอยู่บนเก้าอี้",
+              "english": "A cat is on the chair."
+            },
+            {
+              "speaker": "mali",
+              "text": "หมาชอบกินปลา",
+              "english": "The dogs like to eat fish."
+            },
+            {
+              "speaker": "mali",
+              "text": "แมวชอบกินไข่",
+              "english": "The cat likes to eat eggs."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่บ้านมีนก",
+              "english": "At the house there are birds."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันได้ยินเสียงนก",
+              "english": "I heard the birds."
+            },
+            {
+              "speaker": "mali",
+              "text": "นกอยู่บนต้นไม้",
+              "english": "The birds are in the tree."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขามีวัวและม้า",
+              "english": "She has cows and horses."
+            },
+            {
+              "speaker": "mali",
+              "text": "วัวกินหญ้า",
+              "english": "The cows eat grass."
+            },
+            {
+              "speaker": "mali",
+              "text": "ม้าอยู่ที่นั่น",
+              "english": "The horse is over there."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันดูวัว ฉันดูม้า",
+              "english": "I watched the cows and the horse."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาทำงานที่นา",
+              "english": "She works in the field."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาเก็บผัก",
+              "english": "She picked vegetables."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเก็บไข่",
+              "english": "I collected eggs."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาทำอาหารให้ฉัน",
+              "english": "She cooked for me."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันล้างจานให้เขา",
+              "english": "I washed the dishes for her."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันกินข้าวผัดผักกับไข่",
+              "english": "I ate vegetable fried rice with egg."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาไม่ยุ่ง ฉันว่าง",
+              "english": "She was not busy and I was free."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันฟังเขา",
+              "english": "I listened to her."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเข้าใจเขา",
+              "english": "I understood her."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาเล่านิทานให้ฉันฟัง",
+              "english": "She told me a story."
+            },
+            {
+              "speaker": "mali",
+              "text": "เราหัวเราะ",
+              "english": "We laughed."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนเย็นบอลมาที่หมู่บ้าน",
+              "english": "In the evening Ball came to the village."
+            },
+            {
+              "speaker": "ball",
+              "text": "สวัสดีครับ",
+              "english": "Hello."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไม่เบื่อครับ",
+              "english": "I'm not bored."
+            },
+            {
+              "speaker": "mali",
+              "text": "เรากินส้มและกล้วยที่ไร่",
+              "english": "We ate oranges and bananas on the farm."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฤดูฝนผลไม้ถูก",
+              "english": "In the rainy season fruit is cheap."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาให้ถุงผลไม้กับฉัน",
+              "english": "She gave me a bag of fruit."
+            },
+            {
+              "speaker": "mali",
+              "text": "วันอาทิตย์ฉันกลับเชียงใหม่",
+              "english": "On Sunday I went back to Chiang Mai."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนเย็นฉันนั่งกับเขาที่โต๊ะ",
+              "english": "In the evening I sat with her at the table."
+            },
+            {
+              "speaker": "mali",
+              "text": "เรากินข้าวด้วยกัน",
+              "english": "We ate together."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาทำปลา ผัก และไข่",
+              "english": "She cooked fish, vegetables and eggs."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันอิ่มมาก",
+              "english": "I was very full."
+            },
+            {
+              "speaker": "mali",
+              "text": "หลังกินข้าวฉันล้างจาน",
+              "english": "After the meal I washed the dishes."
+            },
+            {
+              "speaker": "grandmother",
+              "text": "ลูกเหนื่อยไหมคะ",
+              "english": "Are you tired, dear?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ไม่เหนื่อยค่ะ ฉันสบายดีค่ะ",
+              "english": "No, I'm fine."
+            },
+            {
+              "speaker": "grandmother",
+              "text": "ลูกกินข้าวอีกไหมคะ",
+              "english": "Will you eat some more?"
+            },
+            {
+              "speaker": "mali",
+              "text": "อิ่มแล้วค่ะ ขอบคุณค่ะ",
+              "english": "I'm full, thank you."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาปิดประตูและหน้าต่าง",
+              "english": "She closed the door and the windows."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันนอนที่เตียงของเขา",
+              "english": "I slept in her bed."
+            },
+            {
+              "speaker": "mali",
+              "text": "คืนนั้นฉันได้ยินเสียงฝน",
+              "english": "That night I heard the rain."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฝนตกหลายชั่วโมง",
+              "english": "It rained for many hours."
+            },
+            {
+              "speaker": "mali",
+              "text": "เช้าวันอาทิตย์ฝนไม่ตก",
+              "english": "On Sunday morning it did not rain."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันตื่นหกโมงเช้า",
+              "english": "I got up at six."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาตื่นก่อนฉัน",
+              "english": "She got up before me."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาไปทำงานแล้ว",
+              "english": "She had already gone to work."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันดื่มชาที่ครัว",
+              "english": "I drank tea in the kitchen."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันไปหาเขา",
+              "english": "I went to find her."
+            },
+            {
+              "speaker": "mali",
+              "text": "เราไปโบสถ์ด้วยกัน",
+              "english": "We went to church together."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่โบสถ์มีคนไม่มาก",
+              "english": "At the church there were not many people."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันร้องเพลงและอธิษฐาน",
+              "english": "I sang and prayed."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขารักพระเจ้า",
+              "english": "She loves God."
+            },
+            {
+              "speaker": "mali",
+              "text": "หลังโบสถ์เรากินข้าวที่บ้านของเพื่อนเขา",
+              "english": "After church we ate at her friend's house."
+            },
+            {
+              "speaker": "mali",
+              "text": "เพื่อนของเขาให้ขนมกับฉัน",
+              "english": "Her friend gave me sweets."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันซื้อผลไม้ที่ตลาด",
+              "english": "I bought fruit at the market."
+            },
+            {
+              "speaker": "grandmother",
+              "text": "พรุ่งนี้ลูกกลับกี่โมงคะ",
+              "english": "What time are you going back?"
+            },
+            {
+              "speaker": "mali",
+              "text": "สี่โมงเย็นค่ะ",
+              "english": "At four in the afternoon."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันรอรถสิบนาที",
+              "english": "I waited ten minutes for the bus."
+            },
+            {
+              "speaker": "mali",
+              "text": "รถผ่านทางไปกรุงเทพ",
+              "english": "The bus passed the road to Bangkok."
+            },
+            {
+              "speaker": "mali",
+              "text": "สัปดาห์นี้ฉันยุ่งมาก",
+              "english": "This week I am very busy."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขามักตื่นตีห้าครึ่ง",
+              "english": "She usually gets up at half past five."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขากำลังกวาดครัว",
+              "english": "She was sweeping the kitchen."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันช่วยเขาซักผ้า",
+              "english": "I helped her wash clothes."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเช็ดโต๊ะในครัว",
+              "english": "I wiped the table in the kitchen."
+            },
+            {
+              "speaker": "mali",
+              "text": "เราคุยกันทุกเย็น",
+              "english": "We chatted every evening."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาไม่มีโทรทัศน์",
+              "english": "She has no television."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันดูนาฬิกา",
+              "english": "I looked at the clock."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันซื้อตั๋วใบหนึ่ง",
+              "english": "I bought one ticket."
+            },
+            {
+              "speaker": "mali",
+              "text": "รถเต็ม",
+              "english": "The bus was full."
+            },
+            {
+              "speaker": "mali",
+              "text": "รถไปช้า",
+              "english": "The bus went slowly."
+            },
+            {
+              "speaker": "mali",
+              "text": "รถไปสามสิบนาที",
+              "english": "The bus ran for thirty minutes."
+            },
+            {
+              "speaker": "grandmother",
+              "text": "ดื่มชาสิคะ",
+              "english": "Please have some tea."
+            },
+            {
+              "speaker": "grandmother",
+              "text": "แล้วลูกล่ะคะ",
+              "english": "And you?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันไปกรุงเทพไม่ได้",
+              "english": "I can't go to Bangkok."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนสามทุ่มเขาหลับ",
+              "english": "At nine she slept."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาอาบน้ำตอนเช้า",
+              "english": "She bathed in the morning."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันรักยาย",
+              "english": "I love my grandmother."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันสุขใจ",
+              "english": "I am glad at heart."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

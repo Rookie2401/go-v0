@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-02",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Sam's room",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-02",
+    "title": "Sam's room (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม … ครับ), ton=Ton (man; ผม … ครับ), daeng=Auntie Daeng (woman; calls herself ป้า; ค่ะ / คะ). For the reviewer - Auntie Daeng calls herself ป้า and ends with ค่ะ / คะ; Sam says ป้า to her; location words บน / ใน / ใต้; ของ + owner (\"ของคุณ\" = yours)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "home",
+    "room",
+    "furniture",
+    "where things are"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "ton": "Ton",
+    "daeng": "Auntie Daeng"
+  },
+  "sections": [
+    {
+      "title": "Sam's room",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "สวัสดีค่ะ แซม",
+              "english": "Hello, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "สวัสดีครับป้า",
+              "english": "Hello, Auntie."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ห้องของคุณอยู่ที่บ้านป้าค่ะ",
+              "english": "Your room is at my house."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณมากครับ",
+              "english": "Thank you very much."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไปครับ แซม",
+              "english": "Let's go, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ",
+              "english": "Let's go."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "มีเตียงไหมครับ",
+              "english": "Is there a bed?"
+            },
+            {
+              "speaker": "ton",
+              "text": "มีครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ton",
+              "text": "มีเตียง มีเก้าอี้ครับ",
+              "english": "There is a bed and a chair."
+            },
+            {
+              "speaker": "sam",
+              "text": "มีประตูไหมครับ",
+              "english": "Is there a door?"
+            },
+            {
+              "speaker": "ton",
+              "text": "มีประตูหนึ่งอันครับ",
+              "english": "There is one door."
+            },
+            {
+              "speaker": "ton",
+              "text": "ประตูไม่ดีครับ หน้าต่างดีครับ",
+              "english": "The door isn't good; the window is."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบหน้าต่างครับ",
+              "english": "I like the window."
+            },
+            {
+              "speaker": "ton",
+              "text": "ใต้หน้าต่างมีโต๊ะครับ",
+              "english": "Under the window there is a table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ผมไม่เห็นหนังสือครับ",
+              "english": "I can't see my book."
+            },
+            {
+              "speaker": "ton",
+              "text": "ของคุณอยู่บนเตียงครับ",
+              "english": "Yours is on the bed."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเจอครับ",
+              "english": "I found it."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ในห้องมีกาแฟไหมครับ",
+              "english": "Is there coffee in the room?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ไม่มีครับ แต่ป้ามีกาแฟครับ",
+              "english": "No, but Auntie has coffee."
+            },
+            {
+              "speaker": "daeng",
+              "text": "บนโต๊ะมีกาแฟค่ะ",
+              "english": "On the table there is coffee."
+            },
+            {
+              "speaker": "daeng",
+              "text": "บนเก้าอี้มีขนมค่ะ",
+              "english": "On the chair there are sweets."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ใต้เก้าอี้มีชาค่ะ",
+              "english": "Under the chair there is tea."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่ดื่มกาแฟครับ",
+              "english": "I don't drink coffee."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมดื่มชาครับ",
+              "english": "I drink tea."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ชาของป้าดีมากค่ะ",
+              "english": "My tea is very good."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ในบ้านมีน้ำค่ะ",
+              "english": "In the house there is water."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ใต้โต๊ะมีน้ำค่ะ",
+              "english": "Under the table there is water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "คุณชอบห้องไหมคะ",
+              "english": "Do you like the room?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ชอบมากครับ",
+              "english": "Very much."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยู่ในบ้านป้าครับ",
+              "english": "I'm staying in Auntie's house."
+            },
+            {
+              "speaker": "daeng",
+              "text": "คุณพูดภาษาไทยดีค่ะ",
+              "english": "You speak Thai well."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมพูดได้นิดหน่อยครับ",
+              "english": "I can speak a little."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเรียนที่โรงเรียนครับ",
+              "english": "I study at the school."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเป็นครูที่โรงเรียนครับ",
+              "english": "I'm a teacher at the school."
+            },
+            {
+              "speaker": "daeng",
+              "text": "คุณอยากกินอะไรคะ",
+              "english": "What would you like to eat?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากกินขนมครับ",
+              "english": "I'd like some sweets."
+            },
+            {
+              "speaker": "daeng",
+              "text": "พรุ่งนี้ไปตลาดไหมคะ",
+              "english": "Are you going to the market tomorrow?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ton",
+              "text": "พรุ่งนี้ผมไปโรงเรียนครับ",
+              "english": "Tomorrow I go to the school."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมไปโบสถ์ครับ",
+              "english": "I go to church."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าก็ไปโบสถ์ค่ะ",
+              "english": "I'm going to church too."
+            },
+            {
+              "speaker": "daeng",
+              "text": "คุณไปโบสถ์ไหมคะ",
+              "english": "Are you going to church?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ ผมอยากไปครับ",
+              "english": "Yes, I want to go."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ คุณต้น",
+              "english": "Thank you, Ton."
+            },
+            {
+              "speaker": "daeng",
+              "text": "วันนี้ป้าเหนื่อยค่ะ",
+              "english": "I'm tired today."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าดื่มชาค่ะ",
+              "english": "I'm going to drink some tea."
+            },
+            {
+              "speaker": "ton",
+              "text": "คุณเหนื่อยไหมครับ",
+              "english": "Are you tired?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเหนื่อยนิดหน่อยครับ",
+              "english": "I'm a little tired."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมก็เหนื่อยครับ",
+              "english": "I'm tired too."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมชอบชาครับ",
+              "english": "I like tea."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบขนมครับ",
+              "english": "I like sweets."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขอบคุณค่ะ",
+              "english": "Thank you."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-03",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Mali's family photograph",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-03",
+    "title": "Mali's family photograph (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม … ครับ), mali=Mali (woman; ฉัน … ค่ะ / คะ), ball=Ball (boy, ten; ผม … ครับ). For the reviewer - kin terms (พ่อ, แม่, พี่, น้อง; พี่ต้น is how Mali names her older brother); ages said as a number + ปี without อายุ (spoken style); คน as the classifier for people; Ball (ten) says ผม … ครับ."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "family",
+    "kin terms",
+    "ages",
+    "counting people"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "mali": "Mali",
+    "ball": "Ball"
+  },
+  "sections": [
+    {
+      "title": "Mali's family photograph",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "คุณมะลิครับ ผมขอดูรูปได้ไหมครับ",
+              "english": "Mali, may I look at the photo?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ได้ค่ะ",
+              "english": "Of course."
+            },
+            {
+              "speaker": "mali",
+              "text": "รูปครอบครัวของฉันค่ะ",
+              "english": "It's my family's photo."
+            },
+            {
+              "speaker": "sam",
+              "text": "ในรูปมีกี่คนครับ",
+              "english": "How many people are in the photo?"
+            },
+            {
+              "speaker": "mali",
+              "text": "มีหกคนค่ะ",
+              "english": "There are six people."
+            },
+            {
+              "speaker": "mali",
+              "text": "มีพ่อ มีแม่ มีพี่ต้น มีน้องค่ะ",
+              "english": "There are my father, my mother, big brother Ton and my little sister."
+            },
+            {
+              "speaker": "sam",
+              "text": "พ่อของคุณชื่ออะไรครับ",
+              "english": "What is your father's name?"
+            },
+            {
+              "speaker": "mali",
+              "text": "พ่อชื่อสมชายค่ะ",
+              "english": "My father's name is Somchai."
+            },
+            {
+              "speaker": "sam",
+              "text": "แม่ของคุณทำงานที่ไหนครับ",
+              "english": "Where does your mother work?"
+            },
+            {
+              "speaker": "mali",
+              "text": "แม่เป็นครูที่โรงเรียนค่ะ",
+              "english": "My mother is a teacher at a school."
+            },
+            {
+              "speaker": "sam",
+              "text": "ครอบครัวของคุณดีมากครับ",
+              "english": "You have a lovely family."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขอบคุณค่ะ",
+              "english": "Thank you."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "พี่ต้นสามสิบแปดปีค่ะ",
+              "english": "Ton is thirty-eight."
+            },
+            {
+              "speaker": "mali",
+              "text": "มีลูกหนึ่งคนค่ะ",
+              "english": "He has one child."
+            },
+            {
+              "speaker": "mali",
+              "text": "ลูกของพี่ต้นชื่อบอลค่ะ",
+              "english": "Ton's child is called Ball."
+            },
+            {
+              "speaker": "sam",
+              "text": "บอลอยู่ที่ไหนครับ",
+              "english": "Where is Ball?"
+            },
+            {
+              "speaker": "mali",
+              "text": "บอลมาแล้วค่ะ",
+              "english": "Ball has come."
+            },
+            {
+              "speaker": "mali",
+              "text": "บอลเป็นลูกที่ดีค่ะ",
+              "english": "Ball is a good child."
+            },
+            {
+              "speaker": "ball",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ball",
+              "text": "สวัสดีครับ ผมชื่อบอลครับ",
+              "english": "Hello, my name is Ball."
+            },
+            {
+              "speaker": "sam",
+              "text": "สวัสดีครับ",
+              "english": "Hello."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณสบายดีไหมครับ",
+              "english": "Are you well?"
+            },
+            {
+              "speaker": "ball",
+              "text": "สบายดีครับ",
+              "english": "I'm well."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมสิบปีครับ",
+              "english": "I am ten years old."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมยี่สิบห้าปีครับ",
+              "english": "I am twenty-five."
+            },
+            {
+              "speaker": "ball",
+              "text": "คุณมาจากอเมริกาใช่ไหมครับ",
+              "english": "You come from America, right?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ใช่ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ball",
+              "text": "ครอบครัวของคุณอยู่ที่อเมริกาไหมครับ",
+              "english": "Does your family live in America?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ครับ อยู่ที่อเมริกาครับ",
+              "english": "Yes, in America."
+            },
+            {
+              "speaker": "ball",
+              "text": "คุณเรียนภาษาไทยไหมครับ",
+              "english": "Are you studying Thai?"
+            },
+            {
+              "speaker": "sam",
+              "text": "เรียนนิดหน่อยครับ",
+              "english": "A little."
+            },
+            {
+              "speaker": "mali",
+              "text": "น้องของฉันเรียนที่โรงเรียนค่ะ",
+              "english": "My little sister studies at a school."
+            },
+            {
+              "speaker": "mali",
+              "text": "น้องชอบขนมค่ะ",
+              "english": "My little sister likes sweets."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมก็ชอบขนมครับ",
+              "english": "I like sweets too."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมดูห้องของคุณได้ไหมครับ",
+              "english": "Can I look at your room?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ได้ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ball",
+              "text": "ห้องของคุณมีเตียงไหมครับ",
+              "english": "Does your room have a bed?"
+            },
+            {
+              "speaker": "sam",
+              "text": "มีครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "sam",
+              "text": "หน้าต่างสองอันครับ",
+              "english": "Two windows."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมชอบหน้าต่างครับ",
+              "english": "I like windows."
+            },
+            {
+              "speaker": "ball",
+              "text": "คุณชอบเชียงใหม่ไหมครับ",
+              "english": "Do you like Chiang Mai?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ชอบมากครับ",
+              "english": "Very much."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณบอลพูดภาษาไทยได้ดีครับ",
+              "english": "Ball, you speak Thai very well."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมก็พูดภาษาไทยครับ",
+              "english": "I speak Thai too."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่ตลาดมีขนมค่ะ",
+              "english": "At the market there are sweets."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอยากกินขนมครับ",
+              "english": "I would like to eat sweets."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมก็อยากกินครับ",
+              "english": "I would like some too."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันอยากดื่มชาค่ะ",
+              "english": "I would like to drink tea."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไม่ดื่มชาครับ",
+              "english": "I don't drink tea."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมดื่มน้ำครับ",
+              "english": "I drink water."
+            },
+            {
+              "speaker": "mali",
+              "text": "วันนี้ไปตลาดไหมคะ",
+              "english": "Shall we go to the market today?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมก็ไปครับ",
+              "english": "I'm going too."
+            },
+            {
+              "speaker": "mali",
+              "text": "ไปค่ะ",
+              "english": "Let's go."
+            },
+            {
+              "speaker": "sam",
+              "text": "วันนี้ผมเหนื่อยนิดหน่อยครับ",
+              "english": "I'm a little tired today."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่ตลาดมีชา มีกาแฟค่ะ",
+              "english": "At the market there is tea and coffee."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

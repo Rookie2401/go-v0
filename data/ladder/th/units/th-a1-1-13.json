@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-13",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "The lost school bag",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-13",
+    "title": "The lost school bag (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: ball=Ball (boy, ten; ผม … ครับ), ton=Ton (man; ผม … ครับ), daeng=Auntie Daeng (woman; calls herself ป้า; ค่ะ / คะ), sam=Sam (man; ผม … ครับ), pastor=The pastor (man; ผม … ครับ). For the reviewer - a short story in plain present-tense narration with quoted speech; no particles in the narration, ผม … ครับ for the males and ป้า … ค่ะ for Auntie inside the quotations; \"ศิษยาภิบาล\" as the pastor's title; ผู้หญิง / ผู้ชาย used for \"a woman\" / \"a man\"; \"ไม่เจอ\" (cannot find)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "story",
+    "school",
+    "searching",
+    "losing things"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ball": "Ball",
+    "ton": "Ton",
+    "daeng": "Auntie Daeng",
+    "sam": "Sam",
+    "pastor": "The pastor"
+  },
+  "sections": [
+    {
+      "title": "The lost school bag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันนี้บอลตื่นหกโมงเช้า",
+              "english": "Today Ball got up at six in the morning."
+            },
+            {
+              "text": "เขาจะไปโรงเรียน",
+              "english": "He is going to school."
+            },
+            {
+              "text": "บอลไม่เจอกระเป๋า",
+              "english": "Ball cannot find his bag."
+            },
+            {
+              "text": "กระเป๋าหายแล้ว",
+              "english": "The bag is lost."
+            },
+            {
+              "text": "บอลหาใต้เตียง",
+              "english": "Ball looks under the bed."
+            },
+            {
+              "text": "บอลหาในห้อง",
+              "english": "Ball looks in the room."
+            },
+            {
+              "text": "บอลเปิดประตู",
+              "english": "Ball opens the door."
+            },
+            {
+              "text": "บอลเปิดหน้าต่าง",
+              "english": "Ball opens the window."
+            },
+            {
+              "speaker": "ball",
+              "text": "กระเป๋าของผมอยู่ไหนครับ",
+              "english": "Where is my bag?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ใครเห็นครับ",
+              "english": "Has anyone seen it?"
+            },
+            {
+              "speaker": "ton",
+              "text": "เราหาที่ร้านป้ากันครับ",
+              "english": "Let's look at Auntie's shop."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "บอลกับต้นเดินไปที่ร้านป้า",
+              "english": "Ball and Ton walk to Auntie's shop."
+            },
+            {
+              "text": "ป้ายิ้มและทักเขา",
+              "english": "Auntie smiles and greets them."
+            },
+            {
+              "speaker": "daeng",
+              "text": "สวัสดีค่ะ วันนี้บอลไปโรงเรียนไหมคะ",
+              "english": "Hello. Is Ball going to school today?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไปไม่ได้ครับ",
+              "english": "I can't go."
+            },
+            {
+              "speaker": "ball",
+              "text": "ของผมหายครับ",
+              "english": "Mine is lost."
+            },
+            {
+              "speaker": "daeng",
+              "text": "สีอะไรคะ",
+              "english": "What colour?"
+            },
+            {
+              "speaker": "ball",
+              "text": "สีแดงครับ",
+              "english": "Red."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าไม่เห็นค่ะ",
+              "english": "I haven't seen it."
+            },
+            {
+              "speaker": "daeng",
+              "text": "บอลจะไปไหนคะ",
+              "english": "Where will Ball go?"
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไปไหนไม่ได้ครับ",
+              "english": "I can't go anywhere."
+            },
+            {
+              "speaker": "daeng",
+              "text": "บอลหิวไหมคะ",
+              "english": "Is Ball hungry?"
+            },
+            {
+              "speaker": "ball",
+              "text": "หิวครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้ามีข้าวผัดไก่ค่ะ",
+              "english": "I have chicken fried rice."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมอยากกินครับ",
+              "english": "I'd like some."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมสั่งสองจานครับ",
+              "english": "I'll order two plates."
+            },
+            {
+              "text": "ที่ร้านมีผู้หญิงหนึ่งคน มีผู้ชายหนึ่งคน",
+              "english": "At the shop there is one woman and one man."
+            },
+            {
+              "text": "ผู้หญิงไม่เห็น",
+              "english": "The woman hasn't seen it."
+            },
+            {
+              "text": "ผู้ชายไม่เห็น",
+              "english": "The man hasn't seen it."
+            },
+            {
+              "text": "บอลไม่ดีใจ",
+              "english": "Ball is not happy."
+            },
+            {
+              "text": "ผู้หญิงยิ้มให้เขา",
+              "english": "The woman smiles at him."
+            },
+            {
+              "text": "ผู้ชายทักเขา",
+              "english": "The man says hello to him."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "สวัสดีครับป้า สวัสดีครับคุณต้น",
+              "english": "Hello, Auntie. Hello, Ton."
+            },
+            {
+              "speaker": "sam",
+              "text": "วันนี้บอลทำอะไรครับ",
+              "english": "What is Ball doing today?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ของเขาหายครับ",
+              "english": "His is lost."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเห็นกระเป๋าสีแดงที่โบสถ์ครับ",
+              "english": "I saw a red bag at the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "ศิษยาภิบาลเปิดประตูโบสถ์ตอนเช้าครับ",
+              "english": "The pastor opened the church door in the morning."
+            },
+            {
+              "speaker": "sam",
+              "text": "ศิษยาภิบาลเห็นด้วยครับ",
+              "english": "The pastor saw it too."
+            },
+            {
+              "speaker": "ball",
+              "text": "ใครเอาไปที่โบสถ์ครับ",
+              "english": "Who took it to the church?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ศิษยาภิบาลช่วยเราครับ",
+              "english": "The pastor helped us."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไปที่โบสถ์กันครับ",
+              "english": "Let's go to the church."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ต้นกับบอลและแซมเดินไปโบสถ์",
+              "english": "Ton, Ball and Sam walk to the church."
+            },
+            {
+              "text": "ศิษยาภิบาลยิ้ม",
+              "english": "The pastor smiles."
+            },
+            {
+              "speaker": "pastor",
+              "text": "สวัสดีครับ",
+              "english": "Hello."
+            },
+            {
+              "speaker": "pastor",
+              "text": "อยู่บนเก้าอี้ครับ",
+              "english": "It is on the chair."
+            },
+            {
+              "speaker": "ball",
+              "text": "ของผมครับ",
+              "english": "It's mine."
+            },
+            {
+              "text": "บอลดีใจ",
+              "english": "Ball is happy."
+            },
+            {
+              "speaker": "ball",
+              "text": "ขอบคุณครับ ศิษยาภิบาล",
+              "english": "Thank you, pastor."
+            },
+            {
+              "text": "ต้นดีใจ",
+              "english": "Ton is happy."
+            },
+            {
+              "speaker": "ton",
+              "text": "ใครช่วยเขาครับ",
+              "english": "Who helped him?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ศิษยาภิบาลครับ",
+              "english": "The pastor."
+            },
+            {
+              "speaker": "ball",
+              "text": "ผมไปโรงเรียนได้แล้วครับ",
+              "english": "Now I can go to school."
+            },
+            {
+              "text": "ตอนบ่ายบอลกลับบ้าน",
+              "english": "In the afternoon Ball goes home."
+            },
+            {
+              "text": "ตอนเย็นต้นสอนเขาที่บ้าน",
+              "english": "In the evening Ton teaches him at home."
+            },
+            {
+              "speaker": "pastor",
+              "text": "บอลเป็นเด็กดีครับ",
+              "english": "Ball is a good boy."
+            },
+            {
+              "speaker": "pastor",
+              "text": "เพื่อนของคุณอยู่ที่โรงเรียนไหมครับ",
+              "english": "Are your friends at school?"
+            },
+            {
+              "speaker": "ball",
+              "text": "อยู่ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ball",
+              "text": "นักเรียนที่โรงเรียนผมชอบยิ้มครับ",
+              "english": "The pupils at my school like to smile."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ครูของคุณสอนอะไรครับ",
+              "english": "What does your teacher teach?"
+            },
+            {
+              "speaker": "ball",
+              "text": "พ่อของผมสอนภาษาไทยครับ",
+              "english": "My father teaches Thai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบโบสถ์ครับ",
+              "english": "I like the church."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ขอบคุณพระเจ้าครับ ที่เราเจอครับ",
+              "english": "Thank God that we found it."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าชอบเด็กที่ยิ้มค่ะ",
+              "english": "I like children who smile."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

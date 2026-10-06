@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-15",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Sam's first testimony",
+  "contentType": "testimony",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-15",
+    "title": "Sam's first testimony (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม), mali=Mali (woman; ฉัน). For the reviewer - two short first-person testimonies in plain spoken-written Thai, without polite particles inside the testimony (Sam says ผม, Mali says ฉัน); เชื่อว่า (\"believe that\") and ที่ + clause; faith vocabulary (เชื่อ, รัก, อธิษฐาน, พระเจ้า, พระเยซู) kept simple, personal and non-pressuring; the temple, the monks and Mali's mother's temple are mentioned respectfully."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "testimony",
+    "faith",
+    "life story",
+    "friendship"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "mali": "Mali"
+  },
+  "sections": [
+    {
+      "title": "Sam's first testimony",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ผมชื่อแซม",
+              "english": "My name is Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมาจากอเมริกา",
+              "english": "I come from America."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมาเรียนภาษาไทยที่เชียงใหม่",
+              "english": "I came to study Thai in Chiang Mai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่อเมริกา ชีวิตของผมเหนื่อยมาก",
+              "english": "In America my life was very tiring."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอธิษฐาน",
+              "english": "I prayed."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเชื่อว่าพระเจ้ารักผม",
+              "english": "I believe that God loves me."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเชื่อว่าพระเยซูรักเรา",
+              "english": "I believe that Jesus loves us."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมาที่เชียงใหม่",
+              "english": "I came to Chiang Mai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีเพื่อนใหม่ที่คริสตจักร",
+              "english": "I have new friends at the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีบ้านใหม่ในซอยของป้า",
+              "english": "I have a new home in Auntie's soi."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเดินไปโบสถ์ที่ถนน",
+              "english": "I walk to the church on the road."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมร้องเพลงและอธิษฐานที่โบสถ์",
+              "english": "I sing and pray at the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "ชีวิตของผมที่เชียงใหม่ดีมาก",
+              "english": "My life in Chiang Mai is very good."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมสุขใจ",
+              "english": "I am glad at heart."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากอยู่ที่เชียงใหม่",
+              "english": "I want to stay in Chiang Mai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากพูดภาษาไทยดี",
+              "english": "I want to speak Thai well."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมช่วยป้าที่ร้าน",
+              "english": "I help Auntie at the shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "ครอบครัวของผมอยู่ที่อเมริกา",
+              "english": "My family is in America."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมรักเชียงใหม่",
+              "english": "I love Chiang Mai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ใจของผมดี",
+              "english": "My heart is well."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเชื่อว่าพระเจ้าช่วยผม",
+              "english": "I believe that God helps me."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณพระเจ้า",
+              "english": "Thank God."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "ฉันชื่อมะลิ",
+              "english": "My name is Mali."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเป็นพยาบาล",
+              "english": "I am a nurse."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันทำงานที่โรงพยาบาล",
+              "english": "I work at the hospital."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนเด็กฉันไม่ไปโบสถ์",
+              "english": "As a child I did not go to church."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันไปวัดกับแม่",
+              "english": "I went to the temple with my mother."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันชอบเดินที่วัด",
+              "english": "I liked walking at the temple."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเห็นพระที่ถนน",
+              "english": "I saw monks on the road."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนนั้นฉันป่วย",
+              "english": "One time I was ill."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันปวดหัว",
+              "english": "I had a headache."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันไอ",
+              "english": "I was coughing."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันรอรถที่ถนน",
+              "english": "I waited for a bus on the road."
+            },
+            {
+              "speaker": "mali",
+              "text": "รถสองแถวคันสีแดงถึงแล้ว",
+              "english": "The red songthaew arrived."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเปิดกระเป๋า",
+              "english": "I opened my bag."
+            },
+            {
+              "speaker": "mali",
+              "text": "เงินของฉันหาย",
+              "english": "My money was gone."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันไม่เจอ",
+              "english": "I could not find it."
+            },
+            {
+              "speaker": "mali",
+              "text": "ผู้หญิงคนหนึ่งทักฉัน",
+              "english": "A woman greeted me."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขายิ้มและช่วยฉัน",
+              "english": "She smiled and helped me."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขามาจากคริสตจักร",
+              "english": "She came from the church."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาช่วยฉันขึ้นรถ",
+              "english": "She helped me get on."
+            },
+            {
+              "speaker": "mali",
+              "text": "เราลงที่โรงพยาบาล",
+              "english": "We got off at the hospital."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันออกจากโรงพยาบาลตอนเย็น",
+              "english": "I left the hospital in the evening."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเข้าคริสตจักรกับเขา",
+              "english": "I went into the church with her."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันร้องเพลงที่โบสถ์",
+              "english": "I sang at the church."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันอธิษฐาน",
+              "english": "I prayed."
+            },
+            {
+              "speaker": "mali",
+              "text": "ชีวิตของฉันใหม่",
+              "english": "My life is new."
+            },
+            {
+              "speaker": "mali",
+              "text": "ใจของฉันสบายมาก",
+              "english": "My heart is at ease."
+            },
+            {
+              "speaker": "mali",
+              "text": "วันนี้ฉันสุขใจ",
+              "english": "Today I am glad at heart."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันชอบโบสถ์",
+              "english": "I like the church."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันสุขใจที่โบสถ์",
+              "english": "I am glad at heart at the church."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันทำงานที่โรงพยาบาลเพราะฉันอยากช่วยคน",
+              "english": "I work at the hospital because I want to help people."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันอยากช่วยคนที่ป่วย",
+              "english": "I want to help people who are ill."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขอบคุณพระเจ้า",
+              "english": "Thank God."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "แซม คุณมาโบสถ์ตอนเช้าไหมคะ",
+              "english": "Sam, do you come to church in the morning?"
+            },
+            {
+              "speaker": "sam",
+              "text": "มาครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบคริสตจักรของเราครับ",
+              "english": "I like our church."
+            },
+            {
+              "speaker": "mali",
+              "text": "ใจของคุณดีค่ะ",
+              "english": "You have a kind heart."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันดีใจค่ะ",
+              "english": "I am glad."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมก็ดีใจครับ",
+              "english": "I'm glad too."
+            },
+            {
+              "speaker": "mali",
+              "text": "พรุ่งนี้เรากินข้าวด้วยกันนะคะ",
+              "english": "Let's eat together tomorrow."
+            },
+            {
+              "speaker": "sam",
+              "text": "ได้ครับ ผมไปครับ",
+              "english": "Yes, I'll come."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

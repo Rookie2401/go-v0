@@ -1,0 +1,590 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-12",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "How to make som tam",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-12",
+    "title": "How to make som tam (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: daeng=Auntie Daeng (woman; calls herself ป้า; ค่ะ / คะ), sam=Sam (man; ผม … ครับ). For the reviewer - an everyday recipe given aloud by Auntie Daeng, with subject-less imperatives (\"หั่นมะละกอค่ะ\") and numbered steps; ส้มตำ is read by the adapter as one token (so it is an extra new word); the tastes เปรี้ยว, หวาน, เค็ม, เผ็ด; \"อย่า\" for \"don't\"; please check the order of steps and the amounts as a cook would say them."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "recipe",
+    "som tam",
+    "cooking instructions",
+    "tastes"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "daeng": "Auntie Daeng",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "How to make som tam",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "ป้าครับ ผมอยากทำส้มตำครับ",
+              "english": "Auntie, I want to make som tam."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ได้ค่ะ ส้มตำไม่ยากค่ะ",
+              "english": "Of course. Som tam is not hard."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าสอนแซมค่ะ",
+              "english": "I'll teach you, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ยายของป้าสอนป้า",
+              "english": "My grandmother taught me."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ที่หมู่บ้านป้าทำส้มตำทุกวัน",
+              "english": "In the village I made som tam every day."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "ของที่ต้องมีค่ะ",
+              "english": "What you need."
+            },
+            {
+              "speaker": "daeng",
+              "text": "มีมะละกอหนึ่งลูกค่ะ",
+              "english": "One papaya."
+            },
+            {
+              "speaker": "daeng",
+              "text": "มีมะนาวสองลูกค่ะ",
+              "english": "Two limes."
+            },
+            {
+              "speaker": "daeng",
+              "text": "มีถั่วหนึ่งถุงค่ะ",
+              "english": "One bag of peanuts."
+            },
+            {
+              "speaker": "daeng",
+              "text": "มีพริกค่ะ",
+              "english": "Chillies."
+            },
+            {
+              "speaker": "daeng",
+              "text": "มีน้ำปลาหนึ่งขวดค่ะ",
+              "english": "One bottle of fish sauce."
+            },
+            {
+              "speaker": "daeng",
+              "text": "มีน้ำตาลค่ะ",
+              "english": "Sugar."
+            },
+            {
+              "speaker": "daeng",
+              "text": "มีครกและช้อนค่ะ",
+              "english": "A mortar and a spoon."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีเงิน ผมซื้อได้ครับ",
+              "english": "I have money; I can buy them."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "หนึ่ง หั่นมะละกอค่ะ",
+              "english": "One: cut the papaya."
+            },
+            {
+              "speaker": "sam",
+              "text": "หั่นนิดหน่อยไหมครับ",
+              "english": "A little?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ไม่ยากค่ะ",
+              "english": "It's not hard."
+            },
+            {
+              "speaker": "daeng",
+              "text": "สอง เอาพริกลงในครกค่ะ",
+              "english": "Two: put the chillies in the mortar."
+            },
+            {
+              "speaker": "daeng",
+              "text": "สาม ใส่ถั่วค่ะ",
+              "english": "Three: add the peanuts."
+            },
+            {
+              "speaker": "daeng",
+              "text": "สี่ ใส่มะละกอค่ะ",
+              "english": "Four: add the papaya."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ห้า ตำในครกค่ะ",
+              "english": "Five: pound it in the mortar."
+            },
+            {
+              "speaker": "daeng",
+              "text": "อย่าตำเร็วค่ะ",
+              "english": "Don't pound fast."
+            },
+            {
+              "speaker": "daeng",
+              "text": "หก ใส่น้ำตาลหนึ่งช้อนค่ะ",
+              "english": "Six: add a spoon of sugar."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เจ็ด เอาน้ำปลาสองช้อนลงค่ะ",
+              "english": "Seven: put in two spoons of fish sauce."
+            },
+            {
+              "speaker": "daeng",
+              "text": "แปด เอามะนาวลงไปค่ะ",
+              "english": "Eight: put in the lime."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ชิมก่อนค่ะ",
+              "english": "Taste it first."
+            },
+            {
+              "speaker": "sam",
+              "text": "เปรี้ยวครับ",
+              "english": "It's sour."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ถ้าเปรี้ยวมาก ก็เอาน้ำตาลลงค่ะ",
+              "english": "If it's very sour, add some sugar."
+            },
+            {
+              "speaker": "sam",
+              "text": "หวานแล้วครับ",
+              "english": "It's sweet now."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ชิมอีกค่ะ",
+              "english": "Taste again."
+            },
+            {
+              "speaker": "sam",
+              "text": "เค็มครับ",
+              "english": "It's salty."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ถ้าเค็ม ก็เอามะนาวลงค่ะ",
+              "english": "If it's salty, add lime."
+            },
+            {
+              "speaker": "sam",
+              "text": "เผ็ดมากครับ",
+              "english": "It's very spicy."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบหวานครับ",
+              "english": "I like it sweet."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบถั่วครับ",
+              "english": "I like peanuts."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมหั่นแล้วครับ",
+              "english": "I have cut it."
+            },
+            {
+              "speaker": "daeng",
+              "text": "พริกมากไปค่ะ",
+              "english": "There is too much chilli."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ชิมหนึ่งคำค่ะ",
+              "english": "Take one taste."
+            },
+            {
+              "speaker": "sam",
+              "text": "อร่อยครับ",
+              "english": "Delicious."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบเปรี้ยว หวาน เค็ม เผ็ดครับ",
+              "english": "I like it sour, sweet, salty and spicy."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ของแซมดีค่ะ",
+              "english": "Sam's is good."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ราคาสามสิบบาทค่ะ",
+              "english": "It's thirty baht."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "ซื้อน้ำปลาสองขวดค่ะ",
+              "english": "Buy two bottles of fish sauce."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขวดอยู่บนโต๊ะค่ะ",
+              "english": "The bottle is on the table."
+            },
+            {
+              "speaker": "daeng",
+              "text": "หม้อข้าวอยู่ที่ครัวค่ะ",
+              "english": "The rice pot is in the kitchen."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ข้าวอยู่ในหม้อค่ะ",
+              "english": "The rice is in the pot."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ล้างหม้อก่อนค่ะ",
+              "english": "Wash the pot first."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ล้างมือก่อนกินข้าวค่ะ",
+              "english": "Wash your hands before eating."
+            },
+            {
+              "speaker": "daeng",
+              "text": "อย่าเอามือใกล้ตาค่ะ",
+              "english": "Don't put your hands near your eyes."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เผ็ดมากค่ะ",
+              "english": "It is very hot."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ปากเผ็ดไหมคะ",
+              "english": "Is your mouth burning?"
+            },
+            {
+              "speaker": "sam",
+              "text": "เผ็ดนิดหน่อยครับ",
+              "english": "A little."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ดื่มน้ำค่ะ",
+              "english": "Drink some water."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ทำผิดไม่ได้ค่ะ",
+              "english": "You must not get it wrong."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เป็นของขวัญได้ค่ะ",
+              "english": "It can be a gift."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อที่ตลาดครับ",
+              "english": "I'll buy it at the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมตำให้เพื่อนครับ",
+              "english": "I'll pound some for friends."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเชื่อว่าเพื่อนชอบครับ",
+              "english": "I believe my friends will like it."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ที่ไร่ของยายมีต้นไม้และผลไม้ค่ะ",
+              "english": "On Grandmother's farm there are trees and fruit."
+            },
+            {
+              "speaker": "daeng",
+              "text": "นกชอบผลไม้ค่ะ",
+              "english": "Birds like fruit."
+            },
+            {
+              "speaker": "daeng",
+              "text": "หมาและแมวไม่กินเผ็ดค่ะ",
+              "english": "Dogs and cats don't eat spicy food."
+            },
+            {
+              "speaker": "sam",
+              "text": "ราคาที่ตลาดเท่าไรครับ",
+              "english": "How much is it at the market?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "สามลูกห้าบาทค่ะ",
+              "english": "Three limes for five baht."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไม่แพงครับ",
+              "english": "That's not expensive."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ราคาถูกค่ะ",
+              "english": "The price is cheap."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อสิบลูกครับ",
+              "english": "I'll buy ten."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้ามีเงินค่ะ ป้าซื้อให้ค่ะ",
+              "english": "I have money; I'll buy them for you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณมากครับป้า",
+              "english": "Thank you very much, Auntie."
+            },
+            {
+              "speaker": "daeng",
+              "text": "วันอาทิตย์เรากินข้าวที่ร้านค่ะ",
+              "english": "On Sunday we'll eat at the shop."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ต้นกับมะลิมาด้วยค่ะ",
+              "english": "Ton and Mali are coming too."
+            },
+            {
+              "speaker": "sam",
+              "text": "บอลก็มาด้วยครับ",
+              "english": "Ball is coming too."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เด็กชอบเผ็ดไหมคะ",
+              "english": "Does the child like spicy food?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ไม่ชอบครับ",
+              "english": "No."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ถ้าไม่ชอบ ก็ทำไม่เผ็ดค่ะ",
+              "english": "If he does not like it, we make it not spicy."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปตลาดกับป้าครับ",
+              "english": "I'll go to the market with Auntie."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมขอดูรูปของป้าได้ไหมครับ",
+              "english": "May I see your pictures?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ได้ค่ะ ป้ามีรูปที่ร้าน",
+              "english": "Yes, I have a picture at the shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบร้านของป้าครับ",
+              "english": "I like your shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่ร้านมีขนม มีกาแฟ มีชาครับ",
+              "english": "At the shop there are sweets, coffee and tea."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ที่ร้านมีเก้าอี้ใต้หน้าต่างค่ะ",
+              "english": "At the shop there are chairs under the window."
+            },
+            {
+              "speaker": "daeng",
+              "text": "นั่งสบายค่ะ",
+              "english": "It's comfortable to sit."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเหนื่อยนิดหน่อยครับ",
+              "english": "I'm a little tired."
+            },
+            {
+              "speaker": "daeng",
+              "text": "นั่งพักก่อนค่ะ",
+              "english": "Sit and rest first."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมนั่งแล้วครับ",
+              "english": "I'm sitting."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ดื่มชาไหมคะ",
+              "english": "Would you like tea?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ดื่มครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ล้างมือวันละสองครั้งค่ะ",
+              "english": "Wash your hands twice a day."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ยายอาบน้ำที่แม่น้ำค่ะ",
+              "english": "Grandmother bathed at the river."
+            },
+            {
+              "speaker": "daeng",
+              "text": "คนที่วัดทำบุญและไหว้พระค่ะ",
+              "english": "People at the temple make merit and wai."
+            },
+            {
+              "speaker": "sam",
+              "text": "หมอตรวจคนไข้ที่คลินิกครับ",
+              "english": "The doctor examines patients at the clinic."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่ชอบฉีดยาครับ",
+              "english": "I don't like injections."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ตาของป้าเจ็บค่ะ",
+              "english": "My eyes hurt."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าอธิบายให้แซมฟังค่ะ",
+              "english": "I explained it to Sam."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ผักและผลไม้ดีกับสุขภาพค่ะ",
+              "english": "Vegetables and fruit are good for your health."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าชิมจนอิ่มค่ะ",
+              "english": "I tasted until I was full."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เมื่อป้าเหนื่อย ป้าก็พักค่ะ",
+              "english": "When I'm tired, I rest."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าทำชาค่ะ",
+              "english": "I will make tea."
+            },
+            {
+              "speaker": "sam",
+              "text": "ชาของป้าอร่อยเสมอครับ",
+              "english": "Your tea is always delicious."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขอบคุณค่ะ แซม",
+              "english": "Thank you, Sam."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

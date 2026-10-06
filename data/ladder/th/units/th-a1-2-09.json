@@ -1,0 +1,548 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-2-09",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "At the clinic",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-2-09",
+    "title": "At the clinic (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: daeng=Auntie Daeng (woman; calls herself ป้า; ค่ะ / คะ), mali=Mali (woman, a nurse; ฉัน … ค่ะ / คะ), doctor=The doctor (man; ผม … ครับ), sam=Sam (man; ผม … ครับ). For the reviewer - a doctor's visit in everyday Thai: ตรวจ, แพ้ยา, \"กินยาวันละสามครั้ง\" (the plan wanted วันละ; ละ is a new token here), \"ถ้า … ก็ …\" (if … then …), ห้าม / อย่า for warnings; the doctor says ผม … ครับ and calls patients คุณ or ป้า; check how a Chiang Mai doctor would address an older woman."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "clinic",
+    "doctor's visit",
+    "medicine",
+    "instructions",
+    "warnings"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "daeng": "Auntie Daeng",
+    "mali": "Mali",
+    "doctor": "The doctor",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "At the clinic",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "ป้าไอมากค่ะ",
+              "english": "Auntie coughs a lot."
+            },
+            {
+              "speaker": "mali",
+              "text": "วันนี้เราไปคลินิกค่ะ",
+              "english": "Today we are going to the clinic."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปด้วยครับ",
+              "english": "I'll come too."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขอบคุณค่ะ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "คลินิกอยู่ไกลไหมครับ",
+              "english": "Is the clinic far?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ไม่ไกลค่ะ",
+              "english": "Not far."
+            },
+            {
+              "speaker": "mali",
+              "text": "คลินิกอยู่ใกล้ตลาดค่ะ",
+              "english": "The clinic is near the market."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเหนื่อยค่ะ",
+              "english": "I'm tired."
+            },
+            {
+              "speaker": "mali",
+              "text": "นั่งที่เก้าอี้ค่ะ",
+              "english": "Sit on the chair."
+            },
+            {
+              "speaker": "mali",
+              "text": "รถผ่านตลาดค่ะ",
+              "english": "The songthaew passes the market."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "สวัสดีค่ะ คุณหมอ",
+              "english": "Hello, doctor."
+            },
+            {
+              "speaker": "doctor",
+              "text": "สวัสดีครับ",
+              "english": "Hello."
+            },
+            {
+              "speaker": "doctor",
+              "text": "คนไข้ชื่ออะไรครับ",
+              "english": "What is the patient's name?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าชื่อแดงค่ะ",
+              "english": "My name is Daeng."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ป้าเป็นอะไรครับ",
+              "english": "What is wrong?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าไอและปวดหัวค่ะ",
+              "english": "I cough and have a headache."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเจ็บคอด้วยค่ะ",
+              "english": "I have a sore throat too."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าปวดมือค่ะ",
+              "english": "My hand hurts."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมขอตรวจป้าหน่อยครับ",
+              "english": "Let me examine you."
+            },
+            {
+              "speaker": "doctor",
+              "text": "เปิดปากครับ",
+              "english": "Open your mouth."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมดูคอครับ",
+              "english": "I am looking at your throat."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมตรวจหูครับ",
+              "english": "I'm checking your ears."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ป้าปวดหูไหมครับ",
+              "english": "Do your ears hurt?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ไม่ปวดหูค่ะ",
+              "english": "No."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมตรวจตาครับ",
+              "english": "I'm checking your eyes."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ตาป้าดีไหมครับ",
+              "english": "Are your eyes all right?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ตาดีค่ะ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมดูปากครับ",
+              "english": "I am looking at your mouth."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ป้ามีไข้ครับ",
+              "english": "You have a fever."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ปากของป้าดีครับ",
+              "english": "Your mouth is fine."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "doctor",
+              "text": "ป้าแพ้ยาไหมครับ",
+              "english": "Are you allergic to any medicine?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าไม่แพ้ค่ะ",
+              "english": "No."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ลูกของป้าแพ้ยาค่ะ",
+              "english": "My child is allergic to medicine."
+            },
+            {
+              "speaker": "doctor",
+              "text": "คนไข้บางคนต้องฉีดยาครับ",
+              "english": "Some patients have to have an injection."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ป้าไม่ต้องฉีดยาครับ",
+              "english": "You don't need one."
+            },
+            {
+              "speaker": "doctor",
+              "text": "คนไข้หลายคนไอครับ",
+              "english": "Many patients cough."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมไม่ฉีดยาให้ป้าครับ",
+              "english": "I won't give you an injection."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมให้ยากินครับ",
+              "english": "I'll give you medicine to take."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ป้ากินยาวันละสามครั้งครับ",
+              "english": "Take the medicine three times a day."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ตอนเช้า ตอนบ่าย ตอนเย็นครับ",
+              "english": "Morning, afternoon and evening."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมขออธิบายครับ",
+              "english": "Let me explain."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมอธิบายให้ป้าฟังครับ",
+              "english": "I will explain to you."
+            },
+            {
+              "speaker": "doctor",
+              "text": "กินยาหลังกินข้าวครับ",
+              "english": "Take it after meals."
+            },
+            {
+              "speaker": "doctor",
+              "text": "อย่ากินก่อนกินข้าวครับ",
+              "english": "Don't take it before meals."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันอธิบายให้ป้าอีกค่ะ",
+              "english": "I will explain to Auntie again."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมช่วยป้าจำครับ",
+              "english": "I'll help Auntie remember."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าลืมยาบ่อยค่ะ",
+              "english": "I often forget medicine."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ป้าพยายามกินนะครับ",
+              "english": "Please try to take it."
+            },
+            {
+              "speaker": "doctor",
+              "text": "เริ่มกินวันนี้ครับ",
+              "english": "Start today."
+            },
+            {
+              "speaker": "doctor",
+              "text": "กินยาให้จบนะครับ",
+              "english": "Finish all of it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "doctor",
+              "text": "ถ้าป้ายังไอ ก็มาอีกครับ",
+              "english": "If you still cough, come again."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ถ้าเป็นไข้มาก ก็โทรหาผมครับ",
+              "english": "If the fever is high, phone me."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ยาอีกอันกินวันละสองครั้งครับ",
+              "english": "The other medicine is taken twice a day."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ถ้าป้าพัก ก็หายเร็วครับ",
+              "english": "If you rest, you will get well fast."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมแนะนำให้ป้าพักครับ",
+              "english": "I advise you to rest."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมแนะนำให้ป้านอนครับ",
+              "english": "I advise you to lie down."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมแนะนำให้ป้าดื่มน้ำครับ",
+              "english": "I advise you to drink water."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ล้างมือก่อนกินข้าวด้วยครับ",
+              "english": "Wash your hands before eating too."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ล้างมือวันละสามครั้งครับ",
+              "english": "Wash your hands three times a day."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมเตือนป้าครับ",
+              "english": "I'm warning you."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ห้ามกินเผ็ดครับ",
+              "english": "No spicy food."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ห้ามดื่มกาแฟครับ",
+              "english": "No coffee."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าชอบกาแฟค่ะ",
+              "english": "I like coffee."
+            },
+            {
+              "speaker": "doctor",
+              "text": "ผมเตือนป้าอีกครับ",
+              "english": "I am warning you again."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเตือนป้าด้วยค่ะ",
+              "english": "I'll remind you too."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ได้ค่ะ ป้าจะกินยา",
+              "english": "All right, I'll take the medicine."
+            },
+            {
+              "speaker": "doctor",
+              "text": "สุขภาพป้าดีครับ",
+              "english": "Your health is good."
+            },
+            {
+              "speaker": "mali",
+              "text": "ป้ามีสุขภาพดีค่ะ",
+              "english": "Auntie is healthy."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากให้ป้าสุขภาพดีครับ",
+              "english": "I want Auntie to be healthy."
+            },
+            {
+              "speaker": "mali",
+              "text": "คืนนี้ป้าหลับสบายค่ะ",
+              "english": "Tonight Auntie will sleep well."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขอบคุณค่ะ คุณหมอ",
+              "english": "Thank you, doctor."
+            },
+            {
+              "speaker": "doctor",
+              "text": "เจอกันครับ",
+              "english": "See you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปซื้อยาที่ร้านครับ",
+              "english": "I'll go and buy the medicine at the shop."
+            },
+            {
+              "speaker": "mali",
+              "text": "ราคาไม่แพงค่ะ",
+              "english": "The price is not high."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้ามีเงินค่ะ",
+              "english": "I have money."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อให้ป้าครับ",
+              "english": "I'll buy it for you."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขอบคุณมากค่ะแซม",
+              "english": "Thank you very much, Sam."
+            },
+            {
+              "speaker": "mali",
+              "text": "เราไปกินข้าวกันไหมคะ",
+              "english": "Shall we go and eat?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าไม่หิวค่ะ",
+              "english": "I'm not hungry."
+            },
+            {
+              "speaker": "mali",
+              "text": "ป้าต้องกินข้าวก่อนกินยาค่ะ",
+              "english": "You have to eat before the medicine."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมสั่งข้าวผัดหมูให้ป้าครับ",
+              "english": "I'll order pork fried rice for you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ความหมายของคำนี้ไม่ยากครับ",
+              "english": "The meaning of this word is not hard."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเคยเจ็บคอครับ",
+              "english": "I have had a sore throat before."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเริ่มไอเมื่อวานค่ะ",
+              "english": "I started coughing yesterday."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเรียนจบแล้วครับ",
+              "english": "I have finished my lessons."
+            },
+            {
+              "speaker": "sam",
+              "text": "ภาษาไทยไม่ง่ายครับ",
+              "english": "Thai is not easy."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าพูดผิดบ่อยค่ะ",
+              "english": "I often say things wrongly."
+            },
+            {
+              "speaker": "mali",
+              "text": "ความหมายไม่ยากค่ะ",
+              "english": "The meaning is not hard."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ไม่เผ็ดนะคะ",
+              "english": "Not spicy, please."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไม่เผ็ดครับ",
+              "english": "Not spicy."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนเย็นฉันมาดูป้าที่บ้านค่ะ",
+              "english": "In the evening I'll come and see Auntie at home."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

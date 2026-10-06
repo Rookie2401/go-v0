@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-11",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Sunday at the church",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-11",
+    "title": "Sunday at the church (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม … ครับ), daeng=Auntie Daeng (woman; calls herself ป้า; ค่ะ / คะ), mali=Mali (woman; ฉัน … ค่ะ / คะ), ton=Ton (man; ผม … ครับ), pastor=The pastor (man; ผม … ครับ). For the reviewer - church vocabulary (คริสตจักร, ศิษยาภิบาล, อธิษฐาน, ร้องเพลง, ขอบคุณพระเจ้า) and the pastor's way of welcoming a newcomer; the pastor is addressed by his title ศิษยาภิบาล; \"ด้วยกัน\" (\"together\"); the Thai church service is described simply and warmly."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "church",
+    "singing",
+    "prayer",
+    "fellowship"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "daeng": "Auntie Daeng",
+    "mali": "Mali",
+    "ton": "Ton",
+    "pastor": "The pastor"
+  },
+  "sections": [
+    {
+      "title": "Sunday at the church",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "วันนี้ป้าไปโบสถ์ค่ะ",
+              "english": "I'm going to church today."
+            },
+            {
+              "speaker": "daeng",
+              "text": "คริสตจักรของป้าอยู่ที่ถนนค่ะ",
+              "english": "My church is on the road."
+            },
+            {
+              "speaker": "daeng",
+              "text": "คุณอยากไปด้วยไหมคะ",
+              "english": "Would you like to come too?"
+            },
+            {
+              "speaker": "sam",
+              "text": "อยากไปครับ",
+              "english": "Yes, I'd like to."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไปครับ ผมไปครับ",
+              "english": "Yes, I'll go."
+            },
+            {
+              "speaker": "daeng",
+              "text": "คุณตื่นกี่โมงคะ",
+              "english": "What time do you get up?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมตื่นหกโมงเช้าครับ",
+              "english": "I get up at six."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ไปกันค่ะ",
+              "english": "Let's go."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "สวัสดีค่ะ แซม",
+              "english": "Hello, Sam."
+            },
+            {
+              "speaker": "ton",
+              "text": "สวัสดีครับ แซม",
+              "english": "Hello, Sam."
+            },
+            {
+              "speaker": "ton",
+              "text": "คุณมากับป้าใช่ไหมครับ",
+              "english": "You came with Auntie, didn't you?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ใช่ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "mali",
+              "text": "วันนี้คุณมาที่โบสถ์ค่ะ",
+              "english": "Today you've come to the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากมาครับ",
+              "english": "I wanted to come."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันก็ชอบมาโบสถ์ค่ะ",
+              "english": "I like coming to church too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "pastor",
+              "text": "สวัสดีครับ คุณแซม",
+              "english": "Hello, Sam."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ผมเป็นศิษยาภิบาลของคริสตจักรนี้ครับ",
+              "english": "I am the pastor of this church."
+            },
+            {
+              "speaker": "sam",
+              "text": "สวัสดีครับ ศิษยาภิบาล",
+              "english": "Hello, pastor."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมาจากอเมริกาครับ",
+              "english": "I come from America."
+            },
+            {
+              "speaker": "pastor",
+              "text": "คุณพูดภาษาไทยได้ดีครับ",
+              "english": "You speak Thai well."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมพูดนิดหน่อยครับ",
+              "english": "I speak a little."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ขอบคุณพระเจ้าครับ ที่คุณมา",
+              "english": "Thank God that you have come."
+            },
+            {
+              "speaker": "pastor",
+              "text": "เรามีเพื่อนจากอเมริกาครับ",
+              "english": "We have a friend from America."
+            },
+            {
+              "speaker": "mali",
+              "text": "ศิษยาภิบาลชอบเด็กค่ะ",
+              "english": "The pastor likes children."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "pastor",
+              "text": "เราร้องเพลงกันครับ",
+              "english": "Let's sing."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันชอบร้องเพลงค่ะ",
+              "english": "I like singing."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมชอบเพลงนี้ครับ",
+              "english": "I like this song."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมร้องได้นิดหน่อยครับ",
+              "english": "I can sing a little."
+            },
+            {
+              "speaker": "pastor",
+              "text": "เราอธิษฐานกันครับ",
+              "english": "Let's pray."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมอธิษฐานตอนเช้าครับ",
+              "english": "I pray in the morning."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากอธิษฐานด้วยครับ",
+              "english": "I'd like to pray too."
+            },
+            {
+              "speaker": "pastor",
+              "text": "ขอบคุณพระเจ้าครับ",
+              "english": "Thank God."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขอบคุณพระเจ้าค่ะ",
+              "english": "Thank God."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณพระเจ้าครับ",
+              "english": "Thank God."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ton",
+              "text": "ตอนบ่ายผมสอนเด็กที่โบสถ์ครับ",
+              "english": "In the afternoon I teach the children at the church."
+            },
+            {
+              "speaker": "ton",
+              "text": "นักเรียนของผมมีสิบคนครับ",
+              "english": "I have ten pupils."
+            },
+            {
+              "speaker": "sam",
+              "text": "เด็กชอบยิ้มครับ",
+              "english": "The children like to smile."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้ามีข้าว มีผัก มีปลาค่ะ",
+              "english": "I have rice, vegetables and fish."
+            },
+            {
+              "speaker": "daeng",
+              "text": "เรากินด้วยกันนะคะ",
+              "english": "Let's eat together."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันขอชามกับช้อนค่ะ",
+              "english": "May I have a bowl and a spoon?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอิ่มแล้วครับ",
+              "english": "I'm full."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าซื้อมะม่วงกับกล้วยที่ตลาดค่ะ",
+              "english": "I bought mangoes and bananas at the market."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ราคาไม่แพงค่ะ ถูกมากค่ะ",
+              "english": "The price wasn't high; it was very cheap."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ร้านลดให้ค่ะ",
+              "english": "The shop gave a discount."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีเงินครับ",
+              "english": "I have money."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อผลไม้ให้ป้าครับ",
+              "english": "I'll buy fruit for you."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "คุณมีเวลาตอนบ่ายไหมคะ",
+              "english": "Do you have time this afternoon?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีเวลาครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมกลับบ้านตอนเย็นครับ",
+              "english": "I go home in the evening."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีเพื่อนที่โบสถ์แล้วครับ",
+              "english": "I have friends at church now."
+            },
+            {
+              "speaker": "daeng",
+              "text": "คุณพูดภาษาไทยดีค่ะ",
+              "english": "You speak Thai well."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ ผมชอบคริสตจักรของเราครับ",
+              "english": "Thank you. I like our church."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันกลับบ้านตอนเย็นค่ะ",
+              "english": "I go home in the evening."
+            },
+            {
+              "speaker": "ton",
+              "text": "พรุ่งนี้ผมไปโรงเรียนครับ",
+              "english": "Tomorrow I go to the school."
+            },
+            {
+              "speaker": "daeng",
+              "text": "พรุ่งนี้ป้าขายขนมที่ตลาดค่ะ",
+              "english": "Tomorrow I sell sweets at the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "พรุ่งนี้ผมช่วยป้าที่ร้านครับ",
+              "english": "Tomorrow I'll help you at the shop."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขอบคุณค่ะ แซม",
+              "english": "Thank you, Sam."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

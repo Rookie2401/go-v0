@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-10",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "By songthaew to the Sunday market",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-10",
+    "title": "By songthaew to the Sunday market (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: sam=Sam (man; ผม … ครับ), mali=Mali (woman; ฉัน … ค่ะ / คะ), driver=The songthaew driver (man; ผม … ครับ). For the reviewer - รถสองแถว (the red songthaew) and คัน as its classifier; the driver is addressed as พี่; \"ขึ้น\" / \"ลง\" / \"เข้า\" / \"ออก\" as the verbs of getting on, off, in and out; \"ไม่ไกล / ใกล้\" for distance; the fare in baht."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "songthaew",
+    "travel",
+    "near and far",
+    "the market"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "mali": "Mali",
+    "driver": "The songthaew driver"
+  },
+  "sections": [
+    {
+      "title": "By songthaew to the Sunday market",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "วันนี้เราจะไปตลาดค่ะ",
+              "english": "Today we'll go to the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตลาดอยู่ไกลไหมครับ",
+              "english": "Is the market far?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ไม่ไกลค่ะ",
+              "english": "Not far."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตลาดอยู่ใกล้ถนนค่ะ",
+              "english": "The market is near the road."
+            },
+            {
+              "speaker": "mali",
+              "text": "เรารอรถสองแถวค่ะ",
+              "english": "We'll wait for the songthaew."
+            },
+            {
+              "speaker": "sam",
+              "text": "รถสองแถวสีอะไรครับ",
+              "english": "What colour is the songthaew?"
+            },
+            {
+              "speaker": "mali",
+              "text": "สีแดงค่ะ",
+              "english": "Red."
+            },
+            {
+              "speaker": "mali",
+              "text": "คันนั้นค่ะ",
+              "english": "That one."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเห็นครับ",
+              "english": "I can see it."
+            },
+            {
+              "speaker": "mali",
+              "text": "ต้องรอนิดหน่อยนะคะ",
+              "english": "We have to wait a little."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมรอได้ครับ",
+              "english": "I can wait."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขึ้นค่ะ",
+              "english": "Get on."
+            },
+            {
+              "speaker": "driver",
+              "text": "สวัสดีครับ ขึ้นครับ",
+              "english": "Hello. Get on."
+            },
+            {
+              "speaker": "mali",
+              "text": "สวัสดีค่ะพี่",
+              "english": "Hello."
+            },
+            {
+              "speaker": "driver",
+              "text": "คันนี้ไปตลาดครับ",
+              "english": "This one goes to the market."
+            },
+            {
+              "speaker": "driver",
+              "text": "จะไปที่ไหนครับ",
+              "english": "Where are you going?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ไปตลาดค่ะ",
+              "english": "To the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมต้องลงที่ไหนครับ",
+              "english": "Where must I get off?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ลงที่ตลาดค่ะ",
+              "english": "At the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "ถึงตลาดกี่โมงครับ",
+              "english": "What time will we reach the market?"
+            },
+            {
+              "speaker": "driver",
+              "text": "จะถึงแปดโมงครับ",
+              "english": "We'll arrive at eight."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "mali",
+              "text": "คันนี้มีคนมากค่ะ",
+              "english": "This one has a lot of people."
+            },
+            {
+              "speaker": "sam",
+              "text": "ใช่ครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "driver",
+              "text": "รถสองแถวออกแล้วครับ",
+              "english": "The songthaew is off."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมขึ้นแล้วครับ",
+              "english": "I'm on."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตลาดอยู่ใกล้ไหมครับ",
+              "english": "Is the market near?"
+            },
+            {
+              "speaker": "driver",
+              "text": "ใกล้แล้วครับ",
+              "english": "Nearly there."
+            },
+            {
+              "speaker": "sam",
+              "text": "บ้านป้าอยู่ไกลไหมครับ",
+              "english": "Is Auntie's house far?"
+            },
+            {
+              "speaker": "mali",
+              "text": "อยู่ที่ซอยค่ะ",
+              "english": "It's in the soi."
+            },
+            {
+              "speaker": "mali",
+              "text": "ถึงตลาดแล้วค่ะ",
+              "english": "We have reached the market."
+            },
+            {
+              "speaker": "mali",
+              "text": "ต้องลงแล้วค่ะ",
+              "english": "We must get off now."
+            },
+            {
+              "speaker": "driver",
+              "text": "ราคาสิบบาทครับ",
+              "english": "The fare is ten baht."
+            },
+            {
+              "speaker": "sam",
+              "text": "ไม่แพงครับ",
+              "english": "That isn't expensive."
+            },
+            {
+              "speaker": "mali",
+              "text": "ขอบคุณค่ะพี่",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "driver",
+              "text": "ขอบคุณครับ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "mali",
+              "text": "เข้าตลาดกันค่ะ",
+              "english": "Let's go into the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่ตลาดมีร้านข้าวผัดไหมครับ",
+              "english": "Is there a fried rice shop at the market?"
+            },
+            {
+              "speaker": "mali",
+              "text": "มีค่ะ ร้านนั้นมีข้าวผัดหมู ข้าวผัดไก่ค่ะ",
+              "english": "Yes, that shop has pork and chicken fried rice."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากสั่งปลาครับ",
+              "english": "I'd like to order fish."
+            },
+            {
+              "speaker": "mali",
+              "text": "ปลาเผ็ดนะคะ",
+              "english": "The fish is spicy."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบเผ็ดครับ",
+              "english": "I like spicy food."
+            },
+            {
+              "speaker": "mali",
+              "text": "เราเข้าร้านนั้นกันค่ะ",
+              "english": "Let's go into that shop."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่ร้านมีไข่ มีจาน มีช้อนค่ะ",
+              "english": "At the shop there are eggs, plates and spoons."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่ตลาดมีผลไม้ไหมครับ",
+              "english": "Is there fruit at the market?"
+            },
+            {
+              "speaker": "mali",
+              "text": "มีค่ะ มีส้ม ราคาถูกค่ะ",
+              "english": "Yes, there are oranges, and the price is cheap."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนบ่ายเราออกจากตลาดค่ะ",
+              "english": "In the afternoon we leave the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "ตอนเย็นเรามีเวลาไหมครับ",
+              "english": "Will we have time in the evening?"
+            },
+            {
+              "speaker": "mali",
+              "text": "มีค่ะ เรากลับบ้านตอนเย็นค่ะ",
+              "english": "Yes. We go home in the evening."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมอยากซื้อขนมให้ป้าครับ",
+              "english": "I'd like to buy sweets for Auntie."
+            },
+            {
+              "speaker": "mali",
+              "text": "ป้าชอบขนมสีขาวค่ะ",
+              "english": "Auntie likes the white sweets."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมซื้อสองจานครับ",
+              "english": "I'll buy two plates."
+            },
+            {
+              "speaker": "sam",
+              "text": "ข้าวผัดหมูอร่อยมากครับ",
+              "english": "The pork fried rice is very tasty."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันอิ่มแล้วค่ะ",
+              "english": "I'm full."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมก็อิ่มแล้วครับ",
+              "english": "I'm full too."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันเหนื่อยนิดหน่อยค่ะ",
+              "english": "I'm a little tired."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบตลาดครับ",
+              "english": "I like the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "ที่เชียงใหม่มีตลาดมากครับ",
+              "english": "In Chiang Mai there are many markets."
+            },
+            {
+              "speaker": "mali",
+              "text": "พรุ่งนี้พี่ต้นไปโรงเรียนค่ะ",
+              "english": "Tomorrow Ton goes to the school."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันทำงานที่โรงพยาบาลค่ะ",
+              "english": "I work at the hospital."
+            },
+            {
+              "speaker": "mali",
+              "text": "เราเข้าร้านขายผลไม้กันค่ะ",
+              "english": "Let's go into the fruit shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไม่อยากออกจากตลาดครับ",
+              "english": "I don't want to leave the market."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันก็ชอบตลาดค่ะ",
+              "english": "I like the market too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมไปโบสถ์ครับ",
+              "english": "I go to church."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันก็ไปค่ะ",
+              "english": "I'm going too."
+            },
+            {
+              "speaker": "mali",
+              "text": "พรุ่งนี้ฉันไปโรงพยาบาลค่ะ",
+              "english": "Tomorrow I go to the hospital."
+            },
+            {
+              "speaker": "sam",
+              "text": "พรุ่งนี้ผมไปโรงเรียนครับ",
+              "english": "Tomorrow I go to the school."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

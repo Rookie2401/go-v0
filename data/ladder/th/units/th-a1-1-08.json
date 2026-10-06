@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a1-1-08",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "Who works where",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a1-1-08",
+    "title": "Who works where (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native Thai review (preferably a Chiang Mai speaker; the text is spoken-standard Central Thai). Speakers: daeng=Auntie Daeng (woman; calls herself ป้า; ค่ะ / คะ), sam=Sam (man; ผม … ครับ), mali=Mali (woman; ฉัน … ค่ะ / คะ), ton=Ton (man; ผม … ครับ). For the reviewer - เป็น + job; \"ช่วย ... ให้\" and \"ให้\" with a person; เขา (he / she) and เรา (we) first appear here; ทำ in \"ทำอะไร\" and \"ทำขนม\"; Mali calls Ton พี่ต้น."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "jobs",
+    "work",
+    "helping",
+    "friends"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "central-thai",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "daeng": "Auntie Daeng",
+    "sam": "Sam",
+    "mali": "Mali",
+    "ton": "Ton"
+  },
+  "sections": [
+    {
+      "title": "Who works where",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "daeng",
+              "text": "วันนี้คุณทำอะไรคะ แซม",
+              "english": "What are you doing today, Sam?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมเรียนภาษาไทยครับ",
+              "english": "I'm studying Thai."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมช่วยป้าที่ร้านครับ",
+              "english": "I help you at the shop."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขอบคุณค่ะ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าทำขนมกล้วยค่ะ",
+              "english": "I make banana sweets."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าขายขนมให้เด็กค่ะ",
+              "english": "I sell sweets to the children."
+            },
+            {
+              "speaker": "sam",
+              "text": "เด็กชอบขนมไหมครับ",
+              "english": "Do the children like sweets?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ชอบมากค่ะ",
+              "english": "Very much."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "mali",
+              "text": "สวัสดีค่ะ ป้า สวัสดีค่ะ แซม",
+              "english": "Hello, Auntie. Hello, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "สวัสดีครับ",
+              "english": "Hello."
+            },
+            {
+              "speaker": "sam",
+              "text": "คุณมะลิเป็นหมอไหมครับ",
+              "english": "Mali, are you a doctor?"
+            },
+            {
+              "speaker": "mali",
+              "text": "ไม่ใช่ค่ะ ฉันเป็นพยาบาลค่ะ",
+              "english": "No, I'm a nurse."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันทำงานที่โรงพยาบาลค่ะ",
+              "english": "I work at the hospital."
+            },
+            {
+              "speaker": "sam",
+              "text": "งานของพยาบาลเหนื่อยไหมครับ",
+              "english": "Is a nurse's work tiring?"
+            },
+            {
+              "speaker": "mali",
+              "text": "เหนื่อยค่ะ แต่ฉันชอบงานของฉันค่ะ",
+              "english": "Yes, but I like my work."
+            },
+            {
+              "speaker": "mali",
+              "text": "พยาบาลช่วยหมอค่ะ",
+              "english": "Nurses help the doctors."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่โรงพยาบาลมีห้องมีเตียงค่ะ",
+              "english": "At the hospital there are rooms and beds."
+            },
+            {
+              "speaker": "mali",
+              "text": "ในห้องมีเก้าอี้ ประตู และหน้าต่างค่ะ",
+              "english": "In the room there are chairs, a door and windows."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "คุณต้นทำอะไรครับ",
+              "english": "Ton, what do you do?"
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมเป็นครูครับ",
+              "english": "I'm a teacher."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมสอนนักเรียนที่โรงเรียนครับ",
+              "english": "I teach pupils at the school."
+            },
+            {
+              "speaker": "sam",
+              "text": "นักเรียนของคุณสบายดีไหมครับ",
+              "english": "Are your pupils well?"
+            },
+            {
+              "speaker": "ton",
+              "text": "สบายดีครับ",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ton",
+              "text": "นักเรียนชอบเรียนภาษาไทยครับ",
+              "english": "The pupils like learning Thai."
+            },
+            {
+              "speaker": "ton",
+              "text": "ตอนเช้าเด็กไปโรงเรียนครับ",
+              "english": "In the morning the children go to school."
+            },
+            {
+              "speaker": "ton",
+              "text": "สี่โมงเย็นผมกลับบ้านครับ",
+              "english": "At four in the evening I go home."
+            },
+            {
+              "speaker": "ton",
+              "text": "ผมสอนภาษาไทยให้แซมครับ",
+              "english": "I teach Thai to Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบครับ",
+              "english": "I like it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "พ่อของคุณเป็นครูไหมครับ",
+              "english": "Is your father a teacher?"
+            },
+            {
+              "speaker": "ton",
+              "text": "เป็นครับ เขาเป็นครูครับ",
+              "english": "Yes, he is a teacher."
+            },
+            {
+              "speaker": "ton",
+              "text": "แม่ก็เป็นครูครับ",
+              "english": "My mother is a teacher too."
+            },
+            {
+              "speaker": "mali",
+              "text": "พี่ต้นเป็นครูค่ะ",
+              "english": "Ton is a teacher."
+            },
+            {
+              "speaker": "mali",
+              "text": "น้องของฉันเรียนที่โรงเรียนค่ะ",
+              "english": "My little sister studies at a school."
+            },
+            {
+              "speaker": "sam",
+              "text": "ครอบครัวของคุณดีมากครับ",
+              "english": "You have a lovely family."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมชอบงานของคุณครับ",
+              "english": "I like your work."
+            },
+            {
+              "speaker": "ton",
+              "text": "เราเป็นเพื่อนกันครับ",
+              "english": "We are friends."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ป้าเป็นเพื่อนของคุณค่ะ",
+              "english": "I am your friend too."
+            },
+            {
+              "speaker": "sam",
+              "text": "ขอบคุณครับป้า",
+              "english": "Thank you, Auntie."
+            },
+            {
+              "speaker": "mali",
+              "text": "เขาชอบเรียนภาษาไทยค่ะ",
+              "english": "He likes learning Thai."
+            },
+            {
+              "speaker": "ton",
+              "text": "เขาพูดภาษาไทยดีครับ",
+              "english": "He speaks Thai well."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมช่วยซื้อกาแฟให้ป้าครับ",
+              "english": "I'll help by buying coffee for you."
+            },
+            {
+              "speaker": "daeng",
+              "text": "ขอบคุณค่ะ",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีเพื่อนที่เชียงใหม่ครับ",
+              "english": "I have friends in Chiang Mai."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนเช้าฉันไปโรงพยาบาลหกโมงค่ะ",
+              "english": "In the morning I go to the hospital at six."
+            },
+            {
+              "speaker": "mali",
+              "text": "ที่โรงพยาบาลมีหมอสามคนค่ะ",
+              "english": "At the hospital there are three doctors."
+            },
+            {
+              "speaker": "mali",
+              "text": "ตอนเย็นฉันกลับบ้านค่ะ",
+              "english": "In the evening I go home."
+            },
+            {
+              "speaker": "mali",
+              "text": "ฉันกินข้าวที่บ้านกับพ่อและแม่ค่ะ",
+              "english": "I eat at home with my father and mother."
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมกินข้าวที่ร้านป้าครับ",
+              "english": "I eat at Auntie's shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "ครอบครัวของผมอยู่ที่อเมริกาครับ",
+              "english": "My family is in America."
+            },
+            {
+              "speaker": "ton",
+              "text": "ลูกของผมสิบปีครับ",
+              "english": "My child is ten."
+            },
+            {
+              "speaker": "ton",
+              "text": "พี่น้องของคุณมีกี่คนครับ",
+              "english": "How many brothers and sisters do you have?"
+            },
+            {
+              "speaker": "sam",
+              "text": "ผมมีน้องหนึ่งคนครับ",
+              "english": "I have one younger sibling."
+            },
+            {
+              "speaker": "sam",
+              "text": "เรากินข้าวกันไหมครับ",
+              "english": "Shall we eat together?"
+            },
+            {
+              "speaker": "daeng",
+              "text": "ที่ร้านของเรามีข้าวผัดค่ะ",
+              "english": "At our shop there is fried rice."
+            },
+            {
+              "speaker": "ton",
+              "text": "ไปกันครับ",
+              "english": "Let's go."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

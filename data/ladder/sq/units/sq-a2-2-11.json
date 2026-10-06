@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-11",
+  "lang": "sq",
+  "title": "Lutje dhe urime",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-11",
+    "title": "Albanian ladder, a2-2: Lutje dhe urime (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Church unit: a prayer meeting, in the course's own words, NO Scripture quotation. Needs theological review (wording about disciples, apostles, prophets, miracle, repentance, obedience, paradise, angels, sin; the order of the prayer; the optative wishes \"Zoti u bekoftë\", \"Qofsh i bekuar\", \"Zoti e ruajtë\"; the short first prayer of Sam). Check also the Mother Teresa lines against unit 10."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-theological-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Lutje dhe urime",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të mërkurën në mbrëmje në kishë kishte shumë njerëz.",
+              "english": "On Wednesday evening there were many people in the church."
+            },
+            {
+              "text": "Ishte takimi i lutjes, dhe pastori Pjetër qëndronte para tavolinës me një libër të vogël në dorë.",
+              "english": "It was the prayer meeting, and Pastor Pjetër stood in front of the table with a small book in his hand."
+            },
+            {
+              "text": "Sami u ul pranë gjyshes Drita, sepse ajo i kishte thënë: — Këtë mbrëmje do të mësosh fjalë të reja.",
+              "english": "Sam sat next to grandmother Drita, because she had said to him: \"This evening you will learn new words.\""
+            },
+            {
+              "text": "Mira ishte pak më larg, me një kapelë të vogël dhe me një fytyrë të lodhur.",
+              "english": "Mira was a little further away, with a small hat and a tired face."
+            },
+            {
+              "text": "Pastori Pjetër buzëqeshi.",
+              "english": "Pastor Pjetër smiled."
+            },
+            {
+              "text": "— Përshëndetje, motra dhe vëllezër, — tha ai.",
+              "english": "\"Hello, sisters and brothers,\" he said."
+            },
+            {
+              "text": "— Zoti ju bekoftë!",
+              "english": "\"May the Lord bless you all!\""
+            },
+            {
+              "text": "Të gjithë iu përgjigjën: — Qofsh i bekuar, pastor!",
+              "english": "Everyone answered: \"May you be blessed, pastor!\""
+            },
+            {
+              "text": "Sami e dëgjoi me kujdes. Ai e lavdëroi në zemër Perëndinë. Në kishë ishin edhe disa vizitorë amerikanë, italianë dhe një serb, dhe Sami e pa një formë të re të dashurisë.",
+              "english": "Sam listened carefully. He praised God in his heart. In the church there were also some American and Italian visitors and a Serb, and Sam saw a new form of love."
+            },
+            {
+              "text": "— Çfarë do të thotë «qofsh i bekuar»? — e pyeti ai Dritën me zë të ulët.",
+              "english": "\"What does 'qofsh i bekuar' mean?\" he asked Drita in a low voice."
+            },
+            {
+              "text": "— Është një urim, — tha ajo.",
+              "english": "\"It is a wish,\" she said."
+            },
+            {
+              "text": "— Do të thotë: Perëndia të bëjë të mirë. Ne u themi njerëzve urime të tilla.",
+              "english": "\"It means: may God do you good. We say wishes like this to people.\""
+            },
+            {
+              "text": "— Në shqip urimet kanë një formë të vjetër, — shtoi ajo.",
+              "english": "\"In Albanian wishes have an old form,\" she added."
+            },
+            {
+              "text": "— Mos ki frikë, do t'i mësosh.",
+              "english": "\"Do not be afraid, you will learn them.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastori e hapi takimin me një lutje të shkurtër.",
+              "english": "The pastor opened the meeting with a short prayer."
+            },
+            {
+              "text": "— Perëndi i fuqishëm dhe i mrekullueshëm, — tha ai, — të falënderojmë për këtë mbrëmje dhe për këtë kishë.",
+              "english": "\"Mighty and wonderful God,\" he said, \"we thank you for this evening and for this church.\""
+            },
+            {
+              "text": "— Të lavdërojmë, sepse ti je i shenjtë dhe i mirë, dhe emri yt është i shenjtë.",
+              "english": "\"We praise you, because you are holy and good, and your name is holy.\""
+            },
+            {
+              "text": "— Për sot të kërkojmë tri gjëra: për njerëzit e sëmurë, për një familje në nevojë dhe për vendin tonë.",
+              "english": "\"For today we ask you three things: for the sick, for a family in need and for our country.\""
+            },
+            {
+              "text": "Ai lutej, dhe zëri i tij ishte i qetë dhe i ngrohtë.",
+              "english": "He prayed, and his voice was calm and warm."
+            },
+            {
+              "text": "— Për njerëzit e sëmurë, — tha ai, — lutemi që Perëndia i fuqishëm t'u japë shëndet dhe paqe.",
+              "english": "\"For the sick,\" he said, \"we pray that God will give them health and peace.\""
+            },
+            {
+              "text": "— Lutemi sidomos për një fëmijë që është në spital dhe për nënën e tij, që është shumë e shqetësuar.",
+              "english": "\"We pray especially for a child who is in hospital and for his mother, who is very worried.\""
+            },
+            {
+              "text": "— Gjendja e fëmijës është e vështirë, por ne besojmë në një Perëndi që dëgjon.",
+              "english": "\"The child's condition is hard, but we believe in a God who listens.\""
+            },
+            {
+              "text": "— Zoti e ruajtë! — tha një grua pranë derës.",
+              "english": "\"May the Lord keep him!\" said a voice a woman near the door."
+            },
+            {
+              "text": "— Zoti e ruajtë! — thanë të gjithë.",
+              "english": "\"May the Lord keep him!\" everybody said."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Për një familje në nevojë, — vazhdoi pastori, — lutemi që Perëndia t'u japë punë, bukë dhe paqe.",
+              "english": "\"For a family in need,\" the pastor continued, \"we pray that God will give them work, bread and peace.\""
+            },
+            {
+              "text": "— Ata janë të varfër, por nuk janë vetëm.",
+              "english": "\"They are poor, but they are not alone.\""
+            },
+            {
+              "text": "— Kisha e di që varfëria është një kohë e vështirë, dhe ne duam të organizojmë një ndihmë për ta.",
+              "english": "\"The church knows that poverty is a hard time, and we want to organise help for them.\""
+            },
+            {
+              "text": "— Çdo besimtar mund të ofrojë diçka: ushqim, kohë ose një fjalë të mirë.",
+              "english": "\"Every believer can offer something: food, time or a kind word.\""
+            },
+            {
+              "text": "— Mira ka vendosur të përgatisë fasule dhe byrek me limon dhe me pulë, — shtoi pastori.",
+              "english": "\"Mira has decided to prepare beans and byrek with lemon and chicken,\" added the pastor."
+            },
+            {
+              "text": "— Ushqimi i mirë jep energji, por masa është e rëndësishme, — qeshi Mira.",
+              "english": "\"Good food gives energy, but measure is important,\" laughed Mira."
+            },
+            {
+              "text": "— Nuk dua që askush të hajë shumë!",
+              "english": "\"I do not want anyone to eat too much!\""
+            },
+            {
+              "text": "— Kafeja që do të pini është edhe pak e hidhur, — shtoi Drita, — por zemrat tona janë të ëmbla.",
+              "english": "\"The coffee you will drink is also a little bitter,\" added Drita, \"but our hearts are sweet.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Për vendin tonë, — tha pastori, — lutemi për njerëzit që kanë vendin në dorë.",
+              "english": "\"For our country,\" said the pastor, \"we pray for the people who have the country in their hands.\""
+            },
+            {
+              "text": "— Lutemi për presidentin, për qeverinë dhe për çdo ministër, që të bëjnë ligje të mira.",
+              "english": "\"We pray for the president, for the government and for every minister, that they make good laws.\""
+            },
+            {
+              "text": "— Lutemi për kryetarët e qyteteve dhe për çdo njeri që punon me duart e tij, dhe për ekonominë e çdo familje.",
+              "english": "\"We pray for the mayors of the towns and for every person who works.\""
+            },
+            {
+              "text": "— Lutemi për fermerët, për tregtarët dhe për të gjithë ata që punojnë në industri dhe në turizëm, në zonat industriale dhe në tregjet popullore.",
+              "english": "\"We pray for the farmers, for the traders and for all those who work in industry and in tourism, in the industrial areas and in the popular markets.\""
+            },
+            {
+              "text": "— Lutemi që prodhimi, shitja dhe blerja të bëhen me zemër të mirë, dhe që jeta ekonomike e vendit të ketë sukses, dhe tregtia gjithashtu.",
+              "english": "\"We pray that production, sale and purchase may be done with a good heart, and that the economy of the country may have success.\""
+            },
+            {
+              "text": "— Lutemi edhe për ushtrinë, që të ruajë paqen, dhe për kombin tonë.",
+              "english": "\"We pray also for the army, that it may keep the peace, and for our nation.\""
+            },
+            {
+              "text": "— Kryesisht lutemi, — tha ai, — që ne të jemi një vend ku njerëzit jetojnë në paqe, edhe aktualisht, edhe për shumë vite.",
+              "english": "\"Above all we pray,\" he said, \"that we may be a country where people live in peace, both at present and for many years.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastaj pastori foli për besimin.",
+              "english": "Then the pastor spoke about faith."
+            },
+            {
+              "text": "— Besimtari është një njeri që beson në Perëndinë, — tha ai.",
+              "english": "\"A believer is a person who believes in God,\" he said."
+            },
+            {
+              "text": "— Ai është edhe një dishepull, sepse e ndjek Jezusin.",
+              "english": "\"He is also a disciple, because he follows Jesus.\""
+            },
+            {
+              "text": "— Apostujt ishin dishepujt që Jezusi i dërgoi të tregonin lajmin e mirë. Një apostull ishte një dishepull i dërguar, dhe çdo apostull e dinte se Jezusi ishte me të.",
+              "english": "\"The apostles were the disciples whom Jesus sent to tell the good news. An apostle was a disciple who was sent, and every apostle knew that Jesus was with him.\""
+            },
+            {
+              "text": "— Profetët ishin njerëz që folën në emër të Perëndisë, shumë vite më parë. Një profet nuk fliste për vete, por për Perëndinë, dhe çdo profet e dinte se ishte një njeri i vogël.",
+              "english": "\"The prophets were people who spoke in the name of God, many years earlier. A prophet did not speak for himself, but for God, and every prophet knew he was a small man.\""
+            },
+            {
+              "text": "— Mrekullia është një gjë që vetëm Perëndia mund ta bëjë, dhe ai e bën shpesh.",
+              "english": "\"A miracle is something that only God can do, and he does it often.\""
+            },
+            {
+              "text": "— Mes nesh ka mrekulli çdo ditë, mes familjeve dhe mes miqve, edhe kur nuk i shohim, dhe mes njerëzve me pak ka besim të madh.",
+              "english": "\"Among us there are miracles every day, among families and among friends, even when we do not see them, and among simple people there is great faith.\""
+            },
+            {
+              "text": "— Ky është një engjëll? — pyeti Sami me zë të ulët, duke treguar një fëmijë që flinte.",
+              "english": "\"Is that an angel?\" Sam asked in a low voice, pointing to a child who was sleeping."
+            },
+            {
+              "text": "— Jo, — qeshi Drita.",
+              "english": "\"No,\" laughed Drita."
+            },
+            {
+              "text": "— Engjëjt janë një gjë tjetër, ata janë dërguar nga Perëndia. Por fëmijët e qetë na kujtojnë engjëjt.",
+              "english": "\"Angels are something else, they are sent by God. But calm children remind us of angels.\""
+            },
+            {
+              "text": "— Dhe parajsa? — pyeti Sami.",
+              "english": "\"And paradise?\" asked Sam."
+            },
+            {
+              "text": "— Parajsa është shtëpia e Perëndisë, ku nuk ka më dhimbje, — tha pastori.",
+              "english": "\"Paradise is the house of God, where there is no more pain,\" said the pastor."
+            },
+            {
+              "text": "— Një besimtar e ka parajsën si shpresë, dhe kjo parajsë është një dhuratë e mrekullueshme.",
+              "english": "\"A believer has paradise as hope, and this paradise is a wonderful gift.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Të gjithë jemi mëkatarë, — vazhdoi ai, — por Perëndia na jep falje. Një mëkatar që kthehet nuk është më larg se një besimtar i vjetër, dhe një mëkatar me pendim është një njeri që Perëndia e pret.",
+              "english": "\"We are all sinners,\" he continued, \"but God gives us forgiveness. A sinner who returns is no farther than an old believer, and a sinner with repentance is a person whom God awaits.\""
+            },
+            {
+              "text": "— Pendimi është kur ne ndryshojmë jetën dhe kthehemi tek ai. Një njeri me pendim e ndryshon jetën, dhe pendimi nuk është frikë.",
+              "english": "\"Repentance is when we change our mind and turn back to him. A person with repentance changes his life, and repentance is not fear.\""
+            },
+            {
+              "text": "— Dhe si bindemi? — pyeti Mira.",
+              "english": "\"And how do we obey?\" asked Mira."
+            },
+            {
+              "text": "— Të bindemi do të thotë të dëgjojmë Perëndinë dhe të bëjmë atë që ai thotë, — tha pastori.",
+              "english": "\"To obey means to listen to God and to do what he says,\" said the pastor."
+            },
+            {
+              "text": "— Kur bindemi, ne jemi të lirë.",
+              "english": "\"When we obey, we are free.\""
+            },
+            {
+              "text": "— Murgesha që e njohim të gjithë, Nënë Tereza, e ndoqi këtë rrugë, — tha Drita.",
+              "english": "\"The nun whom we all know, Mother Teresa, followed this way,\" said Drita."
+            },
+            {
+              "text": "— Ajo themeloi një urdhër, organizoi shtëpi për njerëzit e varfër dhe qëndroi me ta gjithë jetën.",
+              "english": "\"She founded an order, organised homes for the poor people and stayed with them all her life.\""
+            },
+            {
+              "text": "— Ajo nuk ishte e pasur dhe e mori shpërblimin vetëm për t'ua dhënë njerëzve të varfër.",
+              "english": "\"She was not rich and took the prize only to give it to the poor.\""
+            },
+            {
+              "text": "— Është e nderuar nga shumë njerëz, dhe kisha e bëri shenjtore, — shtoi Mira.",
+              "english": "\"She is respected by many people, and the church made her a saint,\" added Mira."
+            },
+            {
+              "text": "— Dhe ne e vazhdojmë punën e saj, në një mënyrë të vogël, — tha pastori.",
+              "english": "\"And we continue her work, in a small way,\" said the pastor."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në fund të takimit pastori e ftoi Samin të lutej.",
+              "english": "At the end of the meeting the pastor invited Sam to pray."
+            },
+            {
+              "text": "Sami u ngrit pak i shqetësuar, sepse kjo ishte lutja e tij e parë në shqip.",
+              "english": "Sam stood up a little worried, because this was his first prayer in Albanian."
+            },
+            {
+              "text": "Ai e kishte shkruar në një letër të vogël, dhe tani e lexoi me zë të ulët.",
+              "english": "He had written it on a small piece of paper, and now he read it slowly."
+            },
+            {
+              "text": "— Perëndi, unë jam një i huaj këtu, por ti më ke dhënë një familje.",
+              "english": "\"God, I am a stranger here, but you have given me a family.\""
+            },
+            {
+              "text": "— Të falënderoj për kishën, për Dritën, për Mirën, për pastorin dhe për çdo mik.",
+              "english": "\"I thank you for the church, for Drita, for Mira, for the pastor and for every friend.\""
+            },
+            {
+              "text": "— Të lutem të më ndihmosh të flas mirë dhe të dëgjoj mirë.",
+              "english": "\"I ask you to help me speak well and listen well.\""
+            },
+            {
+              "text": "— Nëse bëj një gabim, të lutem më jep falje, dhe më ndihmo të mësoj.",
+              "english": "\"If I make a mistake, please forgive me, and help me learn.\""
+            },
+            {
+              "text": "— Ky është plani im: të qëndroj këtu një vit, të punoj me zemër dhe të jem i gëzuar.",
+              "english": "\"This is my plan: to stay here a year, to work with heart and to be glad.\""
+            },
+            {
+              "text": "— Kam një ide të vogël dhe një arsye të madhe: dua që njerëzit të të njohin.",
+              "english": "\"I have a small idea and a big reason: I want people to know you.\""
+            },
+            {
+              "text": "— Kusht nuk kam, por kërkoj një gjë: që të përulem para teje çdo ditë.",
+              "english": "\"I have no condition, but I ask one thing: that I may humble myself before you every day.\""
+            },
+            {
+              "text": "— Kjo ka rëndësi për mua. Të lavdëroj dhe të bekoj emrin tënd.",
+              "english": "\"This matters to me. I praise you and bless your name.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kur Sami mbaroi, të gjithë heshtën për një moment.",
+              "english": "When Sam finished, everyone was silent for a moment."
+            },
+            {
+              "text": "Pastaj pastori tha: — Zoti të bekoftë, Sam!",
+              "english": "Then the pastor said: \"May the Lord bless you, Sam!\""
+            },
+            {
+              "text": "— Qofsh i bekuar! — thanë të gjithë bashkë.",
+              "english": "\"May you be blessed!\" everyone said together."
+            },
+            {
+              "text": "Gjyshja Drita e mori dorën e Samit dhe e mbajti.",
+              "english": "Grandmother Drita took Sam's hand and held it."
+            },
+            {
+              "text": "— Ke mësuar më shumë se një urim këtë mbrëmje, — i tha ajo.",
+              "english": "\"You have learned more than one wish tonight,\" she said to him."
+            },
+            {
+              "text": "— Ke mësuar të flasësh me zemër.",
+              "english": "\"You have learned to speak with your heart.\""
+            },
+            {
+              "text": "— Zoti të ruajtë! — i tha Mira kur dolën jashtë.",
+              "english": "\"May the Lord keep you!\" Mira said to him when they went outside."
+            },
+            {
+              "text": "— Zoti të ruajtë edhe ty, — tha Sami.",
+              "english": "\"May the Lord keep you too,\" said Sam."
+            },
+            {
+              "text": "— Dhe lavdi Perëndisë për çdo mrekulli të vogël.",
+              "english": "\"And glory to God for every small miracle.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

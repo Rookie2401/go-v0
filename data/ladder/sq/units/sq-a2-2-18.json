@@ -1,0 +1,455 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-18",
+  "lang": "sq",
+  "title": "Gjyshi tregon edhe një herë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-18",
+    "title": "Albanian ladder, a2-2: Gjyshi tregon edhe një herë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Narrative (volume unit): the grandfather retells the tale of two brothers and the spring. The tale is invented for the course (not a collected folk tale), with a moral (together, truthful). Check tone and naturalness; the lines about the Greeks, Italians and others telling the story are invented."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Gjyshi tregon edhe një herë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Atë mbrëmje në fshat darka ishte e gjatë dhe e mirë.",
+              "english": "That evening in the village the dinner was long and good."
+            },
+            {
+              "text": "Gjyshja kishte gatuar një tenxhere të madhe me fasule dhe pula, dhe tavolina ishte e plotë me pjata, gota dhe pirunë.",
+              "english": "Grandmother had cooked a big pot of beans and chicken, and the table was full of plates, glasses and forks."
+            },
+            {
+              "text": "— Sonte kuzhinieri është gjyshja, — qeshi gjyshi.",
+              "english": "\"Tonight the cook is grandmother,\" laughed the grandfather."
+            },
+            {
+              "text": "— Dhe mikesha jonë, Elira, e di që byreku i saj është më i mirë se i çdo restoranti.",
+              "english": "\"And our friend Elira knows that her byrek is better than any restaurant's.\""
+            },
+            {
+              "text": "Elira kishte ardhur nga qyteti me Ardin, dhe ata kishin ngrënë çdo gjë me gëzim.",
+              "english": "Elira had come from the town with Ardi, and they had eaten everything with joy."
+            },
+            {
+              "text": "Pas darkës të gjithë dolën në oborr, ku era ishte e ftohtë dhe qielli kishte shumë yje.",
+              "english": "After dinner everyone went out into the yard, where the wind was cold and the sky had many stars."
+            },
+            {
+              "text": "Në shtëpi nuk kishte rrymë, sepse mbrëmë një stuhi e kishte lënë fshatin pa rrymë.",
+              "english": "In the house there was no electricity, because last night a storm had left the village without electricity."
+            },
+            {
+              "text": "Gjyshi ndezi një llambë të vogël dhe e la mbi një gur.",
+              "english": "The grandfather lit a small lamp and left it on a stone."
+            },
+            {
+              "text": "— Tani, — tha ai, — kush do një histori?",
+              "english": "\"Now,\" he said, \"who wants a story?\""
+            },
+            {
+              "text": "— Gjyshi, tregoje atë për dy vëllezërit dhe çelësin e burimit! — tha Ardi.",
+              "english": "\"Grandfather, tell the one about the two brothers and the key of the spring!\" said Ardi."
+            },
+            {
+              "text": "— Ne e dimë atë, — shtoi Elira.",
+              "english": "\"We know it,\" added Elira."
+            },
+            {
+              "text": "— Na e tregove verën e kaluar.",
+              "english": "\"You told it to us last summer.\""
+            },
+            {
+              "text": "— Po, e dini, — tha gjyshi me një buzëqeshje.",
+              "english": "\"Yes, you know it,\" said the grandfather with a smile."
+            },
+            {
+              "text": "— Por një histori e mirë nuk është e njëjtë dy herë.",
+              "english": "\"But a good story is not the same twice.\""
+            },
+            {
+              "text": "— Dhe unë mendoj se sonte ju do të habiteni. Ju do të thoni: «Kjo nuk duket e njëjtë!»",
+              "english": "\"And I think that tonight you will be surprised. You will say: 'This does not seem the same!'\""
+            },
+            {
+              "text": "Ata u ulën pranë tij, dhe gjyshi filloi të tregonte.",
+              "english": "They sat next to him, and the grandfather began to tell it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Një herë e një kohë, në një fshat shumë të largët, jetonin dy vëllezër, — tha ai.",
+              "english": "\"Once upon a time, in a very distant village, two brothers lived,\" he said."
+            },
+            {
+              "text": "— Vëllai i madh ishte i madh dhe i vështirë, ndërsa vëllai i vogël ishte i qetë dhe i mirë.",
+              "english": "\"The big brother was big and difficult, while the small brother was calm and kind.\""
+            },
+            {
+              "text": "— Babai i tyre kishte vdekur dhe u kishte lënë një fushë të thatë dhe një shtëpi të vjetër.",
+              "english": "\"Their father had died and had left them a dry field and an old house.\""
+            },
+            {
+              "text": "— Atë vit nuk binte shi, dhe fusha ishte shumë e thatë.",
+              "english": "\"That year it did not rain, and the field was very dry.\""
+            },
+            {
+              "text": "— Unë e kam dëgjuar këtë, — tha Ardi.",
+              "english": "\"I have heard this,\" said Ardi."
+            },
+            {
+              "text": "— Atëherë vëllai i madh tha: «Fusha është e imja!»",
+              "english": "\"Then the big brother said: 'The field is mine!'\""
+            },
+            {
+              "text": "— Po, — tha gjyshi.",
+              "english": "\"Yes,\" said the grandfather."
+            },
+            {
+              "text": "— Por këtë herë ai nuk e tha ashtu, sepse ai ishte më i mirë se më parë.",
+              "english": "\"But this time he did not say it like that, because he was better than before.\""
+            },
+            {
+              "text": "— Sot unë e tregoj me një mënyrë tjetër. Vëllai i madh tha: «Fusha është e jona, por uji është i të gjithë njerëzve.»",
+              "english": "\"Today I tell it in another way. The big brother said: 'The field is ours, but the water belongs to all people.'\""
+            },
+            {
+              "text": "— Dhe vëllai i vogël tha: «Atëherë duhet ta gjejmë ujin bashkë.»",
+              "english": "\"And the small brother said: 'Then we must find the water together.'\""
+            },
+            {
+              "text": "— Në kodër jetonte një bari i vjetër, që e njihte çdo gur dhe çdo përrua të malit.",
+              "english": "\"On the hill lived an old shepherd, who knew every stone and every stream of the mountain.\""
+            },
+            {
+              "text": "— Ai u tha: «Një burim që njerëzit nuk e shohin gjendet pas malit. Ai nuk është i afërt, por nuk është shumë i largët. Një burim i afërt do ta kishit gjetur më parë.»",
+              "english": "\"He told them: 'A spring that people do not see is located behind the mountain. It is not near, but it is not very far. A near spring you would have found before.'\""
+            },
+            {
+              "text": "— Ata e pyetën: «Si ta gjejmë?»",
+              "english": "\"They asked him: 'How do we find it?'\""
+            },
+            {
+              "text": "— Ai u përgjigj: «Kushti është i njëjtë për të gjithë: duhet të shkoni bashkë dhe të mos gënjeni.»",
+              "english": "\"The shepherd answered: 'The condition is the same for everyone: you must go together and not lie.'\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Vëllai i madh nuk e besoi.",
+              "english": "\"The big brother did not believe it.\""
+            },
+            {
+              "text": "— Ai shkoi vetëm natën, me një shishe me ujë dhe me një thikë, dhe e kërkoi burimin pa i thënë asgjë një njeriu tjetër.",
+              "english": "\"He went alone at night, with a bottle of water and a knife, and looked for the spring without telling anything to another person.\""
+            },
+            {
+              "text": "— Ai ecte nëpër një luginë të thellë dhe nëpër një pyll të madh, por nuk gjeti asgjë.",
+              "english": "\"He walked through a deep valley and through a big forest, but found nothing.\""
+            },
+            {
+              "text": "— Në mëngjes ai ishte i lodhur, dhe shishja e tij ishte bosh.",
+              "english": "\"In the morning he was tired, and his bottle was empty.\""
+            },
+            {
+              "text": "— Vëllai i vogël e kishte kuptuar që vëllai i tij kishte shkuar, dhe e ndoqi.",
+              "english": "\"The small brother had understood that his brother had gone away, and followed him.\""
+            },
+            {
+              "text": "— Kur e gjeti, i tha: «Mos ji i mërzitur. Unë nuk jam këtu për ta gjetur burimin pa ty.»",
+              "english": "\"When he found him, he said: 'Do not be sad. I am not here to find the spring without you.'\""
+            },
+            {
+              "text": "— Vëllai i madh heshti, sepse nuk e kishte pritur këtë.",
+              "english": "\"The big brother fell silent, because he had not expected this.\""
+            },
+            {
+              "text": "— Ai e kishte një mendim të keq në shpirt dhe në mendje, por fjalët e vëllait e ngushëlluan.",
+              "english": "\"He had a bad thought in his soul, but the words of his brother comforted him.\""
+            },
+            {
+              "text": "— Atëherë të dy ecën bashkë, dhe vëllai i vogël e mbajti çantën e vëllait të madh.",
+              "english": "\"Then the two of them walked together, and the small brother carried the big brother's bag.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Gjyshi, tani vjen pjesa që më pëlqen, — tha Ardi.",
+              "english": "\"Grandfather, now comes the part I like,\" said Ardi."
+            },
+            {
+              "text": "— Po, — qeshi gjyshi.",
+              "english": "\"Yes,\" laughed the grandfather."
+            },
+            {
+              "text": "— Por mos u habit, sepse sonte ka diçka të re.",
+              "english": "\"But do not be surprised, because tonight there is something new.\""
+            },
+            {
+              "text": "— Para se të vinte nata, vëllezërit mbërritën në një pikë të lartë, ku pamja ishte e hapur dhe e qartë.",
+              "english": "\"Before night came, the brothers arrived at a high spot, where the view was open and clear.\""
+            },
+            {
+              "text": "— Poshtë tyre dukej një luginë e gjerë, dhe larg ishte një kullë e vjetër.",
+              "english": "\"Below them a wide valley could be seen, and far away was an old tower.\""
+            },
+            {
+              "text": "— Aty ishte një gur i madh. Vëllai i madh e lëvizi atë me krahun e tij, por guri nuk lëvizi.",
+              "english": "\"There was a big stone there. The big brother tried to move it with his arm, but the stone did not move.\""
+            },
+            {
+              "text": "— Atëherë vëllai i vogël e ndihmoi, dhe të dy e lëvizën bashkë.",
+              "english": "\"Then the small brother helped him, and the two of them moved it together.\""
+            },
+            {
+              "text": "— Guri lëvizi, dhe poshtë tij doli uji, i pastër dhe i ftohtë si uji i malit.",
+              "english": "\"The stone moved, and below it the water came out, clean and cold like mountain water.\""
+            },
+            {
+              "text": "— Ata e pinë me duar, dhe nuk e harruan atë ujë.",
+              "english": "\"They drank it with their hands, and did not forget that water.\""
+            },
+            {
+              "text": "— Çelësi i burimit nuk ishte guri, — tha gjyshi.",
+              "english": "\"The key of the spring was not the stone,\" said the grandfather."
+            },
+            {
+              "text": "— Ishte që dy vëllezër e lëvizën gurin bashkë.",
+              "english": "\"It was that two brothers pushed the stone together.\""
+            },
+            {
+              "text": "— Unë e di këtë, — tha Elira.",
+              "english": "\"I know that,\" said Elira."
+            },
+            {
+              "text": "— Por sonte më duket i ngjashëm me një histori tjetër që e di.",
+              "english": "\"But tonight it seems to me similar to another story that I know.\""
+            },
+            {
+              "text": "— Po, — tha gjyshi.",
+              "english": "\"Yes,\" said the grandfather."
+            },
+            {
+              "text": "— Çdo histori e mirë është e ngjashme me një tjetër, por nuk është e njëjtë me të.",
+              "english": "\"Every good story is similar to another, but is not the same as it.\""
+            },
+            {
+              "text": "— Në një histori ujin e zbulon një mbret, në një tjetër e zbulon një bari.",
+              "english": "\"In one story a king discovers the water, in another a shepherd discovers it.\""
+            },
+            {
+              "text": "— Në një të tretë e gjen një vajzë me një gotë në dorë.",
+              "english": "\"In a third a girl finds it with a glass in her hand.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Dhe ujin e mbrojtën vëllezërit? — pyeti Ardi.",
+              "english": "\"And the brothers defended the water?\" asked Ardi."
+            },
+            {
+              "text": "— Po, — tha gjyshi.",
+              "english": "\"Yes,\" said the grandfather."
+            },
+            {
+              "text": "— Ata u kthyen në fshat dhe e thirrën gjithë banorët.",
+              "english": "\"They returned to the village and called all the inhabitants.\""
+            },
+            {
+              "text": "— Të gjithë ecën bashkë deri te burimi, dhe zbuluan se kishte ujë për çdo shtëpi.",
+              "english": "\"Everyone walked together to the spring, and they discovered that there was water for every house.\""
+            },
+            {
+              "text": "— Ata e lidhën burimin me fshatin me një rrugë të gjatë uji, dhe fusha u bë e gjelbër.",
+              "english": "\"They linked the spring with the village with a long road of water, and the field became green.\""
+            },
+            {
+              "text": "— Pastaj fshatarët e quajtën atë burim «Burimi i Dy Vëllezërve», dhe e mbrojtën me një ligj të vogël. Edhe sot ai gjendet aty.",
+              "english": "\"Then the villagers called that spring 'the Spring of the Two Brothers', and defended it with a small law.\""
+            },
+            {
+              "text": "— Çdo vit ata mblidheshin aty, dhe bënin një kuvend të vogël për të vendosur kush e pastron burimin.",
+              "english": "\"Every year they gathered there, and held a small assembly to decide who would clean the spring.\""
+            },
+            {
+              "text": "— Kjo ishte kushtetuta e fshatit, — tha gjyshi duke qeshur.",
+              "english": "\"That was the constitution of the village,\" said the grandfather, laughing."
+            },
+            {
+              "text": "— Një kuvend, një kushtetutë! — tha Ardi.",
+              "english": "\"An assembly, a constitution!\" said Ardi."
+            },
+            {
+              "text": "— Gjyshi, sa i ngjashme është me shtëpinë tonë!",
+              "english": "\"Grandfather, how similar it is to our house!\""
+            },
+            {
+              "text": "— Gjyshja ka partinë e saj, unë kam një tjetër, dhe çaji është kryetari i familjes, — tha gjyshi.",
+              "english": "\"Grandmother has her party, I have another, and the tea is the head of the family,\" said the grandfather."
+            },
+            {
+              "text": "Të gjithë qeshën, edhe gjyshja, që ishte në derë me një gotë çaj në dorë, dhe pa u habitur.",
+              "english": "Everybody laughed, even grandmother, who was at the door with a glass of tea in her hand."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Dhe një gjë tjetër, — tha gjyshi, kur të gjithë heshtën.",
+              "english": "\"And one more thing,\" said the grandfather, when everyone was silent."
+            },
+            {
+              "text": "— Në ditët e vjetra njerëzit i thoshin këtë histori në të gjithë vendin: në veriun dhe në jugun, në lindjen dhe në perëndimin, nga qytetet mesdhetare e detare deri te fshatrat e maleve.",
+              "english": "\"In the old days people told this story in the whole country: in the north and in the south, in the east and in the west.\""
+            },
+            {
+              "text": "— Në Shqipëri e tregonin shqiptarët, dhe e tregonin edhe grekët, italianët dhe serbët që jetonin pranë. Në Durrës e tregonte një teatër i vjetër, dhe sot turistët e dëgjojnë në bregdetin verior.",
+              "english": "\"In Albania the Albanians told it, and the Greeks, Italians and Serbs who lived nearby told it too.\""
+            },
+            {
+              "text": "— Kur erdhën edhe gjermanët, francezët dhe amerikanët, ata e dëgjuan nga vendasit dhe u habitën.",
+              "english": "\"When the Germans, the French and the Americans came too, they heard it from the locals and were surprised.\""
+            },
+            {
+              "text": "— Evropianët thoshin: «Ne kemi një histori të ngjashme.» Dhe kishin të drejtë.",
+              "english": "\"The Europeans said: 'We have a similar story.' And they were right.\""
+            },
+            {
+              "text": "— Në kohën e sundimit osman dhe në kohën e bizantinëve, njerëzit e vjetër e tregonin atë me fjalë të ndryshme.",
+              "english": "\"In the time of the Ottomans and in the time of the Byzantines, the Illyrians of the Middle Ages told it with a different word.\""
+            },
+            {
+              "text": "— Edhe populli turk e kishte një histori të njëjtë, edhe pse me një mbret tjetër.",
+              "english": "\"The Turkish people too had the same story, even though with another king.\""
+            },
+            {
+              "text": "— Ilirët e vjetër dhe njerëzit mesjetarë, popujt lindorë dhe perëndimorë, të gjithë e donin një burim.",
+              "english": "\"The old Illyrians and the medieval people, eastern and western peoples, all loved a spring.\""
+            },
+            {
+              "text": "— Në ditët e lëvizjes kombëtare, kur e shpallën pavarësinë, njerëzit e tregonin këtë histori edhe në kuvend.",
+              "english": "\"In the days of the national movement, when they declared independence, people told this story in the assembly too.\""
+            },
+            {
+              "text": "— Dhe në ditët e zgjedhjeve ata thoshin: «Le të jemi gati të ecim bashkë.» — Sot turistët që vijnë në fshat pyesin: «Ku është burimi? A është një pikë turistike?» — Dhe fshatarët qeshin: «Është shumë më shumë se kjo.»",
+              "english": "\"And in the days of the elections they said: 'Let us be ready to walk together.'\" \"Today the tourists who come to the village ask: 'Where is the spring? Is it a tourist spot?'\" \"And the villagers laugh: 'It is more than that.'\""
+            },
+            {
+              "text": "— Çelësi i dy vëllezërve nuk është i një vendi, tha ai.",
+              "english": "\"The secret of the two brothers does not belong to one place,\" he said."
+            },
+            {
+              "text": "— Ai është i çdo njeriu.",
+              "english": "\"It belongs to every person.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Elira e shikoi qiellin dhe yjet. Bari që kishte folur në histori ishte një njeri i qetë, tha ajo, dhe sonte ajo e shihte atë mes yjeve.",
+              "english": "Elira looked at the sky and the stars. The shepherd who had spoken in the story was a calm man, she said, and tonight she saw him among the stars."
+            },
+            {
+              "text": "— Gjyshi, a është e vërtetë kjo histori?",
+              "english": "\"Grandfather, is this story true?\""
+            },
+            {
+              "text": "— Është e vërtetë në një mënyrë, — tha ai.",
+              "english": "\"It is true in a way,\" he said."
+            },
+            {
+              "text": "— Nuk e di nëse ka pasur dy vëllezër, por e di që fjala e drejtë e ngushëllon shpirtin.",
+              "english": "\"I do not know if there were two brothers, but I know that the right word comforts the soul.\""
+            },
+            {
+              "text": "— Një mendim i qartë, një fuqi e vogël dhe një frymë e mirë janë më shumë se një gur kur kërkon një burim.",
+              "english": "\"A clear thought, a small power and a good spirit are more than a stone when you look for a spring.\""
+            },
+            {
+              "text": "— Çdo njeri që gënjen e lë rrugën, dhe çdo njeri që e thotë të vërtetën e gjen forcën.",
+              "english": "\"Every person who lies loses the way, and every person who tells the truth finds strength.\""
+            },
+            {
+              "text": "— Dhe ringjallja e një fshati fillon nga një fjalë e mirë, — shtoi gjyshja nga dera.",
+              "english": "\"And the revival of a village starts from a kind word,\" added grandmother from the door."
+            },
+            {
+              "text": "Llamba u fik, dhe qielli kishte edhe më shumë yje.",
+              "english": "The lamp went out, and the sky had even more stars."
+            },
+            {
+              "text": "Ardi dhe Elira heshtën për një moment, dhe pastaj Ardi tha: — Gjyshi, tregoje edhe një herë.",
+              "english": "Ardi and Elira were silent for a moment, and then Ardi said slowly: \"Grandfather, tell it once more.\""
+            },
+            {
+              "text": "Gjyshi qeshi, dhe e filloi edhe një herë.",
+              "english": "The grandfather laughed, and began it again."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

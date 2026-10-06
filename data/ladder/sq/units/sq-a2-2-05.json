@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-05",
+  "lang": "sq",
+  "title": "Ekonomia e Shqipërisë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-05",
+    "title": "Albanian ladder, a2-2: Ekonomia e Shqipërisë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Nonfiction (school text), every fact to be checked by a person: Albania about 340 km from north border to south border; highest peaks about 2,700 m; coast about 360 km; electricity almost entirely from rivers; Italy the main trade partner; constitution of 1998; parliament (Kuvendi) of 140 members, elections every four years; the president chosen by parliament for five years; one of the ministers named (labour) is illustrative. Economic life before and after 1990 stated in one sentence."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "nonfiction"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-fact-check"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "nonfiction"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Ekonomia e Shqipërisë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ekonomia është mënyra se si një vend bën prodhime, i shet dhe i blen.",
+              "english": "The economy is the way in which a country makes products, sells them and buys them."
+            },
+            {
+              "text": "Para se të flasim për ekonominë e Shqipërisë, duhet të shohim vendin.",
+              "english": "Before we talk about the economy of Albania, we must look at the country."
+            },
+            {
+              "text": "Shqipëria ka një sipërfaqe të vogël, por natyra e saj është shumë e bukur.",
+              "english": "Albania has a small surface, but its nature is very beautiful."
+            },
+            {
+              "text": "Nga kufiri i veriut deri në kufirin e jugut janë rreth 340 kilometra.",
+              "english": "From the border in the north to the border in the south it is about 340 kilometres."
+            },
+            {
+              "text": "Pothuajse çdo rajon ka male dhe lugina, dhe lartësia e majave arrin deri në 2.700 metra.",
+              "english": "Almost every region has mountains and valleys, and the height of the peaks reaches up to 2,700 metres."
+            },
+            {
+              "text": "Në perëndim shtrihen fushat pranë detit, dhe në lindje ngrihen malet.",
+              "english": "In the west the plains stretch near the sea, and in the east the mountains rise."
+            },
+            {
+              "text": "Në jug klima është e ngrohtë: në verë ka vapë dhe temperatura arrin 35 gradë.",
+              "english": "In the south the climate is warm: in summer there is heat and the temperature reaches 35 degrees."
+            },
+            {
+              "text": "Në veri ka më shumë reshje dhe ajri është më i ftohtë, sidomos në zonat malore.",
+              "english": "In the north there is more rain and the air is colder, especially in the mountain areas."
+            },
+            {
+              "text": "Në pranverë përrenjtë e vegjël kanë shumë ujë, dhe bimët dhe pemët rriten shpejt.",
+              "english": "In spring the small streams have a lot of water, and the plants and fruit trees grow quickly."
+            },
+            {
+              "text": "Të gjitha këto kanë një rol të madh në jetën ekonomike të vendit.",
+              "english": "All this plays a big role in the economic life of the country."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ekonomia shqiptare është ende e vogël, por ajo ka ndryshuar shumë në këto tridhjetë vite.",
+              "english": "The Albanian economy is still small, but it has changed a great deal in these thirty years."
+            },
+            {
+              "text": "Para vitit 1990 shteti kishte pothuajse çdo fabrikë, çdo dyqan dhe çdo tokë.",
+              "english": "Before 1990 the state had almost every factory, every shop and every piece of land."
+            },
+            {
+              "text": "Pas këtij viti ekonomia u bë një ekonomi tregu, dhe njerëzit filluan të hapin biznese të tyre.",
+              "english": "After that year the economy became a market economy, and people began to open businesses of their own."
+            },
+            {
+              "text": "Sot shumë njerëz punojnë për një kompani ose hapin një dyqan të vogël.",
+              "english": "Today many people work for a company or open a small shop."
+            },
+            {
+              "text": "Jeta ekonomike e vendit ka tre pjesë të mëdha: bujqësinë, industrinë dhe shërbimet.",
+              "english": "The economic life of the country has three big parts: agriculture, industry and services."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Bujqësia mbetet një pjesë shumë e rëndësishme e ekonomisë shqiptare.",
+              "english": "Agriculture remains a very important part of the Albanian economy."
+            },
+            {
+              "text": "Shumë fermerë punojnë tokën e tyre, sidomos në fushat e perëndimit dhe në luginat e lumenjve.",
+              "english": "Many farmers work their own land, especially on the plains of the west and in the river valleys."
+            },
+            {
+              "text": "Fermerët shqiptarë shesin kryesisht në tregjet e vendit dhe bëjnë prodhime të mira: domate, patate, spinaq, pemë dhe vaj.",
+              "english": "Albanian farmers sell mainly in the markets of the country and make good products: tomatoes, potatoes, spinach, fruit and oil."
+            },
+            {
+              "text": "Në zonat malore ata kanë dele, dhi dhe lopë, dhe bëjnë djathë dhe qumësht.",
+              "english": "In the mountain areas they have sheep, goats and cows, and make cheese and milk."
+            },
+            {
+              "text": "Prodhimi i fermerëve shitet në treg ose në dyqane.",
+              "english": "The farmers' produce is sold at the market or in shops."
+            },
+            {
+              "text": "Shitja e këtyre prodhimeve i ndihmon familjet e fshatit.",
+              "english": "The sale of these products helps the families of the village."
+            },
+            {
+              "text": "Edhe blerja e prodhimeve shqiptare është një mënyrë për të ndihmuar fermerët.",
+              "english": "Buying Albanian products is also a way to help the farmers."
+            },
+            {
+              "text": "Burimet e ujit dhe ajri i mirë i maleve ndihmojnë edhe bimët edhe kafshët.",
+              "english": "The springs of water and the good air of the mountains help both the plants and the animals."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Industria në Shqipëri është kryesisht e vogël. Durrësi dhe Elbasani janë qytete industriale, dhe zonat industriale janë pranë qyteteve të mëdha.",
+              "english": "Industry in Albania is mainly small. Durrës and Elbasan are industrial cities, and the industrial areas are near the big cities."
+            },
+            {
+              "text": "Disa fabrika bëjnë këpucë, këmisha, sapun dhe peshqirë, që shiten në vendet e Evropës.",
+              "english": "Some factories make shoes, shirts, soap and towels, which are sold in the countries of Europe."
+            },
+            {
+              "text": "Disa fabrika bëjnë ushqim dhe pije.",
+              "english": "Some factories make food and drinks."
+            },
+            {
+              "text": "Industria shqiptare nuk është shumë e madhe, por aktualisht ajo ka punë për shumë njerëz.",
+              "english": "Albanian industry is not very big, but at present it has work for many people."
+            },
+            {
+              "text": "Fabrikat e vogla janë pothuajse në çdo rajon, edhe në zonat industriale edhe në fshatra.",
+              "english": "Small factories are almost in every region, both in industrial areas and in villages."
+            },
+            {
+              "text": "Shqipëria merr pothuajse gjithë rrymën e saj nga uji i lumenjve.",
+              "english": "Albania gets almost all its electricity from the water of its rivers."
+            },
+            {
+              "text": "Lumenjtë e veriut dhe të lindjes kanë shumë ujë, prandaj ata japin rrymë për shtëpitë, për fabrikat dhe për ngrohjen.",
+              "english": "The rivers of the north and the east have a lot of water, so they give electricity for homes, for factories and for heating."
+            },
+            {
+              "text": "Në dimër rryma kushton më shumë, por ngrohja është e rëndësishme për çdo familje.",
+              "english": "In winter electricity costs more, but heating is important for every family."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Turizmi është një nga pjesët që rriten më shpejt.",
+              "english": "Tourism is one of the parts that grow fastest."
+            },
+            {
+              "text": "Çdo vit vijnë më shumë turistë në Shqipëri, kryesisht në verë, dhe turizmi sjell punë për shumë qytete.",
+              "english": "Every year more tourists come to Albania, and tourism brings work to many towns."
+            },
+            {
+              "text": "Ata vijnë për plazhet e detit, për malet dhe për kalatë e vjetra.",
+              "english": "They come for the beaches of the sea, for the mountains and for the old castles."
+            },
+            {
+              "text": "Qeveria i këshillon turistët të vizitojnë edhe fshatrat, jo vetëm qytetet.",
+              "english": "The government advises tourists to visit the villages too, not only the towns."
+            },
+            {
+              "text": "Turistët pëlqejnë edhe kulturën e vendit: muzikën popullore, gjellët tradicionale, festat popullore dhe dasmat.",
+              "english": "Tourists also like the culture of the country: folk music, traditional dishes, folk festivals and weddings."
+            },
+            {
+              "text": "Çiftet e reja vijnë këtu për pushim, dhe disa e festojnë këtu ditëlindjen e tyre.",
+              "english": "Young couples come here for a holiday, and some celebrate their birthday here."
+            },
+            {
+              "text": "Para Krishtlindjes dhe para Pashkës njerëzit blejnë shumë ushqim dhe dhurojnë shumë dhurata.",
+              "english": "Before Christmas and before Easter people buy a lot of food and give many presents."
+            },
+            {
+              "text": "Kjo është një ditë e mirë për tregtinë: shitja e ushqimeve dhe e dhuratave rritet.",
+              "english": "This is a good time for trade: the sale of food and presents goes up."
+            },
+            {
+              "text": "Në verë turistët rrinë në hotele, në apartamente me qira dhe në shtëpi të vogla.",
+              "english": "In summer tourists stay in hotels, in rented apartments and in small houses."
+            },
+            {
+              "text": "Shumë pronarë i japin banesat e tyre me qira për disa javë.",
+              "english": "Many owners rent out their flats for a few weeks."
+            },
+            {
+              "text": "Në Tiranë ka lagje të reja dhe qiraja në qendër është më e lartë se në lagjet e vjetra.",
+              "english": "In Tirana there are new neighbourhoods, and the rent in the centre is higher than in the old neighbourhoods."
+            },
+            {
+              "text": "Një apartament në katin e tretë, me ballkon dhe me dysheme të re, kushton më shumë se një apartament pa ballkon.",
+              "english": "An apartment on the third floor, with a balcony and a new floor, costs more than an apartment without a balcony."
+            },
+            {
+              "text": "Pronarët blejnë edhe frigoriferë, tavolina dhe karrige të reja për banesat e tyre, dhe para blerjes së një banese ata pyesin shumë.",
+              "english": "The owners also buy new refrigerators, tables and chairs for their flats, and before buying a flat they ask a lot of questions."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Tregtia është shumë e rëndësishme për një vend të vogël.",
+              "english": "Trade is very important for a small country."
+            },
+            {
+              "text": "Shqipëria shet jashtë vendit këpucë, pemë, vaj dhe rrymë.",
+              "english": "Albania sells shoes, fruit, oil and electricity abroad."
+            },
+            {
+              "text": "Ajo blen makina, ilaçe dhe ushqime nga vendet e botës.",
+              "english": "It buys cars, medicines and foods from the countries of the world."
+            },
+            {
+              "text": "Vendi me të cilin Shqipëria bën më shumë tregti është Italia, dhe pas saj vijnë Greqia, Turqia dhe Gjermania.",
+              "english": "The country with which Albania trades most is Italy, and after it come Greece, Turkey and Germany."
+            },
+            {
+              "text": "Tregtia me këto vende është e vjetër dhe e mirë, dhe Italia është shoku tregtar më i madh.",
+              "english": "Trade with these countries is old and good, and Italy is the biggest trading friend."
+            },
+            {
+              "text": "Edhe shumë tregtarë të vegjël shesin dhe blejnë në tregjet popullore të qyteteve. Tregtarët e Tiranës dhe të Shkodrës kanë njerëz në dyqan çdo ditë.",
+              "english": "Many small traders also sell and buy in the popular markets of the towns. The traders of Tirana and of Shkodër have people in the shop every day."
+            },
+            {
+              "text": "Aktualisht pjesa e tretë e ekonomisë, ajo e shërbimeve, ka më shumë punë se dy pjesët që kemi parë.",
+              "english": "At present the third part of the economy, that of services, has more jobs than the two parts we have seen."
+            },
+            {
+              "text": "Hotelet, dyqanet, bankat dhe shkollat janë pjesë e këtyre shërbimeve, dhe bankat janë të rëndësishme për jetën ekonomike.",
+              "english": "Hotels, shops, banks and schools are part of these services, and banks are important for economic life."
+            },
+            {
+              "text": "Aktualisht shumë të rinj mendojnë për punë në turizëm, sepse ai ka më shumë mundësi.",
+              "english": "At present many young people think about jobs in tourism, because it has more opportunities."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kush vendos për këtë ekonomi dhe për këtë vend?",
+              "english": "Who decides about this economy and about this country?"
+            },
+            {
+              "text": "Shqipëria është një republikë.",
+              "english": "Albania is a republic."
+            },
+            {
+              "text": "Kushtetuta që ka sot vendi është e vitit 1998.",
+              "english": "The constitution that the country has today dates from 1998."
+            },
+            {
+              "text": "Kushtetuta thotë që populli zgjedh kuvendin, dhe kuvendi bën ligjet. Çdo ligj duhet të jetë sipas kushtetutës.",
+              "english": "The constitution says that the people elect the assembly, and the assembly makes the laws. Every law must be in line with the constitution."
+            },
+            {
+              "text": "Kuvendi ka 140 anëtarë, dhe zgjedhjet bëhen çdo katër vite. Para zgjedhjeve partitë flasin shumë me njerëzit.",
+              "english": "The assembly has 140 members, and elections are held every four years. Before the elections the parties talk a lot with people."
+            },
+            {
+              "text": "Në zgjedhje njerëzit zgjedhin partinë që duan, dhe një parti ose disa parti bëjnë qeverinë.",
+              "english": "In the elections people choose the party they want, and one party or several parties form the government."
+            },
+            {
+              "text": "Qeveria ka një kryetar dhe disa ministra.",
+              "english": "The government has a head and several ministers."
+            },
+            {
+              "text": "Çdo ministër ka një punë: ministri i shëndetit, ministri i arsimit dhe ministri i punës.",
+              "english": "Every minister has a job: the minister of health, the minister of education and the minister of labour."
+            },
+            {
+              "text": "Presidenti është kryetar i shtetit.",
+              "english": "The president is head of state."
+            },
+            {
+              "text": "Kuvendi e zgjedh presidentin për pesë vite, dhe presidenti i nënshkruan ligjet e reja.",
+              "english": "The assembly chooses the president for five years, and the president signs the new laws."
+            },
+            {
+              "text": "Edhe qytetet kanë një kryetar të bashkisë, që e zgjedhin vetë banorët.",
+              "english": "The towns also have a mayor, whom the inhabitants themselves choose."
+            },
+            {
+              "text": "Çdo shtet ka një ushtri, dhe ushtria e Shqipërisë është e vogël.",
+              "english": "Every state has an army, and the army of Albania is small."
+            },
+            {
+              "text": "Ushtria ruan vendin dhe ndihmon njerëzit kur ka shumë shi ose borë.",
+              "english": "The army guards the country and helps people when there is a lot of rain or snow."
+            },
+            {
+              "text": "Shqiptarët janë një komb i vogël, por shumë i vjetër.",
+              "english": "The Albanians are a small nation, but a very old one."
+            },
+            {
+              "text": "Çdo komb ka kulturën dhe ekonominë e tij, dhe çdo komb duhet të ruajë ligjet.",
+              "english": "Every nation has its own culture and economy, and every nation must keep the laws."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Vallë si do të jetë ekonomia e Shqipërisë pas dhjetë vitesh?",
+              "english": "I wonder what the economy of Albania will be like in ten years?"
+            },
+            {
+              "text": "Kjo është në duart e fermerëve, të fabrikave, të turistëve dhe të ligjeve të vendit.",
+              "english": "That is in the hands of the farmers, of the factories, of the tourists and of the laws of the country."
+            },
+            {
+              "text": "Bregdeti ka një gjatësi prej rreth 360 kilometrash, dhe turistët vijnë edhe në majat e larta të maleve. Ajo është edhe në duart e djemve dhe të vajzave që sot ulen në klasë, ndërsa mësuesi shpjegon prodhimin, shitjen dhe blerjen.",
+              "english": "The coast has a length of about 360 kilometres, and tourists come even to the high peaks of the mountains. It is also in the hands of the boys and girls who today sit in class while the teacher explains production, sale and purchase."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,492 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-04",
+  "lang": "sq",
+  "title": "Udhëtim në veri",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-04",
+    "title": "Albanian ladder, a2-2: Udhëtim në veri (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Narrative of a trip north. To check (facts): Tirana to Shkodër is about 100 km by road, about 2 to 3 hours; Shkodër is on a lake; the temperatures given are invented. The cross on the peak is a small stone cross, generic. Aorist/imperfect/pluperfect narrative with \"duke\" + participle."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-fact-check"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Udhëtim në veri",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luani kishte rezervuar dy dhoma në Shkodër që në janar.",
+              "english": "Luan had booked two rooms in Shkodër back in January."
+            },
+            {
+              "text": "Ishte dhurata e tij për ditëlindjen e Anës, që ishte në prill.",
+              "english": "It was his present for Ana's birthday, which was in April."
+            },
+            {
+              "text": "Ata kishin folur për këtë udhëtim që para Pashkës, por nuk kishin pasur kohë gjatë dimrit, prandaj e kishin lënë për gusht.",
+              "english": "They had talked about this trip since before Easter, but had not had time during the winter, so they had left it for August."
+            },
+            {
+              "text": "Sami ishte shumë i gëzuar kur Luani e ftoi.",
+              "english": "Sam was very happy when Luan invited him."
+            },
+            {
+              "text": "Para një viti ai kishte mbërritur në Tiranë me avion dhe nuk kishte parë asgjë tjetër nga Shqipëria.",
+              "english": "A year before he had arrived in Tirana by plane and had not seen anything else of Albania."
+            },
+            {
+              "text": "Nuk kishte udhëtuar në veri, dhe tani donte të shihte çdo gjë.",
+              "english": "He had not travelled to the north, and now he wanted to see everything."
+            },
+            {
+              "text": "Të shtunën në mëngjes të tre u nisën me makinën e vjetër të Luanit.",
+              "english": "On Saturday morning the three of them set off in Luan's old car."
+            },
+            {
+              "text": "Luani ngiste dhe Ana ishte pranë tij me hartën në dorë.",
+              "english": "Luan was driving and Ana was next to him with the map in her hand."
+            },
+            {
+              "text": "Sami ishte pas tyre, me një valixhe të vogël dhe një çantë me ujë.",
+              "english": "Sam was behind them, with a small suitcase and a bag with water."
+            },
+            {
+              "text": "Ana kishte marrë dy valixhe të mëdha dhe Luani qeshte me të.",
+              "english": "Ana had taken two big suitcases and Luan was laughing at her."
+            },
+            {
+              "text": "— Çfarë udhëtimi do të jetë! — tha Sami duke buzëqeshur.",
+              "english": "\"What a trip this will be!\" said Sam, smiling."
+            },
+            {
+              "text": "— Sa kilometra janë nga Tirana në Shkodër? — pyeti ai.",
+              "english": "\"How many kilometres is it from Tirana to Shkodër?\" he asked."
+            },
+            {
+              "text": "— Janë rreth njëqind kilometra, — tha Ana.",
+              "english": "\"It is about a hundred kilometres,\" said Ana."
+            },
+            {
+              "text": "— Do të na duhen afër tri orë.",
+              "english": "\"We will need almost three hours.\""
+            },
+            {
+              "text": "Rruga kalonte nëpër një fushë të gjerë dhe pastaj përgjatë një lumi.",
+              "english": "The road passed through a wide plain and then along a river."
+            },
+            {
+              "text": "Në fushë ajri ishte i nxehtë dhe bimët ishin të thata.",
+              "english": "On the plain the air was hot and the plants were dry."
+            },
+            {
+              "text": "Ishte vapë e madhe, edhe pse ishte ende mëngjes.",
+              "english": "It was very hot, even though it was still morning."
+            },
+            {
+              "text": "Një avion i vogël kaloi mbi fushë dhe Sami e shikoi për një sekondë.",
+              "english": "A small plane flew over the plain and Sam watched it for a second."
+            },
+            {
+              "text": "— Para një viti isha në një avion si ai, — tha ai.",
+              "english": "\"A year ago I was on a plane like that,\" he said."
+            },
+            {
+              "text": "— Dhe ky vit ka qenë shumë i mirë.",
+              "english": "\"And this year has been very good.\""
+            },
+            {
+              "text": "— Në verë këtu nuk bie shi për javë me radhë, — tha Luani.",
+              "english": "\"In summer it does not rain here for weeks in a row,\" said Luan."
+            },
+            {
+              "text": "— Reshjet vijnë në dimër dhe në pranverë.",
+              "english": "\"The rains come in winter and in spring.\""
+            },
+            {
+              "text": "— Sa gradë janë tani? — pyeti Sami.",
+              "english": "\"How many degrees is it now?\" asked Sam."
+            },
+            {
+              "text": "— Tridhjetë e dy, — tha Ana duke parë celularin.",
+              "english": "\"Thirty-two,\" said Ana, looking at the phone."
+            },
+            {
+              "text": "— Në mal do të jetë më ftohtë.",
+              "english": "\"In the mountains it will be colder.\""
+            },
+            {
+              "text": "Ata bënë një ndalesë për kafe dhe për ushqim.",
+              "english": "They made a stop for coffee and for food."
+            },
+            {
+              "text": "Në fshat kishte një dasmë dhe muzika dëgjohej larg. Pronari i një kafeje të vogël u dha një gjellë tradicionale dhe pemë nga kopshti i tij.",
+              "english": "In the village there was a wedding and the music could be heard from far away. The owner of a small café gave them a traditional dish and fruit from his garden."
+            },
+            {
+              "text": "— Në veri ushqimi është shumë i mirë, — tha ai.",
+              "english": "\"In the north the food is very good,\" he said."
+            },
+            {
+              "text": "— Ju duhet ta hani.",
+              "english": "\"You must eat it.\""
+            },
+            {
+              "text": "Sami e falënderoi, dhe Luani i dhuroi një libër të vogël për Tiranën.",
+              "english": "Sam thanked him, and Luan gave him a small book about Tirana."
+            },
+            {
+              "text": "Ana e ngiti makinën për një orë, dhe Luani flinte duke buzëqeshur.",
+              "english": "Ana drove the car for an hour, and Luan slept, smiling."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas tri orësh ata mbërritën në Shkodër.",
+              "english": "After three hours they arrived in Shkodër."
+            },
+            {
+              "text": "Hoteli ishte në lagjen e vjetër, pranë një rruge të ngushtë me shtëpi të bardha.",
+              "english": "The hotel was in the old neighbourhood, near a narrow street with white houses."
+            },
+            {
+              "text": "Pronari i hotelit kishte pritur disa udhëtarë, por dhomat e tyre ishin të lira.",
+              "english": "The owner of the hotel had been waiting for some travellers, but their rooms were free."
+            },
+            {
+              "text": "Sami e la valixhen në dhomë dhe doli në ballkon.",
+              "english": "Sam left the suitcase in the room and went out onto the balcony."
+            },
+            {
+              "text": "Poshtë tij shtrihej qyteti dhe larg ishte liqeni, me një sipërfaqe shumë të madhe.",
+              "english": "Below him the town stretched out, and far away was the lake, with a very large surface."
+            },
+            {
+              "text": "Pastaj ata morën biçikleta me qira dhe ecën përgjatë liqenit.",
+              "english": "Then they rented bicycles and rode along the lake."
+            },
+            {
+              "text": "Biçikleta e Samit ishte e vogël, por ai nuk ra.",
+              "english": "Sam's bicycle was small, but he did not fall."
+            },
+            {
+              "text": "Luani e kishte harruar biçikletën e tij në Tiranë, prandaj mori një tjetër me qira.",
+              "english": "Luan had forgotten his own bicycle in Tirana, so he rented another one."
+            },
+            {
+              "text": "Peizazhi ishte shumë i bukur: liqen i madh, male të larta dhe qiell me diell.",
+              "english": "The landscape was very beautiful: a big lake, high mountains and a sunny sky."
+            },
+            {
+              "text": "— Liqeni është shumë i thellë? — pyeti Sami.",
+              "english": "\"Is the lake very deep?\" asked Sam."
+            },
+            {
+              "text": "— Në disa vende po, — tha Luani.",
+              "english": "\"In some places yes,\" said Luan."
+            },
+            {
+              "text": "— Por pranë bregut është i vogël dhe i ngrohtë.",
+              "english": "\"But near the shore it is shallow and warm.\""
+            },
+            {
+              "text": "Peizazhi ndryshonte çdo orë dhe Sami nuk kishte parë një peizazh si ky.",
+              "english": "The landscape changed every hour and Sam had never seen a landscape like this."
+            },
+            {
+              "text": "Në mbrëmje u kthyen te hoteli duke folur dhe duke qeshur.",
+              "english": "In the evening they went back to the hotel, talking and laughing."
+            },
+            {
+              "text": "Kishin ngrënë peshk dhe kishin pirë çaj, dhe të gjithë ishin të lodhur.",
+              "english": "They had eaten fish and had drunk tea, and everyone was tired."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ditën tjetër kishin një ecje të gjatë në mal.",
+              "english": "The next day they had a long walk in the mountains."
+            },
+            {
+              "text": "Luani kishte rezervuar një udhëzues që një javë më parë.",
+              "english": "Luan had booked a guide a week before."
+            },
+            {
+              "text": "— Kam rezervuar edhe një taksi për orën gjashtë, — tha ai.",
+              "english": "\"I have also booked a taxi for six o'clock,\" he said."
+            },
+            {
+              "text": "Udhëzuesi i priti në hotel në orën gjashtë.",
+              "english": "The guide met them at the hotel at six o'clock."
+            },
+            {
+              "text": "— Ecja është gjashtë orë, — tha ai.",
+              "english": "\"The walk is six hours,\" he said."
+            },
+            {
+              "text": "— Do të ngjiteni deri në një lartësi prej 1.800 metrash.",
+              "english": "\"You will climb up to a height of 1,800 metres.\""
+            },
+            {
+              "text": "Luani e thirri taksinë dhe shoferi i çoi deri në fund të rrugës.",
+              "english": "Luan called the taxi and the driver took them to the end of the road."
+            },
+            {
+              "text": "Aty filloi udhëtimi i tyre në këmbë. Ata udhëtonin me kujdes, duke ecur përgjatë një përroi.",
+              "english": "There their journey on foot began. They travelled carefully, walking along a stream."
+            },
+            {
+              "text": "Udhëzuesi ecte përpara dhe u fliste për natyrën.",
+              "english": "The guide walked ahead and told them about the nature."
+            },
+            {
+              "text": "— Këtu në veri klima nuk është si klima e jugut, — tha ai.",
+              "english": "\"Here in the north the climate is not like the climate of the south,\" he said."
+            },
+            {
+              "text": "— Në veri ka shumë reshje, sidomos në dimër, dhe në zonat malore ka borë.",
+              "english": "\"In the north there is a lot of rain, especially in winter, and in the mountain areas there is snow.\""
+            },
+            {
+              "text": "— Në jug ka vapë çdo verë dhe fushat janë të thata.",
+              "english": "\"In the south there is heat every summer and the plains are dry.\""
+            },
+            {
+              "text": "— Nga lindja vjen era e ftohtë dhe nga perëndimi vjen deti.",
+              "english": "\"From the east comes the cold wind and from the west comes the sea.\""
+            },
+            {
+              "text": "Ata ecën nëpër një luginë të thellë, ku kishte një përrua me ujë shumë të ftohtë.",
+              "english": "They walked through a deep valley, where there was a stream with very cold water."
+            },
+            {
+              "text": "— Gjatësia e kësaj lugine është 20 kilometra, — tha udhëzuesi.",
+              "english": "\"The length of this valley is 20 kilometres,\" said the guide."
+            },
+            {
+              "text": "— Ky burim është i vjetër.",
+              "english": "\"This spring is old.\""
+            },
+            {
+              "text": "— Njerëzit e fshatit pinë prej tij prej shumë shekujsh.",
+              "english": "\"The people of the village have drunk from it for many centuries.\""
+            },
+            {
+              "text": "Sami piu nga burimi dhe buzëqeshi. Dita ishte e nxehtë, por uji ishte i ftohtë.",
+              "english": "Sam drank from the spring and smiled. The day was hot, but the water was cold."
+            },
+            {
+              "text": "Ai e kishte harruar se uji mund të ishte shumë i mirë.",
+              "english": "He had forgotten that water could be so good."
+            },
+            {
+              "text": "Pastaj udhëzuesi i këshilloi të bëjnë pak pushim, sepse rruga ngjitej shumë.",
+              "english": "Then the guide advised them to rest a little, because the road climbed steeply."
+            },
+            {
+              "text": "— Sa lartësi kemi bërë? — pyeti Ana.",
+              "english": "\"How much height have we made?\" asked Ana."
+            },
+            {
+              "text": "— Pothuajse 800 metra, — tha udhëzuesi.",
+              "english": "\"Almost 800 metres,\" said the guide."
+            },
+            {
+              "text": "— Dhe ajri tani është më i ftohtë.",
+              "english": "\"And the air is colder now.\""
+            },
+            {
+              "text": "Ecja ishte e vështirë, por udhëtarët nuk thoshin asgjë.",
+              "english": "The walk was difficult, but the travellers said nothing."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mesditë ata nuk dinin më ku ishin.",
+              "english": "At midday they no longer knew where they were."
+            },
+            {
+              "text": "Udhëzuesi kishte thënë të mbanin djathtas, por Luani kishte marrë majtas duke menduar se ishte më e shkurtër.",
+              "english": "The guide had said to keep to the right, but Luan had taken the left, thinking it was shorter."
+            },
+            {
+              "text": "Ata ecën një orë duke folur dhe pa parë njeri.",
+              "english": "They walked for an hour, talking and without seeing anyone."
+            },
+            {
+              "text": "Pastaj panë një përrua tjetër dhe një kufi të vjetër prej guri.",
+              "english": "Then they saw another stream and an old stone boundary."
+            },
+            {
+              "text": "— Nuk jemi larg kufirit, — tha Ana duke qeshur.",
+              "english": "\"We are not far from the border,\" said Ana, laughing."
+            },
+            {
+              "text": "— Po shkojmë në një vend tjetër!",
+              "english": "\"We are going to another country!\""
+            },
+            {
+              "text": "— Sam, thirr udhëzuesin, — tha Luani.",
+              "english": "\"Sam, call the guide,\" said Luan."
+            },
+            {
+              "text": "Sami e thirri me celular dhe udhëzuesi u përgjigj shpejt.",
+              "english": "Sam called him on the mobile and the guide answered quickly."
+            },
+            {
+              "text": "— Rrini aty ku jeni, — tha ai.",
+              "english": "\"Stay where you are,\" he said."
+            },
+            {
+              "text": "— Po vij.",
+              "english": "\"I am coming.\""
+            },
+            {
+              "text": "Pas njëzet minutash ai mbërriti, i shqetësuar por i qetë.",
+              "english": "After twenty minutes he arrived, worried but calm."
+            },
+            {
+              "text": "— Çdo gjë është mirë, — tha ai.",
+              "english": "\"Everything is fine,\" he said."
+            },
+            {
+              "text": "— Çdo udhëtar e ka kaluar një herë një ditë si kjo.",
+              "english": "\"Every traveller has had a day like this once.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mbrëmje ata mbërritën në një vend të lartë, ku shihej e gjithë lugina.",
+              "english": "In the evening they reached a high place from which the whole valley could be seen."
+            },
+            {
+              "text": "Aty kishte një kryq të vogël prej guri. Ishte dita e tretë e udhëtimit të tyre.",
+              "english": "There was a small stone cross there. It was the third day of their journey."
+            },
+            {
+              "text": "Sami heshti. Ai u përul, sepse natyra para tij ishte shumë e madhe.",
+              "english": "Sam fell silent. He humbled himself, because the nature before him was so great."
+            },
+            {
+              "text": "Në atë moment ai mendoi për gjithë botën dhe për Perëndinë që e kishte bërë.",
+              "english": "At that moment he thought of the whole world and of God who had made it."
+            },
+            {
+              "text": "Nuk tha asgjë. Vetëm falënderoi Perëndinë në heshtje.",
+              "english": "He said nothing. He only thanked God in silence."
+            },
+            {
+              "text": "Pas pak Ana e mori për dore.",
+              "english": "After a while Ana took him by the hand."
+            },
+            {
+              "text": "— Është koha të zbresim, — tha ajo.",
+              "english": "\"It is time to go down,\" she said."
+            },
+            {
+              "text": "— Taksia na pret poshtë.",
+              "english": "\"The taxi is waiting for us below.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ditën tjetër në mëngjes Luani u kthye në Tiranë me makinën, duke ngarë me kujdes.",
+              "english": "The next morning Luan drove back to Tirana, driving carefully."
+            },
+            {
+              "text": "Ana flinte, dhe Sami shikonte nga dritarja fushat, malet dhe lumenjtë që kalonin.",
+              "english": "Ana slept, and Sam looked out of the window at the plains, the mountains and the rivers passing by."
+            },
+            {
+              "text": "— Në nëntor do të kthehemi, — tha ai.",
+              "english": "\"In November we will come back,\" he said."
+            },
+            {
+              "text": "— Dua ta shoh këtë vend nën borë.",
+              "english": "\"I want to see this place under snow.\""
+            },
+            {
+              "text": "— Pastaj shkojmë në jug, — qeshi Luani.",
+              "english": "\"Then we will go to the south,\" laughed Luan."
+            },
+            {
+              "text": "— Të shohim se si është Shqipëria pothuajse në çdo stinë.",
+              "english": "\"Let us see what Albania is like in almost every season.\""
+            },
+            {
+              "text": "Sami e mbylli sytë me një buzëqeshje.",
+              "english": "Sam closed his eyes with a smile."
+            },
+            {
+              "text": "Ai e dinte që nuk do ta harronte atë udhëtim.",
+              "english": "He knew he would not forget that trip."
+            },
+            {
+              "text": "Ata kishin udhëtuar shumë kilometra, por ai mendonte se udhëtimi më i gjatë ishte ai në zemër.",
+              "english": "They had travelled many kilometres, but he thought the longest journey was the one in the heart."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

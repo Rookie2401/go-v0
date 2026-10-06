@@ -1,0 +1,503 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-02",
+  "lang": "sq",
+  "title": "Datat dhe kalendari",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-02",
+    "title": "Albanian ladder, a2-2: Datat dhe kalendari (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Practical story: planning the congregation year. To check: 8 March as Mother's Day / Women's Day in Albania; 28 November as national (Independence) holiday; Gjergj (a schoolboy in a1-1) acts as a bright older child: the castle history (a king, an empire, a war) is generic and invented, no real castle named; \"pagëzim\" and the camp for children are church life described in the course's own words; \"kalendar\" is not in the word list as a form for \"kalendari\"."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "practical"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Datat dhe kalendari",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën pas shërbimit Mira, Dritani, Gjergji dhe Sami ulen në kishë, rreth një tavoline të madhe.",
+              "english": "On Sunday after the service Mira, Dritan, Gjergj and Sam sit down in the church around a big table."
+            },
+            {
+              "text": "Mira ka një kalendar të madh dhe një laps në dorë.",
+              "english": "Mira has a big calendar and a pencil in her hand."
+            },
+            {
+              "text": "— Sot është 12 janar, — thotë ajo.",
+              "english": "\"Today is 12 January,\" she says."
+            },
+            {
+              "text": "— Viti është i ri, prandaj duhet të vendosim ditët e tij.",
+              "english": "\"The year is new, so we have to decide on its days.\""
+            },
+            {
+              "text": "— Deri më 31 janar duhet t'ia dërgojmë kalendarin pastorit, — shton Dritani.",
+              "english": "\"By 31 January we have to send the calendar to the pastor,\" Dritan adds."
+            },
+            {
+              "text": "— Unë nuk e di si e bëni këtu, — thotë Sami.",
+              "english": "\"I do not know how you do it here,\" says Sam."
+            },
+            {
+              "text": "— Në vendin tim e bënim kështu: një ditë e gjatë, shumë çaj dhe shumë fjalë.",
+              "english": "\"In my country we did it like this: one long day, a lot of tea and a lot of words.\""
+            },
+            {
+              "text": "— Atëherë fillojmë nga fillimi, — thotë Mira.",
+              "english": "\"Then let us begin at the beginning,\" says Mira."
+            },
+            {
+              "text": "— Në fillim nuk kemi shumë punë. Dimri është i gjatë dhe njerëzit rrinë në shtëpi.",
+              "english": "\"At the beginning we do not have much to do. Winter is long and people stay at home.\""
+            },
+            {
+              "text": "— Një moment, — thotë Gjergji.",
+              "english": "\"One moment,\" says Gjergj."
+            },
+            {
+              "text": "— Më 19 janar është ditëlindja e babait.",
+              "english": "\"On 19 January it is Dad's birthday.\""
+            },
+            {
+              "text": "— E di, — buzëqesh Dritani.",
+              "english": "\"I know,\" smiles Dritan."
+            },
+            {
+              "text": "— Bëhem 50 vjeç.",
+              "english": "\"I am turning fifty.\""
+            },
+            {
+              "text": "— Atëherë bëjmë një darkë të vogël pas shërbimit, — thotë Mira dhe e shkruan ditën aty.",
+              "english": "\"Then we will have a small dinner after the service,\" says Mira, and writes the day down there."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Po në shkurt? — pyet Sami.",
+              "english": "\"And in February?\" asks Sam."
+            },
+            {
+              "text": "— Në shkurt është ditëlindja ime, — thotë Mira.",
+              "english": "\"In February it is my birthday,\" says Mira."
+            },
+            {
+              "text": "— Por unë nuk dua festë. Dua vetëm një kafe me ju.",
+              "english": "\"But I do not want a party. I only want a coffee with you.\""
+            },
+            {
+              "text": "— Mirë. Shkurti është muaji më i shkurtër i vitit, — thotë Gjergji.",
+              "english": "\"Fine. February is the shortest month of the year,\" says Gjergj."
+            },
+            {
+              "text": "— Të gjithë janë të lodhur.",
+              "english": "\"Everybody is tired.\""
+            },
+            {
+              "text": "— Mars është muaji i tretë i vitit, — thotë Mira.",
+              "english": "\"March is the third month of the year,\" says Mira."
+            },
+            {
+              "text": "— Më 8 mars është Dita e Nënës dhe e Gruas. Të gjithë u dhurojnë nënave lule.",
+              "english": "\"On 8 March it is Mother's and Women's Day. Everyone gives flowers to their mothers.\""
+            },
+            {
+              "text": "— Në mars mund të shkojmë te nënat e vjetra të kishës, — thotë Sami.",
+              "english": "\"In March we can go to the old mothers of the church,\" says Sam."
+            },
+            {
+              "text": "— Unë mund t'u sjell çaj dhe t'i dëgjoj.",
+              "english": "\"I can bring them tea and listen to them.\""
+            },
+            {
+              "text": "— Kjo është mirë, — thotë Mira.",
+              "english": "\"That is good,\" says Mira."
+            },
+            {
+              "text": "— Pastori na këshillon çdo vit të vizitojmë ata që janë vetëm.",
+              "english": "\"The pastor advises us every year to visit those who are alone.\""
+            },
+            {
+              "text": "— Në prill vjen Pashka, — thotë Dritani.",
+              "english": "\"In April comes Easter,\" says Dritan."
+            },
+            {
+              "text": "— Këtë vit ajo është në prill dhe pranvera është e bukur.",
+              "english": "\"This year it is in April and the spring is beautiful.\""
+            },
+            {
+              "text": "— Do të kemi një shërbim të gjatë dhe pastaj një gjellë të mirë, — thotë Mira.",
+              "english": "\"We will have a long service and then a good meal,\" says Mira."
+            },
+            {
+              "text": "— Mos harroni, — thotë Gjergji.",
+              "english": "\"Do not forget,\" says Gjergj."
+            },
+            {
+              "text": "— Në prill dhe në maj kam provime në shkollë.",
+              "english": "\"In April and in May I have exams at school.\""
+            },
+            {
+              "text": "— Nuk harrojmë, — thotë Mira.",
+              "english": "\"We do not forget,\" says Mira."
+            },
+            {
+              "text": "— Por më 17 maj kemi një ditë të madhe: një shoqe e Mirës ka vendosur të marrë pagëzimin.",
+              "english": "\"But on 17 May we have a big day: a friend of Mira has decided to receive baptism.\""
+            },
+            {
+              "text": "— Çfarë lajmi i bukur! — thotë Sami.",
+              "english": "\"What lovely news!\" says Sam."
+            },
+            {
+              "text": "— Çfarë ndjen ajo shoqe?",
+              "english": "\"What does that friend feel?\""
+            },
+            {
+              "text": "— Ajo është e lumtur, por ka edhe pak frikë. Pagëzimi është një hap i madh, — thotë Mira.",
+              "english": "\"She is happy, but she is also a little afraid. Baptism is a big step,\" says Mira."
+            },
+            {
+              "text": "— Kisha do të jetë me të në atë moment, — thotë Dritani.",
+              "english": "\"The church will be with her at that moment,\" says Dritan."
+            },
+            {
+              "text": "— Një sekondë, — thotë Mira.",
+              "english": "\"One second,\" says Mira."
+            },
+            {
+              "text": "— Po e shikoj ditën. Një sekondë. Ajo shkruan ditën e pagëzimit në kalendar.",
+              "english": "\"I am looking at the day. One second.\" She writes the day of the baptism in the calendar."
+            },
+            {
+              "text": "— Dhe më 24 maj nuk kemi asgjë, — thotë Dritani.",
+              "english": "\"And on 24 May we have nothing,\" says Dritan."
+            },
+            {
+              "text": "— Mund të pushojmë.",
+              "english": "\"We can rest.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Në qershor shkolla mbaron, — thotë Gjergji.",
+              "english": "\"In June school ends,\" says Gjergj."
+            },
+            {
+              "text": "— Më 20 jam i lirë.",
+              "english": "\"On the 20th I am free.\""
+            },
+            {
+              "text": "— Në qershor ka edhe një dasmë, — thotë Mira.",
+              "english": "\"In June there is also a wedding,\" says Mira."
+            },
+            {
+              "text": "— Një çift i ri i kishës martohet më 28 qershor.",
+              "english": "\"A young couple of the church is getting married on 28 June.\""
+            },
+            {
+              "text": "— Në korrik bën shumë vapë, — thotë Dritani.",
+              "english": "\"In July it is very hot,\" says Dritan."
+            },
+            {
+              "text": "— Mira dhe unë shkojmë te nëna dhe babai i saj në fshat.",
+              "english": "\"Mira and I go to her mother and father in the village.\""
+            },
+            {
+              "text": "— Atëherë korriku është për pushim, — thotë Mira. Në korrik nuk bëjmë asgjë të madhe.",
+              "english": "\"Then July is for rest,\" says Mira. In July we do nothing big."
+            },
+            {
+              "text": "— Por në gusht na duhet çdo njeri.",
+              "english": "\"But in August we need everybody.\""
+            },
+            {
+              "text": "— Çfarë ka në gusht? — pyet Sami.",
+              "english": "\"What is there in August?\" asks Sam."
+            },
+            {
+              "text": "— Çdo vit më 10 gusht e çojmë një grup të madh fëmijësh në mal për gjashtë ditë, — thotë Mira.",
+              "english": "\"Every year on 10 August we take a big group of children to the mountains for six days,\" says Mira."
+            },
+            {
+              "text": "— Është periudha më e mirë e vitit për ta.",
+              "english": "\"It is the best period of the year for them.\""
+            },
+            {
+              "text": "— Këtë vit shkojmë afër kalasë së vjetër. Gjergji e njeh historinë e saj.",
+              "english": "\"This year we are going near the old castle. Gjergj knows its history.\""
+            },
+            {
+              "text": "— Kjo kala është një kështjellë shumë e bukur dhe një monument i rëndësishëm, — thotë Gjergji.",
+              "english": "\"This castle is a very beautiful fortress and an important monument,\" says Gjergj."
+            },
+            {
+              "text": "— Një mbret e themeloi në një epokë antike.",
+              "english": "\"A king founded it in an ancient age.\""
+            },
+            {
+              "text": "— Pastaj një perandori e pushtoi dhe ajo u bë pjesë e një mbretërie tjetër. Kështu çdo shekull ka pasur një luftë.",
+              "english": "\"Then an empire conquered it and it became part of another kingdom. So every century has had a war.\""
+            },
+            {
+              "text": "— Sot ajo është një trashëgimi e rëndësishme e kësaj zone, — shton ai.",
+              "english": "\"Today it is an important heritage of this area,\" he adds."
+            },
+            {
+              "text": "— Ajo shtrihet mbi një kodër dhe përfshin një sipërfaqe të madhe.",
+              "english": "\"It stretches over a hill and covers a large surface.\""
+            },
+            {
+              "text": "— Si është koha atje? — pyet Sami.",
+              "english": "\"What is the weather like there?\" asks Sam."
+            },
+            {
+              "text": "— Në atë rajon temperatura mesatare në atë muaj është 27 gradë. Ditët janë të ngrohta dhe netët janë të ftohta.",
+              "english": "\"In that region the average temperature in that month is 27 degrees. The days are warm and the nights are cold.\""
+            },
+            {
+              "text": "— A do të ketë turistë? — pyet Sami.",
+              "english": "\"Will there be tourists?\" asks Sam."
+            },
+            {
+              "text": "— Do të ketë disa turistë të huaj, — thotë Mira.",
+              "english": "\"There will be some foreign tourists,\" says Mira."
+            },
+            {
+              "text": "— Por këto ditë janë për fëmijët tanë.",
+              "english": "\"But these days are for our children.\""
+            },
+            {
+              "text": "— Do të na duhen vullnetarë, — thotë Dritani.",
+              "english": "\"We will need volunteers,\" says Dritan."
+            },
+            {
+              "text": "— Dhjetë njerëz të mirë.",
+              "english": "\"Ten good people.\""
+            },
+            {
+              "text": "— Vallë do t'i gjejmë? — thotë Mira.",
+              "english": "\"I wonder whether we will find them?\" says Mira."
+            },
+            {
+              "text": "— Njerëzit kanë punë dhe familje.",
+              "english": "\"People have work and families.\""
+            },
+            {
+              "text": "— Mos dysho, — thotë Sami.",
+              "english": "\"Do not doubt,\" says Sam."
+            },
+            {
+              "text": "— Kam një ndjenjë të mirë për këtë vit.",
+              "english": "\"I have a good feeling about this year.\""
+            },
+            {
+              "text": "— Unë jam misionar, dhe ky është misioni im. Kam kohë dhe do të ndihmoj shumë.",
+              "english": "\"I am a missionary, and this is my mission. I have time and I will help a lot.\""
+            },
+            {
+              "text": "— Edhe Luani dhe Ana mund të vijnë, — thotë Gjergji.",
+              "english": "\"Luan and Ana can come too,\" says Gjergj."
+            },
+            {
+              "text": "— Unë ndjej se ky do të jetë një javë e mirë. Ky është vendimi im: do të jem vullnetar.",
+              "english": "\"I feel this will be a good week. This is my decision: I will be a volunteer.\""
+            },
+            {
+              "text": "— Në mbrëmje do të lexojmë një varg dhe një psalm, — thotë Mira.",
+              "english": "\"In the evening we will read a verse and a psalm,\" says Mira."
+            },
+            {
+              "text": "— Do t'u flasim fëmijëve për paqen, për lirinë dhe për faljen.",
+              "english": "\"We will talk to the children about peace, about freedom and about forgiveness.\""
+            },
+            {
+              "text": "— Fëmijët flasin më shumë për fenë e tyre kur janë larg shtëpisë, — thotë Dritani.",
+              "english": "\"Children talk more about their faith when they are far from home,\" says Dritan."
+            },
+            {
+              "text": "— Do t'i japim lavdi Perëndisë për çdo ditë, — thotë Sami.",
+              "english": "\"We will give glory to God for every day,\" says Sam."
+            },
+            {
+              "text": "— Faleminderit, Gjergj, — thotë Mira dhe e shkruan aty.",
+              "english": "\"Thank you, Gjergj,\" says Mira, and writes it down there."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Shtatori vjen shpejt, — thotë ajo.",
+              "english": "\"September comes quickly,\" she says."
+            },
+            {
+              "text": "— Më 15 shtator fillon shkolla.",
+              "english": "\"On 15 September school begins.\""
+            },
+            {
+              "text": "— Pastaj në shtator ka edhe një takim për shkollën, — thotë Gjergji.",
+              "english": "\"Then in September there is also a meeting about the school,\" says Gjergj."
+            },
+            {
+              "text": "— Tetori është muaji i pemëve, — thotë Dritani.",
+              "english": "\"October is the month of fruit,\" says Dritan."
+            },
+            {
+              "text": "— Më 11 tetor shkojmë në fshat te gjyshi i Ardit. Mbledhim pemët bashkë me fëmijët.",
+              "english": "\"On 11 October we go to the village to Ardi's grandfather. We pick the fruit together with the children.\""
+            },
+            {
+              "text": "— Në tetor Sami do të njohë më mirë kulturën e fshatit, — thotë Mira.",
+              "english": "\"In October Sam will get to know the culture of the village better,\" says Mira."
+            },
+            {
+              "text": "— Në nëntor bën ftohtë, — thotë Gjergji.",
+              "english": "\"In November it is cold,\" says Gjergj."
+            },
+            {
+              "text": "— Më 28 nëntor është festë kombëtare dhe shumë njerëz kanë një ditë pushim.",
+              "english": "\"On 28 November it is a national holiday and many people have a day off.\""
+            },
+            {
+              "text": "— Deri më 30 nëntor nuk kemi asgjë tjetër, — thotë Mira.",
+              "english": "\"Until 30 November we have nothing else,\" says Mira."
+            },
+            {
+              "text": "— Por në dhjetor kemi shumë punë.",
+              "english": "\"But in December we have a lot to do.\""
+            },
+            {
+              "text": "— Më 20 dhjetor bëjmë një mbrëmje me muzikë, me fëmijët dhe me ushqim tradicional, — thotë Sami.",
+              "english": "\"On 20 December let us have an evening with music, with the children and with traditional food,\" says Sam."
+            },
+            {
+              "text": "— Pastaj vjen Krishtlindja, — thotë Mira.",
+              "english": "\"Then comes Christmas,\" says Mira."
+            },
+            {
+              "text": "— Më 25 dhjetor e festojmë me familjet tona.",
+              "english": "\"On 25 December we celebrate it with our families.\""
+            },
+            {
+              "text": "— Para Krishtlindjes do të vizitojmë një çift të vjetër në lagjen e Samit, — thotë Dritani.",
+              "english": "\"Before Christmas we will visit an old couple in Sam's neighbourhood,\" says Dritan."
+            },
+            {
+              "text": "— Ata nuk kanë asnjë fëmijë.",
+              "english": "\"They have no children at all.\""
+            },
+            {
+              "text": "— Dhe Sami mund të sjellë çajin e tij, — thotë Gjergji.",
+              "english": "\"And Sam can bring his tea,\" says Gjergj."
+            },
+            {
+              "text": "Të gjithë buzëqeshin, por Mira nuk e ka mbaruar ende.",
+              "english": "Everybody smiles, but Mira has not finished yet."
+            },
+            {
+              "text": "— Një moment, — thotë ajo.",
+              "english": "\"One moment,\" she says."
+            },
+            {
+              "text": "— Në fillim të çdo muaji bëhet një takim i grupit.",
+              "english": "\"At the beginning of every month there is a meeting of the group.\""
+            },
+            {
+              "text": "— Një sekondë, — thotë Sami.",
+              "english": "\"One second,\" says Sam."
+            },
+            {
+              "text": "— Nuk është e lehtë të kujtosh çdo gjë. Unë do ta shkruaj kalendarin edhe në celular.",
+              "english": "\"It is not easy to remember everything. I will also write the calendar on my phone.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mira shikon kalendarin tonë.",
+              "english": "Mira looks at our calendar."
+            },
+            {
+              "text": "Çdo muaj ka ditët e tij dhe çdo ditë ka një emër.",
+              "english": "Every month has its days and every day has a name."
+            },
+            {
+              "text": "— Ky është viti ynë, — thotë ajo.",
+              "english": "\"This is our year,\" she says."
+            },
+            {
+              "text": "— Një vit i ri, me ditë të bukura, me punë dhe me gëzim.",
+              "english": "\"A new year, with beautiful days, with work and with joy.\""
+            },
+            {
+              "text": "Sami e mban në dorë dhe e lexon edhe një herë nga fillimi deri në fund.",
+              "english": "Sam holds it in his hand and reads it once more from the beginning to the end."
+            },
+            {
+              "text": "Ai falënderon Perëndinë për kishën dhe për miqtë e tij.",
+              "english": "He thanks God for the church and for his friends."
+            },
+            {
+              "text": "Ky nuk është vetëm një kalendar. Është historia e kishës dhe e njerëzve që ai do.",
+              "english": "This is not just a calendar. It is the story of the church and of the people he loves."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

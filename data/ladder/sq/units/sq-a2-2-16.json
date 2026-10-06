@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-16",
+  "lang": "sq",
+  "title": "Turizmi në Shqipëri",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-16",
+    "title": "Albanian ladder, a2-2: Turizmi në Shqipëri (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Nonfiction on tourism. To check (facts): the Adriatic in the north and the Ionian in the south; Llogara; Berat and Gjirokastër declared important places by an international organisation; Butrint (archaeological site near the border with a lake and a forest); Apollonia near Fier; a very old theatre in Durrës; the Albanian Alps with the parks of Theth and Valbonë; Dajti near Tirana; the lakes of Shkodër (the largest of the Balkans) and Ohrid; Mother Teresa and the airport; the Cathedral of the Resurrection in Tirana; the definition of a commune. Mean sentence length is high (19)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "nonfiction"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-fact-check"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "nonfiction"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Turizmi në Shqipëri",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Shqipëria është një vend i vogël, por ajo ka shumë gjëra për të treguar turistëve, në çdo zonë të territorit të saj.",
+              "english": "Albania is a small country, but it has many things to show to tourists, in every zone of its territory."
+            },
+            {
+              "text": "Territori i saj ka shumë natyrë të bukur, qytete të vjetra dhe histori të gjatë. Edhe territori i një vendi të vogël mund të ketë shumë gjëra për të parë.",
+              "english": "Its territory has a lot of beautiful nature, old towns and a long history. Even the territory of a small country can have many things to see."
+            },
+            {
+              "text": "Çdo vit vijnë më shumë njerëz, dhe turizmi është një pjesë e rëndësishme e jetës së vendit.",
+              "english": "Every year more people come, and tourism is an important part of the life of the country."
+            },
+            {
+              "text": "Ky tekst ju tregon se çfarë mund të shihni, dhe ku gjendet çdo vend.",
+              "english": "This text tells you what you can see, and where each place is located."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Bregdeti shqiptar ka dy pjesë të mëdha.",
+              "english": "The Albanian coast has two big parts."
+            },
+            {
+              "text": "Në veri deti quhet Adriatik, dhe në jug quhet Jon. Pjesa veriore e vendit ka më shumë reshje, dhe pjesa jugore ka më shumë diell.",
+              "english": "In the north the sea is called the Adriatic, and in the south it is called the Ionian. The northern part of the country has more rain, and the southern part has more sun."
+            },
+            {
+              "text": "Bregdeti verior është me rërë të gjatë dhe me ujë të ulët, kështu që është i mirë për familjet me fëmijë, dhe në atë zonë bregdetare ka shumë plazhe.",
+              "english": "The northern coast has long sand and shallow water, so it is good for families with children, and in that coastal zone there are many beaches."
+            },
+            {
+              "text": "Bregdeti jugor është më malor, dhe ka vende të vogla me ujë të pastër dhe të thellë, ku qëndrojnë varkat. Në pjesën jugore klima është më e ngrohtë.",
+              "english": "The southern coast is more mountainous, and has small places with clean and deep water, where the boats stay. In the southern part the climate is warmer."
+            },
+            {
+              "text": "Klima në të dy pjesët është mesdhetare, dhe klima mesdhetare është shumë e mirë për turizmin: vera është e nxehtë dhe e thatë, dhe dimri është i ngrohtë.",
+              "english": "The climate in both parts is Mediterranean: the summer is hot and dry, and the winter is warm."
+            },
+            {
+              "text": "Në qytetet bregdetare, si Durrësi, Vlora dhe Saranda, ka hotele, plazhe dhe restorante, dhe zona bregdetare e jugut ka më shumë male.",
+              "english": "In the coastal towns, such as Durrës, Vlorë and Sarandë, there are hotels, beaches and restaurants, and the coastal zone of the south has more mountains."
+            },
+            {
+              "text": "Njerëzit që punojnë me turistët jetojnë kryesisht nga turizmi detar, dhe shumë prej tyre kanë varka të vogla. Klima mesdhetare është e mirë për turizmin detar. Një udhëtim detar me varkë është një nga gjërat më të mira të bregdetit.",
+              "english": "The people who work with tourists live mainly from sea tourism, and many of them have small boats. The Mediterranean climate is good for sea tourism. A sea trip by boat is one of the best things of the coast."
+            },
+            {
+              "text": "Një rrugë e gjatë lidh bregdetin verior me jugun, dhe ajo kalon pranë shumë fushave dhe malesh.",
+              "english": "A long road links the northern coast with the south, and it passes near many plains and mountains."
+            },
+            {
+              "text": "Rruga që lidh Tiranën me Durrësin është më e shkurtra, dhe ajo e lidh kryeqytetin me detin.",
+              "english": "The road that links Tirana with Durrës is the shortest, and it links the capital with the sea."
+            },
+            {
+              "text": "Pamja e detit nga mali Llogara është një nga pamjet më të bukura të vendit, dhe në maj plazhet janë ende bosh dhe të qeta.",
+              "english": "The view of the sea from the mountain Llogara is one of the most beautiful views of the country, and in May the beaches are still empty and quiet."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Shqipëria ka edhe shumë vende të vjetra.",
+              "english": "Albania also has many old places."
+            },
+            {
+              "text": "Qyteti i Beratit dhe qyteti i Gjirokastrës janë dy qytete shumë të veçanta.",
+              "english": "The town of Berat and the town of Gjirokastër are two very special towns."
+            },
+            {
+              "text": "Ata u shpallën vende të rëndësishme nga një grup i madh i botës, sepse shtëpitë e tyre të vjetra janë ende të plota.",
+              "english": "They were declared important places by a big group of the world, because their old houses are still whole."
+            },
+            {
+              "text": "Në Gjirokastër ka një kala të madhe, dhe shtëpitë janë prej guri dhe kanë çati të rënda.",
+              "english": "In Gjirokastër there is a big castle, and the houses are of stone and have heavy roofs."
+            },
+            {
+              "text": "Në Berat shtëpitë janë të bardha, dhe qyteti përmendet shpesh si një nga qytetet më të bukura.",
+              "english": "In Berat the houses are white, and the town is often mentioned as one of the most beautiful towns."
+            },
+            {
+              "text": "Në të dy qytetet ka kisha, xhami dhe muze, dhe të gjitha janë të hapura për vizitorët.",
+              "english": "In both towns there are churches, mosques and museums, and all of them are open to visitors."
+            },
+            {
+              "text": "Një vend tjetër shumë i vjetër është Butrinti, në jug, afër kufirit.",
+              "english": "Another very old place is Butrint, in the south, near the border."
+            },
+            {
+              "text": "Në Butrint ka një vend arkeologjik, dhe aty gjenden mure, një teatër dhe një kullë shumë e vjetër. Në zonën arkeologjike ka edhe një muze arkeologjik të vogël.",
+              "english": "In Butrint there is an archaeological site, and there are walls, a theatre and a very old tower there."
+            },
+            {
+              "text": "Njerëzit e shkencës kanë zbuluar aty shumë gjëra: shtëpi, rrugë, kisha dhe një banjë të vjetër.",
+              "english": "People of science have discovered many things there: houses, streets, churches and an old bath."
+            },
+            {
+              "text": "Në Butrint ka një liqen dhe një pyll pranë, dhe pamja është shumë e qetë.",
+              "english": "In Butrint there is a lake and a forest nearby, and the view is very calm."
+            },
+            {
+              "text": "Një qytet tjetër i vjetër është Apolonia, afër Fierit, ku ka edhe një teatër dhe një pallat të vogël. Pallati i vogël është i vjetër dhe i hapur për vizitorët, dhe një pallat tjetër i rëndësishëm gjendet në Tiranë.",
+              "english": "Another old town is Apollonia, near Fier, where there is also a theatre and a small palace. The small palace is old and open to visitors, and another important palace is located in Tirana."
+            },
+            {
+              "text": "Në Durrës ka një teatër shumë të vjetër prej guri, që e gjetën vetëm shumë shekuj më vonë.",
+              "english": "In Durrës there is a very old stone theatre, which they found only many centuries later."
+            },
+            {
+              "text": "Të ruash këto vende është e vështirë, por shteti përpiqet t'i mbrojë me ligj.",
+              "english": "To keep these places is difficult, but the state tries to defend them by law."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në veri gjenden Alpet shqiptare, një rajon me male të larta dhe me luginë të thellë.",
+              "english": "In the north are the Albanian Alps, a region with high mountains and deep valleys."
+            },
+            {
+              "text": "Aty ndodhen dy parqe kombëtare shumë të njohura: një në Theth dhe një në Valbonë.",
+              "english": "There are two very well-known national parks there: one in Theth and one in Valbonë."
+            },
+            {
+              "text": "Parqet kombëtare janë vende që shteti i mbron, dhe aty nuk lejohet t'i bësh keq natyrës, sepse kjo është një dëm i madh.",
+              "english": "National parks are places that the state protects, and there you are not allowed to harm nature, because this is a big harm."
+            },
+            {
+              "text": "Në këto parqe ka burime të ftohta, përrenj të pastër dhe pyje të mëdha.",
+              "english": "In these parks there are cold springs, clean streams and big forests."
+            },
+            {
+              "text": "Përveç malit, aty ka edhe fshatra të vogla, ku njerëzit jetojnë në shtëpi prej guri.",
+              "english": "Besides the mountain, there are also small villages there, where people live in stone houses."
+            },
+            {
+              "text": "Në verë mund të ecësh dy ditë pa parë asnjë rrugë, pa parë asnjë makinë.",
+              "english": "In summer you can walk two days without seeing any road, without seeing any car."
+            },
+            {
+              "text": "Shumë turistë i duan këto vende, sepse atje ka paqe, ajër të mirë dhe njerëz të mirë, dhe turistët duhet t'u binden ligjeve të parkut.",
+              "english": "Many tourists like these places, because there is peace, good air and good people there, and tourists must obey the laws of the park."
+            },
+            {
+              "text": "Pranë Tiranës ka edhe një park tjetër, Dajti, me një rrugë lart dhe me një pamje të gjerë mbi qytet.",
+              "english": "Near Tirana there is also another park, Dajti, with a road up and a wide view over the town."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Liqenet janë edhe një pikë tjetër e turizmit.",
+              "english": "The lakes are another point of tourism."
+            },
+            {
+              "text": "Liqeni i Shkodrës është liqeni më i madh i Ballkanit, dhe një pjesë e tij gjendet edhe në një vend tjetër.",
+              "english": "The lake of Shkodër is the biggest lake of the Balkans, and part of it is also in another country."
+            },
+            {
+              "text": "Liqeni i Ohrit është shumë i thellë dhe i pastër, dhe shumë njerëz notojnë atje në verë.",
+              "english": "The lake of Ohrid is very deep and clean, and many people swim there in summer."
+            },
+            {
+              "text": "Në ujin e tyre ka peshq, dhe restorantet i gatuajnë ata në tenxhere të vjetra, me limon dhe me hudhër.",
+              "english": "In their water there are fish, and the restaurants cook them in old pots, with lemon and garlic."
+            },
+            {
+              "text": "Mbrëmë dhe sonte tavolinat e restoranteve janë gati dhe të plota me njerëz.",
+              "english": "Last night and tonight the tables of the restaurants are ready and full of people."
+            },
+            {
+              "text": "Nga një tavolinë mund ta shohësh liqenin në mbrëmje, kur dielli bie dhe uji është i kuq.",
+              "english": "From a table you can see the lake in the evening, when the sun goes down and the water is red."
+            },
+            {
+              "text": "Ushqimi shqiptar është i mirë dhe i vërtetë: byrek, supë, pulë, peshk dhe perime.",
+              "english": "Albanian food is simple and real: byrek, soup, chicken, fish and vegetables."
+            },
+            {
+              "text": "Në shumë vende ka edhe një pirun dhe një lugë më pak se në qytet, por ushqimi është më i mirë.",
+              "english": "In many places there is also one fork and one spoon fewer than in town, but the food is better."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Komunat e vogla të fshatrave kanë një rol të madh në turizëm.",
+              "english": "The small communes of the villages have a big role in tourism."
+            },
+            {
+              "text": "Një komunë është një pjesë e vogël e shtetit, dhe ajo ka një kryetar që e zgjedhin banorët.",
+              "english": "A commune is a small part of the state, and it has a head whom the inhabitants choose."
+            },
+            {
+              "text": "Shumë komuna me varfëri tani ofrojnë dhoma për turistët dhe ushqim të përgatitur në shtëpi.",
+              "english": "Many communes with poverty now offer rooms for tourists and food prepared at home."
+            },
+            {
+              "text": "Kështu një familje e varfër mund të ketë para, pa e lënë fshatin, dhe varfëria nuk është më shumë një arsye për të ndryshuar vendin.",
+              "english": "Thus a poor family can have money without leaving the village, and poverty is no longer a reason to change place."
+            },
+            {
+              "text": "Njerëz të pasur që vijnë nga qytetet nuk kërkojnë gjithmonë hotele të mëdha, por qëndrojnë në shtëpi të vogla.",
+              "english": "Rich people who come from the towns do not always look for big hotels, but stay in small houses."
+            },
+            {
+              "text": "Njerëzit e fshatit ndjejnë një forcë të re kur turistët vijnë, dhe ata qëndrojnë në vendin e tyre.",
+              "english": "The people of the village feel a new strength when tourists come, and they stay in their place."
+            },
+            {
+              "text": "Disa vizitorë vijnë edhe për një arsye tjetër: kërkojnë paqe për shpirtin dhe për mendjen.",
+              "english": "Some visitors come also for another reason: they seek peace for the soul and for the mind."
+            },
+            {
+              "text": "Natyra i ngushëllon ata, dhe ata ndjejnë një frymë të re në trup, siç ndjen një njeri pas një udhëtimi të gjatë.",
+              "english": "Nature comforts them, and they feel a new spirit in the body, as a person feels after a long journey."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Turizmi ka edhe një anë tjetër që duhet të kujtohet.",
+              "english": "Tourism also has another side that must be remembered."
+            },
+            {
+              "text": "Shumë turistë mund t'i bëjnë keq një vendi, nëse nuk e respektojnë.",
+              "english": "Too many tourists can do harm to a place, if they do not respect it."
+            },
+            {
+              "text": "Prandaj parqet, qytetet e vjetra dhe bregdeti kanë nevojë për ligje të qarta dhe të drejta.",
+              "english": "That is why the parks, the old towns and the coast need clear and just laws."
+            },
+            {
+              "text": "Një turist i mirë nuk e lë vendin në një gjendje të keqe, nuk i bën keq natyrës dhe i flet mirë vendasit.",
+              "english": "A good tourist does not leave the place in a bad state, does not harm nature and speaks well to the locals."
+            },
+            {
+              "text": "Vendi duhet të krijojë parqe të reja dhe të zhvillojë rrugët, por pa i bërë keq asaj që ka.",
+              "english": "The country must create new parks and develop the roads, but without harming what it has."
+            },
+            {
+              "text": "Aktualisht shumë njerëz mendojnë për këtë, dhe kjo është shumë e mirë.",
+              "english": "At present many people are thinking about this, and that is very good."
+            },
+            {
+              "text": "Në fund, turizmi i vërtetë është takimi i dy botëve: i atyre që vijnë dhe i atyre që presin. Sektori i turizmit është një institucion i madh për vendin, dhe puna administrative e tij bëhet përmes bashkive; shteti e respekton çdo njeri që punon aty.",
+              "english": "In the end, real tourism is the meeting of two worlds: of those who come and of those who wait. The tourism sector is a big institution for the country, and its administrative work is done through the municipalities; the state respects every person who works there."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Turizmi i kishës dhe i besimit është edhe ai një pjesë e historisë shqiptare.",
+              "english": "The tourism of church and faith is also a part of Albanian history."
+            },
+            {
+              "text": "Në disa kisha të vjetra kanë jetuar murgesha që e ndiqnin një urdhër, dhe njerëzit i respektonin shumë.",
+              "english": "In some old churches nuns lived who followed an order, and people respected them a lot."
+            },
+            {
+              "text": "Shumë shenjtorë të kishës janë të njohur në këtë vend.",
+              "english": "Many saints of the church are known in this country."
+            },
+            {
+              "text": "Një shqiptare e njohur në të gjithë botën është Nënë Tereza, që e mori një shpërblim të madh për punën e saj me njerëzit e varfër.",
+              "english": "An Albanian woman known all over the world is Mother Teresa, who received a big prize for her work with the poor."
+            },
+            {
+              "text": "Aeroporti i Tiranës mban emrin e saj, dhe shumë turistë e lexojnë këtë emër kur mbërrijnë.",
+              "english": "The airport of Tirana bears her name, and many tourists read this name when they arrive."
+            },
+            {
+              "text": "Në Tiranë ka edhe një kishë të madhe, me emrin Katedralja e Ringjalljes, dhe aty vijnë njerëz të shumë feve.",
+              "english": "In Tirana there is also a big cathedral, with the name Cathedral of the Resurrection, and people of many faiths come there."
+            },
+            {
+              "text": "Një udhëzues i mirë nuk të gënjen për historinë dhe e tregon të vërtetën, edhe kur ajo nuk është e bukur.",
+              "english": "A good guide does not lie to you about history and tells the truth, even when it is not beautiful."
+            },
+            {
+              "text": "Kjo është një mendim i vjetër i këtij vendi: një mik i vërtetë i thotë mikut të tij atë që është e drejtë dhe e qartë.",
+              "english": "This is an old thought of this country: a true friend tells his friend what is right and clear."
+            },
+            {
+              "text": "Vendi ka forcën e natyrës, të kishave dhe të njerëzve, dhe kjo forcë e bën çdo vizitë një gjë të veçantë, si një fuqi që nuk mbaron.",
+              "english": "The country has the strength of nature, of churches and of people, and this strength makes every visit something special, like a power that does not end."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

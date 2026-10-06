@@ -1,0 +1,419 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-14",
+  "lang": "sq",
+  "title": "Një CV dhe një punë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-14",
+    "title": "Albanian ladder, a2-2: Një CV dhe një punë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Practical: a CV, a covering letter, an interview, with \"pa\" + participle. To check: CV and letter conventions in Albanian (\"I nderuar drejtor\", \"Me respekt\"); the first draft of Sam's CV is a joke full of church words, in the course's own words. Needs theological review only for the joke lines."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "practical"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një CV dhe një punë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pas një viti në Shqipëri Sami donte një punë të mirë, pa e lënë punën e tij në kishë.",
+              "english": "After a year in Albania Sam wanted a good job, without leaving his work at the church."
+            },
+            {
+              "text": "Dritani, që ishte inxhinier dhe e njihte drejtorin e një shkolle, i foli për një vend të lirë.",
+              "english": "Dritan, who was an engineer and knew the director of a school, told him about a vacant place."
+            },
+            {
+              "text": "— Shkolla ka nevojë për një mësues të gjuhës së huaj, — tha ai.",
+              "english": "\"The school needs a teacher of the foreign language,\" he said."
+            },
+            {
+              "text": "— Ti flet anglisht dhe shqip, dhe fëmijët të duan.",
+              "english": "\"You speak English and Albanian, and the children like you.\""
+            },
+            {
+              "text": "— Por duhet të dërgosh një CV dhe një letër, — shtoi ai.",
+              "english": "\"But you must send a CV and a letter,\" he added."
+            },
+            {
+              "text": "— Kjo është një punë në sektorin e arsimit, dhe në këtë sektor ka vend për mësues, dhe një institucion i tillë do letra të qarta.",
+              "english": "\"This is a job in the education sector, and in this sector there is room for teachers, and such an institution wants clear letters.\""
+            },
+            {
+              "text": "— Unë mund ta dërgoj përmes një miku, por letra duhet të jetë e mirë.",
+              "english": "\"I can send it through a friend, but the letter must be good.\""
+            },
+            {
+              "text": "Sami u përpoq ta shkruante CV-në vetë, pa pyetur njeri, dhe e solli te Luani të shtunën.",
+              "english": "Sam tried to write the CV himself, without asking anyone, and brought it to Luan on Saturday."
+            },
+            {
+              "text": "Luani e lexoi dhe nuk tha asgjë për një minutë, sepse sektori i arsimit nuk pranon letra të tilla.",
+              "english": "Luan read it and said nothing for a minute, because the education sector does not accept such letters."
+            },
+            {
+              "text": "— Sam, kjo nuk është një CV, — tha ai pastaj.",
+              "english": "\"Sam, this is not a CV,\" he said then."
+            },
+            {
+              "text": "— Kjo është një predikim.",
+              "english": "\"This is a sermon.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Teksti i parë i Samit fillonte kështu: «Unë jam një besimtar dhe një mëkatar me pendim, dhe Perëndia më ka bekuar.»",
+              "english": "Sam's first text began like this: \"I am a believer and a sinner with repentance, and God has blessed me.\""
+            },
+            {
+              "text": "Pastaj shkruante: «Jam një dishepull i vogël, dhe kam mësuar të bindem dhe të lavdëroj çdo ditë.»",
+              "english": "Then it said: \"I am a small disciple, and I have learned to obey and to praise every day.\""
+            },
+            {
+              "text": "Në fund kishte edhe këtë: «Besoj te profetët dhe te apostujt, te engjëjt dhe te parajsa, dhe çdo mrekulli është për mua një ditë e shenjtë dhe e bekuar.»",
+              "english": "At the end there was also this: \"I believe in the prophets and the apostles, in the angels and in paradise, and every miracle is for me a holy and blessed day.\""
+            },
+            {
+              "text": "Luani qeshi shumë. Në këtë rast forma e CV-së ishte shumë e keqe.",
+              "english": "Luan laughed a lot. In this case the form of the CV was very bad."
+            },
+            {
+              "text": "— Një shkollë nuk është kisha, — tha ai.",
+              "english": "\"A school is not the church,\" he said."
+            },
+            {
+              "text": "— Një drejtor do ta lexojë këtë dhe do të mendojë se po kërkon një parajsë, jo një punë.",
+              "english": "\"A director will read this and think that you are looking for a paradise, not a job.\""
+            },
+            {
+              "text": "— Unë e thashë çfarë mendoj, — tha Sami.",
+              "english": "\"I said what I think,\" said Sam."
+            },
+            {
+              "text": "— Është e vërtetë.",
+              "english": "\"It is true.\""
+            },
+            {
+              "text": "— Sigurisht që është e vërtetë, — tha Luani.",
+              "english": "\"Of course it is true,\" said Luan."
+            },
+            {
+              "text": "— Por një CV duhet të tregojë aftësitë e tua, jo gjithë besimin tënd.",
+              "english": "\"But a CV must show your skills, not all your faith.\""
+            },
+            {
+              "text": "— Besimi yt ka rëndësi, por e shkruan me kujdes në një letër tjetër.",
+              "english": "\"Your faith matters, but write it carefully in another letter.\""
+            },
+            {
+              "text": "Ata u ulën bashkë dhe punuan tri orë, pa pirë asnjë kafe, dhe në fund CV-ja ishte e qartë dhe e shkurtër.",
+              "english": "They sat down together and worked for three hours, without drinking a single coffee, and in the end the CV was clear and short."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kjo ishte CV-ja e re e Samit.",
+              "english": "This was Sam's new CV."
+            },
+            {
+              "text": "Emri: Sam. Puna që kërkoj: mësues i gjuhës së huaj.",
+              "english": "Name: Sam. Job I am seeking: teacher of a foreign language."
+            },
+            {
+              "text": "Aftësitë: flas anglisht si gjuhë të parë dhe shqip mirë, dhe mësoj fëmijë dhe të rritur.",
+              "english": "Skills: I speak English as a first language and Albanian well, and I teach children and adults."
+            },
+            {
+              "text": "Jam i aftë të punoj në grup, pa qenë i zemëruar kur dikush bën një gabim dhe pa harruar asnjë detyrë.",
+              "english": "I am able to work in a team, without being angry when someone makes a mistake and without forgetting any task."
+            },
+            {
+              "text": "Përvoja: një vit në Tiranë, mësues vullnetar te një kishë dhe te një grup për fëmijë.",
+              "english": "Experience: one year in Tirana, volunteer teacher at a church and at a group for children."
+            },
+            {
+              "text": "Kam zhvilluar një plan leximi për fëmijët dhe kam krijuar lojëra për klasën.",
+              "english": "I developed a reading plan for the children and created games for the class."
+            },
+            {
+              "text": "Kam punuar edhe si kuzhinier vullnetar në kishë, ku kam gatuar fasule, byrek dhe pulë me limon.",
+              "english": "I have also worked as a volunteer cook at the church, where I cooked beans, byrek and chicken with lemon."
+            },
+            {
+              "text": "Kam mësuar që ushqimi i shëndetshëm ka vitamina, substanca dhe energji, dhe që sheqeri në masë të madhe është një dëm, një ushqim i dëmshëm.",
+              "english": "I learned that healthy food has vitamins, substances and energy, and that sugar in large amounts is a harm, a harmful food."
+            },
+            {
+              "text": "Kam mësuar edhe të bëj produkte të vogla: një çaj i ëmbël, një kafe e hidhur, një gotë qumësht.",
+              "english": "I also learned to make small products: a sweet tea, a bitter coffee, a glass of milk."
+            },
+            {
+              "text": "Megjithatë, e di që një gotë çaj me mjaltë e ndihmon çdo mësues në një ditë të gjatë.",
+              "english": "Nevertheless, I know that a glass of tea with honey helps every teacher on a long day."
+            },
+            {
+              "text": "Arsimi: diplomë universiteti në gjuhë dhe në arsim. Kam bërë kurse për gjuhën shqip në Tiranë.",
+              "english": "Education: university degree in language and education. I did courses for the Albanian language in Tirana."
+            },
+            {
+              "text": "Njerëz që më njohin: pastori Pjetër dhe Dritani, inxhinier.",
+              "english": "People who know me: Pastor Pjetër and Dritan, engineer."
+            },
+            {
+              "text": "— Kjo është shumë më mirë, — tha Luani.",
+              "english": "\"This is much better,\" said Luan."
+            },
+            {
+              "text": "— Një kandidat i mirë tregon çfarë di të bëjë, dhe jo çfarë beson për parajsën.",
+              "english": "\"A good candidate shows what he knows how to do, and not what he believes about paradise.\""
+            },
+            {
+              "text": "— Të shkruaj edhe një gjë, — tha Sami.",
+              "english": "\"Let me write one more thing,\" said Sam."
+            },
+            {
+              "text": "— Në fund do të them: Zoti ju bekoftë.",
+              "english": "\"At the end I will say: May the Lord bless you.\""
+            },
+            {
+              "text": "— Jo, — qeshi Luani.",
+              "english": "\"No,\" laughed Luan."
+            },
+            {
+              "text": "— Këtë ma ruaj për kishën.",
+              "english": "\"Save that for the church.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastaj ata shkruan letrën. Ia dërgoi Sami përmes Dritanit, që e njihte drejtorin.",
+              "english": "Then they wrote the letter. Sam sent it through Dritan, who knew the director."
+            },
+            {
+              "text": "I nderuar drejtor,",
+              "english": "Dear Director,"
+            },
+            {
+              "text": "Quhem Sam dhe jam një kandidat për vendin e mësuesit të gjuhës së huaj.",
+              "english": "My name is Sam and I am a candidate for the post of teacher of the foreign language."
+            },
+            {
+              "text": "Jam i aftë të punoj me fëmijë, dhe kam punuar një vit në një institucion për fëmijë në Tiranë.",
+              "english": "I am able to work with children, and I have worked for a year in an institution for children in Tirana."
+            },
+            {
+              "text": "Në shkollën tuaj do t'i respektoj kolegët, fëmijët dhe çdo kusht të shkollës.",
+              "english": "In your school I will respect my colleagues, the children and every condition of the school."
+            },
+            {
+              "text": "Kam zhvilluar aftësi të mira, dhe dua të krijoj një plan të ri leximi për klasën.",
+              "english": "I have developed good skills, and I want to create a new reading plan for the class."
+            },
+            {
+              "text": "Faleminderit që e lexuat letrën time.",
+              "english": "Thank you for reading my letter."
+            },
+            {
+              "text": "Faleminderit, Sam.",
+              "english": "Thank you, Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas një jave shkolla e thirri Samin për një intervistë.",
+              "english": "After a week the school invited Sam for an interview."
+            },
+            {
+              "text": "Atë ditë binte shi, dhe Sami doli pa çadër dhe pa kapelë, sepse i kishte harruar në shtëpi.",
+              "english": "That day it was raining, and Sam went out without an umbrella and without a hat, because he had forgotten them at home."
+            },
+            {
+              "text": "Kur mbërriti në shkollë, flokët e tij kishin shumë ujë dhe ai mbante xhaketën në krah.",
+              "english": "When he arrived at the school, his hair had a lot of water and he carried the jacket on his arm."
+            },
+            {
+              "text": "Në zyrën administrative një mësuese e re i dha një gotë ujë dhe i tha: — Drejtori ju pret.",
+              "english": "In the administrative office a young woman teacher gave him a glass of water and said: \"The director is waiting for you.\""
+            },
+            {
+              "text": "Ajo ishte e para që punonte në zyrën administrative dhe e dinte si pret shkolla çdo kandidat.",
+              "english": "She was the first who worked in the administrative office and knew how the school receives every candidate."
+            },
+            {
+              "text": "Drejtori ishte një burrë i vjetër me sy të mirë, që rrinte pas një tavoline të madhe.",
+              "english": "The director was an old man with kind eyes, who sat behind a big table."
+            },
+            {
+              "text": "Në zyrë ishte edhe një koleg i ri, që do të punonte me Samin, dhe një mësuese tjetër. Kolegu i ri ishte një njeri i qetë, dhe ai e respektoi Samin që nga fjalët e para.",
+              "english": "In the office there was also a young colleague, who would work with Sam, and another woman teacher."
+            },
+            {
+              "text": "— Mirë se vini, — tha drejtori.",
+              "english": "\"Welcome,\" said the director."
+            },
+            {
+              "text": "— Letra juaj është e qartë dhe e shkurtër.",
+              "english": "\"Your letter is clear and short.\""
+            },
+            {
+              "text": "— Shumë kandidatë shkruajnë shumë faqe pa thënë asgjë. Ju e keni thënë çdo gjë në dhjetë fjali.",
+              "english": "\"Many candidates write many pages without saying anything. You have said everything in ten sentences.\""
+            },
+            {
+              "text": "— Faleminderit, — tha Sami.",
+              "english": "\"Thank you,\" said Sam."
+            },
+            {
+              "text": "— Kam pasur një mik që më ka ndihmuar.",
+              "english": "\"I had a friend who helped me.\""
+            },
+            {
+              "text": "Drejtori e pyeti për përvojën e tij, për fëmijët dhe për planin e tij për klasën.",
+              "english": "The director asked him about his experience, about the children and about his plan for the class."
+            },
+            {
+              "text": "Sami foli me zë të ulët, pa folur shumë shpejt, dhe i tregoi për lojërat që kishte krijuar.",
+              "english": "Sam spoke in a low voice, without speaking too fast, and told him about the games he had created."
+            },
+            {
+              "text": "— Dhe pse doni të punoni këtu? — pyeti mësuesja tjetër.",
+              "english": "\"And why do you want to work here?\" asked the other woman teacher."
+            },
+            {
+              "text": "— Sepse kjo shkollë i respekton fëmijët, — tha Sami.",
+              "english": "\"Because this school respects children,\" said Sam."
+            },
+            {
+              "text": "— Është një institucion i vjetër, dhe unë dua të zhvilloj atë që është e mirë aty.",
+              "english": "\"It is an old institution, and I want to develop what is good there.\""
+            },
+            {
+              "text": "— Dhe sepse unë dua të mësoj prej tyre.",
+              "english": "\"And because I want to learn from them.\""
+            },
+            {
+              "text": "Drejtori buzëqeshi. Avokati nuk tha asgjë, sepse një avokat i mirë flet vetëm kur duhet.",
+              "english": "The director smiled. The lawyer said nothing, because a good lawyer speaks only when necessary."
+            },
+            {
+              "text": "— Kemi një avokat që e shikon çdo kontratë, dhe një inxhinier që i kontrollon klasat, — tha ai.",
+              "english": "\"We have a lawyer who looks at every contract, and an engineer who checks the classrooms,\" he said."
+            },
+            {
+              "text": "— Por vendi i mësuesit është i juaji, nëse e doni.",
+              "english": "\"But the teacher's place is yours, if you want it.\""
+            },
+            {
+              "text": "— E dua, — tha Sami.",
+              "english": "\"I want it,\" said Sam."
+            },
+            {
+              "text": "Avokati i shkollës, që ishte një njeri i qetë dhe punonte në zyrën administrative, e lexoi kontratën para Samit, dhe Sami e nënshkroi pa e lexuar dy herë.",
+              "english": "The school's lawyer, who was a calm man and worked in the administrative office, read the contract in front of Sam, and Sam signed it without reading it twice."
+            },
+            {
+              "text": "Shkolla e punësoi që nga dita tjetër, përmes një kontrate të shkurtër. Ajo punëson çdo vit disa mësues të rinj, por një kandidat punësohet vetëm pas një interviste.",
+              "english": "The school employed him from the next day, through a short contract. It employs a few new teachers every year, but a candidate is employed only after an interview."
+            },
+            {
+              "text": "Kur doli jashtë, ai pa një gazetar që bënte fotografi për një gazetë të vogël.",
+              "english": "When he went out, he saw a journalist taking photographs for a small newspaper."
+            },
+            {
+              "text": "Gazetari e pyeti Samin se si ishte dita e tij e parë, dhe Sami iu përgjigj me gëzim. Gazetari shkroi një faqe të vogël për shkollën.",
+              "english": "The journalist asked Sam how his first day was, and Sam answered with joy. The journalist wrote a small page about the school."
+            },
+            {
+              "text": "Një artist i ri shkruante diçka në një fletore, pa e ngritur kokën.",
+              "english": "A young artist was writing something in a notebook, without lifting his head."
+            },
+            {
+              "text": "— Ky artist është nxënësi ynë më i mirë, — tha drejtori.",
+              "english": "\"This artist is our best pupil,\" said the director."
+            },
+            {
+              "text": "— Një artist i vërtetë ka aftësi dhe zemër të mirë.",
+              "english": "\"A real artist has skills and patience.\""
+            },
+            {
+              "text": "Sami mendoi: «Sa gjëra të bukura ka kur njeriu nuk e lë shpresën.»",
+              "english": "Sam thought: \"How many beautiful things there are when a person does not give up hope.\""
+            },
+            {
+              "text": "Ai e thirri Luanin dhe Dritanin, dhe të dy u gëzuan shumë.",
+              "english": "He called Luan and Dritan, and both of them rejoiced a lot."
+            },
+            {
+              "text": "Atë natë ai ia tregoi lajmin kishës, dhe të gjithë i thanë: — Zoti të bekoftë!",
+              "english": "That night he told the church the news, and everyone said to him: \"May the Lord bless you!\""
+            },
+            {
+              "text": "— Tani po, — qeshi Luani.",
+              "english": "\"Now yes,\" laughed Luan."
+            },
+            {
+              "text": "— Tani mund ta thuash.",
+              "english": "\"Now you can say it.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

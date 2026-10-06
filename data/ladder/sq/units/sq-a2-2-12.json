@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-12",
+  "lang": "sq",
+  "title": "Një darkë me miq",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-12",
+    "title": "Albanian ladder, a2-2: Një darkë me miq (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Conversation story (volume unit): a dinner with friends; hospitality and toasts; \"për shëndetin!\" as a toast. To check: \"një gotë e thyer sjell gëzim\" as a saying (the usual saying is about luck, here changed to joy); the story of Dritan's first dinner."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një darkë me miq",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën Sami u zgjua herët, sepse kishte një plan të madh: do t'u bënte darkë miqve të tij.",
+              "english": "On Saturday Sam woke up early, because he had a big plan: he would make dinner for his friends."
+            },
+            {
+              "text": "Ishte darka e parë që e bënte vetë në banesën e re, dhe ai ishte pak i shqetësuar.",
+              "english": "It was the first dinner he was making himself in the new flat, and he was a little worried."
+            },
+            {
+              "text": "Ideja kishte ardhur nga Drita, që i kishte thënë: — Sam, një njeri që ka miq duhet t'i ftojë një herë në shtëpi.",
+              "english": "The idea had come from Drita, who had said to him: \"Sam, a person who has friends must invite them home once.\""
+            },
+            {
+              "text": "Arsyeja ishte kjo: ai donte t'i falënderonte për çdo gjë që kishin bërë për të gjatë vitit.",
+              "english": "The reason was this: he wanted to thank them for everything they had done for him during the year."
+            },
+            {
+              "text": "Ai kishte menduar për ushqimet: supë me fasule, pulë me limon, sallatë dhe një ëmbëlsirë me mjaltë.",
+              "english": "He had thought about the foods: bean soup, chicken with lemon, salad and a dessert with honey."
+            },
+            {
+              "text": "Në kuzhinë, mbi tavolinë, ai kishte një tenxhere të madhe, tre pirunë, shumë gota dhe një shishe vaji.",
+              "english": "In the kitchen, on the table, he had a big pot, three forks, many glasses and a bottle of oil."
+            },
+            {
+              "text": "— Unë nuk jam kuzhinier, — tha ai me zë të lartë, vetëm në kuzhinë.",
+              "english": "\"I am not a cook,\" he said aloud, alone in the kitchen."
+            },
+            {
+              "text": "— Por sot do të bëhem një.",
+              "english": "\"But today I will become one.\""
+            },
+            {
+              "text": "Rëndësi ka që miqtë të ndihen mirë, mendoi ai, jo që darka të jetë e madhe.",
+              "english": "What matters is that the friends feel good, he thought, not that the dinner be big."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në orën gjashtë erdhi Luani, me një shishe lëng dhe me një buzëqeshje të madhe.",
+              "english": "At six o'clock Luan came, with a bottle of juice and a big smile."
+            },
+            {
+              "text": "— Përshëndetje, kuzhinier! — tha ai.",
+              "english": "\"Hello, cook!\" he said."
+            },
+            {
+              "text": "— Çfarë ka në tenxhere?",
+              "english": "\"What is in the pot?\""
+            },
+            {
+              "text": "— Supë me fasule, — tha Sami.",
+              "english": "\"Bean soup,\" said Sam."
+            },
+            {
+              "text": "— Por mos hyr në kuzhinë, se nuk e di si do të dalë.",
+              "english": "\"But do not come into the kitchen, because I do not know how it will turn out.\""
+            },
+            {
+              "text": "— Unë erdha me një kusht, — qeshi Luani.",
+              "english": "\"I have come on one condition,\" laughed Luan."
+            },
+            {
+              "text": "— Do të ulem në tavolinë dhe nuk do të flas për gabimet e kuzhinierit.",
+              "english": "\"I will sit at the table and will not talk about the cook's mistakes.\""
+            },
+            {
+              "text": "— Kusht i mirë, — tha Sami.",
+              "english": "\"A good condition,\" said Sam."
+            },
+            {
+              "text": "Pas pak erdhën Dritani dhe Mira me një byrek të madh.",
+              "english": "Soon Dritan and Mira came with a big byrek."
+            },
+            {
+              "text": "— Byreku është nga Mira, — tha Dritani.",
+              "english": "\"The byrek is from Mira,\" said Dritan."
+            },
+            {
+              "text": "— Të gjithë mikeshat e saj e duan atë.",
+              "english": "\"All her friends love it.\""
+            },
+            {
+              "text": "— Mikeshat? — pyeti Sami.",
+              "english": "\"Friends?\" asked Sam."
+            },
+            {
+              "text": "— Po, — tha Mira.",
+              "english": "\"Yes,\" said Mira."
+            },
+            {
+              "text": "— Ana dhe Drita janë mikeshat e mia më të vjetra.",
+              "english": "\"Ana and Drita are my oldest friends.\""
+            },
+            {
+              "text": "Në atë moment erdhi Ana, e lodhur por e gëzuar, dhe pas saj gjyshja Drita, me një çantë të vogël.",
+              "english": "At that moment Ana came, tired but glad, and after her grandmother Drita, with a small bag."
+            },
+            {
+              "text": "Ata u ulën rreth tavolinës, dhe Sami filloi t'u shërbejë. Mira kishte një mikeshë franceze dhe Luani një shok grek, dhe në tavolinë ishin edhe një shok gjerman dhe një shok serb, kështu që dëgjoheshin edhe gjuhë evropiane. Në këtë rast tavolina kishte një formë të gjatë.",
+              "english": "They sat down around the table, and Sam began to serve them. Mira had a French friend and Luan a Greek friend, and at the table there were also a German friend and a Serbian friend, so European languages were heard too. In this case the table had a long shape."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ai hodhi ujë në gotën e parë, por gota i ra nga dora.",
+              "english": "He poured water into the first glass, but the glass fell from his hand."
+            },
+            {
+              "text": "Ajo u thye në dysheme.",
+              "english": "It broke on the floor."
+            },
+            {
+              "text": "— Është gota e parë, dhe tashmë kam bërë një gabim!",
+              "english": "\"It is the first glass, and I have already made a mistake!\""
+            },
+            {
+              "text": "— Mos ki frikë, — tha Drita.",
+              "english": "\"Do not be afraid,\" said Drita."
+            },
+            {
+              "text": "— Një gotë e thyer sjell gëzim.",
+              "english": "\"A broken glass brings joy.\""
+            },
+            {
+              "text": "— Dhe këtë gëzim do ta hamë me byrek, — qeshi Luani.",
+              "english": "\"And we will eat this joy with byrek,\" laughed Luan."
+            },
+            {
+              "text": "Të gjithë qeshën. Sami mori një gotë tjetër dhe këtë herë e mbajti me duart e tij.",
+              "english": "Everyone laughed. Sam took another glass and this time held it with his hands."
+            },
+            {
+              "text": "Pastaj ai e solli supën në tenxhere dhe e la në mes të tavolinës.",
+              "english": "Then he brought the soup in the pot and left it in the middle of the table."
+            },
+            {
+              "text": "— Ka erë të mirë, — tha Ana.",
+              "english": "\"It smells good,\" said Ana."
+            },
+            {
+              "text": "— Është një ushqim i shëndetshëm.",
+              "english": "\"It is a healthy food.\""
+            },
+            {
+              "text": "— Fasulet kanë vitamina, substanca dhe energji, — tha Sami.",
+              "english": "\"Beans have vitamins, substances and energy,\" said Sam."
+            },
+            {
+              "text": "— Këtë e mësova nga ty.",
+              "english": "\"I learned that from you.\""
+            },
+            {
+              "text": "Të gjithë morën nga një lugë dhe heshtën.",
+              "english": "Everyone took a spoon and fell silent."
+            },
+            {
+              "text": "— Supa ka shumë kripë, — tha Dritani.",
+              "english": "\"The soup has a lot of salt,\" said Dritan."
+            },
+            {
+              "text": "— Shumë kripë? — tha Sami. Ai hëngri një lugë dhe e kuptoi vetë.",
+              "english": "\"A lot of salt?\" said Sam. He ate a spoonful and understood himself."
+            },
+            {
+              "text": "— Kam hedhur kripë dy herë!",
+              "english": "\"I put salt in twice!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Nuk ka gjë, — tha Mira.",
+              "english": "\"It is nothing,\" said Mira."
+            },
+            {
+              "text": "— Do të shtojmë ujë dhe limon, dhe do të jetë mirë.",
+              "english": "\"We will add water and lemon, and it will be fine.\""
+            },
+            {
+              "text": "— Dhe pak byrek, — shtoi Drita.",
+              "english": "\"And a little byrek,\" added Drita."
+            },
+            {
+              "text": "— Byreku e bën më të lehtë çdo gjendje.",
+              "english": "\"Byrek makes every situation easier.\""
+            },
+            {
+              "text": "— Gjendja e supës është e keqe, — tha Luani, — por gjendja e miqve është shumë e mirë.",
+              "english": "\"The state of the soup is bad,\" said Luan, \"but the state of the friends is very good.\""
+            },
+            {
+              "text": "— Sam, nëse do të bëhesh kuzhinier i mirë, duhet të hash çdo gjë me kujdes para se ta japësh.",
+              "english": "\"Sam, if you want to become a good cook, you must eat everything carefully before you give it.\""
+            },
+            {
+              "text": "— Unë nuk kisha plan të bëja një supë të ëmbël, — tha Sami.",
+              "english": "\"I did not plan to make a sweet soup,\" said Sam."
+            },
+            {
+              "text": "— Jo, ajo nuk është e ëmbël, është e hidhur, — qeshi Ana.",
+              "english": "\"No, it is not sweet, it is bitter,\" laughed Ana."
+            },
+            {
+              "text": "— Por mos ki frikë.",
+              "english": "\"But do not be afraid.\""
+            },
+            {
+              "text": "Ndërkohë që Mira e ndihmonte supën me ujë dhe limon, Sami solli pulën.",
+              "english": "While Mira helped the soup with water and lemon, Sam brought the chicken."
+            },
+            {
+              "text": "Pula ishte shumë e mirë dhe e ngrohtë.",
+              "english": "The chicken was very good and warm."
+            },
+            {
+              "text": "— Kjo është një sukses! — tha Dritani.",
+              "english": "\"This is a success!\" said Dritan."
+            },
+            {
+              "text": "— Sam, ti je një kuzhinier i mirë.",
+              "english": "\"Sam, you are a good cook.\""
+            },
+            {
+              "text": "— Mos e thuaj shumë shpejt, — tha Sami.",
+              "english": "\"Do not say it too quickly,\" said Sam."
+            },
+            {
+              "text": "— Nuk i kam përdorur ende pirunët.",
+              "english": "\"I have not used the forks yet.\""
+            },
+            {
+              "text": "Ai kishte dhënë një pirun dhe një lugë për çdo njeri, por pirunët ishin të ndryshëm.",
+              "english": "He had given a fork and a spoon to every person, but the forks were different."
+            },
+            {
+              "text": "— Ky ka një formë të re, — tha Luani, duke treguar pirunin e tij.",
+              "english": "\"This one has a new shape,\" said Luan, showing his fork."
+            },
+            {
+              "text": "— Ai është pirun i vjetër i gjyshes, — tha Sami.",
+              "english": "\"That is an old fork of the grandmother's,\" said Sam."
+            },
+            {
+              "text": "— Ajo e kishte dhuruar para shumë vitesh.",
+              "english": "\"She had given it many years ago.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas pulës erdhi ëmbëlsira.",
+              "english": "After the chicken came the dessert."
+            },
+            {
+              "text": "Sami e kishte bërë me mjaltë dhe me kos, dhe e solli në një pjatë të madhe.",
+              "english": "Sam had made it with honey and yoghurt, and brought it on a big plate."
+            },
+            {
+              "text": "— Mjalti është produkt natyror, — tha ai.",
+              "english": "\"Honey is a natural product,\" he said."
+            },
+            {
+              "text": "— Bletët e bëjnë atë me kujdes.",
+              "english": "\"The bees make it with care.\""
+            },
+            {
+              "text": "— Ti e ke mësuar këtë nga gjyshi i Ardit, — tha Drita.",
+              "english": "\"You learned this from Ardi's grandfather,\" said Drita."
+            },
+            {
+              "text": "— Po, — tha Sami.",
+              "english": "\"Yes,\" said Sam."
+            },
+            {
+              "text": "— Atje mësova se bleta është një insekt i vogël, por i veçantë.",
+              "english": "\"There I learned that the bee is a small insect, but a special one.\""
+            },
+            {
+              "text": "— Mbretëresha bën vezë, femrat prodhojnë mjaltë, meshkujt pushojnë, dhe nga nektari dalin larva e mjaltë.",
+              "english": "\"The queen lays eggs, the females produce honey, the males rest, and from nectar come larvae and honey.\""
+            },
+            {
+              "text": "— Bleta ka edhe një thumb, — shtoi ai, — por unë sot nuk përdora asnjë.",
+              "english": "\"The bee also has a sting,\" he added, \"but I did not use any today.\""
+            },
+            {
+              "text": "— Megjithatë ke bërë një gjë të ëmbël dhe shumë të mirë, — tha Ana.",
+              "english": "\"Nevertheless you have made something sweet and very good,\" said Ana."
+            },
+            {
+              "text": "— Ushqimi është i mirë, por mos e hani shumë, — tha ajo.",
+              "english": "\"The food is good, but do not eat too much,\" she said."
+            },
+            {
+              "text": "— Mjalti është i ëmbël dhe shumë i bëhet një dëm.",
+              "english": "\"Honey is sweet and too much of it becomes a harm.\""
+            },
+            {
+              "text": "— Masa është e rëndësishme, — tha Luani.",
+              "english": "\"Measure is important,\" said Luan."
+            },
+            {
+              "text": "— Ana, ti je gjithmonë infermiere.",
+              "english": "\"Ana, you are always a nurse.\""
+            },
+            {
+              "text": "— Ushqimi i dëmshëm është ai që nuk e hamë me zemër të mirë, — qeshi Drita.",
+              "english": "\"Harmful food is the food that we do not eat with a good heart,\" laughed Drita."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kur darka mbaroi, Mira ngriti një gotë.",
+              "english": "When dinner ended, Mira raised a glass."
+            },
+            {
+              "text": "— Për Samin! — tha ajo.",
+              "english": "\"To Sam!\" she said."
+            },
+            {
+              "text": "— Për një darkë të gjallë, me gabime dhe me qeshje!",
+              "english": "\"For a lively dinner, with mistakes and with laughter!\""
+            },
+            {
+              "text": "— Për Samin! — thanë të gjithë, dhe shishja e lëngut kaloi nga dora në dorë.",
+              "english": "\"To Sam!\" everyone said, and the bottle of juice passed from hand to hand."
+            },
+            {
+              "text": "Sami buzëqeshi dhe tha: — Faleminderit që erdhët. Ky është një sukses vetëm për shkak të jush.",
+              "english": "Sam smiled and said: \"Thank you for coming. This is a success only because of you.\""
+            },
+            {
+              "text": "— Të gjithë kemi një arsye të mirë për të qenë këtu, — tha Drita.",
+              "english": "\"We all have a good reason to be here,\" said Drita."
+            },
+            {
+              "text": "— Ti ke shtëpi dhe ne kemi një shok.",
+              "english": "\"You have a home and we have a friend.\""
+            },
+            {
+              "text": "Ata folën gjatë: për punën, për fëmijët dhe për kishën, dhe darka ishte e gjallë deri vonë.",
+              "english": "They talked for a long time: about work, about the children and about the church, and the dinner was lively until late."
+            },
+            {
+              "text": "Para se të largohen, Dritani tregoi një histori për darkën e tij të parë në shtëpi. — Supa ishte e ftohtë, byreku ishte shumë i vogël dhe unë kisha harruar bukën në treg, — tha ai. — Mira nuk më tha asnjë fjalë të keqe, por e pa fytyrën time dhe qeshi. — Sot ajo është gruaja ime, — shtoi ai, — dhe darka e parë është historia që na pëlqen më shumë. — Atëherë edhe darka jote është një histori e mirë, — i tha Mira Samit. — Do ta tregosh edhe ti një ditë, kur të kesh një familje. — Sami nuk tha asgjë, por ndjeu një gëzim të madh. Në mbrëmje Sami i lau pjatat bashkë me Luanin, dhe pirunët, gotat dhe tenxherja ishin në vendin e tyre.",
+              "english": "Before they went away, Dritan told a story about his own first dinner at home. \"The soup was cold, the byrek was very small and I had forgotten to buy bread,\" he said. \"Mira did not say one bad word to me, but she saw my face and laughed.\" \"Today she is my wife,\" he added, \"and that first dinner is the story we like best.\" \"Then your dinner is a good story too,\" Mira said to Sam. \"You will tell it one day too, when you have a family.\" Sam said nothing, but he felt a great joy. In the evening Sam washed the plates together with Luan, and the forks, glasses and pot were in their place."
+            },
+            {
+              "text": "Ai shikoi fytyrën e tij në një pasqyrë të vogël, pranë derës, dhe pa që kishte pak mjaltë.",
+              "english": "He looked at his face in a small mirror, near the door, and saw that he had a little honey on it."
+            },
+            {
+              "text": "— Dhe çorapet e mia, — qeshi ai, — kanë miell!",
+              "english": "\"And my socks,\" he laughed, \"have flour on them!\""
+            },
+            {
+              "text": "— Një kuzhinier i mirë, — tha Luani, — duhet të ketë miell në çorape.",
+              "english": "\"A good cook,\" said Luan, \"must have flour on his socks.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

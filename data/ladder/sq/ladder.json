@@ -922,6 +922,166 @@
       "document": "units/sq-a2-1-18.json",
       "domain": "nonfiction",
       "title": "Shqipëria: klima dhe natyra"
+    },
+    {
+      "id": "sq-a2-2-01",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-01.json",
+      "domain": "practical",
+      "title": "Një banesë për Samin"
+    },
+    {
+      "id": "sq-a2-2-02",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-02.json",
+      "domain": "practical",
+      "title": "Datat dhe kalendari"
+    },
+    {
+      "id": "sq-a2-2-03",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-03.json",
+      "domain": "conversation",
+      "title": "Kisha harruar çelësin"
+    },
+    {
+      "id": "sq-a2-2-04",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-04.json",
+      "domain": "narrative",
+      "title": "Udhëtim në veri"
+    },
+    {
+      "id": "sq-a2-2-05",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-05.json",
+      "domain": "nonfiction",
+      "title": "Ekonomia e Shqipërisë"
+    },
+    {
+      "id": "sq-a2-2-06",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-06.json",
+      "domain": "correspondence",
+      "title": "Një email nga Gjergji"
+    },
+    {
+      "id": "sq-a2-2-07",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-07.json",
+      "domain": "explanation",
+      "title": "Bletët dhe mjalti"
+    },
+    {
+      "id": "sq-a2-2-08",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-08.json",
+      "domain": "explanation",
+      "title": "Ushqimi dhe shëndeti"
+    },
+    {
+      "id": "sq-a2-2-09",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-09.json",
+      "domain": "narrative",
+      "title": "Një ditë shiu në Tiranë"
+    },
+    {
+      "id": "sq-a2-2-10",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-10.json",
+      "domain": "biography",
+      "title": "Nënë Tereza"
+    },
+    {
+      "id": "sq-a2-2-11",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-11.json",
+      "domain": "church",
+      "title": "Lutje dhe urime"
+    },
+    {
+      "id": "sq-a2-2-12",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-12.json",
+      "domain": "conversation",
+      "title": "Një darkë me miq"
+    },
+    {
+      "id": "sq-a2-2-13",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-13.json",
+      "domain": "testimony",
+      "title": "Dëshmia e Dritanit"
+    },
+    {
+      "id": "sq-a2-2-14",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-14.json",
+      "domain": "practical",
+      "title": "Një CV dhe një punë"
+    },
+    {
+      "id": "sq-a2-2-15",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-15.json",
+      "domain": "correspondence",
+      "title": "Kartolina nga Berati"
+    },
+    {
+      "id": "sq-a2-2-16",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-16.json",
+      "domain": "nonfiction",
+      "title": "Turizmi në Shqipëri"
+    },
+    {
+      "id": "sq-a2-2-17",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-17.json",
+      "domain": "explanation",
+      "title": "Shqipëria në shekuj"
+    },
+    {
+      "id": "sq-a2-2-18",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-18.json",
+      "domain": "narrative",
+      "title": "Gjyshi tregon edhe një herë"
+    },
+    {
+      "id": "sq-a2-2-19",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-19.json",
+      "domain": "nonfiction",
+      "title": "Tirana sot"
+    },
+    {
+      "id": "sq-a2-2-20",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/sq-a2-2-20.json",
+      "domain": "testimony",
+      "title": "Një vit në Shqipëri"
     }
   ]
 }

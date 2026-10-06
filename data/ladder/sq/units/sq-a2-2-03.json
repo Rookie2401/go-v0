@@ -1,0 +1,444 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-03",
+  "lang": "sq",
+  "title": "Kisha harruar çelësin",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-03",
+    "title": "Albanian ladder, a2-2: Kisha harruar çelësin (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Conversation story with the pluperfect throughout. To check: \"kisha harruar\", \"kishte ardhur\" etc.; the closing paragraph is a short family reading and prayer in the course's own words (chapter, psalm, verse, salvation, cross, grace; no quotation). Needs theological review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-theological-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Kisha harruar çelësin",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Në orën tre gjyshja Drita po kthehej nga tregu me dy çanta të rënda.",
+              "english": "At three o'clock grandmother Drita was coming back from the market with two heavy bags."
+            },
+            {
+              "text": "Para derës së ndërtesës ajo pa Ardin.",
+              "english": "In front of the door of the building she saw Ardi."
+            },
+            {
+              "text": "Djali ishte ulur në shkallë me çantën e shkollës pranë tij dhe nuk buzëqeshte.",
+              "english": "The boy was sitting on the stairs with his school bag beside him, and he was not smiling."
+            },
+            {
+              "text": "Ai ishte shumë i mërzitur.",
+              "english": "He was very upset."
+            },
+            {
+              "text": "— Çfarë ke, Ardi? Pse nuk je brenda? — e pyeti gjyshja.",
+              "english": "\"What is wrong, Ardi? Why are you not inside?\" his grandmother asked him."
+            },
+            {
+              "text": "— Kisha harruar çelësin brenda, gjyshe, — tha ai.",
+              "english": "\"I had forgotten the key inside, grandmother,\" he said."
+            },
+            {
+              "text": "— Kam pritur dy orë.",
+              "english": "\"I have been waiting for two hours.\""
+            },
+            {
+              "text": "— Biri im i dashur! Eja, hyjmë dhe pimë një çaj.",
+              "english": "\"My dear boy! Come, let us go in and have a tea.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gjyshja e hapi derën dhe i vendosi çantat në kuzhinë.",
+              "english": "The grandmother opened the door and put the bags down in the kitchen."
+            },
+            {
+              "text": "Ardi u ul në tavolinë dhe ajo i dha bukë me djathë.",
+              "english": "Ardi sat down at the table and she gave him bread with cheese."
+            },
+            {
+              "text": "— Tani më trego çdo gjë nga fillimi, — tha ajo.",
+              "english": "\"Now tell me everything from the beginning,\" she said."
+            },
+            {
+              "text": "— Sot kisha një ditë shumë të keqe, — filloi Ardi.",
+              "english": "\"Today I had a very bad day,\" Ardi began."
+            },
+            {
+              "text": "— Në mëngjes u zgjova vonë, sepse nuk kisha dëgjuar orën.",
+              "english": "\"In the morning I woke up late, because I had not heard the clock.\""
+            },
+            {
+              "text": "— Kur arrita në stacion, autobusi kishte shkuar. Prita njëzet minuta.",
+              "english": "\"When I got to the stop, the bus had gone. I waited twenty minutes.\""
+            },
+            {
+              "text": "— Kur hyra në klasë, mësimi kishte filluar para një ore.",
+              "english": "\"When I came into the class, the lesson had started an hour before.\""
+            },
+            {
+              "text": "— Mësuesi i gjeografisë ishte shumë i zemëruar.",
+              "english": "\"The geography teacher was very angry.\""
+            },
+            {
+              "text": "— Ai tha: « Ardi, kjo është hera e tretë këtë javë! »",
+              "english": "\"He said: 'Ardi, this is the third time this week!'\""
+            },
+            {
+              "text": "— Në atë moment klasa fliste për kufijtë e Shqipërisë, për fushat, për zonat malore dhe për bimët.",
+              "english": "\"At that moment the class was talking about the borders of Albania, about the plains, about the mountain areas and about the plants.\""
+            },
+            {
+              "text": "— Unë kisha harruar fletoren me detyrën në shtëpi, sidomos detyrën për bimët, që kisha bërë me shumë punë.",
+              "english": "\"I had forgotten the notebook with the homework at home, especially the homework about plants, which I had done with a lot of work.\""
+            },
+            {
+              "text": "— Mësuesi ishte i zemëruar edhe sepse unë kisha harruar të them mirëmëngjes.",
+              "english": "\"The teacher was angry also because I had forgotten to say good morning.\""
+            },
+            {
+              "text": "— Dhe kur u ktheva këtu, dera u mbyll para meje, sepse çelësi ishte brenda.",
+              "english": "\"And when I came back here, the door closed in front of me, because the key was inside.\""
+            },
+            {
+              "text": "— Vërtet një ditë e vështirë, — tha gjyshja.",
+              "english": "\"Truly a difficult day,\" said grandmother."
+            },
+            {
+              "text": "— Por sigurisht nuk është fundi i botës.",
+              "english": "\"But of course it is not the end of the world.\""
+            },
+            {
+              "text": "— Edhe unë kam pasur ditë si kjo. Në mars kisha harruar çantën në autobus.",
+              "english": "\"I have had days like this too. In March I had left my bag on the bus.\""
+            },
+            {
+              "text": "— Në qershor kisha harruar paratë në treg dhe në shtator kisha lënë çelësin në derë, si ti.",
+              "english": "\"In June I had left the money at the market, and in September I had left the key in the door, like you.\""
+            },
+            {
+              "text": "— Dhe në dhjetor kishte rënë shumë borë, kisha blerë shumë gjëra dhe nuk kisha asnjë dorë të lirë për çelësin.",
+              "english": "\"And in December a lot of snow had fallen, I had bought many things and I had no free hand for the key.\""
+            },
+            {
+              "text": "Ardi buzëqeshi pak.",
+              "english": "Ardi smiled a little."
+            },
+            {
+              "text": "— Atëherë nuk jam i vetëm, — tha ai.",
+              "english": "\"Then I am not alone,\" he said."
+            },
+            {
+              "text": "— Nuk je i vetëm. Ndoshta kjo ditë ka një mësim për ne: është mirë të kemi dy çelësa.",
+              "english": "\"You are not alone. Perhaps this day has a lesson for us: it is good to have two keys.\""
+            },
+            {
+              "text": "— Ky është vendimi im, — tha Ardi.",
+              "english": "\"This is my decision,\" said Ardi."
+            },
+            {
+              "text": "— Çdo mbrëmje do ta përgatis çantën dhe do të kontrolloj çelësin.",
+              "english": "\"Every evening I will prepare my bag and check the key.\""
+            },
+            {
+              "text": "— Dhe nesër do t'i them mësuesit që më vjen keq.",
+              "english": "\"And tomorrow I will tell the teacher that I am sorry.\""
+            },
+            {
+              "text": "— Kjo është shumë mirë. Mësuesit e dinë që fëmijët harrojnë.",
+              "english": "\"That is very good. Teachers know that children forget.\""
+            },
+            {
+              "text": "— Po, — tha Ardi.",
+              "english": "\"Yes,\" said Ardi."
+            },
+            {
+              "text": "— A është vërtet kështu?",
+              "english": "\"Is that really so?\""
+            },
+            {
+              "text": "— Sigurisht, — tha gjyshja.",
+              "english": "\"Of course,\" said grandmother."
+            },
+            {
+              "text": "Ardi u bë pak më i lumtur. Ai nuk ishte më i mërzitur.",
+              "english": "Ardi became a little happier. He was no longer upset."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në orën gjashtë erdhi Ana nga klinika.",
+              "english": "At six o'clock Ana came from the clinic."
+            },
+            {
+              "text": "Ajo ishte e lodhur dhe e shqetësuar, dhe e la çantën në karrige pa folur.",
+              "english": "She was tired and worried, and she left her bag on the chair without speaking."
+            },
+            {
+              "text": "— Çfarë ka, Ana? — e pyeti Drita.",
+              "english": "\"What is it, Ana?\" Drita asked her."
+            },
+            {
+              "text": "— Sot kisha shumë pacientë, — tha Ana.",
+              "english": "\"Today I had many patients,\" said Ana."
+            },
+            {
+              "text": "— Një fëmijë i vogël kishte pasur dhimbje të mëdha gjithë natën.",
+              "english": "\"A little child had had great pain all night.\""
+            },
+            {
+              "text": "— Nëna e tij kishte pritur gjithë ditën në shtëpi. Kur e pashë, ajo ishte shumë e trishtuar.",
+              "english": "\"His mother had waited all day at home. When I saw her, she was very sad.\""
+            },
+            {
+              "text": "— Jam veçanërisht e shqetësuar për këtë fëmijë.",
+              "english": "\"I am especially worried about this child.\""
+            },
+            {
+              "text": "— Çfarë kishit bërë për të? — pyeti Ardi.",
+              "english": "\"What had you done for him?\" asked Ardi."
+            },
+            {
+              "text": "— Kisha dhënë një ilaç dhe e kisha dërguar në spital. Mjeku kishte thënë se do të jetë mirë.",
+              "english": "\"I had given a medicine and had sent him to the hospital. The doctor had said that he would be fine.\""
+            },
+            {
+              "text": "— Kam një ndjenjë të keqe, por ndoshta nesër ai do të jetë më mirë.",
+              "english": "\"I have a bad feeling, but perhaps tomorrow he will be better.\""
+            },
+            {
+              "text": "— Ti sidomos duhet të pushosh, Ana, sidomos pas një dite si kjo, — tha Drita.",
+              "english": "\"You especially must rest, Ana, especially after a day like this,\" said Drita."
+            },
+            {
+              "text": "— Ulu këtu dhe pi çajin.",
+              "english": "\"Sit down here and drink your tea.\""
+            },
+            {
+              "text": "Ana heshti. Ajo ishte e trishtuar, por gjyshja e dëgjoi me dashuri.",
+              "english": "Ana fell silent. She was sad, but grandmother listened to her with love."
+            },
+            {
+              "text": "Drita ishte e qetë gjatë gjithë kohës. Pastaj Ana buzëqeshi, sepse Ardi i solli pak bukë.",
+              "english": "Drita was calm the whole time. Then Ana smiled, because Ardi brought her some bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në orën shtatë erdhi Sami.",
+              "english": "At seven o'clock Sam came."
+            },
+            {
+              "text": "Ai ishte i gëzuar dhe nuk ishte i lodhur.",
+              "english": "He was cheerful and was not tired."
+            },
+            {
+              "text": "— Përshëndetje! — tha ai.",
+              "english": "\"Hello!\" he said."
+            },
+            {
+              "text": "— Kam një histori për ju.",
+              "english": "\"I have a story for you.\""
+            },
+            {
+              "text": "— Sot në mëngjes kisha harruar çelësat. Dera e apartamentit u mbyll dhe unë mbeta jashtë.",
+              "english": "\"This morning I had forgotten the keys. The door of the apartment closed and I was left outside.\""
+            },
+            {
+              "text": "— Pronari kishte një çelës tjetër, por ai ishte në punë. Në banesën time ngrohja punonte, sapuni dhe peshqiri ishin në banjë dhe unë isha në shkallë.",
+              "english": "\"The owner had another key, but he was at work. In my flat the heating was working, the soap and the towel were in the bathroom and I was on the stairs.\""
+            },
+            {
+              "text": "— Dhe sigurisht kisha frikë se do të vija vonë gjithë ditën.",
+              "english": "\"And of course I was afraid I would arrive late all day.\""
+            },
+            {
+              "text": "— Pastaj mendova mirë: ku e kisha lënë çelësin?",
+              "english": "\"Then I thought hard: where had I left the key?\""
+            },
+            {
+              "text": "— E kisha lënë në frigorifer, pranë qumështit!",
+              "english": "\"I had left it in the refrigerator, next to the milk!\""
+            },
+            {
+              "text": "— Në frigorifer? — pyeti Ardi.",
+              "english": "\"In the refrigerator?\" asked Ardi."
+            },
+            {
+              "text": "— Po! Kur isha në ballkon, e kisha marrë qumështin dhe çelësin bashkë.",
+              "english": "\"Yes! When I was on the balcony, I had taken the milk and the key together.\""
+            },
+            {
+              "text": "— Atëherë hyra nga ballkoni i fqinjit dhe e hapa derën nga brenda.",
+              "english": "\"Then I went in from the neighbour's balcony and opened the door from the inside.\""
+            },
+            {
+              "text": "Të gjithë qeshën, edhe Ardi, edhe Ana.",
+              "english": "Everybody laughed, even Ardi, even Ana."
+            },
+            {
+              "text": "— Ndoshta çelësi kishte nevojë për një pushim, — tha Sami, — dhe e gjeta vërtet aty ku e kisha lënë.",
+              "english": "\"Perhaps the key needed a rest,\" said Sam, \"and I really found it where I had left it.\""
+            },
+            {
+              "text": "— Sa ditë e gjatë! — tha Drita.",
+              "english": "\"What a long day!\" said Drita."
+            },
+            {
+              "text": "— Çelësat nuk janë gjithmonë atje ku i lëmë.",
+              "english": "\"Keys are not always where we leave them.\""
+            },
+            {
+              "text": "— Sot isha veçanërisht i lodhur, — tha Ardi.",
+              "english": "\"Today I was especially tired,\" said Ardi."
+            },
+            {
+              "text": "— Por tani jam i gëzuar, veçanërisht kur ju qeshni.",
+              "english": "\"But now I am cheerful, especially when you laugh.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas darkës të gjithë u ulën rreth tavolinës.",
+              "english": "After dinner everybody sat down around the table."
+            },
+            {
+              "text": "Drita mori një libër të vogël dhe lexoi një kapitull nga ungjilli.",
+              "english": "Drita took a small book and read a chapter from the gospel."
+            },
+            {
+              "text": "Pastaj lexoi një psalm dhe një varg që fliste për paqen.",
+              "english": "Then she read a psalm and a verse that spoke of peace."
+            },
+            {
+              "text": "— Kur kemi një ditë të keqe, — tha ajo, — kemi nevojë për besim, për fe dhe për shpresë.",
+              "english": "\"When we have a bad day,\" she said, \"we need trust, faith and hope.\""
+            },
+            {
+              "text": "— Një i krishterë nuk ka frikë nga një ditë e vështirë, sepse e di që Perëndia është me të.",
+              "english": "\"A Christian is not afraid of a hard day, because he knows that God is with him.\""
+            },
+            {
+              "text": "— Unë kam një dëshmi për këtë, — tha Sami.",
+              "english": "\"I have a testimony about this,\" said Sam."
+            },
+            {
+              "text": "— Në fillim isha i huaj këtu dhe kisha dyshuar shumë. Tani ndjej gëzim.",
+              "english": "\"At the beginning I was a stranger here and I had doubted a lot. Now I feel joy.\""
+            },
+            {
+              "text": "— Si misionar, ky është misioni im: të jem këtu me ju.",
+              "english": "\"As a missionary, this is my mission: to be here with you.\""
+            },
+            {
+              "text": "— Kuptimi i një dite të keqe vjen më vonë, — tha Drita.",
+              "english": "\"The meaning of a bad day comes later,\" said Drita."
+            },
+            {
+              "text": "— Ky është mësimi i urtësisë.",
+              "english": "\"This is the lesson of wisdom.\""
+            },
+            {
+              "text": "— Falja është edhe liri, — shtoi Ana.",
+              "english": "\"Forgiveness is also freedom,\" added Ana."
+            },
+            {
+              "text": "— Kur i japim njerëzve falje, jemi më të lirë.",
+              "english": "\"When we give people forgiveness, we are freer.\""
+            },
+            {
+              "text": "— Dhe lavdi i qoftë Perëndisë për çdo ditë, — tha gjyshja.",
+              "english": "\"And glory be to God for every day,\" said grandmother."
+            },
+            {
+              "text": "— Sam, çfarë roli ke ti në këtë familje? — pyeti Ardi.",
+              "english": "\"Sam, what role do you have in this family?\" asked Ardi."
+            },
+            {
+              "text": "— Unë? — qeshi Sami.",
+              "english": "\"Me?\" laughed Sam."
+            },
+            {
+              "text": "— Mendoj se jam vullnetari i dytë pas gjyshes!",
+              "english": "\"I think I am the second volunteer after grandmother!\""
+            },
+            {
+              "text": "Para se të shkonin, Drita vendosi të falënderojë Perëndinë me një lutje të shkurtër.",
+              "english": "Before they went, Drita decided to thank God with a short prayer."
+            },
+            {
+              "text": "Ajo e falënderoi për shpëtimin, për kryqin dhe për hirin, dhe të gjithë u përulën.",
+              "english": "She thanked him for salvation, for the cross and for grace, and all of them humbled themselves."
+            },
+            {
+              "text": "Ardi qeshi edhe ai. Tani ai ishte një djalë i qetë.",
+              "english": "Ardi laughed too. Now he was a calm boy."
+            },
+            {
+              "text": "Ai e kishte harruar çelësin, por nuk e kishte harruar se kishte një familje që e donte.",
+              "english": "He had forgotten the key, but he had not forgotten that he had a family that loved him."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

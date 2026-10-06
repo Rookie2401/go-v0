@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-06",
+  "lang": "sq",
+  "title": "Një email nga Gjergji",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-06",
+    "title": "Albanian ladder, a2-2: Një email nga Gjergji (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Correspondence: two emails (Gjergj to Sam, Sam to Gjergj). Informal register, reported speech (\"tha se\", \"më shkroi që\"). Gjergj is the school pupil of a1-1 (he writes from an aunt's home in Korçë during a summer course); the plan's \"university\" was changed to keep a1-1 consistent. To check: Korçë in the south-east of Albania near the border; the grade scale (9 out of 10); the form of an email heading."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "correspondence"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një email nga Gjergji",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nga: Gjergji. Për: Sami. Përshëndetje nga Korça!",
+              "english": "From: Gjergj. To: Sam. Greetings from Korçë!"
+            },
+            {
+              "text": "I dashur Sam,",
+              "english": "Dear Sam,"
+            },
+            {
+              "text": "Të shkruaj nga Korça, ku jam te tezja ime për dy javë.",
+              "english": "I am writing to you from Korçë, where I am staying with my aunt for two weeks."
+            },
+            {
+              "text": "Nëna ime tha se do të ishte mirë të të shkruaj një email, sepse ti më pyete si kaloj pushimet.",
+              "english": "My mother said it would be good to write you an email, because you asked me how I am spending the holidays."
+            },
+            {
+              "text": "Unë të shkruaj me gëzim, por nuk e di nga të filloj.",
+              "english": "I write to you with joy, but I do not know where to start."
+            },
+            {
+              "text": "Atëherë do të filloj me provimet, sepse ato ishin pjesa më e vështirë e vitit.",
+              "english": "So I will start with the exams, because they were the hardest part of the year."
+            },
+            {
+              "text": "Provimi i gjeografisë ishte në maj.",
+              "english": "The geography exam was in May."
+            },
+            {
+              "text": "Mësuesi na kishte thënë se duhet të dimë klimën e Shqipërisë, reshjet, vapën dhe gradët e çdo muaji.",
+              "english": "The teacher had told us that we must know the climate of Albania, the rains, the heat and the degrees of every month."
+            },
+            {
+              "text": "Duhej të dinim edhe sipërfaqen e vendit, lartësinë e maleve dhe gjatësinë e lumenjve.",
+              "english": "We also had to know the surface of the country, the height of the mountains and the length of the rivers."
+            },
+            {
+              "text": "Duhej të tregonim ku është veriu dhe ku është jugu, ku është lindja dhe ku është perëndimi.",
+              "english": "We had to show where the north is and where the south is, where the east is and where the west is."
+            },
+            {
+              "text": "Unë kisha mësuar shumë, por gjatë provimit u bëra shumë i shqetësuar.",
+              "english": "I had studied a lot, but during the exam I became very worried."
+            },
+            {
+              "text": "Fillova të shkruaj për një luginë dhe për një burim, dhe e vendosa një përrua në vendin gabim.",
+              "english": "I began to write about a valley and a spring, and I put a stream in the wrong place."
+            },
+            {
+              "text": "Ky ishte gabimi im i parë, dhe isha shumë i mërzitur.",
+              "english": "This was my first mistake, and I was very upset."
+            },
+            {
+              "text": "Pastaj mendova: sigurisht, nuk është fundi i botës.",
+              "english": "Then I thought: of course, it is not the end of the world."
+            },
+            {
+              "text": "Mësuesi nuk ishte i zemëruar. Ai më tha se ndoshta kisha mësuar më shumë se sa kisha shkruar.",
+              "english": "The teacher was not angry. He told me that perhaps I had learned more than I had written."
+            },
+            {
+              "text": "Më në fund nota ime ishte 9, dhe unë isha shumë i gëzuar.",
+              "english": "In the end my grade was 9, and I was very happy."
+            },
+            {
+              "text": "Nëna ime ishte e gëzuar edhe ajo, dhe babai im më dha një libër për natyrën e botës.",
+              "english": "My mother was happy too, and my father gave me a book about the nature of the world."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në shkurt isha shumë i trishtuar, sepse gjyshi im ishte i sëmurë, por tani ai është mirë. Tani do të të tregoj për një gabim tjetër.",
+              "english": "In February I was very sad, because my grandfather was ill, but now he is well. Now I will tell you about another mistake."
+            },
+            {
+              "text": "Nëna kishte plotësuar një formular për shkollën e re, por ajo kishte shkruar një ditë gabim.",
+              "english": "Mum had filled in a form for the new school, but she had written a day wrong."
+            },
+            {
+              "text": "Kur e pamë gabimin, isha unë ai që duhej t'i telefonoja shkollës.",
+              "english": "When we saw the mistake, it was I who had to phone the school."
+            },
+            {
+              "text": "Kjo ishte arsyeja pse isha i shqetësuar gjithë ditën.",
+              "english": "That was the reason why I was worried all day."
+            },
+            {
+              "text": "Në fund drejtori më tha se çdo gjë ishte mirë.",
+              "english": "In the end the headmaster told me that everything was fine."
+            },
+            {
+              "text": "Ai tha se rëndësi ka vetëm që formulari të vijë para tetorit.",
+              "english": "He said that the only thing that matters is that the form arrives before October."
+            },
+            {
+              "text": "Sot gjendja është e mirë, dhe unë jam shumë i qetë.",
+              "english": "Today the situation is good, and I am very calm."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Tani të tregoj pak për Korçën.",
+              "english": "Now let me tell you a little about Korçë."
+            },
+            {
+              "text": "Korça është në jug të Shqipërisë, afër kufirit, dhe është një qytet i bukur me ajër shumë të mirë.",
+              "english": "Korçë is in the south of Albania, near the border, and it is a beautiful town with very good air."
+            },
+            {
+              "text": "Këtu nuk ka vapë të madhe, edhe pse është korrik.",
+              "english": "Here there is no great heat, even though it is July."
+            },
+            {
+              "text": "Mbrëmjeve bën më ftohtë se gjatë ditës.",
+              "english": "In the evenings it is colder than during the day."
+            },
+            {
+              "text": "Tezja ime jeton në katin e tretë të një ndërtese të vjetër.",
+              "english": "My aunt lives on the third floor of an old building."
+            },
+            {
+              "text": "Dyshemeja e dhomës time është e ftohtë, por peshqirët e saj janë të mëdhenj dhe të ngrohtë.",
+              "english": "The floor of my room is cold, but her towels are big and warm."
+            },
+            {
+              "text": "Një ditë nuk kishte rrymë gjithë mëngjesin, dhe tezja thirri pronarin.",
+              "english": "One day there was no electricity all morning, and my aunt called the owner."
+            },
+            {
+              "text": "Ajo paguan qira të vogël, por thotë se pronari është i mirë.",
+              "english": "She pays a small rent, but she says the owner is good."
+            },
+            {
+              "text": "Në Korçë kam parë shumë kilometra me fusha dhe male.",
+              "english": "In Korçë I have seen many kilometres of fields and mountains."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Këtu në Korçë ka edhe një kurs për fëmijë evropianë, gjatë verës.",
+              "english": "Here in Korçë there is also a course for European children, during the summer."
+            },
+            {
+              "text": "Në grupin tim janë një djalë grek, dy vajza italiane, një shok gjerman, një vajzë franceze, një djalë amerikan dhe një vajzë serbe.",
+              "english": "In my group there are a Greek boy, two Italian girls, a German friend, a French girl, an American boy and a Serbian girl."
+            },
+            {
+              "text": "Të gjithë flasin anglisht, dhe unë flas anglisht me ta çdo ditë.",
+              "english": "Everybody speaks English, and I speak English with them every day."
+            },
+            {
+              "text": "Djali grek më mësoi disa fjalë në gjuhën e tij, dhe unë i thashë disa fjalë shqip.",
+              "english": "The Greek boy taught me some words in his language, and I told him some words in Albanian."
+            },
+            {
+              "text": "Vajzat italiane këndojnë shumë bukur, dhe një ditë na mësuan një këngë të vjetër.",
+              "english": "The Italian girls sing very beautifully, and one day they taught us an old song."
+            },
+            {
+              "text": "Shoku gjerman është një djalë i qetë dhe e do shumë natyrën.",
+              "english": "The German friend is a calm boy and loves nature very much."
+            },
+            {
+              "text": "Vajza franceze ka një celular me shumë lojëra, dhe të gjithë duan ta marrin.",
+              "english": "The French girl has a mobile phone with a lot of games, and everybody wants to take it."
+            },
+            {
+              "text": "Djali amerikan flet shumë shpejt dhe unë nuk e kuptoj gjithmonë.",
+              "english": "The American boy speaks very fast and I do not always understand him."
+            },
+            {
+              "text": "Vajza serbe më tregoi fotografi të fshatit të saj dhe të maces së saj të bardhë.",
+              "english": "The Serbian girl showed me photographs of her village and of her white cat."
+            },
+            {
+              "text": "Të gjithë fëmijët evropianë janë miq, edhe pse secili vjen nga një vend.",
+              "english": "All the European children are friends, even though each one comes from a different country."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Tani të tregoj për planin tim.",
+              "english": "Now let me tell you about my plan."
+            },
+            {
+              "text": "Në gusht kam një ide të madhe: dua të vij në mal me ju, në ditët e fëmijëve.",
+              "english": "In August I have a big idea: I want to come to the mountains with you, for the children's days."
+            },
+            {
+              "text": "Nëna ime tha po, por me një kusht.",
+              "english": "My mother said yes, but on one condition."
+            },
+            {
+              "text": "Kushti është që unë të ndihmoj në kuzhinë dhe të mos humbas asnjë ditë.",
+              "english": "The condition is that I help in the kitchen and do not miss a single day."
+            },
+            {
+              "text": "Unë e mora kushtin, sepse kjo ide ka shumë rëndësi për mua.",
+              "english": "I took the condition, because this idea is very important to me."
+            },
+            {
+              "text": "Nuk e di pse, por më pëlqen të jem me ju dhe me fëmijët.",
+              "english": "I do not know why, but I like being with you and with the children."
+            },
+            {
+              "text": "Pyetja ime për ty është kjo: çfarë plani ke ti për ditët e para?",
+              "english": "My question for you is this: what plan do you have for the first days?"
+            },
+            {
+              "text": "Çfarë lojërash mund të bëjmë?",
+              "english": "What games can we play?"
+            },
+            {
+              "text": "Dhe a më këshillon ta mësoj më mirë anglisht para gushtit?",
+              "english": "And do you advise me to learn English better before August?"
+            },
+            {
+              "text": "Kam një arsye tjetër për këtë pyetje: djali amerikan më tha se do të vijë edhe ai në Shqipëri.",
+              "english": "I have another reason for this question: the American boy told me that he will come to Albania too."
+            },
+            {
+              "text": "Të dëshiroj sukses në punën tënde dhe shëndet për gjithë ekipin.",
+              "english": "I wish you success in your work and health for the whole team."
+            },
+            {
+              "text": "Përshëndetje edhe për Luanin dhe Anën.",
+              "english": "Greetings to Luan and Ana too."
+            },
+            {
+              "text": "Shihemi në gusht,",
+              "english": "See you in August,"
+            },
+            {
+              "text": "Gjergji",
+              "english": "Gjergj"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nga: Sami. Për: Gjergji. Përgjigje nga Tirana",
+              "english": "From: Sam. To: Gjergj. Reply from Tirana"
+            },
+            {
+              "text": "I dashur Gjergj,",
+              "english": "Dear Gjergj,"
+            },
+            {
+              "text": "Email-i yt më bëri shumë të lumtur.",
+              "english": "Your email made me very happy."
+            },
+            {
+              "text": "Pas një dite pune e lexova dy herë dhe e tregova edhe te Luani.",
+              "english": "After a day of work I read it twice and showed it to Luan too."
+            },
+            {
+              "text": "Luani më tha se mësuesit e dinë që një gabim nuk është e keqe.",
+              "english": "Luan told me that teachers know a mistake is not a bad thing."
+            },
+            {
+              "text": "Ana më shkroi që një gabim me një formular është gjë e vogël, dhe që ti ke bërë mirë që i telefonove vetë drejtorit.",
+              "english": "Ana wrote me that a mistake with a form is a small thing, and that you did well to phone the headmaster yourself."
+            },
+            {
+              "text": "Unë mendoj sigurisht si ata. Si është gjendja e gjyshit tënd tani?",
+              "english": "I think of course the same as they do. How is your grandfather's condition now?"
+            },
+            {
+              "text": "Gjendja jote është e mirë, dhe unë jam i gëzuar për ty.",
+              "english": "Your situation is good, and I am glad for you."
+            },
+            {
+              "text": "Nëna dhe babai yt më thanë se do të vini të gjithë në mal më 10 gusht.",
+              "english": "Your mother and father told me that you will all come to the mountains on 10 August."
+            },
+            {
+              "text": "Planin tim e di tashmë: do të ndihmoj fëmijët me lojëra dhe me muzikë.",
+              "english": "You already know my plan: I will help the children with games and with music."
+            },
+            {
+              "text": "Kam një ide për ditën e parë: fëmijët bëjnë një hartë të vogël të fshatit dhe të maleve.",
+              "english": "I have an idea for the first day: the children make a small map of the village and the mountains."
+            },
+            {
+              "text": "Kjo ka rëndësi, sepse kështu ata e njohin vendin që nga dita e parë.",
+              "english": "This is important, because that way they get to know the place from the first day."
+            },
+            {
+              "text": "Për të mësuar anglisht të këshilloj kështu: mos dëgjo vetëm, por fol çdo ditë me djalin amerikan.",
+              "english": "About English, I advise you this way: do not only listen, but speak every day with the American boy."
+            },
+            {
+              "text": "Mos ki frikë nga gabimet, sepse ato janë pjesë e mësimit.",
+              "english": "Do not be afraid of mistakes, because they are part of learning."
+            },
+            {
+              "text": "Ti thua se nuk e di pse të pëlqen të jesh me ne.",
+              "english": "You say you do not know why you like being with us."
+            },
+            {
+              "text": "Unë mendoj se arsyeja është kjo: ne të duam dhe ti na do ne, dhe je vërtet një shok i mirë.",
+              "english": "I think the reason is this: we love you and you love us, and you are really a good friend."
+            },
+            {
+              "text": "Edhe ekipi ynë ka njerëz nga shumë vende evropiane: ka grekë, italianë, gjermanë, francezë dhe një serb.",
+              "english": "Our team too has people from many European countries: there are Greeks, Italians, Germans, French and a Serb."
+            },
+            {
+              "text": "Tre prej tyre janë amerikanë, dhe ata flasin shpejt si djali yt.",
+              "english": "Three of them are Americans, and they speak fast like your boy."
+            },
+            {
+              "text": "Kur ngas makinën nëpër Tiranë, unë mendoj për ekipin tonë dhe për ju.",
+              "english": "When I drive the car through Tirana, I think of our team and of you."
+            },
+            {
+              "text": "Dje dëgjova lajmet: presidenti tha se turizmi dhe prodhimet popullore kanë sukses të mirë.",
+              "english": "Yesterday I heard the news: the president said that tourism and folk products are doing well."
+            },
+            {
+              "text": "Babai i një shoku tim është në ushtri dhe më tha se kryesisht punon në veri.",
+              "english": "The father of a friend of mine is in the army and told me that he mainly works in the north."
+            },
+            {
+              "text": "Pas një blerje të vogël në treg, mora një libër të ri për ty.",
+              "english": "After a small purchase at the market, I got a new book for you."
+            },
+            {
+              "text": "Kjo verë është e thatë, por ne mendojmë për ujin e burimeve të malit.",
+              "english": "This summer is dry, but we think of the water of the mountain springs."
+            },
+            {
+              "text": "Nëse ke kohë, thirr nënën dhe babanë tënd dhe thuaj që jam mirë.",
+              "english": "If you have time, call your mum and dad and say that I am well."
+            },
+            {
+              "text": "Edhe unë të dëshiroj sukses, dhe shihemi shpejt.",
+              "english": "I wish you success too, and see you soon."
+            },
+            {
+              "text": "Me dashuri,",
+              "english": "With love,"
+            },
+            {
+              "text": "Sami",
+              "english": "Sam"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,412 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-07",
+  "lang": "sq",
+  "title": "Bletët dhe mjalti",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-07",
+    "title": "Albanian ladder, a2-2: Bletët dhe mjalti (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Explanation: bees and honey, in a village visit. To check (facts about bees): up to 50,000 bees in a hive; one queen; the queen lays about 2,000 eggs on the best days; workers are female, males do not work; a worker bee dies after stinging; bees go up to about three kilometres from the hive; the year of the bees month by month (a general northern-hemisphere pattern)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "explanation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-fact-check"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Bletët dhe mjalti",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Një e shtunë në gusht Sami dhe Ardi udhëtuan në fshat, te gjyshi i Ardit.",
+              "english": "One Saturday in August Sam and Ardi travelled to the village, to Ardi's grandfather."
+            },
+            {
+              "text": "Sami e kishte rezervuar këtë ditë me gjyshin që në qershor, sepse donte të mësonte diçka të re.",
+              "english": "Sam had booked this day with the grandfather back in June, because he wanted to learn something new."
+            },
+            {
+              "text": "Ata morën autobusin deri në një stacion dhe pastaj një taksi me një shofer të vjetër.",
+              "english": "They took the bus as far as a station and then a taxi with an old driver."
+            },
+            {
+              "text": "Udhëtimi ishte i gjatë, por peizazhi ishte shumë i bukur.",
+              "english": "The journey was long, but the landscape was very beautiful."
+            },
+            {
+              "text": "Sami kishte një valixhe të vogël me dhurata për familjen e gjyshit.",
+              "english": "Sam had a small suitcase with presents for the grandfather's family."
+            },
+            {
+              "text": "Kur mbërritën, dita ishte e nxehtë dhe fusha ishte e thatë.",
+              "english": "When they arrived, the day was hot and the field was dry."
+            },
+            {
+              "text": "Gjyshi i priti para derës me gëzim.",
+              "english": "The grandfather met them in front of the door with joy."
+            },
+            {
+              "text": "— Mirë se vini! — tha ai.",
+              "english": "\"Welcome!\" he said."
+            },
+            {
+              "text": "— Sot do t'u tregoj botën e bletëve.",
+              "english": "\"Today I will show you the world of the bees.\""
+            },
+            {
+              "text": "Ai ishte një burrë i vjetër me duar të mëdha dhe me një xhaketë të vjetër.",
+              "english": "He was an old man with big hands and an old jacket."
+            },
+            {
+              "text": "Pas pak ata mbërritën pranë arkave, në fund të kopshtit.",
+              "english": "Soon they came to the hives, at the end of the garden."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Gjysh, a janë bletët insekte? — pyeti Ardi.",
+              "english": "\"Grandfather, are bees insects?\" asked Ardi."
+            },
+            {
+              "text": "— Po, ato janë insekte, — tha gjyshi.",
+              "english": "\"Yes, they are insects,\" said the grandfather."
+            },
+            {
+              "text": "— Por janë insekte të veçanta, sepse prodhojnë mjaltë.",
+              "english": "\"But they are special insects, because they produce honey.\""
+            },
+            {
+              "text": "— Në një arkë jetojnë deri në 50.000 bletë. Ato nuk bëjnë të gjitha një punë.",
+              "english": "\"Up to 50,000 bees live in one hive. They do not all do one job.\""
+            },
+            {
+              "text": "— Ka një mbretëreshë, ka femra që punojnë dhe ka disa meshkuj.",
+              "english": "\"There is one queen, there are females who work and there are a few males.\""
+            },
+            {
+              "text": "— Mbretëresha është më e madhe se çdo bletë tjetër, dhe në arkë ka vetëm një.",
+              "english": "\"The queen is bigger than every other bee, and there is only one in the hive.\""
+            },
+            {
+              "text": "— Ajo nuk shkon te lulet, nuk prodhon asgjë dhe nuk ruan arkën.",
+              "english": "\"She does not go to the flowers, does not produce anything and does not guard the hive.\""
+            },
+            {
+              "text": "— Atëherë çfarë bën? — pyeti Sami.",
+              "english": "\"Then what does she do?\" asked Sam."
+            },
+            {
+              "text": "— Ajo bën vezë, — tha gjyshi.",
+              "english": "\"She lays eggs,\" said the grandfather."
+            },
+            {
+              "text": "— Në ditët më të mira mbretëresha bën 2.000 vezë.",
+              "english": "\"On the best days the queen lays 2,000 eggs.\""
+            },
+            {
+              "text": "— Nga vezët dalin larva të vogla. Larvat rrinë në arkë dhe nuk dalin jashtë.",
+              "english": "\"From the eggs come small larvae. The larvae stay in the hive and do not go outside.\""
+            },
+            {
+              "text": "— Zhvillimi i larvës ka nevojë për disa javë dhe për shumë ushqim.",
+              "english": "\"The development of the larva needs a few weeks and a lot of food.\""
+            },
+            {
+              "text": "— Pastaj larva bëhet një bletë e vogël dhe fillon të punojë.",
+              "english": "\"Then the larva becomes a small bee and begins to work.\""
+            },
+            {
+              "text": "— Femrat punojnë shumë, — tha ai.",
+              "english": "\"The females work a lot,\" he said."
+            },
+            {
+              "text": "— Ato kujdesen për larvat, pastrojnë arkën dhe sjellin ushqim.",
+              "english": "\"They look after the larvae, clean the hive and bring food.\""
+            },
+            {
+              "text": "— Dhe meshkujt? — pyeti Ardi.",
+              "english": "\"And the males?\" asked Ardi."
+            },
+            {
+              "text": "— Meshkujt nuk punojnë, — qeshi gjyshi.",
+              "english": "\"The males do not work,\" laughed the grandfather."
+            },
+            {
+              "text": "— Ata rrinë në arkë dhe hanë shumë. Ndërkohë që femrat punojnë, ata pushojnë.",
+              "english": "\"They stay in the hive and eat a lot. Meanwhile the females work, they rest.\""
+            },
+            {
+              "text": "— Si njerëzit që nuk duan të punojnë! — tha Ardi.",
+              "english": "\"Like people who do not want to work!\" said Ardi."
+            },
+            {
+              "text": "— Bletët kanë punë të ndryshme, — shtoi gjyshi, — dhe ndërkohë mbretëresha bën vezë.",
+              "english": "\"Bees have different jobs,\" added the grandfather, \"and meanwhile the queen lays eggs.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Arka është si një banesë ose si një apartament i vogël, — tha gjyshi.",
+              "english": "\"The hive is like a home or a small apartment,\" said the grandfather."
+            },
+            {
+              "text": "— Ajo ka shumë kate, ka dysheme dhe ka edhe një ballkon të vogël.",
+              "english": "\"It has many floors, it has a floor and it also has a small balcony.\""
+            },
+            {
+              "text": "— Ballkoni është ku ulen ato para se të hyjnë.",
+              "english": "\"The balcony is where they sit before they go in.\""
+            },
+            {
+              "text": "— Një arkë e tillë është shumë e thellë, dhe brenda ka vend për gjithë familjen.",
+              "english": "\"Such a hive is very deep, and inside there is room for the whole family.\""
+            },
+            {
+              "text": "— Bletët nuk paguajnë qira, — qeshi gjyshi, — por më japin mjaltë çdo vit.",
+              "english": "\"The bees do not pay rent,\" laughed the grandfather, \"but they give me honey every year.\""
+            },
+            {
+              "text": "— Atëherë ti je pronari i lagjes së tyre, — tha Sami.",
+              "english": "\"Then you are the owner of their neighbourhood,\" said Sam."
+            },
+            {
+              "text": "— Po, kopshti është lagjja e tyre. Është një lagje e qetë, pa shumë njerëz dhe pa makina.",
+              "english": "\"Yes, the garden is their neighbourhood. It is a quiet neighbourhood, with not many people and no cars.\""
+            },
+            {
+              "text": "— A duhet ta mbajmë mjaltin në frigorifer? — pyeti Ardi.",
+              "english": "\"Do we have to keep the honey in the refrigerator?\" asked Ardi."
+            },
+            {
+              "text": "— Jo, mjalti nuk ka nevojë për frigorifer. Ai mbetet i mirë për shumë vite.",
+              "english": "\"No, honey does not need a refrigerator. It stays good for many years.\""
+            },
+            {
+              "text": "— Kur e marr mjaltin, i laj duart me sapun dhe marr një peshqir të madh.",
+              "english": "\"When I take the honey, I wash my hands with soap and take a big towel.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Si e bëjnë mjaltin? — pyeti Sami.",
+              "english": "\"How do they make the honey?\" asked Sam."
+            },
+            {
+              "text": "— Ato dalin në verë nga arka dhe shkojnë nga një lule te një lule tjetër.",
+              "english": "\"In summer they come out of the hive and go from one flower to another flower.\""
+            },
+            {
+              "text": "— Në çdo lule ato marrin nektar. Nektari është një lëng që e kanë lulet.",
+              "english": "\"From every flower they take nectar. Nectar is a liquid that flowers have.\""
+            },
+            {
+              "text": "— Bleta e merr nektarin dhe e çon në arkë. Aty një tjetër e merr dhe e përzien në gojë.",
+              "english": "\"The bee takes the nectar and brings it to the hive. There another one takes it and mixes it in her mouth.\""
+            },
+            {
+              "text": "— Pastaj e çon në dhoma të vogla me gjashtë faqe dhe e lë aty disa ditë.",
+              "english": "\"Then she takes it to small rooms with six sides and leaves it there for a few days.\""
+            },
+            {
+              "text": "— Kështu nektari bëhet mjaltë. Mjalti është ushqim natyror dhe i mirë për njeriun.",
+              "english": "\"That is how nectar becomes honey. Honey is a natural food and good for people.\""
+            },
+            {
+              "text": "— Ka edhe mjaltë industrial, që e bëjnë fabrikat, — tha gjyshi.",
+              "english": "\"There is also industrial honey, which the factories make,\" said the grandfather."
+            },
+            {
+              "text": "— Por unë mendoj se ai natyror është më i mirë, sepse një ushqim natyror është më i mirë se një ushqim i fabrikës. Mjalti grek dhe mjalti italian janë shumë të njohur, tha ai.",
+              "english": "\"But I think the natural one is better, because a natural food is better than a factory food. Greek honey and Italian honey are very well known, he said.\""
+            },
+            {
+              "text": "— Bletët janë udhëtarë të mirë, — shtoi ai.",
+              "english": "\"Bees are good travellers,\" he added."
+            },
+            {
+              "text": "— Ato udhëtojnë deri në tre kilometra nga arka.",
+              "english": "\"They travel up to three kilometres from the hive.\""
+            },
+            {
+              "text": "— Ato nuk kanë nevojë për avion, për taksi apo për biçikletë.",
+              "english": "\"They do not need a plane, a taxi or a bicycle.\""
+            },
+            {
+              "text": "— Dhe nuk kanë nevojë për udhëzues, — qeshi Sami.",
+              "english": "\"And they do not need a guide,\" laughed Sam."
+            },
+            {
+              "text": "— Ato e njohin rrugën vetë.",
+              "english": "\"They know the way themselves.\""
+            },
+            {
+              "text": "— Po, — tha gjyshi.",
+              "english": "\"Yes,\" said the grandfather."
+            },
+            {
+              "text": "— Ndërkohë që ne mësojmë rrugën me hartë, ato e dinë me natyrën.",
+              "english": "\"While we learn the way with a map, they know it from nature.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— A të bëjnë keq bletët? — pyeti Ardi.",
+              "english": "\"Do bees hurt you?\" asked Ardi."
+            },
+            {
+              "text": "— Bleta ka një thumb, — tha gjyshi.",
+              "english": "\"The bee has a sting,\" said the grandfather."
+            },
+            {
+              "text": "— Por ajo e përdor thumbin vetëm kur ka frikë.",
+              "english": "\"But she uses the sting only when she is afraid.\""
+            },
+            {
+              "text": "— Pas thumbit bleta vdes, prandaj ajo nuk e përdor pa nevojë.",
+              "english": "\"After the sting the bee dies, so she does not use it without need.\""
+            },
+            {
+              "text": "— Mos ki frikë, Ardi. Bletët nuk të bëjnë keq nëse je një djalë i qetë.",
+              "english": "\"Do not be afraid, Ardi. Bees do not hurt you if you are a calm boy.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas drekës gjyshi i çoi në një ecje nëpër kopsht, për të parë lulet dhe për të dëgjuar bletët. Kjo ecje ishte e shkurtër, por një ecje e tillë i mëson fëmijët shumë gjëra. Ai pa se zhvillimi i çdo bletë fillon nga një vezë e vogël. Zhvillimi është i ndryshëm për mbretëreshën dhe për femrat. Gjyshi tha se bletët prodhojnë më shumë mjaltë në verë se në pranverë, kur ka shumë lule të tilla. Gjyshi iu tregoi edhe vitin e bletëve, muaj pas muaji.",
+              "english": "After lunch the grandfather took them on a walk through the garden, to see the flowers and to listen to the bees. This walk was short, but such a walk teaches children a lot of things. He saw that the development of every bee begins with a small egg. The development is different for the queen and for the females. The grandfather said that bees produce more honey in summer than in spring, when there are a lot of such flowers. The grandfather also told them about the year of the bees, month by month."
+            },
+            {
+              "text": "— Në dhjetor, janar dhe shkurt është ftohtë, dhe ato rrinë në arkë.",
+              "english": "\"In December, January and February it is cold, and they stay in the hive.\""
+            },
+            {
+              "text": "— Ato rrinë bashkë dhe e mbajnë arkën të ngrohtë vetë, sepse nuk kanë rrymë dhe nuk kanë ngrohje.",
+              "english": "\"They stay together and keep the hive warm themselves, because they have no electricity and no heating.\""
+            },
+            {
+              "text": "— Në mars bën më ngrohtë dhe ato dalin pak jashtë.",
+              "english": "\"In March it is warmer and they go out a little.\""
+            },
+            {
+              "text": "— Në prill dhe në maj dalin lulet e para, dhe punët fillojnë.",
+              "english": "\"In April and May the first flowers come out, and the work begins.\""
+            },
+            {
+              "text": "— Në qershor ka më shumë lule dhe më shumë bletë.",
+              "english": "\"In June there are more flowers and more bees.\""
+            },
+            {
+              "text": "— Korriku dhe gushti janë muajt e mjaltit, sepse atëherë e marr atë.",
+              "english": "\"July and August are the months of honey, because then I take it.\""
+            },
+            {
+              "text": "— Në shtator ato mbledhin ushqim për dimrin, dhe në tetor ato dalin pak.",
+              "english": "\"In September they gather food for winter, and in October they go out little.\""
+            },
+            {
+              "text": "— Në nëntor arka mbyllet edhe një herë.",
+              "english": "\"In November the hive closes once more.\""
+            },
+            {
+              "text": "— Çdo muaj ka punën e tij, — tha Sami.",
+              "english": "\"Every month has its own work,\" said Sam."
+            },
+            {
+              "text": "— Po, dhe çdo moment është i rëndësishëm, — tha gjyshi.",
+              "english": "\"Yes, and every moment is important,\" said the grandfather."
+            },
+            {
+              "text": "— Një bletë nuk pushon asnjë sekondë.",
+              "english": "\"A bee does not rest for a single second.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mbrëmje gjyshi thirri gjyshen për një çaj, dhe të gjithë u ulën në kopsht.",
+              "english": "In the evening the grandfather called grandmother for a tea, and they all sat down in the garden."
+            },
+            {
+              "text": "Gjyshi ngiti makinën e vjetër deri te dyqani dhe e shiti një pjesë të mjaltit.",
+              "english": "The grandfather drove the old car to the shop and sold part of the honey."
+            },
+            {
+              "text": "Sami hëngri pak mjaltë me bukë dhe buzëqeshi.",
+              "english": "Sam ate a little honey with bread and smiled."
+            },
+            {
+              "text": "— Ky është një mjaltë i veçantë, dhe më i mirë se çdo mjaltë që kam ngrënë, — tha ai.",
+              "english": "\"This is a special honey, and better than any honey I have ever eaten,\" he said."
+            },
+            {
+              "text": "Ardi hapi një libër të vogël dhe shkroi një fjali për bletët.",
+              "english": "Ardi opened a small book and wrote a sentence about the bees."
+            },
+            {
+              "text": "Ai shkroi: «Bleta është një insekt i vogël, por ajo bën një punë të madhe.»",
+              "english": "He wrote: \"The bee is a small insect, but she does a big job.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

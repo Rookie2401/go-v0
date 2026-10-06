@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-15",
+  "lang": "sq",
+  "title": "Kartolina nga Berati",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-15",
+    "title": "Albanian ladder, a2-2: Kartolina nga Berati (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Correspondence: four postcards from Berat. To check (facts): Berat is in the south-centre of Albania on the river Osum; \"qyteti i një mijë dritareve\"; the castle is still lived in; Berat and Gjirokastër are on the world heritage list; a mosque and churches stand together in the castle. The restaurant and the people are invented."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "correspondence"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-fact-check"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Kartolina nga Berati",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Një fundjavë Sami dhe Ana u nisën për Beratin, dhe Ana kishte organizuar çdo gjë.",
+              "english": "One weekend Sam and Ana set off for Berat, and Ana had organised everything."
+            },
+            {
+              "text": "Sami u kishte thënë miqve se do t'u shkruante kartolina, siç bëhet në Shqipëri.",
+              "english": "Sam had told his friends that he would write them postcards, as is done in Albania."
+            },
+            {
+              "text": "Ai i shkroi katër, dhe këto janë ato.",
+              "english": "He wrote four, and here they are."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kartolina e parë, për Mirën dhe Dritanin",
+              "english": "The first postcard, for Mira and Dritan"
+            },
+            {
+              "text": "E dashur Mirë dhe i dashur Dritan,",
+              "english": "Dear Mira and dear Dritan,"
+            },
+            {
+              "text": "Ju shkruaj nga Berati, një qytet që gjendet në qendër të vendit, mbi lumin Osum.",
+              "english": "I am writing to you from Berat, a town that is located in the centre of the country, on the river Osum."
+            },
+            {
+              "text": "Ana më tha një gjë që nuk e dija: Beratin e quajnë qyteti i një mijë dritareve.",
+              "english": "Ana told me something I did not know: they call Berat the town of a thousand windows."
+            },
+            {
+              "text": "Nuk e di nëse janë një mijë, por unë i shikova njëqind dhe pastaj pushova, sepse ata që e quajnë kështu e thonë me dashuri.",
+              "english": "I do not know if there are a thousand, but I looked at a hundred and then stopped, because those who call it this say it with love."
+            },
+            {
+              "text": "Shtëpitë janë të bardha dhe ngjiten lart, si një shkallë e madhe.",
+              "english": "The houses are white and climb up, like a big staircase."
+            },
+            {
+              "text": "Nga dhoma ime kam një pamje shumë të bukur mbi çatitë dhe mbi lumin.",
+              "english": "From my room I have a very beautiful view over the roofs and over the river."
+            },
+            {
+              "text": "Kjo pamje është një pikë shumë e mirë për ata që duan të mendojnë, dhe pamja e mbrëmjes është edhe më e bukur.",
+              "english": "This view is a very good spot for those who want to think, and the view in the evening is even more beautiful."
+            },
+            {
+              "text": "Ajri është i pastër dhe uji i lumit është i pastër, dhe qyteti është i qetë, edhe pse ka shumë turistë.",
+              "english": "The air is clean and the water of the river is clean, and the town is calm, even though there are many tourists."
+            },
+            {
+              "text": "Berati është një qytet turistik, por vendasit janë ende miq. Hoteli ynë gjendet pranë lumit, dhe pronari është një vendas.",
+              "english": "Berat is a tourist town, but the locals are still friends. Our hotel is located near the river, and the owner is a local."
+            },
+            {
+              "text": "Nuk më duhet çadër këtu, sepse dielli është i madh, por kam marrë kapelën tënde, Dritan.",
+              "english": "I do not need an umbrella here, because the sun is big, but I have taken your hat, Dritan."
+            },
+            {
+              "text": "Të dua të dy,",
+              "english": "I love you both,"
+            },
+            {
+              "text": "Sami",
+              "english": "Sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kartolina e dytë, për Ardin",
+              "english": "The second postcard, for Ardi"
+            },
+            {
+              "text": "I dashur Ardi,",
+              "english": "Dear Ardi,"
+            },
+            {
+              "text": "Sot ndoqëm një rrugë të gjatë deri në kala.",
+              "english": "Today we followed a long road up to the castle."
+            },
+            {
+              "text": "Kalaja e Beratit është shumë e vjetër, dhe në të ka ende njerëz që jetojnë, siç më tregoi një vendas.",
+              "english": "The castle of Berat is very old, and there are still people living in it, as a local man told me."
+            },
+            {
+              "text": "Kalaja u shpall një vend shumë i veçantë nga një grup i madh njerëzish nga e gjithë bota, dhe turistët vijnë nga çdo anë. Edhe lagjet e vjetra u shpallën vende të veçanta, dhe vendasit e dinë që këtë e shpalli një grup i madh nga bota.",
+              "english": "The castle was declared a very special place by a big group of people from the whole world, and tourists come from every side. The old neighbourhoods too were declared special places, and the locals know that a big group from the world declared this."
+            },
+            {
+              "text": "Në kala ka kulla të vjetra, rrugë të ngushta dhe disa kisha të vogla.",
+              "english": "In the castle there are old towers, narrow streets and some small churches."
+            },
+            {
+              "text": "Një kishë e vjetër është e hapur, dhe brenda saj ka një frymë të shenjtë dhe të qetë.",
+              "english": "An old church is open, and inside it there is a holy and calm spirit."
+            },
+            {
+              "text": "Përveç kishave, aty ka edhe një xhami të vjetër, dhe njerëzit rrinë bashkë në paqe. Xhamia është e bardhë dhe e hapur për çdo vizitor, përveç në kohën e lutjes. Pranë xhamisë ka një kishë të vogël, dhe xhamia dhe kisha kanë shumë qiell mbi ta.",
+              "english": "Besides the churches, there is also an old mosque there, and the people sit together in peace. The mosque is white and open to every visitor, except at the time of prayer. Next to the mosque there is a small church, and both are under the same sky."
+            },
+            {
+              "text": "Nga një kullë shihet gjithë qyteti, dhe unë qëndrova aty një orë. Një kullë tjetër është e lartë, dhe nga ajo pamja shkon deri larg në fushë. Kjo është pika ku ngjiten të gjithë, dhe rruga turistike ka shumë njerëz në verë.",
+              "english": "From a tower the whole town can be seen, and I stayed there an hour. Another tower is tall, and from it the view goes far into the plain. This is the spot where everyone climbs, and the tourist road has many people in summer."
+            },
+            {
+              "text": "Një artist i vjetër shiste fotografi të kalasë për pak para, dhe unë bleva një për ty. Anën tjetër të kalasë e zbulova vetëm sot.",
+              "english": "An old artist was selling photographs of the castle for a little money, and I bought one for you. The other side of the castle I discovered only today."
+            },
+            {
+              "text": "Mendova për ty, sepse je si Gjergji: të pëlqejnë historitë e vjetra.",
+              "english": "I thought of you, because you are like Gjergj: you like old stories."
+            },
+            {
+              "text": "Të dua shumë dhe të pres të shtunën. Berati është një qytet turistik, por gjithë qyteti është një shtëpi e hapur për çdo anë të botës.",
+              "english": "I love you very much and I am waiting for you on Saturday. Berat is a tourist town, but the whole town is a house open to every side of the world."
+            },
+            {
+              "text": "Sami",
+              "english": "Sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kartolina e tretë, për Luanin",
+              "english": "The third postcard, for Luan"
+            },
+            {
+              "text": "I dashur Luan,",
+              "english": "Dear Luan,"
+            },
+            {
+              "text": "Mbrëmë zbuluam një restorant të vogël në anën tjetër të lumit.",
+              "english": "Last night we discovered a small restaurant on the other side of the river."
+            },
+            {
+              "text": "Ishte një vend shumë i vogël, me gota të vjetra, pirunë të ndryshëm dhe një shishe vaji mbi çdo tavolinë.",
+              "english": "It was a very small place, with old glasses, different forks and a bottle of oil on every table."
+            },
+            {
+              "text": "Kuzhinieri ishte një burrë i vjetër, dhe mikesha e tij, një grua e qeshur, na solli një tenxhere me gjellë.",
+              "english": "The cook was an old man, and his friend, a smiling woman, brought us a pot of food."
+            },
+            {
+              "text": "Mbrëmë çdo gjë ishte gati shumë shpejt, dhe ushqimi ishte i vërtetë dhe i mirë.",
+              "english": "Last night everything was ready very quickly, and the food was real and good."
+            },
+            {
+              "text": "Mbrëmë pashë edhe një pikë të bukur, ku ulen vendasit, dhe pata një ndjenjë të qartë: ky është një vend për të qëndruar. Përveç restorantit, ne zbuluam edhe një rrugë të vogël me lule.",
+              "english": "Last night I also saw a beautiful spot, where the locals sit, and I had a clear feeling: this is a place to stay. Besides the restaurant, we also discovered a small street with flowers."
+            },
+            {
+              "text": "Sonte do të shkojmë atje edhe një herë, dhe unë po mendoj ta ftoj edhe një shok të ri. Sonte tavolina jonë do të jetë gati, dhe sonte do të flasim shumë.",
+              "english": "Tonight we will go there once more, and I am thinking of inviting a new friend too. Tonight our table will be ready, and tonight we will talk a lot."
+            },
+            {
+              "text": "Ai është një inxhinier nga Tirana, dhe vjen me një koleg, një avokat.",
+              "english": "He is an engineer from Tirana, and he comes with a colleague, a lawyer."
+            },
+            {
+              "text": "Të dy janë njerëz të aftë dhe të mirë, dhe flasin shumë për punën e tyre.",
+              "english": "Both of them are able and good people, and they talk a lot about their work."
+            },
+            {
+              "text": "Një gazetar na pyeti për qytetin, dhe unë i thashë se Berati është një qytet i plotë dhe i bukur, me një jetë të plotë.",
+              "english": "A journalist asked us about the town, and I told him that Berat is a full and beautiful town, with a full life."
+            },
+            {
+              "text": "Libri për turistë e përmend edhe këtë restorant, por vendasit thonë se ai nuk është shumë i madh. Një gazetar tjetër e përmendi edhe kalanë, dhe e quajti një kalanë të gjallë.",
+              "english": "The book for tourists mentions this restaurant too, but the locals say it is not very big. Another journalist also mentioned the castle, and called it a living castle."
+            },
+            {
+              "text": "Mos harro: kur të vish, merr një pasqyrë, sepse në dhomën time nuk ka asnjë!",
+              "english": "Do not forget: when you come, take a mirror, because there is none in my room!"
+            },
+            {
+              "text": "Të kam në mendje,",
+              "english": "I have you in mind,"
+            },
+            {
+              "text": "Sami",
+              "english": "Sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kartolina për Dritën",
+              "english": "The postcard for Drita"
+            },
+            {
+              "text": "E dashur gjyshe Drita,",
+              "english": "Dear grandmother Drita,"
+            },
+            {
+              "text": "Sot nisemi për në shtëpi, dhe dhoma ime është bosh, sepse e kam bërë çantën. Edhe frigoriferi i vogël është bosh. Çanta është gati, dhe tavolina është bosh, dhe gjithë dhoma është e hapur për erën e mëngjesit.",
+              "english": "Today we set off for home, and my room is empty, because I have packed my bag. The small refrigerator is empty too. The bag is ready, and the table is empty, and the whole room is open to the morning wind."
+            },
+            {
+              "text": "Kam çorape me ujë nga lumi dhe flokë me erë, por jam shumë i gëzuar.",
+              "english": "I have socks that are full of water from the river and hair with wind, but I am very happy."
+            },
+            {
+              "text": "Ana më tha se unë nuk ndjek asnjë plan kur shkoj në mal, dhe se e di vetëm me forcën e mendjes.",
+              "english": "Ana told me that I follow no plan when I go to the mountains, and that I know it only with the strength of my mind."
+            },
+            {
+              "text": "Unë i thashë se kam një shpirt të lirë, dhe ajo qeshi.",
+              "english": "I told her that I have a free soul, and she laughed."
+            },
+            {
+              "text": "Ky qytet përmendet shpesh në librat e vjetër, dhe tani e kuptoj pse. Ai gjendet në një vend të bukur, dhe e quajnë një qytet muze, sepse çdo gjë atje është e vjetër dhe e plotë.",
+              "english": "This town is often mentioned in old books, and now I understand why. It is located in a beautiful place, and they call it a museum town, because everything there is old and whole."
+            },
+            {
+              "text": "Kur e shikoj Beratin nga larg, më vjen një mendim: sa e madhe është fuqia e dashurisë.",
+              "english": "When I look at Berat from far away, a thought comes to me: how great is the power of love."
+            },
+            {
+              "text": "Në këtë qytet ka paqe, dhe paqja ngushëllon njerëzit që janë të lodhur.",
+              "english": "In this town there is peace, and peace comforts people who are tired."
+            },
+            {
+              "text": "Ti më mësove se një shpirt i qetë nuk ka nevojë për shumë gjëra.",
+              "english": "You taught me that a calm soul does not need many things."
+            },
+            {
+              "text": "Ana është një mësuese e mirë dhe ka aftësi që unë nuk i kam, dhe ajo është gati për çdo gjë. Një mësues i mirë punësohet shpejt, por një mikeshë e mirë nuk gjendet çdo ditë.",
+              "english": "Ana is a good teacher and has skills that I do not have, and she is ready for anything. A good worker is employed quickly, but a good friend is not found everywhere."
+            },
+            {
+              "text": "Një kandidat për çdo punë duhet të ketë një mikeshë si ajo!",
+              "english": "A candidate for every job must have a friend like her!"
+            },
+            {
+              "text": "Edhe fytyra e saj është e lodhur sot, por ajo më mban për krahu dhe më thotë: — Mos ki frikë, Sam.",
+              "english": "Her face is tired today too, but she holds me by the arm and says: \"Do not be afraid, Sam.\""
+            },
+            {
+              "text": "Do të vazhdoj të shkruaj kartolina, edhe kur të vij në shtëpi.",
+              "english": "I will continue to write postcards, even when I come home."
+            },
+            {
+              "text": "Të dua shumë,",
+              "english": "I love you very much,"
+            },
+            {
+              "text": "Sami",
+              "english": "Sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kur i shkroi katër kartolinat, Sami e lexoi edhe një herë kartolinën për gjyshen.",
+              "english": "When he had written the four postcards, Sam read the postcard for his grandmother once more."
+            },
+            {
+              "text": "Ana erdhi pranë tij me një gotë çaj, dhe ata dolën në ballkon.",
+              "english": "Ana came next to him with a glass of tea, and they went out onto the balcony."
+            },
+            {
+              "text": "Jashtë, pas ditës, lumi ishte si një rrugë e vogël e bardhë.",
+              "english": "Outside, after the day, the river was like a small white road."
+            },
+            {
+              "text": "— Do të të them diçka, — tha Ana.",
+              "english": "\"I will tell you something,\" said Ana."
+            },
+            {
+              "text": "— Këtë fundjavë e kujtoj më mirë se çdo udhëtim tjetër.",
+              "english": "\"I remember this weekend better than any other trip.\""
+            },
+            {
+              "text": "— Edhe unë, — tha Sami.",
+              "english": "\"Me too,\" said Sam."
+            },
+            {
+              "text": "— Dhe nesër shkojmë në shtëpi.",
+              "english": "\"And tomorrow we go home.\""
+            },
+            {
+              "text": "Ata heshtën për një moment, dhe qyteti ishte i qetë nën ta.",
+              "english": "They were silent for a moment, and the town was calm below them."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

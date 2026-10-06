@@ -1,0 +1,423 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-08",
+  "lang": "sq",
+  "title": "Ushqimi dhe shëndeti",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-08",
+    "title": "Albanian ladder, a2-2: Ushqimi dhe shëndeti (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Explanation: food and health, an everyday conversation. To check: general advice only (vegetables, fruit, little sugar, measure), nothing medical; \"supë me fasule\", \"byrek\", \"pulë me limon\" as ordinary dishes; seasonal foods by month; \"Ministri i shëndetit\" and the president speaking about healthy eating are illustrative."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "explanation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Ushqimi dhe shëndeti",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën Drita ftoi Anën dhe Samin në drekë.",
+              "english": "On Sunday Drita invited Ana and Sam to lunch."
+            },
+            {
+              "text": "Në kuzhinë kishte erë byreku, dhe në tavolinë kishte një pjatë me fasule dhe një pjatë me pulë.",
+              "english": "In the kitchen there was a smell of byrek, and on the table there was a plate of beans and a plate of chicken."
+            },
+            {
+              "text": "Sami e shikoi tavolinën dhe buzëqeshi.",
+              "english": "Sam looked at the table and smiled."
+            },
+            {
+              "text": "— Drita, ti gatuan si një mbretëreshë, — tha ai.",
+              "english": "\"Drita, you cook like a queen,\" he said."
+            },
+            {
+              "text": "— Faleminderit, Sam, — tha gjyshja.",
+              "english": "\"Thank you, Sam,\" said grandmother."
+            },
+            {
+              "text": "— Por Ana thotë se ne duhet të hamë më mirë.",
+              "english": "\"But Ana says that we must eat better.\""
+            },
+            {
+              "text": "— Unë nuk them që byreku është i keq, — qeshi Ana.",
+              "english": "\"I do not say that byrek is bad,\" laughed Ana."
+            },
+            {
+              "text": "— Them vetëm që duhet të njohim ushqimin.",
+              "english": "\"I only say that we must know our food.\""
+            },
+            {
+              "text": "— Ti je infermiere, — tha Sami.",
+              "english": "\"You are a nurse,\" said Sam."
+            },
+            {
+              "text": "— A është dëm të hash byrek një herë në javë?",
+              "english": "\"Is it a harm to eat byrek once a week?\""
+            },
+            {
+              "text": "— Jo, nuk është dëm, — tha Ana.",
+              "english": "\"No, it is not a harm,\" said Ana."
+            },
+            {
+              "text": "— Një pulë e mirë dhe një byrek në javë nuk i bëjnë keq shëndetit.",
+              "english": "\"A good chicken and a byrek a week do not harm your health.\""
+            },
+            {
+              "text": "— Na trego çfarë është një ushqim i shëndetshëm.",
+              "english": "\"Tell us what a healthy food is.\""
+            },
+            {
+              "text": "— Mirë, — tha Ana.",
+              "english": "\"Good,\" said Ana."
+            },
+            {
+              "text": "— Do të flas pak, ndërsa ju hani.",
+              "english": "\"I will talk a little, while you eat.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Trupi ynë ka nevojë për energji, — filloi ajo.",
+              "english": "\"Our body needs energy,\" she began."
+            },
+            {
+              "text": "— Energjinë e marrim nga ushqimi.",
+              "english": "\"We get energy from food.\""
+            },
+            {
+              "text": "— Por ushqimi nuk është vetëm energji. Ai ka edhe vitamina dhe substanca që na duhen.",
+              "english": "\"But food is not only energy. It also has vitamins and substances that we need.\""
+            },
+            {
+              "text": "— Perimet dhe frutat kanë shumë vitamina, — tha ajo.",
+              "english": "\"Vegetables and fruit have a lot of vitamins,\" she said."
+            },
+            {
+              "text": "— Fasulet kanë substanca që e bëjnë trupin më të ngrohtë dhe më të mirë.",
+              "english": "\"Beans have substances that keep the body warmer and better.\""
+            },
+            {
+              "text": "— Pula dhe peshku japin edhe ata substanca të mira, mirëpo duhet t'i gatuash mirë. Një pulë me limon dhe me perime është shumë e shëndetshme, megjithatë mos e ha çdo ditë.",
+              "english": "\"Chicken and fish also give good substances, but you must cook them well. A chicken with lemon and vegetables is very healthy; nevertheless do not eat it every day.\""
+            },
+            {
+              "text": "— Një limon në ujë është një ide e mirë, — shtoi Drita.",
+              "english": "\"A lemon in water is a good idea,\" Drita added."
+            },
+            {
+              "text": "— Ai ka shumë vitamina dhe e pastron gojën.",
+              "english": "\"It has a lot of vitamins and cleans the mouth.\""
+            },
+            {
+              "text": "— Po, — tha Ana.",
+              "english": "\"Yes,\" said Ana."
+            },
+            {
+              "text": "— Ai nuk është i ëmbël, por është shumë i mirë për trupin.",
+              "english": "\"It is not sweet, but it is very good for the body.\""
+            },
+            {
+              "text": "— Çdo ushqim i shëndetshëm ka një kusht të vogël: nuk duhet të hash shumë nga një gjë e vetme.",
+              "english": "\"Every healthy food has a small condition: you must not eat too much of one thing.\""
+            },
+            {
+              "text": "— Edhe ushqimi më i mirë bëhet i dëmshëm kur e ha pa masë, dhe pastaj ai bëhet një dëm për trupin.",
+              "english": "\"Even the best food becomes harmful when you eat it without measure, and then it becomes a harm to the body.\""
+            },
+            {
+              "text": "— Çfarë do të thotë pa masë? — pyeti Sami.",
+              "english": "\"What does 'without measure' mean?\" asked Sam."
+            },
+            {
+              "text": "— Do të thotë shumë, — tha Ana.",
+              "english": "\"It means a lot,\" said Ana."
+            },
+            {
+              "text": "— Masa është sa duhet, jo më shumë dhe jo më pak.",
+              "english": "\"Measure is as much as needed, not more and not less.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Tani mendoni për sheqerin, — tha Ana.",
+              "english": "\"Now think of sugar,\" said Ana."
+            },
+            {
+              "text": "— Sheqeri është i ëmbël dhe na pëlqen shumë.",
+              "english": "\"Sugar is sweet and we like it a lot.\""
+            },
+            {
+              "text": "— Një çokollatë nuk është një dëm i madh. Por shumë çokollata çdo ditë janë të dëmshme për trupin.",
+              "english": "\"One chocolate is not a big harm. But many chocolates every day are harmful for the body.\""
+            },
+            {
+              "text": "— Kafeja pa sheqer është pak e hidhur, por shumë njerëz e pëlqejnë kështu.",
+              "english": "\"Coffee without sugar is a little bitter, but many people like it that way.\""
+            },
+            {
+              "text": "— Ilaçi është shpesh i hidhur, — qeshi Drita.",
+              "english": "\"Medicine is often bitter,\" laughed Drita."
+            },
+            {
+              "text": "— Mjeku thotë se ai që është i hidhur është shpesh i mirë.",
+              "english": "\"The doctor says that what is bitter is often good.\""
+            },
+            {
+              "text": "— Mjalti është i ëmbël, por është natyror, — tha Sami.",
+              "english": "\"Honey is sweet, but it is natural,\" said Sam."
+            },
+            {
+              "text": "— Është më i mirë se sheqeri?",
+              "english": "\"Is it better than sugar?\""
+            },
+            {
+              "text": "— Megjithatë ai ka sheqer, — tha Ana.",
+              "english": "\"Nevertheless it has sugar,\" said Ana."
+            },
+            {
+              "text": "— Një lugë mjaltë është mirë, mirëpo jo çdo orë. Megjithatë, ai është më i mirë se çokollata.",
+              "english": "\"A spoon of honey is good, but not every hour. Nevertheless, it is better than chocolate.\""
+            },
+            {
+              "text": "— Mjalti vjen nga bletët, dhe bletët e marrin nektarin nga lulet, — tha Ardi.",
+              "english": "\"Honey comes from bees, and bees take nectar from flowers,\" said Ardi."
+            },
+            {
+              "text": "— Gjyshi i Ardit më ka treguar edhe për bletët, — tha Drita.",
+              "english": "\"The grandfather of Ardi told me about bees too,\" said Drita."
+            },
+            {
+              "text": "— Ato janë insekte të veçanta, dhe në arkë ka një mbretëreshë, disa meshkuj dhe shumë femra. Ndërkohë që femrat prodhojnë mjaltë, meshkujt rrinë.",
+              "english": "\"They are special insects, and in the hive there is a queen, some males and many females. While the females produce honey, the males stay.\""
+            },
+            {
+              "text": "— Dhe bleta ka një thumb, mirëpo e përdor pak, — shtoi Sami.",
+              "english": "\"And the bee has a sting, but she uses it little,\" added Sam."
+            },
+            {
+              "text": "— Ardi ishte këtu? — pyeti Ana.",
+              "english": "\"Was Ardi here?\" asked Ana."
+            },
+            {
+              "text": "— Jo, — qeshi Drita.",
+              "english": "\"No,\" laughed Drita."
+            },
+            {
+              "text": "— Ai më tha këtë një ditë pas fshatit. Gjyshi i tij i ka mësuar çdo gjë për bletët, edhe për mbretëreshën dhe për larvat.",
+              "english": "\"He told me this one day after the village. His grandfather taught him everything about bees, even about the queen and the larvae.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Në çdo muaj kemi ushqime të ndryshme, — tha Ana.",
+              "english": "\"In every month we have different foods,\" said Ana."
+            },
+            {
+              "text": "— Në dimër, në dhjetor, në janar dhe në shkurt, hamë më shumë supë, fasule dhe patate.",
+              "english": "\"In winter, in December, in January and in February, we eat more soup, beans and potatoes.\""
+            },
+            {
+              "text": "— Në mars dhe në prill vijnë perimet e para. Në maj dhe në qershor kemi fruta të reja.",
+              "english": "\"In March and April the first vegetables come. In May and June we have new fruit.\""
+            },
+            {
+              "text": "— Në korrik dhe në gusht kemi domate dhe shumë fruta, dhe nuk kemi nevojë për shumë energji.",
+              "english": "\"In July and August we have tomatoes, and a lot of fruit, and we do not need much energy.\""
+            },
+            {
+              "text": "— Në shtator, në tetor dhe në nëntor mbledhim pemët. Kështu çdo muaj ka një ushqim të tij.",
+              "english": "\"In September, October and November we pick the fruit. So every month has a food of its own.\""
+            },
+            {
+              "text": "— Fermerët e dinë këtë, — tha Drita.",
+              "english": "\"The farmers know this,\" said Drita."
+            },
+            {
+              "text": "— Në treg çmimi i produkteve të stinës është më i ulët.",
+              "english": "\"At the market the price of seasonal products is lower.\""
+            },
+            {
+              "text": "— Blerja e ushqimit të stinës është më e lirë dhe më e mirë për shëndetin, — tha Ana.",
+              "english": "\"Buying seasonal food is cheaper and better for health,\" said Ana."
+            },
+            {
+              "text": "— Prodhimi i fshatit shitet me çmim të mirë, dhe fermeri është i gëzuar.",
+              "english": "\"The village's produce is sold at a good price, and the farmer is glad.\""
+            },
+            {
+              "text": "— Edhe qeveria dhe ministri i shëndetit këshillojnë që njerëzit të hanë më shumë fruta dhe perime.",
+              "english": "\"The government and the minister of health also advise people to eat more fruit and vegetables.\""
+            },
+            {
+              "text": "— Ato nuk janë ligj, por këshillë. Kryetari i bashkisë e thotë këtë edhe në shkolla, dhe presidenti e ka thënë një herë në lajme.",
+              "english": "\"They are not a law, but advice. The mayor says this in schools too, and the president said it once on the news.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Edhe ndjenjat tona kanë punë me ushqimin, — tha Ana.",
+              "english": "\"Our feelings have to do with food too,\" said Ana."
+            },
+            {
+              "text": "— Kur jemi të mërzitur, hamë shpesh shumë sheqer. Kur jemi të zemëruar, nuk hamë asgjë.",
+              "english": "\"When we are upset, we often eat a lot of sugar. When we are angry, we eat nothing.\""
+            },
+            {
+              "text": "— Kur jemi të shqetësuar, ndoshta nuk flemë mirë dhe nuk hamë në kohë.",
+              "english": "\"When we are worried, perhaps we do not sleep well and do not eat on time.\""
+            },
+            {
+              "text": "— Një njeri i gëzuar dhe i qetë ha me kohë dhe pi shumë ujë. Ai është vërtet më i shëndetshëm.",
+              "english": "\"A cheerful and calm person eats unhurriedly and drinks a lot of water. He is really healthier.\""
+            },
+            {
+              "text": "— Unë sigurisht nuk jam gjithmonë i qetë, — tha Sami.",
+              "english": "\"Of course I am not always calm,\" said Sam."
+            },
+            {
+              "text": "— Por kur jam i trishtuar, një çaj më ndihmon.",
+              "english": "\"But when I am sad, a tea helps me.\""
+            },
+            {
+              "text": "— Çaji është mirë, — tha Ana.",
+              "english": "\"Tea is good,\" said Ana."
+            },
+            {
+              "text": "— Por kujdes: një moment i qetë në tavolinë ndihmon më shumë se një ilaç.",
+              "english": "\"But careful: a calm moment at the table helps more than a medicine.\""
+            },
+            {
+              "text": "— Dhe një sekondë për të falënderuar para ushqimit, — shtoi Drita.",
+              "english": "\"And a second to give thanks before the meal,\" added Drita."
+            },
+            {
+              "text": "— Kjo është një zakon i vjetër i familjes.",
+              "english": "\"That is an old custom of our family.\""
+            },
+            {
+              "text": "— Ushqimi është edhe ekonomi, — tha Ana.",
+              "english": "\"\"Food is economy too,\" said Ana."
+            },
+            {
+              "text": "— Tregtia e produkteve dhe industria e ushqimit rriten në çdo zonë industriale, dhe jeta ekonomike e vendit ka nevojë për ta. Edhe ushtria ka kuzhinat e saj.",
+              "english": "\"The trade in products and the food industry are growing in every industrial zone, and the economic life of the country needs them. Even the army has its kitchens.\""
+            },
+            {
+              "text": "— Në Shqipëri turizmi dhe industria e ushqimit rriten, — tha Ana.",
+              "english": "\"In Albania tourism and the food industry are growing,\" said Ana."
+            },
+            {
+              "text": "— Aktualisht shumë tregtarë shesin produkte popullore, dhe shitja e tyre ka sukses.",
+              "english": "\"At present many traders sell folk products, and their sale is successful.\""
+            },
+            {
+              "text": "— Kryesisht ata shesin mjaltë, djathë dhe vaj, — tha Drita.",
+              "english": "\"Mainly they sell honey, cheese, wine and oil,\" said Drita."
+            },
+            {
+              "text": "— Edhe një komb i vogël ka ushqim të mirë.",
+              "english": "\"Even a small nation has good food.\""
+            },
+            {
+              "text": "— Ushqimi evropian është shumë i ndryshëm, — tha Ana.",
+              "english": "\"European food is very different,\" said Ana."
+            },
+            {
+              "text": "— Ai italian ka domate dhe vaj, ai grek ka djathë dhe mjaltë, ai francez ka bukë, ai gjerman ka patate, ai serb ka mish dhe ai amerikan ka shumë sheqer.",
+              "english": "\"The Italian has tomatoes and oil, the Greek has cheese and honey, the French has bread, the German has potatoes, the Serbian has meat and the American has a lot of sugar.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas drekës Ana mori një pjesë byrek dhe e hëngri me kohë.",
+              "english": "After lunch Ana took a piece of byrek and ate it unhurriedly."
+            },
+            {
+              "text": "— Byreku është shumë i mirë, — tha ajo.",
+              "english": "\"The byrek is very good,\" she said."
+            },
+            {
+              "text": "— Por një pjesë e vogël është mjaft.",
+              "english": "\"But a small piece is enough.\""
+            },
+            {
+              "text": "Të gjithë qeshën.",
+              "english": "Everyone laughed."
+            },
+            {
+              "text": "Gjyshja bëri tre çaj me limon, dhe të gjithë pinë nga një çaj me limon të ngrohtë.",
+              "english": "Grandmother made three teas with lemon, and everyone drank a cup of warm tea with lemon."
+            },
+            {
+              "text": "— Për shëndetin tuaj! — tha ajo.",
+              "english": "\"To your health!\" she said."
+            },
+            {
+              "text": "— Për shëndetin! — thanë Ana dhe Sami.",
+              "english": "\"To health!\" said Ana and Sam."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

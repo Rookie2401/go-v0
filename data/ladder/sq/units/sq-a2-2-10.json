@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-10",
+  "lang": "sq",
+  "title": "Nënë Tereza",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-10",
+    "title": "Albanian ladder, a2-2: Nënë Tereza (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Biography of Mother Teresa as told in a school reader. EVERY fact needs a person to check: born in Skopje in 1910, then Ottoman, in 1912 no longer so; Albanian family, surname Bojaxhiu; father died when she was eight; at 12 heard of missionaries in India; left home at 18 to become a nun (order of teaching sisters), never saw her mother and sister again; arrived in India in 1929, taught girls in Calcutta; independence of India 1947; 1948 left the school to live among the poor; founded the Missionaries of Charity in 1950; Nobel Peace Prize 1979, asked that the money be given to the poor; visited Tirana in 1989 and the sisters opened a house there in 1991; died 1997 in Calcutta; declared a saint by the Catholic Church in 2016; Tirana airport bears her name. The saying about the face as the mirror of the heart is invented (not a quotation). Needs theological review for the church wording."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-theological-review",
+    "needs-fact-check"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Nënë Tereza",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Një mbrëmje Ardi e pyeti Luanin pse aeroporti i Tiranës mban emrin Nënë Tereza.",
+              "english": "One evening Ardi asked Luan why the airport of Tirana bears the name Mother Teresa."
+            },
+            {
+              "text": "— Aeroporti është porta e vendit për udhëtarët dhe për turistët, — tha Luani.",
+              "english": "\"The airport is the gateway of the country for travellers and for tourists,\" said Luan."
+            },
+            {
+              "text": "— Për turizmin dhe për ekonominë ai ka shumë rëndësi.",
+              "english": "\"It is very important for tourism and for the economy.\""
+            },
+            {
+              "text": "— Kryetari i bashkisë dhe qeveria e zgjodhën këtë emër, sepse ajo ishte shqiptare, dhe sot shumë njerëz në botë e njohin.",
+              "english": "\"The mayor and the government chose this name, because she was Albanian, and today many people in the world know her.\""
+            },
+            {
+              "text": "Luani mori nga tavolina një libër leximi dhe filloi t'ia lexojë Ardit.",
+              "english": "Luan took a reading book from the table and began to read it to Ardi."
+            },
+            {
+              "text": "Nënë Tereza lindi në Shkup, në vitin 1910.",
+              "english": "Mother Teresa was born in Skopje, in 1910."
+            },
+            {
+              "text": "Në atë kohë qyteti ishte ende pjesë e Perandorisë Osmane, dhe kishte ndërtesa të vjetra osmane.",
+              "english": "At that time the city was still part of the Ottoman Empire, and had old Ottoman buildings."
+            },
+            {
+              "text": "Dy vite më vonë, në vitin 1912, Shkupi nuk ishte më osman.",
+              "english": "Two years later, in 1912, Skopje was no longer Ottoman."
+            },
+            {
+              "text": "Familja e saj ishte shqiptare, dhe babai i saj ishte një tregtar.",
+              "english": "Her family was Albanian, and her father was a trader."
+            },
+            {
+              "text": "Ajo quhej Bojaxhiu.",
+              "english": "Her name was Bojaxhiu."
+            },
+            {
+              "text": "Kur ajo ishte tetë vjeç, babai vdiq, dhe familja mbeti me pak para.",
+              "english": "When she was eight, her father died, and the family was left with little money."
+            },
+            {
+              "text": "Nëna e saj nuk ishte e pasur, por çdo ditë ajo e ndante bukën me njerëz të varfër.",
+              "english": "Her mother was not rich, but every day she shared her bread with poor people."
+            },
+            {
+              "text": "Vajza e vogël e shikonte këtë dhe e mësoi një gjë të madhe: njeriu i varfër është edhe ai një fëmijë i Perëndisë.",
+              "english": "The little girl watched this and learned one big thing: a poor person is also a child of God."
+            },
+            {
+              "text": "Në kishë ajo këndonte me vajza, dhe në shkollë ajo mësonte me gëzim.",
+              "english": "In church she sang with girls, and at school she studied with joy."
+            },
+            {
+              "text": "Kur ishte dymbëdhjetë vjeç, ajo dëgjoi për misionarët që punonin në Indi.",
+              "english": "When she was twelve, she heard about the missionaries who worked in India."
+            },
+            {
+              "text": "Nga ajo ditë ajo mendonte shpesh: «Edhe unë dua të shkoj atje dhe të ndihmoj.»",
+              "english": "From that day she often thought: \"I want to go there too and help.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në moshën tetëmbëdhjetë vjeç ajo e la shtëpinë e saj.",
+              "english": "At the age of eighteen she left her home."
+            },
+            {
+              "text": "Ajo u bë murgeshë dhe hyri në një urdhër të motrave, që punonin në shkolla.",
+              "english": "She became a nun and entered an order of sisters, who worked in schools."
+            },
+            {
+              "text": "Murgesha e re nuk e dinte ende sa e gjatë do të ishte rruga e saj. Në çdo rast rruga ishte e rrezikshme për një vajzë të re, dhe ajo kishte një formë të vogël frike. Ajo ishte një murgeshë shumë e re, por kishte një zemër të madhe dhe të mirë.",
+              "english": "The young nun did not yet know how long her road would be. In any case the road was dangerous for a young girl, and she had a small form of fear. She was a very young nun, but she had a big, good heart."
+            },
+            {
+              "text": "Nëna dhe motra e saj mbetën në Shkup, dhe ajo nuk i pa më.",
+              "english": "Her mother and sister stayed in Skopje, and she did not see them again."
+            },
+            {
+              "text": "Ajo mori një valixhe të vogël, një anije dhe një tren, dhe udhëtimi ishte i gjatë.",
+              "english": "She took a small suitcase, a ship and a train, and the journey was long."
+            },
+            {
+              "text": "Në vitin 1929 ajo mbërriti në Indi.",
+              "english": "In 1929 she arrived in India."
+            },
+            {
+              "text": "Atje vera ishte shumë e nxehtë, dhe toka ishte e thatë para shiut.",
+              "english": "There the summer was very hot, and the land was dry before the rain."
+            },
+            {
+              "text": "Peizazhi ishte shumë i ndryshëm nga ai i Shkupit: lumenj të mëdhenj, qytete të mëdha me shumë njerëz dhe ajër i rëndë.",
+              "english": "The landscape was very different from that of Skopje: big rivers, big cities with many people and heavy air."
+            },
+            {
+              "text": "Vendi kishte një ekonomi të madhe, me industri dhe tregti, por jeta ekonomike e njerëzve të varfër ishte shumë e vështirë, dhe varfëria ishte e thellë.",
+              "english": "The country had a big economy, with industry and trade, but the economic life of the poor people was very hard, and the poverty was deep."
+            },
+            {
+              "text": "Ajo jetoi shumë vite në Kalkutë dhe mësonte në një shkollë për vajza.",
+              "english": "She lived many years in Calcutta and taught in a school for girls."
+            },
+            {
+              "text": "Në shkollë vinin vajza nga familje të pasura, por jashtë mureve kishte njerëz që jetonin në rrugë.",
+              "english": "Girls from rich families came to the school, but outside the walls there were people who lived in the street."
+            },
+            {
+              "text": "Ajo i shikonte nga dritarja dhe nuk mund të harronte fytyrat e tyre.",
+              "english": "She looked at them from the window and could not forget their faces."
+            },
+            {
+              "text": "Ajo nuk e donte varfërinë, sepse varfëria i çonte njerëzit drejt një jete pa shpresë.",
+              "english": "She did not like poverty, because poverty took people towards a life without hope."
+            },
+            {
+              "text": "Njerëzit e sëmurë nuk kishin ilaçe dhe nuk kishin ushqim, dhe shumë prej tyre vdisnin në rrugë, jo nga një vdekje natyrore, por nga varfëria.",
+              "english": "The sick people had no medicine and no food, and many of them died in the street, not from a natural death, but from poverty."
+            },
+            {
+              "text": "Në atë kohë Indisë i erdhi pavarësia, në vitin 1947, dhe shumë njerëz festuan pavarësinë e vendit.",
+              "english": "At that time independence came to India, in 1947, and many people celebrated the independence of the country."
+            },
+            {
+              "text": "Por njerëzit e varfër mbetën po të varfër, dhe pavarësia nuk e ndryshoi shpejt jetën e tyre.",
+              "english": "But the poor people stayed poor, and independence did not change their life quickly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në vitin 1948 ajo mori një vendim të madh: do të largohej nga shkolla dhe do të jetonte bashkë me njerëzit e varfër.",
+              "english": "In 1948 she made a big decision: she would leave the school and live together with the poor people."
+            },
+            {
+              "text": "Ajo nuk kishte shumë para, por kishte besim.",
+              "english": "She did not have much money, but she had faith."
+            },
+            {
+              "text": "Ajo ndiqte zemrën e saj, dhe dashuria ishte udhëzuesi i saj. Ajo organizoi një shtëpi të vogël, pastaj organizoi edhe një tjetër.",
+              "english": "She followed her heart, and love was her guide. She organised a small home, then organised another."
+            },
+            {
+              "text": "Çdo mëngjes ajo dilte në rrugë me këmbë, pa taksi dhe pa biçikletë, dhe ecja nëpër rrugë ishte e gjatë.",
+              "english": "Every morning she went out into the street on foot, without a taxi and without a bicycle, and the walk through the streets was long."
+            },
+            {
+              "text": "Ajo i lante njerëzit e sëmurë, u jepte ushqim dhe u fliste me fjalë të ëmbla.",
+              "english": "She washed and fed the sick people and spoke to them with sweet words."
+            },
+            {
+              "text": "Shpejt disa nga vajzat që i kishte mësuar erdhën të punonin me të, dhe ato e ndiqnin atë.",
+              "english": "Soon some of the girls she had taught came to work with her, and they followed her."
+            },
+            {
+              "text": "Në vitin 1950 ajo themeloi urdhrin e saj, me emrin Misionaret e Dashurisë.",
+              "english": "In 1950 she founded her own order, with the name Missionaries of Charity."
+            },
+            {
+              "text": "Motrat e urdhrit ndiqnin një ligj të vogël: të ndihmonin çdo njeri që kishte nevojë.",
+              "english": "The sisters of the order followed a small law: to help every person who needed it."
+            },
+            {
+              "text": "Ato organizonin shtëpi për njerëzit e sëmurë dhe për fëmijët që nuk kishin nënë e baba.",
+              "english": "They organised homes for the sick people and for children who had no mother or father."
+            },
+            {
+              "text": "Nënë Tereza organizoi edhe ushqim për shumë vajza dhe femra të reja që nuk kishin asgjë.",
+              "english": "Mother Teresa also organised food for many girls and young women who had nothing."
+            },
+            {
+              "text": "Në këto shtëpi askush nuk paguante qira, dhe askush nuk paguante për ushqimin.",
+              "english": "In these homes nobody paid rent, and nobody paid for food."
+            },
+            {
+              "text": "Ushqimet ishin pak, por kishin substanca të mira, dhe ajo i mësonte njerëzit të mos pinë ujë të dëmshëm.",
+              "english": "The foods were few, but they had good substances, and she taught people not to drink harmful water."
+            },
+            {
+              "text": "Fermerët dhe tregtarët i dhuronin urdhrit pak produkte, dhe njerëz të pasur i dhuronin para, ushqim dhe ilaçe.",
+              "english": "Farmers and traders gave the order a few products, and rich people gave money, food and medicine."
+            },
+            {
+              "text": "Ajo ndante çdo gjë me ata që kishin më pak, sepse nuk donte shitje dhe nuk donte prodhim, por donte shërbim.",
+              "english": "She shared everything with those who had less, because she wanted neither sales nor production, but service."
+            },
+            {
+              "text": "Ajo ofronte çdo ditë një gjë më të rëndësishme se paratë: ofronte dashuri, dhe ofronte edhe kohë.",
+              "english": "Every day she offered something more important than money: she offered love, and she offered time too."
+            },
+            {
+              "text": "Ajo thoshte se fytyra e një njeriu është pasqyra e zemrës së tij.",
+              "english": "She said that a person's face is the mirror of his heart."
+            },
+            {
+              "text": "Nënë Tereza mbronte jetën e çdo njeriu, edhe të atij që ishte shumë i dobët ose shumë i vogël.",
+              "english": "Mother Teresa defended the life of every person, even one who was very weak or very small."
+            },
+            {
+              "text": "Ajo mbronte fëmijët dhe e mbante në krah çdo të sëmurë, dhe motrat e saj mbronin edhe ata që askush nuk i donte.",
+              "english": "She defended the children and held every sick person in her arms, and her sisters defended even those whom nobody loved."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ajo qëndroi në Indi gjithë jetën, edhe kur ishte e vjetër dhe e lodhur.",
+              "english": "She stayed in India all her life, even when she was old and tired."
+            },
+            {
+              "text": "Njerëzit thoshin: «Qëndro me ne», dhe ajo qëndronte.",
+              "english": "People said: \"Stay with us,\" and she stayed."
+            },
+            {
+              "text": "Ajo udhëtoi edhe në shumë vende të botës, me avion, për shtëpi të reja. Ajo shkoi edhe në vende evropiane, dhe në çdo rast njerëzit e donin.",
+              "english": "She also travelled to many countries of the world, by plane, for new homes. She also went to European countries, and in every case people loved her."
+            },
+            {
+              "text": "Ajo nuk rezervonte dhoma në hotele të mëdha, por flinte në shtëpitë e motrave.",
+              "english": "She did not book rooms in big hotels, but slept in the homes of the sisters."
+            },
+            {
+              "text": "Në vitin 1979 ajo mori një shpërblim të madh ndërkombëtar, Shpërblimin Nobel për Paqen.",
+              "english": "In 1979 she received a big international prize, the Nobel Peace Prize."
+            },
+            {
+              "text": "Ajo e mori shpërblimin, por kërkoi që paratë t'u jepeshin njerëzve të varfër.",
+              "english": "She took the prize, but asked that the money be given to the poor people."
+            },
+            {
+              "text": "Kryetari i qeverisë së Indisë dhe njerëz nga shumë vende i thoshin një grua të nderuar.",
+              "english": "The head of the government of India and people from many countries told her \"respected woman\"."
+            },
+            {
+              "text": "Ajo thoshte vetëm se ishte një grua e vogël dhe e lodhur, dhe se shpërblimi nuk ishte i saj. Ishte një grua e nderuar, por ajo nuk e dinte, dhe njerëzit e nderuar si ajo flasin pak.",
+              "english": "She said only that she was a small, tired woman, and that the prize was not hers. She was a respected woman, but she did not know it, and respected people like her speak little."
+            },
+            {
+              "text": "Në vitin 1989 ajo erdhi në Tiranë, dhe në vitin 1991 motrat e saj hapën një shtëpi në qytet.",
+              "english": "In 1989 she came to Tirana, and in 1991 her sisters opened a house in the city."
+            },
+            {
+              "text": "Pastaj ajo vazhdoi punën e saj deri në fund, dhe nuk e la. Ajo nuk ngiste makinë, por vazhdonte të ecte.",
+              "english": "Then she continued her work to the end, and did not leave it. She did not drive a car, but kept walking."
+            },
+            {
+              "text": "Nënë Tereza vdiq në Kalkutë, në vitin 1997.",
+              "english": "Mother Teresa died in Calcutta, in 1997."
+            },
+            {
+              "text": "Në vitin 2016 kisha e bëri shenjtore.",
+              "english": "In 2016 the church made her a saint."
+            },
+            {
+              "text": "Sot shumë njerëz e thërrasin shenjtore, dhe motrat e saj vazhdojnë punën në shumë vende.",
+              "english": "Today many people call her a saint, and her sisters continue the work in many countries."
+            },
+            {
+              "text": "Në kishë njerëzit e njohin edhe shumë shenjtorë, por ajo është një shenjtore e njerëzve të varfër.",
+              "english": "In church people know many other saints too, but she is the saint of the poor people."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Luani e mbylli librin.",
+              "english": "Luan closed the book."
+            },
+            {
+              "text": "Ardi heshti për një moment.",
+              "english": "Ardi was silent for a moment."
+            },
+            {
+              "text": "— Ajo nuk ishte e pasur, — tha ai.",
+              "english": "\"She was not rich,\" he said."
+            },
+            {
+              "text": "— Por ajo bëri shumë.",
+              "english": "\"But she did a lot.\""
+            },
+            {
+              "text": "— Po, — tha Luani.",
+              "english": "\"Yes,\" said Luan."
+            },
+            {
+              "text": "— Ajo nuk kishte shumë gjëra, por kishte një zemër të madhe.",
+              "english": "\"She did not have many things, but she had a big heart.\""
+            },
+            {
+              "text": "— A mund të bëjmë edhe ne diçka të vogël? — pyeti Ardi.",
+              "english": "\"Can we also do something small?\" asked Ardi."
+            },
+            {
+              "text": "— Sigurisht, — tha Luani.",
+              "english": "\"Of course,\" said Luan."
+            },
+            {
+              "text": "— Nesër mund t'i çojmë bukë një gjyshe të vjetër në lagjen tonë.",
+              "english": "\"Tomorrow we can take bread to an old grandmother in our neighbourhood.\""
+            },
+            {
+              "text": "Ardi buzëqeshi dhe e mbylli sytë, dhe në ëndërr e pa një grua të vogël me një fytyrë të mirë.",
+              "english": "Ardi smiled and closed his eyes, and in his dream he saw a small woman with a kind face."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

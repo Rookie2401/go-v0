@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-17",
+  "lang": "sq",
+  "title": "Shqipëria në shekuj",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-17",
+    "title": "Albanian ladder, a2-2: Shqipëria në shekuj (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Explanation: Albanian history in a school lesson. EVERY fact to be checked by a historian: the Illyrians; Durrës founded by old Greeks and the road to the east; Roman, then Byzantine rule; Ottoman army in the 14th–15th centuries; Skanderbeg and twenty-five years of resistance; Ottoman rule of almost five centuries; the national movement of the 19th century; independence declared in Vlorë on 28 November 1912 (Qemali); borders leaving many Albanians outside; kingdom 1928–1939; Italian invasion 1939; single-party rule 1944–1990; students in the street 1990; elections 1991; constitution 1998; candidate for the European Union. The sentence about the apostles bringing the good news is \"tradition says\". Mean sentence length is high (19)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "explanation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-fact-check"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Shqipëria në shekuj",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mbrëmë Luani e kishte përgatitur mësimin bashkë me një koleg, dhe të hënën në orën e historisë ai i shkroi disa fjalë të gjata në tabelë.",
+              "english": "Last night Luan had prepared the lesson together with a colleague, and on Monday in the history lesson he wrote some long words on the board."
+            },
+            {
+              "text": "Në klasë ishin Gjergji, Ardi, Elira dhe shumë nxënës, dhe të gjithë e shikonin tabelën.",
+              "english": "In the class were Gjergj, Ardi, Elira and many other pupils, and everyone was looking at the line."
+            },
+            {
+              "text": "— Sot do të flasim për historinë e Shqipërisë, — tha Luani.",
+              "english": "\"Today we will talk about the history of Albania,\" said Luan."
+            },
+            {
+              "text": "— Kjo është një histori e gjatë, dhe ne do ta ndjekim nga fillimi.",
+              "english": "\"This is a long history, and we will follow it from the beginning.\""
+            },
+            {
+              "text": "— Para se të filloj, dua të them diçka: historia nuk është vetëm vite. Historia është njerëz, kala, rrugë dhe zgjedhje.",
+              "english": "\"Before I begin, I want to say something: history is not only years. History is people, castles, roads and choices.\""
+            },
+            {
+              "text": "— Një mësues i mirë e quan këtë «një udhëtim në kohë», — shtoi ai.",
+              "english": "\"A good teacher calls this 'a journey in time',\" he added."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Në fillim, shumë shekuj para Krishtit, në këto toka jetonin ilirët, — tha Luani.",
+              "english": "\"In the beginning, many centuries before Christ, the Illyrians lived in these lands,\" said Luan."
+            },
+            {
+              "text": "— Ilirët ishin disa popuj me mbretër të tyre, dhe ata kishin një jetë të vështirë në male dhe në bregdet.",
+              "english": "\"The Illyrians were several peoples with their own kings, and they had a hard life in the mountains and on the coast.\""
+            },
+            {
+              "text": "— Popujt ilirë kishin kala, kulla dhe qytete me mure, dhe ata ishin të aftë në luftë.",
+              "english": "\"The Illyrian peoples had castles, towers and towns with walls, and they were skilled in war.\""
+            },
+            {
+              "text": "— Në bregdet erdhën grekët e vjetër, dhe ata e krijuan qytetin e Durrësit shumë shekuj para Krishtit.",
+              "english": "\"On the coast came the old Greeks, and they created the town of Durrës many centuries before Christ.\""
+            },
+            {
+              "text": "— Durrësi u bë një vend detar dhe një pikë e rëndësishme, sepse aty fillonte një rrugë që lidhte detin me lindjen, nga çdo anë.",
+              "english": "\"Durrës became a sea port and an important point, because there began a road that linked the sea with the east, from every side.\""
+            },
+            {
+              "text": "— Sot aty ka një vend arkeologjik dhe një teatër shumë të vjetër, — shtoi ai.",
+              "english": "\"Today there is an archaeological site and a very old theatre there,\" he added."
+            },
+            {
+              "text": "— Durrësi ndodhet në gjirin e detit, dhe qyteti përhapet çdo vit nga deti në fushë, ndërsa vendbanimet e reja e mbushin fushën.",
+              "english": "\"Durrës is located in the bay of the sea, and the town spreads every year from the sea to the plain, while the new settlements fill the plain.\""
+            },
+            {
+              "text": "— Qyteti është kufizuar nga deti në perëndim, dhe sistemi hekurudhor e lidh me Tiranën.",
+              "english": "\"The town is bounded by the sea in the west, and the railway system links it with Tirana.\""
+            },
+            {
+              "text": "— Transporti hekurudhor është shumë i vjetër në këtë vend, dhe një rrjet hekurudhor i vogël i lidh qytetet e mëdha.",
+              "english": "\"Railway transport is very old in this country, and a small railway network links the big towns.\""
+            },
+            {
+              "text": "— Akademia e Shkencave dhe instituti i bujqësisë në Tiranë ruajnë shumë vëllime të vjetra, dhe biblioteka kombëtare ka mijëra vëllime.",
+              "english": "\"In Tirana, the Academy of Sciences and the institute of agriculture keep many old volumes, and the national library has thousands of volumes.\""
+            },
+            {
+              "text": "— Akademia e Shkencave është një institucion i madh, dhe instituti i bujqësisë është një institucion i vogël, por të dy kanë vëllime.",
+              "english": "\"The Academy of Sciences is a big institution, and the institute of agriculture is a small institution, but both have volumes.\""
+            },
+            {
+              "text": "— Pastaj Ilirinë e pushtoi perandoria e Romës.",
+              "english": "\"Then the empire of Rome conquered Illyria.\""
+            },
+            {
+              "text": "— Perandoria ndërtoi rrugë, ura dhe qytete, dhe disa nga ato rrugë mbeten edhe sot.",
+              "english": "\"The empire built roads, bridges and towns, and some of those roads remain even today.\""
+            },
+            {
+              "text": "— Në atë kohë erdhi edhe kisha e parë, dhe tradita e kishës thotë se apostujt e sollën lajmin e mirë edhe në këto vende.",
+              "english": "\"At that time the first church came too, and the tradition of the church says that the apostles brought the good news to these lands too.\""
+            },
+            {
+              "text": "— Shumë dishepuj të apostujve ishin besimtarë të mirë, dhe ata jetonin në qytete të vogla.",
+              "english": "\"Many disciples of the apostles were good believers, and they lived in small towns.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Kur Perandoria Romake u nda, Shqipëria mbeti pjesë e Perandorisë Bizantine, që ishte lindore.",
+              "english": "\"When the Roman Empire was divided, Albania remained part of the Byzantine Empire, which was eastern.\""
+            },
+            {
+              "text": "— Sundimi bizantin vazhdoi shumë shekuj, dhe kisha bizantine ishte e rëndësishme, dhe në atë kohë u ndërtuan kala dhe kisha mesjetare që i shohim edhe sot.",
+              "english": "\"Byzantine rule continued for many centuries, and the Byzantine church was important, and in that time medieval castles and churches were built that we still see today.\""
+            },
+            {
+              "text": "— Pastaj erdhën popuj të tjerë nga veriu dhe nga lindja, dhe disa nga ata e pushtuan vendin për një kohë.",
+              "english": "\"Then other peoples came from the north and from the east, and some of them conquered the country for a time.\""
+            },
+            {
+              "text": "— Në këtë kohë filloi të dëgjohet emri i shqiptarëve, dhe shumë shekuj më vonë u krijuan disa shtete të vogla shqiptare, me qytete mesjetare dhe me kala mesjetare.",
+              "english": "\"In this time the name of the Albanians began to be heard, and many centuries later several small Albanian states were created, with medieval towns and medieval castles.\""
+            },
+            {
+              "text": "— Kisha kishte një pjesë lindore dhe një pjesë perëndimore, dhe Shqipëria ishte në mes të lindjes dhe perëndimit. Qytetet perëndimore ishin më afër detit, dhe ato lindore ishin më afër maleve; kishat lindore dhe ato perëndimore ishin të ndryshme.",
+              "english": "\"The church had an eastern part and a western part, and Albania was in between the east and the west. The western towns were closer to the sea, and the eastern ones were closer to the mountains; the eastern churches and the western ones were different.\""
+            },
+            {
+              "text": "— Në atë kohë kisha ishte një vend shumë i rëndësishëm, dhe njerëzit shkonin atje për të lavdëruar Perëndinë, dhe pastori i bekonte ata.",
+              "english": "\"At that time the church was a very important place, and people went there to praise God, and the pastor blessed them.\""
+            },
+            {
+              "text": "— Ata besonin në engjëj, në profetë dhe në parajsë, dhe tregonin histori për mrekulli. — Thoshin se çdo mëkatar mund të kthehet me pendim, dhe se çdo ditë e bekuar është një dhuratë. — Gjergji ngriti dorën. — Zoti mësues, dhe ushtria turke? Kur erdhi ajo?",
+              "english": "\"They believed in angels, in prophets and in paradise, and told stories about miracles.\" \"They said that every sinner can return with repentance, and that every blessed day is a gift.\" Gjergj raised his hand. \"Mr teacher, and the Turkish army? When did it come?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Në shekullin XIV dhe XV ushtria turke e Perandorisë Osmane erdhi në Ballkan, — tha Luani.",
+              "english": "\"In the fourteenth and fifteenth centuries the Turkish army of the Ottoman Empire came to the Balkans,\" said Luan."
+            },
+            {
+              "text": "— Shqiptarët nuk e pranuan sundimin osman pa luftë, dhe një lëvizje e madhe me Skënderbeun mbrojti vendin për njëzet e pesë vite.",
+              "english": "\"The Albanians did not accept Ottoman rule without a fight, and a big movement with Skanderbeg defended the country for twenty-five years.\""
+            },
+            {
+              "text": "— Kjo është një nga pjesët më të bukura të historisë, — shtoi ai.",
+              "english": "\"This is one of the most beautiful parts of history,\" he added."
+            },
+            {
+              "text": "— Me Skënderbeun, kalaja në Krujë qëndroi, dhe vendi qëndroi kundër ushtrisë turke.",
+              "english": "\"With Skanderbeg the castle in Krujë was kept, and the country stood against the Turkish army.\""
+            },
+            {
+              "text": "— Pas vdekjes së tij, Perandoria Osmane e pushtoi vendin, dhe sundimi osman vazhdoi gati pesë shekuj.",
+              "english": "\"After his death the Ottoman Empire conquered the country, and Ottoman rule continued for almost five centuries.\""
+            },
+            {
+              "text": "— Në atë kohë shumë shqiptarë e ndërruan fenë, ndërsa disa mbetën të krishterë, dhe qytetet kishin xhami dhe kisha bashkë.",
+              "english": "\"In that time many Albanians changed their faith, while some remained Christian, and the towns had mosques and churches together.\""
+            },
+            {
+              "text": "— Në shekullin XIX filloi një lëvizje e re, lëvizja kombëtare.",
+              "english": "\"In the nineteenth century a new movement developed, the national movement.\""
+            },
+            {
+              "text": "— Në atë lëvizje mësuesit, shkrimtarët dhe gazetarët u përpoqën të krijonin një gjuhë të shkruar dhe një shkollë shqip.",
+              "english": "\"In that movement teachers, writers and journalists tried to create a written language and an Albanian school.\""
+            },
+            {
+              "text": "— Një mësuese, një artist, një gazetar ose një avokat mund ta ndryshojë një komb, — tha Luani, — dhe historia e plotë e kombit tonë e tregon këtë.",
+              "english": "\"A woman teacher, an artist, a journalist or a lawyer can change a nation,\" said Luan, \"and the whole history of our nation shows this.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Pas shumë vitesh lufte, më 28 nëntor 1912 u shpall pavarësia e Shqipërisë, në Vlorë, dhe Qemali e shpalli atë.",
+              "english": "\"After many years of fighting, on 28 November 1912 the independence of Albania was declared, in Vlorë, and Qemali declared it.\""
+            },
+            {
+              "text": "— Kjo është dita jonë kombëtare, dhe sot shumë njerëz kanë pushim, — tha Ardi.",
+              "english": "\"This is our national day, and today many people have a day off,\" said Ardi."
+            },
+            {
+              "text": "— Po, — tha Luani.",
+              "english": "\"Yes,\" said Luan."
+            },
+            {
+              "text": "— Por kufijtë e rinj të Shqipërisë ishin shumë të vegjël, dhe shumë shqiptarë mbetën jashtë kufijve.",
+              "english": "\"But the new borders of Albania were very small, and many Albanians stayed outside the borders.\""
+            },
+            {
+              "text": "— Në vitin 1928 Shqipëria u bë një mbretëri, dhe mbreti e mbajti vendin deri në vitin 1939.",
+              "english": "\"In 1928 Albania became a kingdom, and the king held the country until 1939.\""
+            },
+            {
+              "text": "— Në atë vit Italia e pushtoi vendin, dhe pak vite më vonë filloi një luftë e madhe në gjithë Evropën.",
+              "english": "\"In that year Italy conquered the country, and a few years later a big war began in the whole of Europe.\""
+            },
+            {
+              "text": "— Pas luftës, nga viti 1944 deri në vitin 1990, vendi kishte një parti të vetme, dhe sundimi i saj ishte shumë i rëndë.",
+              "english": "\"After the war, from 1944 to 1990, the country had a single party, and its rule was very heavy.\""
+            },
+            {
+              "text": "— Në atë kohë njerëzit nuk kishin liri: nuk mund të shkonin jashtë, nuk mund të flisnin si donin dhe nuk mund të besonin në Perëndinë.",
+              "english": "\"In that time people were not allowed to go abroad, or to speak freely, and could not believe in God.\""
+            },
+            {
+              "text": "— Shumë kisha dhe xhami u mbyllën, dhe shumë besimtarë u mbajtën larg familjes.",
+              "english": "\"Many churches and mosques were closed, and many believers were kept far from their families.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Në vitin 1990 studentët dolën në rrugë, dhe një lëvizje e re filloi në Tiranë.",
+              "english": "\"In 1990 the students went out into the street, and a new movement began in Tirana.\""
+            },
+            {
+              "text": "— Në vitin 1991 u bënë zgjedhjet e para me më shumë se një parti, dhe në vitin 1998 vendi pati një kushtetutë të re.",
+              "english": "\"In 1991 the first elections with more than one party were held, and in 1998 the country had a new constitution.\""
+            },
+            {
+              "text": "— Kuvendi zgjedh presidentin, dhe qeveria punon me partitë, siç e kemi mësuar.",
+              "english": "\"The assembly chooses the president, and the government works with the parties, as we have learned.\""
+            },
+            {
+              "text": "— Aktualisht Shqipëria është një vend kandidat për të hyrë në Bashkimin Evropian, dhe kjo është një rrugë e gjatë.",
+              "english": "\"At present Albania is a candidate country to enter the European Union, and this is a long road.\""
+            },
+            {
+              "text": "— Gjergji, ti pyete për grekët, për ushtrinë turke dhe për shumë popuj, dhe unë të përgjigjem: ata janë gjithë pjesë e historisë.",
+              "english": "\"Gjergj, you asked about the Greeks, about the Turkish army and about many peoples, and I answer you: they are all part of our history.\""
+            },
+            {
+              "text": "— Territori ynë ka qenë një rrugë mes lindjes dhe perëndimit, mes detit dhe malit, dhe mes shumë feve, dhe ky qytet gjendet në mes të kësaj rruge.",
+              "english": "\"Our territory has been a road between east and west, between sea and mountain, and between many faiths.\""
+            },
+            {
+              "text": "— Në këtë vend ka vende arkeologjike, qytete mesdhetare dhe bregdetare, kala jugore dhe veriore, dhe çdo vendas e përmend një histori.",
+              "english": "\"In this country there are archaeological sites, Mediterranean and coastal towns, southern and northern castles, and every local knows a story.\""
+            },
+            {
+              "text": "— Çdo turist që vjen në pikat tona turistike, në një pallat të vjetër ose në një komunë të vogël, e sheh një pjesë të kësaj historie.",
+              "english": "\"Every tourist who comes to our tourist spots, to an old palace or a small commune, sees a part of this history.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Zoti mësues, çfarë duhet të bëjmë ne? — pyeti Elira.",
+              "english": "\"Mr teacher, what must we do?\" asked Elira."
+            },
+            {
+              "text": "— Ju duhet të mësoni, të pyesni dhe të mos e harroni këtë histori, — tha Luani.",
+              "english": "\"You must learn, ask and not forget this history,\" said Luan."
+            },
+            {
+              "text": "— Një ditë ju do të jeni inxhinierë, avokatë, mësuese dhe gazetarë, dhe vendi do t'u punësojë ose do t'u presë.",
+              "english": "\"One day you will be engineers, lawyers, women teachers and journalists, and the country will employ you or will wait for you.\""
+            },
+            {
+              "text": "— Një kandidat i aftë, me aftësi të mira, është në çdo vend një forcë më e madhe se një kala.",
+              "english": "\"A capable candidate, with good skills, is in every country a greater strength than a castle.\""
+            },
+            {
+              "text": "— Duhet ta zhvilloni vendin, ta mbroni natyrën dhe ta zbuloni vetë çfarë i duhet.",
+              "english": "\"You must develop the country, protect nature and discover for yourselves what it needs.\""
+            },
+            {
+              "text": "— Kjo është një detyrë e madhe, dhe ajo është gati vetëm kur çdo njeri e bën pjesën e tij.",
+              "english": "\"This is a common task, and it is ready only when every person does his part.\""
+            },
+            {
+              "text": "Kur mbaroi ora, të gjithë u ngritën, dhe Ardi e shkroi në fletore: «Historia është një rrugë e gjatë.» Sektori i arsimit është një institucion që e mban historinë, dhe puna e tij administrative nuk bëhet pa ligje; përmes tyre shteti i respekton mësuesit. Gjergji erdhi në shtëpi, dhe Mira dhe një mikeshë e saj e dëgjuan historinë me një shishe ujë në tavolinë.",
+              "english": "When the lesson ended, everyone stood up, and Ardi wrote in his notebook: \"History is a long road.\" The education sector is an institution that holds history, and its administrative work is not done without laws; through them the state respects the teachers. Gjergj came home, and Mira and a friend of hers listened to the story with a bottle of water on the table."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

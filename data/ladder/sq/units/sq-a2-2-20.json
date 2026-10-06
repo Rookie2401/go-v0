@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-20",
+  "lang": "sq",
+  "title": "Një vit në Shqipëri",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-20",
+    "title": "Albanian ladder, a2-2: Një vit në Shqipëri (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Testimony (volume unit): Sam's speech after a year in Albania, first person, in the course's own words, NO Scripture quotation. Needs theological review. Summarises the places, the history, the thanks and the promises (\"premtoj\") of the stage; uses present perfect, aorist, imperfect, future and conditional."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "testimony"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-theological-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një vit në Shqipëri",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Një e diel në mëngjes kishte kaluar një vit që Sami kishte mbërritur në Tiranë.",
+              "english": "One Sunday morning a year had passed since Sam had arrived in Tirana."
+            },
+            {
+              "text": "Pas shërbimit pastori Pjetër i tha: — Sam, sot do të na flasësh ti.",
+              "english": "After the service Pastor Pjetër said to him: \"Sam, today you will speak to us.\""
+            },
+            {
+              "text": "— Për çfarë? — pyeti Sami.",
+              "english": "\"About what?\" asked Sam."
+            },
+            {
+              "text": "— Për një vit, — tha pastori.",
+              "english": "\"About a year,\" said the pastor."
+            },
+            {
+              "text": "— Për atë që nuk mundeshe të thoshe dhe për atë që mund ta thuash tani.",
+              "english": "\"About what you could not say and about what you can say now.\""
+            },
+            {
+              "text": "Sami u ngrit pak i shqetësuar, por në radhën e parë ishin Ana dhe Luani, dhe ai buzëqeshi.",
+              "english": "Sam stood up a little worried, but in the front row were Ana and Luan, and he smiled."
+            },
+            {
+              "text": "Pastaj ai filloi të flasë, pa letër, në shqip.",
+              "english": "Then he began to speak, without paper, in Albanian."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Të dashur motra dhe vëllezër, — tha ai.",
+              "english": "\"Dear sisters and brothers,\" he said."
+            },
+            {
+              "text": "— Një vit më parë unë mbërrita këtu me një avion dhe me një valixhe të vogël.",
+              "english": "\"A year ago I arrived here by plane and with a small suitcase.\""
+            },
+            {
+              "text": "— Atë ditë unë dija vetëm tri fjalë: «përshëndetje», «faleminderit» dhe «dua bukë».",
+              "english": "\"That day I knew only three words: 'hello', 'thank you' and 'I want bread'.\""
+            },
+            {
+              "text": "— Nuk mundem të them sa frikë kisha. Nuk e kuptoja asnjë njeri, dhe askush nuk më kuptonte mua.",
+              "english": "\"I cannot tell how afraid I was. I did not understand any person, and nobody understood me.\""
+            },
+            {
+              "text": "— Në fillim kisha një dhomë të vogël pranë kishës, dhe çdo ditë mësoja dhjetë fjalë të reja.",
+              "english": "\"In the beginning I had a small room next to the church, and every day I learned ten new words.\""
+            },
+            {
+              "text": "— Gjyshja Drita më mësoi të blej bukë në treg, dhe Luani më mësoi të pyes çfarë kushton çdo gjë.",
+              "english": "\"Grandmother Drita taught me to buy bread at the market, and Luan taught me to ask what everything costs.\""
+            },
+            {
+              "text": "— Ana më mësoi të them «më dhemb» kur isha i sëmurë, dhe Ardi më mësoi gjuhën e fëmijëve.",
+              "english": "\"Ana taught me to say 'it hurts' when I was ill, and Ardi taught me the language of children.\""
+            },
+            {
+              "text": "— Sot mundem të flas me ju, edhe pse bëj ende gabime, dhe kjo më kënaq shumë.",
+              "english": "\"Today I can speak with you, even though I still make mistakes, and this pleases me a lot.\""
+            },
+            {
+              "text": "— Kënaqem kur dëgjoj një fjali të plotë, kënaqem kur dikush më kupton dhe kënaqem kur qesh me mua.",
+              "english": "\"I am glad when I hear a full sentence, I am glad when someone understands me and I am glad when he laughs with me.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Ky vit ka qenë një rrugë e gjatë.",
+              "english": "\"This year has been a long road.\""
+            },
+            {
+              "text": "— Unë kam parë shumë vende: një kala, një kullë, një xhami dhe një pallat të vjetër.",
+              "english": "\"I have seen many places: a castle, a tower, a mosque and an old palace.\""
+            },
+            {
+              "text": "— Kam shkuar në veri, ku mali është i lartë dhe ajri është i pastër, dhe në jug, ku deti është i qetë dhe i ngrohtë.",
+              "english": "\"I have been to the north, where the mountain is high and the air is clean, and to the south, where the sea is calm and warm.\""
+            },
+            {
+              "text": "— Kam parë vende arkeologjike, qytete bregdetare dhe krahina të largëta, dhe një komunë të vogël ku njerëzit më pritën në derë.",
+              "english": "\"I have seen archaeological sites, coastal towns and distant regions, and a small commune where people received me at the door.\""
+            },
+            {
+              "text": "— Nga një pikë e hapur në mal pashë një pamje që nuk do ta harroj, dhe aty u përula dhe falënderova Perëndinë.",
+              "english": "\"From an open point in the mountains I saw a view that I will not forget, and there I humbled myself and thanked God.\""
+            },
+            {
+              "text": "— Në Berat mësova se një qytet mund të ketë një mijë dritare, dhe në një fshat mësova se një arkë bletësh është një shtëpi e vogël.",
+              "english": "\"In Berat I learned that a town can have a thousand windows, and in a village I learned that a hive of bees is a small house.\""
+            },
+            {
+              "text": "— Mësova edhe shumë gjëra të vogla: që çelësi duhet të jetë gjithmonë në çantë, dhe që shiu mund të bëjë keq një plani të mirë.",
+              "english": "\"I also learned many small things: that the key must always be in the bag, and that rain can harm a good plan.\""
+            },
+            {
+              "text": "— Një herë mbetëm pa çadër, dhe një herë e harrova çelësin në frigorifer!",
+              "english": "\"Once we were left without an umbrella, and once I forgot the key in the refrigerator!\""
+            },
+            {
+              "text": "Të gjithë qeshën, dhe Sami priti një moment përpara se të vazhdonte.",
+              "english": "Everybody laughed, and Sam waited a moment before continuing."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Kam mësuar edhe për këtë vend, — tha ai.",
+              "english": "\"I have also learned about this country,\" he said."
+            },
+            {
+              "text": "— Mësova se Shqipëria është një komb i vogël, por shumë i vjetër.",
+              "english": "\"I learned that Albania is a small nation, but a very old one.\""
+            },
+            {
+              "text": "— Mësova për ilirët, për bizantinët dhe për sundimin osman, dhe për lëvizjen kombëtare dhe pavarësinë.",
+              "english": "\"I learned about the Illyrians, about the Byzantines and about Ottoman rule, and about the national movement and independence.\""
+            },
+            {
+              "text": "— Mësova për zgjedhjet, për kuvendin dhe për kushtetutën, dhe pyeta shumë herë për parti dhe për qeveri.",
+              "english": "\"I learned about elections, about the assembly and about the constitution, and I asked many times about parties and about the government.\""
+            },
+            {
+              "text": "— Në këtë vend jetojnë shqiptarë, grekë, italianë, serbë, gjermanë dhe shumë të tjerë, dhe unë i kam njohur disa prej tyre.",
+              "english": "\"In this country live Albanians, Greeks, Italians, Serbs, Germans and many others, and I have met some of them.\""
+            },
+            {
+              "text": "— Nuk jam më një i huaj këtu, dhe kjo është mrekullia ime e vogël.",
+              "english": "\"I am no longer a stranger here, and this is my small miracle.\""
+            },
+            {
+              "text": "— Kam takuar edhe francezë, amerikanë dhe evropianë të tjerë, dhe kemi folur për një jetë të njëjtë, të ngjashme dhe të afërt me jetën e çdo njeriu.",
+              "english": "\"I have also met French, Americans and other Europeans, and we have talked about a life that is the same, similar and near to the life of every person.\""
+            },
+            {
+              "text": "— Në Durrës kam parë gjirin e detit, ku qyteti përhapet çdo vit dhe vendbanimet e reja janë kufizuar nga deti.",
+              "english": "\"In Durrës I have seen the bay of the sea, where the town spreads every year and the new settlements are bounded by the sea.\""
+            },
+            {
+              "text": "— Kam udhëtuar edhe me transportin hekurudhor, dhe udhëtimi hekurudhor ishte i bukur.",
+              "english": "\"I have also travelled by railway transport, and the railway journey was beautiful.\""
+            },
+            {
+              "text": "— Akademia e Shkencave dhe instituti i bujqësisë janë dy vende ku kam lexuar vëllime të vjetra.",
+              "english": "\"The Academy of Sciences and the institute of agriculture are two places where I have read old volumes.\""
+            },
+            {
+              "text": "— Kam parë pjesën qendrore të Tiranës, lagjet jugore dhe territorin e saj, një zonë turke me xhami të vjetra dhe një kala mesjetare, pjesën lindore dhe atë perëndimore, dhe kam parë se çdo rast, çdo formë jete dhe çdo zhvillim i vogël më ka mësuar diçka.",
+              "english": "\"I have seen the centre of Tirana, the southern neighbourhoods and its territory, a Turkish zone with old mosques and a medieval castle, in the east and in the west, and I have seen that every occasion, every form of life and every small development has taught me something.\""
+            },
+            {
+              "text": "— Çdo punë administrative, çdo ditë e mrekullueshme, nga çdo anë e vendit, më ka sjellë miq.",
+              "english": "\"Every administrative job, every wonderful day, from every side of the country, has brought me friends.\""
+            },
+            {
+              "text": "— Dhoma ime e parë është tani bosh, dhe sonte do të flas edhe me nënën time në shtëpi.",
+              "english": "\"My first room is now empty, and tonight I will speak also to my parents at home.\""
+            },
+            {
+              "text": "— Do të përmend vetëm një emër më shumë: emrin e atij që e krijoi çdo gjë.",
+              "english": "\"I will mention only one more name: the name of the one who created everything.\""
+            },
+            {
+              "text": "— Mësova edhe për ekonominë: për fermerët që shesin pemët e tyre, për turizmin dhe për sektorin e shërbimeve.",
+              "english": "\"I also learned about the economy: about farmers who sell their fruit, about tourism and about the service sector.\""
+            },
+            {
+              "text": "— Punoj tani në një shkollë, në një institucion të vjetër, dhe aty kam kolegë që e kanë zhvilluar sistemin e tyre me kohë.",
+              "english": "\"I now work in a school, in an old institution, and there I have colleagues who have developed their system with time.\""
+            },
+            {
+              "text": "— Kam parë transportin e Tiranës, ndërtimet e reja, lagjet urbane dhe tregjet lokale, dhe e di që ky qytet është i gjallë dhe karakteristik.",
+              "english": "\"I have seen the transport of Tirana, the new constructions, the urban neighbourhoods and the local markets, and I know that this city is lively and characteristic.\""
+            },
+            {
+              "text": "— Ai nuk është një qytet botëror, por ka një nivel të mirë jete dhe një zemër të madhe.",
+              "english": "\"It is not a world city, but it has a good standard of life and a big heart.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Por mbi të gjitha, — tha Sami me zë më të ulët, — unë kam mësuar nga ju.",
+              "english": "\"But above all,\" said Sam in a lower voice, \"I have learned from you.\""
+            },
+            {
+              "text": "— Veçanërisht nga ju, që më ngushëlluat kur isha i trishtuar dhe që më dhatë një frymë të re kur isha i lodhur.",
+              "english": "\"Especially from you, who comforted me when I was sad and who gave me a new spirit when I was tired.\""
+            },
+            {
+              "text": "— Nuk jam i fuqishëm, nuk jam shumë i mirë dhe nuk jam gjithmonë i qetë, por ju më mësuat që forca e vërtetë vjen nga dashuria.",
+              "english": "\"I am not mighty, I am not perfect and I am not always calm, but you taught me that true strength comes from love.\""
+            },
+            {
+              "text": "— Shpesh isha i rrezikshëm për mua, sepse mendoja shumë dhe flisja pak, dhe mendja ime kishte shumë frikë.",
+              "english": "\"Often I was a danger to myself, because I thought a lot and spoke little, and my mind was had a lot of fear.\""
+            },
+            {
+              "text": "— Sidomos në muajt e parë kisha frikë se do të bëja gabime, dhe se askush nuk do të më pranonte.",
+              "english": "\"Especially in the first months I was afraid that I would make mistakes, and that nobody would accept me.\""
+            },
+            {
+              "text": "— Por ju më pranuat, dhe këtë mrekulli nuk e harroj.",
+              "english": "\"But you accepted me, and I do not forget this wonderful thing.\""
+            },
+            {
+              "text": "— Në radhën e parë dua të falënderoj pastor Pjetrin, që më priti në kishë dhe më foli me dashuri.",
+              "english": "\"First of all I want to thank Pastor Pjetër, who received me at the church and spoke to me calmly.\""
+            },
+            {
+              "text": "— Dua të falënderoj gjyshen Drita, që më dha bukë, çaj dhe një vend në tavolinën e saj.",
+              "english": "\"I want to thank grandmother Drita, who gave me bread, tea and a place at her table.\""
+            },
+            {
+              "text": "— Falënderoj Anën, që kujdeset për mua kur jam i sëmurë, dhe Luanin, që më mësoi gjuhën dhe më dha një shok.",
+              "english": "\"I thank Ana, who looks after me when I am ill, and Luan, who taught me the language and gave me a friend.\""
+            },
+            {
+              "text": "— Falënderoj Mirën dhe Dritanin, që më treguan një dëshmi të madhe, dhe Gjergjin, Ardin dhe Elirën, që më mësuan të qesh.",
+              "english": "\"I thank Mira and Dritan, who told me a big testimony, and Gjergj, Ardi and Elira, who taught me to laugh.\""
+            },
+            {
+              "text": "— Falënderoj edhe gjyshin e Ardit me bletët e tij, që më tregoi se një insekt i vogël bën një punë të madhe.",
+              "english": "\"I also thank Ardi's grandfather with his bees, who showed me that a small insect does a big job.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Tani dua të premtoj disa gjëra, — tha Sami.",
+              "english": "\"Now I want to promise you a few things,\" said Sam."
+            },
+            {
+              "text": "— Premtoj se do të vazhdoj të mësoj çdo ditë, edhe kur është e vështirë.",
+              "english": "\"I promise that I will continue to learn every day, even when it is hard.\""
+            },
+            {
+              "text": "— Premtoj se nuk do të gënjej, edhe kur e vërteta nuk është e lehtë, dhe se do të bëj një punë të mirë në shkollë.",
+              "english": "\"I promise that I will not lie, even when the truth is not easy, and that I will do good work at school.\""
+            },
+            {
+              "text": "— Premtoj se do të ndihmoj fëmijët, njerëzit e sëmurë dhe njerëzit e varfër, siç ndihmoi Nënë Tereza me forcën e vogël që pati.",
+              "english": "\"I promise that I will help children, the sick and poor people, as Mother Teresa helped with the small strength she had.\""
+            },
+            {
+              "text": "— Në vitin që vjen do të doja të mësoj të flas edhe më mirë, dhe nëse do të kisha kohë, do të mësoja të këndoj një këngë shqip.",
+              "english": "\"In the year that comes I would like to learn to speak even better, and if I had time, I would learn to sing an Albanian song.\""
+            },
+            {
+              "text": "— Nuk e di sa kohë do të qëndroj këtu, por e di që këtu është shtëpia ime e dytë, dhe kjo më kënaq.",
+              "english": "\"I do not know how long I will stay here, but I know that this is my second home, and that pleases me.\""
+            },
+            {
+              "text": "— Ndoshta një ditë do të kthehem në vendin tim, por zemra ime do të jetë gjithmonë edhe në Shqipëri.",
+              "english": "\"Perhaps one day I will return to my country, but my heart will always be in Albania too.\""
+            },
+            {
+              "text": "— Faleminderit që më dëgjuat. Zoti ju bekoftë! Më duket se kam qenë këtu shumë më gjatë, dhe më habit që kam mësuar shumë.",
+              "english": "\"Thank you for listening to me. May the Lord bless you all!\" It seems to me that I have been here much longer, and I am surprised that I have learned a lot."
+            },
+            {
+              "text": "Të gjithë iu përgjigjën: — Qofsh i bekuar, Sam!",
+              "english": "Everyone answered: \"May you be blessed, Sam!\""
+            },
+            {
+              "text": "Ana u ngrit dhe e mori në krahë për një moment, dhe Luani e mbajti për krahu.",
+              "english": "Ana stood up and took him in her arms for a moment, and Luan held him by the arm."
+            },
+            {
+              "text": "Jashtë dielli ishte i lartë, dhe në oborrin e kishës gjyshja Drita po priste me një çantë të madhe.",
+              "english": "Outside the sun was high, and in the yard of the church grandmother Drita was waiting with a big bag."
+            },
+            {
+              "text": "— Eja, Sam, — tha ajo.",
+              "english": "\"Come, Sam,\" she said."
+            },
+            {
+              "text": "— Sot ke një vit, dhe vit i parë do të thotë byrek i madh.",
+              "english": "\"Today you are a year old, and a first year means a big byrek.\""
+            },
+            {
+              "text": "Sami qeshi, dhe për herë të parë atë vit nuk kishte nevojë të mendonte para se të fliste.",
+              "english": "Sam laughed, and for the first time that year he did not need to think before speaking."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-09",
+  "lang": "sq",
+  "title": "Një ditë shiu në Tiranë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-09",
+    "title": "Albanian ladder, a2-2: Një ditë shiu në Tiranë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Narrative (volume unit): a rainy day. To check: \"kryqëzim\", \"rrugë e rrezikshme\"; the radio news is invented; the clothing words (jacket, hat, socks) and weather forms."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një ditë shiu në Tiranë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën në mëngjes qielli mbi Tiranë ishte shumë i zi dhe i ulët.",
+              "english": "On Saturday morning the sky over Tirana was very dark and low."
+            },
+            {
+              "text": "Nuk kishte diell dhe nuk kishte erë, por shiu binte në çdo rrugë.",
+              "english": "There was no sun and no wind, but the rain was falling in every street."
+            },
+            {
+              "text": "Sami kishte një plan për atë ditë: do t'i çonte Ardin dhe Elirën në park, pastaj do t'u jepte akullore.",
+              "english": "Sam had a plan for that day: he would take Ardi and Elira to the park, then give them ice cream."
+            },
+            {
+              "text": "Ai kishte rezervuar edhe një tavolinë në një kafe pranë parkut.",
+              "english": "He had also booked a table in a café near the park."
+            },
+            {
+              "text": "Nëna e Elirës kishte thënë po, por me një kusht: Elira duhej të vishte xhaketën e saj.",
+              "english": "Elira's mother had said yes, but on one condition: Elira had to wear her jacket."
+            },
+            {
+              "text": "— Parku është i bukur edhe kur bie shi, — tha Sami.",
+              "english": "\"The park is beautiful even when it rains,\" said Sam."
+            },
+            {
+              "text": "— Do të marrim çadrën time të madhe.",
+              "english": "\"We will take my big umbrella.\""
+            },
+            {
+              "text": "Ardi dhe Elira e prisnin para ndërtesës së tij.",
+              "english": "Ardi and Elira were waiting for him in front of his building."
+            },
+            {
+              "text": "Ardi ishte pak i mërzitur, sepse donte të rrinte në shtëpi dhe të shikonte një film.",
+              "english": "Ardi was a little sad, because he wanted to stay at home and watch a film."
+            },
+            {
+              "text": "Elira ishte e gëzuar dhe luante në shi me çorape të bardha dhe këpucë të vogla.",
+              "english": "Elira was happy and played in the rain in white socks and small shoes."
+            },
+            {
+              "text": "— Elira, mos luaj në shi! — tha Sami.",
+              "english": "\"Elira, do not play in the rain!\" said Sam."
+            },
+            {
+              "text": "— Çorapet do të kenë ujë.",
+              "english": "\"Your socks will be full of water.\""
+            },
+            {
+              "text": "— Nuk më bën gjë, — qeshi ajo.",
+              "english": "\"It does not matter to me,\" she laughed."
+            },
+            {
+              "text": "— Unë dua ta shoh shiun nga afër.",
+              "english": "\"I want to see the rain from close up.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ata nisën të ecin drejt parkut, të tre nën çadrën e madhe.",
+              "english": "They set off walking towards the park, the three of them under the big umbrella."
+            },
+            {
+              "text": "Çadra ishte e vjetër, por Sami e mbante me krahun e tij.",
+              "english": "The umbrella was old, but Sam held it with his arm."
+            },
+            {
+              "text": "Elira ishte udhëzuesi i tyre, sepse e njihte rrugën më mirë se të gjithë.",
+              "english": "Elira was their guide, because she knew the way better than everyone."
+            },
+            {
+              "text": "Ardi kishte një kapelë të zezë, dhe Elira kishte flokë të gjatë, që kishin ujë.",
+              "english": "Ardi had a black hat, and Elira had long hair that was full of water."
+            },
+            {
+              "text": "— Flokët e mi kanë shumë ujë, — tha ajo.",
+              "english": "\"My hair has a lot of water,\" she said."
+            },
+            {
+              "text": "— Nëna do të jetë e zemëruar.",
+              "english": "\"Mum will be angry.\""
+            },
+            {
+              "text": "— Nëna jote nuk do të jetë e zemëruar, — tha Sami.",
+              "english": "\"Your mother will not be angry,\" said Sam."
+            },
+            {
+              "text": "— Ajo e di që shiu është shi.",
+              "english": "\"She knows that rain is rain.\""
+            },
+            {
+              "text": "Në atë rast Sami mendoi se një ecje në shi ishte një ide e mirë.",
+              "english": "In that case Sam thought that a walk in the rain was a good idea."
+            },
+            {
+              "text": "Në një kryqëzim ata pritën një minutë, sepse rruga ishte e rrezikshme për fëmijët.",
+              "english": "At a crossing they waited a minute, because the road was dangerous for children."
+            },
+            {
+              "text": "— Mbaj krahun tim, — i tha Sami Elirës.",
+              "english": "\"Hold my arm,\" Sam said to Elira."
+            },
+            {
+              "text": "— Është një rrugë e rrezikshme.",
+              "english": "\"It is a dangerous road.\""
+            },
+            {
+              "text": "Pastaj erdhi një erë e madhe nga lindja dhe çadra u kthye nga brenda.",
+              "english": "Then a big wind came from the east and the umbrella turned inside out."
+            },
+            {
+              "text": "Sami e mbajti me duar, por çadra ishte shumë e vjetër.",
+              "english": "Sam held it with his hands, but the umbrella was very old."
+            },
+            {
+              "text": "Një nga krahët e saj u thye dhe shiu filloi të binte mbi të tre.",
+              "english": "One of its arms broke and the rain began to fall on the three of them."
+            },
+            {
+              "text": "— Kjo nuk ishte pjesë e planit tim! — tha Sami duke qeshur.",
+              "english": "\"This was not part of my plan!\" said Sam, laughing."
+            },
+            {
+              "text": "— Tani çadra ka një formë të re, — tha Ardi.",
+              "english": "\"Now the umbrella has a new shape,\" said Ardi."
+            },
+            {
+              "text": "— Ka formën e një lule të madhe e të zezë.",
+              "english": "\"It has the shape of a big black flower.\""
+            },
+            {
+              "text": "— Kjo formë më pëlqen, — tha Elira.",
+              "english": "\"I like this shape,\" said Elira."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në atë rast nuk kishte asnjë dyqan afër, prandaj ata vrapuan te një stacion autobusi.",
+              "english": "In that case there was no shop nearby, so they ran to a bus stop."
+            },
+            {
+              "text": "Aty ishin disa udhëtarë që prisnin autobusin dhe flisnin për shiun. Një turist gjerman me një grua italiane dhe një djalë amerikan prisnin edhe ata, dhe një grua franceze qeshte me ta.",
+              "english": "There were some travellers there waiting for the bus and talking about the rain. A German tourist with an Italian woman and an American boy were waiting too, and a French woman was laughing with them."
+            },
+            {
+              "text": "Një grua i dha Elirës një peshqir të vogël dhe i tha: — Merre për fytyrën, vogël.",
+              "english": "A woman gave Elira a small towel and said, \"Take it for your face, little one.\""
+            },
+            {
+              "text": "Elira e përdori peshqirin për fytyrën dhe për flokët, dhe pastaj buzëqeshi.",
+              "english": "Elira used the towel for her face and for her hair, and then smiled."
+            },
+            {
+              "text": "— Faleminderit, zonjë, — tha ajo.",
+              "english": "\"Thank you, madam,\" she said."
+            },
+            {
+              "text": "Ardi pa që çorapet e tij kishin shumë ujë.",
+              "english": "Ardi saw that his socks were full of water."
+            },
+            {
+              "text": "— Sam, çorapet e mia janë të ftohta dhe këmbët e mia janë të ftohta, — tha ai.",
+              "english": "\"Sam, my socks are cold and my feet are cold,\" he said."
+            },
+            {
+              "text": "Sami ishte i shqetësuar.",
+              "english": "Sam was worried."
+            },
+            {
+              "text": "Ai nuk donte që fëmijët të kishin dhimbje, dhe gjendja e tyre nuk i pëlqente.",
+              "english": "He did not want the children to have pain, and he did not like their condition."
+            },
+            {
+              "text": "— Është një gabim të rrimë këtu, — tha ai.",
+              "english": "\"It is a mistake to stay here,\" he said."
+            },
+            {
+              "text": "— Le të marrim një taksi dhe të shkojmë në shtëpi.",
+              "english": "\"Let us take a taxi and go home.\""
+            },
+            {
+              "text": "— Por parku? Plani juaj? — pyeti Elira.",
+              "english": "\"But the park? Your plan?\" asked Elira."
+            },
+            {
+              "text": "— Plani im nuk pati sukses, — qeshi Sami.",
+              "english": "\"My plan was not a success,\" laughed Sam."
+            },
+            {
+              "text": "— Sot shiu është më i madh se unë.",
+              "english": "\"Today the rain is bigger than I am.\""
+            },
+            {
+              "text": "— Ndoshta nesër parku do të jetë më i mirë, — tha Elira.",
+              "english": "\"Perhaps tomorrow the park will be better,\" said Elira."
+            },
+            {
+              "text": "— Ndoshta, — tha Ardi.",
+              "english": "\"Perhaps,\" said Ardi."
+            },
+            {
+              "text": "— Dhe vërtet nuk do të ketë shi.",
+              "english": "\"And there really will be no rain.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në stacion një grua kishte një celular dhe po dëgjonte lajmet.",
+              "english": "At the stop a woman had a mobile phone and was listening to the news."
+            },
+            {
+              "text": "Një ministër thoshte se shiu do të bjerë gjithë ditën, dhe se qeveria i këshillon njerëzit të mos dalin pa nevojë.",
+              "english": "A minister said that the rain would fall all day, and that the government advised people not to go out without need."
+            },
+            {
+              "text": "— Aktualisht në të gjithë vendin bie shi, — thoshte zëri.",
+              "english": "\"At present it is raining all over the country,\" said the voice."
+            },
+            {
+              "text": "— Është një ditë e vështirë për kombin.",
+              "english": "\"It is a hard day for the nation.\""
+            },
+            {
+              "text": "Ardi qeshi.",
+              "english": "Ardi laughed."
+            },
+            {
+              "text": "— Një ditë e vështirë për kombin! — tha ai.",
+              "english": "\"A hard day for the nation!\" he said."
+            },
+            {
+              "text": "— Dhe unë kam çorape me ujë!",
+              "english": "\"And I have socks full of water!\""
+            },
+            {
+              "text": "Në atë moment erdhi një taksi e bardhë dhe Sami e thirri me dorë.",
+              "english": "At that moment a white taxi came and Sam called it with his hand."
+            },
+            {
+              "text": "Shoferi ishte një burrë i qetë me një kapelë të vjetër.",
+              "english": "The driver was a calm man with an old hat."
+            },
+            {
+              "text": "Ata hynë të tre brenda dhe ndjenë ngrohjen e makinës.",
+              "english": "The three of them got in and felt the warmth of the car."
+            },
+            {
+              "text": "— Ku shkojmë? — pyeti shoferi.",
+              "english": "\"Where are we going?\" asked the driver."
+            },
+            {
+              "text": "— Te shtëpia e gjyshes Drita, — tha Ardi.",
+              "english": "\"To grandmother Drita's house,\" said Ardi."
+            },
+            {
+              "text": "— Ajo ka çaj të nxehtë dhe bukë të ngrohtë.",
+              "english": "\"She has hot tea and warm bread.\""
+            },
+            {
+              "text": "Udhëtimi në taksi ishte i shkurtër, por jashtë shiu binte më shumë se më parë.",
+              "english": "The journey in the taxi was short, but outside the rain was falling harder than before."
+            },
+            {
+              "text": "Rruga ishte si një lumë i thellë dhe makinat kalonin.",
+              "english": "The road was like a deep river and the cars passed."
+            },
+            {
+              "text": "Elira shikonte nga dritarja peizazhin e Tiranës: ndërtesa të zeza, njerëz me çadra dhe fëmijë në shi.",
+              "english": "Elira looked out of the window at the landscape of Tirana: dark buildings, people with umbrellas and children in the rain."
+            },
+            {
+              "text": "— Sa i trishtuar është qyteti sot, — tha Ardi.",
+              "english": "\"How sad the city is today,\" said Ardi."
+            },
+            {
+              "text": "— Jo, — tha Elira.",
+              "english": "\"No,\" said Elira."
+            },
+            {
+              "text": "— Ai është një qytet i qetë. Shiu i ka larë të gjitha.",
+              "english": "\"It is a calm city. The rain has washed everything.\""
+            },
+            {
+              "text": "— Një ditë dua të udhëtoj me avion mbi të gjitha re, — shtoi ajo.",
+              "english": "\"One day I want to travel by plane above all the clouds,\" she added."
+            },
+            {
+              "text": "— Atje nuk bie shi.",
+              "english": "\"There it does not rain.\""
+            },
+            {
+              "text": "— Me biçikletë do të ishte më keq sot, — qeshi Sami.",
+              "english": "\"On a bicycle it would be worse today,\" laughed Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kur mbërritën, gjyshja Drita i priti në derë me një peshqir të madh.",
+              "english": "When they arrived, grandmother Drita met them at the door with a big towel."
+            },
+            {
+              "text": "— Sa ditë! — tha ajo.",
+              "english": "\"What a day!\" she said."
+            },
+            {
+              "text": "— Hyni, hyni! Sigurisht keni nevojë për çaj.",
+              "english": "\"Come in, come in! Of course you need tea.\""
+            },
+            {
+              "text": "Sami i ndihmoi fëmijët të pinë çaj.",
+              "english": "Sam helped the children drink tea."
+            },
+            {
+              "text": "Në kuzhinë kishte erë buke, dhe në tavolinë kishte çaj, djathë dhe mjaltë.",
+              "english": "In the kitchen there was a smell of bread, and on the table there was tea, cheese and honey."
+            },
+            {
+              "text": "Elira mori një pasqyrë të vogël dhe shikoi fytyrën e saj.",
+              "english": "Elira took a small mirror and looked at her face."
+            },
+            {
+              "text": "— Kam flokët si një mace që ka pasur shumë ujë! — qeshi ajo.",
+              "english": "\"I have hair like a cat that has had a lot of water!\" she laughed."
+            },
+            {
+              "text": "— Më herët, në rrugë, e pashë fytyrën time në ujin që ishte para stacionit, — tha ajo.",
+              "english": "\"Earlier, in the street, I saw my face in the water in front of the stop,\" she said."
+            },
+            {
+              "text": "— Ishte si një pasqyrë e madhe.",
+              "english": "\"It was like a big mirror.\""
+            },
+            {
+              "text": "— Ai ujë ishte si një pasqyrë natyrore, — tha Sami.",
+              "english": "\"That water was like a natural mirror,\" said Sam."
+            },
+            {
+              "text": "— Dhe fytyra jote ishte shumë e gëzuar.",
+              "english": "\"And your face was very cheerful.\""
+            },
+            {
+              "text": "Gjyshja i dha Ardit çorape të thata që i kishte në një valixhe të vjetër, dhe një kapelë të vjetër për Samin.",
+              "english": "Grandmother gave Ardi dry socks that she had in an old suitcase, and an old hat for Sam."
+            },
+            {
+              "text": "— Sam, çfarë ideje pate, të dilnit me shi? — pyeti ajo.",
+              "english": "\"Sam, what idea did you have, to go out in the rain?\" she asked."
+            },
+            {
+              "text": "— Ishte një plan i mirë, — tha Sami.",
+              "english": "\"It was a good plan,\" said Sam."
+            },
+            {
+              "text": "— Por arsyeja pse nuk pati sukses ishte një çadër e vjetër.",
+              "english": "\"But the reason it was not a success was an old umbrella.\""
+            },
+            {
+              "text": "— Çadra nuk ka rëndësi, — tha Drita.",
+              "english": "\"The umbrella does not matter,\" said Drita."
+            },
+            {
+              "text": "— Rëndësi ka që jeni të gjithë këtu, të shëndetshëm dhe të ngrohtë.",
+              "english": "\"What matters is that you are all here, healthy and warm.\""
+            },
+            {
+              "text": "Në atë rast të tre qeshën, dhe jashtë shiu binte ende mbi Tiranën.",
+              "english": "In that case the three of them laughed, and outside the rain was still falling on Tirana."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,471 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-01",
+  "lang": "sq",
+  "title": "Një banesë për Samin",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-01",
+    "title": "Albanian ladder, a2-2: Një banesë për Samin (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Practical story: finding a flat. To check: rent and heating prices are invented; \"ju\" register with the landlord; \"do të doja\" / \"do të ishte mirë\" as polite conditional; \"e shtunë\" / \"të hënën\" day forms; the reading-in-the-evening paragraph names a chapter, a psalm, a verse, salvation, the cross, forgiveness and grace in the course's own words, no quotation."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "practical"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një banesë për Samin",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam jeton në një dhomë të vogël pranë kishës, por tani ajo është shumë e vogël për të.",
+              "english": "Sam lives in a small room next to the church, but now it is too small for him."
+            },
+            {
+              "text": "Dhoma është e lirë, por është vetëm katër metra e gjatë dhe tre metra e gjerë.",
+              "english": "The room is cheap, but it is only four metres long and three metres wide."
+            },
+            {
+              "text": "Nuk ka kuzhinë, nuk ka ballkon dhe pothuajse nuk ka vend për një karrige të dytë.",
+              "english": "It has no kitchen, no balcony and almost no room for a second chair."
+            },
+            {
+              "text": "Sam ha në kishë ose në kafe, dhe kjo i kushton shumë.",
+              "english": "Sam eats at the church or in a café, and that costs him a lot."
+            },
+            {
+              "text": "Të shtunën ai takon Luanin në një kafe pranë shkollës.",
+              "english": "On Saturday he meets Luan in a café near the school."
+            },
+            {
+              "text": "Luani e pyet si e ka kaluar fundjavën.",
+              "english": "Luan asks him how he spent the weekend."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Shkova me tren në Durrës, — thotë Sam.",
+              "english": "\"I went to Durrës by train,\" says Sam."
+            },
+            {
+              "text": "Ishte një ditë e bukur, me diell dhe pak erë.",
+              "english": "It was a beautiful day, with sun and a little wind."
+            },
+            {
+              "text": "Në plazh kishte shumë turistë, por unë gjeta një vend të lirë afër detit.",
+              "english": "There were many tourists on the beach, but I found a free spot near the sea."
+            },
+            {
+              "text": "Pashë varka të vogla dhe një anije të madhe që shkonte drejt jugut.",
+              "english": "I saw small boats and a big ship that was going towards the south."
+            },
+            {
+              "text": "— Sa mirë! Një pushim i bukur, — thotë Luani.",
+              "english": "\"How good! A lovely holiday,\" says Luan."
+            },
+            {
+              "text": "— Po, por kur u ktheva në dhomën time, mendova: më duhet një vend për mua.",
+              "english": "\"Yes, but when I came back to my room I thought: I need a place of my own.\""
+            },
+            {
+              "text": "— Në jug, në bregdet, ka edhe një ishull ku shkojnë shumë turistë. Një ditë do të të çoj atje.",
+              "english": "\"In the south, on the coast, there is also an island where many tourists go. One day I will take you there.\""
+            },
+            {
+              "text": "— Do të doja shumë. Por tani më duhet një banesë.",
+              "english": "\"I would like that very much. But now I need a home.\""
+            },
+            {
+              "text": "— Do të ishte mirë të kishe një apartament në lagjen time, — thotë Luani.",
+              "english": "\"It would be good for you to have an apartment in my neighbourhood,\" says Luan."
+            },
+            {
+              "text": "— Një mik i babait tim është pronar i një apartamenti të lirë.",
+              "english": "\"A friend of my father's is the owner of a vacant apartment.\""
+            },
+            {
+              "text": "— Sa është qiraja?",
+              "english": "\"How much is the rent?\""
+            },
+            {
+              "text": "— Nuk e di. Do ta pyesim pronarin. Ai na pret sot në orën katër.",
+              "english": "\"I do not know. We will ask the owner. He is expecting us today at four o'clock.\""
+            },
+            {
+              "text": "Sam buzëqesh dhe pi kafe me Luanin, por ai mendon vetëm për banesën.",
+              "english": "Sam smiles and drinks coffee with Luan, but he thinks only about the flat."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në orën katër ata janë para një ndërtese të vjetër.",
+              "english": "At four o'clock they are in front of an old building."
+            },
+            {
+              "text": "Pronari është një burrë i gjatë, me një çantë të vogël në dorë.",
+              "english": "The owner is a tall man with a small bag in his hand."
+            },
+            {
+              "text": "— Mirëdita! Ju jeni Sami, apo jo?",
+              "english": "\"Good afternoon! You are Sam, aren't you?\""
+            },
+            {
+              "text": "— Po, jam unë. Ky është shoku im, Luani.",
+              "english": "\"Yes, it is me. This is my friend Luan.\""
+            },
+            {
+              "text": "— Gëzohem shumë. Hyni, ju lutem.",
+              "english": "\"Pleased to meet you. Come in, please.\""
+            },
+            {
+              "text": "— Faleminderit. A është shumë lart?",
+              "english": "\"Thank you. Is it very high up?\""
+            },
+            {
+              "text": "— Është në katin e dytë, nuk është shumë lart. Në katin e parë jeton një grua e vjetër me macen e saj.",
+              "english": "\"It is on the second floor, it is not very high. On the first floor lives an old woman with her cat.\""
+            },
+            {
+              "text": "— Dhe në katin e tretë jetojnë një çift dhe fëmijët e tyre, — shton burri.",
+              "english": "\"And on the third floor live a couple and their children,\" the man adds."
+            },
+            {
+              "text": "Ata ngjiten shkallët dhe ai hap derën.",
+              "english": "They climb the stairs and he opens the door."
+            },
+            {
+              "text": "— Kjo është dhoma e madhe. Dyshemeja është shumë e mirë, por në dimër është pak e ftohtë.",
+              "english": "\"This is the big room. The floor is very good, but in winter it is a little cold.\""
+            },
+            {
+              "text": "— Edhe dyshemeja e dhomës së gjumit është e bukur, — thotë Luani.",
+              "english": "\"The floor of the bedroom is nice too,\" says Luan."
+            },
+            {
+              "text": "— Po kuzhina?",
+              "english": "\"And the kitchen?\""
+            },
+            {
+              "text": "— Kuzhina është e vogël, por është e mirë. Dyshemeja këtu është e ftohtë, por e pastruar mirë. Ja frigoriferi.",
+              "english": "\"The kitchen is small, but it is good. The floor here is cold, but well cleaned. Here is the refrigerator.\""
+            },
+            {
+              "text": "— Është i vjetër?",
+              "english": "\"Is it old?\""
+            },
+            {
+              "text": "— Po, është i vjetër, por punon mirë.",
+              "english": "\"Yes, it is old, but it works well.\""
+            },
+            {
+              "text": "Luani hap një derë tjetër.",
+              "english": "Luan opens another door."
+            },
+            {
+              "text": "— Sam, shiko! Kjo derë të çon në ballkon.",
+              "english": "\"Sam, look! This door leads to the balcony.\""
+            },
+            {
+              "text": "Sam del në ballkon dhe shikon rrugën poshtë. Ai mendon: këtu mund të punoj, të lexoj dhe të pi çaj çdo mëngjes.",
+              "english": "Sam goes out onto the balcony and looks at the street below. He thinks: here I can work, read and drink tea every morning."
+            },
+            {
+              "text": "Në fund të rrugës shihet mali dhe mbi të ka diell.",
+              "english": "At the end of the street the mountain can be seen, and there is sun above it."
+            },
+            {
+              "text": "— Si e shihni lagjen? — e pyet burri.",
+              "english": "\"How do you find the neighbourhood?\" the man asks him."
+            },
+            {
+              "text": "— Është shumë e mirë. Ka dyqan, farmaci dhe stacion autobusi.",
+              "english": "\"It is very good. There is a shop, a pharmacy and a bus station.\""
+            },
+            {
+              "text": "— Po, lagjja është e mirë, dhe njerëzit janë miq.",
+              "english": "\"Yes, the neighbourhood is good, and the people are friends.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastaj Sam pyet për qiranë.",
+              "english": "Then Sam asks about the rent."
+            },
+            {
+              "text": "— Qiraja është 250 euro në muaj.",
+              "english": "\"The rent is 250 euros a month.\""
+            },
+            {
+              "text": "— Po ngrohja dhe rryma?",
+              "english": "\"And the heating and the electricity?\""
+            },
+            {
+              "text": "— Ato nuk hyjnë në qira. Rrymën e paguan ai që jeton këtu.",
+              "english": "\"They are not included in the rent. The person who lives here pays for the electricity.\""
+            },
+            {
+              "text": "— Ngrohja është me rrymë?",
+              "english": "\"Is the heating electric?\""
+            },
+            {
+              "text": "— Po. Në dimër rryma kushton më shumë, por ai nuk është i madh.",
+              "english": "\"Yes. In winter electricity costs more, but it is not big.\""
+            },
+            {
+              "text": "— Do të doja të di sa kushton një muaj i ftohtë.",
+              "english": "\"I would like to know what a cold month costs.\""
+            },
+            {
+              "text": "— Dimrin e kaluar ishte rreth 60 euro në muaj.",
+              "english": "\"Last winter it was about 60 euros a month.\""
+            },
+            {
+              "text": "Sam mendon pak. Pastaj pyet edhe një herë.",
+              "english": "Sam thinks for a moment. Then he asks once more."
+            },
+            {
+              "text": "— A duhet të nënshkruaj një kontratë?",
+              "english": "\"Do I have to sign a contract?\""
+            },
+            {
+              "text": "— Po, kontrata duhet. Ajo është e shkurtër dhe e lehtë.",
+              "english": "\"Yes, there has to be a contract. It is short and easy.\""
+            },
+            {
+              "text": "— Do të ishte mirë ta lexoj me Luanin.",
+              "english": "\"It would be good if I read it with Luan.\""
+            },
+            {
+              "text": "— Mirë. Merreni dhe lexoni këtë natë.",
+              "english": "\"Good. Take it and read it tonight.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Burri e shikon Samin me kujdes.",
+              "english": "The man looks at Sam attentively."
+            },
+            {
+              "text": "— A jeni turist, zoti Sam?",
+              "english": "\"Are you a tourist, Mr Sam?\""
+            },
+            {
+              "text": "— Jo, nuk jam turist. Jam misionar dhe jam këtu për një vit.",
+              "english": "\"No, I am not a tourist. I am a missionary and I am here for a year.\""
+            },
+            {
+              "text": "— Mirë. A do të jetoni vetëm?",
+              "english": "\"Good. Will you live alone?\""
+            },
+            {
+              "text": "— Po, vetëm. Dua një vend të mirë për të punuar dhe për të pushuar.",
+              "english": "\"Yes, alone. I want a good place to work and to rest.\""
+            },
+            {
+              "text": "— Atëherë ky është vendi juaj. Njerëzit këtu nuk bërtasin natën.",
+              "english": "\"Then this is your place. The people here do not shout at night.\""
+            },
+            {
+              "text": "Luani buzëqesh.",
+              "english": "Luan smiles."
+            },
+            {
+              "text": "— Sam ka nevojë për pushim. Ai punon shumë.",
+              "english": "\"Sam needs rest. He works a lot.\""
+            },
+            {
+              "text": "— Dëgjoj. Do të doja t'ia jepja apartamentin një njeriu si ju.",
+              "english": "\"I see. I would like to give the apartment to a person like you.\""
+            },
+            {
+              "text": "— Më parë këtu jetonte një çift i ri, — thotë burri.",
+              "english": "\"A young couple used to live here,\" says the owner."
+            },
+            {
+              "text": "— Ata kishin një fëmijë dhe u larguan në fshat.",
+              "english": "\"They had a child and moved away to a village.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Një ditë më vonë Sam vjen te Luani me kontratën.",
+              "english": "A day later Sam comes to Luan with the contract."
+            },
+            {
+              "text": "Luani e lexon dy herë.",
+              "english": "Luan reads it twice."
+            },
+            {
+              "text": "— Çmimi, çelësat, dita kur hyj. Çdo gjë është mirë.",
+              "english": "\"The price, the keys, the day of moving in. Everything is fine.\""
+            },
+            {
+              "text": "— Mendon se mund ta nënshkruaj?",
+              "english": "\"Do you think I can sign it?\""
+            },
+            {
+              "text": "— Po, mund ta nënshkruash.",
+              "english": "\"Yes, you can sign it.\""
+            },
+            {
+              "text": "Të hënën Sam nënshkruan kontratën dhe merr çelësat.",
+              "english": "On Monday Sam signs the contract and takes the keys."
+            },
+            {
+              "text": "Pronari i jep edhe një letër me numrin e tij celular.",
+              "english": "The owner also gives him a letter with his mobile number."
+            },
+            {
+              "text": "— Kur ju duhet diçka, më telefononi.",
+              "english": "\"When you need something, call me.\""
+            },
+            {
+              "text": "— Faleminderit, zoti. Jeni shumë i mirë.",
+              "english": "\"Thank you, sir. You are very kind.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kështu Sam ka shtëpi të vetën.",
+              "english": "So Sam has a home of his own."
+            },
+            {
+              "text": "Ana vjen ta shohë shtëpinë e re.",
+              "english": "Ana comes to see the new home."
+            },
+            {
+              "text": "Ajo sjell një dhuratë: dy peshqirë dhe një sapun.",
+              "english": "She brings a gift: two towels and a bar of soap."
+            },
+            {
+              "text": "— Një banesë ka nevojë për peshqirë dhe sapun, — thotë ajo.",
+              "english": "\"A flat needs towels and soap,\" she says."
+            },
+            {
+              "text": "— Faleminderit, Ana. Sapuni ka erë shumë të mirë.",
+              "english": "\"Thank you, Ana. The soap smells very good.\""
+            },
+            {
+              "text": "Sam hap frigoriferin, por aty ka vetëm ujë dhe djathë.",
+              "english": "Sam opens the refrigerator, but there is only water and cheese in it."
+            },
+            {
+              "text": "— Ju lutem, ulu dhe pi një çaj! — i thotë ai Anës.",
+              "english": "\"Please, sit down and have a tea!\" he says to Ana."
+            },
+            {
+              "text": "Ata ulen jashtë dhe pinë çaj bashkë.",
+              "english": "They sit outside and drink tea together."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Atë natë Sam është vetëm në shtëpinë e re.",
+              "english": "That night Sam is alone in the new home."
+            },
+            {
+              "text": "Në dhomën e madhe ka një tavolinë dhe dy karrige.",
+              "english": "In the big room there is a table and two chairs."
+            },
+            {
+              "text": "Ai i çon peshqirët në banjë, hap Biblën dhe lexon një kapitull nga ungjilli.",
+              "english": "He takes the towels to the bathroom, opens the Bible and reads a chapter from the gospel."
+            },
+            {
+              "text": "Pastaj ai lexon edhe një psalm dhe një varg që e do shumë.",
+              "english": "Then he also reads a psalm and a verse that he loves very much."
+            },
+            {
+              "text": "Sam mendon për shpëtimin, për kryqin, për faljen dhe për hirin.",
+              "english": "Sam thinks about salvation, about the cross, about forgiveness and about grace."
+            },
+            {
+              "text": "Ai përulet dhe falënderon Perëndinë për banesën e re.",
+              "english": "He humbles himself and thanks God for the new flat."
+            },
+            {
+              "text": "Ai mendon edhe për festat: vallë si do të jetë Krishtlindja këtu?",
+              "english": "He also thinks about the holidays: I wonder what Christmas will be like here?"
+            },
+            {
+              "text": "Në dimër, kur ngrohja punon mirë, do të ftojë çiftet e kishës për ushqim, çaj dhe muzikë.",
+              "english": "In winter, when the heating works well, he will invite the couples of the church for food, tea and music."
+            },
+            {
+              "text": "Në pranverë do të vizitojë miqtë dhe do të festojë me ta.",
+              "english": "In spring he will visit friends and celebrate with them."
+            },
+            {
+              "text": "Ai do të njohë kulturën e këtij vendi: ushqimin tradicional, muzikën dhe dasmat.",
+              "english": "He wants to know the culture of this country: the traditional food, the music and the weddings."
+            },
+            {
+              "text": "Ai mendon: nesër duhet të blej bukë, mish dhe qumësht për frigoriferin. Sam fik llambën dhe fle shumë mirë në shtëpinë e tij të parë.",
+              "english": "He thinks: tomorrow I must buy bread, meat and milk for the refrigerator. Sam turns off the lamp and sleeps very well in his first home."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

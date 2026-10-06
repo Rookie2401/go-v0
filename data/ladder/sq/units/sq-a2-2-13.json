@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-2-13",
+  "lang": "sq",
+  "title": "Dëshmia e Dritanit",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-2-13",
+    "title": "Albanian ladder, a2-2: Dëshmia e Dritanit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Albanian usage points in every unit: standard (Tosk) forms were chosen to be readable by the adapter; the optative (\"Zoti ju bekoftë\", \"Zoti e ruajtë\", \"Qofsh i bekuar\") is formulaic and is not read by the adapter. Testimony of Dritan, first person, in the course's own words, NO Scripture quotation. Needs theological review (resurrection, the power of God, repentance, forgiveness, \"ringjallje e vogël\"). Contains a conditional (\"do t'i kisha thënë\", \"nëse do të kisha...\"). The pastor's lines are invented."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "testimony"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-theological-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Dëshmia e Dritanit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën në mbrëmje grupi i vogël i kishës u mblodh në shtëpinë e Dritanit dhe të Mirës.",
+              "english": "On Sunday evening the small group of the church met in the house of Dritan and Mira."
+            },
+            {
+              "text": "Në tavolinë kishte çaj, mjaltë dhe byrek, dhe Sami u ul pranë dritares.",
+              "english": "On the table there was tea, honey and byrek, and Sam sat down near the window."
+            },
+            {
+              "text": "Pasi të gjithë pinë çaj, Mira tha: — Dritan, ke një histori që nuk e ke treguar këtu.",
+              "english": "After everyone had had tea, Mira said: \"Dritan, you have a story that you have not told here.\""
+            },
+            {
+              "text": "— Sot është koha, — shtoi ajo.",
+              "english": "\"Today is the time,\" she added."
+            },
+            {
+              "text": "— Sami është i ri në kishë dhe duhet ta dijë.",
+              "english": "\"Sam is new in the church and he should know it.\""
+            },
+            {
+              "text": "Dritani buzëqeshi pak, por kishte frikë.",
+              "english": "Dritan smiled a little, but he was afraid."
+            },
+            {
+              "text": "— Mirë, — tha ai.",
+              "english": "\"Good,\" he said."
+            },
+            {
+              "text": "— Do të flas siç e kujtoj, siç e di Mira, pa fjalë të mëdha.",
+              "english": "\"I will speak as I remember it, as Mira knows it, without big words.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Para se të besoja, isha një njeri që i kishte të gjitha, — filloi Dritani.",
+              "english": "\"Before I believed, I was a man who had everything,\" Dritan began."
+            },
+            {
+              "text": "— Kisha një punë të mirë, një shtëpi dhe një grua që më donte.",
+              "english": "\"I had a good job, a house and a wife who loved me.\""
+            },
+            {
+              "text": "— Por brenda meje shpirti im ishte i lodhur, dhe mendja ime kishte shumë gjëra që nuk kishin fund.",
+              "english": "\"But inside me my soul was tired, and my mind had many things that had no end.\""
+            },
+            {
+              "text": "— Mendoja se jam më i mirë se të gjithë, dhe se çdo gjë që kisha ishte vetëm nga forca ime.",
+              "english": "\"I thought I was better than everyone, and that everything I had was only from my own strength.\""
+            },
+            {
+              "text": "— Ishte një mendim i keq, por unë e kisha dashur atë mendim.",
+              "english": "\"It was a bad thought, but I had loved that thought.\""
+            },
+            {
+              "text": "— Isha si një mashkull në një arkë bletësh: hëngra mjaltin, por nuk punova me ta.",
+              "english": "\"I was like a male in a hive of bees: I ate the honey, but I did not work with them.\""
+            },
+            {
+              "text": "— Ndërkohë që Mira punonte në shtëpi dhe në shkollë, unë mendoja vetëm për mua.",
+              "english": "\"While Mira worked at home and at school, I thought only of me.\""
+            },
+            {
+              "text": "— Bleta është një insekt i vogël, por ajo punon për gjithë arkën, — tha Sami.",
+              "english": "\"The bee is a small insect, but she works for the whole hive,\" said Sam."
+            },
+            {
+              "text": "— Ashtu është, — qeshi Dritani.",
+              "english": "\"That is so,\" laughed Dritan."
+            },
+            {
+              "text": "— Bleta merr nektar dhe e bën mjaltë, dhe larvat rriten me kohë.",
+              "english": "\"The bee takes nectar and makes honey, and the larvae grow with time.\""
+            },
+            {
+              "text": "— Unë isha një mbretëreshë e vogël në mendjen time, dhe jo një bletë që prodhon.",
+              "english": "\"I was a little queen in my own mind, and not a bee that produces.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Pastaj ndodhi gabimi im i madh, — tha ai.",
+              "english": "\"Then my big mistake happened,\" he said."
+            },
+            {
+              "text": "— Kisha një shok shumë të vjetër, që kishte hapur një punë të vogël me mua.",
+              "english": "\"I had a very old friend, who had opened a small business with me.\""
+            },
+            {
+              "text": "— Një ditë unë e gënjeva për paratë. Nuk i thashë të vërtetën, dhe paratë nuk i gjetëm më.",
+              "english": "\"One day I lied to him about the money. I did not tell him the truth, and we never found the money again.\""
+            },
+            {
+              "text": "— Ai shok më besonte, dhe unë e gënjeva. Kjo ishte gjëja më e keqe që bëra.",
+              "english": "\"That friend trusted me, and I lied to him. That was the worst thing I did.\""
+            },
+            {
+              "text": "— Fjalët e mia ishin si thumba të vegjël, dhe ai i ndjeu.",
+              "english": "\"My words were like small stings, and he felt them.\""
+            },
+            {
+              "text": "— Kur e kuptoi, ai nuk më tha asnjë fjalë të keqe, por nuk erdhi më.",
+              "english": "\"When he understood, he did not say a single bad word to me, but he did not come again.\""
+            },
+            {
+              "text": "— Kam menduar shpesh: nëse do t'i kisha thënë të vërtetën, do të kisha ende një shok.",
+              "english": "\"I have often thought: if I had told him the truth, I would still have a friend.\""
+            },
+            {
+              "text": "— Mira ndiqte çdo hap tim dhe nuk më tha asgjë, por unë e shikoja fytyrën e saj të trishtuar.",
+              "english": "\"Mira followed my every step and said nothing, but I looked at her sad face.\""
+            },
+            {
+              "text": "— Ky ishte fillimi i një viti shumë të vështirë.",
+              "english": "\"This was the beginning of a very hard year.\""
+            },
+            {
+              "text": "— Kisha pak para, pak gjumë, dhe shëndeti im nuk ishte më i mirë.",
+              "english": "\"I had little money, little sleep and my health was no longer good.\""
+            },
+            {
+              "text": "— Mjeku më tha se duhej të hanim më shëndetshëm, me vitamina, por megjithatë unë hëngra shumë pak.",
+              "english": "\"The doctor told me we had to eat healthier, with vitamins, but nevertheless I ate very little.\""
+            },
+            {
+              "text": "— Dhe kjo ishte një dëm për trupin tim.",
+              "english": "\"And this was a harm to my body.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Një ditë në nëntor binte shi, dhe unë dola pa çadër dhe pa kapelë.",
+              "english": "\"One day in November it was raining, and I went out without an umbrella and without a hat.\""
+            },
+            {
+              "text": "— Flokët e mi kishin shumë ujë, dhe çorapet e mia ishin të ftohta.",
+              "english": "\"My hair had a lot of water, and my socks were cold.\""
+            },
+            {
+              "text": "— Nuk dija ku të shkoja. Ecja nëpër rrugët e Tiranës pa një qëllim.",
+              "english": "\"I did not know where to go. I walked through the streets of Tirana without a purpose.\""
+            },
+            {
+              "text": "— Pastaj pashë një derë dhe dëgjova një këngë. Ishte kisha jonë.",
+              "english": "\"Then I saw a door and heard a song. It was our church.\""
+            },
+            {
+              "text": "— Hyra, dhe pastori Pjetër nuk më pyeti asgjë. Në atë rast rruga ishte e rrezikshme nga shiu, por unë nuk e ndjeva. Ai më dha një peshqir dhe një çaj.",
+              "english": "\"I went in, and Pastor Pjetër did not ask me anything. In that case the road was dangerous because of the rain, but I did not feel it. He gave me a towel and a tea.\""
+            },
+            {
+              "text": "— Pastori më foli me zë të ulët: «Hyr, mos ki frikë. Rri këtu sa të duash.»",
+              "english": "\"The pastor spoke to me in a low voice: 'Come in, do not be afraid. Stay here as long as you want.'\""
+            },
+            {
+              "text": "— Nuk e dija çfarë donte të thoshte, por ndjeva frymën e mirë të vendit, një frymë të shenjtë dhe të qetë, siç thotë pastori.",
+              "english": "\"I did not know what he meant, but I felt the good spirit of the place, a holy and calm spirit, as the pastor says.\""
+            },
+            {
+              "text": "— Mendimi im i parë ishte: «Mos lejo të qash.» Por qava, dhe Mira nuk më lejoi të qëndroj vetëm.",
+              "english": "\"My first thought was: 'Do not allow yourself to cry.' But I cried, and Mira did not let me stay alone.\""
+            },
+            {
+              "text": "— Aty e pranova që isha gabim, dhe e pranova që kisha nevojë për ndihmë.",
+              "english": "\"There I accepted that I was in the wrong, and I accepted that I needed help.\""
+            },
+            {
+              "text": "— Pastori më tha: «Perëndia të ngushëllon, jo për të të bërë të trishtuar, por për të të ngritur.»",
+              "english": "\"The pastor said to me: 'God comforts you, not to make you sad, but to lift you up.'\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Atë natë nuk pata përgjigje, por pata një ndjenjë të qartë: që nuk isha vetëm.",
+              "english": "\"That night I had no answer, but I had a clear feeling: that I was not alone.\""
+            },
+            {
+              "text": "— Fillova të vij çdo të diel. Në fillim përpiqesha të mos flisja me njeri.",
+              "english": "\"I began to come every Sunday. At first I tried not to talk to anybody.\""
+            },
+            {
+              "text": "— Pastori më foli për një ditë të veçantë, për pendimin, dhe për mëkatarët që kthehen te Perëndia. Kjo ishte një fjalë e qartë për mua. Ai më tregoi edhe për profetët dhe apostujt, për shenjtorët e kishës dhe për parajsën si shpresë.",
+              "english": "\"The pastor spoke to me about repentance, and about the sinners who turn back to God. This was a clear word for me. He also told me about the prophets and the apostles, about the saints of the church and about paradise as hope.\""
+            },
+            {
+              "text": "— Mira ishte një engjëll për mua: ajo më ngushëlloi pa fjalë, dhe unë përpiqesha ta dëgjoja.",
+              "english": "\"Mira was an angel to me: she comforted me without words, and I tried to listen to her.\""
+            },
+            {
+              "text": "— Lexova për një murgeshë që e kishte ndjekur një rrugë shumë të vështirë: Nënë Terezën.",
+              "english": "\"I read about a nun who had followed a very hard road: Mother Teresa.\""
+            },
+            {
+              "text": "— Ajo organizoi urdhrin e saj për njerëz të varfër dhe qëndroi me ta gjithë jetën, dhe varfëria nuk i bëri keq zemrës së saj.",
+              "english": "\"She organised her order for poor people and stayed with them all her life, and poverty did not harm her heart.\""
+            },
+            {
+              "text": "— Ajo nuk ishte e pasur, por ishte e nderuar nga shumë njerëz, edhe nga njerëz të pasur.",
+              "english": "\"She was not rich, but she was respected by many people, even by rich people.\""
+            },
+            {
+              "text": "— Mendova: «Ajo nuk e mori shpërblimin për vete.» Dhe unë po thosha se çdo gjë ishte e imja?",
+              "english": "\"I thought: 'She did not take the prize for herself.' And I was saying that everything was mine?\""
+            },
+            {
+              "text": "— Pasi e kuptova këtë, nuk e lashë më celularin pa e thirrur shokun tim.",
+              "english": "\"After I understood this, I no longer left my phone without calling my friend.\""
+            },
+            {
+              "text": "— Shoku im nuk u përgjigj për tre muaj, por unë vazhdova ta thërras.",
+              "english": "\"My friend did not answer for three months, but I kept calling him.\""
+            },
+            {
+              "text": "— Një ditë ai erdhi. U ulëm në tavolinë dhe unë i thashë të vërtetën për paratë.",
+              "english": "\"One day he came. We sat at the table and I told him the truth about the money.\""
+            },
+            {
+              "text": "— Nuk ishte e lehtë, por ai më dha falje, dhe unë i ofrova paratë që ia kisha marrë.",
+              "english": "\"It was not easy, but he gave me forgiveness, and I offered him the money that I had taken from him.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Kjo ishte një ringjallje e vogël për mua, — tha Dritani me zë të ulët.",
+              "english": "\"This was a small resurrection for me,\" said Dritan in a low voice."
+            },
+            {
+              "text": "— Isha i trishtuar brenda, dhe një ditë isha i gjallë.",
+              "english": "\"I was sad inside, and one day I was alive.\""
+            },
+            {
+              "text": "— Kisha dëgjuar fjalën «ringjallje» në kishë, por e kuptova atë ditë.",
+              "english": "\"I had heard the word 'resurrection' in church, but I understood it that day.\""
+            },
+            {
+              "text": "— Besimtarët e kishës e dinë se ringjallja është shpresa më e madhe, dhe se Jezusi ka një fuqi që vdekja nuk e ka.",
+              "english": "\"The believers of the church know that the resurrection is the greatest hope, and that Jesus has a power that death does not have.\""
+            },
+            {
+              "text": "— Kisha edhe një arsye për të qenë i gëzuar: Perëndia kishte forcë më të madhe se frika ime.",
+              "english": "\"I also had a reason to be glad: God had a strength greater than my fear.\""
+            },
+            {
+              "text": "— Nuk e kam fuqinë time, — tha ai.",
+              "english": "\"I do not have my own power,\" he said."
+            },
+            {
+              "text": "— Fuqia është e tij, dhe unë vetëm e pranoj.",
+              "english": "\"The power is his, and I only accept it.\""
+            },
+            {
+              "text": "— Çdo ditë përpiqem të them të vërtetën, edhe kur është e vështirë, sepse një fjalë e vërtetë ka forcë të madhe.",
+              "english": "\"Every day I try to tell the truth, even when it is hard, because a true word has great strength.\""
+            },
+            {
+              "text": "— Një njeri i vërtetë nuk është ai që nuk ka bërë gabim, por ai që e pranon gabimin.",
+              "english": "\"A true man is not the one who has not made a mistake, but the one who admits the mistake.\""
+            },
+            {
+              "text": "— Sot shpirti im ka paqe dhe mendja ime është më e qetë, sepse shpirti i njeriut ka nevojë për të vërtetën, siç ka trupi nevojë për bukë.",
+              "english": "\"Today my soul has peace and my mind is calmer, because the soul of a person needs the truth, as the body needs bread.\""
+            },
+            {
+              "text": "— Pasi u bëra një dishepull i vogël, mësova edhe të bindem, dhe shoku im më mësoi të pres.",
+              "english": "\"After I became a small disciple, I also learned to obey, and my friend taught me to wait.\""
+            },
+            {
+              "text": "— Nuk jam shumë i mirë. Gënjeva një herë dhe mund të gënjej edhe një herë, dhe Perëndia më lejon të ngrihem.",
+              "english": "\"I am not very good. I lied once and I could lie once more.\""
+            },
+            {
+              "text": "— Por tani e di ku të kthehem. Çdo mëngjes lutem që Perëndia të më ngushëllojë dhe të më bekojë.",
+              "english": "\"But now I know where to turn. Every morning I pray that God will comfort me and bless me.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kur Dritani mbaroi, në dhomë ishte heshtje.",
+              "english": "When Dritan finished, there was silence in the room."
+            },
+            {
+              "text": "Mira i mbajti dorën, dhe fytyra e saj ishte e trishtuar dhe e gëzuar bashkë.",
+              "english": "Mira held his hand, and her face was sad and glad together."
+            },
+            {
+              "text": "— Ky është një njeri i drejtë, — tha Sami me zë të ulët.",
+              "english": "\"This is a just man,\" said Sam in a low voice."
+            },
+            {
+              "text": "— Një njeri që tregon të vërtetën është i drejtë.",
+              "english": "\"A person who tells the truth is just.\""
+            },
+            {
+              "text": "— Faleminderit që na e tregove, — shtoi ai.",
+              "english": "\"Thank you for telling us,\" he added."
+            },
+            {
+              "text": "— Kjo është një mrekulli e vogël.",
+              "english": "\"This is a small miracle.\""
+            },
+            {
+              "text": "— Ti nuk je bletë që punon vetëm, — qeshi Mira.",
+              "english": "\"You are not a bee that works alone,\" laughed Mira."
+            },
+            {
+              "text": "— Ti je pjesë e një arke të madhe.",
+              "english": "\"You are part of a big hive.\""
+            },
+            {
+              "text": "Dritani u ngrit dhe e hapi derën e ballkonit, sepse dhoma ishte e ngrohtë.",
+              "english": "Dritan stood up and opened the door of the balcony, because the room was warm."
+            },
+            {
+              "text": "Jashtë shiu kishte pushuar, dhe ajri ishte shumë i mirë, ndërsa fryma në dhomë ishte e ngrohtë.",
+              "english": "Outside the rain had stopped, and the air was very good, while the spirit in the room was warm."
+            },
+            {
+              "text": "Sami u përul në zemër dhe e lavdëroi Perëndinë, që e bënte çdo mbrëmje një dhuratë të bekuar.",
+              "english": "Sam humbled himself in his heart and praised God, who made every evening a blessed gift."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting agent (Claude), a2-2 drafts"
+        }
+      }
+    ]
+  }
+}

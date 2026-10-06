@@ -4,6 +4,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { GERMAN_COURSE_ID, GERMAN_STREAMS } from '../../src/course/german';
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { hasLadder } from '../../src/ui/read/hasLadder';
+import { makeLadderSource } from '../../src/ladder/bundle';
 import { makeHarness, qa } from './harness';
 import type { Mounted } from './harness';
 
@@ -22,10 +23,11 @@ describe('Your path on Home', () => {
     expect(qa(mounted.container, 'nav[aria-label="Start here"] a').map((a) => a.getAttribute('href'))).toContain('/path');
   });
 
-  it('is not listed for a language without one (German)', async () => {
-    expect(hasLadder('de')).toBe(false);
+  it('is listed for German too, now that it has a ladder; a language with no bundled ladder has none', async () => {
+    expect(hasLadder('de')).toBe(true);
+    expect(hasLadder('de', makeLadderSource())).toBe(false); // no ladder files at all
     const h = await makeHarness({ courseId: GERMAN_COURSE_ID, streams: GERMAN_STREAMS });
     mounted = await h.mount(app(), { router: '/' });
-    expect(homeNames(mounted)).not.toContain('Your path');
+    expect(homeNames(mounted)).toContain('Your path');
   });
 });

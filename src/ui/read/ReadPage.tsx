@@ -31,6 +31,7 @@ import { BAND_LABEL, awaitedStatement, isVisibleText, languageName, pct, plainRe
 import { TextBadges, UnpublishedReasons, useLangTexts } from '../library';
 import { usePreview } from '../prefs';
 import { BackLink, Topbar } from '../ui';
+import { NextForYou } from './NextForYou';
 import './read.css';
 
 /** Whose copy a text is: the course's own, the learner's own copy of a book, or the team's own writing. */
@@ -349,6 +350,7 @@ export function ReadPage() {
             {lastBook && lastBook.title !== last.title && <div className="home__continue-sub">{lastBook.title}</div>}
           </Link>
         )}
+        <NextForYou />
         <p className="card__note"><Link to="/team-texts">Team Texts</Link> · what your team reads</p>
         {(lang === 'th' || lang === 'hi') && <p className="card__note"><Link to="/alphabet">Alphabet</Link> · learn the letters, 10 at a time</p>}
         {tags.length > 0 && (

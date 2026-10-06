@@ -317,11 +317,15 @@ export async function runSimulation(engine: SimEngine, options: SimOptions): Pro
     if (mainTexts >= options.maxTexts) { stop = { reason: 'max-texts', detail: `${mainTexts} texts read after Stage 0 (budget ${options.maxTexts})` }; break; }
     if (Date.now() - t0 > options.maxMinutes * 60_000) { stop = { reason: 'max-minutes', detail: `${options.maxMinutes} minutes of wall time` }; break; }
 
+    // a student who declines everything on the first screen scrolls further before giving up: first `limit`, then up to 50
+    let recs: Recommendation[] = [];
+    let chosen: { rec: Recommendation; a: Analysed } | undefined;
+    for (const ask of [limit, Math.max(limit, 50)]) {
+    if (chosen || (ask !== limit && ask <= recs.length)) break;
     const tRec = Date.now();
-    const recs = await engine.recommend({ limit, includeUnpublished: options.includeUnpublished });
+    recs = await engine.recommend({ limit: ask, includeUnpublished: options.includeUnpublished });
     timing.recommendMs += Date.now() - tRec;
     const tOpen = Date.now();
-    let chosen: { rec: Recommendation; a: Analysed } | undefined;
     for (const rec of recs) {
       if (!rec.textId) { skipped.push({ afterRow: rows.length, reason: rec.reason === 'rehearse-testimony' ? 'testimony' : 'note-without-text', detail: short(rec.explanation, 120) }); continue; }
       if (rec.reason === 'listen-to-read-text') { skipped.push({ afterRow: rows.length, textId: rec.textId, reason: 'listening-only' }); continue; }
@@ -339,6 +343,7 @@ export async function runSimulation(engine: SimEngine, options: SimOptions): Pro
       }
     }
     timing.openMs += Date.now() - tOpen;
+    }
     if (!chosen) { stop = { reason: 'no-openable-recommendation', detail: recs.length ? `${recs.length} recommendation(s), none the learner may open` : 'the engine recommended nothing' }; break; }
 
     const { rec, a } = chosen;

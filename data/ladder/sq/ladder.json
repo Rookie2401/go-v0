@@ -778,6 +778,150 @@
       "document": "units/sq-a1-2-25.json",
       "domain": "description",
       "title": "Tirana dhe fshati"
+    },
+    {
+      "id": "sq-a2-1-01",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-01.json",
+      "domain": "narrative",
+      "title": "Kur isha i vogël"
+    },
+    {
+      "id": "sq-a2-1-02",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-02.json",
+      "domain": "explanation",
+      "title": "Fshati para dhe tani"
+    },
+    {
+      "id": "sq-a2-1-03",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-03.json",
+      "domain": "narrative",
+      "title": "Rrëfimi i gjyshit natën"
+    },
+    {
+      "id": "sq-a2-1-04",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-04.json",
+      "domain": "narrative",
+      "title": "Nata e stuhisë"
+    },
+    {
+      "id": "sq-a2-1-05",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-05.json",
+      "domain": "practical",
+      "title": "Në postë dhe në bankë"
+    },
+    {
+      "id": "sq-a2-1-06",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-06.json",
+      "domain": "instructions",
+      "title": "Si ta përdorim kompjuterin"
+    },
+    {
+      "id": "sq-a2-1-07",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-07.json",
+      "domain": "correspondence",
+      "title": "Mesazhet e grupit"
+    },
+    {
+      "id": "sq-a2-1-08",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-08.json",
+      "domain": "nonfiction",
+      "title": "Tirana — qyteti ku jetoj"
+    },
+    {
+      "id": "sq-a2-1-09",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-09.json",
+      "domain": "narrative",
+      "title": "Dita e shkollës"
+    },
+    {
+      "id": "sq-a2-1-10",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-10.json",
+      "domain": "conversation",
+      "title": "Një intervistë pune"
+    },
+    {
+      "id": "sq-a2-1-11",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-11.json",
+      "domain": "practical",
+      "title": "Puna e Anës në klinikë"
+    },
+    {
+      "id": "sq-a2-1-12",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-12.json",
+      "domain": "biography",
+      "title": "Luani, mësuesi"
+    },
+    {
+      "id": "sq-a2-1-13",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-13.json",
+      "domain": "narrative",
+      "title": "Një ditë në Durrës"
+    },
+    {
+      "id": "sq-a2-1-14",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-14.json",
+      "domain": "explanation",
+      "title": "Qytetet e Shqipërisë"
+    },
+    {
+      "id": "sq-a2-1-15",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-15.json",
+      "domain": "testimony",
+      "title": "Si erdha në Shqipëri"
+    },
+    {
+      "id": "sq-a2-1-16",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-16.json",
+      "domain": "church",
+      "title": "Pastori flet me Samin"
+    },
+    {
+      "id": "sq-a2-1-17",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-17.json",
+      "domain": "explanation",
+      "title": "Festat në Shqipëri"
+    },
+    {
+      "id": "sq-a2-1-18",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/sq-a2-1-18.json",
+      "domain": "nonfiction",
+      "title": "Shqipëria: klima dhe natyra"
     }
   ]
 }

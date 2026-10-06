@@ -1,0 +1,420 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-15",
+  "lang": "sq",
+  "title": "Si erdha në Shqipëri",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-15",
+    "title": "Albanian ladder, a2-1: Si erdha në Shqipëri (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Testimony of the learner stand-in, in his own words (seed: story-01). NO Scripture quoted; faith vocabulary only (fe, besim, paqe, lavdi, shpresë). Needs theological review; check \"Lavdi Zotit\", \"Perëndia\" vs \"Zoti\", \"u bëra i krishterë\", and the whole register for a congregation."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "testimony"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-theological-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Si erdha në Shqipëri",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën pas shërbimit pastori Pjetër i thotë Samit: — Sam, a do të na tregosh historinë tënde?",
+              "english": "On Sunday after the service Pastor Pjetër says to Sam: \"Sam, will you tell us your story?\""
+            },
+            {
+              "text": "Sami mendon pak dhe pastaj thotë po.",
+              "english": "Sam thinks a little and then says yes."
+            },
+            {
+              "text": "Njerëzit ulen, dhe në kishë nuk dëgjohet asnjë zë.",
+              "english": "The people sit down, and in the church not a sound is heard."
+            },
+            {
+              "text": "Sami ngrihet dhe flet.",
+              "english": "Sam stands up and speaks."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Të dashur vëllezër e motra, jam shumë i lumtur që jam këtu.",
+              "english": "\"Dear brothers and sisters, I am very happy to be here.\""
+            },
+            {
+              "text": "— Dua të tregoj si erdha në Shqipëri.",
+              "english": "\"I want to tell you how I came to Albania.\""
+            },
+            {
+              "text": "— Unë jam i huaj këtu, por ju më keni pritur si një vëlla.",
+              "english": "\"I am a foreigner here, but you have received me like a brother.\""
+            },
+            {
+              "text": "— Kur isha i vogël, familja ime shkonte në kishë, por unë nuk e kuptoja pse.",
+              "english": "\"When I was small, my family went to church, but I did not understand why.\""
+            },
+            {
+              "text": "— Në shkollë më pëlqente shkenca, dhe matematika ishte e lehtë për mua.",
+              "english": "\"At school I liked science, and mathematics was easy for me.\""
+            },
+            {
+              "text": "— Në gjeografi nuk e dija ku është Shqipëria në hartë.",
+              "english": "\"In geography I did not know where Albania is on the map.\""
+            },
+            {
+              "text": "— Pastaj shkova në fakultet dhe studiova gjuhët.",
+              "english": "\"Then I went to the faculty and studied languages.\""
+            },
+            {
+              "text": "— Në bibliotekë lexoja çdo ditë tekste të vjetra dhe bëja ushtrime.",
+              "english": "\"In the library I read old texts every day and did exercises.\""
+            },
+            {
+              "text": "— Mora një diplomë dhe një punë të mirë, por nuk isha i lumtur.",
+              "english": "\"I got a diploma and a good job, but I was not happy.\""
+            },
+            {
+              "text": "— Kisha arsim, kisha para, por jeta ime nuk kishte kuptim.",
+              "english": "\"I had education, I had money, but my life had no meaning.\""
+            },
+            {
+              "text": "— Nuk kisha paqe në zemër, dhe e ndjeja këtë çdo mbrëmje.",
+              "english": "\"I had no peace in my heart, and I felt this every evening.\""
+            },
+            {
+              "text": "— Dyshoja për çdo gjë: për jetën, për Perëndinë, edhe për mua.",
+              "english": "\"I doubted everything: life, God, and even myself.\""
+            },
+            {
+              "text": "— Mendoja se fjalët e kishës ishin vetëm fjalë.",
+              "english": "\"I thought that the words of the church were only words.\""
+            },
+            {
+              "text": "Në kishë askush nuk lëviz. Të gjithë dëgjojnë.",
+              "english": "In the church nobody moves. Everyone listens."
+            },
+            {
+              "text": "— Një ditë një mik më ftoi në një grup të vogël të bashkësisë së tij.",
+              "english": "\"One day a friend invited me to a small group of his congregation.\""
+            },
+            {
+              "text": "— Atje njerëzit nuk flisnin shumë.",
+              "english": "\"There the people did not speak much.\""
+            },
+            {
+              "text": "— Ata lexonin, luteshin dhe ndihmonin njerëzit e tjerë.",
+              "english": "\"They read, prayed and helped other people.\""
+            },
+            {
+              "text": "— Për herë të parë ndjeva se kjo nuk ishte vetëm një traditë.",
+              "english": "\"For the first time I felt that this was not only a tradition.\""
+            },
+            {
+              "text": "— Ishte besim i vërtetë, dhe ai ndryshonte jetën e njerëzve.",
+              "english": "\"It was a real faith, and it changed people's lives.\""
+            },
+            {
+              "text": "— Fillova të lexoj Biblën çdo mbrëmje dhe të pyes.",
+              "english": "\"I began to read the Bible every evening and to ask questions.\""
+            },
+            {
+              "text": "— Nuk e kuptoja çdo gjë, megjithëse lexoja me kujdes.",
+              "english": "\"I did not understand everything, although I read carefully.\""
+            },
+            {
+              "text": "— Pyesja dhe dyshoja, por Perëndia më priste.",
+              "english": "\"I asked and doubted, but God waited for me.\""
+            },
+            {
+              "text": "— Pas një viti vendosa t'i besoj Jezusit.",
+              "english": "\"After a year I decided to trust Jesus.\""
+            },
+            {
+              "text": "— Ky ishte vendimi më i rëndësishëm i jetës time.",
+              "english": "\"This was the most important decision of my life.\""
+            },
+            {
+              "text": "— Atë ditë ndjeva një paqe që nuk e kisha njohur më parë.",
+              "english": "\"That day I felt a peace that I had not known before.\""
+            },
+            {
+              "text": "— Ndjeva gëzim dhe një liri të madhe, si diçka e rëndë që bie nga zemra.",
+              "english": "\"I felt joy and a great freedom, like something heavy falling from the heart.\""
+            },
+            {
+              "text": "— Kjo liri ishte e re për mua, dhe gjithë jeta ime ndryshoi.",
+              "english": "\"This freedom was new to me, and my whole life changed.\""
+            },
+            {
+              "text": "— Atëherë u bëra i krishterë, dhe lavdinë ia dhashë Perëndisë.",
+              "english": "\"Then I became a Christian, and I gave the glory to God.\""
+            },
+            {
+              "text": "— Lavdi Zotit për çdo gjë!",
+              "english": "\"Glory to the Lord for everything!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Një vit më vonë një misionar erdhi në kishën tonë dhe foli për Shqipërinë.",
+              "english": "\"A year later a missionary came to our church and spoke about Albania.\""
+            },
+            {
+              "text": "— Ai tha: — Këtu kemi nevojë për vullnetarë, jo vetëm për njerëz me para.",
+              "english": "\"He said: Here we need volunteers, not only people with money.\""
+            },
+            {
+              "text": "— Çdo fjalë e tij hyri në zemrën time.",
+              "english": "\"Every word of his entered my heart.\""
+            },
+            {
+              "text": "— Atë natë nuk fjeta, sepse mendoja për këtë mision.",
+              "english": "\"That night I did not sleep, because I was thinking about this mission.\""
+            },
+            {
+              "text": "— Nuk kisha një dëshmi të madhe, kisha vetëm një dëshirë të vogël.",
+              "english": "\"I did not have a great testimony, I only had a small wish.\""
+            },
+            {
+              "text": "— Pyesja: A është ky vendimi im, apo vetëm një ëndërr?",
+              "english": "\"I asked: Is this my decision, or only a dream?\""
+            },
+            {
+              "text": "— Familja ime ishte kundër, dhe disa miq nuk e kuptonin.",
+              "english": "\"My family was against it, and some friends did not understand.\""
+            },
+            {
+              "text": "— Babai më tha: — Ke një punë të mirë dhe një jetë të mirë. Pse të shkosh atje?",
+              "english": "\"Father said to me: You have a good job and a good life. Why go there?\""
+            },
+            {
+              "text": "— I thashë: — Nuk kam shpresë të madhe për mua, por kam besim te Perëndia.",
+              "english": "\"I said: I do not have great hope for myself, but I have faith in God.\""
+            },
+            {
+              "text": "— Nëna ime qau, por më dha një bekim.",
+              "english": "\"My mother cried, but she gave me a blessing.\""
+            },
+            {
+              "text": "— Kështu vendosa të vij si vullnetar në një mision të vogël.",
+              "english": "\"So I decided to come as a volunteer to a small mission.\""
+            },
+            {
+              "text": "— Çdo vullnetar ka një rol, dhe roli i tij nuk është gjithmonë i madh.",
+              "english": "\"Every volunteer has a role, and his role is not always big.\""
+            },
+            {
+              "text": "— Misionari tha gjithashtu se një mision fillon me një vendim të vogël.",
+              "english": "\"The missionary also said that a mission begins with a small decision.\""
+            },
+            {
+              "text": "— Një misionar tjetër më tha: — Besimi nuk është një ndjenjë; është një vendim çdo ditë.",
+              "english": "\"Another missionary told me: Faith is not a feeling; it is a decision every day.\""
+            },
+            {
+              "text": "— Atëherë vendosa të shkoj, megjithëse kisha frikë.",
+              "english": "\"Then I decided to go, although I was afraid.\""
+            },
+            {
+              "text": "— Unë kisha një fe të vogël, por të vërtetë.",
+              "english": "\"I had a small faith, but a real one.\""
+            },
+            {
+              "text": "— Fe do të thotë të besosh edhe kur dyshon.",
+              "english": "\"Faith means to believe even when you doubt.\""
+            },
+            {
+              "text": "— Në fillim kisha frikë, sepse nuk njihja njeri dhe nuk e dija gjuhën.",
+              "english": "\"At first I was afraid, because I knew nobody and did not know the language.\""
+            },
+            {
+              "text": "— Shqip ishte e vështirë për mua: shkronjat, fjalët, fjalitë.",
+              "english": "\"Albanian was hard for me: the letters, the words, the sentences.\""
+            },
+            {
+              "text": "— Mora një kurs dhe një fjalor, dhe çdo ditë bëja ushtrime me laps e fletore.",
+              "english": "\"I took a course and a dictionary, and every day I did exercises with pencil and notebook.\""
+            },
+            {
+              "text": "— Mësuesi i parë ishte një profesor i vjetër, dhe studenti i tij isha unë.",
+              "english": "\"The first teacher was an old professor, and I was his student.\""
+            },
+            {
+              "text": "— Ai më tregoi se studimi i një gjuhe është një studim i njerëzve.",
+              "english": "\"He showed me that the study of a language is a study of people.\""
+            },
+            {
+              "text": "— Ai më ndihmonte me laps, me stilolaps dhe me fjalë të mira.",
+              "english": "\"He helped me with a pencil, with a pen and with kind words.\""
+            },
+            {
+              "text": "— Ai më tregonte një shembull çdo mësim, dhe pastaj më jepte një detyrë.",
+              "english": "\"He showed me an example in every lesson, and then gave me a task.\""
+            },
+            {
+              "text": "— Provimi i dytë ishte tepër i vështirë, dhe nota ime ishte e keqe.",
+              "english": "\"The second exam was far too hard, and my mark was bad.\""
+            },
+            {
+              "text": "— Pastaj erdha në Tiranë, dhe këtu filloi mësimi i vërtetë.",
+              "english": "\"Then I came to Tirana, and here the real lesson began.\""
+            },
+            {
+              "text": "— Në Tiranë asnjë njeri nuk ishte kundër meje.",
+              "english": "\"In Tirana nobody was against me.\""
+            },
+            {
+              "text": "— Mësimi i parë ishte se ata ma hapën derën pa asnjë pyetje.",
+              "english": "\"The first lesson was that they opened the door to me without any question.\""
+            },
+            {
+              "text": "— Në javët e para ndjeva shumë gjëra: ndjenjën e frikës, ndjenjën e dëshirës dhe ndjenjën e shpresës.",
+              "english": "\"In the first weeks I felt many things: the feeling of fear, the feeling of desire and the feeling of hope.\""
+            },
+            {
+              "text": "— Leximi dhe shkrimi në shqip ishin të vështira për mua.",
+              "english": "\"Reading and writing in Albanian were hard for me.\""
+            },
+            {
+              "text": "— Një ditë Luani më tha: — Sam, hartojmë bashkë ushtrime të reja.",
+              "english": "\"One day Luan said to me: Sam, let us draft new exercises together.\""
+            },
+            {
+              "text": "— Ai më ndihmoi të përkthej tekste të shkurtra nga anglisht në shqip dhe nga shqip në anglisht.",
+              "english": "\"He helped me to translate short texts from English into Albanian and from Albanian into English.\""
+            },
+            {
+              "text": "— Ana më ndihmoi me fjalët e shëndetit, dhe Drita më ndihmoi me bukë dhe me fjalë të ngrohta.",
+              "english": "\"Ana helped me with the words of health, and Drita helped me with bread and warm words.\""
+            },
+            {
+              "text": "— Ndaj meje të gjithë ishin të mirë, megjithëse unë isha një i huaj.",
+              "english": "\"Everyone was good to me, although I was a foreigner.\""
+            },
+            {
+              "text": "— Një ditë drejtori i shkollës më ftoi të jap një mësim anglisht në një klasë.",
+              "english": "\"One day the director of the school invited me to give an English lesson in a class.\""
+            },
+            {
+              "text": "— Shkrova një fjali në tabelë, dhe fëmijët e lexuan bashkë me mua.",
+              "english": "\"I wrote a sentence on the board, and the children read it together with me.\""
+            },
+            {
+              "text": "— Ky ishte roli im i parë në Shqipëri: të jem mësues, dhe jo vetëm vullnetar.",
+              "english": "\"This was my first role in Albania: to be a teacher, and not only a volunteer.\""
+            },
+            {
+              "text": "— Në mësimin e fundit fëmijët më dhanë një letër të madhe me shkronja të kuqe: «Faleminderit, Sam».",
+              "english": "\"In the last lesson the children gave me a big letter with red characters: Thank you, Sam.\""
+            },
+            {
+              "text": "— Atë ditë qava, por ishte një gëzim i madh.",
+              "english": "\"That day I cried, but it was a great joy.\""
+            },
+            {
+              "text": "— Sot ndjej se jam në vendin e mirë.",
+              "english": "\"Today I feel that I am in the right place.\""
+            },
+            {
+              "text": "— Tani jeta ime ka kuptim, dhe liria nuk është të bësh çdo gjë, por të mos kesh frikë.",
+              "english": "\"Now my life has meaning, and freedom is not to do everything, but not to be afraid.\""
+            },
+            {
+              "text": "— Tani jam i krishterë edhe në Shqipëri, edhe në çdo vend tjetër.",
+              "english": "\"Now I am a Christian both in Albania and in every other country.\""
+            },
+            {
+              "text": "— Kuptimi i jetës nuk është te paratë, por te dashuria.",
+              "english": "\"The meaning of life is not in money, but in love.\""
+            },
+            {
+              "text": "— Kam shpresë dhe kërkoj urtësi çdo ditë.",
+              "english": "\"I have hope and I ask for wisdom every day.\""
+            },
+            {
+              "text": "— Urtësia vjen shpesh nga njerëzit e vjetër.",
+              "english": "\"Wisdom often comes from old people.\""
+            },
+            {
+              "text": "— Nuk ka më frikë në mua, sepse kam fe, shpresë dhe paqe.",
+              "english": "\"There is no more fear in me, because I have faith, hope and peace.\""
+            },
+            {
+              "text": "— Perëndia më mësoi urtësinë: njeriu nuk e ka gjithmonë një përgjigje, por Perëndia e ka.",
+              "english": "\"God taught me wisdom: a person does not always have an answer, but God has.\""
+            },
+            {
+              "text": "— Kjo është dëshmia ime, dhe unë e jap me gëzim.",
+              "english": "\"This is my testimony, and I give it with joy.\""
+            },
+            {
+              "text": "— Nëse dyshoni, si dyshoja unë, mos kini frikë: Perëndia ju pret.",
+              "english": "\"If you doubt, as I doubted, do not be afraid: God is waiting for you.\""
+            },
+            {
+              "text": "— Faleminderit që më pritët, dhe lavdi Zotit.",
+              "english": "\"Thank you for receiving me, and glory to the Lord.\""
+            },
+            {
+              "text": "Sami ulet, dhe të gjithë thonë: — Lavdi Perëndisë.",
+              "english": "Sam sits down, and everyone says: \"Glory to God.\""
+            },
+            {
+              "text": "Pastori Pjetër i jep dorën dhe i thotë: — Faleminderit, Sam. Ishte një dëshmi e bukur.",
+              "english": "Pastor Pjetër shakes his hand and says: \"Thank you, Sam. It was a beautiful testimony.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

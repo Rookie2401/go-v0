@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-17",
+  "lang": "sq",
+  "title": "Festat në Shqipëri",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-17",
+    "title": "Albanian ladder, a2-1: Festat në Shqipëri (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Explanation of holidays in Albania from a Christian speaker: Christmas (tree, gifts), the New Year, Easter (red eggs knocked together), a village wedding with the traditional circle dance, a birthday, and Summer Day (Dita e Verës, in spring: 14 March) which is not a religious holiday. All customs are generalisations and vary by region and faith: a person should check each. Needs theological review (the Christian explanations of Christmas and Easter)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "explanation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-theological-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Festat në Shqipëri",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sami ka një ushtrim për kursin e gjuhës: të shkruajë për festat në Shqipëri.",
+              "english": "Sam has an exercise for his language course: to write about the holidays in Albania."
+            },
+            {
+              "text": "Ai shkoi në bibliotekë, por një profesor i tha: — Pyet njerëzit, ata e dinë më mirë.",
+              "english": "He went to the library, but a professor told him: \"Ask people, they know best.\""
+            },
+            {
+              "text": "Kështu Sami vjen te Drita, bashkë me Luanin dhe Ardin.",
+              "english": "So Sam comes to Drita, together with Luan and Ardi."
+            },
+            {
+              "text": "Drita ka një çaj dhe një tortë mbi tavolinë.",
+              "english": "Drita has a tea and a cake on the table."
+            },
+            {
+              "text": "— Pyet, Sam, pyet — thotë ajo. — Unë kam parë shumë festa.",
+              "english": "\"Ask, Sam, ask,\" she says. \"I have seen many holidays.\""
+            },
+            {
+              "text": "— Cilat janë festat më të rëndësishme? — pyet Sami.",
+              "english": "\"Which are the most important holidays?\" asks Sam."
+            },
+            {
+              "text": "— Janë shumë, sepse Shqipëria ka shumë kulturë — thotë Drita.",
+              "english": "\"There are many, because Albania has a lot of culture,\" says Drita."
+            },
+            {
+              "text": "— Këtu jetojnë njerëz me fe të tjera, dhe çdo fe ka festat e saj.",
+              "english": "\"People of other faiths live here, and every faith has its holidays.\""
+            },
+            {
+              "text": "— Fillojmë me dimrin — thotë ajo.",
+              "english": "\"We begin with winter,\" she says."
+            },
+            {
+              "text": "— Gjatë dimrit vjen Krishtlindja.",
+              "english": "\"During the winter Christmas comes.\""
+            },
+            {
+              "text": "— Për mua kjo është një festë me shumë gëzim.",
+              "english": "\"For me this is a holiday with much joy.\""
+            },
+            {
+              "text": "— Në kishë lexojmë një kapitull nga ungjilli dhe falënderojmë Perëndinë.",
+              "english": "\"In church we read a chapter from the gospel and thank God.\""
+            },
+            {
+              "text": "— Kuptimi i festës është ky: Perëndia na dha një dhuratë të madhe.",
+              "english": "\"The meaning of the feast is this: God gave us a great gift.\""
+            },
+            {
+              "text": "— Ky është shpëtimi dhe hiri për të gjithë.",
+              "english": "\"This is salvation and grace for everyone.\""
+            },
+            {
+              "text": "— Shumë familje kanë një pemë në shtëpi, me drita dhe dhurata.",
+              "english": "\"Many families have a tree at home, with lights and gifts.\""
+            },
+            {
+              "text": "— Fëmijët dhurojnë një letër të bukur, dhe njerëzit e mëdhenj dhurojnë ushqim ose lule.",
+              "english": "\"The children give a beautiful letter, and the grown-ups give food or flowers.\""
+            },
+            {
+              "text": "— Dikur kishim më pak dhurata, por më shumë dashuri — buzëqesh Drita.",
+              "english": "\"Once we had fewer gifts, but more love,\" smiles Drita."
+            },
+            {
+              "text": "— Çfarë gatuani për Krishtlindje? — pyet Ardi.",
+              "english": "\"What do you cook for Christmas?\" asks Ardi."
+            },
+            {
+              "text": "— Gatuaj një gjellë të ngrohtë me mish dhe oriz, dhe një tortë të madhe.",
+              "english": "\"I cook a warm dish with meat and rice, and a big cake.\""
+            },
+            {
+              "text": "— Çdo familje ka gjellën e saj tradicionale.",
+              "english": "\"Every family has its own traditional dish.\""
+            },
+            {
+              "text": "— Pema e Krishtlindjes është e bukur, dhe Ardi i ndez dritat e pemës.",
+              "english": "\"The Christmas tree is beautiful, and Ardi lights the lights of the tree.\""
+            },
+            {
+              "text": "— Ushqimi është i rëndësishëm, por më shumë janë njerëzit që e hanë bashkë.",
+              "english": "\"The food is important, but the people who eat it together are more important.\""
+            },
+            {
+              "text": "— Miqtë vijnë në shtëpi, dhe ne shkojmë të vizitojmë fqinjët.",
+              "english": "\"Friends come to the house, and we go to visit the neighbours.\""
+            },
+            {
+              "text": "— Sipas zakonit, njerëzit e rinj vizitojnë njerëzit e vjetër.",
+              "english": "\"According to custom, the young people visit the old people.\""
+            },
+            {
+              "text": "— Edhe Viti i Ri është një festë e madhe e dimrit.",
+              "english": "\"The New Year is also a big holiday of winter.\""
+            },
+            {
+              "text": "— Para Krishtlindjes të gjithë festojmë bashkë në kishë.",
+              "english": "\"Before Christmas we all celebrate together in the church.\""
+            },
+            {
+              "text": "— Njerëzit këshillojnë njerëzit e tjerë të kenë shpresë për vitin që vjen.",
+              "english": "\"People advise other people to have hope for the year that is coming.\""
+            },
+            {
+              "text": "— Pastaj vjen pranvera, dhe me të vjen Pashka — thotë Drita.",
+              "english": "\"Then spring comes, and with it comes Easter,\" says Drita."
+            },
+            {
+              "text": "— Pashka është festa jonë më e madhe, sepse Jezusi u ringjall.",
+              "english": "\"Easter is our biggest holiday, because Jesus rose again.\""
+            },
+            {
+              "text": "— Ajo është shpresa jonë, dhe këtë shpresë e dëshmojmë çdo vit.",
+              "english": "\"It is our hope, and we testify to this hope every year.\""
+            },
+            {
+              "text": "— Në Pashkë ne bëjmë vezë të kuqe.",
+              "english": "\"At Easter we make red eggs.\""
+            },
+            {
+              "text": "— Çdo njeri merr një vezë dhe e thyen me vezën e njeriut tjetër.",
+              "english": "\"Every person takes an egg and breaks it against the other person's egg.\""
+            },
+            {
+              "text": "Ardi thyen vezën e Luanit dhe buzëqesh shumë.",
+              "english": "Ardi breaks Luan's egg and smiles broadly."
+            },
+            {
+              "text": "— Kush e thyen vezën e njeriut tjetër, e merr atë — thotë Drita.",
+              "english": "\"Whoever breaks the other person's egg, takes it,\" says Drita."
+            },
+            {
+              "text": "Ardi ka një gisht të kuq, dhe Ana, që është infermiere, e kontrollon.",
+              "english": "Ardi has a red finger, and Ana, who is a nurse, checks it."
+            },
+            {
+              "text": "Infermierja u shërben pacientëve dhe ndihma e saj është e rëndësishme.",
+              "english": "The nurse serves the patients and her help is important."
+            },
+            {
+              "text": "— Nuk ka gjak, nuk ka asnjë kockë të thyer, dhe lëkura është mirë — thotë ajo.",
+              "english": "\"There is no blood, no broken bone, and the skin is fine,\" she says."
+            },
+            {
+              "text": "— Ana punon edhe në festë, në spital, dhe ndihmon pacientët.",
+              "english": "\"Ana works even on holiday, in the hospital, and helps the patients.\""
+            },
+            {
+              "text": "— Ajo është e mirë ndaj çdo njeriu, dhe këshilla e saj është gjithmonë e mirë.",
+              "english": "\"She is good to every person, and her advice is always good.\""
+            },
+            {
+              "text": "— Mos hani tepër mish dhe vezë, sepse trupi ka nevojë për pushim — na thotë ajo çdo vit.",
+              "english": "\"Do not eat too much meat and too many eggs, because the body needs rest,\" she tells us every year."
+            },
+            {
+              "text": "— Në festë farmacitë punojnë pak orë, dhe shumë njerëz kanë një sëmundje ose një mjekim të gjatë.",
+              "english": "\"On holidays the pharmacies work only a few hours, and many people have an illness or a long treatment.\""
+            },
+            {
+              "text": "— Një infermier ose një infermiere shkon te pacienti për një vizitë.",
+              "english": "\"A male nurse or a female nurse goes to the patient for a visit.\""
+            },
+            {
+              "text": "— Kjo është një shërbim i bukur, dhe ai e bën zemrën e njeriut të lumtur.",
+              "english": "\"This is a beautiful service, and it makes a person's heart happy.\""
+            },
+            {
+              "text": "— Shëndeti është më i rëndësishëm se gjella — buzëqesh Drita.",
+              "english": "\"Health is more important than food,\" smiles Drita."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Luani merr fjalën: — Shumë zakone janë shumë të vjetra.",
+              "english": "Luan takes the floor: \"Many customs are very old.\""
+            },
+            {
+              "text": "— Disa vijnë nga periudha antike, kur një mbret ose një perandori e pushtonte këtë zonë.",
+              "english": "\"Some come from the ancient period, when a king or an empire conquered this area.\""
+            },
+            {
+              "text": "— Një mbretëri e vjetër e themeloi këtë qytet, dhe shekuj më vonë erdhi një luftë.",
+              "english": "\"An old kingdom founded this town, and centuries later a war came.\""
+            },
+            {
+              "text": "— Në çdo epokë njerëzit kanë ruajtur festat e tyre, edhe pas një lufte.",
+              "english": "\"In every epoch people have kept their holidays, even after a war.\""
+            },
+            {
+              "text": "— Ato janë pjesë e trashëgimisë së vjetër, si kalatë, kështjellat dhe monumentet.",
+              "english": "\"They are part of the old heritage, like the castles, the fortresses and the monuments.\""
+            },
+            {
+              "text": "— Rajoni i Gjirokastrës përfshin shumë qytete të vjetra, dhe turistët vijnë për ta parë.",
+              "english": "\"The region of Gjirokastër includes many old towns, and tourists come to see it.\""
+            },
+            {
+              "text": "— Zona e vjetër shtrihet mbi një kodër, dhe festat e saj janë të njohura.",
+              "english": "\"The old area lies on a hill, and its festivals are well known.\""
+            },
+            {
+              "text": "— Nuk është një numër mesatar: çdo shtëpi ka shumë festa gjatë vitit.",
+              "english": "\"It is not an average number: every house has many holidays during the year.\""
+            },
+            {
+              "text": "— Luani ka një diplomë për gjuhën dhe i pëlqen të kërkojë fjalët e festave.",
+              "english": "\"Luan has a diploma in language and likes to look for the words of the holidays.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Dasma në fshat është një festë e madhe — thotë Drita.",
+              "english": "\"A wedding in the village is a big celebration,\" says Drita."
+            },
+            {
+              "text": "— Çifti i ri martohet në verë, kur dielli është i ngrohtë.",
+              "english": "\"The young couple get married in summer, when the sun is warm.\""
+            },
+            {
+              "text": "— Gjithë fshati vjen, të vegjël e të mëdhenj, dhe çdo familje sjell ushqim dhe një dhuratë.",
+              "english": "\"The whole village comes, small and big, and every family brings food and a gift.\""
+            },
+            {
+              "text": "— Pastaj fillon muzika, dhe vallja tradicionale fillon me një rreth të madh.",
+              "english": "\"Then the music begins, and the traditional dance starts with a big circle.\""
+            },
+            {
+              "text": "— Vallja është një rreth i madh njerëzish, që mbahen për dore.",
+              "english": "\"The dance is a big circle of people holding hands.\""
+            },
+            {
+              "text": "— Muzika e vjetër dhe vallja tradicionale janë pjesë e kulturës që kemi.",
+              "english": "\"The old music and the traditional dance are part of the culture we have.\""
+            },
+            {
+              "text": "— Dikur një burrë i vjetër i fshatit i këshillonte çiftin: — Jetoni me paqe.",
+              "english": "\"Once an old man of the village advised the couple: Live in peace.\""
+            },
+            {
+              "text": "— Sot këtë këshillë e jep edhe pastori, dhe urtësia e vjetër mbetet.",
+              "english": "\"Today the pastor gives this advice too, and the old wisdom remains.\""
+            },
+            {
+              "text": "— Pastori ka një rol të madh në dasmën e një çifti të krishterë.",
+              "english": "\"The pastor has a big role in the wedding of a Christian couple.\""
+            },
+            {
+              "text": "— Në një dasmë vijnë edhe turistë, dhe ata shikojnë valle me gëzim.",
+              "english": "\"To a wedding tourists also come, and they watch dances with joy.\""
+            },
+            {
+              "text": "— Atyre u pëlqen kultura jonë, dhe ne i falënderojmë që vijnë.",
+              "english": "\"They like our culture, and we thank them for coming.\""
+            },
+            {
+              "text": "— Edhe ditëlindja është një festë e vogël, por e dashur.",
+              "english": "\"A birthday is also a small celebration, but a dear one.\""
+            },
+            {
+              "text": "— Ditëlindja ime është në verë, dhe unë e dua tortën.",
+              "english": "\"My birthday is in summer, and I love cake.\""
+            },
+            {
+              "text": "— Ardi do të bëjë dhjetë vjeç javën tjetër.",
+              "english": "\"Ardi will turn ten next week.\""
+            },
+            {
+              "text": "— Do të bëjmë një tortë, dhe Sami do të dhurojë një libër.",
+              "english": "\"We will make a cake, and Sam will give a book as a gift.\""
+            },
+            {
+              "text": "— Në ditëlindje njerëzit festojnë me muzikë dhe me këngë.",
+              "english": "\"At a birthday people celebrate with music and songs.\""
+            },
+            {
+              "text": "— Gjyshja ka një rol të madh në çdo festë: gatuan, këshillon dhe falënderon të gjithë.",
+              "english": "\"The grandmother has a big role in every holiday: she cooks, advises and thanks everyone.\""
+            },
+            {
+              "text": "— Festa e tretë që dua të them është Dita e Verës, në pranverë.",
+              "english": "\"The third holiday I want to mention is Summer Day, in spring.\""
+            },
+            {
+              "text": "— Në këtë ditë njerëzit dalin jashtë dhe festojnë.",
+              "english": "\"On this day people go outside and celebrate.\""
+            },
+            {
+              "text": "— Nuk është një festë e kishës, por një festë e vjetër e të gjithë njerëzve.",
+              "english": "\"It is not a holiday of the church, but an old holiday of all people.\""
+            },
+            {
+              "text": "Sami shkruan çdo gjë në fletore.",
+              "english": "Sam writes everything in his notebook."
+            },
+            {
+              "text": "— Tani kam shumë për ushtrimin tim — thotë ai.",
+              "english": "\"Now I have a lot for my exercise,\" he says."
+            },
+            {
+              "text": "— Do ta shkruaj për kursin dhe do të them: festat i sjellin njerëzit bashkë.",
+              "english": "\"I will write it for the course and I will say: holidays bring people together.\""
+            },
+            {
+              "text": "— Gjatë dimrit, gjatë pranverës dhe gjatë verës njerëzit vizitojnë miqtë e tyre.",
+              "english": "\"During winter, during spring and during summer people visit their friends.\""
+            },
+            {
+              "text": "— Kjo është një traditë e bukur, dhe unë jam i lumtur që jam pjesë e saj.",
+              "english": "\"This is a beautiful tradition, and I am happy to be a part of it.\""
+            },
+            {
+              "text": "— Faleminderit, Drita — thotë ai. — Ti më dhe një dhuratë të madhe: histori dhe besim.",
+              "english": "\"Thank you, Drita,\" he says. \"You gave me a great gift: stories and faith.\""
+            },
+            {
+              "text": "— Edhe ti do të vish në festën time, Sam — buzëqesh ajo.",
+              "english": "\"You will come to my holiday too, Sam,\" she smiles."
+            },
+            {
+              "text": "— Kjo është dëshmia ime për festat: ato janë shpresë dhe gëzim.",
+              "english": "\"This is my testimony about the holidays: they are hope and joy.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

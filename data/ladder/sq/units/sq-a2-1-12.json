@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-12",
+  "lang": "sq",
+  "title": "Luani, mësuesi",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-12",
+    "title": "Albanian ladder, a2-1: Luani, mësuesi (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Invented biography of Luan (born in a village, studies in Tirana, pharmacy job, first interview, courses, translation of a book). Check the perfect/aorist/duke contrasts and the university vocabulary (fakultet, diplomë, kurs, profesor)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Luani, mësuesi",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam dhe Ana ecin në parkun e qytetit.",
+              "english": "Sam and Ana walk in the city park."
+            },
+            {
+              "text": "Sami pyet: — Ana, kush është Luani? Si ka qenë jeta e tij?",
+              "english": "Sam asks: \"Ana, who is Luan? What has his life been like?\""
+            },
+            {
+              "text": "Ana buzëqesh dhe fillon të tregojë.",
+              "english": "Ana smiles and begins to tell."
+            },
+            {
+              "text": "— Luani është vëllai im, dhe unë e njoh mirë historinë e tij.",
+              "english": "\"Luan is my brother, and I know his story well.\""
+            },
+            {
+              "text": "— Ai ka lindur në një fshat, në shtëpinë e gjyshit.",
+              "english": "\"He was born in a village, in grandfather's house.\""
+            },
+            {
+              "text": "— Si fëmijë ai shkoi në shkollën e fshatit.",
+              "english": "\"As a child he went to the village school.\""
+            },
+            {
+              "text": "— Klasa ishte e vogël, dhe mësuesi ishte i vetëm për të gjithë nxënësit.",
+              "english": "\"The classroom was small, and the teacher was alone for all the pupils.\""
+            },
+            {
+              "text": "— Luani nuk kishte shumë fletore, por kishte një laps dhe një ëndërr.",
+              "english": "\"Luan did not have many notebooks, but he had a pencil and a dream.\""
+            },
+            {
+              "text": "— Çdo ditë ai bënte detyrat, dhe nota e tij ishte gjithmonë e mirë.",
+              "english": "\"Every day he did his homework, and his mark was always good.\""
+            },
+            {
+              "text": "— Ai e donte shumë matematikën dhe gjeografinë, por më shumë i pëlqenin gjuhët.",
+              "english": "\"He loved mathematics and geography very much, but he liked languages more.\""
+            },
+            {
+              "text": "— Drejtori i shkollës e pa këtë dhe i tha babait tonë: — Ky djalë duhet të studiojë.",
+              "english": "\"The director of the school saw this and told our father: This boy must study.\""
+            },
+            {
+              "text": "— Arsimi është shumë i rëndësishëm për të.",
+              "english": "\"Education is very important for him.\""
+            },
+            {
+              "text": "Sami dëgjon me kujdes.",
+              "english": "Sam listens carefully."
+            },
+            {
+              "text": "— Kur Luani ishte tetëmbëdhjetë vjeç, ai erdhi në Tiranë.",
+              "english": "\"When Luan was eighteen, he came to Tirana.\""
+            },
+            {
+              "text": "— Në universitet ai hyri në fakultetin e gjuhëve.",
+              "english": "\"At the university he entered the faculty of languages.\""
+            },
+            {
+              "text": "— Ai ishte student dhe punonte edhe në një farmaci.",
+              "english": "\"He was a student and also worked in a pharmacy.\""
+            },
+            {
+              "text": "— Atje u shërbente njerëzve dhe merrte një pagë të vogël.",
+              "english": "\"There he served people and received a small pay.\""
+            },
+            {
+              "text": "— Në verë punonte në një hotel pranë sheshit të njohur.",
+              "english": "\"In summer he worked in a hotel near the well-known square.\""
+            },
+            {
+              "text": "— Universiteti ishte në fund të bulevardit, dhe ai shkonte atje çdo mëngjes.",
+              "english": "\"The university was at the end of the boulevard, and he went there every morning.\""
+            },
+            {
+              "text": "— Pas mësimit ai rrinte në bibliotekë gjithë pasditen.",
+              "english": "\"After lessons he stayed in the library all afternoon.\""
+            },
+            {
+              "text": "— Atje lexonte tekste të gjata dhe bënte ushtrime.",
+              "english": "\"There he read long texts and did exercises.\""
+            },
+            {
+              "text": "— Biblioteka Kombëtare ishte pranë sheshit historik, dhe ai bënte kërkim për çdo fjalë.",
+              "english": "\"The National Library was near the historic square, and he did research for every word.\""
+            },
+            {
+              "text": "— Çdo ushtrim e bënte dy herë, dhe leximi ishte puna e tij kryesore.",
+              "english": "\"He did every exercise twice, and reading was his main work.\""
+            },
+            {
+              "text": "— Leximi dhe shkrimi ishin jeta e tij: ai lexonte dhe shkruante çdo ditë.",
+              "english": "\"Reading and writing were his life: he read and wrote every day.\""
+            },
+            {
+              "text": "— Studimi i tij për gjuhën u pëlqeu profesorëve.",
+              "english": "\"His study on the language pleased the professors.\""
+            },
+            {
+              "text": "— Në fakultet kishte shumë studentë, dhe çdo profesor kishte një kurs tjetër.",
+              "english": "\"At the faculty there were many students, and every professor had a different course.\""
+            },
+            {
+              "text": "— Luani e donte edhe shkencën, por gjuhët i pëlqente më shumë.",
+              "english": "\"Luan also loved science, but he liked languages more.\""
+            },
+            {
+              "text": "— Provimi i dytë ishte më i vështirë se provimi i parë, dhe provimi i fundit ishte shumë i gjatë.",
+              "english": "\"The second exam was harder than the first exam, and the last exam was very long.\""
+            },
+            {
+              "text": "— Profesori i tij i tha një ditë: — Luan, një shembull i mirë është më i mirë se një fjalë e bukur.",
+              "english": "\"His professor told him one day: Luan, a good example is better than a beautiful word.\""
+            },
+            {
+              "text": "— Luani e ruajti këtë fjalë dhe e përdori gjithë jetën.",
+              "english": "\"Luan kept this word and used it all his life.\""
+            },
+            {
+              "text": "— Në atë kohë babai ynë ishte pacient në spital.",
+              "english": "\"At that time our father was a patient in the hospital.\""
+            },
+            {
+              "text": "— Ai kishte një sëmundje të zemrës, dhe mjekimi ishte i gjatë.",
+              "english": "\"He had an illness of the heart, and the treatment was long.\""
+            },
+            {
+              "text": "— Unë isha infermiere e re, dhe Luani vinte në çdo vizitë.",
+              "english": "\"I was a young nurse, and Luan came to every visit.\""
+            },
+            {
+              "text": "— Duke ecur në rrugë, ai lexonte edhe në autobus.",
+              "english": "\"Walking along the road, he read even on the bus.\""
+            },
+            {
+              "text": "— Ai kujdesej gjithmonë për shëndetin e babait.",
+              "english": "\"He always took care of father's health.\""
+            },
+            {
+              "text": "— Ana i shikonte lëkurën dhe gjakun e tij, dhe Luani i jepte ndihmë çdo ditë.",
+              "english": "\"I looked at his skin and his blood, and Luan gave him help every day.\""
+            },
+            {
+              "text": "— Luani ishte shumë i mirë ndaj babait.",
+              "english": "\"Luan was very good to father.\""
+            },
+            {
+              "text": "Ana hesht pak dhe pi ujë.",
+              "english": "Ana is silent for a moment and drinks water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Pas katër vitesh Luani mori diplomën — thotë ajo.",
+              "english": "\"After four years Luan got his diploma,\" she says."
+            },
+            {
+              "text": "— Diplomën e mori në dorë dhe nuk tha asnjë fjalë.",
+              "english": "\"He took the diploma in his hand and did not say a word.\""
+            },
+            {
+              "text": "— Fakulteti i dha një diplomë të bukur, por arsimi nuk mbaroi atje.",
+              "english": "\"The faculty gave him a beautiful diploma, but education did not end there.\""
+            },
+            {
+              "text": "— Ai kishte shkruar një studim për gjuhën dhe për arsimin.",
+              "english": "\"He had written a study about language and about education.\""
+            },
+            {
+              "text": "— Profesori e ndihmoi të hartonte një tekst të shkurtër për nxënësit.",
+              "english": "\"The professor helped him draft a short text for pupils.\""
+            },
+            {
+              "text": "— Ai hartoi edhe ushtrime për nxënësit dhe studioi gjuhën çdo ditë.",
+              "english": "\"He also drafted exercises for the pupils and studied the language every day.\""
+            },
+            {
+              "text": "— Në shkrimin e tekstit ai përdorte shembuj nga jeta.",
+              "english": "\"In writing the text he used examples from life.\""
+            },
+            {
+              "text": "— Ky ishte projekti i tij i parë.",
+              "english": "\"This was his first project.\""
+            },
+            {
+              "text": "— Pastaj erdhi intervista e parë, në një shkollë të vogël.",
+              "english": "\"Then came the first interview, in a small school.\""
+            },
+            {
+              "text": "— Një kompani e vogël i dha një projekt: të përkthente një tekst.",
+              "english": "\"A small company gave him a project: to translate a text.\""
+            },
+            {
+              "text": "— Shefi i kompanisë i tha: — Ju lutem përktheni me kujdes.",
+              "english": "\"The boss of the company told him: Please translate carefully.\""
+            },
+            {
+              "text": "— Luani e përktheu tekstin dhe e shkroi mirë.",
+              "english": "\"Luan translated the text and wrote it well.\""
+            },
+            {
+              "text": "— Drejtori e pyeti për përvojën e tij, dhe Luani tha: — Nuk kam shumë, por kam qëllim të mirë.",
+              "english": "\"The director asked him about his experience, and Luan said: I do not have much, but I have a good aim.\""
+            },
+            {
+              "text": "— Drejtori buzëqeshi dhe e mori në punë.",
+              "english": "\"The director smiled and took him on.\""
+            },
+            {
+              "text": "— Kështu filloi profesioni i tij.",
+              "english": "\"So his profession began.\""
+            },
+            {
+              "text": "— Në fillim ishte e vështirë.",
+              "english": "\"At the beginning it was hard.\""
+            },
+            {
+              "text": "— Klasa kishte tridhjetë nxënës, dhe ai kishte vetëm një tabelë dhe një stilolaps.",
+              "english": "\"The class had thirty pupils, and he had only a board and a pen.\""
+            },
+            {
+              "text": "— Por Luani është një punëtor i mirë, dhe punonte mjaft, ndonjëherë tepër.",
+              "english": "\"But Luan is a good worker, and he worked enough, sometimes too much.\""
+            },
+            {
+              "text": "— Ai ka mësuar shumë nxënës anglisht dhe ka bërë edhe kurse për të rritur.",
+              "english": "\"He has taught many pupils English and has also given courses for adults.\""
+            },
+            {
+              "text": "— Në kurse vijnë njerëz që kanë nevojë për gjuhën, të rinj dhe të vjetër.",
+              "english": "\"People who need the language come to the courses, young and old.\""
+            },
+            {
+              "text": "— Ai i ndihmon me dashuri, dhe asnjë nuk ka frikë në klasën e tij.",
+              "english": "\"He helps them with love, and nobody is afraid in his class.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Sot Luani është shumë i njohur në shkollë.",
+              "english": "\"Today Luan is very well known at school.\""
+            },
+            {
+              "text": "— Ai ka një ekip të vogël me mësues të tjerë dhe punon me ta çdo javë.",
+              "english": "\"He has a small team with other teachers and works with them every week.\""
+            },
+            {
+              "text": "— Në një biznes të vogël ai ndihmon edhe me emaile në anglisht.",
+              "english": "\"In a small business he also helps with emails in English.\""
+            },
+            {
+              "text": "— Çdo mëngjes ai hap kompjuterin, kërkon në internet dhe zgjedh faqe të mira për nxënësit.",
+              "english": "\"Every morning he opens the computer, searches the internet and chooses good pages for the pupils.\""
+            },
+            {
+              "text": "— Ai shtyp tekste, plotëson formularë dhe kontrollon çdo gjë me kujdes.",
+              "english": "\"He types texts, fills in forms and checks everything carefully.\""
+            },
+            {
+              "text": "— Ndonjëherë gjen një film të mirë ose një fotografi, dhe e dërgon me një lidhje.",
+              "english": "\"Sometimes he finds a good film or a photograph, and sends it with a link.\""
+            },
+            {
+              "text": "— Sa herë që punon, ai përdor një fjalor dhe një mjet tjetër në kompjuter.",
+              "english": "\"Whenever he works, he uses a dictionary and another tool on the computer.\""
+            },
+            {
+              "text": "— Tani Luani po përkthen një libër në shqip.",
+              "english": "\"Now Luan is translating a book into Albanian.\""
+            },
+            {
+              "text": "— Ai e lexon çdo fjali dy herë, dhe e shkruan çdo shkronjë mirë.",
+              "english": "\"He reads every sentence twice, and writes every letter well.\""
+            },
+            {
+              "text": "— Gishtat e tij janë të lodhur, por ai nuk pushon.",
+              "english": "\"His fingers are tired, but he does not stop.\""
+            },
+            {
+              "text": "— Libri nuk është i lehtë: ka shumë fjalë të reja.",
+              "english": "\"The book is not easy: it has many new words.\""
+            },
+            {
+              "text": "— Ai ka mësuar edhe nga provimet dhe nga notat.",
+              "english": "\"He has learned from exams and from marks.\""
+            },
+            {
+              "text": "— Çdo javë ai harton ushtrime të reja, dhe në shkrim dhe në lexim ai kërkon gjithmonë një notë të mirë nga nxënësit.",
+              "english": "\"Every week he drafts new exercises, and in writing and in reading he always asks the pupils for a good mark.\""
+            },
+            {
+              "text": "— Ky studim është pasuria e tij.",
+              "english": "\"This study is his wealth.\""
+            },
+            {
+              "text": "— Edhe sot ai shkon çdo të shtunë në bibliotekë dhe studion gjithë ditën.",
+              "english": "\"Even today he goes to the library every Saturday and studies all day.\""
+            },
+            {
+              "text": "— Një shembull i mirë e ndihmon më shumë se një libër i gjatë.",
+              "english": "\"A good example helps him more than a long book.\""
+            },
+            {
+              "text": "— Qëllimi i tij është që nxënësit ta duan gjuhën.",
+              "english": "\"His aim is that the pupils love the language.\""
+            },
+            {
+              "text": "Sam e dëgjon dhe mendon për Luanin.",
+              "english": "Sam listens and thinks about Luan."
+            },
+            {
+              "text": "— Faleminderit, Ana — thotë ai. — Tani e di pse Luani është një mësues i mirë.",
+              "english": "\"Thank you, Ana,\" he says. \"Now I know why Luan is a good teacher.\""
+            },
+            {
+              "text": "— Ai ka qenë një nxënës i vogël, pastaj student, dhe tani është mësues — thotë Ana.",
+              "english": "\"He was a small pupil, then a student, and now he is a teacher,\" says Ana."
+            },
+            {
+              "text": "— Sa herë që ai ndihmon një njeri, e kujton babanë tonë.",
+              "english": "\"Every time he helps a person, he remembers our father.\""
+            },
+            {
+              "text": "Ata ulen pranë liqenit të parkut dhe pinë çaj.",
+              "english": "They sit by the lake in the park and drink tea."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

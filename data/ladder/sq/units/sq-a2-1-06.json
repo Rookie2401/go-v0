@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-06",
+  "lang": "sq",
+  "title": "Si ta përdorim kompjuterin",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-06",
+    "title": "Albanian ladder, a2-1: Si ta përdorim kompjuterin (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Instructions with short-pronoun imperatives (ndize, hape, ruaje, dërgoje, fike, shtype): check forms and register. Computer vocabulary is deliberately small (no \"ekran\", \"buton\", \"dosje\")."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "instructions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Si ta përdorim kompjuterin",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam ka një kompjuter të ri, por nuk e përdor shumë mirë.",
+              "english": "Sam has a new computer, but he does not use it very well."
+            },
+            {
+              "text": "Faqet e internetit janë në shqip, dhe ai nuk i kupton të gjitha.",
+              "english": "The web pages are in Albanian, and he does not understand all of them."
+            },
+            {
+              "text": "Të shtunën vjen te ai Gjergji, nxënësi që e njeh kompjuterin shumë mirë.",
+              "english": "On Saturday Gjergj comes to him, the pupil who knows the computer very well."
+            },
+            {
+              "text": "Gjergji është nxënës i Luanit dhe i pëlqen çdo mjet i ri.",
+              "english": "Gjergj is Luan's pupil and likes every new tool."
+            },
+            {
+              "text": "— Gjergj, trego Samit si ta përdorë — thotë Mira nga kuzhina.",
+              "english": "\"Gjergj, show Sam how to use it,\" says Mira from the kitchen."
+            },
+            {
+              "text": "— Mirë. Do ta bëjmë çdo gjë hap pas hapi — thotë Gjergji.",
+              "english": "\"Good. We will do everything step by step,\" says Gjergj."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Në fillim ndize kompjuterin — thotë ai.",
+              "english": "\"At the beginning switch on the computer,\" he says."
+            },
+            {
+              "text": "Sam e ndez dhe pret.",
+              "english": "Sam switches it on and waits."
+            },
+            {
+              "text": "— Prit pak, kompjuteri po fillon.",
+              "english": "\"Wait a little, the computer is starting.\""
+            },
+            {
+              "text": "— Tani hape faqen e internetit. Shtype këtë lidhje.",
+              "english": "\"Now open the page of the internet. Press this link.\""
+            },
+            {
+              "text": "— Jo, mos e shtyp atë lidhje! Nuk është e mirë — thotë Gjergji.",
+              "english": "\"No, do not press that link! It is not good,\" says Gjergj."
+            },
+            {
+              "text": "— Përdor këtë mjet për kërkim. Shkruaj këtu çfarë kërkon.",
+              "english": "\"Use this tool for searching. Write here what you are looking for.\""
+            },
+            {
+              "text": "Sam shkruan në kërkim: orari i autobusit.",
+              "english": "Sam writes in the search: bus timetable."
+            },
+            {
+              "text": "Faqja tregon një orar të shkurtër.",
+              "english": "The page shows a short timetable."
+            },
+            {
+              "text": "Sam kërkon edhe një herë: autobusi nga Tirana në Durrës.",
+              "english": "Sam searches once more: the bus from Tirana to Durrës."
+            },
+            {
+              "text": "Faqja tregon orarin, çmimin e biletës dhe stacionin.",
+              "english": "The page shows the timetable, the price of the ticket and the station."
+            },
+            {
+              "text": "— Përdor edhe një mjet tjetër: hartën — thotë Gjergji.",
+              "english": "\"Use another tool as well: the map,\" says Gjergj."
+            },
+            {
+              "text": "Sam hap hartën dhe gjen stacionin. Është një faqe e gjerë dhe e bukur.",
+              "english": "Sam opens the map and finds the station. It is a wide and beautiful page."
+            },
+            {
+              "text": "— Ky mjet është shumë i mirë — thotë ai. — Dikur kërkonim rrugën me hartë të vjetër.",
+              "english": "\"This tool is very good,\" he says. \"Once we looked for the way with an old map.\""
+            },
+            {
+              "text": "— Kërkimi në internet është i lehtë kur e di çfarë të kërkosh — thotë Gjergji.",
+              "english": "\"Searching on the internet is easy when you know what to look for,\" says Gjergj."
+            },
+            {
+              "text": "— Shumë mirë. Nuk është e vështirë — thotë Gjergji.",
+              "english": "\"Very good. It is not difficult,\" says Gjergj."
+            },
+            {
+              "text": "— Tani do të shkruajmë një email. Hape emailin.",
+              "english": "\"Now we will write an email. Open the email.\""
+            },
+            {
+              "text": "— Fillo me adresën e mikut tënd.",
+              "english": "\"Start with the address of your friend.\""
+            },
+            {
+              "text": "— Pastaj shkruaj një mesazh të shkurtër.",
+              "english": "\"Then write a short message.\""
+            },
+            {
+              "text": "Sam i shkruan bashkësisë së tij në Amerikë.",
+              "english": "Sam writes to his congregation in America."
+            },
+            {
+              "text": "Sam shkruan: — Të dashur miq, jam mirë në Tiranë. Sot hapa një llogari në bankë dhe dërgova një letër.",
+              "english": "Sam writes: \"Dear friends, I am well in Tirana. Today I opened an account at the bank and sent a letter.\""
+            },
+            {
+              "text": "Këtu njerëzit janë të mirë, dhe unë mësoj shumë.",
+              "english": "\"Here the people are good, and I am learning a lot.\""
+            },
+            {
+              "text": "Ju dërgoj edhe një fotografi të liqenit. Faleminderit për lutjet tuaja.",
+              "english": "\"I am also sending you a photograph of the lake. Thank you for your prayers.\""
+            },
+            {
+              "text": "— Mesazhi është i shkurtër dhe i mirë — thotë Gjergji. — Lexoje edhe një herë, plotëso emrin tënd në fund dhe dërgoje.",
+              "english": "\"The message is short and good,\" says Gjergj. \"Read it once more, fill in your name at the end and send it.\""
+            },
+            {
+              "text": "— Dua të dërgoj edhe një fotografi — thotë Sam.",
+              "english": "\"I want to send a photograph too,\" says Sam."
+            },
+            {
+              "text": "— Zgjidh një fotografi të liqenit — thotë Gjergji.",
+              "english": "\"Choose a photograph of the lake,\" says Gjergj."
+            },
+            {
+              "text": "— Fotografia është e rëndë, prandaj ruaje në një vend tjetër dhe zgjidhe pastaj.",
+              "english": "\"The photograph is heavy, so save it in another place and then choose it.\""
+            },
+            {
+              "text": "Sam zgjedh fotografinë dhe e shikon edhe një herë.",
+              "english": "Sam chooses the photograph and looks at it once more."
+            },
+            {
+              "text": "— Në fund shtyp lidhjen dhe dërgoje — thotë Gjergji.",
+              "english": "\"At the end press the link and send it,\" says Gjergj."
+            },
+            {
+              "text": "Sam shtyp lidhjen dhe emaili shkon.",
+              "english": "Sam presses the link and the email goes."
+            },
+            {
+              "text": "— Çdo gjë është e lehtë, kur e di mënyrën — buzëqesh ai.",
+              "english": "\"Everything is easy, when you know the way,\" he smiles."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Tani më duhet të kontrolloj llogarinë time — thotë Sam.",
+              "english": "\"Now I have to check my account,\" says Sam."
+            },
+            {
+              "text": "— Mirë. Hape faqen e bankës, por jo nga një lidhje tjetër.",
+              "english": "\"Good. Open the bank's page, but not from another link.\""
+            },
+            {
+              "text": "— Në fillim regjistro emrin tënd dhe numrin e kartës.",
+              "english": "\"At the beginning register your name and the number of the card.\""
+            },
+            {
+              "text": "— Pastaj plotëso formularin dhe kontrolloje shumë mirë.",
+              "english": "\"Then fill in the form and check it very carefully.\""
+            },
+            {
+              "text": "— A është kjo shumë e rëndësishme? — pyet Sam.",
+              "english": "\"Is this very important?\" asks Sam."
+            },
+            {
+              "text": "— Po, është shumë e rëndësishme: asnjë njeri tjetër nuk duhet ta ketë numrin tënd.",
+              "english": "\"Yes, it is very important: no other person should have your number.\""
+            },
+            {
+              "text": "Sam plotëson formularin dhe e kontrollon edhe një herë.",
+              "english": "Sam fills in the form and checks it once more."
+            },
+            {
+              "text": "— Tani shiko sasinë dhe vlerën e pagës — thotë Gjergji.",
+              "english": "\"Now look at the amount and the value of the pay,\" says Gjergj."
+            },
+            {
+              "text": "— Paga ka ardhur! — thotë Sam dhe buzëqesh.",
+              "english": "\"The pay has arrived!\" says Sam and smiles."
+            },
+            {
+              "text": "— Ruaje dokumentin e bankës. Është i rëndësishëm — thotë Gjergji.",
+              "english": "\"Save the bank's document. It is important,\" says Gjergj."
+            },
+            {
+              "text": "— Në internet nuk ka radhë dhe nuk ka orar, ke nevojë vetëm për kompjuterin.",
+              "english": "\"On the internet there is no queue and no timetable, you only need the computer.\""
+            },
+            {
+              "text": "— Edhe kontratën e punës ruaje këtu. Nëse ke nevojë për kartë të re, bëj një kërkesë.",
+              "english": "\"Save the work contract here too. If you need a new card, make a request.\""
+            },
+            {
+              "text": "— Pastaj nënshkruaje kërkesën me emrin tënd dhe dërgoje me pasaportën.",
+              "english": "\"Then sign the request with your name and send it with the passport.\""
+            },
+            {
+              "text": "— Kjo është e lehtë! — thotë Sam. — Ju faleminderit të dy.",
+              "english": "\"That is easy!\" says Sam. \"Thank you both.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mira vjen nga kuzhina me çaj.",
+              "english": "Mira comes from the kitchen with tea."
+            },
+            {
+              "text": "— Tani një pjesë tjetër — thotë Gjergji. — Një film për një djalë të vogël dhe një liqen.",
+              "english": "\"Now another part,\" says Gjergj. \"A film about a little boy and a lake.\""
+            },
+            {
+              "text": "Ai hap filmin dhe ulet pranë Samit.",
+              "english": "He opens the film and sits down next to Sam."
+            },
+            {
+              "text": "Në fillim të filmit djali është i vetëm në një shtëpi pranë liqenit.",
+              "english": "At the beginning of the film the boy is alone in a house near the lake."
+            },
+            {
+              "text": "Natën vjen një stuhi me bubullimë dhe vetëtimë.",
+              "english": "At night a storm comes with thunder and lightning."
+            },
+            {
+              "text": "Drita fiket dhe djali ndez një llambë.",
+              "english": "The light goes out and the boy lights a lamp."
+            },
+            {
+              "text": "Era e madhe thyen dritaren, dhe ai bërtet dhe qan.",
+              "english": "The strong wind breaks the window, and he shouts and cries."
+            },
+            {
+              "text": "Në mur ka një hije të madhe.",
+              "english": "On the wall there is a big shadow."
+            },
+            {
+              "text": "Pastaj djali dëgjon një zë nga shpella. Shpella është e ulët dhe e ngushtë.",
+              "english": "Then the boy hears a voice from the cave. The cave is low and narrow."
+            },
+            {
+              "text": "Mjegulla është e trashë pranë shkëmbit të lartë.",
+              "english": "The fog is thick near the high rock."
+            },
+            {
+              "text": "Djali ka frikë, por është trim.",
+              "english": "The boy is afraid, but he is brave."
+            },
+            {
+              "text": "Ai hap portën e vjetër dhe zbret shkallët e ngushta dhe të gjata.",
+              "english": "He opens the old door and goes down the narrow, long stairs."
+            },
+            {
+              "text": "Atje gjen një gjarpër, por nuk ka rrezik.",
+              "english": "There he finds a snake, but there is no danger."
+            },
+            {
+              "text": "Gjarpri e çon djalin në shtëpi, dhe djali kthen kokën dhe buzëqesh.",
+              "english": "The snake takes the boy home, and the boy turns his head and smiles."
+            },
+            {
+              "text": "Sam e shikon me sy të mëdhenj.",
+              "english": "Sam watches it with big eyes."
+            },
+            {
+              "text": "— Çfarë lloj filmi është ky? — pyet ai.",
+              "english": "\"What kind of film is this?\" he asks."
+            },
+            {
+              "text": "— Është një film për fëmijë, nga një histori e vjetër — thotë Gjergji.",
+              "english": "\"It is a film for children, from an old story,\" says Gjergj."
+            },
+            {
+              "text": "Mira i thotë: — Dreka është në tavolinë!",
+              "english": "Mira tells them: \"Lunch is on the table!\""
+            },
+            {
+              "text": "— Në fund fike kompjuterin — i thotë Gjergji Samit.",
+              "english": "\"At the end switch off the computer,\" Gjergj tells Sam."
+            },
+            {
+              "text": "Sam e fik, e mbyll dhe buzëqesh.",
+              "english": "Sam switches it off, closes it and smiles."
+            },
+            {
+              "text": "— Faleminderit, Gjergj. Ti je një mësues i mirë — thotë ai.",
+              "english": "\"Thank you, Gjergj. You are a good teacher,\" he says."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

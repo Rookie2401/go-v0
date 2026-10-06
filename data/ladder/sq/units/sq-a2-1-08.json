@@ -1,0 +1,483 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-08",
+  "lang": "sq",
+  "title": "Tirana — qyteti ku jetoj",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-08",
+    "title": "Albanian ladder, a2-1: Tirana — qyteti ku jetoj (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Nonfiction: facts about Tirana for a person to check: capital of Albania since 1920; population more than 500,000; Mount Dajti near the city; Skanderbeg Square named after the national hero; the National Historical Museum on the square; main boulevard from the square to the University of Tirana; park with a small lake behind the university; a river with old bridges; the international airport about 20 km from the centre; a town hall (bashki) in the centre. Also check \"muzetë\" (definite plural, not read by the adapter, avoided) and the letter-opening \"Të dashur miq\"."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "nonfiction"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "nonfiction"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Tirana — qyteti ku jetoj",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam shkruan një letër për bashkësinë e tij në Amerikë.",
+              "english": "Sam writes a letter for his congregation in America."
+            },
+            {
+              "text": "Luani e lexon letrën para se ai ta dërgojë.",
+              "english": "Luan reads the letter before he sends it."
+            },
+            {
+              "text": "Ja çfarë shkruan Sam:",
+              "english": "Here is what Sam writes:"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të dashur miq,",
+              "english": "Dear friends,"
+            },
+            {
+              "text": "Quhem Sam dhe jetoj në Tiranë.",
+              "english": "My name is Sam and I live in Tirana."
+            },
+            {
+              "text": "Dua të flas për këtë qytet.",
+              "english": "I want to speak about this town."
+            },
+            {
+              "text": "Tirana është kryeqyteti i Shqipërisë.",
+              "english": "Tirana is the capital of Albania."
+            },
+            {
+              "text": "Ajo është kryeqyteti i vendit që nga viti 1920.",
+              "english": "It has been the capital of the country since 1920."
+            },
+            {
+              "text": "Shqipëria është një republikë, dhe këtu ndodhen zyrat e shtetit.",
+              "english": "Albania is a republic, and the offices of the state are here."
+            },
+            {
+              "text": "Si çdo republikë, edhe ajo ka kryeqytetin e saj.",
+              "english": "Like every republic, it too has its capital."
+            },
+            {
+              "text": "Qyteti ndodhet në qendër të vendit, midis kodrave dhe maleve.",
+              "english": "The city lies in the centre of the country, between hills and mountains."
+            },
+            {
+              "text": "Pranë tij ka një mal të madh, që quhet mali i Dajtit.",
+              "english": "Near it there is a big mountain, called Mount Dajti."
+            },
+            {
+              "text": "Mali i Dajtit është shumë i njohur, dhe njerëzit ngjiten atje çdo të diel.",
+              "english": "Mount Dajti is very well known, and people go up there every Sunday."
+            },
+            {
+              "text": "Popullsia e Tiranës është e madhe: këtu jetojnë më shumë se 500.000 banorë.",
+              "english": "The population of Tirana is large: more than 500,000 inhabitants live here."
+            },
+            {
+              "text": "Popullsia është e re, sepse shumë të rinj vijnë këtu për punë dhe për universitetin.",
+              "english": "The population is young, because many young people come here for work and for the university."
+            },
+            {
+              "text": "Shumica e banorëve kanë ardhur nga qytete e fshatra të tjera.",
+              "english": "Most of the inhabitants have come from other towns and villages."
+            },
+            {
+              "text": "Dikur shumë njerëz u larguan nga fshati, sepse nuk kishin punë.",
+              "english": "Once many people left the village, because they had no work."
+            },
+            {
+              "text": "Ata erdhën këtu dhe e ndërtuan qytetin e ri.",
+              "english": "They came here and built the new city."
+            },
+            {
+              "text": "Sot një pakicë e banorëve punon në bujqësi.",
+              "english": "Today a minority of the inhabitants work in farming."
+            },
+            {
+              "text": "Shumica punojnë në zyra, në shkolla, në dyqane dhe në fabrika.",
+              "english": "Most work in offices, in schools, in shops and in factories."
+            },
+            {
+              "text": "Tirana ka ndryshuar shumë.",
+              "english": "Tirana has changed a lot."
+            },
+            {
+              "text": "Ky është një ndryshim i madh: ndërtesa të vjetra dhe ndërtesa të reja ndodhen bashkë.",
+              "english": "It is a big change: old buildings and new buildings stand together."
+            },
+            {
+              "text": "Shteti dhe populli e ndërtojnë qytetin çdo ditë.",
+              "english": "The state and the people build the city every day."
+            },
+            {
+              "text": "Në kryeqytet çdo ditë ka më shumë banorë dhe më shumë makina.",
+              "english": "In the capital every day there are more inhabitants and more cars."
+            },
+            {
+              "text": "Popullsia e qytetit rritet çdo vit.",
+              "english": "The population of the city grows every year."
+            },
+            {
+              "text": "Të gjitha zyrat e republikës janë në Tiranë.",
+              "english": "All the offices of the republic are in Tirana."
+            },
+            {
+              "text": "Rreth qytetit ka kodra dhe male.",
+              "english": "Around the city there are hills and mountains."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Qyteti ka një bashki, që ndodhet në qendër, pranë sheshit.",
+              "english": "The city has a town hall, which stands in the centre, near the square."
+            },
+            {
+              "text": "Në bashki ka zyra, dhe çdo banor mund të marrë atje një dokument.",
+              "english": "In the town hall there are offices, and every inhabitant can get a document there."
+            },
+            {
+              "text": "Bashkia ndërton edhe parqe dhe rrugë të reja.",
+              "english": "The town hall also builds parks and new roads."
+            },
+            {
+              "text": "Zyra e bashkisë hapet në orën tetë.",
+              "english": "The office of the town hall opens at eight."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Qendra e qytetit quhet Sheshi Skënderbej.",
+              "english": "The centre of the city is called Skanderbeg Square."
+            },
+            {
+              "text": "Ky shesh ka emrin e një burri të madh të popullit tonë.",
+              "english": "This square bears the name of a great man of our people."
+            },
+            {
+              "text": "Në shesh ndodhet Muzeu Historik Kombëtar.",
+              "english": "On the square stands the National Historical Museum."
+            },
+            {
+              "text": "Ky muze tregon historinë e vendit.",
+              "english": "This museum tells the history of the country."
+            },
+            {
+              "text": "Ai është muzeu kombëtar i të gjithë vendit.",
+              "english": "It is the national museum of the whole country."
+            },
+            {
+              "text": "Ditët kombëtare njerëzit mblidhen në shesh.",
+              "english": "On national days people gather on the square."
+            },
+            {
+              "text": "Rreth sheshit ka shumë ndërtesa të vjetra.",
+              "english": "Around the square there are many old buildings."
+            },
+            {
+              "text": "Qendra historike është e vogël, dhe mund ta shohësh gjithë në një ditë.",
+              "english": "The historic centre is small, and you can see all of it in one day."
+            },
+            {
+              "text": "Përpara muzeut ka shumë njerëz që ecin e flasin.",
+              "english": "In front of the museum there are many people walking and talking."
+            },
+            {
+              "text": "Pranë sheshit ka hotele, dyqane dhe zyra.",
+              "english": "Near the square there are hotels, shops and offices."
+            },
+            {
+              "text": "Vizitorët rrinë në hotele të vogla ose të mëdha.",
+              "english": "Visitors stay in small or big hotels."
+            },
+            {
+              "text": "Përpara hotelit të vjetër ka gjithmonë një radhë makinash.",
+              "english": "In front of the old hotel there is always a line of cars."
+            },
+            {
+              "text": "Nga sheshi fillon një bulevard i gjerë dhe i gjatë.",
+              "english": "From the square begins a wide and long boulevard."
+            },
+            {
+              "text": "Ai është bulevardi kryesor i qytetit.",
+              "english": "It is the main boulevard of the city."
+            },
+            {
+              "text": "Çdo mbrëmje njerëzit ecin në bulevard dhe flasin.",
+              "english": "Every evening people walk on the boulevard and talk."
+            },
+            {
+              "text": "Në fund të bulevardit ndodhet universiteti.",
+              "english": "At the end of the boulevard stands the university."
+            },
+            {
+              "text": "Universiteti i Tiranës është një nga universitetet më të njohura të vendit.",
+              "english": "The University of Tirana is one of the best-known universities of the country."
+            },
+            {
+              "text": "Atje mësojnë shumë të rinj nga i gjithë vendi.",
+              "english": "Many young people from the whole country study there."
+            },
+            {
+              "text": "Midis sheshit dhe parkut ndodhet bulevardi.",
+              "english": "Between the square and the park stands the boulevard."
+            },
+            {
+              "text": "Përpara universitetit ka gjithmonë shumë të rinj.",
+              "english": "In front of the university there are always many young people."
+            },
+            {
+              "text": "Pas universitetit është parku.",
+              "english": "Behind the university is the park."
+            },
+            {
+              "text": "Parku është i madh dhe i gjelbër, dhe tek parku ka një liqen të vogël.",
+              "english": "The park is big and green, and by the park there is a small lake."
+            },
+            {
+              "text": "Njerëzit ecin atje në mbrëmje, dhe fëmijët luajnë.",
+              "english": "People walk there in the evening, and children play."
+            },
+            {
+              "text": "Një lumë i vogël kalon pranë qendrës.",
+              "english": "A small river passes near the centre."
+            },
+            {
+              "text": "Mbi lumë ka disa ura të vjetra.",
+              "english": "Over the river there are some old bridges."
+            },
+            {
+              "text": "Një nga urat njihet si ura e vjetër e qytetit.",
+              "english": "One of the bridges is known as the old bridge of the city."
+            },
+            {
+              "text": "Tek ura njerëzit rrinë dhe shikojnë ujin.",
+              "english": "At the bridge people stay and look at the water."
+            },
+            {
+              "text": "Ura e vjetër është një ndërtesë historike.",
+              "english": "The old bridge is a historic building."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Midis qendrës dhe aeroportit ka një rrugë të gjatë.",
+              "english": "Between the centre and the airport there is a long road."
+            },
+            {
+              "text": "Aeroporti ndërkombëtar ndodhet rreth 20 km nga qendra.",
+              "english": "The international airport is about 20 km from the centre."
+            },
+            {
+              "text": "Çdo ditë aty vijnë njerëz nga shumë shtete.",
+              "english": "Every day people come there from many countries."
+            },
+            {
+              "text": "Brenda qytetit njerëzit shkojnë me autobus ose me furgon.",
+              "english": "Inside the city people go by bus or by minibus."
+            },
+            {
+              "text": "Rruga kryesore për në aeroport është e gjatë.",
+              "english": "The main road to the airport is long."
+            },
+            {
+              "text": "Stacioni kryesor i autobusëve është pranë qendrës.",
+              "english": "The main bus station is near the centre."
+            },
+            {
+              "text": "Biletën e blen te shoferi, dhe çmimi është i vogël.",
+              "english": "You buy the ticket from the driver, and the price is small."
+            },
+            {
+              "text": "Autobusët kanë shpesh vonesë, sepse rrugët janë të ngushta.",
+              "english": "The buses are often late, because the roads are narrow."
+            },
+            {
+              "text": "Në qytet ka edhe shkolla ndërkombëtare dhe festa kulturore.",
+              "english": "In the city there are also international schools and cultural festivals."
+            },
+            {
+              "text": "Jeta kulturore e Tiranës është e madhe, dhe disa muze janë një pjesë e saj.",
+              "english": "The cultural life of Tirana is great, and some museums are a part of it."
+            },
+            {
+              "text": "Një muze mbledh gjëra të vjetra nga fshatrat.",
+              "english": "A museum collects old things from the villages."
+            },
+            {
+              "text": "Shkrimtarët tanë shkruajnë poezi dhe tregime, dhe gazetat dhe revistat sjellin lajme.",
+              "english": "Our writers write poems and stories, and the newspapers and magazines bring news."
+            },
+            {
+              "text": "Çdo vit ka një javë kulturore dhe një festë ndërkombëtare.",
+              "english": "Every year there is a cultural week and an international festival."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jeta në qytet nuk është gjithmonë e qetë.",
+              "english": "Life in the city is not always calm."
+            },
+            {
+              "text": "Në rrugë ka shumë makina, dhe disa shoferë bërtasin.",
+              "english": "On the road there are many cars, and some drivers shout."
+            },
+            {
+              "text": "Rreziku është më i madh kur njerëzit ecin shpejt.",
+              "english": "The danger is greater when people walk fast."
+            },
+            {
+              "text": "Makinat janë shkak i shumë gjërave të vështira.",
+              "english": "Cars are the cause of many hard things."
+            },
+            {
+              "text": "Në treg zërat e shitësve dëgjohen nga larg.",
+              "english": "In the market the voices of the sellers are heard from far away."
+            },
+            {
+              "text": "Një ditë pashë një gjë tek tregu.",
+              "english": "One day I saw something at the market."
+            },
+            {
+              "text": "Një djalë i vogël thyen dritaren e një dyqani me një gur.",
+              "english": "A little boy broke the window of a shop with a stone."
+            },
+            {
+              "text": "Ai kishte frikë dhe qante.",
+              "english": "He was afraid and was crying."
+            },
+            {
+              "text": "Shitësi nuk bërtiti.",
+              "english": "The seller did not shout."
+            },
+            {
+              "text": "Ai e la djalin të shkonte dhe ia ktheu kusurin e një leku.",
+              "english": "He let the boy go and gave back the change of a lek."
+            },
+            {
+              "text": "Kështu mendoj unë: njerëzit e Tiranës nuk kanë shumë para, por kanë një pasuri tjetër.",
+              "english": "This is what I think: the people of Tirana do not have much money, but they have another wealth."
+            },
+            {
+              "text": "Ajo pasuri është se ata janë njerëz të mirë.",
+              "english": "That wealth is that they are good people."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Bashkësia jonë është e vogël.",
+              "english": "Our congregation is small."
+            },
+            {
+              "text": "Ne mblidhemi çdo të diel, dhe çdo anëtar sjell diçka.",
+              "english": "We gather every Sunday, and every member brings something."
+            },
+            {
+              "text": "Unë jam anëtar i bashkësisë që para dy javësh, por ende nuk i njoh të gjithë.",
+              "english": "I have been a member of the congregation for two weeks, but I still do not know everyone."
+            },
+            {
+              "text": "Nuk ka rrezik të jem i vetëm: këtu çdo njeri më thotë mirëdita.",
+              "english": "There is no danger of my being alone: here everyone says good day to me."
+            },
+            {
+              "text": "Kjo letër është e shkurtër, sepse qyteti është shumë i madh për një letër.",
+              "english": "This letter is short, because the city is too big for one letter."
+            },
+            {
+              "text": "Do të dërgoj edhe fotografi, dhe një ditë do të vini këtu.",
+              "english": "I will send photographs too, and one day you will come here."
+            },
+            {
+              "text": "Faleminderit për lutjet tuaja.",
+              "english": "Thank you for your prayers."
+            },
+            {
+              "text": "Sam",
+              "english": "Sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Luani e lexon letrën nga fillimi në fund dhe buzëqesh.",
+              "english": "Luan reads the letter from beginning to end and smiles."
+            },
+            {
+              "text": "— Është një letër e mirë, Sam — thotë ai.",
+              "english": "\"It is a good letter, Sam,\" he says."
+            },
+            {
+              "text": "— Ka vetëm një gjë: Tirana është më shumë se muze, ura dhe aeroporte.",
+              "english": "\"There is only one thing: Tirana is more than museums, bridges and airports.\""
+            },
+            {
+              "text": "— Ka njerëz. Dhe ti tani je një prej tyre.",
+              "english": "\"It has people. And you are now one of them.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

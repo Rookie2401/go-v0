@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-05",
+  "lang": "sq",
+  "title": "Në postë dhe në bankë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-05",
+    "title": "Albanian ladder, a2-1: Në postë dhe në bankë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Procedure at a bank and a post office is a simplified invention (a foreigner opens an account with a passport and a work contract; card after three days; bank hours 8-16; postage 700 lek for America): a person should check the procedure, the amounts and the polite forms with ju (\"do të doja\", \"a mund të më thoni\"). The word \"pako\" is not known to the adapter, so the story sends an envelope."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "practical"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Në postë dhe në bankë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sot Sam ka dy punë të rëndësishme.",
+              "english": "Today Sam has two important jobs."
+            },
+            {
+              "text": "Ai duhet të hapë një llogari në bankë dhe të dërgojë një letër.",
+              "english": "He has to open an account at the bank and send a letter."
+            },
+            {
+              "text": "Mira vjen me të, sepse ajo i njeh zyrat e qytetit.",
+              "english": "Mira comes with him, because she knows the offices of the town."
+            },
+            {
+              "text": "— Sam, pa llogari nuk merr pagën — i thotë ajo.",
+              "english": "\"Sam, without an account you do not get your pay,\" she tells him."
+            },
+            {
+              "text": "— Paga ime vjen nga jashtë, nga bashkësia ime — thotë Sam.",
+              "english": "\"My pay comes from abroad, from my congregation,\" says Sam."
+            },
+            {
+              "text": "— Banka është pranë qendrës — thotë Mira. — Është një ndërtesë e re, e madhe dhe e bukur.",
+              "english": "\"The bank is near the centre,\" says Mira. \"It is a new building, big and beautiful.\""
+            },
+            {
+              "text": "— Ne e ndërtuam qytetin, por jo gjithmonë mirë — buzëqesh ajo.",
+              "english": "\"We built the town, but not always well,\" she smiles."
+            },
+            {
+              "text": "— Ka një ndryshim të madh nga vitet e tjera.",
+              "english": "\"There is a big change from other years.\""
+            },
+            {
+              "text": "Në çantë Sam ka pasaportën dhe dokumentet e tjera.",
+              "english": "In his bag Sam has the passport and the other documents."
+            },
+            {
+              "text": "Ai i shikon dokumentet edhe një herë: njëri është kontrata e punës.",
+              "english": "He looks at the documents once more: one of them is the work contract."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në bankë ka një radhë të gjatë.",
+              "english": "At the bank there is a long queue."
+            },
+            {
+              "text": "Secili merr një numër dhe pret.",
+              "english": "Everyone takes a number and waits."
+            },
+            {
+              "text": "Secili ka një punë tjetër: njëri paguan, një tjetër merr pagën.",
+              "english": "Everyone has a different business: one pays, another gets his pay."
+            },
+            {
+              "text": "Sam nuk largohet nga radha.",
+              "english": "Sam does not leave the queue."
+            },
+            {
+              "text": "Para tij një burrë i vjetër flet me një zonjë të re.",
+              "english": "In front of him an old man speaks with a young lady."
+            },
+            {
+              "text": "Burri vjen nga një fshat tjetër dhe punon në bujqësi.",
+              "english": "The man comes from another village and works in farming."
+            },
+            {
+              "text": "Njëri nga banorët e fshatit të tij ka një llogari këtu.",
+              "english": "One of the inhabitants of his village has an account here."
+            },
+            {
+              "text": "— Shumica e njerëzve nga fshati vijnë këtu një herë në javë — thotë Mira.",
+              "english": "\"Most of the people from the village come here once a week,\" says Mira."
+            },
+            {
+              "text": "— Një pakicë e tyre punon në fabrikë, dhe pagën e marrin këtu.",
+              "english": "\"A minority of them work in a factory, and they get their pay here.\""
+            },
+            {
+              "text": "Secili e di se banka hapet herët.",
+              "english": "Everyone knows that the bank opens early."
+            },
+            {
+              "text": "Pastaj vjen radha e Samit.",
+              "english": "Then it is Sam's turn."
+            },
+            {
+              "text": "Ai ulet para zonjës së re në zyrë.",
+              "english": "He sits down in front of the young lady in the office."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Mirëdita. Do të doja të hap një llogari — thotë Sam.",
+              "english": "\"Good day. I would like to open an account,\" says Sam."
+            },
+            {
+              "text": "— Mirëdita. Urdhëroni, uluni. Keni pasaportë? — pyet ajo.",
+              "english": "\"Good day. Please, sit down. Do you have a passport?\" she asks."
+            },
+            {
+              "text": "— Po, urdhëroni pasaportën.",
+              "english": "\"Yes, here you are, the passport.\""
+            },
+            {
+              "text": "— A keni edhe një dokument tjetër?",
+              "english": "\"Do you have another document as well?\""
+            },
+            {
+              "text": "— Kam kontratën e punës nga bashkësia.",
+              "english": "\"I have the work contract from the congregation.\""
+            },
+            {
+              "text": "— Mirë. Ky dokument është i rëndësishëm për llogarinë.",
+              "english": "\"Good. This document is important for the account.\""
+            },
+            {
+              "text": "Zonja merr formularin dhe thotë: — Duhet të shkruani emrin dhe adresën këtu, ju lutem.",
+              "english": "The lady takes the form and says: \"You have to write your name and address here, please.\""
+            },
+            {
+              "text": "— A mund të më thoni, ju lutem, ku është numri i pasaportës?",
+              "english": "\"Could you tell me, please, where the passport number is?\""
+            },
+            {
+              "text": "— Është këtu, nën emrin tuaj.",
+              "english": "\"It is here, under your name.\""
+            },
+            {
+              "text": "Sam shkruan emrin, adresën dhe numrin e celularit.",
+              "english": "Sam writes his name, his address and his mobile number."
+            },
+            {
+              "text": "Zonja regjistron numrin e pasaportës.",
+              "english": "The lady registers the passport number."
+            },
+            {
+              "text": "— Tani ju lutem nënshkruani këtu.",
+              "english": "\"Now please sign here.\""
+            },
+            {
+              "text": "— A duhet të nënshkruaj edhe kontratën?",
+              "english": "\"Do I have to sign the contract too?\""
+            },
+            {
+              "text": "— Po, nënshkruani edhe atë. Kjo është kërkesa juaj për llogari.",
+              "english": "\"Yes, sign that too. This is your request for an account.\""
+            },
+            {
+              "text": "Sam e lexon formularin dhe e kupton. Pastaj ai nënshkruan formularin dhe kontratën.",
+              "english": "Sam reads the form and understands it. Then he signs the form and the contract."
+            },
+            {
+              "text": "— Kërkesa juaj shkon te një zyrë tjetër, por llogaria është e regjistruar sot — thotë zonja.",
+              "english": "\"Your request goes to another office, but the account is registered today,\" says the lady."
+            },
+            {
+              "text": "— Do ta regjistrojmë edhe kartën. Kartën do ta merrni pas tri ditësh.",
+              "english": "\"We will register the card as well. You will receive the card in three days.\""
+            },
+            {
+              "text": "— Kjo kartë ka vlerë vetëm për ju.",
+              "english": "\"This card has value only for you.\""
+            },
+            {
+              "text": "— Një pyetje: sa është sasia që mund të marr në ditë? — pyet Sam.",
+              "english": "\"One question: what is the amount I can take out in a day?\" asks Sam."
+            },
+            {
+              "text": "— Sasia është e vogël çdo ditë, por vlera e pagës mbetet në llogari.",
+              "english": "\"The amount is small every day, but the value of the pay stays in the account.\""
+            },
+            {
+              "text": "— Një sasi e madhe nuk merret pa një kërkesë tjetër.",
+              "english": "\"A large amount cannot be taken without another request.\""
+            },
+            {
+              "text": "— A kam nevojë për diçka tjetër?",
+              "english": "\"Do I need anything else?\""
+            },
+            {
+              "text": "— Nuk keni nevojë për asgjë tjetër. Nëse keni nevojë, ejani edhe një herë te unë.",
+              "english": "\"You do not need anything else. If you need anything, come to me once more.\""
+            },
+            {
+              "text": "— Banka hapet në orën tetë dhe mbyllet në orën katër. Ky është orari i bankës.",
+              "english": "\"The bank opens at eight and closes at four. This is the bank's timetable.\""
+            },
+            {
+              "text": "Sam e shkruan orarin e bankës në një shënim. Pastaj ai i thotë faleminderit zonjës dhe del me Mirën.",
+              "english": "Sam writes down the bank's timetable on a note. Then he says thank you to the lady and goes out with Mira."
+            },
+            {
+              "text": "— Nuk ishte e vështirë, apo jo? — pyet Mira.",
+              "english": "\"It was not difficult, was it?\" asks Mira."
+            },
+            {
+              "text": "— Jo, por pa ty do të ishte e vështirë — thotë Sam.",
+              "english": "\"No, but without you it would have been difficult,\" says Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Posta është në një ndërtesë tjetër, pranë stacionit.",
+              "english": "The post office is in another building, near the station."
+            },
+            {
+              "text": "Orari i postës është më i gjatë, dhe radha është e shkurtër.",
+              "english": "The post office's timetable is longer, and the queue is short."
+            },
+            {
+              "text": "Sam ka një letër dhe një kartolinë për bashkësinë e tij në Amerikë.",
+              "english": "Sam has a letter and a postcard for his congregation in America."
+            },
+            {
+              "text": "— Mirëdita. Do të dërgoja këtë zarf në Amerikë — thotë ai.",
+              "english": "\"Good day. I would like to send this envelope to America,\" he says."
+            },
+            {
+              "text": "— Urdhëroni. Shkruani adresën në zarf — i thotë zonja.",
+              "english": "\"Please. Write the address on the envelope,\" the lady tells him."
+            },
+            {
+              "text": "— Sa kushton?",
+              "english": "\"How much does it cost?\""
+            },
+            {
+              "text": "— Ky zarf ka vlerë të vogël, por ky zarf kushton 700 lekë.",
+              "english": "\"This envelope has little value, but sending it costs 700 lek.\""
+            },
+            {
+              "text": "Sam paguan dhe merr një faturë.",
+              "english": "Sam pays and gets a receipt."
+            },
+            {
+              "text": "— Sa ditë do të duhen?",
+              "english": "\"How many days will it take?\""
+            },
+            {
+              "text": "— Dhjetë ditë ose më shumë.",
+              "english": "\"Ten days or more.\""
+            },
+            {
+              "text": "Zonja mbyll zarfin dhe e hedh në një çantë të madhe.",
+              "english": "The lady closes the envelope and puts it into a big bag."
+            },
+            {
+              "text": "Sam i thotë faleminderit dhe del nga posta.",
+              "english": "Sam says thank you and leaves the post office."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Tani ke një punë tjetër — buzëqesh Mira.",
+              "english": "\"Now you have another job,\" smiles Mira."
+            },
+            {
+              "text": "— Të dielën bashkësia ka një drekë të madhe, dhe unë do të gatuaj byrek.",
+              "english": "\"On Sunday the congregation has a big lunch, and I will cook byrek.\""
+            },
+            {
+              "text": "Ajo i jep Samit një shënim me gjërat që duhen.",
+              "english": "She gives Sam a note with the things that are needed."
+            },
+            {
+              "text": "Në shënim shkruan: miell, vezë, vaj, kripë, spinaq dhe kos.",
+              "english": "On the note it says: flour, eggs, oil, salt, spinach and yoghurt."
+            },
+            {
+              "text": "Sam shkon në treg dhe blen të gjitha gjërat.",
+              "english": "Sam goes to the market and buys all the things."
+            },
+            {
+              "text": "Në mbrëmje ai është në kuzhinën e Mirës.",
+              "english": "In the evening he is in Mira's kitchen."
+            },
+            {
+              "text": "Ai nuk di të gatuajë mirë, por do të mësojë.",
+              "english": "He does not know how to cook well, but he wants to learn."
+            },
+            {
+              "text": "Mira përzien miellin me vezët dhe me vajin.",
+              "english": "Mira mixes the flour with the eggs and the oil."
+            },
+            {
+              "text": "Sam shton kripën dhe pastron spinaqin.",
+              "english": "Sam adds the salt and cleans the spinach."
+            },
+            {
+              "text": "— Kosi duhet të jetë i trashë, jo i hollë — thotë Mira.",
+              "english": "\"The yoghurt must be thick, not thin,\" says Mira."
+            },
+            {
+              "text": "Ajo e hedh spinaqin në byrek me një lugë.",
+              "english": "She puts the spinach into the byrek with a spoon."
+            },
+            {
+              "text": "Sam e pret byrekun me thikë, dhe pastaj Mira e pjek në furrë.",
+              "english": "Sam cuts the byrek with a knife, and then Mira bakes it in the oven."
+            },
+            {
+              "text": "Mira ndryshon pak recetën e gjyshes dhe shton më shumë spinaq.",
+              "english": "Mira changes her grandmother's recipe a little and adds more spinach."
+            },
+            {
+              "text": "— Ky është një ushqim i vjetër i popullit tonë — thotë ajo.",
+              "english": "\"This is an old food of our people,\" she says."
+            },
+            {
+              "text": "— Në Amerikë çdo shtet ka një ushqim tjetër — thotë Sam.",
+              "english": "\"In America every state has a different food,\" says Sam."
+            },
+            {
+              "text": "— Një ushqim i mirë është një pasuri e familjes — thotë Mira.",
+              "english": "\"Good food is a wealth of the family,\" says Mira."
+            },
+            {
+              "text": "Kur byreku del nga furra, Sam e ha dhe buzëqesh.",
+              "english": "When the byrek comes out of the oven, Sam eats it and smiles."
+            },
+            {
+              "text": "— Është shumë i mirë! — thotë ai.",
+              "english": "\"It is very good!\" he says."
+            },
+            {
+              "text": "Pastaj ata pinë çaj dhe flasin për bankën, për postën dhe për ditën e gjatë.",
+              "english": "Then they drink tea and talk about the bank, the post office and the long day."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

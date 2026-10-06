@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-13",
+  "lang": "sq",
+  "title": "Një ditë në Durrës",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-13",
+    "title": "Albanian ladder, a2-1: Një ditë në Durrës (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Day trip to Durrës. Facts to check: Durrës is the second city of the republic; there is a train from Tirana to Durrës (check that it is a real, running service; the story only says \"treni\"); a bigger island near Vlorë (Sazan); a sea trip on a small ship. Everything else is invented."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një ditë në Durrës",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën në verë Sami, Luani, Ana, Ardi dhe Elira shkuan në Durrës.",
+              "english": "On a Saturday in summer Sam, Luan, Ana, Ardi and Elira went to Durrës."
+            },
+            {
+              "text": "Ishte dita e parë e pushimit të tyre.",
+              "english": "It was the first day of their holiday."
+            },
+            {
+              "text": "Ata u nisën herët nga stacioni i Tiranës.",
+              "english": "They set off early from the station of Tirana."
+            },
+            {
+              "text": "Në stacion kishte një tabelë të madhe me shkronja të kuqe: «DURRËS».",
+              "english": "At the station there was a big sign with red letters: \"DURRËS\"."
+            },
+            {
+              "text": "— Ja treni ynë! — tha Ardi me zë të madh dhe vrapoi te dera.",
+              "english": "\"There is our train!\" said Ardi in a loud voice and ran to the door."
+            },
+            {
+              "text": "Treni kishte shumë njerëz që shkonin në plazh.",
+              "english": "The train had many people who were going to the beach."
+            },
+            {
+              "text": "Në tren Luani lexonte gazetën, dhe Ana lexonte një revistë.",
+              "english": "On the train Luan was reading the newspaper, and Ana was reading a magazine."
+            },
+            {
+              "text": "— Ka një lajm të bukur për bregdetin — tha Luani.",
+              "english": "\"There is nice news about the coast,\" said Luan."
+            },
+            {
+              "text": "— Këtë verë hoteli i ri hapet pranë plazhit.",
+              "english": "\"This summer the new hotel opens near the beach.\""
+            },
+            {
+              "text": "Sami nuk lexonte gazetë: ai kishte një roman në çantë.",
+              "english": "Sam was not reading a newspaper: he had a novel in his bag."
+            },
+            {
+              "text": "— Një shkrimtar i njohur ka shkruar një tregim për detin — tha ai.",
+              "english": "\"A well-known writer has written a story about the sea,\" he said."
+            },
+            {
+              "text": "— Ka edhe një poezi në fund të librit.",
+              "english": "\"There is also a poem at the end of the book.\""
+            },
+            {
+              "text": "Pranë tyre ishte një grup nga një shkollë, dhe çdo anëtar i grupit këndonte.",
+              "english": "Next to them was a group from a school, and every member of the group was singing."
+            },
+            {
+              "text": "— Ende nuk e di ku është plazhi — tha Elira.",
+              "english": "\"I do not know yet where the beach is,\" said Elira."
+            },
+            {
+              "text": "— Akoma një orë — tha Ana.",
+              "english": "\"Another hour,\" said Ana."
+            },
+            {
+              "text": "Ardi dhe Elira mblidhnin gurë të vegjël që kishin sjellë nga shtëpia.",
+              "english": "Ardi and Elira were collecting little stones that they had brought from home."
+            },
+            {
+              "text": "Ata luanin dhe buzëqeshnin gjithë rrugën.",
+              "english": "They played and smiled all the way."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kur arritën në Durrës, dielli ishte i lartë.",
+              "english": "When they arrived in Durrës, the sun was high."
+            },
+            {
+              "text": "Durrësi është një qytet i madh në bregdet, dhe popullsia e tij rritet në verë.",
+              "english": "Durrës is a big city on the coast, and its population grows in summer."
+            },
+            {
+              "text": "Është qyteti i dytë i republikës.",
+              "english": "It is the second city of the republic."
+            },
+            {
+              "text": "Ata ecën në një bulevard të gjerë, pranë detit.",
+              "english": "They walked along a wide boulevard, near the sea."
+            },
+            {
+              "text": "Ardi tregoi një tabelë tjetër me shkronja të bardha: «Bregdeti i Durrësit».",
+              "english": "Ardi pointed to another sign with white letters: \"The coast of Durrës\"."
+            },
+            {
+              "text": "Nga larg panë një muze të vjetër dhe një shesh të njohur me shumë njerëz.",
+              "english": "From far away they saw an old museum and a well-known square with many people."
+            },
+            {
+              "text": "— Ky qytet ka një histori shumë të gjatë — tha Luani. — Unë studioj historinë e tij në libra të vjetër.",
+              "english": "\"This city has a very long history,\" said Luan. \"I study its history in old books.\""
+            },
+            {
+              "text": "— Treni vjen nga kryeqyteti çdo orë, dhe muzeu është një muze kombëtar — shtoi ai.",
+              "english": "\"The train comes from the capital every hour, and the museum is a national museum,\" he added."
+            },
+            {
+              "text": "— Atë historik e lexova në një tekst.",
+              "english": "\"I read that history in a text.\""
+            },
+            {
+              "text": "— Do ta shohim muzeun nesër — tha Ana. — Sot është dita e detit.",
+              "english": "\"We will see the museum tomorrow,\" said Ana. \"Today is the day of the sea.\""
+            },
+            {
+              "text": "Në plazh nuk kishte tepër njerëz.",
+              "english": "On the beach there were not too many people."
+            },
+            {
+              "text": "Rëra ishte e ngrohtë dhe uji ishte i bukur dhe i ftohtë.",
+              "english": "The sand was warm and the water was beautiful and cold."
+            },
+            {
+              "text": "Ardi dhe Elira vrapuan në det dhe notuan shumë.",
+              "english": "Ardi and Elira ran into the sea and swam a lot."
+            },
+            {
+              "text": "Sami notoi pak, pastaj u ul në rërë dhe lexoi tregimin.",
+              "english": "Sam swam a little, then sat on the sand and read the story."
+            },
+            {
+              "text": "Ana e shikonte detin dhe mendoi për punën e saj.",
+              "english": "Ana looked at the sea and thought of her work."
+            },
+            {
+              "text": "— Si infermiere kam një këshillë — tha ajo.",
+              "english": "\"As a nurse I have a piece of advice,\" she said."
+            },
+            {
+              "text": "— Mos rrini shumë në diell, sepse trupi ka nevojë për hije.",
+              "english": "\"Do not stay long in the sun, because the body needs shade.\""
+            },
+            {
+              "text": "— Në farmaci ka ilaçe për diellin, por këshilla më e mirë është hija.",
+              "english": "\"In the pharmacy there are medicines for the sun, but the best advice is shade.\""
+            },
+            {
+              "text": "Elira u kthye me një gjë të vogël në këmbë.",
+              "english": "Elira came back with a little something on her foot."
+            },
+            {
+              "text": "— Ana, kam gjak! — tha ajo me zë të lartë.",
+              "english": "\"Ana, I have blood!\" she said in a loud voice."
+            },
+            {
+              "text": "Ana e kontrolloi dhe buzëqeshi: — Është vetëm një gur i vogël. Nuk është e thyer asnjë kockë.",
+              "english": "Ana examined it and smiled: \"It is only a little stone. No bone is broken.\""
+            },
+            {
+              "text": "Elira nuk qau më.",
+              "english": "Elira did not cry any more."
+            },
+            {
+              "text": "Elira i tha Samit: — Në shkencë mësuam për detin. A mund të më ndihmosh të shkruaj një fjali për të?",
+              "english": "Elira said to Sam: \"In science we learned about the sea. Can you help me write a sentence about it?\""
+            },
+            {
+              "text": "— Po — tha Sami. — Unë mësoj shqip çdo ditë, dhe shkrimi më pëlqen shumë.",
+              "english": "\"Yes,\" said Sam. \"I learn Albanian every day, and I like writing a lot.\""
+            },
+            {
+              "text": "Ai e ndihmoi dhe Elira shkroi: «Deti është i madh dhe i bukur.»",
+              "english": "He helped her and Elira wrote: \"The sea is big and beautiful.\""
+            },
+            {
+              "text": "Pranë tyre ishte një infermier nga Shkodra, që po pushonte me familjen.",
+              "english": "Near them was a nurse from Shkodër, who was on holiday with his family."
+            },
+            {
+              "text": "Ai i tha Anës: — Keni mirë: pushimi është një ilaç i mirë.",
+              "english": "He said to Ana: \"You are right: a holiday is a good medicine.\""
+            },
+            {
+              "text": "Ata folën pak për punën, pastaj për detin.",
+              "english": "They talked a little about work, then about the sea."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në drekë u ulën në një restorant pranë plazhit.",
+              "english": "At lunch they sat down in a restaurant near the beach."
+            },
+            {
+              "text": "Kamarieri u shërbeu peshk, sallatë dhe bukë.",
+              "english": "The waiter served them fish, salad and bread."
+            },
+            {
+              "text": "Luani porositi një supë, sepse nuk i pëlqente peshku.",
+              "english": "Luan ordered a soup, because he did not like fish."
+            },
+            {
+              "text": "Ardi ngriti dorën dhe tha: — Pastaj duam akullore!",
+              "english": "Ardi raised his hand and said: \"Then we want ice cream!\""
+            },
+            {
+              "text": "Të gjithë buzëqeshën.",
+              "english": "Everyone smiled."
+            },
+            {
+              "text": "Pas drekës ata ecën në një rrugë të gjatë pranë bregdetit dhe hëngrën akullore.",
+              "english": "After lunch they walked along a long road near the coast and ate ice cream."
+            },
+            {
+              "text": "Elira zgjodhi një akullore me çokollatë, dhe Ardi një me mollë.",
+              "english": "Elira chose a chocolate ice cream, and Ardi one with apple."
+            },
+            {
+              "text": "Pastaj ata ecën në bulevard dhe shikuan hotelet e mëdha.",
+              "english": "Then they walked on the boulevard and looked at the big hotels."
+            },
+            {
+              "text": "Në një shesh të vogël një burrë shiste lule dhe tregime për fëmijë.",
+              "english": "In a small square a man was selling flowers and stories for children."
+            },
+            {
+              "text": "Ardi pyeti: — A ka ishull këtu në det?",
+              "english": "Ardi asked: \"Is there an island here in the sea?\""
+            },
+            {
+              "text": "— Jo shumë afër — tha Ana. — Por me anije mund të shohim bregdetin nga larg.",
+              "english": "\"Not very close,\" said Ana. \"But by ship we can see the coast from far away.\""
+            },
+            {
+              "text": "Sami bëri disa fotografi për bashkësinë e tij.",
+              "english": "Sam took some photographs for his congregation."
+            },
+            {
+              "text": "Atij i pëlqente çdo gjë: uji, rëra, njerëzit dhe dielli.",
+              "english": "He liked everything: the water, the sand, the people and the sun."
+            },
+            {
+              "text": "— Këtu çdo njeri është më i lumtur — tha ai.",
+              "english": "\"Here everyone is happier,\" he said."
+            },
+            {
+              "text": "— Pushimi bën mirë — u përgjigj Luani. — Njeriu ka nevojë për pak kohë.",
+              "english": "\"A holiday does good,\" answered Luan. \"A person needs a little time.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pasdite Luani gjeti një njoftim: një anije e vogël shkonte në det për një orë.",
+              "english": "In the afternoon Luan found an announcement: a small ship was going out to sea for an hour."
+            },
+            {
+              "text": "Ata blenë bileta dhe u ngjitën në anije.",
+              "english": "They bought tickets and climbed onto the ship."
+            },
+            {
+              "text": "Ishte një anije e bardhë dhe e vjetër, por e bukur.",
+              "english": "It was a white, old ship, but beautiful."
+            },
+            {
+              "text": "Pas pak një varkë e vogël kaloi pranë tyre, dhe një burrë në varkë buzëqeshi.",
+              "english": "After a little while a small boat passed beside them, and a man in the boat smiled."
+            },
+            {
+              "text": "— Ku shkon kjo varkë? — pyeti Elira.",
+              "english": "\"Where is this boat going?\" asked Elira."
+            },
+            {
+              "text": "— Shkon në një ishull të vogël — tha një grua.",
+              "english": "\"It goes to a small island,\" said a woman."
+            },
+            {
+              "text": "— Në Vlorë, pranë detit, ka një ishull më të madh — shtoi Luani.",
+              "english": "\"In Vlorë, by the sea, there is a bigger island,\" added Luan."
+            },
+            {
+              "text": "Sami shikoi bregdetin që mbetej larg.",
+              "english": "Sam looked at the coast that stayed far away."
+            },
+            {
+              "text": "Detin e pa për herë të parë në këtë vend, dhe i pëlqeu shumë.",
+              "english": "He saw the sea for the first time in this country, and he liked it very much."
+            },
+            {
+              "text": "Ai mendoi për poezinë që kishte lexuar.",
+              "english": "He thought about the poem he had read."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mbrëmje ata u kthyen në stacion.",
+              "english": "In the evening they went back to the station."
+            },
+            {
+              "text": "Ishin të lodhur, por të lumtur.",
+              "english": "They were tired, but happy."
+            },
+            {
+              "text": "Ardi fjeti në tren me një gur të vogël në dorë.",
+              "english": "Ardi fell asleep on the train with a small stone in his hand."
+            },
+            {
+              "text": "Elira i tha Anës: — Ky ishte pushimi më i mirë.",
+              "english": "Elira said to Ana: \"This was the best holiday.\""
+            },
+            {
+              "text": "— Do të vijmë edhe një herë vitin tjetër — tha Ana.",
+              "english": "\"We will come once more next year,\" said Ana."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

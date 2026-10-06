@@ -1,0 +1,431 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-09",
+  "lang": "sq",
+  "title": "Dita e shkollës",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-09",
+    "title": "Albanian ladder, a2-1: Dita e shkollës (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Invented school day (marks out of ten: \"nëntë\"). Check the three pasts, \"kishte harruar\", the ordinal numbers (i parë, i dytë, i fundit) and school terms: \"mësuese\" (feminine) is not in the adapter lexicon."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Dita e shkollës",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të hënën në mëngjes Gjergjin e zgjoi nëna.",
+              "english": "On Monday morning Gjergj's mother woke him."
+            },
+            {
+              "text": "Ai nuk kishte fjetur mirë, sepse atë ditë kishte provim në matematikë.",
+              "english": "He had not slept well, because that day he had an exam in mathematics."
+            },
+            {
+              "text": "Gjergji kishte frikë, por kishte mësuar shumë.",
+              "english": "Gjergj was afraid, but he had studied a lot."
+            },
+            {
+              "text": "Mira i përgatiti bukë, djathë dhe një mollë.",
+              "english": "Mira prepared bread, cheese and an apple for him."
+            },
+            {
+              "text": "Ai i mori gjërat në çantë dhe doli me nënën.",
+              "english": "He took the things in his bag and went out with his mother."
+            },
+            {
+              "text": "Mira e çoi te porta e shkollës.",
+              "english": "Mira took him to the gate of the school."
+            },
+            {
+              "text": "Gjergji nuk e donte shumë matematikën, por e donte gjeografinë.",
+              "english": "Gjergj did not like mathematics much, but he liked geography."
+            },
+            {
+              "text": "Mira punonte në shkollën e Luanit, prandaj ata shkonin bashkë çdo mëngjes.",
+              "english": "Mira worked in Luan's school, so they went together every morning."
+            },
+            {
+              "text": "Në rrugë Gjergji mendoi: «A i kam marrë të gjitha?»",
+              "english": "On the way Gjergj thought: \"Have I taken everything?\""
+            },
+            {
+              "text": "Ai kishte harruar fletoren dhe stilolapsin në tavolinë.",
+              "english": "He had forgotten the notebook and the pen on the table."
+            },
+            {
+              "text": "Tani nuk mund të kthehej.",
+              "english": "Now he could not go back."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Shkolla ishte një ndërtesë e madhe me një portë të gjerë dhe me një mur të gjatë.",
+              "english": "The school was a big building with a wide gate and a long wall."
+            },
+            {
+              "text": "Në mur kishte një tabelë me njoftime.",
+              "english": "On the wall there was a board with notices."
+            },
+            {
+              "text": "Fëmijët ngjitën shkallët dhe hynë në klasa.",
+              "english": "The children went up the stairs and entered the classrooms."
+            },
+            {
+              "text": "Klasa e Gjergjit ishte në fund të shkallëve.",
+              "english": "Gjergj's classroom was at the top of the stairs."
+            },
+            {
+              "text": "Mësimi i parë ishte provimi.",
+              "english": "The first lesson was the exam."
+            },
+            {
+              "text": "Mësuesi tha: — Hesht, ju lutem! Askush nuk lëviz nga vendi.",
+              "english": "The teacher said: \"Quiet, please! Nobody moves from his place.\""
+            },
+            {
+              "text": "Gjergji nuk kishte laps dhe nuk kishte fletore.",
+              "english": "Gjergj had no pencil and no notebook."
+            },
+            {
+              "text": "Atëherë vërejti Luani, që po kalonte pranë klasës.",
+              "english": "Then Luan noticed, as he was passing the classroom."
+            },
+            {
+              "text": "Ai hyri, i dha Gjergjit një fletore dhe një stilolaps dhe nuk tha asgjë.",
+              "english": "He came in, gave Gjergj a notebook and a pen and said nothing."
+            },
+            {
+              "text": "Gjergji buzëqeshi dhe filloi detyrën.",
+              "english": "Gjergj smiled and began the task."
+            },
+            {
+              "text": "Provimi kishte katër pyetje.",
+              "english": "The exam had four questions."
+            },
+            {
+              "text": "Dy ishin të lehta, por dy ishin të vështira.",
+              "english": "Two were easy, but two were hard."
+            },
+            {
+              "text": "Në pyetjen e fundit Gjergji mendoi shumë, dhe pastaj e gjeti përgjigjen.",
+              "english": "On the last question Gjergj thought a lot, and then he found the answer."
+            },
+            {
+              "text": "Në fund mësuesi mori fletoret.",
+              "english": "At the end the teacher took the notebooks."
+            },
+            {
+              "text": "Gjergji ishte i lodhur, por i lumtur.",
+              "english": "Gjergj was tired, but happy."
+            },
+            {
+              "text": "Mësuesja e gjeografisë e pëlqente Gjergjin, sepse ai e njihte shumë mirë hartën.",
+              "english": "The geography teacher liked Gjergj, because he knew the map very well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mësimi i dytë ishte gjeografi.",
+              "english": "The second lesson was geography."
+            },
+            {
+              "text": "Mësuesja hapi një hartë të Shqipërisë në tabelë.",
+              "english": "The teacher put a map of Albania on the board."
+            },
+            {
+              "text": "Ajo tregoi Tiranën dhe tha: — Këtu ndodhen bashkia, universiteti, muzeu dhe aeroporti ndërkombëtar.",
+              "english": "She showed Tirana and said: \"Here are the town hall, the university, the museum and the international airport.\""
+            },
+            {
+              "text": "Një nxënës pyeti për urën e vjetër, dhe mësuesja i tregoi edhe atë.",
+              "english": "A pupil asked about the old bridge, and the teacher showed him that too."
+            },
+            {
+              "text": "— Sheshi kryesor është këtu — tha ajo — dhe këtu fillon bulevardi.",
+              "english": "\"The main square is here,\" she said, \"and here the boulevard begins.\""
+            },
+            {
+              "text": "Pastaj drejtori hyri në klasë me një njoftim.",
+              "english": "Then the director came into the classroom with an announcement."
+            },
+            {
+              "text": "Ai lexoi: — Të premten një grup nga shkolla do të shohë muzeun dhe një qendër kulturore.",
+              "english": "He read: \"On Friday a group from the school will see the museum and a cultural centre.\""
+            },
+            {
+              "text": "— Çdo anëtar i grupit duhet të sjellë një fletore dhe një laps.",
+              "english": "\"Every member of the group must bring a notebook and a pencil.\""
+            },
+            {
+              "text": "— Do të ketë edhe një festë ndërkombëtare për fëmijët.",
+              "english": "\"There will also be an international festival for children.\""
+            },
+            {
+              "text": "Gjergji ishte anëtar i grupit, por Elira akoma nuk e dinte.",
+              "english": "Gjergj was a member of the group, but Elira did not know yet."
+            },
+            {
+              "text": "Ai i tha: — Mos harro stilolapsin! — dhe të dy buzëqeshën.",
+              "english": "He said to her: \"Do not forget the pen!\" and both of them smiled."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Edhe Ardi kishte një ditë të gjatë.",
+              "english": "Ardi too had a long day."
+            },
+            {
+              "text": "Në klasën e tij mësimi i dytë ishte shkencë.",
+              "english": "In his class the second lesson was science."
+            },
+            {
+              "text": "Mësuesja e shkencës ishte një zonjë e re.",
+              "english": "The science teacher was a young lady."
+            },
+            {
+              "text": "Ajo shkroi në tabelë dy fjalë: bubullimë dhe vetëtimë.",
+              "english": "She wrote two words on the board: thunder and lightning."
+            },
+            {
+              "text": "Shkronjën e parë të çdo fjale e shkroi me të kuqe.",
+              "english": "She wrote the first letter of each word in red."
+            },
+            {
+              "text": "Ardi e pëlqeu këtë shkronjë të parë dhe e shkroi edhe në fletore.",
+              "english": "Ardi liked this first letter and wrote it in his notebook too."
+            },
+            {
+              "text": "— Në fillim shihni vetëtimën, pastaj dëgjoni bubullimën. Cili është shkaku? — pyeti ajo.",
+              "english": "\"At first you see the lightning, then you hear the thunder. What is the cause?\" she asked."
+            },
+            {
+              "text": "Askush nuk e dinte.",
+              "english": "Nobody knew."
+            },
+            {
+              "text": "Atëherë ajo ndezi një llambë dhe fiku dritën e klasës.",
+              "english": "Then she lit a lamp and switched off the light of the classroom."
+            },
+            {
+              "text": "Të gjithë heshtën, dhe asnjë nxënës nuk lëvizi.",
+              "english": "Everyone fell silent, and no pupil moved."
+            },
+            {
+              "text": "Në mur u bë një hije e madhe.",
+              "english": "A big shadow appeared on the wall."
+            },
+            {
+              "text": "Elira kishte frikë dhe Ardi ia kapi dorën.",
+              "english": "Elira was afraid and Ardi took her hand."
+            },
+            {
+              "text": "Llamba ra nga tavolina, por Ardi e kapi para se të bjerë.",
+              "english": "The lamp fell from the table, but Ardi caught it before it fell."
+            },
+            {
+              "text": "Ai e shpëtoi llambën.",
+              "english": "He saved the lamp."
+            },
+            {
+              "text": "— Je trim, Ardi! — i tha mësuesja.",
+              "english": "\"You are brave, Ardi!\" the teacher told him."
+            },
+            {
+              "text": "Pastaj ajo ndezi dritën dhe shpjegoi shkakun e bubullimës.",
+              "english": "Then she switched the light on and explained the cause of the thunder."
+            },
+            {
+              "text": "Çdo nxënës mori një fletore të re dhe shkroi tri fjali.",
+              "english": "Every pupil took a new notebook and wrote three sentences."
+            },
+            {
+              "text": "Ardi shkroi: «Bubullima është e madhe, por unë nuk kam frikë.»",
+              "english": "Ardi wrote: \"The thunder is loud, but I am not afraid.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mësimi i fundit ishte shqip.",
+              "english": "The last lesson was Albanian."
+            },
+            {
+              "text": "Mësuesja lexoi një tregim për një djalë dhe një shpellë.",
+              "english": "The teacher read a story about a boy and a cave."
+            },
+            {
+              "text": "Në tregim kishte shkëmb, mjegull, shkallë të gjata dhe një portë të vjetër.",
+              "english": "In the story there were a rock, fog, long stairs and an old door."
+            },
+            {
+              "text": "Djali zbriti shkallët dhe pa një hije në mur.",
+              "english": "The boy went down the stairs and saw a shadow on the wall."
+            },
+            {
+              "text": "Ishte një gjarpër i vetëm.",
+              "english": "It was a lonely snake."
+            },
+            {
+              "text": "— A kishte frikë djali? — pyeti mësuesja.",
+              "english": "\"Was the boy afraid?\" asked the teacher."
+            },
+            {
+              "text": "— Po, por ishte trim — u përgjigj Ardi.",
+              "english": "\"Yes, but he was brave,\" answered Ardi."
+            },
+            {
+              "text": "Mësuesja tha se shkrimtari e ka shkruar këtë tregim për fëmijët.",
+              "english": "The teacher said that the writer wrote this story for children."
+            },
+            {
+              "text": "— Ai ka shkruar edhe një roman — shtoi ajo.",
+              "english": "\"He has also written a novel,\" she added."
+            },
+            {
+              "text": "— Gazeta e shkollës ka një faqe për tregimet tuaja.",
+              "english": "\"The school newspaper has a page for your stories.\""
+            },
+            {
+              "text": "Ardi e do shkencën më shumë se çdo mësim tjetër.",
+              "english": "Ardi likes science more than any other lesson."
+            },
+            {
+              "text": "Si detyrë mësuesja kërkoi: — Hapni fjalorin, gjeni pesë fjalë të reja dhe shkruani një fjali me secilën.",
+              "english": "As homework the teacher asked: \"Open the dictionary, find five new words and write a sentence with each.\""
+            },
+            {
+              "text": "— Shkruani mirë çdo shkronjë!",
+              "english": "\"Write every letter well!\""
+            },
+            {
+              "text": "Në oborr fëmijët vraponin dhe luanin, dhe drejtori i shikonte nga dritarja.",
+              "english": "In the yard the children ran and played, and the director watched them from the window."
+            },
+            {
+              "text": "— Mos vraponi në shkallë! — i tha një mësues.",
+              "english": "\"Do not run on the stairs!\" a teacher told them."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas shkollës Luani e lexoi provimin e Gjergjit.",
+              "english": "After school Luan read Gjergj's exam."
+            },
+            {
+              "text": "— Gjergj, notë e mirë: nëntë! — i tha ai.",
+              "english": "\"Gjergj, a good mark: nine!\" he told him."
+            },
+            {
+              "text": "Drejtori kaloi pranë tyre dhe buzëqeshi.",
+              "english": "The director passed by them and smiled."
+            },
+            {
+              "text": "Në fjalor Gjergji pa edhe fjalën «notë». Ardi mori një notë të mirë për detyrën e tij.",
+              "english": "In the dictionary Gjergj also saw the word \"mark\". Ardi got a good mark for his homework."
+            },
+            {
+              "text": "Gjergji ia ktheu fletoren dhe stilolapsin Luanit.",
+              "english": "Gjergj gave the notebook and the pen back to Luan."
+            },
+            {
+              "text": "— Faleminderit — tha ai. — Pa ju nuk kisha laps dhe nuk kisha fletore.",
+              "english": "\"Thank you,\" he said. \"Without you I would have had no pencil and no notebook.\""
+            },
+            {
+              "text": "Në shtëpi Mira e pyeti: — Si shkoi dita?",
+              "english": "At home Mira asked him: \"How did the day go?\""
+            },
+            {
+              "text": "— Provimi shkoi mirë — tha Gjergji. — Por unë kisha harruar fletoren.",
+              "english": "\"The exam went well,\" said Gjergj. \"But I had forgotten the notebook.\""
+            },
+            {
+              "text": "— Nesër kontrollo çantën para se të dalësh — i tha ajo.",
+              "english": "\"Tomorrow check your bag before you go out,\" she told him."
+            },
+            {
+              "text": "Pastaj Gjergji bëri detyrën e shtëpisë.",
+              "english": "Then Gjergj did his homework."
+            },
+            {
+              "text": "Ai hapi fjalorin dhe gjeti disa fjalë të reja në matematikë dhe në gjeografi. Çdo fjali e shkroi dy herë.",
+              "english": "He opened the dictionary and found some new words in mathematics and in geography. He wrote every sentence twice."
+            },
+            {
+              "text": "Ai shkroi çdo shkronjë mirë, sepse nuk dëshironte një notë të keqe.",
+              "english": "He wrote every letter well, because he did not want a bad mark."
+            },
+            {
+              "text": "Ardi ishte i lodhur dhe akoma kishte pak frikë nga bubullima.",
+              "english": "Ardi was tired and still was a little afraid of the thunder."
+            },
+            {
+              "text": "Por atë natë ai fjeti shumë mirë.",
+              "english": "But that night he slept very well."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

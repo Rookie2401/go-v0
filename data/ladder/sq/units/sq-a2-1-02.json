@@ -1,0 +1,416 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-02",
+  "lang": "sq",
+  "title": "Fshati para dhe tani",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-02",
+    "title": "Albanian ladder, a2-1: Fshati para dhe tani (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Invented village (400 then 120 inhabitants, a school built in 2015, a small cheese factory): all figures are fiction, not facts. Check the contrast dikur/sot and the quantifiers shumica/pakica/disa; \"Çelësi i fshatit\" is a joke of the story. Church paragraph: needs theological review (own words only, no Scripture)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "explanation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-theological-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Fshati para dhe tani",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Në mëngjes gjyshi përgatit mëngjesin për Samin dhe Luanin.",
+              "english": "In the morning grandfather prepares breakfast for Sam and Luan."
+            },
+            {
+              "text": "Buka është e ngrohtë: gjyshi e pjek çdo javë.",
+              "english": "The bread is warm: grandfather bakes it every week."
+            },
+            {
+              "text": "Ai shton pak kripë në vezë dhe sjell kos të trashë.",
+              "english": "He adds a little salt to the eggs and brings thick yoghurt."
+            },
+            {
+              "text": "Në tavolinë ka edhe një thikë të vogël.",
+              "english": "On the table there is also a small knife."
+            },
+            {
+              "text": "Pas mëngjesit Sam pastron tavolinën dhe Luani lan pjatat.",
+              "english": "After breakfast Sam clears the table and Luan washes the plates."
+            },
+            {
+              "text": "Pastaj të tre dalin në rrugë.",
+              "english": "Then the three of them go out into the road."
+            },
+            {
+              "text": "— Gjysh, fshati ka ndryshuar shumë, apo jo? — pyet Luan.",
+              "english": "\"Grandfather, the village has changed a lot, hasn't it?\" asks Luan."
+            },
+            {
+              "text": "— Po, Luan. Ky është një ndryshim i madh — thotë gjyshi.",
+              "english": "\"Yes, Luan. This is a great change,\" says grandfather."
+            },
+            {
+              "text": "— Cili është ndryshimi më i madh? — pyet Sam.",
+              "english": "\"Which is the biggest change?\" asks Sam."
+            },
+            {
+              "text": "— Rruga. Rruga solli autobusin, shkollën dhe punën. Ky është ndryshimi më i madh.",
+              "english": "\"The road. The road brought the bus, the school and the work. That is the biggest change.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Dikur në fshat jetonin 400 banorë — thotë gjyshi. — Sot jetojnë 120.",
+              "english": "\"Back then 400 inhabitants lived in the village,\" says grandfather. \"Today 120 live here.\""
+            },
+            {
+              "text": "— Ku shkuan njerëzit e tjerë? — pyet Sam.",
+              "english": "\"Where did the other people go?\" asks Sam."
+            },
+            {
+              "text": "— Shumica u larguan nga fshati — përgjigjet Luan.",
+              "english": "\"Most of them left the village,\" answers Luan."
+            },
+            {
+              "text": "— Disa shkuan në Tiranë, disa shkuan jashtë shtetit.",
+              "english": "\"Some went to Tirana, some went abroad.\""
+            },
+            {
+              "text": "— Pse u larguan?",
+              "english": "\"Why did they leave?\""
+            },
+            {
+              "text": "— Sepse këtu nuk kishte punë — thotë gjyshi.",
+              "english": "\"Because there was no work here,\" says grandfather."
+            },
+            {
+              "text": "— Dikur çdo familje kishte tokë, por toka ishte e vogël.",
+              "english": "\"Back then every family had land, but the land was small.\""
+            },
+            {
+              "text": "Bujqësia nuk jepte shumë, dhe njerëzit nuk kishin para.",
+              "english": "Farming did not give much, and people had no money."
+            },
+            {
+              "text": "Djemtë dhe vajzat shkonin në qytet për të punuar.",
+              "english": "The boys and girls went to the town to work."
+            },
+            {
+              "text": "Disa nuk u kthyen më.",
+              "english": "Some did not come back."
+            },
+            {
+              "text": "Sot në fshat rrinë më shumë njerëz të vjetër se njerëz të rinj.",
+              "english": "Today more old people than young people stay in the village."
+            },
+            {
+              "text": "Një pakicë e njerëzve të rinj mbetet këtu.",
+              "english": "A minority of the young people stay here."
+            },
+            {
+              "text": "Pakica ka një punë, por shumica jo.",
+              "english": "The minority have a job, but the majority do not."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ata ecin pranë shkollës.",
+              "english": "They walk past the school."
+            },
+            {
+              "text": "Është një ndërtesë e re, me shumë dritare.",
+              "english": "It is a new building with many windows."
+            },
+            {
+              "text": "— Këtë ndërtesë e ndërtoi shteti në vitin 2015 — thotë Luan.",
+              "english": "\"The state built this building in 2015,\" says Luan."
+            },
+            {
+              "text": "— Dikur nuk kishte shkollë këtu — thotë gjyshi.",
+              "english": "\"Back then there was no school here,\" says grandfather."
+            },
+            {
+              "text": "Fëmijët shkonin në një fshat tjetër.",
+              "english": "The children went to another village."
+            },
+            {
+              "text": "Rruga ishte e keqe dhe ata vinin në shtëpi vonë.",
+              "english": "The road was bad and they came home late."
+            },
+            {
+              "text": "Tani ka një rrugë të re, dhe autobusi vjen çdo ditë.",
+              "english": "Now there is a new road, and the bus comes every day."
+            },
+            {
+              "text": "Sot ndërtohen edhe disa shtëpi të reja.",
+              "english": "Today some new houses are also being built."
+            },
+            {
+              "text": "Ndërtojnë ata që punojnë jashtë dhe vijnë këtu në verë.",
+              "english": "Those who work abroad build, and they come here in summer."
+            },
+            {
+              "text": "Një banor tjetër e bën shtëpinë me duart e tij.",
+              "english": "Another inhabitant makes his house with his own hands."
+            },
+            {
+              "text": "Shumica e shtëpive janë të vjetra, por disa janë të reja.",
+              "english": "Most of the houses are old, but some are new."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në tokën pranë rrugës një burrë punon me një makinë.",
+              "english": "In the land by the road a man works with a machine."
+            },
+            {
+              "text": "— Dikur ne punonim me kalin — thotë gjyshi.",
+              "english": "\"Back then we worked with the horse,\" says grandfather."
+            },
+            {
+              "text": "— Ndërsa sot një makinë bën punën që bëjnë dhjetë njerëz.",
+              "english": "\"Whereas today a machine does the work that ten people do.\""
+            },
+            {
+              "text": "Bujqësia nuk është si dikur: sot ka më pak njerëz në tokë, por më shumë perime.",
+              "english": "Farming is not what it was: today there are fewer people on the land, but more vegetables."
+            },
+            {
+              "text": "Por bujqësia mbetet puna e shumë familjeve.",
+              "english": "But farming remains the work of many families."
+            },
+            {
+              "text": "— Pasuria e fshatit ishte toka — thotë gjyshi.",
+              "english": "\"The wealth of the village was the land,\" says grandfather."
+            },
+            {
+              "text": "— Sot pasuria e fshatit janë njerëzit që e duan.",
+              "english": "\"Today the wealth of the village is the people who love it.\""
+            },
+            {
+              "text": "— Populli i fshatit është i mirë, por kërkon punë — thotë Luan.",
+              "english": "\"The people of the village are good, but they ask for work,\" says Luan."
+            },
+            {
+              "text": "— Populli i këtij fshati e do tokën.",
+              "english": "\"The people of this village love the land.\""
+            },
+            {
+              "text": "Pranë rrugës ka një fabrikë të vogël.",
+              "english": "Near the road there is a small factory."
+            },
+            {
+              "text": "— Çfarë bën kjo fabrikë? — pyet Sam.",
+              "english": "\"What does this factory make?\" asks Sam."
+            },
+            {
+              "text": "— Bën djathë dhe kos — thotë Luan.",
+              "english": "\"It makes cheese and yoghurt,\" says Luan."
+            },
+            {
+              "text": "— Aty punojnë dhjetë banorë të fshatit.",
+              "english": "\"Ten inhabitants of the village work there.\""
+            },
+            {
+              "text": "— Kështu disa njerëz nuk largohen.",
+              "english": "\"So some people do not leave.\""
+            },
+            {
+              "text": "Fabrika ka bërë një gjë të mirë për fshatin.",
+              "english": "The factory has done one good thing for the village."
+            },
+            {
+              "text": "Gjyshi tregon një ndërtesë tjetër: — Dikur këtu ishte një zyrë e vogël.",
+              "english": "Grandfather points to another building: \"Back then there was a small office here.\""
+            },
+            {
+              "text": "Njeriu i zyrës shkruante letra dhe mbante çelësin e fshatit.",
+              "english": "The man in the office wrote letters and kept the key of the village."
+            },
+            {
+              "text": "Sot nuk ka njeri në zyrë dhe çelësi është në qytet.",
+              "english": "Today there is nobody in the office and the key is in the town."
+            },
+            {
+              "text": "Sam buzëqesh: — Çelësi i fshatit! Është një histori e bukur.",
+              "english": "Sam smiles: \"The key of the village! That is a nice story.\""
+            },
+            {
+              "text": "— Shteti ka bërë shumë për fshatin — thotë Luan.",
+              "english": "\"The state has done a lot for the village,\" says Luan."
+            },
+            {
+              "text": "— Por populli ka bërë gjithashtu shumë.",
+              "english": "\"But the people have also done a lot.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastaj ata arrijnë te kisha.",
+              "english": "Then they reach the church."
+            },
+            {
+              "text": "Kisha është e vjetër, por e bukur.",
+              "english": "The church is old, but beautiful."
+            },
+            {
+              "text": "— Këtu zakonet nuk kanë ndryshuar shumë — thotë gjyshi.",
+              "english": "\"Here the customs have not changed much,\" says grandfather."
+            },
+            {
+              "text": "— Dikur çdo e diel kishte shërbim, dhe sot ka shërbim çdo javë.",
+              "english": "\"Back then there was a service every Sunday, and today there is a service every week.\""
+            },
+            {
+              "text": "Kori këndon këngët e vjetra, ndërsa pastori vjen nga qyteti.",
+              "english": "The choir sings the old songs, while the pastor comes from the town."
+            },
+            {
+              "text": "— Predikimi është i shkurtër, por lutja është e gjatë — buzëqesh Luan.",
+              "english": "\"The sermon is short, but the prayer is long,\" smiles Luan."
+            },
+            {
+              "text": "— Dikur në bashkësi vinin të gjithë, të vegjël e të mëdhenj.",
+              "english": "\"Back then everyone came to the congregation, small and big.\""
+            },
+            {
+              "text": "— Sot njerëzit e rinj janë një pakicë edhe në kishë, por adhurimi mbetet.",
+              "english": "\"Today the young people are a minority in church too, but the worship remains.\""
+            },
+            {
+              "text": "Në mbledhjen e bashkësisë çdo familje sillte një dhuratë dhe një ofertë.",
+              "english": "At the congregation's meeting every family brought a gift and an offering."
+            },
+            {
+              "text": "Çdo vit gjyshi dëshmon në kishë se Zoti e ruan fshatin.",
+              "english": "Every year grandfather testifies in church that the Lord protects the village."
+            },
+            {
+              "text": "— Shumë gjëra ndërruan, por mëshira e Zotit nuk ndryshon — thotë ai.",
+              "english": "\"Many things changed, but the Lord's mercy does not change,\" he says."
+            },
+            {
+              "text": "Ai merr një bekim nga pastori dhe hap derën.",
+              "english": "He receives a blessing from the pastor and opens the door."
+            },
+            {
+              "text": "Sam mendon për fjalët e gjyshit.",
+              "english": "Sam thinks about grandfather's words."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në shtëpi gjyshi ruan një libër të vjetër.",
+              "english": "At home grandfather keeps an old book."
+            },
+            {
+              "text": "Aty janë emrat e njerëzve që lindën, që u martuan dhe që vdiqën në fshat.",
+              "english": "There are the names of the people who were born, who married and who died in the village."
+            },
+            {
+              "text": "— Ky libër mban kujtimin e fshatit — thotë ai.",
+              "english": "\"This book holds the memory of the village,\" he says."
+            },
+            {
+              "text": "— Ky libër është pasuria ime.",
+              "english": "\"This book is my wealth.\""
+            },
+            {
+              "text": "Gjyshi tregon edhe gjëra të tjera, ndërsa Sam dëgjon dhe buzëqesh.",
+              "english": "Grandfather tells other things as well, while Sam listens and smiles."
+            },
+            {
+              "text": "— Çdo fëmijë që lind shkruhet këtu.",
+              "english": "\"Every child that is born is written here.\""
+            },
+            {
+              "text": "— Çdo vdekje shkruhet këtu.",
+              "english": "\"Every death is written here.\""
+            },
+            {
+              "text": "Sam lexon disa emra dhe mendon për jetën e njerëzve.",
+              "english": "Sam reads a few names and thinks about the life of the people."
+            },
+            {
+              "text": "Një grua vdiq në moshën nëntëdhjetë vjeç.",
+              "english": "One woman died at the age of ninety."
+            },
+            {
+              "text": "Fëmijëria dhe rinia e tyre ishin këtu, në këtë rrugë.",
+              "english": "Their childhood and youth were here, in this road."
+            },
+            {
+              "text": "Familjet rritnin fëmijët si dikur, dhe fëmijët ruanin traditën.",
+              "english": "The families raised the children as in the past, and the children kept the tradition."
+            },
+            {
+              "text": "— A ka ndryshuar çdo gjë? — pyet Sam.",
+              "english": "\"Has everything changed?\" asks Sam."
+            },
+            {
+              "text": "— Jo — thotë gjyshi. — Ndryshon rruga, ndërron puna, por fshati mbetet fshat.",
+              "english": "\"No,\" says grandfather. \"The road changes, the work changes, but the village stays a village.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

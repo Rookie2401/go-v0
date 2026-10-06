@@ -1,0 +1,467 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-11",
+  "lang": "sq",
+  "title": "Puna e Anës në klinikë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-11",
+    "title": "Albanian ladder, a2-1: Puna e Anës në klinikë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Nursing and clinic details are a simplified invention (opening hours 8-16, about forty patients a day, a health card, payment at the bank for a foreigner): a person should check medical terms (mat gjakun / marr gjakun, sëmundje e zemrës, mjekim, këshillë). No medical advice is meant."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "practical"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Puna e Anës në klinikë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sot Sami është në klinikë, sepse do të shohë punën e Anës.",
+              "english": "Today Sam is at the clinic, because he wants to see Ana's work."
+            },
+            {
+              "text": "Ana është infermiere.",
+              "english": "Ana is a nurse."
+            },
+            {
+              "text": "Ajo punon në një klinikë të bashkisë, pranë qendrës së qytetit.",
+              "english": "She works in a municipal clinic, near the centre of the city."
+            },
+            {
+              "text": "Klinika ndodhet pranë urës së vjetër.",
+              "english": "The clinic stands near the old bridge."
+            },
+            {
+              "text": "Popullsia e Tiranës është e madhe, dhe klinika u shërben shumë njerëzve.",
+              "english": "The population of Tirana is large, and the clinic serves many people."
+            },
+            {
+              "text": "Në republikën tonë çdo njeri mund të vijë këtu.",
+              "english": "In our republic every person can come here."
+            },
+            {
+              "text": "Klinika hapet në orën tetë dhe mbyllet në orën katër.",
+              "english": "The clinic opens at eight and closes at four."
+            },
+            {
+              "text": "Ky është orari i saj, dhe çdo punëtor e njeh.",
+              "english": "This is its timetable, and every worker knows it."
+            },
+            {
+              "text": "Në fillim të ditës drejtori i klinikës thotë disa fjalë për ekipin.",
+              "english": "At the beginning of the day the director of the clinic says a few words to the team."
+            },
+            {
+              "text": "— Shëndeti është një gjë shumë e rëndësishme — thotë ai.",
+              "english": "\"Health is a very important thing,\" he says."
+            },
+            {
+              "text": "— Kjo është detyra jonë: të shërbejmë njerëzit me dashuri.",
+              "english": "\"This is our task: to serve people with love.\""
+            },
+            {
+              "text": "Ana buzëqesh. Ajo e do këtë profesion.",
+              "english": "Ana smiles. She loves this profession."
+            },
+            {
+              "text": "— Kam një profesion të bukur, por ka shumë detyra — i thotë ajo Samit.",
+              "english": "\"I have a beautiful profession, but there are many duties,\" she tells Sam."
+            },
+            {
+              "text": "— Qëllimi im është të jap ndihmë çdo ditë.",
+              "english": "\"My aim is to give help every day.\""
+            },
+            {
+              "text": "Në klinikë punon edhe një infermier i ri dhe një infermiere tjetër.",
+              "english": "In the clinic there also work a young male nurse and another nurse."
+            },
+            {
+              "text": "Infermieri i ri është shumë i mirë ndaj fëmijëve, dhe të gjithë punojnë bashkë si një ekip.",
+              "english": "The new nurse is very good to the children, and everyone works together as a team."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mëngjes Ana ulet pranë një kompjuteri.",
+              "english": "In the morning Ana sits by a computer."
+            },
+            {
+              "text": "Ajo regjistron pacientët që vijnë.",
+              "english": "She registers the patients who come."
+            },
+            {
+              "text": "Çdo pacient ka një dokument dhe një kartë shëndeti.",
+              "english": "Every patient has a document and a health card."
+            },
+            {
+              "text": "Ana shtyp emrin e tij në kompjuter dhe kontrollon çdo gjë.",
+              "english": "Ana types his name into the computer and checks everything."
+            },
+            {
+              "text": "Pastaj pacienti plotëson një formular dhe e nënshkruan.",
+              "english": "Then the patient fills in a form and signs it."
+            },
+            {
+              "text": "Një burrë nga jashtë nuk ka kartë shëndeti.",
+              "english": "A man from abroad has no health card."
+            },
+            {
+              "text": "Ai ka vetëm pasaportën, prandaj bën një kërkesë dhe paguan një sasi të vogël.",
+              "english": "He has only his passport, so he makes a request and pays a small amount."
+            },
+            {
+              "text": "— Ku mund ta paguaj? — pyet ai.",
+              "english": "\"Where can I pay it?\" he asks."
+            },
+            {
+              "text": "— Në bankë, në llogarinë e klinikës — thotë Ana.",
+              "english": "\"At the bank, into the clinic's account,\" says Ana."
+            },
+            {
+              "text": "Ka një radhë të gjatë, por Ana nuk bërtet.",
+              "english": "There is a long queue, but Ana does not shout."
+            },
+            {
+              "text": "Ajo i thotë: — Mirë se erdhët. Prisni pak.",
+              "english": "She tells him: \"Welcome. Please wait a little.\""
+            },
+            {
+              "text": "Vizita e parë fillon në orën tetë e tridhjetë minuta.",
+              "english": "The first visit begins at eight thirty."
+            },
+            {
+              "text": "Sipas orarit vizita e dytë është në orën nëntë.",
+              "english": "According to the schedule the second visit is at nine."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pacienti i parë është një burrë i vjetër, që vjen çdo javë.",
+              "english": "The first patient is an old man who comes every week."
+            },
+            {
+              "text": "Ai ka një sëmundje të zemrës.",
+              "english": "He has an illness of the heart."
+            },
+            {
+              "text": "Dr Arta e pret me një buzëqeshje.",
+              "english": "Dr Arta receives him with a smile."
+            },
+            {
+              "text": "— Si është zemra sot? — e pyet ajo.",
+              "english": "\"How is the heart today?\" she asks him."
+            },
+            {
+              "text": "— Më dhemb pak — thotë burri.",
+              "english": "\"It hurts a little,\" says the man."
+            },
+            {
+              "text": "Ana i merr gjakun dhe i shikon lëkurën e dorës.",
+              "english": "Ana takes his blood and looks at the skin of his hand."
+            },
+            {
+              "text": "Lëkura e tij është e hollë dhe e thatë.",
+              "english": "His skin is thin and dry."
+            },
+            {
+              "text": "Në dhomën tjetër infermieri merr gjak nga një pacient dhe i thotë: — Trupi juaj ka nevojë për pak pushim.",
+              "english": "In the other room the nurse takes blood from a patient and tells him: \"Your body needs a little rest.\""
+            },
+            {
+              "text": "Dr Arta thotë: — Sipas gjakut, mjekimi është i mirë.",
+              "english": "Dr Arta says: \"According to the blood, the treatment is good.\""
+            },
+            {
+              "text": "— Mjekimi është i vështirë, por duhet çdo ditë.",
+              "english": "\"The treatment is hard, but it is needed every day.\""
+            },
+            {
+              "text": "— Këtu është edhe një këshillë: ecni çdo ditë, sepse trupi ka nevojë të ecë.",
+              "english": "\"Here is another piece of advice: walk every day, because the body needs to walk.\""
+            },
+            {
+              "text": "— Këshilla e mjekut është e mirë — thotë burri. — Do të ec sot në park.",
+              "english": "\"The doctor's advice is good,\" says the man. \"I will walk in the park today.\""
+            },
+            {
+              "text": "Ana i tregon mjekimin në një letër dhe e shkruan edhe në kompjuter.",
+              "english": "Ana shows him the treatment on a letter and writes it on the computer too."
+            },
+            {
+              "text": "— Ana është shumë e mirë ndaj pacientëve — i thotë burri Samit.",
+              "english": "\"Ana is very good to the patients,\" the man tells Sam."
+            },
+            {
+              "text": "— Ndaj meje ajo është si një vajzë.",
+              "english": "\"To me she is like a daughter.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas tij vjen një grua, që ka një sëmundje të lëkurës.",
+              "english": "After him comes a woman who has a skin illness."
+            },
+            {
+              "text": "Dr Arta bën një fotografi të lëkurës dhe e dërgon me email në spital.",
+              "english": "Dr Arta takes a photograph of the skin and sends it by email to the hospital."
+            },
+            {
+              "text": "— Spitali kryesor i kryeqytetit është pranë universitetit — i thotë Ana Samit.",
+              "english": "\"The main hospital of the capital is near the university,\" Ana tells Sam."
+            },
+            {
+              "text": "— Atje shkojnë njerëzit që kanë sëmundje të rënda.",
+              "english": "\"People who have serious illnesses go there.\""
+            },
+            {
+              "text": "— Spitali ka shumë mjete të mira, por klinika jonë është më afër njerëzve.",
+              "english": "\"The hospital has many good tools, but our clinic is closer to the people.\""
+            },
+            {
+              "text": "— Çdo vizitë këtu është e shkurtër, dhe spitali është për sëmundje të mëdha.",
+              "english": "\"Every visit here is short, and the hospital is for big illnesses.\""
+            },
+            {
+              "text": "Gruaja merr një recetë dhe shkon në farmaci.",
+              "english": "The woman takes a prescription and goes to the pharmacy."
+            },
+            {
+              "text": "Në farmaci ka gjithmonë një radhë të vogël.",
+              "english": "In the pharmacy there is always a small queue."
+            },
+            {
+              "text": "Në farmaci shitësi i shet ilaçin dhe i jep një këshillë për mjekimin.",
+              "english": "The seller sells her the medicine and gives her advice about the treatment."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në orën njëmbëdhjetë vjen një nënë me një djalë të vogël.",
+              "english": "At eleven o'clock a mother comes with a little boy."
+            },
+            {
+              "text": "Djali qan shumë, sepse e ka mbyllur gishtin në derë.",
+              "english": "The boy is crying a lot, because he has shut his finger in the door."
+            },
+            {
+              "text": "— Mos qaj, ti je trim — i thotë Ana.",
+              "english": "\"Don't cry, you are brave,\" Ana tells him."
+            },
+            {
+              "text": "Ajo e merr dorën e tij.",
+              "english": "She takes his hand gently."
+            },
+            {
+              "text": "Gishti është i kuq, por kocka nuk është e thyer.",
+              "english": "The finger is red, but the bone is not broken."
+            },
+            {
+              "text": "Dr Arta shikon edhe trupin e djalit: asgjë tjetër nuk është e thyer.",
+              "english": "Dr Arta also looks at the boy's body: nothing else is broken."
+            },
+            {
+              "text": "— Kockat e djalit janë mirë — i thotë ajo nënës.",
+              "english": "\"The boy's bones are fine,\" she tells the mother."
+            },
+            {
+              "text": "Dr Arta e kontrollon gishtin dhe bën një fotografi tjetër.",
+              "english": "Dr Arta examines the finger and takes another photograph."
+            },
+            {
+              "text": "— Kocka është mirë — thotë ajo. — Nuk ka rrezik.",
+              "english": "\"The bone is fine,\" she says. \"There is no danger.\""
+            },
+            {
+              "text": "— Edhe gishti, edhe zemra e djalit janë mirë.",
+              "english": "\"Both the finger and the boy's heart are fine.\""
+            },
+            {
+              "text": "Djali nuk qan më dhe buzëqesh.",
+              "english": "The boy no longer cries and smiles."
+            },
+            {
+              "text": "Ana i jep një mollë, dhe nëna i thotë faleminderit.",
+              "english": "Ana gives him an apple, and the mother says thank you ."
+            },
+            {
+              "text": "— Sipas mjekut, ai duhet të pushojë një javë — thotë Ana.",
+              "english": "\"According to the doctor, he must rest for a week,\" says Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mesditë Ana dhe Sami pinë çaj.",
+              "english": "At midday Ana and Sam drink tea."
+            },
+            {
+              "text": "— Sa pacientë keni çdo ditë? — pyet Sami.",
+              "english": "\"How many patients do you have every day?\" asks Sam."
+            },
+            {
+              "text": "— Rreth dyzet — thotë Ana. — Ndonjëherë puna është tepër, por unë kam mjaft përvojë.",
+              "english": "\"About forty,\" says Ana. \"Sometimes the work is too much, but I have enough experience.\""
+            },
+            {
+              "text": "— Paga nuk është e madhe. Vlera e punës time është tjetër.",
+              "english": "\"The pay is not big. The value of my work is something else.\""
+            },
+            {
+              "text": "— Paga vjen në llogarinë time, por unë nuk e shoh kartën.",
+              "english": "\"The pay comes into my account, but I never see the card.\""
+            },
+            {
+              "text": "Sami mendon: kjo punë është një shërbim për njerëzit.",
+              "english": "Sam thinks: this work is a service, for people."
+            },
+            {
+              "text": "Ai i tregon Anës për intervistën e tij.",
+              "english": "He tells Ana about his interview."
+            },
+            {
+              "text": "— Shefi i kompanisë është një njeri i mirë — thotë ai.",
+              "english": "\"The boss of the company is a good man,\" he says."
+            },
+            {
+              "text": "— Do të punoj në një projekt për një biznes të vogël, dhe kam edhe një kontratë.",
+              "english": "\"I will work on a project for a small business, and I also have a contract.\""
+            },
+            {
+              "text": "— Urime! — thotë Ana. — Tani kemi dy punëtorë në familje.",
+              "english": "\"Congratulations!\" says Ana. \"Now we have two workers in the family.\""
+            },
+            {
+              "text": "Pas drekës Ana hap internetin dhe shikon një faqe.",
+              "english": "After lunch Ana opens the internet and looks at a page."
+            },
+            {
+              "text": "Në faqe ka një njoftim për një ditë kulturore dhe një film mbi shëndetin.",
+              "english": "On the page there is an announcement about a cultural day and a film about health."
+            },
+            {
+              "text": "— Do të vijnë mjekë nga një spital ndërkombëtar — thotë ajo.",
+              "english": "\"Doctors will come from an international hospital,\" she says."
+            },
+            {
+              "text": "— Një burrë ka ardhur sot nga aeroporti dhe ka një sëmundje të lëkurës — thotë infermieri.",
+              "english": "\"A man has come today from the airport and has a skin illness,\" says the nurse."
+            },
+            {
+              "text": "Ana e merr dhe e regjistron në kompjuter.",
+              "english": "Ana takes him and registers him on the computer."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në orën tre vjen Ardi, sepse shkolla ka mbaruar.",
+              "english": "At three o'clock Ardi comes, because school has finished."
+            },
+            {
+              "text": "Ai ka një detyrë për gjeografinë dhe nuk ka kohë për të.",
+              "english": "He has a geography task and has no time for it."
+            },
+            {
+              "text": "Ana ulet pranë tij dhe e lexon çdo fjali.",
+              "english": "Ana sits next to him and reads every sentence."
+            },
+            {
+              "text": "— Çfarë është kryeqyteti i Shqipërisë? — e pyet ajo.",
+              "english": "\"What is the capital of Albania?\" she asks him."
+            },
+            {
+              "text": "— Tirana! — thotë Ardi. — Ndodhet në qendër të vendit.",
+              "english": "\"Tirana!\" says Ardi. \"It is in the centre of the country.\""
+            },
+            {
+              "text": "Pacienti i fundit del në orën katër.",
+              "english": "The last patient leaves at four."
+            },
+            {
+              "text": "Ana i shërben çaj Samit, ndërsa një infermiere tjetër pastron mjetet.",
+              "english": "Ana serves tea to Sam, while another nurse cleans the instruments."
+            },
+            {
+              "text": "Dr Arta i thotë Anës: — Faleminderit për ndihmën tënde sot.",
+              "english": "Dr Arta says to Ana: \"Thank you for your help today.\""
+            },
+            {
+              "text": "— Është një ndihmë e vogël, por e dua këtë punë — thotë Ana.",
+              "english": "\"It is a small help, but I love this work,\" says Ana."
+            },
+            {
+              "text": "Pastaj ata tre dalin dhe ecin në park.",
+              "english": "Then the three of them go out and walk in the park."
+            },
+            {
+              "text": "Sami shikon urën dhe njerëzit që kthehen në shtëpi.",
+              "english": "Sam looks at the bridge and the people who are going home."
+            },
+            {
+              "text": "Ai mendon se shëndeti është një pasuri e madhe, dhe se Ana e ruan atë çdo ditë.",
+              "english": "He thinks that health is a great treasure, and that Ana guards it every day."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

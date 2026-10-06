@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-10",
+  "lang": "sq",
+  "title": "Një intervistë pune",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-10",
+    "title": "Albanian ladder, a2-1: Një intervistë pune (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Invented job interview with ju and conditional set phrases (do të doja, do të punoja, do të ishte mirë). Check the register of the boss, \"zoti Sam\", \"Ju lutem uluni\", and \"a mund ta bëni këtë\"."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një intervistë pune",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dritani punon në një kompani të vogël në Tiranë.",
+              "english": "Dritan works in a small company in Tirana."
+            },
+            {
+              "text": "Kompania ka nevojë për një njeri që flet anglisht.",
+              "english": "The company needs a man who speaks English."
+            },
+            {
+              "text": "Dritani e pa njoftimin në një gazetë dhe i tha Samit.",
+              "english": "Dritan saw the announcement in a newspaper and told Sam."
+            },
+            {
+              "text": "Sot Sami është në zyrën e kompanisë për një intervistë.",
+              "english": "Today Sam is in the office of the company for an interview."
+            },
+            {
+              "text": "Atje e pret shefi, një burrë i gjatë me sy të mirë.",
+              "english": "There the boss waits for him, a tall man with kind eyes."
+            },
+            {
+              "text": "Dritani ulet pak më larg dhe dëgjon.",
+              "english": "Dritan sits a little further away and listens."
+            },
+            {
+              "text": "Kjo është intervista e parë e Samit në Shqipëri.",
+              "english": "This is Sam's first interview in Albania."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Mirëdita, zoti Sam. Ju lutem uluni — thotë shefi.",
+              "english": "\"Good day, Mr Sam. Please sit down,\" says the boss."
+            },
+            {
+              "text": "— Mirëdita. Faleminderit që më pritët — thotë Sami.",
+              "english": "\"Good day. Thank you for receiving me,\" says Sam."
+            },
+            {
+              "text": "— Si e gjetët njoftimin tonë?",
+              "english": "\"How did you find our announcement?\""
+            },
+            {
+              "text": "— Një mik më tregoi për të. Ai e lexoi në gazetë.",
+              "english": "\"A friend told me about it. He read it in the newspaper.\""
+            },
+            {
+              "text": "— Pse doni të punoni në kompaninë tonë?",
+              "english": "\"Why do you want to work in our company?\""
+            },
+            {
+              "text": "— Do të doja të punoja me njerëz dhe të flisja anglisht çdo ditë.",
+              "english": "\"I would like to work with people and to speak English every day.\""
+            },
+            {
+              "text": "— Cili është qëllimi juaj?",
+              "english": "\"What is your aim?\""
+            },
+            {
+              "text": "— Qëllimi im është të mësoj një profesion të ri.",
+              "english": "\"My aim is to learn a new profession.\""
+            },
+            {
+              "text": "— Ky qëllim është shumë i rëndësishëm për mua.",
+              "english": "\"This aim is very important for me.\""
+            },
+            {
+              "text": "— Çfarë profesioni keni tani?",
+              "english": "\"What profession do you have now?\""
+            },
+            {
+              "text": "— Profesioni i mësuesit është i bukur, por ju duhet një profesion tjetër?",
+              "english": "\"The profession of a teacher is beautiful, but do you need another profession?\""
+            },
+            {
+              "text": "— Jo, por dua të mësoj shumë gjëra. Unë jam punëtor i ri, por mësoj shpejt.",
+              "english": "\"No, but I want to learn many things. I am a new worker, but I learn quickly.\""
+            },
+            {
+              "text": "— Jam mësues. Kam mjaft përvojë me fëmijë dhe me të rritur, dhe flas anglisht mirë.",
+              "english": "\"I am a teacher. I have enough experience with children and with adults, and I speak English well.\""
+            },
+            {
+              "text": "— Është mirë, por këtu punojmë me biznese, jo me shkolla.",
+              "english": "\"That is good, but here we work with businesses, not with schools.\""
+            },
+            {
+              "text": "— Cila është përvoja juaj më e mirë?",
+              "english": "\"What is your best experience?\""
+            },
+            {
+              "text": "— Përvoja ime më e mirë është puna me fëmijë dhe me familje.",
+              "english": "\"My best experience is the work with children and with families.\""
+            },
+            {
+              "text": "— Ne punojmë për biznese të vogla. Ato kanë nevojë për një faqe interneti dhe për një email në anglisht.",
+              "english": "\"We work for small businesses. They need a website and an email in English.\""
+            },
+            {
+              "text": "— E kuptoj. Kam shkruar shumë emaile dhe di ta përdor internetin — thotë Sami.",
+              "english": "\"I understand. I have written many emails and I know how to use the internet,\" says Sam."
+            },
+            {
+              "text": "— Çdo lidhje e internetit nuk është e mirë, prandaj e kontrolloj çdo gjë dy herë.",
+              "english": "\"Not every link on the internet is good, so I check everything twice.\""
+            },
+            {
+              "text": "— Bëjmë edhe kërkim në internet për njerëzit që na kërkojnë. A mund ta bëni këtë?",
+              "english": "\"We also do research on the internet for the people who ask us. Can you do this?\""
+            },
+            {
+              "text": "— Po. Mund të shtyp një letër, të zgjedh fotografi dhe të dërgoj dokumente.",
+              "english": "\"Yes. I can type a letter, choose photographs and send documents.\""
+            },
+            {
+              "text": "— Mirë. Çfarë lexoni?",
+              "english": "\"Good. What do you read?\""
+            },
+            {
+              "text": "— Lexoj lajme në gazetë dhe në revistë. Tani po lexoj edhe një roman, dhe më pëlqejnë poezitë.",
+              "english": "\"I read news in the newspaper and in magazines. Now I am also reading a novel, and I like poems.\""
+            },
+            {
+              "text": "— A keni punuar në grup?",
+              "english": "\"Have you worked in a group?\""
+            },
+            {
+              "text": "— Po. Në bashkësi kam mbledhur një grup fëmijësh, dhe bëmë një projekt bashkë.",
+              "english": "\"Yes. In the congregation I gathered a group of children, and we did a project together.\""
+            },
+            {
+              "text": "— Çfarë projekti ishte ai?",
+              "english": "\"What kind of project was it?\""
+            },
+            {
+              "text": "— Një film i vogël për një djalë dhe një liqen. Fëmijët e bënë vetë.",
+              "english": "\"A little film about a boy and a lake. The children made it themselves.\""
+            },
+            {
+              "text": "Shefi buzëqesh dhe shkruan diçka.",
+              "english": "The boss smiles and writes something down."
+            },
+            {
+              "text": "— Një punëtor i mirë punon në ekip. Ju pëlqen puna në ekip?",
+              "english": "\"A good worker works in a team. Do you like working in a team?\""
+            },
+            {
+              "text": "— Po. Një ekip i mirë bën më shumë se një njeri i vetëm.",
+              "english": "\"Yes. A good team does more than a single person.\""
+            },
+            {
+              "text": "— Edhe ju do të punoni me kompjuter çdo ditë. A është tepër e vështirë kjo për ju?",
+              "english": "\"You too will work with a computer every day. Is this too hard for you?\""
+            },
+            {
+              "text": "— Jo, nuk është tepër e vështirë. Kam mjaft kohë për të mësuar, dhe do ta bëj vetë.",
+              "english": "\"No, it is not too hard. I have enough time to learn, and I will do it myself.\""
+            },
+            {
+              "text": "— Projekti ynë i parë është një faqe interneti për një hotel.",
+              "english": "\"Our first project is a website for a hotel.\""
+            },
+            {
+              "text": "— Biznesi i hotelit ka nevojë për një faqe të re.",
+              "english": "\"The hotel's business needs a new page.\""
+            },
+            {
+              "text": "— Do të doja ta bëja këtë projekt me ekipin tuaj.",
+              "english": "\"I would like to do this project with your team.\""
+            },
+            {
+              "text": "— Tani një pyetje e vështirë — thotë ai.",
+              "english": "\"Now a difficult question,\" he says."
+            },
+            {
+              "text": "— Na tregoni për një ditë të vështirë dhe çfarë bëtë ju.",
+              "english": "\"Tell us about a hard day and what you did.\""
+            },
+            {
+              "text": "Sami mendon për një kohë të gjatë.",
+              "english": "Sam thinks for a long time."
+            },
+            {
+              "text": "— Një natë ra një stuhi e madhe — thotë ai.",
+              "english": "\"One night a big storm came,\" he says."
+            },
+            {
+              "text": "— Pati bubullimë dhe vetëtimë, dhe drita u fik.",
+              "english": "\"There was thunder and lightning, and the light went out.\""
+            },
+            {
+              "text": "— Unë ndeza një llambë, por dëgjova një zë nga dhoma e një fëmije.",
+              "english": "\"I lit a lamp, but I heard a voice from a child's room.\""
+            },
+            {
+              "text": "— Fëmija bërtiti dhe qau, sepse dritarja e tij u thye nga era.",
+              "english": "\"The child shouted and cried, because his window broke in the wind.\""
+            },
+            {
+              "text": "— Nuk ka rrezik, i thashë, dhe ia kapa dorën.",
+              "english": "\"There is no danger, I told him, and I took his hand.\""
+            },
+            {
+              "text": "— Heshta pak, dhe ai nuk lëvizi.",
+              "english": "\"I was quiet for a while, and he did not move.\""
+            },
+            {
+              "text": "— E ktheva kokën e tij nga llamba dhe e çova te nëna e tij.",
+              "english": "\"I turned his head towards the lamp and took him to his mother.\""
+            },
+            {
+              "text": "— Vërejta se kishte shumë frikë, prandaj e lashë të flinte pranë nesh.",
+              "english": "\"I noticed that he was very afraid, so I let him sleep near us.\""
+            },
+            {
+              "text": "— Nuk e dija shkakun e vërtetë të frikës së tij, por ai shpëtoi nga nata e keqe.",
+              "english": "\"I did not know the real cause of his fear, but he got through the bad night.\""
+            },
+            {
+              "text": "Shefi e shikon Samin për një kohë të gjatë.",
+              "english": "The boss looks at Sam for a long time."
+            },
+            {
+              "text": "— Kjo është një përgjigje e vërtetë — thotë ai. — Një punëtor i mirë nuk ka frikë.",
+              "english": "\"That is a real answer,\" he says. \"A good worker is not afraid.\""
+            },
+            {
+              "text": "Dritani buzëqesh, por nuk flet.",
+              "english": "Dritan smiles, but does not speak."
+            },
+            {
+              "text": "— Tani të flasim për punën. Ekipi ynë ka katër vetë dhe është tepër i vogël.",
+              "english": "\"Now let us talk about the work. Our team has four people and is far too small.\""
+            },
+            {
+              "text": "— Do të ishte mirë të kishim një njeri që flet anglisht.",
+              "english": "\"It would be good to have a man who speaks English.\""
+            },
+            {
+              "text": "— Do të doja të filloja sa më shpejt — thotë Sami.",
+              "english": "\"I would like to begin as soon as possible,\" says Sam."
+            },
+            {
+              "text": "— Orari është nga ora nëntë në orën pesë.",
+              "english": "\"The hours are from nine to five.\""
+            },
+            {
+              "text": "— Paga është e mirë për fillim. Sasia është e vogël, por vlera e punës është e madhe.",
+              "english": "\"The pay is good for a start. The amount is small, but the value of the work is great.\""
+            },
+            {
+              "text": "— Një kontratë është e rëndësishme për mua. Ende nuk kam një punë të vërtetë këtu.",
+              "english": "\"A contract is important for me. I do not yet have a real job here.\""
+            },
+            {
+              "text": "— Duhet të sillni pasaportën dhe një dokument tjetër.",
+              "english": "\"You have to bring your passport and another document.\""
+            },
+            {
+              "text": "— Pastaj plotësoni formularin dhe bëni një kërkesë me një letër.",
+              "english": "\"Then fill in the form and make a request with a letter.\""
+            },
+            {
+              "text": "— Do ta regjistrojmë emrin tuaj, dhe pagën do ta merrni në bankë.",
+              "english": "\"We will register your name, and you will receive your pay at the bank.\""
+            },
+            {
+              "text": "— Kam një llogari dhe një kartë — thotë Sami.",
+              "english": "\"I have an account and a card,\" says Sam."
+            },
+            {
+              "text": "— Mirë. Nuk keni nevojë për radhë në bankë, sepse mund ta kontrolloni llogarinë në internet.",
+              "english": "\"Good. You do not need to queue at the bank, because you can check the account on the internet.\""
+            },
+            {
+              "text": "— Faqja e bankës është e lehtë. Akoma nuk e kam përdorur shumë, por mësoj.",
+              "english": "\"The bank's page is easy. I have not used it much yet, but I am learning.\""
+            },
+            {
+              "text": "— Shumë mirë. Ju lutem nënshkruani këtu në fund.",
+              "english": "\"Very good. Please sign here at the end.\""
+            },
+            {
+              "text": "Sami nënshkruan, dhe shefi i jep dorën.",
+              "english": "Sam signs, and the boss shakes his hand."
+            },
+            {
+              "text": "— Në fillim do të punoni me Dritanin. Ai do të tregojë mjetet e kompanisë.",
+              "english": "\"At the beginning you will work with Dritan. He will show you the tools of the company.\""
+            },
+            {
+              "text": "— Dritani ka një ekip të mirë, dhe unë besoj te ju.",
+              "english": "\"Dritan has a good team, and I believe in you.\""
+            },
+            {
+              "text": "— Kemi mjaft punë për ju.",
+              "english": "\"We have enough work for you.\""
+            },
+            {
+              "text": "— Urime, zoti Sam. Shihemi të hënën — thotë shefi.",
+              "english": "\"Congratulations, Mr Sam. See you on Monday,\" says the boss."
+            },
+            {
+              "text": "— Faleminderit për intervistën.",
+              "english": "\"Thank you for the interview.\""
+            },
+            {
+              "text": "Jashtë Dritani i thotë: — Urime! Ishe shumë i mirë.",
+              "english": "Outside Dritan says to him: \"Congratulations! You were very good.\""
+            },
+            {
+              "text": "— Faleminderit, Dritan. Pa ty nuk do ta kisha parë njoftimin — thotë Sami.",
+              "english": "\"Thank you, Dritan. Without you I would not have seen the announcement,\" says Sam."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

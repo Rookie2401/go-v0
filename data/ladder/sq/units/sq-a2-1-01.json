@@ -1,0 +1,455 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-01",
+  "lang": "sq",
+  "title": "Kur isha i vogël",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-01",
+    "title": "Albanian ladder, a2-1: Kur isha i vogël (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Invented memoir of a village boyhood (grandfather). Imperfect narration: check \"kujtoj\" for \"mbaj mend\" (the adapter does not read \"mbaj mend\"), \"u linda\", \"ngjitesha\", \"ishe\", the choice of \"rri\" for \"stay/sit\". No facts to check; everything is fiction."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Kur isha i vogël",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam dhe Ardi janë te gjyshi në fshat.",
+              "english": "Sam and Ardi are at grandfather's in the village."
+            },
+            {
+              "text": "Është mbrëmje dhe jashtë bie shi.",
+              "english": "It is evening and it is raining outside."
+            },
+            {
+              "text": "Në sobë ka zjarr dhe dhoma është e ngrohtë.",
+              "english": "There is a fire in the stove and the room is warm."
+            },
+            {
+              "text": "Ata ulen pranë sobës dhe pinë çaj.",
+              "english": "They sit down by the stove and drink tea."
+            },
+            {
+              "text": "Ardi ka një pyetje.",
+              "english": "Ardi has a question."
+            },
+            {
+              "text": "— Gjysh, si ishte jeta kur ishe i vogël?",
+              "english": "\"Grandfather, what was life like when you were small?\""
+            },
+            {
+              "text": "Gjyshi buzëqesh dhe mendon.",
+              "english": "Grandfather smiles and thinks."
+            },
+            {
+              "text": "— Dikur nuk kishim shumë, por ishim të lumtur.",
+              "english": "\"Back then we did not have much, but we were happy.\""
+            },
+            {
+              "text": "— Më trego, gjysh! — thotë Ardi.",
+              "english": "\"Tell me, grandfather!\" says Ardi."
+            },
+            {
+              "text": "— Mirë. Do të flas për fëmijërinë time. Kujtoj shumë gjëra.",
+              "english": "\"Good. I will talk about my childhood. I remember many things.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— U linda në këtë fshat, në shtëpinë e vjetër pranë lumit.",
+              "english": "\"I was born in this village, in the old house by the river.\""
+            },
+            {
+              "text": "Ishim pesë fëmijë, tre djem dhe dy vajza.",
+              "english": "There were five of us children, three boys and two girls."
+            },
+            {
+              "text": "Babai punonte në tokë dhe nëna kujdesej për shtëpinë dhe për ne.",
+              "english": "Father worked on the land and mother took care of the house and of us."
+            },
+            {
+              "text": "Nëna kishte sy të mirë dhe fliste pak.",
+              "english": "Mother had kind eyes and spoke little."
+            },
+            {
+              "text": "Kur binte borë, rrinim gjithë ditën pranë sobës, sepse jashtë ishte shumë ftohtë.",
+              "english": "When it snowed, we stayed by the stove all day, because it was very cold outside."
+            },
+            {
+              "text": "Nëna kujdesej për zjarrin dhe gatuante supë.",
+              "english": "Mother looked after the fire and cooked soup."
+            },
+            {
+              "text": "Zjarri ishte i vogël, por dhoma ishte e ngrohtë.",
+              "english": "The fire was small, but the room was warm."
+            },
+            {
+              "text": "Pas darkës babai tregonte histori dhe ne dëgjonim.",
+              "english": "After supper father told stories and we listened."
+            },
+            {
+              "text": "Dikur në fshat kishte shumë fëmijë, prandaj kishim shumë lojëra.",
+              "english": "Back then there were many children in the village, so we had many games."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Në verë shkonim çdo ditë në lumë.",
+              "english": "\"In summer we went to the river every day.\""
+            },
+            {
+              "text": "Ai ishte i gjerë dhe i ftohtë.",
+              "english": "It was wide and cold."
+            },
+            {
+              "text": "Në breg kishte rërë dhe ne luanim me rërën.",
+              "english": "On the bank there was sand and we played with the sand."
+            },
+            {
+              "text": "Rëra ishte e ngrohtë, dhe çdo lojë ishte e bukur.",
+              "english": "The sand was warm, and every game was beautiful."
+            },
+            {
+              "text": "Unë mësova të notoj kur isha pesë vjeç.",
+              "english": "I learned to swim when I was five."
+            },
+            {
+              "text": "Notonim gjithë ditën, dhe unë notoja më mirë se vëllezërit.",
+              "english": "We swam all day, and I swam better than my brothers."
+            },
+            {
+              "text": "Nuk kishim këpucë dhe vraponim në rrugë.",
+              "english": "We had no shoes and we ran in the road."
+            },
+            {
+              "text": "Loja ishte kjo: kush vrapon më shpejt?",
+              "english": "The game was this: who runs fastest?"
+            },
+            {
+              "text": "Unë vrapoja më shpejt se të gjithë.",
+              "english": "I ran faster than everyone."
+            },
+            {
+              "text": "Mbanim pesë dhi dhe dy dele.",
+              "english": "We kept five goats and two sheep."
+            },
+            {
+              "text": "Çdo mëngjes shkoja me dhitë në kodër.",
+              "english": "Every morning I went with the goats to the hill."
+            },
+            {
+              "text": "Dhitë më njihnin shumë mirë.",
+              "english": "The goats knew me very well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Një ditë u ngjita në çatinë e shtëpisë.",
+              "english": "\"One day I climbed up onto the roof of the house.\""
+            },
+            {
+              "text": "Me sytë e mi shihja gjithë fshatin, lumin dhe kodrat.",
+              "english": "With my own eyes I saw the whole village, the river and the hills."
+            },
+            {
+              "text": "Nëna më pa dhe më tha: — Zbrit!",
+              "english": "Mother saw me and said to me: \"Come down!\""
+            },
+            {
+              "text": "Atë ditë mësova një gjë: çatia nuk është për fëmijë.",
+              "english": "That day I learned one thing: the roof is not for children."
+            },
+            {
+              "text": "Por unë ngjitesha çdo ditë.",
+              "english": "But I climbed up every day."
+            },
+            {
+              "text": "Një herë babai erdhi nga puna dhe më pa në çati.",
+              "english": "Once father came back from work and saw me on the roof."
+            },
+            {
+              "text": "Ai nuk tha asgjë, por buzëqeshi.",
+              "english": "He said nothing, but he smiled."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Një herë në vit shkonim te liqeni.",
+              "english": "\"Once a year we went to the lake.\""
+            },
+            {
+              "text": "Liqeni ishte larg, kështu ngjiteshim në kodër gjithë ditën.",
+              "english": "The lake was far, so we climbed the hill all day."
+            },
+            {
+              "text": "Aty nëna hapte çantën dhe na jepte bukë, djathë dhe mollë.",
+              "english": "There mother opened the bag and gave us bread, cheese and apples."
+            },
+            {
+              "text": "Uleshim në breg dhe hanim bashkë.",
+              "english": "We sat on the bank and ate together."
+            },
+            {
+              "text": "Liqeni ishte shumë i madh.",
+              "english": "The lake was very big."
+            },
+            {
+              "text": "Aty në breg kishte shumë zogj.",
+              "english": "There on the shore there were many birds."
+            },
+            {
+              "text": "Ky është një kujtim shumë i bukur.",
+              "english": "This is a very beautiful memory."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Babai punonte larg, në qytet.",
+              "english": "\"Father worked far away, in the town.\""
+            },
+            {
+              "text": "Posta vinte një herë në javë.",
+              "english": "The post came once a week."
+            },
+            {
+              "text": "Nëna priste postën pranë derës.",
+              "english": "Mother waited for the post by the door."
+            },
+            {
+              "text": "Një ditë erdhi një zarf.",
+              "english": "One day an envelope came."
+            },
+            {
+              "text": "Brenda kishte një kartolinë dhe një shënim të vogël.",
+              "english": "Inside there was a postcard and a small note."
+            },
+            {
+              "text": "Babai shkruante: — Shpresoj që jeni mirë.",
+              "english": "Father wrote: \"I hope you are well.\""
+            },
+            {
+              "text": "Nëna lexoi dhe i shkroi një përgjigje.",
+              "english": "Mother read it and wrote him an answer."
+            },
+            {
+              "text": "Ajo i përgjigjej çdo herë.",
+              "english": "She answered him every time."
+            },
+            {
+              "text": "Kartolinën e ruaj edhe sot.",
+              "english": "I keep the postcard even today."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— A kishit shkollë në fshat? — pyet Sam.",
+              "english": "\"Did you have a school in the village?\" asks Sam."
+            },
+            {
+              "text": "— Kishim një shkollë të vogël. Mësuesi vinte nga qyteti dhe na mësonte të lexojmë.",
+              "english": "\"We had a small school. The teacher came from the town and taught us to read.\""
+            },
+            {
+              "text": "— Kisha një ëndërr: të bëhesha mësues.",
+              "english": "\"I had a dream: to become a teacher.\""
+            },
+            {
+              "text": "Por nuk kishim mundësi të paguanim shkollën.",
+              "english": "But we could not afford to pay for school."
+            },
+            {
+              "text": "Kisha një dëshirë të madhe të mësoj, prandaj lexoja çdo libër.",
+              "english": "I had a great wish to learn, so I read every book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Të dielën nuk punonim.",
+              "english": "\"On Sunday we did not work.\""
+            },
+            {
+              "text": "Ndërronim këmishën dhe shkonim në kishë.",
+              "english": "We changed our shirts and went to church."
+            },
+            {
+              "text": "Kisha ishte e vogël.",
+              "english": "The church was small."
+            },
+            {
+              "text": "Kori këndonte dhe të gjithë dëgjonin.",
+              "english": "The choir sang and everyone listened."
+            },
+            {
+              "text": "Pas shërbimit pastori jepte një bekim.",
+              "english": "After the service the pastor gave a blessing."
+            },
+            {
+              "text": "Dëshmoj se ato të diela ishin të mira.",
+              "english": "I can testify that those Sundays were good."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Fqinjët vinin shpesh dhe rrinim bashkë.",
+              "english": "\"The neighbours came often and we sat together.\""
+            },
+            {
+              "text": "Një zonjë e vjetër, shoqja e nënës, sillte djathë.",
+              "english": "An old lady, mother's friend, used to bring cheese."
+            },
+            {
+              "text": "Një ditë erdhi një mysafir nga qyteti.",
+              "english": "One day a guest came from the town."
+            },
+            {
+              "text": "Ai ishte një mik i babait.",
+              "english": "He was a friend of father's."
+            },
+            {
+              "text": "Ishte zakon që vizitori të rrinte te ne një natë.",
+              "english": "It was the custom that the visitor stayed with us for a night."
+            },
+            {
+              "text": "Mysafiri më solli një dhuratë: një çokollatë.",
+              "english": "The guest brought me a present: a chocolate."
+            },
+            {
+              "text": "Në festë nëna piqte një tortë.",
+              "english": "On a feast day mother baked a cake."
+            },
+            {
+              "text": "Ishte një traditë e vjetër.",
+              "english": "It was an old tradition."
+            },
+            {
+              "text": "Akulloren e hëngra shumë më vonë, kur isha i ri, në qytet.",
+              "english": "I ate ice cream much later, when I was young, in the town."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Kur babai vdiq, unë isha i ri.",
+              "english": "\"When father died, I was young.\""
+            },
+            {
+              "text": "Vdekja e tij ishte e rëndë për ne.",
+              "english": "His death was hard for us."
+            },
+            {
+              "text": "Në rini punova në qytet.",
+              "english": "In my youth I worked in the town."
+            },
+            {
+              "text": "Në moshën njëzet vjeç u martova.",
+              "english": "At the age of twenty I got married."
+            },
+            {
+              "text": "Pastaj jeta ndërroi, por unë ruaj fëmijërinë time.",
+              "english": "Then life changed, but I keep my childhood."
+            },
+            {
+              "text": "Babai dhe nëna na rritën me shumë dashuri, në atë mënyrë.",
+              "english": "Father and mother raised us with much love, in that way."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gjyshi mbyll sytë.",
+              "english": "Grandfather closes his eyes."
+            },
+            {
+              "text": "— Faleminderit, gjysh — thotë Sam. — Kjo histori është shumë e bukur.",
+              "english": "\"Thank you, grandfather,\" says Sam. \"This story is very beautiful.\""
+            },
+            {
+              "text": "— Dikur jeta ishte e bukur, por sot jeni ju këtu — thotë gjyshi.",
+              "english": "\"Back then life was beautiful, but today you are here,\" says grandfather."
+            },
+            {
+              "text": "— Gjysh, a të pëlqen fshati edhe sot? — pyet Ardi.",
+              "english": "\"Grandfather, do you like the village even today?\" asks Ardi."
+            },
+            {
+              "text": "— Shumë, sepse këtu jam në shtëpi — thotë gjyshi.",
+              "english": "\"Very much, because here I am at home,\" says grandfather."
+            },
+            {
+              "text": "Ardi ulet pranë tij dhe buzëqesh.",
+              "english": "Ardi sits down next to him and smiles."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

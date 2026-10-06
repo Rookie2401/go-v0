@@ -1,0 +1,471 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-18",
+  "lang": "sq",
+  "title": "Shqipëria: klima dhe natyra",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-18",
+    "title": "Albanian ladder, a2-1: Shqipëria: klima dhe natyra (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Nonfiction: figures for a person to check: area about 28,700 km2; length about 340 km north to south and about 150 km east to west; about 70 % mountains and hills; Korab 2,764 m as the highest peak; average height about 700 m; the Drin about 285 km; coast of more than 360 km on the Adriatic (north) and the Ionian Sea (south); Lake Shkodër the biggest lake; temperatures above 35 degrees in summer, about 8 degrees in winter on the coast; more rain in the north than in the south; borders (Montenegro, North Macedonia, Kosovo, Greece). \"kilometra katrorë\" is not in the adapter lexicon."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "nonfiction"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "nonfiction"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Shqipëria: klima dhe natyra",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luani ka hartuar një tekst të shkurtër për studentët e kursit të tij.",
+              "english": "Luan has drafted a short text for the students of his course."
+            },
+            {
+              "text": "Ai ka një diplomë në gjuhë dhe e do shkrimin.",
+              "english": "He has a diploma in languages and likes writing."
+            },
+            {
+              "text": "Sami e lexon tekstin dhe do ta përkthejë në anglisht.",
+              "english": "Sam reads the text and will translate it into English."
+            },
+            {
+              "text": "Ja çfarë shkruan Luani:",
+              "english": "Here is what Luan writes:"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Shqipëria është një vend i vogël, por me shumë natyrë.",
+              "english": "Albania is a small country, but with a lot of nature."
+            },
+            {
+              "text": "Sipërfaqja e saj është rreth 28.700 kilometra katrorë.",
+              "english": "Its area is about 28,700 square kilometres."
+            },
+            {
+              "text": "Sipërfaqja e vendit është e vogël, por sipërfaqja e maleve është shumë e madhe.",
+              "english": "The area of the country is small, but the area of the mountains is very large."
+            },
+            {
+              "text": "Nga veriu në jug gjatësia e vendit është rreth 340 kilometra.",
+              "english": "From north to south the length of the country is about 340 kilometres."
+            },
+            {
+              "text": "Nga lindja në perëndim ajo është më e ngushtë: rreth 150 kilometra.",
+              "english": "From east to west it is narrower: about 150 kilometres."
+            },
+            {
+              "text": "Në botë Shqipëria është një nga vendet e vogla, por me shumë natyrë.",
+              "english": "In the world Albania is one of the small countries, but with a lot of nature."
+            },
+            {
+              "text": "Në të gjithë botën ka vende më të mëdha, por Shqipëria ka shumë lloje natyre.",
+              "english": "In the whole world there are bigger countries, but Albania has many kinds of nature."
+            },
+            {
+              "text": "Në veri Shqipëria ka kufi me Malin e Zi, në lindje me Maqedoninë e Veriut dhe me Kosovën, dhe në jug me Greqinë.",
+              "english": "In the north Albania borders Montenegro, in the east North Macedonia and Kosovo, and in the south Greece."
+            },
+            {
+              "text": "Në perëndim është deti.",
+              "english": "In the west is the sea."
+            },
+            {
+              "text": "Ky është një kufi i gjatë, që shkon nga veriu në jug.",
+              "english": "This is a long border that runs from north to south."
+            },
+            {
+              "text": "Bregdeti ka dy dete: detin Adriatik në veri dhe detin Jon në jug.",
+              "english": "The coast has two seas: the Adriatic Sea in the north and the Ionian Sea in the south."
+            },
+            {
+              "text": "Gjatësia e bregdetit është më shumë se 360 kilometra.",
+              "english": "The length of the coast is more than 360 kilometres."
+            },
+            {
+              "text": "Atje ka shumë plazhe, dhe në verë vijnë turistë për pushim.",
+              "english": "There are many beaches there, and in summer tourists come for holiday."
+            },
+            {
+              "text": "Anije dhe varka të vogla kalojnë çdo ditë nëpër det.",
+              "english": "Ships and small boats pass over the sea every day."
+            },
+            {
+              "text": "Një tren shkon nga kryeqyteti në bregdet.",
+              "english": "A train goes from the capital to the coast."
+            },
+            {
+              "text": "Në det ka edhe disa ishuj të vegjël.",
+              "english": "In the sea there are also a few small islands."
+            },
+            {
+              "text": "Një ishull i njohur ndodhet pranë qytetit të Vlorës.",
+              "english": "A well-known island lies near the town of Vlorë."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Shqipëria është një vend malor.",
+              "english": "Albania is a mountainous country."
+            },
+            {
+              "text": "Rreth 70 % e vendit janë male dhe kodra.",
+              "english": "About 70 % of the country is mountains and hills."
+            },
+            {
+              "text": "Mali më i lartë është Korabi, me një lartësi prej 2.764 metrash.",
+              "english": "The highest mountain is Korab, with a height of 2,764 metres."
+            },
+            {
+              "text": "Lartësia mesatare e vendit është rreth 700 metra.",
+              "english": "The average height of the country is about 700 metres."
+            },
+            {
+              "text": "Malet e veriut janë të larta dhe të ngushta, dhe zona e tyre është e ftohtë.",
+              "english": "The mountains of the north are high and narrow, and their area is cold."
+            },
+            {
+              "text": "Në lindje malet janë më të gjera, dhe rajoni është më i thatë.",
+              "english": "In the east the mountains are wider, and the region is drier."
+            },
+            {
+              "text": "Midis maleve ka lugina, ku jetojnë njerëz dhe ku toka është e mirë.",
+              "english": "Between the mountains there are valleys where people live and where the land is good."
+            },
+            {
+              "text": "Në perëndim, pranë detit, shtrihet një fushë e gjerë.",
+              "english": "In the west, near the sea, a wide plain lies."
+            },
+            {
+              "text": "Në fushë ka shumë fshatra, dhe bujqësia është e rëndësishme.",
+              "english": "On the plain there are many villages, and farming is important."
+            },
+            {
+              "text": "Aty rritet bukë, perime dhe fruta.",
+              "english": "There bread, vegetables and fruits grow."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Shqipëria ka shumë ujë.",
+              "english": "Albania has a lot of water."
+            },
+            {
+              "text": "Rreth çdo mali ka burime të vogla, dhe prej tyre dalin përrenj.",
+              "english": "Around every mountain there are small springs, and streams come out of them."
+            },
+            {
+              "text": "Përrenjtë shkojnë poshtë dhe bëhen lumenj.",
+              "english": "The streams go down and become rivers."
+            },
+            {
+              "text": "Lumi më i gjatë është Drini, me një gjatësi prej rreth 285 kilometrash.",
+              "english": "The longest river is the Drin, with a length of about 285 kilometres."
+            },
+            {
+              "text": "Edhe Vjosa, edhe Shkumbini janë lumenj të njohur.",
+              "english": "Both the Vjosa and the Shkumbin are well-known rivers."
+            },
+            {
+              "text": "Ata shkojnë në det, dhe disa prej tyre kanë ujë të bukur edhe në verë.",
+              "english": "They go to the sea, and some of them have beautiful water even in summer."
+            },
+            {
+              "text": "Në vend ka edhe liqene të mëdhenj.",
+              "english": "In the country there are also large lakes."
+            },
+            {
+              "text": "Liqeni i Shkodrës është një nga liqenet më të mëdhenj të vendit.",
+              "english": "The Lake of Shkodër is one of the largest lakes of the country."
+            },
+            {
+              "text": "Një pjesë e tij ndodhet në Shqipëri dhe një pjesë në një vend tjetër.",
+              "english": "A part of it lies in Albania and a part in another country."
+            },
+            {
+              "text": "Në lindje ka edhe liqene të tjerë, që janë shumë të vjetër.",
+              "english": "In the east there are other lakes too, which are very old."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Klima e Shqipërisë ndryshon nga një zonë në një zonë tjetër.",
+              "english": "The climate of Albania changes from one area to another zone."
+            },
+            {
+              "text": "Në bregdet klima është e ngrohtë: dimri është i ftohtë, por jo shumë, dhe vera është shumë e ngrohtë.",
+              "english": "On the coast the climate is warm: winter is cold, but not very, and summer is very warm."
+            },
+            {
+              "text": "Në verë vapa është e madhe, dhe temperatura arrin 35 gradë ose më shumë.",
+              "english": "In summer the heat is great, and the temperature reaches 35 degrees or more."
+            },
+            {
+              "text": "Në dimër temperatura mesatare në bregdet është rreth 8 gradë.",
+              "english": "In winter the average temperature on the coast is about 8 degrees."
+            },
+            {
+              "text": "Në male klima është më e ftohtë, dhe bora rri shumë javë.",
+              "english": "In the mountains the climate is colder, and the snow stays many weeks."
+            },
+            {
+              "text": "Reshjet ndryshojnë nga një zonë në një zonë tjetër.",
+              "english": "The rainfall changes from one area to another."
+            },
+            {
+              "text": "Në veri bien më shumë reshje se në jug.",
+              "english": "In the north more rain falls than in the south."
+            },
+            {
+              "text": "Në disa zona malore ka më shumë se dy metra reshje në vit.",
+              "english": "In some mountain areas there are more than two metres of rainfall a year."
+            },
+            {
+              "text": "Në jug dhe në lindje nuk bie shumë shi në verë, dhe pothuajse nuk ka reshje.",
+              "english": "In the south and in the east it does not rain much in summer, and there is almost no rainfall."
+            },
+            {
+              "text": "Dimri është koha e shiut për gjithë vendin.",
+              "english": "Winter is the time of rain for the whole country."
+            },
+            {
+              "text": "Pranvera është koha më e bukur, sepse ajri është i ngrohtë dhe i mirë.",
+              "english": "Spring is the most beautiful time, because the air is warm and good."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Natyra e Shqipërisë ka shumë gjëra të bukura.",
+              "english": "The nature of Albania has many beautiful things."
+            },
+            {
+              "text": "Në male ka pyje të mëdhenj me shumë bimë.",
+              "english": "In the mountains there are big forests with many plants."
+            },
+            {
+              "text": "Në pyje ka bimë të shumë llojeve, dhe disa bimë janë shumë të vjetra.",
+              "english": "In the forests there are plants of many kinds, and some plants are very old."
+            },
+            {
+              "text": "Bimët e maleve nuk janë si bimët e fushës.",
+              "english": "The plants of the mountains are not like the plants of the plain."
+            },
+            {
+              "text": "Shumë njerëz mbledhin bimë për çaj, dhe pothuajse çdo shtëpi ka një çaj malor.",
+              "english": "Many people collect plants for tea, and almost every house has a mountain tea."
+            },
+            {
+              "text": "Në vende të ulëta rriten pemë dhe lule të bukura.",
+              "english": "In low places trees and beautiful flowers grow."
+            },
+            {
+              "text": "Në pyje jetojnë shumë kafshë, dhe në ujë ka shumë peshk.",
+              "english": "In the forests many animals live, and in the water there is a lot of fish."
+            },
+            {
+              "text": "Ajri në male është i mirë, dhe shumë njerëz vijnë atje për pushim.",
+              "english": "The air in the mountains is good, and many people come there for holiday."
+            },
+            {
+              "text": "Ajri i detit është i ngrohtë, dhe ajri i maleve është i ftohtë.",
+              "english": "The air of the sea is warm, and the air of the mountains is cold."
+            },
+            {
+              "text": "Natyra është një pasuri e vendit dhe e popullit.",
+              "english": "Nature is a wealth of the country and of the people."
+            },
+            {
+              "text": "Çdo njeri duhet ta ruajë atë.",
+              "english": "Every person must protect it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në male uji është i ftohtë dhe i mirë.",
+              "english": "In the mountains the water is cold and good."
+            },
+            {
+              "text": "Çdo përrua i vogël vjen nga një burim, dhe çdo burim ka një vend të tij në mal.",
+              "english": "Every small stream comes from a spring, and every spring has its place on the mountain."
+            },
+            {
+              "text": "Burimet e mira janë një pasuri për fshatrat, sepse njerëzit pinë atë ujë.",
+              "english": "Good springs are a wealth for the villages, because people drink that water."
+            },
+            {
+              "text": "Poshtë, midis dy maleve, shtrihet një luginë e gjerë me një lumë.",
+              "english": "Below, between two mountains, there lies a wide valley with a river."
+            },
+            {
+              "text": "Lugina është e gjelbër në pranverë, dhe në verë ajo është shumë e ngrohtë.",
+              "english": "The valley is green in spring, and in summer it is very warm."
+            },
+            {
+              "text": "Vapa në luginë është e madhe, kurse në mal temperatura është më e ulët.",
+              "english": "The heat in the valley is great, while in the mountains the temperature is lower."
+            },
+            {
+              "text": "Vapa e verës është e madhe edhe në fushë.",
+              "english": "The heat of summer is great on the plain too."
+            },
+            {
+              "text": "Në verë, kur temperatura arrin 38 gradë, njerëzit shkojnë në male ose në det.",
+              "english": "In summer, when the temperature reaches 38 degrees, people go to the mountains or to the sea."
+            },
+            {
+              "text": "Pothuajse çdo familje shkon në bregdet ose në male për pushim në verë.",
+              "english": "Almost every family goes to the coast or to the mountains for a holiday in summer."
+            },
+            {
+              "text": "Zonat malore kanë një klimë tjetër, dhe fshatrat atje janë të vegjël.",
+              "english": "The mountain areas have another climate, and the villages there are small."
+            },
+            {
+              "text": "Rruga malore është e gjatë, por vendi është shumë i bukur.",
+              "english": "The mountain road is long, but the place is very beautiful."
+            },
+            {
+              "text": "Në disa vende lartësia arrin 2.000 metra, dhe aty ka borë edhe në pranverë.",
+              "english": "In some places the height reaches 2,000 metres, and there is snow even in spring."
+            },
+            {
+              "text": "Kufiri me vendet e tjera kalon shpesh nëpër male dhe liqene.",
+              "english": "The border with other countries often passes through mountains and lakes."
+            },
+            {
+              "text": "Në kufi ka një lumë, një përrua ose një rrugë malore.",
+              "english": "On the border there is a river, a stream or a mountain road."
+            },
+            {
+              "text": "Natyra dhe historia janë bashkë në këtë vend.",
+              "english": "Nature and history are together in this country."
+            },
+            {
+              "text": "Shqipëria njihet në botë për bregdetin, malet dhe liqenet e saj.",
+              "english": "Albania is known in the world for its coast, mountains and lakes."
+            },
+            {
+              "text": "Në vende të larta ka kala dhe kështjella të vjetra, dhe shumë monumente antike.",
+              "english": "In high places there are old castles and fortresses, and many ancient monuments."
+            },
+            {
+              "text": "Një mbret e themeloi një qytet në një fushë, dhe një perandori e pushtoi atë.",
+              "english": "A king founded a town on a plain, and an empire conquered it."
+            },
+            {
+              "text": "Çdo epokë ka lënë një monument, dhe çdo periudhë tregon një luftë ose një festë.",
+              "english": "Every epoch has left a monument, and every period shows a war or a celebration."
+            },
+            {
+              "text": "Disa shekuj më parë një mbretëri e vjetër përfshinte një zonë të madhe të vendit.",
+              "english": "A few centuries ago an old kingdom included a large area of the country."
+            },
+            {
+              "text": "Kjo trashëgimi përfshin kala, ura, rrugë dhe shumë qytete të vjetra.",
+              "english": "This heritage includes castles, bridges, roads and many old towns."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Luani i jep tekstit një ushtrim në fund:",
+              "english": "At the end Luan gives the text an exercise:"
+            },
+            {
+              "text": "— Lexoni tekstin dhe shkruani pesë fjali për klimën, për malet dhe për lumenj.",
+              "english": "\"Read the text and write five sentences about the climate, the mountains and the rivers.\""
+            },
+            {
+              "text": "Leximi i këtij teksti është një studim i vogël, dhe studentët e studiojnë me kujdes.",
+              "english": "Reading this text is a small study, and the students study it carefully."
+            },
+            {
+              "text": "— Jepni një shembull për çdo zonë: bregdetin, fushën, luginën dhe malin.",
+              "english": "\"Give an example for every area: the coast, the plain, the valley and the mountain.\""
+            },
+            {
+              "text": "— Kërkoni fjalë të reja në bibliotekë dhe mësoni t'i përdorni.",
+              "english": "\"Look for new words in the library and learn to use them.\""
+            },
+            {
+              "text": "Sami e përkthen tekstin në anglisht dhe e dërgon me email.",
+              "english": "Sam translates the text into English and sends it by email."
+            },
+            {
+              "text": "— Ky studim është i mirë — thotë ai. — Profesorët e fakultetit mund ta përdorin.",
+              "english": "\"This study is good,\" he says. \"The professors of the faculty can use it.\""
+            },
+            {
+              "text": "— Mësuesi i vërtetë i ndihmon studentët dhe arsimi i tyre rritet — thotë Luani.",
+              "english": "\"A real teacher helps the students and their education grows,\" says Luan."
+            },
+            {
+              "text": "Sami buzëqesh dhe mendon për atë vend të vogël me natyrë të madhe.",
+              "english": "Sam smiles and thinks about that small country with big nature."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

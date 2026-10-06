@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-04",
+  "lang": "sq",
+  "title": "Nata e stuhisë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-04",
+    "title": "Albanian ladder, a2-1: Nata e stuhisë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Invented first-person account of a storm. Check imperfect/aorist (\"po flisnim kur ... bërtiti\"), \"duke\" + participle, and the adapter gaps: the imperfect \"bërtiste\" is not read by the adapter, so the aorist \"bërtiti\" is used."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Nata e stuhisë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën në mbrëmje isha te Ana dhe Luani për darkë.",
+              "english": "On Saturday evening I was at Ana and Luan's for supper."
+            },
+            {
+              "text": "Ardi ishte edhe ai atje, sepse flinte te Ana.",
+              "english": "Ardi was there too, because he was sleeping at Ana's."
+            },
+            {
+              "text": "Ana po gatuante një byrek me spinaq dhe Luani po pastronte spinaqin.",
+              "english": "Ana was cooking a spinach byrek and Luan was cleaning the spinach."
+            },
+            {
+              "text": "Ata përzienin miellin, vezët dhe kripën.",
+              "english": "They were mixing the flour, the eggs and the salt."
+            },
+            {
+              "text": "Ana hodhi pak vaj në byrek dhe shtoi kos të trashë.",
+              "english": "Ana poured a little oil onto the byrek and added thick yoghurt."
+            },
+            {
+              "text": "Luani e priste spinaqin me thikë, dhe unë sillja lugët dhe pjatat.",
+              "english": "Luan was cutting the spinach with a knife, and I was bringing the spoons and the plates."
+            },
+            {
+              "text": "Furra ishte e ngrohtë dhe byreku piqej.",
+              "english": "The oven was warm and the byrek was baking."
+            },
+            {
+              "text": "Ardi po lexonte një libër në dhomën e tij.",
+              "english": "Ardi was reading a book in his room."
+            },
+            {
+              "text": "Ishte një mbrëmje e bukur, por jashtë qielli ishte i zi.",
+              "english": "It was a lovely evening, but outside the sky was black."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas pak u dëgjua një bubullimë e madhe.",
+              "english": "Soon a loud clap of thunder was heard."
+            },
+            {
+              "text": "Pastaj pamë një vetëtimë të bardhë.",
+              "english": "Then we saw a white flash of lightning."
+            },
+            {
+              "text": "Çdo vetëtimë e bënte kuzhinën të bardhë dhe pastaj të zezë.",
+              "english": "Every flash of lightning made the kitchen white and then black."
+            },
+            {
+              "text": "— Stuhi! — tha Luani, duke shikuar nga dritarja.",
+              "english": "\"A storm!\" said Luan, looking out of the window."
+            },
+            {
+              "text": "Ra shi dhe era u bë shumë e madhe.",
+              "english": "Rain fell and the wind became very strong."
+            },
+            {
+              "text": "Atëherë drita u fik.",
+              "english": "Then the light went out."
+            },
+            {
+              "text": "Kuzhina nuk kishte dritë, por furra ishte e ngrohtë.",
+              "english": "The kitchen had no light, but the oven was warm."
+            },
+            {
+              "text": "Ana tha: — Mos lëvizni, ju lutem!",
+              "english": "Ana said: \"Do not move, please!\""
+            },
+            {
+              "text": "Luani ndezi një llambë dhe e la në tavolinë.",
+              "english": "Luan lit a lamp and left it on the table."
+            },
+            {
+              "text": "Hijet tona ishin të mëdha në mur.",
+              "english": "Our shadows were big on the wall."
+            },
+            {
+              "text": "— Nuk ka rrezik — tha ai. — Është një stuhi.",
+              "english": "\"There is no danger,\" he said. \"It is a storm.\""
+            },
+            {
+              "text": "Ne po flisnim kur Ardi bërtiti nga dhoma.",
+              "english": "We were talking when Ardi shouted from his room."
+            },
+            {
+              "text": "Pastaj dëgjuam një zë tjetër: dritarja u thye.",
+              "english": "Then we heard another sound: the window broke."
+            },
+            {
+              "text": "Ne vrapuam te dhoma e tij.",
+              "english": "We ran to his room."
+            },
+            {
+              "text": "— A ka rrezik te dritarja? — pyeta unë.",
+              "english": "\"Is there danger by the window?\" I asked."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Era e madhe e kishte thyer dritaren.",
+              "english": "The strong wind had broken the window."
+            },
+            {
+              "text": "Ardi ishte në shtrat dhe po qante.",
+              "english": "Ardi was in bed and was crying."
+            },
+            {
+              "text": "Ai bërtiti edhe një herë: — Ana!",
+              "english": "He shouted once more: \"Ana!\""
+            },
+            {
+              "text": "Shkaku ishte era e madhe.",
+              "english": "The cause was the strong wind."
+            },
+            {
+              "text": "Luani vërejti se era hynte nga dritarja e thyer.",
+              "english": "Luan noticed that the wind was coming in through the broken window."
+            },
+            {
+              "text": "Unë vërejta gjithashtu që shiu hynte brenda.",
+              "english": "I also noticed that the rain was coming in."
+            },
+            {
+              "text": "Unë e kapa dorën e tij dhe i thashë: — Mos qaj, Ardi. Jam këtu.",
+              "english": "I took his hand and said to him: \"Do not cry, Ardi. I am here.\""
+            },
+            {
+              "text": "Ai nuk lëvizte dhe nuk fliste.",
+              "english": "He did not move and did not speak."
+            },
+            {
+              "text": "Ana e mori pranë dhe tha: — Hesht tani, nuk ka rrezik.",
+              "english": "Ana took him close and said: \"Hush now, there is no danger.\""
+            },
+            {
+              "text": "Luani kapi llambën, e ktheu nga dera dhe e çoi në dhomën e Ardit.",
+              "english": "Luan picked up the lamp, turned it towards the door and took it to Ardi's room."
+            },
+            {
+              "text": "Unë vërejta se asgjë nuk ra mbi shtratin e Ardit.",
+              "english": "I noticed that nothing fell on Ardi's bed."
+            },
+            {
+              "text": "Ai nuk kishte asgjë, por kishte frikë.",
+              "english": "He was not hurt, but he was afraid."
+            },
+            {
+              "text": "— Nuk ka shkak për frikë — tha Ana. — Dritarja u thye, por Ardi shpëtoi.",
+              "english": "\"There is no reason for fear,\" said Ana. \"The window broke, but Ardi is safe.\""
+            },
+            {
+              "text": "— Pa shkak nuk qan njeri — tha Ana.",
+              "english": "\"Nobody cries without a reason,\" said Ana."
+            },
+            {
+              "text": "— Kam frikë nga bubullima — tha Ardi.",
+              "english": "\"I am afraid of the thunder,\" said Ardi."
+            },
+            {
+              "text": "Ana e çoi në kuzhinë, pranë furrës, ku ishte e ngrohtë.",
+              "english": "Ana took him to the kitchen, near the oven, where it was warm."
+            },
+            {
+              "text": "Aty ai ishte më mirë.",
+              "english": "There he was better."
+            },
+            {
+              "text": "Ana ktheu byrekun në furrë dhe e fiku furrën pas pak.",
+              "english": "Ana turned the byrek over in the oven and switched the oven off a little later."
+            },
+            {
+              "text": "Byreku shpëtoi dhe ne ishim të lumtur.",
+              "english": "The byrek was saved and we were happy."
+            },
+            {
+              "text": "Ne hëngrëm duke dëgjuar bubullimën.",
+              "english": "We ate listening to the thunder."
+            },
+            {
+              "text": "Zëri i Luanit ishte i ngrohtë dhe i ulët.",
+              "english": "Luan's voice was warm and low."
+            },
+            {
+              "text": "— Faleminderit Zotit që shpëtuam të gjithë — tha Ana.",
+              "english": "\"Thank God that we were all saved,\" said Ana."
+            },
+            {
+              "text": "Luani e la llambën në tavolinë, dhe ne ulëm bashkë pa asnjë dritë tjetër.",
+              "english": "Luan left the lamp on the table, and we sat down together without any other light."
+            },
+            {
+              "text": "Ardi heshti dhe dëgjoi bubullimën.",
+              "english": "Ardi fell silent and listened to the thunder."
+            },
+            {
+              "text": "Edhe unë heshta një minutë.",
+              "english": "I too was silent for a minute."
+            },
+            {
+              "text": "Pas çdo vetëtime ai mbyllte sytë.",
+              "english": "After every flash of lightning he closed his eyes."
+            },
+            {
+              "text": "Ana fliste me zë të ulët: — Mos bërtit, Ardi, dhe mos ki frikë.",
+              "english": "Ana spoke in a low voice: \"Do not shout, Ardi, and do not be afraid.\""
+            },
+            {
+              "text": "— Kam kujtime të stuhive — tha Luani.",
+              "english": "\"I have memories of storms,\" said Luan."
+            },
+            {
+              "text": "— Dikur, kur isha i vogël, stuhia më kapi në breg të lumit.",
+              "english": "\"Once, when I was small, a storm caught me on the bank of the river.\""
+            },
+            {
+              "text": "— Unë vrapova në shtëpi dhe dhitë vraponin pas meje.",
+              "english": "\"I ran home and the goats were running after me.\""
+            },
+            {
+              "text": "— Një herë stuhia e mori çatinë e shtëpisë së vjetër.",
+              "english": "\"One time a storm took the roof of the old house.\""
+            },
+            {
+              "text": "— Çatia e shtëpisë së vjetër ishte e ulët dhe dhomat ishin të ngushta.",
+              "english": "\"The roof of the old house was low and the rooms were narrow.\""
+            },
+            {
+              "text": "— Pas stuhisë shkonim në lumë: notonim, ngjiteshim në shkëmb dhe luanim në rërë.",
+              "english": "\"After the storm we went to the river: we swam, climbed up on the rock and played in the sand.\""
+            },
+            {
+              "text": "— Atëherë gjyshi ndizte zjarrin në sobë dhe thoshte: stuhia është e shkurtër.",
+              "english": "\"Then grandfather lit the fire in the stove and said: the storm is short.\""
+            },
+            {
+              "text": "— Pas stuhisë vinte mjegulla, dhe unë dilja te liqeni me dhitë.",
+              "english": "\"After the storm the fog came, and I went out to the lake with the goats.\""
+            },
+            {
+              "text": "Ardi buzëqeshi pak.",
+              "english": "Ardi smiled a little."
+            },
+            {
+              "text": "— Gjyshi më tregoi për djalin trim dhe për gjarprin e shpellës — tha ai.",
+              "english": "\"Grandfather told me about the brave boy and the snake of the cave,\" he said."
+            },
+            {
+              "text": "— Djali zbriti shkallët dhe nuk kishte frikë, edhe pse ishte i vetëm.",
+              "english": "\"The boy went down the stairs and was not afraid, although he was alone.\""
+            },
+            {
+              "text": "— Edhe unë dua të jem trim.",
+              "english": "\"I want to be brave too.\""
+            },
+            {
+              "text": "— Je trim, Ardi — i thashë unë. — Tani nuk je i vetëm.",
+              "english": "\"You are brave, Ardi,\" I said to him. \"Now you are not alone.\""
+            },
+            {
+              "text": "Ne hëngrëm byrek me dritën e llambës, duke folur për fshatin dhe për verën.",
+              "english": "We ate byrek by the light of the lamp, talking about the village and about summer."
+            },
+            {
+              "text": "Hijet në mur lëviznin, por Ardi nuk kishte më frikë.",
+              "english": "The shadows on the wall moved, but Ardi was no longer afraid."
+            },
+            {
+              "text": "Luani bëri një lojë me hijet dhe me duart e tij.",
+              "english": "Luan made a game with the shadows and with his hands."
+            },
+            {
+              "text": "Në mur ishte një qen dhe pastaj një zog.",
+              "english": "On the wall there was a dog and then a bird."
+            },
+            {
+              "text": "Ardi buzëqeshi dhe unë gjithashtu.",
+              "english": "Ardi smiled and so did I."
+            },
+            {
+              "text": "Ana më dha një pjesë të hollë byreku.",
+              "english": "Ana gave me a thin piece of byrek."
+            },
+            {
+              "text": "— Në këtë vend stuhia vjen shpesh — tha ajo.",
+              "english": "\"In this country the storm comes often,\" she said."
+            },
+            {
+              "text": "— Çdo vit ka disa stuhi në qytet, por kjo ishte e rëndë.",
+              "english": "\"Every year there are a few storms in the town, but this one was heavy.\""
+            },
+            {
+              "text": "Ardi rrinte pranë meje dhe hante.",
+              "english": "Ardi sat next to me and ate."
+            },
+            {
+              "text": "Ai ishte një djalë i vogël dhe kishte një lloj frike që nuk e kuptonte.",
+              "english": "He was a small boy and had a kind of fear that he did not understand."
+            },
+            {
+              "text": "Pas një ore drita u kthye.",
+              "english": "After an hour the light came back."
+            },
+            {
+              "text": "Luani ndezi dritën e kuzhinës dhe fiku llambën.",
+              "english": "Luan switched on the kitchen light and put out the lamp."
+            },
+            {
+              "text": "Tani pamë dhomën e Ardit: dritarja ishte e lartë, e gjerë dhe e thyer.",
+              "english": "Now we saw Ardi's room: the window was high, wide and broken."
+            },
+            {
+              "text": "Nuk ishte një punë e lehtë të mbyllnim atë dritare.",
+              "english": "It was not an easy job to close that window."
+            },
+            {
+              "text": "Luani mbylli derën e dhomës dhe ktheu çelësin në portën e shtëpisë.",
+              "english": "Luan closed the door of the room and turned the key in the door of the house."
+            },
+            {
+              "text": "Pastaj ai i telefonoi një miku.",
+              "english": "Then he phoned a friend."
+            },
+            {
+              "text": "— Nesër do të vijë një shok dhe do të blejë një dritare të re — tha ai.",
+              "english": "\"Tomorrow a friend will come and will buy a new window,\" he said."
+            },
+            {
+              "text": "Luani e çoi Ardin në shtratin e madh. Ardi nuk flinte pa dritë, prandaj Ana la një llambë të vogël.",
+              "english": "Luan took Ardi to the big bed. Ardi did not sleep without a light, so Ana left a small lamp."
+            },
+            {
+              "text": "Unë rrija pranë dritares, por tani jashtë nuk binte më shi.",
+              "english": "I was sitting by the window, but now it was no longer raining outside."
+            },
+            {
+              "text": "Ishte një natë e vështirë për Ardin.",
+              "english": "It was a hard night for Ardi."
+            },
+            {
+              "text": "— Ishte një natë e vështirë për të gjithë — tha Luani.",
+              "english": "\"It was a hard night for everyone,\" said Luan."
+            },
+            {
+              "text": "Në këtë mënyrë stuhia na solli bashkë.",
+              "english": "In this way the storm brought us together."
+            },
+            {
+              "text": "Mësova një gjë: në një stuhi njeri nuk është i vetëm.",
+              "english": "I learned one thing: in a storm no one is alone."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

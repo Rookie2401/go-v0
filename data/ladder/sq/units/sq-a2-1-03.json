@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-03",
+  "lang": "sq",
+  "title": "Rrëfimi i gjyshit natën",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-03",
+    "title": "Albanian ladder, a2-1: Rrëfimi i gjyshit natën (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Invented folk-style tale (boy, cave, snake). The \"snake of the house\" tradition is a Balkan folk motif: a person should check that the closing line is acceptable and not misleading. Aorist/imperfect mix, direct speech: check \"e mbajta pranë meje\", \"u përgjigj\", \"u ngrit\". No Scripture."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Rrëfimi i gjyshit natën",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Është natë në fshat dhe jashtë ka mjegull.",
+              "english": "It is night in the village and there is fog outside."
+            },
+            {
+              "text": "Në shtëpinë e gjyshit ka vizitorë: Elira, shoqja e Ardit, dhe nëna e saj.",
+              "english": "In grandfather's house there are visitors: Elira, Ardi's friend, and her mother."
+            },
+            {
+              "text": "Zonja ulet pranë sobës.",
+              "english": "The lady sits down by the stove."
+            },
+            {
+              "text": "Zjarri bën hije të mëdha në mur.",
+              "english": "The fire makes big shadows on the wall."
+            },
+            {
+              "text": "Pas pak vjen edhe fqinji, një mik i vjetër i gjyshit.",
+              "english": "Soon the neighbour comes too, an old friend of grandfather's."
+            },
+            {
+              "text": "Gjyshi sjell lëng molle dhe një tortë.",
+              "english": "Grandfather brings apple juice and a cake."
+            },
+            {
+              "text": "Elira ka sjellë çokollatë nga Tirana.",
+              "english": "Elira has brought chocolate from Tirana."
+            },
+            {
+              "text": "— Në qytet ne hamë çokollatë dhe akullore — thotë ajo. — Këtu ka vetëm lëng molle.",
+              "english": "\"In town we eat chocolate and ice cream,\" she says. \"Here there is only apple juice.\""
+            },
+            {
+              "text": "Gjyshi buzëqesh.",
+              "english": "Grandfather smiles."
+            },
+            {
+              "text": "— Këtu ka diçka tjetër: histori — thotë ai.",
+              "english": "\"Here there is something else: stories,\" he says."
+            },
+            {
+              "text": "Ardi dhe Elira ulen para tij.",
+              "english": "Ardi and Elira sit down in front of him."
+            },
+            {
+              "text": "Mysafirët dëgjojnë.",
+              "english": "The guests listen."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Dikur, në një fshat pranë malit, jetonte një djalë i vogël — fillon gjyshi.",
+              "english": "\"Once, in a village near the mountain, there lived a little boy,\" grandfather begins."
+            },
+            {
+              "text": "Ai ishte i vetëm, sepse babai dhe nëna vdiqën kur ai ishte fëmijë.",
+              "english": "He was alone, because his father and mother died when he was a child."
+            },
+            {
+              "text": "Vdekja e tyre ishte e rëndë për të.",
+              "english": "Their death was hard for him."
+            },
+            {
+              "text": "Gjyshja e rriti në një shtëpi të vogël me çati të ulët.",
+              "english": "His grandmother raised him in a small house with a low roof."
+            },
+            {
+              "text": "Djali kishte një dhi të bardhë dhe e donte shumë.",
+              "english": "The boy had a white goat and loved her very much."
+            },
+            {
+              "text": "Çdo ditë ai luante pranë lumit dhe liqenit, notonte në ujë dhe vraponte në breg.",
+              "english": "Every day he played by the river and the lake, swam in the water and ran on the bank."
+            },
+            {
+              "text": "Në rërë ai bënte lojëra me gurë.",
+              "english": "In the sand he played games with stones."
+            },
+            {
+              "text": "Natën ngjitej në çati dhe shikonte qiellin.",
+              "english": "At night he climbed onto the roof and looked at the sky."
+            },
+            {
+              "text": "Ai rrinte shpesh i vetëm, por ishte i lumtur.",
+              "english": "He often stayed alone, but he was happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pranë fshatit ishte një shkëmb i madh dhe i lartë.",
+              "english": "Near the village there was a big, high rock."
+            },
+            {
+              "text": "Në shkëmb kishte një shpellë të ngushtë dhe të ulët.",
+              "english": "In the rock there was a narrow, low cave."
+            },
+            {
+              "text": "Asnjë njeri nuk hynte atje.",
+              "english": "No one went in there."
+            },
+            {
+              "text": "Ishte një zakon i vjetër: asnjë fëmijë nuk shkonte te shpella.",
+              "english": "It was an old custom: no child went to the cave."
+            },
+            {
+              "text": "Njerëzit thoshin se aty jetonte një gjarpër i madh.",
+              "english": "People said that a big snake lived there."
+            },
+            {
+              "text": "Të gjithë kishin frikë nga ai.",
+              "english": "Everyone was afraid of it."
+            },
+            {
+              "text": "Asnjë nuk e kishte parë, por të gjithë e njihnin nga fjalët e njerëzve.",
+              "english": "Nobody had seen it, but everyone knew it from what people said."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Një ditë mjegulla ra mbi mal.",
+              "english": "One day the fog fell on the mountain."
+            },
+            {
+              "text": "Mjegulla ishte e trashë dhe e rëndë.",
+              "english": "The fog was thick and heavy."
+            },
+            {
+              "text": "Djali nuk e gjente dhinë e tij.",
+              "english": "The boy could not find his goat."
+            },
+            {
+              "text": "Ai mori një llambë dhe tha: — Do ta gjej!",
+              "english": "He took a lamp and said: \"I will find her!\""
+            },
+            {
+              "text": "Gjyshja e pyeti: — A nuk ke frikë?",
+              "english": "Grandmother asked him: \"Aren't you afraid?\""
+            },
+            {
+              "text": "— Jo, gjyshe — u përgjigj ai. — Do të kthehem shpejt.",
+              "english": "\"No, grandmother,\" he answered. \"I will come back soon.\""
+            },
+            {
+              "text": "Ai ishte një djalë trim.",
+              "english": "He was a brave boy."
+            },
+            {
+              "text": "Rruga nuk ishte e lehtë, por ishte e shkurtër.",
+              "english": "The road was not easy, but it was short."
+            },
+            {
+              "text": "Ai eci shumë në mjegull dhe arriti te shkëmbi.",
+              "english": "He walked a long way in the fog and reached the rock."
+            },
+            {
+              "text": "Atje shikoi se dhia hyri në shpellë.",
+              "english": "There he saw that the goat had gone into the cave."
+            },
+            {
+              "text": "Djali nuk mendoi shumë: hyri brenda.",
+              "english": "The boy did not think much: he went inside."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mur ishte një portë e vjetër.",
+              "english": "In the wall there was an old door."
+            },
+            {
+              "text": "Ai e hapi portën dhe shikoi shkallë të gjata.",
+              "english": "He opened the door and saw long stairs."
+            },
+            {
+              "text": "Hija e tij ishte e madhe, por djali nuk u kthye.",
+              "english": "Its shadow was big, but the boy did not turn back."
+            },
+            {
+              "text": "Shkallët ishin të ngushta, por djali zbriti.",
+              "english": "The stairs were narrow, but the boy went down."
+            },
+            {
+              "text": "Poshtë, pas shkallëve, ishte një dhomë e gjerë.",
+              "english": "Below, after the stairs, there was a wide room."
+            },
+            {
+              "text": "Aty ai shikoi një hije të madhe në mur.",
+              "english": "There he saw a big shadow on the wall."
+            },
+            {
+              "text": "Hija ishte e gjatë dhe e gjerë.",
+              "english": "The shadow was long and wide."
+            },
+            {
+              "text": "Ishte gjarpri.",
+              "english": "It was the snake."
+            },
+            {
+              "text": "Sytë e tij ishin të mëdhenj dhe të lodhur.",
+              "english": "Its eyes were big and tired."
+            },
+            {
+              "text": "— Kush je ti? — pyeti gjarpri.",
+              "english": "\"Who are you?\" asked the snake."
+            },
+            {
+              "text": "— Jam një djalë dhe kërkoj dhinë time — tha djali.",
+              "english": "\"I am a boy and I am looking for my goat,\" said the boy."
+            },
+            {
+              "text": "Djali kishte frikë, por nuk e tregoi.",
+              "english": "The boy was afraid, but he did not show it."
+            },
+            {
+              "text": "— Je trim që erdhe. Dhia është këtu — tha gjarpri. — Unë jam i vetëm dhe e mbajta pranë meje.",
+              "english": "\"You are brave to have come. The goat is here,\" said the snake. \"I am alone and I kept her near me.\""
+            },
+            {
+              "text": "— Njerëzit kanë frikë nga unë dhe nuk vijnë.",
+              "english": "\"People are afraid of me and they do not come.\""
+            },
+            {
+              "text": "— Jam shumë i vetëm këtu.",
+              "english": "\"I am very lonely here.\""
+            },
+            {
+              "text": "Djali e dëgjoi dhe u ul pranë tij.",
+              "english": "The boy listened to him and sat down next to him."
+            },
+            {
+              "text": "Ai i foli për shtëpinë, për gjyshen dhe për lumin.",
+              "english": "He told him about the house, about his grandmother and about the river."
+            },
+            {
+              "text": "Gjarpri dëgjoi gjithë natën dhe buzëqeshi.",
+              "english": "The snake listened all night and smiled."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mëngjes mjegulla u ngrit.",
+              "english": "In the morning the fog lifted."
+            },
+            {
+              "text": "Gjarpri e dha dhinë dhe hapi portën.",
+              "english": "The snake gave back the goat and opened the door."
+            },
+            {
+              "text": "Djali u kthye në fshat me dhinë.",
+              "english": "The boy returned to the village with the goat."
+            },
+            {
+              "text": "Ai tregoi gjithë historinë dhe asnjë nuk e besoi.",
+              "english": "He told the whole story and nobody believed him."
+            },
+            {
+              "text": "Por çdo mbrëmje ai shkonte te shpella dhe i sillte gjarprit bukë.",
+              "english": "But every evening he went to the cave and brought the snake bread."
+            },
+            {
+              "text": "Kështu gjarpri nuk ishte më i vetëm.",
+              "english": "So the snake was no longer alone."
+            },
+            {
+              "text": "Ai ishte i vetëm në fëmijëri, por jo në rini.",
+              "english": "He was alone in his childhood, but not in his youth."
+            },
+            {
+              "text": "Të gjithë thoshin se djali ishte trim.",
+              "english": "Everyone said the boy was brave."
+            },
+            {
+              "text": "Vitet kaluan. Në moshën njëzet vjeç djali u martua.",
+              "english": "The years passed. At the age of twenty the boy got married."
+            },
+            {
+              "text": "Jeta e tij ndërroi, por kujtimin e asaj nate e ruajti gjithë jetën.",
+              "english": "His life changed, but he kept the memory of that night all his life."
+            },
+            {
+              "text": "Fëmija i tij u lind në atë shtëpi të vogël.",
+              "english": "His child was born in that small house."
+            },
+            {
+              "text": "Gjarpri ruante portën e shpellës dhe ruante gjithë fshatin.",
+              "english": "The snake guarded the door of the cave and guarded the whole village."
+            },
+            {
+              "text": "Në këtë mënyrë në fshat mbeti një traditë: gjarpri i shtëpisë ruan familjen.",
+              "english": "In this way a tradition remained in the village: the snake of the house protects the family."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gjyshi mbaroi dhe zjarri në sobë u bë i vogël.",
+              "english": "Grandfather finished and the fire in the stove became small."
+            },
+            {
+              "text": "— Këtë histori e di edhe unë — thotë fqinji. — Në fshatin tonë ka një lloj gjarpri që nuk është i keq.",
+              "english": "\"I know this story too,\" says the neighbour. \"In our village there is a kind of snake that is not bad.\""
+            },
+            {
+              "text": "— Unë nuk kam më frikë nga gjarpërinjtë — thotë Elira.",
+              "english": "\"I am not afraid of snakes any more,\" says Elira."
+            },
+            {
+              "text": "— Gjysh, a ka shpellë sot? — pyet Ardi.",
+              "english": "\"Grandfather, is there a cave today?\" asks Ardi."
+            },
+            {
+              "text": "— Ka, në një vend pranë shkëmbit — thotë gjyshi.",
+              "english": "\"There is, in a place near the rock,\" says grandfather."
+            },
+            {
+              "text": "— Nesër do të shkojmë bashkë, por nuk do të hyjmë brenda.",
+              "english": "\"Tomorrow we will go together, but we will not go inside.\""
+            },
+            {
+              "text": "Nëna e Elirës i thotë faleminderit gjyshit.",
+              "english": "Elira's mother says thank you to grandfather."
+            },
+            {
+              "text": "Ajo merr një pjesë të tortës dhe i jep Elirës dhe Ardit.",
+              "english": "She takes a piece of the cake and gives it to Elira and Ardi."
+            },
+            {
+              "text": "Jashtë mjegulla është shumë e trashë.",
+              "english": "Outside the fog is very thick."
+            },
+            {
+              "text": "Ardi mbyll sytë dhe fle.",
+              "english": "Ardi closes his eyes and sleeps."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

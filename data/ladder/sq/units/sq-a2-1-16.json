@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-16",
+  "lang": "sq",
+  "title": "Pastori flet me Samin",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-16",
+    "title": "Albanian ladder, a2-1: Pastori flet me Samin (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Dialogue between the pastor and Sam about reading the Bible (seed: dialogue-01). NO Scripture quoted: the Gospel of John, a chapter a day, a verse, a psalm, salvation, the cross, grace are named only. Needs theological review (the statements on salvation, forgiveness, grace, and the short prayer at the end) and a native check of \"ti\" for Sam and \"ju\" for the pastor."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-theological-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Pastori flet me Samin",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pas shërbimit Sami rri pak në kishë.",
+              "english": "After the service Sam stays a little in the church."
+            },
+            {
+              "text": "Pastor Pjetri ulet pranë tij me një çaj.",
+              "english": "Pastor Pjetër sits down next to him with a tea."
+            },
+            {
+              "text": "— Si je, Sam? Të shoh pak i menduar — thotë pastori.",
+              "english": "\"How are you, Sam? I see you a little thoughtful,\" says the pastor."
+            },
+            {
+              "text": "— Jam mirë, faleminderit, pastor. Kam një pyetje — thotë Sami.",
+              "english": "\"I am well, thank you, pastor. I have a question,\" says Sam."
+            },
+            {
+              "text": "— Dua ta lexoj Biblën në shqip, por nuk di nga të fillojë.",
+              "english": "\"I want to read the Bible in Albanian, but I do not know where to begin.\""
+            },
+            {
+              "text": "— Pyetje e mirë. Në fillim lexo vetëm pak, por lexo çdo ditë — thotë pastori.",
+              "english": "\"A good question. At the beginning read only a little, but read every day,\" says the pastor."
+            },
+            {
+              "text": "— Mund të fillosh me një ungjill.",
+              "english": "\"You can begin with a gospel.\""
+            },
+            {
+              "text": "— Ungjilli i Gjonit është i lehtë për një njeri që mëson gjuhën.",
+              "english": "\"The Gospel of John is easy for a person who is learning the language.\""
+            },
+            {
+              "text": "— A të lexoj një kapitull në ditë?",
+              "english": "\"Should I read one chapter a day?\""
+            },
+            {
+              "text": "— Po, një kapitull në ditë është mjaft.",
+              "english": "\"Yes, one chapter a day is enough.\""
+            },
+            {
+              "text": "— Lexoje pak nga pak dhe mos e mbyll librin nëse nuk i kupton të gjitha fjalët.",
+              "english": "\"Read it little by little and do not close the book if you do not understand all the words.\""
+            },
+            {
+              "text": "— Mbaj pranë një fjalor, por mos bëj pushim te çdo fjalë.",
+              "english": "\"Keep a dictionary near you, but do not take a break at every word.\""
+            },
+            {
+              "text": "— Psalmet e Biblës janë një ungjill i vogël për lutjen, dhe ungjilli sjell lajmin e mirë.",
+              "english": "\"The psalms are a little gospel for prayer, and the gospel brings the good news.\""
+            },
+            {
+              "text": "— Pastaj zgjidh një varg për ditën.",
+              "english": "\"Then choose a verse for the day.\""
+            },
+            {
+              "text": "— Leximi i Biblës nuk është një punë e vështirë; është një rrugë e gjatë.",
+              "english": "\"Reading the Bible is not a hard job; it is a long road.\""
+            },
+            {
+              "text": "— Një varg? — pyet Sami.",
+              "english": "\"A verse?\" asks Sam."
+            },
+            {
+              "text": "— Po. Një varg i vogël, që mund ta mësosh dhe ta ruash në zemër.",
+              "english": "\"Yes. A small verse that you can learn and keep in your heart.\""
+            },
+            {
+              "text": "— Mbrëmjeve lexo edhe një psalm.",
+              "english": "\"In the evenings read a psalm too.\""
+            },
+            {
+              "text": "— Psalmet janë lutje të bukura, dhe janë të shkurtra.",
+              "english": "\"The psalms are beautiful prayers, and they are short.\""
+            },
+            {
+              "text": "— Kam një shef të mirë dhe një ekip të mirë në punë, por kam shumë projekte — thotë Sami.",
+              "english": "\"I have a good boss and a good team at work, but I have many projects,\" says Sam."
+            },
+            {
+              "text": "— Nuk kam mjaft kohë për Biblën.",
+              "english": "\"I do not have enough time for the Bible.\""
+            },
+            {
+              "text": "— Shumë njerëz e thonë këtë, Sam — buzëqesh pastori.",
+              "english": "\"Many people say this, Sam,\" smiles the pastor."
+            },
+            {
+              "text": "— Një punëtor i mirë ka kohë për gjërat e rëndësishme.",
+              "english": "\"A good worker has time for the important things.\""
+            },
+            {
+              "text": "— Në mëngjes, para punës, lexo kapitullin tënd.",
+              "english": "\"In the morning, before work, read your chapter.\""
+            },
+            {
+              "text": "— Në autobus mendo për vargun.",
+              "english": "\"On the bus think about the verse.\""
+            },
+            {
+              "text": "— Në mbrëmje lexo psalmin dhe lutu.",
+              "english": "\"In the evening read the psalm and pray.\""
+            },
+            {
+              "text": "— Në këtë mënyrë Fjala hyn në ditën tënde.",
+              "english": "\"In this way the Word enters your day.\""
+            },
+            {
+              "text": "— Kur lexoj, ndonjëherë dyshoj — thotë Sami.",
+              "english": "\"When I read, sometimes I doubt,\" says Sam."
+            },
+            {
+              "text": "— Nuk e kuptoj shpëtimin, dhe nuk e kuptoj pse Jezusi vdiq në kryq.",
+              "english": "\"I do not understand salvation, and I do not understand why Jesus died on the cross.\""
+            },
+            {
+              "text": "— Edhe unë dyshova dikur — thotë pastori.",
+              "english": "\"I doubted once too,\" says the pastor."
+            },
+            {
+              "text": "— Dyshoj nuk është mëkat, por duhet ta çosh te Perëndia.",
+              "english": "\"Doubting is not sin, but you must take it to God.\""
+            },
+            {
+              "text": "— Shpëtimi nuk është diçka që e paguan ti: është një dhuratë.",
+              "english": "\"Salvation is not something that you pay for: it is a gift.\""
+            },
+            {
+              "text": "— Ungjilli e thotë shumë mirë: shpëtimi vjen nga hiri i Perëndisë.",
+              "english": "\"The gospel says it very well: salvation comes from the grace of God.\""
+            },
+            {
+              "text": "— Në kryq Jezusi mori mëkatin tonë, dhe kështu ne kemi falje.",
+              "english": "\"On the cross Jesus took our sin, and so we have forgiveness.\""
+            },
+            {
+              "text": "— Kryqi është qendra e shpëtimit, dhe falja e mëkatit është një dhuratë e madhe.",
+              "english": "\"The cross is the centre of salvation, and the forgiveness of sin is a great gift.\""
+            },
+            {
+              "text": "— Kjo falje është hir, dhe hiri nuk kushton asgjë.",
+              "english": "\"This forgiveness is grace, and grace costs nothing.\""
+            },
+            {
+              "text": "— Kur e kuptova këtë, u përula para Perëndisë dhe ndjeva paqe.",
+              "english": "\"When I understood this, I humbled myself before God and felt peace.\""
+            },
+            {
+              "text": "— A është vështirë të përulesh? — pyet Sami.",
+              "english": "\"Is it hard to humble oneself?\" asks Sam."
+            },
+            {
+              "text": "— Po, por pastaj ndjen një liri të madhe — thotë pastori.",
+              "english": "\"Yes, but then you feel a great freedom,\" says the pastor."
+            },
+            {
+              "text": "— Njeriu që përulet nuk ka frikë më.",
+              "english": "\"A person who humbles himself is no longer afraid.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Tani të flasim për diçka tjetër — thotë pastori.",
+              "english": "\"Now let us talk about something else,\" says the pastor."
+            },
+            {
+              "text": "— Një anëtar i bashkësisë është pacient në spital.",
+              "english": "\"A member of the congregation is a patient in the hospital.\""
+            },
+            {
+              "text": "— Është një zonjë e vjetër me një sëmundje të zemrës.",
+              "english": "\"She is an old lady with a heart illness.\""
+            },
+            {
+              "text": "— Ana, që është infermiere, më tha se mjekimi është i gjatë.",
+              "english": "\"Ana, who is a nurse, told me that the treatment is long.\""
+            },
+            {
+              "text": "— Lëkura e saj është e hollë, dhe gishtat e saj dhembin.",
+              "english": "\"Her skin is thin, and her fingers hurt.\""
+            },
+            {
+              "text": "— Ajo ka nevojë për ndihmë, por më shumë për një fjalë të mirë.",
+              "english": "\"She needs help, but even more a kind word.\""
+            },
+            {
+              "text": "— A mund të vij me ju? — pyet Sami.",
+              "english": "\"May I come with you?\" asks Sam."
+            },
+            {
+              "text": "— Po. Mund të lexosh një psalm për të, edhe në shqip, edhe në anglisht.",
+              "english": "\"Yes. You can read a psalm for her, both in Albanian and in English.\""
+            },
+            {
+              "text": "— Ky është një rol i vogël, por i rëndësishëm — thotë pastori.",
+              "english": "\"This is a small role, but an important one,\" says the pastor."
+            },
+            {
+              "text": "— Edhe unë jam i huaj, por kjo nuk është e vështirë — buzëqesh Sami.",
+              "english": "\"I am a foreigner too, but this is not hard,\" smiles Sam."
+            },
+            {
+              "text": "— Në bashkësi askush nuk është i huaj — thotë pastori.",
+              "english": "\"In the congregation nobody is a foreigner,\" says the pastor."
+            },
+            {
+              "text": "— Ka edhe diçka tjetër. Disa studentë të fakultetit kërkojnë një studim të Biblës në anglisht.",
+              "english": "\"There is also something else. Some students of the faculty ask for a study of the Bible in English.\""
+            },
+            {
+              "text": "— Ata duan të lexojnë, të flasin dhe të pyesin.",
+              "english": "\"They want to read, to speak and to ask.\""
+            },
+            {
+              "text": "— Sa studentë janë?",
+              "english": "\"How many students are there?\""
+            },
+            {
+              "text": "— Rreth dhjetë. Arsimi i tyre është i mirë, por kanë shumë pyetje.",
+              "english": "\"About ten. Their education is good, but they have many questions.\""
+            },
+            {
+              "text": "— Do ta bëj me gëzim — thotë Sami. — Qëllimi im është të ndihmoj.",
+              "english": "\"I will do it with joy,\" says Sam. \"My aim is to help.\""
+            },
+            {
+              "text": "— Faleminderit. Në këtë projekt do të jemi një ekip i vogël.",
+              "english": "\"Thank you. In this project we will be a small team.\""
+            },
+            {
+              "text": "— Kam edhe diçka tjetër — thotë pastori. — Në verë bashkësia do të bëjë një pushim në bregdet.",
+              "english": "\"I have something else,\" says the pastor. \"In summer the congregation will go on a holiday on the coast.\""
+            },
+            {
+              "text": "— Do të shkojmë me tren, pastaj do të ngjitemi në një anije të vogël.",
+              "english": "\"We will go by train, then we will board a small ship.\""
+            },
+            {
+              "text": "— Një varkë do të na çojë në një ishull pranë plazhit.",
+              "english": "\"A boat will take us to an island near the beach.\""
+            },
+            {
+              "text": "— Atje do të lexojmë dhe do të lutemi para detit.",
+              "english": "\"There we will read and pray in front of the sea.\""
+            },
+            {
+              "text": "— Mos harro Biblën, Sam! Ajo është mjeti më i mirë, edhe në pushim.",
+              "english": "\"Do not forget the Bible, Sam! It is the best tool, even on holiday.\""
+            },
+            {
+              "text": "— Do ta marr me vete në çantë — thotë Sami.",
+              "english": "\"I will take it with me in my bag,\" says Sam."
+            },
+            {
+              "text": "Pastori e shikon me sy të ngrohtë.",
+              "english": "The pastor looks at him with warm eyes."
+            },
+            {
+              "text": "— Kur erdha këtu si vullnetar, e dija se kisha një mision — thotë Sami.",
+              "english": "\"When I came here as a volunteer, I knew I had a mission,\" says Sam."
+            },
+            {
+              "text": "— Tani e kuptoj se mision nuk do të thotë vetëm të bësh diçka, por të jesh me njerëzit.",
+              "english": "\"Now I understand that mission does not only mean to do something, but to be with people.\""
+            },
+            {
+              "text": "— Ky është kuptimi i vërtetë i misionit — thotë pastori.",
+              "english": "\"This is the real meaning of mission,\" says the pastor."
+            },
+            {
+              "text": "— Një misionar i mirë dëgjon më shumë se sa flet.",
+              "english": "\"A good missionary listens more than he speaks.\""
+            },
+            {
+              "text": "— Urtësia vjen kur ke vendosur të dëgjosh.",
+              "english": "\"Wisdom comes when you have decided to listen.\""
+            },
+            {
+              "text": "— Ndonjëherë kam një ndjenjë frike — thotë Sami.",
+              "english": "\"Sometimes I have a feeling of fear,\" says Sam.\""
+            },
+            {
+              "text": "— Ndjej se jam larg shtëpisë, dhe besimi im është i vogël.",
+              "english": "\"I feel that I am far from home, and my faith is small.\""
+            },
+            {
+              "text": "— Edhe fe e vogël është fe — thotë pastori.",
+              "english": "\"Even a small faith is faith,\" says the pastor."
+            },
+            {
+              "text": "— Një dëshmi e vërtetë është më e mirë se një fjalë e madhe.",
+              "english": "\"A real testimony is better than a big word.\""
+            },
+            {
+              "text": "— Dhe kjo shpresë nuk është e juaja vetëm: është e gjithë bashkësisë.",
+              "english": "\"And this hope is not only yours: it is the whole congregation's.\""
+            },
+            {
+              "text": "— Çdo vendim i vogël që merr me besim sjell gëzim.",
+              "english": "\"Every small decision that you take in faith brings joy.\""
+            },
+            {
+              "text": "— Një ditë do të kesh një dëshmi të madhe, dhe do t'i japësh lavdi Perëndisë.",
+              "english": "\"One day you will have a great testimony, and you will give glory to God.\""
+            },
+            {
+              "text": "— Një i krishterë nuk është një njeri pa pyetje, por një njeri që lexon çdo ditë.",
+              "english": "\"A Christian is not a person without questions, but a person who reads every day.\""
+            },
+            {
+              "text": "— Si është puna në kompani? — e pyet pastori.",
+              "english": "\"How is work at the company?\" the pastor asks him."
+            },
+            {
+              "text": "— Shefi është i mirë, dhe biznesi i vogël ku punoj ka shumë punë.",
+              "english": "\"The boss is good, and the small business where I work has a lot of work.\""
+            },
+            {
+              "text": "— Kisha vetëm një intervistë, por tani kam një profesion të ri.",
+              "english": "\"I had only one interview, but now I have a new profession.\""
+            },
+            {
+              "text": "— Përvoja ime është e vogël, por mësoj çdo ditë.",
+              "english": "\"My experience is small, but I learn every day.\""
+            },
+            {
+              "text": "— Pastaj mund të ndihmosh edhe pacientët me një fjalë të mirë — thotë pastori.",
+              "english": "\"Then you can also help the patients with a kind word,\" says the pastor."
+            },
+            {
+              "text": "— Kjo është më e rëndësishme se çdo mjekim.",
+              "english": "\"This is more important than any treatment.\""
+            },
+            {
+              "text": "— Do të vij të dielën pas shërbimit — thotë Sami.",
+              "english": "\"I will come on Sunday after the service,\" says Sam."
+            },
+            {
+              "text": "Ata ngrihen dhe luten bashkë:",
+              "english": "They stand up and pray together:"
+            },
+            {
+              "text": "— Perëndi, ti na ke dhënë shpresë, paqe dhe hir.",
+              "english": "\"God, you have given us hope, peace and grace.\""
+            },
+            {
+              "text": "— Na ndihmo të lexojmë me zemër dhe me sy të mirë, dhe të jetojmë me gëzim.",
+              "english": "\"Help us to read with heart and good eyes, and to live with joy.\""
+            },
+            {
+              "text": "— Lavdi të qoftë ty.",
+              "english": "\"Glory be to you.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

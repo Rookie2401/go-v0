@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-14",
+  "lang": "sq",
+  "title": "Qytetet e Shqipërisë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-14",
+    "title": "Albanian ladder, a2-1: Qytetet e Shqipërisë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Nonfiction: facts about towns for a person to check: Durrës founded by Greeks in 627 BC and an important port under the Roman Empire; Shkodër near a big lake, an old kingdom, a castle on a hill, a university; Berat \"town of a thousand windows\", a fortress where people still live, UNESCO heritage; Gjirokastër \"town of stone\", a castle with a museum, in the south; \"Gjirokastra\" and \"Berati\" are the forms the adapter reads. The ordinals above \"i dytë\" are avoided on purpose."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "explanation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Qytetet e Shqipërisë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sot Luani ka një mësim të gjeografisë në klasën e Gjergjit.",
+              "english": "Today Luan has a geography lesson in Gjergj's class."
+            },
+            {
+              "text": "Sami ulet në fund të klasës dhe dëgjon.",
+              "english": "Sam sits at the back of the classroom and listens."
+            },
+            {
+              "text": "Nxënësit kanë fletoret dhe stilolapsat para tyre.",
+              "english": "The pupils have their notebooks and pens in front of them."
+            },
+            {
+              "text": "Luani shkruan në tabelë katër emra: Durrës, Shkodër, Berat dhe Gjirokastër.",
+              "english": "Luan writes four names on the board: Durrës, Shkodër, Berat and Gjirokastër."
+            },
+            {
+              "text": "— Këto janë katër qytete të vjetra të Shqipërisë — thotë ai.",
+              "english": "\"These are four old towns of Albania,\" he says."
+            },
+            {
+              "text": "— Çdo qytet ka një histori, dhe çdo histori ka një periudhë.",
+              "english": "\"Every town has a history, and every history has a period.\""
+            },
+            {
+              "text": "— Ndër qytetet më të njohura të vendit këto katër mbajnë një trashëgimi të madhe.",
+              "english": "\"Among the best-known towns of the country these four hold a great heritage.\""
+            },
+            {
+              "text": "— Çdo vit vijnë atje shumë turistë, që duan të shohin monumentet e tyre.",
+              "english": "\"Every year many tourists come there who want to see their monuments.\""
+            },
+            {
+              "text": "— Disa monumente janë antike, dhe disa janë më të reja.",
+              "english": "\"Some monuments are ancient, and some are newer.\""
+            },
+            {
+              "text": "— Çdo epokë ka lënë një monument, dhe çdo monument tregon një periudhë.",
+              "english": "\"Every epoch has left a monument, and every monument shows a period.\""
+            },
+            {
+              "text": "— Sot do të mësojmë pak për secilin.",
+              "english": "\"Today we will learn a little about each of them.\""
+            },
+            {
+              "text": "Gjergji hap fletoren dhe merr një laps.",
+              "english": "Gjergj opens his notebook and takes a pencil."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Fillojmë me Durrësin — thotë Luani.",
+              "english": "\"We begin with Durrës,\" says Luan."
+            },
+            {
+              "text": "— Durrësi ndodhet në bregdet, pranë detit.",
+              "english": "\"Durrës is on the coast, by the sea.\""
+            },
+            {
+              "text": "— Qyteti ka një bashki të vjetër dhe një popullsi që rritet çdo vit.",
+              "english": "\"The town has an old town hall and a population that grows every year.\""
+            },
+            {
+              "text": "— Muzeu i tij është një muze kombëtar dhe kulturor.",
+              "english": "\"Its museum is a national and cultural museum.\""
+            },
+            {
+              "text": "— Është një nga qytetet më të vjetra të Shqipërisë.",
+              "english": "\"It is one of the oldest towns of Albania.\""
+            },
+            {
+              "text": "— Disa njerëz nga Greqia e themeluan këtë qytet në vitin 627 para Krishtit.",
+              "english": "\"Some people from Greece founded this town in the year 627 before Christ.\""
+            },
+            {
+              "text": "— Ata themeluan qytetin në një vend të mirë, sepse deti ishte pranë.",
+              "english": "\"They founded the town in a good place, because the sea was near.\""
+            },
+            {
+              "text": "— Edhe një mbret më vonë themeloi një qytet tjetër në këtë zonë.",
+              "english": "\"Later a king also founded another town in this area.\""
+            },
+            {
+              "text": "— Në atë epokë ai ishte një qytet i vogël në breg.",
+              "english": "\"In that epoch it was a small town on the coast.\""
+            },
+            {
+              "text": "— Qyteti ishte ndër qytetet e para të një rajoni të madh.",
+              "english": "\"The town was among the first towns of a big region.\""
+            },
+            {
+              "text": "— Më vonë Durrësi u bë një qytet i madh dhe i rëndësishëm.",
+              "english": "\"Later Durrës became a big and important town.\""
+            },
+            {
+              "text": "— Një perandori e madhe e pushtoi këtë zonë dhe ndërtoi shumë ndërtesa.",
+              "english": "\"A big empire conquered this area and built many buildings.\""
+            },
+            {
+              "text": "— Më vonë një mbret tjetër e pushtoi atë, dhe pas tij erdhi një perandori e re.",
+              "english": "\"Later another king conquered it, and after him came a new empire.\""
+            },
+            {
+              "text": "— Sot Durrësi është qyteti i dytë i republikës, me shumë hotele dhe plazhe.",
+              "english": "\"Today Durrës is the second city of the republic, with many hotels and beaches.\""
+            },
+            {
+              "text": "— Atje ka një muze të vjetër dhe një park pranë detit.",
+              "english": "\"There is an old museum and a park by the sea.\""
+            },
+            {
+              "text": "— Mbi dhe nën tokë ka mure antike, dhe kjo është një trashëgimi antike.",
+              "english": "\"Above and below the ground there are ancient walls, and this is an ancient heritage.\""
+            },
+            {
+              "text": "— Nxënësit shkruajnë: «Durrësi — themeluar në shekullin VII para Krishtit.»",
+              "english": "The pupils write: \"Durrës — founded in the seventh century before Christ.\""
+            },
+            {
+              "text": "— Dhe a ka ende monumente të asaj kohe? — pyet Gjergji.",
+              "english": "\"And are there still monuments from that time?\" asks Gjergj."
+            },
+            {
+              "text": "— Po, ka monumente nga ajo periudhë — thotë Luani. — Ato njihen nga shumë turistë.",
+              "english": "\"Yes, there are monuments from that period,\" says Luan. \"They are known to many tourists.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Tani shkojmë te Shkodra — thotë Luani.",
+              "english": "\"Now we go to Shkodër,\" says Luan."
+            },
+            {
+              "text": "— Shkodra shtrihet pranë një liqeni të madh dhe pranë maleve.",
+              "english": "\"Shkodër lies near a big lake and near the mountains.\""
+            },
+            {
+              "text": "— Ajo ka qenë qendra e një mbretërie të vjetër.",
+              "english": "\"It has been the centre of an old kingdom.\""
+            },
+            {
+              "text": "— Në atë kohë një mbret e kishte kryeqytetin e tij këtu.",
+              "english": "\"At that time a king had his capital here.\""
+            },
+            {
+              "text": "— Rajoni i Shkodrës përfshin liqenin, malet dhe disa fshatra.",
+              "english": "\"The region of Shkodër includes the lake, the mountains and some villages.\""
+            },
+            {
+              "text": "— Zona e vjetër përfshin edhe një kala, edhe disa rrugë të ngushta.",
+              "english": "\"The old area includes both a castle and some narrow streets.\""
+            },
+            {
+              "text": "— Mbretëria e vjetër përfshinte një pjesë të madhe të vendit.",
+              "english": "\"The old kingdom included a large part of the country.\""
+            },
+            {
+              "text": "— Në atë mbretëri jetonin njerëz që ruanin zakonet e tyre.",
+              "english": "\"In that kingdom lived people who kept their customs.\""
+            },
+            {
+              "text": "— Në atë mbretëri jetonin njerëz që ruanin zakonet e tyre.",
+              "english": "\"In that kingdom lived people who kept their customs.\""
+            },
+            {
+              "text": "— Mbi qytet, në një kodër, ndodhet një kala e madhe.",
+              "english": "\"Above the town, on a hill, there stands a big castle.\""
+            },
+            {
+              "text": "— Kalaja njihet në gjithë vendin, dhe nxënësit e shkollave vijnë atje në vizitë.",
+              "english": "\"The castle is known in the whole country, and school pupils come there on a visit.\""
+            },
+            {
+              "text": "— Në një luftë të vjetër shumë njerëz e ruajtën kalanë.",
+              "english": "\"In an old war many people kept the castle.\""
+            },
+            {
+              "text": "— Kjo luftë i ka dhënë qytetit një emër të madh.",
+              "english": "\"This war has given the town a great name.\""
+            },
+            {
+              "text": "Një nxënës ngre dorën dhe pyet: — A ka universitet në Shkodër?",
+              "english": "A pupil raises his hand and asks: \"Is there a university in Shkodër?\""
+            },
+            {
+              "text": "— Po, ka një universitet — thotë Luani. — Atje studiojnë të rinj nga i gjithë rajoni.",
+              "english": "\"Yes, there is a university,\" says Luan. \"Young people from the whole region study there.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Tani një qytet tjetër: Berati.",
+              "english": "\"Now another town: Berat.\""
+            },
+            {
+              "text": "— Berati ndodhet në qendër të vendit, pranë një lumi.",
+              "english": "\"Berat is in the centre of the country, by a river.\""
+            },
+            {
+              "text": "— Njihet si «qyteti i një mijë dritareve», sepse shtëpitë e tij të bardha kanë shumë dritare.",
+              "english": "\"It is known as the town of a thousand windows, because its white houses have many windows.\""
+            },
+            {
+              "text": "— Edhe këtu një kështjellë e vjetër ngrihet mbi kodër.",
+              "english": "\"Here too an old fortress rises above the hill.\""
+            },
+            {
+              "text": "— Brenda kështjellës jetojnë njerëz edhe sot, dhe zona e vjetër është një monument i madh.",
+              "english": "\"Inside the fortress people live even today, and the old area is a big monument.\""
+            },
+            {
+              "text": "— Berati është pjesë e trashëgimisë që UNESCO e ruan.",
+              "english": "\"Berat is part of the heritage that UNESCO keeps.\""
+            },
+            {
+              "text": "— Nëpër rrugët e tij ecin çdo ditë turistë nga shumë vende.",
+              "english": "\"Through its streets tourists from many countries walk every day.\""
+            },
+            {
+              "text": "— Nëpër çdo rrugë të vjetër ka një shtëpi të bardhë.",
+              "english": "\"Along every old street there is a white house.\""
+            },
+            {
+              "text": "— Nëpër kala turistët shohin muret antike.",
+              "english": "\"Through the castle the tourists see the ancient walls.\""
+            },
+            {
+              "text": "— Turistët ngjiten në kështjellë dhe bëjnë fotografi.",
+              "english": "\"The tourists climb up to the fortress and take photographs.\""
+            },
+            {
+              "text": "Gjergji ngre dorën: — Unë e njoh atë kala! Aty thyeva një kockë.",
+              "english": "Gjergj raises his hand: \"I know that castle! There I broke a bone.\""
+            },
+            {
+              "text": "Të gjithë buzëqeshin dhe e shikojnë.",
+              "english": "Everyone smiles and looks at him."
+            },
+            {
+              "text": "— Isha dhjetë vjeç dhe u ngjita shumë shpejt — thotë ai.",
+              "english": "\"I was ten years old and I climbed up very fast,\" he says."
+            },
+            {
+              "text": "— Ra dhe e thyeva dorën, dhe kishte shumë gjak.",
+              "english": "\"I fell and broke my arm, and there was a lot of blood.\""
+            },
+            {
+              "text": "— Një infermier më ndihmoi, dhe pastaj më çuan në spital.",
+              "english": "\"A nurse helped me, and then they took me to the hospital.\""
+            },
+            {
+              "text": "— Aty kisha një vizitë të gjatë, dhe mjeku më dha një këshillë: «Mos u ngjit më shpejt!»",
+              "english": "\"There I had a long visit, and the doctor gave me advice: Do not climb so fast!\""
+            },
+            {
+              "text": "— Pas disa javësh trupi im ishte mirë, dhe shëndeti im ishte i mirë.",
+              "english": "\"After a few weeks my body was well, and my health was good.\""
+            },
+            {
+              "text": "— Tani shikoj kalanë nga poshtë!",
+              "english": "\"Now I look at the castle from below!\""
+            },
+            {
+              "text": "Luani buzëqesh dhe thotë: — Mirë, mbetet një qytet.",
+              "english": "Luan smiles and says: \"Good, one town remains.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Qyteti i fundit është Gjirokastra — thotë ai.",
+              "english": "\"The last town is Gjirokastër,\" he says."
+            },
+            {
+              "text": "— Ajo shtrihet në një rajon me male të larta.",
+              "english": "\"It lies in a region with high mountains.\""
+            },
+            {
+              "text": "— Edhe Berati shtrihet pranë një lumi, dhe qyteti shtrihet në kodra.",
+              "english": "\"Berat also lies by a river, and the town lies on hills.\""
+            },
+            {
+              "text": "— Quhet «qyteti i gurit», sepse shtëpitë dhe rrugët e vjetra janë prej guri.",
+              "english": "\"It is called the town of stone, because the old houses and streets are of stone.\""
+            },
+            {
+              "text": "— Një kala e madhe ndodhet mbi qytet.",
+              "english": "\"A big castle stands above the town.\""
+            },
+            {
+              "text": "— Sot në kala ka një muze të vjetër.",
+              "english": "\"Today in the castle there is an old museum.\""
+            },
+            {
+              "text": "— Edhe Gjirokastra është një monument i trashëgimisë, dhe turistët e dinë këtë.",
+              "english": "\"Gjirokastër is also a monument of the heritage, and the tourists know it.\""
+            },
+            {
+              "text": "— Shekujt kanë kaluar këtu, dhe çdo shekull ka lënë diçka.",
+              "english": "\"Centuries have passed here, and every century has left something.\""
+            },
+            {
+              "text": "— Shumë mbretër e shumë perandori e kanë pushtuar këtë vend.",
+              "english": "\"Many kings and many empires have conquered this country.\""
+            },
+            {
+              "text": "— Pas çdo lufte vinte një epokë e re.",
+              "english": "\"After every war a new epoch came.\""
+            },
+            {
+              "text": "— Por njerëzit mbetën, dhe qytetet e tyre ruajtën historinë.",
+              "english": "\"But the people stayed, and their towns kept the history.\""
+            },
+            {
+              "text": "Luani i kërkon klasës një detyrë: — Zgjidhni një qytet dhe hartoni një tekst të shkurtër.",
+              "english": "Luan asks the class for a task: \"Choose a town and draft a short text.\""
+            },
+            {
+              "text": "— Jepni një shembull nga çdo periudhë.",
+              "english": "\"Give one example from every period.\""
+            },
+            {
+              "text": "— Përktheni fjalët e reja me fjalorin, ju lutem.",
+              "english": "\"Translate the new words with the dictionary, please.\""
+            },
+            {
+              "text": "— Nesër në fakultet kam një kurs, dhe do të sjell disa fotografi për ju.",
+              "english": "\"Tomorrow at the faculty I have a course, and I will bring some photographs for you.\""
+            },
+            {
+              "text": "— Do të ketë edhe provim për këto qytete — shton ai.",
+              "english": "\"There will also be an exam on these towns,\" he adds."
+            },
+            {
+              "text": "— Notat nuk do të jenë si në matematikë: një notë mesatare nuk është e mirë.",
+              "english": "\"The marks will not be like in mathematics: an average mark is not good.\""
+            },
+            {
+              "text": "Gjergji buzëqesh dhe shkruan në fletore: «Provim — qytetet e vjetra.»",
+              "english": "Gjergj smiles and writes in his notebook: \"Exam: the old towns.\""
+            },
+            {
+              "text": "Pas mësimit Sami i thotë Luanit: — Unë dua të shoh të katër qytetet.",
+              "english": "After the lesson Sam says to Luan: \"I want to see all four towns.\""
+            },
+            {
+              "text": "— Zona e Gjirokastrës është e bukur — thotë Luani. — Temperatura mesatare në verë është e lartë, por shumë muze janë të ftohta.",
+              "english": "\"The area of Gjirokastër is beautiful,\" says Luan. \"The average temperature in summer is high, but many museums are cool.\""
+            },
+            {
+              "text": "— Qyteti ka një popullsi mesatare, jo shumë të madhe.",
+              "english": "\"The town has an average population, not very large.\""
+            },
+            {
+              "text": "— Ndër qytetet e vjetra ky është shumë i njohur.",
+              "english": "\"Among the old towns this one is very well known.\""
+            },
+            {
+              "text": "— Nëse shkon në kryeqytet para tyre, nuk humbet asgjë — buzëqesh ai. — Tirana ka aeroportin ndërkombëtar, hotelet dhe urat e saj.",
+              "english": "\"If you go through the capital before them, you lose nothing,\" he smiles. \"Tirana has the international airport, the hotels and its bridges.\""
+            },
+            {
+              "text": "— Por Tirana nuk është e vjetër si Berati — thotë Sami. — Është një qytet i ri me shumë parqe dhe bulevarde.",
+              "english": "\"But Tirana is not old like Berat,\" says Sam. \"It is a new city with many parks and boulevards.\""
+            },
+            {
+              "text": "— Sheshi kryesor i saj është historik, por qyteti ynë nuk ka shekuj si ata.",
+              "english": "\"Its main square is historic, but our city does not have centuries like those.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

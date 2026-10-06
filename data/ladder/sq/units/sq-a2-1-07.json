@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a2-1-07",
+  "lang": "sq",
+  "title": "Mesazhet e grupit",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a2-1-07",
+    "title": "Albanian ladder, a2-1: Mesazhet e grupit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit (adapter-sq@8); awaiting a named native reviewer (npm run review:packet). Group-chat format: sender and time then the message; days are headings (\"Hënë\" ...). Check abbreviations, greetings and the register of messages. Church units need theological review (prayer request, blessing)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "correspondence"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder",
+    "needs-theological-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Mesazhet e grupit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Bashkësia ka një grup në celular.",
+              "english": "The congregation has a group on the phone."
+            },
+            {
+              "text": "Ky grup ka 42 anëtarë.",
+              "english": "This group has 42 members."
+            },
+            {
+              "text": "Çdo ditë njerëzit shkruajnë njoftime, lajme dhe pyetje.",
+              "english": "Every day people write announcements, news and questions."
+            },
+            {
+              "text": "Këtu janë mesazhet e një jave.",
+              "english": "Here are the messages of one week."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hënë",
+              "english": "Monday"
+            },
+            {
+              "text": "Mira, 07:45 — Mirëmëngjes, të gjithë! Njoftim: të dielën shërbimi fillon në orën 10:30, jo në orën 10:00.",
+              "english": "Mira, 07:45 — Good morning, all! Announcement: on Sunday the service begins at 10:30, not at 10:00."
+            },
+            {
+              "text": "Mira, 07:46 — Dikush e la një çantë të zezë në kishë. Ju lutem shkruani.",
+              "english": "Mira, 07:46 — Someone left a black bag in the church. Please write."
+            },
+            {
+              "text": "Dritan, 09:10 — Mirëdita! Ende nuk e di kujt është çanta.",
+              "english": "Dritan, 09:10 — Good day! I still do not know whose bag it is."
+            },
+            {
+              "text": "Dritan, 09:11 — Akoma nuk e kam parë, por do ta shikoj nesër.",
+              "english": "Dritan, 09:11 — I have not seen it yet, but I will look at it tomorrow."
+            },
+            {
+              "text": "Sam, 12:20 — Mirëdita! Çanta nuk është e imja, e imja është e kuqe.",
+              "english": "Sam, 12:20 — Good day! The bag is not mine, mine is red."
+            },
+            {
+              "text": "Sam, 12:21 — Vërejta një gjë tjetër: dritat e kishës nuk fiken mirë.",
+              "english": "Sam, 12:21 — I noticed another thing: the lights of the church do not switch off properly."
+            },
+            {
+              "text": "Mira, 12:40 — Askush nuk e di kush e ka çelësin e zyrës?",
+              "english": "Mira, 12:40 — Does nobody know who has the key to the office?"
+            },
+            {
+              "text": "Dritan, 12:45 — Çelësin e ka pastori.",
+              "english": "Dritan, 12:45 — The pastor has the key."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Martë",
+              "english": "Tuesday"
+            },
+            {
+              "text": "Pastor Pjetër, 08:00 — Të dashur anëtarë, ndërtesa e kishës është e vjetër.",
+              "english": "Pastor Pjetër, 08:00 — Dear members, the church building is old."
+            },
+            {
+              "text": "Pastor Pjetër, 08:02 — Në verë do të ndërtojmë një çati të re.",
+              "english": "Pastor Pjetër, 08:02 — In summer we will build a new roof."
+            },
+            {
+              "text": "Pastor Pjetër, 08:03 — Dikur soba ishte e mirë, por sot e ndez zjarrin dhe dhoma mbetet e ftohtë.",
+              "english": "Pastor Pjetër, 08:03 — Once the stove was good, but today I light the fire and the room stays cold."
+            },
+            {
+              "text": "Pastor Pjetër, 08:04 — Do të mbledhim edhe një ofertë për çatinë. Kush mund ta mbledhë?",
+              "english": "Pastor Pjetër, 08:04 — We will also collect an offering for the roof. Who can collect it?"
+            },
+            {
+              "text": "Mira, 08:10 — Askush nuk e di sa kushton një çati e re?",
+              "english": "Mira, 08:10 — Does nobody know how much a new roof costs?"
+            },
+            {
+              "text": "Mira, 08:30 — Është një punë e vështirë, por e rëndësishme. Kush mund të vijë të shtunën?",
+              "english": "Mira, 08:30 — It is a hard job, but an important one. Who can come on Saturday?"
+            },
+            {
+              "text": "Dritan, 08:40 — Unë mund të vij me Gjergjin.",
+              "english": "Dritan, 08:40 — I can come with Gjergj."
+            },
+            {
+              "text": "Sam, 09:05 — Edhe unë vij. Ju lutem më thoni në çfarë ore.",
+              "english": "Sam, 09:05 — I will come too. Please tell me at what time."
+            },
+            {
+              "text": "Mira, 09:20 — Në orën 9:00. Mblidhemi para kishës. Mirë se vini, të gjithë!",
+              "english": "Mira, 09:20 — At 9:00. We gather in front of the church. Welcome, everyone!"
+            },
+            {
+              "text": "Pastor Pjetër, 09:30 — Njoftim i rëndësishëm: të dielën kisha mbyllet në orën 13:00.",
+              "english": "Pastor Pjetër, 09:30 — Important announcement: on Sunday the church closes at 13:00."
+            },
+            {
+              "text": "Pastor Pjetër, 10:10 — Dikush ka një makinë për të shtunën? Kemi shumë gjëra të tjera për të sjellë.",
+              "english": "Pastor Pjetër, 10:10 — Does someone have a car for Saturday? We have many other things to bring."
+            },
+            {
+              "text": "Dritan, 10:15 — Unë kam një makinë të madhe.",
+              "english": "Dritan, 10:15 — I have a big car."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mërkurë",
+              "english": "Wednesday"
+            },
+            {
+              "text": "Sam, 11:15 — Një pyetje: kam një roman në shqip, por është shumë i vështirë.",
+              "english": "Sam, 11:15 — A question: I have a novel in Albanian, but it is very hard."
+            },
+            {
+              "text": "Sam, 11:16 — A keni një tregim të shkurtër për mua?",
+              "english": "Sam, 11:16 — Do you have a short story for me?"
+            },
+            {
+              "text": "Mira, 12:00 — Lexo një poezi! Shkrimtarët tanë kanë shkruar shumë poezi të bukura.",
+              "english": "Mira, 12:00 — Read a poem! Our writers have written many beautiful poems."
+            },
+            {
+              "text": "Mira, 12:01 — Një poezi është e shkurtër dhe më e lehtë se një roman.",
+              "english": "Mira, 12:01 — A poem is short and easier than a novel."
+            },
+            {
+              "text": "Mira, 12:05 — Luani ka ftuar një shkrimtar në shkollë të enjten. Ai ka shkruar një roman dhe disa tregime.",
+              "english": "Mira, 12:05 — Luan has invited a writer to the school on Thursday. He has written a novel and a few stories."
+            },
+            {
+              "text": "Sam, 12:08 — Do të vij! Kam shumë pyetje për shkrimtarin.",
+              "english": "Sam, 12:08 — I will come! I have many questions for the writer."
+            },
+            {
+              "text": "Sam, 12:10 — Ku mund të blej një gazetë në shqip?",
+              "english": "Sam, 12:10 — Where can I buy a newspaper in Albanian?"
+            },
+            {
+              "text": "Dritan, 12:20 — Në qendër, pranë stacionit, ka një dyqan me gazeta dhe revista.",
+              "english": "Dritan, 12:20 — In the centre, near the station, there is a shop with newspapers and magazines."
+            },
+            {
+              "text": "Dritan, 14:30 — Në gazetën e ditës ka një lajm për një fshat tjetër.",
+              "english": "Dritan, 14:30 — In the day's newspaper there is a piece of news about another village."
+            },
+            {
+              "text": "Dritan, 14:31 — Banorët kërkojnë një shkollë, dhe shteti do të ndërtojë një ndërtesë të re.",
+              "english": "Dritan, 14:31 — The inhabitants ask for a school, and the state will build a new building."
+            },
+            {
+              "text": "Dritan, 14:32 — Fabrika pranë tyre ka bërë një ndryshim të madh: shumë njerëz nuk largohen më.",
+              "english": "Dritan, 14:32 — The factory near them has made a big change: many people do not leave any more."
+            },
+            {
+              "text": "Pastor Pjetër, 16:00 — Bujqësia mbetet pasuria e popullit tonë, por jeta po ndryshon.",
+              "english": "Pastor Pjetër, 16:00 — Farming remains the wealth of our people, but life is changing."
+            },
+            {
+              "text": "Pastor Pjetër, 16:05 — Revista e bashkësisë ka një tregim të ri. Përdorni këtë lidhje.",
+              "english": "Pastor Pjetër, 16:05 — The congregation's magazine has a new story. Use this link."
+            },
+            {
+              "text": "Sam, 16:20 — Revista është shumë e mirë, por tregimi është i gjatë.",
+              "english": "Sam, 16:20 — The magazine is very good, but the story is long."
+            },
+            {
+              "text": "Mira, 16:30 — Do ta lexoj pas darkës, sepse akoma nuk e kam lexuar.",
+              "english": "Mira, 16:30 — I will read it after supper, because I have not read it yet."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Enjte",
+              "english": "Thursday"
+            },
+            {
+              "text": "Mira, 08:10 — Kërkim: kush mund të sjellë djathë dhe kos për drekën e së dielës?",
+              "english": "Mira, 08:10 — Request: who can bring cheese and yoghurt for Sunday's lunch?"
+            },
+            {
+              "text": "Dritan, 08:50 — Unë sjell djathë. Dikush tjetër mund të sjellë mollë.",
+              "english": "Dritan, 08:50 — I will bring cheese. Someone else can bring apples."
+            },
+            {
+              "text": "Pastor Pjetër, 09:00 — Zgjidhni një ditë për piknikun e fëmijëve: të shtunën ose të dielën?",
+              "english": "Pastor Pjetër, 09:00 — Choose a day for the children's picnic: Saturday or Sunday?"
+            },
+            {
+              "text": "Dritan, 09:15 — Një piknik te lumi! Fëmijët mund të notojnë dhe të vrapojnë në breg.",
+              "english": "Dritan, 09:15 — A picnic by the river! The children can swim and run on the bank."
+            },
+            {
+              "text": "Dritan, 09:16 — Mund të luajnë në rërë dhe të bëjnë lojëra. Dikur kjo ishte lojë e mirë edhe për ne.",
+              "english": "Dritan, 09:16 — They can play in the sand and have games. Once that was a good game for us too."
+            },
+            {
+              "text": "Mira, 10:00 — Ngjitemi pastaj në kodër! Atje ka edhe dhi.",
+              "english": "Mira, 10:00 — Then we climb up the hill! There are even goats there."
+            },
+            {
+              "text": "Sam, 10:30 — Unë zgjedh të dielën. Të shtunën punojmë në kishë.",
+              "english": "Sam, 10:30 — I choose Sunday. On Saturday we work at the church."
+            },
+            {
+              "text": "Pastor Pjetër, 11:00 — Mirë, piknik të dielën pas shërbimit.",
+              "english": "Pastor Pjetër, 11:00 — Good, a picnic on Sunday after the service."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Premte",
+              "english": "Friday"
+            },
+            {
+              "text": "Pastor Pjetër, 07:30 — Lutje: një anëtar i grupit është i sëmurë. Lutuni për të.",
+              "english": "Pastor Pjetër, 07:30 — Prayer: a member of the group is ill. Pray for him."
+            },
+            {
+              "text": "Pastor Pjetër, 07:31 — Zoti e shpëton njeriun që e kërkon. Mos hesht: shkruani, nëse keni nevojë.",
+              "english": "Pastor Pjetër, 07:31 — The Lord saves the person who seeks Him. Do not stay silent: write, if you need."
+            },
+            {
+              "text": "Mira, 08:00 — Shumica e anëtarëve ka shkruar, por një pakicë akoma nuk ka shkruar.",
+              "english": "Mira, 08:00 — Most of the members have written, but a minority have not written yet."
+            },
+            {
+              "text": "Dritan, 08:15 — Askush nuk është i vetëm këtu.",
+              "english": "Dritan, 08:15 — Nobody is alone here."
+            },
+            {
+              "text": "Dritan, 08:20 — Ende nuk kam ardhur nga puna, por e lexova mesazhin.",
+              "english": "Dritan, 08:20 — I have not come back from work yet, but I read the message."
+            },
+            {
+              "text": "Pastor Pjetër, 09:00 — Lajm i mirë: një anëtar i ri vjen në grupin tonë nga qyteti tjetër.",
+              "english": "Pastor Pjetër, 09:00 — Good news: a new member is coming to our group from another town."
+            },
+            {
+              "text": "Mira, 09:05 — Mirë se vjen! Ende nuk e njoh, por shpresoj ta takoj të dielën.",
+              "english": "Mira, 09:05 — Welcome! I do not know him yet, but I hope to meet him on Sunday."
+            },
+            {
+              "text": "Sam, 20:00 — Përshëndetje, të gjithë! Sot e kapa autobusin shumë vonë, por arrita në shtëpi.",
+              "english": "Sam, 20:00 — Hello, everyone! Today I caught the bus very late, but I got home."
+            },
+            {
+              "text": "Mira, 20:05 — Natën e mirë, Sam!",
+              "english": "Mira, 20:05 — Good night, Sam!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Shtunë",
+              "english": "Saturday"
+            },
+            {
+              "text": "Mira, 08:45 — Zyra e kishës hapet në orën 9:00 dhe mbyllet në 12:00.",
+              "english": "Mira, 08:45 — The church office opens at 9:00 and closes at 12:00."
+            },
+            {
+              "text": "Pastor Pjetër, 09:30 — Lëvizni tavolinat nga muri dhe lini çantat pranë derës.",
+              "english": "Pastor Pjetër, 09:30 — Move the tables from the wall and leave the bags by the door."
+            },
+            {
+              "text": "Sam, 10:40 — Kapa shkallën që të mos bjerë. Gjergji është në çati.",
+              "english": "Sam, 10:40 — I held the ladder so that it would not fall. Gjergj is on the roof."
+            },
+            {
+              "text": "Dritan, 11:00 — Faleminderit, Sam! Të gjithë ishim të lodhur, por të lumtur.",
+              "english": "Dritan, 11:00 — Thank you, Sam! We were all tired, but happy."
+            },
+            {
+              "text": "Pastor Pjetër, 12:30 — Në fund faleminderit për punën tuaj. Shihemi të dielën!",
+              "english": "Pastor Pjetër, 12:30 — At the end, thank you for your work. See you on Sunday!"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a2-1 drafting agent"
+        }
+      }
+    ]
+  }
+}

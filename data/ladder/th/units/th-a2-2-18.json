@@ -1,0 +1,431 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-18",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "บันทึกการเดินทาง",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-18",
+    "title": "บันทึกการเดินทาง — Diary of the mission trip (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Check: the diary register (first person, no particles, short dated entries), the road and village details, the rain on the tin roof, the testimony scene (respectful, not a sermon in the diary). Narrator is Sam (a man)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "travel",
+    "diary",
+    "mission trip",
+    "hill village",
+    "past narration"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "วันที่ 26 ... ออกเดินทาง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันนี้เราออกจากเชียงใหม่ตอนตีห้า",
+              "english": "Today we left Chiang Mai at five o'clock."
+            },
+            {
+              "text": "ท้องฟ้ายังไม่สว่าง และอากาศหนาวมาก",
+              "english": "The sky was not yet light, and it was very cold."
+            },
+            {
+              "text": "ต้นขับรถกระบะของโรงเรียน",
+              "english": "Ton drove the school's pickup truck."
+            },
+            {
+              "text": "เราบรรทุกข้าวสาร ยา เสื้อหนาว และหนังสือไปเต็มรถ",
+              "english": "We loaded rice, medicine, warm clothes and books until the truck was full."
+            },
+            {
+              "text": "มีพ่อค้าคนหนึ่งช่วยเราเอาของขึ้นรถ",
+              "english": "A trader helped us put things on the truck."
+            },
+            {
+              "text": "รถไม่มีเนื้อที่เหลือเลย ดังนั้นผมต้องนั่งบนเสื้อหนาว",
+              "english": "There was no space left in the truck, so I had to sit on the warm clothes."
+            },
+            {
+              "text": "ศิษยาภิบาลนั่งข้างต้น ส่วนมะลิกับผมนั่งข้างหลัง",
+              "english": "The pastor sat beside Ton, and Mali and I sat in the back."
+            },
+            {
+              "text": "ผมซุกซ่อนกระเป๋าไว้ใต้เสื้อ เพราะกลัวขโมย",
+              "english": "I hid my bag under the clothes, because I was afraid of thieves."
+            },
+            {
+              "text": "ขณะที่รถขึ้นเขา ลมเย็นพัดแรง",
+              "english": "As the truck climbed the hill, the cold wind blew hard."
+            },
+            {
+              "text": "ขณะที่ผมนั่งอยู่หลังรถ ผมได้ยินเสียงดังจากในรถ",
+              "english": "While I sat at the back of the truck, I heard a loud noise from below."
+            },
+            {
+              "text": "ถนนขึ้นเขาสูงและยาวมาก มะลิเริ่มรู้สึกไม่สบาย",
+              "english": "The road up the hill was very high and long, and Mali began to feel unwell."
+            },
+            {
+              "text": "เธอมีอาการอยากอาเจียน แต่ต้นขับรถช้าลงทันที",
+              "english": "She had the symptom of wanting to vomit, but Ton slowed the truck at once."
+            },
+            {
+              "text": "เธอพักที่ข้างทางสิบนาที และดื่มน้ำ",
+              "english": "She rested by the road for ten minutes and drank water."
+            },
+            {
+              "text": "ผมนั่งดูภูเขาที่ค่อยๆ สูงขึ้น",
+              "english": "I sat watching the mountains slowly grow higher."
+            },
+            {
+              "text": "ตอนเย็น เราไปถึงแม่ฮ่องสอน",
+              "english": "In the evening we reached Mae Hong Son."
+            },
+            {
+              "text": "ผมจะดิ้นรนกับภาษาไทยอีกสามวัน ผมนึกในใจ",
+              "english": "\"I'll struggle with Thai for three more days,\" I thought."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันที่ 27 ... สะพานขาด",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เช้านี้ผมตื่นเพราะเสียงไก่",
+              "english": "This morning I woke to the sound of chickens."
+            },
+            {
+              "text": "ท้องฟ้าสว่างขึ้น และผมได้กลิ่นไฟจากครัว",
+              "english": "The sky grew light, and I smelled the fire from the kitchen."
+            },
+            {
+              "text": "อาหารเช้าหอมมาก ผมเลยลุกไปกิน",
+              "english": "Breakfast smelled lovely, so I got up to eat."
+            },
+            {
+              "text": "ผู้ใหญ่บ้านบอกว่า สะพานเล็กขาดเมื่อคืน",
+              "english": "The headman said the small bridge had broken last night."
+            },
+            {
+              "text": "ฝนตกมากเมื่อสองวันก่อน ไม้ของสะพานหักไปสองแผ่น",
+              "english": "There was heavy rain two days ago, and two planks of the bridge had broken."
+            },
+            {
+              "text": "ดังนั้นรถกระบะข้ามลำธารไม่ได้ เพราะสะพานขาด",
+              "english": "So the pickup truck could not cross the stream, because the bridge was broken."
+            },
+            {
+              "text": "เราต้องเดินข้ามไป และถือของไปเอง",
+              "english": "We had to walk across and carry the things ourselves."
+            },
+            {
+              "text": "คนในหมู่บ้านมาช่วยกันประมาณยี่สิบคน",
+              "english": "About twenty people from the village came to help."
+            },
+            {
+              "text": "พวกเขาช่วยกันบรรทุกของลงจากรถ",
+              "english": "They helped load the things down from the truck."
+            },
+            {
+              "text": "ชายหนุ่มคนหนึ่งยิ้มให้ผม และถือถุงข้าวสารไปสองถุง",
+              "english": "A young man smiled at me and carried two bags of rice."
+            },
+            {
+              "text": "ผมถือถุงข้าวสารหนึ่งใบไปเอง",
+              "english": "I carried one bag of rice myself."
+            },
+            {
+              "text": "น้ำเย็นมาก และก้อนหินเปียก",
+              "english": "The water was very cold, and the stones were wet."
+            },
+            {
+              "text": "ผู้ชายคนหนึ่งจับมือผมไว้ ผมเลยไม่ล้ม",
+              "english": "A man held my hand, so I did not fall."
+            },
+            {
+              "text": "ผมหัดพูดภาษาไทยกับเขาระหว่างเดิน",
+              "english": "I practised my Thai with him as we walked."
+            },
+            {
+              "text": "เขาชื่อลุงดำ เขาให้ทุกคนได้เท่ากัน ทั้งข้าวและน้ำ",
+              "english": "His name was Uncle Dam; he gave everyone the same, both rice and water."
+            },
+            {
+              "text": "ตอนเย็น ฟ้าเย็นลับไปหลังภูเขา",
+              "english": "In the evening the sky went out of sight behind the mountain."
+            },
+            {
+              "text": "พวกเราเหนื่อยมาก แต่ก็สนุกด้วย",
+              "english": "We were very tired, but it was fun too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันที่ 28 ... ที่โรงเรียนบนดอย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนเช้า มะลิตั้งโต๊ะตรวจสุขภาพที่ห้องเรียน",
+              "english": "In the morning Mali set up a health table in the classroom."
+            },
+            {
+              "text": "มีคนมามาก ผมช่วยเขียนชื่อคนไข้",
+              "english": "Many people came, and I helped write down the patients' names."
+            },
+            {
+              "text": "เด็กคนหนึ่งมีไข้และมีผื่นขึ้นที่แขน",
+              "english": "A child had a fever and a rash on the arm."
+            },
+            {
+              "text": "แม่ของเด็กซุกซ่อนหน้าไว้ข้างหลังแม่ เพราะกลัว",
+              "english": "The child hid its face behind its mother out of fear."
+            },
+            {
+              "text": "มะลิกลัวว่าจะเป็นไข้เลือดออก เธอจึงตรวจดู",
+              "english": "Mali feared it might be dengue, so she examined him."
+            },
+            {
+              "text": "เธอดูว่ามีอาการอื่นไหม และถามถึงเกล็ดเลือด",
+              "english": "She checked whether there were other symptoms, and asked about the platelets."
+            },
+            {
+              "text": "เธอไม่มีเครื่องตรวจเกล็ดเลือดที่นี่",
+              "english": "She had no machine here to test platelets."
+            },
+            {
+              "text": "ดังนั้นเธอบอกแม่ว่า ต้องพาเด็กไปโรงพยาบาลพรุ่งนี้",
+              "english": "So she told the mother that she must take the child to the hospital tomorrow."
+            },
+            {
+              "text": "เธอสอนวิธีป้องกันยุง และบอกว่าอย่าให้มีน้ำขังใกล้บ้าน",
+              "english": "She taught how to protect against mosquitoes and said not to let standing water collect near the house."
+            },
+            {
+              "text": "ผมเห็นว่า ยุงที่นี่มาก เพราะมีน้ำขังหลายที่",
+              "english": "I saw that there are many mosquitoes here, because there is standing water in several places."
+            },
+            {
+              "text": "ผื่นของเด็กค่อยๆ หายไปในวันที่สอง",
+              "english": "The child's rash gradually went away on the second day."
+            },
+            {
+              "text": "ผมกลัวโรคนี้ ผมเลยเอายาไปให้ทุกบ้าน",
+              "english": "I feared this illness, so I took repellent round to every house."
+            },
+            {
+              "text": "มะลิบอกว่าหลายโรคที่นี่รักษาได้ ถ้ามาเร็ว",
+              "english": "Mali said that many illnesses here can be treated, if people come early."
+            },
+            {
+              "text": "ตอนบ่าย ฝนเริ่มตก",
+              "english": "In the afternoon the rain began."
+            },
+            {
+              "text": "ตอนบ่าย เราขึ้นดอยไปอีก เพื่อเทศนาให้คนที่อยู่บนดอยฟัง",
+              "english": "In the afternoon we went further up the hill, to preach to the people who live on the hill."
+            },
+            {
+              "text": "ศิษยาภิบาลเทศนาเรื่องความรัก และผมเป็นพยานอีกครั้ง",
+              "english": "The pastor preached about love, and I gave my testimony again."
+            },
+            {
+              "text": "พวกเราเผยแพร่ข่าวดีด้วยการช่วยคนป่วย ไม่ใช่ด้วยการพูดอย่างเดียว",
+              "english": "We spread the good news by helping the sick, not only by speaking."
+            },
+            {
+              "text": "ที่แม่ฮ่องสอน ยุงมาก และมีน้ำขังหลายที่ ผมจึงเอายากันยุงมาทา",
+              "english": "In Mae Hong Son there are many mosquitoes and standing water in many places, so I put on repellent."
+            },
+            {
+              "text": "เด็กอีกคนมีผื่นและมีอาการอาเจียน",
+              "english": "Another child had a rash and the symptom of vomiting."
+            },
+            {
+              "text": "มะลิตรวจเกล็ดเลือดไม่ได้ จึงบอกวิธีป้องกันและรักษาตัว",
+              "english": "Mali could not test the platelets, so she told them how to protect themselves and take care of the patient."
+            },
+            {
+              "text": "ผมหยิบยาให้เด็กคนนั้น และอาเจียนก็หยุด",
+              "english": "I handed medicine to that child, and the vomiting stopped."
+            },
+            {
+              "text": "ผมขึ้นดอยคืนนั้นอีกครั้ง และเห็นไฟเล็กๆ ของบ้านบนดอย",
+              "english": "That night I went up the hill again and saw the small lights of houses on the hill."
+            },
+            {
+              "text": "เผอิญมีหมาตัวหนึ่งเข้ามา ผมกลัวว่ามันจะทำร้ายเด็ก",
+              "english": "By chance a dog came in, and I feared it would hurt the child."
+            },
+            {
+              "text": "แต่มันเดินผ่านไป",
+              "english": "But it walked past."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันที่ 29 ... โบสถ์หลังคาสังกะสี",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คืนนี้เราได้ไปโบสถ์เล็กของหมู่บ้าน",
+              "english": "Tonight we went to the village's small church."
+            },
+            {
+              "text": "โบสถ์ใช้หลังคาสังกะสี และมีคอกแพะอยู่ข้างๆ",
+              "english": "The church has a tin roof, and there is a goat pen next to it."
+            },
+            {
+              "text": "ผมได้กลิ่นหญ้าและฝนที่เข้ามาในโบสถ์",
+              "english": "I smelled the grass and the rain coming into the church."
+            },
+            {
+              "text": "ฝนตกลงบนหลังคาสังกะสี และเสียงดังมาก",
+              "english": "The rain fell on the tin roof and made a great noise."
+            },
+            {
+              "text": "ขณะที่ศิษยาภิบาลเทศนา เขาต้องพูดเสียงดัง",
+              "english": "While the pastor preached, he had to speak in a loud voice."
+            },
+            {
+              "text": "เขาพูดเรื่องการเผยแพร่ข่าวดี ให้คนในหมู่บ้านฟัง",
+              "english": "He spoke about spreading the good news, for the villagers to hear."
+            },
+            {
+              "text": "ผมนึกว่า เราได้เผยแพร่ข่าวดีด้วยการไปหาเขา ไม่ใช่ด้วยการพูดอย่างเดียว",
+              "english": "I thought we spread the good news by going to them, not only by speaking."
+            },
+            {
+              "text": "เมื่อถึงตาผม ผมกลัวมาก",
+              "english": "When it was my turn I was very afraid."
+            },
+            {
+              "text": "ผมเป็นพยานเรื่องชีวิตของผมเป็นภาษาไทย",
+              "english": "I gave my testimony about my life, in Thai."
+            },
+            {
+              "text": "ผมค่อยๆ พูด และต้นช่วยบอกคำที่ผมไม่รู้",
+              "english": "I spoke slowly, and Ton helped with words I did not know."
+            },
+            {
+              "text": "ท้องฟ้าสว่างด้วยฟ้าแลบ ทำให้ทุกคนเห็นหน้ากัน",
+              "english": "The sky was lit up by lightning, so everyone saw one another's faces."
+            },
+            {
+              "text": "คนในโบสถ์ฟังเงียบ และบางคนร้องไห้",
+              "english": "The people in the church listened in silence, and some wept."
+            },
+            {
+              "text": "หลังจากนั้นผู้ใหญ่บ้านพูดว่า เขาหวังว่าเราจะมาอีก",
+              "english": "After that the headman said he hoped we would come again."
+            },
+            {
+              "text": "เขาขอให้เราวางแผนมาในปีหน้า",
+              "english": "He asked us to plan to come next year."
+            },
+            {
+              "text": "เขาไม่มีเงินเหลือ แต่ยังเอาแพะมาให้เรา",
+              "english": "He had no money left over, but still brought us a goat."
+            },
+            {
+              "text": "ผมสิ้นแรงมากในคืนนั้น แต่ใจผมสบาย",
+              "english": "I was worn out that night, but my heart was at ease."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันที่ 30 ... กลับบ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เช้านี้เราต้องข้ามสะพานที่ซ่อมแล้ว",
+              "english": "This morning we had to cross the repaired bridge."
+            },
+            {
+              "text": "ผมเดินไปบนไม้ใหม่ที่ไม่ขาดอีกแล้ว",
+              "english": "I walked over the new wood that no longer broke."
+            },
+            {
+              "text": "ต้นขับรถกระบะลงจากเขาอย่างระวัง",
+              "english": "Ton drove the pickup truck down the hill carefully."
+            },
+            {
+              "text": "ผมคิดถึงคนที่เราพบ และผมหวังว่าเราจะได้เจอกันอีก",
+              "english": "I thought of the people we had met, and hoped we would meet again."
+            },
+            {
+              "text": "ต้นบรรทุกของฝากของคนหมู่บ้านขึ้นรถ มีทั้งข้าวและผลไม้",
+              "english": "Ton loaded the villagers' gifts on to the truck, both rice and fruit."
+            },
+            {
+              "text": "ในรถมีกลิ่นหอมของผลไม้",
+              "english": "The truck smelled fragrant with fruit."
+            },
+            {
+              "text": "ผมจะไม่ลืมเสียงฝนบนหลังคาสังกะสีคืนนั้น",
+              "english": "I won't forget the sound of the rain on the tin roof that night."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

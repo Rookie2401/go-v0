@@ -1,0 +1,563 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-05",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "โทรหาแม่",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-05",
+    "title": "โทรหาแม่ — A long phone call home (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Sam's mother is American; her English is rendered in Thai for the unit. Check that a Thai reader finds the mother's register (แม่ … ลูก … นะ) natural and not too Thai-mother-like; the tone-mistake joke (เสือ / เสื้อ) and the use of ฉลอง."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "family",
+    "phone call",
+    "homesickness",
+    "daily life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "S": "แซม",
+    "K": "แม่ของแซม",
+    "M": "มะลิ",
+    "_gender": "S=m; K=f; M=f"
+  },
+  "sections": [
+    {
+      "title": "วันอาทิตย์ตอนบ่าย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันอาทิตย์ตอนบ่าย แซมโทรหาแม่ที่อเมริกา",
+              "english": "On Sunday afternoon Sam phoned his mother in America."
+            },
+            {
+              "text": "ที่เชียงใหม่เป็นเวลาบ่าย แต่ที่บ้านแม่เป็นเวลาเช้า",
+              "english": "In Chiang Mai it was afternoon, but at his mother's it was morning."
+            },
+            {
+              "text": "แซมใช่ไหมลูก",
+              "english": "Is that you, Sam, dear?",
+              "speaker": "K"
+            },
+            {
+              "text": "ครับแม่ ผมเอง",
+              "english": "Yes, Mum. It's me.",
+              "speaker": "S"
+            },
+            {
+              "text": "เสียงเงียบไปเลย แม่ไม่ได้ยินลูก",
+              "english": "The line has gone quiet. I can't hear you.",
+              "speaker": "K"
+            },
+            {
+              "text": "เดี๋ยวครับแม่ ผมเปิดประตูก่อน",
+              "english": "One moment, Mum. Let me open the door.",
+              "speaker": "S"
+            },
+            {
+              "text": "ตอนนี้ได้ยินไหมครับ ผมเรียนเสร็จตอนบ่ายโมงครับ",
+              "english": "Can you hear me now? I finished my lesson at one o'clock.",
+              "speaker": "S"
+            },
+            {
+              "text": "ได้ยินแล้ว ดีมากเลย",
+              "english": "I can hear you now. That's lovely.",
+              "speaker": "K"
+            },
+            {
+              "text": "ลูกกินข้าวหรือยัง",
+              "english": "Have you eaten yet?",
+              "speaker": "K"
+            },
+            {
+              "text": "กินแล้วครับ แม่ถามเหมือนคนไทยเลย",
+              "english": "Yes. You ask just like a Thai person.",
+              "speaker": "S"
+            },
+            {
+              "text": "แม่ถามทุกวันอยู่แล้ว",
+              "english": "I ask every day anyway.",
+              "speaker": "K"
+            },
+            {
+              "text": "วันนี้ลูกกินอะไร เล่าให้แม่ฟังหน่อย",
+              "english": "What did you eat today? Tell me.",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องอาหาร",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เช้านี้ป้าแดงชวนผมทานข้าวผัดครับ",
+              "english": "This morning Auntie Daeng invited me to eat fried rice.",
+              "speaker": "S"
+            },
+            {
+              "text": "ป้าซื้อเนื้อหมูมาจากตลาด และทอดไข่ในกระทะ",
+              "english": "She bought pork at the market and fried eggs in the pan.",
+              "speaker": "S"
+            },
+            {
+              "text": "ข้าวสารก็มาจากหมู่บ้านของป้า หอมมากครับ",
+              "english": "The rice is from her village too, and it smells wonderful.",
+              "speaker": "S"
+            },
+            {
+              "text": "ลูกไม่ได้กินขนมปังแล้วหรือ",
+              "english": "You don't eat bread any more?",
+              "speaker": "K"
+            },
+            {
+              "text": "บางวันครับ แต่ที่นี่ผมกินข้าวสามมื้อเหมือนคนไทย",
+              "english": "Some days. But here I eat three meals like the Thais.",
+              "speaker": "S"
+            },
+            {
+              "text": "แล้วลูกชอบไหม",
+              "english": "And do you like it?",
+              "speaker": "K"
+            },
+            {
+              "text": "ชอบมากครับ เมื่อวานมะลิเอาเค้กมาให้ด้วย",
+              "english": "Very much. Yesterday Mali brought cake too.",
+              "speaker": "S"
+            },
+            {
+              "text": "มะลิเป็นใครลูก",
+              "english": "Who is Mali, dear?",
+              "speaker": "K"
+            },
+            {
+              "text": "เธอเป็นพยาบาลครับ เธอช่วยผมเรื่องภาษาไทย",
+              "english": "She's a nurse. She helps me with Thai.",
+              "speaker": "S"
+            },
+            {
+              "text": "ลูกจ่ายค่าเช่าห้องหรือยัง",
+              "english": "Have you paid the rent for your room yet?",
+              "speaker": "K"
+            },
+            {
+              "text": "จ่ายแล้วครับ ผมจ่ายมัดจำให้เจ้าของห้องไปแล้วด้วย",
+              "english": "Yes. I've also already paid the deposit to the owner of the room.",
+              "speaker": "S"
+            },
+            {
+              "text": "ป้าแดงเป็นเจ้าของห้องหรือ",
+              "english": "Auntie Daeng owns the room?",
+              "speaker": "K"
+            },
+            {
+              "text": "ใช่ครับ ป้าดีมาก",
+              "english": "Yes. She is very kind.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมทานกับป้าทุกเช้าครับ มื้อเย็นที่บ้านป้าอร่อยที่สุด",
+              "english": "I eat with her every morning. Dinner at her house is the best.",
+              "speaker": "S"
+            },
+            {
+              "text": "ดี แม่ตกลงใจแล้วว่าจะไม่ถามมาก",
+              "english": "Good. I've made up my mind not to ask too much.",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ความฝันของแม่",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แม่ต้องบอกลูกอย่างหนึ่ง",
+              "english": "I have to tell you something.",
+              "speaker": "K"
+            },
+            {
+              "text": "เมื่อคืนแม่ฝันถึงลูก",
+              "english": "Last night I dreamed about you.",
+              "speaker": "K"
+            },
+            {
+              "text": "ในฝัน ลูกหิวมาก แต่ไม่มีใครให้ข้าวลูกกิน",
+              "english": "In the dream you were very hungry, but nobody gave you any rice.",
+              "speaker": "K"
+            },
+            {
+              "text": "แม่ครับ ผมกินข้าวอิ่มทุกวันครับ",
+              "english": "Mum, I eat until I'm full every day.",
+              "speaker": "S"
+            },
+            {
+              "text": "แม่รู้ แต่แม่ก็ยังกังวล",
+              "english": "I know, but I still worry.",
+              "speaker": "K"
+            },
+            {
+              "text": "แม่กังวลเรื่องอาหาร เรื่องห้อง เรื่องความปลอดภัย",
+              "english": "I worry about the food, the room and safety.",
+              "speaker": "K"
+            },
+            {
+              "text": "ไม่ต้องกังวลครับแม่ ผมสบายดี ผมพักผ่อนทุกคืน",
+              "english": "Don't worry, Mum. I'm fine. I rest every night.",
+              "speaker": "S"
+            },
+            {
+              "text": "ลูกทนอากาศร้อนได้ไหม",
+              "english": "Can you stand the hot weather?",
+              "speaker": "K"
+            },
+            {
+              "text": "ได้ครับ ตอนนี้ผมกล้ากินพริกแล้วด้วย ผมกินกล้วยสุกทุกเช้า",
+              "english": "Yes. Now I even dare to eat chillies, and I eat ripe bananas every morning.",
+              "speaker": "S"
+            },
+            {
+              "text": "ลูกเหงาไหม ลูกฝันถึงบ้านบ้างไหม",
+              "english": "Are you lonely? Do you ever dream of home?",
+              "speaker": "K"
+            },
+            {
+              "text": "บางครั้งครับ ตอนกลางคืนผมเหงามาก",
+              "english": "Sometimes. At night I feel very lonely.",
+              "speaker": "S"
+            },
+            {
+              "text": "ห้องของผมเงียบมาก และผมคิดถึงบ้าน",
+              "english": "My room is very quiet, and I miss home.",
+              "speaker": "S"
+            },
+            {
+              "text": "บ้านที่อเมริกาก็เงียบเหมือนกัน แม่ก็คิดถึงลูก",
+              "english": "The house here is quiet too. I miss you as well.",
+              "speaker": "K"
+            },
+            {
+              "text": "แต่ลูกมีเพื่อนที่โบสถ์ใช่ไหม",
+              "english": "But you have friends at church, don't you?",
+              "speaker": "K"
+            },
+            {
+              "text": "มีครับ มะลิชวนผมไปตลาด ป้าชวนผมทานข้าว ทุกคนดีกับผมมาก",
+              "english": "Yes. Everyone is very good to me.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมเป็นเหมือนแขกของทุกบ้านเลยครับ",
+              "english": "I'm like a guest in every house.",
+              "speaker": "S"
+            },
+            {
+              "text": "ลูกรู้สึกว่าลูกอยู่ที่นั่นได้นานไหม",
+              "english": "Do you feel you can stay there a long time?",
+              "speaker": "K"
+            },
+            {
+              "text": "รู้สึกครับ ผมเริ่มรู้สึกว่า ที่นี่เป็นบ้านของผมด้วย",
+              "english": "Yes. I'm beginning to feel that this is my home too.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องเสือกับเสื้อ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แม่ครับ ผมมีเรื่องตลกจะเล่า",
+              "english": "Mum, I've got a funny story to tell you.",
+              "speaker": "S"
+            },
+            {
+              "text": "วันก่อนผมไปตลาด และผมบอกคนขายว่า ผมอยากซื้อเสือ",
+              "english": "The other day I went to the market and told the seller I wanted to buy a tiger.",
+              "speaker": "S"
+            },
+            {
+              "text": "เสือหรือ ลูกอยากซื้อเสือหรือ",
+              "english": "A tiger? You wanted to buy a tiger?",
+              "speaker": "K"
+            },
+            {
+              "text": "ครับ แต่ผมอยากซื้อเสื้อ ไม่ใช่เสือ",
+              "english": "Yes, but I wanted to buy a shirt, not a tiger.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมออกเสียงผิด คำสองคำนี้เสียงไม่เหมือนกัน",
+              "english": "I pronounced it wrong. The two words don't sound the same.",
+              "speaker": "S"
+            },
+            {
+              "text": "แล้วคนขายทำอย่างไร",
+              "english": "And what did the seller do?",
+              "speaker": "K"
+            },
+            {
+              "text": "เขาหัวเราะ และเอาเสื้อมาให้ผมดูหลายตัว",
+              "english": "She laughed and brought me several shirts to look at.",
+              "speaker": "S"
+            },
+            {
+              "text": "ลูกพูดภาษาไทยดีขึ้นหรือยัง",
+              "english": "Is your Thai getting better?",
+              "speaker": "K"
+            },
+            {
+              "text": "ยังไม่ดีหรอกครับ แต่มะลิสอนวิธีออกเสียงให้ผม",
+              "english": "Not yet, but Mali teaches me the way to pronounce words.",
+              "speaker": "S"
+            },
+            {
+              "text": "เธอบอกว่าต้องฟังเสียงให้ดีก่อน แล้วพูด",
+              "english": "She says I must listen to the sound well first, and then speak.",
+              "speaker": "S"
+            },
+            {
+              "text": "เธอสอนวิธีตำพริกด้วยครับ",
+              "english": "She taught me how to pound chillies too.",
+              "speaker": "S"
+            },
+            {
+              "text": "สวัสดีค่ะคุณแม่ของคุณแซม",
+              "english": "Hello, Sam's mother.",
+              "speaker": "M"
+            },
+            {
+              "text": "สวัสดีค่ะ",
+              "english": "Hello.",
+              "speaker": "K"
+            },
+            {
+              "text": "คุณแซมเรียนเร็วมากค่ะ ไม่ต้องห่วงนะคะ",
+              "english": "Sam learns very fast. Please don't worry.",
+              "speaker": "M"
+            },
+            {
+              "text": "เขาต้องพักผ่อนบ้างนะคะ เขาทำงานมากเลย",
+              "english": "He should rest now and then. He works a lot.",
+              "speaker": "M"
+            },
+            {
+              "text": "ขอบคุณมากนะคะที่ช่วยลูกของแม่",
+              "english": "Thank you so much for helping my son.",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "นิทานของกวาง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันก่อนผมอ่านนิทานภาษาไทยเรื่องหนึ่งครับ",
+              "english": "The other day I read a Thai fable.",
+              "speaker": "S"
+            },
+            {
+              "text": "เรื่องกวางตัวหนึ่ง ที่หมาของพรานดมพื้นตามหามัน",
+              "english": "About a deer, whom the hunter's dog tracked by sniffing the ground.",
+              "speaker": "S"
+            },
+            {
+              "text": "กวางรอดไหม",
+              "english": "Did the deer survive?",
+              "speaker": "K"
+            },
+            {
+              "text": "ไม่รอดครับ มันกินใบของต้นไม้ที่ซ่อนตัวอยู่",
+              "english": "No. It ate the leaves of the tree it was hiding in.",
+              "speaker": "S"
+            },
+            {
+              "text": "พรานร้ายนักครับ เขาเหลือบเห็นกวางตอนมันจวนตัว",
+              "english": "The hunter is terribly cruel. He caught sight of the deer when it was cornered.",
+              "speaker": "S"
+            },
+            {
+              "text": "กวางอาศัยต้นไม้ซ่อนตัว และเล็มใบของต้นไม้ที่ไม่สู้จะใหญ่",
+              "english": "The deer used the tree to hide and nibbled the leaves of a tree that was not very big.",
+              "speaker": "S"
+            },
+            {
+              "text": "พอพรานเดินมาถึงที่นั่นอีก ก็ไม่เหลืออะไรให้ซ่อนแล้วครับ",
+              "english": "When the hunter came to that place again, there was nothing left to hide in.",
+              "speaker": "S"
+            },
+            {
+              "text": "แม่ไม่ชอบตอนจบของนิทานเรื่องนี้เลย",
+              "english": "I don't like the ending of this fable at all.",
+              "speaker": "K"
+            },
+            {
+              "text": "ครับ แต่ผมจำคำใหม่ได้หลายคำ",
+              "english": "Yes, but I learned many new words.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "พรุ่งนี้และคืนนี้",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "พรุ่งนี้เราจะฉลองวันเกิดป้าแดงครับ",
+              "english": "Tomorrow we'll celebrate Auntie Daeng's birthday.",
+              "speaker": "S"
+            },
+            {
+              "text": "จะมีแขกมาที่ร้านยี่สิบคน แขกของป้ามาจากหลายหมู่บ้านครับ",
+              "english": "Twenty guests will come to the shop. Auntie's guests come from many villages.",
+              "speaker": "S"
+            },
+            {
+              "text": "ที่อเมริกาเราก็ฉลองวันเกิดด้วยเค้กเหมือนกัน",
+              "english": "In America we also celebrate birthdays with cake.",
+              "speaker": "K"
+            },
+            {
+              "text": "แม่อยากฉลองวันเกิดกับลูกนะ แม่จะส่งวิธีทำเค้กไปให้",
+              "english": "I'd like to celebrate birthdays with you. I'll send you the way to make cake.",
+              "speaker": "K"
+            },
+            {
+              "text": "ผมจะช่วยจัดโต๊ะและชงชาครับ ชาอุ่นๆ ใส่แก้วใบเล็ก",
+              "english": "I'll help set the tables and make tea, warm tea in small glasses.",
+              "speaker": "S"
+            },
+            {
+              "text": "ดีมาก ถ้าลูกยุ่งก็จะไม่เหงา",
+              "english": "Good. If you're busy, you won't be lonely.",
+              "speaker": "K"
+            },
+            {
+              "text": "ลูกต้องพักผ่อนด้วยนะ อย่าเหนื่อยมาก",
+              "english": "You must rest too. Don't get very tired.",
+              "speaker": "K"
+            },
+            {
+              "text": "ครับแม่ ผมยังเป็นผมคนเดิมครับ",
+              "english": "Yes, Mum. I'm still the same old me.",
+              "speaker": "S"
+            },
+            {
+              "text": "แม่รู้ ลูกยังเป็นลูกของแม่เหมือนเดิม",
+              "english": "I know. You are still my son, just as before.",
+              "speaker": "K"
+            },
+            {
+              "text": "ตอนนี้แม่นั่งอยู่ข้างหน้าต่าง กาแฟเย็นหมดแล้ว",
+              "english": "I'm sitting by the window now, and my coffee has gone cold.",
+              "speaker": "K"
+            },
+            {
+              "text": "ก่อนวางโทรศัพท์ ให้แม่อธิษฐานให้ลูกนะ",
+              "english": "Before we hang up, let me pray for you.",
+              "speaker": "K"
+            },
+            {
+              "text": "ขอบพระคุณพระเจ้าที่ส่งพระบุตรมา และที่อยู่กับลูกของแม่ที่ไกลบ้าน",
+              "english": "Thank you, God, for sending your Son, and for being with my son far from home.",
+              "speaker": "K"
+            },
+            {
+              "text": "ขอให้พระเจ้าอภัยบาปของเรา และขอให้ลูกมีชีวิตที่ไม่ทุกข์",
+              "english": "May God forgive our sins, and may my son have a life without sorrow.",
+              "speaker": "K"
+            },
+            {
+              "text": "ขอให้ทั้งร่างกายและวิญญาณของเขาได้พัก",
+              "english": "May both his body and his soul find rest.",
+              "speaker": "K"
+            },
+            {
+              "text": "ขอให้เขาพึ่งพระเจ้าในทุกวัน",
+              "english": "May he rely on God every day.",
+              "speaker": "K"
+            },
+            {
+              "text": "ผมรักแม่ครับ",
+              "english": "I love you, Mum.",
+              "speaker": "S"
+            },
+            {
+              "text": "แม่ก็รักลูก โทรมาอีกนะ ตกลงไหม",
+              "english": "I love you too. Call again, all right?",
+              "speaker": "K"
+            },
+            {
+              "text": "ตกลงครับแม่",
+              "english": "All right, Mum.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

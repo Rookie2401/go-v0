@@ -1,0 +1,509 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-14",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "หน้าฝนกับยุง",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-14",
+    "title": "หน้าฝนกับยุง — Dengue season (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A nurse (Mali) must check the medical statements: symptoms and warning signs of dengue are given in outline only and should be confirmed by a Thai clinician; no dose or treatment instruction is given beyond \"see a doctor\". Check the register of the doctor and the headman's announcement."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "health",
+    "dengue",
+    "mosquitoes",
+    "prevention",
+    "hospital"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "M": "มะลิ",
+    "S": "แซม",
+    "T": "ต้น",
+    "B": "บอล",
+    "D": "คุณหมอ",
+    "H": "ผู้ใหญ่บ้าน",
+    "Q": "ศิษยาภิบาล",
+    "P": "ป้าแดง",
+    "_gender": "M=f; S=m; T=m; B=m; D=m; H=m; Q=m; P=f"
+  },
+  "sections": [
+    {
+      "title": "ฤดูฝนมาแล้ว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ฤดูฝนมาถึงเชียงใหม่ และยุงก็มาด้วย",
+              "english": "The rainy season arrived in Chiang Mai, and the mosquitoes came with it."
+            },
+            {
+              "text": "วันนี้มะลิติดประกาศที่ร้านของป้าแดง",
+              "english": "Today Mali put up a notice at Auntie Daeng's shop."
+            },
+            {
+              "text": "ประกาศนั้นเขียนว่า ระวังโรคไข้เลือดออก",
+              "english": "The notice read: beware of dengue fever."
+            },
+            {
+              "text": "ไข้เลือดออกเป็นอะไรครับ",
+              "english": "What is dengue?",
+              "speaker": "S"
+            },
+            {
+              "text": "เป็นโรคที่ติดมาจากตัวเล็กๆ ที่กัดคนค่ะ",
+              "english": "It is an illness that comes from small creatures that bite people.",
+              "speaker": "M"
+            },
+            {
+              "text": "มันกัดคนที่ป่วย แล้วก็ไปกัดอีกคนหนึ่ง",
+              "english": "It bites a sick person and then goes and bites another.",
+              "speaker": "M"
+            },
+            {
+              "text": "คนที่ถูกกัดก็เป็นไข้ได้",
+              "english": "The person who is bitten can get a fever.",
+              "speaker": "M"
+            },
+            {
+              "text": "มันเกิดที่ไหนครับ",
+              "english": "Where do they come from?",
+              "speaker": "S"
+            },
+            {
+              "text": "ที่ไหนมีน้ำขัง ที่นั่นก็มีมันค่ะ",
+              "english": "Wherever there is standing water, there they are.",
+              "speaker": "M"
+            },
+            {
+              "text": "น้ำขังในขวดเก่า ในยางรถ ในจานใต้ต้นไม้ ก็มีได้",
+              "english": "Standing water in old bottles, car tyres or the dish under a plant can have them.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมไม่รู้เลยว่าน้ำนิดเดียวก็มีได้",
+              "english": "I never knew that even a little water could have them.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "อาการของโรค",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เป็นโรคนี้แล้วมีอาการอย่างไรครับ",
+              "english": "What are the symptoms of this illness?",
+              "speaker": "S"
+            },
+            {
+              "text": "ก่อนอื่นเป็นไข้สูงค่ะ ไข้สูงสองถึงสามวัน",
+              "english": "First, a high fever, two to three days of high fever.",
+              "speaker": "M"
+            },
+            {
+              "text": "คนไข้จะปวดหัว ปวดตา และปวดเนื้อปวดตัว",
+              "english": "The patient has a headache, eye pain and aches all over.",
+              "speaker": "M"
+            },
+            {
+              "text": "บางคนมีผื่นขึ้นที่แขนและที่ขา",
+              "english": "Some people get a rash on the arms and legs.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผื่นไม่ได้ทำให้เจ็บ แต่เป็นอาการที่เตือนเราค่ะ",
+              "english": "The rash doesn't hurt, but it is a symptom that warns us.",
+              "speaker": "M"
+            },
+            {
+              "text": "แล้วอาการแบบไหนอันตรายที่สุดครับ",
+              "english": "And which symptoms are the most dangerous?",
+              "speaker": "S"
+            },
+            {
+              "text": "ถ้าปวดท้องมาก และอาเจียนหลายครั้ง ต้องไปโรงพยาบาลทันทีค่ะ",
+              "english": "If there is severe stomach pain and vomiting several times, one must go to the hospital at once.",
+              "speaker": "M"
+            },
+            {
+              "text": "บางคนมีเลือดออกด้วย ซึ่งเป็นเรื่องฉุกเฉิน",
+              "english": "Some people even bleed, which is an emergency.",
+              "speaker": "M"
+            },
+            {
+              "text": "หมอจะตรวจเลือด เพราะมันทำให้เกล็ดเลือดลดลง",
+              "english": "The doctor will test the blood, because this illness makes the platelets go down.",
+              "speaker": "M"
+            },
+            {
+              "text": "ถ้าเกล็ดเลือดลดลงมาก เลือดก็หยุดยาก",
+              "english": "If the platelet count falls a lot, bleeding is hard to stop.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมเข้าใจแล้วครับ ต้องไม่รอ",
+              "english": "I understand. One must not wait.",
+              "speaker": "S"
+            },
+            {
+              "text": "ใช่ค่ะ ถ้ามีไข้ ก็ไปหาหมอ อย่ารอถึงเย็น",
+              "english": "Yes. If you have a fever, go to a doctor. Don't wait until evening.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วิธีป้องกัน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "มะลิบอกวิธีป้องกันให้แซมจดไว้",
+              "english": "Mali told Sam the ways to protect oneself, and he wrote them down."
+            },
+            {
+              "text": "หนึ่ง อย่าให้มีน้ำขังที่บ้าน",
+              "english": "One: don't let there be standing water at home.",
+              "speaker": "M"
+            },
+            {
+              "text": "สอง เปลี่ยนน้ำในที่ใส่ดอกไม้ทุกสัปดาห์",
+              "english": "Two: change the water in the flower holders every week.",
+              "speaker": "M"
+            },
+            {
+              "text": "สาม ปิดถังน้ำทุกใบ",
+              "english": "Three: cover every water tank.",
+              "speaker": "M"
+            },
+            {
+              "text": "สี่ ใส่เสื้อแขนยาวและเอายากันยุงมาทาทุกเย็น",
+              "english": "Four: wear long sleeves and put on mosquito repellent every evening.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมต้องระวังตอนไหนครับ",
+              "english": "When must I be careful?",
+              "speaker": "S"
+            },
+            {
+              "text": "ต้องระวังตอนเช้าและตอนเย็นค่ะ ยุงออกมากที่สุด",
+              "english": "Be careful in the morning and the evening. That is when the mosquitoes come out most.",
+              "speaker": "M"
+            },
+            {
+              "text": "ถ้าป้องกันดี ก็ไม่ป่วยง่ายค่ะ",
+              "english": "If you protect yourself well, you will not fall ill easily.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมหยิบขวดนั้นไปที่ห้องได้ไหมครับ",
+              "english": "May I take that bottle to my room?",
+              "speaker": "S"
+            },
+            {
+              "text": "ได้ค่ะ ขวดนี้ขนาดเล็ก แต่พอสำหรับหนึ่งเดือน",
+              "english": "Yes. This bottle is small, but enough for a month.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "บอลป่วย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนเย็นวันนั้น ต้นโทรหามะลิ",
+              "english": "That evening Ton phoned Mali."
+            },
+            {
+              "text": "มะลิครับ บอลเป็นไข้สูงมาก",
+              "english": "Mali, Ball has a very high fever.",
+              "speaker": "T"
+            },
+            {
+              "text": "เขานอนไม่หลับ ตื่นอยู่จนเช้า และบอกว่าปวดตา",
+              "english": "He can't sleep, stays awake till morning, and says his eyes hurt.",
+              "speaker": "T"
+            },
+            {
+              "text": "ให้เขาดื่มน้ำมากๆ ค่ะ ฉันจะไปหาเดี๋ยวนี้",
+              "english": "Give him lots of water. I'll come to you right now.",
+              "speaker": "M"
+            },
+            {
+              "text": "มะลิกับแซมไปถึงบ้านต้นในสิบนาที",
+              "english": "Mali and Sam reached Ton's house in ten minutes."
+            },
+            {
+              "text": "บอลนอนอยู่บนเตียง หน้าแดงมาก",
+              "english": "Ball lay on the bed, his face very red."
+            },
+            {
+              "text": "บอล เจ็บตรงไหนบ้างคะ",
+              "english": "Ball, where does it hurt?",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมปวดตา ปวดหัว และอยากอาเจียนครับ",
+              "english": "My eyes and head hurt, and I feel like vomiting.",
+              "speaker": "B"
+            },
+            {
+              "text": "มะลิดูที่แขนของบอล",
+              "english": "Mali looked at Ball's arm."
+            },
+            {
+              "text": "มีผื่นสีแดงเล็กๆ ขึ้นหลายจุด",
+              "english": "Small red spots had appeared in several places."
+            },
+            {
+              "text": "พี่ต้นคะ ต้องไปโรงพยาบาลเดี๋ยวนี้ค่ะ",
+              "english": "Ton, we must go to the hospital right now.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมตัดสินใจพาเขาไปทันที ผมขับรถไปเองครับ",
+              "english": "I decide to take him at once. I'll drive myself.",
+              "speaker": "T"
+            },
+            {
+              "text": "โรงพยาบาลอยู่ไกลจากบ้านห้ากิโลเมตร",
+              "english": "The hospital was five kilometres from the house."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่โรงพยาบาล",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ที่ห้องฉุกเฉินมีประกาศหลายอย่างติดอยู่",
+              "english": "There were several notices on the emergency room."
+            },
+            {
+              "text": "ทางออกฉุกเฉินอยู่หลังห้อง ห้ามวางของ",
+              "english": "The emergency exit is behind the room; do not put things there."
+            },
+            {
+              "text": "ตามระเบียบ คนที่อยู่ในครอบครัวเข้าได้ครั้งละหนึ่งคน",
+              "english": "By the rules, only one family member may go in at a time."
+            },
+            {
+              "text": "กฎของโรงพยาบาลให้ถอดรองเท้าก่อนเข้าห้องเด็ก",
+              "english": "The hospital's rule is to take off shoes before the children's room."
+            },
+            {
+              "text": "ผมเป็นหมอของบอลครับ",
+              "english": "I am Ball's doctor.",
+              "speaker": "D"
+            },
+            {
+              "text": "บอลเป็นไข้เลือดออก ผมขอตรวจเลือดก่อนครับ",
+              "english": "Ball has dengue. I'd like to test his blood first.",
+              "speaker": "D"
+            },
+            {
+              "text": "ต่อมาหมอก็กลับมาหาต้น",
+              "english": "Later the doctor came back to Ton."
+            },
+            {
+              "text": "เกล็ดเลือดลดลงครับ แต่ยังไม่อันตรายมาก",
+              "english": "The platelets are lower, but it's not very dangerous yet.",
+              "speaker": "D"
+            },
+            {
+              "text": "ผมจะรักษาให้ บอลต้องพักที่นี่ครับ",
+              "english": "I will treat him. Ball must rest here.",
+              "speaker": "D"
+            },
+            {
+              "text": "ไม่มียาที่รักษาไข้เลือดออกได้ ต้องให้ดื่มน้ำและพักครับ",
+              "english": "There is no medicine that treats dengue directly. He must drink water and rest.",
+              "speaker": "D"
+            },
+            {
+              "text": "ต้องอยู่กี่วันครับ",
+              "english": "How many days must he stay?",
+              "speaker": "T"
+            },
+            {
+              "text": "สามวันครับ ถ้าไม่อาเจียนอีก ก็กลับบ้านได้",
+              "english": "Three days. If he doesn't vomit again, he can go home.",
+              "speaker": "D"
+            },
+            {
+              "text": "ที่บ้านสมควรทิ้งน้ำเก่าทุกที่ครับ",
+              "english": "At home you should throw out old water everywhere.",
+              "speaker": "D"
+            },
+            {
+              "text": "ผมเข้าใจครับ ผมจะทำทันที",
+              "english": "I understand. I'll do it at once.",
+              "speaker": "T"
+            },
+            {
+              "text": "หมอพูดสุภาพกับต้น และต้นก็ดีใจขึ้น",
+              "english": "The doctor spoke politely to Ton, and Ton was relieved."
+            },
+            {
+              "text": "บอลนอนหลับไป และตื่นมาตอนเช้า",
+              "english": "Ball fell asleep and woke in the morning."
+            },
+            {
+              "text": "เขาหายไข้ในวันที่สาม",
+              "english": "His fever went in the third day."
+            },
+            {
+              "text": "ผมหวังว่าบอลจะหายเร็วครับ",
+              "english": "I hope Ball recovers quickly.",
+              "speaker": "Q"
+            },
+            {
+              "text": "การไปแม่ฮ่องสอนต้องวางแผนใหม่ เพราะต้นอยู่โรงพยาบาล",
+              "english": "The trip to Mae Hong Son must be planned afresh, because Ton is at the hospital.",
+              "speaker": "Q"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ชุมชนช่วยกัน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผู้ใหญ่บ้านประกาศให้ทุกบ้านมาประชุมที่หน้าวัด",
+              "english": "The headman announced that every house should come to a meeting in front of the temple."
+            },
+            {
+              "text": "ในซอยของเราตอนนี้มีคนเป็นไข้เลือดออกสองคนครับ",
+              "english": "In our lane there are now two people with dengue.",
+              "speaker": "H"
+            },
+            {
+              "text": "ผมเสนอให้เรารวมกลุ่มกัน ช่วยดูท่อและที่ที่น้ำท่วม",
+              "english": "I propose that we form groups to look at the drains and the places that flood.",
+              "speaker": "H"
+            },
+            {
+              "text": "ถ้าน้ำท่วมอีก ท่อก็จะมีขยะติดอีก",
+              "english": "If it floods again, the drains will get blocked with rubbish again.",
+              "speaker": "H"
+            },
+            {
+              "text": "กลุ่มหนึ่งเก็บขยะ อีกกลุ่มหนึ่งซ่อมท่อ",
+              "english": "One group collects rubbish; another repairs the drain.",
+              "speaker": "H"
+            },
+            {
+              "text": "ผมไม่มีอำนาจสั่งใคร แต่ชุมชนเราต้องช่วยกัน",
+              "english": "I have no power to order anyone, but our community must help one another.",
+              "speaker": "H"
+            },
+            {
+              "text": "ป้าก็จะบริจาคยาสิบขวดค่ะ",
+              "english": "I'll donate ten bottles too.",
+              "speaker": "P"
+            },
+            {
+              "text": "ขอบคุณครับ เราตัดสินใจร่วมกันแล้วว่าจะเริ่มพรุ่งนี้",
+              "english": "Thank you. We have decided together to start tomorrow.",
+              "speaker": "H"
+            },
+            {
+              "text": "เราจะรวมเงิน เพื่อซ่อมสะพานเล็กด้วยครับ",
+              "english": "We'll collect money, to repair the small bridge as well.",
+              "speaker": "H"
+            },
+            {
+              "text": "ผมขอเสนอให้ติดประกาศอีกอย่างด้วยครับ",
+              "english": "I'd like to propose putting up an English notice too.",
+              "speaker": "S"
+            },
+            {
+              "text": "ตามระเบียบของซอย เราต้องช่วยกันหาทางออกครับ",
+              "english": "By the lane's rules, we must help one another find a way out.",
+              "speaker": "H"
+            },
+            {
+              "text": "ชุมชนของเราจะปลอดภัยขึ้นครับ",
+              "english": "Our community will become safer.",
+              "speaker": "H"
+            },
+            {
+              "text": "แซมช่วยแจกยาให้ทุกบ้าน และบริจาคเงินด้วย",
+              "english": "Sam helped hand out the repellent to every house, and donated money too."
+            },
+            {
+              "text": "ผู้ใหญ่บ้านขอบคุณทุกคนหลังประชุม",
+              "english": "The headman thanked everyone after the meeting."
+            },
+            {
+              "text": "เขาเรียนรู้ว่า การป้องกันดีกว่าการรักษา",
+              "english": "He learned that prevention is better than cure."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

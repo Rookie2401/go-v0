@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-15",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ลิงกับชายหนุ่มริมน้ำ",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-15",
+    "title": "ลิงกับชายหนุ่มริมน้ำ — The monkey and the fisherman (a fable retold, 6) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 132247 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=132247",
+    "attribution": "Adapted retelling of \"ลิงกับคนทอดแห\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 132247, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"ลิงกับคนทอดแห\" (th-gap-recovery-aesop-43); the sentences are the drafter's own retelling in the vocabulary of the ladder plan, with the fable register (เจ้า, ข้า, จึง, ครั้น, แล …) kept where the plan teaches it. Machine-drafted on 2026-10-06; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 132247) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). The fishing net (แห) is not on the plan's lists and is named once; later it is called \"มัน\" / \"ของนั้น\". A short coda (the man comes back) was added. Check the fable register (แหละ, สม, จัก, ครั้น) and the moral."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "fable",
+    "animals",
+    "river",
+    "fishing"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ชายหนุ่มริมน้ำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ที่ริมแม่น้ำ มีชายหนุ่มคนหนึ่งทอดแหจับปลา",
+              "english": "On the river bank a young man was casting a net to catch fish."
+            },
+            {
+              "text": "เขาตื่นแต่รุ่งเช้า และมาทำการจับปลาที่ตลิ่ง",
+              "english": "He woke at dawn and came to do his fishing at the bank."
+            },
+            {
+              "text": "เขารู้จักวิธีใช้มันอย่างดี",
+              "english": "He knew well how to use it."
+            },
+            {
+              "text": "เขาเหวี่ยงมันออกไปไกล แล้วเก็บกลับมา",
+              "english": "He swung it far out, then gathered it back."
+            },
+            {
+              "text": "ปลาตัวใหญ่ ปลาตัวเล็ก เป็นต้น ติดขึ้นมาหลายตัว",
+              "english": "Big fish, small fish and so on came up caught in it."
+            },
+            {
+              "text": "ใกล้ตลิ่งมีต้นไม้ใหญ่ต้นหนึ่ง มีผลไม้และใบ เป็นต้น",
+              "english": "Near the bank was a big tree, with fruit, leaves and so on."
+            },
+            {
+              "text": "ลิงตัวหนึ่งซุกซ่อนตัวอยู่ในนั้น",
+              "english": "A monkey lay hidden in it."
+            },
+            {
+              "text": "ลิงตัวหนึ่งไต่ขึ้นไปนั่งบนต้นไม้ต้นนั้น",
+              "english": "A monkey climbed up to sit in that tree."
+            },
+            {
+              "text": "มันมองดูอยู่นาน และอดกินผลไม้เช้านั้น",
+              "english": "It watched for a long time and went without eating fruit that morning."
+            },
+            {
+              "text": "มันนึกว่า \"ทำการง่ายนิดเดียว\"",
+              "english": "It thought, \"That is easy work.\""
+            },
+            {
+              "text": "\"ข้าก็จักทำ ข้าจักไม่ให้ใครรู้\"",
+              "english": "\"I too shall do it. I shall not let anyone know.\""
+            },
+            {
+              "text": "มันไม่เคยรู้จักกำลังของตนเอง นั่นแหละเหตุที่มันนึกอย่างนั้น",
+              "english": "It had never known its own strength; that was the reason it thought so."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เขากลับไปกินข้าว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เขาทำงานมาแต่เช้า เขาอดกินข้าวเช้า",
+              "english": "He had worked since morning and went without breakfast."
+            },
+            {
+              "text": "เขาอดนอนมาทั้งคืนด้วย",
+              "english": "He had also gone without sleep all night."
+            },
+            {
+              "text": "เมื่อเวลาผ่านไป เขาหิวมาก ทนไม่ไหว",
+              "english": "As time went by he grew very hungry and could not bear it."
+            },
+            {
+              "text": "เผอิญวันนั้นเขาไม่ได้เอาข้าวมาด้วย",
+              "english": "By chance he had brought no food that day."
+            },
+            {
+              "text": "เขาผูกเรือไว้ที่ต้นไม้ แล้วเดินกลับบ้าน",
+              "english": "He tied his boat to the tree and walked home."
+            },
+            {
+              "text": "ในเรือมีถุง ข้าว เป็นต้น แต่เขาไม่ได้เอาไปด้วย",
+              "english": "In the boat were a bag, rice and so on, but he did not take them."
+            },
+            {
+              "text": "เขาวางมันไว้ในเรือ",
+              "english": "He left it in the boat."
+            },
+            {
+              "text": "เขานึกว่า กินข้าวเสร็จแล้วจักกลับมา",
+              "english": "He meant to come back when he had eaten."
+            },
+            {
+              "text": "เขาเดินลับไป",
+              "english": "He walked out of sight."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ลิงลงมา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ลิงเห็นเขาเดินลับไปไกล ก็ลงมาจากต้นไม้",
+              "english": "When the monkey saw him far out of sight, it came down from the tree."
+            },
+            {
+              "text": "มันไต่ลงไปในเรือ",
+              "english": "It climbed down into the boat."
+            },
+            {
+              "text": "มันเห็นของนั้นอยู่ ก็ดีใจ",
+              "english": "It saw that thing lying there and was pleased."
+            },
+            {
+              "text": "\"นี่แหละ ข้าจักทำให้ดู\"",
+              "english": "\"Here it is. I shall show how it's done.\""
+            },
+            {
+              "text": "ของนั้นหนักกว่าที่ลิงนึก",
+              "english": "It was heavier than the monkey had thought."
+            },
+            {
+              "text": "ลิงไม่เคยถือของหนักแบบนั้น",
+              "english": "The monkey had never held anything so heavy."
+            },
+            {
+              "text": "มือของมันอ่อน ไม่แข็งเหมือนมือคน",
+              "english": "Its hands were soft, not hard like a man's."
+            },
+            {
+              "text": "แต่มันตั้งหน้าถือขึ้นมา",
+              "english": "But it set its face and lifted it up."
+            },
+            {
+              "text": "มันฉวยขึ้นมา แล้วเหวี่ยงออกไป",
+              "english": "It grabbed it and swung it out."
+            },
+            {
+              "text": "แต่ใหญ่เกินกำลังของลิง",
+              "english": "But it was too big for the monkey's strength."
+            },
+            {
+              "text": "มันพันมือ พันตัว และพันขาของลิง",
+              "english": "It wound round the monkey's hands, body and legs."
+            },
+            {
+              "text": "ลิงไต่ไปทางน้ำ แต่เผอิญเหยียบพลาด",
+              "english": "The monkey crept towards the water, but by chance trod wrongly."
+            },
+            {
+              "text": "มันตกลงไปในน้ำ ทั้งที่ยังพันอยู่",
+              "english": "It fell into the water with it still wound round it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ในน้ำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ลิงดิ้นรนสักเท่าใด ก็ไม่ออก",
+              "english": "However much the monkey struggled, it did not get out."
+            },
+            {
+              "text": "มันดิ้นรนอีก แต่แรงของมันสิ้นลง",
+              "english": "It struggled again, but its strength gave out."
+            },
+            {
+              "text": "มันเหวี่ยงมืออีกครั้ง แต่ก็ไม่ไหว",
+              "english": "It swung its hands once more, but could not."
+            },
+            {
+              "text": "ลิงยังดิ้นรนอยู่ใต้น้ำ",
+              "english": "The monkey was still struggling under the water."
+            },
+            {
+              "text": "น้ำลึก มันไม่ไหวเลย",
+              "english": "The water was deep and it could not hold out."
+            },
+            {
+              "text": "มันตะเกียกตะกายหาตลิ่ง แต่ไม่ถึง",
+              "english": "It scrambled for the bank, but could not reach it."
+            },
+            {
+              "text": "มันซุกซ่อนหน้าไว้ในมือ เพราะกลัว",
+              "english": "It hid its face in its hands out of fear."
+            },
+            {
+              "text": "มันอยากหลบ แต่เลี่ยงไม่ได้",
+              "english": "It wanted to dodge, but could not avoid it."
+            },
+            {
+              "text": "มันสิ้นหวัง",
+              "english": "It lost all hope."
+            },
+            {
+              "text": "มันซุกซ่อนมือไว้ใต้น้ำ",
+              "english": "It hid its hands under the water."
+            },
+            {
+              "text": "ก่อนตาย ลิงร้องว่า",
+              "english": "Before it died, the monkey cried out,"
+            },
+            {
+              "text": "\"นี่แหละ สมแล้วที่ข้าเป็นอย่างนี้\"",
+              "english": "\"This is just what I deserve.\""
+            },
+            {
+              "text": "\"สมน้ำหน้าข้าแล้ว ข้าไม่เคยประมาณกำลังของข้า\"",
+              "english": "\"Serves me right. I never measured my own strength.\""
+            },
+            {
+              "text": "\"ข้าทำร้ายตนเอง ข้าไม่มีเหตุจะทำ แต่ข้าอยากทำเหมือนเขา\"",
+              "english": "\"I harmed myself. I had no reason to do it, but I wanted to do as he did.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ชายหนุ่มกลับมา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อสิ้นเสียงของลิง ก็ไม่มีใครได้ยินอะไรอีก",
+              "english": "When the monkey's voice had ended, nobody heard anything more."
+            },
+            {
+              "text": "ชายหนุ่มเผอิญกลับมาเร็วกว่าที่นึก แต่ช้าไปแล้ว",
+              "english": "The young man happened to come back sooner than he had thought, but it was too late."
+            },
+            {
+              "text": "เขาเห็นลิงอยู่ในน้ำ และช่วยมันขึ้นมา",
+              "english": "He saw the monkey in the water and helped it out."
+            },
+            {
+              "text": "เขาตั้งหน้าเก็บของโดยไม่พูดอะไร",
+              "english": "He set his face and gathered his things without a word."
+            },
+            {
+              "text": "คนอื่นอาจว่า สมแล้ว แต่เขาไม่ยิ้มเลย",
+              "english": "Others might say it served it right, but he did not smile at all."
+            },
+            {
+              "text": "สิ่งที่มันนึก ไม่ใช่ความสุขของใคร",
+              "english": "What it had imagined brought joy to no one."
+            },
+            {
+              "text": "นี่คือเรื่องของลิง ที่ทำร้ายตนเองโดยไม่รู้ตัว",
+              "english": "This is the story of the monkey, which harmed itself without knowing."
+            },
+            {
+              "text": "ชายหนุ่มเดินลับไปทางบ้านด้วยใจที่หนัก",
+              "english": "The young man walked off out of sight towards home with a heavy heart."
+            },
+            {
+              "text": "บางทีเราก็ทำเกินกำลังของเราเอง",
+              "english": "Sometimes we too do more than our own strength allows."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "นิทานเรื่องนี้สอนว่า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "นิทานเรื่องนี้สอนให้รู้ว่า ก่อนจะทำการใด ต้องรู้จักประมาณกำลังของตน",
+              "english": "This fable teaches that before undertaking anything one must know the measure of one's own strength."
+            },
+            {
+              "text": "คนอื่นอาจแข็ง แต่เราอาจอ่อน",
+              "english": "Others may be hard, but we may be soft."
+            },
+            {
+              "text": "ถ้าเกินกำลัง ก็ไม่ควรทำ อย่าทำร้ายตนเองเลย",
+              "english": "If it is beyond our strength, we should not do it. Do not harm yourself."
+            },
+            {
+              "text": "ต้องประมาณตนให้ดีเสมอ บางทีก็ช้าไปแล้ว",
+              "english": "We must always measure ourselves well; sometimes it is already too late."
+            },
+            {
+              "text": "อย่าเห็นคนอื่นทำ แล้วนึกว่าเราก็ทำเหมือนเขาทุกอย่าง",
+              "english": "Do not see others do something and think that we can do just the same in everything."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

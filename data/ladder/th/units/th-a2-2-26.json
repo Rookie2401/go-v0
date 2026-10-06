@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-26",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "หมาป่ากับลูกแกะ",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-26",
+    "title": "หมาป่ากับลูกแกะ — The wolf and the lamb (a fable retold, 8) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 132247 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=132247",
+    "attribution": "Adapted retelling of \"หมาป่ากับลูกแกะ\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 132247, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"หมาป่ากับลูกแกะ\" (th-gap-recovery-aesop-17); the sentences are the drafter's own retelling in the vocabulary of the ladder plan, with the fable register (เจ้า, ข้า, จึง, ครั้น, แล …) kept where the plan teaches it. Machine-drafted on 2026-10-06; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 132247) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). Check the fable register: the wolf says เอ็ง / ข้า / จง, the lamb says ท่าน / ข้าพเจ้า; หาความ, นักหนา, วิสัยพาล, ก็ได้ and the moral. The words for \"muddy\", \"flow\" and \"curse\" are not on the plan's lists, so the accusation is told with เสีย and ว่า. The wolf and the lamb keep their names throughout (both words are already known)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "fable",
+    "animals",
+    "stream",
+    "injustice"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ที่ลำธาร",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ลำธารหนึ่งลงมาจากภูเขา",
+              "english": "A stream came down from the mountain."
+            },
+            {
+              "text": "หมาป่าตัวหนึ่งยืนกินน้ำอยู่ที่ต้นลำธาร",
+              "english": "A wolf stood drinking at the head of the stream."
+            },
+            {
+              "text": "มันหิวมาก และอยากกินเนื้อ",
+              "english": "It was very hungry and wanted meat."
+            },
+            {
+              "text": "ไกลลงไป มีลูกแกะตัวหนึ่งกินน้ำอยู่",
+              "english": "Further down, a lamb was drinking."
+            },
+            {
+              "text": "หมาป่าสูดลมเข้าไป และได้กลิ่นลูกแกะ",
+              "english": "The wolf sniffed the air and caught the lamb's scent."
+            },
+            {
+              "text": "มันตั้งใจจะตะครุบลูกแกะกินให้ได้",
+              "english": "It was determined to pounce on the lamb and eat it."
+            },
+            {
+              "text": "แต่มันนึกว่า \"ข้าต้องมีเหตุก่อน\"",
+              "english": "But it thought, \"I must have a reason first.\""
+            },
+            {
+              "text": "มันเป็นพาล มันจึงหาความกับลูกแกะ",
+              "english": "It was a bully, so it picked a quarrel with the lamb."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คำว่า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หมาป่าเดินลงไปหาลูกแกะ",
+              "english": "The wolf walked down to the lamb."
+            },
+            {
+              "text": "มันร้องว่า \"เอ็งนี้เป็นสัตว์ชั่ว\"",
+              "english": "It cried, \"You are a wicked creature.\""
+            },
+            {
+              "text": "\"เอ็งทำน้ำของข้าเสียนักหนา\"",
+              "english": "\"You have spoiled my water terribly.\""
+            },
+            {
+              "text": "ลูกแกะกลัวมาก",
+              "english": "The lamb was very frightened."
+            },
+            {
+              "text": "มันตอบว่า \"ท่านครับ ข้าพเจ้ายืนอยู่ไกลจากท่าน\"",
+              "english": "It answered, \"Sir, I am standing far from you.\""
+            },
+            {
+              "text": "\"น้ำมาจากท่านถึงข้าพเจ้า ไม่ได้มาจากข้าพเจ้าถึงท่าน\"",
+              "english": "\"The water comes from you to me; it does not come from me to you.\""
+            },
+            {
+              "text": "หมาป่าโกรธ",
+              "english": "The wolf was angry."
+            },
+            {
+              "text": "มันไม่อยากเถียงด้วยเหตุผล มันอยากเถียงด้วยเสียงดัง",
+              "english": "It did not want to argue with reasons; it wanted to argue with a loud voice."
+            },
+            {
+              "text": "\"วันนี้เอ็งไม่ได้ทำก็ได้\" มันร้อง",
+              "english": "\"Maybe you didn't do it today,\" it cried."
+            },
+            {
+              "text": "\"แต่เมื่อปีก่อน เอ็งว่าข้านักหนา\"",
+              "english": "\"But last year you spoke ill of me terribly.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ปีก่อน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ลูกแกะตัวเย็น และตอบว่า",
+              "english": "The lamb went cold and answered,"
+            },
+            {
+              "text": "\"เมื่อปีก่อน ข้าพเจ้ายังไม่ได้เกิดเลย\"",
+              "english": "\"Last year I was not yet born at all.\""
+            },
+            {
+              "text": "\"ท่านจะให้ข้าพเจ้าชั่วเพราะเรื่องที่ไม่มี ข้าพเจ้ารับไม่ได้\"",
+              "english": "\"You would make me wicked because of something that never was. I cannot accept that.\""
+            },
+            {
+              "text": "หมาป่าไม่ฟัง มันร้องว่า \"จงฟังข้า\"",
+              "english": "The wolf did not listen. It cried, \"Listen to me!\""
+            },
+            {
+              "text": "\"เอ็งไม่ได้ว่าข้า พ่อของเอ็งก็ว่าข้า\"",
+              "english": "\"If you did not speak ill of me, your father did.\""
+            },
+            {
+              "text": "\"เอ็งจะพูดอย่างไรก็ได้ แต่ข้าไม่ฟัง\"",
+              "english": "\"You may say what you like, but I won't listen.\""
+            },
+            {
+              "text": "ลูกแกะเข้าใจแล้ว",
+              "english": "The lamb understood."
+            },
+            {
+              "text": "มันรู้ว่า หมาป่าไม่ต้องการเหตุผล",
+              "english": "It knew that the wolf did not want reasons."
+            },
+            {
+              "text": "มันรู้ว่าวิสัยของพาลเป็นอย่างนี้",
+              "english": "It knew that this is the nature of a bully."
+            },
+            {
+              "text": "หากมีเหตุ ก็หาความ หากไม่มีเหตุ ก็หาความเหมือนกัน",
+              "english": "If there is a reason, it picks a quarrel; if there is none, it picks a quarrel all the same."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ตะครุบ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ลูกแกะร้องว่า \"ท่านคงจะกินข้าพเจ้าก็ได้ แต่ข้าพเจ้าไม่ผิด\"",
+              "english": "The lamb cried, \"You will probably eat me anyway, but I am not at fault.\""
+            },
+            {
+              "text": "หมาป่าหัวเราะเสียงดัง",
+              "english": "The wolf laughed loudly."
+            },
+            {
+              "text": "\"ข้าไม่ต้องการฟังเอ็งแล้ว อยู่เงียบๆ\"",
+              "english": "\"I don't want to hear you any more. Keep quiet.\""
+            },
+            {
+              "text": "มันตะครุบลูกแกะด้วยปากที่เหม็น",
+              "english": "It pounced on the lamb with a stinking mouth."
+            },
+            {
+              "text": "มันกินเนื้อชิ้นหนึ่ง แล้วชิ้นหนึ่งอีก และตะครุบอีกชิ้นด้วยนักหนา",
+              "english": "It ate one piece of meat, then another, and snatched the last piece greedily."
+            },
+            {
+              "text": "ก้อนหินในลำธารเปียกเลือด",
+              "english": "The stones in the stream were wet with blood."
+            },
+            {
+              "text": "ก้อนหินทุกก้อนเห็นเรื่องนี้ แต่ไม่มีใครพูด",
+              "english": "Every stone saw this, but no one spoke."
+            },
+            {
+              "text": "วิสัยของหมาป่าตัวนี้ คือกินก่อน แล้วค่อยหาคำพูด",
+              "english": "This wolf's nature was to eat first and find words afterwards."
+            },
+            {
+              "text": "น้ำในลำธารยังใส และอยู่เหมือนเดิม",
+              "english": "The water in the stream was still clear and stayed as before."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "นิทานเรื่องนี้สอนว่า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "นิทานเรื่องนี้สอนให้รู้ว่า คนพาลย่อมหาเรื่องทำร้ายคนที่ไม่ผิด",
+              "english": "This fable teaches that a bully will always find a pretext to harm someone who is not at fault."
+            },
+            {
+              "text": "จงจำไว้ว่า ความชั่วไม่ต้องการเหตุผลที่ดี",
+              "english": "Remember that wickedness needs no good reason."
+            },
+            {
+              "text": "เมื่อพบคนเช่นนี้ อย่าเถียงมาก แต่จงหาทางหนี",
+              "english": "When you meet such a person, do not argue much, but find a way to escape."
+            },
+            {
+              "text": "นี่แหละคือวิสัยของคนที่ใหญ่กว่า แต่ไม่ฟังคนที่เล็กกว่า",
+              "english": "This, then, is the way of those who are bigger and will not listen to those who are smaller."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

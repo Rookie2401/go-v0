@@ -1,0 +1,485 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-02",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "เล่าให้กันฟัง",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-02",
+    "title": "เล่าให้กันฟัง — Telling one another (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Check: testimony register (spoken, not preachy); ผม/ฉัน and ครับ/ค่ะ by speaker; พึ่ง, อภัย, บาป in everyday Christian Thai; nothing said about Buddhism; a Thai Christian reader should confirm tone."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "testimony",
+    "faith",
+    "church life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "T": "ต้น",
+    "F": "ฟ้า",
+    "L": "ลุงเล็ก",
+    "W": "ครูหวาน",
+    "S": "แซม",
+    "M": "มะลิ",
+    "P": "ป้าแดง",
+    "_gender": "T=m; F=f; L=m; W=f; S=m; M=f; P=f"
+  },
+  "sections": [
+    {
+      "title": "คืนที่เราเล่าให้กันฟัง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คืนนี้คนจากโบสถ์ห้าหกคนมาพบกันที่ร้านของป้าแดงหลังปิดร้าน",
+              "english": "Tonight five or six people from the church met at Auntie Daeng's shop after closing."
+            },
+            {
+              "text": "ต้นเป็นผู้นำ",
+              "english": "Ton was the leader."
+            },
+            {
+              "text": "คืนนี้เรามาเล่าให้กันฟังนะครับ ว่าเรามาเชื่อพระเจ้าได้อย่างไร",
+              "english": "Tonight let's tell each other how we came to believe in God.",
+              "speaker": "T"
+            },
+            {
+              "text": "ไม่ต้องรีบ และไม่ต้องกลัวว่าเรื่องของใครจะเล็กไป",
+              "english": "No hurry, and no need to fear that anyone's story is too small.",
+              "speaker": "T"
+            },
+            {
+              "text": "ใครอยากเริ่มก่อนครับ",
+              "english": "Who wants to start?",
+              "speaker": "T"
+            },
+            {
+              "text": "ให้ฉันเริ่มก่อนนะคะ",
+              "english": "Let me start.",
+              "speaker": "F"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องของฟ้า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ฟ้าเป็นนักเรียนอายุสิบเจ็ดปี",
+              "english": "Fa is a seventeen-year-old pupil."
+            },
+            {
+              "text": "ครอบครัวของฉันยากจนค่ะ",
+              "english": "My family is poor.",
+              "speaker": "F"
+            },
+            {
+              "text": "พ่อกับแม่ทำงานทั้งวัน แต่เงินก็ยังไม่พอ",
+              "english": "My parents work all day, but there is still not enough money.",
+              "speaker": "F"
+            },
+            {
+              "text": "ค่าเรียนก็ต้องจ่าย ค่าข้าวก็ต้องจ่าย",
+              "english": "School fees have to be paid, and so does the food.",
+              "speaker": "F"
+            },
+            {
+              "text": "ตอนอายุสิบสี่ปี ฉันรู้สึกเหนื่อยและไม่มีความสุขเลยค่ะ",
+              "english": "At fourteen I felt tired and not at all happy.",
+              "speaker": "F"
+            },
+            {
+              "text": "ฉันทนไม่ได้อีกแล้ว แต่ฉันไม่กล้าบอกใคร",
+              "english": "I couldn't bear it any longer, but I didn't dare tell anyone.",
+              "speaker": "F"
+            },
+            {
+              "text": "ฉันกลัวว่าเพื่อนจะหัวเราะ",
+              "english": "I was afraid my friends would laugh.",
+              "speaker": "F"
+            },
+            {
+              "text": "วันหนึ่งเพื่อนที่โรงเรียนชวนฉันมาโบสถ์",
+              "english": "One day a friend from school invited me to church.",
+              "speaker": "F"
+            },
+            {
+              "text": "พ่อกับแม่อนุญาตให้ฉันมา เพราะโบสถ์อยู่ใกล้บ้าน",
+              "english": "My parents allowed me to come, because the church is near our house.",
+              "speaker": "F"
+            },
+            {
+              "text": "ฉันได้ฟังเพลง และได้อธิษฐานกับเพื่อนๆ ค่ะ",
+              "english": "I got to hear the songs, and I got to pray with the others.",
+              "speaker": "F"
+            },
+            {
+              "text": "ทุกคนที่นั่นยิ้มให้ฉัน",
+              "english": "Everyone there smiled at me.",
+              "speaker": "F"
+            },
+            {
+              "text": "ฉันเข้าใจว่าฉันไม่ต้องพึ่งตัวเองคนเดียวค่ะ",
+              "english": "I understood that I need not rely on myself alone.",
+              "speaker": "F"
+            },
+            {
+              "text": "เพราะฉันเชื่อ ฉันจึงกล้าเล่าเรื่องนี้ให้พ่อแม่ฟัง",
+              "english": "Because I believed, I dared to tell my parents about it.",
+              "speaker": "F"
+            },
+            {
+              "text": "ตอนนี้ครอบครัวของฉันยังยากจนอยู่ แต่ใจของฉันเปลี่ยนแปลงไปแล้วค่ะ",
+              "english": "Now my family is still poor, but my heart has changed.",
+              "speaker": "F"
+            },
+            {
+              "text": "ฉันว่าเรื่องนี้อัศจรรย์มากค่ะ",
+              "english": "I think this is wonderful.",
+              "speaker": "F"
+            },
+            {
+              "text": "ขอบพระคุณมากนะคะฟ้า",
+              "english": "Thank you very much, Fa.",
+              "speaker": "P"
+            },
+            {
+              "text": "พ่อแม่ของฟ้าดีใจไหมครับ",
+              "english": "Were Fa's parents glad?",
+              "speaker": "T"
+            },
+            {
+              "text": "ดีใจค่ะ แม่ร้องไห้ แล้วแม่ก็ยิ้ม",
+              "english": "Yes. Mother cried, and then she smiled.",
+              "speaker": "F"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องของลุงเล็ก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ลุงเล็กเป็นเจ้าของรถสองแถว",
+              "english": "Uncle Lek owns a songthaew."
+            },
+            {
+              "text": "ผมมีรถสองแถวมาสามสิบปีครับ",
+              "english": "I've had a songthaew for thirty years.",
+              "speaker": "L"
+            },
+            {
+              "text": "เมื่อก่อนผมดื่มทุกคืน เงินทุกบาทหมดไปกับการดื่ม",
+              "english": "In the past I drank every night, and every baht went on drinking.",
+              "speaker": "L"
+            },
+            {
+              "text": "ผมเป็นคนธรรมดา ผมโกรธง่ายมาก และทุกคนที่อยู่ในบ้านก็กลัวผม",
+              "english": "I got angry very easily, and everyone at home was afraid of me.",
+              "speaker": "L"
+            },
+            {
+              "text": "ภรรยาของผมทนไม่ได้ เธอพาลูกไปอยู่บ้านแม่",
+              "english": "My wife couldn't stand it. She took the children to her mother's house.",
+              "speaker": "L"
+            },
+            {
+              "text": "ผมรู้สึกผิดมาก แต่ผมไม่รู้จะทำอย่างไร",
+              "english": "I felt very guilty, but I didn't know what to do.",
+              "speaker": "L"
+            },
+            {
+              "text": "วันหนึ่งลูกคนเล็กของผมมาชวนผมไปโบสถ์",
+              "english": "One day my youngest child came to ask me to go to church.",
+              "speaker": "L"
+            },
+            {
+              "text": "ผมนึกว่าโบสถ์ไม่ใช่ที่ของคนบาปอย่างผมครับ",
+              "english": "I thought a church was no place for a sinner like me.",
+              "speaker": "L"
+            },
+            {
+              "text": "แต่ศิษยาภิบาลไม่ได้ว่าผมเลย",
+              "english": "But the pastor didn't scold me at all.",
+              "speaker": "L"
+            },
+            {
+              "text": "ท่านบอกว่าพระเจ้าอภัยบาปของผมได้",
+              "english": "He said that God can forgive my sins.",
+              "speaker": "L"
+            },
+            {
+              "text": "ผมรู้ว่าผมมีบาปมาก แต่ผมก็รู้ว่าผมมีที่ไป",
+              "english": "I know I have many sins, but I also know I have somewhere to go.",
+              "speaker": "L"
+            },
+            {
+              "text": "ผมจึงไปขอให้ภรรยาอภัยให้ผม และเธอก็อภัยให้ครับ",
+              "english": "So I went to ask my wife to forgive me, and she forgave me.",
+              "speaker": "L"
+            },
+            {
+              "text": "เดี๋ยวนี้ผมไม่ได้ดื่มแล้ว ผมเป็นคริสเตียนมาสิบปี",
+              "english": "Now I no longer drink. I have been a Christian for ten years.",
+              "speaker": "L"
+            },
+            {
+              "text": "ขอบคุณที่เล่าให้เราฟังครับลุง",
+              "english": "Thank you for telling us, Uncle.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องของครูหวาน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ครูหวานเคยเป็นครู ตอนนี้ท่านไม่ได้สอนแล้ว",
+              "english": "Teacher Wan used to be a teacher. Now she no longer teaches."
+            },
+            {
+              "text": "ฉันสอนหนังสือมาสามสิบปีค่ะ",
+              "english": "I taught for thirty years.",
+              "speaker": "W"
+            },
+            {
+              "text": "ฉันเคยนึกว่าฉันเข้าใจชีวิตดี",
+              "english": "I used to think that I understood life well.",
+              "speaker": "W"
+            },
+            {
+              "text": "แต่เมื่อสามีของฉันตาย ฉันมีความทุกข์มากค่ะ",
+              "english": "But when my husband died, I was in great sorrow.",
+              "speaker": "W"
+            },
+            {
+              "text": "ฉันทนไม่ได้เลยที่ต้องอยู่บ้านคนเดียว ฉันร้องไห้ทุกคืน",
+              "english": "I couldn't bear having to be alone in the house. I cried every night.",
+              "speaker": "W"
+            },
+            {
+              "text": "นักเรียนเก่าของฉันคนหนึ่ง ตอนนี้เป็นอาจารย์ มาหาฉัน",
+              "english": "One of my former pupils, now a teacher himself, came to see me.",
+              "speaker": "W"
+            },
+            {
+              "text": "ในยุคของฉัน เด็กทุกคนเคารพครูค่ะ",
+              "english": "In my day, every child respected the teacher.",
+              "speaker": "W"
+            },
+            {
+              "text": "เขาอธิษฐานให้ฉัน และฉันรู้สึกว่ามีคนอยู่กับฉัน",
+              "english": "He prayed for me, and I felt that someone was with me.",
+              "speaker": "W"
+            },
+            {
+              "text": "ฉันไม่เคยเชื่อเรื่องปาฏิหาริย์ค่ะ",
+              "english": "I never believed in miracles.",
+              "speaker": "W"
+            },
+            {
+              "text": "แต่ตอนนี้ฉันเห็นว่า ที่ฉันยังมีชีวิตอยู่ ก็เป็นเรื่องอัศจรรย์",
+              "english": "But now I see that it is a wonder that I am still alive.",
+              "speaker": "W"
+            },
+            {
+              "text": "ฉันเชื่อว่าพระบุตรของพระเจ้ามาเพื่อคนที่มีทุกข์",
+              "english": "I believe that the Son of God came for people in sorrow.",
+              "speaker": "W"
+            },
+            {
+              "text": "ฉันพึ่งพระเจ้าทุกวัน และฉันนอนหลับดีขึ้น",
+              "english": "I rely on God every day, and I sleep better.",
+              "speaker": "W"
+            },
+            {
+              "text": "ตอนนี้วิญญาณของฉันได้พัก ค่ะ",
+              "english": "Now my soul can rest.",
+              "speaker": "W"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องของแซมกับมะลิ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เรื่องของผมไม่ใหญ่เหมือนเรื่องของคุณลุงครับ",
+              "english": "My story isn't big like Uncle's.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมโตมาในโบสถ์ แต่ผมไม่เคยถามตัวเองว่าผมเชื่อจริงหรือไม่",
+              "english": "I grew up in church, but I never asked myself whether I really believed.",
+              "speaker": "S"
+            },
+            {
+              "text": "ที่นี่ผมได้ฟังเรื่องของทุกคน และผมเห็นว่าศรัทธาคือการพึ่งพระเจ้า",
+              "english": "Here I got to hear everyone's story, and I see that faith is relying on God.",
+              "speaker": "S"
+            },
+            {
+              "text": "เมื่อก่อนผมกลัวว่าผมจะพูดภาษาไทยไม่ได้ ตอนนี้ผมกล้าอธิษฐานเป็นภาษาไทยครับ",
+              "english": "I used to be afraid I couldn't speak Thai. Now I dare to pray in Thai.",
+              "speaker": "S"
+            },
+            {
+              "text": "ร่างกายของผมเหนื่อย และวิญญาณของผมก็เหนื่อยเหมือนกัน",
+              "english": "My body is tired, and my soul is tired too.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมขอบพระคุณพระเจ้าที่ส่งผมมาที่นี่ครับ ผมเชื่อว่าพระเยซูคือพระบุตรของพระเจ้า",
+              "english": "I thank God for sending me here. I believe that Jesus is the Son of God.",
+              "speaker": "S"
+            },
+            {
+              "text": "สำหรับฉัน เรื่องอัศจรรย์ที่สุดคือใจของคนที่เปลี่ยนไปค่ะ",
+              "english": "For me the most wonderful thing is a person's heart changing.",
+              "speaker": "M"
+            },
+            {
+              "text": "ฉันทำงานกับคนไข้ที่โรงพยาบาล และฉันเห็นว่าวิญญาณของคนก็ต้องการพักเหมือนร่างกาย",
+              "english": "I work with patients at the hospital, and I see that people's souls need rest just as their bodies do.",
+              "speaker": "M"
+            },
+            {
+              "text": "บางครั้งยาไม่พอ แต่ปาฏิหาริย์เล็กๆ เกิดขึ้นทุกวัน",
+              "english": "Sometimes medicine is not enough, but small miracles happen every day.",
+              "speaker": "M"
+            },
+            {
+              "text": "คนไข้คนหนึ่งยิ้มได้ ถึงเขาจะปวดมาก",
+              "english": "A patient could smile, though he was in great pain.",
+              "speaker": "M"
+            },
+            {
+              "text": "เพราะอย่างนี้ฉันจึงเชื่อว่าปาฏิหาริย์ไม่ใช่เรื่องที่อยู่ไกลค่ะ",
+              "english": "That is why I believe miracles are not far away.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หลังจากเล่าเสร็จ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อทุกคนเล่าเสร็จ ต้นอธิษฐานเป็นคนสุดท้าย",
+              "english": "When everyone had finished telling their stories, Ton prayed last."
+            },
+            {
+              "text": "ขอบพระคุณพระเจ้าที่ส่งพระบุตรมาหาเรา",
+              "english": "We thank you, God, for sending your Son to us.",
+              "speaker": "T"
+            },
+            {
+              "text": "ขอให้คนที่มีทุกข์ได้มีความสุข และขอให้เราไม่กลัวที่จะเล่าเรื่องของเรา",
+              "english": "May those in sorrow find happiness, and may we not be afraid to tell our stories.",
+              "speaker": "T"
+            },
+            {
+              "text": "แล้วป้าแดงก็เอาขนมปังกับชาอุ่นมาวางบนโต๊ะ และมะลิเอาเค้กมาด้วย",
+              "english": "Then Auntie Daeng put bread and warm tea on the table, and Mali brought a cake too."
+            },
+            {
+              "text": "เติมชาให้ไหมคะ ตกลงว่าอาทิตย์หน้าเรามาพบกันอีกนะคะ",
+              "english": "Shall I top up your tea? Agreed, then, that we meet again next week.",
+              "speaker": "P"
+            },
+            {
+              "text": "เดี๋ยวผมแจ้งทุกคนว่าเราจะพบกันที่ไหนครับ",
+              "english": "I'll let everyone know where we'll meet.",
+              "speaker": "T"
+            },
+            {
+              "text": "ใครอยากกินกล้วยทอดบ้างคะ ป้าทอดไว้ในกระทะค่ะ",
+              "english": "Who would like fried bananas? I fried them in the pan.",
+              "speaker": "P"
+            },
+            {
+              "text": "กล้วยสุกหอมมาก กินร้อนๆ อร่อยที่สุดค่ะ",
+              "english": "The ripe bananas smell lovely, and eaten hot they are the most delicious.",
+              "speaker": "P"
+            },
+            {
+              "text": "ผมขอสองลูกกับน้ำหนึ่งแก้วครับป้า",
+              "english": "Two for me, please, Auntie, and a glass of water.",
+              "speaker": "S"
+            },
+            {
+              "text": "ทุกคนนั่งกินและคุยกันอีกนาน",
+              "english": "Everybody sat eating and chatting for a long time."
+            },
+            {
+              "text": "ป้าแดงบอกว่า จะเอาข้าวสารใหม่มาแบ่งให้ทุกคนเอากลับบ้าน",
+              "english": "Auntie Daeng said she would bring new rice to share for everyone to take home."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,550 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-06",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "มาดู มาฟัง",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-06",
+    "title": "มาดู มาฟัง — Come, look, listen (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Check: polite imperatives (กรุณา / โปรด / ขอ … หน่อย / … ค่ะ / … สิ / … เถอะ) are the right strength for each speaker; the village scene should not sound northern-dialect; the short grace by the pastor is respectful of a mixed village."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "instructions",
+    "health day",
+    "village",
+    "polite requests"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "M": "มะลิ",
+    "S": "แซม",
+    "Y": "ยายเขียว",
+    "L": "ลุงดำ",
+    "K": "แม่ของเด็ก",
+    "B": "เด็กชาย",
+    "P": "ศิษยาภิบาล",
+    "_gender": "M=f; S=m; Y=f; L=m; K=f; B=m; P=m"
+  },
+  "sections": [
+    {
+      "title": "วันตรวจสุขภาพ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันนี้มะลิกับแซมนั่งรถขึ้นไปที่หมู่บ้านบนภูเขา",
+              "english": "Today Mali and Sam went by car up to a village in the mountains."
+            },
+            {
+              "text": "ที่โรงเรียนของหมู่บ้านมีวันตรวจสุขภาพ",
+              "english": "There was a health day at the village school."
+            },
+            {
+              "text": "คนหมู่บ้านมากันตอนเช้า ลมแรงมากบนภูเขา",
+              "english": "The villagers came in the morning. The wind was very strong on the mountain."
+            },
+            {
+              "text": "แซมตั้งโต๊ะที่ประตู และเอาเก้าอี้มาวางหลายตัว",
+              "english": "Sam set up a table at the door and put out several chairs."
+            },
+            {
+              "text": "คุณแซมคะ ช่วยจัดแถวให้หน่อยค่ะ",
+              "english": "Sam, please help organise the line.",
+              "speaker": "M"
+            },
+            {
+              "text": "ฉันจะบอกคำที่ควรใช้ค่ะ",
+              "english": "I'll tell you the words to use.",
+              "speaker": "M"
+            },
+            {
+              "text": "ให้พูดว่า กรุณานั่งรอที่นี่ค่ะ",
+              "english": "Say, \"Please sit and wait here.\"",
+              "speaker": "M"
+            },
+            {
+              "text": "ถ้าอยากให้เขาทำอะไร ให้เติมคำว่า หน่อย หรือ สิ ครับ",
+              "english": "If you want them to do something, add \"a little\" or \"do\".",
+              "speaker": "M"
+            },
+            {
+              "text": "เช่น ถอยหลังหน่อยครับ",
+              "english": "For example, \"Step back a little.\"",
+              "speaker": "M"
+            },
+            {
+              "text": "ถอยหลังหน่อยครับ",
+              "english": "Step back a little, please.",
+              "speaker": "S"
+            },
+            {
+              "text": "ดีมากค่ะ",
+              "english": "Very good.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "แถวคนไข้",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คนมามาก แถวยาวไปถึงประตู",
+              "english": "Many people came, and the line stretched to the door."
+            },
+            {
+              "text": "กรุณาแยกแถวด้วยครับ",
+              "english": "Please separate into lines.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผู้ชายแถวนี้ ผู้หญิงแถวนั้นครับ",
+              "english": "Men in this line, women in that one.",
+              "speaker": "S"
+            },
+            {
+              "text": "ลุงดำเดินเข้าไปในห้องโดยไม่รอ",
+              "english": "Uncle Dam walked into the room without waiting."
+            },
+            {
+              "text": "โปรดหยุดก่อนครับลุง",
+              "english": "Please stop first, Uncle.",
+              "speaker": "S"
+            },
+            {
+              "text": "ลุงครับ โปรดรอให้ถึงตาลุงก่อนนะครับ",
+              "english": "Uncle, please wait until it is your turn.",
+              "speaker": "S"
+            },
+            {
+              "text": "ลุงขอโทษนะ ลุงรีบ",
+              "english": "Sorry. I'm in a hurry.",
+              "speaker": "L"
+            },
+            {
+              "text": "ไม่เป็นไรครับ เชิญลุงนั่งตรงนี้",
+              "english": "That's all right. Please sit here.",
+              "speaker": "S"
+            },
+            {
+              "text": "ลุงดำลุกขึ้นอีกครั้ง แล้วก็ไปนั่งรอที่เก้าอี้",
+              "english": "Uncle Dam got up again and then went to sit and wait on a chair."
+            },
+            {
+              "text": "ระวังเด็กด้วยค่ะ อย่าให้เขาวิ่งไปมา",
+              "english": "Watch the children, please. Don't let them run about.",
+              "speaker": "M"
+            },
+            {
+              "text": "ครับ ผมจะให้เขาแยกกันนั่ง",
+              "english": "Yes. I'll make them sit apart.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ห้องตรวจ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ยายเขียวมาก่อนคนอื่น",
+              "english": "Grandmother Khiao came before the others."
+            },
+            {
+              "text": "สวัสดีค่ะยาย เชิญนั่งตรงนี้ค่ะ",
+              "english": "Hello, Grandmother. Please sit here.",
+              "speaker": "M"
+            },
+            {
+              "text": "ยายเจ็บตรงไหนคะ ชี้ให้ดูหน่อยค่ะ",
+              "english": "Where does it hurt? Please point to show me.",
+              "speaker": "M"
+            },
+            {
+              "text": "เจ็บตรงนี้ค่ะ",
+              "english": "It hurts here.",
+              "speaker": "Y"
+            },
+            {
+              "text": "ฉันจะแตะตรงนี้เบาๆ เจ็บไหมคะ",
+              "english": "I'll touch here gently. Does it hurt?",
+              "speaker": "M"
+            },
+            {
+              "text": "เจ็บนิดหน่อยค่ะ แต่ยายทนได้",
+              "english": "A little, but I can stand it.",
+              "speaker": "Y"
+            },
+            {
+              "text": "ถ้าเจ็บมาก ให้บอกค่ะ อย่าทน",
+              "english": "If it hurts a lot, tell me. Don't just put up with it.",
+              "speaker": "M"
+            },
+            {
+              "text": "ตอนนี้หายใจเข้า แล้วหายใจออกค่ะ",
+              "english": "Now breathe in, and breathe out.",
+              "speaker": "M"
+            },
+            {
+              "text": "ยายรู้สึกเหนื่อยทุกครั้งที่เดินขึ้นเขา",
+              "english": "I feel tired every time I walk up the hill.",
+              "speaker": "Y"
+            },
+            {
+              "text": "ยายไม่มีแรงเหมือนเมื่อก่อนแล้ว",
+              "english": "I haven't got the strength I used to have.",
+              "speaker": "Y"
+            },
+            {
+              "text": "ยายชี้ไปที่ภูเขาลูกนั้น นาของยายอยู่ที่นั่นค่ะ",
+              "english": "See that mountain over there? My field is there.",
+              "speaker": "Y"
+            },
+            {
+              "text": "เข้าใจแล้วค่ะ ยายต้องกินยาทุกวัน แต่ให้แยกยาสองอย่างนี้ อย่ากินพร้อมกัน",
+              "english": "I see. You must take medicine every day, but keep these two medicines apart and don't take them together.",
+              "speaker": "M"
+            },
+            {
+              "text": "ตอนนี้ลุกขึ้นช้าๆ ค่ะ",
+              "english": "Now stand up slowly.",
+              "speaker": "M"
+            },
+            {
+              "text": "ขอบพระคุณมากค่ะหมอ",
+              "english": "Thank you very much, doctor.",
+              "speaker": "Y"
+            },
+            {
+              "text": "ฉันไม่ใช่หมอค่ะ ฉันเป็นพยาบาล แต่ยินดีค่ะ",
+              "english": "I'm not a doctor. I'm a nurse, but you're welcome.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ลองดู",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แซมอยากช่วยตรวจคนไข้",
+              "english": "Sam wanted to help examine patients."
+            },
+            {
+              "text": "มะลิครับ ผมลองได้ไหมครับ",
+              "english": "Mali, may I try?",
+              "speaker": "S"
+            },
+            {
+              "text": "ได้ค่ะ ลองใส่ที่แขนของคุณลุงสิคะ",
+              "english": "Yes. Try putting it on Uncle's arm.",
+              "speaker": "M"
+            },
+            {
+              "text": "ทำแบบนี้ใช่ไหมครับ",
+              "english": "Like this, is it?",
+              "speaker": "S"
+            },
+            {
+              "text": "ใช่ค่ะ แล้วอย่าใช้แรงมาก",
+              "english": "Yes, and don't use much force.",
+              "speaker": "M"
+            },
+            {
+              "text": "ลองแตะตรงนี้ดูค่ะ",
+              "english": "Try touching it here.",
+              "speaker": "M"
+            },
+            {
+              "text": "แซมทำตามที่มะลิบอก",
+              "english": "Sam did as Mali said."
+            },
+            {
+              "text": "ดีค่ะ คุณลุงนั่งนิ่งๆ ค่ะ",
+              "english": "Good. Uncle, please sit still.",
+              "speaker": "M"
+            },
+            {
+              "text": "ลุงจะนั่งนิ่งเลยครับ",
+              "english": "I'll sit perfectly still.",
+              "speaker": "L"
+            },
+            {
+              "text": "คุณแซม ดูที่เครื่องสิคะ",
+              "english": "Sam, look at the machine.",
+              "speaker": "M"
+            },
+            {
+              "text": "ดีครับ ลุงสบายดี",
+              "english": "It's good. Uncle is fine.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เด็กกับยา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แม่คนหนึ่งพาเด็กชายมาฉีดยา",
+              "english": "A mother brought a little boy to have an injection."
+            },
+            {
+              "text": "เด็กร้องไห้และไม่กล้าเข้าห้อง",
+              "english": "The child cried and did not dare go into the room."
+            },
+            {
+              "text": "เด็กชายลุกจากเก้าอี้ เดินเข้าห้องช้าๆ",
+              "english": "The boy got up from the chair and walked slowly into the room."
+            },
+            {
+              "text": "ลูก หยุดร้องสิ ไม่เจ็บมากหรอก",
+              "english": "Child, stop crying. It won't hurt much.",
+              "speaker": "K"
+            },
+            {
+              "text": "ผมกลัวครับแม่ ผมไม่กล้า",
+              "english": "I'm scared, Mum. I don't dare.",
+              "speaker": "B"
+            },
+            {
+              "text": "มานี่สิ ลองมองที่รูปนี้ดู",
+              "english": "Come here. Try looking at this picture.",
+              "speaker": "M"
+            },
+            {
+              "text": "มะลิชี้ไปที่รูปปลาบนประตู",
+              "english": "Mali pointed at a picture of a fish on the door."
+            },
+            {
+              "text": "ยืนนิ่งๆ แล้วหายใจเข้าช้าๆ ค่ะ",
+              "english": "Stand still, and breathe in slowly.",
+              "speaker": "M"
+            },
+            {
+              "text": "เจ็บไหมครับ",
+              "english": "Will it hurt?",
+              "speaker": "B"
+            },
+            {
+              "text": "นิดเดียวค่ะ แล้วก็หยุดเจ็บ",
+              "english": "Just a tiny bit, and then it stops.",
+              "speaker": "M"
+            },
+            {
+              "text": "เด็กชายหลับตาและยืนนิ่ง",
+              "english": "The boy closed his eyes and stood still."
+            },
+            {
+              "text": "มะลิฉีดยาให้เด็กเบาๆ",
+              "english": "Mali gave the child the injection gently."
+            },
+            {
+              "text": "เสร็จแล้วหรือครับ",
+              "english": "Is it over?",
+              "speaker": "B"
+            },
+            {
+              "text": "เสร็จแล้วค่ะ ไม่ร้องเลย",
+              "english": "It's over. You didn't cry at all.",
+              "speaker": "M"
+            },
+            {
+              "text": "ไม่ต้องกลัวอีกแล้วนะลูก ไปกันเถอะ",
+              "english": "No need to be afraid any more, child. Let's go.",
+              "speaker": "K"
+            },
+            {
+              "text": "ขอบพระคุณมากค่ะคุณพยาบาล",
+              "english": "Thank you very much, nurse.",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ข้าวกลางวัน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อตรวจเสร็จ คนหมู่บ้านชวนทุกคนทานข้าว",
+              "english": "When the check-ups were done, the villagers invited everyone to eat."
+            },
+            {
+              "text": "มื้อกลางวันมีข้าวสวย เนื้อหมูทอด และขนมปัง",
+              "english": "Lunch had rice, fried pork and bread."
+            },
+            {
+              "text": "ข้าวสารมาจากนาของหมู่บ้านนี้ ข้าวหอมมาก และไข่สุกกำลังดี",
+              "english": "The rice came from this village's fields, it smelled lovely, and the eggs were cooked just right."
+            },
+            {
+              "text": "มีเค้กที่มะลิซื้อมา และชาอุ่นใส่แก้ว",
+              "english": "There was the cake that Mali had bought, and warm tea in glasses."
+            },
+            {
+              "text": "วันนี้เราฉลองกันด้วยครับ เพราะข้าวปีนี้ดี",
+              "english": "Today we are celebrating too, because this year's rice is good.",
+              "speaker": "L"
+            },
+            {
+              "text": "เชิญทานเถอะครับ",
+              "english": "Please, eat.",
+              "speaker": "L"
+            },
+            {
+              "text": "ระวังกระทะร้อนค่ะ",
+              "english": "Be careful, the pan is hot.",
+              "speaker": "M"
+            },
+            {
+              "text": "อย่าแตะนะคะ แล้วถอยออกมาหน่อยค่ะ",
+              "english": "Don't touch it, and step back a little.",
+              "speaker": "M"
+            },
+            {
+              "text": "ศิษยาภิบาลก็มาด้วย เขาขอให้ทุกคนอธิษฐานสั้นๆ",
+              "english": "The pastor had come along too. He asked everyone for a short prayer."
+            },
+            {
+              "text": "ขอบพระคุณพระเจ้าที่ส่งพระบุตรมา",
+              "english": "We thank you, God, that you sent your Son.",
+              "speaker": "P"
+            },
+            {
+              "text": "ขอให้ทุกคนที่มีทุกข์ได้พัก ขอให้อภัยบาปของเรา และขอให้วิญญาณของเราพักในความรักของพระเจ้า",
+              "english": "May all who are in sorrow find rest, forgive our sins, and let our souls rest in God's love.",
+              "speaker": "P"
+            },
+            {
+              "text": "คนหมู่บ้านนั่งนิ่งฟัง",
+              "english": "The villagers sat quietly and listened."
+            },
+            {
+              "text": "แล้วทุกคนก็เริ่มทานข้าวด้วยกัน",
+              "english": "Then everyone began to eat together."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ก่อนกลับ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ยายอยากให้พวกหนูมาอีกค่ะ",
+              "english": "I'd like you all to come again.",
+              "speaker": "Y"
+            },
+            {
+              "text": "ที่นี่ไม่มีหมอ คนหมู่บ้านต้องพึ่งพวกหนู",
+              "english": "There's no doctor here. The villagers have to rely on you.",
+              "speaker": "Y"
+            },
+            {
+              "text": "ยายพึ่งพระเจ้ามาทั้งชีวิตค่ะ เวลามีทุกข์ ยายอธิษฐานเสมอ",
+              "english": "I have relied on God all my life. When I'm in sorrow, I always pray.",
+              "speaker": "Y"
+            },
+            {
+              "text": "ศิษยาภิบาลบอกว่าพระบุตรของพระเจ้ามาเพื่ออภัยบาป และให้วิญญาณของเราได้พัก",
+              "english": "The pastor says the Son of God came to forgive sins and to let our souls rest.",
+              "speaker": "Y"
+            },
+            {
+              "text": "เราจะมาอีกครับ ผมรู้สึกว่า ที่นี่เหมือนบ้านเลย",
+              "english": "We'll come again. I feel that this is like home.",
+              "speaker": "S"
+            },
+            {
+              "text": "ฉันก็รู้สึกเหมือนกันค่ะ",
+              "english": "I feel the same.",
+              "speaker": "M"
+            },
+            {
+              "text": "ขอบพระคุณยายมากค่ะที่ให้เรามา",
+              "english": "Thank you very much, Grandmother, for having us.",
+              "speaker": "M"
+            },
+            {
+              "text": "วันนี้ผมเรียนวิธีพูดกับคนที่อายุมากหลายอย่างครับ",
+              "english": "Today I learned several ways to speak to older people.",
+              "speaker": "S"
+            },
+            {
+              "text": "ใช่ค่ะ กรุณา โปรด หน่อย สิ และเถอะ เป็นคำที่ควรจำค่ะ",
+              "english": "Yes. กรุณา, โปรด, หน่อย, สิ and เถอะ are words worth remembering.",
+              "speaker": "M"
+            },
+            {
+              "text": "ตอนนี้ลมเบาลงแล้ว แต่เวลาจวนตัวแล้ว ไปกันค่ะ ฟ้าจะมืดแล้ว",
+              "english": "The wind has eased, but it's nearly time. Let's go. It will soon be dark.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,585 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-10",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ประชุมคนในซอย",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-10",
+    "title": "ประชุมคนในซอย — The neighbourhood meeting (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Check: the meeting register (ท่าน, ครับ/ค่ะ, polite disagreement), the headman's title and powers (a real ผู้ใหญ่บ้าน leads a village; a city soi may have a community president instead), the monk's offer reported respectfully (no direct monk speech), and that nothing about Buddhism is stated beyond neighbourly help. The vote is done by answering aloud (no hand-raising word is on the plan's list)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "community",
+    "flood",
+    "rubbish",
+    "meeting",
+    "reported speech"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "H": "ผู้ใหญ่บ้าน",
+    "P": "ป้าแดง",
+    "T": "ต้น",
+    "L": "ลุงเล็ก",
+    "F": "ฟ้า",
+    "S": "แซม",
+    "O": "คนแก่",
+    "_gender": "H=m; P=f; T=m; L=m; F=f; S=m; O=m"
+  },
+  "sections": [
+    {
+      "title": "น้ำท่วมในซอย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อคืนฝนตกมาก ซอยของป้าแดงถูกน้ำท่วม",
+              "english": "Last night it rained a lot, and Auntie Daeng's lane was flooded."
+            },
+            {
+              "text": "น้ำเข้ามาในร้านถึงพื้น และเงาของต้นไม้ก็อยู่ในน้ำ",
+              "english": "The water came into the shop up to the floor, and the shadow of the tree lay in the water."
+            },
+            {
+              "text": "ตอนเช้า ป้าแดงกับแซมช่วยกันเก็บของ",
+              "english": "In the morning Auntie Daeng and Sam helped each other put things away."
+            },
+            {
+              "text": "ทุกปีเป็นแบบนี้ค่ะ แต่ปีนี้มากที่สุดเลย",
+              "english": "Every year is like this, but this year is the worst.",
+              "speaker": "P"
+            },
+            {
+              "text": "ทำไมน้ำถึงเข้ามาครับ",
+              "english": "Why has the water come in?",
+              "speaker": "S"
+            },
+            {
+              "text": "เพราะท่อขนาดเล็ก และขยะเต็มค่ะ",
+              "english": "Because the drain is of small size and full of rubbish.",
+              "speaker": "P"
+            },
+            {
+              "text": "คนทิ้งของลงไป น้ำจึงออกไม่ได้",
+              "english": "People throw things down, so the water can't get out.",
+              "speaker": "P"
+            },
+            {
+              "text": "ตอนบ่าย มีประกาศติดที่หน้าร้าน",
+              "english": "In the afternoon a notice was put up in front of the shop."
+            },
+            {
+              "text": "คืนนี้ ทุ่มครึ่ง ประชุมชุมชนที่หน้าวัด",
+              "english": "Tonight, half past seven, community meeting in front of the temple."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คืนประชุม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คืนนั้นคนที่อยู่ในซอยมากันมาก",
+              "english": "That night many of the people who live in the lane came."
+            },
+            {
+              "text": "ผู้ใหญ่บ้านนั่งอยู่ที่โต๊ะแถวหน้า",
+              "english": "The headman sat at the table in the front row."
+            },
+            {
+              "text": "ต้นพาแซมไปนั่งที่แถวหลัง",
+              "english": "Ton took Sam to sit in the back row."
+            },
+            {
+              "text": "ผมจะบอกให้คุณฟังเบาๆ นะครับ โปรดอย่ากังวลถ้าฟังไม่ทัน",
+              "english": "I'll tell you quietly as we go. Please don't worry if you can't keep up.",
+              "speaker": "T"
+            },
+            {
+              "text": "สวัสดีครับทุกท่าน",
+              "english": "Good evening, everyone.",
+              "speaker": "H"
+            },
+            {
+              "text": "กรุณาเงียบสักหน่อยครับ ขอบคุณทุกคนที่เข้ามาร่วมประชุมคืนนี้ครับ",
+              "english": "Please be a little quiet. Thank you, everyone, for joining the meeting tonight.",
+              "speaker": "H"
+            },
+            {
+              "text": "ผมอยากบอกว่า น้ำท่วมครั้งนี้ทำให้หลายบ้านเสียหาย เป็นอันตรายกับเด็กด้วยครับ",
+              "english": "I want to say that this flood damaged many houses, and was dangerous for children too.",
+              "speaker": "H"
+            },
+            {
+              "text": "เมื่อวานผมไปดูท่อ และผมเห็นว่าในนั้นเต็มไปด้วยของที่คนทิ้ง",
+              "english": "Yesterday I went to look at the drain, and I saw that it was full of things people had thrown away.",
+              "speaker": "H"
+            },
+            {
+              "text": "ผมเห็นขวดกับถุง และบางชิ้นใหญ่มาก กลิ้งอยู่ในน้ำด้วย",
+              "english": "I saw bottles and bags, and some pieces were very large, rolling about in the water too.",
+              "speaker": "H"
+            },
+            {
+              "text": "ถ้าเราไม่ทำอะไร ปีหน้าก็จะท่วมอีกครับ",
+              "english": "If we do nothing, it will flood again next year.",
+              "speaker": "H"
+            },
+            {
+              "text": "ท่านพูดว่าอะไรครับ",
+              "english": "What is he saying?",
+              "speaker": "S"
+            },
+            {
+              "text": "ท่านบอกว่าเราต้องช่วยกัน ไม่ให้เป็นอย่างนี้อีก",
+              "english": "He says we must help one another so that this does not happen again.",
+              "speaker": "T"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ป้าแดงกับลุงเล็ก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ป้าแดงลุกขึ้นก่อน และชี้ไปที่ประตูร้านของเธอ",
+              "english": "Auntie Daeng stood up first and pointed at the door of her shop."
+            },
+            {
+              "text": "ป้าขอเสนอว่า ให้ทุกบ้านแยกขยะค่ะ",
+              "english": "I propose that every house separate its rubbish.",
+              "speaker": "P"
+            },
+            {
+              "text": "ถ้าเราไม่ทิ้งของลงท่อ น้ำก็จะออกได้ค่ะ",
+              "english": "If we don't throw things down the drain, the water will be able to get out.",
+              "speaker": "P"
+            },
+            {
+              "text": "ลุงเล็กไม่เห็นด้วย",
+              "english": "Uncle Lek did not agree."
+            },
+            {
+              "text": "ลุงเห็นว่ากฎอย่างเดียวไม่พอครับ",
+              "english": "I think rules alone are not enough.",
+              "speaker": "L"
+            },
+            {
+              "text": "คนไม่ชอบทำตามกฎ ถ้าไม่มีใครมีอำนาจ",
+              "english": "People don't like to follow rules unless someone has authority.",
+              "speaker": "L"
+            },
+            {
+              "text": "ผมเข้าใจครับลุง แต่ผมไม่มีอำนาจจับใคร",
+              "english": "I understand, Uncle, but I have no power to arrest anyone.",
+              "speaker": "H"
+            },
+            {
+              "text": "เราต้องใช้ใจ ไม่ใช่ใช้อำนาจครับ อย่าคิดถึงแต่ตนเลย",
+              "english": "We must use the heart, not power. Let us not think only of ourselves.",
+              "speaker": "H"
+            },
+            {
+              "text": "ลุงว่าต่างคนต่างคิดถึงแต่ตน ใครจะทำตามกฎของซอย",
+              "english": "I think everyone only thinks of himself. Who will follow the lane's rules?",
+              "speaker": "L"
+            },
+            {
+              "text": "ลุงเล็กคะ ป้าเข้าใจที่ลุงห่วงนะคะ",
+              "english": "Uncle Lek, I understand what you are worried about.",
+              "speaker": "P"
+            },
+            {
+              "text": "แต่ถ้าทุกคนดูหน้าบ้านของตน ซอยก็สะอาดค่ะ",
+              "english": "But if each person looks after the front of his own house, the lane will be clean.",
+              "speaker": "P"
+            },
+            {
+              "text": "ป้าแดงแตะแขนลุงเล็กเบาๆ",
+              "english": "Auntie Daeng touched Uncle Lek's arm lightly."
+            },
+            {
+              "text": "ลุงเล็กนิ่งอยู่นิดหนึ่ง แล้วหายใจออกแรงๆ",
+              "english": "Uncle Lek was silent for a moment, then breathed out hard."
+            },
+            {
+              "text": "เขาแตะหมวกของเขาแล้วยิ้ม",
+              "english": "He touched his hat and smiled."
+            },
+            {
+              "text": "ลุงขอถอยหน่อยครับ ลุงเห็นด้วยแล้ว",
+              "english": "I'll back down a little. I agree now.",
+              "speaker": "L"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เด็กๆ กับคนแก่",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ฟ้าลุกขึ้นอีกคน เธอแยกขวดกับถุงมาให้ทุกคนดูแล้ว",
+              "english": "Fa stood up next. She had already separated bottles and bags to show everyone."
+            },
+            {
+              "text": "หนูขอเสนอให้เด็กๆ รวมกลุ่มช่วยเก็บขยะค่ะ",
+              "english": "I propose that the children form a group to help collect rubbish.",
+              "speaker": "F"
+            },
+            {
+              "text": "กลุ่มของหนูมีสิบห้าคน เราอยากร่วมค่ะ กลุ่มเราเริ่มวันอาทิตย์หน้าได้ค่ะ",
+              "english": "My group has fifteen people. We would like to take part. Our group can start next Sunday.",
+              "speaker": "F"
+            },
+            {
+              "text": "คนแก่คนหนึ่งลุกขึ้นช้าๆ",
+              "english": "An elderly man stood up slowly."
+            },
+            {
+              "text": "เขาอยู่คนเดียว ลูกหลานไปทำงานที่อื่น",
+              "english": "He lives alone; his children and grandchildren work elsewhere."
+            },
+            {
+              "text": "เขาพูดเสียงเบา แต่ทุกคนเงียบฟัง",
+              "english": "He spoke softly, but everyone listened in silence."
+            },
+            {
+              "text": "ลุงอยู่ซอยนี้มาห้าสิบปีแล้ว",
+              "english": "I have lived in this lane for fifty years.",
+              "speaker": "O"
+            },
+            {
+              "text": "เมื่อก่อนน้ำไม่เคยเข้าบ้านแบบนี้ ลุงเป็นคนแก่ที่กังวลมาก",
+              "english": "In the past the water never came into houses like this. I am an old man who worries a lot.",
+              "speaker": "O"
+            },
+            {
+              "text": "ตอนกลางคืนลุงเหงา และลุงพักผ่อนไม่ได้ เพราะน้ำเสียงดัง",
+              "english": "At night I'm lonely and can't rest, because of the noise of the water.",
+              "speaker": "O"
+            },
+            {
+              "text": "ลุงอยากพักผ่อนในบ้านที่ไม่เปียกครับ",
+              "english": "I'd like to rest in a house that isn't wet.",
+              "speaker": "O"
+            },
+            {
+              "text": "ลุงฝันว่าซอยเราสะอาดเหมือนเมื่อก่อน",
+              "english": "I dream that our lane will be clean as it used to be.",
+              "speaker": "O"
+            },
+            {
+              "text": "ท่านลุงครับ ผมขอบคุณที่พูดครับ",
+              "english": "Uncle, thank you for speaking.",
+              "speaker": "H"
+            },
+            {
+              "text": "ผมจะบอกคนแก่ในซอยทุกคนว่า เราไม่ลืมท่าน และผมขอให้เราโปรดช่วยกัน",
+              "english": "I'll tell all the old people in the lane that we do not forget them, and I ask us please to look after one another.",
+              "speaker": "H"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องของวัด",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ขอหยุดพักห้านาทีครับ",
+              "english": "Let's stop for a break of five minutes.",
+              "speaker": "H"
+            },
+            {
+              "text": "มีอีกเรื่องหนึ่งที่ผมต้องบอกครับ",
+              "english": "There is one more thing I must tell you.",
+              "speaker": "H"
+            },
+            {
+              "text": "ผมขอบคุณแขกของเราคืนนี้ คือคุณแซมด้วยครับ",
+              "english": "I also thank our guest tonight, Sam.",
+              "speaker": "H"
+            },
+            {
+              "text": "พระที่วัดบอกว่า วัดมีห้องใหญ่ ชุมชนใช้ประชุมได้",
+              "english": "The monk at the temple says the temple has a big room which the community can use for meetings.",
+              "speaker": "H"
+            },
+            {
+              "text": "ท่านบอกว่าไม่ต้องจ่ายค่าห้อง และท่านยินดีให้เรา",
+              "english": "He says there is no room fee, and he is glad to give it to us.",
+              "speaker": "H"
+            },
+            {
+              "text": "ป้าขอบคุณท่านมากค่ะ",
+              "english": "I thank him very much.",
+              "speaker": "P"
+            },
+            {
+              "text": "แต่ลุงเห็นว่า วัดกับเรื่องน้ำเป็นสองเรื่องครับ",
+              "english": "But I think the temple and the water are two different things.",
+              "speaker": "L"
+            },
+            {
+              "text": "ผมเห็นต่างครับลุง",
+              "english": "I see it differently, Uncle.",
+              "speaker": "T"
+            },
+            {
+              "text": "ถ้าเรามีห้องที่วัด คนก็จะมามากขึ้น",
+              "english": "If we have a room at the temple, more people will come.",
+              "speaker": "T"
+            },
+            {
+              "text": "และท่านเป็นคนที่ทุกคนเคารพ",
+              "english": "And he is someone everyone respects.",
+              "speaker": "T"
+            },
+            {
+              "text": "ลุงเห็นด้วยแล้วครับ",
+              "english": "I agree now.",
+              "speaker": "L"
+            },
+            {
+              "text": "ลุงเล็กยิ้มแล้วนั่งลง",
+              "english": "Uncle Lek smiled and sat down."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เงินและสะพาน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ท่านชี้ไปที่ลำธารตรงนั้น",
+              "english": "He pointed at the stream just there."
+            },
+            {
+              "text": "อีกเรื่องหนึ่งคือสะพานเล็กเหนือลำธารครับ",
+              "english": "Another matter is the small bridge over the stream.",
+              "speaker": "H"
+            },
+            {
+              "text": "คนที่อยู่อีกฝั่งหนึ่งไม่มีทางอื่นครับ",
+              "english": "The people on the other side have no other way.",
+              "speaker": "H"
+            },
+            {
+              "text": "ถ้าฝนหยุด เราสมควรซ่อมก่อนฝนมาอีกครับ",
+              "english": "If the rain stops, we ought to repair it before the rain comes again.",
+              "speaker": "H"
+            },
+            {
+              "text": "สะพานเสียหายเพราะน้ำ ไม้หัก และต้องซ่อมครับ",
+              "english": "The bridge was damaged by the water, the wood is broken, and it must be repaired.",
+              "speaker": "H"
+            },
+            {
+              "text": "ผมเสนอให้ทุกบ้านบริจาคบ้านละ 100 บาท",
+              "english": "I propose that every house donates 100 baht.",
+              "speaker": "H"
+            },
+            {
+              "text": "ผมบริจาคด้วยได้ไหมครับ",
+              "english": "May I donate too?",
+              "speaker": "S"
+            },
+            {
+              "text": "ได้ครับ ท่านเป็นแขกของเรา แต่เราขอบคุณมากครับ",
+              "english": "Yes. You are our guest, but we thank you very much.",
+              "speaker": "H"
+            },
+            {
+              "text": "ป้าจะบริจาคสองร้อยค่ะ",
+              "english": "I'll donate two hundred.",
+              "speaker": "P"
+            },
+            {
+              "text": "ลุงสองร้อยเหมือนกันครับ",
+              "english": "Two hundred for me too.",
+              "speaker": "L"
+            },
+            {
+              "text": "คนที่อยู่ในห้องหัวเราะ",
+              "english": "The people in the room laughed."
+            },
+            {
+              "text": "ถ้าบ้านไหนไม่มีเงิน ก็ร่วมแรงได้ครับ",
+              "english": "If a house has no money, it can join with its labour.",
+              "speaker": "H"
+            },
+            {
+              "text": "ผู้ใหญ่บ้านให้คนรวมเงินที่โต๊ะ",
+              "english": "The headman had people gather the money at the table."
+            },
+            {
+              "text": "รวมแล้ว 3,200 บาทครับ",
+              "english": "The total comes to 3,200 baht.",
+              "speaker": "H"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ตัดสินใจ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผมอยากให้เราตัดสินใจคืนนี้ครับ",
+              "english": "I'd like us to decide tonight.",
+              "speaker": "H"
+            },
+            {
+              "text": "ใครเห็นด้วยกับเรื่องที่เราคุยกัน กรุณาตอบว่า เห็นด้วยครับ",
+              "english": "Whoever agrees with what we have discussed, please answer \"agreed\".",
+              "speaker": "H"
+            },
+            {
+              "text": "ทุกคนตอบพร้อมกันว่า เห็นด้วย",
+              "english": "Everyone answered together, \"Agreed.\""
+            },
+            {
+              "text": "มีเสียงเดียวที่ตอบสองครั้ง",
+              "english": "One voice answered twice."
+            },
+            {
+              "text": "เสียงนั้นเป็นของลุงเล็ก",
+              "english": "That voice was Uncle Lek's."
+            },
+            {
+              "text": "ลุงตัดสินใจแล้วครับ ลุงขอเห็นด้วยสองครั้ง",
+              "english": "I have decided. I'd like to agree twice.",
+              "speaker": "L"
+            },
+            {
+              "text": "ทุกคนหัวเราะอีกครั้ง",
+              "english": "Everyone laughed again."
+            },
+            {
+              "text": "ผู้ใหญ่บ้านบอกว่า วันอาทิตย์หน้าเราจะมาช่วยกันซ่อมสะพาน",
+              "english": "The headman said that next Sunday we would come and repair the bridge together."
+            },
+            {
+              "text": "เสียงหัวเราะดังไปทั่วหน้าวัด",
+              "english": "The sound of laughter rang out in front of the temple."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หลังประชุม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผมหายใจเข้าลึกๆ ก่อนจะถามครับ",
+              "english": "I took a deep breath before asking.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมชอบที่ทุกคนพูดตรงๆ แต่ยังสุภาพครับ",
+              "english": "I like that everyone spoke frankly yet politely.",
+              "speaker": "S"
+            },
+            {
+              "text": "ในซอย รถต้องช้า ไม่เร็วกว่า 20 กิโลเมตรครับ และต้องถอยออกเวลาฝนตกมาก",
+              "english": "In the lane cars must go slowly, not faster than 20 kilometres, and must back out when it rains hard.",
+              "speaker": "T"
+            },
+            {
+              "text": "ที่เมืองไทย เรามักพูดกันเบาๆ ครับ",
+              "english": "In Thailand we usually speak to each other softly.",
+              "speaker": "T"
+            },
+            {
+              "text": "ถ้าไม่เห็นด้วย เราก็พูดเบาๆ แล้วหาทางออกด้วยกัน",
+              "english": "If we disagree, we speak softly and look for a way out together.",
+              "speaker": "T"
+            },
+            {
+              "text": "วันอาทิตย์หน้าผมขอไปด้วยได้ไหมครับ",
+              "english": "May I come along next Sunday?",
+              "speaker": "S"
+            },
+            {
+              "text": "ได้ครับ ชุมชนของเราเป็นเจ้าบ้านที่ยินดีต้อนรับแขกเสมอ",
+              "english": "Yes. Our community is a host that always welcomes guests.",
+              "speaker": "T"
+            },
+            {
+              "text": "วิธีนี้ดีที่สุดครับ เราตัดสินใจด้วยกัน",
+              "english": "This way is best. We decide together.",
+              "speaker": "T"
+            },
+            {
+              "text": "ท่านให้ทุกคนถอดรองเท้าก่อนเข้าห้องวัด แล้วเรามาฉลองกันด้วยชาร้อนๆ",
+              "english": "The headman had everyone take off their shoes before going into the temple room, and we celebrated with hot tea."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

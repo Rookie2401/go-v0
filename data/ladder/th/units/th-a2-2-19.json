@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-19",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "นกใหญ่กับหมาจิ้งจอก",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-19",
+    "title": "นกใหญ่กับหมาจิ้งจอก — The eagle and the fox (a fable retold, 7) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 132247 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=132247",
+    "attribution": "Adapted retelling of \"นกอินทรีกับหมาจิ้งจอก\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 132247, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"นกอินทรีกับหมาจิ้งจอก\" (th-gap-recovery-aesop-27); the sentences are the drafter's own retelling in the vocabulary of the ladder plan, with the fable register (เจ้า, ข้า, จึง, ครั้น, แล …) kept where the plan teaches it. Machine-drafted on 2026-10-06; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 132247) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). The eagle is called \"นกตัวใหญ่\" and its nest \"บ้าน\" (อินทรี and รัง are not on the plan's lists at this point). Check the fable register (มิได้, ชาว, ถือดี, ครั้น, ข้า, เจ้า) and the moral; ที is used in ทีเดียว."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "fable",
+    "animals",
+    "forest",
+    "neighbours"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "เพื่อนบ้านต่างกัน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "นกตัวใหญ่ตัวหนึ่งมีบ้านอยู่บนต้นไม้สูง",
+              "english": "A big bird had its home at the top of a tall tree."
+            },
+            {
+              "text": "ที่เชิงต้นไม้ต้นเดียวกันนั้น มีหมาจิ้งจอกตัวหนึ่งอาศัยอยู่",
+              "english": "At the foot of that same tree a fox lived."
+            },
+            {
+              "text": "สัตว์สองตัวนี้อยู่เคียงกัน แต่ไม่ได้เป็นเพื่อนกัน",
+              "english": "These two animals lived side by side, but were not friends."
+            },
+            {
+              "text": "ต่างก็มีลูกน้อยอยู่ในบ้านของตน",
+              "english": "Each had young ones at home."
+            },
+            {
+              "text": "ชาวป่าเห็นว่า บ้านทั้งสองอยู่ที่เดียวกัน",
+              "english": "The forest people saw that the two homes were in the same place."
+            },
+            {
+              "text": "นกตัวนั้นถือดีว่ามันบินได้ และอยู่สูง",
+              "english": "The bird was proud that it could fly and lived high up."
+            },
+            {
+              "text": "มันมิได้ฟังคำของใคร และเคยลักของคนอื่นมาก่อน",
+              "english": "It did not listen to anyone, and had stolen from others before."
+            },
+            {
+              "text": "มันถือดีเกินไป และนึกว่าใครก็ทำอะไรมันไม่ได้",
+              "english": "It was too proud, and thought that no one could do anything to it."
+            },
+            {
+              "text": "ชาวป่ารู้ว่ามันเป็นอย่างนี้ และไม่ชอบมัน",
+              "english": "The forest people knew it was like this and did not like it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ลูกน้อยของหมาจิ้งจอก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันหนึ่ง หมาจิ้งจอกออกไปทำการหากินไกล",
+              "english": "One day the fox went far away to do its hunting."
+            },
+            {
+              "text": "มันอดกินมาทั้งวัน จึงต้องไปไกลเกินกำลัง",
+              "english": "It had gone without food all day, so it had to go beyond its strength."
+            },
+            {
+              "text": "ลูกน้อยของมันอยู่ที่บ้านลำพัง ไม่มีใครดู",
+              "english": "Its little ones were at home alone, with no one to watch them."
+            },
+            {
+              "text": "ลำพังหมาจิ้งจอกตัวเดียว ไม่อาจดูลูกได้ทุกเวลา",
+              "english": "A fox on its own cannot watch its young at every moment."
+            },
+            {
+              "text": "นกตัวใหญ่เห็นเข้า ก็บินลงมาทีหนึ่ง",
+              "english": "The big bird saw this and flew down just once."
+            },
+            {
+              "text": "มันลักลูกหมาจิ้งจอกตัวหนึ่งไป",
+              "english": "It stole one of the fox's cubs."
+            },
+            {
+              "text": "ลูกตัวนั้นดิ้นรน แต่มันคาบไว้",
+              "english": "The cub struggled, but it held it in its claws."
+            },
+            {
+              "text": "ลูกอดข้าวมาทั้งวัน จึงร้องเสียงเบา",
+              "english": "The cub had gone without rice all day and cried softly."
+            },
+            {
+              "text": "มันตั้งใจว่าจะให้ลูกของมันกิน",
+              "english": "It meant to give it to its own young to eat."
+            },
+            {
+              "text": "เมื่อหมาจิ้งจอกกลับมา ลูกตัวหนึ่งหายไป",
+              "english": "When the fox came back, one cub was gone."
+            },
+            {
+              "text": "มันได้ยินเสียงร้องดังมาจากบนต้นไม้ มันตายทีเดียว",
+              "english": "It heard crying coming from the tree, and felt like dying outright."
+            },
+            {
+              "text": "มันใจหนักมากที่ต้องทำการนี้ลำพัง",
+              "english": "It was very heavy-hearted to have to do this thing alone."
+            },
+            {
+              "text": "มันรู้ว่า นกตัวนั้นลักลูกของมันไป",
+              "english": "It knew that the bird had stolen its cub."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คำขอ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หมาจิ้งจอกไต่ขึ้นไปบนต้นไม้ แต่ไต่ได้ไม่สูง",
+              "english": "The fox climbed up the tree, but could not climb high."
+            },
+            {
+              "text": "ต้นไม้สูงเกินกำลังของมัน และมันทนไม่ได้",
+              "english": "The tree was too high for its strength, and it could not bear it."
+            },
+            {
+              "text": "มันร้องว่า \"ขอลูกของข้าคืนมา\"",
+              "english": "It called out, \"Give me back my cub.\""
+            },
+            {
+              "text": "\"ข้ามิได้ทำอะไรเจ้าเลย\"",
+              "english": "\"I have done nothing to you.\""
+            },
+            {
+              "text": "นกตัวใหญ่หัวเราะ มันถือดีมาก",
+              "english": "The big bird laughed; it was very arrogant."
+            },
+            {
+              "text": "\"เจ้าอยู่ใต้ต้น ข้าอยู่บนต้น ข้าไม่กลัวเจ้า\"",
+              "english": "\"You are under the tree, I am up it. I do not fear you.\""
+            },
+            {
+              "text": "\"เจ้ามิได้บินได้ และไม่มีปัญญาจะทำอะไรข้า\"",
+              "english": "\"You cannot fly, and have no means of doing anything to me.\""
+            },
+            {
+              "text": "หมาจิ้งจอกแค้นมาก มันสบถว่า \"ข้าจักทำให้เจ้ากลัว\"",
+              "english": "The fox was very bitter and swore, \"I will make you afraid.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ไฟ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หมาจิ้งจอกคิดอยู่นิดเดียว",
+              "english": "The fox thought for only a moment."
+            },
+            {
+              "text": "ชาวป่าทิ้งไม้ไผ่ที่มีไฟไว้ใกล้ๆ",
+              "english": "The forest people had left a bamboo stick with fire in it nearby."
+            },
+            {
+              "text": "มันคาบไม้นั้นมา ไม้นั้นหนักมาก แต่มันไม่วางลง",
+              "english": "It carried that stick in its mouth; it was very heavy, but it did not put it down."
+            },
+            {
+              "text": "ไฟอยู่ที่ปลายไม้ ทำให้ใจของมันหนัก",
+              "english": "The fire was at the tip of the stick, and its heart was heavy."
+            },
+            {
+              "text": "มันอดนอนทั้งคืน เพราะอยากได้ลูกคืน",
+              "english": "It went without sleep all night because it wanted its cub back."
+            },
+            {
+              "text": "มันไต่ขึ้นไปบนต้นไม้อีกครั้ง",
+              "english": "It climbed up the tree once more."
+            },
+            {
+              "text": "มันเหวี่ยงไม้นั้นไปที่ใต้บ้านของนก",
+              "english": "It swung the stick up under the bird's home."
+            },
+            {
+              "text": "มันเหวี่ยงไฟอีก และอีก",
+              "english": "It swung the fire again, and again."
+            },
+            {
+              "text": "มันทำการใหญ่ครั้งนี้โดยไม่รู้ตัว",
+              "english": "It did this great deed without knowing."
+            },
+            {
+              "text": "มันเหวี่ยงไม้อีกครั้ง ไฟขึ้นไปถึงบ้านของนกตัวใหญ่",
+              "english": "It swung the stick once more, and the fire reached the big bird's home."
+            },
+            {
+              "text": "นกตัวนั้นตกใจมาก",
+              "english": "The bird was terribly frightened."
+            },
+            {
+              "text": "บ้านและลูกนกอาจเสียหายหมดทีเดียว",
+              "english": "Its home and its young might be ruined altogether."
+            },
+            {
+              "text": "มันเผอิญนึกได้ว่า มันทำเกินไป",
+              "english": "By chance it realised that it had gone too far."
+            },
+            {
+              "text": "มันไม่ได้คิดถึงลูกของตนเองอย่างเดียว แต่คิดถึงลูกของหมาจิ้งจอกด้วย",
+              "english": "It did not think of its own young alone, but of the fox's cub too."
+            },
+            {
+              "text": "มันสิ้นความกล้า และรีบคาบลูกหมาจิ้งจอกลงมาคืน",
+              "english": "It lost its nerve and hurried to carry the fox's cub back down."
+            },
+            {
+              "text": "ภายหลัง นกตัวใหญ่ลับไปจากต้นไม้ต้นนั้น",
+              "english": "Afterwards the big bird went away from that tree."
+            },
+            {
+              "text": "หมาจิ้งจอกหนุ่มตัวนั้นมีลูกที่ปลอดภัยแล้ว",
+              "english": "That young fox had its young safe again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "นิทานเรื่องนี้สอนว่า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "นิทานเรื่องนี้สอนให้รู้ว่า อย่าคิดว่าเราอยู่สูงกว่า และอย่าทำร้ายผู้น้อย",
+              "english": "This fable teaches that we should not think we are higher up, and should not hurt those smaller than us."
+            },
+            {
+              "text": "เพราะคนเล็กก็มีใจ และอาจทำให้เราสมน้ำหน้าได้",
+              "english": "For the small also have hearts, and may bring us what we deserve."
+            },
+            {
+              "text": "เพื่อนบ้านบนต้นไม้ต้นเดียวกัน ควรอยู่ด้วยกันด้วยดี",
+              "english": "Neighbours on the same tree should live together in peace."
+            },
+            {
+              "text": "ต้องรู้จักประมาณตน",
+              "english": "We must know our own measure."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

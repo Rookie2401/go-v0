@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-11",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ต้นไม้ใหญ่กับไม้อ่อน",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-11",
+    "title": "ต้นไม้ใหญ่กับไม้อ่อน — The banyan and the reed (a fable retold, 5) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 132247 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=132247",
+    "attribution": "Adapted retelling of \"ต้นไทรกับต้นอ้อ\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 132247, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"ต้นไทรกับต้นอ้อ\" (th-gap-recovery-aesop-36); the sentences are the drafter's own retelling in the vocabulary of the ladder plan, with the fable register (เจ้า, ข้า, จึง, ครั้น, แล …) kept where the plan teaches it. Machine-drafted on 2026-10-06; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 132247) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). The big tree is called \"ต้นไม้ใหญ่\" and the reeds \"ไม้อ่อน\" / \"ไม้เล็ก\" (the words ต้นไทร and ต้นอ้อ are not on the plan's lists); a short coda with a goat was added to recycle the vocabulary of fable 4. Check: จัก, เหตุใด, เป็นต้น, เหล่า in fable register; the moral."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "fable",
+    "storm",
+    "river",
+    "plants"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "คืนที่พายุมา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ต้นไม้ใหญ่ต้นหนึ่งยืนอยู่ที่ตลิ่ง",
+              "english": "A big tree stood on the river bank."
+            },
+            {
+              "text": "มันสูงและแข็ง มีกิ่งมีใบ เป็นต้น",
+              "english": "It was tall and hard, with branches, leaves and so on."
+            },
+            {
+              "text": "สัตว์ทั้งหลาย เช่นนกกับแพะ เป็นต้น มาอาศัยอยู่ใต้ร่มของมัน",
+              "english": "All sorts of animals, birds and goats for example, came to live in its shade."
+            },
+            {
+              "text": "ต้นไม้ใหญ่นึกว่าตนเองไม่มีวันล้ม",
+              "english": "The big tree thought that it would never fall."
+            },
+            {
+              "text": "มันพูดว่า \"ข้าจักไม่ล้ม\"",
+              "english": "It said, \"I shall not fall.\""
+            },
+            {
+              "text": "มันพูดอีกว่า \"ลมจักทำอะไรข้าได้\"",
+              "english": "It said, \"What can the wind do to me?\""
+            },
+            {
+              "text": "คืนหนึ่งพายุใหญ่มา",
+              "english": "One night a great storm came."
+            },
+            {
+              "text": "ลมแรงมาทันที ฟ้าร้อง ฟ้าแลบ",
+              "english": "The strong wind came at once, with thunder and lightning."
+            },
+            {
+              "text": "ต้นไม้ใหญ่ตั้งหน้ายืนอยู่ที่เดิม",
+              "english": "The big tree faced it and stood in the same place."
+            },
+            {
+              "text": "มันไม่หลบ และไม่เคยรู้จักเลี่ยงลม",
+              "english": "It did not dodge, and had never known how to avoid the wind."
+            },
+            {
+              "text": "มันอยากกระโจนหนี แต่ต้องยืนอยู่กับที่",
+              "english": "It wanted to leap away, but had to stay where it was."
+            },
+            {
+              "text": "ในที่สุดมันทนไม่ไหว",
+              "english": "In the end it could not hold out."
+            },
+            {
+              "text": "มันฉวยดินไว้ ตะเกียกตะกายอยู่นาน แต่ไม่มีปัญญาจะยืนต่อไป",
+              "english": "It clutched at the earth and scrambled for a long while, but it had no means to stand any longer."
+            },
+            {
+              "text": "ต้นไม้ใหญ่ล้มลงในน้ำที่ลึก",
+              "english": "The big tree fell into the deep water."
+            },
+            {
+              "text": "กิ่งกับใบ เป็นต้น หักไปหมด",
+              "english": "The branches, the leaves and so on were all broken."
+            },
+            {
+              "text": "มันนึกว่า \"ข้าจักจมน้ำตายแล้ว\"",
+              "english": "It thought, \"I shall drown now.\""
+            },
+            {
+              "text": "น้ำพามันไปทั้งคืน",
+              "english": "The water carried it along all night."
+            },
+            {
+              "text": "มันเหงาและกังวล มันฝันถึงที่เดิมของมัน",
+              "english": "It was lonely and worried. It dreamed of its old place."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เหล่าไม้อ่อน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ก่อนรุ่ง พายุก็หยุด",
+              "english": "Before dawn the storm stopped."
+            },
+            {
+              "text": "ต้นไม้ใหญ่ติดอยู่ที่ตลิ่งอีกที่หนึ่ง",
+              "english": "The big tree was stuck at another bank."
+            },
+            {
+              "text": "พอรุ่งเช้า ต้นไม้ใหญ่มองเห็นที่นั่นมีเหล่าไม้เล็กขึ้นอยู่เต็มริมน้ำ",
+              "english": "At daybreak the big tree saw that small plants grew there all along the water's edge."
+            },
+            {
+              "text": "พวกมันยืนอยู่เหมือนเดิม ไม่มีต้นไหนหัก",
+              "english": "They stood as before, and not one had broken."
+            },
+            {
+              "text": "ต้นไม้ใหญ่ตกใจมาก",
+              "english": "The big tree was astonished."
+            },
+            {
+              "text": "มันถามเหล่าไม้เล็กว่า \"เหตุใดพวกเจ้าจึงไม่ล้ม\"",
+              "english": "It asked the small plants, \"Why did you not fall?\""
+            },
+            {
+              "text": "\"พวกเจ้าเป็นไม้เล็ก ข้าเป็นไม้ใหญ่ที่แข็ง\"",
+              "english": "\"You are small; I am a big, hard tree.\""
+            },
+            {
+              "text": "\"ข้าไม่ไหวแล้ว แต่พวกเจ้ายังอยู่\"",
+              "english": "\"I couldn't hold out, but you are still here.\""
+            },
+            {
+              "text": "เหล่าไม้เล็กตอบว่า \"ลมพัดมาถึงที่นี่เหมือนกัน\"",
+              "english": "The small plants answered, \"The wind came here too.\""
+            },
+            {
+              "text": "\"แต่พวกเราเป็นไม้อ่อน เราจึงหลบลมได้\"",
+              "english": "\"But we are soft, and so we could dodge the wind.\""
+            },
+            {
+              "text": "\"เมื่อลมแรงมา เราก็นิ่ง ปล่อยให้ลมไป\"",
+              "english": "\"When the strong wind came, we kept still and let it go.\""
+            },
+            {
+              "text": "\"ด้วยเหตุนี้ พวกเรายังไหว\"",
+              "english": "\"For this reason we could still hold.\""
+            },
+            {
+              "text": "\"เมื่อแพะมาเหยียบเรา เราก็ไม่หัก\"",
+              "english": "\"When goats tread on us, we do not break.\""
+            },
+            {
+              "text": "\"เราเลี่ยงลมได้ แต่เลี่ยงแพะไม่ได้\"",
+              "english": "\"We can avoid the wind, but we cannot avoid the goats.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ต้นไม้ใหญ่นึก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ต้นไม้ใหญ่ได้ฟังก็นิ่งไป",
+              "english": "The big tree fell silent on hearing this."
+            },
+            {
+              "text": "มันนึกว่า \"ข้าตั้งหน้ายืนอยู่อย่างเดียว\"",
+              "english": "It thought, \"All I did was set my face and stand.\""
+            },
+            {
+              "text": "\"ข้าไม่เคยรู้จักอ่อนเลย\"",
+              "english": "\"I never knew how to yield.\""
+            },
+            {
+              "text": "\"ลมแรงกว่าข้า ข้าจึงล้ม\"",
+              "english": "\"The wind was stronger than I, so I fell.\""
+            },
+            {
+              "text": "\"แต่พวกเขารู้จักหลบ พวกเขาจึงรอด\"",
+              "english": "\"But they knew how to dodge, so they survived.\""
+            },
+            {
+              "text": "\"เหตุที่พวกเขารอด คือพวกเขารู้จักเลี่ยง\"",
+              "english": "\"The reason they survived is that they knew how to avoid it.\""
+            },
+            {
+              "text": "บางทีคนเราก็ตั้งหน้าอยู่อย่างเดียวเหมือนต้นไม้ใหญ่",
+              "english": "Sometimes people too just set their faces, like the big tree."
+            },
+            {
+              "text": "บางทีนิ่งก็ดีกว่า",
+              "english": "Sometimes keeping still is better."
+            },
+            {
+              "text": "เรามักไม่เห็นเลยว่าตนเองพลาด",
+              "english": "We often do not see at all that we ourselves have made a mistake."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "แพะข้ามน้ำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "รุ่งขึ้นอีกวัน แพะตัวหนึ่งมาถึงตลิ่ง",
+              "english": "The next day a goat came to the bank."
+            },
+            {
+              "text": "น้ำตรงนั้นลึกมาก ใครตกลงไปก็จมน้ำตาย",
+              "english": "The water there was very deep, and anyone who fell in would drown."
+            },
+            {
+              "text": "มันไม่กระโจนลงไปทันที มันนึกก่อน",
+              "english": "It did not leap in at once. It thought first."
+            },
+            {
+              "text": "มันมีปัญญา เห็นต้นไม้ใหญ่ล้มอยู่ในน้ำ",
+              "english": "It had sense, and saw the big tree lying in the water."
+            },
+            {
+              "text": "เงาของต้นไม้ใหญ่ยาวไปถึงอีกฝั่ง",
+              "english": "The shadow of the big tree stretched to the other side."
+            },
+            {
+              "text": "มันเหยียบที่ต้นไม้ใหญ่ช้าๆ ไม่ให้ตกลงไป",
+              "english": "It stepped carefully on the big tree, so as not to fall in."
+            },
+            {
+              "text": "มันฉวยเวลา ตะเกียกตะกายขึ้นฝั่ง",
+              "english": "It seized the moment and scrambled up the bank."
+            },
+            {
+              "text": "ต้นไม้ใหญ่ไม่ได้พูดอะไร แต่ดีใจที่ได้ช่วย",
+              "english": "The big tree said nothing, but was glad to have helped."
+            },
+            {
+              "text": "ก่อนไป แพะขอลาต้นไม้ใหญ่",
+              "english": "Before leaving, the goat took its leave of the big tree."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "นิทานเรื่องนี้สอนว่า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "นิทานเรื่องนี้สอนให้รู้ว่า เมื่อเจอสิ่งที่แรงกว่า บางทีอ่อนก็ดีกว่าแข็ง",
+              "english": "This fable teaches that when facing something stronger, sometimes yielding is better than being hard."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

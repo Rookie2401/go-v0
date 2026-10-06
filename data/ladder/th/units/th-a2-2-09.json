@@ -1,0 +1,562 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-09",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ข้อความตามทาง",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-09",
+    "title": "ข้อความตามทาง — Notices, rules, recipes (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Check: the notice language (telegram style, กรุณา / โปรด / ห้าม / ควร / ต้อง) is typical of real Thai notices; the temple etiquette is stated respectfully and correctly; the bus seat for monks and the medicine-box wording are plausible. Notices are given as separate sentences, without a verb or with ห้าม / กรุณา as on the real thing."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "practical communication",
+    "notices",
+    "rules",
+    "recipes",
+    "public life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical-communication"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "S": "แซม",
+    "M": "มะลิ",
+    "_gender": "S=m; M=f"
+  },
+  "sections": [
+    {
+      "title": "ที่สถานีรถ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันนี้มะลิพาแซมไปเที่ยวลำพูนโดยรถ",
+              "english": "Today Mali took Sam on a day trip to Lamphun by bus."
+            },
+            {
+              "text": "ที่สถานี แซมเห็นข้อความหลายอย่างและถามมะลิ",
+              "english": "At the station Sam saw many notices and asked Mali."
+            },
+            {
+              "text": "มะลิครับ ข้อความนี้เขียนว่าอะไรครับ",
+              "english": "Mali, what does this notice say?",
+              "speaker": "S"
+            },
+            {
+              "text": "ประกาศนี้บอกเวลารถค่ะ",
+              "english": "This notice gives the bus times.",
+              "speaker": "M"
+            },
+            {
+              "text": "เชียงใหม่ — ลำพูน 26 กิโลเมตร",
+              "english": "Chiang Mai to Lamphun, 26 kilometres."
+            },
+            {
+              "text": "ทางออกอยู่หลังสถานี",
+              "english": "The exit is behind the station."
+            },
+            {
+              "text": "รถออกทุก 30 นาที จาก 6.00 ถึง 18.00",
+              "english": "Buses leave every 30 minutes, from 6.00 to 18.00."
+            },
+            {
+              "text": "ค่าโดยสาร 30 บาท",
+              "english": "Fare: 30 baht."
+            },
+            {
+              "text": "กรุณาซื้อตั๋วก่อนขึ้นรถค่ะ",
+              "english": "Please buy a ticket before getting on the bus.",
+              "speaker": "M"
+            },
+            {
+              "text": "ค่าโดยสารคืออะไรครับ",
+              "english": "What is \"ค่าโดยสาร\"?",
+              "speaker": "S"
+            },
+            {
+              "text": "คือค่ารถของผู้โดยสารค่ะ",
+              "english": "It's the fare for passengers.",
+              "speaker": "M"
+            },
+            {
+              "text": "โปรดอย่าพลาดรถเที่ยวสุดท้าย",
+              "english": "Please don't miss the last bus."
+            },
+            {
+              "text": "เที่ยวสุดท้ายกี่โมงครับ",
+              "english": "What time is the last one?",
+              "speaker": "S"
+            },
+            {
+              "text": "18.00 ค่ะ หกโมงเย็น",
+              "english": "18.00. Six o'clock in the evening.",
+              "speaker": "M"
+            },
+            {
+              "text": "ที่นั่งนี้สำหรับพระ กรุณาลุกให้พระนั่ง",
+              "english": "This seat is for monks. Please get up so that a monk can sit."
+            },
+            {
+              "text": "ผมเข้าใจแล้วครับ ผมจะไม่นั่งตรงนั้น",
+              "english": "I understand. I won't sit there.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่วัด",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ที่ลำพูน มะลิพาแซมเข้าไปในวัด",
+              "english": "In Lamphun Mali took Sam into a temple."
+            },
+            {
+              "text": "ที่ประตูมีประกาศติดอยู่",
+              "english": "A notice was posted at the gate."
+            },
+            {
+              "text": "ระเบียบการเข้าวัด",
+              "english": "Rules for entering the temple."
+            },
+            {
+              "text": "ผู้เข้าวัดสมควรแต่งตัวสุภาพ",
+              "english": "Visitors should dress politely."
+            },
+            {
+              "text": "ห้ามใส่กางเกงสั้น",
+              "english": "Shorts are not allowed."
+            },
+            {
+              "text": "กรุณาถอดรองเท้าและถอดหมวกก่อนเข้า",
+              "english": "Please take off your shoes and hat before going in."
+            },
+            {
+              "text": "ข้อความนี้บอกว่า คนที่เข้าวัดต้องแต่งตัวสุภาพ",
+              "english": "This notice says that people entering the temple must dress politely.",
+              "speaker": "M"
+            },
+            {
+              "text": "สุภาพคืออะไรครับ",
+              "english": "What is \"สุภาพ\"?",
+              "speaker": "S"
+            },
+            {
+              "text": "คือเรียบร้อย ไม่ทำให้คนอื่นไม่ชอบค่ะ",
+              "english": "It means neat, not making others dislike it.",
+              "speaker": "M"
+            },
+            {
+              "text": "โปรดเงียบ ห้ามเสียงดัง",
+              "english": "Please be quiet. No loud noise."
+            },
+            {
+              "text": "ห้ามชี้เท้าไปที่พระ ห้ามแตะของในวัด",
+              "english": "Do not point your feet at the Buddha image. Do not touch things in the temple."
+            },
+            {
+              "text": "ห้ามเดินขึ้นเขาเมื่อลมแรง",
+              "english": "Do not climb the hill when the wind is strong."
+            },
+            {
+              "text": "เรามาเป็นแขกของที่นี่ ควรทำตามระเบียบของเขาค่ะ",
+              "english": "We come as guests here, so we should follow their rules.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมถอดรองเท้าแล้วครับ",
+              "english": "I've taken off my shoes.",
+              "speaker": "S"
+            },
+            {
+              "text": "ดีค่ะ แล้วพูดเบาๆ ด้วยค่ะ",
+              "english": "Good. And speak softly too.",
+              "speaker": "M"
+            },
+            {
+              "text": "ที่นี่มีงานฉลองทุกปี อีก 5 กิโลเมตรก็ถึงตลาดของงาน",
+              "english": "There is a celebration here every year. Five more kilometres to the fair."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่ร้านและที่พัก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนกลางวัน มะลิกับแซมกินข้าวที่ร้านเล็กๆ",
+              "english": "At midday Mali and Sam ate at a small shop."
+            },
+            {
+              "text": "ที่ประตูร้านมีข้อความอีกอย่างหนึ่ง",
+              "english": "There was another notice at the shop door."
+            },
+            {
+              "text": "ร้านหยุดวันอาทิตย์",
+              "english": "The shop closes on Sundays."
+            },
+            {
+              "text": "เจ้าของร้านลาไปงานแต่ง ขอปิดวันนี้",
+              "english": "The owner is away at a wedding. Closed today."
+            },
+            {
+              "text": "วันนี้ร้านเปิดครับ ข้อความนี้เป็นของเมื่อวาน",
+              "english": "The shop is open today. This notice is from yesterday.",
+              "speaker": "S"
+            },
+            {
+              "text": "ใช่ค่ะ เขาลืมเอาออก",
+              "english": "Yes, they forgot to take it down.",
+              "speaker": "M"
+            },
+            {
+              "text": "ใกล้ๆ กันมีที่พักเล็กๆ และมีข้อความติดอยู่",
+              "english": "Nearby was a small guesthouse with a notice posted."
+            },
+            {
+              "text": "ประกาศ: ทางออกฉุกเฉินอยู่ใกล้ประตูใหญ่",
+              "english": "Notice: the emergency exit is near the big door."
+            },
+            {
+              "text": "ห้ามวางของหน้าทางออก",
+              "english": "Do not put things in front of the exit."
+            },
+            {
+              "text": "ห้ามเล่นไฟ อันตราย",
+              "english": "No playing with fire. Danger."
+            },
+            {
+              "text": "ขอให้แขกทุกท่านฝันดี และพักผ่อนให้สบาย",
+              "english": "We wish all guests good dreams and a restful stay."
+            },
+            {
+              "text": "ผมชอบคำสุดท้ายครับ",
+              "english": "I like the last words.",
+              "speaker": "S"
+            },
+            {
+              "text": "เมื่อก่อนผมเหงา เพราะอ่านข้อความไม่ออก",
+              "english": "I used to feel lonely because I couldn't read the notices.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมกังวลว่าผมจะอ่านผิด แต่ตอนนี้อ่านง่ายขึ้นแล้วครับ",
+              "english": "I worried that I would read wrongly, but now it is easier to read.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่คลินิก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนบ่าย มะลิไปที่คลินิกของเพื่อน",
+              "english": "In the afternoon Mali went to a friend's clinic."
+            },
+            {
+              "text": "ที่ห้องรอมีข้อความหลายอย่าง",
+              "english": "There were several notices in the waiting room."
+            },
+            {
+              "text": "กรุณาเงียบ มีคนป่วยพักผ่อนอยู่",
+              "english": "Please be quiet. There are patients resting."
+            },
+            {
+              "text": "ผู้ป่วยฉุกเฉิน เข้าทางนี้",
+              "english": "Emergency patients, enter this way."
+            },
+            {
+              "text": "ระเบียบของคลินิก: กรุณาแยกขวดและกระดาษ",
+              "english": "Clinic rules: please separate bottles and paper."
+            },
+            {
+              "text": "ตรงนี้เป็นที่นั่งสำหรับแม่กับเด็กค่ะ",
+              "english": "This is the seating for mothers and children.",
+              "speaker": "M"
+            },
+            {
+              "text": "ห้ามหยุดรถหน้าประตู โปรดถอยรถออกไป",
+              "english": "No stopping cars at the door. Please reverse out."
+            },
+            {
+              "text": "รถในซอยต้องช้า ไม่ควรเร็วกว่า 20 กิโลเมตรต่อชั่วโมง",
+              "english": "Cars in the lane must be slow, and should not go faster than 20 kilometres an hour."
+            },
+            {
+              "text": "คนที่เข้ามาตรวจสมควรนั่งรอที่เก้าอี้",
+              "english": "Those who come in for a check-up should wait on the chairs."
+            },
+            {
+              "text": "ฉุกเฉินโทร 1669",
+              "english": "Emergency: call 1669."
+            },
+            {
+              "text": "อ่านแล้วเหมือนคำสั่งเลยครับ",
+              "english": "Reading it, it's like an order.",
+              "speaker": "S"
+            },
+            {
+              "text": "ข้อความแบบนี้เขียนสั้นๆ ค่ะ ไม่ต้องมีคำยาว",
+              "english": "Notices like this are written short. They don't need long words.",
+              "speaker": "M"
+            },
+            {
+              "text": "อันตราย ห้ามเข้า",
+              "english": "Danger. No entry."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "กล่องยา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เพื่อนของมะลิให้ยาแซมกล่องหนึ่ง",
+              "english": "Mali's friend gave Sam a box of medicine."
+            },
+            {
+              "text": "มะลิอ่านที่กล่องให้แซมฟัง",
+              "english": "Mali read the box to Sam."
+            },
+            {
+              "text": "วิธีใช้: กินหลังอาหาร ครั้งละหนึ่งช้อน",
+              "english": "How to use: take after meals, one spoon at a time."
+            },
+            {
+              "text": "ขนาดที่ใช้: วันละ 3 ครั้ง",
+              "english": "Dose: three times a day."
+            },
+            {
+              "text": "ห้ามกินมาก เพราะอาจเป็นอันตราย",
+              "english": "Do not take more than this, as it may be dangerous."
+            },
+            {
+              "text": "เก็บให้พ้นมือเด็ก",
+              "english": "Keep out of reach of children."
+            },
+            {
+              "text": "ถ้าไม่ดีขึ้นใน 3 วัน สมควรไปพบหมอ",
+              "english": "If there is no improvement in 3 days, it is advisable to see a doctor."
+            },
+            {
+              "text": "ถ้าหายใจไม่ออก ให้ไปโรงพยาบาลทันที",
+              "english": "If you cannot breathe, go to the hospital at once."
+            },
+            {
+              "text": "เรื่องนี้สำคัญที่สุดเลยครับ",
+              "english": "This is the most important.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วิธีทำอาหาร",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เย็นนั้น แซมอยากทำอาหารเอง",
+              "english": "That evening Sam wanted to cook for himself."
+            },
+            {
+              "text": "มะลิให้บัตรวิธีทำอาหารใบหนึ่ง",
+              "english": "Mali gave him a recipe card."
+            },
+            {
+              "text": "ข้าวผัดหมูใส่ไข่",
+              "english": "Fried rice with pork and egg."
+            },
+            {
+              "text": "ข้าวสาร 200 กรัม หมู 100 กรัม ไข่ 2 ใบ",
+              "english": "200 grams of rice, 100 grams of pork, 2 eggs."
+            },
+            {
+              "text": "ใช้กระทะขนาดใหญ่",
+              "english": "Use a pan of large size."
+            },
+            {
+              "text": "ผักที่มีกลิ่นหอม 50 กรัม",
+              "english": "50 grams of fragrant vegetables."
+            },
+            {
+              "text": "วิธีทำ: หั่นหมูและผัก ตีไข่ใส่น้ำปลา",
+              "english": "Method: cut the pork and vegetables, beat the eggs and add fish sauce."
+            },
+            {
+              "text": "ทอดไข่ในกระทะให้สุก แล้วผัดข้าวกับไข่",
+              "english": "Fry the egg in the pan until cooked, then stir-fry the rice with the egg."
+            },
+            {
+              "text": "ระวังกระทะร้อน",
+              "english": "Beware of the hot pan."
+            },
+            {
+              "text": "ผมเอาไปลองทำดูได้ไหมครับ",
+              "english": "May I take it and try cooking?",
+              "speaker": "S"
+            },
+            {
+              "text": "ได้ค่ะ ถ้าคุณเสร็จช้า ฉันก็ช่วยได้",
+              "english": "Yes. If you are slow to finish, I can help.",
+              "speaker": "M"
+            },
+            {
+              "text": "แต่คุณแซมต้องลองทำเองก่อนค่ะ",
+              "english": "But you must try it yourself first.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่โบสถ์",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันอาทิตย์ แซมเห็นข้อความของโบสถ์ติดอยู่ที่ประตู",
+              "english": "On Sunday Sam saw the church's notices on the door."
+            },
+            {
+              "text": "วันอาทิตย์หน้า งานฉลองของโบสถ์ เริ่ม 10.00",
+              "english": "Next Sunday: the church celebration, starting at 10.00."
+            },
+            {
+              "text": "ผู้ที่อยากช่วย กรุณาแจ้งก่อนวันที่ 15",
+              "english": "Anyone who wants to help, please let us know before the 15th."
+            },
+            {
+              "text": "โปรดลุกยืนเมื่อร้องเพลง",
+              "english": "Please stand when we sing."
+            },
+            {
+              "text": "ห้ามนำสัตว์เข้ามาในห้อง",
+              "english": "Animals may not be brought into the room."
+            },
+            {
+              "text": "ขนาดห้องไม่ใหญ่ คนที่ไปถึงก่อนควรนั่งใกล้ๆ กัน",
+              "english": "The room is not large. Those who arrive first should sit close together."
+            },
+            {
+              "text": "ถ้าอยากช่วยงานฉลอง คุณแซมต้องแจ้งก่อนวันที่ 15 ค่ะ",
+              "english": "If you want to help with the celebration, you have to tell them before the 15th.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมแจ้งหลังจากกินข้าวครับ",
+              "english": "I'll tell them after I've eaten.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ข้อความของแซม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คืนนั้น แซมเขียนข้อความติดที่ประตูห้อง",
+              "english": "That night Sam wrote a note to stick on his door."
+            },
+            {
+              "text": "ผมเขียนว่า ห้ามเข้า ผมนอน",
+              "english": "I wrote: No entry. I am sleeping.",
+              "speaker": "S"
+            },
+            {
+              "text": "ข้อความนี้ฟังดูแรงไปค่ะ",
+              "english": "This note sounds too harsh.",
+              "speaker": "M"
+            },
+            {
+              "text": "ถ้าเขียนว่า กรุณาอย่าเข้า ผมนอนอยู่ จะดีกว่าค่ะ",
+              "english": "If you write \"Please don't come in, I am sleeping\", it will be better.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมต้องเขียนอย่างไรถ้าอยากให้ป้าเข้ามาได้ครับ",
+              "english": "How should I write if I want Auntie to be able to come in?",
+              "speaker": "S"
+            },
+            {
+              "text": "เขียนว่า ป้าเข้ามาได้เลย ผมไม่ได้นอน",
+              "english": "Write: Auntie, you may come in, I'm not asleep.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมเข้าใจแล้วครับ ข้อความที่ดีต้องสั้น และต้องไม่แรงไป",
+              "english": "I understand. A good notice must be short and not too harsh.",
+              "speaker": "S"
+            },
+            {
+              "text": "ถูกแล้วค่ะ และต้องอ่านแล้วเข้าใจทันที",
+              "english": "Right, and it must be understood at once on reading.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

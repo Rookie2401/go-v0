@@ -1,0 +1,445 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-29",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "สัมภาษณ์พยาบาล",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-29",
+    "title": "สัมภาษณ์พยาบาล — Interview with a nurse (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Interview for the church newsletter. A nurse should check the hospital details (night shift hours, ward routine); Mali's words are Sam's invention of what a nurse might say and must not be taken as her real biography. Question and answer format; อะไร / ทำไม / อย่างไร."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "work",
+    "nursing",
+    "interview",
+    "newsletter",
+    "night shift"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "S": "แซม",
+    "M": "มะลิ",
+    "_gender": "S=m; M=f"
+  },
+  "sections": [
+    {
+      "title": "ก่อนสัมภาษณ์",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แซมต้องเขียนเรื่องหนึ่งเรื่องให้จดหมายข่าวของโบสถ์",
+              "english": "Sam had to write a piece for the church newsletter."
+            },
+            {
+              "text": "เขาเลือกสัมภาษณ์มะลิ",
+              "english": "He chose to interview Mali."
+            },
+            {
+              "text": "ตอนบ่ายวันอาทิตย์ ทั้งสองคนนั่งที่ร้านของป้าแดง",
+              "english": "On Sunday afternoon the two of them sat at Auntie Daeng's shop."
+            },
+            {
+              "text": "แซมเปิดสมุด และเตรียมปากกา",
+              "english": "Sam opened his notebook and got his pen ready."
+            },
+            {
+              "text": "ขอบคุณมากครับที่ให้สัมภาษณ์",
+              "english": "Thank you very much for giving the interview.",
+              "speaker": "S"
+            },
+            {
+              "text": "ยินดีค่ะ แต่ฉันกลัวว่าฉันจะไม่มีอะไรให้เล่านะคะ",
+              "english": "My pleasure, but I'm afraid I haven't got anything to tell.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมมั่นใจครับว่ามี ผมมั่นใจในตัวมะลิ",
+              "english": "I'm sure you have. I have confidence in you.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ทำไมถึงเป็นพยาบาล",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เริ่มเลยนะครับ ทำไมมะลิจึงเป็นพยาบาลครับ",
+              "english": "Let me begin: why did you become a nurse?",
+              "speaker": "S"
+            },
+            {
+              "text": "ตอนเด็กๆ ยายของฉันป่วยค่ะ",
+              "english": "When I was little my grandmother was ill.",
+              "speaker": "M"
+            },
+            {
+              "text": "ที่หมู่บ้านไม่มีหมอ และไม่มีใครช่วยยายได้ดี",
+              "english": "In the village there was no doctor, and no one could help her well.",
+              "speaker": "M"
+            },
+            {
+              "text": "ฉันนั่งอยู่ข้างเตียงยาย และฉันคิดว่า สักวันฉันจะดูแลคนป่วยให้ได้ค่ะ",
+              "english": "I sat by her bed and thought that one day I would look after the sick.",
+              "speaker": "M"
+            },
+            {
+              "text": "ตอนนี้ยายเป็นอย่างไรบ้างครับ",
+              "english": "How is your grandmother now?",
+              "speaker": "S"
+            },
+            {
+              "text": "ยายหายแล้วค่ะ และยายภูมิใจในตัวฉันมาก",
+              "english": "She is better, and she is very proud of me.",
+              "speaker": "M"
+            },
+            {
+              "text": "ฉันก็ภูมิใจที่ได้เป็นพยาบาลเหมือนกัน",
+              "english": "I am proud to be a nurse too.",
+              "speaker": "M"
+            },
+            {
+              "text": "ภูมิใจที่สุดเรื่องอะไรครับ",
+              "english": "What are you proudest of?",
+              "speaker": "S"
+            },
+            {
+              "text": "เวลาคนไข้ที่เคยป่วยหนัก กลับมาหาฉันแล้วยิ้มค่ะ",
+              "english": "When a patient who was once seriously ill comes back to me and smiles.",
+              "speaker": "M"
+            },
+            {
+              "text": "ตอนนั้นฉันรู้สึกชื่นใจมากค่ะ",
+              "english": "Then I feel really refreshed.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คืนที่ยาก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "งานพยาบาลยากที่สุดตอนไหนครับ",
+              "english": "When is nursing work hardest?",
+              "speaker": "S"
+            },
+            {
+              "text": "ช่วงเวรดึกค่ะ ฉันเข้าเวรสัปดาห์ละสามคืน",
+              "english": "During the night shift. I work three nights a week.",
+              "speaker": "M"
+            },
+            {
+              "text": "เวรดึกเริ่มสี่ทุ่ม และเลิกตอนเจ็ดโมงเช้า ในช่วงนั้นคนมาน้อย แต่ใจต้องตื่นอยู่",
+              "english": "The night shift starts at ten o'clock and ends at seven in the morning. During that time few people come, but one's mind must stay awake.",
+              "speaker": "M"
+            },
+            {
+              "text": "ตอนดึก คนไข้หลายคนนอนไม่หลับ และบางคนกลัวค่ะ",
+              "english": "In the small hours many patients can't sleep, and some are afraid.",
+              "speaker": "M"
+            },
+            {
+              "text": "มีคืนไหนที่ยากมากไหมครับ",
+              "english": "Was there a night that was very hard?",
+              "speaker": "S"
+            },
+            {
+              "text": "มีค่ะ คืนหนึ่งในช่วงฤดูฝน",
+              "english": "Yes, one night in the rainy season.",
+              "speaker": "M"
+            },
+            {
+              "text": "เด็กคนหนึ่งมีไข้สูง และแม่ของเขากลัวมาก",
+              "english": "A child had a high fever, and his mother was very afraid.",
+              "speaker": "M"
+            },
+            {
+              "text": "ฉันดูแลเขาทั้งคืน ฉันไม่ได้นั่งเลยค่ะ",
+              "english": "I looked after him all night, and didn't sit down at all.",
+              "speaker": "M"
+            },
+            {
+              "text": "พอตีห้า ไข้ก็ลดลง และเด็กก็หลับ",
+              "english": "By five o'clock the fever went down and the child slept.",
+              "speaker": "M"
+            },
+            {
+              "text": "ฉันยืนยันได้ว่า คืนนั้นฉันเหนื่อยที่สุด แต่ก็มีความสุขที่สุด ฉันยืนยันกับตัวเองว่าจะเป็นพยาบาลต่อไป",
+              "english": "I can say for certain that that night I was most tired, but also happiest.",
+              "speaker": "M"
+            },
+            {
+              "text": "คุณชนะความกลัวของตัวเองได้อย่างไรครับ ผมอยากรู้ว่าตอนที่ยากที่สุดเป็นอย่างไร",
+              "english": "How do you overcome your own fear? I'd like to know about the hardest time.",
+              "speaker": "S"
+            },
+            {
+              "text": "ฉันเคยชนะความกลัวไม่ได้เลยค่ะ ตอนเป็นนักเรียน แต่ฉันอธิษฐาน และพอผ่านไป ฉันก็มั่นใจขึ้น",
+              "english": "I can't win every time, but I pray, and as time passes I gain confidence.",
+              "speaker": "M"
+            },
+            {
+              "text": "ฉันบอกพระเจ้าว่า ฉันกลัว และขอให้พระเจ้าอยู่กับฉัน",
+              "english": "I tell God that I'm afraid, and ask him to be with me.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คนไข้ที่เป็นชาวนา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คนไข้ของมะลิเป็นคนแบบไหนครับ",
+              "english": "What kind of people are your patients?",
+              "speaker": "S"
+            },
+            {
+              "text": "ส่วนมากเป็นเกษตรกรค่ะ โดยมากในฤดูกาลทำนา",
+              "english": "Mostly farmers, especially in the rice-farming season.",
+              "speaker": "M"
+            },
+            {
+              "text": "ในฤดูกาลที่ฝนมา เกษตรกรที่ไม่มีเงินซื้อปุ๋ย ก็ไม่มาหาหมอค่ะ",
+              "english": "In the season when the rain comes, farmers who have no money for fertiliser don't come to the doctor.",
+              "speaker": "M"
+            },
+            {
+              "text": "เกษตรกรเหล่านั้นกลัวว่าผลผลิตจะไม่ดี และกลัวขาดทุนค่ะ",
+              "english": "Those farmers fear the harvest will not be good, and fear a loss.",
+              "speaker": "M"
+            },
+            {
+              "text": "เมล็ดข้าวที่แห้งเกินไป ก็ทำให้พวกเขาไม่มีกำไร",
+              "english": "Seed rice that is too dry leaves them with no profit.",
+              "speaker": "M"
+            },
+            {
+              "text": "ชาวนาบางคนมีผื่นขึ้นที่มือ เพราะใช้ปุ๋ยมาก",
+              "english": "Some rice farmers get a rash on the hands because they use a lot of fertiliser.",
+              "speaker": "M"
+            },
+            {
+              "text": "บางคนอยู่ในน้ำนาน มือก็แห้งและเจ็บค่ะ",
+              "english": "Some stay in the water so long that the hands dry out and hurt.",
+              "speaker": "M"
+            },
+            {
+              "text": "เมื่อผลผลิตไม่ดี ชาวนาก็กังวล แล้วก็ป่วยง่ายค่ะ ปีที่ขาดทุนและนาแห้ง คนไข้มาที่โรงพยาบาลมากขึ้น",
+              "english": "When the harvest is poor, the farmers worry and fall ill easily. In a year of losses and dry fields, more patients come to the hospital.",
+              "speaker": "M"
+            },
+            {
+              "text": "ชาวนาที่ได้กำไรจากผลผลิต ก็ซื้อเมล็ดข้าวกับปุ๋ยปีหน้าได้ แต่ถ้าขาดทุน ต้องรอฤดูกาลหน้า",
+              "english": "A farmer who makes a profit on his harvest can buy next year's seed and fertiliser, but after a loss he must wait for the next season.",
+              "speaker": "M"
+            },
+            {
+              "text": "ปีที่ได้กำไร คนไข้ก็ยิ้มบ่อยขึ้น",
+              "english": "In years with a profit, patients smile more often.",
+              "speaker": "M"
+            },
+            {
+              "text": "บางคนมาหาหมอ เพราะกังวลเรื่องเมล็ดข้าวด้วยค่ะ",
+              "english": "Some come to see the doctor because they worry about the seed rice too.",
+              "speaker": "M"
+            },
+            {
+              "text": "งานของมะลิเกี่ยวข้องกับชีวิตของคนในซอยมากนะครับ",
+              "english": "Your work is very closely involved with the lives of people in the lane.",
+              "speaker": "S"
+            },
+            {
+              "text": "ใช่ค่ะ ฉะนั้นฉันจึงชอบอยู่ที่นี่",
+              "english": "Yes, and so I like being here.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันหยุดของมะลิ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เวลาว่าง มะลิทำอะไรครับ",
+              "english": "What do you do in your free time?",
+              "speaker": "S"
+            },
+            {
+              "text": "ฉันอ่านนิทานให้บอลฟังค่ะ",
+              "english": "I read fables to Ball.",
+              "speaker": "M"
+            },
+            {
+              "text": "แม้จะเหนื่อย ฉันก็ยังดีใจ ผลที่ได้คือคนไข้ยิ้มค่ะ",
+              "english": "Though tired, I'm still glad; the result is that the patients smile.",
+              "speaker": "M"
+            },
+            {
+              "text": "คนไข้คงจะกลัว หากไม่มีใครอยู่ด้วยค่ะ",
+              "english": "Patients would probably be afraid if no one stayed with them.",
+              "speaker": "M"
+            },
+            {
+              "text": "คืนก่อน ฉันอ่านเรื่องหมาป่ากับลูกแกะ",
+              "english": "The other night I read the story of the wolf and the lamb.",
+              "speaker": "M"
+            },
+            {
+              "text": "บอลถามว่า พาลคืออะไร และหมาป่าทำไมหาความกับลูกแกะ",
+              "english": "Ball asked what พาล means and why the wolf had to pick a quarrel with the lamb.",
+              "speaker": "M"
+            },
+            {
+              "text": "ฉันบอกว่า นั่นเป็นวิสัยของพาล ที่ไม่อยากเถียงด้วยเหตุผล",
+              "english": "I said that is the nature of a bully, who doesn't want to argue with reasons.",
+              "speaker": "M"
+            },
+            {
+              "text": "บอลชอบตอนที่หมาป่าตะครุบลูกแกะ แต่ฉันไม่ชอบเลย",
+              "english": "Ball likes the part where the wolf pounces on the lamb, but I don't like it at all.",
+              "speaker": "M"
+            },
+            {
+              "text": "แล้วเขาเถียงมะลิไหมครับ",
+              "english": "And does he argue with you?",
+              "speaker": "S"
+            },
+            {
+              "text": "เถียงนักหนาค่ะ เขาบอกว่าลูกแกะควรเอาก้อนหินเหวี่ยงใส่หมาป่า",
+              "english": "He argues terribly. He says the lamb should have thrown a stone at the wolf.",
+              "speaker": "M"
+            },
+            {
+              "text": "บอลบอกว่า ถ้าเขาเป็นลูกแกะ เขาจะตะครุบหมาป่าก่อน",
+              "english": "Ball says that if he were the lamb, he would pounce on the wolf first.",
+              "speaker": "M"
+            },
+            {
+              "text": "ชั่วเกินไปไหมครับ",
+              "english": "Isn't that too wicked?",
+              "speaker": "S"
+            },
+            {
+              "text": "ไม่ชั่วหรอกค่ะ ฉันก็นึกอยากช่วยลูกแกะเหมือนกัน",
+              "english": "Not wicked, no. I too wished to help the lamb.",
+              "speaker": "M"
+            },
+            {
+              "text": "บอลกินขนมชิ้นหนึ่ง แล้วก็หลับไปค่ะ",
+              "english": "Ball ate a piece of cake and fell asleep.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คำแนะนำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "มะลิจะแนะนำอะไรให้คนที่อยากเป็นพยาบาลครับ",
+              "english": "What would you advise people who want to become nurses?",
+              "speaker": "S"
+            },
+            {
+              "text": "ฉันอยากบอกสามอย่างค่ะ",
+              "english": "I'd like to say three things.",
+              "speaker": "M"
+            },
+            {
+              "text": "หนึ่ง อย่ากลัวเหนื่อย",
+              "english": "One: don't be afraid of getting tired.",
+              "speaker": "M"
+            },
+            {
+              "text": "สอง ต้องรักคนไข้ ไม่ใช่รักเพียงเงินเดือน",
+              "english": "Two: you must love the patients, not just the salary.",
+              "speaker": "M"
+            },
+            {
+              "text": "สาม อย่าเลือกว่าจะช่วยใคร ต้องดูแลทุกคนค่ะ",
+              "english": "Three: don't choose whom to help; look after everyone.",
+              "speaker": "M"
+            },
+            {
+              "text": "คนที่ชนะใจตัวเองได้ ก็ช่วยคนอื่นได้ค่ะ",
+              "english": "A person who can win over his own heart can help others.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมยืนยันได้ว่า มะลิทำอย่างนั้นจริงครับ",
+              "english": "I can confirm that Mali really does that.",
+              "speaker": "S"
+            },
+            {
+              "text": "แซมปิดสมุด และขอบคุณมะลิอีกครั้ง",
+              "english": "Sam closed his notebook and thanked Mali again."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

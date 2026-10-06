@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-24",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ฝนกับคนทำนา",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-24",
+    "title": "ฝนกับคนทำนา — The rainy season and the farmers (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Magazine / church-newsletter register (written Thai, no polite particles outside the quoted farmer). Check the farming facts (rice calendar in the north, prices as examples only), แม้ … แต่ …, เพราะ … จึง …, ซึ่ง, and the respectful mention of merit-making. Numbers are illustrative, not statistics. The word ชาวนา is used only three times; elsewhere \"คนทำนา\" / \"เขา\"."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "farming",
+    "rice",
+    "rain",
+    "floods",
+    "prices",
+    "church help"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "F": "ลุงดำ",
+    "_gender": "F=m"
+  },
+  "sections": [
+    {
+      "title": "ฝนกำหนดปีของคนทำนา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ในภาคเหนือของไทย ฤดูฝนเริ่มประมาณเดือนพฤษภาคม และจบประมาณเดือนตุลาคม",
+              "english": "In northern Thailand the rainy season begins around May and ends around October."
+            },
+            {
+              "text": "ฤดูกาลนี้สำคัญที่สุดสำหรับเกษตรกร",
+              "english": "This season is the most important one for farmers."
+            },
+            {
+              "text": "เกษตรกรหลายคนบอกว่า ฝนเป็นเหมือนเจ้านายของพวกเขา",
+              "english": "Many farmers say that the rain is like their boss."
+            },
+            {
+              "text": "ชาวนาเริ่มทำงานเมื่อฝนมา แม้บางปีฝนมาช้า",
+              "english": "Rice farmers begin work when the rain comes, even though some years it comes late."
+            },
+            {
+              "text": "เขาเตรียมนา แล้วใส่เมล็ดข้าวลงไป",
+              "english": "They prepare the field and then put the rice seeds in."
+            },
+            {
+              "text": "ถ้าฝนมาช้า ข้าวก็ไม่โต",
+              "english": "If the rain comes late, the rice does not grow."
+            },
+            {
+              "text": "แม้ฝนมาเร็ว ก็ไม่ใช่ว่าจะดีเสมอไป",
+              "english": "Even if the rain comes early, it is not always good."
+            },
+            {
+              "text": "ถ้าฝนตกมากเกินไป น้ำก็ท่วมทุ่ง และน้ำก็ซัดข้าวไป",
+              "english": "If it rains too much, the water floods the fields and the water washes the rice away."
+            },
+            {
+              "text": "คนทำนาจึงต้องดูท้องฟ้าทุกเช้า",
+              "english": "Rice farmers therefore have to watch the sky every morning."
+            },
+            {
+              "text": "เมื่อท้องฟ้ามัว ก็หมายถึงฝนจะมา",
+              "english": "When the sky is hazy, it means rain is coming."
+            },
+            {
+              "text": "เมื่อท้องฟ้าสว่างและแห้ง ก็หมายถึงต้องรอ",
+              "english": "When the sky is bright and dry, it means one must wait."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ปีนี้เป็นอย่างไร",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ลุงดำเป็นชาวนาในหมู่บ้านใกล้ลำพูน",
+              "english": "Uncle Dam is a rice farmer in a village near Lamphun."
+            },
+            {
+              "text": "เขามีนาสิบห้าไร่ และเลี้ยงเป็ดไว้ในนาด้วย",
+              "english": "He has fifteen rai of fields and keeps ducks in the fields too."
+            },
+            {
+              "text": "ปีนี้ฝนมาช้ากว่าปีก่อนครับ",
+              "english": "This year the rain came later than last year.",
+              "speaker": "F"
+            },
+            {
+              "text": "ผมรอจนนาแห้ง เมล็ดข้าวก็แห้งไปด้วยครับ ผมกลัวมาก",
+              "english": "I waited until the field was dry, and the seeds dried too. I was very afraid.",
+              "speaker": "F"
+            },
+            {
+              "text": "พอฝนมา ผมก็ค่อยๆ เริ่มปลูก",
+              "english": "When the rain came, I gradually began to plant.",
+              "speaker": "F"
+            },
+            {
+              "text": "ที่นาของผมอยู่ใกล้ลำธาร ถ้าน้ำท่วม รถกระบะก็ข้ามไม่ได้ครับ",
+              "english": "My fields are near a stream; if it floods, the pickup truck cannot cross.",
+              "speaker": "F"
+            },
+            {
+              "text": "ที่ที่พักกลางนา ลุงดำได้ยินเสียงฝนดังบนหลังคาสังกะสี",
+              "english": "In his hut in the middle of the fields Uncle Dam heard the rain loud on the tin roof."
+            },
+            {
+              "text": "ขณะที่ฝนตก เขาได้กลิ่นดินที่หอมมาก",
+              "english": "While it rained, he smelled the earth, which was very fragrant."
+            },
+            {
+              "text": "เขาบอกว่า ทุกคนชอบกลิ่นนี้",
+              "english": "He says everyone likes this smell."
+            },
+            {
+              "text": "เมื่อน้ำลง ในนามีเลน ซึ่งทำให้ข้าวโต",
+              "english": "When the water falls, the field has mud, which helps the rice grow."
+            },
+            {
+              "text": "ในที่ที่น้ำใส เป็ดก็กินปลาตัวเล็กได้",
+              "english": "Where the water is clear, the ducks can eat small fish."
+            },
+            {
+              "text": "ฟ้าสว่างทุกเช้า ลุงดำก็ออกไปที่ทุ่ง และค่อยๆ เดินดูข้าว",
+              "english": "Every morning when the sky grew light, Uncle Dam went out to the fields and slowly walked looking at the rice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ปุ๋ย ราคา และกำไร",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คนทำนาต้องใช้ปุ๋ย เพื่อให้ผลผลิตดี",
+              "english": "Farmers must use fertiliser so that the harvest is good."
+            },
+            {
+              "text": "ปุ๋ยหนึ่งถุงราคา 800 บาท และแพงขึ้นทุกปี ปุ๋ยมีหลายชนิด",
+              "english": "One bag of fertiliser costs 800 baht and gets dearer every year. There are many kinds."
+            },
+            {
+              "text": "ผลผลิตของนาหนึ่งไร่ได้ประมาณ 60 ถัง",
+              "english": "One rai of field gives a harvest of about 60 tanks."
+            },
+            {
+              "text": "ข้าวหนึ่งถังขายได้ 120 บาท ในปีที่ราคาดี",
+              "english": "A tank of rice sells for 120 baht in a year when the price is good."
+            },
+            {
+              "text": "ปีที่ขายได้ราคาดี ก็มีกำไร",
+              "english": "In a year when it sells at a good price, there is profit."
+            },
+            {
+              "text": "ปีที่ราคาตก ก็อาจขาดทุน",
+              "english": "In a year when the price falls, there may be a loss."
+            },
+            {
+              "text": "เมื่อขาดทุน เขาก็ไม่มีเงินซื้อของปีหน้า",
+              "english": "When he makes a loss, he has no money to buy things for next year."
+            },
+            {
+              "text": "คนทำนาจึงเปรียบเทียบอยู่เสมอว่า ปีนี้กำไรหรือขาดทุน",
+              "english": "Rice farmers therefore always compare whether this year is a profit or a loss."
+            },
+            {
+              "text": "ผลผลิตดีไหม ต้องดูดังนี้ ฝน ปุ๋ย และเมล็ดข้าว",
+              "english": "Whether the harvest is good depends on the following: rain, fertiliser and rice seed."
+            },
+            {
+              "text": "ข้อดีและข้อเสียของการปลูกข้าวมีดังนี้",
+              "english": "The advantages and disadvantages of growing rice are as follows."
+            },
+            {
+              "text": "ข้อดีคือข้าวมีคนซื้อเสมอ",
+              "english": "The advantage is that rice always has buyers."
+            },
+            {
+              "text": "ข้อเสียคือราคาขึ้นลง และฝนก็ขึ้นลงตามปี",
+              "english": "The disadvantage is that the price goes up and down, and the rain is uncertain."
+            },
+            {
+              "text": "บางคนคิดว่า ควรปลูกอย่างอื่นด้วย",
+              "english": "Some people think they should grow something else too."
+            },
+            {
+              "text": "บางคนเห็นว่า การปลูกข้าวมีเหตุผลของมัน",
+              "english": "Others see that growing rice has its reasons."
+            },
+            {
+              "text": "เหตุผลดังนี้ ข้าวเป็นอาหารของทุกคน และเก็บได้นาน",
+              "english": "The reasons are as follows: rice is everyone's food and keeps a long time."
+            },
+            {
+              "text": "ด้านหนึ่ง ข้าวเป็นอาหารที่ทุกคนต้องกิน",
+              "english": "On one side, rice is food that everyone must eat."
+            },
+            {
+              "text": "อีกด้านหนึ่ง งานนี้ค่อนข้างเหนื่อย",
+              "english": "On the other side, this work is rather tiring."
+            },
+            {
+              "text": "ด้านความเป็นอยู่ คนทำนาแตกต่างกันตามขนาดของนา",
+              "english": "In terms of livelihood, rice farmers differ according to the size of their fields."
+            },
+            {
+              "text": "คนที่มีนาเล็ก แตกต่างจากคนที่มีนาใหญ่",
+              "english": "A person with a small field differs from one with a large field."
+            },
+            {
+              "text": "ความจริงแท้จริงแล้ว ยิ่งมีนาใหญ่ ก็ยิ่งต้องใช้คน",
+              "english": "In real truth, the bigger the field, the more people are needed."
+            },
+            {
+              "text": "คนที่อยู่ลำพังเหนื่อยกว่า เพราะไม่มีใครช่วยเก็บเกี่ยว",
+              "english": "A person on his own is more tired, because there is no one to help with the harvest."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ชาวบ้านช่วยกัน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ชาวบ้านจึงมักรวมกลุ่มกัน",
+              "english": "So villagers often form groups."
+            },
+            {
+              "text": "พวกเขาซื้อปุ๋ยพร้อมกัน เพื่อให้ราคาถูกลง",
+              "english": "They buy fertiliser together so that the price comes down."
+            },
+            {
+              "text": "พวกเขายังช่วยกันบรรทุกข้าวไปขายที่ตลาด",
+              "english": "They also help one another load rice to sell at the market."
+            },
+            {
+              "text": "ลุงดำคิดว่า การช่วยกันดีกว่าการทำคนเดียว",
+              "english": "Uncle Dam thinks that helping one another is better than doing it alone."
+            },
+            {
+              "text": "คนที่ถือดีว่าตนทำเองได้ ก็มักเหนื่อยกว่าคนอื่น",
+              "english": "Those who are proud that they can do it themselves often get more tired than others."
+            },
+            {
+              "text": "เขาเปรียบเทียบสองปี ปีที่ช่วยกัน กับปีที่ไม่ช่วยกัน ปีที่ช่วยกันได้กำไรดีกว่า แม้ฝนจะน้อย",
+              "english": "He compared two years: the year of helping together and the year of not helping. The year of helping had more profit, even though the rain was less."
+            },
+            {
+              "text": "ชาวบ้านดูนาด้วยกัน เพราะมีคนลักขโมยข้าวบ้าง",
+              "english": "The villagers watch the fields together, because there are sometimes people who steal rice."
+            },
+            {
+              "text": "โบสถ์ในหมู่บ้านก็ช่วยด้วย",
+              "english": "The village church helps too."
+            },
+            {
+              "text": "คนที่เข้าโบสถ์บริจาคเงิน เพื่อซื้อเมล็ดข้าวให้ครอบครัวที่ไม่มีเงิน",
+              "english": "People who go to church donate money to buy rice seed for families without money."
+            },
+            {
+              "text": "ในปีที่น้ำท่วม คนทำนาบางคนขาดข้าวกิน",
+              "english": "In a year of flood, some farmers lacked rice to eat."
+            },
+            {
+              "text": "โบสถ์จึงเอารถกระบะบรรทุกข้าวสารไปแจกให้",
+              "english": "So the church took a pickup truck loaded with rice to give out."
+            },
+            {
+              "text": "ถนนขาดอยู่หลายที่ และรถต้องข้ามสะพานไม้ที่ชาวบ้านซ่อมไว้",
+              "english": "The road was broken in several places, and the truck had to cross a wooden bridge that the villagers had repaired."
+            },
+            {
+              "text": "เมื่อรถไปถึง ทุกคนดีใจและยิ้ม",
+              "english": "When the truck arrived, everyone was glad and smiled."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เมื่อถึงเวลาเก็บเกี่ยว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "พอถึงเดือนพฤศจิกายน เขาก็เก็บเกี่ยวข้าว",
+              "english": "By November they harvest the rice."
+            },
+            {
+              "text": "ชีวิตตอนนั้นวุ่นวายมาก แม้ทุกคนเหนื่อย ก็ยังยิ้มได้",
+              "english": "Life at that time is very hectic, but even though everyone is tired, they can still smile."
+            },
+            {
+              "text": "ผลผลิตที่เพิ่มขึ้น ทำให้พวกเขาดีใจ",
+              "english": "A harvest that has increased makes them glad."
+            },
+            {
+              "text": "หลายคนเอาข้าวใหม่ไปทำบุญถวายที่วัด",
+              "english": "Many take new rice to make merit and offer it at the temple."
+            },
+            {
+              "text": "มีสุภาษิตเก่าบอกว่า ข้าวดีเพราะมีฝน และมีฝนเพราะมีคนรอ",
+              "english": "An old saying goes: rice is good because of rain, and there is rain because people wait."
+            },
+            {
+              "text": "ดังนั้น ไม่ว่าฝนจะมาเร็วหรือช้า เขาก็ยังรอ",
+              "english": "So whether the rain comes early or late, they still wait."
+            },
+            {
+              "text": "ฤดูกาลหนึ่งผ่านไป และอีกฤดูกาลหนึ่งก็เริ่มขึ้น",
+              "english": "One season passes and another begins."
+            },
+            {
+              "text": "เกษตรกรทุกคนรู้ดีว่า ฝนไม่ใช่ของใคร แต่เป็นของทุกคน ชาวนาก็เหมือนกัน",
+              "english": "Every farmer knows that the rain belongs to no one, but to everyone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "สรุปจากลุงดำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผมคิดว่า การช่วยกันมีข้อดีมาก และมีข้อเสียน้อยครับ",
+              "english": "I think helping one another has many advantages and few disadvantages.",
+              "speaker": "F"
+            },
+            {
+              "text": "ผมไม่เคยบ่นเรื่องฝน แม้ฝนมาช้าซ้ำแล้วซ้ำอีก ผมก็ไม่บ่นครับ",
+              "english": "I never grumble about the rain; even when it comes late again and again, I don't grumble.",
+              "speaker": "F"
+            },
+            {
+              "text": "พ่อค้าที่ซื้อข้าวบางคนก็ซื่อตรง บางคนก็ไม่ซื่อตรง เราต้องดูให้ดี",
+              "english": "Some of the traders who buy rice are honest and some are not; we must look carefully.",
+              "speaker": "F"
+            },
+            {
+              "text": "ดังนั้นผมจึงบอกทุกคนว่า ให้ช่วยกัน ดังนั้นผมไม่อยากอยู่ลำพัง",
+              "english": "So I told everyone to help one another; therefore I do not want to be alone.",
+              "speaker": "F"
+            },
+            {
+              "text": "ชาวบ้านทำคอกเป็ดใหม่หลังคาสังกะสี ผมพอใจมากครับ",
+              "english": "The villagers built a new duck pen with a tin roof; I'm very pleased.",
+              "speaker": "F"
+            },
+            {
+              "text": "ผมไม่มีเงินเหลือมาก แต่ผมก็พอใจ และคอกนั้นอยู่ได้นาน",
+              "english": "I haven't much money left, but I'm content, and the pen will last a long time.",
+              "speaker": "F"
+            },
+            {
+              "text": "ยิ่งช่วยกัน ผลก็ย่อมดีกว่า ความจริงแท้จริงคือเราต้องการกันครับ",
+              "english": "The more we help one another, the better the result naturally is; the real truth is that we need each other.",
+              "speaker": "F"
+            },
+            {
+              "text": "เหตุผลของผมง่ายๆ คือเราอยู่ฟ้าเดียวกัน ฝนเดียวกัน",
+              "english": "My reason is simple: we live under the same sky and the same rain.",
+              "speaker": "F"
+            },
+            {
+              "text": "คนที่ค่อนข้างมีเงิน กับคนที่ค่อนข้างจน ก็แตกต่างกันไม่มากเมื่อฝนมา",
+              "english": "The rather well-off and the rather poor do not differ much when the rain comes.",
+              "speaker": "F"
+            },
+            {
+              "text": "เมื่อเปรียบเทียบกัน ความจริงแท้จริงคือ ฝนกับใจคนสำคัญที่สุดครับ",
+              "english": "Comparing them, the real truth is that the rain and people's hearts matter most.",
+              "speaker": "F"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

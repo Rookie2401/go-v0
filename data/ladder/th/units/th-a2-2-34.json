@@ -1,0 +1,502 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-34",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ทำไมผมจึงมาเมืองไทย",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-34",
+    "title": "ทำไมผมจึงมาเมืองไทย — Why I came to Thailand (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Sam's longer testimony in the first person (no polite particles in narration). A Thai Christian reviewer should confirm that the faith language (พระวจนะ, พระองค์, สวรรค์, กางเขน, สรรเสริญ, ถวาย, บัญญัติ, ศัตรู) is natural and not stiff, and that the testimony respects the neighbours' own religion (it says it did not come to tell anyone they are wrong). The story is an invented composite for the course."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "testimony",
+    "call",
+    "mission",
+    "first year",
+    "friendship",
+    "faith"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ผมได้ยินเรื่องเมืองไทยครั้งแรก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผมโตมาในโบสถ์เล็กๆ ที่อเมริกา",
+              "english": "I grew up in a small church in America."
+            },
+            {
+              "text": "กิจกรรมของโบสถ์ที่ผมชอบที่สุดคือกิจกรรมของเด็กๆ",
+              "english": "The church activity I liked best was the one for the children."
+            },
+            {
+              "text": "วันหนึ่งมิชชันนารีคนหนึ่งมาเล่าเรื่องเมืองไทยให้เราฟัง",
+              "english": "One day a missionary came and told us about Thailand."
+            },
+            {
+              "text": "เขาเอารูปภูเขา ตลาด และวัดมาให้ดู",
+              "english": "He showed us pictures of mountains, markets and temples."
+            },
+            {
+              "text": "เขาบอกว่า เขามานมัสการพระเจ้าร่วมกับคนไทยที่นั่น",
+              "english": "He said that he worshipped God together with the Thai people there."
+            },
+            {
+              "text": "เขาไม่ได้บอกว่าใครผิด เขาบอกว่า คนที่นั่นเป็นมิตรสหายที่ดีของเขา",
+              "english": "He did not say anyone was wrong; he said that the people there were good friends of his."
+            },
+            {
+              "text": "ผมอายุสิบหกปี และผมฟังจนดึกในคืนนั้น",
+              "english": "I was sixteen, and I listened late into that night."
+            },
+            {
+              "text": "หลังจากนั้นผมติดตามรายงานของเขาทุกเดือน",
+              "english": "After that I followed his reports every month."
+            },
+            {
+              "text": "รายงานของเขาแสดงให้เห็นว่า งานที่นั่นไม่ง่าย",
+              "english": "His reports showed that the work there was not easy."
+            },
+            {
+              "text": "แต่ผมอ่านทุกครั้ง และผมเริ่มอธิษฐานเพื่อคนไทย",
+              "english": "But I read every time, and I began to pray for the Thai people."
+            },
+            {
+              "text": "โบสถ์ของผมเริ่มสนับสนุนเขาด้วยเงินเล็กน้อย",
+              "english": "My church began to support him with a little money."
+            },
+            {
+              "text": "นอกจากนี้ ผมยังเก็บเงินของผมเองเพื่อเขา",
+              "english": "Besides that, I also saved my own money for him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "พระวจนะที่เปลี่ยนใจผม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่ออายุสิบเจ็ดปี ผมไปประชุมกับโบสถ์ที่ภูเขา",
+              "english": "At seventeen I went to a church gathering in the mountains."
+            },
+            {
+              "text": "ที่นั่น เรามีกิจกรรมอ่านพระวจนะทุกเช้า",
+              "english": "There we had the activity of reading the Word every morning."
+            },
+            {
+              "text": "ผมอ่านเรื่องของพระเยซู และเห็นว่าพระองค์รักคน",
+              "english": "I read about Jesus and saw that he loves people."
+            },
+            {
+              "text": "พระเยซูเป็นชาวยิว แต่พระองค์พูดกับคนทุกคน",
+              "english": "Jesus was a Jew, but he spoke with everyone."
+            },
+            {
+              "text": "ชาวยิวและคนไทยต่างกัน แต่พระองค์รักทั้งสองฝ่าย",
+              "english": "Jews and Thais are different, but he loves both."
+            },
+            {
+              "text": "ผมอ่านว่า พระองค์พูดกับหญิงคนหนึ่งที่บ่อ",
+              "english": "I read that he spoke to a woman at a well."
+            },
+            {
+              "text": "หญิงคนนั้นไม่ใช่ชาวยิว เขาเป็นคนที่กระหายน้ำ",
+              "english": "That woman was not a Jew; she was one who was thirsty."
+            },
+            {
+              "text": "พระเยซูเป็นเพื่อนของคนที่ไม่มีเงิน และคนที่ไม่มีใครรัก",
+              "english": "Jesus was a friend of those without money and of those whom no one loved."
+            },
+            {
+              "text": "ผมอ่านว่า พระองค์ตายบนกางเขน เพื่อทุกคน",
+              "english": "I read that he died on the cross for everyone."
+            },
+            {
+              "text": "ผมอ่านว่า พระเยซูฟื้นขึ้นมาในวันที่สาม และฟื้นเพื่อทุกคน",
+              "english": "I read that Jesus rose again on the third day, and rose for everyone."
+            },
+            {
+              "text": "กางเขนนั้นไม่ใช่เรื่องที่ผมเข้าใจทุกอย่าง แต่ผมรู้สึกว่าใจผมสงบลง",
+              "english": "The cross was not something I understood in everything, but I felt my heart grow calm."
+            },
+            {
+              "text": "เมื่อฟื้นจากความกลัว ผมคิดว่า ผมอยากเป็นสาวกของพระเยซู",
+              "english": "When I recovered from fear, I thought I wanted to be a disciple of Jesus."
+            },
+            {
+              "text": "สาวกของพระองค์ไปกับพระองค์ทุกที่",
+              "english": "His disciples went with him everywhere."
+            },
+            {
+              "text": "พระเยซูให้บัญญัติใหม่ ว่าให้รักกัน และบัญญัตินี้ง่ายที่จะพูด แต่ยากที่จะทำ",
+              "english": "Jesus gave a new commandment, that we love one another; this commandment is easy to say but hard to do."
+            },
+            {
+              "text": "และอีกบัญญัติหนึ่ง ว่าให้รักแม้ศัตรู",
+              "english": "And there is another commandment, that we love even our enemies."
+            },
+            {
+              "text": "ผมคิดว่า ถ้าผมรักศัตรูได้ ผมก็ไปไหนก็ได้",
+              "english": "I thought that if I could love my enemies I could go anywhere."
+            },
+            {
+              "text": "ศัตรูของผมมีไม่มาก แต่ผมไม่เกลียดใครเลย",
+              "english": "I have not many enemies, but I hate no one at all."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ความกลัวและคำปรึกษา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผมเรียนที่วิทยาลัยใกล้บ้าน และได้ปริญญาตอนอายุยี่สิบสอง",
+              "english": "I studied at a college near home and got my degree at twenty-two."
+            },
+            {
+              "text": "ผมได้ทุนบางส่วน แต่ผมยังเป็นหนี้ค่าเรียน",
+              "english": "I had a partial scholarship, but I was still in debt for the fees."
+            },
+            {
+              "text": "ดอกเบี้ยของหนี้นั้นไม่น้อยเลย",
+              "english": "The interest on that debt was not small."
+            },
+            {
+              "text": "ผมกลัวว่า ถ้าผมไปเมืองไทย หนี้จะโตขึ้น",
+              "english": "I was afraid that if I went to Thailand the debt would grow."
+            },
+            {
+              "text": "ผมจึงปรึกษาศิษยาภิบาลของผม",
+              "english": "So I consulted my pastor."
+            },
+            {
+              "text": "ท่านบอกว่า ท่านไม่ปฏิเสธว่าเรื่องเงินสำคัญ แต่ท่านขอให้ผมอธิษฐานก่อน",
+              "english": "He said he did not deny that money matters, but he asked me to pray first."
+            },
+            {
+              "text": "ผมปรึกษาพ่อแม่ด้วย",
+              "english": "I consulted my parents too."
+            },
+            {
+              "text": "ผมปรึกษาเพื่อนๆ ที่โบสถ์อีกหลายคน",
+              "english": "I consulted many more friends at church."
+            },
+            {
+              "text": "แม่ขอร้องว่า ผมอย่าไปไกลนัก",
+              "english": "Mother begged me not to go too far."
+            },
+            {
+              "text": "พ่อเงียบ แต่ผมเห็นว่าพ่อไม่ได้ปฏิเสธ",
+              "english": "Father was silent, but I saw he was not refusing."
+            },
+            {
+              "text": "ผมเกรงใจพ่อแม่มาก เพราะท่านช่วยผมเรื่องเรียนมาทุกปี",
+              "english": "I felt very awkward towards my parents, because they had helped me with my studies every year."
+            },
+            {
+              "text": "นอกจากนั้น ผมยังกลัวว่าผมพูดภาษาไทยไม่ได้",
+              "english": "Besides that, I was afraid that I couldn't speak Thai."
+            },
+            {
+              "text": "ผมจึงฝึกงานที่โบสถ์หนึ่งปี เพื่อเตรียมตัว",
+              "english": "So I did a year's practical training at a church to prepare myself."
+            },
+            {
+              "text": "ช่วงนั้นผมเข้าเวรดูโบสถ์ตอนดึกด้วย",
+              "english": "During that time I also did night duty looking after the church."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องที่ผมไม่ภูมิใจ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ช่วงที่ผมสอบสุดท้ายของวิทยาลัย ผมอยากโกง",
+              "english": "During my last exams at college I wanted to cheat."
+            },
+            {
+              "text": "ผมเหนื่อยมาก และผมนอนดึกทุกคืน",
+              "english": "I was very tired and went to bed late every night."
+            },
+            {
+              "text": "เพื่อนคนหนึ่งยื่นกระดาษให้ผมดู",
+              "english": "A friend held out a piece of paper for me to see."
+            },
+            {
+              "text": "ผมอยากรับ แต่ผมไม่ได้รับ",
+              "english": "I wanted to take it, but I did not."
+            },
+            {
+              "text": "ผมไม่ได้โกง และผมสอบได้ไม่ดี",
+              "english": "I did not cheat, and I did not do well in the exam."
+            },
+            {
+              "text": "แต่ผมได้เรียนว่า ผมต้องรักษาเกียรติของตัวเอง",
+              "english": "But I learned that I must keep my own honour."
+            },
+            {
+              "text": "ผมยังเป็นคนที่โกงได้ ถ้าไม่มีพระเจ้าช่วย",
+              "english": "I am still someone who can cheat if God does not help."
+            },
+            {
+              "text": "เรื่องนี้ไม่ทำให้ผมภูมิใจ แต่ทำให้ผมชนะใจตัวเองได้ครั้งหนึ่ง",
+              "english": "This does not make me proud, but it let me win over myself once."
+            },
+            {
+              "text": "ผมเข้าใจว่า ผมต้องพึ่งพระเจ้า",
+              "english": "I understood that I must rely on God."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ปีแรกที่เมืองไทย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผมมาถึงเชียงใหม่เมื่อหนึ่งปีก่อน",
+              "english": "I arrived in Chiang Mai a year ago."
+            },
+            {
+              "text": "ผมไม่มีทรัพย์มาก เพราะผมขายรถและสมบัติส่วนใหญ่",
+              "english": "I had not much wealth, because I sold my car and most of my possessions."
+            },
+            {
+              "text": "ในโบสถ์ ผมมักนั่งที่มุมห้อง และไม่บ่น แม้ต้องนั่งตลอดเช้า",
+              "english": "In church I usually sat in a corner of the room and did not grumble, even when I had to sit all morning."
+            },
+            {
+              "text": "ผมมีเงินเหลือไม่มาก แต่ผู้สนับสนุนหลายท่านส่งเงินมา",
+              "english": "I had little money left, but many supporters sent money."
+            },
+            {
+              "text": "ผู้สนับสนุนรอรายงานของผมทุกสัปดาห์",
+              "english": "The supporters wait for my report every week."
+            },
+            {
+              "text": "ผมสัญญากับแม่ว่า ผมจะเขียนจดหมายทุกสัปดาห์",
+              "english": "I promised Mother that I would write a letter every week."
+            },
+            {
+              "text": "ผมสัญญากับตัวเองว่า ผมจะเรียนภาษาไทยทุกวัน",
+              "english": "I promised myself that I would study Thai every day."
+            },
+            {
+              "text": "ปีนั้นผมทำผิดหลายครั้ง และผมเกรงใจคนไทยมาก",
+              "english": "That year I made many mistakes, and I felt very awkward before the Thai people."
+            },
+            {
+              "text": "แต่คนไทยให้เกียรติผม และให้น้ำใจผมเสมอ",
+              "english": "But the Thai people always honoured me and gave me their kindness."
+            },
+            {
+              "text": "ป้าแดงเลี้ยงข้าวผม ครูหวานสอนภาษาให้ผม และมะลิดูแลผมเมื่อผมป่วย",
+              "english": "Auntie Daeng fed me, Teacher Wan taught me the language, and Mali looked after me when I was ill."
+            },
+            {
+              "text": "ปรากฏว่า ผมซึ่งมาช่วยเขา กลับเป็นคนที่เขาช่วย",
+              "english": "It appeared that I, who came to help them, was the one they helped."
+            },
+            {
+              "text": "นี่แสดงว่าผมยังต้องเรียนอีกมาก",
+              "english": "This shows that I still have much to learn."
+            },
+            {
+              "text": "ผลของปีหนึ่งคือ ผมมีเพื่อนมากเกินที่ผมนึก",
+              "english": "The result of the first year is that I have more friends than I imagined."
+            },
+            {
+              "text": "ผลนี้ยังปรากฏในน้ำใจของคนในซอย ที่ให้ผมอยู่ในหมู่เขา",
+              "english": "This result also appears in the kindness of the lane's people, who let me live among them."
+            },
+            {
+              "text": "จนกระทั่งวันนี้ ผมยังเรียนอยู่ทุกวัน",
+              "english": "Even today I am still learning every day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "มิตรสหายของผม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผมไม่ได้เข้ามาเพื่อบอกว่า ใครเชื่อผิด",
+              "english": "I did not come to say that anyone believes wrongly."
+            },
+            {
+              "text": "ผมมาเป็นเพื่อน และเล่าว่า พระเจ้าทำอะไรในชีวิตของผม",
+              "english": "I came to be a friend, and to tell what God has done in my life."
+            },
+            {
+              "text": "ผมไปงานทำบุญของเพื่อนบ้าน และเขามางานโบสถ์ของผม",
+              "english": "I go to my neighbours' merit-making, and they come to my church events."
+            },
+            {
+              "text": "เราไม่เคยเถียงกันเรื่องศาสนา เราช่วยกันสร้างสะพาน และเก็บขยะ",
+              "english": "We have never argued about religion; we build a bridge together and collect rubbish."
+            },
+            {
+              "text": "เรื่องนี้สร้างมิตรสหายให้ผมมากเกินที่ผมนึก",
+              "english": "This has made me more friends than I thought."
+            },
+            {
+              "text": "และสร้างความสามัคคีในซอยของเรา",
+              "english": "And it has built unity in our lane."
+            },
+            {
+              "text": "ความสามัคคีนั้นแสดงให้เห็นความรัก ที่ผมเรียนมาจากพระเยซู",
+              "english": "That unity shows the love that I learned from Jesus."
+            },
+            {
+              "text": "ผมติดตามพระเยซู ผมจึงติดตามเพื่อนบ้านไปทุกที่",
+              "english": "I follow Jesus, and so I follow my neighbours everywhere."
+            },
+            {
+              "text": "ผมมั่นใจว่า พระเจ้าอยู่ที่นี่ก่อนผมมา",
+              "english": "I am sure that God was here before I came."
+            },
+            {
+              "text": "ผมยืนยันได้ว่า พระองค์ไม่ได้ทิ้งผมไว้คนเดียว",
+              "english": "I can confirm that he has not left me alone."
+            },
+            {
+              "text": "พระวิญญาณของพระเจ้าทำให้ผมไม่เหงา",
+              "english": "The Spirit of God keeps me from being lonely."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่ผมหวัง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผมหวังว่า ผมจะอยู่ที่นี่อีกนาน",
+              "english": "I hope I shall stay here a long time."
+            },
+            {
+              "text": "ผมหวังว่า มิตรสหายของผมจะรู้ว่า ผมรักพวกเขา",
+              "english": "I hope my friends will know that I love them."
+            },
+            {
+              "text": "ผมอยากสรรเสริญพระเจ้า สำหรับทุกสิ่งที่เกิดขึ้น และสรรเสริญด้วยเพลงของคนไทย",
+              "english": "I want to praise God for everything that has happened, and to praise with the songs of the Thai people."
+            },
+            {
+              "text": "ผมอยากถวายชีวิตของผมให้พระองค์ ในที่ที่ผมอยู่",
+              "english": "I want to offer my life to him, in the place where I am."
+            },
+            {
+              "text": "ผมอยากถวายเวลาและแรงของผม เพื่อซอยนี้",
+              "english": "I want to offer my time and strength for this lane."
+            },
+            {
+              "text": "ผมอยากนมัสการพระเจ้าด้วยใจที่จริง และด้วยชีวิตของผม",
+              "english": "I want to worship God with a true heart, and with my life."
+            },
+            {
+              "text": "ผมอยากถวายคำสรรเสริญให้พระบิดาในสวรรค์ ทุกวัน",
+              "english": "I want to offer words of praise every day to the Father in heaven."
+            },
+            {
+              "text": "ที่โบสถ์ของเรา กางเขนอันเล็กอยู่ใกล้หน้าต่าง",
+              "english": "In our church a small cross stands near the window."
+            },
+            {
+              "text": "ทุกครั้งที่ผมเห็นกางเขนนั้น ผมคิดถึงสวรรค์ และคิดถึงแม่",
+              "english": "Every time I see that cross I think of heaven and of Mother."
+            },
+            {
+              "text": "ผมคิดถึงสาวกที่ไปไกลบ้านก่อนผม",
+              "english": "I think of the disciples who went far from home before me."
+            },
+            {
+              "text": "ผมไม่รู้ว่าวันหน้าเป็นอย่างไร",
+              "english": "I do not know what the days ahead will bring."
+            },
+            {
+              "text": "แต่ผมรู้ว่า พระวจนะของพระเจ้าจะอยู่กับผม",
+              "english": "But I know that God's word will be with me."
+            },
+            {
+              "text": "สวรรค์อยู่ไกล แต่พระองค์อยู่ใกล้ผม",
+              "english": "Heaven is far, but he is near me."
+            },
+            {
+              "text": "ผมเรียนมาว่า ใจที่สงบ คือของขวัญจากพระบิดา",
+              "english": "I have learned that a calm heart is a gift from the Father."
+            },
+            {
+              "text": "ขอให้ใจของมิตรสหายทุกคนสงบ เหมือนที่ใจของผมสงบ",
+              "english": "May the heart of every friend be calm, as my heart is calm."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

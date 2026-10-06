@@ -442,6 +442,286 @@
       "document": "../../corpus/th/bridge-thai-bridge-10.json",
       "domain": "narrative",
       "title": "ร้านหนังสือเล็กๆ"
+    },
+    {
+      "id": "th-a2-2-01",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-01.json",
+      "domain": "conversation",
+      "title": "\"Have you eaten yet?\""
+    },
+    {
+      "id": "th-a2-2-02",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-02.json",
+      "domain": "testimony",
+      "title": "Small-group testimonies"
+    },
+    {
+      "id": "th-a2-2-03",
+      "stage": "a2-2",
+      "kind": "adapted",
+      "document": "units/th-a2-2-03.json",
+      "domain": "narrative",
+      "title": "The hunter and the deer (a fable retold, 3)"
+    },
+    {
+      "id": "th-a2-2-04",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "../../corpus/th/bridge-thai-bridge-11.json",
+      "domain": "narrative",
+      "title": "ของขวัญวันเกิด"
+    },
+    {
+      "id": "th-a2-2-05",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-05.json",
+      "domain": "family",
+      "title": "A long phone call home"
+    },
+    {
+      "id": "th-a2-2-06",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-06.json",
+      "domain": "instructions",
+      "title": "Come, look, listen"
+    },
+    {
+      "id": "th-a2-2-07",
+      "stage": "a2-2",
+      "kind": "adapted",
+      "document": "units/th-a2-2-07.json",
+      "domain": "narrative",
+      "title": "The fox and the goat in the well (a fable retold, 4)"
+    },
+    {
+      "id": "th-a2-2-08",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "../../corpus/th/bridge-thai-bridge-06.json",
+      "domain": "narrative",
+      "title": "แมวสีขาว"
+    },
+    {
+      "id": "th-a2-2-09",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-09.json",
+      "domain": "practical-communication",
+      "title": "Notices, rules, recipes"
+    },
+    {
+      "id": "th-a2-2-10",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-10.json",
+      "domain": "community",
+      "title": "The neighbourhood meeting"
+    },
+    {
+      "id": "th-a2-2-11",
+      "stage": "a2-2",
+      "kind": "adapted",
+      "document": "units/th-a2-2-11.json",
+      "domain": "narrative",
+      "title": "The banyan and the reed (a fable retold, 5)"
+    },
+    {
+      "id": "th-a2-2-12",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "../../corpus/th/bridge-thai-bridge-02.json",
+      "domain": "narrative",
+      "title": "ข้าวเช้าวันนี้"
+    },
+    {
+      "id": "th-a2-2-13",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-13.json",
+      "domain": "church-and-mission-life",
+      "title": "Planning the next visit"
+    },
+    {
+      "id": "th-a2-2-14",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-14.json",
+      "domain": "health",
+      "title": "Dengue season"
+    },
+    {
+      "id": "th-a2-2-15",
+      "stage": "a2-2",
+      "kind": "adapted",
+      "document": "units/th-a2-2-15.json",
+      "domain": "narrative",
+      "title": "The monkey and the fisherman (a fable retold, 6)"
+    },
+    {
+      "id": "th-a2-2-16",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "../../corpus/th/bridge-thai-bridge-07.json",
+      "domain": "narrative",
+      "title": "รถไฟไปเมือง"
+    },
+    {
+      "id": "th-a2-2-17",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-17.json",
+      "domain": "scripture",
+      "title": "The good neighbour (a retelling of Luke 10)"
+    },
+    {
+      "id": "th-a2-2-18",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-18.json",
+      "domain": "travel",
+      "title": "Diary of the mission trip"
+    },
+    {
+      "id": "th-a2-2-19",
+      "stage": "a2-2",
+      "kind": "adapted",
+      "document": "units/th-a2-2-19.json",
+      "domain": "narrative",
+      "title": "The eagle and the fox (a fable retold, 7)"
+    },
+    {
+      "id": "th-a2-2-20",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "../../corpus/th/bridge-thai-bridge-09.json",
+      "domain": "narrative",
+      "title": "ช่วยกันทำอาหาร"
+    },
+    {
+      "id": "th-a2-2-21",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:th:th-gap-recovery-aesop-44",
+      "domain": "narrative",
+      "title": "คนเลี้ยงแพะกับลูกเสือ"
+    },
+    {
+      "id": "th-a2-2-22",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-22.json",
+      "domain": "explanation",
+      "title": "Opinions and comparisons"
+    },
+    {
+      "id": "th-a2-2-23",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:th:th-gap-recovery-aesop-15",
+      "domain": "narrative",
+      "title": "ลา หมาจิ้งจอก กับราชสีห์"
+    },
+    {
+      "id": "th-a2-2-24",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-24.json",
+      "domain": "contemporary-nonfiction",
+      "title": "The rainy season and the farmers"
+    },
+    {
+      "id": "th-a2-2-25",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:th:th-gap-recovery-aesop-45",
+      "domain": "narrative",
+      "title": "คนเลี้ยงวัวกับวัวหาย"
+    },
+    {
+      "id": "th-a2-2-26",
+      "stage": "a2-2",
+      "kind": "adapted",
+      "document": "units/th-a2-2-26.json",
+      "domain": "narrative",
+      "title": "The wolf and the lamb (a fable retold, 8)"
+    },
+    {
+      "id": "th-a2-2-27",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "../../corpus/th/bridge-thai-bridge-04.json",
+      "domain": "narrative",
+      "title": "ฝนตกที่บ้าน"
+    },
+    {
+      "id": "th-a2-2-28",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:th:th-gap-recovery-aesop-12",
+      "domain": "narrative",
+      "title": "หมากับเงา"
+    },
+    {
+      "id": "th-a2-2-29",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-29.json",
+      "domain": "work",
+      "title": "Interview with a nurse"
+    },
+    {
+      "id": "th-a2-2-30",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:th:th-gap-recovery-aesop-25",
+      "domain": "narrative",
+      "title": "ลูกปูกับแม่ปู"
+    },
+    {
+      "id": "th-a2-2-31",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-31.json",
+      "domain": "biography",
+      "title": "A nurse's life"
+    },
+    {
+      "id": "th-a2-2-32",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-32.json",
+      "domain": "conversation",
+      "title": "A loan, politely"
+    },
+    {
+      "id": "th-a2-2-33",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-33.json",
+      "domain": "correspondence",
+      "title": "The weekly report"
+    },
+    {
+      "id": "th-a2-2-34",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/th-a2-2-34.json",
+      "domain": "testimony",
+      "title": "Why I came to Thailand"
+    },
+    {
+      "id": "th-a2-2-35",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:th:bible-thai-otcv2025-1jn-4",
+      "domain": "scripture",
+      "title": "1 ยอห์น 4"
     }
   ]
 }

@@ -1,0 +1,352 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-07",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "หมาจิ้งจอกกับแพะในบ่อ",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-07",
+    "title": "หมาจิ้งจอกกับแพะในบ่อ — The fox and the goat in the well (a fable retold, 4) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 132247 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=132247",
+    "attribution": "Adapted retelling of \"หมาจิ้งจอกกับแพะ\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 132247, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"หมาจิ้งจอกกับแพะ\" (th-gap-recovery-aesop-05); the sentences are the drafter's own retelling in the vocabulary of the ladder plan, with the fable register (เจ้า, ข้า, จึง, ครั้น, แล …) kept where the plan teaches it. Machine-drafted on 2026-10-06; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 132247) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). Check: the fable register (เจ้า, ข้า, เถิด, ครั้น, จึง) in the speech of the fox and the goat; ลา as \"take leave\" (not \"donkey\"); the moral wording. After the first mention the animals are called มัน / เจ้า on purpose (each new word is used three times)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "fable",
+    "animals",
+    "well"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "หมาจิ้งจอกตกลงไป",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หมาจิ้งจอกตัวหนึ่งอาศัยอยู่ริมป่า",
+              "english": "A fox lived at the edge of a forest."
+            },
+            {
+              "text": "ในป่านั้นมีบ่อลึกที่พรานทำไว้",
+              "english": "In that forest there was a deep well that a hunter had made."
+            },
+            {
+              "text": "พรานคนนั้นเคยฆ่ากวางที่เดินมาดื่มน้ำที่บ่อนี้",
+              "english": "That hunter had killed deer that came walking to drink at this well."
+            },
+            {
+              "text": "คืนหนึ่ง หมาจิ้งจอกเดินดมพื้นหาอาหาร",
+              "english": "One night the fox walked about sniffing the ground for food."
+            },
+            {
+              "text": "มันเดินพลาดและตกลงไปในบ่อ",
+              "english": "It took a wrong step and fell into the well."
+            },
+            {
+              "text": "บ่อนั้นลึกมาก",
+              "english": "The well was very deep."
+            },
+            {
+              "text": "มันฉวยหินไว้ เพื่อไม่ให้จมน้ำตาย",
+              "english": "It seized hold of a stone so as not to drown."
+            },
+            {
+              "text": "มันตะเกียกตะกายสักเท่าใดก็ขึ้นไม่ได้",
+              "english": "However much it scrambled, it could not climb out."
+            },
+            {
+              "text": "มันจวนตัวแล้ว",
+              "english": "It was at the end of its rope."
+            },
+            {
+              "text": "มันนึกไม่ออกว่าจะทำอย่างไร",
+              "english": "It could not think what to do."
+            },
+            {
+              "text": "มันไม่มีปัญญาจะขึ้นไปเอง",
+              "english": "It had no means of getting up by itself."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เช้าวันใหม่",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เช้าวันใหม่ มันยังอยู่ในบ่อ และนิ่งอยู่นาน",
+              "english": "The next morning it was still in the well, and it stayed still for a long time."
+            },
+            {
+              "text": "มันเหลือบมองขึ้นไปบนฟ้า แต่ไม่มีใครมา",
+              "english": "It glanced up at the sky, but no one came."
+            },
+            {
+              "text": "มันนึกว่า \"ข้าต้องรอดให้ได้\"",
+              "english": "It thought, \"I must get out somehow.\""
+            },
+            {
+              "text": "ตอนนั้นมีแพะตัวหนึ่งเล็มหญ้ามาถึงที่บ่อ",
+              "english": "Just then a goat came nibbling grass to the well."
+            },
+            {
+              "text": "มันเล็มหญ้ามาทั้งวัน",
+              "english": "It had been nibbling grass all day."
+            },
+            {
+              "text": "สัตว์ตัวนั้นหิวน้ำมาก",
+              "english": "That creature was very thirsty."
+            },
+            {
+              "text": "มันเหลือบมองลงไปในบ่อ และเห็นหมาจิ้งจอก",
+              "english": "It glanced down into the well and saw the fox."
+            },
+            {
+              "text": "มันถามว่า \"บ่อนี้ลึกเท่าใด น้ำดื่มได้ไหม\"",
+              "english": "It asked, \"How deep is this well? Can the water be drunk?\""
+            },
+            {
+              "text": "หมาจิ้งจอกได้ฟังก็ดีใจนัก",
+              "english": "The fox was overjoyed to hear this."
+            },
+            {
+              "text": "มันนึกว่า นี่เป็นเรื่องอัศจรรย์ ที่มีคนมาช่วยข้า",
+              "english": "It thought, \"What a wonder that someone has come to help me.\""
+            },
+            {
+              "text": "มันนึกว่า นี่เป็นปาฏิหาริย์",
+              "english": "It thought, \"This is a miracle.\""
+            },
+            {
+              "text": "แต่มันไม่ใช่สัตว์ดี มันคิดถึงตนเองก่อน",
+              "english": "But it was not a good animal, and thought of itself first."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คำลวง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "มันร้องตอบขึ้นมาว่า \"น้ำในนี้เย็นและหวานนัก\"",
+              "english": "It called back up, \"The water in here is cold and very sweet.\""
+            },
+            {
+              "text": "\"ลงมาเถิดเจ้า ลงมาดื่มกับข้า\"",
+              "english": "\"Come down, my friend, and drink with me.\""
+            },
+            {
+              "text": "\"ข้าอาศัยอยู่ที่นี่นานแล้ว ไม่มีอะไรน่ากลัวเลย\"",
+              "english": "\"I have lived here a long time. There is nothing to fear at all.\""
+            },
+            {
+              "text": "สัตว์ตัวนั้นไม่ได้สำคัญใจว่า คำนี้ร้ายนัก",
+              "english": "The creature did not suspect that these words were wicked."
+            },
+            {
+              "text": "มันนึกว่าหมาจิ้งจอกพูดจริง",
+              "english": "It believed the fox spoke truly."
+            },
+            {
+              "text": "มันกลัวไม่ได้ดื่มน้ำ จึงกระโจนลงไปทันที",
+              "english": "It feared it would not get a drink, so it leapt in at once."
+            },
+            {
+              "text": "น้ำในบ่อเย็นมาก แต่ก็ไม่สู้จะหวานอย่างที่หมาจิ้งจอกบอก",
+              "english": "The water in the well was very cold, but not so sweet as the fox had said."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ทางขึ้นของหมาจิ้งจอก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อสัตว์ตัวนั้นลงมาแล้ว หมาจิ้งจอกก็ฉวยเวลา",
+              "english": "When the creature had come down, the fox seized its moment."
+            },
+            {
+              "text": "มันเหยียบหลังสัตว์ตัวนั้น แล้วเหยียบเขากระโจนขึ้นไป",
+              "english": "It stepped on the creature's back, then on its horns, and sprang upwards."
+            },
+            {
+              "text": "สัตว์ตัวนั้นเจ็บที่ถูกเหยียบ",
+              "english": "The creature was hurt at being trodden on."
+            },
+            {
+              "text": "มันฉวยริมบ่อไว้ ตะเกียกตะกายขึ้นไปถึงฝั่งบ่อ",
+              "english": "It grabbed the rim of the well and scrambled up to the edge."
+            },
+            {
+              "text": "สัตว์ตัวนั้นตกใจมาก ร้องว่า \"เจ้าจะไปไหน ช่วยข้าขึ้นไปด้วย\"",
+              "english": "The creature was shocked and cried, \"Where are you going? Help me up too.\""
+            },
+            {
+              "text": "หมาจิ้งจอกยืนอยู่ที่ฝั่งบ่อ และหัวเราะ",
+              "english": "The fox stood at the edge of the well and laughed."
+            },
+            {
+              "text": "มันบอกว่า \"ข้าขอลาแล้ว เจ้าแพะ\"",
+              "english": "It said, \"I take my leave, goat.\""
+            },
+            {
+              "text": "สัตว์ตัวนั้นร้องว่า \"ลาก่อนอย่างนี้หรือ ช่วยข้าทันทีเถิด\"",
+              "english": "It cried, \"You leave just like this? Help me at once!\""
+            },
+            {
+              "text": "หมาจิ้งจอกตอบว่า \"ข้าเอาตัวรอดก่อน\"",
+              "english": "The fox answered, \"I save myself first.\""
+            },
+            {
+              "text": "\"ถ้าเจ้ามีปัญญา เจ้าต้องนึกก่อนกระโดดลงมา\"",
+              "english": "\"If you had any sense, you would have thought before jumping down.\""
+            },
+            {
+              "text": "มันลาไปโดยไม่มองกลับมา",
+              "english": "It went away without looking back."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ในบ่อ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "มันอยู่ในบ่อคนเดียว",
+              "english": "It was alone in the well."
+            },
+            {
+              "text": "มันตะเกียกตะกายอยู่นาน แต่ก็ขึ้นฝั่งไม่ได้",
+              "english": "It scrambled for a long time, but could not get up to the edge."
+            },
+            {
+              "text": "ในน้ำมีเงาของมันอยู่",
+              "english": "In the water there was its reflection."
+            },
+            {
+              "text": "มันมองเงาของตนเอง และเงานั้นก็อยู่นิ่งๆ",
+              "english": "It looked at its own reflection, and the reflection stayed still."
+            },
+            {
+              "text": "ถ้าไม่มีใครมา มันต้องจมน้ำตายเหมือนหมาจิ้งจอก",
+              "english": "If no one came, it would have to drown, like the fox."
+            },
+            {
+              "text": "มันไม่สู้จะดีใจที่ได้กินน้ำนั้นอีกแล้ว",
+              "english": "It was no longer so glad to have had that water."
+            },
+            {
+              "text": "มันร้องว่า \"ข้าจะจมน้ำตายหรือ\"",
+              "english": "It cried, \"Am I going to drown?\""
+            },
+            {
+              "text": "\"ข้าพลาดไปแล้ว\" มันนึก",
+              "english": "\"I have blundered,\" it thought."
+            },
+            {
+              "text": "ในที่สุดมีคนเดินมาถึงที่บ่อ และได้ยินเสียงร้อง",
+              "english": "In the end someone came to the well and heard its cry."
+            },
+            {
+              "text": "เขาช่วยมันขึ้นมา",
+              "english": "He helped it out."
+            },
+            {
+              "text": "มันรอดมาได้เหมือนปาฏิหาริย์ เพราะมีคนมา ไม่ใช่เพราะปัญญาของมัน",
+              "english": "It got out like a miracle, because someone came, not because of its own wits."
+            },
+            {
+              "text": "หมาจิ้งจอกร้ายมาก ไม่เหมือนที่แพะนึก",
+              "english": "The fox was very wicked, not as the goat had thought."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "นิทานเรื่องนี้สอนว่า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "นิทานเรื่องนี้สอนให้รู้ว่า สิ่งสำคัญคือต้องนึกให้ดีเสียก่อนทำอะไร",
+              "english": "This fable teaches that the important thing is to think carefully before doing anything."
+            },
+            {
+              "text": "คนที่กระโจนทำทันทีโดยไม่คิดถึงตนเองและคนอื่น มักเสียหาย",
+              "english": "A person who leaps into action at once without thinking of himself and others often comes to harm."
+            },
+            {
+              "text": "ไม่ว่าจะมีแรงเท่าใด ถ้าไม่นึกให้ดี ก็เสียหายได้",
+              "english": "However strong one is, if one does not think carefully one can still come to harm."
+            },
+            {
+              "text": "การพลาดครั้งเดียว อาจทำให้เสียชีวิตได้",
+              "english": "A single slip can cost a life."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

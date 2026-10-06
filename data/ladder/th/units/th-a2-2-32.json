@@ -1,0 +1,493 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-32",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ขอยืมเงินอย่างสุภาพ",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-32",
+    "title": "ขอยืมเงินอย่างสุภาพ — A loan, politely (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A delicate cultural scene: asking for a loan, advice from a Thai friend, refusing or giving without shaming. A Thai reviewer must check that the politeness strategies (เกรงใจ, ขอรบกวน, ไม่เป็นไร, ให้เป็นน้ำใจ) are plausible and that nothing sounds stingy or rude. Amounts are examples."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation",
+    "money",
+    "politeness",
+    "neighbours",
+    "loans",
+    "saving face"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "S": "แซม",
+    "T": "ต้น",
+    "L": "ลุงสม",
+    "P": "ป้าแดง",
+    "_gender": "S=m; T=m; L=m; P=f"
+  },
+  "sections": [
+    {
+      "title": "ลุงสมมาหาแซม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หลังพายุ หลังคาบ้านลุงสมเสียหายหลายที่",
+              "english": "After the storm, Uncle Som's roof was damaged in several places."
+            },
+            {
+              "text": "ตอนเย็น ลุงสมมาหาแซมที่ร้านป้าแดง",
+              "english": "In the evening Uncle Som came to see Sam at Auntie Daeng's shop."
+            },
+            {
+              "text": "ลุงสมเดินไปมาอยู่หน้าร้านนาน แล้วจึงเข้ามา",
+              "english": "He walked up and down in front of the shop for a long time, and then came in."
+            },
+            {
+              "text": "ในมือลุงมีเหรียญเก่าสองสามเหรียญ",
+              "english": "In his hand Uncle held two or three old coins."
+            },
+            {
+              "text": "แซมครับ ลุงขอรบกวนหน่อยนะ",
+              "english": "Sam, I'd like to trouble you a little.",
+              "speaker": "L"
+            },
+            {
+              "text": "ได้ครับลุง เชิญนั่งครับ",
+              "english": "Of course, Uncle. Please sit down.",
+              "speaker": "S"
+            },
+            {
+              "text": "ลุงเกรงใจมาก ที่จะพูดเรื่องนี้",
+              "english": "I'm very reluctant to speak about this.",
+              "speaker": "L"
+            },
+            {
+              "text": "ลุงต้องจ้างคนซ่อมหลังคา เขาขอเงินก่อน",
+              "english": "I have to hire someone to mend the roof, and he asks for money first.",
+              "speaker": "L"
+            },
+            {
+              "text": "ไม่เป็นไรครับ ลุงพูดได้เลย",
+              "english": "It's all right. Please go ahead.",
+              "speaker": "S"
+            },
+            {
+              "text": "หลังคาบ้านลุงเสียหาย ลุงต้องใช้เงินสามพันบาท",
+              "english": "My roof is damaged and I need three thousand baht.",
+              "speaker": "L"
+            },
+            {
+              "text": "ลุงอยากยืมเงินจากแซมก่อน ลุงจะคืนเดือนหน้า",
+              "english": "I'd like to borrow money from you first. I'll pay it back next month.",
+              "speaker": "L"
+            },
+            {
+              "text": "แซมนิ่งไปนิดหนึ่ง",
+              "english": "Sam was silent for a moment."
+            },
+            {
+              "text": "ผมขอนึกก่อนได้ไหมครับลุง พรุ่งนี้ผมจะตอบ",
+              "english": "May I think first, Uncle? I'll answer tomorrow.",
+              "speaker": "S"
+            },
+            {
+              "text": "ได้ๆ ไม่เป็นไร ลุงไม่ได้ขอร้องให้ตอบวันนี้",
+              "english": "Yes, yes, that's fine. I'm not begging you to answer today.",
+              "speaker": "L"
+            },
+            {
+              "text": "ลุงสมลุกขึ้น แล้วไหว้แซมด้วยสองมือ",
+              "english": "Uncle Som stood up and wai'd Sam with both hands."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ต้นให้คำแนะนำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เย็นนั้น แซมไปหาต้น",
+              "english": "That evening Sam went to see Ton."
+            },
+            {
+              "text": "ต้นครับ ผมไม่รู้จะทำอย่างไร",
+              "english": "Ton, I don't know what to do.",
+              "speaker": "S"
+            },
+            {
+              "text": "เรื่องอะไรครับ",
+              "english": "What is it?",
+              "speaker": "T"
+            },
+            {
+              "text": "ลุงสมต้องการยืมเงินสามพันบาท แต่ผมไม่รู้ว่าลุงจะคืนได้ไหม ผมก็เกรงใจลุงเหมือนกัน",
+              "english": "Uncle Som wants to borrow three thousand baht, but I don't know whether he can pay it back. I feel awkward about it with him too.",
+              "speaker": "S"
+            },
+            {
+              "text": "ในไทย การให้ยืมเงินเพื่อนบ้านมิใช่เรื่องง่ายครับ",
+              "english": "In Thailand lending money to a neighbour is not an easy matter.",
+              "speaker": "T"
+            },
+            {
+              "text": "ถ้าเขาคืนไม่ได้ ก็เป็นหนี้ และอาจเสียหน้า เราต้องรักษาเกียรติของเขา",
+              "english": "If he can't pay back, he is in debt and may lose face. We must protect his dignity.",
+              "speaker": "T"
+            },
+            {
+              "text": "ถ้าปฏิเสธเขาตรงๆ ก็ทำให้เขาเสียเกียรติเหมือนกัน แต่ถ้าปฏิเสธอย่างสุภาพ เขาจะเข้าใจ ผมว่าคุณควรปฏิเสธเมื่อคุณไม่ไหวจริงๆ",
+              "english": "If you refuse him outright, that makes him lose his dignity as well. But if you refuse politely he'll understand. I think you should refuse only when you really cannot manage.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมไม่อยากให้ลุงเสียหน้าครับ",
+              "english": "I don't want Uncle to lose face.",
+              "speaker": "S"
+            },
+            {
+              "text": "แต่ผมก็ไม่อยากให้คุณเสียเงินแล้วเสียเพื่อนด้วย",
+              "english": "But I don't want you to lose the money and the friend too.",
+              "speaker": "T"
+            },
+            {
+              "text": "แล้วผมควรทำอย่างไรครับ",
+              "english": "Then what should I do?",
+              "speaker": "S"
+            },
+            {
+              "text": "มีสองทางครับ",
+              "english": "There are two ways.",
+              "speaker": "T"
+            },
+            {
+              "text": "ทางหนึ่งคือให้เป็นน้ำใจ ไม่ใช่ให้ยืม",
+              "english": "One is to give it as a kindness, not as a loan.",
+              "speaker": "T"
+            },
+            {
+              "text": "อีกทางคือให้ยืม แต่ทำสัญญากันก่อนเริ่ม",
+              "english": "The other is to lend, but to make an agreement before starting.",
+              "speaker": "T"
+            },
+            {
+              "text": "สัญญาหรือครับ คือเขียนไว้หรือครับ",
+              "english": "An agreement? You mean write it down?",
+              "speaker": "S"
+            },
+            {
+              "text": "บางทีก็เขียน บางทีก็พูดกันให้เข้าใจครับ",
+              "english": "Sometimes it is written, sometimes you just say it so that it's understood.",
+              "speaker": "T"
+            },
+            {
+              "text": "แต่ผมว่าไม่ควรเอาดอกเบี้ยครับ",
+              "english": "But I think one should not take interest.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมไม่เคยคิดเรื่องดอกเบี้ยเลยครับ",
+              "english": "I never thought of interest.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องของต้น",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผมเล่าเรื่องของผมให้แซมฟังดีไหมครับ",
+              "english": "Shall I tell you my own story?",
+              "speaker": "T"
+            },
+            {
+              "text": "ตอนผมเรียนที่วิทยาลัยครู ผมได้ทุนเรียนครึ่งหนึ่ง",
+              "english": "When I studied at the teachers' college I got a half scholarship.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมคงจะไม่ได้เรียนต่อ หากพ่อไม่ยืมเงิน และผมคงจะไม่ลืมเรื่องนั้น",
+              "english": "I probably could not have gone on studying if Father hadn't borrowed, and I'll probably never forget it.",
+              "speaker": "T"
+            },
+            {
+              "text": "อีกครึ่งหนึ่ง พ่อกับแม่ต้องยืมเงินจากคนอื่น",
+              "english": "For the other half Father and Mother had to borrow from other people.",
+              "speaker": "T"
+            },
+            {
+              "text": "คนให้ยืมคนนั้นเอาดอกเบี้ยแพงนักหนา",
+              "english": "That lender took terribly high interest.",
+              "speaker": "T"
+            },
+            {
+              "text": "เขาเป็นคนชั่วหรือครับ",
+              "english": "Was he a wicked man?",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมไม่รู้ครับ แต่เป็นวิสัยของคนให้ยืมเงินที่ชอบหาความ",
+              "english": "I don't know, but it was the way of lenders who like to pick quarrels.",
+              "speaker": "T"
+            },
+            {
+              "text": "เขาเป็นพาลกับพ่อผมทุกครั้งที่พ่อมาช้า",
+              "english": "He was a bully to my father every time Father was late.",
+              "speaker": "T"
+            },
+            {
+              "text": "พ่อผมไม่เคยเถียงเขา แต่ผมเห็นว่าพ่อไม่ยิ้มเลย",
+              "english": "My father never argued with him, but I saw that he never smiled.",
+              "speaker": "T"
+            },
+            {
+              "text": "เงินก้อนนั้นใหญ่มาก เหมือนก้อนหินหนักๆ บนบ้านของเรา",
+              "english": "That lump of debt was huge, like a heavy stone on our house.",
+              "speaker": "T"
+            },
+            {
+              "text": "แล้วต้นทำอย่างไรครับ",
+              "english": "And what did you do?",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมฝึกงานเป็นครูที่โรงเรียนหนึ่ง และเอาเงินส่งให้พ่อ",
+              "english": "I did my teaching practice at a school and sent money to Father.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมสอบได้ และได้รับปริญญาในปีต่อมา",
+              "english": "I passed my exams and received my degree the following year.",
+              "speaker": "T"
+            },
+            {
+              "text": "กระทั่งหนี้หมด พ่อก็ยิ้มได้อีกครั้ง",
+              "english": "Until the debt was gone, and Father could smile again.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมภูมิใจที่เราชนะได้ แต่ผมไม่ลืมความทุกข์ในช่วงนั้นครับ",
+              "english": "I'm proud that we beat the debt, but I don't forget the sorrow of that time.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมเข้าใจแล้วครับ",
+              "english": "I understand now.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ป้าแดงเสริม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แซมเล่าให้ป้าแดงฟัง ป้าแดงฟังโดยไม่พูด",
+              "english": "Sam told Auntie Daeng, who listened without speaking."
+            },
+            {
+              "text": "ป้ารู้จักลุงสมมานานค่ะ",
+              "english": "I've known Uncle Som for a long time.",
+              "speaker": "P"
+            },
+            {
+              "text": "เขาเป็นคนดี ไม่เคยโกงใคร ไม่เคยคิดจะโกงเลยค่ะ",
+              "english": "He is a good man who has never cheated anyone, never thought of cheating.",
+              "speaker": "P"
+            },
+            {
+              "text": "แต่เขาไม่มีทรัพย์ ลูกของเขาก็ไปทำงานเวรดึกที่โรงพยาบาลไกลบ้าน ทรัพย์ของเขามีบ้านหลังเดียว",
+              "english": "But he has no wealth, and his child works night duty at a hospital far from home. His only wealth is the house.",
+              "speaker": "P"
+            },
+            {
+              "text": "ลูกชายของเขาก็ไปทำงานไกล และลูกชายอีกคนก็ไม่มีงาน",
+              "english": "His son works far away, and another son has no work.",
+              "speaker": "P"
+            },
+            {
+              "text": "บ้านหลังนั้นเป็นสมบัติเดียวที่เขามี สมบัติชิ้นเดียวค่ะ",
+              "english": "That house is the only possession he has. One single possession.",
+              "speaker": "P"
+            },
+            {
+              "text": "ถ้าหลังคาเสีย เขาจะเหลืออะไร สมบัติของเขาก็เสียไป",
+              "english": "If the roof is ruined, what will he have left? His possession would be lost too.",
+              "speaker": "P"
+            },
+            {
+              "text": "ป้าเห็นว่า แซมควรช่วยเขา แต่ไม่ควรให้เขาเสียหน้าค่ะ",
+              "english": "I think Sam should help him, but not let him lose face.",
+              "speaker": "P"
+            },
+            {
+              "text": "ไม่ใช่ทุกคนที่ไม่มีทรัพย์ จะเป็นคนโกงค่ะ และคนหมู่หนึ่งในซอยก็พร้อมช่วยเหลือเขา",
+              "english": "Not everyone without wealth is a cheat, and a group of people in the lane is ready to help him.",
+              "speaker": "P"
+            },
+            {
+              "text": "ผมจะพูดกับลุงอย่างไรดีครับ",
+              "english": "How shall I put it to him?",
+              "speaker": "S"
+            },
+            {
+              "text": "ลูกชายของลุงสมจะส่งเงินมาให้ในเดือนหน้า แต่ลุงต้องจ้างคนซ่อมก่อน เงินที่จ้างก็ไม่ควรแพงค่ะ",
+              "english": "Uncle Som's son will send money next month, but he has to hire someone to repair it first, and the pay should not be dear.",
+              "speaker": "P"
+            },
+            {
+              "text": "แซมอาจพูดว่า ผมให้เป็นน้ำใจนะครับลุง",
+              "english": "You might say, \"Uncle, I give it as a kindness.\"",
+              "speaker": "P"
+            },
+            {
+              "text": "คำนี้ไม่ทำให้ใครเสียเกียรติค่ะ",
+              "english": "These words don't dishonour anyone.",
+              "speaker": "P"
+            },
+            {
+              "text": "ถ้าเขาขอร้องจะคืน แซมก็บอกว่า ค่อยว่ากันวันหลังค่ะ",
+              "english": "If he begs to pay back, you say, \"We'll talk about it another day.\"",
+              "speaker": "P"
+            },
+            {
+              "text": "ถ้าเขาขอร้องอีก ก็ยืนยันว่าไม่ต้องรีบค่ะ",
+              "english": "If he begs again, insist that there is no hurry.",
+              "speaker": "P"
+            },
+            {
+              "text": "เรื่องนี้ ป้าห่วงทั้งสองฝ่าย ป้าเลยอยากช่วยเหลือกัน",
+              "english": "I worry about both sides in this, so I'd like us to help one another.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันรุ่งขึ้น",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เช้าวันรุ่งขึ้น แซมไปหาลุงสมที่บ้าน",
+              "english": "The next morning Sam went to Uncle Som's house."
+            },
+            {
+              "text": "ลุงครับ ผมนึกเรื่องเมื่อวานแล้วครับ",
+              "english": "Uncle, I've thought about yesterday.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมไม่อยากให้ลุงเป็นหนี้ครับ",
+              "english": "I don't want you to be in debt.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมให้เป็นน้ำใจสองพันบาท ให้ลุงใช้ซ่อมหลังคาครับ",
+              "english": "I'm giving two thousand baht as a kindness, for you to use on the roof.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมมั่นใจว่าลุงดูแลบ้านได้ดีครับ",
+              "english": "I'm sure you will look after the house well.",
+              "speaker": "S"
+            },
+            {
+              "text": "แซมครับ นี่มากไป ลุงรับไม่ได้",
+              "english": "Sam, this is too much. I can't accept.",
+              "speaker": "L"
+            },
+            {
+              "text": "ได้ครับลุง ผมไม่ได้ให้ยืม ผมให้เลยครับ",
+              "english": "You can, Uncle. I'm not lending; I'm just giving it.",
+              "speaker": "S"
+            },
+            {
+              "text": "ถ้าอย่างนั้น ลุงขอสัญญาว่า ลุงจะช่วยแซมกลับ เมื่อแซมต้องการ",
+              "english": "Then I promise that I'll help you back, whenever you need it.",
+              "speaker": "L"
+            },
+            {
+              "text": "ลุงไม่ต้องทำอะไรตอบครับ ถ้าลุงยิ้ม ผมก็ดีใจแล้ว",
+              "english": "You needn't do anything in return, Uncle. If you smile, I'm glad.",
+              "speaker": "S"
+            },
+            {
+              "text": "ลุงสมไหว้แซมอีกครั้ง และตาเปียก ลุงเอาผ้าชิ้นหนึ่งเช็ดตา",
+              "english": "Uncle Som wai'd Sam again, and his eyes were wet; he wiped them with a piece of cloth."
+            },
+            {
+              "text": "ลุงเก็บเหรียญของพ่อไว้ในกล่อง ลุงขอให้แซมเอาไปหนึ่งเหรียญ",
+              "english": "I kept my father's coins in a box; I'd like Sam to take one coin.",
+              "speaker": "L"
+            },
+            {
+              "text": "ลุงเกรงใจนะแซม แต่ลุงขอบใจมาก ลุงลำบากมามาก ตอนนี้ไม่ลำบากแล้ว",
+              "english": "I feel embarrassed, Sam, but I thank you very much. I've been through hard times; now it is not hard any more.",
+              "speaker": "L"
+            },
+            {
+              "text": "เมื่อสิ้นเดือน ลุงสมเอาข้าวสารหนึ่งถุงมาให้แซม",
+              "english": "At the end of the month Uncle Som brought Sam a bag of rice."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

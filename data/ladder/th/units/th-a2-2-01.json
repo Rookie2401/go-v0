@@ -1,0 +1,656 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-01",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ทานข้าวหรือยัง",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-01",
+    "title": "ทานข้าวหรือยัง — \"Have you eaten yet?\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Check: ทาน (polite) against กิน (plain) by speaker; the refuse-once, accept-the-second-time routine; ป้า … ค่ะ/คะ for Auntie Daeng; ละ and หรอก as spoken particles; the bank scene (what a foreigner is asked for)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation",
+    "food",
+    "greetings",
+    "politeness",
+    "bank"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "S": "แซม",
+    "P": "ป้าแดง",
+    "M": "มะลิ",
+    "T": "ต้น",
+    "B": "บอล",
+    "_gender": "S=m; P=f; M=f; T=m; B=m"
+  },
+  "sections": [
+    {
+      "title": "ที่ร้านของป้าแดง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เช้าวันนี้ แซมเดินลงมาจากห้องบนร้าน",
+              "english": "This morning Sam walked down from the room above the shop."
+            },
+            {
+              "text": "ป้าแดงกำลังทอดไข่อยู่ในกระทะ",
+              "english": "Auntie Daeng was frying eggs in a pan."
+            },
+            {
+              "text": "ทั้งร้านหอมมาก",
+              "english": "The whole shop smelled wonderful."
+            },
+            {
+              "text": "สวัสดีค่ะแซม",
+              "english": "Good morning, Sam.",
+              "speaker": "P"
+            },
+            {
+              "text": "สวัสดีครับป้า",
+              "english": "Good morning, Auntie.",
+              "speaker": "S"
+            },
+            {
+              "text": "ทานข้าวหรือยังคะ",
+              "english": "Have you eaten yet?",
+              "speaker": "P"
+            },
+            {
+              "text": "ยังไม่ได้กินครับ",
+              "english": "Not yet.",
+              "speaker": "S"
+            },
+            {
+              "text": "ถ้าอย่างนั้นป้าชวนมากินด้วยกันนะคะ",
+              "english": "Then I invite you to eat with us.",
+              "speaker": "P"
+            },
+            {
+              "text": "ขอบคุณครับ แต่ไม่เป็นไรหรอกครับ",
+              "english": "Thank you, but it's all right, really.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมไม่หิวหรอกครับ",
+              "english": "I'm not hungry, really.",
+              "speaker": "S"
+            },
+            {
+              "text": "แต่ท้องของแซมร้องขึ้นมา",
+              "english": "But Sam's stomach rumbled."
+            },
+            {
+              "text": "ป้าแดงหัวเราะ",
+              "english": "Auntie Daeng laughed."
+            },
+            {
+              "text": "ท้องแซมไม่ได้พูดแบบนั้นนะคะ",
+              "english": "Your stomach doesn't say that.",
+              "speaker": "P"
+            },
+            {
+              "text": "ผมเคารพป้า ผมเลยไม่อยากรบกวนครับ",
+              "english": "I respect you, Auntie, so I don't want to trouble you.",
+              "speaker": "S"
+            },
+            {
+              "text": "ไม่รบกวนหรอกค่ะ ป้าทำไว้มากแล้ว",
+              "english": "It's no trouble. I have made plenty already.",
+              "speaker": "P"
+            },
+            {
+              "text": "แซมนึกอยู่นิดหนึ่ง",
+              "english": "Sam thought for a moment."
+            },
+            {
+              "text": "ป้าครับ ผมขอจ่ายค่าอาหารได้ไหมครับ",
+              "english": "Auntie, may I pay for the food?",
+              "speaker": "S"
+            },
+            {
+              "text": "ไม่ต้องจ่ายค่ะ วันนี้ป้าเลี้ยงเอง",
+              "english": "You don't have to pay. Today I'm treating you myself.",
+              "speaker": "P"
+            },
+            {
+              "text": "สุดท้ายแซมก็ตอบตกลง",
+              "english": "In the end Sam said yes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "อาหารเช้า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ป้าแดงเอาข้าวใส่จานให้แซม",
+              "english": "Auntie Daeng put rice on a plate for Sam."
+            },
+            {
+              "text": "มีไข่ทอด หมูทอด และผัดผัก",
+              "english": "There were a fried egg, fried pork and stir-fried vegetables."
+            },
+            {
+              "text": "ไข่สุกดีไหมคะ",
+              "english": "Is the egg cooked enough?",
+              "speaker": "P"
+            },
+            {
+              "text": "ถ้ายังไม่สุก ป้าจะทำให้ใหม่",
+              "english": "If it isn't done, I'll make it again.",
+              "speaker": "P"
+            },
+            {
+              "text": "ดีครับ อร่อยมากครับ",
+              "english": "It's fine, and delicious.",
+              "speaker": "S"
+            },
+            {
+              "text": "ทานเนื้อหมูด้วยนะคะ ป้าซื้อจากตลาดเมื่อเช้า",
+              "english": "Have some pork too. I bought it at the market this morning.",
+              "speaker": "P"
+            },
+            {
+              "text": "ข้าวหอมมากเลยครับ",
+              "english": "The rice smells lovely.",
+              "speaker": "S"
+            },
+            {
+              "text": "ใช่ค่ะ ข้าวสารนี้มาจากหมู่บ้านของป้า",
+              "english": "Yes. This rice comes from my village.",
+              "speaker": "P"
+            },
+            {
+              "text": "ทุกเดือนคนที่ไร่ส่งมาให้ป้าถุงใหญ่",
+              "english": "Every month the people at the farm send me a big bag.",
+              "speaker": "P"
+            },
+            {
+              "text": "ผมขอน้ำหนึ่งแก้วได้ไหมครับ",
+              "english": "Could I have a glass of water?",
+              "speaker": "S"
+            },
+            {
+              "text": "ได้ค่ะ ชาอุ่นๆ ดีไหมคะ",
+              "english": "Of course. Would warm tea be good?",
+              "speaker": "P"
+            },
+            {
+              "text": "ดีครับ ขอบคุณครับ",
+              "english": "Yes, thank you.",
+              "speaker": "S"
+            },
+            {
+              "text": "ป้าแดงเอาชาอุ่นใส่แก้วให้แซม",
+              "english": "Auntie Daeng poured warm tea into a glass for Sam."
+            },
+            {
+              "text": "แซมกินข้าวหมดจาน",
+              "english": "Sam finished his whole plate."
+            },
+            {
+              "text": "ยังหิวอยู่ไหมคะ ป้ายังมีข้าวอีก",
+              "english": "Are you still hungry? I have more rice.",
+              "speaker": "P"
+            },
+            {
+              "text": "อิ่มแล้วครับ ขอบคุณมากครับ",
+              "english": "I'm full, thank you very much.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "มะลิมาถึง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนนั้นมะลิเดินเข้ามาในร้านพร้อมกล่องเค้ก",
+              "english": "Just then Mali walked into the shop with a box of cake."
+            },
+            {
+              "text": "สวัสดีค่ะป้า สวัสดีค่ะคุณแซม",
+              "english": "Hello, Auntie. Hello, Sam.",
+              "speaker": "M"
+            },
+            {
+              "text": "กินข้าวหรือยังคะ",
+              "english": "Have you eaten yet?",
+              "speaker": "M"
+            },
+            {
+              "text": "กินแล้วครับ ป้าเลี้ยงผมครับ",
+              "english": "I have. Auntie treated me.",
+              "speaker": "S"
+            },
+            {
+              "text": "ดีมากเลยค่ะ",
+              "english": "That's wonderful.",
+              "speaker": "M"
+            },
+            {
+              "text": "ฉันเอาเค้กมาฝากป้ากับคุณแซมค่ะ",
+              "english": "I've brought cake for you and Sam.",
+              "speaker": "M"
+            },
+            {
+              "text": "ฉันซื้อที่ร้านใกล้โรงพยาบาลค่ะ",
+              "english": "I bought it at the shop near the hospital.",
+              "speaker": "M"
+            },
+            {
+              "text": "ขอบใจนะคะมะลิ",
+              "english": "Thank you, Mali.",
+              "speaker": "P"
+            },
+            {
+              "text": "แล้วมะลิละคะ กินแล้วหรือยัง",
+              "english": "And you, Mali? Have you eaten yet?",
+              "speaker": "P"
+            },
+            {
+              "text": "ยังไม่ได้กินค่ะ ฉันตื่นช้ามาก",
+              "english": "Not yet. I woke up very late.",
+              "speaker": "M"
+            },
+            {
+              "text": "ถ้าอย่างนั้นมากินด้วยกันเลยค่ะ",
+              "english": "Then come and eat with us.",
+              "speaker": "P"
+            },
+            {
+              "text": "มะลิยิ้มและนั่งลงใกล้แซม",
+              "english": "Mali smiled and sat down near Sam."
+            },
+            {
+              "text": "เนื้อหมูร้านป้าอร่อยที่สุดค่ะ",
+              "english": "The pork at Auntie's shop is the most delicious.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ทำไมทุกคนถามอย่างนี้",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "มะลิครับ ทำไมทุกคนถามผมว่ากินข้าวหรือยัง",
+              "english": "Mali, why does everybody ask me whether I've eaten yet?",
+              "speaker": "S"
+            },
+            {
+              "text": "เขาอยากรู้จริงๆ หรือครับ",
+              "english": "Do they really want to know?",
+              "speaker": "S"
+            },
+            {
+              "text": "ทั้งสองอย่างค่ะ",
+              "english": "Both.",
+              "speaker": "M"
+            },
+            {
+              "text": "บางครั้งเขาอยากรู้จริงๆ ว่าคุณหิวไหม",
+              "english": "Sometimes they really want to know if you are hungry.",
+              "speaker": "M"
+            },
+            {
+              "text": "แต่บางครั้งก็เป็นคำทักทายค่ะ",
+              "english": "But sometimes it is just a greeting.",
+              "speaker": "M"
+            },
+            {
+              "text": "แล้วผมต้องตอบอย่างไรครับ",
+              "english": "Then how should I answer?",
+              "speaker": "S"
+            },
+            {
+              "text": "ถ้ายังไม่ได้กิน ก็ตอบว่ายังไม่ได้กินค่ะ",
+              "english": "If you haven't eaten, say you haven't.",
+              "speaker": "M"
+            },
+            {
+              "text": "ถ้าเขาชวนกิน คนไทยมักตอบว่าไม่เป็นไรก่อน",
+              "english": "If they invite you to eat, Thai people often say it's fine first.",
+              "speaker": "M"
+            },
+            {
+              "text": "แล้วถ้าเขาชวนอีก ก็ตอบตกลงค่ะ",
+              "english": "Then, if they ask again, you say yes.",
+              "speaker": "M"
+            },
+            {
+              "text": "คนไทยเคารพป้า ลุง ปู่ และย่า ถ้าป้าเลี้ยง เราก็ควรรับค่ะ",
+              "english": "Thai people respect their aunties, uncles and grandparents. If Auntie treats us, we should accept.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมเข้าใจแล้วครับ วันนี้ผมทำถูกแล้วใช่ไหมครับ",
+              "english": "I understand. I did it right today, didn't I?",
+              "speaker": "S"
+            },
+            {
+              "text": "ถูกแล้วค่ะ คุณแซมเรียนเร็วมาก",
+              "english": "Yes. You learn very quickly.",
+              "speaker": "M"
+            },
+            {
+              "text": "แล้วคุณละครับ ทำไมคุณตื่นช้า",
+              "english": "And you? Why did you wake up late?",
+              "speaker": "S"
+            },
+            {
+              "text": "เมื่อคืนฉันทำงานที่โรงพยาบาลค่ะ",
+              "english": "Last night I worked at the hospital.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ต้นกับบอล",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ต้นกับบอลเดินเข้ามาในร้าน",
+              "english": "Ton and Ball walked into the shop."
+            },
+            {
+              "text": "ป้าครับ ผมหิวมากเลยครับ",
+              "english": "Auntie, I'm very hungry.",
+              "speaker": "B"
+            },
+            {
+              "text": "บอลกินข้าวหรือยังคะ",
+              "english": "Ball, have you eaten yet?",
+              "speaker": "P"
+            },
+            {
+              "text": "ผมกินขนมปังเป็นมื้อเช้าแล้วครับ",
+              "english": "I ate bread for breakfast already.",
+              "speaker": "B"
+            },
+            {
+              "text": "ขนมปังไม่ใช่ข้าวนะบอล",
+              "english": "Bread isn't rice, Ball.",
+              "speaker": "P"
+            },
+            {
+              "text": "ข้าวสารเหมือนข้าวที่ป้าทำไหมครับ",
+              "english": "Is dry rice the same as the rice you cook, Auntie?",
+              "speaker": "B"
+            },
+            {
+              "text": "ข้าวสารคือข้าวที่ยังไม่สุกค่ะ ต้องเอาไปทำอาหารก่อนกิน",
+              "english": "Dry rice is rice that isn't cooked yet. You have to make it into food before eating.",
+              "speaker": "P"
+            },
+            {
+              "text": "ที่บ้านเรากินข้าวสามมื้อ คือเช้า กลางวัน และเย็นครับ",
+              "english": "At home we eat three meals: morning, noon and evening.",
+              "speaker": "T"
+            },
+            {
+              "text": "ถ้าไม่ได้กินข้าว คนไทยบางคนบอกว่ายังไม่ได้กินอะไรเลยค่ะ",
+              "english": "If they haven't eaten rice, some Thai people say they haven't eaten anything at all.",
+              "speaker": "M"
+            },
+            {
+              "text": "ป้าชอบมื้อเช้าที่สุด เพราะตอนเช้าอากาศเย็นสบาย",
+              "english": "I like breakfast best, because the air is cool and pleasant in the morning.",
+              "speaker": "P"
+            },
+            {
+              "text": "ที่อเมริกาผมกินขนมปังกับไข่ทุกเช้าครับ",
+              "english": "In America I eat bread and eggs every morning.",
+              "speaker": "S"
+            },
+            {
+              "text": "แล้วคุณแซมละครับ ไม่หิวหรือครับ",
+              "english": "And you, Sam? Weren't you hungry?",
+              "speaker": "B"
+            },
+            {
+              "text": "หิวครับ แต่ผมกินกาแฟอย่างเดียว",
+              "english": "I was, but I only had coffee.",
+              "speaker": "S"
+            },
+            {
+              "text": "ป้าครับ ผมอยากกินไก่ครับ",
+              "english": "Auntie, I'd like to eat chicken.",
+              "speaker": "B"
+            },
+            {
+              "text": "วันนี้ไม่มีไก่ ป้ามีแต่เนื้อหมูค่ะ",
+              "english": "There's no chicken today. I only have pork.",
+              "speaker": "P"
+            },
+            {
+              "text": "ป้าทำข้าวผัดเสร็จแล้วค่ะ ทานเลยนะคะ",
+              "english": "The fried rice is finished. Please eat.",
+              "speaker": "P"
+            },
+            {
+              "text": "ข้าวผัดของป้าหอมที่สุดเลยครับ",
+              "english": "Your fried rice smells the best, Auntie.",
+              "speaker": "B"
+            },
+            {
+              "text": "ป้าแดงเอากระทะใบใหญ่มาวางบนไฟ",
+              "english": "Auntie Daeng put a big pan on the fire."
+            },
+            {
+              "text": "อย่าจับกระทะนะบอล ร้อนมาก",
+              "english": "Don't touch the pan, Ball. It's very hot.",
+              "speaker": "P"
+            },
+            {
+              "text": "ครับป้า ผมรู้แล้วครับ",
+              "english": "Yes, Auntie. I know.",
+              "speaker": "B"
+            },
+            {
+              "text": "ผมขอเค้กหน่อยได้ไหมครับ",
+              "english": "May I have some cake?",
+              "speaker": "B"
+            },
+            {
+              "text": "ผมยังเตรียมบทเรียนไม่เสร็จครับ วันนี้ผมต้องรีบ",
+              "english": "I haven't finished preparing my lesson. I have to hurry today.",
+              "speaker": "T"
+            },
+            {
+              "text": "ถ้าอย่างนั้นป้าอุ่นข้าวให้ต้นเอากลับไปกินที่บ้านนะคะ",
+              "english": "Then I'll warm up some rice for Ton to take home.",
+              "speaker": "P"
+            },
+            {
+              "text": "ขอบคุณครับป้า ผมขอหนึ่งกล่องก็พอครับ ขออีกแก้วด้วยครับ",
+              "english": "Thank you, Auntie. One box is enough for me. And one more glass, please.",
+              "speaker": "T"
+            },
+            {
+              "text": "เรียบร้อยแล้วค่ะ รับไปเลยนะคะ",
+              "english": "All done. Please take it.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "จดหมายจากแม่",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หลังจากกินข้าวเสร็จ แซมเอาจดหมายออกมาจากกระเป๋า",
+              "english": "After eating, Sam took a letter out of his bag."
+            },
+            {
+              "text": "แม่ผมเขียนจดหมายมาครับ",
+              "english": "My mother wrote me a letter.",
+              "speaker": "S"
+            },
+            {
+              "text": "เขาถามว่าผมกินข้าวหรือยัง",
+              "english": "She asks whether I have eaten yet.",
+              "speaker": "S"
+            },
+            {
+              "text": "ที่อเมริกาก็ถามเหมือนกันหรือคะ",
+              "english": "Do they ask that in America too?",
+              "speaker": "M"
+            },
+            {
+              "text": "แม่ผมถามทุกวันครับ เขาห่วงผมมาก",
+              "english": "My mother asks every day. She worries about me a lot.",
+              "speaker": "S"
+            },
+            {
+              "text": "เขาคิดถึงผม และผมก็คิดถึงเขา",
+              "english": "She misses me, and I miss her too.",
+              "speaker": "S"
+            },
+            {
+              "text": "ถ้าอย่างนั้นแซมต้องตอบแม่ว่าป้าเลี้ยงข้าวทุกเช้านะคะ",
+              "english": "Then you must write to your mother that Auntie feeds you every morning.",
+              "speaker": "P"
+            },
+            {
+              "text": "แม่ผมเป็นคริสเตียน แม่อธิษฐานให้ภารกิจของผมทุกคืนครับ",
+              "english": "My mother is a Christian. She prays for my mission every night.",
+              "speaker": "S"
+            },
+            {
+              "text": "ป้าก็อธิษฐานให้แซมทุกเช้าตามศรัทธาของป้าค่ะ",
+              "english": "I pray for you every morning too, according to my faith.",
+              "speaker": "P"
+            },
+            {
+              "text": "ผมจะเขียนคืนนี้ครับ ผมจะเล่าว่าผมพบคนดีหลายคน",
+              "english": "I'll write tonight. I'll tell her I have met many good people.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "งานวันนี้",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันนี้ผมต้องไปธนาคารครับ ผมอยากเปิดบัญชีใหม่",
+              "english": "Today I have to go to the bank. I want to open a new account.",
+              "speaker": "S"
+            },
+            {
+              "text": "ฉันไปเป็นเพื่อนค่ะ ธนาคารอยู่ใกล้โรงพยาบาล",
+              "english": "I'll go with you. The bank is near the hospital.",
+              "speaker": "M"
+            },
+            {
+              "text": "ธนาคารอนุญาตให้คนต่างประเทศเปิดบัญชีไหมครับ",
+              "english": "Does the bank allow foreigners to open an account?",
+              "speaker": "S"
+            },
+            {
+              "text": "ได้ค่ะ ฉันเคยไปกับเพื่อนแล้ว ฉันรู้ว่าเขาขออะไรบ้าง",
+              "english": "Yes. I went once with a friend, so I know what they ask for.",
+              "speaker": "M"
+            },
+            {
+              "text": "ต้องยื่นหนังสือเดินทาง เขียนชื่อลงบนกระดาษแผ่นหนึ่ง แล้วแจ้งเบอร์โทรศัพท์ค่ะ",
+              "english": "You have to hand in your passport, write your name on a sheet of paper and give your phone number.",
+              "speaker": "M"
+            },
+            {
+              "text": "เปิดบัญชีธรรมดาง่ายมากค่ะ ธนาคารจะให้บัตรใบหนึ่ง",
+              "english": "Opening a normal account is very easy. The bank will give you a card.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมต้องเติมเงินโทรศัพท์ด้วยครับ ตอนบ่ายผมมีเรียนภาษาไทยกับอาจารย์",
+              "english": "I also have to top up my phone. This afternoon I have a Thai lesson with my teacher.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมจ่ายค่าเช่าห้องและมัดจำให้ป้าแล้วครับ",
+              "english": "I have already paid Auntie the room rent and the deposit.",
+              "speaker": "S"
+            },
+            {
+              "text": "ป้าเป็นเจ้าของห้อง ป้าช่วยแจ้งที่อยู่ได้นะคะ",
+              "english": "I'm the owner of the room. I can help give your address.",
+              "speaker": "P"
+            },
+            {
+              "text": "ฉันขอกินข้าวก่อนนะคะ แล้วเราไปธนาคารกัน",
+              "english": "Let me eat first, and then we'll go to the bank.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

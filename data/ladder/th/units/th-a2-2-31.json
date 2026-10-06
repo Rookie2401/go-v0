@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-31",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ชีวิตพยาบาลของมะลิ",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-31",
+    "title": "ชีวิตพยาบาลของมะลิ — A nurse's life (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. An invented life of the cast member Mali, told by Mali in the first person (no polite particles in narration). It is a composite, not a real person's biography; a nurse should check the education path (scholarship, college in Bangkok, practical training, degree, hospital wards). Years are given in digits; the Buddhist-era year is not used."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography",
+    "nursing",
+    "education",
+    "scholarship",
+    "first person"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "เด็กหญิงจากหมู่บ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ฉันเกิดที่หมู่บ้านเล็กๆ ใกล้ลำพูน",
+              "english": "I was born in a small village near Lamphun."
+            },
+            {
+              "text": "ฉันเป็นเด็กหญิงตัวเล็กๆ ที่ต้องไปตักน้ำที่บ่อทุกเช้า",
+              "english": "I was a little girl who had to go and draw water from the well every morning."
+            },
+            {
+              "text": "พ่อกับแม่ทำนา และยายเลี้ยงฉันกับพี่ต้น",
+              "english": "My father and mother grew rice, and Grandmother looked after me and Ton."
+            },
+            {
+              "text": "บ้านเราไม่มีเงินมาก แต่เราไม่เคยหิว",
+              "english": "We had not much money, but we were never hungry."
+            },
+            {
+              "text": "ตอนฉันอายุเก้าปี ยายป่วยหนัก",
+              "english": "When I was nine, Grandmother fell seriously ill."
+            },
+            {
+              "text": "ยายกระหายน้ำมาก ฉันจึงตักน้ำให้ยายดื่ม",
+              "english": "Grandmother was very thirsty, so I drew water for her to drink."
+            },
+            {
+              "text": "ฉันตักน้ำมาล้างหน้าให้ยายด้วย",
+              "english": "I also drew water to wash her face."
+            },
+            {
+              "text": "ที่หมู่บ้านไม่มีหมอ ต้องไปโรงพยาบาลแห่งหนึ่งในเมือง",
+              "english": "There was no doctor in the village; one had to go to a hospital in town."
+            },
+            {
+              "text": "แม่พายายไปนั่งรถ และฉันไปด้วย",
+              "english": "Mother took Grandmother by bus, and I went along."
+            },
+            {
+              "text": "ที่โรงพยาบาลแห่งนั้น ฉันเห็นพยาบาลคนหนึ่ง",
+              "english": "At that hospital I saw a nurse."
+            },
+            {
+              "text": "เธอพูดกับยายเบาๆ และจับมือยายไว้",
+              "english": "She spoke to Grandmother softly and held her hand."
+            },
+            {
+              "text": "หญิงคนนั้นไม่ได้รีบเลย และเธอกระหายน้ำเหมือนกัน แต่ก็ยังดูแลยายก่อน",
+              "english": "That woman was in no hurry, and she was thirsty too, but still looked after Grandmother first."
+            },
+            {
+              "text": "ตอนนั้นฉันรู้ว่า ฉันอยากเป็นอย่างเธอ",
+              "english": "Then I knew that I wanted to be like her."
+            },
+            {
+              "text": "ฉันอยากเป็นหญิงที่ช่วยคนกระหายน้ำ และคนที่ไม่มีใครช่วย",
+              "english": "I wanted to be the kind of woman who helps the thirsty and those whom nobody helps."
+            },
+            {
+              "text": "ฉันอยากช่วยคนป่วย เหมือนที่เธอช่วยยายของฉัน",
+              "english": "I wanted to help the sick, as she had helped my grandmother."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรียนหนังสือ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ที่โรงเรียนของหมู่บ้าน ฉันเรียนดีมาก",
+              "english": "At the village school I did very well."
+            },
+            {
+              "text": "ฉันอ่านหนังสือทุกคืนใต้ไฟเล็กๆ",
+              "english": "I read books every night under a small light."
+            },
+            {
+              "text": "ครูของฉันคนหนึ่งชื่อครูหวาน",
+              "english": "One of my teachers was called Teacher Wan."
+            },
+            {
+              "text": "ครูบอกว่า ฉันควรสอบเข้าวิทยาลัยพยาบาล",
+              "english": "The teacher said I should take the entrance exam for a nursing college."
+            },
+            {
+              "text": "แต่ครอบครัวของฉันไม่มีเงินจ่ายค่าเรียน",
+              "english": "But my family had no money to pay the fees."
+            },
+            {
+              "text": "ครูหวานจึงช่วยหาทุนให้ฉัน",
+              "english": "So Teacher Wan helped me find a scholarship."
+            },
+            {
+              "text": "ฉันคงจะเรียนไม่ได้ หากไม่มีทุนนั้น",
+              "english": "I probably could not have studied without that scholarship."
+            },
+            {
+              "text": "ทุนนั้นมาจากฝ่ายช่วยเด็กของโบสถ์",
+              "english": "That scholarship came from the children's-aid department of a church."
+            },
+            {
+              "text": "ฉันไม่รู้จักคนที่ให้ทุน แต่ฉันขอบคุณเขามาก",
+              "english": "I did not know the people who gave the scholarship, but I thanked them very much."
+            },
+            {
+              "text": "ฉันสอบเข้าวิทยาลัยได้ ตอนอายุสิบแปดปี",
+              "english": "I passed the entrance exam for college at eighteen."
+            },
+            {
+              "text": "วันนั้นแม่ร้องไห้ และพ่อยิ้มทั้งวัน",
+              "english": "That day Mother cried and Father smiled all day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วิทยาลัยที่กรุงเทพ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ฉันนั่งรถไฟไปกรุงเทพคนเดียว",
+              "english": "I took the train to Bangkok alone."
+            },
+            {
+              "text": "วิทยาลัยอยู่ใกล้แม่น้ำ และมีห้องเรียนเก่าหลายห้อง",
+              "english": "The college was near the river and had several old classrooms."
+            },
+            {
+              "text": "ปีที่หนึ่ง ฉันคิดถึงบ้านทุกวัน",
+              "english": "In the first year I missed home every day."
+            },
+            {
+              "text": "เพื่อนหมู่หนึ่งชวนฉันไปกินข้าวและคุยกัน",
+              "english": "A group of friends invited me to eat and chat."
+            },
+            {
+              "text": "แต่มีนักเรียนคนหนึ่งเป็นพาล",
+              "english": "But there was one student who was a bully."
+            },
+            {
+              "text": "เขาหาความกับฉันบ่อยๆ เพราะฉันมาจากหมู่บ้าน",
+              "english": "He often picked quarrels with me because I came from a village."
+            },
+            {
+              "text": "เขาเถียงนักหนาว่า คนจากหมู่บ้านไม่ควรเป็นพยาบาล",
+              "english": "He argued endlessly that people from villages should not be nurses."
+            },
+            {
+              "text": "นั่นเป็นวิสัยของคนที่อยากให้คนอื่นเล็กลง",
+              "english": "That is the way of someone who wants others to be smaller."
+            },
+            {
+              "text": "ฉันไม่ได้เถียงกลับ แต่ฉันตั้งใจเรียนมากขึ้น",
+              "english": "I did not argue back, but I studied harder."
+            },
+            {
+              "text": "เขาไม่ใช่คนชั่ว เพียงแต่ไม่มั่นใจในตัวเอง",
+              "english": "He was not a wicked person, only unsure of himself."
+            },
+            {
+              "text": "ต่อมา เขาเป็นเพื่อนของฉัน",
+              "english": "Later he became my friend."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ฝึกงานและสอบ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ปีที่สอง ฉันเริ่มฝึกงานที่โรงพยาบาล",
+              "english": "In the second year I began practical training at the hospital."
+            },
+            {
+              "text": "ฉันฝึกงานในฝ่ายเด็กก่อน",
+              "english": "I trained in the children's department first."
+            },
+            {
+              "text": "แม้ฉันเหนื่อย ฉันก็ไม่ท้อ และผลของการฝึกก็ดีขึ้นทุกเดือน",
+              "english": "Though I was tired, I did not lose heart, and the results of the training got better every month."
+            },
+            {
+              "text": "ฉันเล่าให้แม่ฟังดังนี้ ว่าฉันได้เรียนอะไรบ้าง",
+              "english": "I told Mother as follows what I had learned."
+            },
+            {
+              "text": "เด็กตัวเล็กๆ ร้องไห้ และฉันไม่รู้ว่าจะทำอย่างไร",
+              "english": "The little children cried, and I did not know what to do."
+            },
+            {
+              "text": "พยาบาลที่อยู่มานานสอนให้ฉันจับเด็กเบาๆ",
+              "english": "A nurse who had been there long taught me to hold a child gently."
+            },
+            {
+              "text": "เด็กคนหนึ่งตะครุบนิ้วฉันไว้ แล้วไม่ปล่อย",
+              "english": "One child grabbed my finger and would not let go."
+            },
+            {
+              "text": "ฉันเรียนวิธีฉีดยา โดยทำกับผ้าก่อน",
+              "english": "I learned how to give injections, practising on cloth first."
+            },
+            {
+              "text": "ผ้าชิ้นเล็กๆ นั้นเขาทำเป็นแขนให้เรา",
+              "english": "The small pieces of cloth had been made into an arm for us."
+            },
+            {
+              "text": "ปีที่สาม ฉันไปฝึกงานที่ฝ่ายคนไข้หนัก",
+              "english": "In the third year I went to train in the intensive-care department."
+            },
+            {
+              "text": "ที่นั่นฉันเห็นคนไข้คนหนึ่งตาย",
+              "english": "There I saw a patient die."
+            },
+            {
+              "text": "ฉันร้องไห้ และพยาบาลที่ดูแลฉัน บอกว่า ไม่ต้องกลัว",
+              "english": "I cried, and the nurse supervising me said there was no need to be afraid."
+            },
+            {
+              "text": "สุดท้าย มีการสอบใหญ่ก่อนจบ",
+              "english": "At the end there was a big exam before graduation."
+            },
+            {
+              "text": "ฉันอ่านหนังสือหนึ่งอาทิตย์เต็ม และนอนน้อยมาก",
+              "english": "I read for a full week and slept very little."
+            },
+            {
+              "text": "จนกระทั่งวันสุดท้าย ฉันเหนื่อยจนเดินไม่ไหว",
+              "english": "Until the last day, when I was so tired I could not walk."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "รับปริญญา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ในเดือนกันยายน ฉันรู้ว่าฉันผ่านหรือไม่",
+              "english": "In September I learned whether I had passed."
+            },
+            {
+              "text": "ฉันผ่าน",
+              "english": "I passed."
+            },
+            {
+              "text": "เมื่อรับปริญญา พ่อกับแม่เดินทางมากรุงเทพ",
+              "english": "At the graduation, Father and Mother travelled to Bangkok."
+            },
+            {
+              "text": "ปริญญาใบนั้น ครอบครัวของฉันไม่เคยมีมาก่อน",
+              "english": "That degree was something my family had never had before."
+            },
+            {
+              "text": "พ่อใส่เสื้อใหม่ที่ซื้อมาเพื่อวันนั้น",
+              "english": "Father wore a new shirt bought for that day."
+            },
+            {
+              "text": "ยายอยู่ที่บ้าน แต่ยายขอให้ฉันถ่ายรูปไปให้ดู",
+              "english": "Grandmother stayed at home, but asked me to take a photograph to show her."
+            },
+            {
+              "text": "ครูหวานมาด้วย และยืนอยู่ข้างแม่",
+              "english": "Teacher Wan came too and stood next to Mother."
+            },
+            {
+              "text": "ฉันขอบคุณทุกคน ที่ช่วยให้ฉันมาถึงวันนี้",
+              "english": "I thanked everyone who had helped me get to that day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "กลับขึ้นเหนือ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ฉันทำงานที่โรงพยาบาลแห่งหนึ่งในกรุงเทพสามปี",
+              "english": "I worked at a hospital in Bangkok for three years."
+            },
+            {
+              "text": "ฉันเข้าเวรดึกบ่อย และรู้ว่า คนไข้ตอนดึกต้องการคนอยู่ข้างๆ",
+              "english": "I often worked night shifts and learned that patients in the small hours need someone beside them."
+            },
+            {
+              "text": "จนกระทั่งยายป่วยอีกครั้ง",
+              "english": "Until Grandmother fell ill again."
+            },
+            {
+              "text": "ฉันตัดสินใจลาออก และกลับมาเชียงใหม่",
+              "english": "I decided to resign and come back to Chiang Mai."
+            },
+            {
+              "text": "เพื่อนหมู่หนึ่งที่โรงพยาบาลมาส่งฉัน พร้อมก้อนน้ำแข็งสำหรับชา",
+              "english": "A group of friends from the hospital saw me off, with lumps of ice for tea."
+            },
+            {
+              "text": "จนกระทั่งวันนั้น ฉันไม่เคยรู้ว่า ฉันมีเพื่อนมากขนาดนั้น",
+              "english": "Until that day I had never known I had so many friends."
+            },
+            {
+              "text": "ปริญญาที่ได้มาทำให้ฉันกลับบ้านได้อย่างภูมิใจ",
+              "english": "The degree I had earned let me return home with pride."
+            },
+            {
+              "text": "ตอนนี้ฉันทำงานที่โรงพยาบาลในเมือง และอยู่ใกล้ยาย",
+              "english": "Now I work at the hospital in town and live near Grandmother."
+            },
+            {
+              "text": "ทุกเดือนฉันส่งเงินส่วนหนึ่งไปที่ทุนของวิทยาลัย",
+              "english": "Every month I send part of my money to the college scholarship fund."
+            },
+            {
+              "text": "ฉันอยากให้เด็กจากหมู่บ้านอื่น ได้เรียนเหมือนฉัน",
+              "english": "I want children from other villages to be able to study as I did."
+            },
+            {
+              "text": "ฉันยังจำพยาบาลคนนั้นที่จับมือยายไว้ได้",
+              "english": "I still remember that nurse who held Grandmother's hand."
+            },
+            {
+              "text": "และฉันหวังว่า สักวัน จะมีเด็กคนหนึ่งจำฉันได้เหมือนกัน",
+              "english": "And I hope that one day a child will remember me in the same way."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

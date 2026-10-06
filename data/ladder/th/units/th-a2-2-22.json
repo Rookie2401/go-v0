@@ -1,0 +1,471 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-22",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "คุยกันเรื่องความคิดเห็น",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-22",
+    "title": "คุยกันเรื่องความคิดเห็น — Opinions and comparisons (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Check: ผมคิดว่า / ผมเห็นว่า / เพราะ / แต่ … ก็ …; the register of friendly, polite disagreement; the use of ย่อม, ยิ่ง … ยิ่ง …, ค่อนข้าง, เพียง in spoken Thai (ย่อม is slightly formal); nothing is said that depends on knowing the real prices in Chiang Mai."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "opinions",
+    "comparison",
+    "reasons",
+    "city and village",
+    "renting and buying",
+    "studying abroad"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "T": "ต้น",
+    "S": "แซม",
+    "M": "มะลิ",
+    "_gender": "T=m; S=m; M=f"
+  },
+  "sections": [
+    {
+      "title": "อยู่เมืองหรืออยู่หมู่บ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันอาทิตย์ตอนบ่าย ต้น มะลิ และแซมนั่งกินผลไม้ที่บ้านต้น",
+              "english": "On Sunday afternoon Ton, Mali and Sam sat eating fruit at Ton's house."
+            },
+            {
+              "text": "ต้นมีเรื่องที่ต้องตัดสินใจ",
+              "english": "Ton had something to decide."
+            },
+            {
+              "text": "ครูใหญ่ที่หมู่บ้านของยายชวนผมไปสอนที่นั่นครับ",
+              "english": "The head teacher at Grandmother's village has invited me to teach there.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมควรอยู่ในเมืองต่อ หรือย้ายไปอยู่หมู่บ้านดีครับ",
+              "english": "Should I stay in the city, or move to the village?",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมคิดว่าหมู่บ้านดีครับ เพราะอากาศดี และค่อนข้างเงียบ",
+              "english": "I think the village is good, because the air is good and it's rather quiet.",
+              "speaker": "S"
+            },
+            {
+              "text": "เหตุผลของคุณแซมฟังดูดีค่ะ แต่ฉันไม่ค่อยเห็นด้วย",
+              "english": "Sam's reason sounds good, but I don't quite agree.",
+              "speaker": "M"
+            },
+            {
+              "text": "ฉันคิดว่าเมืองมีข้อดีมาก ฉันขอเล่าให้ฟังค่ะ",
+              "english": "I think the city has many advantages. Let me tell you.",
+              "speaker": "M"
+            },
+            {
+              "text": "ข้อดีของเมืองคืออะไรครับ",
+              "english": "What are the advantages of the city?",
+              "speaker": "T"
+            },
+            {
+              "text": "ด้านการงาน ด้านการเรียน และด้านสุขภาพค่ะ",
+              "english": "In work, in study and in health.",
+              "speaker": "M"
+            },
+            {
+              "text": "โรงพยาบาลอยู่ใกล้ โรงเรียนดี และมีงานให้เลือก",
+              "english": "The hospital is near, the schools are good, and there's work to choose from.",
+              "speaker": "M"
+            },
+            {
+              "text": "แล้วข้อเสียของเมืองล่ะครับ",
+              "english": "And what about the disadvantages of the city?",
+              "speaker": "S"
+            },
+            {
+              "text": "เมืองค่อนข้างแพง และรถติดมากครับ",
+              "english": "The city is rather expensive and the traffic is very heavy.",
+              "speaker": "T"
+            },
+            {
+              "text": "ยิ่งอยู่ในเมืองนาน ก็ยิ่งเหนื่อยค่ะ",
+              "english": "The longer you live in the city, the more tired you get.",
+              "speaker": "M"
+            },
+            {
+              "text": "คนบางคนในเมืองก็ถือดี ไม่ทักใครค่ะ และมีคนลักของด้วย",
+              "english": "Some people in the city are proud and greet no one, and some steal things too.",
+              "speaker": "M"
+            },
+            {
+              "text": "ข้อเสียของหมู่บ้านก็มีเหมือนกันครับ",
+              "english": "The village has disadvantages too.",
+              "speaker": "S"
+            },
+            {
+              "text": "ถ้าเจ็บหนัก ก็ไกลจากโรงพยาบาล",
+              "english": "If you are seriously ill, it's far from the hospital.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมเคยไปหมู่บ้านบนดอย ที่นั่นสะพานขาด และรถกระบะที่บรรทุกของต้องข้ามไปช้าๆ",
+              "english": "I once went to a hill village; the bridge was broken there and vehicles had to cross the stream slowly.",
+              "speaker": "S"
+            },
+            {
+              "text": "ใช่ค่ะ และเด็กเล็กต้องไกลจากโรงเรียนดีๆ",
+              "english": "Yes, and little children have to be far from good schools.",
+              "speaker": "M"
+            },
+            {
+              "text": "แต่ที่หมู่บ้านไม่แพง เงินเดือนเท่ากัน ก็เหลือเงินมากเลยครับ",
+              "english": "But the village is not expensive; with the same salary, more is left over.",
+              "speaker": "T"
+            },
+            {
+              "text": "ข้อดีของหมู่บ้านคือคนไม่รีบ และมีเวลาให้กัน ชาวบ้านก็อยู่ใต้ฟ้าเดียวกับเรา",
+              "english": "The advantage of the village is that people are calm and have time for one another.",
+              "speaker": "T"
+            },
+            {
+              "text": "ย่อมเป็นอย่างนั้นครับ เพราะที่นั่นไม่มีรถติด ฟ้าก็สว่างเร็ว กลิ่นดอกไม้ก็หอมขณะผมตื่น",
+              "english": "Naturally so, because there is no traffic jam there, the sky gets light early, and flowers smell sweet while I wake.",
+              "speaker": "S"
+            },
+            {
+              "text": "เมืองกับหมู่บ้านแตกต่างกันมาก ผมเปรียบเทียบไม่ง่ายครับ",
+              "english": "The city and the village are very different. It's not easy for me to compare them.",
+              "speaker": "S"
+            },
+            {
+              "text": "ฉันว่า ความจริงแท้จริงแล้ว ไม่ใช่เมืองหรือหมู่บ้านที่สำคัญค่ะ",
+              "english": "I think that in real truth it is not the city or the village that matters.",
+              "speaker": "M"
+            },
+            {
+              "text": "สิ่งสำคัญคือคนที่อยู่ใกล้เรา",
+              "english": "What matters is the people near us.",
+              "speaker": "M"
+            },
+            {
+              "text": "ถ้าอยู่ลำพัง ที่ไหนก็เหงาค่ะ",
+              "english": "If you live alone, anywhere is lonely.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เช่าหรือซื้อ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "อีกเรื่องหนึ่งคือบ้านครับ ผมอยากซื้อบ้านเล็กๆ",
+              "english": "The other matter is a house. I would like to buy a small one.",
+              "speaker": "T"
+            },
+            {
+              "text": "ซื้อดีกว่าเช่าหรือครับ",
+              "english": "Is buying better than renting?",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมเปรียบเทียบแล้วครับ เช่าเดือนละ 5,000 บาท",
+              "english": "I have compared. Renting is 5,000 baht a month.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผ่อนบ้านเดือนละ 6,000 บาท ต่างกันเพียงพันบาทครับ",
+              "english": "Paying instalments is 6,000 a month, a difference of only a thousand baht.",
+              "speaker": "T"
+            },
+            {
+              "text": "แต่ต้องผ่อนยี่สิบปี ย่อมหนักค่ะ",
+              "english": "But you must pay for twenty years; naturally that is heavy.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมคิดว่า ถ้าเป็นบ้านของตนเอง ก็ไม่ต้องกลัวเจ้าของให้ออกครับ",
+              "english": "I think if it's my own house I need not fear the owner asking me to leave.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมเช่าห้องที่ร้านป้าแดง และผมพอใจมากครับ",
+              "english": "I rent a room at Auntie Daeng's shop, and I'm very content.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมไม่ต้องห่วงเรื่องซ่อมบ้าน และค่าเช่าก็ไม่แพงครับ",
+              "english": "I don't have to worry about repairs, and the rent is not expensive.",
+              "speaker": "S"
+            },
+            {
+              "text": "แต่ผมกลัวว่า สักวันป้าอาจไม่ให้เช่าแล้วครับ",
+              "english": "But I fear that one day Auntie may no longer rent it out.",
+              "speaker": "T"
+            },
+            {
+              "text": "บางที ข้อเสียของการเช่าก็คือไม่ปลอดภัยสำหรับวันหน้าค่ะ",
+              "english": "Perhaps the disadvantage of renting is that it is not secure for the future.",
+              "speaker": "M"
+            },
+            {
+              "text": "ส่วนการซื้อ ก็เสียเงินมากค่ะ",
+              "english": "As for buying, it costs a lot of money.",
+              "speaker": "M"
+            },
+            {
+              "text": "เหตุผลทั้งสองข้างมีน้ำหนักเท่ากันครับ",
+              "english": "The reasons on both sides carry equal weight.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมต้องนึกให้ดี ความจริงแท้จริงคือผมยังไม่รู้ว่าอะไรดีกว่ากันครับ",
+              "english": "I must think carefully; the plain truth is I don't yet know which is better.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรียนที่ไหนดี",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ต้นเงียบไปนิดหนึ่ง แล้วเปลี่ยนเรื่อง",
+              "english": "Ton was silent a moment, then changed the subject."
+            },
+            {
+              "text": "บอลจะไปเรียนต่างประเทศได้ไหมครับ",
+              "english": "Could Ball go to study abroad?",
+              "speaker": "T"
+            },
+            {
+              "text": "แซมเรียนที่อเมริกา แต่แซมมาเรียนภาษาไทยที่นี่",
+              "english": "Sam studied in America, but Sam came to study Thai here.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมเห็นว่า การเรียนที่ไหน ก็ดีถ้าเด็กตั้งใจ",
+              "english": "I see that studying anywhere is good if the child is determined.",
+              "speaker": "S"
+            },
+            {
+              "text": "ฉันเห็นด้วยบางส่วนค่ะ",
+              "english": "I agree in part.",
+              "speaker": "M"
+            },
+            {
+              "text": "การเรียนต่างประเทศแตกต่างมาก ทั้งภาษา อาหาร และคน",
+              "english": "Studying abroad is very different: the language, the food and the people.",
+              "speaker": "M"
+            },
+            {
+              "text": "เด็กบางคนเหงามาก ถ้าต้องละทิ้งบ้านไปไกล",
+              "english": "Some children are very lonely if they have to leave home far behind.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมเข้าใจครับ ตอนมาใหม่ๆ ผมเองก็เหงา",
+              "english": "I understand. When I first came I was lonely myself.",
+              "speaker": "S"
+            },
+            {
+              "text": "แต่บอลชอบภาษาต่างประเทศ และเขาพอใจที่จะลอง",
+              "english": "But Ball likes foreign languages, and he's happy to try.",
+              "speaker": "T"
+            },
+            {
+              "text": "ฉันห่วงเขาค่ะ ฉันบ่นอยู่เสมอ ขอโทษที่พูดซ้ำเรื่องเดิม",
+              "english": "I worry about him. I'm always grumbling; sorry for repeating the same thing.",
+              "speaker": "M"
+            },
+            {
+              "text": "ไม่เป็นไรครับ มะลิพูดถูกเสมอ",
+              "english": "That's all right. Mali is always right.",
+              "speaker": "S"
+            },
+            {
+              "text": "การเรียนที่นี่กับที่นั่น ค่อนข้างต่างกัน แตกต่างทั้งราคาและวิธีสอนครับ",
+              "english": "Studying here and there is rather different — different in price and in method of teaching.",
+              "speaker": "T"
+            },
+            {
+              "text": "ถ้าราคาเท่ากัน ฉันเลือกที่นี่ค่ะ ฉันเปรียบเทียบสองที่แล้วค่ะ",
+              "english": "If the price is the same, I choose here. I have compared the two places.",
+              "speaker": "M"
+            },
+            {
+              "text": "ถ้าเรียนที่นี่ ก็ยิ่งอยู่ใกล้ครอบครัวค่ะ",
+              "english": "If he studies here, he'll be even closer to his family.",
+              "speaker": "M"
+            },
+            {
+              "text": "เด็กที่ซื่อตรงและตั้งใจ ย่อมเรียนได้ดีทุกที่ครับ",
+              "english": "A child who is honest and determined will do well anywhere.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เพื่อนบ้านที่ดี",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เย็นวันนั้น ทั้งสามคนไปที่โบสถ์ ศิษยาภิบาลเล่าเรื่องเพื่อนบ้านที่ดี",
+              "english": "That evening the three went to the church, where the pastor told the story of the good neighbour."
+            },
+            {
+              "text": "หลังจากนั้นทุกคนกลับไปนั่งคุยกันต่อ",
+              "english": "Afterwards they all went back to sit and talk on."
+            },
+            {
+              "text": "หลังจากนั้น พ่อค้าที่ตลาดมาร่วมคุยด้วย เขาหัดพูดภาษาอังกฤษกับแซม",
+              "english": "After that the trader from the market joined the conversation; he practised his English with Sam."
+            },
+            {
+              "text": "พ่อค้าคนนั้นบอกว่า ที่ร้านของเขามีหลังคาสังกะสี ฝนตกทีไรก็ดังมาก",
+              "english": "The trader said his shop has a tin roof, and whenever it rains it is very loud."
+            },
+            {
+              "text": "เขาหัดทำขนมให้เด็กๆ ด้วย และพ่อค้าอีกคนก็หัดตามเขา",
+              "english": "He also learned to make sweets for the children, and another trader learned after him."
+            },
+            {
+              "text": "ผมสงสารชายที่ถูกปล้นมากครับ",
+              "english": "I felt very sorry for the man who was robbed.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมไม่เข้าใจว่า ทำไมปุโรหิตจึงไม่หยุดช่วย",
+              "english": "I don't understand why the priest did not stop to help.",
+              "speaker": "S"
+            },
+            {
+              "text": "ปุโรหิตอาจมีเหตุผลของเขาค่ะ เขาอาจกลัวพวกขโมย",
+              "english": "The priest may have had his reasons. He may have feared the thieves.",
+              "speaker": "M"
+            },
+            {
+              "text": "เขากลัวว่า คนปล้นจะมาปล้นเขาด้วย",
+              "english": "He feared that the robbers would rob him too.",
+              "speaker": "M"
+            },
+            {
+              "text": "แต่เรื่องนั้นเพียงทำให้เขาเดินเลยไป",
+              "english": "But that only made him walk on.",
+              "speaker": "M"
+            },
+            {
+              "text": "ชายคนที่หยุดช่วย เขาเห็นอย่างไรครับ",
+              "english": "The man who stopped to help — how did he see it?",
+              "speaker": "T"
+            },
+            {
+              "text": "ฉันเห็นว่า เขาไม่ได้ถามว่าจะได้อะไร เขาสงสารอย่างเดียวค่ะ",
+              "english": "I think he did not ask what he would get; he simply had pity.",
+              "speaker": "M"
+            },
+            {
+              "text": "เขาเอาน้ำมันกับเหล้าองุ่นใส่บาดแผล แล้วพาไปที่โรงแรมครับ",
+              "english": "He put oil and wine on the wounds and took him to an inn.",
+              "speaker": "S"
+            },
+            {
+              "text": "เขาจ่ายเงินให้เจ้าของโรงแรมด้วยครับ",
+              "english": "He paid the innkeeper too.",
+              "speaker": "T"
+            },
+            {
+              "text": "ไม่ใช่เพียงสงสาร แต่ช่วยเขาจริงๆ ค่ะ",
+              "english": "Not only pity, but he really helped.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมเห็นว่า น้ำมันกับเหล้าองุ่นเป็นเรื่องเล็ก แต่ใจนั้นใหญ่ครับ",
+              "english": "I see that the oil and the wine are small things, but the heart was big.",
+              "speaker": "S"
+            },
+            {
+              "text": "เขาซื้อน้ำมันกับเหล้าองุ่นมาด้วยเงินของเขาเอง และมีขโมยลักของในโรงแรมนั้นด้วยครับ",
+              "english": "He bought the oil and wine with his own money, and thieves stole things at that inn as well.",
+              "speaker": "T"
+            },
+            {
+              "text": "ขโมยในโรงแรมน่ากลัวกว่าขโมยบนถนนเสียอีกค่ะ",
+              "english": "A thief in an inn is even more frightening than one on the road.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมเห็นว่า ชายคนนั้นสงสารเพราะมีใจรัก ไม่ใช่เพราะอยากให้ใครเห็น",
+              "english": "I see that he pitied because he was soft-hearted, not because he wanted to be seen.",
+              "speaker": "S"
+            },
+            {
+              "text": "ฉันเห็นว่า ปุโรหิตกับคนปล้นต่างกัน แต่ไม่ได้เป็นเพื่อนบ้านทั้งคู่",
+              "english": "I think the priest and the robbers are different, but neither of them was a neighbour.",
+              "speaker": "M"
+            },
+            {
+              "text": "เพื่อนบ้านแท้จริง คือคนที่หยุดช่วยครับ",
+              "english": "A true neighbour is the one who stops to help.",
+              "speaker": "T"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

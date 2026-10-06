@@ -1,0 +1,418 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-33",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "รายงานสัปดาห์",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-33",
+    "title": "รายงานสัปดาห์ — The weekly report (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A formal written report to the sending church. Check the register (เรียน … ด้วยความเคารพ; ผม for Sam and Ton, ดิฉัน for Mali's paragraph), the headings, the numbers (illustrative, not real accounts), the use of ซึ่ง, การ + verb and ได้ + verb, and that nothing in the report discloses private details of the neighbours (the loan scene is told without names)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "correspondence",
+    "report",
+    "mission team",
+    "finance",
+    "prayer requests",
+    "formal register"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "รายงานสัปดาห์ที่ 12",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เรียน ผู้สนับสนุนทุกท่าน",
+              "english": "Dear supporters, all of you,"
+            },
+            {
+              "text": "ผมและต้นขอรายงานงานของสัปดาห์นี้ ดังนี้",
+              "english": "Ton and I submit the report of this week's work, as follows."
+            },
+            {
+              "text": "สัปดาห์นี้เป็นสัปดาห์ที่ 12 ของงานที่เชียงใหม่",
+              "english": "This is the twelfth week of the work in Chiang Mai."
+            },
+            {
+              "text": "รายงานนี้เขียนโดยแซม ได้ปรึกษากับต้นแล้ว",
+              "english": "This report is written by Sam, after consulting with Ton."
+            },
+            {
+              "text": "ผมปรึกษากับมะลิด้วย เรื่องส่วนของโรงพยาบาล และจะปรึกษาต้นอีกครั้ง",
+              "english": "I also consulted Mali about the hospital part, and will consult Ton once more."
+            },
+            {
+              "text": "ส่วนของมะลิ มะลิเขียนเอง",
+              "english": "Mali's section is written by herself."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "1. กิจกรรมของสัปดาห์",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "กิจกรรมของสัปดาห์นี้ มีดังนี้",
+              "english": "This week's activities are as follows."
+            },
+            {
+              "text": "วันที่ 1: เรียนภาษาไทยกับครูหวาน 3 ชั่วโมง",
+              "english": "Day 1: a Thai lesson with Teacher Wan, 3 hours."
+            },
+            {
+              "text": "วันที่ 2: ประชุมของชุมชน เรื่องน้ำท่วมและขยะ",
+              "english": "Day 2: a community meeting about flooding and rubbish."
+            },
+            {
+              "text": "วันที่ 3: ตรวจสุขภาพที่โรงเรียน มีคนมา 48 คน",
+              "english": "Day 3: a health check at the school, 48 people came."
+            },
+            {
+              "text": "วันที่ 5: เรียนเรื่องพระเจ้าของกลุ่มเล็ก มี 9 คน",
+              "english": "Day 5: a Bible-study evening of the small group, 9 people."
+            },
+            {
+              "text": "วันที่ 7: ไปโบสถ์ตอนเช้า ผู้มา 63 คน",
+              "english": "Day 7: church in the morning, 63 people attended."
+            },
+            {
+              "text": "วันที่ 7: นมัสการพระเจ้าที่โบสถ์ตอนเช้า ผู้มา 63 คน",
+              "english": "Day 7: worship at church in the morning, 63 people attended."
+            },
+            {
+              "text": "นอกจากนี้ พวกเราได้ไปหาครอบครัวสามครอบครัว",
+              "english": "In addition, we visited three families."
+            },
+            {
+              "text": "นอกจากกิจกรรมเหล่านี้ ผมได้เขียนจดหมายถึงแม่ด้วย",
+              "english": "Besides these activities, I also wrote a letter to my mother."
+            },
+            {
+              "text": "กิจกรรมที่ผมชอบที่สุดคือการตรวจสุขภาพ เพราะได้เจอคนมาก",
+              "english": "The activity I like best is the health check, because I meet many people."
+            },
+            {
+              "text": "ผมไม่ได้ทำเองคนเดียว มีต้นและมะลิช่วยทุกวัน",
+              "english": "I did not do it alone; Ton and Mali helped every day."
+            },
+            {
+              "text": "เราชื่นใจทุกครั้งที่ได้รับจดหมายจากท่าน",
+              "english": "We are cheered every time we receive a letter from you."
+            },
+            {
+              "text": "เราชื่นใจที่เห็นเด็กคนหนึ่งหายป่วย และชื่นใจที่คนในซอยช่วยกัน",
+              "english": "We are glad to see a child recover, and glad that the people in the lane help each other."
+            },
+            {
+              "text": "ฉะนั้นเราจึงอยากเล่าให้ท่านฟังโดยละเอียด",
+              "english": "Therefore we would like to tell you in detail."
+            },
+            {
+              "text": "ฉะนั้นเราขอบคุณท่านทุกคน ฉะนั้นเราจะทำงานต่อไป",
+              "english": "So we thank each of you; so we shall carry on working."
+            },
+            {
+              "text": "ผมไม่ได้รู้ว่า งานของเราเกี่ยวข้องกับชีวิตของคนมากแค่ไหน แต่เรื่องนี้เกี่ยวข้องกับทุกคน",
+              "english": "I did not know how much our work is bound up with people's lives, but it is bound up with everyone."
+            },
+            {
+              "text": "นอกจากนั้น ครูหวานยังช่วยสอนภาษาไทยให้ผมโดยไม่คิดเงิน",
+              "english": "Besides that, Teacher Wan also taught me Thai without charging."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. ผลที่ปรากฏ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผลที่ปรากฏในสัปดาห์นี้ มีดังนี้",
+              "english": "The results that appeared this week are as follows."
+            },
+            {
+              "text": "ข้อที่หนึ่ง ชุมชนตกลงที่จะแยกขยะ ตามที่ป้าแดงเสนอ",
+              "english": "One: the community agreed to separate rubbish, as Auntie Daeng proposed."
+            },
+            {
+              "text": "ข้อที่สอง มีผู้ป่วยไข้เลือดออกหนึ่งคนหายแล้ว",
+              "english": "Second, one dengue patient has recovered."
+            },
+            {
+              "text": "ผลนี้แสดงให้เห็นว่า การทำงานร่วมกันมีผลจริง",
+              "english": "This result shows that working together really has an effect."
+            },
+            {
+              "text": "การประชุมยังแสดงว่า ชุมชนมีน้ำใจต่อกัน",
+              "english": "The meeting also shows that the community is kind to one another."
+            },
+            {
+              "text": "เรื่องหนึ่งที่แสดงน้ำใจนั้นปรากฏในการประชุมวันที่ 2",
+              "english": "One matter showing that kindness appeared at the meeting on day 2."
+            },
+            {
+              "text": "ผลอีกอย่างหนึ่งคือ นักเรียนคนหนึ่งสอบเข้าวิทยาลัยพยาบาลได้",
+              "english": "Another result is that a pupil passed the entrance exam for the nursing college."
+            },
+            {
+              "text": "เธอได้ทุนจากผู้สนับสนุนท่านหนึ่ง และเธอภูมิใจมาก",
+              "english": "She received a scholarship from one supporter and is very proud."
+            },
+            {
+              "text": "เธอจะฝึกงานที่โรงพยาบาล และจะได้ปริญญาในสามปี",
+              "english": "She will do practical training at a hospital and will get her degree in three years."
+            },
+            {
+              "text": "ครอบครัวของเธอไม่มีสมบัติมาก แต่ก็ไม่ต้องเป็นหนี้",
+              "english": "Her family does not own much, but does not have to go into debt."
+            },
+            {
+              "text": "ปรากฏว่า เด็กที่เคยร้องไห้ตอนฉีดยา ตอนนี้ชนะความกลัวได้แล้ว",
+              "english": "It has appeared that the child who used to cry at injections has now overcome his fear."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. การเงิน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เงินที่ได้จากผู้สนับสนุนสัปดาห์นี้ 18,000 บาท",
+              "english": "Money received from supporters this week: 18,000 baht."
+            },
+            {
+              "text": "ค่าใช้จ่ายสัปดาห์นี้ มีดังนี้",
+              "english": "This week's expenses are as follows."
+            },
+            {
+              "text": "ค่าเช่าห้อง 2,500 บาท",
+              "english": "Room rent: 2,500 baht."
+            },
+            {
+              "text": "ค่าอาหารและค่ารถ 4,800 บาท",
+              "english": "Food and transport: 4,800 baht."
+            },
+            {
+              "text": "ค่ายาและค่าตรวจสุขภาพ 3,200 บาท",
+              "english": "Medicine and health checks: 3,200 baht."
+            },
+            {
+              "text": "รวมค่าใช้จ่าย 10,500 บาท",
+              "english": "Total expenses: 10,500 baht."
+            },
+            {
+              "text": "เงินที่เหลือ 7,500 บาท ใช้ซ่อมสะพานเล็ก และสนับสนุนค่าเรียนของนักเรียน",
+              "english": "The remaining 7,500 baht is used to repair the small bridge and support a pupil's school fees."
+            },
+            {
+              "text": "ห้องที่ผมเช่า ผมทำสัญญากับป้าแดง และเขียนไว้",
+              "english": "For the room I rent, I made an agreement with Auntie Daeng, and wrote it down."
+            },
+            {
+              "text": "เราไม่มีหนี้ และไม่ต้องจ่ายดอกเบี้ยให้ใคร ผู้ให้ยืมมักคิดดอกเบี้ย เราจึงไม่ยืม",
+              "english": "We have no debts and pay interest to no one. Lenders often charge interest, so we do not borrow."
+            },
+            {
+              "text": "ทรัพย์ของพวกเรามีน้อย แต่เราไม่ได้ขายสมบัติของใคร ทรัพย์ที่เรามีคือคน",
+              "english": "Our wealth is small, but we have sold nobody's possessions. The wealth we have is people."
+            },
+            {
+              "text": "ไม่มีการโกง และไม่มีการเสียเงินโดยไม่มีใบเสร็จ",
+              "english": "There is no cheating and no spending without receipts."
+            },
+            {
+              "text": "ต้นยืนยันว่า ได้ตรวจเงินทุกบาทแล้ว",
+              "english": "Ton confirms that he has checked every baht."
+            },
+            {
+              "text": "เมื่อท่านส่งเงินมาอีก เราจะเขียนใบเสร็จให้ทุกครั้ง",
+              "english": "When you send more money, we write a receipt every time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. ความต้องการและเรื่องที่ขอให้อธิษฐาน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ความต้องการของสัปดาห์หน้า มีสามเรื่อง",
+              "english": "Next week's needs are three in number."
+            },
+            {
+              "text": "เรื่องที่หนึ่ง ต้องการเงินซ่อมหลังคาโบสถ์ 12,000 บาท",
+              "english": "One: we need 12,000 baht to repair the church roof."
+            },
+            {
+              "text": "ผมเกรงใจที่ต้องขอเงินอีก แต่ฝนปีนี้ทำให้หลังคาเสียหายมาก",
+              "english": "I am reluctant to ask for money again, but this year's rain has damaged the roof badly."
+            },
+            {
+              "text": "เรื่องที่สอง ต้องการผู้ช่วยสอนเด็กในวันอาทิตย์ 2 คน",
+              "english": "Two: we need two helpers for teaching children on Sundays."
+            },
+            {
+              "text": "เรื่องที่สาม ขอให้ผู้สนับสนุนอธิษฐานเพื่อพวกเรา",
+              "english": "Three: we ask supporters to pray for us."
+            },
+            {
+              "text": "ผมขอร้องว่า ถ้าไม่ไหว ก็ปฏิเสธได้อย่างสุภาพ",
+              "english": "I ask that, if you cannot manage, you refuse politely."
+            },
+            {
+              "text": "ผมขอร้องอีกอย่างหนึ่งด้วย",
+              "english": "I make one more request as well."
+            },
+            {
+              "text": "ขอให้พวกเราสามัคคีกัน และไม่เหนื่อยเกินไป",
+              "english": "May we be united and not too tired."
+            },
+            {
+              "text": "ขอให้พระเจ้าสร้างความสามัคคีในหมู่พวกเรา จนกระทั่งงานเสร็จ",
+              "english": "May God create unity among us, until the work is done."
+            },
+            {
+              "text": "ขอให้พระบิดาให้ปัญญาแก่เรา เมื่อเราต้องพิจารณาเรื่องที่ยาก",
+              "english": "May the Father give us wisdom when we have to consider hard matters."
+            },
+            {
+              "text": "ขอให้พระวจนะของพระเจ้าถึงคนในซอยนี้ และให้เขาเป็นสุข",
+              "english": "May God's word reach the people of this lane, and may they be happy."
+            },
+            {
+              "text": "เมื่อไรที่เรามีความสามัคคี งานก็จะดีขึ้น",
+              "english": "Whenever we have unity, the work gets better."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "5. การติดตามผล",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เรามีสามอย่างที่ต้องทำต่อ",
+              "english": "We have three things to continue."
+            },
+            {
+              "text": "ติดตามผู้ป่วยไข้เลือดออก ซึ่งตอนนี้กลับบ้านแล้ว",
+              "english": "Following up the dengue patient, who is now back home."
+            },
+            {
+              "text": "ติดตามการซ่อมสะพาน ซึ่งคนหมู่บ้านเริ่มแล้ว",
+              "english": "Following up the bridge repair, which the villagers have begun."
+            },
+            {
+              "text": "ติดตามเรื่องที่คนแก่คนหนึ่งอยากยืมเงิน เราไม่ได้ปฏิเสธเขา แต่ให้เป็นน้ำใจ",
+              "english": "Following up the matter of an older neighbour who wanted to borrow money: we did not refuse him, but gave it as a kindness."
+            },
+            {
+              "text": "เราไม่ได้ให้เขาเสียเกียรติ และเขาก็ไม่ได้ขอร้องอะไรเลย",
+              "english": "We did not make him lose dignity, and he did not beg for anything."
+            },
+            {
+              "text": "เรามองว่า เรื่องนี้สร้างความเข้าใจที่ดีในซอย",
+              "english": "We see that this matter builds good understanding in the lane."
+            },
+            {
+              "text": "ผู้ที่อยากรู้เรื่องนี้ ผมยินดีเล่าให้ฟัง",
+              "english": "Anyone who wants to know about this, I am glad to tell."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "6. จากมะลิ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ขอรายงานงานที่โรงพยาบาลสั้นๆ",
+              "english": "A brief report on the work at the hospital."
+            },
+            {
+              "text": "ในช่วงสัปดาห์นี้ ดิฉันเข้าเวรดึกสามคืน",
+              "english": "During this week I worked three night shifts."
+            },
+            {
+              "text": "ผู้ป่วยหลายคนต้องการคนดูแลตอนดึก",
+              "english": "Many patients need someone to look after them in the small hours."
+            },
+            {
+              "text": "แม่ของเด็กขอบคุณ และดิฉันยืนยันว่า ทุกอย่างเป็นเรื่องที่พระเจ้าทำ",
+              "english": "The child's mother thanked me, and I affirm that everything was God's doing."
+            },
+            {
+              "text": "ดิฉันมั่นใจว่า งานของเราจะสร้างความดีให้ชุมชนต่อไป",
+              "english": "I am confident that our work will go on creating good for the community."
+            },
+            {
+              "text": "ด้วยความเคารพ แซม ต้น และมะลิ",
+              "english": "With respect, Sam, Ton and Mali."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

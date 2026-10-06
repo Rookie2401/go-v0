@@ -1,0 +1,334 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-03",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "พรานกับกวาง",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-03",
+    "title": "พรานกับกวาง — The hunter and the deer (a fable retold, 3) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 132247 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=132247",
+    "attribution": "Adapted retelling of \"แม่เนื้อกับนายพรานป่า\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 132247, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"แม่เนื้อกับนายพรานป่า\" (th-gap-recovery-aesop-38); the sentences are the drafter's own retelling in the vocabulary of the ladder plan, with the fable register (เจ้า, ข้า, จึง, ครั้น, แล …) kept where the plan teaches it. Machine-drafted on 2026-10-06; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 132247) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). Check: the written fable register (ครั้น, จึง, ก็, ข้า) is plausible for a school reader; จวนตัว, ไม่สู้, ถึงที่, ตนเอง used correctly; the moral wording. The animal is called มัน and the hunter เขา after the first mention on purpose (each new word is used three times)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "fable",
+    "animals",
+    "forest"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "กวางในป่า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "กวางตัวหนึ่งอาศัยอยู่ในป่าใหญ่",
+              "english": "A deer lived in a big forest."
+            },
+            {
+              "text": "แม่ของมันเคยสอนว่า ไม่ว่าจะอยู่ที่ใด ก็ต้องมองไปทั่วเสมอ",
+              "english": "Its mother had taught it that wherever it was, it must always look all around."
+            },
+            {
+              "text": "แม่บอกว่าบางคนฆ่าสัตว์ไปขาย และบางคนก็ร้ายมาก",
+              "english": "Mother said some people kill animals to sell them, and some are very cruel."
+            },
+            {
+              "text": "แม่บอกว่า เวลาจวนตัว ให้ยืนนิ่ง",
+              "english": "Mother said that when cornered, it should stand still."
+            },
+            {
+              "text": "ทุกเช้ามันเดินเล็มหญ้าอยู่ริมลำธาร",
+              "english": "Every morning it walked along the stream, nibbling grass."
+            },
+            {
+              "text": "วันหนึ่ง มันกินหญ้าเพลินมาก ไม่ได้มองไปทั่ว",
+              "english": "One day it was so absorbed in the grass that it did not look around."
+            },
+            {
+              "text": "ครั้น มันเหลือบไปเห็นพรานเดินมาแต่ไกล",
+              "english": "Then it glanced up and saw a hunter coming from afar."
+            },
+            {
+              "text": "พรานคนนี้ร้ายนัก",
+              "english": "This hunter was very wicked."
+            },
+            {
+              "text": "เขาอยากฆ่ามันไปขาย",
+              "english": "He wanted to kill it and sell it."
+            },
+            {
+              "text": "หมาของเขาดมพื้นไปทางที่สัตว์ตัวนั้นเคยเดิน",
+              "english": "His dog sniffed the ground along the way the animal had walked."
+            },
+            {
+              "text": "สัตว์ตัวนั้นตกใจกลัวมาก",
+              "english": "The animal was terribly frightened."
+            },
+            {
+              "text": "มันนึกหาทางหนี",
+              "english": "It tried to think of a way to flee."
+            },
+            {
+              "text": "จะวิ่งไปทางที่ไม่มีต้นไม้ ก็กลัวเขาจะเห็น",
+              "english": "If it ran where there were no trees, it feared he would see it."
+            },
+            {
+              "text": "จะวิ่งเข้าไปใต้ต้นไม้ ต้นไม้ที่นั่นก็ไม่สู้จะใหญ่",
+              "english": "If it ran in under the trees, the trees there were not very big."
+            },
+            {
+              "text": "มันยืนนิ่งอยู่ ไม่รู้ว่าจะหนีไปทางใดดี",
+              "english": "It stood still, not knowing which way was best to flee."
+            },
+            {
+              "text": "ไม่มีที่ใดปลอดภัยเลย",
+              "english": "There was no place that was safe."
+            },
+            {
+              "text": "เขาเดินเข้ามาใกล้มากแล้ว",
+              "english": "He had come very close."
+            },
+            {
+              "text": "มันจวนตัวแล้ว",
+              "english": "It was cornered."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่ซ่อน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "มันวิ่งเข้าไปซ่อนในต้นไม้ที่มีใบมาก",
+              "english": "It ran in to hide in a tree with many leaves."
+            },
+            {
+              "text": "มันอาศัยใบของต้นไม้ปิดตัว",
+              "english": "It used the tree's leaves to cover itself."
+            },
+            {
+              "text": "มันไม่สู้จะกลัวแล้ว",
+              "english": "It was not so afraid any more."
+            },
+            {
+              "text": "หมาของเขามาถึงที่ต้นไม้ก่อน",
+              "english": "His dog reached the tree first."
+            },
+            {
+              "text": "เขาเดินมาถึงที่ที่มันเคยยืน",
+              "english": "He came to the place where it had stood."
+            },
+            {
+              "text": "เขามองไปทั่ว แต่ไม่เห็นสัตว์ตัวนั้น",
+              "english": "He looked all around, but did not see the animal."
+            },
+            {
+              "text": "เขาสำคัญว่ามันหนีไปไกลแล้ว",
+              "english": "He thought that it had fled far away."
+            },
+            {
+              "text": "หมาของเขาดมพื้นอีกครั้ง แต่ก็ไม่เจออะไร",
+              "english": "His dog sniffed the ground once more, but found nothing."
+            },
+            {
+              "text": "เขาจึงเดินเลยไป",
+              "english": "So he walked on."
+            },
+            {
+              "text": "ลิงตัวหนึ่งนั่งอยู่บนต้นไม้ใกล้ๆ",
+              "english": "A monkey sat in a tree nearby."
+            },
+            {
+              "text": "มันเห็นทุกอย่าง",
+              "english": "It saw everything."
+            },
+            {
+              "text": "ลิงอยากบอกมันว่า อย่ากินใบนั้นเลย",
+              "english": "The monkey wanted to tell it not to eat those leaves."
+            },
+            {
+              "text": "แต่สัตว์ตัวนั้นไม่ได้ยินเสียงของลิง",
+              "english": "But the animal did not hear the monkey's voice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ใบที่หมดไป",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "กวางเห็นเขาเดินไปไกล ก็ดีใจนัก",
+              "english": "The deer saw him walk far away and was very glad."
+            },
+            {
+              "text": "มันสำคัญว่า \"เรารอดแล้ว\"",
+              "english": "It thought, \"I have been saved.\""
+            },
+            {
+              "text": "มันนึกว่าเป็นเรื่องอัศจรรย์ ที่ไม่มีใครเห็นมัน",
+              "english": "It thought it a wonder that no one had seen it."
+            },
+            {
+              "text": "แม่เคยพูดถึงเรื่องอัศจรรย์แบบนี้ มันจึงดีใจมากขึ้น",
+              "english": "Its mother had spoken of wonders like this, and so it was happier still."
+            },
+            {
+              "text": "มันนอนนิ่งอยู่นาน แล้วเล็มหญ้าที่อยู่ใกล้ต้นไม้",
+              "english": "It lay still for a long time, and then nibbled the grass near the tree."
+            },
+            {
+              "text": "แต่มันหิวนัก",
+              "english": "But it was very hungry."
+            },
+            {
+              "text": "มันจึงเล็มใบของต้นไม้ที่ซ่อนตัวอยู่",
+              "english": "So it nibbled the leaves of the very tree it was hiding in."
+            },
+            {
+              "text": "ใบหมดไปมากแล้ว แต่มันไม่ได้ดู",
+              "english": "A lot of the leaves were gone, but it did not look."
+            },
+            {
+              "text": "ที่ซ่อนก็ไม่สู้จะดีอีกแล้ว",
+              "english": "The hiding place was no longer very good."
+            },
+            {
+              "text": "พรานเดินกลับมาถึงที่นั่นอีก",
+              "english": "The hunter came back to that place again."
+            },
+            {
+              "text": "เขาเหลือบมองมาทางต้นไม้",
+              "english": "He glanced towards the tree."
+            },
+            {
+              "text": "หมาของเขาดมพื้นแล้วร้อง",
+              "english": "His dog sniffed the ground and whined."
+            },
+            {
+              "text": "เขาเหลือบเห็นมันยืนอยู่ในที่ซ่อนนั้น",
+              "english": "He caught sight of it standing in that hiding place."
+            },
+            {
+              "text": "มันจวนตัวอีกครั้ง แต่ครั้งนี้ไม่มีที่ให้ซ่อนแล้ว",
+              "english": "It was cornered again, but this time there was nowhere left to hide."
+            },
+            {
+              "text": "เขาจึงฆ่ามันที่ตรงนั้นเอง",
+              "english": "So he killed it right there."
+            },
+            {
+              "text": "ก่อนตาย กวางร้องว่า",
+              "english": "Before it died, the deer cried out,"
+            },
+            {
+              "text": "\"ข้าอาศัยต้นไม้จึงรอดมาได้ แต่ข้ากลับกินใบของมันเสียเอง\"",
+              "english": "\"The tree sheltered me and so I got away, but I went and ate its leaves myself.\""
+            },
+            {
+              "text": "\"ข้าเสียหายเพราะตนเอง\"",
+              "english": "\"I am ruined by my own doing.\""
+            },
+            {
+              "text": "\"ข้าได้รอดมาครั้งหนึ่งเหมือนปาฏิหาริย์ แต่ข้าไม่รู้ว่าจะเก็บมันไว้อย่างไร\"",
+              "english": "\"I escaped once like a miracle, but I did not know how to keep it.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "นิทานเรื่องนี้สอนว่า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "นิทานเรื่องนี้สอนให้รู้ว่า คนที่ร้ายกับผู้ที่ช่วยตนเอง ก็ทำให้ตนเองเสียหาย",
+              "english": "This fable teaches that a person who treats badly the one who helps him brings harm on himself."
+            },
+            {
+              "text": "สิ่งสำคัญที่สุดคือรู้ว่าใครช่วยเราไว้",
+              "english": "The most important thing is to know who has saved us."
+            },
+            {
+              "text": "คืนนั้นแม่ของมันรออยู่ที่บ้านในป่า",
+              "english": "That night its mother waited at home in the forest."
+            },
+            {
+              "text": "แต่ลูกของเธอไม่กลับมาอีกเลย",
+              "english": "But her child never came back."
+            },
+            {
+              "text": "ลิงตัวนั้นนั่งมองอยู่ และไม่ยิ้มเลย",
+              "english": "The monkey sat watching, and did not smile at all."
+            },
+            {
+              "text": "วันรุ่งขึ้น ลิงตัวนั้นเล่าเรื่องนี้ให้ลิงตัวอื่นฟัง",
+              "english": "The next day that monkey told the other monkeys about it."
+            },
+            {
+              "text": "ลิงตัวอื่นฟังแล้วก็เงียบ และไม่มีใครอยากไปที่บ่อนั้นอีก",
+              "english": "The other monkeys listened and fell silent, and no one wanted to go to that well again."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

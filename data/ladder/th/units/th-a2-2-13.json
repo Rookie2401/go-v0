@@ -1,0 +1,512 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-13",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "วางแผนไปหมู่บ้านบนดอย",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-13",
+    "title": "วางแผนไปหมู่บ้านบนดอย — Planning the next visit (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Check: the church-planning vocabulary (เผยแพร่ข่าวดี, เป็นพยาน, เทศนา) is the everyday language of Thai Christians and is not preachy; the polite register of the phone call with the village headman; the road and distances are plausible (Chiang Mai to Mae Hong Son by the hill road is about 250 km)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "church life",
+    "mission team",
+    "planning",
+    "travel",
+    "Mae Hong Son"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "P": "ศิษยาภิบาล",
+    "S": "แซม",
+    "M": "มะลิ",
+    "T": "ต้น",
+    "V": "ผู้ใหญ่บ้านบนดอย",
+    "_gender": "P=m; S=m; M=f; T=m; V=m"
+  },
+  "sections": [
+    {
+      "title": "ประชุมที่โบสถ์",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เย็นวันนั้น พวกเรามาประชุมที่โบสถ์",
+              "english": "That evening we met at the church."
+            },
+            {
+              "text": "ศิษยาภิบาลอยากไปหาโบสถ์เล็กที่หมู่บ้านบนดอย",
+              "english": "The pastor wanted to go to a small church in a hill village."
+            },
+            {
+              "text": "หมู่บ้านนั้นอยู่ที่แม่ฮ่องสอน",
+              "english": "The village is in Mae Hong Son."
+            },
+            {
+              "text": "ผมเชิญทุกคนมาวันนี้ เพื่อวางแผนครับ",
+              "english": "I invited everyone today to make a plan.",
+              "speaker": "P"
+            },
+            {
+              "text": "เขาขอให้เราไป และอยากให้เรามาเทศนาและเป็นพยานครับ",
+              "english": "They have asked us to come, and want us to preach and bear witness.",
+              "speaker": "P"
+            },
+            {
+              "text": "เป็นพยานหมายถึงอะไรครับ",
+              "english": "What does \"bear witness\" mean?",
+              "speaker": "S"
+            },
+            {
+              "text": "คือเล่าให้คนอื่นฟังว่า พระเจ้าทำอะไรในชีวิตเรา",
+              "english": "It means telling others what God has done in our lives.",
+              "speaker": "P"
+            },
+            {
+              "text": "เหมือนที่เราเล่าให้กันฟังเมื่อคืนก่อนค่ะ",
+              "english": "Like what we told each other the other night.",
+              "speaker": "M"
+            },
+            {
+              "text": "ใช่ครับ ผมหวังว่าเราจะได้เผยแพร่ข่าวดีที่นั่นด้วย",
+              "english": "Yes. I hope we will be able to spread the good news there too.",
+              "speaker": "P"
+            },
+            {
+              "text": "ผมหวังว่าทุกคนจะไปได้",
+              "english": "I hope everyone can go.",
+              "speaker": "P"
+            },
+            {
+              "text": "เราต้องตัดสินใจคืนนี้ เพราะต้องแจ้งผู้ใหญ่บ้านที่นั่น",
+              "english": "We must decide tonight, because we must tell the headman there.",
+              "speaker": "P"
+            },
+            {
+              "text": "แม่ฮ่องสอนไกลไหมครับ",
+              "english": "Is Mae Hong Son far?",
+              "speaker": "S"
+            },
+            {
+              "text": "ไกลครับ แต่ผมวางแผนไว้ว่าจะไปสามวัน",
+              "english": "Yes, but I have planned to go for three days.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ใครไปได้บ้าง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผมไปได้ครับ แต่ต้องลาหยุดสองวัน",
+              "english": "I can go, but I must take two days' leave.",
+              "speaker": "T"
+            },
+            {
+              "text": "ฉันก็ต้องลาหยุดจากโรงพยาบาลค่ะ",
+              "english": "I must take leave from the hospital too.",
+              "speaker": "M"
+            },
+            {
+              "text": "วันที่ 12 ถึง 14 ฉันทำงานอยู่ค่ะ",
+              "english": "From the 12th to the 14th I'm working.",
+              "speaker": "M"
+            },
+            {
+              "text": "มะลิเปิดสมุดดูวัน",
+              "english": "Mali opened her notebook to look at the dates."
+            },
+            {
+              "text": "ถ้าเปลี่ยนเป็นวันที่ 19 ถึง 21 ฉันก็ไปได้ค่ะ",
+              "english": "If we change to the 19th to the 21st, I can go.",
+              "speaker": "M"
+            },
+            {
+              "text": "วันที่ 19 ผมมีงานที่โรงเรียนครับ",
+              "english": "On the 19th I have work at school.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมว่างทุกวันครับ ผมอยากไปมาก",
+              "english": "I'm free every day. I want to go very much.",
+              "speaker": "S"
+            },
+            {
+              "text": "ถ้าอย่างนั้น เราต้องช่วยกันหาทางออกครับ",
+              "english": "Then we must help one another find a way out.",
+              "speaker": "P"
+            },
+            {
+              "text": "ทุกคนนั่งนึกอยู่นิดหนึ่ง",
+              "english": "Everyone sat thinking for a little."
+            },
+            {
+              "text": "ผมขอเสนอวันที่ 26 ถึง 28 ครับ",
+              "english": "I propose the 26th to the 28th.",
+              "speaker": "T"
+            },
+            {
+              "text": "วันนั้นโรงเรียนหยุด เพราะมีงานฉลอง",
+              "english": "The school is closed that day because of a festival.",
+              "speaker": "T"
+            },
+            {
+              "text": "วันที่ 26 ถึง 28 ฉันมีเวลาค่ะ ฉันหวังว่าฝนจะไม่ตก",
+              "english": "On the 26th to the 28th I have time. I hope it won't rain.",
+              "speaker": "M"
+            },
+            {
+              "text": "ถ้าฝนตก เรามีเวลาน้อยค่ะ",
+              "english": "If it rains, we have little time.",
+              "speaker": "M"
+            },
+            {
+              "text": "ดีเลยครับ เราตกลงตามนี้",
+              "english": "Good. We agree on that.",
+              "speaker": "P"
+            },
+            {
+              "text": "ผมจะได้ไปแล้ว ผมดีใจมากครับ",
+              "english": "So I will get to go. I'm very glad.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ทางขึ้นดอย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ต้นเปิดรูปถนนในโทรศัพท์ให้ทุกคนดู",
+              "english": "Ton opened a picture of the road on his phone for everyone to see."
+            },
+            {
+              "text": "จากเชียงใหม่ไปแม่ฮ่องสอน 250 กิโลเมตรครับ",
+              "english": "From Chiang Mai to Mae Hong Son it's 250 kilometres.",
+              "speaker": "T"
+            },
+            {
+              "text": "แล้วขึ้นดอยอีก 40 กิโลเมตร",
+              "english": "Then another 40 kilometres up the hill.",
+              "speaker": "T"
+            },
+            {
+              "text": "ถนนบนดอยเล็ก และอันตรายมากครับ",
+              "english": "The road up the hill is small and very dangerous.",
+              "speaker": "T"
+            },
+            {
+              "text": "ถ้ารถตกลงน้ำ อย่ากระโจนลงไปช่วยทันที ต้องนึกก่อนว่าน้ำลึกเท่าใดครับ",
+              "english": "If a car falls into the water, don't leap in to help at once; first think how deep the water is.",
+              "speaker": "T"
+            },
+            {
+              "text": "ที่ดอย เงาของภูเขาทำให้ถนนมืดเร็ว และคนเหยียบพื้นเปียกต้องระวังครับ",
+              "english": "Up there the shadow of the mountain makes the road dark early, and people treading on wet ground must be careful.",
+              "speaker": "T"
+            },
+            {
+              "text": "เราจะไปอย่างไรครับ",
+              "english": "How shall we go?",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมขับรถของโรงเรียนไปครับ",
+              "english": "I'll drive the school's car.",
+              "speaker": "T"
+            },
+            {
+              "text": "ไปโดยรถโดยสารได้ไหมครับ",
+              "english": "Could we go by bus?",
+              "speaker": "P"
+            },
+            {
+              "text": "รถโดยสารไม่ขึ้นไปครับ รถต้องมีขนาดเล็ก",
+              "english": "Buses don't go up the hill. The vehicle must be of small size.",
+              "speaker": "T"
+            },
+            {
+              "text": "ทางขึ้นไปยาก รถต้องตะเกียกตะกายขึ้นไป",
+              "english": "The way up is hard. The car has to scramble up.",
+              "speaker": "T"
+            },
+            {
+              "text": "ถ้าฝนตกและน้ำท่วมถนน เราจะไปไม่ได้ใช่ไหมคะ",
+              "english": "If it rains and the road is flooded, we won't be able to go, will we?",
+              "speaker": "M"
+            },
+            {
+              "text": "เขาบอกว่าสะพานเล็กเหนือลำธารเสียหาย",
+              "english": "They say the small bridge over the stream is damaged.",
+              "speaker": "T"
+            },
+            {
+              "text": "คนหมู่บ้านกำลังซ่อมสะพาน และผู้ใหญ่บ้านรวมเงินไว้",
+              "english": "The villagers are repairing the bridge, and the headman is collecting money.",
+              "speaker": "T"
+            },
+            {
+              "text": "เราบริจาคเงินช่วยซ่อมสะพานด้วยดีไหมครับ",
+              "english": "Shall we donate money to help repair the bridge too?",
+              "speaker": "P"
+            },
+            {
+              "text": "ฉันเห็นด้วยค่ะ ฉันขอร่วมด้วย",
+              "english": "I agree. I'd like to join in.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมขับรถ เพราะผมรู้ทาง",
+              "english": "I'll drive, because I know the way.",
+              "speaker": "T"
+            },
+            {
+              "text": "แต่ผมต้องรู้ว่าซ่อมสะพานเสร็จหรือยัง",
+              "english": "But I must know whether the bridge is repaired yet.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมโทรไปถามผู้ใหญ่บ้านได้ไหมครับ",
+              "english": "Could I phone the headman and ask?",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมโทรหาเขาตอนบ่าย เดี๋ยวผมเปิดเสียงให้ทุกคนฟังครับ",
+              "english": "I rang him this afternoon. I'll turn on the speaker for everybody.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "โทรหาผู้ใหญ่บ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "สวัสดีครับศิษยาภิบาล",
+              "english": "Hello, Pastor.",
+              "speaker": "V"
+            },
+            {
+              "text": "สวัสดีครับผู้ใหญ่ พวกเราเตรียมไปวันที่ 26 ครับ",
+              "english": "Hello, headman. We are preparing to come on the 26th.",
+              "speaker": "P"
+            },
+            {
+              "text": "ยินดีครับ ผมจะประกาศให้คนหมู่บ้านมา",
+              "english": "Welcome. I'll announce it so the villagers come.",
+              "speaker": "V"
+            },
+            {
+              "text": "ที่นี่มีระเบียบหนึ่งครับ คือคนมาหาต้องแจ้งผม",
+              "english": "We have one rule here: visitors must tell me.",
+              "speaker": "V"
+            },
+            {
+              "text": "ผมไม่มีอำนาจห้ามใคร แต่เป็นกฎของหมู่บ้านครับ",
+              "english": "I have no power to forbid anyone, but it is the village's rule.",
+              "speaker": "V"
+            },
+            {
+              "text": "เรายินดีทำตามกฎครับ",
+              "english": "We're happy to follow the rule.",
+              "speaker": "P"
+            },
+            {
+              "text": "ขอให้แต่งตัวสุภาพ และถอดรองเท้าก่อนเข้าโบสถ์ครับ",
+              "english": "Please dress politely and take off your shoes before going into the church.",
+              "speaker": "V"
+            },
+            {
+              "text": "ที่นี่มีคนแก่อยู่หลายคน",
+              "english": "There are several elderly people here.",
+              "speaker": "V"
+            },
+            {
+              "text": "ถ้าฉันพายามาตรวจสุขภาพด้วย ได้ไหมคะ",
+              "english": "If I bring medicine for health checks too, is that all right?",
+              "speaker": "M"
+            },
+            {
+              "text": "ได้ครับ ยินดีมาก เรามีคนป่วยอยู่หลายคน",
+              "english": "Yes, very welcome. We have several sick people.",
+              "speaker": "V"
+            },
+            {
+              "text": "ถ้ามีเรื่องฉุกเฉิน โทรหาฉันได้ทันทีนะคะ",
+              "english": "If there's an emergency, you can call me at once.",
+              "speaker": "M"
+            },
+            {
+              "text": "ขอบคุณครับ ชุมชนของเรารอพวกท่านอยู่",
+              "english": "Thank you. Our community is waiting for you.",
+              "speaker": "V"
+            },
+            {
+              "text": "หมู่บ้านเราเลี้ยงแพะ เราจะเตรียมไว้ต้อนรับครับ",
+              "english": "Our village keeps goats. We'll prepare one to welcome you.",
+              "speaker": "V"
+            },
+            {
+              "text": "ผมกินได้ทุกอย่างครับ ขอบคุณมาก",
+              "english": "I can eat anything. Thank you very much.",
+              "speaker": "S"
+            },
+            {
+              "text": "สะพานจะซ่อมเสร็จวันที่ 22 ครับ",
+              "english": "The bridge will be repaired by the 22nd.",
+              "speaker": "V"
+            },
+            {
+              "text": "ขอให้ขับรถช้าๆ เพราะแม่น้ำลึก ถ้าตกลงไปก็จมน้ำตายครับ",
+              "english": "Please drive slowly, because the river is deep, and if you fall in you will drown.",
+              "speaker": "V"
+            },
+            {
+              "text": "ที่นั่นไม่มีรถเก็บขยะ และท่อน้ำก็เสียมานานแล้ว",
+              "english": "On the hill there is no rubbish truck, and the water pipe has been broken for a long time.",
+              "speaker": "V"
+            },
+            {
+              "text": "ขอให้เตรียมน้ำดื่มไปด้วยครับ",
+              "english": "Please bring drinking water with you.",
+              "speaker": "V"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "งานที่ต้องเตรียม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เราต้องวางแผนอีกสองเรื่องครับ",
+              "english": "We must plan two more things.",
+              "speaker": "P"
+            },
+            {
+              "text": "เรื่องหนึ่งคือการเทศนา ผมจะเทศนาเรื่องความรักของพระเจ้า",
+              "english": "One is the sermon. I'll preach about God's love.",
+              "speaker": "P"
+            },
+            {
+              "text": "อีกเรื่องคือพยาน ผมอยากให้แซมเล่าสั้นๆ",
+              "english": "The other is the testimony. I'd like Sam to tell his briefly.",
+              "speaker": "P"
+            },
+            {
+              "text": "ผมอยากเผยแพร่ข่าวดีครับ แต่ผมกลัวพลาด ผมพูดภาษาไทยยังไม่ดี",
+              "english": "I want to spread the good news, but I'm afraid of making a mistake. My Thai isn't good yet.",
+              "speaker": "S"
+            },
+            {
+              "text": "ผมจะช่วยบอกครับ และเราจะลองกันก่อน",
+              "english": "I'll help tell it, and we'll try it first.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมอยากฉวยเวลานี้ให้ทุกคนได้ร่วมงาน",
+              "english": "I'd like to seize this time for everyone to take part in the work.",
+              "speaker": "P"
+            },
+            {
+              "text": "ฉันจะเตรียมยากับผ้าไปด้วยค่ะ",
+              "english": "I'll prepare medicine and cloth to take.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมจะเตรียมหนังสือและข้าวสารครับ",
+              "english": "I'll prepare books and rice.",
+              "speaker": "P"
+            },
+            {
+              "text": "ผมจะเตรียมเสื้อหนาวครับ เพราะที่นั่นหนาวมาก",
+              "english": "I'll prepare warm clothes, because it's very cold on the hill.",
+              "speaker": "S"
+            },
+            {
+              "text": "ถ้าเราไปเช้า ก็สมควรออกตอนตีห้าครับ",
+              "english": "If we go in the morning, we ought to leave at five.",
+              "speaker": "P"
+            },
+            {
+              "text": "ผมแจ้งผู้ใหญ่บ้านทันที",
+              "english": "I'll tell the headman at once.",
+              "speaker": "P"
+            },
+            {
+              "text": "ศิษยาภิบาลให้ทุกคนอธิษฐานก่อนกลับ",
+              "english": "The pastor asked everyone to pray before going home."
+            },
+            {
+              "text": "ขอพระเจ้าให้ปัญญาแก่เรา และให้เรากล้าเล่าเรื่องของเรา",
+              "english": "May God give us wisdom, and make us bold to tell our story.",
+              "speaker": "P"
+            },
+            {
+              "text": "ขอให้เราได้เผยแพร่ข่าวดีด้วยใจที่สุภาพและรัก",
+              "english": "May we spread the good news with a polite and loving heart.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,418 @@
+{
+  "schemaVersion": 2,
+  "id": "th-a2-2-17",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "เพื่อนบ้านที่แท้จริง",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-a2-2-17",
+    "title": "เพื่อนบ้านที่แท้จริง — The good neighbour (a retelling of Luke 10) (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder plan; not reviewed by a native speaker. It is controlled, deliberately repetitive Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. SCRIPTURE RETELLING in the drafter's own words (not a quotation of the OTCV or of any translation). Needs a Scripture-competent reviewer in addition to the linguistic one: fidelity to Luke 10:25-37 (the question, the man attacked on the road, the priest, the helper from the temple, the man from another town, the inn, oil and wine, two days' wages, \"go and do likewise\"). Place names and the word \"Samaritan\" are not used on purpose; the Levite is \"another man who worked in the house of God\"."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "Scripture retelling",
+    "parable",
+    "neighbour",
+    "mercy"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "scripture"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "J": "พระเยซู",
+    "A": "ชายผู้ถาม",
+    "W": "เจ้าของโรงแรม",
+    "_gender": "J=m; A=m; W=m"
+  },
+  "sections": [
+    {
+      "title": "คำถาม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันหนึ่ง ชายคนหนึ่งมาหาพระเยซู",
+              "english": "One day a man came to Jesus."
+            },
+            {
+              "text": "เขาเป็นคนที่รู้เรื่องกฎมาก",
+              "english": "He was a man who knew the law well."
+            },
+            {
+              "text": "อาจารย์ครับ ผมต้องทำอะไร ชีวิตของผมจึงจะดี",
+              "english": "Teacher, what must I do so that my life may be good?",
+              "speaker": "A"
+            },
+            {
+              "text": "ในกฎเขียนไว้ว่าอย่างไร",
+              "english": "What is written in the law?",
+              "speaker": "J"
+            },
+            {
+              "text": "ให้รักพระเจ้ามากที่สุด และให้รักเพื่อนบ้านเหมือนรักตนเอง",
+              "english": "To love God the most, and to love one's neighbour as oneself.",
+              "speaker": "A"
+            },
+            {
+              "text": "ท่านตอบถูกแล้ว ท่านทำอย่างนั้นเถิด",
+              "english": "You have answered rightly. Do so.",
+              "speaker": "J"
+            },
+            {
+              "text": "แต่ใครคือเพื่อนบ้านของผมครับ",
+              "english": "But who is my neighbour?",
+              "speaker": "A"
+            },
+            {
+              "text": "พระเยซูจึงเล่าเรื่องหนึ่งให้เขาฟัง",
+              "english": "So Jesus told him a story."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ชายที่ถูกปล้น",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ชายหนุ่มคนหนึ่งเดินทางลงจากเมืองหนึ่งไปอีกเมืองหนึ่ง",
+              "english": "A young man was travelling down from one city to another.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขาเดินคนเดียว ถนนนั้นอยู่ในป่า และอยู่ใกล้ตลิ่งแม่น้ำ",
+              "english": "He walked alone; the road ran through a wild place and near the river bank.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขารู้ว่าทางนั้นไม่ปลอดภัย ต้องระวังตัว เขาจึงซุกซ่อนเงินไว้ในเสื้อ",
+              "english": "He knew the way was not safe and he had to be careful, so he hid his money in his coat.",
+              "speaker": "J"
+            },
+            {
+              "text": "แต่มีคนกลุ่มหนึ่งวางแผนไว้ก่อน",
+              "english": "But a group of men had planned it in advance.",
+              "speaker": "J"
+            },
+            {
+              "text": "พวกเขาซ่อนอยู่ข้างทาง ใกล้ตลิ่งนั้น",
+              "english": "They lay hidden by the road, near that bank.",
+              "speaker": "J"
+            },
+            {
+              "text": "พวกเขาโลภ และอยากได้ของของเขา",
+              "english": "They were greedy, and wanted what he had.",
+              "speaker": "J"
+            },
+            {
+              "text": "เผอิญไม่มีพยานเห็นเลย",
+              "english": "By chance there was no witness to see.",
+              "speaker": "J"
+            },
+            {
+              "text": "พวกเขามาปล้นชายหนุ่ม",
+              "english": "They robbed the young man.",
+              "speaker": "J"
+            },
+            {
+              "text": "พวกเขาแย่งเสื้อ กระเป๋า เป็นต้น ไป",
+              "english": "They snatched away his coat, his bag and so on.",
+              "speaker": "J"
+            },
+            {
+              "text": "พวกขโมยลักเอาเงินทุกบาท พวกขโมยไม่มีใจอ่อนเลย",
+              "english": "The thieves took every baht; the thieves were not softened at all.",
+              "speaker": "J"
+            },
+            {
+              "text": "ชายหนุ่มดิ้นรนป้องกันตัว แต่พวกเขาตีเขา",
+              "english": "The young man struggled to protect himself, but they beat him.",
+              "speaker": "J"
+            },
+            {
+              "text": "พวกเขาทำร้ายเขา ทำให้เขาลุกไม่ไหว",
+              "english": "They hurt him so that he could not get up.",
+              "speaker": "J"
+            },
+            {
+              "text": "แล้วพวกเขาก็ลับไป ปล่อยให้เขานอนอยู่ข้างถนน",
+              "english": "Then they went out of sight, leaving him lying by the road.",
+              "speaker": "J"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ปุโรหิต",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนนั้นมีปุโรหิตคนหนึ่งเดินมาทางนั้น",
+              "english": "At that time a priest came along that way.",
+              "speaker": "J"
+            },
+            {
+              "text": "ปุโรหิตเห็นชายคนนั้นนอนอยู่ แต่เขาตั้งหน้าเดินไป",
+              "english": "The priest saw the man lying there, but he set his face and walked on.",
+              "speaker": "J"
+            },
+            {
+              "text": "ใจของเขาแข็ง เขาไม่อยากเสียเวลา",
+              "english": "His heart was hard, and he did not want to lose time.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขานึกว่า บางทีชายคนนั้นอาจทำอะไรผิด",
+              "english": "He thought that perhaps the man had done something wrong.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขากลัวติดโรค และกลัวคนปล้นจะกลับมา",
+              "english": "He feared catching a disease, and feared the robbers would return.",
+              "speaker": "J"
+            },
+            {
+              "text": "ปุโรหิตเลี่ยงไปเดินอีกฝั่งหนึ่งของถนน",
+              "english": "The priest avoided him and walked on the other side of the road.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขาไม่ได้รู้จักชายหนุ่ม และไม่อยากรู้จัก",
+              "english": "He did not know the young man and did not want to know him.",
+              "speaker": "J"
+            },
+            {
+              "text": "ต่อมามีอีกคนหนึ่งซึ่งทำงานในบ้านของพระเจ้า เดินมาถึงที่นั่น",
+              "english": "Then another man who worked in the house of God came to the same place.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขามองชายหนุ่มแล้วก็หลบไป",
+              "english": "He looked at the young man and then slipped away.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขาเลี่ยงไปเหมือนกัน เพราะไม่อยากเห็น",
+              "english": "He avoided him too, because he did not want to see.",
+              "speaker": "J"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ชายจากอีกเมืองหนึ่ง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แล้วมีชายคนหนึ่งจากอีกเมืองหนึ่งเดินทางมาทางนั้น",
+              "english": "Then a man from another town came travelling that way.",
+              "speaker": "J"
+            },
+            {
+              "text": "คนส่วนมากไม่ชอบคนจากเมืองของเขา",
+              "english": "Most people did not like those from his town.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขาเห็นชายหนุ่มนอนอยู่ และเขาสงสาร",
+              "english": "He saw the young man lying there, and he felt pity.",
+              "speaker": "J"
+            },
+            {
+              "text": "ใจของเขาอ่อน เขาไม่หลบ และไม่เลี่ยง",
+              "english": "His heart was soft; he did not slip away or avoid him.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขาเดินเข้าไปหา",
+              "english": "He walked up to him.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขาดูอาการของชายหนุ่ม และตรวจบาดแผล",
+              "english": "He looked at the young man's condition and examined the wounds.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขาเอาน้ำมันกับเหล้าองุ่นใส่ที่บาดแผล",
+              "english": "He put oil and wine on the wounds.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขาผูกผ้าไว้ที่แขนและที่ขา",
+              "english": "He tied cloth round the arms and legs.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขาพาชายหนุ่มขึ้นลาของเขา",
+              "english": "He lifted the young man on to his donkey.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขาขับลาไปช้าๆ และระวังไม่ให้ชายหนุ่มตก",
+              "english": "He drove the donkey slowly, taking care that the young man did not fall.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขาไม่ได้ถามว่า ชายหนุ่มเป็นใคร มาจากไหน",
+              "english": "He did not ask who the young man was or where he came from.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขารักษาชายหนุ่มอย่างดี และไม่ทำร้ายเขา",
+              "english": "He treated the young man well, and did not hurt him.",
+              "speaker": "J"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่โรงแรม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อถึงโรงแรม เขาพาชายหนุ่มไปนอนบนเตียง",
+              "english": "When they reached the inn, he took the young man to bed.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขานั่งดูชายหนุ่มทั้งคืน ถึงเขาจะง่วงมาก",
+              "english": "He sat watching over him all night, though he was very sleepy.",
+              "speaker": "J"
+            },
+            {
+              "text": "ชายหนุ่มสิ้นแรง แต่ได้พักในโรงแรมนั้น",
+              "english": "The young man had no strength left, but could rest in that inn.",
+              "speaker": "J"
+            },
+            {
+              "text": "น้ำมันกับเหล้าองุ่นของเขาหมดไป",
+              "english": "His oil and wine were used up.",
+              "speaker": "J"
+            },
+            {
+              "text": "รุ่งเช้า ชายจากอีกเมืองต้องเดินทางต่อ",
+              "english": "In the morning the man from the other town had to travel on.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขาให้เงินสำหรับสองวันแก่เจ้าของโรงแรม",
+              "english": "He gave the innkeeper money for two days.",
+              "speaker": "J"
+            },
+            {
+              "text": "เขาบอกว่า \"ช่วยดูเขาด้วย ถ้าเงินไม่พอ ข้าจักจ่ายให้เมื่อกลับมา\"",
+              "english": "He said, \"Please look after him. If the money isn't enough, I'll pay when I come back.\"",
+              "speaker": "J"
+            },
+            {
+              "text": "ผมมีน้ำมันกับเหล้าองุ่นไว้รักษาบาดแผล ผมจะช่วยเขาเต็มที่ครับ",
+              "english": "I have oil and wine for treating wounds. I'll help him as best I can.",
+              "speaker": "W"
+            },
+            {
+              "text": "เขาไม่ได้หวังอะไรเลย เขาทำเพราะสงสาร",
+              "english": "He hoped for nothing; he did it out of pity.",
+              "speaker": "J"
+            },
+            {
+              "text": "เหตุใดเขาจึงช่วย เพราะเขารู้ว่าชายหนุ่มต้องการเพื่อน",
+              "english": "Why did he help? Because he knew the young man needed a friend.",
+              "speaker": "J"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คำตอบ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ใน 3 คนนั้น ท่านเห็นว่าใครเป็นเพื่อนบ้านของชายหนุ่มที่ถูกปล้น",
+              "english": "Of those three, who do you think was the neighbour of the young man who was robbed?",
+              "speaker": "J"
+            },
+            {
+              "text": "คนที่สงสารเขาครับ",
+              "english": "The one who pitied him.",
+              "speaker": "A"
+            },
+            {
+              "text": "ถ้าอย่างนั้น ท่านก็ไปทำอย่างเขาเถิด",
+              "english": "Then go and do the same.",
+              "speaker": "J"
+            },
+            {
+              "text": "ชายคนนั้นนิ่งอยู่นิดหนึ่ง",
+              "english": "The man was silent for a little."
+            },
+            {
+              "text": "เขาเข้าใจว่า เพื่อนบ้านไม่ใช่คนที่อยู่ใกล้บ้านของเรา",
+              "english": "He understood that a neighbour is not the one who lives near our house."
+            },
+            {
+              "text": "เพื่อนบ้านคือคนที่เราช่วย เมื่อเขาต้องการ ขโมยไม่ใช่เพื่อนบ้านของใคร",
+              "english": "A neighbour is the one we help when he is in need; a thief is no one's neighbour."
+            },
+            {
+              "text": "นี่เป็นข่าวดีสำหรับคนที่ไม่มีใครช่วย",
+              "english": "This is good news for those that nobody helps."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), a2-2 units"
+        }
+      }
+    ]
+  }
+}

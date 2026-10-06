@@ -7,10 +7,12 @@ import { useApp } from '../context';
 import { teamLabel } from '../format';
 import { I } from '../ui';
 import { Stage0Entry } from '../stage0/Stage0Entry';
+import { hasLadder } from '../read/hasLadder';
 
 
 const ENTRIES: Array<{ to: string; name: string; sub: string }> = [
   { to: '/read', name: 'Reading', sub: 'Stories and dialogues' },
+  { to: '/path', name: 'Your path', sub: 'Step by step from your first words to real books' },
   { to: '/listen', name: 'GoListen', sub: 'Understand stories and Scripture by listening' },
   { to: '/scripture', name: 'Scripture', sub: 'The Bible, prepared for you' },
   { to: '/testimony', name: 'Testimony', sub: 'Write it in your own words' },
@@ -18,7 +20,7 @@ const ENTRIES: Array<{ to: string; name: string; sub: string }> = [
 ];
 
 export function Home() {
-  const { user, course, features } = useApp();
+  const { user, course, features, lang } = useApp();
 
   return (
     <div className="page home route-fade">
@@ -29,7 +31,7 @@ export function Home() {
 
       <nav className="home__list" aria-label="Start here">
         <Stage0Entry />
-        {ENTRIES.filter((e) => e.to !== '/listen' || features.listen).map((e) => (
+        {ENTRIES.filter((e) => (e.to !== '/listen' || features.listen) && (e.to !== '/path' || hasLadder(lang))).map((e) => (
           <Link key={e.to} to={e.to} className="home__entry">
             <span className="home__entry-body">
               <span className="home__entry-name">{e.name}</span>

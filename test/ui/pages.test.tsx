@@ -87,7 +87,7 @@ describe('Library and routes', () => {
     const h = await makeHarness();
     mounted = await h.mount(app(), { router: '/' });
     expect(qa(mounted.container, 'a[href^="/read/"]')).toHaveLength(0);
-    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((a) => a.textContent)).toEqual(['Reading', 'GoListen', 'Scripture', 'Testimony', 'Team Texts']);
+    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((a) => a.textContent)).toEqual(['Reading', 'Your path', 'GoListen', 'Scripture', 'Testimony', 'Team Texts']);
   });
 /*
     const recs: Recommendation[] = [

@@ -110,7 +110,7 @@ export async function createRealEngine(opts: RealEngineOptions): Promise<RealEng
       substitutions: [
         'In-memory store (indexed clone of createMemoryStore, same semantics) instead of IndexedDB.',
         `globalThis.fetch serves /library/${lang}/ from public/library on disk${opts.dict ? ' and /dict from public/dict' : '; no dictionary is installed in the import (404 on /dict), as in the learner\'s own adapter-lemma rule'}.`,
-        'setWholeLibrarySource is registered here with the app\'s library.search / library.profile (the app\'s bootstrap does not register it yet).',
+        'setWholeLibrarySource is registered here with the app\'s library.search / library.profile as the app\'s bootstrap does.',
         'Simulated clock: every reading advances 0.2 s; 45 minutes pass between texts (each text is its own sitting).',
         'No localStorage: preferences are defaults; preview mode is recommend(includeUnpublished).',
         'The Stage 0 exit verdict is the simulation\'s own (>= 80 % of Stage 0 lemmas known); no exit-gate answers are sent.',

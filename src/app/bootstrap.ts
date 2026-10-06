@@ -35,7 +35,7 @@ import { createAdapterRegistry } from '../adapters';
 import { exportLearner, restoreLearner, validateBackup } from '../backup';
 import type { BackupFile } from '../backup';
 import { createGoLearn } from '../golearn';
-import { setLadderPathSource } from '../golearn/recommend';
+import { setLadderPathSource, setWholeLibrarySource } from '../golearn/recommend';
 import { ladderUnitDocuments } from '../ladder/bundle';
 import { createLadderPath } from '../ladder/path';
 import { AZURE_PROVIDER_ID, AzureSpeechProvider, ProxySpeechProvider, createGoListen } from '../golisten';
@@ -296,6 +296,9 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   try { library = createLibrary({ store, adapters, clock, lexicon }); } catch {
     library = emptyLibrary(); // the catalogue pages then say there is nothing in the library yet
   }
+  // GoLearn recommends from the WHOLE library (src/golearn/candidates.ts), not only from texts already on this device: its
+  // shortlist pages through the catalogue and profiles the few it ranks. Registered once, like the ladder's path source.
+  setWholeLibrarySource({ pager: (q) => library.search(q), profileOf: (id) => library.profile(id) });
 
   // ── built-in texts through the importer, one language at a time ──
   let bundle: ReturnType<typeof loadBundledCorpus> | undefined;

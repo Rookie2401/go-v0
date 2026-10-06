@@ -69,7 +69,10 @@ describe('one complete acquisition loop — Spanish', () => {
   beforeAll(async () => {
     await seedUser(app.store, USER, 'honduras-es');
     await importDocuments(app.store, app.adapters, bundled(LANG).filter((d) => d.id !== 'story-01')); // Scripture + dialogue already on the device
-    supplied = bundledDoc(LANG, 'story-01');
+    // The bundled seed story is tagged `superseded-by-ladder` (the ladder absorbed it), so the engine never offers it. This loop is about a
+    // contributor's NEW text, which carries no such tag: the fixture is the same file as supplied without it.
+    const seed = bundledDoc(LANG, 'story-01');
+    supplied = { ...seed, editorialTags: seed.editorialTags.filter((t) => t !== 'superseded-by-ladder') };
   });
 
   it('1 — the supplied text validates, imports exactly, and is NOT published without a review', async () => {

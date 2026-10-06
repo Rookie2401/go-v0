@@ -416,6 +416,42 @@ export const WHOLE_RANKING = {
 } as const;
 
 /**
+ * What the learner is RECOMMENDED to read next (rank.ts `reachOf`, recommend.ts). PROVISIONAL, from the simulated student of
+ * docs/audits/B2-SIMULATION.md. The coverage used here is the RECOMMENDATION's own: proper names (PROPN) and numerals are left out
+ * of numerator and denominator, because a genealogy is "easy" only through its names and teaches nothing. It is never shown to the
+ * learner as his coverage (the coverage of a text, in the reader and in Explore, is unchanged).
+ */
+export const REACH = {
+  /** A text is IN REACH at this recommendation coverage or above (shown or likely-familiar words, names left out). */
+  floor: 0.75,
+  /** With nothing in reach, the closest this many are recommended, said to be above the learner's level. */
+  closestFew: 3,
+  /** Such a text never scores above this (the ladder's "Next on your path" is 0.99), so it is not led with. */
+  aboveLevelScore: 0.45,
+  /** YIELD: new words per word, i.e. the distinct lemmas not yet known per word of the text (names counted as words). Below `minYield` (fewer than 1 new word per 100) a text "teaches (almost) nothing new". */
+  minYield: 0.01,
+  /** At this yield (4 new words per 100) the yield part reaches 1; the part is added with `yieldWeight` (the score is divided by 1 + the weight). */
+  yieldFullShare: 0.04,
+  yieldWeight: 0.15,
+  /** The lemma-based measure needs lemmas for at least this share of the words and this many non-name word tokens, else the form-based share stands. */
+  minLemmaShare: 0.5,
+  minNameFreeWords: 20,
+  /** SOFT CAP on Scripture in what is READ: the window is the last `recentTexts` texts or `recentWords` words, whichever is shorter. */
+  recentTexts: 20,
+  recentWords: 20_000,
+  /** The fewest recently read texts for the cap to speak at all. */
+  scriptureMinTexts: 3,
+  /** Above this share of the window, Scripture candidates lose `scripturePenalty` x (share - cap) / (1 - cap) of their score. */
+  scriptureShare: 0.35,
+  scripturePenalty: 0.8,
+  /** REREADS: never a text read at under `rereadMinCoverage` (help share above 1 - it) among the last `rereadLookback` texts read. */
+  rereadMinCoverage: 0.75,
+  rereadLookback: 5,
+  /** A text carrying this editorial tag was absorbed by the ladder: it stays in the store and is never offered. */
+  supersededTag: 'superseded-by-ladder',
+} as const;
+
+/**
  * Rescue dependence (rescue.ts): provisional values, not calibrated on learners. A trend is stated only from
  * `minUnitsForTrend` sentence readings; a change counts when the later rate differs from the earlier one by `change`
  * (relative) and by at least `minAbsoluteChange` (per 100), so that 1 → 0 on a handful of sentences is not "falling".

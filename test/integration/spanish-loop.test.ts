@@ -19,6 +19,10 @@ import { canonicalTextSha256, editionIdOf, listeningEmitter, releaseIdOf } from 
 import verified from '../../data/verified/scripture.json';
 import { SyntheticSpeechProvider, bundled, bundledDoc, liveSentences, makeApp, makeClock, reader, seedUser, syntheticallyReviewed, tokensOf } from './harness';
 
+// The bundled seed texts are drafts the ladder absorbed (tagged superseded-by-ladder, so the engine no longer offers them). This test
+// is about review and publication, not the ladder: its fixtures drop that one tag.
+const notSuperseded = <T extends { editorialTags: string[] }>(d: T): T => ({ ...d, editorialTags: d.editorialTags.filter((t) => t !== 'superseded-by-ladder') });
+
 const USER = 'learner-es';
 const LANG = 'es' as const;
 const sinForm = ids.form(LANG, 'pecado');
@@ -61,7 +65,7 @@ describe('Spanish end-to-end loop', () => {
   beforeAll(async () => { await seedUser(app.store, USER, 'honduras-es'); });
 
   it('0 — with only the bundled corpus nothing unreviewed is offered: a new learner gets an honest note, not a story', async () => {
-    const report = await importDocuments(app.store, app.adapters, bundled(LANG));
+    const report = await importDocuments(app.store, app.adapters, bundled(LANG).map(notSuperseded));
     expect(report.ok).toBe(true);
     const byId = Object.fromEntries(report.documents.map((d) => [d.id, d]));
     expect(byId['story-01'].published).toBe(false);
@@ -78,7 +82,7 @@ describe('Spanish end-to-end loop', () => {
   });
 
   it('1 — import: reviewed CI material is published; Scripture is exact, verified and unchanged by import', async () => {
-    const report = await importDocuments(app.store, app.adapters, [syntheticallyReviewed(bundledDoc(LANG, 'story-01'))]);
+    const report = await importDocuments(app.store, app.adapters, [syntheticallyReviewed(notSuperseded(bundledDoc(LANG, 'story-01')))]);
     expect(report.documents[0]).toMatchObject({ id: 'story-01', published: true });
     story = (await app.store.texts.get(ids.text(LANG, 'story-01')))!;
     bible = (await app.store.texts.get(ids.text(LANG, 'bible-1john-1')))!;
@@ -98,7 +102,7 @@ describe('Spanish end-to-end loop', () => {
       expect(/\d/.test(s.text)).toBe(false); // verse numbers are metadata
     }
     // Re-import is a no-op (no duplicate texts, no version bump).
-    const again = await importDocuments(app.store, app.adapters, [syntheticallyReviewed(bundledDoc(LANG, 'story-01'))]);
+    const again = await importDocuments(app.store, app.adapters, [syntheticallyReviewed(notSuperseded(bundledDoc(LANG, 'story-01')))]);
     expect(again.documents[0].action).toBe('unchanged');
     expect((await app.store.texts.where('lang', LANG)).filter((t) => t.id === story.id).length).toBe(1);
     // A new learner is now offered the published story first.

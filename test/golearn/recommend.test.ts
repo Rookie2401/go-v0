@@ -155,12 +155,21 @@ describe('recommend() — after reading', () => {
     expect(little.score).toBeGreaterThan(re!.score); // understood less → more urgent
   });
 
-  it('suggests a reread when the latest session needed heavy help', async () => {
+  it('suggests a reread when the latest session needed heavy help — but not while that text is among the last five read (read at 60 %, rereading it does not help)', async () => {
     const h = await setup();
     await h.viewAll(U, 'es', ES_STORY, 4, 's1');
     await h.rescue(U, 'es', ES_STORY, [0, 1, 2], 's1'); // English on most of it
     await h.complete(U, 'es', ES_STORY, 's1');
     let recs = await h.golearn.recommend(U, { limit: 10 });
+    expect(recs.find((r) => r.textId === ES_STORY && (r.reason === 'reread' || r.reason === 'reinforces-weak-items'))).toBeUndefined();
+    // five other texts later it is no longer "within the last few": it may come back
+    for (let i = 0; i < 5; i++) {
+      const slug = `story-more${i}`;
+      await addText(h, slug, ['dios', 'creo', 'en']);
+      await h.viewAll(U, 'es', `text:es:${slug}`, 1, `m${i}`);
+      await h.complete(U, 'es', `text:es:${slug}`, `m${i}`);
+    }
+    recs = await h.golearn.recommend(U, { limit: 20 });
     expect(recs.find((r) => r.textId === ES_STORY)?.reason).toBe('reread');
     await h.viewAll(U, 'es', ES_STORY, 4, 's2'); // a clean second session: the latest session is what counts
     await h.complete(U, 'es', ES_STORY, 's2');
@@ -186,12 +195,27 @@ describe('recommend() — after reading', () => {
     const plain = await h.golearn.recommend(U, { limit: 10 });
     const score = (list: typeof plain, id: string) => list.find((r) => r.textId === id)!.score;
     expect(plain.find((r) => r.textId === easy)?.band).not.toBe('stretch');
-    expect(score(plain, easy)).toBeGreaterThan(score(plain, hard));
+    // a text below the floor of what is in reach is not offered while one in reach exists
+    expect(plain.find((r) => r.textId === hard)).toBeUndefined();
     const boosted = await h.golearn.recommend(U, { limit: 10, interests: ['daily-life'] });
     expect(score(boosted, easy)).toBeGreaterThan(score(plain, easy));
     const scores = plain.map((r) => r.score);
     expect([...scores].sort((a, b) => b - a)).toEqual(scores);
     expect(await h.golearn.recommend(U, { limit: 1 })).toHaveLength(1);
+  });
+
+  it('with nothing in reach the closest text is offered, and it says plainly that it is above the learner level', async () => {
+    const h = createHarness();
+    await h.seed(U, 'honduras-es');
+    await buildSpanish(h.store);
+    await readStory(h, { report: 'all' });
+    await h.understood(U, 'es', ES_STORY, [0, 1, 2, 3], 's2');
+    const far = await addText(h, 'story-05', ['qa', 'qb', 'qc', 'qd']); // nothing known
+    const near = await addText(h, 'story-06', ['dios', 'qe', 'qf', 'qg']); // one word in four known: closer, still far from in reach
+    const recs = (await h.golearn.recommend(U, { limit: 10 })).filter((r) => r.reason === 'next-input' && r.textId);
+    expect(recs.map((r) => r.textId)).toEqual([near, far]);
+    for (const r of recs) expect(r.explanation).toMatch(/above your level/);
+    expect(recs[0].score).toBeGreaterThan(recs[1].score);
   });
 
   it('texts read only by exposure are offered as "reinforces weak items", not as understood', async () => {

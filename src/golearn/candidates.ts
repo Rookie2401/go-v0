@@ -27,13 +27,13 @@
  * speech never makes one), and only for a text with a lawful reviewed HUMAN recording (`hasHumanReviewedRecording` + GoListen's
  * `audioEligible`), exactly as `recommend` requires.
  */
-import type { CatalogText, LanguageCode, LibraryQuery, RankCandidate, Text, TextProfile } from '../core';
+import type { CatalogText, LanguageCode, LibraryQuery, Text, TextProfile } from '../core';
 import { searchCatalog } from '../library/postings';
 import { cachedProfile } from '../library/store-index';
 import { hasHumanReviewedRecording } from './eligibility';
-import { CANDIDATES } from './policy';
+import { CANDIDATES, REACH } from './policy';
 import { domainOf, rankLibrary } from './rank';
-import type { RankedTextWhole } from './rank';
+import type { RankCandidateWhole, RankedTextWhole } from './rank';
 import type { Ctx } from './state';
 import { cmp } from './util';
 
@@ -65,6 +65,11 @@ export interface LearnerSnapshot {
   interests: ReadonlySet<string>;
   /** He has CREDITED listening encounters in this language (synthetic speech never creates one). */
   listens: boolean;
+  /**
+   * Scripture's share of the words of what he read lately (the last `REACH.recentTexts` texts or `REACH.recentWords` words);
+   * undefined when he read fewer than `REACH.scriptureMinTexts` texts. Feeds the soft cap on Scripture in what is recommended.
+   */
+  scriptureShare?: number;
 }
 
 export async function learnerSnapshot(ctx: Ctx, userId: string, lang: LanguageCode, interests: readonly string[] = []): Promise<LearnerSnapshot> {
@@ -106,12 +111,45 @@ export async function learnerSnapshot(ctx: Ctx, userId: string, lang: LanguageCo
   if (ctx.listening && ctx.audioEligible) {
     listens = (await ctx.store.encounters.where('userId', userId)).some((e) => e.lang === lang && e.modality === 'listening');
   }
+  const scriptureShare = await recentScriptureShare(ctx, [...lastAt.entries()].sort((a, b) => (a[1] < b[1] ? 1 : a[1] > b[1] ? -1 : cmp(a[0], b[0]))).map(([id]) => id));
   return {
     lang, completed, started: new Set(lastAt.keys()), recent, touchedWorks, stageIndex,
     ...(currentStage !== undefined ? { currentStage } : {}), recentGroups,
     interests: new Set(interests.map((s) => s.toLowerCase())), listens,
+    ...(scriptureShare !== undefined ? { scriptureShare } : {}),
   };
 }
+
+/** Scripture's share of the words of the texts he read lately (`recentIds`: most recent first); undefined with too few texts to say. */
+async function recentScriptureShare(ctx: Ctx, recentIds: readonly string[]): Promise<number | undefined> {
+  if (recentIds.length < REACH.scriptureMinTexts) return undefined;
+  const ids = recentIds.slice(0, REACH.recentTexts);
+  const rows = await ctx.store.catalog.getMany(ids);
+  const texts = await ctx.store.texts.getMany(ids);
+  let words = 0;
+  let scripture = 0;
+  let n = 0;
+  for (let i = 0; i < ids.length && words < REACH.recentWords; i++) {
+    const w = Math.max(1, rows[i]?.features.words ?? 200);
+    const isScr = rows[i] ? isScripture(rows[i]!) : texts[i]?.kind === 'scripture';
+    words += w;
+    n += 1;
+    if (isScr) scripture += w;
+  }
+  return n >= REACH.scriptureMinTexts && words > 0 ? scripture / words : undefined;
+}
+
+// ───────────────────────────── what is never offered as reading ─────────────────────────────
+
+/** A work's front matter or preface (the plaintext importer files it as chapter 0, "<book> — Front matter"). Scripture's chapter 0 is its starter selection, not front matter. */
+const FRONT_TITLE = /(?:^|[—–-]\s*)(?:front matter|preface|foreword|prólogo|prologo|vorwort|préface|prefazione|prefácio)(?:\s*\([^)]*\))?\s*$/i;
+export const isFrontMatterTitle = (title: string): boolean => FRONT_TITLE.test(title.trim());
+export const isFrontMatterRow = (r: Pick<CatalogText, 'title' | 'chapter' | 'stream' | 'streams'>): boolean =>
+  isFrontMatterTitle(r.title) || (r.chapter === 0 && !isScripture(r));
+export const isFrontMatterText = (t: Pick<Text, 'title' | 'chapter' | 'kind'>): boolean =>
+  isFrontMatterTitle(t.title) || /^front matter$/i.test(t.chapter?.title ?? '') || (t.chapter?.index === 0 && t.kind !== 'scripture');
+/** Absorbed by the ladder (`editorialTags` carries `superseded-by-ladder`): it stays in the store, it is not offered. */
+export const isSuperseded = (t: Pick<Text, 'editorialTags'>): boolean => (t.editorialTags ?? []).includes(REACH.supersededTag);
 
 // ───────────────────────────── the prefilter ─────────────────────────────
 
@@ -230,7 +268,7 @@ export async function shortlist(pager: CatalogPager, opts: ShortlistOptions): Pr
     const fitRows = opts.fit ? await opts.fit(page.items) : page.items;
     stats.excluded += page.items.length - fitRows.length;
     for (const row of fitRows) {
-      if (row.lang !== opts.lang || (!preview && !row.published) || opts.excludeIds?.has(row.id)) { stats.excluded += 1; continue; }
+      if (row.lang !== opts.lang || (!preview && !row.published) || opts.excludeIds?.has(row.id) || isFrontMatterRow(row)) { stats.excluded += 1; continue; }
       stats.seen += 1;
       const entry: Entry = { id: row.id, score: prefilterScore(row, snap), row };
       const liked = matchesInterest(row, snap.interests);
@@ -291,7 +329,7 @@ export async function candidateFilter(ctx: Ctx): Promise<(rows: CatalogText[]) =
     const stored = await ctx.store.texts.getMany(rows.map((r) => r.id));
     return rows.filter((_, i) => {
       const t = stored[i];
-      return !t || (t.kind !== 'testimony' && !privateCorpusIds.has(t.corpusId) && !isHeldOut(t));
+      return !t || (t.kind !== 'testimony' && !privateCorpusIds.has(t.corpusId) && !isHeldOut(t) && !isSuperseded(t) && !isFrontMatterText(t));
     });
   };
 }
@@ -325,6 +363,11 @@ export interface WholeLibraryOptions {
   targetVariety?: string;
   /** A snapshot already taken by the caller (it must be for the same learner and language). */
   snapshot?: LearnerSnapshot;
+  /**
+   * RECOMMENDING (what `recommend` asks for; default off, so a plain ranking is exactly what it was): coverage with names left out, the
+   * yield term, the floor of what is in reach and the soft cap on Scripture in what he reads (rank.ts `RankOptionsWhole.reach`).
+   */
+  reach?: boolean;
 }
 
 export interface WholeLibraryResult {
@@ -357,7 +400,7 @@ export async function rankWholeLibrary(ctx: Ctx, userId: string, deps: WholeLibr
   for (let i = 0; i < items.length; i += PROFILE_BATCH) {
     profiles.push(...await Promise.all(items.slice(i, i + PROFILE_BATCH).map((r) => profileOf(r.id).catch(() => undefined))));
   }
-  const candidates: RankCandidate[] = [];
+  const candidates: RankCandidateWhole[] = [];
   const rowOf = new Map<string, CatalogText>();
   items.forEach((r, i) => {
     const profile = profiles[i];
@@ -365,7 +408,7 @@ export async function rankWholeLibrary(ctx: Ctx, userId: string, deps: WholeLibr
     rowOf.set(r.id, r);
     candidates.push({
       profile, workId: r.workId, stream: r.stream, domains: r.domains, variety: r.variety, author: r.author, controlled: r.stream === 'acquisition',
-      published: r.published, rights: r.rights, alreadyRead: snap.completed.has(r.id),
+      published: r.published, rights: r.rights, alreadyRead: snap.completed.has(r.id), scripture: isScripture(r),
     });
   });
 
@@ -385,6 +428,7 @@ export async function rankWholeLibrary(ctx: Ctx, userId: string, deps: WholeLibr
   const ranked = await rankLibrary(ctx, userId, candidates, {
     interests, targetVariety: opts.targetVariety ?? course?.variety?.target, challenge: opts.challenge, limit: opts.limit ?? 10,
     signals: { recentGroups: snap.recentGroups, ...(listenEligible ? { listenEligible } : {}) },
+    ...(opts.reach ? { reach: { scriptureShare: snap.scriptureShare } } : {}),
   });
   return {
     picks: ranked.flatMap((r) => { const row = rowOf.get(r.textId); return row ? [{ ranked: r, row, alreadyRead: snap.completed.has(r.textId) }] : []; }),

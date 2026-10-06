@@ -22,17 +22,32 @@
  *  testimony
  *     rehearse-testimony    the learner's testimony with an accepted revision: 0.5, always after the input items.
  *  nothing to offer        an honest note (no textId) when nothing is published, or everything published has been read.
+ *
+ * WHAT IS OFFERED AS NEW READING (REACH in policy.ts; from the simulated student of docs/audits/B2-SIMULATION.md):
+ *   - coverage is the recommendation's own: proper names and numerals are left out of numerator and denominator (a genealogy is
+ *     "easy" only through its names), and a text that would teach (almost) nothing new comes after every text in reach that does;
+ *   - nothing below the floor (75 %) is offered while a text at or above it exists; with none in reach the closest few are offered
+ *     and said plainly to be above his level, and the ladder's "Next on your path" still leads;
+ *   - Scripture is soft-capped in what he READS: above 35 % of his last 20 texts / 20,000 words, Scripture candidates lose score
+ *     proportionally (never removed: with little else in reach it is still offered);
+ *   - rereads and reinforcement come after the new input in reach, are never of the text he has just read again, and never of a text
+ *     he read at under 75 % coverage among the last five;
+ *   - front matter / prefaces and texts tagged `superseded-by-ladder` are never offered.
  */
-import type { LanguageCode, PersonalizedCoverage, Recommendation, RecommendationReason, Text } from '../core';
-import { learnerSnapshot, rankWholeLibrary, storePager } from './candidates';
-import type { WholeLibraryDeps } from './candidates';
+import type { LanguageCode, LearnerItemState, PersonalizedCoverage, Recommendation, RecommendationReason, Text, TextProfile } from '../core';
+import { isFrontMatterText, isSuperseded, learnerSnapshot, rankWholeLibrary, storePager } from './candidates';
+import type { LearnerSnapshot, WholeLibraryDeps } from './candidates';
 import { analyzeText, liveSentences, scriptureReadiness } from './coverage';
 import { hasHumanReviewedRecording } from './eligibility';
-import { HEAVY_HELP_FRACTION } from './policy';
+import { rowsByItemId } from './personal';
+import { HEAVY_HELP_FRACTION, REACH } from './policy';
 import { readingProgressMany } from './progress';
 import type { Degree } from './progress';
+import { nameFreeLemmas, reachOf, reachTier, scriptureFactor } from './rank';
+import type { Reach, ReachInfo, ReachTier } from './rank';
 import type { Ctx, StoredEncounter } from './state';
 import { sittingOf } from './state';
+import { cachedProfile } from '../library/store-index';
 
 const REASON_ORDER: RecommendationReason[] = [
   'first-text', 'reread', 'next-input', 'prepares-scripture', 'revisit-scripture', 'easy-story', 'reinforces-weak-items',
@@ -102,7 +117,9 @@ export async function recommend(
   // Protected listening-assessment material is never recommended, nor counted as something the learner could read.
   const texts = (await ctx.store.texts.where('lang', lang)).filter((t) => t.listeningAssessmentId === undefined).sort((a, b) => (a.id < b.id ? -1 : 1));
   const visible = (t: Text) => includeUnpublished || t.published;
-  const inputAll = texts.filter((t) => INPUT_KINDS.has(t.kind));
+  // never offered as reading: a draft the ladder absorbed (`superseded-by-ladder`), and a work's front matter / preface
+  const notOffered = new Set(texts.filter((t) => isSuperseded(t) || isFrontMatterText(t)).map((t) => t.id));
+  const inputAll = texts.filter((t) => INPUT_KINDS.has(t.kind) && !notOffered.has(t.id));
   const input = inputAll.filter(visible);
   const withheld = inputAll.filter((t) => !visible(t));
   const scripturePublished = texts.some((t) => t.kind === 'scripture' && t.published);
@@ -131,6 +148,24 @@ export async function recommend(
     l.push(e);
   }
 
+  // What he read lately (reading encounters, newest first). A reread / reinforcement is never of the text he has just read, and never of
+  // a text he could barely read among the last few: rereading what he could not read does not help.
+  const recentRead = [...byText.entries()]
+    .map(([id, es]) => [id, es.reduce((m, e) => (e.modality === 'reading' && e.at > m ? e.at : m), '')] as const)
+    .filter(([, at]) => at !== '').sort((a, b) => (a[1] < b[1] ? 1 : a[1] > b[1] ? -1 : a[0] < b[0] ? -1 : 1)).map(([id]) => id);
+  // the same text in the last TWO reading sittings (sentences viewed): he has just read it again, so not a third time in a row
+  const log = await ctx.userLog(userId);
+  const sittingAt = new Map<string, { at: string; textId: string }>();
+  for (const e of log.events) {
+    if (e.type !== 'SentenceViewed' || e.lang !== lang) continue;
+    const key = `${log.sittings.get(e.id) ?? e.session}|${e.textId}`;
+    const cur = sittingAt.get(key);
+    if (!cur || e.at > cur.at) sittingAt.set(key, { at: e.at, textId: e.textId });
+  }
+  const sittingTexts = [...sittingAt.values()].sort((x, y) => (x.at < y.at ? 1 : x.at > y.at ? -1 : 0)).map((x) => x.textId);
+  const lastRead = sittingTexts.length >= 2 && sittingTexts[0] === sittingTexts[1] ? sittingTexts[0] : undefined;
+  const unreadable = new Set(recentRead.slice(0, REACH.rereadLookback).filter((id) => readAtLowCoverage(byText.get(id) ?? [])));
+
   const best = new Map<string, Recommendation>(); // keyed by textId
   const offer = (r: Recommendation) => {
     const key = r.textId ?? `testimony:${r.testimonyId}`;
@@ -145,6 +180,7 @@ export async function recommend(
   };
   const pctOf = (x: number) => Math.round(x * 100);
   const notes: Recommendation[] = [];
+  const freshStore: Array<{ text: Text; rec: Recommendation; known: number; familiar: number; met: number }> = [];
 
   // ── input ──
   if (!hasReading) {
@@ -207,7 +243,7 @@ export async function recommend(
         const reported = rec.reportedComprehension;
         const below = reported && reported !== 'all' ? { degree: reported } : undefined;
         const heavy = await heavyHelp(byText.get(t.id) ?? []);
-        if (below || heavy) {
+        if ((below || heavy) && !unreadable.has(t.id)) {
           offer({
             reason: 'reread', textId: t.id, band: cov.coverage.band, reinforces: partialIds(cov, 10),
             score: cap(Math.max(below ? REPORT_SCORE[below.degree] : 0, heavy ? 0.7 : 0) + bonus),
@@ -216,7 +252,7 @@ export async function recommend(
               : `You needed a lot of help the last time you read "${t.title}"; a second reading should go more easily.`,
           });
         }
-        if (cov.coverage.partialCoverage >= 0.25) {
+        if (cov.coverage.partialCoverage >= 0.25 && !unreadable.has(t.id)) {
           offer({
             reason: 'reinforces-weak-items', textId: t.id, band: cov.coverage.band, reinforces: partialIds(cov, 10),
             score: cap(Math.min(0.55, 0.3 + 0.6 * cov.coverage.partialCoverage) + bonus),
@@ -246,10 +282,14 @@ export async function recommend(
         });
       } else {
         const cov = await analyzeText(ctx, userId, t.id);
-        offer({
-          reason: 'next-input', textId: t.id, band: cov.coverage.band, reinforces: partialIds(cov, 8),
-          score: cap(BAND_SCORE[cov.coverage.band] + bonus),
-          explanation: `Not started yet; about ${pctOf(cov.coverage.knownLexicalCoverage + cov.coverage.estimatedFamiliarCoverage)} % of its words are already shown or likely familiar.`,
+        // offered below, once what is in reach, what teaches and how much Scripture he reads are known
+        freshStore.push({
+          text: t, known: cov.coverage.knownLexicalCoverage, familiar: cov.coverage.estimatedFamiliarCoverage, met: cov.coverage.partialCoverage,
+          rec: {
+            reason: 'next-input', textId: t.id, band: cov.coverage.band, reinforces: partialIds(cov, 8),
+            score: cap(BAND_SCORE[cov.coverage.band] + bonus),
+            explanation: `Not started yet; about ${pctOf(cov.coverage.knownLexicalCoverage + cov.coverage.estimatedFamiliarCoverage)} % of its words are already shown or likely familiar.`,
+          },
         });
       }
     }
@@ -297,18 +337,21 @@ export async function recommend(
   // chosen from the WHOLE catalogue by personal mastery (candidates.ts: prefilter, then rankLibrary), not from a sample.
   let whole: Awaited<ReturnType<typeof rankWholeLibrary>> | undefined;
   let onPath = false;
+  let pathTextId: string | undefined;
+  let snap: LearnerSnapshot | undefined;
   let wholeWanted = false;
   if (opts?.wholeLibrary !== false) {
     const deps = opts?.wholeLibrary ?? librarySource ?? {};
     let total = 0;
     try { total = (await (deps.pager ?? storePager(ctx))({ lang, limit: 1, publishedOnly: !includeUnpublished })).total; } catch { total = 0; }
-    const snap = (total > 0 || ladderSource) ? await learnerSnapshot(ctx, userId, lang, [...interests]) : undefined;
+    snap = (total > 0 || ladderSource) ? await learnerSnapshot(ctx, userId, lang, [...interests]) : undefined;
     if (snap && ladderSource) {
       try {
         const position = await ladderSource({ userId, lang, completed: snap.completed });
-        const step = position?.finished ? undefined : position?.steps.find((s) => !snap.completed.has(s.textId) && (s.published || includeUnpublished));
+        const step = position?.finished ? undefined : position?.steps.find((s) => !snap!.completed.has(s.textId) && (s.published || includeUnpublished));
         if (step) {
           onPath = true;
+          pathTextId = step.textId;
           offer({
             reason: 'next-input', textId: step.textId, reinforces: [], score: 0.99,
             explanation: `Next on your path: "${step.title}" (${step.stage})${step.published ? '' : ' (in preview, not published)'}.`,
@@ -319,7 +362,7 @@ export async function recommend(
     if (snap && total > 0) {
       wholeWanted = true;
       try {
-        whole = await rankWholeLibrary(ctx, userId, deps, { lang, ...(interests.size ? { interests: [...interests] } : {}), includeUnpublished, limit: Math.max(limit, 5), snapshot: snap });
+        whole = await rankWholeLibrary(ctx, userId, deps, { lang, ...(interests.size ? { interests: [...interests] } : {}), includeUnpublished, limit: Math.max(limit, 5), snapshot: snap, reach: true });
       } catch { whole = undefined; /* no ranking is not an error the learner can act on */ }
       for (const p of whole?.picks ?? []) {
         if (p.alreadyRead) continue; // a text he has read is for `reread` / `reinforces-weak-items`, which judge it by what he did
@@ -331,9 +374,69 @@ export async function recommend(
     }
   }
 
-  const inputs = [...best.values()]
-    .sort((a, b) => b.score - a.score || REASON_ORDER.indexOf(a.reason) - REASON_ORDER.indexOf(b.reason)
-      || ((a.textId ?? '') < (b.textId ?? '') ? -1 : 1));
+  // ── new input: names left out, yield counted, the floor of what is in reach, the soft cap on Scripture ──
+  // A text of the store that is not read yet is measured the way the whole-library ranking measures its picks (rank.ts `reachOf`).
+  const reachById = new Map<string, Reach>();
+  for (const p of whole?.picks ?? []) if (!p.alreadyRead && p.ranked.reach) reachById.set(p.ranked.textId, p.ranked.reach as ReachInfo);
+  const pending = freshStore.filter((f) => !reachById.has(f.text.id));
+  if (pending.length > 0) {
+    const profiles = new Map<string, TextProfile>();
+    for (const f of pending) { const p = await cachedProfile(ctx.store, f.text); if (p) profiles.set(f.text.id, p); }
+    const rows = profiles.size > 0 ? await rowsByItemId(ctx, userId, nameFreeLemmas(profiles.values())) : new Map<string, LearnerItemState>();
+    for (const f of pending) {
+      const p = profiles.get(f.text.id);
+      const shares = { knownShare: f.known, familiarShare: f.familiar, metShare: f.met };
+      reachById.set(f.text.id, p ? reachOf(p, rows, shares) : { coverage: f.known + f.familiar, effective: f.known + f.familiar + 0.5 * f.met, nameShare: 0, basis: 'forms' });
+    }
+  }
+  if (!snap && hasReading && freshStore.some((f) => f.text.kind === 'scripture')) {
+    try { snap = await learnerSnapshot(ctx, userId, lang, [...interests]); } catch { snap = undefined; }
+  }
+  const scriptureCap = scriptureFactor(snap?.scriptureShare);
+  for (const f of freshStore) offer({ ...f.rec, score: f.text.kind === 'scripture' ? cap(f.rec.score * scriptureCap) : f.rec.score });
+  for (const id of notOffered) best.delete(id);
+
+  const fresh = [...new Set([...freshStore.map((f) => f.text.id), ...(whole?.picks ?? []).filter((p) => !p.alreadyRead).map((p) => p.ranked.textId)])]
+    .filter((id) => id !== pathTextId && best.get(id)?.reason === 'next-input' && reachById.has(id) && !(progress.get(id)?.seen));
+  const tierOf = (id: string): ReachTier => reachTier(reachById.get(id)!);
+  const inReach = fresh.filter((id) => tierOf(id) < 2);
+  const aboveLevel = new Set<string>();
+  if (inReach.length > 0) {
+    for (const id of fresh) if (tierOf(id) === 2) best.delete(id); // nothing below the floor while anything at or above it exists
+    // a text that would teach (almost) nothing new comes after every text in reach that teaches something
+    const teaching = inReach.filter((id) => tierOf(id) === 0).map((id) => best.get(id)!.score);
+    if (teaching.length > 0) {
+      const lowest = Math.min(...teaching);
+      for (const id of inReach) if (tierOf(id) === 1) { const r = best.get(id)!; best.set(id, { ...r, score: cap(Math.min(r.score, lowest * 0.9)) }); }
+    }
+  } else {
+    // nothing is in reach: the closest few, said plainly to be above his level (the ladder's next unit, when there is one, still leads)
+    const closest = [...fresh].sort((a, b) => reachById.get(b)!.coverage - reachById.get(a)!.coverage || best.get(b)!.score - best.get(a)!.score || (a < b ? -1 : 1));
+    for (const id of closest.slice(REACH.closestFew)) best.delete(id);
+    closest.slice(0, REACH.closestFew).forEach((id, i) => {
+      const r = best.get(id)!;
+      aboveLevel.add(id);
+      best.set(id, {
+        ...r, score: cap(Math.min(r.score, reachById.get(id)!.coverage * REACH.aboveLevelScore - i * 1e-4)),
+        explanation: `This is above your level for now: only about ${pctOf(reachById.get(id)!.coverage)} % of its words (names and numbers left out) are shown understood or likely familiar. It is the closest to your level among the texts offered.`,
+      });
+    });
+  }
+  // a reread is of a text he has not just read (unless nothing else is offered)
+  if (lastRead && [...best.values()].some((r) => r.textId && r.textId !== lastRead)) {
+    for (const r of [...best.values()]) if (r.textId === lastRead && (r.reason === 'reread' || r.reason === 'reinforces-weak-items')) best.delete(lastRead);
+  }
+
+  const isReread = (r: Recommendation) => r.reason === 'reread' || r.reason === 'reinforces-weak-items';
+  const bySort = (a: Recommendation, b: Recommendation) => b.score - a.score || REASON_ORDER.indexOf(a.reason) - REASON_ORDER.indexOf(b.reason)
+    || ((a.textId ?? '') < (b.textId ?? '') ? -1 : 1);
+  const sorted = [...best.values()].sort(bySort);
+  // Rereads come only after the new input in reach: the path's next unit, a text in progress, an unread text that is in reach and teaches
+  const isNewInReach = (r: Recommendation) => (r.reason === 'next-input' || r.reason === 'first-text') && !!r.textId && !aboveLevel.has(r.textId)
+    && !(reachById.has(r.textId) && tierOf(r.textId) !== 0);
+  const rest = sorted.filter((r) => !isReread(r));
+  const lastNew = rest.reduce((m, r, i) => (isNewInReach(r) ? i : m), -1);
+  const inputs = lastNew < 0 ? sorted : [...rest.slice(0, lastNew + 1), ...sorted.filter(isReread), ...rest.slice(lastNew + 1)];
 
   // ── testimony (always after input) ──
   const rehearse: Recommendation[] = [];
@@ -382,6 +485,17 @@ function noneExplanation(langName: string, withheld: Text[], includeUnpublished:
   // "No text" would be untrue when the Scripture of this language is published: say what is missing, and where the rest is.
   return `No ${langName} ${scripturePublished ? 'story or dialogue' : 'text'} is published yet: ${withheld.length} imported text${withheld.length === 1 ? ' is' : 's are'} waiting`
     + (reasons.length ? ` (${reasons.join('; ')})` : '') + `.${scripturePublished ? ' Scripture is published: open it under Scripture.' : ''} You can still use preview mode to see them.`;
+}
+
+/** Read at under `REACH.rereadMinCoverage` known: more than the rest of that share of the word encounters of the LATEST reading sitting needed help. */
+function readAtLowCoverage(encounters: StoredEncounter[]): boolean {
+  const words = encounters.filter((e) => e.modality === 'reading' && e.itemKind === 'form');
+  if (words.length === 0) return false;
+  const latest = new Map<string, string>();
+  for (const e of words) { const s = sittingOf(e); if (!latest.has(s) || e.at > latest.get(s)!) latest.set(s, e.at); }
+  const sitting = [...latest.entries()].sort((a, b) => (a[1] < b[1] ? 1 : a[1] > b[1] ? -1 : 0))[0][0];
+  const inSitting = words.filter((e) => sittingOf(e) === sitting);
+  return inSitting.length >= 3 && inSitting.filter((e) => e.assistance > 0).length / inSitting.length > 1 - REACH.rereadMinCoverage;
 }
 
 /** Help was heavy when ≥ HEAVY_HELP_FRACTION of the word encounters of the LATEST reading sitting needed help. */

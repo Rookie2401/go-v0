@@ -823,3 +823,33 @@ The `gustar-type` detector names *encantar, interesar, molestar* but the list do
 12. **Audio**: every unit is meant to be recordable in one sitting (a1 ≤ 400 words; a2-2 ≤ 1,300), but nothing here schedules recordings or reviewers; `docs/audits/B2-AUDIT.md` items 2–3 (a named native reviewer, native audio) are still the precondition for any unit to reach a learner.
 13. **This plan is prose.** The Spanish session should turn the unit blocks into `ladder.json` entries plus a per-unit allowed-lemma list (Stage 0 + all earlier lists + the unit's own) so that writers and the gate read the same data; hand-copying 960 lemmas will introduce errors.
 
+
+
+## Units 65–69 (rewritten 2026-10-06)
+
+Units es-a2-2-16 … es-a2-2-20 were pure recycling (100 % known words, nothing new) and the drafters had avoided ordinary words the plan never scheduled (`docs/audits/B2-SIMULATION.md`, item 6). They were rewritten as core units that use those words naturally. The "New (0) / Recycle" lists of units 65–69 above are superseded: the units no longer carry them, and no padding with known words was done. Unit ids, order, domains and titles in `ladder.json` are unchanged. All remain `machine-draft` (tool, 2026-10-06), corpus `ladder-es`, variety es-HN (vos among friends, usted for respect, ustedes only), one English line per sentence, present subjunctive only (no future, conditional or imperfect subjunctive).
+
+Measured with the gate (`npm run ladder:check -- es`): 0 errors. Findings of the new texts and the words that stand behind them:
+
+| unit | domain / title | words | cov3 | new lemmas (per 100) |
+|---|---|---:|---:|---:|
+| es-a2-2-16 (65) | biography, A nurse's life (Ana, first person) | 1,183 | 94.1 % | 18 (1.5) |
+| es-a2-2-17 (66) | conversation, A loan, politely (Sam, don Carlos, Marvin, Elena) | 1,094 | 95.2 % | 15 (1.4) |
+| es-a2-2-18 (67) | narrative, The key that came back (doña Marta, Nico) | 1,002 | 92.4 % | 15 (1.5) |
+| es-a2-2-19 (68) | correspondence, The weekly report (Sam and Karla to the sending church) | 1,052 | 97.0 % | 17 (1.6) |
+| es-a2-2-20 (69) | testimony, Why I came to Honduras (Sam) | 1,124 | 96.2 % | 22 (2.0) |
+
+**Words each unit teaches** (home unit, at least three uses; every word is in the word list, `otra vez` in `phrases.ts`; all recur in the later units unless noted):
+- **65 (biography, childhood and training)**: *historia, cocina, ropa, lavar, desayunar, preocupar, miedo, fuerte* (never met before), *cada, cosa, casi, tan, mismo, todavía, desde, guardar*. Other new lemmas: *leche, almuerzo, cena, cuaderno, estudiante, calma, vecina*.
+- **66 (loan conversation)**: *contra, juntos (junto), rápido* (never met before), *quién, cuándo, ese/esa/eso, tanto, perdón, problema, importante, ni, mismo*. Other new lemmas: *deuda, escalera, malo, tranquilo, ocupado, don*.
+- **67 (story)**: *puerta, ventana, silla, música, cerrar* (never met before), *correr, guardar, otra vez, algo, alguien, nadie, camino, cuidado, miedo, ese/esa/eso*. Other new lemmas: *guitarra, tocar, sonar, barro, polvo, oscuro, bolsillo, voz, limpiar*.
+- **68 (weekly report)**: *importante, desde, ellos, ellas, ropa, música, cocina, desayunar, lavar, oración, problema, historia, cuidado*, recycling of the earlier ones (*puerta, ventana, cerrar, contra, junto, camino, correr*). Other new lemmas: *apoyo, gasto, esperanza, alegría, necesidad, faltar, lápiz, viernes, maíz*.
+- **69 (testimony)**: *empezar, pensar, dejar, oración, camino, ni, cuándo, quién, mismo, juntos*, recycling of nearly all the others (*miedo, música, fuerte, cerrar, puerta, ventana, silla, correr, contra, perdón, cuidado, otra vez*). Other new lemmas: *oficina, duda, fe, error, valiente, paso, maleta*.
+
+Of the 44 words of the brief, 16 were unknown to the gate before (fewer than three earlier encounters): *contra, juntos, historia, puerta, cocina, ropa, ventana, silla, fuerte, rápido, cerrar, lavar, preocupar, desayunar, miedo, música*. The other 28 words (and the phrase *otra vez*, made of known words) were already met at least three times in units 1–64 (*quién, cuándo, cada, cosa, mismo, ni, todavía, ese, algo, alguien, nadie, casi, tan, tanto, desde, problema, importante, ellos, ellas, camino, cuidado, oración, perdón, empezar, pensar, dejar, correr, guardar*); they are used here in the ordinary places a native writer would put them, three or more times in their unit.
+
+Notes for the reviewer:
+- **Recycling warnings.** The gate now warns for units 10–14 (new lemmas not coming back 3+ times within six units: animals, grains, abstract words such as *trigo, cebada, gallo, pato, ladrón, sincero*). The old 16–20 only recycled them by stuffing; they are not forced back in. Re-plan their recycling in the b1-bridge, or accept the warning.
+- New lemmas per 100 words: 1.4–2.0, below the plan's 2.65, because the texts avoid one-use words; the rest of the learning is the 28 known words in natural use.
+- Honduran usage still unverified: *vos* forms (*pasá, sentate, decí, vení, tenés, querés, tocá, poné*), *don/doña*, lempiras, the dialogue register of don Carlos and Marvin. Unit 66 uses *usted* from Marvin to don Carlos and *vos* back; Sam says *usted* to don Carlos and *vos* to Marvin.
+- Consistency with unit 64 (Ana, her mother, Luis, the doctor, the university, the bicycle and the main road): kept. Unit 69 mentions people from 65–68 (Ana, Marvin, doña Marta, Nico, Pastor Mario).

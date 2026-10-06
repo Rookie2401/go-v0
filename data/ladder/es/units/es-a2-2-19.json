@@ -45,393 +45,285 @@
   "variety": "es-HN",
   "sections": [
     {
-      "title": "Saludo y resumen",
+      "title": "Saludo",
       "paragraphs": [
         {
           "sentences": [
             {
-              "text": "Queridos hermanos de la iglesia que nos envía:",
-              "english": "Dear brothers and sisters of the church that sends us:"
+              "text": "Queridos hermanos y hermanas de nuestra iglesia:",
+              "english": "Dear brothers and sisters of our church:"
             },
             {
-              "text": "Reciban un abrazo de parte del equipo en Honduras.",
-              "english": "Receive a hug from the team in Honduras."
+              "text": "Les escribimos desde Honduras para contarles cómo ha sido esta semana.",
+              "english": "We are writing to you from Honduras to tell you how this week has been."
             },
             {
-              "text": "Les escribimos para contarles lo que hemos hecho esta semana, lo que necesitamos y lo que esperamos.",
-              "english": "We are writing you to tell you what we have done this week, what we need and what we hope for."
+              "text": "Primero queremos darles las gracias por su apoyo y por sus oraciones.",
+              "english": "First we want to thank you for your support and your prayers."
             },
             {
-              "text": "Queremos que ustedes conozcan nuestro trabajo con verdad, y que oren por nosotros con cuidado.",
-              "english": "We want you to know our work truthfully, and to pray for us carefully."
+              "text": "Desde que llegamos, ustedes han estado con nosotros, aunque estén muy lejos.",
+              "english": "Since we arrived, you have been with us, even though you are very far away."
             },
             {
-              "text": "Ha sido una semana buena, aunque no ha sido fácil.",
-              "english": "It has been a good week, although it has not been easy."
+              "text": "Este informe es largo porque han pasado muchas cosas, buenas y no tan buenas.",
+              "english": "This report is long because many things have happened, good ones and not so good ones."
             },
             {
-              "text": "Hemos trabajado en la clínica, en la escuela y con los campesinos.",
-              "english": "We have worked at the clinic, at the school and with the farmers."
-            },
-            {
-              "text": "También hemos aprendido mucho.",
-              "english": "We have also learned a lot."
-            },
-            {
-              "text": "Algunas cosas han salido mejor de lo que suponíamos, y otras han salido peor.",
-              "english": "Some things have turned out better than we supposed, and others have turned out worse."
+              "text": "Les pedimos perdón si hay algo que no explicamos bien.",
+              "english": "We ask your forgiveness if there is anything we do not explain well."
             }
           ]
         }
       ]
     },
     {
-      "title": "Lo que hemos hecho",
+      "title": "Lo que hicimos",
       "paragraphs": [
         {
           "sentences": [
             {
-              "text": "En la clínica, la enfermera Ana ha ayudado a más de cien personas.",
-              "english": "At the clinic, the nurse Ana has helped more than a hundred people."
+              "text": "El lunes empezamos a dar desayuno a los niños en la escuela de la aldea.",
+              "english": "On Monday we began to give breakfast to the children at the village school."
             },
             {
-              "text": "El doctor ha dicho que el número es el mayor del año.",
-              "english": "The doctor has said that the number is the biggest of the year."
+              "text": "Desde ese día, sesenta niños desayunan cada mañana antes de la clase.",
+              "english": "Since that day, sixty children have breakfast every morning before class."
             },
             {
-              "text": "Ha llegado gente de las aldeas de la montaña, y algunas personas han caminado dos días.",
-              "english": "People have come from the villages in the mountains, and some people have walked two days."
+              "text": "Ana, la enfermera, y cuatro madres preparan la comida en la cocina de la escuela.",
+              "english": "Ana, the nurse, and four mothers prepare the food in the school kitchen."
             },
             {
-              "text": "El chofer de la clínica ha llevado a los más enfermos al hospital.",
-              "english": "The clinic driver has taken the sickest to the hospital."
+              "text": "Ellas se levantan a las cinco, y a las siete todo está listo.",
+              "english": "They get up at five, and at seven everything is ready."
             },
             {
-              "text": "Gracias a Dios, nadie ha muerto esta semana.",
-              "english": "Thank God, nobody has died this week."
+              "text": "Ellas lavan, preparan la comida y cuidan a los niños, y ellas no piden nada a cambio.",
+              "english": "They wash, prepare the food and look after the children, and they ask for nothing in return."
             },
             {
-              "text": "En la escuela, Carlos y sus trabajadores han terminado el techo nuevo.",
-              "english": "At the school, Carlos and his workers have finished the new roof."
+              "text": "Cada mañana los niños corren hasta la cocina cuando huelen el pan.",
+              "english": "Every morning the children run to the kitchen when they smell the bread."
             },
             {
-              "text": "La obra duró tres semanas, y quedó hermosa.",
-              "english": "The job lasted three weeks, and it turned out beautiful."
+              "text": "Marvin arregló el techo de la cocina, y don Carlos nos prestó una mesa grande.",
+              "english": "Marvin fixed the kitchen roof, and don Carlos lent us a big table."
             },
             {
-              "text": "El lunes anterior, los niños volvieron a clase en una sala sin agua.",
-              "english": "The Monday before, the children went back to class in a dry room."
+              "text": "Marvin arregló también la puerta de la clínica, que no cerraba bien desde hacía años.",
+              "english": "Marvin also fixed the clinic door, which had not closed properly for years."
             },
             {
-              "text": "La maestra dice que los niños escuchan mejor, y que ya no hay agua en el piso.",
-              "english": "The teacher says the children listen better, and that there is no longer water on the floor."
+              "text": "Los niños comen pan, frijoles y maíz, y toman un vaso de leche.",
+              "english": "The children eat bread, beans and corn, and drink a glass of milk."
             },
             {
-              "text": "Con los campesinos hemos visitado cinco familias.",
-              "english": "With the farmers we have visited five families."
+              "text": "Muchos de ellos llegaban a la escuela sin comer, y los mismos niños que antes dormían en clase ahora aprenden rápido.",
+              "english": "Many of them used to arrive at school without eating, and the same children who used to sleep in class now learn quickly."
             },
             {
-              "text": "Hemos hablado del trigo, de la cebada y de los frijoles.",
-              "english": "We have talked about wheat, barley and beans."
+              "text": "Antes de comer, ellos lavan las manos con jabón.",
+              "english": "Before eating, they wash their hands with soap."
             },
             {
-              "text": "Una familia tiene un puesto en el mercado, y vende rosas y pan.",
-              "english": "One family has a stall at the market, and sells roses and bread."
+              "text": "Ana les explica que lavar las manos es lo más importante para no enfermarse.",
+              "english": "Ana explains to them that washing hands is the most important thing for not getting sick."
             },
             {
-              "text": "Otra familia tiene gallos, patos y conejos para la escuela.",
-              "english": "Another family raises roosters, ducks and rabbits for the school."
+              "text": "Al principio a los niños les parecía un juego, pero ahora lo hacen solos, sin que nadie se lo pida.",
+              "english": "At first it seemed like a game to the children, but now they do it on their own, without anyone asking."
             },
             {
-              "text": "Nos sorprendió ver cuánto trabajan, y cuánta poca ganancia reciben.",
-              "english": "It surprised us to see how much they work, and how little profit they receive."
+              "text": "Esta semana Ana atendió a treinta y dos enfermos, casi todos con tos o con fiebre por la lluvia.",
+              "english": "This week Ana saw thirty-two sick people, almost all of them with a cough or a fever because of the rain."
             },
             {
-              "text": "Esa es una pérdida que se repite cada año.",
-              "english": "That is a loss that repeats every year."
+              "text": "A las madres les repite siempre lo mismo: tengan cuidado con el agua, y no dejen a los niños mojados.",
+              "english": "She always repeats the same thing to the mothers: be careful with the water, and do not leave the children wet."
             },
             {
-              "text": "El sábado hicimos un día de cuentos para los niños.",
-              "english": "On Saturday we held a story day for the children."
+              "text": "Para pesar a los bebés, puso la mesa contra la pared, como le enseñó la doctora de su pueblo.",
+              "english": "To weigh the babies, she put the table against the wall, as the doctor in her town taught her."
             },
             {
-              "text": "El pastor Mario contó el cuento del zorro, del lobo, del león y del oso.",
-              "english": "Pastor Mario told the story of the fox, the wolf, the lion and the bear."
+              "text": "Ana trabaja siempre contra el tiempo, porque el camino es malo y los enfermos no esperan.",
+              "english": "Ana always works against the clock, because the road is bad and the sick cannot wait."
             },
             {
-              "text": "Los niños se rieron mucho, y una niña preguntó si había una serpiente en el cuento.",
-              "english": "The children laughed a lot, and a girl asked whether there was a snake in the story."
-            },
-            {
-              "text": "Hubo una, y la niña pidió otro cuento.",
-              "english": "There was one, and the girl asked for another story."
-            },
-            {
-              "text": "Hay dos cuentos de la semana que queremos contarles.",
-              "english": "There are two stories from the week that we want to tell you."
-            },
-            {
-              "text": "El primero es el de un joven que antes era perezoso, y que hoy trabaja con Carlos y aprende un oficio.",
-              "english": "The first is about a young man who used to be lazy, and who today works with Carlos and learns a trade."
-            },
-            {
-              "text": "Su hermano menor lo sigue, y los dos usan el mismo martillo.",
-              "english": "His younger brother follows him, and the two use the same hammer."
-            },
-            {
-              "text": "Es verdadero que han cambiado.",
-              "english": "It is true that they have changed."
-            },
-            {
-              "text": "Es falso que haya sido fácil.",
-              "english": "It is false that it was easy."
-            },
-            {
-              "text": "Antes de pasar a lo que necesitamos, queremos darles unos números.",
-              "english": "Before moving on to what we need, we want to give you some numbers."
-            },
-            {
-              "text": "Los números son hechos, y los hechos ayudan.",
-              "english": "Numbers are facts, and facts help."
-            },
-            {
-              "text": "Personas que vinieron a la clínica: ciento doce.",
-              "english": "People who came to the clinic: one hundred and twelve."
-            },
-            {
-              "text": "Familias que visitamos: cinco.",
-              "english": "Families we visited: five."
-            },
-            {
-              "text": "Días de trabajo en la escuela: quince.",
-              "english": "Days of work at the school: fifteen."
-            },
-            {
-              "text": "Niños que escucharon el cuento: cuarenta y dos.",
-              "english": "Children who listened to the story: forty-two."
-            },
-            {
-              "text": "Dinero que recibimos de ustedes: tres mil lempiras.",
-              "english": "Money we received from you: three thousand lempiras."
-            },
-            {
-              "text": "Dinero que gastamos en pastillas y herramientas: dos mil ochocientos lempiras.",
-              "english": "Money we spent on pills and tools: two thousand eight hundred lempiras."
-            },
-            {
-              "text": "Dinero que nos queda: doscientos lempiras.",
-              "english": "Money we have left: two hundred lempiras."
-            },
-            {
-              "text": "Estos números son ciertos.",
-              "english": "These numbers are accurate."
-            },
-            {
-              "text": "Pero las personas no son solo números, y por eso les escribimos también los cuentos.",
-              "english": "But people are not only numbers, and that is why we also write you the stories."
-            },
-            {
-              "text": "El otro cuento es el de una señora que tenía ratones en su casa y hierba alta en el patio.",
-              "english": "The second story is about a lady who had mice in her house and tall grass in the courtyard."
-            },
-            {
-              "text": "Ana le explicó que los ratones traen enfermedades, y que los ratones viven en la hierba alta.",
-              "english": "Ana explained to her that mice bring diseases, and that mice live in tall grass."
-            },
-            {
-              "text": "Ahora la señora corta la hierba cada semana, y los ratones ya no vienen.",
-              "english": "Now the lady cuts the grass every week, and the mice no longer come."
-            },
-            {
-              "text": "Aparte de eso, ella nos hizo una sopa tibia como regalo.",
-              "english": "Besides that, she made us a lukewarm soup as a gift."
+              "text": "Con mucho cuidado servimos la leche, para que alcance para todos.",
+              "english": "We serve the milk very carefully, so that there is enough for everyone."
             }
           ]
         }
       ]
     },
     {
-      "title": "Una evaluación honesta",
+      "title": "La ropa y la música",
       "paragraphs": [
         {
           "sentences": [
             {
-              "text": "Queremos ser sinceros con ustedes.",
-              "english": "We want to be sincere with you."
+              "text": "El miércoles recibimos una caja grande con ropa para los niños.",
+              "english": "On Wednesday we received a big box with clothes for the children."
             },
             {
-              "text": "Reconocemos que hay cosas que no hemos hecho bien.",
-              "english": "We recognize that there are things we have not done well."
+              "text": "Era ropa muy buena, y casi toda les quedaba bien.",
+              "english": "It was very good clothing, and almost all of it fit them well."
             },
             {
-              "text": "El cocinero que nos ayuda ha trabajado demasiado, porque no hemos pedido ayuda a otros.",
-              "english": "The cook who helps us has worked too much, because we have not asked others for help."
+              "text": "La dimos el jueves, y ellas, las madres, la lavaron antes de dársela a los niños.",
+              "english": "We gave it out on Thursday, and they, the mothers, washed it before giving it to the children."
             },
             {
-              "text": "Además, hemos llegado tarde a dos visitas, y la gente ha esperado al sol.",
-              "english": "Besides, we arrived late to two visits, and the people waited under the sun."
+              "text": "Queremos decir que esa ropa no es solo ropa.",
+              "english": "We want to say that this clothing is not just clothing."
             },
             {
-              "text": "Describimos lo que vimos, pero no juzgamos a nadie.",
-              "english": "We describe what we saw, but we do not judge anyone."
+              "text": "Para ellos es una señal de que alguien en otro país piensa en ellos.",
+              "english": "For them it is a sign that someone in another country is thinking of them."
             },
             {
-              "text": "Distinguimos entre los hechos y las opiniones.",
-              "english": "We distinguish between facts and opinions."
+              "text": "Algunos niños no tenían ni zapatos ni camisa, y hoy los tienen.",
+              "english": "Some children had neither shoes nor a shirt, and today they have them."
             },
             {
-              "text": "Es un hecho que el techo está terminado.",
-              "english": "It is a fact that the roof is finished."
+              "text": "El viernes tuvimos algo nuevo: la primera clase de música.",
+              "english": "On Friday we had something new: the first music class."
             },
             {
-              "text": "Es una opinión que la comunidad está contenta, aunque creemos que es verdad.",
-              "english": "It is an opinion that the community is happy, although we believe it is true."
+              "text": "Doña Marta, una vecina muy querida, nos prestó la guitarra de su papá.",
+              "english": "Doña Marta, a very dear neighbor, lent us her father's guitar."
             },
             {
-              "text": "Afirmamos que este trabajo vale mucho.",
-              "english": "We state that this work is worth a lot."
+              "text": "Su nieto Nico toca muy bien, aunque empezó hace solo dos meses.",
+              "english": "Her grandson Nico plays very well, even though he started only two months ago."
             },
             {
-              "text": "No negamos que es difícil.",
-              "english": "We do not deny that it is hard."
+              "text": "Veinte niños llegaron al patio, y todos querían tocar.",
+              "english": "Twenty children came to the patio, and all of them wanted to play."
             },
             {
-              "text": "Expresamos nuestro gusto por todos los que dan.",
-              "english": "We express our pleasure for everyone who gives."
+              "text": "Nico les enseñó tres canciones, y ellos las cantaron tan fuerte que los vecinos salieron a mirar.",
+              "english": "Nico taught them three songs, and they sang them so loudly that the neighbors came out to look."
             },
             {
-              "text": "Ser honesto con el dinero es difícil, pero es el mejor camino.",
-              "english": "Being honest with money is hard, but it is the best road."
+              "text": "Doña Marta nos contó la historia de esa guitarra, y todos escuchamos callados.",
+              "english": "Doña Marta told us the story of that guitar, and we all listened quietly."
             },
             {
-              "text": "Hemos visto que lo moderno puede ayudar, y que lo actual no siempre es peor que lo antiguo.",
-              "english": "We have seen that the modern can help, and that the current is not always worse than the old."
+              "text": "Ella dice que una guitarra necesita manos, y no un lugar cerrado.",
+              "english": "She says that a guitar needs hands, not a closed place."
             },
             {
-              "text": "Un teléfono nos ha servido para llamar a la clínica, y un gallo nos ha servido para despertar a las cuatro.",
-              "english": "A phone has helped us to call the clinic, and a rooster has helped us to wake up at four."
+              "text": "Pensamos que la música va a ser una parte importante de nuestro trabajo en la aldea.",
+              "english": "We think that music is going to be an important part of our work in the village."
             },
             {
-              "text": "Las dos cosas son útiles.",
-              "english": "Both things are useful."
-            },
-            {
-              "text": "Les prometemos que vamos a escribirles cada semana.",
-              "english": "We promise you that we will write to you every week."
-            },
-            {
-              "text": "Les prometemos que vamos a decir la verdad, aunque sea difícil.",
-              "english": "We promise you that we will tell the truth, even if it is hard."
-            },
-            {
-              "text": "Les prometemos que vamos a usar cada lempira con cuidado.",
-              "english": "We promise you that we will use every lempira carefully."
-            },
-            {
-              "text": "Y si ustedes quieren una copia de las cuentas, se la mandamos con gusto.",
-              "english": "And if you want a copy of the accounts, we will gladly send it to you."
-            },
-            {
-              "text": "Imaginamos que algunos de ustedes piensan que el cambio tarda.",
-              "english": "We imagine that some of you think progress is slow."
-            },
-            {
-              "text": "Es cierto, pero es natural y humano: un pueblo cambia despacio.",
-              "english": "It is true, but it is natural and human: a village changes slowly."
-            },
-            {
-              "text": "Lo moderno llega, y lo antiguo todavía vive aquí.",
-              "english": "The modern arrives, and the old still lives here."
-            },
-            {
-              "text": "Los dos son igual de importantes, y no queremos juzgar ni a uno ni al otro.",
-              "english": "Both are equally important, and we do not want to judge either one."
+              "text": "La alegría de los niños es la mejor noticia de la semana.",
+              "english": "The children's joy is the best news of the week."
             }
           ]
         }
       ]
     },
     {
-      "title": "Lo que necesitamos",
+      "title": "Lo que no salió bien",
       "paragraphs": [
         {
           "sentences": [
             {
-              "text": "Pedimos que ustedes nos ayuden en tres cosas.",
-              "english": "We ask that you help us in three things."
+              "text": "También tuvimos problemas esta semana, y queremos contárselos como son.",
+              "english": "We also had problems this week, and we want to tell you about them as they are."
             },
             {
-              "text": "Primero, queremos que oren por la salud del equipo, porque dos hermanos han tenido fiebre esta semana.",
-              "english": "First, we want you to pray for the team's health, because two brothers have had fever this week."
+              "text": "El martes, la lluvia dejó el camino lleno de barro, y no pudimos llegar a la aldea de arriba.",
+              "english": "On Tuesday the rain left the road full of mud, and we could not reach the upper village."
             },
             {
-              "text": "Luego, necesitamos que nos manden pastillas y herramientas, aunque sean pocas.",
-              "english": "Then, we need you to send us pills and tools, even if they are few."
+              "text": "Allí hay una niña con fiebre que todavía no ha visto a un doctor.",
+              "english": "There is a girl there with a fever who has not yet seen a doctor."
             },
             {
-              "text": "Por último, esperamos que un profesor o una profesora venga a enseñar a los maestros de la escuela.",
-              "english": "Last, we hope that a teacher or a professor will come to teach the school's teachers."
+              "text": "Ana y Marvin salieron el miércoles muy temprano, y llegaron cansados pero a tiempo.",
+              "english": "Ana and Marvin left very early on Wednesday and arrived tired but in time."
             },
             {
-              "text": "También sería bueno que un músico nos ayude con las canciones, y que un abogado nos explique las leyes de la tierra.",
-              "english": "It would also be good if a musician helped us with the songs, and if a lawyer explained the land laws to us."
+              "text": "La niña está mejor, pero su familia no tiene casi nada.",
+              "english": "The girl is better, but her family has almost nothing."
             },
             {
-              "text": "Si ustedes conocen a un piloto, ojalá nos cuente cómo llegar a las aldeas más lejanas.",
-              "english": "If you know a pilot, we hope he will tell us how to reach the most distant villages."
+              "text": "Otro problema es el dinero.",
+              "english": "Another problem is money."
             },
             {
-              "text": "Y si hay un chofer que quiera venir un mes, mejor todavía.",
-              "english": "And if there is a driver who wants to come for a month, better still."
+              "text": "Hasta hoy hemos gastado dos mil cuatrocientos lempiras en leche, frijoles y maíz.",
+              "english": "So far we have spent two thousand four hundred lempiras on milk, beans and corn."
+            },
+            {
+              "text": "Esos gastos son normales, pero cada semana la compra cuesta un poco más.",
+              "english": "Those expenses are normal, but every week the shopping costs a little more."
+            },
+            {
+              "text": "Además, nos faltan lápices y cuadernos para la escuela.",
+              "english": "Besides, we are short of pencils and notebooks for the school."
+            },
+            {
+              "text": "Nos faltan también dos ventanas, porque el viento rompió las ventanas de la cocina.",
+              "english": "We also need two windows, because the wind broke the kitchen windows."
+            },
+            {
+              "text": "No queremos dejar a los niños con frío, y tampoco queremos pedirles tanto a ustedes.",
+              "english": "We do not want to leave the children cold, and we do not want to ask so much of you either."
+            },
+            {
+              "text": "Pero la necesidad es grande, y nadie en la aldea puede resolverla solo.",
+              "english": "But the need is great, and nobody in the village can solve it alone."
             }
           ]
         }
       ]
     },
     {
-      "title": "Lo que vamos a hacer",
+      "title": "Lo que hemos aprendido",
       "paragraphs": [
         {
           "sentences": [
             {
-              "text": "La próxima semana vamos a visitar las aldeas del río.",
-              "english": "Next week we are going to visit the villages by the river."
+              "text": "Esta semana aprendimos que nadie puede ayudar a todos, pero todos pueden ayudar a alguien.",
+              "english": "This week we learned that nobody can help everyone, but everyone can help someone."
             },
             {
-              "text": "Vamos a llevar pastillas, una copia del mapa del país y tres cartas de la comunidad.",
-              "english": "We are going to take pills, a copy of the map of the country and three letters from the community."
+              "text": "Al principio teníamos miedo de hacer algo mal y de molestar a los vecinos sin querer.",
+              "english": "At first we were afraid of doing something wrong and bothering the neighbors without meaning to."
             },
             {
-              "text": "El mes siguiente vamos a abrir la pequeña escuela de salud que Ana ha imaginado.",
-              "english": "Next month we are going to open the small health school that Ana has imagined."
+              "text": "Ana nos dijo que no nos preocupemos tanto, porque lo importante es volver cada día con alegría.",
+              "english": "Ana told us not to worry so much, because the important thing is to come back every day with joy."
             },
             {
-              "text": "Allí va a enseñar una profesora de la universidad, y un cocinero amigo nos va a enseñar a preparar comida sana y barata.",
-              "english": "A professor from the university is going to teach there, and a friend who is a cook is going to teach us to prepare healthy, cheap food."
+              "text": "Cuando uno se equivoca, pide perdón y empieza otra vez.",
+              "english": "When one makes a mistake, one asks forgiveness and starts again."
             },
             {
-              "text": "Carlos ha hecho un trato con la compañía que debía pagar la obra, y va a recibir su dinero este mes.",
-              "english": "Carlos has made a deal with the company that owed the payment for the job, and he is going to receive his money this month."
+              "text": "Doña Marta lo dice con otras palabras: la puerta que uno cierra por miedo es la que más cuesta abrir.",
+              "english": "Doña Marta says it in other words: the door one closes out of fear is the one that is hardest to open."
             },
             {
-              "text": "Karla ha escrito una carta cortés y clara.",
-              "english": "Karla has written a courteous and clear letter."
+              "text": "Hemos escuchado muchas historias esta semana, y cada una nos ha enseñado algo.",
+              "english": "We have heard many stories this week, and each one has taught us something."
             },
             {
-              "text": "Este es otro hecho que nos alegra, y que muestra que ser honesto todavía vale.",
-              "english": "This is another fact that makes us glad, and that shows that being honest is still worth something."
+              "text": "Ellos nos enseñan más de lo que nosotros les enseñamos a ellos.",
+              "english": "They teach us more than we teach them."
             },
             {
-              "text": "Los jóvenes de la aldea nos han pedido un partido de balón y un baile.",
-              "english": "The young people of the village have asked us for a ball match and a dance."
+              "text": "Con su apoyo, la cocina de la escuela está abierta, y por eso tenemos esperanza.",
+              "english": "With your support the school kitchen is open, and that is why we have hope."
             },
             {
-              "text": "Vamos a decir que sí, porque un pueblo alegre trabaja mejor.",
-              "english": "We are going to say yes, because a cheerful village works better."
-            },
-            {
-              "text": "Hasta el hombre más cansado se pone guapo cuando baila.",
-              "english": "Even the most tired man becomes handsome when he dances."
+              "text": "Con su apoyo y con nuestro trabajo, creemos que vamos a ver cosas mejores.",
+              "english": "With your support and our work, we believe we are going to see better things."
             }
           ]
         }
@@ -443,24 +335,65 @@
         {
           "sentences": [
             {
-              "text": "Les pedimos que oren por Ana, que ha trabajado muchos días sin descansar.",
-              "english": "We ask you to pray for Ana, who has worked many days without resting."
+              "text": "Les pedimos que oren con nosotros por estas necesidades.",
+              "english": "We ask that you pray with us for these needs."
             },
             {
-              "text": "Les pedimos que oren por Luis y por el chofer, que manejan por caminos peligrosos.",
-              "english": "We ask you to pray for Luis and the driver, who drive on dangerous roads."
+              "text": "Primero, por los niños que todavía no desayunan, porque viven lejos de la escuela.",
+              "english": "First, for the children who still do not have breakfast, because they live far from the school."
             },
             {
-              "text": "Les pedimos que oren por el niño de la aldea que quiere hacer estudios, y por la paz de todo el pueblo.",
-              "english": "We ask you to pray for the boy from the village who wants to study, and for the peace of the whole village."
+              "text": "Segundo, por Ana, que trabaja desde las cinco de la mañana y casi nunca descansa.",
+              "english": "Second, for Ana, who works from five in the morning and almost never rests."
             },
             {
-              "text": "Pedimos también que recuerden a los campesinos, que esperan la lluvia, la ganancia y un buen año, y a las familias que han tenido pérdidas.",
-              "english": "We also ask that you remember the farmers, who wait for rain, profit and a good year, and the families who have had losses."
+              "text": "Tercero, por el camino, para que no se cierre otra vez con la lluvia.",
+              "english": "Third, for the road, that it will not close again with the rain."
             },
             {
-              "text": "Dios es fiel, y creemos que él va a cuidar a su pueblo.",
-              "english": "God is faithful, and we believe he is going to take care of his people."
+              "text": "Cuarto, por los gastos de las próximas semanas.",
+              "english": "Fourth, for the expenses of the coming weeks."
+            },
+            {
+              "text": "Si alguien quiere ayudarnos con dinero, con ropa o con lápices, puede hablar con el pastor Mario.",
+              "english": "If anyone wants to help us with money, with clothes or with pencils, they may speak with Pastor Mario."
+            },
+            {
+              "text": "Él sabe cuándo sale el próximo envío, y quién lo puede llevar.",
+              "english": "He knows when the next shipment leaves, and who can take it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La próxima semana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El lunes vamos a empezar clases para las madres que quieren aprender a leer, y esperamos que vengan muchas.",
+              "english": "On Monday we are going to start classes for the mothers who want to learn to read, and we hope many will come."
+            },
+            {
+              "text": "El miércoles vamos a visitar otra aldea, y Ana quiere que la acompañemos todos.",
+              "english": "On Wednesday we are going to visit another village, and Ana wants all of us to go with her."
+            },
+            {
+              "text": "Esperamos que el camino esté abierto, y que la lluvia nos deje trabajar.",
+              "english": "We hope the road will be open and that the rain will let us work."
+            },
+            {
+              "text": "El viernes vamos a tener otra clase de música, y los niños van a cantar para la iglesia.",
+              "english": "On Friday we are going to have another music class, and the children are going to sing for the church."
+            },
+            {
+              "text": "Ojalá que ustedes puedan escucharlos algún día.",
+              "english": "We hope that you can hear them some day."
+            },
+            {
+              "text": "Todavía no sabemos quién va a tocar la guitarra ese día, pero Nico ya dice que va a ser él.",
+              "english": "We still do not know who is going to play the guitar that day, but Nico already says it will be him."
             }
           ]
         }
@@ -472,36 +405,28 @@
         {
           "sentences": [
             {
-              "text": "Les agradecemos su amor, su oración y su ayuda.",
-              "english": "We thank you for your love, your prayer and your help."
+              "text": "Hermanos, ya es tarde, y las luces de la cocina todavía están encendidas.",
+              "english": "Brothers and sisters, it is late now, and the lights in the kitchen are still on."
             },
             {
-              "text": "Sin ustedes, nada de esto sería posible.",
-              "english": "Without you, none of this would be possible."
+              "text": "Antes de terminar, queremos decirles algo muy importante.",
+              "english": "Before we finish, we want to tell you something very important."
             },
             {
-              "text": "Que Dios los bendiga y los cuide.",
-              "english": "May God bless you and keep you."
+              "text": "Lo que hemos visto esta semana no es obra nuestra, sino de todos: de ellos, de ustedes y de nosotros.",
+              "english": "What we have seen this week is not our work but everyone's: theirs, yours and ours."
             },
             {
-              "text": "Somos un equipo pequeño, pero no estamos solos.",
-              "english": "We are a small team, but we are not alone."
+              "text": "Trabajamos juntos, aunque estemos en países distintos.",
+              "english": "We work together, even though we are in different countries."
             },
             {
-              "text": "Cada carta, cada oración y cada pastilla que ustedes envían llega a una persona verdadera, con nombre y con cara.",
-              "english": "Every letter, every prayer and every pill that you send reaches a true person, with a name and a face."
+              "text": "Con mucho cariño y con esperanza,",
+              "english": "With much love and with hope,"
             },
             {
-              "text": "Eso es lo que más nos ayuda a seguir.",
-              "english": "That is what helps us most to go on."
-            },
-            {
-              "text": "Con cariño,",
-              "english": "With affection,"
-            },
-            {
-              "text": "El equipo de Honduras: Mario, Ana, Luis, Karla, Daniel y Sam",
-              "english": "The team in Honduras: Mario, Ana, Luis, Karla, Daniel and Sam"
+              "text": "Sam, Karla y todo el equipo de Honduras",
+              "english": "Sam, Karla and the whole team in Honduras"
             }
           ]
         }
@@ -513,7 +438,7 @@
     "history": [
       {
         "state": "machine-draft",
-        "at": "2026-10-05",
+        "at": "2026-10-06",
         "by": {
           "kind": "tool",
           "name": "ladder drafting agent (Sonnet)"

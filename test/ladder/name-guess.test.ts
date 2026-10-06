@@ -5,6 +5,7 @@
  */
 import { describe, expect, it } from 'vitest';
 import { thAdapter } from '../../src/adapters/th';
+import { createAdapterRegistry } from '../../src/adapters';
 import type { AnalysisCandidate, LanguageAdapter, RawToken } from '../../src/core';
 import type { CorpusDocument } from '../../src/ingest';
 import { Progress, analyseDocument, isNameGuess } from '../../src/ladder';
@@ -55,5 +56,15 @@ describe('the gate and a guessed name', () => {
     expect(stat.lemmas.has('อับราม')).toBe(false); // a listed name is auto
     expect(stat.auto).toBeGreaterThanOrEqual(2); // อับราม and สอง
     expect(stat.words - stat.auto).toBe([...stat.lemmas.values()].reduce((a, b) => a + b, 0));
+  });
+});
+
+describe('an abbreviation the adapter lists is known by definition', () => {
+  it('Albanian km, shek and etj do not count as lemmas to learn', () => {
+    const doc = { schemaVersion: 2, id: 'abbr', lang: 'sq', title: 't', sections: [{ paragraphs: [{ sentences: [{ text: 'Qyteti është 30 km larg, në shek. XIV, etj.' }] }] }] } as never;
+    const stat = analyseDocument(createAdapterRegistry().get('sq'), doc);
+    expect([...stat.lemmas.keys()]).not.toContain('km');
+    expect([...stat.lemmas.keys()]).not.toContain('shek');
+    expect([...stat.lemmas.keys()]).not.toContain('etj');
   });
 });

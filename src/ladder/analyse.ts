@@ -45,6 +45,12 @@ export function isNameGuess(c: { unconfirmed?: boolean; notes?: Record<string, u
   return c?.unconfirmed === true && c.notes?.nameGuess === 'yes';
 }
 
+/** An abbreviation the adapter lists (Albanian km, shek, etj: part of speech X, its rule says so): known by definition, like a numeral —
+ * a learner does not "learn" km. */
+export function isAbbreviation(c: { pos?: string; notes?: Record<string, unknown> } | undefined): boolean {
+  return c?.pos === 'X' && /abbreviation/.test(String(c.notes?.rule ?? ''));
+}
+
 export function analyseDocument(adapter: LanguageAdapter, doc: CorpusDocument): UnitStat {
   const lemmas = new Map<string, number>();
   const patterns = new Set<string>();
@@ -57,7 +63,7 @@ export function analyseDocument(adapter: LanguageAdapter, doc: CorpusDocument): 
       words++;
       const c = x.candidates[0];
       const norm = x.token.normalized.toLowerCase();
-      if ((c?.pos === 'PROPN' && !isNameGuess(c)) || c?.pos === 'NUM' || /^\p{N}+$/u.test(norm)) { auto++; continue; }
+      if ((c?.pos === 'PROPN' && !isNameGuess(c)) || c?.pos === 'NUM' || isAbbreviation(c) || /^\p{N}+$/u.test(norm)) { auto++; continue; }
       const l = (c?.lemma ?? norm).normalize('NFC').toLowerCase();
       lemmas.set(l, (lemmas.get(l) ?? 0) + 1);
     }

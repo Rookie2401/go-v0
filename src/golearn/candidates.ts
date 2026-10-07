@@ -272,6 +272,9 @@ export async function shortlist(pager: CatalogPager, opts: ShortlistOptions): Pr
     for (const row of fitRows) {
       if (row.lang !== opts.lang || (!preview && !row.published) || opts.excludeIds?.has(row.id) || isFrontMatterRow(row)) { stats.excluded += 1; continue; }
       stats.seen += 1;
+      // a text he has COMPLETED is seen but takes no place: rereads are offered from the store by recommend(), never from here — and in
+      // preview the ladder's own units are catalogue rows too, so a long ladder once read filled the whole shortlist with read texts
+      if (snap.completed.has(row.id)) continue;
       const entry: Entry = { id: row.id, score: prefilterScore(row, snap), row };
       const liked = matchesInterest(row, snap.interests);
       if (liked) interest.add(entry);

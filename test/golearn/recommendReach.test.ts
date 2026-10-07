@@ -423,6 +423,18 @@ describe('6. what he has read never pushes the unread out; Stage 0 scenes are no
     expect(fresh).not.toContain(BASE);
   });
 
+  it('a completed text takes no place in the whole-library shortlist (read texts once filled it and hid every unread one)', async () => {
+    const h = await world();
+    const list = Array.from({ length: 8 }, (_, i) => entry(`unread-${i}`, 90));
+    const deps = await catalogue(h, list);
+    const snap = await learnerSnapshot(ctxOf(h), U, 'es');
+    expect(snap.completed.has(BASE)).toBe(true);
+    const { items } = await shortlist(pagerOf(h), { lang: 'es', snapshot: snap, fit: await candidateFilter(ctxOf(h)) });
+    expect(items.map((r) => r.id)).not.toContain(BASE);
+    expect(items.length).toBe(8);
+    expect(idsOf(await rec(h, deps))).not.toContain(BASE);
+  });
+
   it('a Stage 0 scene in the store (tagged stage0) is never offered, read or not', async () => {
     const h = await world();
     await buildFixtureText(h.store, { lang: 'es', slug: 'stage0-es-s01', editorialTags: ['stage0'], sentences: [{ tokens: [{ surface: 'hijo', lemma: 'hijo', pos: 'NOUN' as const }] }] });

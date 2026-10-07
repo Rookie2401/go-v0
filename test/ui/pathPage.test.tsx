@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { buildFixtureText, createMemoryStore } from '../../src/core';
 import type { Stage0ExitFinished, Stage0ExitStarted, TextCompleted } from '../../src/core';
 import { bootstrap, bundleMetaId } from '../../src/app/bootstrap';
+import { createIndexedMemoryStore } from '../../src/sim/store';
 import { bundledLadder, ladderUnitDocuments, makeLadderSource } from '../../src/ladder/bundle';
 import { createLadderPath } from '../../src/ladder/path';
 import { loadBundledCorpus } from '../../src/ingest';
@@ -124,7 +125,7 @@ describe('the bundled import and the registered path (real bootstrap, Albanian)'
   it('imports the ladder\'s own unit documents with the language\'s corpus, as unpublished drafts, and the signature covers them', async () => {
     const lad = bundledLadder('sq');
     if (!lad) return;
-    const store = createMemoryStore();
+    const store = createIndexedMemoryStore(); // indexed, same semantics (src/sim/store.ts): a real bootstrap's background work on the plain store's scans outlives the test and slows the next one
     const boot = await bootstrap({ store, courseId: 'albania-sq', features: { listen: false } });
     const own = ladderUnitDocuments('sq', undefined, loadBundledCorpus().filter((d) => d.lang === 'sq'));
     expect(own.length).toBeGreaterThan(0);
@@ -154,7 +155,7 @@ describe('the registered path source in GoLearn\'s recommendations (real bootstr
   it('offers "Next on your path" only once Stage 0 is done, and never an unpublished unit outside preview', async () => {
     const lad = bundledLadder('sq');
     if (!lad) return;
-    const store = createMemoryStore();
+    const store = createIndexedMemoryStore(); // the in-memory store with indexes (src/sim/store.ts, same semantics): a long ladder makes the plain store's scans minutes slow
     const boot = await bootstrap({ store, courseId: 'albania-sq', features: { listen: false } });
     const userId = boot.user!.id;
     const first = lad.units.find((u) => u.textId)!;

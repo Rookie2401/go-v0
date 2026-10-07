@@ -55,6 +55,8 @@ const REASON_ORDER: RecommendationReason[] = [
 ];
 const INPUT_KINDS: ReadonlySet<Text['kind']> = new Set(['story', 'dialogue', 'nonfiction', 'transcript']);
 const LEVEL_RANK = ['A0', 'A1', 'A2', 'B1', 'B2', 'C1', 'native'];
+/** For a learner who has read nothing: how many texts tied for the lead (stated level, place) get a full personal estimate. */
+const FIRST_TEXT_ESTIMATES = 24;
 const REPORT_SCORE: Record<Degree, number> = { all: 0, most: 0.72, some: 0.88, little: 0.92 };
 const REPORT_WORD: Record<Degree, string> = { all: 'all', most: 'most', some: 'some', little: 'little' };
 const BAND_SCORE = { 'productive-challenge': 0.85, comfortable: 0.8, difficult: 0.65, stretch: 0.5 } as const;
@@ -197,14 +199,18 @@ export async function recommend(
         const stage = await ctx.store.stages.get(work.stageId);
         return [stage?.index ?? Number.MAX_SAFE_INTEGER, work.order, t.chapter.index];
       };
-      const ranked: Array<{ t: Text; rank: number; difficulty: number; place?: [number, number, number] }> = [];
-      for (const t of input) {
-        const cov = (await analyzeText(ctx, userId, t.id)).coverage;
-        const r = t.staticLevel ? LEVEL_RANK.indexOf(t.staticLevel) : LEVEL_RANK.length;
-        ranked.push({ t, rank: r < 0 ? LEVEL_RANK.length : r, difficulty: cov.expectedDifficulty, place: await placeOf(t) });
-      }
       const byPlace = (a?: [number, number, number], b?: [number, number, number]) =>
         (a && b ? a[0] - b[0] || a[1] - b[1] || a[2] - b[2] : a ? -1 : b ? 1 : 0);
+      // Stated level and place first (cheap); the personal estimate — a full analysis of the text — only for the few that tie for
+      // the lead. Analysing every text of a course with a long ladder took minutes for the first suggestion (Albanian, 135 units).
+      const ranked: Array<{ t: Text; rank: number; difficulty: number; place?: [number, number, number] }> = [];
+      for (const t of input) {
+        const r = t.staticLevel ? LEVEL_RANK.indexOf(t.staticLevel) : LEVEL_RANK.length;
+        ranked.push({ t, rank: r < 0 ? LEVEL_RANK.length : r, difficulty: Number.POSITIVE_INFINITY, place: await placeOf(t) });
+      }
+      ranked.sort((a, b) => a.rank - b.rank || byPlace(a.place, b.place) || (a.t.id < b.t.id ? -1 : 1));
+      const lead = ranked.filter((x) => x.rank === ranked[0].rank && byPlace(x.place, ranked[0].place) === 0).slice(0, FIRST_TEXT_ESTIMATES);
+      for (const x of lead) x.difficulty = (await analyzeText(ctx, userId, x.t.id)).coverage.expectedDifficulty;
       ranked.sort((a, b) => a.rank - b.rank || byPlace(a.place, b.place) || a.difficulty - b.difficulty || (a.t.id < b.t.id ? -1 : 1));
       // A book is begun at its beginning: when the chosen text is a later chapter of a work, the earliest chapter of that
       // work among the texts on offer is the one to start with (a learner's own book: chapter 1 before chapter 2).

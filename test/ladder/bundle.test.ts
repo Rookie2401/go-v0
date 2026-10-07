@@ -111,6 +111,9 @@ describe('the committed ladders', () => {
       expect(corpus.filter((d) => d.lang === lang && ownIds.has(d.id)), `${lang}: a unit document must not also be a corpus document`).toEqual([]);
       for (const u of l!.units) if (u.textId) expect(u.textId.startsWith(`text:${lang}:`), u.unit.id).toBe(true);
       for (const d of own) expect(l!.units.some((u) => u.textId === `text:${lang}:${d.id}`), `${lang}: ${d.id} is a unit document no unit points to`).toBe(true);
+      // "testimony" is the content type of a learner's PRIVATE testimony (GoTell): a unit of that type is hidden from every list
+      // and never recommended. A ladder unit about testimony is a story in the testimony domain.
+      for (const d of own) expect(d.contentType, `${lang}: ${d.id} must not be of the private-testimony content type`).not.toBe('testimony');
     }
   });
 

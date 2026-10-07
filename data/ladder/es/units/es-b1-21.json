@@ -3,7 +3,7 @@
   "id": "es-b1-21",
   "lang": "es",
   "title": "Tres testimonios",
-  "contentType": "testimony",
+  "contentType": "story",
   "corpus": {
     "id": "ladder-es",
     "kind": "comprehensible-input",

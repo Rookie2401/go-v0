@@ -3,8 +3,10 @@ import 'fake-indexeddb/auto';
 import { act } from 'react';
 import { createRoot } from 'react-dom/client';
 import { MemoryRouter } from 'react-router-dom';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { createMemoryStore } from '../../src/core';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+// Every test starts the whole app (real bootstrap: the course's corpus and its ladder imported): ~10 s each, more under load.
+vi.setConfig({ testTimeout: 60_000, hookTimeout: 60_000 });
+import { createIndexedMemoryStore } from '../../src/sim/store'; // indexed, same semantics: a real bootstrap per test on the plain store's scans timed out
 import type { PracticeTask, SemanticGoal, TellAttemptSubmitted } from '../../src/core';
 import { buildFixtureText } from '../../src/core';
 import { bootstrap } from '../../src/app/bootstrap';
@@ -22,7 +24,7 @@ let boot: BootstrapResult;
 let unmount: (() => Promise<void>) | undefined;
 beforeEach(async () => {
   resetPrefsForTests(); localStorage.clear(); installMediaStubs();
-  boot = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', features: { listen: false } });
+  boot = await bootstrap({ store: createIndexedMemoryStore(), courseId: 'honduras-es', features: { listen: false } });
 });
 afterEach(async () => { await unmount?.(); unmount = undefined; resetPrefsForTests(); localStorage.clear(); });
 

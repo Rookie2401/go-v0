@@ -4,7 +4,7 @@
   "lang": "th",
   "locale": "th-TH",
   "title": "Sam's first testimony",
-  "contentType": "testimony",
+  "contentType": "story",
   "corpus": {
     "id": "ladder-th",
     "kind": "comprehensible-input",

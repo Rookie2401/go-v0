@@ -1,5 +1,8 @@
 # From zero to B2? — the simulated student, 2026-10-05/06
 
+> **Superseded on 2026-10-06** by docs/audits/COURSE-AUDIT-2026-10-06.md, which re-runs this student after the five course
+> audits, the ladders for all five courses and the library rebuild. The figures below are the baseline it compares against.
+
 **Question.** Starting from zero, could a student reach B2 with this system? If so, is there fluff slowing them down?
 
 **Short answer: no, in none of the five courses — neither as the app is today nor as if every draft were reviewed and

@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import 'fake-indexeddb/auto';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { buildFixtureText, createMemoryStore } from '../../src/core';
+import { buildFixtureText } from '../../src/core';
 import type { Stage0ExitFinished, Stage0ExitStarted, TextCompleted } from '../../src/core';
 import { bootstrap, bundleMetaId } from '../../src/app/bootstrap';
 import { createIndexedMemoryStore } from '../../src/sim/store';

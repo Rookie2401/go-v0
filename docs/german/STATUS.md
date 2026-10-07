@@ -1,4 +1,34 @@
-# German course — status of record (2026-10-01, after the readiness audit)
+# German course — status of record (2026-10-01, after the readiness audit; updated 2026-10-06)
+
+## Update of 2026-10-06 — what is now different (the numbered sections below are the 2026-10-01 record)
+
+- **Adapter `adapter-de@8`** (was @5): @6 fixed the dictionary path (with the dictionary installed the analyser had
+  failed on 870 of 1,911 German texts, 74 % of their words, and the importer silently dropped the dictionary for them;
+  now no failures, gloss coverage 86 → 96 %, IPA 18 → 71 % on the audit's sample); @7 added the ladder plan's words,
+  names and trip points; @8 corrected the drafters' misreads (zusammen, nächst, Liebe, gehört, weiß, missing adjectives,
+  places). Word list now **1,454 nouns, 856 verbs, 346 adjectives** (1,287 / 824 / 312 in section 3).
+- **The gold figures of section 2 still hold on @8** (`npx vite-node scripts/de-gold.mts`, 2026-10-06): round 1 84 of
+  84, round 2 35 of 35, round 3 46 of 48, round 4 13 of 21 sentences and 377 of 393 facts, no unrecorded failure. Still
+  an AI model's judgement, not a native speaker's; the first-run column is unchanged.
+- **The dictionary is installed and in the build**: Wiktionary via kaikki.org, 357,750 entries, 512 shards, 40.3 MB
+  (`npm run dict:status`); `npm run build` now stops without it. Its use on a learner's own book is still not evaluated
+  for German (section 8).
+- **A library exists and is published**: 1,870 texts in 66 works, 2,326,488 words — the whole Lutherbibel 1912 (1,189
+  chapters), 590 library texts (Grimm, Buddenbrooks, Kant, Lessing, Fontane, Kafka and others), 91 knowledge texts
+  (`npm run library:check`, as installed; being rebuilt while this was written). Rights are recorded for the United
+  States only for 57 of the 66 works; Luther 1912 carries DE / EU / US statuses. The audit also fixed 176 Grimm tales stored
+  as a few paragraph-long "sentences" (median 136 → 11 words per sentence), Luther's "[17:1]" markers shown as words (now verse
+  labels) and Genesis 1, Psalms 1 / 23 and Matthew 1 listed twice. So section 4's "what a learner sees without preview
+  mode is 71 verses" is no longer true; the 34 course texts and the Grimm English lines still await review.
+- **A ladder**: `data/ladder/de`, 69 controlled units `a1-1` … `a2-2` (15 + 16 + 18 + 20; about 46 k running words after
+  Stage 0), planned in `PLAN.md` for about 1,100 lemmas; `npm run ladder:check`: 0 errors, 16 warnings (recycling), mean
+  curriculum coverage 88.2 / 89.1 / 92.9 / 90.8 % by stage. All machine-drafted, unreviewed, unpublished outside preview;
+  Home shows "Your path". There is no `b1-bridge` yet (section 4's "no reading ladder" is no longer true).
+- **Stage 0** (`docs/STAGE0.md`): 15 scenes, 5 sound steps (was 4: the listen test found Stage 0's spelling rules gave only
+  41–57 % of German words their right sounds), 25 path steps; 0 errors. **GoListen** is on since 2026-10-03; no German
+  recording exists.
+- **Not changed**: no native review of anything; the rights record is still an AI model's and Luther 1912 for Germany / EU
+  awaits the owner's confirmation; the round-4 failures of section 2 are not fixed.
 
 **Verdict: a development preview with a working engine, not a course ready for public release, and not a dependable
 analyser of arbitrary German.** What is built is a vertical slice of the German course inside the shared GoLearn
@@ -105,7 +135,7 @@ record", never "all sentences are correct".
 
 - **Course**: `germany-de`, target de-DE; streams, shelves (never locks), doors, catalogue of 76 works with rights
   states (`src/course/german.ts`).
-- **Adapter** `adapter-de@5` (`src/adapters/de.ts`, `src/adapters/german/**`): tokenizer and sentence splitting;
+- **Adapter** `adapter-de@5` on 2026-10-01, `adapter-de@8` now (`src/adapters/de.ts`, `src/adapters/german/**`): tokenizer and sentence splitting;
   word-form engine (nouns with gender, case and number as sets; three adjective declensions; strong, mixed, separable
   and irregular verbs); a word list of **1,287 nouns, 824 verbs, 312 adjectives** plus closed classes and about 590
   course rows — **all machine-drafted, none reviewed by a native speaker**; a sentence layer (agreement, government,
@@ -129,8 +159,8 @@ record", never "all sentences are correct".
 | two older seed texts | 2 | 119 | written for the course | **no** — the same |
 | Grimm, *Die Sternthaler*, *Der süße Brei* (1857) | 2 | 520 | public domain; transcription CC BY-SA 4.0 | **no** — the German is verified against the source, the English lines are machine-drafted and unread |
 
-So what a learner sees without preview mode is **71 verses of a 1912 Bible** — no modern acquisition path, no
-reading ladder. No review record was created or simulated: the one "review" in the tests
+So what a learner saw without preview mode on 2026-10-01 was **71 verses of a 1912 Bible** — no modern acquisition path,
+no reading ladder. (2026-10-06: the library publishes 1,870 texts and a 69-unit ladder exists in preview; see the update at the top.) No review record was created or simulated: the one "review" in the tests
 (`syntheticallyReviewed`) exists only inside `test/integration/german-course.test.ts` to exercise the published
 path and never touches a bundled file.
 
@@ -230,6 +260,11 @@ language's word list and course texts: splitting it by language is outstanding f
 
 ## 8. Things in the working tree that are not this session's
 
+*(2026-10-06: the dictionary below is installed and required by the build, and the German prose texts mentioned
+in the second item are part of the library of the update above, with rights recorded for the United States only for 57
+of 66 works; the owner's decisions
+asked for here have not been recorded in this document.)*
+
 - **A German dictionary was downloaded and built by another agent** (`data/dictionaries/kaikki.org-dictionary-German.jsonl.gz`,
   98,334,006 bytes, 20:43 on 2026-10-01; `public/dict/de`, 357,750 entries, 512 shards, about 40 MB; Wiktionary via
   kaikki.org, CC BY-SA 4.0). This session did not download it and had no authorization to. Effect as the code
@@ -271,7 +306,8 @@ language's word list and course texts: splitting it by language is outstanding f
 
 ## 11. Next actions
 
-1. A native speaker reviews Weg 1 (8 texts) and the Grimm English lines: the first modern published content.
+1. A native speaker reviews Weg 1 (8 texts) and the Grimm English lines: the first modern published content (since
+   2026-10-06 also Stage 0 and the 69 ladder units, which publish only from `audio-ready`; no recording exists).
 2. The owner confirms or restricts the Luther record; decides what to do with the dictionary and the Gutenberg
    catalogue changes of section 8.
 3. Fix the round-4 failures as rules (circumposition `von … aus`; a reading for every older spelling; objects of a

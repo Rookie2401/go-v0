@@ -1,4 +1,34 @@
-# Spanish course — status (2026-10-01, updated the same evening for the dictionary pass and that night for the first run on real prose)
+# Spanish course — status (2026-10-01, updated the same evening for the dictionary pass and that night for the first run on real prose; updated 2026-10-06)
+
+## Update of 2026-10-06 — what is now different (the sections below are the 2026-10-01 record)
+
+- **A library exists and is published.** `public/library/es` (git-ignored build output, `npm run library:rebuild -- es`;
+  `npm run library:check`: 0 failures, as installed — it was being rebuilt while this was written): **1,865 texts in 32
+  works, 2,633,327 words, all published** — the whole Reina-Valera 1909 (1,189 chapters) and 676 library texts (Don Quijote,
+  Galdós, Baroja, Unamuno, Clarín, Pardo Bazán, Rubén Darío, Martí's *La edad de oro*, Samaniego, Platero y yo, and
+  others, plus nine children's "bridge" stories). Four works were refused as damaged (Misericordia, Novelas ejemplares, El
+  conde Lucanor, Libro de buen amor: OCR confusions). Rights are recorded for the **United States only** for 21 of the 32
+  works; a release for Honduras or Spain needs the jurisdictions checked (section 7). *El capitán Veneno*, *El sombrero de tres
+  picos* and *Platero y yo* are now built from `es-gap-recovery/` files whose quality verdict is "usable"; whether those are
+  still the annotated school editions of the closing section has not been re-checked here.
+- **Adapter `adapter-es@11`** (was @6): word list **1,766 lemmas** (844 nouns, 358 verbs, 210 adjectives, 105 names;
+  1,701 in section 1); @7 – @9 added Stage 0 words and the reading of "Vivo en Honduras" as the verb; @10 "Jesús salva" and
+  "San Pedro Sula"; **@11 reads the Honduran -ís forms (¿Dónde vivís?) as voseo, not as Spain's vosotros** — before this the
+  Honduran course told a learner their own form was "used in Spain". The B1 plan's 34 names read as names. Dev sentence
+  evaluation of `docs/spanish/DICTIONARY.md` was reported unchanged at 81.85 % through @10 (not re-run for @11 here).
+- **A ladder**: `data/ladder/es`, **104 units** from Stage 0 to a B1 bridge — `a1-1` 15, `a1-2` 16, `a2-1` 18, `a2-2` 20,
+  `b1-bridge` 35 (16 controlled, 2 adapted, 17 authentic library texts; 39.2 k words, 17.4 % Scripture) — about 88.5 k running
+  words after Stage 0; `npm run ladder:check`: 0 errors, 49 warnings (mostly recycling), mean curriculum coverage
+  92.2 / 92.8 / 92.7 / 93.4 / 91.5 % by stage. **All machine-drafted, unreviewed, unpublished outside preview**; they publish
+  only from `audio-ready` (`docs/LADDER.md`). The 28 Camino / Honduras drafts of section 3 were absorbed into it and are tagged
+  `superseded-by-ladder` (the engine no longer offers them). Home shows "Your path". Plans: `PLAN.md`, `PLAN-B1.md`.
+- **Reading**: the app registers the whole library with GoLearn, so "Next for you" on the Reading page recommends from it;
+  the Honduras door was empty because the library's index rows carried no streams or domains; the build now writes the catalogue's (87 texts per `docs/audits/COURSE-AUDIT-2026-10-06.md`, not re-counted here because the library was being rebuilt); titles with markup were cleaned.
+- **Stage 0** (`docs/STAGE0.md`): 17 scenes (two recycling scenes added), 3 sound steps, 25 path steps; 0 errors.
+- **Dictionary** unchanged (808,278 entries, `npm run dict:status`). **GoListen** is on since 2026-10-03; no Spanish
+  recording exists and the speech proxy is off.
+- **Not changed**: no native or Honduran review of anything; the library's "usable" verdicts and the correctness of readings on
+  real books are unmeasured (section 6); the Honduran claims of section 7 remain unverified.
 
 Words as in `docs/READINESS.md`: **implemented** (the code exists and its own tests pass), **verified** (also proven
 end to end: integration tests on the real adapter, importer and engines, and a browser flow in a sandbox database),
@@ -10,11 +40,13 @@ This is not a production-readiness claim. The short version:
 - The **system** for a large Spanish course is built and tested: streams, shelves, rights states, varieties, rule
   morphology, a library that never loads whole, personal difficulty, ranking, search, "Your copy" import of `.txt`
   and `.epub`, source quality checks.
-- The **content** is almost entirely absent, on purpose. What is bundled is 26 short texts written for the course by
+- The **content** was almost entirely absent on 2026-10-01 (since then the library of the update above has been built; the
+  statements below about the bundled corpus still hold). What is bundled is 26 short texts written for the course by
   an AI model and not reviewed by anyone, plus the three seed documents that were already there. No book has been
   ingested, no corpus downloaded, and no work's rights verified in this pass except the one that was already
   verified (three verses of Reina-Valera 1909).
-- Nothing Spanish is **published** to a learner beyond those three verses. Everything else is visible only in
+- On 2026-10-01 nothing Spanish was **published** to a learner beyond those three verses. Since then the library
+  (1,865 texts) is published; every text this course wrote (the 26 course texts, Stage 0, the ladder) is still visible only in
   preview mode, labelled as unreviewed.
 - **Since the evening of 2026-10-01 a Spanish dictionary is installed** (Wiktionary via kaikki.org, 808,278 entries,
   kept as a separately sourced layer) and the importer uses it for a learner's own books: `docs/spanish/DICTIONARY.md`
@@ -23,9 +55,10 @@ This is not a production-readiness claim. The short version:
   `data/sources/es-prose/` were planned (not imported) with the dictionary. Between 99.6 % and 99.9 % of the words of
   the four clean books get a reading; nine defects showed and were fixed (adapter 6). Whether the readings are right
   on a book is still unmeasured: three 150-word samples wait for a person. See "First run on real prose" at the end.
-- **A library for Spanish is being built by another tool in the same working tree, uncommitted** (26 Project
-  Gutenberg editions, rights recorded as verified for the United States only). This document does not vouch for it;
-  what this session saw of it, and what it would ask before relying on it, is at the end.
+- **A library for Spanish was being built by another tool in the same working tree, uncommitted** (26 Project
+  Gutenberg editions, rights recorded as verified for the United States only). It has since been committed and built
+  (see the update above). This document does not vouch for it; what this session saw of it on 2026-10-01, and what it would
+  ask before relying on it, is at the end.
 
 Design: `docs/SPANISH_COURSE.md`. Build plan and file ownership: `docs/PLAN9.md`. The controlled texts:
 `docs/spanish/ACQUISITION.md`.
@@ -63,9 +96,9 @@ the history (see `docs/READINESS.md`, Thai course).
 
 These exist as contracts, code and fixture tests. No real content has been through them.
 
-- **The built library.** `npm run library:build` turns a manifest of rights-cleared sources into shards. It has run
-  on test fixtures only. No library is built or shipped: `public/` holds no Spanish library, and the app's
-  catalogue index contains only the texts on the device.
+- **The built library** *(on 2026-10-01; built since, see the update at the top)*. `npm run library:build` turns a manifest of
+  rights-cleared sources into shards. It had run on test fixtures only; `public/` held no Spanish library, and the app's
+  catalogue index contained only the texts on the device.
 - **Ranking over a real corpus.** The ranking has been exercised on the 29 bundled documents and on synthetic
   profiles. Its weights (`RANKING` in `src/golearn/policy.ts`) are first guesses, not tuned on any learner. "Best
   next reads" needs texts to rank: with only unpublished texts it shows nothing outside preview.
@@ -96,7 +129,9 @@ course texts and the word list out of the main bundle is the first thing to do b
 
 ## 4. Recommended only
 
-The catalogue (`src/course/spanish.ts`) lists 66 works. For 61 of them the app holds **metadata only**: title,
+*(2026-10-06: the catalogue now lists 76 works — 26 `verified-public-domain`, 10 `verified-open-licence`, 4
+`course-authored`, 25 `rights-unverified`, 11 `prohibited-from-bundling` — and the verified ones are in the library of the update
+above. The figures below are those of 2026-10-01.)* The catalogue (`src/course/spanish.ts`) listed 66 works. For 61 of them the app held **metadata only**: title,
 author, shelf, variety, era, and a rights record. No text of any of them is in the repository.
 
 - 11 modern works are `prohibited-from-bundling` and can only ever be read as the learner's own copy.
@@ -106,7 +141,7 @@ author, shelf, variety, era, and a rights record. No text of any of them is in t
 
 ## 5. Rights that remain unverified
 
-**All of them except one.** By state: 50 `rights-unverified`, 11 `prohibited-from-bundling`, 4 `course-authored`,
+**All of them except one** (2026-10-01; 25 are still unverified on 2026-10-06, see the note in section 4). By state: 50 `rights-unverified`, 11 `prohibited-from-bundling`, 4 `course-authored`,
 1 `verified-public-domain` (Reina-Valera 1909, verified for the three bundled verses against eBible.org).
 
 No work is treated as public domain because it is old or available online. For each candidate, verification means
@@ -169,14 +204,17 @@ the rights verification repeated for the complete text and edition, then an ordi
 path (which is already verified for Spanish). No modern Spanish translation is bundled or proposed: each has an
 owner whose permission would be needed. No verse alignment to another language is fabricated.
 
-**GoListen.** Deferred to V2 and switched off (`FEATURES.listen`). Spanish texts stay structurally ready for audio
-(sentence ids, speech normalisation for Spanish including dialogue dashes), and the `listening` stream exists as
-data. Nothing in the Spanish course waits for it.
+**GoListen.** Deferred to V2 on 2026-10-01; `FEATURES.listen` has been `true` since 2026-10-03, but no Spanish
+recording exists (Home says "No recordings in Spanish yet") and the speech proxy is off. Spanish texts stay structurally ready for
+audio (sentence ids, speech normalisation for Spanish including dialogue dashes), and the `listening` stream exists as
+data. Only the publication of ladder units waits for recordings.
 
 **Large-scale ingestion.** In order:
 1. *(done 2026-10-01)* A Spanish dictionary is installed and the importer uses it.
 2. Choose a first small set of sources and **verify their rights** (section 5). Recommended start: ten to twenty
-   short nineteenth-century works whose authors' death dates make a check straightforward.
+   short nineteenth-century works whose authors' death dates make a check straightforward. *(2026-10-06: another tool did
+   this for 31 works beyond the Bible — see the update; the records name a web page as verifier and cover the United States
+   for 21 of the 32 library works, which is still the open point of the closing section.)*
 3. Run them through `corpus:convert` → quality check → `library:build`; read the quality reports; fix sources, not
    texts.
 4. Measure the analysis on that real prose with a hand-checked sample (the figures above are on dictionary examples

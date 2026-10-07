@@ -29,7 +29,7 @@ A text can be excellent library material and still not be the next ladder text. 
 | `stage0` | pre-A1 | script and sounds where needed, the first few hundred words and constructions, tiny scenes: enough to make GoLearn usable. Owned by Stage 0 (`docs/STAGE0.md`, `data/stage0/<lang>/`) | as it is |
 | `a1-1`, `a1-2` | A1 | daily life, narrative, dialogue, simple description, questions, simple testimony language | 15–30 k words together |
 | `a2-1`, `a2-2` | A2 | longer stories, conversations, biography, explanations, more natural syntax, much less rescue | 30–60 k words together |
-| `b1-bridge` | B1 | authentic or lightly adapted texts increasingly dominant; ends where the library is comfortably readable | 30–60 k words |
+| `b1-bridge` | B1 | authentic or lightly adapted texts increasingly dominant; ends where the library is comfortably readable | 30–60 k words (2026-10-06: only Spanish has one — 35 units, 39 k words; the other four ladders end at `a2-2`) |
 
 Each stage mixes domains — conversation, narrative, explanation, practical communication, biography, instructions,
 correspondence, contemporary nonfiction — and **Scripture is one domain among them, not the ladder**. The audit's
@@ -118,9 +118,36 @@ Every controlled or adapted unit carries:
 - Library texts by native authors are not run through this pipeline: their check is source fidelity, and the app should
   call it that ("source checked"), not "reviewed".
 
+## State of the five ladders (2026-10-06)
+
+Every course now has a ladder. `npm run ladder:check` passes for all five with 0 errors (running words are those of
+the units after Stage 0; the warnings are advice, mostly recycling, and no unit was padded to clear one):
+
+| course | units | running words | stages | kinds | warnings |
+|---|---:|---:|---|---|---:|
+| Spanish (`data/ladder/es`) | 104 | 88.5 k | a1-1 … a2-2, `b1-bridge` (35 units, 39.2 k words, Scripture share 17.4 %) | 85 controlled, 2 adapted, 17 authentic (the 17 authentic and 2 adapted are all in the bridge) | 49 |
+| German (`de`) | 69 | 46.1 k | a1-1 … a2-2 | 69 controlled | 16 |
+| Hindi (`hi`) | 101 | 52.0 k | a1-1 … a2-2; the 28 Stage 0A–0C drafts are placed in the ladder in place | 87 controlled, 14 authentic (13 Global Digital Library books and John 14) | 44 |
+| Thai (`th`) | 90 | 43.9 k | a1-1 … a2-2; 9 bridge drafts placed in place | 76 controlled, 8 adapted (Aesop fables, CC BY-SA 4.0, attributed, share-alike), 6 authentic (5 fables, 1 John 4) | 15 |
+| Albanian (`sq`) | 135 | 49.9 k | a1-1 (72) + a1-2 (25) + a2-1 (18) + a2-2 (20) | 135 controlled (the 20 Udha / Misioni drafts placed in place) | 69 |
+
+- Plans: `data/ladder/<lang>/PLAN*.md` (a vocabulary schedule per unit; Spanish also `PLAN-B1.md`; the German, Hindi,
+  Thai and Albanian plans were measured with each real adapter on 2026-10-06). A word-list pass followed the plans so
+  the analyser knew the planned words (adapters now `adapter-es@11`, `adapter-de@8`, `adapter-hi@5`, `adapter-th@4`,
+  `adapter-sq@8`).
+- **Every unit is a machine draft** (`pipeline.state: machine-draft`, by a tool), unreviewed and unpublished outside
+  preview; Hindi's 28 Stage 0 drafts in place carry the Stage 0 provenance instead of a pipeline block. A ladder unit
+  publishes only from `audio-ready`, and no recording exists in any course, so nothing on any ladder can publish yet.
+- Home shows "Your path" (`#/path`) for every course that has a ladder.
+- Gutenberg texts marked "may not modify" are not adapted; new units teach the same vocabulary instead (an owner
+  decision of 2026-10-06, recorded in the units).
+
 ## Ownership (agreed with the other sessions; see the messages of 2026-10-05)
 
 - Gate, pipeline, packets, Spanish ladder: the Spanish session.
-- German, Hindi, Thai, Albanian ladders: their sessions, on this contract.
+- German, Hindi, Thai, Albanian ladders: their sessions, on this contract — all four written by 2026-10-06 (above).
 - Recordings reaching the player (GoListen): the session that owns GoListen.
-- Whole-corpus recommendations (GoLearn reading the full library, not 40 samples): to be agreed.
+- Whole-corpus recommendations (GoLearn reading the full library, not 40 samples): **done** — the app registers the
+  whole library with GoLearn at start (`setWholeLibrarySource` in `src/app/bootstrap.ts`), and "Next for you" on the
+  Reading page recommends from it; what counts as in reach is `REACH` in `src/golearn/policy.ts` (provisional,
+  from the simulated student of `docs/audits/B2-SIMULATION.md`).

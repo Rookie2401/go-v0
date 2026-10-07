@@ -19,7 +19,7 @@ person, a permission or a file).
 | Stage 0 stories: 26 texts, 4,387 words, recurring cast | implemented; **machine-drafted, not reviewed** — visible in preview only; awaiting a native reviewer |
 | Devanagari layer: akṣara segmentation, pronunciation by rule with the unwritten *a* stated per unit, romanization as a rescue | implemented; verified against the coordinator's unseen tables (169 checks); awaiting a native reviewer for the exception list |
 | Word forms by rule (nouns, adjectives, pronouns and their fusions, verbs, causatives, -वाला, abstract nouns) | implemented; verified against the coordinator's unseen tables (288 of 288, including the script checks) |
-| Word list: 2,746 lemmas with gender, register layer, domains, causative and ने flags | implemented; machine-drafted; awaiting a native reviewer |
+| Word list: 2,937 lemmas (2,746 on 2026-10-01; `adapter-hi@5`) with gender, register layer, domains, causative and ने flags | implemented; machine-drafted; awaiting a native reviewer |
 | Multiword units (603 complex predicates, 13 vector verbs, 73 compound postpositions, 81 fixed expressions), 50 constructions, neighbour rules, sentence splitting, writing checks | implemented; tested on the real adapter; machine-drafted |
 | Hindi Scripture: complete Indian Revised Version (IRV Hindi 2019, CC BY-SA 4.0) | implemented and **verified** against the publisher archive: 66 books, 1,189 chapters, 31,104 verses. Original 91 verse references remain in the seed documents; 1,185 lazy documents supply the remaining verses without duplication. |
 | Rights: a state for every work, a machine-enforced build gate, the credit shown with the text | implemented; verified for the bundled sources (section 8) |
@@ -27,7 +27,9 @@ person, a permission or a file).
 | Linguistic gold set | architecture only: 189 model-drafted candidates, **0 accepted**; nothing about correctness has been measured against a native speaker |
 | Hindi dictionary (Wiktionary extract) | implemented: official Kaikki extract installed, 38,635 entries and 35,814 forms in 256 shards; dictionary lookups verified. |
 | Children's and general native Hindi | 124 Global Digital Library CC BY 4.0 books installed with individual source credits; one damaged eligible source withheld. Literary acquisition and edition-specific gaps are recorded in `docs/hindi/LITERATURE_ACQUISITION.md`. |
-| Audio | out of scope: GoListen is switched off for every course and is not a prerequisite for anything here |
+| Audio | no Hindi recording exists. `FEATURES.listen` has been `true` since 2026-10-03 (the player and the recording import exist) but Home says "No recordings in Hindi yet" and the speech proxy is off; nothing here waits for audio except publishing a ladder unit (it publishes only from `audio-ready`) |
+| Reading ladder (2026-10-06) | implemented: 101 units from Stage 0 to `a2-2` in `data/ladder/hi` (31 + 26 + 20 + 24; about 52 k running words after Stage 0): 87 controlled — the 28 Stage 0A–0C drafts are placed in it in place — and 14 authentic (13 Global Digital Library books and John 14); `npm run ladder:check` 0 errors, 44 warnings, mean curriculum coverage 90.1–95.5 % by stage; **machine-drafted, unreviewed, unpublished outside preview**; Home shows "Your path" (`docs/LADDER.md`). The separate "Start from zero" pack (`docs/STAGE0.md`, `data/stage0/hi`: 17 scenes, 9 sound steps, 30 path steps) leads into it |
+| Library as installed (2026-10-06) | 1,285 texts in 9 works, 847,979 words, all published (`npm run library:check`): the whole IRV (1,189 chapters), 92 Global Digital Library books graded onto shelves c1–c4 by a documented score (23 per shelf), *Andher Nagari*, two Premchand stories and a Global Voices excerpt; rebuilt 2026-10-06 with `npm run library:rebuild -- hi` |
 
 ## 2. What was found in the Thai and Spanish courses, and what Hindi reuses
 
@@ -218,7 +220,7 @@ in Hindi (a story the learner may already know), तमस, झूठा सच,
   reused story must carry. Not verified: the licence line of any individual story; a lawful way of taking stories
   at scale (no documented interface; the terms are silent on automated retrieval, a sister site forbids it; the
   site names a partner contact). Until Pratham Books answers, nothing is fetched by a program.
-- *Premchand* (15 stories, 4 novels; died 1936) and the other older authors (गुलेरी, प्रसाद, भारतेंदु, खत्री,
+- *Premchand* (two stories, पंच परमेश्वर and नमक का दारोगा, are in the library as installed; 15 stories, 4 novels listed; died 1936) and the other older authors (गुलेरी, प्रसाद, भारतेंदु, खत्री,
   सुभद्रा कुमारी चौहान, गांधी, रामचंद्र शुक्ल), पंचतंत्र retellings. The date of death is a lead; which edition
   and transcription a digital text follows, and its status in India and the United States, are not established.
   Part of Premchand's work first appeared in Urdu, so the Hindi edition matters.
@@ -233,8 +235,8 @@ anything shipped; no model, tagger or corpus was bundled. Details in `docs/hindi
 1. **Everything Hindi was written by a model.** Stories, glosses, genders, the ने flags, the pronunciation
    exceptions, the unit tables and the construction explanations are machine-drafted and unreviewed.
 2. **Unseen text.** About one word in sixteen of unseen Scripture has no list-vouched reading; general prose
-   will be worse, since the list leans toward the home, school and church domains it was built for. A dictionary
-   would close most of this gap (section 12).
+   will be worse, since the list leans toward the home, school and church domains it was built for. The dictionary
+   (38,635 entries) is installed and decides what the rules only guess; it has not been measured on Hindi prose.
 3. **Homographs are decided by a handful of neighbour rules.** कल is never split; सोने का … (gold / to sleep),
    खाना है, a noun that is also a participle are right in the common frames and can be wrong outside them. A
    second sense may be missing entirely (the word list is one sense per entry unless both were thought of).
@@ -283,7 +285,7 @@ The two previously blocked downloads are now complete and installed. Their sourc
 - **A native Hindi reviewer** (section 11).
 - **Remaining literary editions:** exact reusable editions or permission where the acquisition report records a gap.
 
-The documented Global Digital Library API supplied 124 licensed children's books, with individual credits; one damaged source was excluded. A complete six-act source of *अंधेर नगरी* is also installed with edition and transcription attribution. The IRV share-alike corpus remains separate from the children's collection. All 1,310 lazy Hindi documents pass the publication gate; native review of machine-drafted Stage 0 remains outstanding.
+The documented Global Digital Library API supplied 124 licensed children's books, with individual credits; one damaged source was excluded. A complete six-act source of *अंधेर नगरी* is also installed with edition and transcription attribution. The IRV share-alike corpus remains separate from the children's collection. All 1,310 lazy Hindi documents passed the publication gate (2026-10-01); native review of machine-drafted Stage 0 remains outstanding. As rebuilt on 2026-10-06 the library holds 1,285 documents, all published (92 children's books graded onto the four shelves c1–c4; the 124 counted on 2026-10-01 were not reconciled with these 92 in this update; `npm run library:check`), and the 101-unit ladder is in preview only.
 
 ## 13. Next highest-value step
 

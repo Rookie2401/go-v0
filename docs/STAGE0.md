@@ -1,6 +1,6 @@
 # Stage 0 — from zero to a GoLearn learner
 
-Status of record for Stage 0 ("Start from zero", `#/start`). Design written 2026-10-04 before implementation; §8 records what was built.
+Status of record for Stage 0 ("Start from zero", `#/start`). Design written 2026-10-04 before implementation; §8 records what was built. Updated 2026-10-06: the content table and the open adapter items of §8 and the listening statements of §8–§9 now match the packs and adapters as they stand (`npm run stage0:validate`: 0 errors in all five); §1 is the audit of 2026-10-04 and stays as written.
 
 Governing question: **could a person who knows nothing of the language enter the app, follow Stage 0 without outside help, and come out able to learn from new simple GoLearn material?**
 
@@ -165,9 +165,9 @@ The exit gate uses unseen controlled material built from the path's own language
 
 | | steps | scenes | lines | checks | production tasks | sound steps | decode items | coverage ids | exit forms |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Spanish (Honduran, voseo) | 23 | 15 | 86 | 40 | 24 | 3 | 10 | 29 | 2 |
-| German | 24 | 15 | 88 | 43 | 24 | 4 | 20 | 36 | 2 |
-| Albanian (Standard) | 27 | 19 | 114 | 55 | 37 | 3 | 16 | 37 | 2 |
+| Spanish (Honduran, voseo) | 25 | 17 | 102 | 46 | 27 | 3 | 11 | 29 | 2 |
+| German | 25 | 15 | 88 | 43 | 24 | 5 | 28 | 36 | 2 |
+| Albanian (Standard) | 27 | 19 | 114 | 55 | 37 | 3 | 18 | 37 | 2 |
 | Hindi (spoken) | 30 | 17 | 106 | 53 | 34 | 9 | 65 | 39 | 2 (7 decoding items each) |
 | Thai (spoken) | 33 | 16 | 94 | 48 | 32 | 12 | 102 | 52 | 2 (10 decoding items each) |
 
@@ -206,10 +206,11 @@ The exit gate uses unseen controlled material built from the path's own language
   - The decoder dropped the a in *अस्पताल* (now aspatāl) and *रुपये* (now rupaye).
   - The trade-off is recorded in `src/adapters/hindi/production.ts`.
 - *Fixed by the Albanian session (4eadf65):* *mbështetem*. *Fixed by the German session (15ca927):* a verbless "…, bitte" read as the verb *bitten* (the pack already says "Ich möchte bitte ein Brot").
-- *Still open:*
-  - Hindi: the lemmatizer reads isolated *भाई*, *फल* and *सीता* as verbs. In sentences the noun wins; Stage 0 shows cast names as names.
-  - Thai: the segmenter splits *เหรอ*, and *ไม่รู้* has no gloss.
-  - Missing word: Hindi *क्लिनिक* (the content uses अस्पताल). Spanish *clínica* (adapter-es@7, 27b84fc) and Albanian *klinikë*, *s'ka përse* and others (adapter-sq@5, 0bf3496) were added and are now used.
+- *Open on 2026-10-04, checked again 2026-10-06 (adapter-hi@5, adapter-th@4):*
+  - Hindi: isolated *भाई*, *फल* and *सीता* now read first as noun, noun and name (the verb is the second reading); *क्लिनिक* is in the word list.
+  - Thai: *เหรอ* is one word with a gloss; *ไม่รู้* is still one token with no reading and so no gloss.
+  - Added to the other adapters: Spanish *clínica* (adapter-es@7, 27b84fc) and Albanian *klinikë*, *s'ka përse* and others (adapter-sq@5, 0bf3496), now used.
+- *Content added since (2026-10-05):* Spanish gained two recycling scenes, es-s16 (Tomorrow at church) and es-s17 (Grandma's bread), so the head of the ladder secures its words; the German pack has five sound steps (the listen test, `docs/audits/LISTEN-TEST.md`, found what Stage 0 taught gave only 41–57 % of German words their right sounds).
 
 **For native reviewers (beyond reading everything).**
 - Spanish: Honduran usage throughout; *doña* use.
@@ -220,17 +221,17 @@ The exit gate uses unseen controlled material built from the path's own language
 
 **Decisions for the owner (made provisionally, easy to reverse).**
 1. **Stage 0 shows its unreviewed drafts by its own rule, outside preview mode, with a draft label on every screen.** Without this, a blank learner sees nothing in any language, because no course text is published. The imported scenes stay unpublished everywhere else.
-2. **The browser's own computer voice is offered as practice sound where the device has one.** It is offline and needs no account; it is labelled on every use and never counted as listening. The owner deferred GoListen on 2026-10-01; this uses no GoListen provider, proxy or network. It can be turned off on the Stage 0 page.
+2. **The browser's own computer voice is offered as practice sound where the device has one.** It is offline and needs no account; it is labelled on every use and never counted as listening. The owner deferred GoListen on 2026-10-01 and `FEATURES.listen` has been `true` since 2026-10-03, but there is still no recording and the speech proxy is off; this uses no GoListen provider, proxy or network. It can be turned off on the Stage 0 page.
 3. The Stage 0 exit therefore cannot give its listening part yet. The best verdict today is `ready-provisional`, and it says so.
 
 ## 9. Not done yet — and what each needs
 
 - **Native review of every line, explanation and answer key (all five languages).** Nothing here is authoritative until a named reviewer signs a content signature. The publish path already exists: `provenance.review` plus `signatureOf`.
-- **Lawful native audio.** Every one of the 488 scene lines and all exit listening lines have an audio slot marked `needed`. A recording reaches learners through GoListen's curated import (`importRecording` with origin `curated` and a named reviewer), and the line's slot then becomes `recorded` with its asset id. Until then:
+- **Lawful native audio.** Every one of the 504 scene lines (574 lines with the exit forms') has an audio slot marked `needed` (`stage0:validate`: "116 of 116" in Spanish, 102 of 102 in German, 120 of 120 in Hindi, 128 of 128 in Albanian, 108 of 108 in Thai). A recording reaches learners through GoListen's curated import (`importRecording` with origin `curated` and a named reviewer), and the line's slot then becomes `recorded` with its asset id. Until then:
   - listening practice is the device's computer voice, where one exists (none for Albanian on most devices);
   - the exit's listening part is not given.
 - **Scale.** These are vertical slices that test the whole loop, about 15–19 scenes per language. A mature Stage 0 needs many more scenes, especially for Hindi, Thai and Albanian. The bands, the recurrence check and the coverage table are there to keep a larger pack honest.
 - **Speech recognition or pronunciation scoring: none,** deliberately. Speaking is model, record, compare and self-check.
-- **The follow-on texts are drafts too.** Camino 1, Weg 1, Udha 0, Stage 0A and the Thai bridge stories open only in preview mode, and the exit page says so.
+- **The follow-on texts are drafts too.** Camino 1, Weg 1, Udha 0, Stage 0A and the Thai bridge stories open only in preview mode, and the exit page says so. Since 2026-10-06 every course has a ladder (`docs/LADDER.md`) that takes Stage 0's path as its head (`after: "stage0"`); the Camino and Honduras drafts it absorbed are tagged `superseded-by-ladder`, and the ladder units are machine drafts in preview only as well.
 - **The alphabet trainer (`#/alphabet`) is separate and optional.** By its owner's choice it records no evidence.
 - **The existing pre-reader / Stage 0A–0C shelves of the course ladders are unchanged.** Stage 0 hands over to them through `path.next`.

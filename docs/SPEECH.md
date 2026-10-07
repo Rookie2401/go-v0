@@ -1,9 +1,14 @@
 # Speech (GoListen audio)
 
-> **Dormant.** GoListen is deferred to V2 and switched off (`FEATURES.listen` in `src/core/config.ts`, `LISTEN` in
-> `vite.config.ts`). With the flag off the app shows no audio interface, registers no provider and the dev server
-> has no `/api/speech/*` endpoint. Everything below describes the dormant code, which stays tested
-> (`npm run speech:check`, `test/golisten`, `test/server`). To resume work on it, set both constants to `true`.
+> **Half on (updated 2026-10-06).** `FEATURES.listen` in `src/core/config.ts` has been `true` since 2026-10-03
+> (commit `62e16dc`, rights-bound GoListen playback and independent listening evidence), so the app has its
+> listening player and the lawful-recording import (`docs/GOLISTEN.md`) — but **no recording exists in any course**
+> (Home's GoListen line says "No recordings in <language> yet"), and the **speech service is still off**: `LISTEN`
+> in `vite.config.ts` is `false`, so the dev and preview servers expose no `/api/speech/*` endpoint and, unless a
+> build sets `VITE_SPEECH_PROXY=1` or the learner opts in to a key of their own, the app makes no speech request.
+> Synthetic speech is practice and never listening evidence. This document describes the speech service and its
+> code, which stay tested (`npm run speech:check`, `test/golisten`, `test/server`). To turn the service on, set
+> `LISTEN` to `true` in `vite.config.ts` and configure the key below.
 
 **No real speech has been produced or auditioned in this repository's history.** Every Azure path described here —
 the same-origin proxy and the direct adapter — is verified against **mocked HTTP only**. No request has ever been

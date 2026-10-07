@@ -9,6 +9,38 @@ Three words are used strictly:
 
 This is **not** a production-readiness claim.
 
+## What changed since 2026-10-01 (update of 2026-10-06)
+
+The sections below are dated snapshots; this one says where they are now false. Source of the figures: the commands in
+brackets, run on 2026-10-06; the audit trail is `docs/audits/` (B2-AUDIT, B2-SIMULATION, LISTEN-TEST, and the
+five-course audit of 2026-10-06). Test counts in the older sections were **not** re-run for this update.
+
+| | adapter | word list | dictionary (Wiktionary via kaikki.org, 2026-09-28) | library as installed: texts, published | ladder (`ladder:check`, 0 errors) | Stage 0 (`stage0:validate`, 0 errors): scenes / sound steps / path steps |
+|---|---|---|---|---|---|---|
+| Spanish | `adapter-es@11` | 1,766 lemmas | 808,278 entries | 1,865, all published (1,189 Reina-Valera 1909 chapters + 676 library texts; 32 works) | 104 units, Stage 0 → `b1-bridge` | 17 / 3 / 25 |
+| German | `adapter-de@8` | 1,454 nouns, 856 verbs, 346 adjectives | 357,750 | 1,870, all published (1,189 Luther 1912 + 590 library + 91 knowledge; 66 works) | 69 units, `a1-1` … `a2-2` | 15 / 5 / 25 |
+| Hindi | `adapter-hi@5` | 2,937 lemmas | 38,635 | 1,285, all published (1,189 IRV 2019 + 92 Global Digital Library books graded c1–c4 + 4 other; 9 works); rebuilt 2026-10-06 | 101 units | 17 / 9 / 30 |
+| Thai | `adapter-th@4` | 1,312 entries (all layers) | 20,254 | 1,243, 1,198 published (1,189 OTCV 2025 + 54 library texts, of which the 45 Aesop fables and none else are held for review); rebuilt 2026-10-06 | 90 entries | 16 / 12 / 33 |
+| Albanian | `adapter-sq@8` | 1,167 lexemes | 91,271 | 38, 1 published (a short open-licence excerpt; the other 37 — 27 of `sq-modern-open` and 10 of `sq-modern-gap-readings` — are held for native review); rebuilt 2026-10-06 | 135 units | 19 / 3 / 27 |
+
+- **Every course has a ladder** from Stage 0 to the end of A2 (Spanish to a B1 bridge): `docs/LADDER.md`. All units are
+  machine drafts, unreviewed and unpublished outside preview; a ladder unit publishes only from `audio-ready`, and
+  there is no recording. Home shows "Your path" for every course.
+- **The app registers the whole library with GoLearn** (`setWholeLibrarySource`, `src/app/bootstrap.ts`), so "Next
+  for you" on the Reading page recommends from the library, by the reach rules in `src/golearn/policy.ts` (`REACH`).
+- **Libraries are build output** (`public/library/<lang>`, git-ignored), rebuilt with `npm run library:rebuild --
+  <lang>`; `npm run library:check` reports 0 failures; the Spanish and German libraries were being rebuilt while this
+  was written, so their counts are those installed at the time. `npm run build` now requires every course's library
+  and dictionary (`GO_ALLOW_MISSING_CONTENT=1` ships without).
+- **Whole Bibles are installed** in Spanish (Reina-Valera 1909), German (Lutherbibel 1912), Hindi (IRV 2019) and Thai
+  (OTCV 2025), 1,189 chapters each; Albanian has none. Rights are recorded for the United States only for 21 of the
+  32 Spanish and 57 of the 66 German works (provenance as installed); a release for Honduras or Germany needs the
+  jurisdictions checked.
+- **GoListen**: see the corrected scope paragraph below — switched on 2026-10-03, no recordings, speech proxy off.
+- **What did not change**: nothing any course wrote has been reviewed by a native speaker; no recording exists; the
+  Thai segmentation gate was not met on 2026-10-01 and has not been re-measured; the Albanian Bible and the modern
+  works of the Thai and Spanish catalogues are not bundled.
+
 ## Status at a glance (2026-10-01)
 
 Three different things are kept apart, because a green test gate proves only the first.
@@ -44,17 +76,19 @@ dictionary data, never against a native reviewer:
    constructions and tone exception lists, and a reviewer's decisions on the 112 recorded disagreements
    (`data/review/th/resolutions.json`).
 4. **A Thai Bible** with verified release metadata and rights (see the policy below), and replacement of the
-   three-verse Thai sample of unidentified origin.
+   three-verse Thai sample of unidentified origin. *(Done later: the Open Thai Common Version 2025 is installed;
+   the three-verse sample stays excluded from production.)*
 
-**Scope change — GoListen is deferred to V2** (course owner, 2026-10-01). It is switched off by one flag
-(`FEATURES.listen` in `src/core/config.ts`), not deleted: the app registers no speech provider, makes no speech
-request, exposes no speech endpoint on the dev server, shows no audio interface (no player, no Settings → Speech,
-no recordings in My Testimony, no listening works on the ladder) and makes no statement about listening (no
-listening recommendation, readiness signal or history line). Learner data is untouched, including any audio rows
-and listening events already stored; backups keep recordings. The package, its tests and `npm run speech:check`
-stay in the repository, green, for V2. Verified by tests (bootstrap makes no `/api/speech/` request and queues no
-audio job; each page in the off state) and in the browser. Sections of this document about speech describe that
-dormant code.
+**Scope change — GoListen was deferred to V2** (course owner, 2026-10-01) and switched off by one flag
+(`FEATURES.listen` in `src/core/config.ts`). **Superseded 2026-10-03 (commit `62e16dc`) and restated 2026-10-06: the
+flag is `true`.** The app has its listening player, the lawful-recording import and listening evidence
+(`docs/GOLISTEN.md`), and shows its listening statements; but **no recording exists in any course** (Home says "No
+recordings in <language> yet"), the **speech proxy is still off** (`LISTEN` in `vite.config.ts` is `false`: no
+`/api/speech/*` endpoint, so the app makes no speech request unless a deployment configures one), and synthetic
+speech is practice, never listening evidence. The package, its tests and `npm run speech:check` stay green. What
+the 2026-10-01 text said of the off state (no audio interface, no listening recommendation, no statement about
+listening) is no longer true of the app. Sections of this document about speech describe the speech service, which
+remains unconfigured.
 
 ## Audit round (2026-10-01): confirmed defects, root causes, fixes
 
@@ -91,9 +125,10 @@ Status of record: **`docs/spanish/STATUS.md`**; the dictionary layer and every m
   Spanish receptive); rule morphology with attached pronouns; readings ordered by context; a library that never
   loads whole (20,000-row catalogue tests); personal difficulty and ranking with reasons; search; import of a
   learner's own `.txt` or unprotected `.epub`; a source quality check that reports and never fixes.
-- **Architecture only**: the built library (the build tool has run on fixtures only; none is shipped); ranking over
-  a real corpus (weights are first guesses); knowledge, mission and listening streams (no texts); frequency data
-  (none).
+- **Architecture only** (2026-10-01; since then the library is built and installed — 1,865 Spanish texts, 676 of
+  them library texts — and a ladder of 104 units exists, see "What changed since 2026-10-01"): the built library (the
+  build tool had run on fixtures only; none shipped); ranking over a real corpus (weights are first guesses);
+  knowledge, mission and listening streams (no texts); frequency data (none).
 - **Bundled**: 26 course texts drafted by an AI model (about 3,660 words, unreviewed, unpublished, preview only),
   the two older seed texts (same state), and three byte-verified verses of Reina-Valera 1909 (published).
 - **Recommended only**: 61 of the 66 catalogued works are metadata. **Rights**: 50 unverified, 11 prohibited from
@@ -131,7 +166,7 @@ own page; the script and word-form engines against the coordinator's unseen tabl
 the correctness of any Hindi analysis against a native speaker (the gold set holds 189 drafts and no accepted item);
 the Stage 0 stories, glosses, genders and pronunciation exceptions (all machine-drafted — the stories are visible in
 preview only). **Awaiting external input:** a native reviewer; two downloads the owner approved (the whole IRV text
-and the Wiktionary Hindi extract); an answer from Pratham Books before any StoryWeaver story is taken. NCERT's
+and the Wiktionary Hindi extract — both installed since, `docs/HINDI_COURSE.md` §12); an answer from Pratham Books before any StoryWeaver story is taken. NCERT's
 readers are recorded as prohibited by NCERT's own terms and are only pointed at.
 
 ## Albanian course (contract v11, 2026-10-01)
@@ -165,19 +200,22 @@ Recognition coverage of the bundled texts (96.7–100 %) is not accuracy. **Brow
 word sheet, units, compounds, older spelling, shared vocabulary, book import, testimony writing and licence lines were
 run in a sandbox; four defects found there were fixed. **Not verified:** anything against a native speaker; the rights
 record by a person. **Release gate:** on a clean checkout of commit `cd8ce97` the type check, the whole suite (8,615 tests), the rights check and the production build pass; the shared working tree does not, because of other writers' uncommitted changes. **Published content:** 71 verses of the Lutherbibel 1912 and nothing
-else — 34 course texts and the English lines of two Grimm tales await review. **Awaiting external input:** a native
+else — 34 course texts and the English lines of two Grimm tales await review. *(2026-10-06: the installed library
+publishes 1,870 texts — the whole Lutherbibel 1912, Grimm, Buddenbrooks and others, rights recorded for the United
+States only for 57 of 66 works — and the German ladder has 69 machine-drafted units; the course texts and ladder units
+still await review.)* **Awaiting external input:** a native
 reviewer; the owner's confirmation of the Luther 1912 basis for Germany / EU; the owner's decision on a German
 dictionary and on Project Gutenberg catalogue entries that another agent added to the working tree.
 
 ## Readiness by language
 
-| | Ingestion | Progress tracking | Linguistic analysis | Scripture | Audio (GoListen: deferred to V2, switched off) |
+| | Ingestion | Progress tracking | Linguistic analysis | Scripture | Audio (GoListen: on since 2026-10-03; no recordings) |
 |---|---|---|---|---|---|
-| **Spanish** | Verified (proof + browser importer; a learner's own `.txt` / `.epub` imports chapter by chapter) | Verified (one record on Home, library, reader; version-scoped) | Tokenization dependable; sentence splitting limited; a word list of 1,701 lemmas (**machine-drafted, not native-reviewed**) plus rule morphology for any verb, noun or adjective form (an inferred lemma is marked as such, 0.6 at most, no gloss); **dictionary installed** (Wiktionary via kaikki.org, separate layer) and used when a learner's own book is imported; readings ordered by neighbouring words — held-out on dictionary example sentences: first reading right for 92.65 %, 82.1 % of ambiguous words; nothing measured on a book (see "Spanish course") | **Published**: Reina-Valera 1909, 3 verses, byte-verified against eBible.org | **Not verified** — no credentials; nothing synthesized |
-| **German** | Verified (a learner's own `.txt` imports chapter by chapter; German chapter headings recognised; checked in a browser sandbox) | Verified (engine; one vocabulary entry across a story and Scripture checked in a browser sandbox) | Rule morphology and a word list of 1,287 nouns, 824 verbs, 312 adjectives (**machine-drafted, not native-reviewed**); a sentence layer (agreement, the subject wherever it stands, separated verbs as one unit, compounds, contractions, older spelling related never rewritten); 38 constructions. Measured on the coordinator's own judgements only (an AI model): on 21 unseen sentences of native prose, **13 fully right, 377 of 393 stated facts**; confident errors exist; no independent evaluation (see "German course") | **Published**: Lutherbibel 1912, 71 verses (Genesis 1, Psalm 1, Psalm 23, Matthew 1, three single verses), byte-verified against eBible.org; the rights basis for Germany / EU is recorded with its evidence and awaits the owner's confirmation | Not verified |
-| **Albanian** | Verified (a word typed without ë / ç is related to the proper spelling; a learner's own copy tested by integration test, not in a browser) | Verified (engine; browser in a sandbox) | A word list of 896 lexemes and the closed classes (**machine-drafted, not native-reviewed**) with rule morphology; fused short pronouns taken apart; the linking article and its adjective one unit; 31 constructions. Every generated reading compared with four other sources: 97.62 % unanimous, the rest capped and listed for review. **Dictionary installed** (Wiktionary via kaikki.org, with its inflection tables). On held-out treebank prose 8.0 % (fiction) and 12.9 % (Wikipedia) of words have no reading; correctness against a native speaker is **not measured** (gold set: 0 accepted). See "Albanian course" | **Blocked** — the translation commonly labelled ALB has no established provenance; not bundled | Not verified |
-| **Hindi** | Verified (grapheme-safe spans, danda kept, nukta never folded; a learner's own `.txt` imports chapter by chapter, Hindi chapter headings recognised) | Verified (engine; browser in a sandbox) | Akṣara-level script decoding with the unwritten *a* stated; rule morphology and a word list of 2,746 lemmas (**machine-drafted, not native-reviewed**); compound verbs, complex predicates and 50 constructions; readings ordered by neighbouring words. On six unseen Scripture chapters 94.6 % of words have a reading the list vouches for; correctness is **not measured** (gold set: 189 drafts, 0 accepted). No dictionary installed (see "Hindi course") | **Published**: Indian Revised Version (IRV Hindi 2019, CC BY-SA 4.0), 91 verses, byte-verified against eBible.org; a licensed text, credited where it is read | Not verified |
-| **Thai** | Verified (no spaces added; a learner's own copy of a book imports chapter by chapter — see "Thai course") | Verified (engine and browser, sandbox) | Word segmentation **is a release gate that is not met**: first benchmark F1 90.3 % on a biased set, nothing measured on book prose (see "Thai substrate validation"); hand lexicon of 598 entries, **machine-drafted, not native-reviewed**; Wiktionary dictionary installed as a separate, attributed layer; script decoding measured on 17,298 words | **Blocked** | Not verified |
+| **Spanish** | Verified (proof + browser importer; a learner's own `.txt` / `.epub` imports chapter by chapter) | Verified (one record on Home, library, reader; version-scoped) | Tokenization dependable; sentence splitting limited; a word list of 1,766 lemmas (1,701 on 2026-10-01; `adapter-es@11`; **machine-drafted, not native-reviewed**) plus rule morphology for any verb, noun or adjective form (an inferred lemma is marked as such, 0.6 at most, no gloss); **dictionary installed** (Wiktionary via kaikki.org, separate layer) and used when a learner's own book is imported; readings ordered by neighbouring words — held-out on dictionary example sentences: first reading right for 92.65 %, 82.1 % of ambiguous words; nothing measured on a book (see "Spanish course") | **Published**: Reina-Valera 1909 — 3 verses byte-verified against eBible.org (2026-10-01), and, since then, the whole translation (1,189 chapters) in the library | **Not verified** — no credentials; nothing synthesized; no recordings |
+| **German** | Verified (a learner's own `.txt` imports chapter by chapter; German chapter headings recognised; checked in a browser sandbox) | Verified (engine; one vocabulary entry across a story and Scripture checked in a browser sandbox) | Rule morphology and a word list of 1,454 nouns, 856 verbs, 346 adjectives (1,287 / 824 / 312 on 2026-10-01; `adapter-de@8`; **machine-drafted, not native-reviewed**); a sentence layer (agreement, the subject wherever it stands, separated verbs as one unit, compounds, contractions, older spelling related never rewritten); 38 constructions. Measured on the coordinator's own judgements only (an AI model): on 21 unseen sentences of native prose, **13 fully right, 377 of 393 stated facts**; confident errors exist; no independent evaluation (see "German course") | **Published**: Lutherbibel 1912 — 71 verses (Genesis 1, Psalm 1, Psalm 23, Matthew 1, three single verses) byte-verified against eBible.org (2026-10-01), and, since then, the whole text (1,189 chapters) in the library; the rights basis for Germany / EU is recorded with its evidence and awaits the owner's confirmation | Not verified; no recordings |
+| **Albanian** | Verified (a word typed without ë / ç is related to the proper spelling; a learner's own copy tested by integration test, not in a browser) | Verified (engine; browser in a sandbox) | A word list of 1,167 lexemes (896 on 2026-10-01; `adapter-sq@8`) and the closed classes (**machine-drafted, not native-reviewed**) with rule morphology; fused short pronouns taken apart; the linking article and its adjective one unit; 31 constructions. Every generated reading compared with four other sources: 97.62 % unanimous, the rest capped and listed for review. **Dictionary installed** (Wiktionary via kaikki.org, with its inflection tables). On held-out treebank prose 8.0 % (fiction) and 12.9 % (Wikipedia) of words have no reading; correctness against a native speaker is **not measured** (gold set: 0 accepted). See "Albanian course" | **Blocked** — the translation commonly labelled ALB has no established provenance; not bundled | Not verified |
+| **Hindi** | Verified (grapheme-safe spans, danda kept, nukta never folded; a learner's own `.txt` imports chapter by chapter, Hindi chapter headings recognised) | Verified (engine; browser in a sandbox) | Akṣara-level script decoding with the unwritten *a* stated; rule morphology and a word list of 2,937 lemmas (2,746 on 2026-10-01; `adapter-hi@5`; **machine-drafted, not native-reviewed**); compound verbs, complex predicates and 50 constructions; readings ordered by neighbouring words. On six unseen Scripture chapters 94.6 % of words have a reading the list vouches for (2026-10-01); correctness is **not measured** (gold set: 189 drafts, 0 accepted). Wiktionary dictionary installed (38,635 entries) | **Published**: Indian Revised Version (IRV Hindi 2019, CC BY-SA 4.0) — 91 verses byte-verified against eBible.org (2026-10-01) and the whole text (1,189 chapters) in the library; a licensed text, credited where it is read | Not verified |
+| **Thai** | Verified (no spaces added; a learner's own copy of a book imports chapter by chapter — see "Thai course") | Verified (engine and browser, sandbox) | Word segmentation **is a release gate that is not met**: first benchmark F1 90.3 % on a biased set, nothing measured on book prose (see "Thai substrate validation"); hand lexicon of 598 entries (the word list across all its layers is 1,312 entries on 2026-10-06; `adapter-th@4`), **machine-drafted, not native-reviewed**; Wiktionary dictionary installed as a separate, attributed layer; script decoding measured on 17,298 words | **Installed, not blocked**: the Biblica Open Thai Common Version 2025 (CC BY-SA 4.0), 1,189 chapters, in the library (THSV11 stays excluded) | Not verified |
 
 A course in the team list, or a seeded example, is not evidence of support: this table is. "Seed lexicon only"
 means every word of a supplied text is tokenized and tracked, but a word outside the adapter's small lexicon
@@ -233,16 +271,19 @@ browser with the real dictionary.
 
 ### Policy recorded as data (`src/course/thai.ts`)
 
-Thai Scripture stays blocked. THSV11: permission declined by the rights holder — never stored, shown, analysed,
+Thai Scripture stays blocked *(as of this phase; the Open Thai Common Version 2025 was verified and installed
+afterwards, see `docs/THAI_COURSE.md`)*. THSV11: permission declined by the rights holder — never stored, shown, analysed,
 packaged or played in the app; external link only. Biblica Open Thai Common Version 2025: a candidate named by
-the course owner, licence unverified, nothing ingested. A draft translation may enter only as a labelled
+the course owner, licence unverified, nothing ingested *(then)*. A draft translation may enter only as a labelled
 technical fixture, which the publication gate can never publish. Audio rights are separate from text rights;
 no recording is bundled. Readiness thresholds were not touched.
 
 ## Thai course (foundation, contract v5)
 
 Design: `docs/THAI_COURSE.md`. This is the structure of the course, **without any of its books**: no text of the
-ladder, no Thai Bible, no dictionary and no audio is in the repository.
+ladder, no Thai Bible, no dictionary and no audio is in the repository. *(As of 2026-10-01. Since then the Thai
+dictionary, the Open Thai Common Version 2025, a 1,243-text library and a 90-entry ladder are installed; there is
+still no audio and no native review — see "What changed since 2026-10-01".)*
 
 ### Implemented and verified
 
@@ -370,7 +411,7 @@ ignored analysis supplied with the file when counting coverage, so preview and r
 a review now records which wording it covers, and a revised text is held until it is reviewed again
 (Scripture is bound by its verification instead). No synthetic text is published or present in the normal library.
 
-## Speech (dormant: GoListen is switched off and deferred to V2)
+## Speech (the service is unconfigured; GoListen's flag has been on since 2026-10-03 and there are no recordings)
 
 `npm run speech:check`: `configured: no`; **12 of 12 provider-independent checks pass** (cache keys, requested vs
 delivered locale, voice metadata and review gate, content-version invalidation, retry, dead state with visible
@@ -399,8 +440,8 @@ the integration test in this one; they were not re-walked in the browser after t
 
 ## Awaiting external input
 
-1. **Native-speaker review** of comprehensible-input texts (none is reviewed; the normal Read list is empty).
-2. **Approved Scripture** for Albanian and Thai, then `node scripts/verify-scripture.mjs`. (Hindi: the Indian Revised Version is verified and bundled as a slice; the whole text awaits one download, see `docs/HINDI_COURSE.md` §12.)
+1. **Native-speaker review** of comprehensible-input texts and ladder units (none is reviewed; since 2026-10-06 the normal Read list holds the library's texts, but no course-written text or ladder unit).
+2. **Approved Scripture** for Albanian, then `node scripts/verify-scripture.mjs`. (Hindi and Thai: the whole Indian Revised Version and the Open Thai Common Version 2025 are installed, see `docs/HINDI_COURSE.md` §12 and `docs/THAI_COURSE.md`.)
 3. **Speech**: `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` in `.env.local`, restart, `npm run speech:check`, then
    a human audition of each voice (`src/golisten/QA.md`).
 4. **Native review** of GoTell's per-language tables and the adapters' writing rules.

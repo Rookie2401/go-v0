@@ -12,6 +12,19 @@ This document describes the design; READINESS records what is actually true.
 
 Acquisition update (2026-10-01): the licensed Biblica Open Thai Common Version 2025 is installed as a separate Scripture work, with 66 books and 1,189 lazy chapter documents. Its 31,087 nonblank verses were independently compared between the publisher's USX and USFM archives. The source has 16 blank verse slots. CC BY-SA 4.0 attribution and immutable release metadata are retained in `data/sources/th/`. The older unverified Scripture fixture remains excluded from production. See `docs/COURSE_CONTENT_IMPORTS.md` for the cross-course import status.
 
+Update (2026-10-06): the course now has a library, a ladder and a newer adapter. **Library** (`public/library/th`, git-ignored
+build output, rebuilt 2026-10-06 with `npm run library:rebuild -- th`): 1,243 texts in 6 works, 857,413 words — the 1,189
+chapters of the Open Thai Common Version, 45 Aesop fables (CC BY-SA 4.0, held unpublished for native review), six selected
+tales of the *Vetal* and three Thai Wikisource poems; 1,198 are published. **Ladder** (`data/ladder/th`, `docs/LADDER.md`): 90
+entries from `a1-1` to `a2-2` (16 + 16 + 23 + 35; about 43.9 k running words after Stage 0), written from `PLAN.md`: 76
+controlled, 8 Aesop fables adapted with attribution (share-alike), and 6 authentic (5 fables and 1 John 4); 9 bridge drafts
+and the Stage 0 hand-over are placed in it; `npm run ladder:check`: 0 errors, 15 warnings (recycling), mean curriculum
+coverage 89.5–94.3 % by stage. All are machine drafts, unreviewed, unpublished outside preview. **Adapter** `adapter-th@4`:
+the word list holds 1,312 entries across its layers (ladder words and names included), a name the analyser only guesses
+is not "known" at the ladder gate, and Scripture takes the learner's stage profile; on the technical audit's Scripture
+sample the unanalysed share fell from 6.41 % to 0.20 % and the glossed share rose from 94 % to 99 %. Stage 0 has 16 scenes,
+12 sound steps and 33 path steps. Dictionary: Wiktionary via kaikki.org, 20,254 entries.
+
 ## 1. Model: Course → Stage → Work → Chapter → Paragraph → Sentence → Phrase → Token
 
 | Level | Record | Where |
@@ -48,9 +61,9 @@ reverse. It takes the assistance profile of the stage the learner is working at.
 with English rescue), exact, verified against its source, never generated — the existing Scripture gate applies
 unchanged. **Policy (2026-10-01, `THAI_SCRIPTURE_POLICY`):** THSV11 was declined by its rights holder and is never
 stored, shown, analysed, packaged or played in the app (external link only, never listening evidence); the Biblica
-Open Thai Common Version 2025 is a candidate whose licence must be verified from the release metadata before
-anything is ingested; a draft translation may enter only as a labelled technical fixture that the gate never
-publishes; English rescue is the World English Bible.
+Open Thai Common Version 2025 was a candidate whose licence had to be verified from the release metadata before
+anything was ingested (done 2026-10-01: it is installed, see the acquisition update above); a draft translation may
+enter only as a labelled technical fixture that the gate never publishes; English rescue is the World English Bible.
 
 ## 4. Thai analysis
 
@@ -115,15 +128,17 @@ explain references and never argue a position.
 
 ## 8. GoListen, GoTell, My Testimony
 
-**GoListen is deferred to V2** (course owner, 2026-10-01) and switched off by `FEATURES.listen`: no audio
-interface, no speech request, no statement about listening; the `audio` works stay in the ladder data but are not
-shown. When it returns, listening counts only for reviewed real speech, a recording is bound to the exact text
-release it reads, and audio rights are tracked separately from text rights. GoTell continues to constrain
+**GoListen was deferred to V2** (course owner, 2026-10-01) and switched off by `FEATURES.listen`; the flag has been
+`true` since 2026-10-03, but no Thai recording exists (Home says "No recordings in Thai yet") and the speech proxy is off,
+so there is nothing to play and no speech request. The `audio` works stay in the ladder data but are not shown.
+Listening counts only for reviewed real speech, a recording is bound to the exact text release it reads, and audio
+rights are tracked separately from text rights. GoTell continues to constrain
 production to what the learner has met and never writes the testimony for him.
 
 ## 9. Not in this foundation
 
 Sense disambiguation; automatic detection of omitted subjects and literary devices; a Thai–Thai learner's
-dictionary (`definition` is carried when supplied, there is no source yet); frequency data (the candidate
-dictionary source has none — the forecast says so in `limits`); measured segmentation accuracy; any real text of
-the ladder; a Thai Bible; real speech.
+dictionary (`definition` is carried when supplied, there is no source yet); frequency data (the dictionary
+source has none — the forecast says so in `limits`); measured segmentation accuracy on book prose; a native review of any
+ladder text; real speech. *(Since this list was written: a Thai Bible, a dictionary and a machine-drafted ladder of
+90 entries are installed — see the acquisition update at the top.)*

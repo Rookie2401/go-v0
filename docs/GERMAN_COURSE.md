@@ -75,7 +75,7 @@ constructions and phrase units · checks on the learner's own German · older sp
 `acquisition` (controlled modern German written for the course) · `conversation` (dialogues, with the modal
 particles) · `library` (the literary ladder on shelves 1–12 and open reading) · `germany` (Germany as reading) ·
 `knowledge` (nonfiction by domain) · `scripture` · `mission` · `personal` (the learner's own books) · `listening`
-(data only; switched off with GoListen).
+(data only: GoListen is on since 2026-10-03, but no German recording exists).
 
 ## 5. Scripture
 
@@ -85,11 +85,14 @@ and the EU, is in `docs/german/RIGHTS.md`). German text with English rescue (Wor
 parallel-Bible interface. Its spelling (`daß`, `muß`) and vocabulary (`ward`) are related to today's German in the
 analysis. Biblical words are ordinary lemma items: `Gnade` met in Scripture is `Gnade` everywhere.
 
-## 6. What the course does not do (as of 2026-10-01)
+## 6. What the course does not do (updated 2026-10-06)
 
-It does not ingest literature at scale, run a statistical parser, or attach audio. The first-party texts are
-machine-drafted and stay in preview until reviewed. The adapter reads one sentence at a time, so a word that only
-the rest of the text could decide stays undecided. A German dictionary was built in the working tree by another agent
-on 2026-10-01; the course's own texts are analysed without it, a learner's own book with it, and that path is not
-evaluated for German. How well the analysis generalises, with the figures and their limits, is in
-`docs/german/STATUS.md`.
+It does not run a statistical parser or attach audio (no German recording exists). The first-party texts and the
+69 ladder units (`data/ladder/de`, `docs/LADDER.md`) are machine-drafted and stay in preview until reviewed. The
+adapter (`adapter-de@8`) reads one sentence at a time, so a word that only the rest of the text could decide stays
+undecided. Since 2026-10-01 the course has a German dictionary (Wiktionary via kaikki.org, 357,750 entries) and a library
+of 1,870 published texts (the whole Lutherbibel 1912, Grimm, novels and plays, nonfiction; 66 works, 2,326,488 words), and
+the importer plans every one of the 1,911 German texts with the dictionary (a defect that made it fail on 870 of them and
+silently drop the dictionary was fixed in `adapter-de@6`). That the dictionary path decides words *correctly* has still
+not been evaluated for German. How well the analysis generalises, with the figures and their limits, is in
+`docs/german/STATUS.md` (the figures there date from 2026-10-01, `adapter-de@5`).

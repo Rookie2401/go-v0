@@ -1,24 +1,51 @@
-# Albanian course — status of record (2026-10-01)
+# Albanian course — status of record (2026-10-01; updated 2026-10-06)
 
 Course `albania-sq`, language `sq` (Standard Albanian). This file says what exists, what was verified and how, and what
 has NOT happened. It is the place to look before believing any other statement about the Albanian course.
+
+## Update of 2026-10-06 — what is now different (the tables below are the 2026-10-01 record unless dated)
+
+- **Adapter `adapter-sq@8`** (was @2): word list **1,167 lexemes** (659 nouns, 45 names, 149 adjectives, 68 adverbs, 246
+  verbs; 896 in the table below) plus closed classes; the 271 words of the A1-2 … A2-2 ladder plan added, with names, money,
+  aches, the non-active aorist, abbreviations and Roman numerals (1,091 of 1,091 listed forms of the plan read). The cross-source
+  check was regenerated for @8 (`npm run sq:check-analyzer`, `sq:agreement -- --write`): **13,977 readings; 13,444 unanimous
+  (96.19 %), 44 majority, 364 disputed, 84 single-source, 41 names no source lists**; against the UniParser analyzer alone,
+  13,491 of 13,977 readings agree (96.52 %). The review queue (`data/review/sq/source-agreement.json`) now has **492 rows**
+  (it had 234), and `src/adapters/albanian/disputed.ts` flags 434 disputed pairs and 43 majority pairs. The
+  96.19 % is over a larger set of readings (13,977, against 11,160 at 97.62 %), so the two are not like for like;
+  agreement between sources is still not a native speaker's review. The treebank figures below were not re-run.
+- **The ladder is complete to A2** — **135 units**: A1-1 72, A1-2 25, A2-1 18, A2-2 20; about 49.9 k running words after
+  Stage 0 (3,651 + 9,952 + 14,775 + 21,514); `npm run ladder:check`: 0 errors, 69 warnings, mean curriculum coverage 90.7 / 90.7 /
+  91.6 / 94.9 % by stage (`data/ladder/sq`, plans `PLAN-A1-2-A2.md`). All controlled, all machine-drafts of a tool, unreviewed and
+  unpublished outside preview; facts in the nonfiction units and the church units are flagged for a reviewer; no Bible quotation
+  is used. There is no B1 bridge. Home shows "Your path". The ladder section below says "A1-2 … not started": no longer true.
+- **A library exists**: `public/library/sq` (git-ignored; rebuilt 2026-10-06 with `npm run library:rebuild -- sq`): 38 texts in 3
+  works, 24,566 words — 27 modern open-licence texts (`sq-modern-open`), 10 gap readings (`sq-modern-gap-readings`) and one Global Voices
+  excerpt (CC BY 3.0). **Only that excerpt is published**; the other 37 are held for native review. There is no Albanian Scripture.
+- **Rights**: the catalogue now has 33 works — 3 `verified-open-licence`, 3 `course-authored`, 21 `rights-unverified`, 6
+  `prohibited-from-bundling`.
+- **Stage 0** (`docs/STAGE0.md`): 19 scenes, 3 sound steps, 27 path steps; 0 errors. **GoListen** is on since 2026-10-03; no
+  Albanian recording exists and the speech proxy is off (the first question below still says "out of scope").
+- **Dictionary** unchanged: `kaikki-sq@2026-09-28`, 91,271 entries (`npm run dict:status`); `npm run build` now requires it.
+- **Not changed**: no native review of anything; dha / vdiq and the owner's decisions below are still open; no Albanian Bible; the
+  analysis is not measured against a native speaker (gold set: 0 accepted).
 
 ## The six questions
 
 | Question | Answer |
 | --- | --- |
-| Architecture complete? | **Yes, for V1 reading and writing**: adapter, sentence layer, constructions, writing checks, catalogue, rights gate, authoring pipeline, gold-set tooling, source-agreement tooling. GoListen is out of scope (deferred to V2 for every language). |
+| Architecture complete? | **Yes, for V1 reading and writing**: adapter, sentence layer, constructions, writing checks, catalogue, rights gate, authoring pipeline, gold-set tooling, source-agreement tooling. GoListen was out of scope (deferred to V2 for every language) on 2026-10-01; the flag has been on since 2026-10-03 and there is still no Albanian recording. |
 | Pipeline operational? | **Yes.** `npm run sq:check-analyzer`, `sq:agreement`, `sq:check-texts`, `sq:eval-ud`, `sq:gold`, `sq:dict-expand`, `authoring:report`, `authoring:check`, `rights:check` all run; the tests listed below pass. |
-| Seed corpus present? | **A small one**: 20 course-written texts (about 850 words; Stage 0 and early Stage 1) plus two older seed texts. Against the Stage 0 target of 15,000–25,000 words this is about 1.6 % of Stage 0 alone. |
+| Seed corpus present? | **A small one** on 2026-10-01: 20 course-written texts (about 850 words; Stage 0 and early Stage 1) plus two older seed texts. Against the Stage 0 target of 15,000–25,000 words this was about 1.6 % of Stage 0 alone. (2026-10-06: 135 ladder units of about 49.9 k words and a 38-text library — see the update above.) |
 | Native review complete? | **No. None.** No Albanian speaker has reviewed any word list, rule, text, gloss, pattern explanation or check. Everything is machine-drafted and marked so; the reader shows the texts only in preview mode. |
-| Rights verified? | **Only for what the course wrote itself** (3 works, `course-authored`). 21 works are `rights-unverified`, 6 `prohibited-from-bundling`. The Albanian Bible commonly labelled ALB is **not** bundled: its provenance is not established (docs/albanian/RIGHTS.md). No person has verified any third-party work. |
+| Rights verified? | **Only for what the course wrote itself** (3 works, `course-authored`) — and, since 2026-10-02, 3 `verified-open-licence` works (the library's modern open texts and gap readings, CC BY-SA 4.0, and a Global Voices excerpt, CC BY 3.0, 2026-10-04; verifier recorded in `public/library/sq/provenance.json`). 21 works are `rights-unverified`, 6 `prohibited-from-bundling`. The Albanian Bible commonly labelled ALB is **not** bundled: its provenance is not established (docs/albanian/RIGHTS.md). No person has verified any third-party work. |
 | Full corpus populated? | **No.** The eventual target (2–3 million words over the ladder) has not been started beyond the seed. The gold set holds 0 reviewed sentences (target 1,500). |
 
 ## What is built
 
 | Part | Where | Size |
 | --- | --- | --- |
-| Word list (machine-drafted) | `src/adapters/albanian/lexicon-*.ts` | 896 lexemes: 460 nouns, 41 names, 113 adjectives, 60 adverbs, 222 verbs → 9,990 written forms |
+| Word list (machine-drafted) | `src/adapters/albanian/lexicon-*.ts` | 896 lexemes on 2026-10-01: 460 nouns, 41 names, 113 adjectives, 60 adverbs, 222 verbs → 9,990 written forms. 2026-10-06: **1,167 lexemes** (659 nouns, 45 names, 149 adjectives, 68 adverbs, 246 verbs); forms not re-counted |
 | Closed classes | `function-*.ts`, `clitics.ts` | 163 lexemes, 227 forms; 8 short pronouns, 19 fused clusters (ma, ta, ia, t'i, m'u …) |
 | Word-form engine | `morphology.ts`, `morph-*.ts` | every context-free reading of a form; diacritic restoration; Gheg and older forms related to Standard; guesses marked `unconfirmed` |
 | Sentence layer | `sentence*.ts` | article + adjective as one unit; e / i / të / u / do / po / pa / më; case after a preposition; kam / jam + participle; modals |
@@ -141,13 +168,16 @@ tens of thousands of reviewed words before any engine optimisation.
 | --- | --- | --- | --- |
 | Stage 0 (`data/stage0/sq`, the Hindi session's) | 23 scenes | 624 | AI-drafted, unreviewed |
 | A1-1 (`data/ladder/sq`) | 72 (52 written for the ladder + the 20 Udha / Misioni drafts placed in place) | 3,651 | machine-draft, nothing reviewed |
-| A1-2, A2-1, A2-2, B1 bridge | — | — | not started |
+| A1-2 (`data/ladder/sq`) | 25 | 9,952 | machine-draft, nothing reviewed (2026-10-06) |
+| A2-1 | 18 | 14,775 | machine-draft, nothing reviewed (2026-10-06) |
+| A2-2 | 20 | 21,514 | machine-draft, nothing reviewed (2026-10-06) |
+| B1 bridge | — | — | not started |
 
-`npm run ladder:check -- sq`: 0 errors; mean curriculum coverage of A1-1 90.7 % (a lemma counts as known after three
-earlier encounters). Every form of the written units is known to the word list and the analyzer (`sq:check-texts`;
-`vdiq` is the one recorded difference). Write in `data/ladder/sq/authoring/a1.txt`, then `npm run sq:ladder-build`,
-`npm run sq:ladder-author` (what each unit still lacks) and the gate. Against the A1 target of 15–30 k words, A1-1 is
-about 3.7 k. All 72 units, the 20 corpus drafts included, carry the
+`npm run ladder:check` (2026-10-06, all stages): 0 errors, 69 warnings; mean curriculum coverage of A1-1 90.7 %, A1-2
+90.7 %, A2-1 91.6 %, A2-2 94.9 % (a lemma counts as known after three earlier encounters). Every form of the written units is known to the word list and the analyzer (`sq:check-texts`;
+`vdiq` is the one recorded difference). Write A1 units in `data/ladder/sq/authoring/a1.txt` (`sq:ladder-build` keeps the later stages' unit documents), then `npm run sq:ladder-build`,
+`npm run sq:ladder-author` (what each unit still lacks) and the gate. Against the A1 target of 15–30 k words, A1-1 and
+A1-2 together are about 13.6 k (A1-1 alone 3.7 k). All 135 units, the 20 corpus drafts included, carry the
 pipeline block (machine-draft by a tool): one road to publication for every unit.
 
 Cast: the Stage 0 world (Sam, Ana, Luan, Drita, Ardi) plus Elira, Dritan, Mira (his wife), Gjergj (their son) and Marku.
@@ -156,8 +186,8 @@ two characters called Ana.
 
 ## Next steps (in order)
 
-1. Native review: `npm run review:packet -- --lang sq --unit <id>` for the A1-1 units, then the disputed readings.
-2. A1-2 and A2 units on the same method; each batch through `sq:check-texts` and the gate before anyone sees it.
+1. Native review: `npm run review:packet -- --lang sq --unit <id>` for the ladder units (A1-1 first), then the disputed readings.
+2. *(A1-2 and A2 done 2026-10-06.)* A B1 bridge on the same method; each batch through `sq:check-texts` and the gate before anyone sees it.
 3. Gold set: draft 100 sentences per category with `npm run sq:gold`, to be accepted by a reviewer.
 4. Word list growth from the "no reading" lists of `sq:eval-ud` (dev half only), each addition through `sq:agreement`.
 5. The Gheg bridge as texts with correspondences (the correspondences exist; no Gheg text is bundled).

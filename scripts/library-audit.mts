@@ -37,6 +37,7 @@ import { computePublished, importDocuments, loadBundledCorpus } from '../src/ing
 import type { CorpusDocument } from '../src/ingest';
 import { parseManifest, parseShard } from '../src/library/format';
 import { groupedAnalysesOf, measureStoredText } from '../src/library/measure';
+import { MAX_MEDIAN_SENTENCE_WORDS, median, sentenceWordCounts } from '../src/library/sentences';
 import { CANON, bookIndex, runningNumber } from './lib-canon.mjs';
 
 const args = process.argv.slice(2).filter((a) => a !== '--');
@@ -135,10 +136,15 @@ for (const [workId, list] of byWork) {
     expect('catalogue: the stream of the texts is a stream of the course', list.every((r) => streamKeys.has(r.stream)), () => `${workId}: ${[...new Set(list.map((r) => r.stream))].join(', ')} (course streams: ${[...streamKeys].join(', ')})`);
     expect('catalogue: the stream of the texts is a stream of their work', list.every((r) => (w.streams ?? []).includes(r.stream)), () => `${workId}: texts in ${[...new Set(list.map((r) => r.stream))].join(', ')}, work in ${(w.streams ?? []).join(', ') || '(none)'}`);
   }
+  // what the catalogue knows of the work is on every row: a door that counts texts by stream or by subject domain finds them
+  expect('catalogue: every row carries every stream of its work', list.every((r) => (w.streams ?? []).every((x) => r.stream === x || (r.streams ?? []).includes(x))), () => `${workId}: work ${(w.streams ?? []).join('+') || '(none)'}, rows ${[...new Set(list.map((r) => [r.stream, ...(r.streams ?? [])].join('+')))].join(' / ')}`);
+  expect('catalogue: every row carries every subject domain of its work', list.every((r) => (w.domains ?? []).every((x) => (r.domains ?? []).includes(x))), () => `${workId}: work ${(w.domains ?? []).join('+') || '(none)'}, rows ${[...new Set(list.map((r) => (r.domains ?? []).join('+') || '(none)'))].join(' / ')}`);
   expect('catalogue: the work says its texts are in the library', w.ingestion === 'ingested' || w.ingestion === 'bundled', () => `${workId}: ingestion "${w.ingestion}"`);
 }
 
 // ───────────────────────────── order ─────────────────────────────
+
+// (the sentence lengths of a work are checked after the documents are read, below)
 
 const bundled = loadBundledCorpus().filter((d) => d.lang === lang);
 const bundledByWork = new Map<string, CorpusDocument[]>();
@@ -159,16 +165,38 @@ for (const r of rows) expect('structure: no library text has the id of a bundled
 // the same words twice: a text whose sentences are exactly those of another text of the language
 {
   const seenBody = new Map<string, string>();
+  const adapterOfLang = createAdapterRegistry().get(lang);
+  const sentenceLens = new Map<string, number[]>();
   for (const r of rows) {
     const d = docOf(r);
+    const everyString = JSON.stringify(d.sections);
+    expect('structure: the words of a text are in Unicode NFC', everyString === everyString.normalize('NFC'), () => `${r.id}: not NFC (the importer, the dictionary and the search all use NFC)`);
+    if (d.contentType === 'scripture') expect('structure: a Scripture chapter is its own source (source id = src:<lang>:<text id>)', d.source?.id === `src:${lang}:${d.id}`, () => `${r.id}: source id "${d.source?.id}"`);
+    const lens = sentenceWordCounts(d, adapterOfLang);
+    (sentenceLens.get(r.workId ?? r.id) ?? sentenceLens.set(r.workId ?? r.id, []).get(r.workId ?? r.id)!).push(...lens);
     const body = d.sections.flatMap((s) => s.paragraphs.flatMap((p) => ('sentences' in p ? p.sentences.map((x) => x.text) : [(p as { text: string }).text]))).join('\n').normalize('NFC').replace(/\s+/g, ' ').trim();
     const key = crypto.createHash('sha256').update(body).digest('hex');
     const first = seenBody.get(key);
     expect('order: no text has exactly the words of another text', first === undefined || body.length < 40, () => `${r.id} has the same words as ${first}`);
     if (first === undefined) seenBody.set(key, r.id);
   }
+  // a work whose median sentence is longer than a paragraph of a children's book stores whole paragraphs as sentences
+  for (const [workId, lens] of sentenceLens) {
+    expect(`sentences: no work has a median sentence of more than ${MAX_MEDIAN_SENTENCE_WORDS} words`, median(lens) <= MAX_MEDIAN_SENTENCE_WORDS, () => `${workId}: median ${median(lens)} words, longest ${Math.max(...lens)}, ${lens.length} sentences`);
+  }
 }
 
+// titles: as a person writes them, and no two texts of a work alike
+const BAD_TITLE = /#[^#\n]+#|[\u200B\uFEFF]|^\s|\s$|\s\s/u;
+for (const [workId, list] of byWork) {
+  const seenTitles = new Map<string, string>();
+  for (const r of list) {
+    expect('titles: a title is clean (no "#…#" markup, zero-width marks or runs of blanks)', !BAD_TITLE.test(r.title), () => `${r.id}: ${JSON.stringify(r.title)}`);
+    expect('titles: a title is in Unicode NFC', r.title === r.title.normalize('NFC'), () => `${r.id}: ${JSON.stringify(r.title)}`);
+    expect('titles: no two texts of a work have the same title', !seenTitles.has(r.title), () => `${workId}: "${r.title}" is ${seenTitles.get(r.title)} and ${r.id}`);
+    seenTitles.set(r.title, r.id);
+  }
+}
 for (const [workId, list] of byWork) {
   const numbers = list.map((r) => r.chapter);
   expect('order: every text of a work has a chapter number', numbers.every((n) => typeof n === 'number'), () => workId);

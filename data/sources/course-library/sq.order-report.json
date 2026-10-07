@@ -1,8 +1,11 @@
 {
  "lang": "sq",
- "at": "2026-10-02",
+ "at": "2026-10-06",
  "changes": [
-  "sq-modern-open: 23 texts numbered 1 … 23 (was undefined, undefined, undefined, undefined, …)"
+  "sq-modern-open: 27 texts numbered 1 … 27 (was undefined, undefined, undefined, undefined, …)",
+  "sq-modern-open: the review of the manifest follows the renumbered file (sha256 31b68e3a9507… → 720d53a29619…)",
+  "sq-modern-gap-readings: 10 texts numbered 1 … 10 (was undefined, undefined, undefined, undefined, …)",
+  "sq-modern-gap-readings: the review of the manifest follows the renumbered file (sha256 be31b4b5ada1… → 8ff31876be12…)"
  ],
  "leftOut": [],
  "withheld": []

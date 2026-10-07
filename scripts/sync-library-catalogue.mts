@@ -1,6 +1,6 @@
 /// <reference types="node" />
 /**
- * npm run library:sync-catalogue
+ * npm run library:sync-catalogue -- [--lang hi] [--library <dir>] [--dry]
  *
  * Makes the catalogue say which library works are really installed: for every work recorded in
  * src/course/acquired-library-works.json and src/course/reading-bridge-works.json, `installed` / `ingestion` follow the
@@ -13,9 +13,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { BuildEntry, BuildManifest } from '../src/library/build';
 
-const LANGS = ['de', 'es', 'hi', 'sq', 'th'] as const;
+const args = process.argv.slice(2).filter((a) => a !== '--');
+const libraryDir = args.includes('--library') ? args[args.indexOf('--library') + 1] : 'public/library';
+const dry = args.includes('--dry'); // report what would change, write nothing
+const only = args.includes('--lang') ? args[args.indexOf('--lang') + 1] : undefined; // one language only (the other languages' records are left as they are)
+const LANGS = (['de', 'es', 'hi', 'sq', 'th'] as const).filter((l) => !only || l === only);
 const provenanceOf = (lang: string): Map<string, string> => {
-  const file = `public/library/${lang}/provenance.json`;
+  const file = `${libraryDir}/${lang}/provenance.json`;
   if (!fs.existsSync(file)) return new Map();
   return new Map((JSON.parse(fs.readFileSync(file, 'utf8')) as { works: Array<{ slug: string; source: { sha256: string } }> }).works.map((w) => [w.slug, w.source.sha256]));
 };
@@ -42,7 +46,7 @@ for (const lang of LANGS) {
     if (rec.installed !== installed) { rec.installed = installed; changed++; lines.push(`${lang}/${slug}: installed ${installed}`); }
   }
 }
-fs.writeFileSync(acquiredFile, `${JSON.stringify(acquired, null, 2)}\n`);
+if (!dry) fs.writeFileSync(acquiredFile, `${JSON.stringify(acquired, null, 2)}\n`);
 
 const bridgeFile = 'src/course/reading-bridge-works.json';
 const bridges = JSON.parse(fs.readFileSync(bridgeFile, 'utf8')) as Record<string, Array<{ id: string; ingestion?: string; readiness?: string }>>;
@@ -58,6 +62,6 @@ for (const lang of LANGS) {
     if (w.ingestion !== ingestion || w.readiness !== readiness) { w.ingestion = ingestion; w.readiness = readiness; changed++; lines.push(`${lang}/${slug}: ${ingestion}`); }
   }
 }
-fs.writeFileSync(bridgeFile, `${JSON.stringify(bridges, null, 2)}\n`);
+if (!dry) fs.writeFileSync(bridgeFile, `${JSON.stringify(bridges, null, 2)}\n`);
 for (const l of lines) console.log(`  ${l}`);
-console.log(`library:sync-catalogue — ${changed} record(s) changed`);
+console.log(`library:sync-catalogue — ${changed} record(s) ${dry ? "would change (dry run: nothing written)" : "changed"}`);

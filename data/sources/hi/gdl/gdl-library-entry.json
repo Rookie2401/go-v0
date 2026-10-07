@@ -4,7 +4,7 @@
   "entries": [
     {
       "slug": "gdl-hindi-ccby",
-      "title": "Global Digital Library Hindi CC BY collection",
+      "title": "Global Digital Library Hindi CC BY collection — Class 1",
       "courseId": "india-hi",
       "stage": "c1",
       "streams": [
@@ -24,10 +24,194 @@
       "source": {
         "file": "gdl-library-documents.json",
         "kind": "documents",
+        "only": [
+          "gdl-104-ch01",
+          "gdl-106-ch01",
+          "gdl-42-ch01",
+          "gdl-111-ch01",
+          "gdl-105-ch01",
+          "gdl-20-ch01",
+          "gdl-54-ch01",
+          "gdl-52-ch01",
+          "gdl-122-ch01",
+          "gdl-101-ch01",
+          "gdl-121-ch01",
+          "gdl-64-ch01",
+          "gdl-66-ch01",
+          "gdl-75-ch01",
+          "gdl-63-ch01",
+          "gdl-1-ch01",
+          "gdl-65-ch01",
+          "gdl-50-ch01",
+          "gdl-117-ch01",
+          "gdl-14-ch01",
+          "gdl-32-ch01",
+          "gdl-71-ch01",
+          "gdl-68-ch01"
+        ],
         "url": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
         "edition": "GDL Hindi CC BY 4.0 catalogue",
         "attribution": "Per-book author, translator, illustrator and publisher credits are retained in each document source record.",
-        "provenance": "92 unique source documents reconstructed from 124 clean cached official GDL text and attribution records; duplicate bodies and damaged source 6161 excluded."
+        "provenance": "23 of the 92 unique source documents reconstructed from 124 clean cached official GDL text and attribution records (duplicate bodies and damaged source 6161 excluded), placed on Class 1 by measured difficulty (scripts/prepare-hi-gdl-collection.mts)."
+      }
+    },
+    {
+      "slug": "gdl-hindi-ccby-c2",
+      "title": "Global Digital Library Hindi CC BY collection — Class 2",
+      "courseId": "india-hi",
+      "stage": "c2",
+      "streams": [
+        "children"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "verifiedBy": "Global Digital Library catalogue and cached per-book attribution review",
+        "verifiedAt": "2026-10-01",
+        "basis": "Each accepted source record is explicitly CC BY 4.0; damaged source 6161 excluded.",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "canBundle": true
+      },
+      "source": {
+        "file": "gdl-library-documents.json",
+        "kind": "documents",
+        "only": [
+          "gdl-110-ch01",
+          "gdl-67-ch01",
+          "gdl-40-ch01",
+          "gdl-3-ch01",
+          "gdl-6-ch01",
+          "gdl-72-ch01",
+          "gdl-79-ch01",
+          "gdl-120-ch01",
+          "gdl-83-ch01",
+          "gdl-88-ch01",
+          "gdl-85-ch01",
+          "gdl-12-ch01",
+          "gdl-98-ch01",
+          "gdl-103-ch01",
+          "gdl-22-ch01",
+          "gdl-93-ch01",
+          "gdl-84-ch01",
+          "gdl-92-ch01",
+          "gdl-28-ch01",
+          "gdl-119-ch01",
+          "gdl-95-ch01",
+          "gdl-118-ch01",
+          "gdl-62-ch01"
+        ],
+        "url": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+        "edition": "GDL Hindi CC BY 4.0 catalogue",
+        "attribution": "Per-book author, translator, illustrator and publisher credits are retained in each document source record.",
+        "provenance": "23 of the 92 unique source documents reconstructed from 124 clean cached official GDL text and attribution records (duplicate bodies and damaged source 6161 excluded), placed on Class 2 by measured difficulty (scripts/prepare-hi-gdl-collection.mts)."
+      }
+    },
+    {
+      "slug": "gdl-hindi-ccby-c3",
+      "title": "Global Digital Library Hindi CC BY collection — Class 3",
+      "courseId": "india-hi",
+      "stage": "c3",
+      "streams": [
+        "children"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "verifiedBy": "Global Digital Library catalogue and cached per-book attribution review",
+        "verifiedAt": "2026-10-01",
+        "basis": "Each accepted source record is explicitly CC BY 4.0; damaged source 6161 excluded.",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "canBundle": true
+      },
+      "source": {
+        "file": "gdl-library-documents.json",
+        "kind": "documents",
+        "only": [
+          "gdl-80-ch01",
+          "gdl-70-ch01",
+          "gdl-96-ch01",
+          "gdl-74-ch01",
+          "gdl-69-ch01",
+          "gdl-116-ch01",
+          "gdl-26-ch01",
+          "gdl-18-ch01",
+          "gdl-114-ch01",
+          "gdl-60-ch01",
+          "gdl-36-ch01",
+          "gdl-56-ch01",
+          "gdl-78-ch01",
+          "gdl-94-ch01",
+          "gdl-113-ch01",
+          "gdl-81-ch01",
+          "gdl-86-ch01",
+          "gdl-108-ch01",
+          "gdl-90-ch01",
+          "gdl-77-ch01",
+          "gdl-38-ch01",
+          "gdl-102-ch01",
+          "gdl-46-ch01"
+        ],
+        "url": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+        "edition": "GDL Hindi CC BY 4.0 catalogue",
+        "attribution": "Per-book author, translator, illustrator and publisher credits are retained in each document source record.",
+        "provenance": "23 of the 92 unique source documents reconstructed from 124 clean cached official GDL text and attribution records (duplicate bodies and damaged source 6161 excluded), placed on Class 3 by measured difficulty (scripts/prepare-hi-gdl-collection.mts)."
+      }
+    },
+    {
+      "slug": "gdl-hindi-ccby-c4",
+      "title": "Global Digital Library Hindi CC BY collection — Class 4",
+      "courseId": "india-hi",
+      "stage": "c4",
+      "streams": [
+        "children"
+      ],
+      "contentType": "story",
+      "rights": {
+        "state": "verified-open-licence",
+        "verifiedBy": "Global Digital Library catalogue and cached per-book attribution review",
+        "verifiedAt": "2026-10-01",
+        "basis": "Each accepted source record is explicitly CC BY 4.0; damaged source 6161 excluded.",
+        "statusByJurisdiction": {
+          "*": "licensed"
+        },
+        "canBundle": true
+      },
+      "source": {
+        "file": "gdl-library-documents.json",
+        "kind": "documents",
+        "only": [
+          "gdl-115-ch01",
+          "gdl-44-ch01",
+          "gdl-89-ch01",
+          "gdl-24-ch01",
+          "gdl-107-ch01",
+          "gdl-16-ch01",
+          "gdl-87-ch01",
+          "gdl-123-ch01",
+          "gdl-97-ch01",
+          "gdl-34-ch01",
+          "gdl-48-ch01",
+          "gdl-91-ch01",
+          "gdl-124-ch01",
+          "gdl-73-ch01",
+          "gdl-76-ch01",
+          "gdl-109-ch01",
+          "gdl-99-ch01",
+          "gdl-112-ch01",
+          "gdl-9-ch01",
+          "gdl-30-ch01",
+          "gdl-58-ch01",
+          "gdl-100-ch01",
+          "gdl-82-ch01"
+        ],
+        "url": "https://content.digitallibrary.io/wp-json/content-api/v1/books/hi",
+        "edition": "GDL Hindi CC BY 4.0 catalogue",
+        "attribution": "Per-book author, translator, illustrator and publisher credits are retained in each document source record.",
+        "provenance": "23 of the 92 unique source documents reconstructed from 124 clean cached official GDL text and attribution records (duplicate bodies and damaged source 6161 excluded), placed on Class 4 by measured difficulty (scripts/prepare-hi-gdl-collection.mts)."
       }
     }
   ]

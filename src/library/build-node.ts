@@ -8,8 +8,9 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
-import type { LanguageCode } from '../core';
+import { COURSES, createMemoryStore, type LanguageCode, type Work } from '../core';
 import { createAdapterRegistry } from '../adapters';
+import { createCourseCatalog } from '../course';
 import { createFileLexiconSource } from '../dict/file';
 import { loadBundledCorpus } from '../ingest';
 import { buildLibrary, parseBuildManifest, LibraryBuildError, type BuildIO, type BuildOptions, type BuildResult } from './build';
@@ -45,6 +46,18 @@ async function renameWithRetry(from: string, to: string): Promise<void> {
       await new Promise((resolve) => setTimeout(resolve, 100 * 2 ** attempt));
     }
   }
+}
+
+/** The course catalogue's works of a language, by work id: what the build carries onto every text (streams, domains). */
+export async function catalogueWorksOf(lang: LanguageCode): Promise<Map<string, Work>> {
+  const store = createMemoryStore();
+  const catalog = createCourseCatalog({ store });
+  const out = new Map<string, Work>();
+  for (const course of COURSES.filter((c) => c.lang === lang)) {
+    await catalog.install(course.id);
+    for (const w of await store.works.where('courseId', course.id)) out.set(w.id, w);
+  }
+  return out;
 }
 
 export async function buildLibraryFiles(opts: BuildFilesOptions): Promise<BuildFilesResult> {
@@ -83,9 +96,11 @@ export async function buildLibraryFiles(opts: BuildFilesOptions): Promise<BuildF
   };
 
   try {
+    const works = await catalogueWorksOf(opts.lang);
     const dict = opts.dictDir ? createFileLexiconSource(opts.dictDir, opts.lang) : undefined;
     const result = await buildLibrary({
       lang: opts.lang, manifest, io, adapters: createAdapterRegistry(), date: opts.date, inspect: opts.inspect, progress: opts.progress,
+      catalogue: (id) => works.get(id),
       lexicon: dict ? (l) => (l === opts.lang ? dict : undefined) : undefined,
       bundledTextIds: new Set(loadBundledCorpus().filter((d) => d.lang === opts.lang).map((d) => `text:${d.lang}:${d.id}`)),
     });

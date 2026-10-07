@@ -51,6 +51,7 @@ const keepOriginal = (file: string) => { const copy = `${file}.before-order`; if
 
 type Manifest = BuildManifest & { withheld?: Array<{ slug: string; title: string; reason: string }> };
 const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8')) as Manifest;
+const manifestAsRead = JSON.stringify(manifest); // entries are changed in place below: compare with this to know whether the manifest changed
 const course = COURSES.find((c) => c.lang === lang)!;
 const store = createMemoryStore();
 const catalog = createCourseCatalog({ store });
@@ -130,6 +131,9 @@ for (const entry of manifest.entries) {
     continue;
   }
 
+  // several works read one documents file (each names its books with source.only; the Hindi GDL shelves): the tool that prepares
+  // the file numbers and orders them, and this step must not renumber or rewrite a file that other entries share
+  if (entry.source.only) { kept.push(entry); continue; }
   const raw = JSON.parse(fs.readFileSync(file, 'utf8')) as CorpusDocument | CorpusDocument[];
   let docs = Array.isArray(raw) ? raw : [raw];
   const before = JSON.stringify(docs);
@@ -205,12 +209,24 @@ for (const entry of manifest.entries) {
       say(`${entry.slug}: ${docs.length === 1 ? 'the one text is chapter 1' : `${docs.length} texts numbered 1 … ${docs.length}`} (was ${numbers.slice(0, 4).map(String).join(', ')}${numbers.length > 4 ? ', …' : ''})`);
     }
   }
-  if (JSON.stringify(docs) !== before && !dry) { keepOriginal(file); fs.writeFileSync(file, JSON.stringify(Array.isArray(raw) || docs.length !== 1 ? docs : docs[0])); }
+  if (JSON.stringify(docs) !== before && !dry) {
+    const sha = (f: string) => crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+    const shaBefore = sha(file);
+    keepOriginal(file);
+    fs.writeFileSync(file, JSON.stringify(Array.isArray(raw) || docs.length !== 1 ? docs : docs[0]));
+    // The step renumbers, orders and leaves texts out; it never changes a word of a text it keeps. A manifest review is bound to the
+    // sha256 of the FILE (build.ts applies it only when the file is the one it covered): carry it to the file as it is now, or the
+    // texts would silently become unreviewed (and unpublished) just because they were numbered.
+    if (entry.review?.coversSourceSha256 === shaBefore) {
+      entry.review = { ...entry.review, coversSourceSha256: sha(file) };
+      say(`${entry.slug}: the review of the manifest follows the renumbered file (sha256 ${shaBefore.slice(0, 12)}… → ${entry.review.coversSourceSha256.slice(0, 12)}…)`);
+    }
+  }
   kept.push(entry);
 }
 
 const out: Manifest = { ...manifest, entries: kept, ...(withheld.length ? { withheld } : {}) };
-if (!dry && JSON.stringify(out) !== JSON.stringify(manifest)) { keepOriginal(manifestFile); fs.writeFileSync(manifestFile, `${JSON.stringify(out, null, 2)}\n`); }
+if (!dry && JSON.stringify(out) !== manifestAsRead) { keepOriginal(manifestFile); fs.writeFileSync(manifestFile, `${JSON.stringify(out, null, 2)}\n`); }
 const reportFile = manifestFile.replace(/\.json$/, '.order-report.json');
 if (!dry && (changes.length || leftOut.length)) fs.writeFileSync(reportFile, `${JSON.stringify({ lang, at: new Date().toISOString().slice(0, 10), changes, leftOut, withheld }, null, 1)}\n`);
 console.log(`library:order ${lang} — ${kept.length} work(s) to build, ${withheld.length} withheld, ${leftOut.length} text(s) or paragraph(s) left out, ${changes.length} change(s)${dry ? ' (dry run: nothing written)' : changes.length ? `; record in ${reportFile}` : ''}`);

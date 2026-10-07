@@ -1,0 +1,991 @@
+{
+ "rule": {
+  "measures": [
+   "words",
+   "meanSentence",
+   "rareShare"
+  ],
+  "weights": {
+   "words": 0.4,
+   "sentence": 0.3,
+   "rarity": 0.3
+  },
+  "rareIfInFewerBooksThan": 4,
+  "cut": "23 books per shelf in order of score, easiest first",
+  "shelves": [
+   "c1",
+   "c2",
+   "c3",
+   "c4"
+  ],
+  "adapter": "Hindi 5"
+ },
+ "summary": [
+  {
+   "shelf": "c1",
+   "books": 23,
+   "wordsRange": [
+    59,
+    318
+   ],
+   "medianWords": 147,
+   "medianMeanSentence": 6.24,
+   "medianRareShare": 0.1304
+  },
+  {
+   "shelf": "c2",
+   "books": 23,
+   "wordsRange": [
+    90,
+    495
+   ],
+   "medianWords": 252,
+   "medianMeanSentence": 6.76,
+   "medianRareShare": 0.1809
+  },
+  {
+   "shelf": "c3",
+   "books": 23,
+   "wordsRange": [
+    263,
+    2112
+   ],
+   "medianWords": 519,
+   "medianMeanSentence": 9.38,
+   "medianRareShare": 0.1977
+  },
+  {
+   "shelf": "c4",
+   "books": 23,
+   "wordsRange": [
+    570,
+    3037
+   ],
+   "medianWords": 1400,
+   "medianMeanSentence": 11.93,
+   "medianRareShare": 0.2175
+  }
+ ],
+ "books": [
+  {
+   "id": "gdl-104-ch01",
+   "words": 79,
+   "sentences": 22,
+   "meanSentence": 3.59,
+   "rareShare": 0.0506,
+   "publisherLevel": 1,
+   "score": 0.0121,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-106-ch01",
+   "words": 59,
+   "sentences": 11,
+   "meanSentence": 5.36,
+   "rareShare": 0.0678,
+   "publisherLevel": 1,
+   "score": 0.056,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-42-ch01",
+   "words": 122,
+   "sentences": 30,
+   "meanSentence": 4.07,
+   "rareShare": 0.1066,
+   "publisherLevel": 1,
+   "score": 0.0758,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-111-ch01",
+   "words": 81,
+   "sentences": 19,
+   "meanSentence": 4.26,
+   "rareShare": 0.1481,
+   "publisherLevel": 1,
+   "score": 0.1088,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-105-ch01",
+   "words": 103,
+   "sentences": 22,
+   "meanSentence": 4.68,
+   "rareShare": 0.1553,
+   "publisherLevel": 1,
+   "score": 0.1385,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-20-ch01",
+   "words": 81,
+   "sentences": 11,
+   "meanSentence": 7.36,
+   "rareShare": 0.0123,
+   "publisherLevel": 1,
+   "score": 0.1385,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-54-ch01",
+   "words": 161,
+   "sentences": 33,
+   "meanSentence": 4.88,
+   "rareShare": 0.1304,
+   "publisherLevel": 1,
+   "score": 0.1659,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-52-ch01",
+   "words": 65,
+   "sentences": 18,
+   "meanSentence": 3.61,
+   "rareShare": 0.2,
+   "publisherLevel": 1,
+   "score": 0.1791,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-122-ch01",
+   "words": 212,
+   "sentences": 35,
+   "meanSentence": 6.06,
+   "rareShare": 0.0896,
+   "publisherLevel": 1,
+   "score": 0.1868,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-101-ch01",
+   "words": 127,
+   "sentences": 17,
+   "meanSentence": 7.47,
+   "rareShare": 0.126,
+   "publisherLevel": 1,
+   "score": 0.2231,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-121-ch01",
+   "words": 133,
+   "sentences": 19,
+   "meanSentence": 7,
+   "rareShare": 0.1429,
+   "publisherLevel": 1,
+   "score": 0.2363,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-64-ch01",
+   "words": 294,
+   "sentences": 47,
+   "meanSentence": 6.26,
+   "rareShare": 0.0884,
+   "publisherLevel": 2,
+   "score": 0.2429,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-66-ch01",
+   "words": 313,
+   "sentences": 50,
+   "meanSentence": 6.26,
+   "rareShare": 0.0735,
+   "publisherLevel": 2,
+   "score": 0.2451,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-75-ch01",
+   "words": 212,
+   "sentences": 30,
+   "meanSentence": 7.07,
+   "rareShare": 0.1226,
+   "publisherLevel": 1,
+   "score": 0.2462,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-63-ch01",
+   "words": 318,
+   "sentences": 51,
+   "meanSentence": 6.24,
+   "rareShare": 0.0786,
+   "publisherLevel": 2,
+   "score": 0.2505,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-1-ch01",
+   "words": 171,
+   "sentences": 21,
+   "meanSentence": 8.14,
+   "rareShare": 0.0819,
+   "publisherLevel": 1,
+   "score": 0.256,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-65-ch01",
+   "words": 147,
+   "sentences": 20,
+   "meanSentence": 7.35,
+   "rareShare": 0.1429,
+   "publisherLevel": 1,
+   "score": 0.2648,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-50-ch01",
+   "words": 213,
+   "sentences": 45,
+   "meanSentence": 4.73,
+   "rareShare": 0.1878,
+   "publisherLevel": 2,
+   "score": 0.278,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-117-ch01",
+   "words": 119,
+   "sentences": 29,
+   "meanSentence": 4.1,
+   "rareShare": 0.2437,
+   "publisherLevel": 1,
+   "score": 0.2923,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-14-ch01",
+   "words": 223,
+   "sentences": 30,
+   "meanSentence": 7.43,
+   "rareShare": 0.139,
+   "publisherLevel": 2,
+   "score": 0.3099,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-32-ch01",
+   "words": 201,
+   "sentences": 30,
+   "meanSentence": 6.7,
+   "rareShare": 0.1791,
+   "publisherLevel": 2,
+   "score": 0.311,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-71-ch01",
+   "words": 104,
+   "sentences": 16,
+   "meanSentence": 6.5,
+   "rareShare": 0.2308,
+   "publisherLevel": 1,
+   "score": 0.3341,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-68-ch01",
+   "words": 251,
+   "sentences": 50,
+   "meanSentence": 5.02,
+   "rareShare": 0.1992,
+   "publisherLevel": 2,
+   "score": 0.3363,
+   "shelf": "c1"
+  },
+  {
+   "id": "gdl-110-ch01",
+   "words": 262,
+   "sentences": 35,
+   "meanSentence": 7.49,
+   "rareShare": 0.1412,
+   "publisherLevel": 1,
+   "score": 0.3451,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-67-ch01",
+   "words": 126,
+   "sentences": 34,
+   "meanSentence": 3.71,
+   "rareShare": 0.4206,
+   "publisherLevel": 1,
+   "score": 0.3473,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-40-ch01",
+   "words": 90,
+   "sentences": 19,
+   "meanSentence": 4.74,
+   "rareShare": 0.4222,
+   "publisherLevel": 1,
+   "score": 0.3516,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-3-ch01",
+   "words": 265,
+   "sentences": 30,
+   "meanSentence": 8.83,
+   "rareShare": 0.1094,
+   "publisherLevel": 2,
+   "score": 0.3604,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-6-ch01",
+   "words": 370,
+   "sentences": 59,
+   "meanSentence": 6.27,
+   "rareShare": 0.1622,
+   "publisherLevel": 2,
+   "score": 0.3615,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-72-ch01",
+   "words": 359,
+   "sentences": 67,
+   "meanSentence": 5.36,
+   "rareShare": 0.1838,
+   "publisherLevel": 2,
+   "score": 0.3659,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-79-ch01",
+   "words": 432,
+   "sentences": 60,
+   "meanSentence": 7.2,
+   "rareShare": 0.1088,
+   "publisherLevel": 2,
+   "score": 0.3659,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-120-ch01",
+   "words": 229,
+   "sentences": 30,
+   "meanSentence": 7.63,
+   "rareShare": 0.1747,
+   "publisherLevel": 2,
+   "score": 0.3802,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-83-ch01",
+   "words": 217,
+   "sentences": 26,
+   "meanSentence": 8.35,
+   "rareShare": 0.1705,
+   "publisherLevel": 1,
+   "score": 0.3912,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-88-ch01",
+   "words": 129,
+   "sentences": 24,
+   "meanSentence": 5.38,
+   "rareShare": 0.3023,
+   "publisherLevel": 1,
+   "score": 0.3923,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-85-ch01",
+   "words": 146,
+   "sentences": 29,
+   "meanSentence": 5.03,
+   "rareShare": 0.3151,
+   "publisherLevel": 2,
+   "score": 0.3956,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-12-ch01",
+   "words": 131,
+   "sentences": 20,
+   "meanSentence": 6.55,
+   "rareShare": 0.2519,
+   "publisherLevel": 1,
+   "score": 0.3967,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-98-ch01",
+   "words": 315,
+   "sentences": 38,
+   "meanSentence": 8.29,
+   "rareShare": 0.1492,
+   "publisherLevel": 1,
+   "score": 0.4077,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-103-ch01",
+   "words": 151,
+   "sentences": 21,
+   "meanSentence": 7.19,
+   "rareShare": 0.2384,
+   "publisherLevel": 2,
+   "score": 0.4176,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-22-ch01",
+   "words": 492,
+   "sentences": 90,
+   "meanSentence": 5.47,
+   "rareShare": 0.1809,
+   "publisherLevel": 2,
+   "score": 0.4242,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-93-ch01",
+   "words": 151,
+   "sentences": 10,
+   "meanSentence": 15.1,
+   "rareShare": 0.1391,
+   "publisherLevel": 1,
+   "score": 0.4308,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-84-ch01",
+   "words": 327,
+   "sentences": 37,
+   "meanSentence": 8.84,
+   "rareShare": 0.1529,
+   "publisherLevel": 2,
+   "score": 0.4429,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-92-ch01",
+   "words": 196,
+   "sentences": 29,
+   "meanSentence": 6.76,
+   "rareShare": 0.2602,
+   "publisherLevel": 2,
+   "score": 0.4451,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-28-ch01",
+   "words": 331,
+   "sentences": 38,
+   "meanSentence": 8.71,
+   "rareShare": 0.1662,
+   "publisherLevel": 2,
+   "score": 0.4538,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-119-ch01",
+   "words": 252,
+   "sentences": 39,
+   "meanSentence": 6.46,
+   "rareShare": 0.2421,
+   "publisherLevel": 2,
+   "score": 0.456,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-95-ch01",
+   "words": 236,
+   "sentences": 44,
+   "meanSentence": 5.36,
+   "rareShare": 0.3178,
+   "publisherLevel": 1,
+   "score": 0.467,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-118-ch01",
+   "words": 495,
+   "sentences": 76,
+   "meanSentence": 6.51,
+   "rareShare": 0.196,
+   "publisherLevel": 2,
+   "score": 0.4714,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-62-ch01",
+   "words": 443,
+   "sentences": 48,
+   "meanSentence": 9.23,
+   "rareShare": 0.1309,
+   "publisherLevel": 3,
+   "score": 0.4725,
+   "shelf": "c2"
+  },
+  {
+   "id": "gdl-80-ch01",
+   "words": 990,
+   "sentences": 137,
+   "meanSentence": 7.23,
+   "rareShare": 0.1354,
+   "publisherLevel": 3,
+   "score": 0.4736,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-70-ch01",
+   "words": 307,
+   "sentences": 38,
+   "meanSentence": 8.08,
+   "rareShare": 0.2085,
+   "publisherLevel": 2,
+   "score": 0.4912,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-96-ch01",
+   "words": 423,
+   "sentences": 44,
+   "meanSentence": 9.61,
+   "rareShare": 0.1631,
+   "publisherLevel": 3,
+   "score": 0.5165,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-74-ch01",
+   "words": 825,
+   "sentences": 113,
+   "meanSentence": 7.3,
+   "rareShare": 0.1806,
+   "publisherLevel": 2,
+   "score": 0.5341,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-69-ch01",
+   "words": 782,
+   "sentences": 79,
+   "meanSentence": 9.9,
+   "rareShare": 0.1202,
+   "publisherLevel": 2,
+   "score": 0.5363,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-116-ch01",
+   "words": 263,
+   "sentences": 25,
+   "meanSentence": 10.52,
+   "rareShare": 0.1977,
+   "publisherLevel": 2,
+   "score": 0.5374,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-26-ch01",
+   "words": 391,
+   "sentences": 38,
+   "meanSentence": 10.29,
+   "rareShare": 0.1688,
+   "publisherLevel": 3,
+   "score": 0.5462,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-18-ch01",
+   "words": 630,
+   "sentences": 140,
+   "meanSentence": 4.5,
+   "rareShare": 0.2714,
+   "publisherLevel": 2,
+   "score": 0.5473,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-114-ch01",
+   "words": 660,
+   "sentences": 134,
+   "meanSentence": 4.93,
+   "rareShare": 0.2742,
+   "publisherLevel": 2,
+   "score": 0.5714,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-60-ch01",
+   "words": 366,
+   "sentences": 39,
+   "meanSentence": 9.38,
+   "rareShare": 0.2131,
+   "publisherLevel": 2,
+   "score": 0.578,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-36-ch01",
+   "words": 1209,
+   "sentences": 125,
+   "meanSentence": 9.67,
+   "rareShare": 0.1332,
+   "publisherLevel": 3,
+   "score": 0.5802,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-56-ch01",
+   "words": 404,
+   "sentences": 37,
+   "meanSentence": 10.92,
+   "rareShare": 0.1807,
+   "publisherLevel": 2,
+   "score": 0.5835,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-78-ch01",
+   "words": 498,
+   "sentences": 59,
+   "meanSentence": 8.44,
+   "rareShare": 0.2108,
+   "publisherLevel": 2,
+   "score": 0.6011,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-94-ch01",
+   "words": 1808,
+   "sentences": 228,
+   "meanSentence": 7.93,
+   "rareShare": 0.167,
+   "publisherLevel": 3,
+   "score": 0.6121,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-113-ch01",
+   "words": 379,
+   "sentences": 48,
+   "meanSentence": 7.9,
+   "rareShare": 0.2744,
+   "publisherLevel": 2,
+   "score": 0.6143,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-81-ch01",
+   "words": 1226,
+   "sentences": 149,
+   "meanSentence": 8.23,
+   "rareShare": 0.19,
+   "publisherLevel": 3,
+   "score": 0.6209,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-86-ch01",
+   "words": 412,
+   "sentences": 38,
+   "meanSentence": 10.84,
+   "rareShare": 0.2015,
+   "publisherLevel": 2,
+   "score": 0.6308,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-108-ch01",
+   "words": 1326,
+   "sentences": 138,
+   "meanSentence": 9.61,
+   "rareShare": 0.1742,
+   "publisherLevel": 3,
+   "score": 0.6473,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-90-ch01",
+   "words": 375,
+   "sentences": 39,
+   "meanSentence": 9.62,
+   "rareShare": 0.2587,
+   "publisherLevel": 3,
+   "score": 0.656,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-77-ch01",
+   "words": 2112,
+   "sentences": 212,
+   "meanSentence": 9.96,
+   "rareShare": 0.1293,
+   "publisherLevel": 4,
+   "score": 0.6571,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-38-ch01",
+   "words": 519,
+   "sentences": 61,
+   "meanSentence": 8.51,
+   "rareShare": 0.2389,
+   "publisherLevel": 2,
+   "score": 0.6593,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-102-ch01",
+   "words": 508,
+   "sentences": 42,
+   "meanSentence": 12.1,
+   "rareShare": 0.1988,
+   "publisherLevel": 2,
+   "score": 0.6681,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-46-ch01",
+   "words": 715,
+   "sentences": 86,
+   "meanSentence": 8.31,
+   "rareShare": 0.235,
+   "publisherLevel": 2,
+   "score": 0.6692,
+   "shelf": "c3"
+  },
+  {
+   "id": "gdl-115-ch01",
+   "words": 574,
+   "sentences": 56,
+   "meanSentence": 10.25,
+   "rareShare": 0.2091,
+   "publisherLevel": 3,
+   "score": 0.678,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-44-ch01",
+   "words": 1229,
+   "sentences": 178,
+   "meanSentence": 6.9,
+   "rareShare": 0.2799,
+   "publisherLevel": 2,
+   "score": 0.7011,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-89-ch01",
+   "words": 570,
+   "sentences": 45,
+   "meanSentence": 12.67,
+   "rareShare": 0.207,
+   "publisherLevel": 2,
+   "score": 0.7033,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-24-ch01",
+   "words": 845,
+   "sentences": 85,
+   "meanSentence": 9.94,
+   "rareShare": 0.2225,
+   "publisherLevel": 2,
+   "score": 0.7264,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-107-ch01",
+   "words": 2096,
+   "sentences": 181,
+   "meanSentence": 11.58,
+   "rareShare": 0.1689,
+   "publisherLevel": 3,
+   "score": 0.7451,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-16-ch01",
+   "words": 1312,
+   "sentences": 110,
+   "meanSentence": 11.93,
+   "rareShare": 0.1982,
+   "publisherLevel": 3,
+   "score": 0.7451,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-87-ch01",
+   "words": 1407,
+   "sentences": 115,
+   "meanSentence": 12.23,
+   "rareShare": 0.1876,
+   "publisherLevel": 3,
+   "score": 0.7495,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-123-ch01",
+   "words": 1504,
+   "sentences": 166,
+   "meanSentence": 9.06,
+   "rareShare": 0.2247,
+   "publisherLevel": 4,
+   "score": 0.7549,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-97-ch01",
+   "words": 683,
+   "sentences": 47,
+   "meanSentence": 14.53,
+   "rareShare": 0.2152,
+   "publisherLevel": 3,
+   "score": 0.7571,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-34-ch01",
+   "words": 1042,
+   "sentences": 105,
+   "meanSentence": 9.92,
+   "rareShare": 0.2476,
+   "publisherLevel": 3,
+   "score": 0.7681,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-48-ch01",
+   "words": 1476,
+   "sentences": 152,
+   "meanSentence": 9.71,
+   "rareShare": 0.2175,
+   "publisherLevel": 3,
+   "score": 0.7703,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-91-ch01",
+   "words": 1351,
+   "sentences": 91,
+   "meanSentence": 14.85,
+   "rareShare": 0.1976,
+   "publisherLevel": 3,
+   "score": 0.7769,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-124-ch01",
+   "words": 1060,
+   "sentences": 73,
+   "meanSentence": 14.52,
+   "rareShare": 0.2132,
+   "publisherLevel": 3,
+   "score": 0.7857,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-73-ch01",
+   "words": 2037,
+   "sentences": 162,
+   "meanSentence": 12.57,
+   "rareShare": 0.1998,
+   "publisherLevel": 3,
+   "score": 0.8132,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-76-ch01",
+   "words": 731,
+   "sentences": 57,
+   "meanSentence": 12.82,
+   "rareShare": 0.2627,
+   "publisherLevel": 3,
+   "score": 0.8154,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-109-ch01",
+   "words": 1400,
+   "sentences": 152,
+   "meanSentence": 9.21,
+   "rareShare": 0.3257,
+   "publisherLevel": 4,
+   "score": 0.8242,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-99-ch01",
+   "words": 1975,
+   "sentences": 171,
+   "meanSentence": 11.55,
+   "rareShare": 0.2167,
+   "publisherLevel": 4,
+   "score": 0.8242,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-112-ch01",
+   "words": 2016,
+   "sentences": 148,
+   "meanSentence": 13.62,
+   "rareShare": 0.2073,
+   "publisherLevel": 3,
+   "score": 0.8319,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-9-ch01",
+   "words": 1660,
+   "sentences": 145,
+   "meanSentence": 11.45,
+   "rareShare": 0.2331,
+   "publisherLevel": 3,
+   "score": 0.8319,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-30-ch01",
+   "words": 2177,
+   "sentences": 217,
+   "meanSentence": 10.03,
+   "rareShare": 0.226,
+   "publisherLevel": 4,
+   "score": 0.8407,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-58-ch01",
+   "words": 1083,
+   "sentences": 70,
+   "meanSentence": 15.47,
+   "rareShare": 0.2844,
+   "publisherLevel": 3,
+   "score": 0.889,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-100-ch01",
+   "words": 3037,
+   "sentences": 199,
+   "meanSentence": 15.26,
+   "rareShare": 0.2344,
+   "publisherLevel": 4,
+   "score": 0.9209,
+   "shelf": "c4"
+  },
+  {
+   "id": "gdl-82-ch01",
+   "words": 2156,
+   "sentences": 126,
+   "meanSentence": 17.11,
+   "rareShare": 0.2783,
+   "publisherLevel": 3,
+   "score": 0.9648,
+   "shelf": "c4"
+  }
+ ]
+}

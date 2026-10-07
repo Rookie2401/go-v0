@@ -1,5 +1,6 @@
 /// <reference types="node" />
-/** Check installed lazy libraries without importing the full books into a learner database. */
+/** Check installed lazy libraries without importing the full books into a learner database.
+ * npm run library:check -- [--require hi,de,es,th,sq] [--library <dir>]   (--library: check a scratch rebuild instead of public/library) */
 import fs from 'node:fs';
 import path from 'node:path';
 import { createAdapterRegistry } from '../src/adapters';
@@ -18,6 +19,9 @@ const release = process.env.GO_RELEASE_JURISDICTIONS?.split(',').map((s) => s.tr
 // build knowingly ships without them (a developer build on a machine without the built libraries).
 const argv = process.argv.slice(2).filter((a) => a !== '--');
 const reqAt = argv.indexOf('--require');
+// --library <dir>: check the libraries under <dir> (a rebuild into a scratch directory) instead of public/library
+const libAt = argv.indexOf('--library');
+const libraryDir = libAt >= 0 ? (argv[libAt + 1] ?? 'public/library') : 'public/library';
 const requiredLibs = reqAt >= 0 && process.env.GO_ALLOW_MISSING_CONTENT !== '1' ? (argv[reqAt + 1] ?? '').split(',').map((x) => x.trim()).filter(Boolean) : [];
 let failures = 0; let shownErrors = 0;
 const report = (message: string) => { if (shownErrors++ < 20) console.error(message); };
@@ -43,7 +47,7 @@ for (const lang of combinedManifestLanguages) {
   combinedSources.set(lang, entries);
 }
 for (const lang of ['hi', 'de', 'es', 'th', 'sq'] as LanguageCode[]) {
-  const root = path.resolve('public/library', lang);
+  const root = path.resolve(libraryDir, lang);
   const manifestFile = path.join(root, 'manifest.json');
   if (!fs.existsSync(manifestFile)) {
     if (requiredLibs.includes(lang)) { failures++; report(`${lang}: required library missing: run npm run library:build for ${lang} (docs/COURSE_CONTENT_IMPORTS.md), or set GO_ALLOW_MISSING_CONTENT=1 for a build without it`); }

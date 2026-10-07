@@ -146,7 +146,7 @@ describe('works: rights are recorded facts, never inferences', () => {
       expect(w.rights.canBundle, w.title).toBe(own);
       // everything not bundled is the learner's own copy to bring — except NCERT's readers, whose terms rule out use inside software
       expect(w.rights.userImportOnly, w.title).toBe(!own && w.publisher !== 'NCERT');
-      const installedSources = ['bharatendu-andher-nagari', 'gdl-hindi-ccby', 'premchand-panch-parameshwar', 'premchand-namak-ka-daroga', 'gv-hi-467925c35d73-excerpt'].map((slug) => ids.work(C, slug));
+      const installedSources = ['bharatendu-andher-nagari', 'gdl-hindi-ccby', 'gdl-hindi-ccby-c2', 'gdl-hindi-ccby-c3', 'gdl-hindi-ccby-c4', 'premchand-panch-parameshwar', 'premchand-namak-ka-daroga', 'gv-hi-467925c35d73-excerpt'].map((slug) => ids.work(C, slug));
       const expectedIngestion = installedSources.includes(w.id) ? 'ingested' : 'bundled';
       expect(w.ingestion === expectedIngestion, w.title).toBe(own);
       expect(w.ingestion === 'ingested', w.title).toBe(installedSources.includes(w.id));
@@ -155,8 +155,9 @@ describe('works: rights are recorded facts, never inferences', () => {
         expect(w.rights.canStoreOffline, w.title).toBe(false);
       }
     }
-    expect(HINDI_WORKS.filter((w) => w.rights.canBundle)).toHaveLength(9);
-    expect(HINDI_WORKS.filter((w) => w.rights.state === 'verified-open-licence').map((w) => w.id).sort()).toEqual([ids.work(C, 'bible-hindi'), ids.work(C, 'gdl-hindi-ccby'), ids.work(C, 'gv-hi-467925c35d73-excerpt')].sort());
+    // the GDL books stand on Classes 1-4 as four works (scripts/prepare-hi-gdl-collection.mts), so a book is on its work's shelf
+    expect(HINDI_WORKS.filter((w) => w.rights.canBundle)).toHaveLength(12);
+    expect(HINDI_WORKS.filter((w) => w.rights.state === 'verified-open-licence').map((w) => w.id).sort()).toEqual([ids.work(C, 'bible-hindi'), ids.work(C, 'gdl-hindi-ccby'), ids.work(C, 'gdl-hindi-ccby-c2'), ids.work(C, 'gdl-hindi-ccby-c3'), ids.work(C, 'gdl-hindi-ccby-c4'), ids.work(C, 'gv-hi-467925c35d73-excerpt')].sort());
   });
 
   it('no work claims public domain, and a licence is named only where its evidence is recorded: age is a lead, never a conclusion', () => {

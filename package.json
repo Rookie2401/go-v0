@@ -56,6 +56,8 @@
     "speech:check": "vite-node --config scripts/vite.config.ts scripts/speech-check.mts",
     "hi:gdl": "vite-node --config scripts/vite.config.ts scripts/acquire-hi-gdl.mts",
     "library:audit": "vite-node --config scripts/vite.config.ts scripts/library-audit.mts",
+    "library:rebuild": "vite-node --config scripts/vite.config.ts scripts/library-rebuild.mts",
+    "library:sentences": "vite-node --config scripts/vite.config.ts scripts/library-sentences.mts",
     "library:order": "vite-node --config scripts/vite.config.ts scripts/library-order.mts",
     "library:sync-catalogue": "vite-node --config scripts/vite.config.ts scripts/sync-library-catalogue.mts",
     "review:packet": "vite-node scripts/review-packet.mts",

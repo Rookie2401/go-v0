@@ -1,4 +1,13 @@
-/** Independently verify the Hindi IRV library source from the approved publisher USFM archive. */
+/**
+ * Independently verify the Hindi IRV library source from the approved publisher USFM archive.
+ *
+ *   node scripts/verify-hi-usfm.mjs [--check-only]
+ *
+ * --check-only compares and reports but NEVER writes data/verified/scripture.json (use it in a rebuild or an audit).
+ * The five seed chapters of data/corpus/hi overlap the "-complete" chapters of the lazy library source: a verse reference
+ * that both hold is compared once (the two wordings must agree); a reference repeated inside the lazy source itself is
+ * still an error.
+ */
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -27,11 +36,21 @@ function parse(file) {
 }
 const sourceVerses = {};
 for (const file of fs.readdirSync(ROOT).filter((x) => /^\d+-[A-Z0-9]+hin2017\.usfm$/.test(x))) Object.assign(sourceVerses, parse(file));
+const checkOnly = process.argv.includes('--check-only');
 const bundled = {};
 const bundledRefs = [];
-for (const d of [...DOCS, ...CORPUS]) for (const s of d.sections.flatMap((x) => x.paragraphs).flatMap((x) => x.sentences ?? [])) { bundledRefs.push(s.verseRefs[0]); bundled[s.verseRefs[0]] = s.text; }
+const overlapProblems = [];
+let overlaps = 0;
+const versesOf = (d) => d.sections.flatMap((x) => x.paragraphs).flatMap((x) => x.sentences ?? []);
+for (const d of DOCS) for (const s of versesOf(d)) { bundledRefs.push(s.verseRefs[0]); bundled[s.verseRefs[0]] = s.text; }
 const duplicateRefs = bundledRefs.filter((r, i) => bundledRefs.indexOf(r) !== i);
 if (duplicateRefs.length) throw new Error(`Hindi bundled source has duplicate verse references: ${duplicateRefs.slice(0, 5).join(', ')}`);
+// the seed chapters: a reference already held by the lazy source is skipped (and must say the same words)
+for (const d of CORPUS) for (const s of versesOf(d)) {
+  const ref = s.verseRefs[0];
+  if (ref in bundled) { overlaps++; if (bundled[ref] !== s.text) overlapProblems.push({ ref, problem: 'the seed chapter and the lazy library chapter word this verse differently', seed: s.text, lazy: bundled[ref] }); continue; }
+  bundled[ref] = s.text;
+}
 const old = fs.existsSync('data/verified/scripture.json') ? JSON.parse(fs.readFileSync('data/verified/scripture.json', 'utf8')) : { checkedAt: '2026-10-01', method: 'byte-comparison', by: 'scripts/verify-scripture.mjs', translations: [] };
 const oldHi = old.translations.find((x) => x.lang === 'hi' && x.translationId === 'hin2017');
 const originalRefs = new Set(CORPUS.flatMap((d) => d.sections.flatMap((x) => x.paragraphs).flatMap((x) => x.sentences ?? []).map((s) => s.verseRefs?.[0]).filter(Boolean)));
@@ -42,7 +61,12 @@ for (const [ref, text] of Object.entries(sourceVerses)) if (bundled[ref] !== tex
   else mismatches.push({ ref, source: text, bundled: bundled[ref] });
 }
 for (const ref of Object.keys(bundled)) if (!(ref in sourceVerses)) mismatches.push({ ref, problem: 'bundled verse absent from publisher archive' });
+mismatches.push(...overlapProblems);
 if (mismatches.length) { console.error(`Hindi USFM verification failed: ${mismatches.length} mismatch(es)`); console.error(JSON.stringify(mismatches.slice(0, 10), null, 2)); process.exit(1); }
+if (checkOnly) {
+  console.log(`Hindi USFM verified independently (check only, nothing written): ${Object.keys(sourceVerses).length} verses, 0 mismatches; ${overlaps} seed verses are also in the lazy source and agree; ${preserved.length} established corpus verses retained`);
+  process.exit(0);
+}
 const others = old.translations.filter((x) => !(x.lang === 'hi' && x.translationId === 'hin2017'));
 const hi = {
   lang: 'hi', translationId: 'hin2017', name: 'इंडियन रिवाइज्ड वर्जन (IRV) हिंदी - 2019', source: 'eBible.org', base: 'https://ebible.org/hin2017',

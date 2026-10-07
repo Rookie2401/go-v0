@@ -101,7 +101,8 @@ for (const file of files) {
     const sentences = rows.map(({ n, text }) => ({ text, ...(oldEnglish.has(`${parsed.book}.${chapter}.${n}`) ? { english: oldEnglish.get(`${parsed.book}.${chapter}.${n}`) } : {}), verseRefs: [`${parsed.book}.${chapter}.${n}`] }));
     const paragraphs = [];
     for (let i = 0; i < sentences.length; i += 5) paragraphs.push({ sentences: sentences.slice(i, i + 5) });
-    const title = old?.title ?? `${parsed.heading} ${chapter}`;
+    // the whole chapter: never the title of the partial seed passage ("1 यूहन्ना 1:8–9; यूहन्ना 3:16")
+    const title = `${parsed.heading} ${chapter}`;
     const page = `${parsed.book}${String(chapter).padStart(parsed.book === 'PSA' ? 3 : 2, '0')}.htm`;
     const doc = {
       schemaVersion: 2, id: slug, lang: 'hi', title, contentType: 'scripture',

@@ -56,7 +56,7 @@
         "status": "reviewed",
         "reviewedBy": "acquire-sq-modern-open source-fidelity check",
         "reviewedAt": "2026-10-02",
-        "coversSourceSha256": "31b68e3a9507cf55b35a62c25572bf156d9f4ffbe7c776dc85536cd7ba2c3753",
+        "coversSourceSha256": "720d53a29619da4b7d04ab8a0ed99cb30879aadfbf84a174323ba2e0d07a7aa1",
         "notes": "Source fidelity and licence evidence checked; no native-speaker or A0 review claimed."
       }
     },
@@ -110,7 +110,7 @@
         "status": "reviewed",
         "reviewedBy": "acquire-sq-modern-gap-readings source-fidelity checker",
         "reviewedAt": "2026-10-02",
-        "coversSourceSha256": "be31b4b5ada1f6892b7a48da1ead49f7c5451a1de7fbfed3848c11a8a3dba48c",
+        "coversSourceSha256": "8ff31876be127ee72e45c9a64ead56e0481909dd26c0a7291889a44ce1ff00f7",
         "notes": "Source extraction and rights checked; no native-speaker or CEFR claim."
       }
     },

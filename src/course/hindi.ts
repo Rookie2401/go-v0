@@ -243,6 +243,16 @@ interface W {
 }
 const readinessOf = (r: WorkRights): NonNullable<Work['readiness']> =>
   (r.state === 'prohibited-from-bundling' || r.state === 'recommended-only' ? 'recommendation' : r.state === 'rights-unverified' ? 'candidate' : 'verified-ready');
+/**
+ * The Global Digital Library books are placed on Classes 1–4 by measured difficulty (scripts/prepare-hi-gdl-collection.mts):
+ * one catalogue record per shelf, so a book is on the shelf its work is on. Class 1 is `gdl-hindi-ccby` (below).
+ */
+const GDL_SHELF = (class_: 2 | 3 | 4) => ({
+  slug: `gdl-hindi-ccby-c${class_}`, title: `Global Digital Library — Hindi CC BY 4.0 books, Class ${class_}`, role: 'extensive' as const, streams: ['children'], publisher: 'Global Digital Library', audience: 'children', genre: 'illustrated story collection',
+  purpose: ['native Hindi children’s reading from individually licensed books'], rights: GDL_HINDI, ingestion: 'ingested' as const, readiness: 'implemented' as const,
+  notes: `The Class ${class_} part of the Global Digital Library Hindi collection: the books whose measured difficulty (length, sentence length, vocabulary the other books do not share) puts them here. Each book retains its own GDL API licence and attribution record.`,
+});
+
 const works = (shelfKey: string, list: W[]): Work[] => list.map((w) => {
   const rights = w.rights ?? (w.died !== undefined ? lead(`The author died in ${w.died}${w.year ? `; first published ${w.year}` : ''}.`) : BASE);
   return {
@@ -294,14 +304,17 @@ const HINDI_BASE_WORKS: Work[] = [
       notes: 'A collection, not a work: stories will arrive one by one with their own record. The publisher\'s level (kept as the publisher\'s) and the course\'s own shelf are separate fields.' },
   ]),
   ...works('c2', [
+    GDL_SHELF(2),
     { slug: 'ncert-rimjhim', title: 'रिमझिम (Hindi school readers)', role: 'extensive', streams: ['children'], publisher: 'NCERT', audience: 'children', genre: 'school reader', era: 'contemporary', rights: NCERT,
       notes: 'A school textbook series: NCERT\'s own class numbers are not this course\'s classes. The terms NCERT states forbid redistribution and use inside software, so this is a pointer only.' },
   ]),
   ...works('c3', [
+    GDL_SHELF(3),
     { slug: 'panchatantra', title: 'पंचतंत्र की कहानियाँ', role: 'extensive', streams: ['children'], audience: 'children', genre: 'fables', era: 'ancient tales, many retellings',
       notes: 'The fables are ancient, but every Hindi retelling is its own work with its own record; the exact retelling has to be identified.' },
   ]),
   ...works('c4', [
+    GDL_SHELF(4),
     { slug: 'chauhan-jhansi-ki-rani', title: 'झाँसी की रानी', author: 'सुभद्रा कुमारी चौहान', died: 1948, era: 'early 20th century', genre: 'poem', audience: 'children', streams: ['children', 'literature'], registers: ['literary'], domains: ['history'] },
   ]),
   ...works('c5', [

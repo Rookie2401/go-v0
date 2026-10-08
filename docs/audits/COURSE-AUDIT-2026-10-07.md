@@ -253,7 +253,9 @@ Reading it honestly:
   The floor did what it was asked (less assisted reading) at the price the Scripture cap was meant to prevent. The
   knob is `REACH.floorAuthentic` in `src/golearn/policy.ts`; the right fix is either a lower floor (0.82) for a learner
   with no published ladder, or counting Scripture against the cap harder when it is the only authentic text in reach.
-  Not changed blind; the next run should test 0.82.
+  **Tested 2026-10-08, same flags, 20 minutes:** floor 0.82 gives 1,000 known at 53 k words (0.85: 57 k; the old 0.75: 45 k),
+  3,250 at 223 k (257 k; 215 k), Scripture 35 % (52 %; 28 %), reading below 90 % known 13.8 % (14.1 %; 16.6 %). The floor is
+  now 0.82: most of the pace of 0.75 with less assisted reading than either. (`es-normal-floor082.json` / `-floor085.json`.)
 - **The adaptive reread never fired in the simulation** (0 rereads), because the simulated learner never reports a
   text below "All" and never asks for help on a quarter of a unit's words. Its effect on real learners is untested
   by this method; the unit tests cover the rule.

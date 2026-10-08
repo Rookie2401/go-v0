@@ -458,7 +458,7 @@ export const REACH = {
   /** A text is IN REACH at this recommendation coverage or above (shown or likely-familiar words, names left out). For controlled / adapted ladder texts and Stage 0 texts. */
   floor: 0.75,
   /** The same floor for AUTHENTIC texts (the library, Scripture): the ladder's own intent is 88-92 % known, so 75 % was far too low for real texts (docs/audits/COURSE-AUDIT-2026-10-07.md 4.3 item 8). */
-  floorAuthentic: 0.85,
+  floorAuthentic: 0.82, // 0.85 pushed the Spanish today-mode learner into Scripture (52 % of reading, 3,250 known at 257 k words); 0.82 measured 35 % and 223 k with the same 14 % assisted reading (docs/audits/COURSE-AUDIT-2026-10-07.md §7)
   /** With nothing in reach, the closest this many are recommended, said to be above the learner's level. */
   closestFew: 3,
   /** Such a text never scores above this (the ladder's "Next on your path" is 0.99), so it is not led with. */

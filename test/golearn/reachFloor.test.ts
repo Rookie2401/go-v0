@@ -1,6 +1,6 @@
 /**
  * The REACH FLOOR by what a text is (R4, docs/audits/COURSE-AUDIT-2026-10-07.md 4.3 item 8): 0.75 stays for texts written for the course
- * (controlled / adapted ladder units, Stage 0); AUTHENTIC texts (the library, Scripture) are in reach only at 0.85
+ * (controlled / adapted ladder units, Stage 0); AUTHENTIC texts (the library, Scripture) are in reach only at 0.82
  * (REACH.floorAuthentic). The "above your level" fallback - the closest three, said plainly - keeps working for both.
  */
 import { describe, expect, it } from 'vitest';
@@ -13,19 +13,19 @@ import { t } from './courseFixtures';
 const offered = (recs: Array<{ textId?: string; reason: string }>) => recs.filter((r) => r.reason === 'next-input' && r.textId).map((r) => r.textId!);
 
 describe('the floor constants and the tier', () => {
-  it('0.75 for course texts, 0.85 for authentic texts and for Scripture, even under an acquisition stream', () => {
+  it('0.75 for course texts, 0.82 for authentic texts and for Scripture, even under an acquisition stream', () => {
     expect(REACH.floor).toBe(0.75);
-    expect(REACH.floorAuthentic).toBe(0.85);
+    expect(REACH.floorAuthentic).toBe(0.82);
     expect(reachFloor({ controlled: true })).toBe(0.75);
-    expect(reachFloor({})).toBe(0.85);
-    expect(reachFloor({ controlled: false, scripture: true })).toBe(0.85);
-    expect(reachFloor({ controlled: true, scripture: true })).toBe(0.85);
+    expect(reachFloor({})).toBe(0.82);
+    expect(reachFloor({ controlled: false, scripture: true })).toBe(0.82);
+    expect(reachFloor({ controlled: true, scripture: true })).toBe(0.82);
   });
 
   it('the same coverage is in reach for a course text and out of reach for an authentic one', () => {
     expect(reachTier({ coverage: 0.8 }, reachFloor({ controlled: true }))).toBe(0);
     expect(reachTier({ coverage: 0.8 }, reachFloor({}))).toBe(2);
-    expect(reachTier({ coverage: 0.85 }, reachFloor({}))).toBe(0); // at the floor: in
+    expect(reachTier({ coverage: 0.82 }, reachFloor({}))).toBe(0); // at the floor: in
     expect(reachTier({ coverage: 0.8 })).toBe(0); // no floor given: the old 0.75 (Stage 0 and course texts)
   });
 });
@@ -48,17 +48,17 @@ describe('recommend(): the catalogue', () => {
 
   it('with no authentic text in reach but a course text in reach, only what is in reach is offered (the authentic ones wait)', async () => {
     const w = await routeWorld('es');
-    const deps = await w.catalogue([w.entry('a-auth-80', 80), w.entry('b-auth-84', 84), w.entry('c-course-78', 78, { stream: 'acquisition' })]);
+    const deps = await w.catalogue([w.entry('a-auth-80', 80), w.entry('b-auth-81', 81), w.entry('c-course-78', 78, { stream: 'acquisition' })]);
     const recs = await w.h.golearn.recommend(U, { limit: 12, wholeLibrary: deps } as never);
     expect(offered(recs)).toEqual([w.idOf('c-course-78')]);
     expect(recs.some((r) => /above your level/.test(r.explanation))).toBe(false);
   });
 
-  it('with nothing in reach, the closest three are offered and said plainly to be above his level - an authentic text at 80 % included', async () => {
+  it('with nothing in reach, the closest three are offered and said plainly to be above his level - an authentic text at 81 % included', async () => {
     const w = await routeWorld('es');
-    const deps = await w.catalogue([w.entry('a', 80), w.entry('b', 84), w.entry('c', 70), w.entry('d', 60), w.entry('e', 50)]);
+    const deps = await w.catalogue([w.entry('a', 80), w.entry('b', 81), w.entry('c', 70), w.entry('d', 60), w.entry('e', 50)]);
     const recs = (await w.h.golearn.recommend(U, { limit: 12, wholeLibrary: deps } as never)).filter((r) => r.reason === 'next-input' && r.textId);
-    expect(recs.map((r) => r.textId)).toEqual([w.idOf('b'), w.idOf('a'), w.idOf('c')]); // 84, 80, 70: nearest first
+    expect(recs.map((r) => r.textId)).toEqual([w.idOf('b'), w.idOf('a'), w.idOf('c')]); // 81, 80, 70: nearest first (81 < 0.82, the authentic floor)
     for (const r of recs) {
       expect(r.explanation).toMatch(/above your level/);
       expect(r.score).toBeLessThanOrEqual(REACH.aboveLevelScore);
@@ -73,7 +73,7 @@ describe('recommend(): the catalogue', () => {
       userLog: async (userId: string) => ({ events: await w.h.bus.history({ userId }), sittings: { get: () => undefined }, byText: new Map() }) };
     const res = await rankWholeLibrary(ctx as never, U, deps, { reach: true, limit: 5 });
     const floorOf = (slug: string) => (res.picks.find((p) => p.row.id === w.idOf(slug))!.ranked.reach as { floor: number }).floor;
-    expect(floorOf('a-auth')).toBe(0.85);
+    expect(floorOf('a-auth')).toBe(0.82);
     expect(floorOf('b-course')).toBe(0.75);
   });
 });

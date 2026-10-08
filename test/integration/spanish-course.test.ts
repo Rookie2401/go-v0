@@ -9,6 +9,7 @@
  */
 import { beforeAll, describe, expect, it } from 'vitest';
 import { COURSES, DEFAULT_ASSISTANCE, ids, varietyStanding } from '../../src/core';
+import { SPANISH_ASSISTANCE } from '../../src/course/spanish';
 import type { Library, Sentence, Text } from '../../src/core';
 import { SPANISH_COURSE_ID, createCourseCatalog } from '../../src/course';
 import { importDocuments, plainTextToDocuments } from '../../src/ingest';
@@ -39,14 +40,16 @@ beforeAll(async () => {
 });
 
 describe('a catalogue, not a ladder', () => {
-  it('has shelves and streams, pages its works, and never gates or changes the reader', async () => {
+  it('has shelves and streams, pages its works, and never gates the reader', async () => {
     expect((await catalog.stages(SPANISH_COURSE_ID)).map((s) => s.kind)).toEqual(Array(8).fill('shelf'));
     expect((await catalog.streams(SPANISH_COURSE_ID)).filter((s) => s.available).length).toBe(7);
     const page = await catalog.findWorks({ courseId: SPANISH_COURSE_ID, stream: 'honduras', limit: 5 });
     expect(page.items.length).toBe(5);
     expect(page.total).toBeGreaterThan(5);
-    expect(await catalog.currentStage(U, SPANISH_COURSE_ID)).toBeUndefined();
-    expect(await catalog.assistanceFor({ courseId: SPANISH_COURSE_ID, textId: T('camino-1-01') })).toEqual(DEFAULT_ASSISTANCE);
+    // a shelf course has a current stage (the first shelf not ready) and nothing locks; a controlled text takes its shelf's profile, a text on no shelf the default
+    expect((await catalog.currentStage(U, SPANISH_COURSE_ID))!.key).toBe('s0');
+    expect(await catalog.assistanceFor({ courseId: SPANISH_COURSE_ID, textId: T('camino-1-01') })).toEqual(SPANISH_ASSISTANCE.s0);
+    expect(await catalog.assistanceFor({ courseId: SPANISH_COURSE_ID })).toEqual(DEFAULT_ASSISTANCE);
   });
 
   it('the controlled texts belong to their work and stream; unreviewed ones stay unpublished', async () => {

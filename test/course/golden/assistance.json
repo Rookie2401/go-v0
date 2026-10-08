@@ -1,0 +1,3998 @@
+{
+ "thailand-th | no arguments": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | unknown stage": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | unknown text": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | stage | 0": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | stage | g1": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | stage | g2": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | stage | g3": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "full"
+ },
+ "thailand-th | stage | g4": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "discourse",
+   "definition",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | stage | g5": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | stage | g6": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | stage | g7": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | stage | g8": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | stage | g9": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | stage | open": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:an-an-an | alone": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:an-an-an | at first": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:an-an-an | at mid": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:an-an-an | at last": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-1 | alone": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-1 | at first": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-1 | at mid": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-1 | at last": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-2 | alone": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-2 | at first": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-2 | at mid": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-2 | at last": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-3 | alone": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-3 | at first": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-3 | at mid": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-3 | at last": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-4 | alone": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "discourse",
+   "definition",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-4 | at first": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "discourse",
+   "definition",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-4 | at mid": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "discourse",
+   "definition",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-4 | at last": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "discourse",
+   "definition",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-5 | alone": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-5 | at first": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-5 | at mid": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | work | work:thailand-th:mana-mani-5 | at last": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | work | work:thailand-th:waeng-thi-rak | alone": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | work | work:thailand-th:waeng-thi-rak | at first": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | work | work:thailand-th:waeng-thi-rak | at mid": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | work | work:thailand-th:waeng-thi-rak | at last": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | work | work:thailand-th:khwam-suk-khong-kathi | alone": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:khwam-suk-khong-kathi | at first": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:khwam-suk-khong-kathi | at mid": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:khwam-suk-khong-kathi | at last": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:dek-chai-maliwan | alone": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:dek-chai-maliwan | at first": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:dek-chai-maliwan | at mid": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:dek-chai-maliwan | at last": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:chotmai-chak-mueang-thai | alone": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:chotmai-chak-mueang-thai | at first": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:chotmai-chak-mueang-thai | at mid": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:chotmai-chak-mueang-thai | at last": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:bible-thai-otcv2025 | alone": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | work | work:thailand-th:bible-thai-otcv2025 | at first": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | work | work:thailand-th:bible-thai-otcv2025 | at mid": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | work | work:thailand-th:bible-thai-otcv2025 | at last": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | scripture | work:thailand-th:bible-thai-otcv2025 | first": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | scripture | work:thailand-th:bible-thai-otcv2025 | mid": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | scripture | work:thailand-th:bible-thai-otcv2025 | last": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | scripture | work:thailand-th:bible-thai-otcv2025 | alone": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "thailand-th | outside | alone": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | outside | at mid": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "thailand-th | unit-shaped | alone": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "thailand-th | unit-shaped | at mid": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "albania-sq | no arguments": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | unknown stage": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | unknown text": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | stage | 0": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | stage | 1": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "english",
+   "sentence",
+   "note",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | stage | 2": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "sentence",
+   "english",
+   "note",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | stage | 3": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "sentence",
+   "english",
+   "note",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | stage | 4": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "discourse",
+   "sentence",
+   "english",
+   "note",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "reduced"
+ },
+ "albania-sq | stage | 5": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "discourse",
+   "sentence",
+   "english",
+   "note",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "albania-sq | stage | 6": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "discourse",
+   "sentence",
+   "note",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "albania-sq | stage | 7": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "albania-sq | stage | 8": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "albania-sq | stage | 9": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "albania-sq | stage | open": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "albania-sq | work | work:albania-sq:udha-0 | alone": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | work | work:albania-sq:udha-0 | at first": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | work | work:albania-sq:udha-0 | at mid": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | work | work:albania-sq:udha-0 | at last": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | work | work:albania-sq:udha-1 | alone": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "english",
+   "sentence",
+   "note",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | work | work:albania-sq:udha-1 | at first": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "english",
+   "sentence",
+   "note",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | work | work:albania-sq:udha-1 | at mid": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "english",
+   "sentence",
+   "note",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | work | work:albania-sq:udha-1 | at last": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "english",
+   "sentence",
+   "note",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | work | work:albania-sq:bibla-alb | alone": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "discourse",
+   "sentence",
+   "note",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "albania-sq | work | work:albania-sq:bibla-alb | at first": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "discourse",
+   "sentence",
+   "note",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "albania-sq | work | work:albania-sq:bibla-alb | at mid": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "discourse",
+   "sentence",
+   "note",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "albania-sq | work | work:albania-sq:bibla-alb | at last": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "discourse",
+   "sentence",
+   "note",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "albania-sq | work | work:albania-sq:sq-modern-open | alone": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "albania-sq | work | work:albania-sq:sq-modern-open | at first": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "albania-sq | work | work:albania-sq:sq-modern-open | at mid": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "albania-sq | work | work:albania-sq:sq-modern-open | at last": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "albania-sq | work | work:albania-sq:kristoforidhi-dhjata-e-re-tosk | alone": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "albania-sq | work | work:albania-sq:kristoforidhi-dhjata-e-re-tosk | at first": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "albania-sq | work | work:albania-sq:kristoforidhi-dhjata-e-re-tosk | at mid": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "albania-sq | work | work:albania-sq:kristoforidhi-dhjata-e-re-tosk | at last": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "albania-sq | work | work:albania-sq:kristoforidhi-dhjata-e-re-gheg | alone": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "albania-sq | work | work:albania-sq:kristoforidhi-dhjata-e-re-gheg | at first": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "albania-sq | work | work:albania-sq:kristoforidhi-dhjata-e-re-gheg | at mid": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "albania-sq | work | work:albania-sq:kristoforidhi-dhjata-e-re-gheg | at last": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "albania-sq | outside | alone": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | outside | at mid": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "discourse",
+   "sentence",
+   "english",
+   "note",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "albania-sq | unit-shaped | alone": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "albania-sq | unit-shaped | at mid": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "discourse",
+   "sentence",
+   "english",
+   "note",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | no arguments": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | unknown stage": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | unknown text": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | stage | s0a": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | stage | s0b": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "grammar",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | stage | s0c": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "grammar",
+   "discourse",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | stage | c1": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | stage | c2": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | stage | c3": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "full"
+ },
+ "india-hi | stage | c4": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "discourse",
+   "definition",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | stage | c5": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | stage | c6": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | stage | c7": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | stage | c8": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | stage | c9": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | stage | c10": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | stage | c11": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | stage | c12": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | stage | open": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:pehli-kahaniyan-0a | alone": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:pehli-kahaniyan-0a | at first": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:pehli-kahaniyan-0a | at mid": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:pehli-kahaniyan-0a | at last": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:pehli-kahaniyan-0b | alone": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "grammar",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:pehli-kahaniyan-0b | at first": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "grammar",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:pehli-kahaniyan-0b | at mid": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "grammar",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:pehli-kahaniyan-0b | at last": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "grammar",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:pehli-kahaniyan-0c | alone": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "grammar",
+   "discourse",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:pehli-kahaniyan-0c | at first": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "grammar",
+   "discourse",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:pehli-kahaniyan-0c | at mid": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "grammar",
+   "discourse",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:pehli-kahaniyan-0c | at last": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "grammar",
+   "discourse",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby | alone": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby | at first": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby | at mid": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby | at last": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "english",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby-c2 | alone": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby-c2 | at first": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby-c2 | at mid": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby-c2 | at last": {
+  "visibility": "heavy",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby-c3 | alone": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby-c3 | at first": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby-c3 | at mid": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby-c3 | at last": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "full"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby-c4 | alone": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "discourse",
+   "definition",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby-c4 | at first": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "discourse",
+   "definition",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby-c4 | at mid": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "discourse",
+   "definition",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | work | work:india-hi:gdl-hindi-ccby-c4 | at last": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "discourse",
+   "definition",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | work | work:india-hi:ncert-vasant | alone": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | work | work:india-hi:ncert-vasant | at first": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | work | work:india-hi:ncert-vasant | at mid": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | work | work:india-hi:ncert-vasant | at last": {
+  "visibility": "light",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "discourse",
+   "note",
+   "grammar",
+   "sentence",
+   "english",
+   "history",
+   "decoding"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | work | work:india-hi:rowling-harry-potter-1-hindi | alone": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | work | work:india-hi:rowling-harry-potter-1-hindi | at first": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | work | work:india-hi:rowling-harry-potter-1-hindi | at mid": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | work | work:india-hi:rowling-harry-potter-1-hindi | at last": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | work | work:india-hi:premchand-bade-bhai-sahab | alone": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-bade-bhai-sahab | at first": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-bade-bhai-sahab | at mid": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-bade-bhai-sahab | at last": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-bade-ghar-ki-beti | alone": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-bade-ghar-ki-beti | at first": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-bade-ghar-ki-beti | at mid": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-bade-ghar-ki-beti | at last": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "note",
+   "phrase",
+   "definition",
+   "history",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-thakur-ka-kuan | alone": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-thakur-ka-kuan | at first": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-thakur-ka-kuan | at mid": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-thakur-ka-kuan | at last": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-nirmala | alone": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-nirmala | at first": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-nirmala | at mid": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-nirmala | at last": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-gaban | alone": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-gaban | at first": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-gaban | at mid": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-gaban | at last": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-godan | alone": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-godan | at first": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-godan | at mid": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:premchand-godan | at last": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:tulsidas-ramcharitmanas | alone": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:tulsidas-ramcharitmanas | at first": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:tulsidas-ramcharitmanas | at mid": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | work | work:india-hi:tulsidas-ramcharitmanas | at last": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | scripture | work:india-hi:bible-hindi | first": {
+  "visibility": "heavy",
+  "defaultHighlight": "strong",
+  "layers": [
+   "gloss",
+   "decoding",
+   "phrase",
+   "english",
+   "grammar",
+   "sentence",
+   "history"
+  ],
+  "englishRescue": "easy",
+  "romanization": "rescue",
+  "decodingFirst": true,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | scripture | work:india-hi:bible-hindi | mid": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | scripture | work:india-hi:bible-hindi | last": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | scripture | work:india-hi:bible-hindi | alone": {
+  "visibility": "invisible",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "history",
+   "note",
+   "phrase",
+   "definition",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "on-request",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "minimal"
+ },
+ "india-hi | outside | alone": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | outside | at mid": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ },
+ "india-hi | unit-shaped | alone": {
+  "visibility": "contextual",
+  "defaultHighlight": "subtle",
+  "layers": [
+   "gloss",
+   "phrase",
+   "grammar",
+   "decoding",
+   "sentence",
+   "english",
+   "history"
+  ],
+  "englishRescue": "secondary",
+  "romanization": "rescue",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": false,
+  "chrome": "full"
+ },
+ "india-hi | unit-shaped | at mid": {
+  "visibility": "clean",
+  "defaultHighlight": "off",
+  "layers": [
+   "gloss",
+   "phrase",
+   "definition",
+   "note",
+   "discourse",
+   "clause-structure",
+   "grammar",
+   "sentence",
+   "history",
+   "english",
+   "decoding"
+  ],
+  "englishRescue": "deep",
+  "romanization": "never",
+  "decodingFirst": false,
+  "targetLanguageDefinitions": true,
+  "chrome": "reduced"
+ }
+}

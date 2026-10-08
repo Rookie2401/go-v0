@@ -1,4 +1,5 @@
 /** Summary and fluff figures of one run, and the Markdown report of several. Pure functions over `SimRun`. */
+import { DECAY } from '../golearn/policy';
 import { MILESTONES } from './types';
 import type { SimRow, SimRun } from './types';
 
@@ -49,6 +50,22 @@ export interface RunSummary {
   distinctWorks: number;
   meanLookupsPer100: number;
   wordsBySource: Record<string, number>;
+  /**
+   * Forgetting (policy.ts DECAY). BOTH yardsticks over the same route: `wordsPerKnownLemma` counts only lemmas still standing (met
+   * within the decay window; a decayed one counts again once met), `wordsPerKnownLemmaNoDecay` counts every lemma ever met 3 times
+   * (the figure of earlier runs, = fluff.wordsPerNewKnownLemma). `enabled` says whether the learner BEHAVED by decay (lookups, coverage).
+   */
+  decay: {
+    enabled: boolean;
+    weeks: number;
+    wordsPerDay: number | null;
+    simulatedDays: number | null;
+    knownLemmasLifetime: number;
+    knownLemmasNow: number | null;
+    decayedLemmas: number | null;
+    wordsPerKnownLemma: number | null;
+    wordsPerKnownLemmaNoDecay: number | null;
+  };
   fluff: {
     wordsPerNewKnownLemma: number | null;
     rereads: { texts: number; words: number };
@@ -110,6 +127,13 @@ export function summarise(run: SimRun): RunSummary {
     distinctWorks: works.size,
     meanLookupsPer100: words ? round(rows.reduce((n, r) => n + r.lookups, 0) * 100 / words, 2) : 0,
     wordsBySource: bySource,
+    decay: {
+      enabled: run.options.decay !== false, weeks: DECAY.weeks, wordsPerDay: run.options.wordsPerDay ?? null,
+      simulatedDays: last?.simDay ?? null, knownLemmasLifetime: last?.cumKnown ?? 0,
+      knownLemmasNow: last?.cumKnownNow ?? null, decayedLemmas: last?.cumDecayed ?? null,
+      wordsPerKnownLemma: last?.cumKnownNow ? round(words / last.cumKnownNow, 1) : null,
+      wordsPerKnownLemmaNoDecay: last && last.cumKnown ? round(words / last.cumKnown, 1) : null,
+    },
     fluff: {
       wordsPerNewKnownLemma: last && last.cumKnown ? round(words / last.cumKnown, 1) : null,
       rereads: { texts: reread.length, words: reread.reduce((n, r) => n + r.words, 0) },
@@ -141,9 +165,9 @@ export function renderReport(runs: ReadonlyArray<{ run: SimRun; summary: RunSumm
     + 'reads it as the reader does, and the events are folded by the real GoLearn. READING only; it does not say whether a person reaches B2. '
     + '"normal" = what the app opens outside preview (published); "preview" = as if every draft had been reviewed and recorded.\n\n';
 
-  md += '## All runs\n\n| lang | mode | stop | texts | words | known lemmas | words at 1,000 / 2,000 / 3,250 / 5,000 / 8,000 known | 5k window >= 95 % at | assisted < 90 % / < 80 % | Scripture | works | words per known lemma |\n|---|---|---|---:|---:|---:|---|---|---|---:|---:|---:|\n';
+  md += '## All runs\n\n| lang | mode | stop | texts | words | known lemmas | words at 1,000 / 2,000 / 3,250 / 5,000 / 8,000 known | 5k window >= 95 % at | assisted < 90 % / < 80 % | Scripture | works | words per known lemma (no decay) | with decay |\n|---|---|---|---:|---:|---:|---|---|---|---:|---:|---:|---:|\n';
   for (const { run, summary: s } of runs) {
-    md += `| ${run.lang} | ${run.mode} | ${s.stop.reason} | ${int(s.texts)} | ${int(s.words)} | ${int(s.knownLemmas)} | ${MILESTONES.map((m) => ms(s.milestones[String(m)])).join(' / ')} | ${s.firstWindow95 ? int(s.firstWindow95.cumWords) : 'never'} | ${pct(s.assisted.lt90)} / ${pct(s.assisted.lt80)} | ${pct(s.scriptureShare)} | ${s.distinctWorks} | ${s.fluff.wordsPerNewKnownLemma ?? '-'} |\n`;
+    md += `| ${run.lang} | ${run.mode} | ${s.stop.reason} | ${int(s.texts)} | ${int(s.words)} | ${int(s.knownLemmas)} | ${MILESTONES.map((m) => ms(s.milestones[String(m)])).join(' / ')} | ${s.firstWindow95 ? int(s.firstWindow95.cumWords) : 'never'} | ${pct(s.assisted.lt90)} / ${pct(s.assisted.lt80)} | ${pct(s.scriptureShare)} | ${s.distinctWorks} | ${s.fluff.wordsPerNewKnownLemma ?? '-'} | ${s.decay?.wordsPerKnownLemma ?? '-'} |\n`;
   }
 
   for (const { run, summary: s } of runs) {
@@ -163,6 +187,11 @@ export function renderReport(runs: ReadonlyArray<{ run: SimRun; summary: RunSumm
     if (run.stage0) md += `| Stage 0 | ${run.stage0.steps} steps, ${run.stage0.lemmas} lemmas, ${pct(run.stage0.knownShare)} known at the exit, verdict ${run.stage0.verdict} |\n`;
     const f = s.fluff;
     md += `| words read per known lemma (overall) | ${f.wordsPerNewKnownLemma ?? '-'} |\n`;
+    if (s.decay) {
+      const d = s.decay;
+      md += `| forgetting (${d.weeks} weeks without an encounter; learner ${d.enabled ? 'behaves by it' : 'does not behave by it'}; ${d.wordsPerDay ?? '-'} words a day) | ${d.simulatedDays === null ? '-' : int(d.simulatedDays)} simulated days; ${d.knownLemmasNow === null ? '-' : int(d.knownLemmasNow)} known lemmas standing, ${d.decayedLemmas === null ? '-' : int(d.decayedLemmas)} decayed |\n`;
+      md += `| words per known lemma: with decay / without decay | ${d.wordsPerKnownLemma ?? '-'} / ${d.wordsPerKnownLemmaNoDecay ?? '-'} |\n`;
+    }
     md += `| rereads | ${f.rereads.texts} texts, ${int(f.rereads.words)} words |\n`;
     md += `| duplicated texts (identical, or >= 50 % of paragraphs read before under another id) | ${f.duplicates.texts} texts (${f.duplicates.identicalTexts} identical), ${int(f.duplicates.words)} words |\n`;
     md += `| passages not in the target language | ${int(f.foreign.words)} words (${pct(f.foreign.share, 2)}) ${Object.entries(f.foreign.byLanguage).map(([k, v]) => `${k} ${int(v)}`).join(', ')} |\n`;

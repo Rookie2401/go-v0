@@ -53,6 +53,7 @@ import type { HighlightPref } from '../prefs';
 import { BackLink, I, IconBtn, Topbar } from '../ui';
 import { ReadingGateContext } from './readingGate';
 import type { ReadingGate } from './readingGate';
+import { EndReport } from './Prompts';
 import { SourceLine } from './SourceLine';
 import { TokenCard } from './TokenCard';
 import type { DecodingView } from './TokenCard';
@@ -67,6 +68,7 @@ import { dictionaryView } from '../../ingest';
 import type { DictionaryView } from './assistance';
 import { useAssistance } from './useAssistance';
 import { useListenEnabled } from './useListen';
+import { ListenPractice } from './ListenPractice';
 import './thai.css';
 
 export interface ReaderProps {
@@ -874,6 +876,8 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
           {/* Credits precede the text at every assistance level, including publishers requiring top-of-story attribution. */}
           <SourceLine text={text} />
 
+          <ListenPractice textId={text.id} lang={text.lang} sentences={data.sentences} />
+
           <div className="reader-body">{sectionBlocks}</div>
 
           <footer className="reader__end">
@@ -883,15 +887,7 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
               <button type="button" className={`btn${allViewed ? ' btn--primary' : ''}`} onClick={() => { void finish(); }}>I have finished reading</button>
             )}
             {(finished || allViewed) && (
-              <div className="reader__howmuch" role="group" aria-label="How much did you understand?">
-                <p className="muted">How much did you understand?</p>
-                <div className="segmented">
-                  {([['all', 'All'], ['most', 'Most'], ['some', 'Some'], ['little', 'Little']] as const).map(([degree, label]) => (
-                    <button key={degree} type="button" aria-pressed={textDegree === degree} onClick={() => { void reportText(degree); }}>{label}</button>
-                  ))}
-                </div>
-                <p className="card__note">This is your own word on it. Nothing here is graded.</p>
-              </div>
+              <EndReport data={data} understood={understood} onUnderstood={reportUnderstood} textDegree={textDegree} onReport={reportText} />
             )}
           </footer>
         </div>

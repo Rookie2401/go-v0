@@ -43,7 +43,7 @@ async function seed(store: AppStore, published: Record<string, boolean>, reasons
 }
 
 const overview = (over: Partial<Stage0Overview> = {}): Stage0Overview => ({
-  lang: 'es', available: true, contentStatus: 'Draft', steps: [], meters: {} as never, after: [], ...over,
+  lang: 'es', available: true, contentStatus: 'Draft', steps: [], meters: {} as never, after: [], ladder: { open: false }, ...over,
 });
 const sceneStep = (id: string, status: 'new' | 'started' | 'done' | 'secure') => ({ step: { id, kind: 'scene', ref: id } as never, title: id, status, detail: '' });
 const fakeStage0 = (ov: Stage0Overview | (() => Stage0Overview), available = true) => ({ available: () => available, overview: async () => (typeof ov === 'function' ? ov() : ov) });
@@ -65,21 +65,37 @@ describe('next step', () => {
     expect(v.groups.flatMap((g) => g.units).some((u) => u.state === 'next')).toBe(false);
   });
 
-  it('counts Stage 0 as done after an exit result with ANY verdict (the verdict is all that is read)', async () => {
+  // (was: "after an exit result with ANY verdict") — the ladder now opens by the exit's READING section, whatever the verdict
+  it('counts Stage 0 as done after an exit whose READING section passed, whatever its verdict (the overview says so)', async () => {
     await seed(store, { u1: true, u2: false, u3: true, u4: false, u5: true });
     for (const verdict of ['ready', 'ready-provisional', 'not-yet'] as const) {
-      const stage0 = fakeStage0(overview({ steps: [sceneStep('a', 'new')], exit: { attemptId: 'x', formId: 'f', startedAt: 't', unseen: true, sections: [], verdict } }));
+      const exit = { attemptId: 'x', formId: 'f', startedAt: 't', unseen: true, sections: [{ section: 'reading' as const, status: 'passed' as const, detail: '' }], verdict };
+      const stage0 = fakeStage0(overview({ steps: [sceneStep('a', 'new')], exit, ladder: { open: true, by: 'exit' } }));
       const v = await createLadderPath({ store, stage0, source: source() }).view(U, 'es');
       expect(v.stage0).toMatchObject({ done: true, by: 'exit', verdict });
       expect(v.next).toMatchObject({ kind: 'unit', unit: { unitId: 'u1' }, to: '/read/text%3Aes%3Au1' });
     }
   });
 
-  it('counts Stage 0 as done when every scene is completed', async () => {
+  // (was: "counts Stage 0 as done when every scene is completed")
+  it('does NOT count Stage 0 as done when every scene is completed, or after an exit whose reading section did not pass', async () => {
     await seed(store, { u1: true, u2: false, u3: true, u4: false, u5: true });
-    const stage0 = fakeStage0(overview({ steps: [sceneStep('a', 'done'), sceneStep('b', 'secure')] }));
+    const scenes = fakeStage0(overview({ steps: [sceneStep('a', 'done'), sceneStep('b', 'secure')] }));
+    const v = await createLadderPath({ store, stage0: scenes, source: source() }).view(U, 'es');
+    expect(v.stage0).toMatchObject({ done: false, scenesDone: 2 });
+    expect(v.next).toEqual({ kind: 'stage0', to: '/start' });
+    const exit = { attemptId: 'x', formId: 'f', startedAt: 't', unseen: true, sections: [{ section: 'reading' as const, status: 'not-yet' as const, detail: '' }], verdict: 'not-yet' as const };
+    const failed = fakeStage0(overview({ steps: [sceneStep('a', 'done'), sceneStep('b', 'secure')], exit }));
+    const w = await createLadderPath({ store, stage0: failed, source: source() }).view(U, 'es');
+    expect(w.stage0).toMatchObject({ done: false, verdict: 'not-yet', readingNotPassed: true });
+    expect(w.next).toEqual({ kind: 'stage0', to: '/start' });
+  });
+
+  it('counts Stage 0 as done when the learner opened the path himself ("I know this already")', async () => {
+    await seed(store, { u1: true, u2: false, u3: true, u4: false, u5: true });
+    const stage0 = fakeStage0(overview({ steps: [sceneStep('a', 'new')], ladder: { open: true, by: 'override', overriddenAt: '2026-10-07T10:00:00.000Z' } }));
     const v = await createLadderPath({ store, stage0, source: source() }).view(U, 'es');
-    expect(v.stage0).toMatchObject({ done: true, by: 'scenes' });
+    expect(v.stage0).toMatchObject({ done: true, by: 'override' });
     expect(v.next.kind).toBe('unit');
   });
 
@@ -176,7 +192,7 @@ describe('the reader GoLearn registers (setLadderPathSource)', () => {
     expect(before).toBeUndefined();
     const bus = new StoreEventBus(store);
     await complete(bus, 'text:es:u1');
-    const after = await createLadderPath({ store, stage0: fakeStage0(overview({ steps: [sceneStep('a', 'done')] })), source: source() })
+    const after = await createLadderPath({ store, stage0: fakeStage0(overview({ steps: [sceneStep('a', 'done')], ladder: { open: true, by: 'exit' } })), source: source() })
       .source()({ userId: U, lang: 'es', completed: new Set(['text:es:u1']) });
     expect(after!.finished).toBe(false);
     expect(after!.steps.map((s) => [s.unitId, s.published])).toEqual([['u2', false], ['u3', true], ['u4', false], ['u5', true]]);
@@ -187,7 +203,7 @@ describe('the reader GoLearn registers (setLadderPathSource)', () => {
     await seed(store, { u1: true, u2: false, u3: true, u4: false, u5: true });
     const all = new Set(['u1', 'u2', 'u3', 'u4', 'u5'].map((u) => `text:es:${u}`));
     const done = await createLadderPath({ store, source: source() }).source()({ userId: U, lang: 'es', completed: all });
-    expect(done).toEqual({ steps: [], finished: true });
+    expect(done).toMatchObject({ steps: [], finished: true }); // (R4: the position now also carries `done`, for the adaptive route)
     expect(await createLadderPath({ store, source: makeLadderSource() }).source()({ userId: U, lang: 'es', completed: new Set() })).toBeUndefined();
   });
 });
@@ -204,24 +220,42 @@ describe('heldBackWords', () => {
 });
 
 describe('Stage 0 through its folded state (the cheap way the real service offers)', () => {
-  const cheap = (completed: string[], finished?: 'ready' | 'not-yet') => ({
+  type Result = { verdict?: 'ready' | 'ready-provisional' | 'not-yet'; sections?: Array<{ section: string; status: string }> };
+  const cheap = (completed: string[], finished: Result[] = [], override?: { at: string }) => ({
     available: () => true,
     overview: async (): Promise<Stage0Overview> => { throw new Error('the overview computes coverage: not needed to know whether Stage 0 is done'); },
     pack: () => ({ path: { steps: [{ id: 's1', kind: 'scene' }, { id: 'snd', kind: 'sounds' }, { id: 's2', kind: 'scene' }, { id: 'exit', kind: 'exit' }] } }),
     state: async () => ({
       steps: new Map(completed.map((id) => [id, { completed: true }])),
-      exits: finished ? [{ finished: { result: { verdict: finished } } }] : [{}],
+      exits: finished.length ? finished.map((result) => ({ finished: { result } })) : [{}],
+      ...(override ? { override } : {}),
     }),
   });
+  const reading = (status: string) => ({ section: 'reading', status });
 
-  it('reads scenes completed, or an exit with any verdict, without the overview', async () => {
+  // (was: "reads scenes completed, or an exit with any verdict, without the overview")
+  it('reads the exit\'s reading section (any attempt) or the learner\'s override — not completed scenes, not the verdict alone — without the overview', async () => {
     await seed(store, { u1: true, u2: false, u3: true, u4: false, u5: true });
     const some = await createLadderPath({ store, stage0: cheap(['s1']), source: source() }).view(U, 'es');
     expect(some.stage0).toMatchObject({ done: false, scenesDone: 1, scenesTotal: 2 });
     expect(some.next).toEqual({ kind: 'stage0', to: '/start' });
     const all = await createLadderPath({ store, stage0: cheap(['s1', 's2']), source: source() }).view(U, 'es');
-    expect(all.stage0).toMatchObject({ done: true, by: 'scenes' });
-    const exit = await createLadderPath({ store, stage0: cheap([], 'not-yet'), source: source() }).view(U, 'es');
-    expect(exit.stage0).toMatchObject({ done: true, by: 'exit', verdict: 'not-yet' });
+    expect(all.stage0).toMatchObject({ done: false, scenesDone: 2 }); // every scene finished: the path stays closed
+    const failed = await createLadderPath({ store, stage0: cheap([], [{ verdict: 'not-yet', sections: [reading('not-yet'), { section: 'writing', status: 'passed' }] }]), source: source() }).view(U, 'es');
+    expect(failed.stage0).toMatchObject({ done: false, verdict: 'not-yet', readingNotPassed: true });
+    const passed = await createLadderPath({ store, stage0: cheap([], [{ verdict: 'not-yet', sections: [reading('passed'), { section: 'writing', status: 'not-yet' }] }]), source: source() }).view(U, 'es');
+    expect(passed.stage0).toMatchObject({ done: true, by: 'exit', verdict: 'not-yet' });
+    // an earlier attempt that passed reading keeps the path open after a later one that did not
+    const later = await createLadderPath({ store, stage0: cheap([], [{ verdict: 'ready', sections: [reading('passed')] }, { verdict: 'not-yet', sections: [reading('not-yet')] }]), source: source() }).view(U, 'es');
+    expect(later.stage0).toMatchObject({ done: true, by: 'exit', verdict: 'not-yet' });
+    // a result with no sections (older results, the simulator's) is judged by its verdict: ready and ready-provisional need reading, not-yet does not
+    for (const verdict of ['ready', 'ready-provisional'] as const) {
+      const legacy = await createLadderPath({ store, stage0: cheap([], [{ verdict }]), source: source() }).view(U, 'es');
+      expect(legacy.stage0).toMatchObject({ done: true, by: 'exit', verdict });
+    }
+    expect((await createLadderPath({ store, stage0: cheap([], [{ verdict: 'not-yet' }]), source: source() }).view(U, 'es')).stage0.done).toBe(false);
+    const override = await createLadderPath({ store, stage0: cheap([], [], { at: '2026-10-07T10:00:00.000Z' }), source: source() }).view(U, 'es');
+    expect(override.stage0).toMatchObject({ done: true, by: 'override' });
+    expect(override.next.kind).toBe('unit');
   });
 });

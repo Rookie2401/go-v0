@@ -3,10 +3,11 @@
  * the rest collapsed, each with its works grouped as main reading / also at this stage / nonfiction / extensive / listening.
  * A work is a recommendation; it becomes readable when the learner adds his own copy (see CopyImporter).
  *
- * Deliberately plain: no locks, no badges, no percentages on the list, nothing that looks like a score. For a course without
- * stages the route goes home.
+ * Deliberately plain: no locks, no badges, no percentages on the list, nothing that looks like a score. A course whose stages are
+ * shelves (Spanish, German, Hindi, Norwegian) shows the shelf the learner is working at with the same readiness and pace
+ * ("How is this going?"); for a course without stages the route goes home.
  */
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import type { Stage, Text, Work } from '../../core';
 import { useApp } from '../context';
@@ -39,7 +40,9 @@ export function CoursePage() {
   const bar = <Topbar title="Reading ladder" left={<BackLink to="/" label="Home" />} />;
   if (error) return <div>{bar}<div className="page page--narrow"><p role="alert" className="error">Could not load the reading ladder: {error}</p></div></div>;
   if (ladder === null) return <div>{bar}<div className="page page--narrow"><p className="muted" role="status">Loading…</p></div></div>;
-  if (ladder.stages.length === 0) return <Navigate to="/" replace />;
+  // A course whose stages are shelves (Spanish, German, Hindi, Norwegian) has no ladder to list, but the learner still gets the
+  // same honest signals: the shelf he is working at, and how that shelf is going.
+  if (ladder.stages.length === 0) return <ShelfCourse />;
 
   const current = ladder.current ?? ladder.stages[0];
   const choose = async (stageId: string) => {
@@ -66,6 +69,48 @@ export function CoursePage() {
             />
           ))}
         </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * The page of a course that has shelves instead of a ladder: the shelf the learner is working at (his choice, else the first
+ * whose readiness is not yet "ready to advance"), "How is this going?" for it, and where to find the reading. The shelves
+ * themselves are browsed from Explore and the reading path. For a course with no stages at all the route goes home.
+ */
+function ShelfCourse() {
+  const { catalog, course, userId } = useApp();
+  const [tick, setTick] = useState(0);
+  const [state, setState] = useState<{ shelves: Stage[]; current: Stage | undefined } | 'error' | null>(null);
+  useEffect(() => {
+    let live = true;
+    void (async () => {
+      const shelves = await catalog.stages(course.id);
+      const current = shelves.length > 0 ? (await catalog.currentStage(userId, course.id)) ?? shelves[0] : undefined;
+      if (live) setState({ shelves, current });
+    })().catch(() => { if (live) setState('error'); });
+    return () => { live = false; };
+  }, [catalog, course.id, userId, tick]);
+
+  const bar = <Topbar title="Your reading" left={<BackLink to="/" label="Home" />} />;
+  if (state === 'error') return <div>{bar}<div className="page page--narrow"><p role="alert" className="error">Could not load your reading shelves.</p></div></div>;
+  if (state === null) return <div>{bar}<div className="page page--narrow"><p className="muted" role="status">Loading…</p></div></div>;
+  if (!state.current) return <Navigate to="/" replace />;
+  const choose = async (stageId: string) => {
+    await catalog.setCurrentStage(userId, course.id, stageId);
+    setTick((n) => n + 1);
+  };
+  return (
+    <div>
+      {bar}
+      <div className="page page--narrow route-fade course" data-testid="shelf-course">
+        <p className="course__intro">
+          The {languageName(course)} library is arranged on shelves, from texts written for the course to open reading. A shelf is a
+          place to browse and sets how much help the reader offers; it is never a gate.
+        </p>
+        <p className="card__note"><Link to="/explore">Explore</Link> opens the library, and <Link to="/path">Your path</Link> shows the units written for the course.</p>
+        <StageStatus stages={state.shelves} current={state.current} onChange={(id) => { void choose(id); }} />
       </div>
     </div>
   );

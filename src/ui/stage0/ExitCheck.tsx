@@ -48,8 +48,13 @@ export function ExitCheck({ overview }: { overview: Stage0Overview }) {
         <ul className="stage0-sections">
           {result.sections.map((s) => <li key={s.section} data-section={s.section} data-status={s.status}><strong>{s.section}</strong>: {s.status} — {s.detail}</li>)}
         </ul>
+        <p className="card__note" data-testid="stage0-ladder-line">
+          {result.sections.find((s) => s.section === 'reading')?.status === 'passed'
+            ? 'The reading part passed: the path after Stage 0 is open to you.'
+            : 'The reading part did not pass yet: the path after Stage 0 opens when it does (or when you open it yourself from the Stage 0 page, if you know this already).'}
+        </p>
         <p className="card__note">Stage 0 is a beginning (before A1), not a level certificate.</p>
-        {(result.verdict === 'ready' || result.verdict === 'ready-provisional') && <NextTexts next={overview.after} />}
+        {(result.verdict === 'ready' || result.verdict === 'ready-provisional' || result.sections.find((s) => s.section === 'reading')?.status === 'passed') && <NextTexts next={overview.after} />}
       </section>
     );
   }
@@ -61,7 +66,8 @@ export function ExitCheck({ overview }: { overview: Stage0Overview }) {
         <ul className="card__text">
           <li>Reading — a short passage and a few questions. No English; you may look up a word (it is counted).</li>
           <li>Listening — {'only with recordings of native speakers; none exist yet, so this part will be marked "not given".'}</li>
-          <li>Writing — three short answers. Speaking — one spoken answer, recorded and compared by you.</li>
+          <li>Writing — three short answers. Speaking — retell one thing aloud from an English cue, record it, then compare it with the model and say whether you said the same thing (yes, partly, no).</li>
+          <li>The path after Stage 0 opens when the reading part passes. The other parts tell you what to work on.</li>
           {cfg.exit.decoding && <li>Reading the script — unseen words, with no romanization.</li>}
         </ul>
         <p className="card__note">Once you start, this material counts as seen, even if you stop half-way.</p>
@@ -124,12 +130,9 @@ export function ExitCheck({ overview }: { overview: Stage0Overview }) {
       <section aria-label="Speaking">
         <h2 className="section-head">Speaking</h2>
         {f.speaking.map((s) => (
-          <div key={s.id}>
-            <p>{s.prompt}</p>
-            {answered(`speaking:${s.id}`) ? <p className="card__note">Recorded.</p> : (
-              <SpeakBox voice={voice} model={s.model} lang={lang} store={store} userId={userId}
-                onDone={(rid, self) => { void send('speaking', s.id, { ...(rid ? { recordingId: rid } : {}), selfCheck: self }); }} />
-            )}
+          <div key={s.id} data-speaking={s.id}>
+            <SpeakBox voice={voice} model={s.model} lang={lang} store={store} userId={userId} cue={{ en: s.prompt }}
+              onDone={(rid, self) => { void send('speaking', s.id, { ...(rid ? { recordingId: rid } : {}), selfCheck: self }); }} />
           </div>
         ))}
       </section>

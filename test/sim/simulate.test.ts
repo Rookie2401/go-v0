@@ -329,6 +329,123 @@ describe('summary figures', () => {
   });
 });
 
+describe('forgetting (policy.ts DECAY)', () => {
+  const DAYS = (n: number) => n * 86_400_000;
+
+  it('a known lemma not met for 6 weeks is decayed: not known, half in coverage, tracked; any encounter restores it', () => {
+    const lemmas = new LemmaIndex();
+    const words = analyseSentence(adapters.get('es'), 'El perro come.', lemmas);
+    const perro = words[1]!.lemma;
+    const l = new SimLearner();
+    for (let i = 0; i < KNOWN_AFTER; i++) l.meet(perro);
+    expect([l.known, l.knownNow, l.decayedNow]).toEqual([1, 1, 0]);
+
+    l.advanceTo(41);
+    expect(l.isKnown(perro)).toBe(true);
+    expect(l.isDecayed(perro)).toBe(false);
+
+    l.advanceTo(42); // DECAY.weeks x 7 days
+    expect(l.isDecayed(perro)).toBe(true);
+    expect(l.isKnown(perro)).toBe(false); // the learner would look it up again
+    expect(l.everKnown(perro)).toBe(true);
+    expect([l.known, l.knownNow, l.decayedNow]).toEqual([1, 0, 1]); // `known` is the lifetime count and never falls
+    expect(l.coverage([words[1]!, { tokenIndex: 9, lemma: AUTO }])).toBeCloseTo(0.75, 5); // half of one, all of the other
+
+    expect(l.meet(perro)).toEqual({ first: false, becameKnown: false }); // already known once: nothing new
+    expect(l.isKnown(perro)).toBe(true);
+    expect([l.known, l.knownNow, l.decayedNow]).toEqual([1, 1, 0]);
+    l.advanceTo(42 + 41);
+    expect(l.isKnown(perro)).toBe(true); // the weeks count from the last meeting
+    l.advanceTo(42 + 42);
+    expect(l.isKnown(perro)).toBe(false);
+  });
+
+  it('a learner that does not behave by decay still tracks it, so both yardsticks exist', () => {
+    const l = new SimLearner({ decay: false });
+    for (let i = 0; i < KNOWN_AFTER; i++) l.meet(0);
+    l.advanceTo(400);
+    expect(l.isKnown(0)).toBe(true);
+    expect(l.coverage([{ tokenIndex: 0, lemma: 0 }])).toBe(1);
+    expect([l.known, l.knownNow, l.decayedNow]).toEqual([1, 0, 1]);
+  });
+
+  it('a lemma met only twice never becomes known by waiting, and proper nouns and numerals never decay', () => {
+    const l = new SimLearner();
+    l.meet(5); l.meet(5);
+    l.advanceTo(300);
+    expect(l.isKnown(5)).toBe(false);
+    expect(l.isDecayed(5)).toBe(false);
+    expect(l.isKnown(AUTO)).toBe(true);
+    expect(l.isDecayed(AUTO)).toBe(false);
+    expect([l.knownNow, l.decayedNow]).toEqual([0, 0]);
+  });
+
+  /** ONE read twice with 55 simulated days between the readings (11 words at 0.2 words a day). */
+  async function twice(decay: boolean) {
+    const w = await world([ONE]);
+    const run = await runSimulation(engineOf(w, () => [rec(textId(ONE))]), opts({ decay, wordsPerDay: 0.2 }));
+    expect(run.stop.reason).toBe('same-text-3-in-a-row');
+    expect(run.rows).toHaveLength(2);
+    return { run, w };
+  }
+
+  it('with decay the learner looks the decayed words up again and reads the second time at lower coverage; without it nothing changes', async () => {
+    const on = await twice(true);
+    const off = await twice(false);
+    const [, b] = on.run.rows;
+    const [, c] = off.run.rows;
+    // the first reading is the same either way (nothing has decayed yet)
+    expect(on.run.rows[0]!.lookups).toBe(off.run.rows[0]!.lookups);
+    // "el perro come" were met three times and then not for 55 days; the other two words are new
+    expect(c!.cov3).toBeCloseTo(9 / 11, 3);
+    expect(c!.lookups).toBe(2);
+    expect(b!.cov3).toBeCloseTo(4.5 / 11, 3); // the same nine words count half
+    expect(b!.cov3).toBeLessThan(c!.cov3);
+    expect(b!.lookups).toBe(5); // el perro come, then mucho and pan; meeting the three restores them for the rest of the text
+    expect(b!.cumDecayed).toBe(0); // restored by the reading itself
+    expect(b!.simDay).toBeCloseTo(55, 1);
+  });
+
+  it('the app\'s clock follows the reading pace with decay on, and keeps the earlier 45 minutes between texts with it off', async () => {
+    const start = Date.parse('2026-10-06T08:00:00.000Z');
+    const on = await twice(true);
+    const off = await twice(false);
+    expect(Date.parse(on.w.clock.now()) - start).toBeGreaterThan(DAYS(100)); // two texts, 55 days each
+    expect(Date.parse(off.w.clock.now()) - start).toBeLessThan(DAYS(1));
+  });
+
+  it('the summary reports BOTH words-per-known-lemma figures, and the options say how the run was made', async () => {
+    const { run } = await twice(true);
+    const s = summarise(run);
+    expect(run.options.decay).toBe(true);
+    expect(run.options.wordsPerDay).toBe(0.2);
+    expect(s.decay.enabled).toBe(true);
+    expect(s.decay.weeks).toBe(6);
+    expect(s.decay.simulatedDays).toBeGreaterThan(50);
+    expect(s.decay.knownLemmasLifetime).toBe(s.knownLemmas); // the earlier field keeps its meaning
+    expect(s.decay.wordsPerKnownLemmaNoDecay).toBe(s.fluff.wordsPerNewKnownLemma); // = the earlier figure
+    expect(s.decay.wordsPerKnownLemma).not.toBeNull();
+    expect(s.decay.wordsPerKnownLemma!).toBeGreaterThanOrEqual(s.decay.wordsPerKnownLemmaNoDecay!);
+
+    // a run of the earlier kind (decay off) still carries the decay yardstick, and says the learner did not behave by it
+    const off = summarise((await twice(false)).run);
+    expect(off.decay.enabled).toBe(false);
+    expect(off.decay.wordsPerKnownLemma).not.toBeNull();
+    expect(off.decay.wordsPerKnownLemmaNoDecay).toBe(off.fluff.wordsPerNewKnownLemma);
+  });
+
+  it('an older run file without the decay fields summarises with the decay figures empty', () => {
+    const rows = [{
+      n: 1, phase: 'main', textId: 't1', title: 'T', kind: 'library', scripture: false, published: true, words: 100, sentences: 5, cov3: 0.5, covRead: 0.5,
+      lookups: 50, lookupsPer100: 50, sentencesWithHelp: 5, sentencesWithoutHelp: 0, newLemmasMet: 10, newKnown: 4, yieldPer1000: 40,
+      cumWords: 100, cumKnown: 4, cumMet: 10, reread: false, reason: 'x', explanation: '', dupWords: 0, foreignWords: 0, lowYield: false,
+    }];
+    const old = { lang: 'es', mode: 'normal', options: { includeUnpublished: false, maxWords: 1, maxTexts: 1, maxMinutes: 1 }, substitutions: [], stop: { reason: 'max-texts', detail: '' }, rows, skipped: [], milestones: {}, elapsedMs: 1, timing: { recommendMs: 0, openMs: 0, stage0Ms: 0, readMs: 0 } } as unknown as Parameters<typeof summarise>[0];
+    const s = summarise(old);
+    expect(s.decay).toMatchObject({ enabled: true, knownLemmasNow: null, wordsPerKnownLemma: null, wordsPerKnownLemmaNoDecay: 25 });
+  });
+});
+
 describe('the indexed memory store', () => {
   it('answers where/put/delete exactly as the plain memory store does', async () => {
     const plain = createMemoryStore();

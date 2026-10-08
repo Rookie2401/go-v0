@@ -7,7 +7,8 @@ import { excludedListens } from './audit';
 import { sentenceItems } from './items';
 import { queryItems } from './queries';
 import type { Ctx, StoredEncounter } from './state';
-import { itemHelpOf } from './state';
+import { DECAY } from './policy';
+import { effectiveStanding, itemHelpOf } from './state';
 
 const times = (n: number) => (n === 1 ? 'once' : n === 2 ? 'twice' : `${n} times`);
 const plural = (n: number, w: string) => `${n} ${w}${n === 1 ? '' : 's'}`;
@@ -66,7 +67,13 @@ export async function explainItem(ctx: Ctx, userId: string, itemId: string): Pro
     parts.push(`used in your own writing or speech ${times(produced)} (${how.join(', ')})`);
   }
   let summary = parts.length > 0 ? `${parts.join('; ')}.` : 'Not met yet.';
-  if (k.reading.estimatedFamiliar) summary += ' Likely familiar (an estimate from repeated help-free exposure, not a demonstration).';
+  // forgetting (policy.ts DECAY): an item not met for DECAY.weeks no longer stands as known / likely familiar
+  const standing = effectiveStanding(row, ctx.clock());
+  if (standing.decayed) {
+    const weeks = Math.floor((standing.idleDays ?? 0) / 7);
+    const was = k.reading.estimatedFamiliar ? 'Was likely familiar' : 'Was recognized';
+    summary += ` ${was}, but not met for ${plural(weeks, 'week')}: ${DECAY.halfCredit ? 'counts half' : 'counts for nothing'} until you meet it again.`;
+  } else if (k.reading.estimatedFamiliar) summary += ' Likely familiar (an estimate from repeated help-free exposure, not a demonstration).';
   if (row?.manualMark === 'known') summary += ' You marked it known.';
   else if (row?.manualMark === 'unknown') summary += ' You marked it unknown.';
   if (excludedEvents > 0) summary += ` ${plural(excludedEvents, 'audio play')} ignored because the audio was not reviewed real speech.`;

@@ -9,7 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import type { Recommendation } from '../../core';
 import { useApp } from '../context';
 import { textPath } from '../format';
-import { usePreview } from '../prefs';
+import { usePref, usePreview } from '../prefs';
 import { hasLadder } from './hasLadder';
 import '../course/course.css'; // the best-reads entry styles
 
@@ -21,6 +21,7 @@ interface Pick { rec: Recommendation; textId: string; title: string }
 export function NextForYou() {
   const { golearn, stage0, userId, lang, user, store, library, bus } = useApp();
   const preview = usePreview();
+  const [challenge] = usePref('challenge');
   const navigate = useNavigate();
   const [picks, setPicks] = useState<Pick[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -43,7 +44,10 @@ export function NextForYou() {
         if (ov?.next) first = { title: step?.title ?? 'Start from zero', ...(ov.nextReason ? { why: ov.nextReason } : {}) };
       }
       if (live) setStart(first); // shown at once: the engine's answer can take a while
-      const recs = await golearn.recommend(userId, { limit: SHOWN + 5, includeUnpublished: preview, lang, interests: user.interests ?? [] });
+      const recs = await golearn.recommend(userId, { limit: SHOWN + 5, includeUnpublished: preview, lang, interests: user.interests ?? [], challenge });
+      // two hard ladder units in a row: Stage 0's recall card (its home), with the engine's reason (R4)
+      const recall = recs.find((r) => r.reason === 'stage0-recall');
+      if (recall && !first && stage0?.available(lang)) { first = { title: 'Refresh your first words', why: recall.explanation }; if (live) setStart(first); }
       const out: Pick[] = [];
       for (const rec of recs) {
         if (out.length === SHOWN) break;
@@ -54,10 +58,10 @@ export function NextForYou() {
         if (!title) continue; // nothing to show it by: not offered
         out.push({ rec, textId: rec.textId, title });
       }
-      if (live) { setPicks(out); setNote(out.length === 0 && !first ? recs.find((r) => !r.textId && r.reason !== 'rehearse-testimony')?.explanation ?? null : null); }
+      if (live) { setPicks(out); setNote(out.length === 0 && !first ? recs.find((r) => !r.textId && r.reason !== 'rehearse-testimony' && r.reason !== 'stage0-recall')?.explanation ?? null : null); }
     })().catch(() => { if (live) { setPicks([]); setNote(null); } }); // no suggestion is not an error the learner can act on
     return () => { live = false; };
-  }, [golearn, stage0, userId, lang, user.interests, preview, store, tick]);
+  }, [golearn, stage0, userId, lang, user.interests, preview, challenge, store, tick]);
 
   const open = (p: Pick) => {
     setError(null);

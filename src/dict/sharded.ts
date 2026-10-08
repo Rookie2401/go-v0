@@ -12,6 +12,7 @@
  */
 import type { DictionaryEntry, DictionaryInfo, LanguageCode, LexiconSource } from '../core';
 import { bucketOf, infoOf, parseManifest, parseShard, shardName, type DictionaryManifest } from './format';
+import { FREQUENCY_FILE, parseFrequencyText, type FrequencyTable } from './frequency';
 
 /**
  * Read one file under `<root>/<lang>/`. Resolves to the text, or undefined when the file definitely is not there
@@ -138,8 +139,31 @@ export function createShardedSource(lang: LanguageCode, read: ReadDictFile, opti
     }
   };
 
+  // The frequency sidecar (frequency.json): read once on the first ask. Absent or unusable => no frequency (the normal state);
+  // a transient failure is not remembered, so the next ask reads again.
+  let frequencyTable: Promise<FrequencyTable | undefined> | undefined;
+  const loadFrequency = (): Promise<FrequencyTable | undefined> => {
+    if (!frequencyTable) {
+      const p = Promise.resolve().then(() => read(FREQUENCY_FILE)).then((t) => parseFrequencyText(t, lang));
+      frequencyTable = p;
+      p.catch(() => { if (frequencyTable === p) frequencyTable = undefined; });
+    }
+    return frequencyTable.catch(() => undefined);
+  };
+
   return {
     lang,
+    async frequencyTable() {
+      const m = await loadManifest();
+      // the manifest says there is none: no request. No manifest at all (a language with a frequency list but no dictionary yet) still asks.
+      if (m && !m.hasFrequency) return undefined;
+      return loadFrequency();
+    },
+    async frequency(lemma) {
+      const m = await loadManifest();
+      if (m && !m.hasFrequency) return undefined;
+      return (await loadFrequency())?.get(lemma);
+    },
     async info(): Promise<DictionaryInfo | undefined> {
       const m = await loadManifest();
       return m ? infoOf(m) : undefined;

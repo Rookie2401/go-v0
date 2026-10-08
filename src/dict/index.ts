@@ -7,6 +7,10 @@
  */
 import type { DictionaryEntry, DictionaryInfo, LanguageCode, LexiconSource } from '../core';
 import { createShardedSource, type ShardCacheOptions } from './sharded';
+import type { FrequencyTable } from './frequency';
+
+export { FREQUENCY_SCHEMA, FREQUENCY_FILE, FREQUENCY_MIN_COUNT, frequencyKey, parseFrequency, parseFrequencyText, frequencyTableOf } from './frequency';
+export type { FrequencyFile, FrequencySource, FrequencyTable, LemmaFrequency } from './frequency';
 
 export {
   bucketOf, shardName, compactEntry, expandEntry, deriveGlosses, parseManifest, parseShard, infoOf,
@@ -23,12 +27,13 @@ export { createShardedSource, newShardCacheProbe, DEFAULT_MAX_PARSED_SHARDS, DEF
 export type { ReadDictFile, ShardCacheOptions, ShardCacheProbe } from './sharded';
 
 /** In-memory source (tests, CLI after reading shards from disk). */
-export function createMemoryLexiconSource(lang: LanguageCode, entries: DictionaryEntry[], info?: Partial<DictionaryInfo>): LexiconSource {
+export function createMemoryLexiconSource(lang: LanguageCode, entries: DictionaryEntry[], info?: Partial<DictionaryInfo>, frequency?: FrequencyTable): LexiconSource {
   const byForm = new Map<string, DictionaryEntry[]>();
   for (const e of entries) byForm.set(e.form, [...(byForm.get(e.form) ?? []), e]);
   return {
     lang,
-    info: async () => ({ id: 'memory', lang, attribution: 'in-memory test dictionary', licence: 'n/a', entries: entries.length, builtAt: '', hasFrequency: false, ...info }),
+    info: async () => ({ id: 'memory', lang, attribution: 'in-memory test dictionary', licence: 'n/a', entries: entries.length, builtAt: '', hasFrequency: frequency !== undefined, ...info }),
+    ...(frequency ? { frequency: async (lemma: string) => frequency.get(lemma), frequencyTable: async () => frequency } : {}),
     lookup: async (forms) => new Map(forms.filter((f) => byForm.has(f)).map((f) => [f, byForm.get(f)!])),
   };
 }

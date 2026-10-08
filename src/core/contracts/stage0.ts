@@ -214,8 +214,11 @@ export interface Stage0ExitCriteria {
   reading: { minCorrect: number; maxLookups: number };
   listening: { minCorrect: number };
   writing: { minAccepted: number };
-  /** Spoken answers are recorded and self-checked against the model; never auto-scored. */
-  speaking: { minRecorded: number };
+  /**
+   * Spoken retellings are recorded and self-checked against the model; never auto-scored. The section passes with `minRecorded`
+   * recorded attempts, at least `minSelfChecked` of them judged "yes" or "partly" by the learner.
+   */
+  speaking: { minRecorded: number; minSelfChecked: number };
   decoding?: { minCorrect: number };
 }
 
@@ -256,10 +259,23 @@ export interface Stage0Meters {
   supportDependence: { english: number; transliteration: number; window: number };
 }
 
+/**
+ * "Compare: did you say the same thing?" — the learner's own judgement of a spoken retelling against the model line.
+ * The last three are the wording from before 2026-10-07 (stored events keep them); 'like-model' reads as "yes".
+ */
+export type Stage0SelfCheck = 'yes' | 'partly' | 'no' | 'like-model' | 'different' | 'unsure';
+
 export interface Stage0StepView {
   step: Stage0PathStep;
   title: string;
+  /** done / secure: completed AND (scenes) every comprehension check answered right; a step left with a check not yet right stays 'started'. */
   status: 'new' | 'started' | 'done' | 'secure';
+  /** Scene steps: every comprehension check's latest answer is right. Absent for other steps. */
+  checksSecure?: boolean;
+  /** Scene steps: counts toward the exit (completed and its checks secure). */
+  counts?: boolean;
+  /** Scene steps: worked on (or left) with a check not yet right — the path says "not secure yet". */
+  notSecure?: boolean;
   /** Why this status ("3 of 3 checks right without English"). */
   detail: string;
 }
@@ -297,6 +313,11 @@ export interface Stage0Overview {
   retrieval?: { stepId: string; taskId: string; prompt: string; why: string };
   /** For the next scene: the share of its words met on the path (curriculum), and the share this learner has met (GoLearn). */
   nextCoverage?: { curriculum: number; personal?: number };
+  /**
+   * Whether the ladder after Stage 0 is open: yes once an exit's READING section has passed (any attempt), or when the learner
+   * opened it himself ("I know this already"). No other section gates it.
+   */
+  ladder: { open: boolean; by?: 'exit' | 'override'; overriddenAt?: string };
 }
 
 export type Stage0ExitSection = 'reading' | 'listening' | 'writing' | 'speaking' | 'decoding';
@@ -345,12 +366,14 @@ export interface Stage0Service {
   answerCheck(userId: string, lang: LanguageCode, stepId: string, checkId: string, choice: number, channel: Stage0Channel, audio: Stage0AudioSource): Promise<{ correct: boolean; rescued: boolean }>;
   answerDecode(userId: string, lang: LanguageCode, stepId: string, checkId: string, answer: number | number[], transliterationShown: boolean, audio: Stage0AudioSource): Promise<{ correct: boolean }>;
   submitProduction(userId: string, lang: LanguageCode, stepId: string, taskId: string, text: string, shown: Stage0Support[]): Promise<{ accepted: boolean; matched?: string; feedback: string }>;
-  recordSpeaking(userId: string, lang: LanguageCode, stepId: string, itemId: string, recordingId: string | undefined, selfCheck: 'like-model' | 'different' | 'unsure'): Promise<void>;
+  recordSpeaking(userId: string, lang: LanguageCode, stepId: string, itemId: string, recordingId: string | undefined, selfCheck: Stage0SelfCheck): Promise<void>;
   completeStep(userId: string, lang: LanguageCode, stepId: string): Promise<void>;
+  /** The learner opens the path after Stage 0 himself ("I know this already — open the path"): an event, shown on the Stage 0 home. */
+  overridePath(userId: string, lang: LanguageCode): Promise<void>;
   // ── exit gate ──
   exitForm(lang: LanguageCode, formId: string): Stage0ExitForm | undefined;
   /** Starts an attempt on the next form this learner has not seen; records protected exposure at once. */
   startExit(userId: string, lang: LanguageCode, opts?: { microphone?: boolean }): Promise<{ attemptId: string; formId: string; unseen: boolean; unavailable: Stage0ExitSection[] }>;
-  answerExit(userId: string, lang: LanguageCode, attemptId: string, section: Stage0ExitSection, itemId: string, answer: { choice?: number; boundaries?: number[]; text?: string; recordingId?: string; selfCheck?: 'like-model' | 'different' | 'unsure'; lookups?: number }): Promise<{ correct?: boolean; accepted?: boolean }>;
+  answerExit(userId: string, lang: LanguageCode, attemptId: string, section: Stage0ExitSection, itemId: string, answer: { choice?: number; boundaries?: number[]; text?: string; recordingId?: string; selfCheck?: Stage0SelfCheck; lookups?: number }): Promise<{ correct?: boolean; accepted?: boolean }>;
   finishExit(userId: string, lang: LanguageCode, attemptId: string): Promise<Stage0ExitResult>;
 }

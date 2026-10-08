@@ -10,15 +10,19 @@
  *   - the next unit is the first, in ladder order, that the learner has not completed (an explicit `TextCompleted`, or the
  *     reading record's `finishedAt` — the rule GoLearn's recommendations already use) AND may open: published, or preview on;
  *   - an unpublished unit outside preview is skipped for "next" but listed, with the reason it is held back;
- *   - Stage 0 counts as done when the learner has a Stage 0 exit result (any verdict — only the verdict is read, never an answer) or
- *     has completed every Stage 0 scene. Until then the next step is Stage 0 itself. A language without Stage 0 content, or a
- *     ladder that does not start after Stage 0, has no Stage 0 step.
+ *   - Stage 0 counts as done when a finished Stage 0 exit result PASSED ITS READING SECTION (whatever its overall verdict; only the
+ *     reading section's status — or, for a result that carries no sections, a ready verdict — is read, never an answer), or when
+ *     the learner opened the path himself ("I know this already", recorded as an event). Finishing the scenes does not open it.
+ *     Until then the next step is Stage 0 itself. A language without Stage 0 content, or a ladder that does not start after
+ *     Stage 0, has no Stage 0 step.
  * Nothing here throws for missing data: a language with no ladder simply has no path.
  */
-import type { AppStore, GoLearn, LanguageCode, Stage0Service, Text } from '../core';
+import type { AppStore, GoLearn, LanguageAdapter, LanguageCode, Stage0Service, Text } from '../core';
 import { pipelineSummary } from '../ingest/pipeline';
+import { readingPassed } from '../stage0/exit';
 import { bundledLadder, defaultLadderSource, documentWords } from './bundle';
 import type { BundledUnit, LadderSource } from './bundle';
+import { ladderOrphanLemmas } from './orphans';
 import type { LadderKind, LadderStage } from './types';
 
 /** The groups the learner sees: A1 (a1-1, a1-2), A2 (a2-1, a2-2), B1 bridge. */
@@ -60,10 +64,12 @@ export interface Stage0Status {
   /** Stage 0 is part of this learner's path (the ladder follows it and the language has Stage 0 content). */
   applicable: boolean;
   done: boolean;
-  /** How it was finished: an exit result ("exit") or every scene completed ("scenes"). */
-  by?: 'exit' | 'scenes';
-  /** The exit's verdict, when there is one (only the verdict is read). */
+  /** How it was opened: an exit result whose reading section passed ("exit"), or the learner's own decision ("override"). */
+  by?: 'exit' | 'override';
+  /** The latest finished exit's verdict, when there is one (only the verdict is read). */
   verdict?: 'ready' | 'ready-provisional' | 'not-yet';
+  /** A finished exit exists but its reading section has not passed: the path stays closed (the learner may open it himself). */
+  readingNotPassed?: boolean;
   scenesDone: number;
   scenesTotal: number;
 }
@@ -87,11 +93,15 @@ export type PathNext =
   | { kind: 'finished' }
   | { kind: 'none' };
 
-/** The part of Stage 0's folded state this module reads: which steps are completed, and the verdict of a finished exit — nothing else. */
+/**
+ * The part of Stage 0's folded state this module reads: which steps are completed, the verdict and the reading section's status of
+ * a finished exit, and whether the learner opened the path himself — nothing else.
+ */
 export interface Stage0Cheap {
   state?(userId: string, lang: LanguageCode): Promise<{
     steps: ReadonlyMap<string, { completed: boolean }>;
-    exits: ReadonlyArray<{ finished?: { result: { verdict?: 'ready' | 'ready-provisional' | 'not-yet' } } }>;
+    exits: ReadonlyArray<{ finished?: { result: { verdict?: 'ready' | 'ready-provisional' | 'not-yet'; sections?: ReadonlyArray<{ section: string; status: string }> } } }>;
+    override?: { at: string };
   }>;
   pack?(lang: LanguageCode): { path: { steps: ReadonlyArray<{ id: string; kind: string }> } } | undefined;
 }
@@ -139,24 +149,27 @@ export function createLadderPath(deps: LadderPathDeps) {
         const st = await s0.state(userId, lang);
         const scenes = pack.path.steps.filter((x) => x.kind === 'scene');
         const scenesDone = scenes.filter((x) => st.steps.get(x.id)?.completed === true).length;
-        const finished = st.exits.filter((x) => x.finished).pop()?.finished?.result;
-        const byExit = finished !== undefined;
-        const byScenes = scenes.length > 0 && scenesDone === scenes.length;
+        const results = st.exits.flatMap((x) => (x.finished ? [x.finished.result] : []));
+        const finished = results[results.length - 1];
+        // The ladder opens only when a finished exit's READING section passed (any attempt) or the learner opened it himself.
+        const byExit = results.some((r) => readingPassed(r));
+        const byOverride = st.override !== undefined;
         return {
-          applicable: true, done: byExit || byScenes, ...(byExit ? { by: 'exit' as const } : byScenes ? { by: 'scenes' as const } : {}),
-          ...(finished?.verdict ? { verdict: finished.verdict } : {}), scenesDone, scenesTotal: scenes.length,
+          applicable: true, done: byExit || byOverride, ...(byExit ? { by: 'exit' as const } : byOverride ? { by: 'override' as const } : {}),
+          ...(finished?.verdict ? { verdict: finished.verdict } : {}), ...(finished && !byExit ? { readingNotPassed: true } : {}),
+          scenesDone, scenesTotal: scenes.length,
         };
       }
       const ov = await s0.overview(userId, lang);
       if (!ov.available) return none;
       const scenes = ov.steps.filter((s) => s.step.kind === 'scene');
       const scenesDone = scenes.filter((s) => s.status === 'done' || s.status === 'secure').length;
-      const verdict = ov.exit?.verdict; // the verdict only: never an answer, a section or a form
-      const byExit = ov.exit !== undefined;
-      const byScenes = scenes.length > 0 && scenesDone === scenes.length;
+      const verdict = ov.exit?.verdict; // the verdict only: never an answer or a form
+      const by = ov.ladder ? (ov.ladder.open ? ov.ladder.by : undefined) : (readingPassed(ov.exit) ? 'exit' as const : undefined);
       return {
-        applicable: true, done: byExit || byScenes, ...(byExit ? { by: 'exit' as const } : byScenes ? { by: 'scenes' as const } : {}),
-        ...(verdict ? { verdict } : {}), scenesDone, scenesTotal: scenes.length,
+        applicable: true, done: by !== undefined, ...(by ? { by } : {}),
+        ...(verdict ? { verdict } : {}), ...(ov.exit && by !== 'exit' ? { readingNotPassed: true } : {}),
+        scenesDone, scenesTotal: scenes.length,
       };
     } catch { return none; } // Stage 0 that cannot be read must not lock a learner out of the ladder
   }
@@ -226,8 +239,13 @@ export function createLadderPath(deps: LadderPathDeps) {
 
   /** The reader for `setLadderPathSource`: the units not completed, in order, with whether each is published. */
   function pathSource() {
-    return async (args: { userId: string; lang: LanguageCode; completed: ReadonlySet<string> }): Promise<
-      { steps: Array<{ unitId: string; textId: string; title: string; stage: string; published: boolean }>; finished: boolean } | undefined
+    type Step = { unitId: string; textId: string; title: string; stage: string; published: boolean };
+    return async (args: { userId: string; lang: LanguageCode; completed: ReadonlySet<string>; adapter?: LanguageAdapter }): Promise<
+      {
+        steps: Step[]; finished: boolean;
+        /** The completed units in ladder order (adaptive ladder), Stage 0's recall card, and the ladder's orphan words (lazy): see golearn/recommend.ts LadderPosition. */
+        done?: Step[]; stage0Recall?: boolean; orphans?: () => ReadonlySet<string> | undefined;
+      } | undefined
     > => {
       const ladder = bundledLadder(args.lang, source);
       if (!ladder || ladder.units.length === 0) return undefined;
@@ -239,7 +257,17 @@ export function createLadderPath(deps: LadderPathDeps) {
       const steps = v.groups.flatMap((g) => g.units)
         .filter((u) => u.textId && u.installed && !done.has(u.textId))
         .map((u) => ({ unitId: u.unitId, textId: u.textId!, title: u.title, stage: u.stage, published: u.published }));
-      return { steps, finished: steps.length === 0 && v.groups.some((g) => g.units.some((u) => u.textId)) };
+      // R4: what the recommender needs to ADAPT the route (the units already done, in ladder order) and to bring orphan words back
+      const doneSteps = v.groups.flatMap((g) => g.units)
+        .filter((u) => u.textId && u.installed && done.has(u.textId))
+        .map((u) => ({ unitId: u.unitId, textId: u.textId!, title: u.title, stage: u.stage, published: u.published }));
+      const adapter = args.adapter;
+      return {
+        steps, finished: steps.length === 0 && v.groups.some((g) => g.units.some((u) => u.textId)),
+        ...(doneSteps.length > 0 ? { done: doneSteps } : {}),
+        ...(stage0.applicable ? { stage0Recall: true } : {}),
+        ...(adapter ? { orphans: () => ladderOrphanLemmas(args.lang, adapter, source) } : {}),
+      };
     };
   }
 

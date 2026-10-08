@@ -13,10 +13,10 @@
 import type { AppStore, AssistanceProfile, CourseCatalog, GoLearn, Stage, Stream, Text, Work } from '../core';
 import { DEFAULT_ASSISTANCE } from '../core';
 import { ALBANIAN_COURSE_ID, ALBANIAN_STAGES, ALBANIAN_STREAMS, ALBANIAN_WORKS } from './albanian';
-import { GERMAN_COURSE_ID, GERMAN_SHELVES, GERMAN_STREAMS, GERMAN_WORKS } from './german';
+import { GERMAN_COURSE_ID, GERMAN_LADDER_SHELF, GERMAN_SHELVES, GERMAN_STREAMS, GERMAN_WORKS } from './german';
 import { HINDI_COURSE_ID, HINDI_OUTSIDE_ASSISTANCE, HINDI_SHELVES, HINDI_STREAMS, HINDI_WORKS } from './hindi';
-import { NORWEGIAN_COURSE_ID, NORWEGIAN_SHELVES, NORWEGIAN_STREAMS, NORWEGIAN_WORKS } from './norwegian';
-import { SPANISH_COURSE_ID, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS } from './spanish';
+import { NORWEGIAN_COURSE_ID, NORWEGIAN_LADDER_SHELF, NORWEGIAN_SHELVES, NORWEGIAN_STREAMS, NORWEGIAN_WORKS } from './norwegian';
+import { SPANISH_COURSE_ID, SPANISH_LADDER_SHELF, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS } from './spanish';
 import { THAI_COURSE_ID, THAI_STAGES, THAI_STREAMS, THAI_WORKS } from './thai';
 import { getStageContract } from './curriculumPolicy';
 
@@ -45,6 +45,20 @@ const LADDERS: Record<string, { stages: Stage[]; works: Work[]; outside?: Assist
   // Norwegian: shelves like German (a browsing orientation, never a gate); empty until the Norwegian catalogue is filled in
   [NORWEGIAN_COURSE_ID]: { stages: NORWEGIAN_SHELVES, works: NORWEGIAN_WORKS },
 };
+
+/**
+ * The courses whose reading ladder (data/ladder/<lang>: a1-1 … b1-bridge) sits on the shelves for help: ladder stage → shelf
+ * key. A ladder unit is a text with no work, so no shelf of its own; `assistanceFor` gives it the profile of the nearest shelf.
+ * A course not listed here is untouched (Thai, Albanian and Hindi keep the answers they always gave).
+ */
+const LADDER_SHELF: Record<string, Record<string, string>> = {
+  [SPANISH_COURSE_ID]: SPANISH_LADDER_SHELF,
+  [GERMAN_COURSE_ID]: GERMAN_LADDER_SHELF,
+  [NORWEGIAN_COURSE_ID]: NORWEGIAN_LADDER_SHELF,
+};
+
+/** The text id of a ladder unit the course authored: `text:es:es-a2-1-03` (the unit id is the slug; b1 units are `es-b1-NN`). */
+const LADDER_UNIT_TEXT = /^text:([a-z]{2,3}):\1-(a1-1|a1-2|a2-1|a2-2|b1-bridge|b1)-\d+$/;
 
 /** The content streams of the courses that have them. */
 const STREAMS: Record<string, Stream[]> = {
@@ -145,27 +159,41 @@ export function createCourseCatalog(deps: CourseCatalogDeps): CourseCatalog {
 
     async assistanceFor({ courseId, textId, currentStageId }) {
       const copy = (p: AssistanceProfile): AssistanceProfile => structuredClone(p);
-      // The profile is the stage's or shelf's own. A course whose shelves should not change the reader gives every shelf
-      // the default profile (Spanish, German); a course whose script has to be decoded gives its first shelves more help.
+      // The profile is the stage's or shelf's own. Every course's shelves fade the help along the shelves (Spanish, German and
+      // Norwegian by gloss and English; Hindi also by decoding the script); a shelf with no profile of its own has the default.
       const profile = (s: Stage) => copy(s.assistance ?? DEFAULT_ASSISTANCE);
+      // Where the learner is working sets the help of a text that is on no shelf (his own book, his testimony) for a stage course
+      // (Thai, Albanian) and, as it always could, for Hindi. In Spanish, German and Norwegian a text gets the profile of the shelf
+      // it is filed on, or of its ladder stage; a text on no shelf keeps the default word sheet, as before the shelves had profiles.
+      const choiceSetsHelp = (s: Stage) => !(s.kind === 'shelf' && courseId in LADDER_SHELF);
       if (textId) {
         // Scripture is a continuous corpus beside the ladder (docs/THAI_COURSE.md section 3): the shelf its work is filed
         // on says nothing about how hard the learner finds it, so it takes the profile of the stage HE is working at. A
-        // course whose learner has no current stage (shelf courses) falls through to the work's own stage.
+        // course whose learner has no current stage falls through to the work's own stage. In Spanish, German and Norwegian the
+        // shelf he is working at never sets the help of a text (see `choiceSetsHelp`), so Scripture keeps its own shelf there.
         if (currentStageId) {
           const text = await store.texts.get(textId);
           const work = text?.workId ? await store.works.get(text.workId) : undefined;
           if (work?.role === 'scripture' && work.courseId === courseId) {
             const current = await store.stages.get(currentStageId);
-            if (current && current.courseId === courseId) return profile(current);
+            if (current && current.courseId === courseId && choiceSetsHelp(current)) return profile(current);
           }
         }
         const stage = await catalog.stageOfText(textId);
         if (stage && stage.courseId === courseId) return profile(stage);
+        // A ladder unit has no work: its stage key (a1-1 … b1-bridge) names the nearest shelf, whose profile it takes, so the
+        // help fades along the ladder whichever shelf the learner is browsing.
+        const shelves = LADDER_SHELF[courseId];
+        const unit = shelves ? LADDER_UNIT_TEXT.exec(textId) : null;
+        if (shelves && unit) {
+          const shelfKey = shelves[unit[2] === 'b1' ? 'b1-bridge' : unit[2]!];
+          const shelf = LADDERS[courseId]?.stages.find((s) => s.key === shelfKey);
+          if (shelf && (await store.texts.get(textId))?.workId === undefined) return profile(shelf);
+        }
       }
       if (currentStageId) {
         const stage = await store.stages.get(currentStageId);
-        if (stage && stage.courseId === courseId) return profile(stage);
+        if (stage && stage.courseId === courseId && choiceSetsHelp(stage)) return profile(stage);
       }
       return copy(LADDERS[courseId]?.outside ?? DEFAULT_ASSISTANCE);
     },
@@ -173,7 +201,9 @@ export function createCourseCatalog(deps: CourseCatalogDeps): CourseCatalog {
     async currentStage(userId, courseId) {
       const all = await stages(courseId);
       if (all.length === 0) return undefined;
-      if (all.every((s) => s.kind === 'shelf')) return undefined; // shelves are for browsing: there is no stage the learner is "at"
+      // A course whose stages are shelves (Spanish, German, Hindi, Norwegian) has a current stage by the same rule as the others:
+      // his stored choice, else the first shelf whose readiness is not 'ready-to-advance'. It is advice that decides which shelf's
+      // help the reader starts with and which readiness the course page shows; shelves still never lock anything.
       const stored = await store.meta.get(stageMetaId(userId, courseId));
       const chosen = stored ? all.find((s) => s.id === stored.value) : undefined;
       if (chosen) return chosen;

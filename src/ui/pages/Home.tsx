@@ -9,10 +9,12 @@ import { languageName, teamLabel } from '../format';
 import { I } from '../ui';
 import { Stage0Entry } from '../stage0/Stage0Entry';
 import { hasLadder } from '../read/hasLadder';
+import { usePracticeDue } from './Practice';
 
 
 const ENTRIES: Array<{ to: string; name: string; sub: string }> = [
   { to: '/read', name: 'Reading', sub: 'Stories and dialogues' },
+  { to: '/practice', name: 'Practice', sub: 'Words from what you read' },
   { to: '/path', name: 'Your path', sub: 'Step by step from your first words to real books' },
   { to: '/listen', name: 'GoListen', sub: 'Understand stories and Scripture by listening' },
   { to: '/scripture', name: 'Scripture', sub: 'The Bible, prepared for you' },
@@ -24,6 +26,7 @@ export function Home() {
   const { user, course, features, lang, store } = useApp();
   // GoListen's own doorway starts from the recordings stored for the language (store.manifests); with none, the entry says so.
   const [recordings, setRecordings] = useState<boolean | null>(null);
+  const practiceDue = usePracticeDue(); // the Practice entry appears only when a prompt is due
   useEffect(() => {
     let live = true;
     setRecordings(null);
@@ -41,7 +44,7 @@ export function Home() {
 
       <nav className="home__list" aria-label="Start here">
         <Stage0Entry />
-        {ENTRIES.filter((e) => (e.to !== '/listen' || features.listen) && (e.to !== '/path' || hasLadder(lang))).map((e) => (
+        {ENTRIES.filter((e) => (e.to !== '/listen' || features.listen) && (e.to !== '/path' || hasLadder(lang)) && (e.to !== '/practice' || practiceDue)).map((e) => (
           <Link key={e.to} to={e.to} className="home__entry">
             <span className="home__entry-body">
               <span className="home__entry-name">{e.name}</span>

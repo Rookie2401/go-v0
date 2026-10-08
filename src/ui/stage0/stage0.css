@@ -46,6 +46,12 @@
 .stage0-write input { flex: 1 1 14rem; min-width: 0; font-size: 1.1rem; padding: 0.35rem 0.5rem; }
 .stage0-ok { color: var(--olive); }
 .stage0-speak { border-left: 3px solid var(--accent-soft); padding: 0.25rem 0.75rem; margin: 0.5rem 0; }
+.stage0-cue { font-size: 1.15rem; margin: 0.3rem 0; }
+.stage0-compare { display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); margin: 0.4rem 0; }
+.stage0-compare__side { display: grid; gap: 0.25rem; align-content: start; }
+.stage0-secure { color: var(--olive); }
+.stage0-notsecure { color: var(--wine); }
+.stage0-retry { margin: 0.3rem 0; padding-left: 0.6rem; border-left: 3px solid var(--wine); }
 
 .stage0-soundwords { list-style: none; padding: 0; display: grid; gap: 0.6rem; }
 .stage0-soundword { display: grid; gap: 0.25rem; }

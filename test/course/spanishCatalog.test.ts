@@ -1,10 +1,12 @@
-/** The Spanish catalogue: shelves as stages, streams, works paged and filtered; shelves never gate and never change the reader. */
+/** The Spanish catalogue: shelves as stages, streams, works paged and filtered; shelves never gate, and the help fades along them. */
 import { describe, expect, it } from 'vitest';
 import { DEFAULT_ASSISTANCE, buildFixtureText, createMemoryStore, ids } from '../../src/core';
 import type { Work } from '../../src/core';
 import {
   SPANISH_COURSE_ID, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS, THAI_COURSE_ID, THAI_STAGES, THAI_STREAMS, createCourseCatalog,
 } from '../../src/course';
+import { SPANISH_ASSISTANCE, SPANISH_LADDER_SHELF } from '../../src/course/spanish';
+import { shelfProfileSuite } from './shelfProfileSuite';
 
 const C = SPANISH_COURSE_ID;
 const U = 'u1';
@@ -105,23 +107,23 @@ describe('findWorks', () => {
   });
 });
 
-describe('shelves never gate and never change the reader', () => {
-  it('there is no current stage in a course whose stages are all shelves, even with a stored choice', async () => {
+describe('shelves never gate', () => {
+  it('a course whose stages are all shelves has a current stage (the stored choice, else the first shelf not ready), and setting it locks nothing', async () => {
     const { store, catalog } = await installed();
-    expect(await catalog.currentStage(U, C)).toBeUndefined();
+    expect((await catalog.currentStage(U, C))!.id).toBe(ids.stage(C, 's0'));
     await catalog.setCurrentStage(U, C, ids.stage(C, 's3'));
-    expect(await catalog.currentStage(U, C)).toBeUndefined();
+    expect((await catalog.currentStage(U, C))!.id).toBe(ids.stage(C, 's3'));
     expect(await store.stages.count()).toBe(SPANISH_SHELVES.length);
   });
 
-  it('assistanceFor returns the default word sheet for a text on any shelf, with or without a current stage', async () => {
+  it("assistanceFor gives a text on a shelf that shelf's profile; the default word sheet is only for open reading and for no shelf at all", async () => {
     const { store, catalog } = await installed();
     const work = SPANISH_WORKS.find((w) => w.stageId === ids.stage(C, 's4'))!;
     const text = await buildFixtureText(store, { lang: 'es', slug: 'on-a-shelf', sentences: [{ tokens: [{ surface: 'uno' }] }] });
     await store.texts.put({ ...text, workId: work.id });
     expect((await catalog.stageOfText(text.id))!.kind).toBe('shelf');
-    expect(await catalog.assistanceFor({ courseId: C, textId: text.id })).toEqual(DEFAULT_ASSISTANCE);
-    expect(await catalog.assistanceFor({ courseId: C, currentStageId: ids.stage(C, 's6') })).toEqual(DEFAULT_ASSISTANCE);
+    expect(await catalog.assistanceFor({ courseId: C, textId: text.id })).toEqual(SPANISH_ASSISTANCE.s4);
+    expect(await catalog.assistanceFor({ courseId: C, currentStageId: ids.stage(C, 's6') })).toEqual(DEFAULT_ASSISTANCE); // a text on no shelf keeps the default word sheet
     expect(await catalog.assistanceFor({ courseId: C })).toEqual(DEFAULT_ASSISTANCE);
   });
 
@@ -132,4 +134,9 @@ describe('shelves never gate and never change the reader', () => {
     await store.texts.put({ ...t, workId: work.id, chapter: { index: 1 } });
     expect((await catalog.textsOf(work.id)).map((x) => x.id)).toEqual([t.id]);
   });
+});
+
+shelfProfileSuite({
+  name: 'Spanish', courseId: C, lang: 'es', shelves: SPANISH_SHELVES, assistance: SPANISH_ASSISTANCE, ladderShelf: SPANISH_LADDER_SHELF, works: SPANISH_WORKS,
+  definitions: true, openKeys: [], graded: true, easy: ['s0', 's1'], deep: ['s5', 's6', 's7'],
 });

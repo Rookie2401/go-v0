@@ -18,7 +18,7 @@
  * (the United States, say) is not a worldwide statement.
  * BIBLIOGRAPHY: titles, authors and dates are from general knowledge and are marked unverified.
  */
-import type { RegisterTag, Stage, Stream, Work, WorkRights, WorkRole } from '../core';
+import type { AssistanceProfile, HelpLayer, RegisterTag, Stage, Stream, Work, WorkRights, WorkRole } from '../core';
 import { DEFAULT_ASSISTANCE, ids } from '../core';
 import { acquiredWorks } from './acquired';
 import { readingBridgeWorks } from './readingBridges';
@@ -49,10 +49,44 @@ export const GERMAN_STREAMS: Stream[] = [
 
 // ───────────────────────────── shelves ─────────────────────────────
 
+const L = (...layers: HelpLayer[]): HelpLayer[] => layers;
+
+/**
+ * The help fades shelf by shelf, as in Hindi (src/course/hindi.ts). The first shelves (controlled German through the short
+ * native texts) are gloss-first with English one tap away (`easy`); the middle shelves keep English second and offer an easy
+ * German definition before it (the dictionary has them: `targetLanguageDefinitions`); the demanding shelves bury English deep,
+ * show less, and put clause structure (verb-final clauses, long periods) ahead of the sentence translation. 'Open reading'
+ * has no difficulty claim and keeps the default word sheet. A shelf is never a gate: this only sets how much the reader
+ * offers by default.
+ */
+export const GERMAN_ASSISTANCE: Record<string, AssistanceProfile> = {
+  s0: { visibility: 'heavy', defaultHighlight: 'strong', layers: L('gloss', 'phrase', 'grammar', 'english', 'sentence', 'history'), englishRescue: 'easy', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: false, chrome: 'full' },
+  s1: { visibility: 'heavy', defaultHighlight: 'strong', layers: L('gloss', 'phrase', 'grammar', 'english', 'sentence', 'history'), englishRescue: 'easy', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: false, chrome: 'full' },
+  s2: { visibility: 'heavy', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'grammar', 'english', 'sentence', 'history'), englishRescue: 'easy', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: false, chrome: 'full' },
+  s3: { visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'definition', 'grammar', 'sentence', 'english', 'history'), englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'full' },
+  s4: { visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'definition', 'grammar', 'sentence', 'english', 'history'), englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'full' },
+  s5: { visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'definition', 'grammar', 'sentence', 'english', 'history'), englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'full' },
+  s6: { visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'definition', 'discourse', 'grammar', 'sentence', 'english', 'history'), englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'reduced' },
+  s7: { visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'definition', 'discourse', 'grammar', 'clause-structure', 'sentence', 'english', 'history'), englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'reduced' },
+  s8: { visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'definition', 'discourse', 'grammar', 'clause-structure', 'sentence', 'english', 'history'), englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'reduced' },
+  s9: { visibility: 'light', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'definition', 'discourse', 'note', 'clause-structure', 'grammar', 'sentence', 'english', 'history'), englishRescue: 'deep', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'reduced' },
+  s10: { visibility: 'light', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'definition', 'discourse', 'note', 'clause-structure', 'grammar', 'sentence', 'history', 'english'), englishRescue: 'deep', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'reduced' },
+  s11: { visibility: 'light', defaultHighlight: 'off', layers: L('gloss', 'note', 'phrase', 'definition', 'discourse', 'clause-structure', 'grammar', 'sentence', 'history', 'english'), englishRescue: 'deep', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'reduced' },
+  s12: { visibility: 'light', defaultHighlight: 'off', layers: L('gloss', 'note', 'phrase', 'definition', 'discourse', 'clause-structure', 'grammar', 'sentence', 'history', 'english'), englishRescue: 'deep', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'reduced' },
+  // Open reading: read by interest, no difficulty claim: the word sheet as it has always worked.
+  s13: DEFAULT_ASSISTANCE,
+};
+
+/**
+ * Where a unit of the course's reading ladder (data/ladder/de: a1-1 … a2-2) sits on the shelves for help: the nearest shelf.
+ * A ladder unit has no work, so no shelf of its own; this is how it gets a profile that fades with its stage. German's first
+ * three shelves keep English `easy`, so English moves to `secondary` from a2-1, which maps to the first shelf that does.
+ */
+export const GERMAN_LADDER_SHELF: Record<string, string> = { 'a1-1': 's0', 'a1-2': 's1', 'a2-1': 's3', 'a2-2': 's4', 'b1-bridge': 's5' };
+
 const shelf = (index: number, label: string, purpose: string[]): Stage => ({
   id: ids.stage(GERMAN_COURSE_ID, `s${index}`), courseId: GERMAN_COURSE_ID, lang: LANG, index, key: `s${index}`, label, kind: 'shelf', purpose,
-  // Shelves do not change how the reader behaves: the word sheet is the same everywhere, help appears when asked for.
-  assistance: DEFAULT_ASSISTANCE,
+  assistance: GERMAN_ASSISTANCE[`s${index}`] ?? DEFAULT_ASSISTANCE,
 });
 
 /** Shelves, not locks: an orientation for browsing. Personal difficulty is computed per learner, per text. */

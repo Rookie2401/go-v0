@@ -9,7 +9,7 @@
  * RIGHTS. Every work starts as `rights-unverified`; nothing here marks a work verified. A work is never bundled as a
  * candidate or a recommendation (see docs/norway/SPEC.md section 8).
  */
-import type { RegisterTag, Stage, Stream, Work, WorkRights, WorkRole } from '../core';
+import type { AssistanceProfile, HelpLayer, RegisterTag, Stage, Stream, Work, WorkRights, WorkRole } from '../core';
 import { DEFAULT_ASSISTANCE, ids } from '../core';
 import manifest from '../../data/sources/course-library/nb.json';
 import { acquiredWorks } from './acquired';
@@ -41,10 +41,35 @@ export const NORWEGIAN_STREAMS: Stream[] = [
 
 // ───────────────────────────── shelves ─────────────────────────────
 
+const L = (...layers: HelpLayer[]): HelpLayer[] => layers;
+
+/**
+ * The help fades shelf by shelf, as in Hindi (src/course/hindi.ts), but Norwegian has NO dictionary with target-language
+ * definitions yet, so `targetLanguageDefinitions` is false on every shelf and the gloss stays first (no 'definition' layer).
+ * The shelves are arranged by kind and era more than by difficulty: the controlled shelf has the most help (English `easy`);
+ * modern open texts, tales, school readers and Nynorsk keep English second; the Dano-Norwegian and Riksmål novels, the
+ * hardest reading here, bury English deep and show less; the Scripture shelf keeps the default word sheet (Scripture
+ * itself takes the profile of the shelf the learner is working at, as in Thai). A shelf is never a gate.
+ */
+export const NORWEGIAN_ASSISTANCE: Record<string, AssistanceProfile> = {
+  s0: { visibility: 'heavy', defaultHighlight: 'strong', layers: L('gloss', 'phrase', 'grammar', 'english', 'sentence', 'history'), englishRescue: 'easy', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: false, chrome: 'full' },
+  s1: { visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'grammar', 'sentence', 'english', 'history'), englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: false, chrome: 'full' },
+  s2: { visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'note', 'grammar', 'sentence', 'english', 'history'), englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: false, chrome: 'full' },
+  s3: { visibility: 'light', defaultHighlight: 'subtle', layers: L('gloss', 'note', 'phrase', 'grammar', 'sentence', 'history', 'english'), englishRescue: 'deep', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: false, chrome: 'reduced' },
+  s4: { visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'note', 'grammar', 'sentence', 'english', 'history'), englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: false, chrome: 'full' },
+  s5: { visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'note', 'grammar', 'sentence', 'english', 'history'), englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: false, chrome: 'reduced' },
+  s6: DEFAULT_ASSISTANCE,
+};
+
+/**
+ * Where a unit of the course's reading ladder (data/ladder/nb: a1-1 … a2-2) sits on the shelves for help: the nearest shelf.
+ * A ladder unit has no work, so no shelf of its own; this is how it gets a profile that fades with its stage.
+ */
+export const NORWEGIAN_LADDER_SHELF: Record<string, string> = { 'a1-1': 's0', 'a1-2': 's0', 'a2-1': 's1', 'a2-2': 's1', 'b1-bridge': 's2' };
+
 const shelf = (index: number, label: string, purpose: string[]): Stage => ({
   id: ids.stage(NORWEGIAN_COURSE_ID, `s${index}`), courseId: NORWEGIAN_COURSE_ID, lang: LANG, index, key: `s${index}`, label, kind: 'shelf', purpose,
-  // Shelves do not change how the reader behaves: the word sheet is the same everywhere, help appears when asked for.
-  assistance: DEFAULT_ASSISTANCE,
+  assistance: NORWEGIAN_ASSISTANCE[`s${index}`] ?? DEFAULT_ASSISTANCE,
 });
 
 /** Shelves, not locks: an orientation for browsing. Personal difficulty is computed per learner, per text. */

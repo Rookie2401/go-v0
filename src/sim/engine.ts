@@ -25,6 +25,7 @@ import { COURSES } from '../core';
 import type { LanguageCode } from '../core';
 import { bootstrap } from '../app/bootstrap';
 import { setLadderPathSource, setWholeLibrarySource } from '../golearn/recommend';
+import { setCorpusFrequencySource } from '../golearn/rank';
 import { bundledLadder } from '../ladder/bundle';
 import { createIndexedMemoryStore } from './store';
 import type { Stage0ServiceImpl } from '../stage0';
@@ -110,8 +111,9 @@ export async function createRealEngine(opts: RealEngineOptions): Promise<RealEng
       substitutions: [
         'In-memory store (indexed clone of createMemoryStore, same semantics) instead of IndexedDB.',
         `globalThis.fetch serves /library/${lang}/ from public/library on disk${opts.dict ? ' and /dict from public/dict' : '; no dictionary is installed in the import (404 on /dict), as in the learner\'s own adapter-lemma rule'}.`,
+        'The corpus frequency source (setCorpusFrequencySource) is registered by the bootstrap and reads frequency.json through the same /dict fetch (none without --dict: the in-shortlist rule).',
         'setWholeLibrarySource is registered here with the app\'s library.search / library.profile as the app\'s bootstrap does.',
-        'Simulated clock: every reading advances 0.2 s; 45 minutes pass between texts (each text is its own sitting).',
+        'Simulated clock: every reading advances 0.2 s; 45 minutes pass between texts (each text is its own sitting); with decay on (default) the clock also follows the reading pace (words read / words per day), so the app sees the same weeks as the simulated learner.',
         'No localStorage: preferences are defaults; preview mode is recommend(includeUnpublished).',
         'The Stage 0 exit verdict is the simulation\'s own (>= 80 % of Stage 0 lemmas known); no exit-gate answers are sent.',
         'No recordings exist, so no listening recommendation can be opened; any that appeared would be skipped.',
@@ -119,6 +121,7 @@ export async function createRealEngine(opts: RealEngineOptions): Promise<RealEng
       dispose() {
         globalThis.fetch = realFetch;
         setWholeLibrarySource(undefined);
+        setCorpusFrequencySource(undefined);
         setLadderPathSource(undefined);
       },
     };

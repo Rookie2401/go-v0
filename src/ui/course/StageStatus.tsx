@@ -7,6 +7,7 @@ import { useEffect, useId, useState } from 'react';
 import type { ReadingPace, Stage, StageReadiness } from '../../core';
 import { useApp } from '../context';
 import { Disclosure } from '../ui';
+import { UnseenCheck } from './UnseenCheck';
 import { SIGNAL_LABEL, SIGNAL_STATUS_WORD, paceLines } from './wording';
 import './course.css';
 
@@ -34,11 +35,16 @@ export function StageStatus({ stages, current, onChange }: { stages: Stage[]; cu
         >
           {stages.map((s) => <option key={s.id} value={s.id}>{s.label}</option>)}
         </select>
-        <p className="card__note">This only decides which stage opens first and how much help the reader offers. You can read anything.</p>
+        <p className="card__note">
+          {current.kind === 'shelf'
+            ? 'This only decides which shelf the readiness below is about. The help the reader offers follows the shelf a text is on. You can read anything.'
+            : 'This only decides which stage opens first and how much help the reader offers. You can read anything.'}
+        </p>
       </div>
       <Disclosure label="How is this going?" lazy className="stage-status__going">
         <Going stage={current} />
       </Disclosure>
+      <UnseenCheck stage={current} />
     </section>
   );
 }

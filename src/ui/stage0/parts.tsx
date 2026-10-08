@@ -3,8 +3,9 @@
  * rescue), the word sheet, and the speaking box (hear the model, record yourself, compare, say how it went — never scored).
  */
 import { useMemo, useRef, useState } from 'react';
-import type { AppStore, LanguageAdapter, LanguageCode, Stage0Audio } from '../../core';
+import type { AppStore, LanguageAdapter, LanguageCode, Stage0Audio, Stage0Line, Stage0ProductionTask } from '../../core';
 import { describeFeature, wordsOf } from '../../stage0/features';
+import { normalizeAnswer } from '../../stage0/match';
 import type { WordInfo } from '../../stage0/features';
 import { recordingSupported, startRecording } from '../testimony/recorder';
 import type { ActiveRecording } from '../testimony/recorder';
@@ -100,18 +101,40 @@ export function PlayButton({ voice, text, audio, label = 'Hear it' }: { voice: S
   );
 }
 
-/** Speak it: hear the model, record yourself, play both, say how it went. Nothing is scored by a machine. */
-export function SpeakBox({ voice, model, lang, store, userId, onDone }: {
+/** What a retelling is cued by: a picture and the English meaning. The target line is NOT part of it. */
+export interface RetellCue { picture?: string; en: string }
+
+/**
+ * The cue for retelling `model`: the picture of the scene line it comes from (or the first line the task is based on), and the
+ * English meaning — the English of the scene line that says exactly this, else the task's own English prompt (a personal answer,
+ * such as the learner's own name, has no scene line to borrow from). Never the target line itself.
+ */
+export function retellCue(lang: LanguageCode, task: Pick<Stage0ProductionTask, 'prompt' | 'basedOn'>, lines: ReadonlyArray<Stage0Line> | undefined, model: string): RetellCue {
+  const same = (lines ?? []).find((l) => normalizeAnswer(lang, l.text) === normalizeAnswer(lang, model));
+  const picture = same?.picture ?? (lines ?? []).find((l) => task.basedOn.includes(l.id) && l.picture)?.picture;
+  return { ...(picture ? { picture } : {}), en: same?.en ?? task.prompt };
+}
+
+/**
+ * Retell it aloud. The cue is a picture and the English meaning; the target line stays hidden until the recording is made. Then
+ * the model line appears beside the learner's recording, with "Compare: did you say the same thing?" (yes / partly / no) — the
+ * learner's own judgement, recorded on the attempt. Recordings stay on this device; nothing is scored by a machine.
+ */
+export function SpeakBox({ voice, model, lang, store, userId, cue, onReveal, onDone }: {
   voice: Stage0Voice; model: string; lang: LanguageCode; store: AppStore; userId: string;
-  onDone(recordingId: string | undefined, selfCheck: 'like-model' | 'different' | 'unsure'): void;
+  cue: RetellCue;
+  /** The model line has been revealed (the recording is made, or the learner said it without recording). */
+  onReveal?(): void;
+  onDone(recordingId: string | undefined, selfCheck: 'yes' | 'partly' | 'no'): void;
 }) {
   const [rec, setRec] = useState<ActiveRecording | null>(null);
   const [url, setUrl] = useState<string | null>(null);
   const [recordingId, setRecordingId] = useState<string | undefined>();
-  const [done, setDone] = useState(false);
+  const [stage, setStage] = useState<'cue' | 'compare' | 'done'>('cue');
   const [err, setErr] = useState<string | null>(null);
   const attempt = useRef(0);
   const supported = recordingSupported();
+  const reveal = () => { setStage('compare'); onReveal?.(); };
   const stop = async () => {
     if (!rec) return;
     const r = await rec.stop();
@@ -122,27 +145,51 @@ export function SpeakBox({ voice, model, lang, store, userId, onDone }: {
     await store.recordings.put({ id, userId, lang, target: { text: model }, assetId, attempt: attempt.current, createdAt: new Date().toISOString() });
     setRecordingId(id);
     setUrl((await store.assets.url(assetId)) ?? null);
+    reveal();
   };
-  const finish = (s: 'like-model' | 'different' | 'unsure') => { setDone(true); onDone(recordingId, s); };
+  const finish = (s: 'yes' | 'partly' | 'no') => { setStage('done'); onDone(recordingId, s); };
+  const canSkip = !supported || err !== null;
   return (
-    <div className="stage0-speak" aria-label="Say it aloud">
-      <p className="card__note">Say it aloud: <span lang={lang}>{model}</span></p>
-      <div className="actions">
-        <PlayButton voice={voice} text={model} label="Hear the model" />
-        {supported && !rec && <button type="button" className="btn btn--small" onClick={() => { setErr(null); void startRecording().then(setRec, () => setErr('The microphone could not be opened. You can still say it aloud and compare.')); }}>● Record yourself</button>}
-        {rec && <button type="button" className="btn btn--small btn--primary" onClick={() => { void stop(); }}>■ Stop</button>}
-        {url && <button type="button" className="btn btn--small" onClick={() => { void new Audio(url).play().catch(() => undefined); }}>▶ Hear yourself</button>}
-      </div>
-      {!supported && <p className="card__note">This device cannot record here: say it aloud, then compare with the model.</p>}
-      {err && <p className="card__note">{err}</p>}
-      {!done ? (
-        <div className="actions">
-          <span className="card__note">How did it go?</span>
-          <button type="button" className="btn btn--small btn--quiet" onClick={() => finish('like-model')}>Like the model</button>
-          <button type="button" className="btn btn--small btn--quiet" onClick={() => finish('different')}>Different</button>
-          <button type="button" className="btn btn--small btn--quiet" onClick={() => finish('unsure')}>Not sure</button>
-        </div>
-      ) : <p className="card__note">Noted. A speaker can listen to your recordings later; nothing here grades your pronunciation.</p>}
+    <div className="stage0-speak" aria-label="Retell it aloud" data-stage={stage}>
+      {stage === 'cue' && (
+        <>
+          <p className="stage0-cue" data-testid="stage0-cue">
+            {cue.picture && <span className="stage0-picture" aria-hidden="true">{cue.picture} </span>}
+            <span>{cue.en}</span>
+          </p>
+          <p className="card__note">Say it in your own words from memory — do not read it. The line itself appears after you have recorded.</p>
+          <div className="actions">
+            {supported && !rec && <button type="button" className="btn btn--small" onClick={() => { setErr(null); void startRecording().then(setRec, () => setErr('The microphone could not be opened. You can still say it aloud and compare.')); }}>● Record yourself</button>}
+            {rec && <button type="button" className="btn btn--small btn--primary" onClick={() => { void stop(); }}>■ Stop</button>}
+            {canSkip && !rec && <button type="button" className="btn btn--small btn--quiet" onClick={reveal}>I said it aloud — show the line</button>}
+          </div>
+          {!supported && <p className="card__note">This device cannot record here: say it aloud, then compare with the line.</p>}
+          {err && <p className="card__note">{err}</p>}
+        </>
+      )}
+      {stage !== 'cue' && (
+        <>
+          <div className="stage0-compare" data-testid="stage0-compare">
+            <div className="stage0-compare__side">
+              <span className="label">You said</span>
+              {url ? <button type="button" className="btn btn--small" onClick={() => { void new Audio(url).play().catch(() => undefined); }}>▶ Hear yourself</button> : <span className="card__note">Not recorded on this device.</span>}
+            </div>
+            <div className="stage0-compare__side">
+              <span className="label">The model</span>
+              <span className="stage0-model" lang={lang}>{model}</span>
+              <PlayButton voice={voice} text={model} label="Hear the model" />
+            </div>
+          </div>
+          {stage === 'compare' ? (
+            <div className="actions" role="group" aria-label="Compare: did you say the same thing?">
+              <span className="card__note">Compare: did you say the same thing?</span>
+              <button type="button" className="btn btn--small" onClick={() => finish('yes')}>Yes</button>
+              <button type="button" className="btn btn--small" onClick={() => finish('partly')}>Partly</button>
+              <button type="button" className="btn btn--small" onClick={() => finish('no')}>No</button>
+            </div>
+          ) : <p className="card__note">Noted. Your recording stays on this device, and a speaker can listen to it later; nothing here grades your pronunciation.</p>}
+        </>
+      )}
     </div>
   );
 }

@@ -9,6 +9,8 @@ export type HighlightPref = 'off' | 'subtle' | 'strong';
 export type TranscriptPref = 'visible' | 'hidden' | 'reveal-current' | 'reveal-after';
 
 export type ThemePref = 'auto' | 'light' | 'dark';
+/** How hard the suggested texts should be (Settings → Reading): where the ranking's comprehensibility part peaks - 97 % / 93 % / 88 % of words known. */
+export type ChallengePref = 'easy' | 'steady' | 'stretch';
 
 export interface Prefs {
   highlight: HighlightPref;
@@ -17,6 +19,8 @@ export interface Prefs {
   /** Reading text size in px (sets --reading-font-size on the reader). */
   fontSize: number;
   theme: ThemePref;
+  /** "How hard should suggestions be?": passed to `golearn.recommend` (RANKING.targetCoverage). Default steady. */
+  challenge: ChallengePref;
   /**
    * "Preview unreviewed content": off by default. On, unpublished texts are listed (with their reasons), fixture
    * audio is allowed and badged, and a persistent banner says so on every screen. Persisted on this device.
@@ -36,7 +40,7 @@ export interface Prefs {
 }
 
 export const FONT_SIZE_RANGE = { min: 16, max: 34 } as const;
-export const DEFAULT_PREFS: Prefs = { highlight: 'subtle', speed: 1, transcript: 'visible', fontSize: 22, theme: 'auto', preview: false, devFixtureAudio: false, azureDirectKey: false, teamServer: '', teamKey: '' };
+export const DEFAULT_PREFS: Prefs = { highlight: 'subtle', speed: 1, transcript: 'visible', fontSize: 22, theme: 'auto', challenge: 'steady', preview: false, devFixtureAudio: false, azureDirectKey: false, teamServer: '', teamKey: '' };
 
 /**
  * Every key below goes through `scopedKey`: in sandbox mode (`?sandbox=<name>`, see sandbox.ts) it is namespaced under

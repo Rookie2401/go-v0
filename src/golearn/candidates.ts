@@ -31,6 +31,7 @@ import type { CatalogText, LanguageCode, LibraryQuery, Text, TextProfile } from 
 import { searchCatalog } from '../library/postings';
 import { cachedProfile } from '../library/store-index';
 import { hasHumanReviewedRecording } from './eligibility';
+import { heldOutIds } from './heldout';
 import { CANDIDATES, REACH } from './policy';
 import { domainOf, rankLibrary } from './rank';
 import type { RankCandidateWhole, RankedTextWhole } from './rank';
@@ -373,6 +374,8 @@ export interface WholeLibraryOptions {
    * yield term, the floor of what is in reach and the soft cap on Scripture in what he reads (rank.ts `RankOptionsWhole.reach`).
    */
   reach?: boolean;
+  /** With `reach`: the ladder's orphan lemma words (src/ladder/orphans.ts); a text bringing back several of them that he has met is lifted (policy ORPHAN_BOOST). */
+  orphans?: ReadonlySet<string>;
 }
 
 export interface WholeLibraryResult {
@@ -398,6 +401,7 @@ export async function rankWholeLibrary(ctx: Ctx, userId: string, deps: WholeLibr
 
   const { items, stats } = await shortlist(pager, {
     lang, snapshot: snap, includeUnpublished: opts.includeUnpublished ?? false, size: opts.size, fit: await candidateFilter(ctx),
+    excludeIds: await heldOutIds(ctx, userId, ctx.clock()), // the text of an unseen-text check stays out for 60 days (heldout.ts)
   });
   if (items.length === 0) return { ...empty, stats: { ...empty.stats, ...stats } };
 
@@ -433,7 +437,7 @@ export async function rankWholeLibrary(ctx: Ctx, userId: string, deps: WholeLibr
   const ranked = await rankLibrary(ctx, userId, candidates, {
     interests, targetVariety: opts.targetVariety ?? course?.variety?.target, challenge: opts.challenge, limit: opts.limit ?? 10,
     signals: { recentGroups: snap.recentGroups, ...(listenEligible ? { listenEligible } : {}) },
-    ...(opts.reach ? { reach: { scriptureShare: snap.scriptureShare } } : {}),
+    ...(opts.reach ? { reach: { scriptureShare: snap.scriptureShare, ...(opts.orphans?.size ? { orphans: opts.orphans } : {}) } } : {}),
   });
   return {
     picks: ranked.flatMap((r) => { const row = rowOf.get(r.textId); return row ? [{ ranked: r, row, alreadyRead: snap.completed.has(r.textId) }] : []; }),

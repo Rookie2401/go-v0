@@ -37,6 +37,12 @@ export const NO_HELP_SHARE = 0.95;
 export const STAGE0_READY_SHARE = 0.8;
 /** Between two texts the clock jumps this far: more than GoLearn's sitting gap (30 min), so each text is its own sitting. */
 const SITTING_JUMP_MINUTES = 45;
+/**
+ * The simulated reading pace (words per calendar day) that turns words read into elapsed days for forgetting: about 20 to 30 minutes
+ * of reading a day for a learner at this stage. An assumption of the model, overridable (`wordsPerDay`, `--words-per-day`).
+ */
+export const SIM_WORDS_PER_DAY = 2000;
+const DAY_MINUTES = 1440;
 
 // ───────────────────────────── analysing a stored text ─────────────────────────────
 
@@ -147,10 +153,14 @@ interface ReadResult {
   withHelp: number; withoutHelp: number; newMet: number; newKnown: number;
 }
 
-interface Tally { cumWords: number; milestones: Record<string, number | null>; learner: SimLearner }
+interface Tally { cumWords: number; milestones: Record<string, number | null>; learner: SimLearner; wordsPerDay: number }
+
+/** The learner's simulated day: the words read so far at the reading pace. Called before anything is judged against the clock. */
+const syncDay = (tally: Tally) => tally.learner.advanceTo(tally.cumWords / tally.wordsPerDay);
 
 async function readAnalysed(a: Analysed, emitter: Emitter, tally: Tally): Promise<ReadResult> {
   const { learner } = tally;
+  syncDay(tally);
   const cov3 = learner.coverage(a.words);
   let lookups = 0, withHelp = 0, withoutHelp = 0, newMet = 0, newKnown = 0, knownAtRead = 0, seen = 0;
   await emitter.opened();
@@ -198,17 +208,24 @@ export async function runSimulation(engine: SimEngine, options: SimOptions): Pro
   const t0 = Date.now();
   const { lang } = engine;
   const lemmas = new LemmaIndex();
-  const learner = new SimLearner();
+  const decay = options.decay !== false;
+  const wordsPerDay = options.wordsPerDay ?? SIM_WORDS_PER_DAY;
+  if (!(wordsPerDay > 0)) throw new Error('wordsPerDay must be positive');
+  const learner = new SimLearner({ decay });
   const fluff = new FluffTracker(lang);
   const rows: SimRow[] = [];
   const skipped: SkipRecord[] = [];
-  const tally: Tally = { cumWords: 0, milestones: Object.fromEntries(MILESTONES.map((m) => [String(m), null])), learner };
+  const tally: Tally = { cumWords: 0, milestones: Object.fromEntries(MILESTONES.map((m) => [String(m), null])), learner, wordsPerDay };
   const readBefore = new Set<string>();
   let stage0Info: SimRun['stage0'];
   const timing = { recommendMs: 0, openMs: 0, stage0Ms: 0, readMs: 0 };
 
   const push = (r: Omit<SimRow, 'n' | 'cumWords' | 'cumKnown' | 'cumMet'>): SimRow => {
-    const row: SimRow = { ...r, n: rows.length + 1, cumWords: tally.cumWords, cumKnown: learner.known, cumMet: learner.met };
+    const row: SimRow = {
+      ...r, n: rows.length + 1, cumWords: tally.cumWords, cumKnown: learner.known, cumMet: learner.met,
+      // forgetting: what the learner still stands on at the end of this text, and what has decayed (cumKnown stays the lifetime count)
+      cumKnownNow: learner.knownNow, cumDecayed: learner.decayedNow, simDay: round(learner.today, 2),
+    };
     rows.push(row);
     options.onRow?.(row);
     return row;
@@ -300,7 +317,7 @@ export async function runSimulation(engine: SimEngine, options: SimOptions): Pro
     } catch {
       stage0Info = { steps: pack.path.steps.length, lemmas: stage0Lemmas.size, knownShare: round(share), verdict: 'not-run' };
     }
-    engine.clock.jumpMinutes(SITTING_JUMP_MINUTES);
+    engine.clock.jumpMinutes(decay ? Math.max(SITTING_JUMP_MINUTES, Math.round((tally.cumWords / wordsPerDay) * DAY_MINUTES)) : SITTING_JUMP_MINUTES);
   }
   timing.stage0Ms = Date.now() - tS0;
 
@@ -361,6 +378,7 @@ export async function runSimulation(engine: SimEngine, options: SimOptions): Pro
 
     // would another recommendation have taught more? (only worth asking when this one will teach almost nothing)
     let better: SimRow['better'];
+    syncDay(tally);
     const covBefore = learner.coverage(a.words);
     if (covBefore >= 0.995 && engine.profileOf) {
       for (const other of recs) {
@@ -391,12 +409,13 @@ export async function runSimulation(engine: SimEngine, options: SimOptions): Pro
       reason: rec.reason, explanation: short(rec.explanation), ...statsOf(textId, a),
       lowYield: rr.cov3 >= 0.995 && core.yieldPer1000 < 1 && rr.words >= 200 && better !== undefined, ...(better ? { better } : {}),
     });
-    engine.clock.jumpMinutes(SITTING_JUMP_MINUTES);
+    // with decay on, the app's own clock follows the reading pace too (so what GoLearn derives from time sees the same weeks); off: the earlier 45 minutes
+    engine.clock.jumpMinutes(decay ? Math.max(SITTING_JUMP_MINUTES, Math.round((rr.words / wordsPerDay) * DAY_MINUTES)) : SITTING_JUMP_MINUTES);
   }
 
   return {
     lang, mode: options.includeUnpublished ? 'preview' : 'normal',
-    options: { includeUnpublished: options.includeUnpublished, maxWords: options.maxWords, maxTexts: options.maxTexts, maxMinutes: options.maxMinutes, limit, ...(options.skipRereads ? { skipRereads: true } : {}) },
+    options: { includeUnpublished: options.includeUnpublished, maxWords: options.maxWords, maxTexts: options.maxTexts, maxMinutes: options.maxMinutes, limit, ...(options.skipRereads ? { skipRereads: true } : {}), decay, wordsPerDay },
     substitutions: engine.substitutions, stop, rows, skipped, milestones: tally.milestones, ...(stage0Info ? { stage0: stage0Info } : {}), elapsedMs: Date.now() - t0, timing,
   };
 }

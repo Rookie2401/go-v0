@@ -12,7 +12,7 @@
  */
 import type { AssistanceLevel, AudioSourceType, ItemKind, LanguageCode, Modality, ProductionKind } from './model';
 import type { AssistanceStep, SelectionExplanation, SemanticGoal, TaskFamily, TellAttemptRecord } from './contracts/gotell-practice';
-import type { Stage0AudioSource, Stage0Channel, Stage0DecodeKind, Stage0ExitResult, Stage0ExitSection, Stage0ProductionKind, Stage0Support } from './contracts/stage0';
+import type { Stage0AudioSource, Stage0Channel, Stage0DecodeKind, Stage0ExitResult, Stage0ExitSection, Stage0ProductionKind, Stage0SelfCheck, Stage0Support } from './contracts/stage0';
 
 export type Surface = 'corpus' | 'scripture' | 'testimony' | 'listen' | 'home';
 
@@ -70,6 +70,16 @@ export interface ComprehensionReported extends Base {
 }
 /** EXPLICIT completion: the learner pressed "I have finished reading". Never inferred from views. */
 export interface TextCompleted extends Base { type: 'TextCompleted'; textId: string; contentVersion?: number }
+/**
+ * The result of an unseen-text check (src/golearn/assessment.ts, R7): `promptsRight` of `promptsTotal` recall prompts answered right
+ * on a held-out text picked at `coverageAtPick` (0..1, names left out). READINESS DATA ONLY: it is read by `stageReadiness` and by the
+ * status line, it is never item evidence (GoLearn's folder does not handle it), and it is never a level or a certificate.
+ */
+export interface UnseenCheckRecorded extends Base {
+  type: 'UnseenCheckRecorded'; textId: string; promptsRight: number; promptsTotal: number; coverageAtPick: number;
+  /** The stage the learner was working at when the check was taken, when known. */
+  stageId?: string;
+}
 export interface PassageCompleted extends Base { type: 'PassageCompleted'; textId: string; sentenceIds: string[]; mode: Modality }
 export interface ItemMarked extends Base { type: 'ItemMarked'; itemId: string; itemKind: ItemKind; mark: 'known' | 'unknown' | 'clear' }
 export interface FormSearched extends Base { type: 'FormSearched'; query: string; itemId?: string }
@@ -201,21 +211,23 @@ export interface Stage0SupportUsed extends Stage0Base { type: 'Stage0SupportUsed
 export interface Stage0ProductionAttempted extends Stage0Base {
   type: 'Stage0ProductionAttempted'; taskId: string; kind: Stage0ProductionKind; text: string; accepted: boolean; matched?: string; shown: Stage0Support[];
 }
-/** A spoken attempt: recorded (or not) and compared with the model by the learner himself. Never machine-scored. */
-export interface Stage0SpeakingRecorded extends Stage0Base { type: 'Stage0SpeakingRecorded'; itemId: string; recordingId?: string; selfCheck: 'like-model' | 'different' | 'unsure' }
+/** A spoken retelling: recorded (or not), then compared with the model line by the learner himself ("did you say the same thing?"). Never machine-scored. */
+export interface Stage0SpeakingRecorded extends Stage0Base { type: 'Stage0SpeakingRecorded'; itemId: string; recordingId?: string; selfCheck: Stage0SelfCheck }
+/** The learner opened the path after Stage 0 by his own decision ("I know this already"), without passing the exit's reading section. */
+export interface Stage0PathOverridden extends Stage0Base { type: 'Stage0PathOverridden' }
 export interface Stage0StepCompleted extends Stage0Base { type: 'Stage0StepCompleted' }
 export interface Stage0SettingsChanged extends Stage0Base { type: 'Stage0SettingsChanged'; speakerForm?: 'm' | 'f' }
 /** An exit attempt began: the form's material counts as seen from this moment, even if it is abandoned. */
 export interface Stage0ExitStarted extends Stage0Base { type: 'Stage0ExitStarted'; attemptId: string; formId: string; unseen: boolean; unavailable: Stage0ExitSection[] }
 export interface Stage0ExitAnswered extends Stage0Base {
   type: 'Stage0ExitAnswered'; attemptId: string; section: Stage0ExitSection; itemId: string;
-  correct?: boolean; accepted?: boolean; text?: string; recordingId?: string; selfCheck?: 'like-model' | 'different' | 'unsure'; lookups?: number;
+  correct?: boolean; accepted?: boolean; text?: string; recordingId?: string; selfCheck?: Stage0SelfCheck; lookups?: number;
 }
 export interface Stage0ExitFinished extends Stage0Base { type: 'Stage0ExitFinished'; attemptId: string; result: Stage0ExitResult }
 
 export type DomainEvent =
   | TextViewed | SentenceViewed | TokenHelpOpened | PhraseHelpOpened | GrammarHelpOpened
-  | SentenceExplanationRevealed | EnglishRescueRevealed | SentenceReread | DecodingRevealed | NoteOpened | ComprehensionReported | TextCompleted | PassageCompleted
+  | SentenceExplanationRevealed | EnglishRescueRevealed | SentenceReread | DecodingRevealed | NoteOpened | ComprehensionReported | TextCompleted | PassageCompleted | UnseenCheckRecorded
   | ItemMarked | FormSearched | PhraseEncountered
   | AudioPlayed | AudioSegmentCompleted | AudioReplayed | PhraseReplayed | AudioSeeked | PlaybackSpeedChanged
   | TranscriptRevealed | AudioAbandoned | ListeningPositionSaved | ListeningAssessmentStarted | ListeningAssessmentSubmitted | ShadowingAttempt | UserRecordingCreated
@@ -223,7 +235,7 @@ export type DomainEvent =
   | GoTellSuggestionRejected | GoTellSuggestionEdited | ProductionRecorded | IndependentProductionDetected
   | TellGoalDefined | TellTaskPresented | TellInterventionShown | TellAttemptSubmitted | TellTaskClosed
   | Stage0CheckAnswered | Stage0DecodeAnswered | Stage0SupportUsed | Stage0ProductionAttempted | Stage0SpeakingRecorded
-  | Stage0StepCompleted | Stage0SettingsChanged | Stage0ExitStarted | Stage0ExitAnswered | Stage0ExitFinished;
+  | Stage0StepCompleted | Stage0SettingsChanged | Stage0ExitStarted | Stage0ExitAnswered | Stage0ExitFinished | Stage0PathOverridden;
 
 export type EventType = DomainEvent['type'];
 export type EventOf<T extends EventType> = Extract<DomainEvent, { type: T }>;

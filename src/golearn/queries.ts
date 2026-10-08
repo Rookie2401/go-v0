@@ -11,6 +11,10 @@ import { COMPETING_MARGIN, UNCERTAIN_BELOW, levelAtLeast, productionKindOf } fro
 import type { Ctx } from './state';
 import { byAtThenId, effectiveEstimate, effectiveReadingLevel, emptyDimension } from './state';
 
+// Forgetting (policy.ts DECAY): the pure, read-time standing of an item at a moment. rank.ts calls it (via state.ts or from here).
+export { effectiveStanding, lastMetAt } from './state';
+export type { Standing } from './state';
+
 export type ItemRef = { itemId?: string; surface?: string; lang: LanguageCode };
 
 /** A row as seen by readers: the reading dimension reflects the manual-mark floor/cap (and an unknown mark silences the estimate). */

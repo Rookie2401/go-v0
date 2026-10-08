@@ -16,7 +16,7 @@ import { stage0Config } from './lang';
 
 export const STAGE0_TYPES = [
   'Stage0CheckAnswered', 'Stage0DecodeAnswered', 'Stage0SupportUsed', 'Stage0ProductionAttempted', 'Stage0SpeakingRecorded',
-  'Stage0StepCompleted', 'Stage0SettingsChanged', 'Stage0ExitStarted', 'Stage0ExitAnswered', 'Stage0ExitFinished',
+  'Stage0StepCompleted', 'Stage0SettingsChanged', 'Stage0ExitStarted', 'Stage0ExitAnswered', 'Stage0ExitFinished', 'Stage0PathOverridden',
 ] as const;
 export type Stage0Event = Extract<DomainEvent, { type: (typeof STAGE0_TYPES)[number] }>;
 
@@ -46,6 +46,8 @@ export interface Stage0State {
   speakerForm?: 'm' | 'f';
   checks: Stage0CheckAnswered[];
   exits: Array<{ started: Stage0ExitStarted; answers: Stage0ExitAnswered[]; finished?: Stage0ExitFinished }>;
+  /** The learner opened the path after Stage 0 himself (the first such decision). */
+  override?: { at: string };
   meters: Stage0Meters;
 }
 
@@ -62,6 +64,7 @@ export function foldStage0(lang: LanguageCode, events: DomainEvent[]): Stage0Sta
   const exits: Stage0State['exits'] = [];
   const production: Partial<Record<Stage0ProductionKind, { accepted: number; attempts: number }>> = {};
   let speakerForm: 'm' | 'f' | undefined;
+  let override: { at: string } | undefined;
   let recorded = 0;
   const feature = (f: string) => {
     let s = features.get(f);
@@ -107,6 +110,7 @@ export function foldStage0(lang: LanguageCode, events: DomainEvent[]): Stage0Sta
       case 'Stage0SpeakingRecorded': st.speaking.push(e); if (e.recordingId) recorded++; break;
       case 'Stage0StepCompleted': st.completed = true; st.completedAt = e.at; break;
       case 'Stage0SettingsChanged': if (e.speakerForm) speakerForm = e.speakerForm; break;
+      case 'Stage0PathOverridden': override ??= { at: e.at }; break;
       case 'Stage0ExitStarted': exits.push({ started: e, answers: [] }); break;
       case 'Stage0ExitAnswered': exits.find((x) => x.started.attemptId === e.attemptId)?.answers.push(e); break;
       case 'Stage0ExitFinished': { const x = exits.find((y) => y.started.attemptId === e.attemptId); if (x) x.finished = e; break; }
@@ -133,7 +137,7 @@ export function foldStage0(lang: LanguageCode, events: DomainEvent[]): Stage0Sta
       window: recent.length,
     },
   };
-  return { lang, steps, features, segmentation, ...(speakerForm ? { speakerForm } : {}), checks, exits, meters };
+  return { lang, steps, features, segmentation, ...(speakerForm ? { speakerForm } : {}), ...(override ? { override } : {}), checks, exits, meters };
 }
 
 /** Supports used for these lines in the step's current visit (since it was last completed). */
@@ -141,6 +145,17 @@ export function supportsInVisit(state: Stage0State, stepId: string, lineIds: str
   const st = state.steps.get(stepId);
   if (!st) return [];
   return st.supports.filter((s) => (!st.completedAt || s.at > st.completedAt) && s.lineIds.some((l) => lineIds.includes(l)));
+}
+
+/**
+ * A scene step is SECURE (counts toward the exit) when every one of its comprehension checks has been answered and the latest
+ * answer to each is right. The step player asks a wrong answer again, so the latest answer is the one that stands. A scene
+ * with no checks has nothing to be secure about and is not blocked.
+ */
+export function checksSecure(scene: { checks: ReadonlyArray<{ id: string }> }, facts: Stage0StepFacts | undefined): { secure: boolean; right: number; total: number } {
+  const total = scene.checks.length;
+  const right = scene.checks.filter((c) => facts?.checks.get(c.id)?.correct === true).length;
+  return { secure: right === total, right, total };
 }
 
 export type { Stage0StepCompleted };

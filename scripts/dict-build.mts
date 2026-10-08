@@ -14,6 +14,7 @@ import fs from 'node:fs';
 import { LANGUAGES, type LanguageCode } from '../src/core';
 import { DROP_FORM_PRONUNCIATIONS } from '../src/dict/build';
 import { buildDictionaryFile } from '../src/dict/build-node';
+import { repatchManifestFrequency } from '../src/dict/frequency-node';
 import { KAIKKI_SKIPS } from '../src/dict/map';
 
 const USAGE = 'usage: npm run dict:build -- --in <file.jsonl> --lang th [--out public/dict] [--date YYYY-MM-DD] [--source-url <url>] [--last-modified YYYY-MM-DD] [--retrieved YYYY-MM-DD]';
@@ -45,6 +46,8 @@ try {
     source: { url: opt['source-url'], lastModified: opt['last-modified'], retrievedAt: opt.retrieved },
   });
   const s = r.stats;
+  // a frequency sidecar from an earlier run (scripts/library-frequency.mts) survives a rebuild; the manifest says so again
+  const keptFrequency = repatchManifestFrequency(r.dir);
   const nonWord = Object.entries(s.nonWord).map(([k, v]) => `${k} ${v}`).join(', ');
   console.log(`dict:build - ${r.manifest.id} (schema ${r.manifest.schema})`);
   console.log(`  input lines:      ${s.lines} (+ ${s.blank} blank)`);
@@ -60,6 +63,7 @@ try {
   if (s.largestShardBytes > 250_000) console.log('  warning:          the largest shard is over 250 kB (a few very heavy forms); consider a raise of the bucket target');
   console.log(`  source:           ${r.manifest.source?.file}, ${r.manifest.source?.lines} lines, sha256 ${r.manifest.source?.sha256}`);
   console.log(`  attribution:      ${r.manifest.attribution}`);
+  console.log(`  frequency:        ${keptFrequency ? 'frequency.json kept, hasFrequency true' : 'none (npm run library:frequency -- <lang> writes it)'}`);
   console.log(`  build time:       ${Date.now() - t0} ms`);
   console.log(`  peak memory:      ${Math.round(process.resourceUsage().maxRSS / 1024)} MB (resident set, this process)`);
 } catch (e) {

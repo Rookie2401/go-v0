@@ -4,7 +4,8 @@
  * (one language, one course) behind every stream, and a variety policy whose active target is Honduras.
  */
 import { describe, expect, it } from 'vitest';
-import { COURSES, DEFAULT_ASSISTANCE, varietyStanding } from '../../src/core';
+import { COURSES, varietyStanding } from '../../src/core';
+import { SPANISH_ASSISTANCE } from '../../src/course/spanish';
 import type { Variety } from '../../src/core';
 import { SPANISH_COURSE_ID, SPANISH_DOORS, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS } from '../../src/course/spanish';
 
@@ -18,11 +19,11 @@ describe('Spanish catalogue', () => {
     expect(new Set(SPANISH_WORKS.map((w) => `${w.courseId}|${w.lang}`))).toEqual(new Set([`${SPANISH_COURSE_ID}|es`]));
   });
 
-  it('shelves are an orientation: every one is a shelf with the ordinary reader, none is a gate', () => {
+  it('shelves are an orientation: every one is a shelf whose help fades along them (the default word sheet is only for no shelf), none is a gate', () => {
     expect(SPANISH_SHELVES.map((s) => s.key)).toEqual(['s0', 's1', 's2', 's3', 's4', 's5', 's6', 's7']);
     for (const s of SPANISH_SHELVES) {
       expect(s.kind, s.label).toBe('shelf');
-      expect(s.assistance, s.label).toEqual(DEFAULT_ASSISTANCE);
+      expect(s.assistance, s.label).toEqual(SPANISH_ASSISTANCE[s.key]);
     }
   });
 

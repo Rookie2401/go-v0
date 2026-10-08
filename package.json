@@ -43,6 +43,7 @@
     "sq:gold": "vite-node --config scripts/vite.config.ts scripts/sq-gold.mts",
     "authoring:report": "vite-node --config scripts/vite.config.ts scripts/authoring-report.mts",
     "authoring:check": "vite-node --config scripts/vite.config.ts scripts/authoring-check.mts",
+    "library:frequency": "vite-node --config scripts/vite.config.ts scripts/library-frequency.mts",
     "library:build": "vite-node --config scripts/vite.config.ts scripts/library-build.mts",
     "library:check": "vite-node --config scripts/vite.config.ts scripts/check-course-libraries.mts",
     "tones:eval": "vite-node --config scripts/vite.config.ts scripts/eval-tones-kaikki.mts",

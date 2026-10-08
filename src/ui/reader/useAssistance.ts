@@ -21,7 +21,11 @@ export function useAssistance(textId: string): AssistanceProfile | null {
       let profile = DEFAULT_ASSISTANCE;
       try {
         const current = await catalog.currentStage(userId, course.id);
-        profile = (await catalog.assistanceFor({ courseId: course.id, textId, currentStageId: current?.id })) ?? DEFAULT_ASSISTANCE;
+        // The shelf a learner is working at is for readiness and the course page: it never sets the help of a text (a text on a
+        // shelf has its shelf's profile, a ladder unit its stage's, a text on no shelf its course's off-shelf profile, e.g. Hindi's
+        // romanization rescue), so only a stage of a ladder (Thai, Albanian) is passed on.
+        const stageId = current && current.kind !== 'shelf' ? current.id : undefined;
+        profile = (await catalog.assistanceFor({ courseId: course.id, textId, currentStageId: stageId })) ?? DEFAULT_ASSISTANCE;
       } catch { /* the ladder is a convenience: a failing catalogue leaves the reader as it always was */ }
       if (live) setState({ key, profile });
     })();

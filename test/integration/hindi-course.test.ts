@@ -61,7 +61,8 @@ describe('shelves, not locks; real Hindi from the first page', () => {
     const streams = await catalog.streams(HINDI_COURSE_ID);
     expect(streams).toHaveLength(9);
     expect(streams.filter((s) => !s.available).map((s) => s.key)).toEqual(['listening']);
-    expect(await catalog.currentStage(U, HINDI_COURSE_ID)).toBeUndefined();
+    // a shelf course has a current stage by the rule the stage courses use (the first shelf not ready); nothing locks
+    expect((await catalog.currentStage(U, HINDI_COURSE_ID))!.key).toBe('s0a');
   });
 
   it('romanization is a rescue on the first shelves only and is never the default line; decoding the script comes first at Stage 0', async () => {

@@ -17,7 +17,7 @@ import type {
   AdapterRegistry, AppStore, DecodingRevealed, EnglishRescueRevealed, EventBus, LanguageCode, ProductionKind, ProductionRecorded, SentenceViewed,
   ComprehensionReported, Stage0AudioSource, Stage0Channel, Stage0CheckAnswered, Stage0DecodeAnswered, Stage0ExitAnswered, Stage0ExitFinished,
   Stage0ExitResult, Stage0ExitSection, Stage0ExitStarted, Stage0Meters, Stage0PathStep, Stage0ProductionAttempted, Stage0Service,
-  Stage0SettingsChanged, Stage0SpeakingRecorded, Stage0StepCompleted, Stage0StepView, Stage0Support, Stage0SupportUsed, TokenHelpOpened, UserRecordingCreated,
+  Stage0PathOverridden, Stage0SettingsChanged, Stage0SpeakingRecorded, Stage0StepCompleted, Stage0StepView, Stage0Support, Stage0SupportUsed, TokenHelpOpened, UserRecordingCreated,
   NoteOpened, GoLearn,
 } from '../core';
 import { importDocuments } from '../ingest';
@@ -25,11 +25,11 @@ import type { Stage0Pack, Stage0World } from './content';
 import { bundledStage0, stepTitle } from './content';
 import { lineSentenceId, sceneDocument, sceneTextId } from './documents';
 import { pathCoverage } from './coverage';
-import { chooseForm, scoreExit, unavailableSections } from './exit';
+import { chooseForm, ladderOpening, scoreExit, unavailableSections } from './exit';
 import { presentation as decidePresentation } from './fading';
 import { featuresOfWord, wordsOf } from './features';
 import { matchAnswer } from './match';
-import { STAGE0_TYPES, foldStage0, supportsInVisit } from './state';
+import { STAGE0_TYPES, checksSecure, foldStage0, supportsInVisit } from './state';
 import type { Stage0State } from './state';
 import type { Stage0Overview } from '../core';
 
@@ -166,12 +166,19 @@ export function createStage0(deps: Stage0Deps): Stage0ServiceImpl {
       }
       const scene = p.scenes.get(step.ref!);
       const all = scene?.checks ?? [];
+      // A scene counts toward the exit only when its checks are SECURE: every comprehension check's latest answer is right
+      // (the step player asks a wrong one again). A step finished or left with one still wrong stays "started" and is marked.
+      const cs = checksSecure({ checks: all }, facts);
+      const counts = facts.completed && cs.secure;
+      const notSecure = !cs.secure && (facts.completed || facts.checks.size > 0);
       const unaided = all.filter((c) => { const a = facts.checks.get(c.id); return a?.correct && !a.rescuedBefore; }).length;
       const tasks = scene?.production ?? [];
       const made = tasks.filter((t) => facts.production.get(t.id)?.some((x) => x.accepted)).length;
-      const secure = facts.completed && all.length > 0 && unaided === all.length && made === tasks.length;
-      const detail = `${unaided} of ${all.length} understood without English${tasks.length ? `; ${made} of ${tasks.length} said yourself` : ''}.`;
-      return { step, title, status: secure ? 'secure' : facts.completed ? 'done' : 'started', detail };
+      const secure = counts && all.length > 0 && unaided === all.length && made === tasks.length;
+      const detail = notSecure
+        ? `Not secure yet: ${cs.right} of ${cs.total} questions answered right. It does not count toward the check until every question is right — open it and try the questions again.`
+        : `${unaided} of ${all.length} understood without English${tasks.length ? `; ${made} of ${tasks.length} said yourself` : ''}.`;
+      return { step, title, status: secure ? 'secure' : counts ? 'done' : 'started', detail, checksSecure: cs.secure, counts, notSecure };
     };
 
     const api: Stage0ServiceImpl = {
@@ -199,10 +206,12 @@ export function createStage0(deps: Stage0Deps): Stage0ServiceImpl {
         assertActor(userId);
         const p = content.packs.get(lang);
         const emptyMeters: Stage0Meters = { decoding: { secure: 0, met: 0, total: 0 }, readingIndependence: { unaided: 0, answered: 0 }, listening: { native: { correct: 0, answered: 0 }, computerVoice: { correct: 0, answered: 0 } }, production: {}, speaking: { recorded: 0 }, constructions: { met: 0, recognized: 0, produced: 0, total: 0 }, supportDependence: { english: 0, transliteration: 0, window: 0 } };
-        if (!p) return { lang, available: false, contentStatus: 'No Stage 0 for this language yet.', steps: [], meters: emptyMeters, after: [] };
+        if (!p) return { lang, available: false, contentStatus: 'No Stage 0 for this language yet.', steps: [], meters: emptyMeters, after: [], ladder: { open: false } };
         const st = await readState(userId, lang);
         const steps = p.path.steps.map((s) => stepView(p, st, s));
-        const next = steps.find((s) => s.status === 'new' || s.status === 'started');
+        // Continue: the first step not yet begun or in progress; a step left "not secure yet" comes back after those, before the check.
+        const open = (s: Stage0StepView) => s.status === 'new' || s.status === 'started';
+        const next = steps.find((s) => s.step.kind !== 'exit' && open(s) && !s.notSecure) ?? steps.find((s) => s.notSecure) ?? steps.find(open);
         const items = [...p.scenes.values(), ...p.sounds.values(), ...p.exits.values()];
         const reviewed = items.filter((x) => x.provenance.review.status === 'reviewed').length;
         const contentStatus = reviewed === items.length ? 'Reviewed by a native speaker.' : reviewed === 0
@@ -226,7 +235,8 @@ export function createStage0(deps: Stage0Deps): Stage0ServiceImpl {
         }
         return {
           lang, available: true, contentStatus, steps,
-          ...(next ? { next: next.step, nextReason: next.status === 'started' ? 'You started this one.' : 'Next on the path.' } : {}),
+          ...(next ? { next: next.step, nextReason: next.notSecure ? 'Not secure yet: try its questions again.' : next.status === 'started' ? 'You started this one.' : 'Next on the path.' } : {}),
+          ladder: ladderOpening(st),
           meters: { ...st.meters, decoding: { ...st.meters.decoding, total: totalFeatures(lang) }, constructions: constructionMeter(p, st) },
           ...(st.speakerForm ? { speakerForm: st.speakerForm } : {}),
           ...(lastExit ? { exit: lastExit } : {}),
@@ -384,6 +394,12 @@ export function createStage0(deps: Stage0Deps): Stage0ServiceImpl {
         assertActor(userId);
         stepOf(lang, stepId);
         await bus.emit<Stage0StepCompleted>({ type: 'Stage0StepCompleted', ...base(userId, lang, unique(userId, 'done')), stepId });
+      },
+
+      async overridePath(userId, lang) {
+        assertActor(userId);
+        pack(lang);
+        await bus.emit<Stage0PathOverridden>({ type: 'Stage0PathOverridden', ...base(userId, lang, unique(userId, 'override')), stepId: 'override' });
       },
 
       exitForm: (lang, formId) => content.packs.get(lang)?.exits.get(formId),

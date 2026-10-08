@@ -10,7 +10,7 @@ import type {
   LanguageCode, LearnerItemState, LearnerLevel, Modality, ProductionKind,
 } from '../core';
 import { ids } from '../core';
-import { ESTIMATE, confidenceFor, levelIndex, toLevel } from './policy';
+import { DECAY, DECAY_MS, ESTIMATE, confidenceFor, levelIndex, toLevel } from './policy';
 
 export interface Ctx {
   store: AppStore;
@@ -253,4 +253,62 @@ export function effectiveEstimate(state: LearnerItemState | undefined): boolean 
   if (!state || !state.reading.estimatedFamiliar) return false;
   if (state.manualMark === 'unknown') return false;
   return levelIndex(effectiveReadingLevel(state)) < levelIndex('recognized');
+}
+
+// ───────────────────────────── forgetting (audit item 5; policy.ts DECAY) ─────────────────────────────
+
+/**
+ * When the item was last MET: the latest of its receptive encounters (`lastSeenAt`: reading or listening, help or no help) and the
+ * latest evidence of any dimension (a production, which is where a correct unaided recall is recorded). Derived from dates the stored
+ * row already has; undefined for a row with no dated evidence (e.g. a bare manual mark, or an old row).
+ */
+export function lastMetAt(state: LearnerItemState | undefined): string | undefined {
+  if (!state) return undefined;
+  let best: string | undefined;
+  for (const at of [state.lastSeenAt, state.reading.lastEvidenceAt, state.listening.lastEvidenceAt, state.writing.lastEvidenceAt, state.speaking.lastEvidenceAt]) {
+    if (at && (best === undefined || at > best)) best = at;
+  }
+  return best;
+}
+
+/**
+ * What an item counts for in coverage AT A MOMENT. `weight`: 1 = standing (recognized / rapid, "likely familiar", or marked known);
+ * 0.5 = known or estimated once but not met for `DECAY.weeks` ("met before, decayed": half credit); 0 = not standing (and, with
+ * `DECAY.halfCredit` false, a decayed item). `level` is the READING level the decayed standing amounts to (`encountered` once decayed,
+ * else the effective level); `storedLevel` is what the evidence made it. The stored row is never changed.
+ */
+export interface Standing {
+  level: LearnerLevel;
+  storedLevel: LearnerLevel;
+  decayed: boolean;
+  weight: 1 | 0.5 | 0;
+  /** The item stands as "likely familiar" (an estimate, not a demonstration) and has not expired. */
+  estimated: boolean;
+  /** Whole days since the item was last met (when it has a date). */
+  idleDays?: number;
+}
+
+const DAY_MS = 86_400_000;
+
+/**
+ * The reading standing of an item at `now` (an ISO time, epoch milliseconds or a Date): pure, read-time, no migration. Decay applies to
+ * `recognized` / `rapid` and to the "likely familiar" estimate alike, after `DECAY.weeks` without ANY encounter (reading, listening or a
+ * recall); a newer encounter restores full credit. A manual `known` mark is the learner's own declaration and never decays. An item
+ * without a date cannot be judged stale and keeps its standing.
+ */
+export function effectiveStanding(state: LearnerItemState | undefined, now: string | number | Date): Standing {
+  const storedLevel = state?.reading.level ?? 'unseen';
+  const level = effectiveReadingLevel(state);
+  const known = levelIndex(level) >= levelIndex('recognized');
+  const estimated = effectiveEstimate(state);
+  if (!state || (!known && !estimated)) return { level, storedLevel, decayed: false, weight: 0, estimated: false };
+
+  const at = lastMetAt(state);
+  const nowMs = now instanceof Date ? now.getTime() : typeof now === 'number' ? now : Date.parse(now);
+  const lastMs = at === undefined ? NaN : Date.parse(at);
+  if (state.manualMark === 'known' || !Number.isFinite(lastMs) || !Number.isFinite(nowMs)) return { level, storedLevel, decayed: false, weight: 1, estimated };
+  const idle = nowMs - lastMs;
+  const idleDays = Math.max(0, Math.floor(idle / DAY_MS));
+  if (idle < DECAY_MS) return { level, storedLevel, decayed: false, weight: 1, estimated, idleDays };
+  return { level: 'encountered', storedLevel, decayed: true, weight: DECAY.halfCredit ? 0.5 : 0, estimated: false, idleDays };
 }

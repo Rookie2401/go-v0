@@ -1,0 +1,16 @@
+/* Recall prompts at the end of a text (Prompts.tsx): quiet, optional, one at a time. */
+.reader__prompts { margin: 1.2rem 0; padding: 0.9rem 1rem; border: 1px solid var(--rule); border-radius: 10px; background: var(--paper-raised); text-align: left; }
+.reader__prompts .prompt__head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.reader__prompts .prompt__ask { margin: 0.6rem 0 0.3rem; font-weight: 600; color: var(--ink-soft); font-size: 0.95rem; }
+.reader__prompts .prompt__sentence { margin: 0.3rem 0 0.6rem; font-size: 1.1rem; line-height: 1.6; color: var(--ink); }
+.reader__prompts .prompt__blank { display: inline-block; min-width: 3.5em; border-bottom: 2px solid var(--accent-soft); margin: 0 0.15em; text-align: center; color: var(--ink-faint); }
+.reader__prompts .prompt__choices { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.4rem 0; }
+.reader__prompts .prompt__choices button { border: 1px solid var(--rule-strong); color: var(--ink); border-radius: 999px; padding: 0.35rem 0.95rem; font-size: 1rem; background: transparent; }
+.reader__prompts .prompt__choices button:hover:not(:disabled) { border-color: var(--accent-soft); }
+.reader__prompts .prompt__choices button[aria-pressed='true'] { background: var(--accent); border-color: var(--accent); color: #fdfaf3; }
+.reader__prompts .prompt__feedback { margin: 0.4rem 0; font-size: 0.95rem; color: var(--ink-soft); }
+.reader__prompts .prompt__actions { display: flex; gap: 0.8rem; align-items: center; margin-top: 0.5rem; }
+.reader__howmuch .segmented button.is-suggested:not([aria-pressed='true']) { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent); }
+@media (max-width: 640px) {
+  .reader__prompts .prompt__choices button { min-height: 2.75rem; }
+}

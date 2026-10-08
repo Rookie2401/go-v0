@@ -47,6 +47,8 @@ const stage0Fake = (done: boolean) => ({
   available: () => true,
   overview: async () => ({
     lang: 'es', available: true, contentStatus: 'draft', meters: {}, after: [],
+    // the ladder opens by the exit's reading section (or the learner's override), not by finished scenes
+    ladder: done ? { open: true, by: 'exit' } : { open: false },
     steps: [{ step: { id: 's1', kind: 'scene', ref: 's1' }, title: 's1', status: done ? 'done' : 'new', detail: '' }, { step: { id: 's2', kind: 'scene', ref: 's2' }, title: 's2', status: done ? 'secure' : 'new', detail: '' }],
   }),
 }) as never;
@@ -163,10 +165,10 @@ describe('the registered path source in GoLearn\'s recommendations (real bootstr
     const wording = (recs: Array<{ explanation: string }>) => recs.map((r) => r.explanation).find((e) => e.startsWith('Next on your path'));
     // Stage 0 not done: the ladder offers nothing here (the path page says why)
     expect(wording(await boot.services.golearn.recommend(userId, { includeUnpublished: true }))).toBeUndefined();
-    // an exit result with any verdict makes Stage 0 done
+    // an exit result whose reading section passed (here with an overall "not yet") makes Stage 0 done
     const base = { userId, lang: 'sq' as const, surface: 'corpus' as const, session: 's', stepId: 'exit' };
     await boot.services.bus.emit<Stage0ExitStarted>({ ...base, type: 'Stage0ExitStarted', dedupeKey: 'x1', attemptId: 'a1', formId: 'f1', unseen: true, unavailable: [] });
-    await boot.services.bus.emit<Stage0ExitFinished>({ ...base, type: 'Stage0ExitFinished', dedupeKey: 'x2', attemptId: 'a1', result: { attemptId: 'a1', formId: 'f1', startedAt: 't', unseen: true, sections: [], verdict: 'not-yet' } });
+    await boot.services.bus.emit<Stage0ExitFinished>({ ...base, type: 'Stage0ExitFinished', dedupeKey: 'x2', attemptId: 'a1', result: { attemptId: 'a1', formId: 'f1', startedAt: 't', unseen: true, sections: [{ section: 'reading', status: 'passed', detail: '' }, { section: 'writing', status: 'not-yet', detail: '' }], verdict: 'not-yet' } });
     const preview = await boot.services.golearn.recommend(userId, { includeUnpublished: true });
     expect(wording(preview)).toContain(`"${title}"`);
     // outside preview a draft is not offered as the next step

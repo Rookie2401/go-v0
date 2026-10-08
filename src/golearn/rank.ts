@@ -23,11 +23,12 @@
  * Every result carries its reasons in plain words, the most important first. Deterministic: ties are broken by text id.
  */
 import type { LearnerItemState, ProfileScore, RankCandidate, RankOptions, RankedText, TextProfile } from '../core';
-import { RANKING, REACH, WHOLE_RANKING, levelAtLeast } from './policy';
+import type { FrequencyTable } from '../dict/frequency';
+import { ORPHAN_BOOST, RANKING, REACH, WHOLE_RANKING, levelAtLeast } from './policy';
 import { rowsByItemId, scoreProfile } from './personal';
 import { productiveGaps } from './productive';
 import type { LemmaReadings } from './personal';
-import { effectiveEstimate, effectiveReadingLevel } from './state';
+import { effectiveEstimate, effectiveReadingLevel, effectiveStanding } from './state';
 import type { Ctx } from './state';
 import { pct1, plural } from './util';
 
@@ -75,7 +76,22 @@ async function workKeys(ctx: Ctx, candidates: RankCandidate[]): Promise<Map<stri
 export interface RankSignals {
   recentGroups?: readonly string[];
   listenEligible?: ReadonlySet<string>;
+  /**
+   * CORPUS FREQUENCY of the language (R9: the dictionary's frequency.json, counted from the installed library). When given, usefulUnknown
+   * counts a never-met lemma as useful when it is COMMON in the corpus (at least USEFUL_PER_MILLION per million words; a lemma the table
+   * does not list is rare), instead of when it recurs in the unread shortlist. Absent (the table, or its `size` is 0) => the
+   * in-shortlist document frequency, exactly as before. Overrides the default set by setCorpusFrequencySource.
+   */
+  frequency?: Pick<FrequencyTable, 'size' | 'get'>;
 }
+
+/** A lemma at least this common (occurrences per million words of the library) counts as a word worth learning for usefulUnknown. */
+export const USEFUL_PER_MILLION = 20;
+
+type FrequencyLookup = Pick<FrequencyTable, 'size' | 'get'>;
+let corpusFrequencyOf: ((lang: string) => FrequencyLookup | undefined | Promise<FrequencyLookup | undefined>) | undefined;
+/** The app's one-line wiring: which frequency table a language has (undefined => none). `undefined` clears it; tests do. */
+export const setCorpusFrequencySource = (f: ((lang: string) => FrequencyLookup | undefined | Promise<FrequencyLookup | undefined>) | undefined): void => { corpusFrequencyOf = f; };
 export type ExtraKey = keyof typeof WHOLE_RANKING.weights;
 /**
  * `reach` turns on the RECOMMENDATION measure (REACH in policy.ts; used by `recommend`, never by the lists the learner browses):
@@ -83,7 +99,18 @@ export type ExtraKey = keyof typeof WHOLE_RANKING.weights;
  * (below it a text is offered only when nothing is in reach, and then said to be above his level), and the soft cap on Scripture
  * (`scriptureShare`: its share of what he read lately).
  */
-export type RankOptionsWhole = RankOptions & { signals?: RankSignals; reach?: { scriptureShare?: number } };
+export type RankOptionsWhole = RankOptions & {
+  signals?: RankSignals;
+  reach?: {
+    scriptureShare?: number;
+    /**
+     * ORPHANS of the ladder (the gate's `orphansOf`, src/ladder/orphans.ts): lemma words the ladder introduces and never meets again.
+     * A candidate that contains ORPHAN_BOOST.minLemmas or more of them that the learner has met in reading is lifted, by at most
+     * ORPHAN_BOOST.max, as natural reinforcement. Absent ⇒ nothing changes.
+     */
+    orphans?: ReadonlySet<string>;
+  };
+};
 export type RankedTextWhole = RankedText & { extra?: Partial<Record<ExtraKey, number>>; reach?: ReachInfo };
 /** A candidate that says whether it is Scripture (its primary stream is not the only way to be one). */
 export type RankCandidateWhole = RankCandidate & { scripture?: boolean };
@@ -114,17 +141,60 @@ export interface Reach {
 }
 /** 0 in reach and teaches · 1 in reach but teaches (almost) nothing · 2 out of reach. */
 export type ReachTier = 0 | 1 | 2;
-export type ReachInfo = Reach & { tier: ReachTier; aboveLevel: boolean; scripturePenalty: number };
+export type ReachInfo = Reach & {
+  tier: ReachTier; aboveLevel: boolean; scripturePenalty: number;
+  /** The floor this text was judged against: REACH.floor (controlled / adapted) or REACH.floorAuthentic (library, Scripture). */
+  floor: number;
+  /** Ladder orphans this text brings back (met in reading) and the score lift they gave; present only when the lift applied. */
+  orphans?: { count: number; boost: number; examples: string[] };
+};
 
 const NAME_LEMMA = /:(?:PROPN|NUM)$/;
 
-/** The tier of a measure: out of reach below the floor, else low-yield below `minYield` (a measure without yield is never low-yield). */
-export const reachTier = (r: Pick<Reach, 'coverage' | 'yield'>): ReachTier =>
-  r.coverage < REACH.floor ? 2 : r.yield !== undefined && r.yield < REACH.minYield ? 1 : 0;
+/**
+ * The tier of a measure: out of reach below the floor, else low-yield below `minYield` (a measure without yield is never low-yield).
+ * `floor` is REACH.floor unless the text is authentic (see `reachFloor`).
+ */
+export const reachTier = (r: Pick<Reach, 'coverage' | 'yield'>, floor: number = REACH.floor): ReachTier =>
+  r.coverage < floor ? 2 : r.yield !== undefined && r.yield < REACH.minYield ? 1 : 0;
 
-/** `rows` are the learner's LEMMA rows (reading only counts, as everywhere: what was only heard is not read). */
+/**
+ * The floor of a text by what it is. Texts written for the course (controlled and adapted ladder units, Stage 0) keep REACH.floor
+ * (75 %); AUTHENTIC texts - the library and Scripture - are in reach only at REACH.floorAuthentic (85 %). Scripture is authentic even
+ * when the catalogue files it under an acquisition stream.
+ */
+export const reachFloor = (t: { controlled?: boolean; scripture?: boolean }): number =>
+  t.controlled && !t.scripture ? REACH.floor : REACH.floorAuthentic;
+
+/** "lemma:es:hablar:VERB" → "hablar" (the written lemma, lower-cased and NFC, the way the ladder gate keys its lemmas). */
+export const lemmaWord = (lemmaId: string): string => {
+  const m = /^lemma:[^:]+:(.*?)(?::[A-Z]+)?$/.exec(lemmaId);
+  return (m ? m[1] : lemmaId).normalize('NFC').toLowerCase();
+};
+
+/** The ladder orphans a profile brings back that the learner has met in reading (`rows` are his lemma rows), and the lift they earn. */
+export function orphanLift(
+  profile: Pick<TextProfile, 'lemmas'>, rows: ReadonlyMap<string, LearnerItemState>, orphans: ReadonlySet<string>,
+): { count: number; boost: number; examples: string[] } | undefined {
+  const found = new Set<string>();
+  for (const [l] of profile.lemmas) {
+    const w = lemmaWord(l);
+    if (!orphans.has(w)) continue;
+    const r = rows.get(l);
+    if (r && (r.reading.level !== 'unseen' || r.manualMark === 'known')) found.add(w); // met in reading, or marked known by him
+  }
+  if (found.size < ORPHAN_BOOST.minLemmas) return undefined;
+  return { count: found.size, boost: round4(Math.min(ORPHAN_BOOST.max, ORPHAN_BOOST.perLemma * found.size)), examples: [...found].sort().slice(0, 3) };
+}
+
+/**
+ * `rows` are the learner's LEMMA rows (reading only counts, as everywhere: what was only heard is not read). With `now`, standing decays
+ * (state.ts `effectiveStanding`, R2): an item not met for DECAY.weeks counts HALF as known and is not also counted as merely met; without it
+ * (or when nothing is stale) the measure is exactly the undecayed one.
+ */
 export function reachOf(
   profile: TextProfile, rows: ReadonlyMap<string, LearnerItemState>, scored: Pick<ProfileScore, 'knownShare' | 'familiarShare' | 'metShare'>,
+  now?: string | number | Date,
 ): Reach {
   let names = 0;
   let free = 0;
@@ -135,7 +205,13 @@ export function reachOf(
     if (NAME_LEMMA.test(lemma)) { names += n; continue; }
     free += n;
     const row = rows.get(lemma);
-    if (row && (levelAtLeast(effectiveReadingLevel(row), 'recognized') || effectiveEstimate(row))) { known += n; continue; }
+    const weight = row && now !== undefined ? effectiveStanding(row, now).weight
+      : row && (levelAtLeast(effectiveReadingLevel(row), 'recognized') || effectiveEstimate(row)) ? 1 : 0;
+    if (weight > 0) {
+      known += weight * n;
+      if (weight < 1) unknownTypes += 1; // a decayed word is partly to be learned again: it still teaches
+      continue;
+    }
     unknownTypes += 1;
     if (row && row.reading.level !== 'unseen') met += n;
   }
@@ -173,26 +249,30 @@ async function extraParts(ctx: Ctx, userId: string, candidates: RankCandidate[],
   const rows = preloaded ?? (lemmas.size > 0 ? await rowsByItemId(ctx, userId, [...lemmas]) : new Map<string, LearnerItemState>());
   // reading-only: a lemma that was only heard is still unknown for reading
   const unknown = (l: string) => { const r = rows.get(l); return !r || (r.reading.level === 'unseen' && !r.manualMark); };
+  // usefulUnknown: by CORPUS frequency when a table is at hand, else by how many unread candidates carry the lemma (the shortlist)
+  const table = sig.frequency ?? (candidates.length > 0 ? await Promise.resolve(corpusFrequencyOf?.(candidates[0].profile.lang)).catch(() => undefined) : undefined);
+  const byCorpus = table !== undefined && table.size > 0;
   const df = new Map<string, number>();
-  for (const c of unread) for (const [l] of c.profile.lemmas) if (unknown(l)) df.set(l, (df.get(l) ?? 0) + 1);
+  if (!byCorpus) for (const c of unread) for (const [l] of c.profile.lemmas) if (unknown(l)) df.set(l, (df.get(l) ?? 0) + 1);
+  const common = (l: string) => unknown(l) && (table!.get(lemmaWord(l))?.perMillion ?? 0) >= USEFUL_PER_MILLION;
   const cutoff = Date.parse(ctx.clock()) - X.overdueDays * DAY_MS;
   let anyDated = false;
   for (const r of rows.values()) if (r.reading.level !== 'unseen' && r.reading.lastEvidenceAt) { anyDated = true; break; }
 
   const active: Record<ExtraKey, boolean> = {
-    usefulUnknown: unread.length >= X.usefulMinTexts,
+    usefulUnknown: byCorpus ? unread.length > 0 : unread.length >= X.usefulMinTexts,
     overdue: anyDated,
     variety: (sig.recentGroups?.length ?? 0) > 0,
     listening: sig.listenEligible !== undefined,
   };
   const recent = sig.recentGroups ?? [];
-  const per = new Map<string, { parts: Partial<Record<ExtraKey, number>>; useful: number; overdue: number }>();
+  const per = new Map<string, { parts: Partial<Record<ExtraKey, number>>; useful: number; overdue: number; byCorpus: boolean }>();
   for (const c of candidates) {
     const words = Math.max(1, c.profile.words);
     let useful = 0;
     let overdue = 0;
     for (const [l, n] of c.profile.lemmas) {
-      if (!c.alreadyRead && (df.get(l) ?? 0) >= X.usefulMinTexts) useful += n;
+      if (!c.alreadyRead && (byCorpus ? common(l) : (df.get(l) ?? 0) >= X.usefulMinTexts)) useful += n;
       const r = rows.get(l);
       const at = r && r.reading.level !== 'unseen' ? r.reading.lastEvidenceAt : undefined;
       if (at && Date.parse(at) < cutoff) overdue += n;
@@ -207,7 +287,7 @@ async function extraParts(ctx: Ctx, userId: string, candidates: RankCandidate[],
     }
     if (active.listening) parts.listening = sig.listenEligible!.has(c.profile.textId) ? 1 : 0;
     for (const k of Object.keys(parts) as ExtraKey[]) parts[k] = round4(parts[k]!);
-    per.set(c.profile.textId, { parts, useful, overdue });
+    per.set(c.profile.textId, { parts, useful, overdue, byCorpus });
   }
   const norm = 1 + (Object.keys(active) as ExtraKey[]).filter((k) => active[k]).reduce((s, k) => s + X.weights[k], 0);
   return { per, norm };
@@ -236,7 +316,7 @@ export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandida
   const scored = [];
   for (const c of candidates) {
     const profile = await scoreProfile(ctx, userId, c.profile, { domains: c.domains, variety: opts.targetVariety, ...(gaps.size ? { productiveGaps: gaps } : {}) }, memo);
-    const rc = lemmaRows ? reachOf(c.profile, lemmaRows, profile) : undefined;
+    const rc = lemmaRows ? reachOf(c.profile, lemmaRows, profile, ctx.clock()) : undefined;
     const coverage = rc ? rc.coverage : profile.knownShare + profile.familiarShare;
     const effective = rc ? rc.effective : coverage + 0.5 * profile.metShare;
     const matched = [c.stream, ...(c.domains ?? [])].filter((x): x is string => !!x && interests.has(x.toLowerCase()));
@@ -259,7 +339,11 @@ export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandida
     if (rc?.yield !== undefined) base = (base + REACH.yieldWeight * clamp01(rc.yield / REACH.yieldFullShare)) / (1 + REACH.yieldWeight);
     const scripture = (c as RankCandidateWhole).scripture ?? c.stream === 'scripture';
     const pen = scripture ? penalty : 1;
-    scored.push({ c, profile, coverage, parts, matched, extra, base, rc, tier: (rc ? reachTier(rc) : 0) as ReachTier, pen });
+    // ladder orphans this text brings back (recommending only, and only when the ladder supplied the list): a bounded lift
+    const orphan = rc && lemmaRows && opts.reach?.orphans?.size ? orphanLift(c.profile, lemmaRows, opts.reach.orphans) : undefined;
+    if (orphan) base += orphan.boost;
+    const floor = reachFloor({ controlled: c.controlled, scripture });
+    scored.push({ c, profile, coverage, parts, matched, extra, base, rc, tier: (rc ? reachTier(rc, floor) : 0) as ReachTier, pen, floor, orphan });
   }
 
   // 2. controlled texts are a ramp: their weight falls as authentic candidates become comprehensible
@@ -327,7 +411,7 @@ export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandida
     const exContrib = ex ? (Object.keys(ex.parts) as ExtraKey[]).map((k) => [k, WHOLE_RANKING.weights[k] * ex.parts[k]!] as const).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]) : [];
     const extraReason = (k: ExtraKey): string | undefined => {
       if (!ex) return undefined;
-      if (k === 'usefulUnknown' && ex.useful > 0) return 'Its new words come up again in other texts you could read, so learning them pays off.';
+      if (k === 'usefulUnknown' && ex.useful > 0) return ex.byCorpus ? 'Its new words are common ones across the library, so learning them pays off.' : 'Its new words come up again in other texts you could read, so learning them pays off.';
       if (k === 'overdue' && ex.overdue > 0) return `It brings back words you have not met in reading for over ${Math.round(WHOLE_RANKING.overdueDays / 7)} weeks.`;
       if (k === 'variety') return 'It is on a different subject from what you read last.';
       if (k === 'listening') return 'A recording by a human speaker is available, so you can also hear it.';
@@ -349,6 +433,7 @@ export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandida
       else if (k === 'quality' && r.parts.quality >= 0.9) reasons.push('It is published, with its rights on record.');
       else if (k === 'challenge' && r.parts.challenge >= 0.9 && r.profile.newPatterns.length > 0) reasons.push(`It brings ${plural(r.profile.newPatterns.length, 'new construction')}, about what you asked for.`);
     }
+    if (r.orphan) reasons.push(`It brings back ${plural(r.orphan.count, 'word')} from your course units that you met there and have not seen since (${r.orphan.examples.join(', ')}).`);
     if (r.c.controlled && authShare > 0) reasons.push('It was written for the course; it counts for less as ordinary texts become readable for you.');
     if (reasons.length === 0) reasons.push('It is the best match among the texts offered.');
     if (r.rc) {
@@ -359,7 +444,7 @@ export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandida
     return {
       textId: r.c.profile.textId, score: round4(clamp01(r.final)), parts: r.parts, reasons, profile: r.profile,
       ...(ex && Object.keys(ex.parts).length > 0 ? { extra: ex.parts } : {}),
-      ...(r.rc ? { reach: { ...r.rc, tier: r.tier, aboveLevel, scripturePenalty: r.pen } } : {}),
+      ...(r.rc ? { reach: { ...r.rc, tier: r.tier, aboveLevel, scripturePenalty: r.pen, floor: r.floor, ...(r.orphan ? { orphans: r.orphan } : {}) } } : {}),
     };
   });
 }

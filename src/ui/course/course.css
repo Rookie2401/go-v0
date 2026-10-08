@@ -87,3 +87,8 @@
 .copy__headings { border: 0; padding: 0; margin: 0.4rem 0; }
 .copy__headings li { padding: 0.15rem 0; }
 .books .disclosure__btn { font-size: 1rem; }
+
+/* the unseen-text check (UnseenCheck.tsx): quiet, under the readiness; the question block reuses .reader__prompts */
+.unseen-check { margin: 0.8rem 0 0.2rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); }
+.unseen-check__title { font-size: 1rem; font-weight: 600; margin: 0 0 0.3rem; color: var(--ink-soft); }
+.unseen-check__last { margin: 0.6rem 0 0; }

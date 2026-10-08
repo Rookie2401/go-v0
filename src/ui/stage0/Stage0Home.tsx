@@ -5,7 +5,7 @@
  */
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import type { Stage0Meters, Stage0Overview, Text } from '../../core';
+import type { Stage0ExitSection, Stage0ExitSectionResult, Stage0Meters, Stage0Overview, Text } from '../../core';
 import { stage0Config } from '../../stage0/lang';
 import { useApp } from '../context';
 import { textPath } from '../format';
@@ -98,15 +98,25 @@ export function Stage0Home() {
               <section className="stage0-card" aria-label="Your Stage 0 check">
                 <p><strong>{ov.exit.verdict === 'ready' ? 'Ready for real texts.' : ov.exit.verdict === 'ready-provisional' ? 'Ready for real texts (listening not yet tested).' : 'Not yet — keep going.'}</strong></p>
                 <p className="card__note">{ov.exit.verdictDetail}</p>
-                {(ov.exit.verdict === 'ready' || ov.exit.verdict === 'ready-provisional') && <NextTexts next={ov.after} />}
+                {ov.exit.sections.length > 0 && (
+                  <ul className="stage0-sections" data-testid="stage0-exit-sections" aria-label="The parts of your last check">
+                    {ov.exit.sections.map((s) => (
+                      <li key={s.section} data-section={s.section} data-status={s.status}><strong>{SECTION_NAME[s.section]}</strong>: {SECTION_STATUS[s.status]} — {s.detail}</li>
+                    ))}
+                  </ul>
+                )}
+                {(ov.exit.verdict === 'ready' || ov.exit.verdict === 'ready-provisional' || ov.ladder.open) && <NextTexts next={ov.after} />}
               </section>
             )}
+            <LadderGate ladder={ov.ladder} onOverride={async () => { await stage0.overridePath(userId, lang); await load(); }} />
             <Disclosure label={`The whole path (${done} of ${ov.steps.length} done)`} className="stage0-path" defaultOpen={done === 0}>
               <ol className="stage0-steps">
                 {ov.steps.map((s) => (
                   <li key={s.step.id} data-step={s.step.id} data-status={s.status} className={`stage0-step stage0-step--${s.status}`}>
                     <Link to={`/start/${s.step.id}`}>{s.title}</Link>
                     <span className="chip">{STATUS[s.status]}</span>
+                    {s.counts && <span className="chip stage0-secure" data-secure="true">secure</span>}
+                    {s.notSecure && <span className="chip stage0-notsecure" data-secure="false">not secure yet</span>}
                     <span className="card__note">{s.detail}</span>
                   </li>
                 ))}
@@ -128,7 +138,43 @@ function RetrievalCard({ retrieval, sceneId }: { retrieval: NonNullable<Stage0Ov
   return (
     <section className="stage0-card" aria-label="From memory" data-testid="stage0-retrieval">
       <p><strong>From memory</strong> — {retrieval.why}</p>
-      <ProductionView task={task} stepId={retrieval.stepId} englishShown={false} voice={voice} />
+      <ProductionView task={task} stepId={retrieval.stepId} englishShown={false} voice={voice} lines={sceneId ? stage0!.scene(lang, sceneId)?.lines : undefined} />
+    </section>
+  );
+}
+
+const SECTION_NAME: Record<Stage0ExitSection, string> = { reading: 'Reading', listening: 'Listening', writing: 'Writing', speaking: 'Speaking', decoding: 'Reading the script' };
+const SECTION_STATUS: Record<Stage0ExitSectionResult['status'], string> = { passed: 'passed', recorded: 'passed (your own comparison)', 'not-yet': 'not yet', unavailable: 'not given' };
+
+/**
+ * The path after Stage 0: open only after the exit's READING part passed, or because the learner opened it himself. Said plainly,
+ * with the one explicit way round ("I know this already"), which is recorded as an event and stays visible here.
+ */
+function LadderGate({ ladder, onOverride }: { ladder: Stage0Overview['ladder']; onOverride(): Promise<void> }) {
+  const [asking, setAsking] = useState(false);
+  const [busy, setBusy] = useState(false);
+  return (
+    <section className="stage0-card" aria-label="The path after Stage 0" data-testid="stage0-ladder" data-open={ladder.open} data-by={ladder.by ?? 'none'}>
+      {ladder.open && ladder.by === 'exit' && <p><strong>The path after Stage 0 is open:</strong> you passed the reading part of the check.</p>}
+      {ladder.open && ladder.by === 'override' && (
+        <p data-testid="stage0-override-note"><strong>The path after Stage 0 is open</strong> because you opened it yourself on {(ladder.overriddenAt ?? '').slice(0, 10)} (&ldquo;I know this already&rdquo;). The check is still here whenever you want to try it.</p>
+      )}
+      {!ladder.open && (
+        <>
+          <p><strong>The path after Stage 0 is closed</strong> until the reading part of the check passes.</p>
+          {!asking
+            ? <div className="actions"><button type="button" className="btn btn--quiet" onClick={() => setAsking(true)}>I know this already — open the path</button></div>
+            : (
+              <div role="group" aria-label="Open the path yourself">
+                <p className="card__note">Open the path without passing the reading part? Your choice is recorded here, and nothing is marked as passed.</p>
+                <div className="actions">
+                  <button type="button" className="btn btn--primary" disabled={busy} onClick={() => { setBusy(true); void onOverride().finally(() => { setBusy(false); setAsking(false); }); }}>Yes, open the path</button>
+                  <button type="button" className="btn btn--quiet" onClick={() => setAsking(false)}>Not now</button>
+                </div>
+              </div>
+            )}
+        </>
+      )}
     </section>
   );
 }

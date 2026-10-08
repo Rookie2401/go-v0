@@ -71,7 +71,7 @@ Governing question: **could a person who knows nothing of the language enter the
 - coverage bands
 - exit criteria
 
-**Learner state** is folded from events (`src/stage0/state.ts`): step status (new / started / done / secure, with why), feature states (attempts, correct, unaided streak, secure), and meters. The meters are decoding, reading independence, listening (native vs computer voice), production by kind, speaking, and support dependence.
+**Learner state** is folded from events (`src/stage0/state.ts`): step status (new / started / done / secure, with why; a scene counts as done or secure only when every comprehension check's latest answer is right — a step left with one wrong stays "started" and is marked "not secure yet"), feature states (attempts, correct, unaided streak, secure), and meters. The meters are decoding, reading independence, listening (native vs computer voice), production by kind, speaking, and support dependence.
 
 ## 4. Engine (`src/stage0/`)
 
@@ -123,7 +123,7 @@ Warnings (reported, never hidden):
 
 ## 7. Exit gate
 
-The exit gate uses unseen controlled material built from the path's own language: a short passage, listening items, a small written response, a spoken response, and for Hindi and Thai, decoding. Thai adds tone-from-spelling and segmentation. Criteria are per language (`src/stage0/lang/*`).
+The exit gate uses unseen controlled material built from the path's own language: a short passage, listening items, a small written response, a spoken response, and for Hindi and Thai, decoding. Thai adds tone-from-spelling and segmentation. Criteria are per language (`src/stage0/lang/*`). **Gates (2026-10-07):** the ladder after Stage 0 opens only when an exit's READING section passed (any attempt, whatever the overall verdict), or when the learner opens it himself ("I know this already — open the path", the event `Stage0PathOverridden`, shown on the Stage 0 home). Finishing every scene does not open it. The speaking section passes only with at least `minRecorded` recordings of which at least `minSelfChecked` were judged "yes" or "partly" by the learner (both in every language's exit criteria).
 
 **Without native recordings the listening section is unavailable**, and the best verdict is `ready-provisional`, which says so. Stage 0 is pre-A1 bootstrap. It never claims A1.
 
@@ -131,7 +131,7 @@ The exit gate uses unseen controlled material built from the path's own language
 
 **Framework (shared, language-configured).**
 - Contract: `src/core/contracts/stage0.ts`.
-- Events: `Stage0CheckAnswered`, `Stage0DecodeAnswered`, `Stage0SupportUsed`, `Stage0ProductionAttempted`, `Stage0SpeakingRecorded`, `Stage0StepCompleted`, `Stage0SettingsChanged`, `Stage0ExitStarted`, `Stage0ExitAnswered` and `Stage0ExitFinished`, all in `src/core/events.ts`. They are additive and not folded by GoLearn.
+- Events: `Stage0CheckAnswered`, `Stage0DecodeAnswered`, `Stage0SupportUsed`, `Stage0ProductionAttempted`, `Stage0SpeakingRecorded`, `Stage0StepCompleted`, `Stage0SettingsChanged`, `Stage0ExitStarted`, `Stage0ExitAnswered` and `Stage0ExitFinished` and `Stage0PathOverridden`, all in `src/core/events.ts`. They are additive and not folded by GoLearn.
 - Engine: `src/stage0/*`.
 - Language configurations: `src/stage0/lang/index.ts`.
 - Service: wired in `src/app/bootstrap.ts` and bound per learner in `src/ui/context.tsx`.
@@ -149,7 +149,7 @@ The exit gate uses unseen controlled material built from the path's own language
 | Script acquisition bound to words | Sound steps teach through real words with meanings; decode checks: how is it said, which word, which tone, where do the words begin. Hindi and Thai answer keys are checked against the adapter's own decoder |
 | Production from copying to retelling | Copy → choose → substitute → complete → recall → answer → describe → retell. Personal slots `{x}` and speaker forms (m/f) are supported. Accepted production is `ProductionRecorded` (copied / assisted / independent by what was on screen); his own name never counts as language evidence |
 | Retrieval from learner state | The overview's `retrieval` is an earlier non-copy task he has met but not produced without a model, preferring the most-recycled constructions; shown as "From memory" on the Stage 0 page |
-| Speaking | Hear the model, record (MediaRecorder), hear yourself, self-check. Never machine-scored |
+| Speaking | A retelling, not reading aloud: the picture and the English meaning are the cue, the target line stays hidden until after the recording, then the model is shown beside the learner's recording with "Compare: did you say the same thing?" (yes / partly / no, recorded on the attempt). Recordings stay on the device. Never machine-scored |
 | Coverage tooling | `pathCoverage` (expected known share per step along the path, new words, undeclared words); personal share of the next scene from GoLearn; curriculum bands per language |
 | Exit gate on unseen material | `src/stage0/exit.ts`: form choice by exposure; exposure recorded on start; reading / listening / writing / speaking / decoding; verdict `ready` / `ready-provisional` / `not-yet`. Exit answers never reach GoLearn |
 | Authoring without code | `data/stage0/<lang>/*.json`; `npx vite-node scripts/stage0-validate.mts [-- <lang> --coverage]`; `test/stage0/content.test.ts` fails the gate on any error |
@@ -160,6 +160,7 @@ The exit gate uses unseen controlled material built from the path's own language
 - `test/stage0/rules.test.ts`: synthetic packs. Every validator check, Hindi romanization fading and retirement, decoder-backed answer keys, matching.
 - `test/stage0/content.test.ts`: every pack validates.
 - `test/ui/stage0.test.tsx`: real bootstrap. Home entry, path page, a scene played through, the exit's promises.
+- `test/stage0/gates.test.ts`: the secure requirement, the exit's reading gate, the override event, the self-checked speaking section. `test/ui/stage0Gates.test.tsx`: the retry loop, the speaking retelling flow with a fake MediaRecorder, the Stage 0 home's sections and override.
 
 **Content (first vertical slices).** All of it is AI-drafted, unreviewed and validated with 0 errors (`npm run stage0:validate`). Spanish was written by this session; German, Albanian, Hindi and Thai by drafting agents under the same validator, then read through by this session. The JSON in `data/stage0/` is the source of truth; the generator scripts were scratch.
 
@@ -231,7 +232,7 @@ The exit gate uses unseen controlled material built from the path's own language
   - listening practice is the device's computer voice, where one exists (none for Albanian on most devices);
   - the exit's listening part is not given.
 - **Scale.** These are vertical slices that test the whole loop, about 15–19 scenes per language. A mature Stage 0 needs many more scenes, especially for Hindi, Thai and Albanian. The bands, the recurrence check and the coverage table are there to keep a larger pack honest.
-- **Speech recognition or pronunciation scoring: none,** deliberately. Speaking is model, record, compare and self-check.
+- **Speech recognition or pronunciation scoring: none,** deliberately. Speaking is a retelling, a recording and the learner's own comparison with the model.
 - **The follow-on texts are drafts too.** Camino 1, Weg 1, Udha 0, Stage 0A and the Thai bridge stories open only in preview mode, and the exit page says so. Since 2026-10-06 every course has a ladder (`docs/LADDER.md`) that takes Stage 0's path as its head (`after: "stage0"`); the Camino and Honduras drafts it absorbed are tagged `superseded-by-ladder`, and the ladder units are machine drafts in preview only as well.
 - **The alphabet trainer (`#/alphabet`) is separate and optional.** By its owner's choice it records no evidence.
 - **The existing pre-reader / Stage 0A–0C shelves of the course ladders are unchanged.** Stage 0 hands over to them through `path.next`.

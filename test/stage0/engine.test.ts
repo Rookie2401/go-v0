@@ -160,7 +160,7 @@ describe('Stage 0 — exit gate', () => {
     for (const c of form.reading.checks) await s0.answerExit(U, 'es', a.attemptId, 'reading', c.id, { choice: c.answer, lookups: 0 });
     await s0.answerExit(U, 'es', a.attemptId, 'writing', form.writing[0].id, { text: 'Luis está en el mercado' });
     await s0.answerExit(U, 'es', a.attemptId, 'writing', form.writing[1].id, { text: 'Me llamo Carla y vivo en Tegucigalpa' });
-    await s0.answerExit(U, 'es', a.attemptId, 'speaking', form.speaking[0].id, { recordingId: 'rec-1', selfCheck: 'like-model' });
+    await s0.answerExit(U, 'es', a.attemptId, 'speaking', form.speaking[0].id, { recordingId: 'rec-1', selfCheck: 'yes' });
     const res = await s0.finishExit(U, 'es', a.attemptId);
     expect(res.verdict).toBe('ready-provisional');
     expect(res.sections.find((s) => s.section === 'listening')!.status).toBe('unavailable');

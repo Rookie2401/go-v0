@@ -12,8 +12,9 @@ import type { Course, GoListenDiagnostics, ItemKind, ItemMarked, LearnerItemStat
 import { useApp } from '../context';
 import { itemSurface, languageName } from '../format';
 import { TeamSelect } from '../Onboarding';
+import { PractiseButton } from './Practice';
 import { FONT_SIZE_RANGE, rememberChosenCourse, usePref } from '../prefs';
-import type { HighlightPref, ThemePref } from '../prefs';
+import type { ChallengePref, HighlightPref, ThemePref } from '../prefs';
 import { BackLink, Disclosure, I, IconBtn, Topbar } from '../ui';
 import { BackupSection } from './settings/BackupSection';
 import { ContentSection } from './settings/ContentSection';
@@ -174,9 +175,16 @@ function LearnerSection() {
 
 const HIGHLIGHTS: HighlightPref[] = ['off', 'subtle', 'strong'];
 const THEMES: ThemePref[] = ['auto', 'light', 'dark'];
+/** The three answers to "How hard should suggestions be?", each with what it asks of the learner. */
+const CHALLENGES: ReadonlyArray<{ id: ChallengePref; label: string; hint: string }> = [
+  { id: 'easy', label: 'easy', hint: 'about 97 % known: very few new words per text' },
+  { id: 'steady', label: 'steady', hint: 'about 93 % known (the default)' },
+  { id: 'stretch', label: 'stretch', hint: 'about 88 % known: more new words per text' },
+];
 
 function ReadingSection() {
   const [highlight, setHighlight] = usePref('highlight');
+  const [challenge, setChallenge] = usePref('challenge');
   const [fontSize, setFontSize] = usePref('fontSize');
   const [theme, setTheme] = usePref('theme');
   const sizeId = useId();
@@ -190,6 +198,15 @@ function ReadingSection() {
             <button key={h} type="button" aria-pressed={highlight === h} onClick={() => setHighlight(h)}>{h}</button>
           ))}
         </div>
+      </div>
+      <div className="field">
+        <span className="label">How hard should suggestions be?</span>
+        <div className="segmented" role="group" aria-label="How hard should suggestions be?">
+          {CHALLENGES.map((c) => (
+            <button key={c.id} type="button" aria-pressed={challenge === c.id} title={c.hint} onClick={() => setChallenge(c.id)}>{c.label}</button>
+          ))}
+        </div>
+        <p className="card__note" data-testid="challenge-hint">{CHALLENGES.find((c) => c.id === challenge)!.hint}. This only changes which texts are suggested; you can read anything.</p>
       </div>
       <div className="field field--row">
         <label htmlFor={sizeId}>Text size</label>
@@ -310,7 +327,7 @@ function VocabRow({ r, why, listen, onWhy, onMark }: { r: LearnerItemState; list
             <option value="unknown">Still learning</option>
           </select>
         </td>
-        <td><button type="button" className="btn btn--small btn--quiet" aria-label={`Why ${itemSurface(r.itemId)}?`} onClick={onWhy}>Why?</button></td>
+        <td><button type="button" className="btn btn--small btn--quiet" aria-label={`Why ${itemSurface(r.itemId)}?`} onClick={onWhy}>Why?</button> <PractiseButton itemId={r.itemId} itemKind={r.itemKind} word={itemSurface(r.itemId)} /></td>
       </tr>
       {why && <tr className="vocab__why"><td colSpan={listen ? 7 : 6} className="card__prov" data-testid="vocab-why">{why}</td></tr>}
     </>

@@ -1,5 +1,6 @@
 import type { LanguageCode, Text } from '../core/model';
 import type { AppStore } from '../core/store';
+import type { StageContract } from './curriculumPolicy';
 
 export interface ReadingAssessmentSpec {
   id: string;
@@ -52,6 +53,89 @@ export function recordReadingAssessment(spec: ReadingAssessmentSpec, context: As
   return { assessmentId: spec.id, textId: spec.textId, contentVersion: spec.contentVersion, userId: context.userId, stageId: spec.stageId, completedAt, ...observation, lookupsPer100Words, meetsReadingContract, dimension: 'reading' as const, cefrCertification: false as const };
 }
 export function isHeldOutReadingText(textId: string, specs: readonly ReadingAssessmentSpec[]): boolean { return specs.some(s => s.textId === textId); }
+
+// ───────────── the runtime-picked unseen text (the periodic check; src/golearn/assessment.ts) ─────────────
+// A protected assessment text (above) is authored, rights-cleared and registered ahead of time. The periodic check picks an
+// ORDINARY library text at the learner's reach, holds it out of recommendation, and measures with the recall prompts. These
+// validators say whether such a text may serve and produce the same `exitEvidence` shape STAGE_CONTRACTS declares for a stage.
+
+/** The measures a stage's `exitEvidence` can name (curriculumPolicy.ts); a prompt-based check measures `comprehension`, and `lookups` / `rescue-use` / `reading-time` when the reader counted them. */
+export type UnseenMeasure = 'comprehension' | 'gist' | 'detail' | 'inference' | 'lookups' | 'rescue-use' | 'reading-time';
+/** Fewest words a text needs to serve as an unseen check. */
+export const UNSEEN_MIN_WORDS = 120;
+
+export type UnseenTextFacts = Pick<Text, 'id' | 'lang'> & Partial<Pick<Text, 'kind' | 'personalCopy' | 'workId' | 'editorialTags' | 'readingAssessmentId' | 'listeningAssessmentId'>> & {
+  /** Word tokens of the text (the catalogue's `features.words`). */
+  words: number;
+};
+export interface RuntimeUnseenContext {
+  userId: string;
+  text: UnseenTextFacts;
+  encounteredTextIds: ReadonlySet<string>;
+  encounteredWorkIds?: ReadonlySet<string>;
+  /** The text is held out of recommendation (src/golearn/heldout.ts) from the moment it is picked. */
+  heldOut: boolean;
+}
+/** Reasons a runtime-picked text may NOT serve as an unseen check; empty = it may. */
+export function validateRuntimeUnseenText(context: RuntimeUnseenContext, minWords: number = UNSEEN_MIN_WORDS): string[] {
+  const { text } = context;
+  const reasons: string[] = [];
+  if (text.kind === 'scripture') reasons.push('Scripture is never used as a check text');
+  if (text.kind === 'testimony' || text.personalCopy) reasons.push('A private or personal-copy text is not used as a check text');
+  if (text.readingAssessmentId !== undefined || text.listeningAssessmentId !== undefined) reasons.push('A protected assessment text goes through the registered assessment path');
+  if ((text.editorialTags ?? []).includes('stage0')) reasons.push('A Stage 0 scene is not a check text');
+  if (!Number.isFinite(text.words) || text.words < minWords) reasons.push(`A check text needs at least ${minWords} words`);
+  if (context.encounteredTextIds.has(text.id) || (!!text.workId && context.encounteredWorkIds?.has(text.workId))) reasons.push('Learner has encountered this text or its work before');
+  if (!context.heldOut) reasons.push('The text is not held out of recommendation');
+  return reasons;
+}
+export interface UnseenCheckObservation {
+  promptsRight: number;
+  promptsTotal: number;
+  /** Share of the text's words known at the pick (0..1). */
+  coverageAtPick: number;
+  lookupCount?: number;
+  wordCount?: number;
+  rescueUses?: number;
+  readingTimeSeconds?: number;
+}
+export type StageExitEvidence = StageContract['exitEvidence'];
+/** The record of one check: the `exitEvidence` a stage contract declares, with the measured values beside it. Never a level. */
+export interface UnseenReadingRecord {
+  exitEvidence: StageExitEvidence;
+  values: Partial<Record<UnseenMeasure, number>>;
+  textId: string;
+  userId: string;
+  completedAt: string;
+  promptsRight: number;
+  promptsTotal: number;
+  coverageAtPick: number;
+  dimension: 'reading';
+  cefrCertification: false;
+}
+/** Builds the record (a separate reading record: no vocabulary, listening, speaking or CEFR evidence). Throws with the reasons when the text or the numbers do not qualify. */
+export function recordUnseenReading(context: RuntimeUnseenContext, observation: UnseenCheckObservation, completedAt: string, minWords: number = UNSEEN_MIN_WORDS): UnseenReadingRecord {
+  const reasons = validateRuntimeUnseenText(context, minWords);
+  const o = observation;
+  const count = (n: number | undefined) => n === undefined || (Number.isInteger(n) && n >= 0);
+  if (!Number.isInteger(o.promptsTotal) || o.promptsTotal <= 0 || !Number.isInteger(o.promptsRight) || o.promptsRight < 0 || o.promptsRight > o.promptsTotal
+    || !Number.isFinite(o.coverageAtPick) || o.coverageAtPick < 0 || o.coverageAtPick > 1
+    || !count(o.lookupCount) || !count(o.rescueUses) || (o.wordCount !== undefined && !(Number.isInteger(o.wordCount) && o.wordCount > 0))
+    || (o.readingTimeSeconds !== undefined && !(Number.isFinite(o.readingTimeSeconds) && o.readingTimeSeconds > 0)) || !Number.isFinite(Date.parse(completedAt))) {
+    reasons.push('Check observations or completion date are invalid');
+  }
+  if (reasons.length) throw new Error(reasons.join('; '));
+  const values: Partial<Record<UnseenMeasure, number>> = { comprehension: o.promptsRight / o.promptsTotal };
+  if (o.lookupCount !== undefined) values.lookups = o.wordCount ? (o.lookupCount * 100) / o.wordCount : o.lookupCount;
+  if (o.rescueUses !== undefined) values['rescue-use'] = o.rescueUses;
+  if (o.readingTimeSeconds !== undefined) values['reading-time'] = o.readingTimeSeconds;
+  return {
+    exitEvidence: { kind: 'unseen-reading', measures: Object.keys(values), certification: false },
+    values, textId: context.text.id, userId: context.userId, completedAt,
+    promptsRight: o.promptsRight, promptsTotal: o.promptsTotal, coverageAtPick: o.coverageAtPick,
+    dimension: 'reading', cefrCertification: false,
+  };
+}
 
 interface StoredAttempt {
   id: string;

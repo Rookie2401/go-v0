@@ -27,6 +27,8 @@ export const REASON_LABEL: Record<string, string> = {
   'first-text': 'A good first text',
   'next-input': 'Something new to read',
   reread: 'Read it again',
+  'reread-before-next': 'Once more before moving on',
+  'stage0-recall': 'Refresh the words from Stage 0',
   'easy-story': 'An easy next story',
   'reinforces-weak-items': 'Strengthens words you have barely met',
   'listen-to-read-text': 'Listen to something you have read',
@@ -153,5 +155,5 @@ export function splitCoverage(text: string): { lead: string; rest: string } {
 
 /** The top Home recommendation list's notion of "input": the reasons that point at a text to read or listen to. */
 export const INPUT_REASONS: ReadonlySet<string> = new Set([
-  'first-text', 'next-input', 'reread', 'listen-to-read-text', 'reinforces-weak-items', 'prepares-scripture', 'revisit-scripture',
+  'first-text', 'next-input', 'reread', 'reread-before-next', 'listen-to-read-text', 'reinforces-weak-items', 'prepares-scripture', 'revisit-scripture',
 ]);

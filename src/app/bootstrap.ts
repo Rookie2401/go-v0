@@ -36,6 +36,7 @@ import { exportLearner, restoreLearner, validateBackup } from '../backup';
 import type { BackupFile } from '../backup';
 import { createGoLearn } from '../golearn';
 import { setLadderPathSource, setWholeLibrarySource } from '../golearn/recommend';
+import { setCorpusFrequencySource } from '../golearn/rank';
 import { ladderUnitDocuments } from '../ladder/bundle';
 import { createLadderPath } from '../ladder/path';
 import { AZURE_PROVIDER_ID, AzureSpeechProvider, ProxySpeechProvider, createGoListen } from '../golisten';
@@ -299,6 +300,9 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   // GoLearn recommends from the WHOLE library (src/golearn/candidates.ts), not only from texts already on this device: its
   // shortlist pages through the catalogue and profiles the few it ranks. Registered once, like the ladder's path source.
   setWholeLibrarySource({ pager: (q) => library.search(q), profileOf: (id) => library.profile(id) });
+  // usefulUnknown reads the language's corpus frequency (the dictionary's frequency.json, R9) through its lexicon source; loaded once per
+  // language by that source and cached by it. No sidecar (or no dictionary): undefined, and the ranking keeps the in-shortlist rule.
+  setCorpusFrequencySource((lang) => lexicon(lang as LanguageCode)?.frequencyTable?.());
 
   // ── built-in texts through the importer, one language at a time ──
   let bundle: ReturnType<typeof loadBundledCorpus> | undefined;

@@ -41,7 +41,7 @@ const norwegianSpelling = (lang: 'nb' | 'nn'): Stage0SpellingFeature[] => [
   ] : []),
 ];
 
-const NORWEGIAN_EXIT = { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1 } };
+const NORWEGIAN_EXIT = { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } };
 
 export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
   es: {
@@ -66,7 +66,7 @@ export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
       ],
     },
     bands: LATIN_BANDS,
-    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1 } },
+    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } },
     intro: 'Spanish is spelled almost as it sounds: you will read real sentences from the first minute.',
   },
   de: {
@@ -102,7 +102,7 @@ export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
       ],
     },
     bands: LATIN_BANDS,
-    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1 } },
+    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } },
     intro: 'German spelling is regular once you know a dozen patterns; you meet them in real sentences, not in a list.',
   },
   sq: {
@@ -133,7 +133,7 @@ export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
       ],
     },
     bands: LATIN_BANDS,
-    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1 } },
+    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } },
     intro: 'Albanian is spelled as it sounds, with a few letters of its own: you will read real Albanian at once.',
   },
   // machine-draft, native review pending. Bokmål is the course target; the Nynorsk config is the same spelling features under its own ids.
@@ -166,7 +166,7 @@ export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
       transliteration: { secureAfter: 2, retireAfterStep: 15 },
     },
     bands: { earlyScenes: 4, earlyMaxNew: 5, laterMaxNew: 7, laterMinCoverage: 0.6, exitMinCoverage: 0.95 },
-    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1 }, decoding: { minCorrect: 0.8 } },
+    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 }, decoding: { minCorrect: 0.8 } },
     intro: 'You will learn the Devanagari letters inside real Hindi words, a few at a time. Romanization helps at first and then steps aside.',
   },
   th: {
@@ -182,7 +182,7 @@ export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
       tones: true,
     },
     bands: { earlyScenes: 5, earlyMaxNew: 5, laterMaxNew: 6, laterMinCoverage: 0.6, exitMinCoverage: 0.95 },
-    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1 }, decoding: { minCorrect: 0.75 } },
+    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 }, decoding: { minCorrect: 0.75 } },
     intro: 'Thai has its own letters, no spaces between words, and tones. You will learn them inside real Thai, step by step; romanization helps at first and then steps aside.',
   },
 };

@@ -11,7 +11,7 @@
  * "public domain". An old work in a modern edition can carry new rights (editing, notes, modernised spelling).
  * BIBLIOGRAPHY: titles, authors and dates are from general knowledge and are marked unverified.
  */
-import type { RegisterTag, Stage, Stream, Work, WorkRights, WorkRole } from '../core';
+import type { AssistanceProfile, HelpLayer, RegisterTag, Stage, Stream, Work, WorkRights, WorkRole } from '../core';
 import { DEFAULT_ASSISTANCE, ids } from '../core';
 import { acquiredWorks } from './acquired';
 import { readingBridgeWorks } from './readingBridges';
@@ -41,10 +41,34 @@ export const SPANISH_STREAMS: Stream[] = [
 
 // ───────────────────────────── shelves ─────────────────────────────
 
+const L = (...layers: HelpLayer[]): HelpLayer[] => layers;
+
+/**
+ * The help fades shelf by shelf, as in Hindi (src/course/hindi.ts). Early shelves are gloss-first with English one tap away
+ * (`easy`); the middle shelves keep English second and offer an easy Spanish definition before it where the dictionary has
+ * one (it does: `targetLanguageDefinitions`); the later shelves bury English deep in the word sheet and show less. Spanish
+ * has no script to decode and no romanization. A shelf is never a gate: this only sets how much the reader offers by default.
+ */
+export const SPANISH_ASSISTANCE: Record<string, AssistanceProfile> = {
+  s0: { visibility: 'heavy', defaultHighlight: 'strong', layers: L('gloss', 'phrase', 'grammar', 'english', 'sentence', 'history'), englishRescue: 'easy', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: false, chrome: 'full' },
+  s1: { visibility: 'heavy', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'grammar', 'english', 'sentence', 'history'), englishRescue: 'easy', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: false, chrome: 'full' },
+  s2: { visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'definition', 'grammar', 'sentence', 'english', 'history'), englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'full' },
+  s3: { visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'definition', 'grammar', 'sentence', 'english', 'history'), englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'full' },
+  s4: { visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'definition', 'discourse', 'grammar', 'sentence', 'english', 'history'), englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'reduced' },
+  s5: { visibility: 'light', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'definition', 'discourse', 'note', 'grammar', 'sentence', 'english', 'history'), englishRescue: 'deep', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'reduced' },
+  s6: { visibility: 'light', defaultHighlight: 'off', layers: L('gloss', 'note', 'phrase', 'definition', 'discourse', 'grammar', 'sentence', 'history', 'english'), englishRescue: 'deep', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'reduced' },
+  s7: { visibility: 'light', defaultHighlight: 'off', layers: L('gloss', 'note', 'phrase', 'definition', 'discourse', 'grammar', 'sentence', 'history', 'english'), englishRescue: 'deep', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: true, chrome: 'reduced' },
+};
+
+/**
+ * Where a unit of the course's reading ladder (data/ladder/es: a1-1 … b1-bridge) sits on the shelves for help: the nearest
+ * shelf. A ladder unit has no work, so no shelf of its own; this is how it gets a profile that fades with its stage.
+ */
+export const SPANISH_LADDER_SHELF: Record<string, string> = { 'a1-1': 's0', 'a1-2': 's1', 'a2-1': 's2', 'a2-2': 's3', 'b1-bridge': 's4' };
+
 const shelf = (index: number, label: string, purpose: string[]): Stage => ({
   id: ids.stage(SPANISH_COURSE_ID, `s${index}`), courseId: SPANISH_COURSE_ID, lang: LANG, index, key: `s${index}`, label, kind: 'shelf', purpose,
-  // Shelves do not change how the reader behaves: the word sheet is the same everywhere, help appears when asked for.
-  assistance: DEFAULT_ASSISTANCE,
+  assistance: SPANISH_ASSISTANCE[`s${index}`] ?? DEFAULT_ASSISTANCE,
 });
 
 /** Shelves, not locks: an orientation for browsing. Personal difficulty is computed per learner, per text. */

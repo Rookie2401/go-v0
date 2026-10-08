@@ -256,7 +256,8 @@ describe('3. nothing out of reach while something in reach exists; front matter 
 
   it('offers no text below the floor when any text at or above it exists', async () => {
     const h = await world();
-    const deps = await catalogue(h, [entry('aaa-near', 93), entry('bbb-far', 50), entry('ccc-mid', 60), entry('ddd-edge', 76)]);
+    // ddd-edge is written for the course (controlled): the 75 % floor stands for it; an AUTHENTIC text needs 85 % (reachFloor.test.ts)
+    const deps = await catalogue(h, [entry('aaa-near', 93), entry('bbb-far', 50), entry('ccc-mid', 60), entry('ddd-edge', 76, { stream: 'acquisition' })]);
     const recs = idsOf(await rec(h, deps));
     expect(recs).toContain(idOf('aaa-near'));
     expect(recs).toContain(idOf('ddd-edge')); // 76 % is at or above the 75 % floor

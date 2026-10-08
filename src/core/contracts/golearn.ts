@@ -143,7 +143,11 @@ export interface EvidenceAudit {
 
 export type RecommendationReason =
   | 'first-text' | 'next-input' | 'reread' | 'easy-story' | 'reinforces-weak-items' | 'listen-to-read-text'
-  | 'prepares-scripture' | 'revisit-scripture' | 'rehearse-testimony';
+  | 'prepares-scripture' | 'revisit-scripture' | 'rehearse-testimony'
+  /** The ladder's adaptive step: read the last unit (or the one before it) once more before the next. A text. */
+  | 'reread-before-next'
+  /** Two ladder units in a row went badly: Stage 0's recall card for that vocabulary. No text; the link is Stage 0's home (/start). */
+  | 'stage0-recall';
 
 export interface Recommendation {
   reason: RecommendationReason;
@@ -194,7 +198,11 @@ export interface GoLearn {
    * listening; input stays first even after testimony work. Unpublished texts only with includeUnpublished.
    * Never recommends listening when no reviewed real-speech audio exists for the text.
    */
-  recommend(userId: string, opts?: { limit?: number; targetTextId?: string; interests?: string[]; includeUnpublished?: boolean; lang?: LanguageCode }): Promise<Recommendation[]>;
+  recommend(userId: string, opts?: {
+    limit?: number; targetTextId?: string; interests?: string[]; includeUnpublished?: boolean; lang?: LanguageCode;
+    /** How hard the suggestions should be (Settings → Reading): the comprehensibility part peaks at 97 % (easy), 93 % (steady, default) or 88 % (stretch). */
+    challenge?: 'easy' | 'steady' | 'stretch';
+  }): Promise<Recommendation[]>;
 
   /** Version of the evidence rules. Stored per user in `meta`; a mismatch triggers a rebuild from the log. */
   readonly policyVersion: string;

@@ -117,13 +117,13 @@ function Stage0Line({ s }: { s: Stage0Status }) {
       {s.done ? (
         <p>
           <span className="chip">done</span>{' '}
-          {s.by === 'exit' ? `You took the Stage 0 check${verdict ? `: ${verdict}` : ''}.` : 'You have completed every Stage 0 scene.'}{' '}
+          {s.by === 'exit' ? `You passed the reading part of the Stage 0 check${verdict ? `: ${verdict}` : ''}.` : 'You opened this path yourself ("I know this already").'}{' '}
           <Link to="/start">Go back to Stage 0</Link>
         </p>
       ) : (
         <p>
           <span className="chip">{s.scenesDone > 0 ? 'started' : 'not started'}</span>{' '}
-          {s.scenesDone} of {s.scenesTotal} scenes done. The units below open after it. <Link to="/start">Open Stage 0</Link>
+          {s.scenesDone} of {s.scenesTotal} scenes done. The units below open when the reading part of the Stage 0 check is passed{s.readingNotPassed ? ' (the reading part did not pass yet)' : ''}, or when you open the path yourself. <Link to="/start">Open Stage 0</Link>
         </p>
       )}
     </section>

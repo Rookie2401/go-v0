@@ -25,6 +25,7 @@ import { readingSummary } from './agg';
 import type { StoredItem } from './agg';
 import type { ReadingUnit } from './activity';
 import { readingUnits, stageTextIds } from './activity';
+import { latestUnseenCheck, reportedByCheck } from './assessment';
 import { analyzeText } from './coverage';
 import { paceOf } from './pace';
 import { READINESS } from './policy';
@@ -139,12 +140,17 @@ export async function stageReadiness(ctx: Ctx, userId: string, courseId: string,
     // earlier wording is history and is left out, and the explanation says so.
     const degrees: string[] = [];
     let leftOut = 0;
+    // The latest unseen-text check (assessment.ts) counts as ONE more report, measured instead of said; it stands in for the report of its own text.
+    const check = await latestUnseenCheck(ctx, userId, lang);
+    const checkNote = check ? ` Your latest unseen-text check counts as one of them (${check.promptsRight} of ${check.promptsTotal} right).` : '';
     for (const id of textIds) {
+      if (check && id === check.textId) continue;
       const p = progress.get(id);
       if (p?.reportedComprehension) degrees.push(p.reportedComprehension);
       else if (p?.reportedEarlierVersion) leftOut += 1;
     }
-    const note = leftOut > 0 ? ` ${plural(leftOut, 'report')} about an earlier version of a text ${leftOut === 1 ? 'was' : 'were'} left out.` : '';
+    if (check) degrees.push(reportedByCheck(check));
+    const note = (leftOut > 0 ? ` ${plural(leftOut, 'report')} about an earlier version of a text ${leftOut === 1 ? 'was' : 'were'} left out.` : '') + checkNote;
     if (degrees.length < minReports) {
       signals.push(sig('reported-comprehension', 'insufficient-data', target, `You have said how much you understood of ${plural(degrees.length, 'text')} in this stage; ${minReports} are needed.${note}`));
     } else {

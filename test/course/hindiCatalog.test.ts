@@ -358,3 +358,18 @@ describe('doors', () => {
     expect(HINDI_OUTSIDE_SHELVES).toEqual(['testimony']);
   });
 });
+
+describe('the current stage of a shelf course (R5)', () => {
+  it('Hindi has one, by the rule the stage courses use, and its help profiles are the ones it always had', async () => {
+    const { createMemoryStore } = await import('../../src/core');
+    const { createCourseCatalog } = await import('../../src/course');
+    const store = createMemoryStore();
+    const catalog = createCourseCatalog({ store });
+    await catalog.install(C);
+    expect((await catalog.currentStage('u1', C))!.id).toBe(ids.stage(C, 's0a'));
+    await catalog.setCurrentStage('u1', C, ids.stage(C, 'c4'));
+    expect((await catalog.currentStage('u1', C))!.id).toBe(ids.stage(C, 'c4'));
+    expect(await catalog.assistanceFor({ courseId: C, currentStageId: ids.stage(C, 'c4') })).toEqual(HINDI_ASSISTANCE.c4);
+    expect(await catalog.assistanceFor({ courseId: C, currentStageId: ids.stage(C, 's0a') })).toEqual(HINDI_ASSISTANCE.s0a);
+  });
+});

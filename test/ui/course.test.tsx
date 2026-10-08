@@ -198,7 +198,7 @@ describe('a learner\'s own copy on the ladder', () => {
 });
 
 describe('Home, Read and Settings around the ladder', () => {
-  it('Home stays a directory; the ladder remains available at /course only for courses that have one', async () => {
+  it('Home stays a directory; /course lists the ladder only for a course that has one, and shows the working shelf (not a ladder) for a shelf course', async () => {
     const t = await thai();
     mounted = await t.mount(app());
     expect(qa(mounted.container, 'a.home__entry').some((a) => a.getAttribute('href') === '/read')).toBe(true);
@@ -212,7 +212,10 @@ describe('Home, Read and Settings around the ladder', () => {
     expect(mounted.container.textContent).not.toContain('Reading ladder');
     await mounted.unmount();
     mounted = await es.mount(app(), { router: '/course' });
-    expect(q(mounted.container, '.home__title')!.textContent).toBe('Go'); // redirected home
+    // a shelf course has no ladder to list, but /course shows the shelf he is working at and how it is going (not a redirect home)
+    expect(q(mounted.container, '[data-testid="shelf-course"]')).not.toBeNull();
+    expect(q(mounted.container, '[data-testid="current-stage"]')!.textContent).toBe('Controlled Spanish');
+    expect(qa(mounted.container, '[data-stage]')).toHaveLength(0);
     expect(mounted.container.textContent).not.toContain('Reading ladder');
   });
 

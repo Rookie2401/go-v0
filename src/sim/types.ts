@@ -43,6 +43,14 @@ export interface SimOptions {
   skipRereads?: boolean;
   /** How many recommendations to ask for (default 5). */
   limit?: number;
+  /**
+   * Forgetting (policy.ts DECAY; default true). On: a lemma known but not met for DECAY.weeks is looked up again (counts half in the
+   * probe's coverage) and the app's clock follows the reading pace; off: the earlier behaviour exactly (45 minutes between texts, nothing
+   * decays). Decay is tracked either way, so every run reports both words-per-known-lemma figures.
+   */
+  decay?: boolean;
+  /** Reading pace that turns words read into elapsed days (default 2,000 words a day; run.ts SIM_WORDS_PER_DAY). */
+  wordsPerDay?: number;
   /** Called after every row (progress output). */
   onRow?: (row: SimRow) => void;
 }
@@ -79,6 +87,10 @@ export interface SimRow {
   cumWords: number;
   cumKnown: number;
   cumMet: number;
+  /** Forgetting: known lemmas (met >= 3 times) NOT decayed after this text's start / decayed ones; the simulated day. `cumKnown` stays the lifetime count. */
+  cumKnownNow?: number;
+  cumDecayed?: number;
+  simDay?: number;
   /** The text had been read (finished) before. */
   reread: boolean;
   reason: string;

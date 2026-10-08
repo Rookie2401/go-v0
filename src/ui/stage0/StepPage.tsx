@@ -8,7 +8,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useNextStep } from './nav';
 import { useParams } from 'react-router-dom';
-import type { Stage0Check, Stage0Overview, Stage0Presentation, Stage0ProductionTask, Stage0Scene, Stage0Support } from '../../core';
+import type { LanguageAdapter, LanguageCode, Stage0Check, Stage0Line, Stage0Overview, Stage0Presentation, Stage0ProductionTask, Stage0Scene, Stage0Support } from '../../core';
 import { characterName, bundledStage0 } from '../../stage0/content';
 import { castName } from './names';
 import { wordsOf } from '../../stage0/features';
@@ -19,7 +19,7 @@ import { BackLink, Disclosure, Topbar } from '../ui';
 import { useStage0Voice } from './audio';
 import type { Stage0Voice } from './audio';
 import { ExitCheck } from './ExitCheck';
-import { PlayButton, SpeakBox, TargetLine, WordSheet } from './parts';
+import { PlayButton, SpeakBox, TargetLine, WordSheet, retellCue } from './parts';
 import { SoundsPlayer } from './SoundsPlayer';
 import './stage0.css';
 
@@ -68,7 +68,7 @@ function ScenePlayer({ stepId, refId, overview }: { stepId: string; refId: strin
   const [textOpen, setTextOpen] = useState<Set<string>>(new Set());
   const [english, setEnglish] = useState<Set<string>>(new Set());
   const [sheet, setSheet] = useState<{ word: WordInfo; lineId: string; index: number } | null>(null);
-  const [answers, setAnswers] = useState<Record<string, { choice: number; correct: boolean }>>({});
+  const [answers, setAnswers] = useState<Record<string, { choice: number; correct: boolean; tries: number }>>({});
   const [finished, setFinished] = useState(false);
   const seen = useRef(new Set<string>());
   const romanSent = useRef(new Set<string>());
@@ -131,10 +131,13 @@ function ScenePlayer({ stepId, refId, overview }: { stepId: string; refId: strin
   };
   const answer = async (c: Stage0Check, choice: number) => {
     const r = await stage0!.answerCheck(userId, lang, stepId, c.id, choice, channel, audio);
-    setAnswers((a) => ({ ...a, [c.id]: { choice, correct: r.correct } }));
+    setAnswers((a) => ({ ...a, [c.id]: { choice, correct: r.correct, tries: (a[c.id]?.tries ?? 0) + 1 } }));
+    // A wrong answer shows the line again (and asks again). In a listening channel that means the words: opening them is a recorded rescue.
+    if (!r.correct) c.lines.forEach((l) => { if (!textVisible(l)) showText(l); });
   };
 
   const allShown = shown >= scene.lines.length;
+  // SECURE = every question's latest answer is right. Only a secure step can be finished; it counts toward the Stage 0 check.
   const allAnswered = scene.checks.every((c) => answers[c.id]?.correct);
   const newWords = useMemo(() => new Set(scene.introduces.words.map((w) => w.normalize('NFC').toLowerCase())), [scene]);
   const notes = scene.notes ?? [];
@@ -180,9 +183,17 @@ function ScenePlayer({ stepId, refId, overview }: { stepId: string; refId: strin
           <h2 className="section-head">Did you understand?</h2>
           {scene.checks.map((c) => (
             <CheckView key={c.id} check={c} lang={lang} result={answers[c.id]} onAnswer={(i) => { void answer(c, i); }}
+              againLines={scene.lines.filter((l) => c.lines.includes(l.id))} adapter={adapter} voice={voice}
               onEnglish={() => c.lines.forEach((l) => { if (!english.has(l)) showEnglish(l); })} />
           ))}
         </section>
+      )}
+
+      {allShown && !allAnswered && (
+        <div className="stage0-gate" data-testid="stage0-not-secure">
+          <p className="card__note stage0-notsecure"><strong>Not secure yet.</strong> This step counts toward the Stage 0 check only when every question is answered right. You can leave it and come back; the path will mark it.</p>
+          <div className="actions"><button type="button" className="btn btn--quiet" onClick={goNext}>Leave for now</button></div>
+        </div>
       )}
 
       {allShown && allAnswered && notes.length > 0 && (
@@ -196,7 +207,7 @@ function ScenePlayer({ stepId, refId, overview }: { stepId: string; refId: strin
       {allShown && allAnswered && (scene.production?.length ?? 0) > 0 && (
         <section className="stage0-turn" aria-label="Your turn">
           <h2 className="section-head">Your turn</h2>
-          {scene.production!.map((t) => <ProductionView key={t.id} task={t} stepId={stepId} englishShown={t.basedOn.some((b) => english.has(b))} voice={voice} />)}
+          {scene.production!.map((t) => <ProductionView key={t.id} task={t} stepId={stepId} englishShown={t.basedOn.some((b) => english.has(b))} voice={voice} lines={scene.lines} />)}
         </section>
       )}
 
@@ -209,9 +220,13 @@ function ScenePlayer({ stepId, refId, overview }: { stepId: string; refId: strin
   );
 }
 
-function CheckView({ check, lang, result, onAnswer, onEnglish }: { check: Stage0Check; lang: string; result?: { choice: number; correct: boolean }; onAnswer(i: number): void; onEnglish(): void }) {
+function CheckView({ check, lang, result, onAnswer, onEnglish, againLines, adapter, voice }: {
+  check: Stage0Check; lang: LanguageCode; result?: { choice: number; correct: boolean; tries: number }; onAnswer(i: number): void; onEnglish(): void;
+  /** The check's own lines, shown again after a wrong answer. */
+  againLines: Stage0Line[]; adapter: LanguageAdapter; voice: Stage0Voice;
+}) {
   return (
-    <div className="stage0-check" data-check={check.id} data-result={result ? (result.correct ? 'right' : 'wrong') : 'open'}>
+    <div className="stage0-check" data-check={check.id} data-result={result ? (result.correct ? 'right' : 'wrong') : 'open'} data-tries={result?.tries ?? 0}>
       <p>{check.question.target ? <span lang={lang}>{check.question.target}</span> : check.question.en}</p>
       <div className="stage0-options">
         {check.options.map((o, i) => (
@@ -221,7 +236,15 @@ function CheckView({ check, lang, result, onAnswer, onEnglish }: { check: Stage0
         ))}
       </div>
       {result && !result.correct && (
-        <p className="card__note">Not quite — read the line again. <button type="button" className="btn btn--small btn--quiet" onClick={onEnglish}>Show the English</button></p>
+        <div className="stage0-retry" data-testid="stage0-retry">
+          <p className="card__note">Not quite — here is the line again. Read it, then answer again.</p>
+          {againLines.map((l) => (
+            <p key={l.id} className="stage0-model" data-line={l.id}>
+              <TargetLine adapter={adapter} lang={lang} text={l.text} /> <PlayButton voice={voice} text={l.text} audio={l.audio} label="Hear it" />
+            </p>
+          ))}
+          <button type="button" className="btn btn--small btn--quiet" onClick={onEnglish}>Show the English</button>
+        </div>
       )}
       {result?.correct && <p className="card__note">Yes.</p>}
     </div>
@@ -232,23 +255,34 @@ const KIND_TEXT: Record<Stage0ProductionTask['kind'], string> = {
   copy: 'Copy', choose: 'Choose', substitute: 'Change one word', complete: 'Complete', recall: 'From memory', answer: 'Answer', describe: 'Say it about yourself', retell: 'Retell',
 };
 
-export function ProductionView({ task, stepId, englishShown, voice }: { task: Stage0ProductionTask; stepId: string; englishShown: boolean; voice: Stage0Voice }) {
+/**
+ * A production task. When it is also spoken (`speak`), the spoken part is a RETELLING, not reading aloud: once the written answer
+ * is accepted, the target line is hidden and the learner is cued by the picture and the English meaning; the line comes back
+ * only after the recording, beside it, for the learner's own "did you say the same thing?".
+ */
+export function ProductionView({ task, stepId, englishShown, voice, lines }: { task: Stage0ProductionTask; stepId: string; englishShown: boolean; voice: Stage0Voice; lines?: ReadonlyArray<Stage0Line> }) {
   const { stage0, userId, lang, store } = useApp();
   const [text, setText] = useState('');
   const [modelShown, setModelShown] = useState(task.kind === 'copy');
   const [result, setResult] = useState<{ accepted: boolean; feedback: string } | null>(null);
-  const [speakDone, setSpeakDone] = useState(false);
+  const [revealed, setRevealed] = useState(false);
   const model = task.accept[0]?.text.replace(/\{x\}/g, '…') ?? '';
+  const [spokenLine, setSpokenLine] = useState<string | undefined>(); // his own accepted sentence (it carries his name, town…) is the line he retells
+  const spoken = spokenLine?.trim() || model;
+  const retelling = !!task.speak && !!result?.accepted;
+  const hideTarget = retelling && !revealed;
   const submit = async (value: string) => {
     const shown: Stage0Support[] = [...(modelShown ? ['model' as const] : []), ...(englishShown ? ['english' as const] : [])];
-    setResult(await stage0!.submitProduction(userId, lang, stepId, task.id, value, shown));
+    const r = await stage0!.submitProduction(userId, lang, stepId, task.id, value, shown);
+    setResult(r);
+    if (r.accepted && !revealed) setSpokenLine(value);
   };
   return (
     <div className="stage0-task" data-task={task.id} data-kind={task.kind}>
       <p><span className="chip">{KIND_TEXT[task.kind]}</span> {task.prompt}</p>
-      {task.kind === 'copy' && <p className="stage0-model" lang={lang}>{model}</p>}
-      {task.frame && <p className="stage0-model" lang={lang}>{task.frame}</p>}
-      {task.kind === 'choose' ? (
+      {task.kind === 'copy' && !hideTarget && <p className="stage0-model" lang={lang}>{model}</p>}
+      {task.frame && !hideTarget && <p className="stage0-model" lang={lang}>{task.frame}</p>}
+      {hideTarget ? null : task.kind === 'choose' ? (
         <div className="stage0-options">
           {task.options!.map((o) => <button key={o} type="button" className="btn stage0-option" lang={lang} onClick={() => { void submit(o); }}>{o}</button>)}
         </div>
@@ -259,11 +293,11 @@ export function ProductionView({ task, stepId, englishShown, voice }: { task: St
           {!modelShown && <button type="button" className="btn btn--small btn--quiet" onClick={() => setModelShown(true)}>Show me an answer</button>}
         </div>
       )}
-      {modelShown && task.kind !== 'copy' && <p className="card__note">One answer: <span lang={lang}>{model}</span></p>}
+      {modelShown && task.kind !== 'copy' && !hideTarget && <p className="card__note">One answer: <span lang={lang}>{model}</span></p>}
       {result && <p className={`card__note ${result.accepted ? 'stage0-ok' : ''}`}>{result.feedback}</p>}
-      {task.speak && result?.accepted && !speakDone && (
-        <SpeakBox voice={voice} model={result.accepted ? (text || model) : model} lang={lang} store={store} userId={userId}
-          onDone={(rid, self) => { setSpeakDone(true); void stage0!.recordSpeaking(userId, lang, stepId, task.id, rid, self); }} />
+      {retelling && (
+        <SpeakBox voice={voice} model={spoken} lang={lang} store={store} userId={userId} cue={retellCue(lang, task, lines, spoken)} onReveal={() => setRevealed(true)}
+          onDone={(rid, self) => { void stage0!.recordSpeaking(userId, lang, stepId, task.id, rid, self); }} />
       )}
     </div>
   );

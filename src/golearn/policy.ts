@@ -13,6 +13,10 @@
  *      change to it is applied by `invalidateListening` (index.ts) which rebuilds from the log;
  *   7. a visible transcript is sentence-level help for the listening encounter (assisted, no veto on any one item's estimate);
  *   8. listening-assessment texts never reach recommendations, ranking, occurrences or forecasts.
+ * FORGETTING (added to evidence@8 WITHOUT a version bump; audit 2026-10-07 item 5; see `DECAY`): computed at READ time from dates every
+ * item row already carries (`lastSeenAt`, each dimension's `lastEvidenceAt`), so stored rows, aggregates and folds are unchanged and no
+ * migration runs; a refold from the log recomputes the very same dates. Receptive `recognized` / `rapid` and the "likely familiar"
+ * estimate stand only while the item was met within `DECAY.weeks`; after that it counts half (met before) until it is met again.
  * Earlier: evidence@7 (listening eligibility revalidates observed coverage, current lawful exact binding,
  * reviewed source-specific quality, and protected assessment material; a policy mismatch rebuilds all derived listening state from the
  * unchanged append-only event log. Reading and production dimensions remain governed by their existing rules. `evidence@6` stored item state is an incrementally updated AGGREGATE, agg.ts, instead of being re-derived from
@@ -126,6 +130,19 @@ export const LEVEL_THRESHOLDS = {
 /** Estimate rule (receptive dimensions). */
 export const ESTIMATE = { minUnassisted: 4, minSittings: 2, cleanTail: 2, confidence: 0.3 } as const;
 
+/**
+ * Forgetting (audit item 5; READ-TIME, nothing stored changes). An item that has not been MET for `weeks` (any encounter at all, a
+ * heard one included, and a correct unaided recall: ANY `ProductionRecorded` for the item, a retrieval recall (dedupeKey `retrieval:…`, modality writing) included, in the dimension the fold
+ * records it) is no longer treated as `recognized` / `rapid` / "likely familiar": it is "met before, decayed" and counts HALF
+ * (`halfCredit`; false = nothing) in coverage until it is met again. A new encounter of any kind restores full credit at once.
+ * The stored level and estimate stay what the evidence made them; `effectiveStanding(item, now)` (state.ts, re-exported by queries.ts)
+ * derives the standing from the dates the row already carries (`lastSeenAt` and each dimension's `lastEvidenceAt`), so there is no
+ * migration and no POLICY_VERSION bump (see the header). A manual `known` mark is the learner's own word and does not decay.
+ */
+export const DECAY = { weeks: 6, halfCredit: true } as const;
+/** `DECAY.weeks` in milliseconds. */
+export const DECAY_MS = DECAY.weeks * 7 * 86_400_000;
+
 export const BAND_THRESHOLDS = { comfortable: 0.95, productiveChallenge: 0.88, difficult: 0.75 } as const;
 
 /** Reference demonstrated evidence at which an item is roughly "recognized"; only used to rank prerequisites. */
@@ -144,6 +161,14 @@ export const COMPETING_MARGIN = 0.2;
 
 /** Recommendation: a text is a `reread` candidate when at least this share of the word encounters of its latest reading sitting needed help. */
 export const HEAVY_HELP_FRACTION = 0.4;
+
+/**
+ * The ADAPTIVE LADDER (recommend.ts, R4): after a ladder unit whose text-level report was below "most" (some / little), or whose latest
+ * reading sitting needed help on MORE than this share of its word encounters, the ladder offers a reread (or, once that unit has been
+ * reread, the unit before it) before the next unit; two such units in a row also point at Stage 0's recall card. Lower than
+ * HEAVY_HELP_FRACTION on purpose: a unit is controlled text, written to be read with little help.
+ */
+export const LADDER_HELP_FRACTION = 0.25;
 
 /**
  * Production encounters are stored as `Encounter`s whose `assistance` field encodes the production kind
@@ -416,14 +441,24 @@ export const WHOLE_RANKING = {
 } as const;
 
 /**
+ * ORPHAN BOOST (rank.ts, R4). An ORPHAN is a lemma the ladder introduces and never meets again in any later unit (the gate's
+ * `orphansOf`; src/ladder/orphans.ts). A library text that contains at least `minLemmas` orphans the learner has MET IN READING gets a
+ * bounded lift (`perLemma` each, at most `max` on the 0..1 score): the natural place for the word to come back, with no drill. Applies
+ * only to the recommendation measure (`reach`), and only when the ladder supplies the list; without one nothing changes.
+ */
+export const ORPHAN_BOOST = { minLemmas: 3, perLemma: 0.02, max: 0.1 } as const;
+
+/**
  * What the learner is RECOMMENDED to read next (rank.ts `reachOf`, recommend.ts). PROVISIONAL, from the simulated student of
  * docs/audits/B2-SIMULATION.md. The coverage used here is the RECOMMENDATION's own: proper names (PROPN) and numerals are left out
  * of numerator and denominator, because a genealogy is "easy" only through its names and teaches nothing. It is never shown to the
  * learner as his coverage (the coverage of a text, in the reader and in Explore, is unchanged).
  */
 export const REACH = {
-  /** A text is IN REACH at this recommendation coverage or above (shown or likely-familiar words, names left out). */
+  /** A text is IN REACH at this recommendation coverage or above (shown or likely-familiar words, names left out). For controlled / adapted ladder texts and Stage 0 texts. */
   floor: 0.75,
+  /** The same floor for AUTHENTIC texts (the library, Scripture): the ladder's own intent is 88-92 % known, so 75 % was far too low for real texts (docs/audits/COURSE-AUDIT-2026-10-07.md 4.3 item 8). */
+  floorAuthentic: 0.85,
   /** With nothing in reach, the closest this many are recommended, said to be above the learner's level. */
   closestFew: 3,
   /** Such a text never scores above this (the ladder's "Next on your path" is 0.99), so it is not led with. */

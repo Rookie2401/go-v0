@@ -103,4 +103,12 @@ export interface LexiconSource {
   info(): Promise<DictionaryInfo | undefined>;
   /** Entries for each normalized form that has any. Forms without an entry are simply absent from the map. */
   lookup(forms: readonly string[]): Promise<Map<string, DictionaryEntry[]>>;
+  /**
+   * Corpus frequency of a lemma (the written lemma, parts of speech merged): occurrences per million words and the rank (1 = most
+   * frequent) in the corpus the dictionary's frequency sidecar was counted from. undefined when the source has no frequency file
+   * (`info().hasFrequency` is false) or the lemma is rare in that corpus. Optional: a source without it has no frequency.
+   */
+  frequency?(lemma: string): Promise<{ perMillion: number; rank: number } | undefined>;
+  /** The whole frequency table once loaded (size + synchronous get), for callers that rank many lemmas at once; undefined as `frequency` is. */
+  frequencyTable?(): Promise<{ readonly size: number; get(lemma: string): { perMillion: number; rank: number } | undefined } | undefined>;
 }

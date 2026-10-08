@@ -587,3 +587,7 @@ tr.is-current { background: color-mix(in srgb, var(--accent) 7%, transparent); }
 .progress__more > summary { cursor: pointer; display: inline; font-size: 0.85em; color: var(--ink-soft); }
 .progress__more > p { margin: 0.25rem 0 0; }
 .coverage__read { margin: 0.15rem 0; }
+.sent[data-practice='on'] { background: color-mix(in srgb, var(--accent) 7%, transparent); border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.listen-practice { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; margin: 0.5rem 0; }
+.listen-practice .note { margin: 0; font-size: 0.85em; flex-basis: 100%; }
+.sent__hear { font: inherit; font-size: 0.8em; background: none; border: 0; padding: 0 0.3em; cursor: pointer; color: var(--accent); }

@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-1-01",
+  "lang": "nb",
+  "title": "Meeting in the street",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-1-01",
+    "title": "Meeting in the street (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Everyone uses \"du\" (the polite \"De\" is rare in modern Norwegian and is not taught). \"Hyggelig\" alone is the short form used in Stage 0. \"fru\" is written with a lower-case f."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "greetings",
+    "introductions",
+    "names",
+    "origin",
+    "Sunday"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "berg": "Fru Berg",
+    "sam": "Sam",
+    "ana": "Anna",
+    "luis": "Lars"
+  },
+  "sections": [
+    {
+      "title": "På gata",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det er søndag. Det er morgen.",
+              "english": "It is Sunday. It is morning."
+            },
+            {
+              "text": "Sam er i byen. Her er fru Berg.",
+              "english": "Sam is in town. Here is Mrs Berg."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "God morgen!",
+              "english": "Good morning!",
+              "speaker": "berg"
+            },
+            {
+              "text": "God morgen!",
+              "english": "Good morning!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Hva heter du?",
+              "english": "What is your name?",
+              "speaker": "berg"
+            },
+            {
+              "text": "Jeg heter Sam Miller. Hva heter du?",
+              "english": "My name is Sam Miller. What is your name?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg heter Berg.",
+              "english": "My name is Berg.",
+              "speaker": "berg"
+            },
+            {
+              "text": "Hyggelig, fru Berg.",
+              "english": "Nice to meet you, Mrs Berg.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Hyggelig også, Sam.",
+              "english": "Nice to meet you too, Sam.",
+              "speaker": "berg"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Snakker du norsk?",
+              "english": "Do you speak Norwegian?",
+              "speaker": "berg"
+            },
+            {
+              "text": "Ja, jeg snakker norsk. Men ikke veldig bra.",
+              "english": "Yes, I speak Norwegian. But not very well.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du snakker veldig bra!",
+              "english": "You speak very well!",
+              "speaker": "berg"
+            },
+            {
+              "text": "Hvor kommer du fra?",
+              "english": "Where do you come from?",
+              "speaker": "berg"
+            },
+            {
+              "text": "Jeg kommer fra USA. Bor du her i byen?",
+              "english": "I come from the USA. Do you live here in town?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, jeg bor her. Jeg er fra Bergen.",
+              "english": "Yes, I live here. I am from Bergen.",
+              "speaker": "berg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Anna og Lars",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna er her også. Hun er glad.",
+              "english": "Anna is here too. She is happy."
+            },
+            {
+              "text": "Hei, Sam! Hvordan går det?",
+              "english": "Hi, Sam! How are you?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Det går bra, takk. Og du?",
+              "english": "I am fine, thank you. And you?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det går veldig bra. Jeg er glad.",
+              "english": "I am very well. I am happy.",
+              "speaker": "ana"
+            },
+            {
+              "text": "God morgen, Anna.",
+              "english": "Good morning, Anna.",
+              "speaker": "berg"
+            },
+            {
+              "text": "Jeg går til kirka. Vil du være med, Sam?",
+              "english": "I am going to church. Do you want to come along, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, gjerne! Jeg vil gå til kirka.",
+              "english": "Yes, gladly! I want to go to church.",
+              "speaker": "sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lars er her også. Han er lærer. Han er glad.",
+              "english": "Lars is here too. He is a teacher. He is happy."
+            },
+            {
+              "text": "Lars bor i byen. Han jobber på skolen.",
+              "english": "Lars lives in town. He works at the school."
+            },
+            {
+              "text": "Hvordan går det, Lars?",
+              "english": "How are you, Lars?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Det går bra. Kommer du med, Sam?",
+              "english": "I am fine. Are you coming along, Sam?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja, gjerne!",
+              "english": "Yes, gladly!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vil du ha kaffe, Sam?",
+              "english": "Do you want coffee, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg vil gjerne ha kaffe. Men jeg er trøtt.",
+              "english": "Yes, I would like some coffee. But I am tired.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Hvordan går det med deg, Sam?",
+              "english": "How are you doing, Sam?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Det går bra! Ha det bra, fru Berg!",
+              "english": "I am fine! Goodbye, Mrs Berg!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ha det bra! Gå til kirka!",
+              "english": "Goodbye! Go to church!",
+              "speaker": "berg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

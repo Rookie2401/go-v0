@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-2-06",
+  "lang": "nb",
+  "title": "How to bake bread",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-2-06",
+    "title": "How to bake bread (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". A simple description of a process in the present tense (\"først, så, til slutt\"). Marta explains; the quantities are left out on purpose."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "process",
+    "bread",
+    "baking",
+    "instructions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "marta": "Marta",
+    "luis": "Lars"
+  },
+  "sections": [
+    {
+      "title": "Marta baker",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam er hos Marta klokka fem om morgenen. Han vil se hvordan hun baker brød.",
+              "english": "Sam is at Marta's at five o'clock in the morning. He wants to see how she bakes bread."
+            },
+            {
+              "text": "Hva trenger du til brød, Marta?",
+              "english": "What do you need for bread, Marta?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg trenger mel, vann, salt og gjær. Det er alt.",
+              "english": "I need flour, water, salt and yeast. That is all.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Det er ikke mye!",
+              "english": "That is not much!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nei, men det må gjøres riktig. Se på meg.",
+              "english": "No, but it must be done right. Watch me.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Slik gjør man det",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Først tar Marta mel. Hun tar vann og salt og gjær også. Så lager hun deig.",
+              "english": "First Marta takes flour. She takes water and salt and yeast too. Then she makes dough."
+            },
+            {
+              "text": "Deigen må hvile. Den hviler lenge, og den blir stor.",
+              "english": "The dough must rest. It rests for a long time, and it gets big."
+            },
+            {
+              "text": "Hvor lenge må deigen hvile?",
+              "english": "How long must the dough rest?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Lenge. Hvis du ikke venter, blir brødet dårlig.",
+              "english": "A long time. If you do not wait, the bread will be bad.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Etterpå lager hun små brød av deigen. Hun setter dem i ovnen.",
+              "english": "Afterwards she makes small loaves from the dough. She puts them in the oven."
+            },
+            {
+              "text": "Ovnen er varm. Etter litt lukter det godt, og brødet blir ferdig.",
+              "english": "The oven is hot. After a little while it smells good, and the bread is done."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Til slutt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nå er brødet ferdig. Smak!",
+              "english": "Now the bread is done. Taste!",
+              "speaker": "marta"
+            },
+            {
+              "text": "Det er veldig godt! Jeg liker brød som er varmt.",
+              "english": "It is very good! I like bread that is warm.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du kan lage det selv, Sam. Du trenger mel, vann, salt og gjær.",
+              "english": "You can make it yourself, Sam. You need flour, water, salt and yeast.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Og deig, ovn og tid. Jeg skal prøve hjemme!",
+              "english": "And dough, oven and time. I will try at home!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Neste dag baker Sam brød hjemme hos Anna. Det blir ikke så bra, men alle spiser det.",
+              "english": "The next day Sam bakes bread at Anna's. It does not turn out so well, but everyone eats it."
+            },
+            {
+              "text": "Det er godt, Sam! Du må lære av Marta.",
+              "english": "It is good, Sam! You must learn from Marta.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg skal komme hver lørdag og lære. Er det bra for deg?",
+              "english": "I will come every Saturday and learn. Is that good for you?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, det er veldig bra. Jeg er gammel, og jeg liker å ha deg her.",
+              "english": "Yes, that is very good. I am old, and I like having you here.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Hver lørdag står Sam opp tidlig. Han går til Marta, og de baker brød.",
+              "english": "Every Saturday Sam gets up early. He goes to Marta, and they bake bread."
+            },
+            {
+              "text": "Folk på markedet liker brødet. De spør: «Hvem baker så godt brød?» Marta sier: «Det er Sam og jeg!»",
+              "english": "People at the market like the bread. They ask: \"Who bakes such good bread?\" Marta says: \"It is Sam and I!\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nyheten sier at de bygger en ny skole. Ola sier at det blir mer plass der. Sam vil gå dit og lære.",
+              "english": "The news says that they are building a new school. Ola says that there will be more room there. Sam wants to go there and learn."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jenta svarte på gåten. Hun var klok. Ingen hadde svart før, og hun var ikke redd for trollet.",
+              "english": "The girl answered the riddle. She was clever. Nobody had answered before, and she was not afraid of the troll."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "På skolen lærer vi begge: bokmål og nynorsk. Dialektene er forskjellige, men vi forstår hverandre.",
+              "english": "At school we learn both: Bokmål and Nynorsk. The dialects are different, but we understand each other."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Toget går langt, gjennom en tunnel. En dame går ut igjen.",
+              "english": "The train goes far, through a tunnel. A woman gets off again."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Er du sikker på at brødet er ferdig?",
+              "english": "Are you sure that the bread is ready?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ingrid stoppet på brua. «Stopp!» sa trollet.",
+              "english": "Ingrid stopped on the bridge. \"Stop!\" said the troll."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

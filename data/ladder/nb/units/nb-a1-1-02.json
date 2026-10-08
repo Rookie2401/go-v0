@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-1-02",
+  "lang": "nb",
+  "title": "Sam's room",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-1-02",
+    "title": "Sam's room (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". \"ei seng / senga\" is feminine; the house style writes the -a forms (sengen is also correct Bokmål)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "room",
+    "furniture",
+    "home"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam",
+    "luis": "Lars"
+  },
+  "sections": [
+    {
+      "title": "Rommet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam bor i et hus. Huset er stort.",
+              "english": "Sam lives in a house. The house is big."
+            },
+            {
+              "text": "Sam har et rom i huset. Rommet er lite.",
+              "english": "Sam has a room in the house. The room is small."
+            },
+            {
+              "text": "Det er ei seng i rommet. Senga er stor.",
+              "english": "There is a bed in the room. The bed is big."
+            },
+            {
+              "text": "Rommet har også et vindu.",
+              "english": "The room also has a window."
+            },
+            {
+              "text": "Vinduet er her. Sam liker vinduet.",
+              "english": "The window is here. Sam likes the window."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hvem bor hvor?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna bor her. Hun jobber på klinikken.",
+              "english": "Anna lives here. She works at the clinic."
+            },
+            {
+              "text": "Lars bor her også. Han er lærer på skolen.",
+              "english": "Lars lives here too. He is a teacher at the school."
+            },
+            {
+              "text": "Marta bor ikke her. Hun bor i byen.",
+              "english": "Marta does not live here. She lives in town."
+            },
+            {
+              "text": "Marta er bestemora til Nils. Nils bor ikke hos Marta.",
+              "english": "Marta is Nils's grandmother. Nils does not live with Marta."
+            },
+            {
+              "text": "Nils bor hjemme. Han går på skolen.",
+              "english": "Nils lives at home. He goes to school."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Anna og Sam",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hei, Sam! Hvordan går det?",
+              "english": "Hi, Sam! How are you?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Det går bra, takk. Jeg er glad.",
+              "english": "I am fine, thank you. I am happy.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Liker du huset?",
+              "english": "Do you like the house?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg liker huset. Men jeg er trøtt i dag.",
+              "english": "Yes, I like the house. But I am tired today.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Har du ei seng?",
+              "english": "Do you have a bed?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg har ei seng.",
+              "english": "Yes, I have a bed.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, det er bra. Rommet er lite, men jeg er glad.",
+              "english": "Yes, that is good. The room is small, but I am happy.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Lars er hjemme. Han er trøtt.",
+              "english": "Lars is at home. He is tired."
+            },
+            {
+              "text": "Hei, Sam! Kommer du til kirka i dag?",
+              "english": "Hi, Sam! Are you coming to church today?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja, gjerne!",
+              "english": "Yes, gladly!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bra! Vil du ha kaffe?",
+              "english": "Good! Do you want coffee?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja, takk!",
+              "english": "Yes, please!",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Fru Berg bor ikke i huset. Hun kommer fra byen, og hun er glad i Sam.",
+              "english": "Mrs Berg does not live in the house. She comes from town, and she is fond of Sam."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

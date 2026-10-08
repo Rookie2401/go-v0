@@ -23,8 +23,8 @@ const normalized = (s: string) => s.replace(/\s+/g, ' ').trim();
 const sourcePath = (entry: any) => path.join(base, entry.slug.startsWith('guerber-') ? 'de' : 'modern', entry.source.file);
 const rows = (lang: string) => {
   const root = `public/library/${lang}`;
-  return read(`${root}/manifest.json`).shards.filter((s: any) => s.file.includes('curriculum-remediation'))
-    .flatMap((s: any) => read(path.join(root, s.file)).rows);
+  // shards are named by stream since the 2026-10-06 library rebuild, so every shard is read and rows are matched by workId
+  return read(`${root}/manifest.json`).shards.flatMap((s: any) => read(path.join(root, s.file)).rows);
 };
 
 describe('installed curriculum-remediation source integrity', () => {

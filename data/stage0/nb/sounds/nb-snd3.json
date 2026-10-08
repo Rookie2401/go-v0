@@ -1,0 +1,136 @@
+{
+  "id": "nb-snd3",
+  "lang": "nb",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "å, ø and the silent h in hj and hv"
+  },
+  "features": [
+    "nb:å",
+    "nb:ø",
+    "nb:hj-hv"
+  ],
+  "words": [
+    {
+      "text": "på",
+      "en": "on, at",
+      "picture": "📍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "trøtt",
+      "en": "tired",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "hjemme",
+      "en": "at home",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "hvor",
+      "en": "where",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "hva",
+      "en": "what",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "å is like \"aw\" in \"saw\" (på). ø is like the vowel in \"fur\", with rounded lips (trøtt). In hj and hv the h is not said: hjemme begins like English \"y\" (YEM-meh), and hvor and hva begin with a \"v\" (VOOR, VAH).",
+    "more": "æ, ø and å are letters of their own at the end of the alphabet, not a, o or e with a mark. Writing them correctly is part of spelling: å is not the same letter as a."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "på",
+      "prompt": "How is \"å\" said in \"på\"?",
+      "options": [
+        "like \"aw\" in \"saw\"",
+        "like \"a\" in \"cat\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "trøtt",
+      "prompt": "How is \"ø\" said in \"trøtt\"?",
+      "options": [
+        "like the vowel in \"fur\", with rounded lips",
+        "like \"oo\" in \"moon\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "hjemme",
+      "prompt": "How does \"hjemme\" begin?",
+      "options": [
+        "HYEM-meh, with an h",
+        "YEM-meh (the h is silent)"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "hvor",
+      "prompt": "How does \"hvor\" begin?",
+      "options": [
+        "with a \"v\" (the h is silent)",
+        "with \"hw\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-reading",
+      "word": "hva",
+      "prompt": "How is \"hva\" said?",
+      "options": [
+        "HVAH",
+        "VAH (no h)"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d6",
+      "kind": "which-word",
+      "word": "hva",
+      "prompt": "Which is the question word for \"what\"?",
+      "options": [
+        "hva",
+        "va"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  }
+}

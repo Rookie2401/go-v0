@@ -11,6 +11,8 @@ export const LANGUAGE_ROWS: Language[] = [
   { id: 'th', name: 'Thai', endonym: 'ไทย', script: 'Thai', direction: 'ltr', whitespaceDelimited: false },
   { id: 'hi', name: 'Hindi', endonym: 'हिन्दी', script: 'Deva', direction: 'ltr', whitespaceDelimited: true },
   { id: 'de', name: 'German', endonym: 'Deutsch', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
+  { id: 'nb', name: 'Norwegian (Bokmål)', endonym: 'Norsk bokmål', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
+  { id: 'nn', name: 'Norwegian (Nynorsk)', endonym: 'Norsk nynorsk', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
 ];
 
 export const COURSES: Course[] = [
@@ -39,9 +41,31 @@ export const COURSES: Course[] = [
     // for recognition only.
     variety: { target: 'de-DE', within: [] },
   },
+  {
+    id: 'norway-nb', lang: 'nb', country: 'Norway', title: 'Norway → Norwegian (Bokmål)', preferredLocales: ['nb-NO', 'nb', 'no'],
+    readsLangs: ['nn'],
+    // Active target: contemporary written Bokmål (2005 norm). Nynorsk is a separate written standard, read receptively in
+    // its own accounts (its items are `nn` items, never credited to Bokmål). The historical varieties (Riksmål,
+    // Dano-Norwegian, Landsmål, Høgnorsk) are recognition-only.
+    variety: { target: 'nb', within: [] },
+  },
 ];
 
-export const courseForLang = (lang: Language['id']) => COURSES.find((c) => c.lang === lang)!;
+/** The course for a language: the course whose own language it is; for a companion language (Nynorsk) the course that reads it. */
+export const courseForLang = (lang: Language['id']) => (COURSES.find((c) => c.lang === lang) ?? COURSES.find((c) => c.readsLangs?.includes(lang)))!;
+
+/**
+ * Whether a course opens a text or imports a document of this language: its own language, or a companion language it
+ * also reads (`readsLangs`). A course without `readsLangs` reads exactly its own language.
+ */
+export const courseReads = (course: Pick<Course, 'lang' | 'readsLangs'>, lang: Language['id']): boolean =>
+  course.lang === lang || (course.readsLangs?.includes(lang) ?? false);
+
+/** Every language a course reads: its own first, then its companions. */
+export const courseLangs = (course: Pick<Course, 'lang' | 'readsLangs'>): Language['id'][] => [
+  course.lang,
+  ...(course.readsLangs ?? []).filter((l) => l !== course.lang),
+];
 
 /**
  * Product scope switches. GoListen playback, lawful recording import, and listening evidence are enabled.

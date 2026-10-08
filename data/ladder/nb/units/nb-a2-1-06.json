@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-1-06",
+  "lang": "nb",
+  "title": "The 17th of May",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-1-06",
+    "title": "The 17th of May (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". General description of the Norwegian national day (17 May); every detail is general knowledge and must be confirmed by a Norwegian reviewer."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "national day",
+    "parade",
+    "flag",
+    "bunad",
+    "ice cream"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "norway"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nico": "Nils",
+    "sam": "Sam",
+    "marta": "Marta",
+    "ana": "Anna",
+    "luis": "Lars"
+  },
+  "sections": [
+    {
+      "title": "En stor dag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sytten mai: flagg, is og pølse.",
+              "english": "The seventeenth of May: flags, ice cream and sausage."
+            },
+            {
+              "text": "Sytten mai er en stor dag i Norge. Folk feirer at Norge er et land.",
+              "english": "The seventeenth of May is a big day in Norway. People celebrate that Norway is a country."
+            },
+            {
+              "text": "Mange folk har flagg. Mange går i tog i byen.",
+              "english": "Many people have flags. Many walk in a parade in town."
+            },
+            {
+              "text": "Toget går til sentrum, og folk synger.",
+              "english": "The parade goes to the town centre, and people sing."
+            },
+            {
+              "text": "Mange har bunad. Bunaden er gammel og dyr.",
+              "english": "Many people wear a bunad. The bunad is old and expensive."
+            },
+            {
+              "text": "Folk spiser is og pølse. Alle er glade.",
+              "english": "People eat ice cream and sausage. Everyone is happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sytten mai i Bergen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det er sytten mai. Sam står opp tidlig. Det regner ikke, og sola er ute.",
+              "english": "It is the seventeenth of May. Sam gets up early. It is not raining, and the sun is out."
+            },
+            {
+              "text": "Anna har bunad. Hun er glad i bunaden.",
+              "english": "Anna has a bunad. She is fond of the bunad."
+            },
+            {
+              "text": "Lars har flagg, og Nils har flagg også.",
+              "english": "Lars has a flag, and Nils has a flag too."
+            },
+            {
+              "text": "Se toget! Folk synger!",
+              "english": "Look at the parade! People are singing!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Hva synger de?",
+              "english": "What are they singing?",
+              "speaker": "sam"
+            },
+            {
+              "text": "De synger om Norge. Vi feirer at Norge er et land.",
+              "english": "They sing about Norway. We celebrate that Norway is a country.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Nils spiser is. Han spiser pølse også. Pølsen er god.",
+              "english": "Nils eats ice cream. He eats sausage too. The sausage is good."
+            },
+            {
+              "text": "Jeg vil ha is. Hvor mye koster den?",
+              "english": "I want ice cream. How much does it cost?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Den koster tretti kroner i dag.",
+              "english": "It costs thirty kroner today.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Sam spiser, og han er glad.",
+              "english": "Sam eats, and he is happy."
+            },
+            {
+              "text": "Liker du sytten mai, Sam?",
+              "english": "Do you like the seventeenth of May, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja! Det er bra å feire. Alle er glade.",
+              "english": "Yes! It is good to celebrate. Everyone is happy.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Om kvelden",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Om kvelden er Sam trøtt. Han sitter hjemme med Anna og Lars.",
+              "english": "In the evening Sam is tired. He sits at home with Anna and Lars."
+            },
+            {
+              "text": "De drikker te, og de snakker om dagen.",
+              "english": "They drink tea, and they talk about the day."
+            },
+            {
+              "text": "Er du glad i Norge, Sam?",
+              "english": "Are you fond of Norway, Sam?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja, jeg er veldig glad i Norge. Jeg vil bo her lenge.",
+              "english": "Yes, I am very fond of Norway. I want to live here for a long time.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er bra. Vi vil ha deg her!",
+              "english": "That is good. We want to have you here!",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg tenker på reisen med fly. Jeg pakket ikke mye, og nå har jeg nye venner. Derfor er jeg glad.",
+              "english": "I think about the journey by plane. I did not pack much, and now I have new friends. That is why I am glad."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "I klassen spør Lars: «Forstår du sytten mai?» Det er et lett spørsmål, men prøven er vanskelig.",
+              "english": "In the class Lars asks: \"Do you understand the 17th of May?\" It is an easy question, but the test is difficult."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta er gammel. Hun har levd lenge, og livet var ikke lett på gården.",
+              "english": "Marta is old. She has lived a long time, and life was not easy on the farm."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

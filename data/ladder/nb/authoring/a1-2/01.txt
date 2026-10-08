@@ -1,0 +1,44 @@
+=== nb-a1-2-01 | dialogue | conversation | A visit at Marta's | Et besøk hos {marta} | visit,tea,asking politely,living room
+note: "Kan jeg få …?" is the polite request; "kom inn" is the imperative of "komme".
+## Et besøk
+Det er lørdag. {sam} besøker {marta}. || It is Saturday. Sam is visiting Marta.
+{marta} bor i et lite hus i byen. {sam} kommer til huset. Han er glad. || Marta lives in a small house in town. Sam comes to the house. He is happy.
+[sam] God dag, {marta}! Kan jeg komme inn? || Hello, Marta! Can I come in?
+[marta] Hei, {sam}! Ja, kom inn! || Hi, Sam! Yes, come in!
+[marta] Vær så god! Du kan sitte her. || Please! You can sit here.
+[sam] Takk. Du har en stor stue, {marta}. || Thanks. You have a big living room, Marta.
+[marta] Ja, stua er stor. Huset er lite. || Yes, the living room is big. The house is small.
+
+## Te i stua
+[marta] Jeg lager kaffe. Vil du ha kaffe? || I am making coffee. Do you want coffee?
+[sam] Nei takk. Kan jeg få te? || No thanks. Can I have tea?
+[marta] Ja, du får te. Vil du ha melk i teen? || Yes, you get tea. Do you want milk in the tea?
+[sam] Ja, gjerne. Litt melk, takk. || Yes, please. A little milk, please.
+[marta] Her er te. Her er melk. || Here is tea. Here is milk.
+{sam} sitter her. Han drikker te. Teen er god. || Sam sits here. He drinks tea. The tea is good.
+[sam] Teen er god, {marta}. Du er snill. || The tea is good, Marta. You are kind.
+[marta] Nei, nei. Du er snill, {sam}. Du besøker meg hver lørdag. || No, no. You are kind, Sam. You visit me every Saturday.
+
+## {nico} kommer inn
+{nico} kommer inn i stua. Han er sulten. || Nils comes into the living room. He is hungry.
+[nico] Hei, {sam}! Er du på besøk? || Hi, Sam! Are you visiting?
+[sam] Ja, jeg er hos bestemora di. || Yes, I am at your grandmother's.
+[nico] Bestemor, får jeg brød? || Grandmother, may I have bread?
+[marta] Ja, her er brød med ost. Du er snill, {nico}. || Yes, here is bread with cheese. You are kind, Nils.
+{nico} sitter og spiser brød med ost. || Nils sits and eats bread with cheese.
+[nico] Jeg vil ha melk også. || I want milk too.
+[marta] Her er melk. || Here is milk.
+{marta} er glad. || Marta is happy.
+[marta] Kom hver lørdag, {sam}! Du er alltid glad i kirka. || Come every Saturday, Sam! You are always happy at church.
+[sam] Takk, {marta}! Jeg kommer gjerne. || Thank you, Marta! I will gladly come.
+
+## Husker du?
+Jobben til {marta} er å bake brød. {ana} er sykepleier, og hun hjelper pasientene. || Marta's job is to bake bread. Anna is a nurse, and she helps the patients.
+
+[sam] Unnskyld, hvor er busstoppet? || Excuse me, where is the bus stop?
+[marta] Gå rett fram, og så til høyre. Så er du i sentrum. || Go straight ahead, and then to the right. Then you are in the town centre.
+
+[ana] Du har en lang uke, {sam}. På mandag og tirsdag er du på skolen. || You have a long week, Sam. On Monday and Tuesday you are at school.
+[ana] På onsdag og torsdag er du hjemme, og på fredag er du i sentrum. || On Wednesday and Thursday you are at home, and on Friday you are in the town centre.
+
+Det regner, og været er vått. {ana} har paraply. || It is raining, and the weather is wet. Anna has an umbrella.

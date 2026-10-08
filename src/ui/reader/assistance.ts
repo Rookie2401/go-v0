@@ -7,7 +7,8 @@
  * DEFAULT_ASSISTANCE, and the reader then keeps its original behaviour exactly (see `isLegacyProfile`).
  */
 import { DEFAULT_ASSISTANCE, LAYER_ASSISTANCE_LEVEL, REVIEW_OK } from '../../core';
-import type { AnalysisSourceInfo, AssistanceLevel, AssistanceProfile, ContentNote, DictionaryEntry, DictionaryInfo, HelpLayer, LanguageCode, OrthographyRelation, PartOfSpeech, RegisterTag, SyllableAnalysis, TokenAnalysis, TokenSupport, Variety, WordPart } from '../../core';
+import { LANGUAGE_ROWS } from '../../core/config';
+import type { AnalysisSourceInfo, AssistanceLevel, ConceptFamily, AssistanceProfile, ContentNote, DictionaryEntry, DictionaryInfo, HelpLayer, LanguageCode, OrthographyRelation, PartOfSpeech, RegisterTag, SyllableAnalysis, TokenAnalysis, TokenSupport, Variety, WordPart } from '../../core';
 
 /** The profile of a course without a ladder: the reader looks and behaves exactly as it always did. */
 export function isLegacyProfile(profile: AssistanceProfile): boolean {
@@ -146,6 +147,23 @@ const VARIETY_LINE: Partial<Record<RegisterTag, string>> = {
 export function varietyLine(register?: RegisterTag[]): string | undefined {
   const lines = [...new Set((register ?? []).filter((r) => r !== 'standard').map((r) => VARIETY_LINE[r]).filter((l): l is string => !!l))];
   return lines.length ? lines.join(' · ') : undefined;
+}
+
+/** How a language is named on the family line: the part in parentheses when there is one ("Norwegian (Nynorsk)" → "Nynorsk"). */
+const familyLangName = (lang: LanguageCode): string => {
+  const name = LANGUAGE_ROWS.find((r) => r.id === lang)?.name ?? lang;
+  return /\(([^)]+)\)/.exec(name)?.[1] ?? name;
+};
+
+/**
+ * The other members of a word's concept family (the adapter's `family()`): "Nynorsk: eg" under Bokmål "jeg". Members of the
+ * word's own language are left out (the sheet lists those as alternatives). Related, never credited: the line only tells the
+ * learner that the other standard says it differently; nothing is counted for him.
+ */
+export function familyLine(family: ConceptFamily | undefined, lang: LanguageCode): string | undefined {
+  const others = (family?.members ?? []).filter((m) => m.lang !== lang);
+  if (others.length === 0) return undefined;
+  return others.map((m) => `${familyLangName(m.lang)}: ${m.lemma}`).join(' · ');
 }
 
 /** What a role means for the learner, in plain words ("softening particle", "classifier"). */
@@ -524,6 +542,8 @@ const has = (tags: readonly string[], re: RegExp): boolean => tags.some((t) => r
  *    readings of Spain and its dialect areas last (they differ: θ).
  *  - de: stressed / standard / Germany readings; then unstressed; the Austrian, Swiss and southern readings last.
  *  - sq: standard or Tosk without "dialectal"; then Tosk dialectal; then other labels; Gheg-only readings last.
+ *  - nb, nn: the East Norwegian (Oslo) reading is the reference realisation, never a norm (no official spoken standard exists);
+ *    other labelled readings (west, southwest, Trøndelag, north) come after it, in the order the source lists them.
  */
 function readingRank(lang: LanguageCode, tags: readonly string[]): number {
   if (tags.length === 0) return 0;
@@ -546,6 +566,9 @@ function readingRank(lang: LanguageCode, tags: readonly string[]): number {
       if (has(t, /tosk/) && !gheg) return 2;
       return 3;
     }
+    case 'nb':
+    case 'nn':
+      return has(t, /east|oslo|øst/) ? 1 : 3;
     default: return 0;
   }
 }

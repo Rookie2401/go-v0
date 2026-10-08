@@ -9,9 +9,9 @@ const work = { ...THAI_WORKS[0], stageId: stage.id, role: 'spine' as const, righ
 const text = { id: 'test', workId: work.id, lang: 'th', kind: 'story', published: true, unpublishedReasons: [], editorialTags: [], contentVersion: 1, generated: false } as unknown as Text;
 const metadata: CurriculumMetadata = { lifecycle: 'published', role: 'controlled', registers: ['standard'], rejectionReasons: [], provenance: { kind: 'original' }, audio: { state: 'unavailable', rightsCleared: false } };
 describe('curriculum release contracts', () => {
-  it('covers each of the 60 real stage declarations with noncertifying transitions', () => {
-    expect(STAGE_CONTRACTS).toHaveLength(60);
-    expect(new Set(STAGE_CONTRACTS.map(s => s.id)).size).toBe(60);
+  it('covers each of the 67 real stage declarations (60 + the 7 Norwegian shelves) with noncertifying transitions', () => {
+    expect(STAGE_CONTRACTS).toHaveLength(67);
+    expect(new Set(STAGE_CONTRACTS.map(s => s.id)).size).toBe(67);
     expect(STAGE_CONTRACTS.every(s => s.targetCapabilities.length && !s.exitEvidence.certification)).toBe(true);
   });
   it('does not count empty, inaccessible, unpublished or assessment stages', () => {

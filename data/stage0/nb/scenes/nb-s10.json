@@ -1,0 +1,256 @@
+{
+  "id": "nb-s10",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "How much is it?",
+    "target": "Hva koster det?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "bread",
+      "rice",
+      "money"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "I dag har jeg brød og ris.",
+      "en": "Today I have bread and rice.",
+      "speaker": "marta",
+      "picture": "🍞🍚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Hva koster brødet?",
+      "en": "How much is the bread?",
+      "speaker": "sam",
+      "picture": "🍞💵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Brødet koster tjue kroner.",
+      "en": "The bread costs twenty kroner.",
+      "speaker": "marta",
+      "picture": "🍞 20",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Og risen?",
+      "en": "And the rice?",
+      "speaker": "sam",
+      "picture": "🍚❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Risen koster tretti kroner.",
+      "en": "The rice costs thirty kroner.",
+      "speaker": "marta",
+      "picture": "🍚 30",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Jeg vil ha et brød og ris, takk.",
+      "en": "I would like a bread and rice, please.",
+      "speaker": "sam",
+      "picture": "🍞🍚🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Jeg har femti kroner.",
+      "en": "I have fifty kroner.",
+      "speaker": "sam",
+      "picture": "💵 50",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l8",
+      "text": "Tjue og tretti er femti.",
+      "en": "Twenty and thirty is fifty.",
+      "speaker": "sam",
+      "picture": "20 + 30 = 50",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ris",
+      "koster",
+      "brødet",
+      "kroner",
+      "risen",
+      "tretti",
+      "femti"
+    ],
+    "constructions": [
+      "nb.numbers"
+    ]
+  },
+  "represents": [
+    "nb.numbers",
+    "nb.w-question",
+    "nb.vil-ha",
+    "nb.politeness",
+    "nb.har-object",
+    "nb.noun-endings",
+    "nb.men-og"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2",
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much is the bread?"
+      },
+      "options": [
+        {
+          "en": "20 kroner"
+        },
+        {
+          "en": "30 kroner"
+        },
+        {
+          "en": "50 kroner"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much is the rice?"
+      },
+      "options": [
+        {
+          "en": "30 kroner"
+        },
+        {
+          "en": "20 kroner"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l7"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much money does Sam have?"
+      },
+      "options": [
+        {
+          "en": "50 kroner"
+        },
+        {
+          "en": "20 kroner"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Ask how much the bread is.",
+      "basedOn": [
+        "l2",
+        "nb.numbers"
+      ],
+      "frame": "Hva koster ___?",
+      "accept": [
+        {
+          "text": "Hva koster brødet"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Marta asks: \"Hva vil du ha?\" You want rice.",
+      "basedOn": [
+        "l6"
+      ],
+      "accept": [
+        {
+          "text": "Jeg vil ha ris"
+        },
+        {
+          "text": "Jeg vil ha ris, takk"
+        },
+        {
+          "text": "Ris, takk"
+        },
+        {
+          "text": "Jeg vil ha ris takk"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "koster, kroner",
+      "text": "\"Hva koster …?\" is how you ask the price. The money is the krone; with a number it is \"kroner\": tjue kroner, tretti kroner, femti kroner (20, 30, 50). The ending on brødet and risen means \"the bread\", \"the rice\". Numbers so far: tjue, tretti, femti.",
+      "explains": [
+        "nb.numbers",
+        "nb.noun-endings"
+      ],
+      "afterScenes": 0
+    }
+  ]
+}

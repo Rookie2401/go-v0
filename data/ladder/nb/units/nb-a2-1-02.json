@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-1-02",
+  "lang": "nb",
+  "title": "A letter home",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-1-02",
+    "title": "A letter home (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". A personal letter: \"Kjære mamma\" opens it and \"Mange hilsener fra …\" closes it. Sam writes \"mamma\" to his mother; the earlier units say \"mora mi\"."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "letter",
+    "family",
+    "missing someone",
+    "hope"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Brevet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "I dag skriver Sam et brev til mamma. Han savner henne.",
+              "english": "Today Sam writes a letter to Mum. He misses her."
+            },
+            {
+              "text": "Bergen, søndag",
+              "english": "Bergen, Sunday"
+            },
+            {
+              "text": "Kjære mamma,",
+              "english": "Dear Mum,"
+            },
+            {
+              "text": "Nå har jeg bodd i Norge i mange uker. Jeg skriver et brev til deg, fordi jeg savner deg.",
+              "english": "Now I have lived in Norway for many weeks. I am writing a letter to you, because I miss you."
+            },
+            {
+              "text": "Jeg har det bra. Jeg bor hos Anna og Lars. De er snille. Huset er lite, men rommet mitt er bra.",
+              "english": "I am fine. I live with Anna and Lars. They are kind. The house is small, but my room is good."
+            },
+            {
+              "text": "Jeg snakker norsk hver dag. Jeg går til skolen på mandag og onsdag. Jeg leser og skriver mye.",
+              "english": "I speak Norwegian every day. I go to school on Monday and Wednesday. I read and write a lot."
+            },
+            {
+              "text": "Jeg har mange venner nå. Marta baker brød og selger det på markedet. Nils er elleve år, og han gråter ikke mer.",
+              "english": "I have many friends now. Marta bakes bread and sells it at the market. Nils is eleven years old, and he does not cry any more."
+            },
+            {
+              "text": "Jeg går i kirka hver søndag. Jeg ber for deg og for far.",
+              "english": "I go to church every Sunday. I pray for you and for Dad."
+            },
+            {
+              "text": "Jeg savner deg og far. Jeg savner broren min også.",
+              "english": "I miss you and Dad. I miss my brother too."
+            },
+            {
+              "text": "Jeg håper at du har det bra. Jeg håper at du kommer til Bergen.",
+              "english": "I hope that you are well. I hope that you will come to Bergen."
+            },
+            {
+              "text": "Jeg ringer snart. Vi snakker på telefonen på søndag.",
+              "english": "I will call soon. We will talk on the phone on Sunday."
+            },
+            {
+              "text": "Hils far og broren min.",
+              "english": "Say hello to Dad and to my brother."
+            },
+            {
+              "text": "Mange hilsener fra Sam",
+              "english": "Many greetings from Sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Etter brevet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hva gjør du, Sam? Er det et brev?",
+              "english": "What are you doing, Sam? Is that a letter?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg skriver et brev til mora mi.",
+              "english": "Yes, I am writing a letter to my mother.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er bra. Skal du sende det snart?",
+              "english": "That is good. Are you going to send it soon?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg skal sende det i morgen. Jeg håper at hun svarer snart.",
+              "english": "Yes, I will send it tomorrow. I hope that she answers soon.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Hils mora di fra meg.",
+              "english": "Say hello to your mother from me.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg skal hilse fra deg og fra Lars.",
+              "english": "Yes, I will say hello from you and from Lars.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du savner henne.",
+              "english": "You miss her.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, men jeg er glad i Norge, og jeg er glad for dere.",
+              "english": "Yes, but I am fond of Norway, and I am glad for you.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg er i Norge, et land i nord. Bergen ligger i vest, og jeg liker landet.",
+              "english": "I am in Norway, a country in the north. Bergen is in the west, and I like the country."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta bakte kake til bursdagen. Gjestene spiste kake, og alle gratulerte Nils.",
+              "english": "Marta baked a cake for the birthday. The guests ate cake, and everyone congratulated Nils."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jeg reiste med fly til Norge. Jeg pakket ei veske, og derfor hadde jeg ikke mye. Det var nytt, men jeg fikk nye venner.",
+              "english": "I travelled by plane to Norway. I packed a bag, and that is why I did not have much. It was new, but I got new friends."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

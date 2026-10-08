@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-2-11",
+  "lang": "nb",
+  "title": "A dog in the rain",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-2-11",
+    "title": "A dog in the rain (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". A small story that brings back Mrs Berg from the first unit. Past tense, with reported speech."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "dog",
+    "rain",
+    "searching",
+    "helping",
+    "neighbours"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nico": "Nils",
+    "marta": "Marta",
+    "berg": "Fru Berg"
+  },
+  "sections": [
+    {
+      "title": "I regnet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det var en kald dag, og det regnet mye. Nils gikk hjem fra skolen.",
+              "english": "It was a cold day, and it rained a lot. Nils walked home from school."
+            },
+            {
+              "text": "På veien fant han en liten hund. Hunden satt under en bil.",
+              "english": "On the way he found a small dog. The dog sat under a car."
+            },
+            {
+              "text": "Den var våt og redd, og den var kald.",
+              "english": "It was wet and afraid, and it was cold."
+            },
+            {
+              "text": "Nils var også våt, men han ville hjelpe hunden.",
+              "english": "Nils was wet too, but he wanted to help the dog."
+            },
+            {
+              "text": "Hei, lille venn! Hvor er eieren din?",
+              "english": "Hi, little friend! Where is your owner?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Hunden kom til Nils. Han tok den med seg.",
+              "english": "The dog came to Nils. He took it with him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hos Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nils gikk til Marta. Han hadde hunden i jakka.",
+              "english": "Nils went to Marta. He had the dog in his jacket."
+            },
+            {
+              "text": "Hva har du, Nils?",
+              "english": "What have you got, Nils?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg fant en hund! Den er våt og kald. Vi må finne eieren.",
+              "english": "I found a dog! It is wet and cold. We must find the owner.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, vi må finne eieren. Men først må vi hjelpe den.",
+              "english": "Yes, we must find the owner. But first we must help it.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Marta tok brød og melk. Hunden spiste og drakk. Så sov den.",
+              "english": "Marta took bread and milk. The dog ate and drank. Then it slept."
+            },
+            {
+              "text": "Du reddet hunden, Nils. Du er snill.",
+              "english": "You rescued the dog, Nils. You are kind.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Eieren",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Neste dag lette Nils og Sam i byen. De spurte folk: «Har du mistet en hund?»",
+              "english": "The next day Nils and Sam looked in town. They asked people: \"Have you lost a dog?\""
+            },
+            {
+              "text": "Mange sa nei. Til slutt kom de til et lite hus. Fru Berg bodde i huset.",
+              "english": "Many said no. At last they came to a small house. Mrs Berg lived in the house."
+            },
+            {
+              "text": "Fru Berg! Har du mistet en hund?",
+              "english": "Mrs Berg! Have you lost a dog?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja! Hunden min er borte! Hvor er den?",
+              "english": "Yes! My dog is gone! Where is it?",
+              "speaker": "berg"
+            },
+            {
+              "text": "Nils hadde hunden med seg. Eieren var fru Berg!",
+              "english": "Nils had the dog with him. The owner was Mrs Berg!"
+            },
+            {
+              "text": "Fru Berg ble veldig glad. Hun sa: «Takk, Nils! Takk, Sam! Dere har reddet hunden min.»",
+              "english": "Mrs Berg became very glad. She said: \"Thank you, Nils! Thank you, Sam! You have rescued my dog.\""
+            },
+            {
+              "text": "Hva heter den?",
+              "english": "What is its name?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Den heter Bjørn. Jeg er glad i den, og jeg er glad i dere.",
+              "english": "Its name is Bjørn. I am fond of it, and I am fond of you.",
+              "speaker": "berg"
+            },
+            {
+              "text": "Sam husket fru Berg fra første dagen i Bergen. Hun var fortsatt like snill.",
+              "english": "Sam remembered Mrs Berg from the first day in Bergen. She was still just as kind."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Etterpå bakte Sam selv: mel, salt, gjær og deig. Han satte brødet i ovnen, og det ble ferdig og lukter godt. Det smakte riktig.",
+              "english": "Afterwards Sam baked himself: flour, salt, yeast and dough. He put the bread in the oven, and it became ready and smells good. It tasted right."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

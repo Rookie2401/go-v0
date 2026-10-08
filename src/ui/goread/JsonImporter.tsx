@@ -14,13 +14,13 @@ import { ImportReport } from '../pages/settings/ImportReport';
 import { errorText } from '../pages/settings/shared';
 
 /** The language verdict on one parsed document, as the report shows it. */
-export function teamLanguageIssue(doc: unknown, file: string, team: { lang: LanguageCode; country: string }): ImportDocView | undefined {
+export function teamLanguageIssue(doc: unknown, file: string, team: { lang: LanguageCode; country: string; readsLangs?: readonly LanguageCode[] }): ImportDocView | undefined {
   const d = doc && typeof doc === 'object' ? (doc as { id?: unknown; lang?: unknown }) : {};
   const verdict = fitsTeamLanguage(documentText(doc), team, typeof d.lang === 'string' ? d.lang : undefined);
   if (verdict.ok) return undefined;
   return {
     id: typeof d.id === 'string' ? d.id : file, file, action: 'rejected',
-    issues: [{ path: 'lang', code: 'not-the-team-language', severity: 'error', message: verdict.message!, hint: `The ${team.country} team's texts are in ${team.lang === 'es' ? 'Spanish' : team.lang === 'de' ? 'German' : team.lang === 'sq' ? 'Albanian' : team.lang === 'th' ? 'Thai' : 'Hindi'}. Choose a text in that language.` }],
+    issues: [{ path: 'lang', code: 'not-the-team-language', severity: 'error', message: verdict.message!, hint: `The ${team.country} team's texts are in ${team.lang === 'es' ? 'Spanish' : team.lang === 'de' ? 'German' : team.lang === 'sq' ? 'Albanian' : team.lang === 'th' ? 'Thai' : team.lang === 'nb' ? 'Norwegian (Bokmål or Nynorsk)' : team.lang === 'nn' ? 'Norwegian (Nynorsk)' : 'Hindi'}. Choose a text in that language.` }],
   };
 }
 
@@ -68,7 +68,7 @@ export function JsonImporter({ onImported }: { onImported(views: ImportDocView[]
         }
         for (const d of Array.isArray(parsed) ? parsed : [parsed]) {
           // the team's language first: a text in another language is turned away before anything else is checked
-          const turnedAway = teamLanguageIssue(d, f.name, { lang: course.lang, country: course.country });
+          const turnedAway = teamLanguageIssue(d, f.name, { lang: course.lang, country: course.country, readsLangs: course.readsLangs });
           if (turnedAway) { failures.push(turnedAway); continue; }
           good.push(markTeamText(d)); from.push(f.name);
         }

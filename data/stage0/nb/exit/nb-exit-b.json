@@ -1,0 +1,269 @@
+{
+  "id": "nb-exit-b",
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "reading": {
+    "lines": [
+      {
+        "id": "r1",
+        "text": "I dag er det søndag, og Anna jobber ikke.",
+        "en": "Today is Sunday, and Anna does not work.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r2",
+        "text": "Anna går i kirka med Marta.",
+        "en": "Anna goes to church with Marta.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r3",
+        "text": "Nils går ikke, fordi han er trøtt.",
+        "en": "Nils does not go, because he is tired.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r4",
+        "text": "Lars og Nils drikker vann hos Marta.",
+        "en": "Lars and Nils drink water at Marta's.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r5",
+        "text": "Marta selger ris.",
+        "en": "Marta sells rice.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "q1",
+        "lines": [
+          "r1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Who does not work today?"
+        },
+        "options": [
+          {
+            "en": "Anna"
+          },
+          {
+            "en": "Marta"
+          },
+          {
+            "en": "Lars"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "r2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where does Anna go?"
+        },
+        "options": [
+          {
+            "en": "to church"
+          },
+          {
+            "en": "to the market"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "r3"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Why does Nils not go?"
+        },
+        "options": [
+          {
+            "en": "He is tired"
+          },
+          {
+            "en": "He is hungry"
+          },
+          {
+            "en": "It is cold"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "lines": [
+          "r4"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What do Lars and Nils drink?"
+        },
+        "options": [
+          {
+            "en": "water"
+          },
+          {
+            "en": "coffee"
+          },
+          {
+            "en": "tea"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "listening": {
+    "lines": [
+      {
+        "id": "h1",
+        "text": "Brødet koster femti kroner.",
+        "en": "The bread costs fifty kroner.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "h2",
+        "text": "Nils er sulten.",
+        "en": "Nils is hungry.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "lq1",
+        "lines": [
+          "h1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How much does the bread cost?"
+        },
+        "options": [
+          {
+            "en": "50 kroner"
+          },
+          {
+            "en": "20 kroner"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "lq2",
+        "lines": [
+          "h2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How is Nils?"
+        },
+        "options": [
+          {
+            "en": "hungry"
+          },
+          {
+            "en": "tired"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "writing": [
+    {
+      "id": "w1",
+      "kind": "answer",
+      "prompt": "Why does Nils not go to church? Answer in Norwegian.",
+      "basedOn": [
+        "r3"
+      ],
+      "accept": [
+        {
+          "text": "Han er trøtt"
+        },
+        {
+          "text": "Nils er trøtt"
+        },
+        {
+          "text": "Fordi han er trøtt"
+        },
+        {
+          "text": "Nils går ikke fordi han er trøtt"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "kind": "describe",
+      "prompt": "Say what you like to drink.",
+      "basedOn": [
+        "nb.liker"
+      ],
+      "accept": [
+        {
+          "text": "Jeg liker {x}"
+        },
+        {
+          "text": "Jeg liker vann"
+        },
+        {
+          "text": "Jeg liker kaffe"
+        }
+      ],
+      "personal": "a drink"
+    },
+    {
+      "id": "w3",
+      "kind": "recall",
+      "prompt": "Say that you do not know where the key is.",
+      "basedOn": [
+        "nb.vet-ikke"
+      ],
+      "accept": [
+        {
+          "text": "Jeg vet ikke hvor nøkkelen er"
+        },
+        {
+          "text": "Jeg vet ikke"
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "sp1",
+      "prompt": "Say where you live, and that you like it.",
+      "model": "Jeg bor i byen. Jeg liker byen."
+    }
+  ]
+}

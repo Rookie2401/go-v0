@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-2-08",
+  "lang": "nb",
+  "title": "Prayer and thanks",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-2-08",
+    "title": "Prayer and thanks (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". \"Gud tilgir synd\" echoes the seed story story-01. Marta speaks of prayer as speaking with God."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "prayer",
+    "thanks",
+    "forgiveness",
+    "hope",
+    "testimony"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "faith"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "marta": "Marta",
+    "sam": "Sam",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "Marta forteller",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hver søndag går Marta i kirka. Hun ber, og hun takker Gud.",
+              "english": "Every Sunday Marta goes to church. She prays, and she thanks God."
+            },
+            {
+              "text": "Gud er god. Jeg takker Gud hver dag.",
+              "english": "God is good. I thank God every day.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Hva ber du om, Marta?",
+              "english": "What do you pray about, Marta?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg ber om håp for alle folk. Jeg ber om det hver dag.",
+              "english": "I pray for hope for all people. I pray for it every day.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Takk, Marta! Hva er en bønn?",
+              "english": "Thank you, Marta! What is a prayer?",
+              "speaker": "sam"
+            },
+            {
+              "text": "En bønn er å snakke med Gud. Du kan be hver dag.",
+              "english": "A prayer is talking with God. You can pray every day.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Du kan takke Gud. Du kan be for Anna, Lars og Nils.",
+              "english": "You can thank God. You can pray for Anna, Lars and Nils.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Synd og håp",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg har synd i hjertet, Marta.",
+              "english": "I have sin in my heart, Marta.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Alle folk har det. Det er en bønn. Gud tilgir deg.",
+              "english": "All people do. That is a prayer. God forgives you.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg vet at Gud tilgir synd. Jeg vil be om det.",
+              "english": "I know that God forgives sin. I want to ask for it.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er bra. Gud elsker deg, Sam. Det er håp.",
+              "english": "That is good. God loves you, Sam. There is hope.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sam ber",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam ber hjemme i rommet. Han sier: «Gud, tilgi synden min.»",
+              "english": "Sam prays at home in his room. He says: \"God, forgive my sin.\""
+            },
+            {
+              "text": "«Takk, Gud. Takk for Marta, Anna, Lars og Nils.»",
+              "english": "\"Thank you, God. Thank you for Marta, Anna, Lars and Nils.\""
+            },
+            {
+              "text": "«Du elsker meg. Jeg har håp.»",
+              "english": "\"You love me. I have hope.\""
+            },
+            {
+              "text": "Sam er glad. Han har fred i hjertet. Det er en god bønn.",
+              "english": "Sam is happy. He has peace in his heart. It is a good prayer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Etter kirka",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det er søndag. Sam og Marta drikker kaffe etter kirka.",
+              "english": "It is Sunday. Sam and Marta drink coffee after church."
+            },
+            {
+              "text": "Nils kommer til dem. Han er sulten.",
+              "english": "Nils comes to them. He is hungry."
+            },
+            {
+              "text": "Hva gjør du i kirka, Marta?",
+              "english": "What do you do in church, Marta?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Vi sang, og vi ba. Presten leste i bibelen.",
+              "english": "We sang, and we prayed. The pastor read in the Bible.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg liker sangen. Men jeg liker ikke å sitte.",
+              "english": "I like the song. But I do not like sitting.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Jeg liker å sitte. Jeg liker sangen også.",
+              "english": "I like sitting. I like the song too.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta trenger smør og egg. Hun handler i butikken, og listen er lang.",
+              "english": "Marta needs butter and eggs. She shops at the shop, and the list is long."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam står opp før Anna. Han gjør lekser tidlig, og om natten sover han godt.",
+              "english": "Sam gets up before Anna. He does homework early, and at night he sleeps well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam tenker på turen til fjellet. Veien var lang, og fjellet var høyt.",
+              "english": "Sam thinks about the walk to the mountain. The road was long, and the mountain was high."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lars har vondt i hodet. Legen sier at han må hvile.",
+              "english": "Lars has a headache. The doctor says that he has to rest."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nils mistet ikke jakka på turen.",
+              "english": "Nils did not lose his jacket on the walk."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

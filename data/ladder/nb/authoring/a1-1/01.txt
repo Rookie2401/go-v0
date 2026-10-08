@@ -1,0 +1,41 @@
+=== nb-a1-1-01 | dialogue | conversation | Meeting in the street | På gata | greetings,introductions,names,origin,Sunday
+speakers: berg=Fru Berg
+note: Everyone uses "du" (the polite "De" is rare in modern Norwegian and is not taught). "Hyggelig" alone is the short form used in Stage 0. "fru" is written with a lower-case f.
+## På gata
+Det er søndag. Det er morgen. || It is Sunday. It is morning.
+{sam} er i byen. Her er fru Berg. || Sam is in town. Here is Mrs Berg.
+
+[berg] God morgen! || Good morning!
+[sam] God morgen! || Good morning!
+[berg] Hva heter du? || What is your name?
+[sam] Jeg heter {sam} Miller. Hva heter du? || My name is Sam Miller. What is your name?
+[berg] Jeg heter Berg. || My name is Berg.
+[sam] Hyggelig, fru Berg. || Nice to meet you, Mrs Berg.
+[berg] Hyggelig også, {sam}. || Nice to meet you too, Sam.
+
+[berg] Snakker du norsk? || Do you speak Norwegian?
+[sam] Ja, jeg snakker norsk. Men ikke veldig bra. || Yes, I speak Norwegian. But not very well.
+[berg] Du snakker veldig bra! || You speak very well!
+[berg] Hvor kommer du fra? || Where do you come from?
+[sam] Jeg kommer fra USA. Bor du her i byen? || I come from the USA. Do you live here in town?
+[berg] Ja, jeg bor her. Jeg er fra {city}. || Yes, I live here. I am from {city}.
+
+## {ana} og {luis}
+{ana} er her også. Hun er glad. || Anna is here too. She is happy.
+[ana] Hei, {sam}! Hvordan går det? || Hi, Sam! How are you?
+[sam] Det går bra, takk. Og du? || I am fine, thank you. And you?
+[ana] Det går veldig bra. Jeg er glad. || I am very well. I am happy.
+[berg] God morgen, {ana}. || Good morning, Anna.
+[ana] Jeg går til kirka. Vil du være med, {sam}? || I am going to church. Do you want to come along, Sam?
+[sam] Ja, gjerne! Jeg vil gå til kirka. || Yes, gladly! I want to go to church.
+
+{luis} er her også. Han er lærer. Han er glad. || Lars is here too. He is a teacher. He is happy.
+{luis} bor i byen. Han jobber på skolen. || Lars lives in town. He works at the school.
+[ana] Hvordan går det, {luis}? || How are you, Lars?
+[luis] Det går bra. Kommer du med, {sam}? || I am fine. Are you coming along, Sam?
+[sam] Ja, gjerne! || Yes, gladly!
+[ana] Vil du ha kaffe, {sam}? || Do you want coffee, Sam?
+[sam] Ja, jeg vil gjerne ha kaffe. Men jeg er trøtt. || Yes, I would like some coffee. But I am tired.
+[luis] Hvordan går det med deg, {sam}? || How are you doing, Sam?
+[sam] Det går bra! Ha det bra, fru Berg! || I am fine! Goodbye, Mrs Berg!
+[berg] Ha det bra! Gå til kirka! || Goodbye! Go to church!

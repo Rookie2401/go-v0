@@ -2,11 +2,11 @@
   "$comment": "The Stage 0 world: the same small cast, places and things in every language, so that meaning stays familiar while the language grows. Names are local to each language (Hindi keeps Ravi and Mira from the Stage 0A stories). Sam is a newcomer learning the language, the learner's stand-in. Language-neutral meaning only; no target-language sentences here.",
   "version": 1,
   "characters": [
-    { "id": "ana", "role": "a nurse at the clinic, about thirty; Luis's sister; organised, often tired after work", "names": { "es": "Ana", "de": "Anna", "sq": "Ana", "hi": "मीरा", "th": "มะลิ" } },
-    { "id": "luis", "role": "a teacher at the school, about thirty; Ana's brother; likes coffee, often late", "names": { "es": "Luis", "de": "Lukas", "sq": "Luan", "hi": "रवि", "th": "ต้น" } },
-    { "id": "marta", "role": "an older neighbour, a grandmother; sells bread at the market; goes to church", "names": { "es": "Marta", "de": "Marta", "sq": "Drita", "hi": "सीता", "th": "ป้าแดง" } },
-    { "id": "nico", "role": "Marta's grandson, ten years old; goes to Luis's school; loses things", "names": { "es": "Nico", "de": "Ben", "sq": "Ardi", "hi": "अमन", "th": "บอล" } },
-    { "id": "sam", "role": "a newcomer who has just arrived and is learning the language — the learner's stand-in; written as a man in the scenes (Hindi verbs, Spanish and Albanian adjectives and Thai polite particles need a gender). The learner's OWN first-person forms follow the speaker forms the learner chose, never Sam's", "names": { "es": "Sam", "de": "Sam", "sq": "Sam", "hi": "सैम", "th": "แซม" } }
+    { "id": "ana", "role": "a nurse at the clinic, about thirty; Luis's sister; organised, often tired after work", "names": { "es": "Ana", "de": "Anna", "sq": "Ana", "hi": "मीरा", "th": "มะลิ", "nb": "Anna" } },
+    { "id": "luis", "role": "a teacher at the school, about thirty; Ana's brother; likes coffee, often late", "names": { "es": "Luis", "de": "Lukas", "sq": "Luan", "hi": "रवि", "th": "ต้น", "nb": "Lars" } },
+    { "id": "marta", "role": "an older neighbour, a grandmother; sells bread at the market; goes to church", "names": { "es": "Marta", "de": "Marta", "sq": "Drita", "hi": "सीता", "th": "ป้าแดง", "nb": "Marta" } },
+    { "id": "nico", "role": "Marta's grandson, ten years old; goes to Luis's school; loses things", "names": { "es": "Nico", "de": "Ben", "sq": "Ardi", "hi": "अमन", "th": "บอล", "nb": "Nils" } },
+    { "id": "sam", "role": "a newcomer who has just arrived and is learning the language — the learner's stand-in; written as a man in the scenes (Hindi verbs, Spanish and Albanian adjectives and Thai polite particles need a gender). The learner's OWN first-person forms follow the speaker forms the learner chose, never Sam's", "names": { "es": "Sam", "de": "Sam", "sq": "Sam", "hi": "सैम", "th": "แซม", "nb": "Sam" } }
   ],
   "places": [
     { "id": "home", "gloss": "home / the house" },

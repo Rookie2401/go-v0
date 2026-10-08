@@ -1,6 +1,7 @@
 import type { LanguageCode } from '../core';
 
-export type BibleAccessStatus = 'bundled' | 'linked-online';
+/** bundled: read in the lazy library. linked-online: an edition read at the publisher's or a distributor's site. not-bundled: no text is bundled yet (rights not verified) and the page only states why. */
+export type BibleAccessStatus = 'bundled' | 'linked-online' | 'not-bundled';
 
 export interface BibleAccessRecord {
   lang: LanguageCode;
@@ -48,6 +49,22 @@ export const BIBLE_ACCESS: Readonly<Record<LanguageCode, BibleAccessRecord>> = {
     method: 'Official Open.Bible release metadata and USX/USFM comparison.',
     importMethod: 'Read the bundled lazy library; an entitled personal copy may also be imported on this device.',
     rights: 'CC BY-SA 4.0 in the official release metadata, with attribution and share-alike retained.',
+  },
+  // Norwegian: no Bible is bundled yet. The publisher says the 1930 Bokmål and 1938 Nynorsk translations are in the public
+  // domain but names no legal basis (docs/norway/SPEC.md section 9); neither is treated as verified. Bibel 2011 / 2024 are protected.
+  nb: {
+    lang: 'nb', translation: 'Bibelen 1930 (Bokmål)', edition: 'nor1930', status: 'not-bundled',
+    sourceUrl: 'https://bibel.no/verbum/rettigheter-til-bruk-av-bibeltekst',
+    method: 'No Bible text is bundled yet. the page of Bibelselskapet on the use of Bible text is the source of the rights statement; a three-verse seed excerpt (1 John 1:1-3) is held out of the release bundle until a person verifies it.',
+    importMethod: 'An entitled personal .txt or unprotected .epub can be imported for ordinary reading on this device. The general importer does not create a verse-addressed Scripture edition.',
+    rights: 'Bibelselskapet states that the 1930 Bokmål translation has "falt i det fri" (is free to use) but gives no legal basis, and no check has been made. The current translations (Bibel 2011, Bibel 2024) are protected and are not bundled.',
+  },
+  nn: {
+    lang: 'nn', translation: 'Bibelen 1938 (Nynorsk)', edition: 'nor1938', status: 'not-bundled',
+    sourceUrl: 'https://bibel.no/verbum/rettigheter-til-bruk-av-bibeltekst',
+    method: 'No Bible text is bundled yet. the page of Bibelselskapet on the use of Bible text is the source of the rights statement; no digital 1938 text with a licence has been found, and the 1921 Studentmållaget translation is a different translation.',
+    importMethod: 'An entitled personal .txt or unprotected .epub can be imported for ordinary reading on this device. The general importer does not create a verse-addressed Scripture edition.',
+    rights: 'Bibelselskapet states that the 1938 Nynorsk translation has "falt i det fri" (is free to use) but gives no legal basis, and the reviser died in 1984, so the claim is unchecked. The current translations are protected and are not bundled.',
   },
   sq: {
     lang: 'sq', translation: 'Bibla Shqip “Së bashku” 2020', edition: 'AL', status: 'linked-online',

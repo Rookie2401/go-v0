@@ -1,0 +1,32 @@
+=== nb-a2-2-11 | story | narrative | A dog in the rain | En hund i regnet | dog,rain,searching,helping,neighbours
+speakers: berg=Fru Berg
+note: A small story that brings back Mrs Berg from the first unit. Past tense, with reported speech.
+## I regnet
+Det var en kald dag, og det regnet mye. {nico} gikk hjem fra skolen. || It was a cold day, and it rained a lot. Nils walked home from school.
+På veien fant han en liten hund. Hunden satt under en bil. || On the way he found a small dog. The dog sat under a car.
+Den var våt og redd, og den var kald. || It was wet and afraid, and it was cold.
+{nico} var også våt, men han ville hjelpe hunden. || Nils was wet too, but he wanted to help the dog.
+[nico] Hei, lille venn! Hvor er eieren din? || Hi, little friend! Where is your owner?
+Hunden kom til {nico}. Han tok den med seg. || The dog came to Nils. He took it with him.
+
+## Hos {marta}
+{nico} gikk til {marta}. Han hadde hunden i jakka. || Nils went to Marta. He had the dog in his jacket.
+[marta] Hva har du, {nico}? || What have you got, Nils?
+[nico] Jeg fant en hund! Den er våt og kald. Vi må finne eieren. || I found a dog! It is wet and cold. We must find the owner.
+[marta] Ja, vi må finne eieren. Men først må vi hjelpe den. || Yes, we must find the owner. But first we must help it.
+{marta} tok brød og melk. Hunden spiste og drakk. Så sov den. || Marta took bread and milk. The dog ate and drank. Then it slept.
+[marta] Du reddet hunden, {nico}. Du er snill. || You rescued the dog, Nils. You are kind.
+
+## Eieren
+Neste dag lette {nico} og {sam} i byen. De spurte folk: «Har du mistet en hund?» || The next day Nils and Sam looked in town. They asked people: "Have you lost a dog?"
+Mange sa nei. Til slutt kom de til et lite hus. Fru Berg bodde i huset. || Many said no. At last they came to a small house. Mrs Berg lived in the house.
+[nico] Fru Berg! Har du mistet en hund? || Mrs Berg! Have you lost a dog?
+[berg] Ja! Hunden min er borte! Hvor er den? || Yes! My dog is gone! Where is it?
+{nico} hadde hunden med seg. Eieren var fru Berg! || Nils had the dog with him. The owner was Mrs Berg!
+Fru Berg ble veldig glad. Hun sa: «Takk, {nico}! Takk, {sam}! Dere har reddet hunden min.» || Mrs Berg became very glad. She said: "Thank you, Nils! Thank you, Sam! You have rescued my dog."
+[nico] Hva heter den? || What is its name?
+[berg] Den heter Bjørn. Jeg er glad i den, og jeg er glad i dere. || Its name is Bjørn. I am fond of it, and I am fond of you.
+{sam} husket fru Berg fra første dagen i {city}. Hun var fortsatt like snill. || Sam remembered Mrs Berg from the first day in Bergen. She was still just as kind.
+
+## Husker du?
+Etterpå bakte {sam} selv: mel, salt, gjær og deig. Han satte brødet i ovnen, og det ble ferdig og lukter godt. Det smakte riktig. || Afterwards Sam baked himself: flour, salt, yeast and dough. He put the bread in the oven, and it became ready and smells good. It tasted right.

@@ -1,0 +1,45 @@
+=== nb-a1-1-05 | story | food | Sunday dinner | Søndagsmiddag | dinner,Sunday,Marta,fish,potatoes
+## Hos {marta}
+Det er mye mat hos {marta}: fisk og poteter. || There is a lot of food at Marta's: fish and potatoes.
+Det er søndag. Etter kirka er {sam}, {ana} og {luis} hos {marta}. || It is Sunday. After church Sam, Anna and Lars are at Marta's.
+{nico} er også hos bestemora si. || Nils is also at his grandmother's.
+{marta} lager middag. Hun lager middag hver søndag. || Marta is making dinner. She makes dinner every Sunday.
+[marta] Her er maten! Det er fisk og poteter. Det er også suppe. || Here is the food! There is fish and potatoes. There is also soup.
+[sam] Det er mye mat! Jeg er sulten. || There is a lot of food! I am hungry.
+[ana] Jeg er sulten også. Men jeg er glad. || I am hungry too. But I am happy.
+
+## Middag
+Vi spiser suppe. Etter suppen spiser vi fisk og poteter. || We eat soup. After the soup we eat fish and potatoes.
+[marta] Er maten bra, {sam}? || Is the food good, Sam?
+[sam] Ja, det er veldig bra! || Yes, it is very good!
+[nico] Jeg liker fisk. Jeg vil ha mer. || I like fish. I want more.
+[marta] Her er mer. || Here is more.
+[ana] Vil du ha mer potet, {sam}? || Do you want more potato, Sam?
+[sam] Ja, gjerne. || Yes, please.
+[marta] Jeg lager middag hver søndag. || I make dinner every Sunday.
+[marta] Du er hos meg hver søndag, {sam}. || You are at my place every Sunday, Sam.
+[sam] Ja, gjerne! Jeg liker deg, {marta}. || Yes, gladly! I like you, Marta.
+[marta] Og jeg liker deg, {sam}! || And I like you, Sam!
+
+## Etter middagen
+{luis} drikker kaffe. {nico} drikker melk. || Lars drinks coffee. Nils drinks milk.
+[luis] Jeg vil ikke ha mer kaffe. Jeg er trøtt. || I do not want more coffee. I am tired.
+[ana] Jeg er trøtt også. Jeg jobber mye på klinikken. || I am tired too. I work a lot at the clinic.
+[marta] Du jobber mye, {ana}. Du er trøtt i dag. || You work a lot, Anna. You are tired today.
+[ana] Ja, men jeg er glad. || Yes, but I am happy.
+Etter kaffen går {luis} og {ana} hjem. || After the coffee Lars and Anna go home.
+{nico} bor hjemme, men i dag er han hos {marta}. || Nils lives at home, but today he is at Marta's.
+{sam} går også. Han er ikke trøtt. Han er glad. || Sam goes too. He is not tired. He is happy.
+[sam] Ha det bra, {marta}! || Goodbye, Marta!
+[marta] Ha det bra, {sam}! || Goodbye, Sam!
+[ana] Du er glad i dag, {marta}. || You are happy today, Marta.
+[marta] Takk, {ana}! Du vil ha mer. Du er trøtt. || Thanks, Anna! You want more. You are tired.
+[ana] Ja, jeg vil gjerne ha mer. || Yes, I would like more.
+
+## Husker du?
+Etter middagen går {sam} hjem til huset. Rommet er lite, men senga er stor. || After dinner Sam goes home to the house. The room is small, but the bed is big.
+
+[nico] Kafeen er bra! Jeg vil ha brød med ost, og jeg vil ha melk. || The café is good! I want bread with cheese, and I want milk.
+[nico] Jeg er ikke mett. || I am not full.
+
+Mora og faren til {ana} bor i Trondheim. Familien er stor. || Anna's mother and father live in Trondheim. The family is big.

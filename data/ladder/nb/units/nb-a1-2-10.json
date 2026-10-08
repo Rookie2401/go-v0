@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-2-10",
+  "lang": "nb",
+  "title": "On the phone",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-2-10",
+    "title": "On the phone (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". \"Ring meg\" (imperative) and \"Jeg skal ringe deg\" are both everyday. The message is written as direct speech."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "phone",
+    "message",
+    "plans",
+    "meeting"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam",
+    "luis": "Lars"
+  },
+  "sections": [
+    {
+      "title": "En melding",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam sender en melding til Anna.",
+              "english": "Sam sends a message to Anna."
+            },
+            {
+              "text": "«Hei, Anna! Har du tid i morgen? Jeg vil treffe deg på kafé.»",
+              "english": "\"Hi, Anna! Do you have time tomorrow? I want to meet you at a café.\""
+            },
+            {
+              "text": "Anna svarer ikke. Hun er på klinikken. Hun jobber mye.",
+              "english": "Anna does not answer. She is at the clinic. She works a lot."
+            },
+            {
+              "text": "Sam ringer til Anna.",
+              "english": "Sam calls Anna."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Klokka fem",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hallo, Sam! Jeg har ikke tid nå. Jeg jobber.",
+              "english": "Hello, Sam! I do not have time now. I am working.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg skal ringe deg klokka fem.",
+              "english": "I will call you at five o'clock.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Det er bra. Ring meg klokka fem.",
+              "english": "That is good. Call me at five.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Klokka fem ringer telefonen.",
+              "english": "At five o'clock the phone rings."
+            },
+            {
+              "text": "Hei, Sam! Nå har jeg tid. Hva vil du?",
+              "english": "Hi, Sam! Now I have time. What do you want?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg vil treffe deg på kafé i morgen. Er det bra?",
+              "english": "I want to meet you at a café tomorrow. Is that good?",
+              "speaker": "sam"
+            },
+            {
+              "text": "I morgen er det lørdag. Jeg har ikke planer.",
+              "english": "Tomorrow is Saturday. I have no plans.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Det er bra! Hva er planen din?",
+              "english": "That is good! What is your plan?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg skal sove tidlig, og så kommer jeg.",
+              "english": "I will sleep early, and then I will come.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Bra! Klokka ti på kafeen?",
+              "english": "Good! At ten at the café?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, klokka ti. Vil du svare på en melding fra Lars?",
+              "english": "Yes, at ten. Do you want to answer a message from Lars?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, gjerne. Hva sier meldingen?",
+              "english": "Yes, please. What does the message say?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Lars sender: «Kan jeg komme også?»",
+              "english": "Lars sends: \"Can I come too?\"",
+              "speaker": "ana"
+            },
+            {
+              "text": "Svar ja! Det er en bra plan.",
+              "english": "Answer yes! That is a good plan.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "På lørdag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På lørdag treffer Sam Anna og Lars på kafeen.",
+              "english": "On Saturday Sam meets Anna and Lars at the café."
+            },
+            {
+              "text": "Klokka er ti. De drikker kaffe og te.",
+              "english": "It is ten o'clock. They drink coffee and tea."
+            },
+            {
+              "text": "Takk, Sam!",
+              "english": "Thanks, Sam!",
+              "speaker": "luis"
+            },
+            {
+              "text": "Bare hyggelig.",
+              "english": "You are welcome.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, vi er glade i dag.",
+              "english": "Yes, we are happy today.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Sam er glad. Han liker kafeen, og han liker Anna og Lars.",
+              "english": "Sam is happy. He likes the café, and he likes Anna and Lars."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Før turen står Sam opp tidlig. Natten før sover han lite. Hva gjør han? Han ber.",
+              "english": "Before the walk Sam gets up early. The night before he sleeps little. What does he do? He prays."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "På veien hjem snakker Sam om turen. Veien er bra, og fjellet er høyt.",
+              "english": "On the way home Sam talks about the walk. The road is good, and the mountain is high."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Norge er et langt land. I nord er det kaldt, og i sør er det varmt.",
+              "english": "Norway is a long country. In the north it is cold, and in the south it is warm."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hver kveld ber Sam en bønn: «Gud, tilgi synden min.»",
+              "english": "Every evening Sam says a prayer: \"God, forgive my sin.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

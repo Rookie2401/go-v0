@@ -1,0 +1,255 @@
+{
+  "id": "nb-s12",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "The rain changes the plan",
+    "target": "Det regner"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "sam",
+      "marta",
+      "nico"
+    ],
+    "things": [
+      "rain",
+      "tea"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Det er søndag, men i dag regner det.",
+      "en": "It is Sunday, but today it is raining.",
+      "picture": "🌧️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Jeg går ikke i kirka, fordi jeg er trøtt.",
+      "en": "I am not going to church, because I am tired.",
+      "speaker": "ana",
+      "picture": "😩🌧️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Det er kaldt, og vi blir hjemme.",
+      "en": "It is cold, and we are staying at home.",
+      "speaker": "luis",
+      "picture": "🥶🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Vil du ha te, Sam?",
+      "en": "Would you like tea, Sam?",
+      "speaker": "luis",
+      "picture": "🍵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Ja, gjerne.",
+      "en": "Yes, gladly.",
+      "speaker": "sam",
+      "picture": "🍵🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Marta går i kirka. Nils går med bestemora si. Han liker kirka.",
+      "en": "Marta goes to church. Nils goes with his grandmother. He likes the church.",
+      "picture": "👵⛪ 👦👵",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "men",
+      "regner",
+      "fordi",
+      "vi",
+      "blir",
+      "te",
+      "si",
+      "han"
+    ],
+    "constructions": [
+      "nb.fordi",
+      "nb.det-weather",
+      "nb.reflexive-si"
+    ]
+  },
+  "represents": [
+    "nb.fordi",
+    "nb.det-weather",
+    "nb.reflexive-si",
+    "nb.men-og",
+    "nb.adjective-state",
+    "nb.negation-ikke",
+    "nb.gaa-place",
+    "nb.vil-ha",
+    "nb.yes-no-question",
+    "nb.politeness",
+    "nb.time-days",
+    "nb.i-pa"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is the weather today?"
+      },
+      "options": [
+        {
+          "en": "rain",
+          "picture": "🌧️"
+        },
+        {
+          "en": "sun",
+          "picture": "☀️"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2",
+        "l3"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who is tired?"
+      },
+      "options": [
+        {
+          "en": "Anna"
+        },
+        {
+          "en": "Lars"
+        },
+        {
+          "en": "Marta"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam say to the tea?"
+      },
+      "options": [
+        {
+          "en": "Yes, gladly"
+        },
+        {
+          "en": "No, thank you"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Say why Anna is not going to church.",
+      "basedOn": [
+        "l2",
+        "nb.fordi"
+      ],
+      "frame": "Anna går ikke i kirka, fordi hun er ___.",
+      "accept": [
+        {
+          "text": "Anna går ikke i kirka, fordi hun er trøtt"
+        },
+        {
+          "text": "Anna går ikke i kirka fordi hun er trøtt"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "describe",
+      "prompt": "Say what the weather is like today.",
+      "basedOn": [
+        "l1",
+        "nb.det-weather"
+      ],
+      "accept": [
+        {
+          "text": "Det regner"
+        },
+        {
+          "text": "I dag regner det"
+        },
+        {
+          "text": "Det regner i dag"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "det regner, fordi, men",
+      "text": "\"Det regner\" is \"it is raining\": Norwegian needs a little \"det\" (it) in front, just as English does. \"Men\" is \"but\" and \"fordi\" is \"because\". Look at \"i dag regner det\": the verb stays in second place, so the subject \"det\" comes after it.",
+      "explains": [
+        "nb.det-weather",
+        "nb.fordi",
+        "nb.men-og",
+        "nb.verb-second"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "bestemora si",
+      "text": "\"Nils går med bestemora si\": \"si\" means \"his own\" and is used when the owner is the one doing the action. It is the same pattern as \"søstera mi\", but for \"his / her / their own\": bestemora si.",
+      "explains": [
+        "nb.reflexive-si"
+      ],
+      "afterScenes": 1
+    }
+  ]
+}

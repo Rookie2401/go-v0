@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-1-05",
+  "lang": "nb",
+  "title": "Sunday dinner",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-1-05",
+    "title": "Sunday dinner (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "dinner",
+    "Sunday",
+    "Marta",
+    "fish",
+    "potatoes"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "food"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "marta": "Marta",
+    "sam": "Sam",
+    "ana": "Anna",
+    "nico": "Nils",
+    "luis": "Lars"
+  },
+  "sections": [
+    {
+      "title": "Hos Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det er mye mat hos Marta: fisk og poteter.",
+              "english": "There is a lot of food at Marta's: fish and potatoes."
+            },
+            {
+              "text": "Det er søndag. Etter kirka er Sam, Anna og Lars hos Marta.",
+              "english": "It is Sunday. After church Sam, Anna and Lars are at Marta's."
+            },
+            {
+              "text": "Nils er også hos bestemora si.",
+              "english": "Nils is also at his grandmother's."
+            },
+            {
+              "text": "Marta lager middag. Hun lager middag hver søndag.",
+              "english": "Marta is making dinner. She makes dinner every Sunday."
+            },
+            {
+              "text": "Her er maten! Det er fisk og poteter. Det er også suppe.",
+              "english": "Here is the food! There is fish and potatoes. There is also soup.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Det er mye mat! Jeg er sulten.",
+              "english": "There is a lot of food! I am hungry.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg er sulten også. Men jeg er glad.",
+              "english": "I am hungry too. But I am happy.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Middag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Vi spiser suppe. Etter suppen spiser vi fisk og poteter.",
+              "english": "We eat soup. After the soup we eat fish and potatoes."
+            },
+            {
+              "text": "Er maten bra, Sam?",
+              "english": "Is the food good, Sam?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, det er veldig bra!",
+              "english": "Yes, it is very good!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg liker fisk. Jeg vil ha mer.",
+              "english": "I like fish. I want more.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Her er mer.",
+              "english": "Here is more.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Vil du ha mer potet, Sam?",
+              "english": "Do you want more potato, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, gjerne.",
+              "english": "Yes, please.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg lager middag hver søndag.",
+              "english": "I make dinner every Sunday.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Du er hos meg hver søndag, Sam.",
+              "english": "You are at my place every Sunday, Sam.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, gjerne! Jeg liker deg, Marta.",
+              "english": "Yes, gladly! I like you, Marta.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Og jeg liker deg, Sam!",
+              "english": "And I like you, Sam!",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Etter middagen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Lars drikker kaffe. Nils drikker melk.",
+              "english": "Lars drinks coffee. Nils drinks milk."
+            },
+            {
+              "text": "Jeg vil ikke ha mer kaffe. Jeg er trøtt.",
+              "english": "I do not want more coffee. I am tired.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg er trøtt også. Jeg jobber mye på klinikken.",
+              "english": "I am tired too. I work a lot at the clinic.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Du jobber mye, Anna. Du er trøtt i dag.",
+              "english": "You work a lot, Anna. You are tired today.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, men jeg er glad.",
+              "english": "Yes, but I am happy.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Etter kaffen går Lars og Anna hjem.",
+              "english": "After the coffee Lars and Anna go home."
+            },
+            {
+              "text": "Nils bor hjemme, men i dag er han hos Marta.",
+              "english": "Nils lives at home, but today he is at Marta's."
+            },
+            {
+              "text": "Sam går også. Han er ikke trøtt. Han er glad.",
+              "english": "Sam goes too. He is not tired. He is happy."
+            },
+            {
+              "text": "Ha det bra, Marta!",
+              "english": "Goodbye, Marta!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ha det bra, Sam!",
+              "english": "Goodbye, Sam!",
+              "speaker": "marta"
+            },
+            {
+              "text": "Du er glad i dag, Marta.",
+              "english": "You are happy today, Marta.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Takk, Anna! Du vil ha mer. Du er trøtt.",
+              "english": "Thanks, Anna! You want more. You are tired.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, jeg vil gjerne ha mer.",
+              "english": "Yes, I would like more.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Etter middagen går Sam hjem til huset. Rommet er lite, men senga er stor.",
+              "english": "After dinner Sam goes home to the house. The room is small, but the bed is big."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kafeen er bra! Jeg vil ha brød med ost, og jeg vil ha melk.",
+              "english": "The café is good! I want bread with cheese, and I want milk.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Jeg er ikke mett.",
+              "english": "I am not full.",
+              "speaker": "nico"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mora og faren til Anna bor i Trondheim. Familien er stor.",
+              "english": "Anna's mother and father live in Trondheim. The family is big."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

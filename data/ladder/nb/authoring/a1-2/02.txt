@@ -1,0 +1,48 @@
+=== nb-a1-2-02 | story | daily-life | The key is gone | Nøkkelen er borte | morning,key,looking for,helping
+note: "glemme" is regular; "må" is the modal "must/have to". "har glemt" is the perfect and appears first here.
+## Mandag morgen
+Det er mandag morgen. Klokka er sju. || It is Monday morning. It is seven o'clock.
+{ana} må gå til klinikken. || Anna has to go to the clinic.
+Men {ana} har ikke nøkkelen. Den er borte. || But Anna does not have the key. It is gone.
+[ana] Hvor er nøkkelen? Jeg må finne den! || Where is the key? I have to find it!
+[luis] Jeg vet ikke, {ana}. Har du den i vesken? || I do not know, Anna. Do you have it in the bag?
+[ana] Nei, den er ikke i vesken. Den er borte! || No, it is not in the bag. It is gone!
+
+## De leter
+{ana} leter i stua. Den er ikke på bordet. Den er ikke under sengen. || Anna looks in the living room. It is not on the table. It is not under the bed.
+{sam} kommer inn. || Sam comes in.
+[sam] Hei, {ana}! Hva leter du etter? || Hi, Anna! What are you looking for?
+[ana] Jeg leter etter nøkkelen. Den er borte! || I am looking for the key. It is gone!
+[sam] Jeg kan hjelpe deg. Er den under bordet? || I can help you. Is it under the table?
+[luis] Er den under sengen? || Is it under the bed?
+{sam} finner telefonen til {ana}. || Sam finds Anna's phone.
+[sam] Her er telefonen din. Men den er ikke her. || Here is your phone. But it is not here.
+[ana] Takk, {sam}! Telefonen er bra, men jeg må finne den. || Thanks, Sam! The phone is good, but I have to find it.
+
+## Den er i jakka
+{nico} kommer inn. Han går til skolen. || Nils comes in. He is going to school.
+[nico] Hei! Hvor er den? Her er den! || Hi! Where is it? Here it is!
+[nico] Den ligger i jakka di, {ana}! || It is in your jacket, Anna!
+[ana] I jakka? Jeg har glemt den i jakka! || In the jacket? I have forgotten it in the jacket!
+[luis] Du glemmer ofte mye, {ana}. || You often forget a lot, Anna.
+[ana] Ja, jeg glemmer mye. Takk, {nico}! || Yes, I forget a lot. Thanks, Nils!
+[sam] Nå ligger den i vesken din. || Now it is in your bag.
+[ana] Ja, den ligger her. Nå går jeg. Ha det bra! || Yes, it is here. Now I am going. Goodbye!
+[luis] Ha det bra, {ana}! Du er ofte trøtt, men du er glad. || Goodbye, Anna! You are often tired, but you are happy.
+{ana} går til bussen. Hun er glad. Det er bra! || Anna goes to the bus. She is happy. That is good!
+
+## Te hjemme
+{sam} og {luis} er hjemme og drikker te med melk. || Sam and Lars are at home. They drink tea with milk.
+[luis] Vil du ha brød, {sam}? || Do you want bread, Sam?
+[sam] Ja, gjerne. Jeg liker brød med ost. || Yes, please. I like bread with cheese.
+[luis] {ana} jobber mye. Hun er ofte trøtt. || Anna works a lot. She is often tired.
+[sam] Ja, men hun er glad. Hun liker klinikken. || Yes, but she is happy. She likes the clinic.
+
+## Husker du?
+På søndag leser presten i bibelen. Alle ber og synger en sang. Gud elsker oss, og vi har det i hjertet. || On Sunday the pastor reads in the Bible. Everyone prays and sings a song. God loves us, and we have it in our hearts.
+
+Det er vått ute i dag, men i morgen kommer sola. Det blir varmt. || It is wet outside today, but tomorrow the sun comes. It will be warm.
+
+{sam} besøker {ana} og {luis}. Han kan sitte i stua, og han får kaffe. || Sam visits Anna and Lars. He can sit in the living room, and he gets coffee.
+
+På onsdag og fredag ber {sam} om fred. || On Wednesday and Friday Sam prays for peace.

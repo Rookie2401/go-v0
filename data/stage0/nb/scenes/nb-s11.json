@@ -1,0 +1,226 @@
+{
+  "id": "nb-s11",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "On Sunday",
+    "target": "På søndag"
+  },
+  "world": {
+    "characters": [
+      "marta",
+      "ana",
+      "luis",
+      "sam"
+    ],
+    "places": [
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "I morgen er det søndag.",
+      "en": "Tomorrow is Sunday.",
+      "picture": "📅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "På søndag selger Marta ikke brød. Hun går i kirka.",
+      "en": "On Sunday Marta does not sell bread. She goes to church.",
+      "picture": "👵🚫🍞 ⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Jeg tror på Gud.",
+      "en": "I believe in God.",
+      "speaker": "marta",
+      "picture": "👵🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Anna og Lars går også i kirka.",
+      "en": "Anna and Lars go to church too.",
+      "picture": "👩👨⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Sam, går du med?",
+      "en": "Sam, are you coming along?",
+      "speaker": "ana",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Ja, jeg går med.",
+      "en": "Yes, I am coming along.",
+      "speaker": "sam",
+      "picture": "🙂👍",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "hun",
+      "går",
+      "kirka",
+      "tror",
+      "Gud",
+      "med"
+    ],
+    "constructions": [
+      "nb.gaa-place",
+      "nb.time-days",
+      "nb.tro"
+    ]
+  },
+  "represents": [
+    "nb.gaa-place",
+    "nb.time-days",
+    "nb.tro",
+    "nb.verb-second",
+    "nb.negation-ikke",
+    "nb.yes-no-question",
+    "nb.i-pa",
+    "nb.men-og",
+    "nb.lowercase",
+    "nb.present-tense"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "When is Sunday?"
+      },
+      "options": [
+        {
+          "en": "Tomorrow"
+        },
+        {
+          "en": "Today"
+        },
+        {
+          "en": "Yesterday"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where does Marta go on Sunday?"
+      },
+      "options": [
+        {
+          "en": "to church",
+          "picture": "⛪"
+        },
+        {
+          "en": "to the market",
+          "picture": "🛒"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5",
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam say?"
+      },
+      "options": [
+        {
+          "en": "He is coming along"
+        },
+        {
+          "en": "He is staying at home"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Anna asks: \"Sam, går du med?\" Say yes, you are coming.",
+      "basedOn": [
+        "l5",
+        "l6"
+      ],
+      "accept": [
+        {
+          "text": "Ja jeg går med"
+        },
+        {
+          "text": "Ja, jeg går med"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "går, i morgen, på søndag",
+      "text": "\"Går\" is \"go\" or \"walk\": jeg går, du går, hun går, Anna går. \"Går i kirka\" is the usual way to say you go to church; \"går med\" means \"come along\". \"I morgen\" is \"tomorrow\" and \"på søndag\" is \"on Sunday\". Days of the week begin with a small letter in Norwegian: søndag.",
+      "explains": [
+        "nb.gaa-place",
+        "nb.time-days",
+        "nb.lowercase"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "usage",
+      "title": "Jeg tror på Gud",
+      "text": "\"Tro\" means \"believe\" and also \"think\": \"Jeg tror på Gud\" is \"I believe in God\", with \"på\" before what you believe in. Gud, like a name, starts with a capital letter. \"Jeg tror …\" can also mean \"I think …\"; the sentence shows which.",
+      "explains": [
+        "nb.tro"
+      ],
+      "afterScenes": 0
+    }
+  ]
+}

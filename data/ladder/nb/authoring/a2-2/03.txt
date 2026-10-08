@@ -1,0 +1,37 @@
+=== nb-a2-2-03 | story | narrative | The troll on the bridge | Trollet på brua | tale,troll,riddle,bridge,courage
+speakers: troll=Trollet, ingrid=Ingrid
+note: An original short tale in the manner of a Norwegian folk tale (not a retelling of any published tale). The riddle's answer is "regn" (rain).
+## Brua
+Det var en gang ei jente som het Ingrid. Hun bodde i en liten by i fjellet. || Once upon a time there was a girl called Ingrid. She lived in a small town in the mountains.
+En dag skulle Ingrid gå til markedet. Hun skulle selge brød. || One day Ingrid was going to the market. She was going to sell bread.
+Veien gikk til ei bro. Under brua bodde et troll. || The road went to a bridge. Under the bridge lived a troll.
+Trollet var stort og mørkt. Folk var redd. || The troll was big and dark. People were afraid.
+Ingrid var også redd, men hun gikk. || Ingrid was also afraid, but she walked on.
+
+## Gåten
+Da hun kom til brua, sa trollet: «Stopp! Du må svare på en gåte!» || When she came to the bridge, the troll said: "Stop! You must answer a riddle!"
+Ingrid stoppet. Hun var redd, men hun var klok. || Ingrid stopped. She was afraid, but she was clever.
+[troll] Jeg er vått. Jeg kommer når det er mørkt og kaldt. Folk i {city} har meg ofte. Hva er jeg? || I am wet. I come when it is dark and cold. People in Bergen often have me. What am I?
+Ingrid tenkte lenge. Hun tenkte på byen, på været og på paraplyen sin. || Ingrid thought for a long time. She thought of the town, of the weather and of her umbrella.
+[ingrid] Jeg vet det! Du er regn! || I know! You are rain!
+Trollet ble glad. Ingen hadde svart på gåten før. || The troll became glad. Nobody had answered the riddle before.
+[troll] Du er klok, Ingrid! Du kan gå her hver dag. || You are clever, Ingrid! You can walk here every day.
+
+## Etterpå
+Ingrid solgte brødet på markedet. Hun sa til alle at trollet var snill. || Ingrid sold the bread at the market. She told everyone that the troll was kind.
+Folk ville ikke tro det. Men neste dag gikk de på veien, og han sa bare: «God dag!» || People did not want to believe it. But the next day they walked on the road, and he only said: "Hello!"
+Nå er folk ikke redd mer. De tar brød til ham, og han sier gåter. || Now people are no longer afraid. They bring bread to him, and he tells riddles.
+Ingrid er ikke redd. Hun er klok, og hun er glad i ham. || Ingrid is not afraid. She is clever, and she is fond of him.
+Hver lørdag går hun til markedet, og hver lørdag sier han: «God dag, Ingrid!» || Every Saturday she goes to the market, and every Saturday he says: "Hello, Ingrid!"
+Hun selger brød, og hun er glad. Hun har en venn under brua. || She sells bread, and she is happy. She has a friend under the bridge.
+
+## Husker du?
+Om våren og sommeren er det lyst. Om høsten er det mørkt. || In spring and summer it is light. In autumn it is dark.
+
+I Norge har {sam} bodd lenge. Han vil bo her lenger. Han har bestemt seg for ikke å reise hjem. || Sam has lived in Norway for a long time. He wants to live here longer. He has decided not to travel home.
+
+Toget fra stasjonen gikk langt, gjennom fjellet. Utsikten var bra. || The train from the station went far, through the mountain. The view was good.
+
+Første fredagskveld i Norge satt {sam} i sofaen, og de spilte ved peisen. || The first Friday evening in Norway Sam sat on the sofa, and they played by the fireplace.
+
+De bygger skolen, og den åpner snart. Nyheten er bra. || They are building the school, and it opens soon. The news is good.

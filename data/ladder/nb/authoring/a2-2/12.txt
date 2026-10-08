@@ -1,0 +1,46 @@
+=== nb-a2-2-12 | story | narrative | Sam stays | {sam} blir | reflection,testimony,gratitude,future,review
+note: The last unit of the Bokmål ladder before the bridge: Sam looks back and ahead, in the first person. It echoes the seed story (story-01) and recycles the vocabulary of the whole ladder.
+## Et år
+Jeg heter {sam}. Jeg har bodd i {city} i ett år nå. Det har vært et langt år, og det har vært et bra år. || My name is Sam. I have lived in Bergen for a year now. It has been a long year, and it has been a good year.
+Da jeg kom, snakket jeg litt norsk. Jeg forstod ikke alt, og jeg var ofte trøtt. || When I came, I spoke a little Norwegian. I did not understand everything, and I was often tired.
+Nå leser jeg bøker, og jeg skriver brev. Jeg snakker med folk på markedet, og de forstår meg. || Now I read books, and I write letters. I talk with people at the market, and they understand me.
+Jeg har lært mye av {marta}, {ana}, {luis} og {nico}. De har hjulpet meg hver dag. || I have learned a lot from Marta, Anna, Lars and Nils. They have helped me every day.
+
+## Troen
+Da jeg var ung, forstod jeg ikke hjertet mitt. Jeg trodde ikke på Gud. || When I was young, I did not understand my heart. I did not believe in God.
+Så begynte jeg å forstå synden min. Gud tilgav meg, og jeg fikk fred i hjertet. || Then I began to understand my sin. God forgave me, and I got peace in my heart.
+Nå går jeg i kirka hver søndag. Jeg ber, og jeg synger, og jeg takker Gud. || Now I go to church every Sunday. I pray, and I sing, and I thank God.
+Jeg har fortsatt spørsmål, og noen ganger har jeg tvil. Men jeg er trygg. || I still have questions, and sometimes I have doubt. But I feel safe.
+
+## Neste år
+[ana] Hva skal du gjøre neste år, {sam}? || What will you do next year, Sam?
+[sam] Jeg skal bli i {city}. Jeg vil lære mer norsk, og jeg vil lese flere bøker. || I will stay in Bergen. I want to learn more Norwegian, and I want to read more books.
+[luis] Du kan lese bøker på bokmål og på nynorsk. || You can read books in Bokmål and in Nynorsk.
+[sam] Ja, og jeg vil lese gamle bøker også. Kanskje jeg forstår dem en dag! || Yes, and I want to read old books too. Maybe I will understand them one day!
+[marta] Du forstår mer hver uke. Det tar tid, men du kommer dit. || You understand more every week. It takes time, but you will get there.
+[nico] Jeg skal lese bøker sammen med deg, {sam}! Jeg skal ikke glemme veska mi! || I will read books together with you, Sam! I will not forget my bag!
+Alle ler. {sam} ser på dem og er glad. || Everyone laughs. Sam looks at them and is glad.
+Han tenker: «Gud er god. Jeg har et hjem, jeg har venner, og jeg har en menighet.» || He thinks: "God is good. I have a home, I have friends, and I have a congregation."
+Han ber: «Takk, Gud, for dette året. Hjelp meg neste år også.» || He prays: "Thank you, God, for this year. Help me next year too."
+
+## Til slutt
+[luis] Vi er glade for at du blir, {sam}. Du er en god venn. || We are glad that you are staying, Sam. You are a good friend.
+[ana] Du hjelper oss, og vi hjelper deg. Slik er det i en familie. || You help us, and we help you. That is how it is in a family.
+[marta] Kom hit på søndag. Jeg lager middag, og vi drikker kaffe etter kirka. || Come on Sunday. I will make dinner, and we will drink coffee after church.
+[sam] Ja, gjerne! Jeg kommer hver søndag, som jeg har gjort i et år. || Yes, gladly! I come every Sunday, as I have done for a year.
+[nico] Og jeg kommer også! Jeg skal ikke glemme veska mi denne gangen. || And I am coming too! I will not forget my bag this time.
+{sam} ler. Han er glad, og han har fred i hjertet. || Sam laughs. He is happy, and he has peace in his heart.
+
+## Husker du?
+
+Hunden til fru Berg heter Bjørn. Eieren er glad, og hunden er lik en liten bjørn. || Mrs Berg's dog is called Bjørn. The owner is happy, and the dog looks like a little bear.
+
+{nico} er glad i hunden. Eieren, fru Berg, er også glad i den. Den er lik en liten bjørn. || Nils is fond of the dog. The owner, Mrs Berg, is also fond of it. It looks like a little bear.
+
+{nico} fortalte om prosjektet. Fiskerne bor nær havet, drar ut i båt og fanger fisk. Tørrfisk er tørr fisk. || Nils told about the project. The fishermen live near the sea, go out in a boat and catch fish. Dried fish is dry fish.
+
+I timen lærte vi om naturen, om elver og skog og strøm. Vi tok med mat. || In the lesson we learned about nature, about rivers and forest and electricity. We took food with us.
+
+Brødet er ferdig når det lukter riktig. {sam} setter deigen i ovnen selv. Etterpå smaker han. || The bread is done when it smells right. Sam puts the dough in the oven himself. Afterwards he tastes it.
+
+{sam} husker invitasjonen til menigheten. Han var ikke alene. || Sam remembers the invitation to the congregation. He was not alone.

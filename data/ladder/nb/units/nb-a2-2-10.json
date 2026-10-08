@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-2-10",
+  "lang": "nb",
+  "title": "Water, forest and electricity",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-2-10",
+    "title": "Water, forest and electricity (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". A simple lesson about nature in Norway. The claims (many rivers, electricity from water, large forests) are general knowledge and unchecked; a Norwegian reviewer should confirm them."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "nature",
+    "rivers",
+    "forest",
+    "electricity",
+    "environment"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "nature"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "luis": "Lars",
+    "nico": "Nils",
+    "sam": "Sam",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Timen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "I dag har Lars en time om naturen. Elevene skal lære om elver, skog og strøm.",
+              "english": "Today Lars has a lesson about nature. The pupils will learn about rivers, forest and electricity."
+            },
+            {
+              "text": "Norge har mye natur. Vi har fjell, fjorder, skog og elver.",
+              "english": "Norway has a lot of nature. We have mountains, fjords, forest and rivers.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Vannet i elvene kommer fra fjellet. Når det regner, blir det mye vann.",
+              "english": "The water in the rivers comes from the mountains. When it rains, there is a lot of water.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Hva gjør vi med vannet?",
+              "english": "What do we do with the water?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Vi lager strøm. Vannet går, og det lager strøm.",
+              "english": "We make electricity. The water runs, and it makes electricity.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Så vi har lys fordi vi har vann!",
+              "english": "So we have light because we have water!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja. Derfor er regn bra for oss.",
+              "english": "Yes. That is why rain is good for us.",
+              "speaker": "luis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Skogen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Etter timen går klassen en tur i skogen. Den er stor og mørk.",
+              "english": "After the lesson the class goes for a walk in the forest. It is big and dark."
+            },
+            {
+              "text": "Her er naturen også. Vi må være snille.",
+              "english": "Here is nature too. We must be kind.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Hvordan kan vi være snille, Lars?",
+              "english": "How can we be kind, Lars?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Vi kan gå på veien, og vi kan ta med oss maten hjem.",
+              "english": "We can walk on the road, and we can take our food home with us.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Sam går med klassen. Han er glad i fjell og vann.",
+              "english": "Sam walks with the class. He is fond of mountains and water."
+            },
+            {
+              "text": "I USA har vi også fjell og vann. Men jeg liker Norge veldig godt.",
+              "english": "In the USA we also have mountains and water. But I like Norway very much.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Fordi det regner mye!",
+              "english": "Because it rains a lot!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, kanskje. Regn lager vann, og vann lager lys.",
+              "english": "Yes, maybe. Rain makes water, and water makes light.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjemme",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Om kvelden er Lars trøtt. Han drikker te, og han tenker på timen.",
+              "english": "In the evening Lars is tired. He drinks tea, and he thinks about the lesson."
+            },
+            {
+              "text": "Hva lærte elevene i dag?",
+              "english": "What did the pupils learn today?",
+              "speaker": "ana"
+            },
+            {
+              "text": "De lærte at vi har lys fordi vi har regn. Og at vi må være snille.",
+              "english": "They learned that we have light because we have rain. And that we must be kind.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Det er en god time! Kanskje elevene husker den lenge.",
+              "english": "That is a good lesson! Maybe the pupils will remember it for a long time.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg håper det. Jeg husker selv timer fra da jeg var liten.",
+              "english": "I hope so. I myself remember lessons from when I was small.",
+              "speaker": "luis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Først leste Sam bokmål, men så leste han nynorsk også. Han ville heller lære begge måter. Han forstår dialekter, og hvert ord er ikke feil.",
+              "english": "First Sam read Bokmål, but then he read Nynorsk too. He would rather learn both ways. He understands dialects, and no word is wrong."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Menigheten inviterer til gudstjeneste. Alle er velkomne, og vi er sammen, ikke alene.",
+              "english": "The congregation invites to the service. Everyone is welcome, and we are together, not alone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hvorfor skriver vi slik? Bokmål eller nynorsk, vi forstår hverandre heller godt.",
+              "english": "Why do we write like this? Bokmål or Nynorsk, we understand each other rather well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mel, salt og gjær: sett deigen riktig. Smak på brødet.",
+              "english": "Flour, salt and yeast: put the dough right. Taste the bread."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

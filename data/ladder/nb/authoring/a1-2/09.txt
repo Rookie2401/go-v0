@@ -1,0 +1,32 @@
+=== nb-a1-2-09 | nonfiction | norway | Norway and Bergen | Norge og {city} | Norway,geography,fjord,sea,north,south,west
+note: General knowledge about Norway kept deliberately simple and unchecked: a Norwegian reviewer should confirm every statement. Lars the teacher talks about the country with his pupils.
+## På skolen
+{luis} er lærer. Han snakker om Norge på skolen. || Lars is a teacher. He talks about Norway at the school.
+[luis] Norge er et land i nord. Norge er langt. || Norway is a country in the north. Norway is long.
+[luis] Norge har mange fjell. Norge har også mange fjorder. || Norway has many mountains. Norway also has many fjords.
+[luis] Havet er i fjellet. Det er en fjord. || The sea is in the mountains. That is a fjord.
+[nico] Hvor er {city}, {luis}? || Where is Bergen, Lars?
+[luis] {city} ligger i vest. Havet er i vest. || Bergen is in the west. The sea is in the west.
+[nico] Hvor er Oslo? || Where is Oslo?
+[luis] Oslo ligger i sør. Oslo er en stor by. || Oslo is in the south. Oslo is a big city.
+[nico] Er USA et stort land? || Is the USA a big country?
+[luis] Ja, USA er stort. Norge er langt, men ikke stort. || Yes, the USA is big. Norway is long, but not big.
+Elevene leser om Norge. De liker fjellene og fjordene. || The pupils read about Norway. They like the mountains and the fjords.
+
+## Hjemme hos {marta}
+{sam} er hos {marta}. De drikker te. || Sam is at Marta's. They drink tea.
+[sam] Jeg bor i vest. Norge er et land med mange fjell. || I live in the west. Norway is a country with many mountains.
+[marta] Ja, du bor i {city}. Det er byen i vest. || Yes, you live in Bergen. It is the town in the west.
+[sam] Er det kaldt i nord? || Is it cold in the north?
+[marta] Ja, det er kaldt i nord. I sør er det varmt. || Yes, it is cold in the north. In the south it is warm.
+[sam] Jeg vil se Norge. Jeg vil se nord og sør! || I want to see Norway. I want to see the north and the south!
+[marta] Det er bra. Fisk bor i havet. Folk liker fisk. || That is good. Fish live in the sea. People like fish.
+[sam] Ja, og jeg liker fisken din, {marta}. || Yes, and I like your fish, Marta.
+{marta} er glad. Hun lager middag i kveld, og {sam} kommer. || Marta is happy. She is making dinner this evening, and Sam is coming.
+
+## Husker du?
+{ana} er sykepleier, men i dag er hun syk. Legen sier at hun må hvile. || Anna is a nurse, but today she is ill. The doctor says that she has to rest.
+
+{marta} sa at {nico} mistet vesken ofte. Han gråt, men nå husker han den. Hun tenkte at det går bra. || Marta said that Nils often lost the bag. He cried, but now he remembers it. She thought that it is going well.
+
+{marta} ber en bønn. Hun takker Gud, og hun ber om håp. || Marta says a prayer. She thanks God, and she prays for hope.

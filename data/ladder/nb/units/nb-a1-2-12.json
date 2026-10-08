@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-2-12",
+  "lang": "nb",
+  "title": "Sam's long week",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-2-12",
+    "title": "Sam's long week (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Sam retells the events of the earlier units in the past tense. No new vocabulary is planned: this unit recycles words from the last ten units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "retelling",
+    "past tense",
+    "week",
+    "recap"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Mandag og tirsdag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg heter Sam. Jeg bor i Bergen. Den uka var lang.",
+              "english": "My name is Sam. I live in Bergen. That week was long."
+            },
+            {
+              "text": "På mandag gikk jeg til skolen. Jeg leste og skrev norsk.",
+              "english": "On Monday I went to school. I read and wrote Norwegian."
+            },
+            {
+              "text": "På tirsdag var jeg syk. Jeg hadde vondt i hodet, og jeg hadde feber.",
+              "english": "On Tuesday I was ill. I had a headache, and I had a fever."
+            },
+            {
+              "text": "Jeg gikk til klinikken. Legen sa at jeg måtte hvile.",
+              "english": "I went to the clinic. The doctor said that I had to rest."
+            },
+            {
+              "text": "Marta kom med suppe. Hun var snill.",
+              "english": "Marta came with soup. She was kind."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Onsdag og torsdag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På onsdag var nøkkelen til Anna borte. Anna lette, og jeg lette også.",
+              "english": "On Wednesday Anna's key was gone. Anna looked, and I looked too."
+            },
+            {
+              "text": "Nils fant den i jakka. Anna hadde glemt den.",
+              "english": "Nils found it in the jacket. Anna had forgotten it."
+            },
+            {
+              "text": "På torsdag handlet jeg i butikken med Lars. Vi hadde ei liste.",
+              "english": "On Thursday I shopped at the shop with Lars. We had a list."
+            },
+            {
+              "text": "Vi kjøpte brød, melk, egg og smør. Vi trengte mye mat.",
+              "english": "We bought bread, milk, eggs and butter. We needed a lot of food."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Fredag, lørdag og søndag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På fredag ringte jeg til Anna. Hun hadde ikke tid, men hun ringte klokka fem.",
+              "english": "On Friday I called Anna. She did not have time, but she called at five o'clock."
+            },
+            {
+              "text": "På lørdag traff jeg Lars på kafeen, og så gikk vi en tur i fjellet.",
+              "english": "On Saturday I met Lars at the café, and then we went for a walk in the mountains."
+            },
+            {
+              "text": "Veien var lang, men turen var bra. Nils gråt ikke.",
+              "english": "The road was long, but the walk was good. Nils did not cry."
+            },
+            {
+              "text": "På søndag hadde Nils bursdag. Marta bakte en kake, og jeg hadde en gave til Nils.",
+              "english": "On Sunday it was Nils's birthday. Marta baked a cake, and I had a gift for Nils."
+            },
+            {
+              "text": "Alle gratulerte Nils, og vi sang en sang.",
+              "english": "Everyone congratulated Nils, and we sang a song."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Til Anna",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Du har hatt en lang uke, Sam!",
+              "english": "You have had a long week, Sam!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, men jeg er glad. Jeg takker Gud for uka.",
+              "english": "Yes, but I am happy. I thank God for the week.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vi liker deg, Sam.",
+              "english": "We like you, Sam.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg liker deg også. Jeg ba i går: «Gud, takk for Anna, Lars, Marta og Nils.»",
+              "english": "I like you too. Yesterday I prayed: \"God, thank you for Anna, Lars, Marta and Nils.\"",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Turen var lang, men veien var bra. Fjellet er høyt.",
+              "english": "The walk was long, but the road was good. The mountain is high."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Bergen ligger i vest. Havet er stort.",
+              "english": "Bergen is in the west. The sea is big."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "På bursdagen til Nils var det kake. Alle gjestene gratulerte ham, og han fikk en gave.",
+              "english": "At Nils's birthday there was cake. All the guests congratulated him, and he got a gift."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Planen er at Sam ringer til Lars.",
+              "english": "The plan is that Sam calls Lars."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

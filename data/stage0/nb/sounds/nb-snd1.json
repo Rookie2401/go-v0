@@ -1,0 +1,139 @@
+{
+  "id": "nb-snd1",
+  "lang": "nb",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "ei, jeg, -ig, o, y and ø — and whose pronunciation this is"
+  },
+  "features": [
+    "nb:ig",
+    "nb:o",
+    "nb:y",
+    "nb:ø",
+    "nb:ei",
+    "nb:eg"
+  ],
+  "words": [
+    {
+      "text": "hei",
+      "en": "hello",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "jeg",
+      "en": "I",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "hyggelig",
+      "en": "nice, pleasant",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "broren",
+      "en": "the brother",
+      "picture": "👨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "søstera",
+      "en": "the sister",
+      "picture": "👩",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Norwegian has no official spoken standard: only the spelling is regulated, and people speak in their own regional ways. Go uses one Eastern (Oslo-area) pronunciation as a reference, not as the only right one. In it, ei is like \"ay\" in \"hay\" (hei), the ending -eg is said \"-ai\" (jeg is YAI), the g in -ig and -lig is silent (hyggelig ends in -lee), o is often like \"oo\" in \"moon\" (broren) and ø is like the vowel in \"fur\", with rounded lips (søstera).",
+    "more": "u is a rounded \"ee\" (hus, du) and y is like the German ü (hyggelig): neither is an English sound. A short o before a double consonant is more like English \"o\" in \"off\" (kopp). Regional speech differs a good deal (r, the melody, kj and sj), and those differences are normal Norwegian, not mistakes."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "hei",
+      "prompt": "How does \"ei\" sound in \"hei\"?",
+      "options": [
+        "like \"ay\" in \"hay\"",
+        "like \"ee\" in \"see\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "jeg",
+      "prompt": "How is \"jeg\" said?",
+      "options": [
+        "YEG, with a hard g",
+        "YAI (the g is not said)"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "hyggelig",
+      "prompt": "How does \"hyggelig\" end?",
+      "options": [
+        "-lee (the g is silent)",
+        "-lig, with a hard g"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "broren",
+      "prompt": "How is the \"o\" in \"broren\" said?",
+      "options": [
+        "like \"o\" in \"go\"",
+        "like \"oo\" in \"moon\""
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d5",
+      "kind": "which-reading",
+      "word": "søstera",
+      "prompt": "What is \"ø\" in \"søstera\" like?",
+      "options": [
+        "like the vowel in \"fur\", with rounded lips",
+        "like \"oo\" in \"moon\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-word",
+      "word": "hei",
+      "prompt": "Which is the Norwegian spelling of \"hello\"?",
+      "options": [
+        "hei",
+        "hej"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  }
+}

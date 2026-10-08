@@ -1,0 +1,50 @@
+=== nb-a1-1-10 | dialogue | travel | The bus into town | Bussen til sentrum | bus,ticket,town centre,directions
+speakers: sjafor=Sjåføren, dame=Damen
+note: "Unnskyld" opens a request to a stranger. "Gå rett fram" is the standard instruction for "go straight ahead".
+## På busstoppet
+{sam} er på busstoppet. Han vil til sentrum. || Sam is at the bus stop. He wants to go to the town centre.
+Bussen kommer. {sam} er glad. || The bus is coming. Sam is happy.
+[sam] Unnskyld, går bussen til sentrum? || Excuse me, does the bus go to the town centre?
+[sjafor] Ja, den går til sentrum. || Yes, it goes to the town centre.
+[sam] Hvor mye koster det? || How much does it cost?
+[sjafor] Det koster førti kroner. || It costs forty kroner.
+[sam] Her er pengene. Takk. || Here is the money. Thanks.
+[sjafor] Vær så god. || Here you are.
+
+## På bussen
+{sam} liker byen fra vinduet. || Sam likes the town from the window.
+Han liker kirka, skolen og markedet. Det regner litt. || He likes the church, the school and the market. It is raining a little.
+[sam] Stopper den her? || Does it stop here?
+[sjafor] Ja, den stopper her. || Yes, it stops here.
+Den stopper bare litt. Mange folk går ut. Alle går ut, og {sam} går ut også. || It stops only a little. Many people get out. Everyone gets out, and Sam gets out too.
+[sam] Mange takk! Ha det bra! || Thank you very much! Goodbye!
+[sjafor] Ha det bra! || Goodbye!
+
+## Til klinikken
+{sam} er i byen. Han vil til klinikken. {ana} jobber på klinikken. || Sam is in town. He wants to go to the clinic. Anna works at the clinic.
+[sam] Unnskyld, hvor er klinikken? || Excuse me, where is the clinic?
+[dame] Gå rett fram. Så går du til høyre. || Go straight ahead. Then you turn right.
+[sam] Rett fram og til høyre? || Straight ahead and to the right?
+[dame] Ja, det er bra. || Yes, that is right.
+[sam] Mange takk! || Thank you very much!
+[dame] Vær så god! || You are welcome!
+{sam} går rett fram. Så går han til høyre. || Sam goes straight ahead. Then he turns right.
+[sam] Unnskyld, er dette klinikken? || Excuse me, is this the clinic?
+[ana] Ja, hei, {sam}! Her er klinikken. || Yes, hi, Sam! Here is the clinic.
+
+## {ana} og {sam}
+[ana] Hvordan går det? Du er i byen i dag! || How are you? You are in town today!
+[sam] Ja, jeg er her. Jeg vil ha litt kaffe. || Yes, I am here. I want a little coffee.
+[ana] Bra! Vil du ha kaffe nå? || Good! Do you want coffee now?
+[sam] Ja, gjerne! Du jobber mye, {ana}. || Yes, please! You work a lot, Anna.
+[ana] Ja, jeg er trøtt i dag. Men jeg er glad. || Yes, I am tired today. But I am glad.
+{ana} har kaffe og brød. {sam} er glad. || Anna has coffee and bread. Sam is happy.
+
+## Husker du?
+{sam} er på bussen, og han vil ha middag. Han vil ha fisk og poteter. {marta} lager suppe. || Sam is on the bus, and he wants dinner. He wants fish and potatoes. Marta makes soup.
+
+{nico} er elev. Skolen begynner klokka åtte. Han har lekse, men han liker ikke å skrive. || Nils is a pupil. School begins at eight o'clock. He has homework, but he does not like to write.
+
+Presten leser i bibelen, og alle synger en sang. || The pastor reads in the Bible, and everyone sings a song.
+
+{ana} er sykepleier, og hun tar bussen til klinikken. || Anna is a nurse, and she takes the bus to the clinic.

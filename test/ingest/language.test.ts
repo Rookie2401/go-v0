@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { documentText, fitsTeamLanguage, guessLanguage } from '../../src/ingest/language';
+import { documentText, fitsTeamLanguage, guessLanguage, guessScandinavian } from '../../src/ingest/language';
 
 // Paragraphs written for these tests (not from any book). Each is well over the 40 words the guesser needs to judge.
 const SPANISH = 'Era una tarde tranquila en el pueblo y los niños jugaban en la plaza mientras sus madres hablaban con las vecinas. El abuelo se sentó bajo el árbol y empezó a contar una historia que todos conocían, '
@@ -142,5 +142,52 @@ describe('documentText', () => {
     expect(documentText({})).toBe('');
     expect(documentText({ sections: 'x' })).toBe('');
     expect(documentText({ sections: [{ paragraphs: 'x' }, null] })).toBe('');
+  });
+});
+
+// Norwegian, Nynorsk and Danish (paragraphs written for these tests). Danish shares most common words with Norwegian, so the
+// guesser tells them apart by the words that belong to one of them only.
+const BOKMAL = 'Det var en stille ettermiddag i bygda, og barna lekte på plassen mens mødrene snakket med naboene. Bestefaren satte seg under treet og begynte å fortelle en historie som alle kjente, '
+  + 'men som ingen ble lei av å høre. Da han var ferdig, klappet folk, og en liten jente spurte om han kunne fortelle den en gang til dagen etter, fordi hun ville lære den utenat. Jeg har ikke noen penger, hva skal vi gjøre?';
+const NYNORSK_TEXT = 'Det var ein stille ettermiddag i bygda, og borna leika på plassen medan mødrene snakka med naboane. Bestefaren sette seg under treet og byrja å fortelje ei soge som alle kjende, '
+  + 'men som ingen vart lei av å høyre. Då han var ferdig, klappa folk, og ei lita jente spurde om han kunne fortelje henne ein gong til dagen etter, fordi ho ville lære henne utanåt. Eg har ikkje nokon pengar, kva skal vi gjere?';
+const DANISH = 'Det var en stille eftermiddag i landsbyen, og børnene legede på pladsen mens deres mødre snakkede med naboerne. Bedstefaren satte sig under træet og begyndte at fortælle en historie, som alle kendte, '
+  + 'men som ingen blev trætte af at høre. Da han var færdig, klappede folk, og en lille pige spurgte, om han kunne fortælle den igen næste dag, fordi hun gerne ville lære den udenad. Jeg har ikke nogen penge, hvad skal vi gøre?';
+
+describe('Norwegian and Danish', () => {
+  const NORWAY = { lang: 'nb', country: 'Norway', readsLangs: ['nn'] } as const;
+
+  it('names Bokmål, Nynorsk and Danish apart', () => {
+    expect(guessLanguage(BOKMAL).lang).toBe('nb');
+    expect(guessLanguage(NYNORSK_TEXT).lang).toBe('nn');
+    expect(guessLanguage(DANISH).lang).toBe('da');
+  });
+
+  it('accepts Bokmål and Nynorsk for the Norway team and turns Danish away', () => {
+    expect(fitsTeamLanguage(BOKMAL, NORWAY).ok).toBe(true);
+    expect(fitsTeamLanguage(NYNORSK_TEXT, NORWAY).ok).toBe(true);
+    const danish = fitsTeamLanguage(DANISH, NORWAY);
+    expect(danish.ok).toBe(false);
+    expect(danish.message).toMatch(/looks like Danish/);
+  });
+
+  it('judges a single Danish sentence for a Norwegian team too (the decisive words need no 40-word floor), and a Bokmål one passes', () => {
+    expect(fitsTeamLanguage('Jeg har ikke nogen penge, hvad skal vi gøre?', NORWAY).ok).toBe(false);
+    expect(fitsTeamLanguage('Jeg har ikke noen penger, hva skal vi gjøre?', NORWAY).ok).toBe(true);
+    expect(guessScandinavian('Jeg har ikke nogen penge, hvad skal vi gøre?')).toBe('da');
+    expect(guessScandinavian('Jeg har ikke noen penger, hva skal vi gjøre?')).toBe('nb');
+    expect(guessScandinavian('Eg har ikkje nokon pengar, kva skal vi gjere?')).toBe('nn');
+    expect(guessScandinavian('Hello brave world')).toBeUndefined();
+  });
+
+  it('leaves the other teams as they were: a short Danish sentence is not judged for a Spanish team', () => {
+    expect(fitsTeamLanguage('Jeg har ikke nogen penge, hvad skal vi gøre?', { lang: 'es', country: 'Honduras' }).ok).toBe(true);
+  });
+
+  it('does not take Norwegian for any of the older languages', () => {
+    expect(guessLanguage(SPANISH).lang).toBe('es');
+    expect(guessLanguage(GERMAN).lang).toBe('de');
+    expect(guessLanguage(ALBANIAN).lang).toBe('sq');
+    expect(guessLanguage(ENGLISH).lang).toBe('en');
   });
 });

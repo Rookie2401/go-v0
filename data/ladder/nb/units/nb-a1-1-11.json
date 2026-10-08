@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-1-11",
+  "lang": "nb",
+  "title": "Rain in Bergen",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-1-11",
+    "title": "Rain in Bergen (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "weather",
+    "rain",
+    "sun",
+    "cold",
+    "warm"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "nature"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam",
+    "luis": "Lars",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "Været",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Været i Bergen er ofte vått. Men sola er også ute.",
+              "english": "The weather in Bergen is often wet. But the sun is also out."
+            },
+            {
+              "text": "I Bergen regner det ofte.",
+              "english": "In Bergen it often rains."
+            },
+            {
+              "text": "Folk sier: «Det regner alltid i Bergen!»",
+              "english": "People say: \"It always rains in Bergen!\""
+            },
+            {
+              "text": "Men det regner ikke alltid. Mange dager er sola ute.",
+              "english": "But it does not always rain. Many days the sun is out."
+            },
+            {
+              "text": "I dag regner det. Det er kaldt og vått.",
+              "english": "Today it is raining. It is cold and wet."
+            },
+            {
+              "text": "Været er ikke bra i dag.",
+              "english": "The weather is not good today."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sam og regnet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam vil gå til skolen. Han tar paraplyen.",
+              "english": "Sam wants to go to the school. He takes the umbrella."
+            },
+            {
+              "text": "Det er ikke varmt i dag, Sam. Ta jakka di!",
+              "english": "It is not warm today, Sam. Take your jacket!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg tar jakka.",
+              "english": "Yes, I will take the jacket.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Er det varmt i USA?",
+              "english": "Is it warm in the USA?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, det er ofte varmt. Det regner ikke mye.",
+              "english": "Yes, it is often warm. It does not rain much.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Regn er vann. Vann er bra!",
+              "english": "Rain is water. Water is good!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Sam går ut. Det regner mye. Paraplyen er bra.",
+              "english": "Sam goes out. It rains a lot. The umbrella is good."
+            },
+            {
+              "text": "Jeg er våt, men jeg er glad!",
+              "english": "I am wet, but I am happy!",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjemme",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det regner. Anna og Lars er hjemme i dag.",
+              "english": "It is raining. Anna and Lars are at home today."
+            },
+            {
+              "text": "Jeg er trøtt. Vil du ha te, Anna?",
+              "english": "I am tired. Do you want tea, Anna?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja, gjerne! Jeg vil ha te med melk.",
+              "english": "Yes, please! I want tea with milk.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Vi er hjemme, og vi drikker te. Det er bra.",
+              "english": "We are at home, and we drink tea. That is good.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg liker regn i dag.",
+              "english": "I like rain today.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sola",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dagen etter er sola ute!",
+              "english": "The next day the sun is out!"
+            },
+            {
+              "text": "Det er ikke vått. Været er bra i dag.",
+              "english": "It is not wet. The weather is good today."
+            },
+            {
+              "text": "Nils kommer til Sam. Han har ikke jakka i dag.",
+              "english": "Nils comes to Sam. He does not have a jacket today."
+            },
+            {
+              "text": "Sola er ute, Sam!",
+              "english": "The sun is out, Sam!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja! I dag vil jeg ikke ha paraply.",
+              "english": "Yes! Today I do not want an umbrella.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vi går ut!",
+              "english": "Let's go out!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Folk er glade i dag. Mange går til markedet.",
+              "english": "People are happy today. Many go to the market."
+            },
+            {
+              "text": "Marta er på markedet. Hun selger brød.",
+              "english": "Marta is at the market. She sells bread."
+            },
+            {
+              "text": "Været i Bergen er ikke alltid bra, men folk er glade i byen.",
+              "english": "The weather in Bergen is not always good, but people are fond of their town."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam har penger, og han vil kjøpe epler. Brød er billig, men jakka er dyr. Han betaler og er glad.",
+              "english": "Sam has money, and he wants to buy apples. Bread is cheap, but the jacket is expensive. He pays and is happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "I regnet hjelper Anna pasienter på klinikken. Marta baker brød. Det er bra.",
+              "english": "In the rain Anna helps patients at the clinic. Marta bakes bread. That is a good job."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam tar bussen til sentrum. Bussen stopper på busstoppet.",
+              "english": "Sam takes the bus to the town centre. The bus stops at the bus stop."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam synger en sang i regnet. Han vet: Gud elsker alle.",
+              "english": "Sam sings a song in the rain. He knows: God loves everyone."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

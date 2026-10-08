@@ -1,0 +1,205 @@
+{
+  "id": "nb-s06",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "Anna is tired",
+    "target": "Anna er trøtt"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "sam"
+    ],
+    "places": [
+      "clinic"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Anna jobber på klinikken.",
+      "en": "Anna works at the clinic.",
+      "picture": "👩‍⚕️🏥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "I dag er Anna trøtt.",
+      "en": "Today Anna is tired.",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Lars er også trøtt.",
+      "en": "Lars is tired too.",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Er du trøtt, Anna?",
+      "en": "Are you tired, Anna?",
+      "speaker": "sam",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Ja, jeg er trøtt.",
+      "en": "Yes, I am tired.",
+      "speaker": "ana",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "jobber",
+      "klinikken",
+      "i",
+      "dag",
+      "trøtt",
+      "ja"
+    ],
+    "constructions": [
+      "nb.adjective-state",
+      "nb.verb-second"
+    ]
+  },
+  "represents": [
+    "nb.adjective-state",
+    "nb.verb-second",
+    "nb.yes-no-question",
+    "nb.er-location",
+    "nb.present-tense",
+    "nb.i-pa"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where does Anna work?"
+      },
+      "options": [
+        {
+          "en": "at the clinic",
+          "picture": "🏥"
+        },
+        {
+          "en": "at the school",
+          "picture": "🏫"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2",
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How are Anna and Lars today?"
+      },
+      "options": [
+        {
+          "en": "Tired"
+        },
+        {
+          "en": "Happy"
+        },
+        {
+          "en": "Hungry"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Anna says she is tired."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Say that Lars is tired too.",
+      "basedOn": [
+        "l3"
+      ],
+      "frame": "Lars er også ___.",
+      "accept": [
+        {
+          "text": "Lars er også trøtt"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "The verb is second",
+      "text": "In a Norwegian statement the verb is always the second item. \"Anna er trøtt\" and \"I dag er Anna trøtt\" both have \"er\" second: you do not say \"I dag Anna er trøtt\". \"Er\" is \"is\", \"am\" and \"are\": jeg er, du er, Anna er.",
+      "explains": [
+        "nb.verb-second",
+        "nb.adjective-state"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "Questions start with the verb",
+      "text": "\"Anna er trøtt.\" becomes a question by putting the verb first: \"Er Anna trøtt?\" \"Er du trøtt?\". You met the same pattern with \"Vil du ha kaffe?\".",
+      "explains": [
+        "nb.yes-no-question"
+      ],
+      "afterScenes": 1
+    }
+  ]
+}

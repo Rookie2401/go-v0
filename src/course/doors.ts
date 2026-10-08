@@ -5,6 +5,7 @@
 import { ALBANIAN_COURSE_ID, ALBANIAN_DOORS } from './albanian';
 import { GERMAN_COURSE_ID, GERMAN_DOORS } from './german';
 import { HINDI_COURSE_ID, HINDI_DOORS } from './hindi';
+import { NORWEGIAN_COURSE_ID, NORWEGIAN_DOORS } from './norwegian';
 import { SPANISH_COURSE_ID, SPANISH_DOORS } from './spanish';
 import { THAI_COURSE_ID, THAI_DOORS } from './thai';
 
@@ -23,4 +24,5 @@ export const COURSE_DOORS: Record<string, readonly CourseDoor[]> = {
   [GERMAN_COURSE_ID]: GERMAN_DOORS,
   [ALBANIAN_COURSE_ID]: ALBANIAN_DOORS,
   [HINDI_COURSE_ID]: HINDI_DOORS,
+  [NORWEGIAN_COURSE_ID]: NORWEGIAN_DOORS,
 };

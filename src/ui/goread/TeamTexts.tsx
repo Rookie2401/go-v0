@@ -9,7 +9,7 @@
  */
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ids } from '../../core';
+import { courseReads, ids } from '../../core';
 import type { AppStore, LanguageCode, Text } from '../../core';
 import { createTeamClient } from '../../goread/client';
 import { shareableText } from '../../goread/sharing';
@@ -189,8 +189,8 @@ export function TeamTextsPage() {
     if (all === null || entries === null || existing === null) return [];
     const added = new Map<string, TeamTextEntry>();
     for (const e of entries) if (existing.has(e.textId)) added.set(e.textId, e);
-    return groupBooks(all.filter((t) => t.lang === course.lang && added.has(t.id)), added);
-  }, [all, entries, existing, course.lang]);
+    return groupBooks(all.filter((t) => courseReads(course, t.lang) && added.has(t.id)), added);
+  }, [all, entries, existing, course]);
 
   // Which books may be shared: asked of the first chapter, and only when there is a server to share with.
   useEffect(() => {

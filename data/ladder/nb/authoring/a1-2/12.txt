@@ -1,0 +1,36 @@
+=== nb-a1-2-12 | story | narrative | Sam's long week | Den lange uka til {sam} | retelling,past tense,week,recap
+note: Sam retells the events of the earlier units in the past tense. No new vocabulary is planned: this unit recycles words from the last ten units.
+## Mandag og tirsdag
+Jeg heter {sam}. Jeg bor i {city}. Den uka var lang. || My name is Sam. I live in Bergen. That week was long.
+På mandag gikk jeg til skolen. Jeg leste og skrev norsk. || On Monday I went to school. I read and wrote Norwegian.
+På tirsdag var jeg syk. Jeg hadde vondt i hodet, og jeg hadde feber. || On Tuesday I was ill. I had a headache, and I had a fever.
+Jeg gikk til klinikken. Legen sa at jeg måtte hvile. || I went to the clinic. The doctor said that I had to rest.
+{marta} kom med suppe. Hun var snill. || Marta came with soup. She was kind.
+
+## Onsdag og torsdag
+På onsdag var nøkkelen til {ana} borte. {ana} lette, og jeg lette også. || On Wednesday Anna's key was gone. Anna looked, and I looked too.
+{nico} fant den i jakka. {ana} hadde glemt den. || Nils found it in the jacket. Anna had forgotten it.
+På torsdag handlet jeg i butikken med {luis}. Vi hadde ei liste. || On Thursday I shopped at the shop with Lars. We had a list.
+Vi kjøpte brød, melk, egg og smør. Vi trengte mye mat. || We bought bread, milk, eggs and butter. We needed a lot of food.
+
+## Fredag, lørdag og søndag
+På fredag ringte jeg til {ana}. Hun hadde ikke tid, men hun ringte klokka fem. || On Friday I called Anna. She did not have time, but she called at five o'clock.
+På lørdag traff jeg {luis} på kafeen, og så gikk vi en tur i fjellet. || On Saturday I met Lars at the café, and then we went for a walk in the mountains.
+Veien var lang, men turen var bra. {nico} gråt ikke. || The road was long, but the walk was good. Nils did not cry.
+På søndag hadde {nico} bursdag. {marta} bakte en kake, og jeg hadde en gave til {nico}. || On Sunday it was Nils's birthday. Marta baked a cake, and I had a gift for Nils.
+Alle gratulerte {nico}, og vi sang en sang. || Everyone congratulated Nils, and we sang a song.
+
+## Til {ana}
+[ana] Du har hatt en lang uke, {sam}! || You have had a long week, Sam!
+[sam] Ja, men jeg er glad. Jeg takker Gud for uka. || Yes, but I am happy. I thank God for the week.
+[ana] Vi liker deg, {sam}. || We like you, Sam.
+[sam] Jeg liker deg også. Jeg ba i går: «Gud, takk for {ana}, {luis}, {marta} og {nico}.» || I like you too. Yesterday I prayed: "God, thank you for Anna, Lars, Marta and Nils."
+
+## Husker du?
+Turen var lang, men veien var bra. Fjellet er høyt. || The walk was long, but the road was good. The mountain is high.
+
+{city} ligger i vest. Havet er stort. || Bergen is in the west. The sea is big.
+
+På bursdagen til {nico} var det kake. Alle gjestene gratulerte ham, og han fikk en gave. || At Nils's birthday there was cake. All the guests congratulated him, and he got a gift.
+
+Planen er at {sam} ringer til {luis}. || The plan is that Sam calls Lars.

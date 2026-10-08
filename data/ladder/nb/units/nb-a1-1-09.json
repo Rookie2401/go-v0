@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-1-09",
+  "lang": "nb",
+  "title": "Sunday morning at church",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-1-09",
+    "title": "Sunday morning at church (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "church",
+    "Sunday",
+    "song",
+    "prayer",
+    "God"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "faith"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "marta": "Marta",
+    "nico": "Nils",
+    "ana": "Anna",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Til kirka",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det er søndag. Sam og Anna går til kirka.",
+              "english": "It is Sunday. Sam and Anna go to church."
+            },
+            {
+              "text": "Lars, Marta og Nils går også.",
+              "english": "Lars, Marta and Nils go too."
+            },
+            {
+              "text": "Kirka er ikke stor. Mange folk er i kirka.",
+              "english": "The church is not big. Many people are in the church."
+            },
+            {
+              "text": "Alle sier: «God morgen!»",
+              "english": "Everyone says: \"Good morning!\""
+            },
+            {
+              "text": "Presten heter Hansen. Han er glad.",
+              "english": "The pastor is called Hansen. He is happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "I kirka",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Alle synger en sang.",
+              "english": "Everyone sings a song."
+            },
+            {
+              "text": "Sam synger litt. Han liker sangen.",
+              "english": "Sam sings a little. He likes the song."
+            },
+            {
+              "text": "Nils synger mye.",
+              "english": "Nils sings a lot."
+            },
+            {
+              "text": "Presten ber: «Gud, du er god.»",
+              "english": "The pastor prays: \"God, you are good.\""
+            },
+            {
+              "text": "Alle ber. Jeg ber også.",
+              "english": "Everyone prays. I pray too."
+            },
+            {
+              "text": "Presten leser i bibelen. Han leser om Jesus. Han leser om Gud.",
+              "english": "The pastor reads in the Bible. He reads about Jesus. He reads about God."
+            },
+            {
+              "text": "Bibelen er ei bok. Gud elsker alle folk.",
+              "english": "The Bible is a book. God loves all people."
+            },
+            {
+              "text": "Jesus elsker oss.",
+              "english": "Jesus loves us."
+            },
+            {
+              "text": "Mange snakker om Gud i kirka.",
+              "english": "Many speak about God in church."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nils og Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nils er trøtt i kirka. Han er ti år. Han vil ha brød.",
+              "english": "Nils is tired in church. He is ten years old. He wants bread."
+            },
+            {
+              "text": "Nei, Nils. Nå er det kirke. Etter kirka spiser vi brød.",
+              "english": "No, Nils. Now it is church. After church we eat bread.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg er sulten!",
+              "english": "I am hungry!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Du er ofte sulten, Nils.",
+              "english": "You are often hungry, Nils.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Lars er ikke trøtt. Han liker kirka. Han liker sangen også.",
+              "english": "Lars is not tired. He likes the church. He likes the song too."
+            },
+            {
+              "text": "Anna er glad. Hun synger med Marta.",
+              "english": "Anna is happy. She sings with Marta."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Etter kirka",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Etter kirka drikker folk kaffe.",
+              "english": "After church people drink coffee."
+            },
+            {
+              "text": "Liker du kirka, Sam?",
+              "english": "Do you like the church, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg liker sangen. Jeg liker ham også.",
+              "english": "Yes, I like the song. I like him too.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Alle liker deg, Sam.",
+              "english": "Everyone likes you, Sam.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg vil komme hver søndag.",
+              "english": "I want to come every Sunday.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Sam leser i bibelen. Han sier: «Gud, du elsker meg.»",
+              "english": "Sam reads in the Bible. He says: \"God, you love me.\""
+            },
+            {
+              "text": "Han sier: «Du er i hjertet mitt.»",
+              "english": "He says: \"You are in my heart.\""
+            },
+            {
+              "text": "Bra! Jesus er i hjertet ditt.",
+              "english": "Good! Jesus is in your heart.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja. Gud er i hjertet mitt. Jeg er glad!",
+              "english": "Yes. God is in my heart. I am happy!",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Etter kirka drikker folk kaffe på kafeen. Sam er mett, men Nils vil ha ost og melk.",
+              "english": "After church people drink coffee at the café. Sam is full, but Nils wants cheese and milk."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta betaler ikke mye. Eplene er billige, men fisk er dyrt. Hun har ikke mye penger.",
+              "english": "Marta does not pay much. The apples are cheap, but fish is expensive. She does not have much money."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna er sykepleier. Hun hjelper pasienter, og hun liker jobben.",
+              "english": "Anna is a nurse. She helps patients, and she likes the job."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mora og faren til Sam bor i USA. Familien er stor, og han liker den.",
+              "english": "Sam's mother and father live in the USA. The family is big, and he likes it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "På søndag er skolen slutt, og Nils er glad.",
+              "english": "On Sunday school is over, and Nils is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

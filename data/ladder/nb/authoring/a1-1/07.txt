@@ -1,0 +1,54 @@
+=== nb-a1-1-07 | story | daily-life | Nils's school day | Skoledagen til {nico} | school,time,clock,lessons
+## Skolen
+Skolen begynner. Mange elever har lekse. || School begins. Many pupils have homework.
+{nico} er ti år. Han går på skolen. || Nils is ten years old. He goes to school.
+Skolen er stor. Mange elever er på skolen. || The school is big. Many pupils are at the school.
+{luis} er læreren til {nico}. || Lars is Nils's teacher.
+Klokka åtte begynner skolen. || At eight o'clock school begins.
+{luis} sier: «God morgen!» Elevene sier: «God morgen!» || Lars says: "Good morning!" The pupils say: "Good morning!"
+Elevene leser. Så skriver {nico}. || The pupils read. Then Nils writes.
+{nico} liker å lese. Han liker ikke å skrive. || Nils likes to read. He does not like to write.
+[luis] {nico}, hvor er boka di? || Nils, where is your book?
+[nico] Boka er hjemme. || The book is at home.
+[luis] Hjemme? || At home?
+[nico] Nei, her er den! Den er i vesken. || No, here it is! It is in the bag.
+Mange er glade i dag. Mange liker skolen. || Many are happy today. Many like school.
+
+Klokka tolv spiser elevene mat. || At twelve o'clock the pupils eat.
+{nico} spiser brød med ost og drikker melk. || Nils eats bread with cheese and drinks milk.
+Etter maten begynner skolen. Nå begynner {luis}. || After the meal school begins. Now Lars begins.
+Så er skolen slutt. || Then school is over.
+[marta] Er skolen slutt, {nico}? || Is school over, Nils?
+[nico] Ja, nå er skolen slutt. || Yes, now school is over.
+
+## Etter skolen
+{nico} går hjem til {marta}. || Nils goes home to Marta.
+[marta] Hei, {nico}! Har du lekse? || Hello, Nils! Do you have homework?
+[nico] Ja, jeg har lekse. || Yes, I have homework.
+[marta] Er leksa stor? || Is the homework big?
+[nico] Nei, den er liten. Jeg vil skrive litt. || No, it is small. I want to write a little.
+[marta] Bra! {marta} sier: «Ha det bra, {nico}!» || Good! Marta says: "Goodbye, Nils!"
+{nico} er glad. Han liker {marta}. || Nils is happy. He likes Marta.
+
+## {sam} og norsk
+{sam} er ikke på skolen. Han er hjemme. Han er glad. || Sam is not at school. He is at home. He is happy.
+[ana] Hei, {sam}! Hvordan går det? || Hi, Sam! How are you?
+[sam] Det går bra! Jeg er i rommet. Jeg liker norsk! || I am fine! I am in my room. I like Norwegian!
+[ana] Bra! Du snakker norsk, og du vil lese norsk. || Good! You speak Norwegian, and you want to read Norwegian.
+[sam] Ja, jeg vil snakke norsk hver dag. || Yes, I want to speak Norwegian every day.
+
+## {luis} og {ana}
+{luis} er trøtt etter skolen. Han vil ha kaffe. || Lars is tired after school. He wants coffee.
+[ana] Hei, {luis}! Hvordan går det? || Hi, Lars! How are you?
+[luis] Det går bra, men jeg er trøtt. Jeg liker skolen. || I am fine, but I am tired. I like the school.
+[ana] Her er kaffe, {luis}. Du jobber mye. || Here is coffee, Lars. You work a lot.
+[luis] Takk, {ana}! Du er bra. || Thanks, Anna! You are good.
+
+## Husker du?
+Rommet til {nico} er lite, men vinduet er stort. Han har ei seng og en bok. || Nils's room is small, but the window is big. He has a bed and a book.
+
+Etter skolen går {nico} til kafeen. Han vil ha ost og melk, men han er mett. || After school Nils goes to the café. He wants cheese and milk, but he is full.
+
+{nico} har penger, og han vil kjøpe epler. Epler er billig, og brød er ikke dyrt. || Nils has money, and he wants to buy apples. Apples are cheap, and bread is not expensive.
+
+Mora og faren til {nico} er hjemme. Familien er glad. || Nils's mother and father are at home. The family is happy.

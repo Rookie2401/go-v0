@@ -1,0 +1,32 @@
+=== nb-a2-1-12 | story | narrative | A year in Norway | Et år i Norge | review,perfect tense,decision,plans
+note: Sam looks back with the perfect tense (har bodd, har lært) and decides about the future. The unit recycles much of the vocabulary of the stage.
+## Åtte måneder
+{sam} har bodd i Norge i åtte måneder. Han har lært mye. || Sam has lived in Norway for eight months. He has learned a lot.
+Han snakker norsk hver dag, og han har skrevet brev til mora si. || He speaks Norwegian every day, and he has written letters to his mother.
+Han har vært på fjellet, han har vært på hytta, og han har spist taco. || He has been on the mountain, he has been at the cabin, and he has eaten tacos.
+Han har mange venner. Han har vært hos {marta} hver søndag. || He has many friends. He has been at Marta's every Sunday.
+Men om to måneder har han vært her i et år. || But in two months he will have been here for a year.
+
+## Et valg
+[sam] Jeg har tenkt mye, {ana}. Neste måned må jeg bestemme meg. || I have thought a lot, Anna. Next month I have to decide.
+[ana] Hva har du tenkt? || What have you thought?
+[sam] Jeg vil bo her lenger. Jeg vil ikke reise hjem nå. || I want to live here longer. I do not want to travel home now.
+[ana] Det er bra! Vi vil ha deg her lenger. || That is good! We want to have you here longer.
+[sam] Men jeg savner mora mi og far. Jeg har ringt hver søndag. || But I miss my mother and father. I have called every Sunday.
+[ana] Du kan besøke dem neste år. De kan også besøke deg. || You can visit them next year. They can also visit you.
+[sam] Ja, kanskje de kommer neste vår! Da kan de treffe dere. || Yes, maybe they will come next spring! Then they can meet you.
+
+## Bønn
+{sam} har bestemt seg. Han vil bo i {city} i et år til. || Sam has decided. He wants to live in Bergen for one more year.
+Han har ringt til mora si og sagt det. Hun var glad, men hun savner ham. || He has called his mother and told her. She was happy, but she misses him.
+Om kvelden ber {sam}: «Gud, takk for dette året. Takk for {ana}, {luis}, {marta} og {nico}.» || In the evening Sam prays: "God, thank you for this year. Thank you for Anna, Lars, Marta and Nils."
+«Du har hjulpet meg. Hjelp meg neste måned også.» || "You have helped me. Help me next month too."
+{sam} er trøtt, men han er glad. Han har fred i hjertet. || Sam is tired, but he is happy. He has peace in his heart.
+
+## Husker du?
+Bilen er nesten ny. Bussen er ofte forsinket, men regnet fortsetter. || The car is almost new. The bus is often late, but the rain continues.
+
+{marta} sier: «Historien om samaritanen er bra. Han var nabo til mannen, og han ga ham hjelp. Han betalte for hotellet.» || Marta says: "The story about the Samaritan is good. He was the neighbour of the man, and he gave him help. He paid for the hotel."
+{nico} lytter til historien. Folk går ofte forbi, som presten gjorde. || Nils listens to the story. People often walk past, as the priest did.
+
+På fredagskveld spiste vi taco. Etter maten satt vi i sofaen og så en film. {nico} ville spille. || On Friday evening we ate tacos. After the meal we sat on the sofa and watched a film. Nils wanted to play.

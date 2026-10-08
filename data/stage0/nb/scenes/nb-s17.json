@@ -1,0 +1,242 @@
+{
+  "id": "nb-s17",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "Tea at Marta's",
+    "target": "Te hos Marta"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "marta",
+      "sam"
+    ],
+    "things": [
+      "tea",
+      "bread"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Bestemor, jeg er sulten. Jeg vil gjerne drikke te.",
+      "en": "Grandma, I am hungry. I would like to drink tea.",
+      "speaker": "nico",
+      "picture": "😋🍵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Vi spiser klokka sju i kveld, Nils.",
+      "en": "We eat at seven o'clock tonight, Nils.",
+      "speaker": "marta",
+      "picture": "🕖🍽️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Dette er te, og dette er brød.",
+      "en": "This is tea, and this is bread.",
+      "speaker": "marta",
+      "picture": "🍵🍞",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Så bra! Jeg vil gjerne drikke te, bestemor.",
+      "en": "How good! I would like to drink tea, Grandma.",
+      "speaker": "nico",
+      "picture": "🙂🍵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Jeg har boka mi, og jeg har ikke glemt nøkkelen min.",
+      "en": "I have my book, and I have not forgotten my key.",
+      "speaker": "nico",
+      "picture": "📖🔑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Jeg rydder av bordet, og du drikker te.",
+      "en": "I clear the table, and you drink tea.",
+      "speaker": "marta",
+      "picture": "🍽️🍵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Hva koster te? Tretti kroner? Femti?",
+      "en": "How much is tea? Thirty kroner? Fifty?",
+      "speaker": "sam",
+      "picture": "🍵💵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l8",
+      "text": "Det koster ingenting. Det er hyggelig å møte deg, Sam.",
+      "en": "It costs nothing. It is nice to meet you, Sam.",
+      "speaker": "marta",
+      "picture": "😄🤝",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "drikke"
+    ],
+    "constructions": []
+  },
+  "represents": [
+    "nb.vil-infinitive",
+    "nb.perfect",
+    "nb.particle-verb",
+    "nb.numbers",
+    "nb.greeting",
+    "nb.possessive-postposed",
+    "nb.men-og",
+    "nb.adjective-state",
+    "nb.w-question",
+    "nb.time-days"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What would Nils like to drink?"
+      },
+      "options": [
+        {
+          "en": "tea",
+          "picture": "🍵"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "When do they eat?"
+      },
+      "options": [
+        {
+          "en": "Tonight at seven"
+        },
+        {
+          "en": "This morning"
+        },
+        {
+          "en": "At noon"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l7",
+        "l8"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does the tea cost Sam?"
+      },
+      "options": [
+        {
+          "en": "Nothing"
+        },
+        {
+          "en": "30 kroner"
+        },
+        {
+          "en": "50 kroner"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Say that you would like to drink tea.",
+      "basedOn": [
+        "l1",
+        "nb.vil-infinitive"
+      ],
+      "frame": "Jeg vil gjerne ___ te.",
+      "accept": [
+        {
+          "text": "Jeg vil gjerne drikke te"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Ask how much tea costs.",
+      "basedOn": [
+        "l7",
+        "nb.numbers"
+      ],
+      "accept": [
+        {
+          "text": "Hva koster te"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "drikke, drikker",
+      "text": "\"Drikke\" is the basic form of the verb you know as \"drikker\": after \"vil gjerne\" it is \"drikke\" (Jeg vil gjerne drikke te), and in a plain statement it is \"drikker\" (du drikker te).",
+      "explains": [
+        "nb.vil-infinitive"
+      ],
+      "afterScenes": 0
+    }
+  ]
+}

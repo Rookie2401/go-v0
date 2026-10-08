@@ -1,0 +1,32 @@
+=== nb-a2-2-08 | nonfiction | norway | Fishing and the sea | Fiskere og havet | fishing,sea,boat,dried fish,Norway
+note: Nils's school project about fishing. The facts are very general (fishing, boats, dried fish) and unchecked; a Norwegian reviewer should confirm them and may add specific, correct details.
+## Skoleprosjektet
+{nico} skal skrive om fiskere. Han har lekse, og han er hos {marta}. || Nils is going to write about fishermen. He has homework, and he is at Marta's.
+[nico] Hva vet du om fiskere, bestemor? || What do you know about fishermen, grandmother?
+[marta] Jeg vet litt. Fiskerne bor nær havet. De har båt, og de drar ut på havet. || I know a little. The fishermen live near the sea. They have a boat, and they go out onto the sea.
+[nico] Hva gjør de på havet? || What do they do on the sea?
+[marta] De fanger fisk. Det er et vanskelig liv, for været er ofte dårlig. || They catch fish. It is a difficult life, because the weather is often bad.
+[nico] Spiser vi fisk fra havet? || Do we eat fish from the sea?
+[marta] Ja. Fisken i butikken og på markedet kommer fra fiskerne. || Yes. The fish in the shop and at the market comes from the fishermen.
+
+## Tørrfisk
+{nico} leser mer i en bok om fisk. Boka forteller om tørrfisk. || Nils reads more in a book about fish. The book tells about dried fish.
+Tørrfisk er fisk som er tørr. Den blir tørr, og folk kan spise den lenge etterpå. || Dried fish is fish that is dry. It becomes dry, and people can eat it a long time afterwards.
+[nico] Har du spist tørrfisk, bestemor? || Have you eaten dried fish, grandmother?
+[marta] Ja, mange ganger. Jeg likte den ikke da jeg var liten, men nå liker jeg den. || Yes, many times. I did not like it when I was small, but now I like it.
+[nico] Jeg liker ikke tørrfisk. Jeg liker ferdig fisk og poteter. || I do not like dried fish. I like ready-made fish and potatoes.
+[marta] Du får lære å like den! Nå må du skrive, {nico}. || You will learn to like it! Now you must write, Nils.
+
+## Prosjektet
+{nico} skrev: «Fiskere bor nær havet. De har båt, og de fanger fisk. Tørrfisk er fisk som er tørr. Jeg liker ikke tørrfisk, men jeg liker fiskerne.» || Nils wrote: "Fishermen live near the sea. They have a boat, and they catch fish. Dried fish is fish that is dry. I do not like dried fish, but I like the fishermen."
+{luis} leste prosjektet på skolen. Han sa at det var godt. || Lars read the project at school. He said that it was good.
+[nico] Får jeg kake nå, bestemor? Jeg har skrevet mye i dag. || May I have cake now, grandmother? I have written a lot today.
+[marta] Ja, du har jobbet bra. Her er kake og melk. || Yes, you have worked well. Here is cake and milk.
+{nico} er glad. Han spiser kake og drikker melk. Så går han hjem, og han sover godt. || Nils is happy. He eats cake and drinks milk. Then he goes home, and he sleeps well.
+
+## Husker du?
+Ingen var redd for jenta på brua, for hun var klok. Hun stoppet og svarte på gåter. || Nobody was afraid of the girl on the bridge, because she was clever. She stopped and answered riddles.
+
+Hvorfor skriver noen nynorsk eller bokmål? Det er to måter, og ingen skriver feil. Ordene er forskjellige, men slik er det. || Why do some write Nynorsk or Bokmål? There are two ways, and nobody writes wrongly. The words are different, but that is how it is.
+
+Etter tilbudet fra sykehuset snakket {ana} om valget. Hun ville ikke flytte nå, men kanskje senere. Sjefen svarte. || After the offer from the hospital Anna talked about the choice. She did not want to move now, but maybe later. The boss answered.

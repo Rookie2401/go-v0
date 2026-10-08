@@ -143,7 +143,7 @@ export interface ConceptFamily { id: string; meaning: string; members: ConceptFa
   owner has a written answer from Bibelselskapet or a lawyer (questions listed in recon 3).
 - Bibel 2011 / 2024 are protected: external link only, never bundled.
 - This phase bundles only the three-verse seed excerpt that the corpus contract requires for every language
-  (1 John 1:1-3, 1930 for `nb`; 1921 Studentmållaget for `nn`), under quotation right, with state `rights-unverified`
+  (1 John 1:8-9 and John 3:16 as the corpus tests fix them; the 1930 translation for `nb`, the 1921 Studentmållaget translation for `nn`, each read from one web source and labelled so), under quotation right, with state `rights-unverified`
   and the source URL recorded. The rights gate keeps it out of the release bundle until verified. A full Bible needs
   the owner's download approval (SWORD `Norsk` 1930, 1.82 MB; `NorSMB` 1921, 1.72 MB) and its own builder; the
   existing one-edition-per-language limits (`verify-scripture-canon.mjs:43` ✔) are not touched because `nb` and

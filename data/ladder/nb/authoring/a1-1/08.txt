@@ -1,0 +1,45 @@
+=== nb-a1-1-08 | story | work | Who works where | Hvem jobber hvor? | work,jobs,nurse,teacher,baker
+speakers: pasient=Pasienten
+## Folk i {city}
+Alle folk jobber. {ana} er sykepleier, og {marta} baker brød. || All people work. Anna is a nurse, and Marta bakes bread.
+Folk i {city} jobber hver dag. || People in Bergen work every day.
+{ana} er sykepleier. Hun jobber på klinikken. || Anna is a nurse. She works at the clinic.
+{luis} er lærer. Han jobber på skolen. || Lars is a teacher. He works at the school.
+{marta} er bestemor, men hun jobber også. || Marta is a grandmother, but she works too.
+Hun baker brød, og hun selger brød på markedet. || She bakes bread, and she sells bread at the market.
+Alle jobber hver dag. {sam} jobber ikke nå. Han vil lære norsk. || Everyone works every day. Sam is not working now. He wants to learn Norwegian.
+{nico} er ti år. Han jobber ikke. Han går på skolen. || Nils is ten years old. He does not work. He goes to school.
+
+## {ana} på klinikken
+Klokka åtte jobber {ana} på klinikken. || At eight o'clock Anna works at the clinic.
+Mange pasienter er på klinikken. || Many patients are at the clinic.
+{ana} hjelper pasientene. || Anna helps the patients.
+[ana] Hvordan går det med deg? || How are you?
+[pasient] Jeg er veldig trøtt. || I am very tired.
+[ana] Jeg vil hjelpe deg. || I want to help you.
+[pasient] Takk, sykepleier! || Thank you, nurse!
+{ana} jobber mye, og hun er ofte trøtt. Men hun er glad. || Anna works a lot, and she is often tired. But she is happy.
+{ana} er en bra sykepleier. Pasienten er glad nå. || Anna is a good nurse. The patient is happy now.
+Hun vil hjelpe folk hver dag. || She wants to help people every day.
+Alle liker {ana}. || Everyone likes Anna.
+
+## {luis} og {marta}
+{luis} jobber mye. Han er ofte trøtt også. Han drikker kaffe. || Lars works a lot. He is often tired too. He drinks coffee.
+{marta} baker brød hver dag. || Marta bakes bread every day.
+[sam] Hva jobber du med, {marta}? || What is your work, Marta?
+[marta] Jeg baker brød og selger brød. Folk liker brødet mitt! || I bake bread and sell bread. People like my bread!
+[sam] Jeg vil også jobbe en dag. || I want to work one day too.
+[marta] Bra! Du vil lære norsk. Du vil lære mye. || Good! You want to learn Norwegian. You want to learn a lot.
+[sam] Jeg er ofte hos deg, {marta}. Alle i byen liker deg. || I am often at your place, Marta. Everyone in town likes you.
+[marta] Takk, {sam}! Mange folk er glad i brød. || Thank you, Sam! Many people are fond of bread.
+{ana}, {luis} og {marta} jobber mye. || Anna, Lars and Marta work a lot.
+
+## Husker du?
+Hvem er læreren i familien til {ana}? Det er {luis}. || Who is the teacher in Anna's family? It is Lars.
+
+{marta} jobber, men hun lager også middag. I dag er det fisk, poteter og suppe. || Marta works, but she also makes dinner. Today there is fish, potatoes and soup.
+
+{luis} har mange elever. Skolen begynner klokka åtte, og klokka to er skolen slutt. || Lars has many pupils. School begins at eight o'clock, and at two o'clock school is over.
+[luis] Elevene har lekse, og elevene skriver mye. || The pupils have homework, and the pupils write a lot.
+
+{ana} betaler middagen i dag. || Anna pays for the dinner today.

@@ -91,6 +91,11 @@ export interface PronunciationSupport {
   /** Romanization / phonetic aid for display in the support panel (never sent to TTS). */
   transliteration?: string;
   ipa?: string;
+  /**
+   * Who produced `ipa` when it is the adapter's own (rule-based, e.g. Norwegian 'rules'): the word sheet then shows it, labelled
+   * with the adapter's name, when neither the analysis nor a dictionary carries an IPA. Absent ⇒ the sheet ignores `ipa` (as before).
+   */
+  ipaSource?: string;
   /** Thai tone per syllable, Hindi schwa deletion hints, German stress, etc. */
   notes?: string[];
 }
@@ -134,6 +139,14 @@ export interface AdapterSupport {
   /** Plain statements of limits ("Thai sentence breaks need a newline between sentences"). */
   limitations: string[];
 }
+
+/** One member of a concept family: a word of one language/standard that names the same concept as the others. */
+export interface ConceptFamilyMember { lang: LanguageCode; lemma: string; pos?: PartOfSpeech; register?: RegisterTag[]; note?: string }
+/**
+ * Words of different standards that name one concept (Bokmål jeg / Nynorsk eg). Members NEVER share an item id and mastery is
+ * never transferred between them; a family is shown ("related, not credited"), not merged.
+ */
+export interface ConceptFamily { id: string; meaning: string; members: ConceptFamilyMember[] }
 
 export interface LanguageAdapter {
   readonly lang: LanguageCode;
@@ -187,6 +200,10 @@ export interface LanguageAdapter {
    * them, or the form-of relation itself does), so that one regional sense does not mark a general word as regional.
    */
   varietiesFromTags?(tags: readonly string[]): string[];
+  /**
+   * The concept family this word belongs to, if the adapter knows one (Norwegian: jeg/eg). Optional; a language without families omits it.
+   */
+  family?(lemma: string, pos?: PartOfSpeech): ConceptFamily | undefined;
   /**
    * Order the readings of each token by its neighbours again, after the importer replaced the readings of some tokens
    * with a dictionary's. The importer calls it once per sentence; the replaced lists arrive as the dictionary gives them

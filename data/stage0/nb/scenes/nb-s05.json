@@ -1,0 +1,215 @@
+{
+  "id": "nb-s05",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "Where everyone is",
+    "target": "Hvor er alle?"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "nico",
+      "sam"
+    ],
+    "places": [
+      "home",
+      "school",
+      "market"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Anna er hjemme.",
+      "en": "Anna is at home.",
+      "picture": "👩🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Lars er på skolen.",
+      "en": "Lars is at the school.",
+      "picture": "👨🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Hei, Sam. Jeg heter Nils.",
+      "en": "Hello, Sam. My name is Nils.",
+      "speaker": "nico",
+      "picture": "👦",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Hyggelig å møte deg, Nils.",
+      "en": "Nice to meet you, Nils.",
+      "speaker": "sam",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Nils er også på skolen.",
+      "en": "Nils is at the school too.",
+      "picture": "👦🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Sam er ikke hjemme. Sam er på markedet.",
+      "en": "Sam is not at home. Sam is at the market.",
+      "picture": "🙂🛒",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "hjemme",
+      "på",
+      "skolen",
+      "å",
+      "møte",
+      "deg",
+      "markedet"
+    ],
+    "constructions": [
+      "nb.er-location",
+      "nb.i-pa"
+    ]
+  },
+  "represents": [
+    "nb.er-location",
+    "nb.i-pa",
+    "nb.greeting",
+    "nb.jeg-heter",
+    "nb.negation-ikke",
+    "nb.noun-endings"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where is Lars?"
+      },
+      "options": [
+        {
+          "en": "at school",
+          "picture": "🏫"
+        },
+        {
+          "en": "at home",
+          "picture": "🏠"
+        },
+        {
+          "en": "at the market",
+          "picture": "🛒"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3",
+        "l5"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who is the boy at the school?"
+      },
+      "options": [
+        {
+          "en": "Nils"
+        },
+        {
+          "en": "Lars"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where is Sam?"
+      },
+      "options": [
+        {
+          "en": "at the market",
+          "picture": "🛒"
+        },
+        {
+          "en": "at home",
+          "picture": "🏠"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Say where Anna is.",
+      "basedOn": [
+        "l1"
+      ],
+      "frame": "Anna er ___.",
+      "accept": [
+        {
+          "text": "Anna er hjemme"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "på skolen, på markedet, hjemme",
+      "text": "\"Hjemme\" means \"at home\" (when you are there). For the school and the market Norwegian says \"på\": på skolen, på markedet. The ending -en or -et on the noun means \"the\": skolen is \"the school\", markedet is \"the market\". \"Hyggelig å møte deg\" is the full form of \"nice to meet you\".",
+      "explains": [
+        "nb.er-location",
+        "nb.i-pa",
+        "nb.noun-endings"
+      ],
+      "afterScenes": 1
+    }
+  ]
+}

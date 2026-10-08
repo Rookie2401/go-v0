@@ -705,14 +705,19 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
   const sound = useMemo<SoundView | undefined>(() => {
     if (!adapter || !cardToken || !wordCard || canDecode || !loaded || !wordCard.detailDone) return undefined;
     let notes: string[] | undefined;
-    try { notes = adapter.pronunciation({ surface: cardToken.surface, start: 0, end: cardToken.surface.length, isWord: true, normalized: cardToken.normalized }).notes; } catch { notes = undefined; }
+    let own: { ipa?: string; ipaSource?: string } = {};
+    try { const p = adapter.pronunciation({ surface: cardToken.surface, start: 0, end: cardToken.surface.length, isWord: true, normalized: cardToken.normalized }); notes = p.notes; own = p; } catch { notes = undefined; }
     // `notes.ipa` is only ever a dictionary's: it says so (`pronunciationSource`) or the analysis is the dictionary's own
     const fromDictionary = cardAnalysis?.origin === 'dictionary' || typeof cardAnalysis?.notes?.pronunciationSource === 'string';
     const named = dictionaryName(dictionary) ?? 'Dictionary';
     if (cardAnalysis?.notes?.ipa) return soundView(cardAnalysis.notes.ipa, notes, fromDictionary ? named : undefined);
     // no IPA on the analysis: the dictionary's own listing for this form, chosen by pickReading, with its labels
     const picked = dictSounds.get(cardToken.normalized);
-    return soundView(picked?.ipa, notes, picked ? named : undefined, picked?.tags.join(', ') || undefined);
+    if (picked) return soundView(picked.ipa, notes, named, picked.tags.join(', ') || undefined);
+    // no dictionary listing either: the adapter's own rule-based IPA (Norwegian), only when the adapter says it is its own
+    // (`ipaSource`), labelled with the adapter's name so it is never taken for a dictionary's
+    if (own.ipa && own.ipaSource) return soundView(own.ipa, notes, `${adapter.name} ${own.ipaSource}`);
+    return soundView(undefined, notes);
   }, [adapter, cardToken, wordCard, canDecode, loaded, cardAnalysis, dictionary, dictSounds]);
   // The dictionary's attribution, read only when the analysis on show (or its alternatives) came from it, or lent it its pronunciation.
   const needsDictionary = !!cardAnalysis && (cardAnalysis.origin === 'dictionary' || cardAnalysis.alternatives?.some((a) => a.origin === 'dictionary') || typeof cardAnalysis.notes?.pronunciationSource === 'string');
@@ -812,6 +817,7 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
           describeMorph={adapter?.describeMorph?.bind(adapter)}
           varietyPolicy={course.variety}
           varieties={adapter?.varieties}
+          familyOf={adapter?.family?.bind(adapter)}
           dictionary={dictionary}
           dictionaryView={cardToken ? dictViews.get(cardToken.normalized) : undefined}
           history={card.history}

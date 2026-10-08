@@ -1,0 +1,48 @@
+=== nb-a1-1-09 | story | faith | Sunday morning at church | Søndag i kirka | church,Sunday,song,prayer,God
+## Til kirka
+Det er søndag. {sam} og {ana} går til kirka. || It is Sunday. Sam and Anna go to church.
+{luis}, {marta} og {nico} går også. || Lars, Marta and Nils go too.
+Kirka er ikke stor. Mange folk er i kirka. || The church is not big. Many people are in the church.
+Alle sier: «God morgen!» || Everyone says: "Good morning!"
+Presten heter Hansen. Han er glad. || The pastor is called Hansen. He is happy.
+
+## I kirka
+Alle synger en sang. || Everyone sings a song.
+{sam} synger litt. Han liker sangen. || Sam sings a little. He likes the song.
+{nico} synger mye. || Nils sings a lot.
+Presten ber: «Gud, du er god.» || The pastor prays: "God, you are good."
+Alle ber. Jeg ber også. || Everyone prays. I pray too.
+Presten leser i bibelen. Han leser om Jesus. Han leser om Gud. || The pastor reads in the Bible. He reads about Jesus. He reads about God.
+Bibelen er ei bok. Gud elsker alle folk. || The Bible is a book. God loves all people.
+Jesus elsker oss. || Jesus loves us.
+Mange snakker om Gud i kirka. || Many speak about God in church.
+
+## {nico} og {marta}
+{nico} er trøtt i kirka. Han er ti år. Han vil ha brød. || Nils is tired in church. He is ten years old. He wants bread.
+[marta] Nei, {nico}. Nå er det kirke. Etter kirka spiser vi brød. || No, Nils. Now it is church. After church we eat bread.
+[nico] Jeg er sulten! || I am hungry!
+[marta] Du er ofte sulten, {nico}. || You are often hungry, Nils.
+{luis} er ikke trøtt. Han liker kirka. Han liker sangen også. || Lars is not tired. He likes the church. He likes the song too.
+{ana} er glad. Hun synger med {marta}. || Anna is happy. She sings with Marta.
+
+## Etter kirka
+Etter kirka drikker folk kaffe. || After church people drink coffee.
+[ana] Liker du kirka, {sam}? || Do you like the church, Sam?
+[sam] Ja, jeg liker sangen. Jeg liker ham også. || Yes, I like the song. I like him too.
+[ana] Alle liker deg, {sam}. || Everyone likes you, Sam.
+[sam] Jeg vil komme hver søndag. || I want to come every Sunday.
+{sam} leser i bibelen. Han sier: «Gud, du elsker meg.» || Sam reads in the Bible. He says: "God, you love me."
+Han sier: «Du er i hjertet mitt.» || He says: "You are in my heart."
+[ana] Bra! Jesus er i hjertet ditt. || Good! Jesus is in your heart.
+[sam] Ja. Gud er i hjertet mitt. Jeg er glad! || Yes. God is in my heart. I am happy!
+
+## Husker du?
+Etter kirka drikker folk kaffe på kafeen. {sam} er mett, men {nico} vil ha ost og melk. || After church people drink coffee at the café. Sam is full, but Nils wants cheese and milk.
+
+{marta} betaler ikke mye. Eplene er billige, men fisk er dyrt. Hun har ikke mye penger. || Marta does not pay much. The apples are cheap, but fish is expensive. She does not have much money.
+
+{ana} er sykepleier. Hun hjelper pasienter, og hun liker jobben. || Anna is a nurse. She helps patients, and she likes the job.
+
+Mora og faren til {sam} bor i USA. Familien er stor, og han liker den. || Sam's mother and father live in the USA. The family is big, and he likes it.
+
+På søndag er skolen slutt, og {nico} er glad. || On Sunday school is over, and Nils is happy.

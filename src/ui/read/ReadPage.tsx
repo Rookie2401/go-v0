@@ -111,7 +111,7 @@ export function ReadPage() {
       const rows: CatalogText[] = [];
       let offset = 0;
       while (true) {
-        const page = await library.search({ lang, publishedOnly: !preview, limit: 200, offset });
+        const page = await library.search({ lang, ...(course.readsLangs?.length ? { alsoLangs: course.readsLangs } : {}), publishedOnly: !preview, limit: 200, offset });
         rows.push(...page.items.filter((t) => t.stream !== 'scripture' && !(t.streams ?? []).includes('scripture') && (t.published || preview)));
         offset += page.items.length;
         if (page.items.length === 0 || offset >= page.total) break;
@@ -119,7 +119,7 @@ export function ReadPage() {
       if (live) { setCatalogTexts(rows); setCatalogReady(true); }
     })().catch((e: unknown) => { if (live) { setCatalogTexts([]); setCatalogReady(true); setCatalogError(e instanceof Error ? e.message : 'Could not load available reading.'); } });
     return () => { live = false; };
-  }, [library, lang, preview]);
+  }, [library, lang, course.readsLangs, preview]);
   // A library row whose id is a resident text is the resident one (it carries the learner's progress), whether or not that one is visible.
   const lazy = useMemo(() => {
     const have = new Set(ofKind.map((t) => t.id));

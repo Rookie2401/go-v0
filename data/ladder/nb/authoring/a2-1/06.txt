@@ -1,0 +1,37 @@
+=== nb-a2-1-06 | nonfiction | norway | The 17th of May | Sytten mai | national day,parade,flag,bunad,ice cream
+note: General description of the Norwegian national day (17 May); every detail is general knowledge and must be confirmed by a Norwegian reviewer.
+## En stor dag
+Sytten mai: flagg, is og pølse. || The seventeenth of May: flags, ice cream and sausage.
+Sytten mai er en stor dag i Norge. Folk feirer at Norge er et land. || The seventeenth of May is a big day in Norway. People celebrate that Norway is a country.
+Mange folk har flagg. Mange går i tog i byen. || Many people have flags. Many walk in a parade in town.
+Toget går til sentrum, og folk synger. || The parade goes to the town centre, and people sing.
+Mange har bunad. Bunaden er gammel og dyr. || Many people wear a bunad. The bunad is old and expensive.
+Folk spiser is og pølse. Alle er glade. || People eat ice cream and sausage. Everyone is happy.
+
+## Sytten mai i {city}
+Det er sytten mai. {sam} står opp tidlig. Det regner ikke, og sola er ute. || It is the seventeenth of May. Sam gets up early. It is not raining, and the sun is out.
+{ana} har bunad. Hun er glad i bunaden. || Anna has a bunad. She is fond of the bunad.
+{luis} har flagg, og {nico} har flagg også. || Lars has a flag, and Nils has a flag too.
+[nico] Se toget! Folk synger! || Look at the parade! People are singing!
+[sam] Hva synger de? || What are they singing?
+[marta] De synger om Norge. Vi feirer at Norge er et land. || They sing about Norway. We celebrate that Norway is a country.
+{nico} spiser is. Han spiser pølse også. Pølsen er god. || Nils eats ice cream. He eats sausage too. The sausage is good.
+[sam] Jeg vil ha is. Hvor mye koster den? || I want ice cream. How much does it cost?
+[marta] Den koster tretti kroner i dag. || It costs thirty kroner today.
+{sam} spiser, og han er glad. || Sam eats, and he is happy.
+[ana] Liker du sytten mai, {sam}? || Do you like the seventeenth of May, Sam?
+[sam] Ja! Det er bra å feire. Alle er glade. || Yes! It is good to celebrate. Everyone is happy.
+
+## Om kvelden
+Om kvelden er {sam} trøtt. Han sitter hjemme med {ana} og {luis}. || In the evening Sam is tired. He sits at home with Anna and Lars.
+De drikker te, og de snakker om dagen. || They drink tea, and they talk about the day.
+[luis] Er du glad i Norge, {sam}? || Are you fond of Norway, Sam?
+[sam] Ja, jeg er veldig glad i Norge. Jeg vil bo her lenge. || Yes, I am very fond of Norway. I want to live here for a long time.
+[ana] Det er bra. Vi vil ha deg her! || That is good. We want to have you here!
+
+## Husker du?
+Jeg tenker på reisen med fly. Jeg pakket ikke mye, og nå har jeg nye venner. Derfor er jeg glad. || I think about the journey by plane. I did not pack much, and now I have new friends. That is why I am glad.
+
+I klassen spør {luis}: «Forstår du sytten mai?» Det er et lett spørsmål, men prøven er vanskelig. || In the class Lars asks: "Do you understand the 17th of May?" It is an easy question, but the test is difficult.
+
+{marta} er gammel. Hun har levd lenge, og livet var ikke lett på gården. || Marta is old. She has lived a long time, and life was not easy on the farm.

@@ -4,13 +4,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createAdapterRegistry } from '../src/adapters';
-import { THAI_WORKS, SPANISH_WORKS, GERMAN_WORKS, HINDI_WORKS, ALBANIAN_WORKS } from '../src/course';
+import { THAI_WORKS, SPANISH_WORKS, GERMAN_WORKS, HINDI_WORKS, ALBANIAN_WORKS, NORWEGIAN_WORKS } from '../src/course';
 import { validateDocument, computePublished, type CorpusDocument } from '../src/ingest';
 import { bundleDecision } from '../src/ingest/rights';
 import { parseManifest, parseShard, documentPathOf } from '../src/library/format';
 import type { LanguageCode } from '../src/core';
 
-const works = [...THAI_WORKS, ...SPANISH_WORKS, ...GERMAN_WORKS, ...HINDI_WORKS, ...ALBANIAN_WORKS];
+const works = [...THAI_WORKS, ...SPANISH_WORKS, ...GERMAN_WORKS, ...HINDI_WORKS, ...ALBANIAN_WORKS, ...NORWEGIAN_WORKS];
 const adapters = createAdapterRegistry();
 const verifiedFile = 'data/verified/scripture.json';
 const verified = fs.existsSync(verifiedFile) ? JSON.parse(fs.readFileSync(verifiedFile, 'utf8')) : { translations: [] };
@@ -28,7 +28,8 @@ const report = (message: string) => { if (shownErrors++ < 20) console.error(mess
 // These manifests are the release source of truth for the combined course
 // libraries.  Keep this check here so a scripture-only rebuild cannot appear
 // healthy simply because its own internal checks pass.
-const combinedManifestLanguages = new Set(['de', 'es', 'hi', 'th', 'sq']);
+// Norwegian (nb, and nn for the companion language) joins once its combined manifest is committed; its libraries are never --require'd here.
+const combinedManifestLanguages = new Set<string>(['de', 'es', 'hi', 'th', 'sq', ...['nb', 'nn'].filter((l) => fs.existsSync(`data/sources/course-library/${l}.json`))]);
 const combinedSources = new Map<string, { slug: string; courseId?: string; withheld?: boolean; withheldReason?: string }[]>();
 for (const lang of combinedManifestLanguages) {
   const file = path.resolve(`data/sources/course-library/${lang}.json`);
@@ -46,7 +47,7 @@ for (const lang of combinedManifestLanguages) {
   }
   combinedSources.set(lang, entries);
 }
-for (const lang of ['hi', 'de', 'es', 'th', 'sq'] as LanguageCode[]) {
+for (const lang of ['hi', 'de', 'es', 'th', 'sq', 'nb', 'nn'] as LanguageCode[]) {
   const root = path.resolve(libraryDir, lang);
   const manifestFile = path.join(root, 'manifest.json');
   if (!fs.existsSync(manifestFile)) {

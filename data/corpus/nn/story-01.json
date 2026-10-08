@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 2,
+  "id": "story-01",
+  "lang": "nn",
+  "title": "Soga mi",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-nn",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Norwegian (Nynorsk)"
+  },
+  "source": {
+    "id": "src:nn:story-01",
+    "title": "Norwegian (Nynorsk) beginner story 1 (course-authored)",
+    "author": "Go course authors (first draft by an AI assistant at the authors’ request)",
+    "attribution": "Course-authored beginner text. First draft by an AI assistant; not yet reviewed by a native speaker.",
+    "provenance": "Written for the course authors as a beginner seed text in contemporary Nynorsk (2012 norm). The drafter was an AI assistant (Claude), not a native speaker: the text is simple and deliberately repetitive but has NOT been reviewed by a native speaker and may contain unnatural phrasing. The English glosses are the drafter's own. Have a native speaker review it before release.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; first draft machine-generated, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Drafted by an AI assistant; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "mission",
+    "testimony"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [
+    "JHN.3.16",
+    "1JN.1.8",
+    "1JN.1.9"
+  ],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss (course authors)"
+  },
+  "sections": [
+    {
+      "title": "Soga mi",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Då eg var ung, forstod eg ikkje hjartet mitt.",
+              "english": "When I was young, I did not understand my heart."
+            },
+            {
+              "text": "Då eg var ung, hadde eg synd i hjartet.",
+              "english": "When I was young, I had sin in my heart."
+            },
+            {
+              "text": "Eg trudde ikkje på Gud.",
+              "english": "I did not believe in God."
+            },
+            {
+              "text": "Ein dag byrja eg å forstå synda mi.",
+              "english": "One day I began to understand my sin."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gud tilgav synda mi.",
+              "english": "God forgave my sin."
+            },
+            {
+              "text": "No trur eg på Gud.",
+              "english": "Now I believe in God."
+            },
+            {
+              "text": "No har eg fred i hjartet.",
+              "english": "Now I have peace in my heart."
+            },
+            {
+              "text": "Gud elskar verda.",
+              "english": "God loves the world."
+            },
+            {
+              "text": "Eg elskar Gud òg.",
+              "english": "I love God too."
+            },
+            {
+              "text": "No forstår eg at Gud tilgir alle.",
+              "english": "Now I understand that God forgives everyone."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

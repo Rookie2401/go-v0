@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-1-07",
+  "lang": "nb",
+  "title": "The bus does not come",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-1-07",
+    "title": "The bus does not come (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". A short problem story in the past tense: waiting, calling, being helped. \"Kirka begynte klokka ni\" uses the past of \"begynne\"."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "bus",
+    "delay",
+    "rain",
+    "help",
+    "patience"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "luis": "Lars",
+    "marta": "Marta",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "På busstoppet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det var søndag morgen. Sam skulle til kirka. Kirka begynte klokka ni.",
+              "english": "It was Sunday morning. Sam was going to church. Church began at nine."
+            },
+            {
+              "text": "Det regnet, og det var kaldt. Sam ventet på busstoppet.",
+              "english": "It was raining, and it was cold. Sam waited at the bus stop."
+            },
+            {
+              "text": "Bussen kom ikke. Den var forsinket.",
+              "english": "The bus did not come. It was late."
+            },
+            {
+              "text": "Sam ventet og ventet. Han hadde paraply, men han var nesten våt.",
+              "english": "Sam waited and waited. He had an umbrella, but he was almost wet."
+            },
+            {
+              "text": "Klokka var nesten ni. Bussen var fortsatt ikke her.",
+              "english": "It was almost nine o'clock. The bus was still not here."
+            },
+            {
+              "text": "Sam tenkte: «Jeg kommer sent til kirka.»",
+              "english": "Sam thought: \"I will be late for church.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Telefonen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam tok telefonen og ringte til Lars.",
+              "english": "Sam took the phone and called Lars."
+            },
+            {
+              "text": "Hei, Lars! Bussen er forsinket. Jeg er fortsatt her.",
+              "english": "Hi, Lars! The bus is late. I am still here.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg kommer! Jeg tar bilen.",
+              "english": "I am coming! I will take the car.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Lars kjørte bilen til Sam. Sam satt i bilen.",
+              "english": "Lars drove the car to Sam. Sam sat in the car."
+            },
+            {
+              "text": "Det regnet fortsatt, men det var varmt.",
+              "english": "It was still raining, but it was warm."
+            },
+            {
+              "text": "Du er våt, Sam! Har du ikke jakke?",
+              "english": "You are wet, Sam! Do you not have a jacket?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja, men det regnet mye. Takk, Lars!",
+              "english": "Yes, but it rained a lot. Thanks, Lars!",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "I kirka",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "De kom klokka ni. Det var nesten sent.",
+              "english": "They came at nine o'clock. It was almost late."
+            },
+            {
+              "text": "Marta satt i kirka. Hun sa: «Hvor var du, Sam?»",
+              "english": "Marta was sitting in the church. She said: \"Where were you, Sam?\""
+            },
+            {
+              "text": "Bussen var forsinket, men Lars hjalp meg. Han kjørte meg.",
+              "english": "The bus was late, but Lars helped me. He drove me.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du er snill, Lars. Du hjelper alle folk.",
+              "english": "You are kind, Lars. You help everyone.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Sam satt i kirka. Han var glad. Han ba: «Gud, takk for Lars.»",
+              "english": "Sam sat in the church. He was glad for the help. He prayed: \"God, thank you for Lars.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hils mamma fra oss alle. Vi håper at dere kommer snart.",
+              "english": "Say hello to Mum from all of us. We hope that you will come soon.",
+              "speaker": "ana"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Om vinteren drar Anna og Lars til hytta. De går på ski, og de sitter i stua med peisen.",
+              "english": "In winter Anna and Lars go to the cabin. They ski, and they sit in the living room with the fireplace."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "På sytten mai feirer folk Norge. De har flagg og bunad, og de går i tog. De spiser is og pølse.",
+              "english": "On the seventeenth of May people celebrate Norway. They have flags and bunads, and they walk in a parade. They eat ice cream and sausage."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Klassen får et spørsmål, og Nils har en prøve.",
+              "english": "The class gets a question, and Nils has a test."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta levde på en gård med en hest. Livet var bra, og noen ganger kjørte hun.",
+              "english": "Marta lived on a farm with a horse. Life was good, and sometimes she drove."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kjære Anna, takk for brevet. Hilsen Sam",
+              "english": "Dear Anna, thank you for the letter. Greetings, Sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kjære Lars, takk for hjelpen. Hilsen Sam",
+              "english": "Dear Lars, thank you for the help. Greetings, Sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam skriver et brev til dere. Han hilser fra Bergen, og dere får hilsen.",
+              "english": "Sam writes a letter to you. He sends greetings from Bergen, and you get a greeting."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

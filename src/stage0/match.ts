@@ -17,6 +17,10 @@ export function normalizeAnswer(lang: LanguageCode, s: string): string {
 
 const stripMarks = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').normalize('NFC');
 
+/** Norwegian ø and æ are letters of their own that carry no combining mark: typed without them, they are o and ae. å loses its ring above. */
+const foldNorwegian = (s: string) => s.replace(/ø/g, 'o').replace(/Ø/g, 'O').replace(/æ/g, 'ae').replace(/Æ/g, 'AE');
+const stripFor = (lang: LanguageCode, s: string) => (lang === 'nb' || lang === 'nn' ? foldNorwegian(stripMarks(s)) : stripMarks(s));
+
 /** A private-use character marks the slot: it survives lower-casing and punctuation removal. */
 const SLOT = '';
 
@@ -39,9 +43,9 @@ export function matchAnswer(lang: LanguageCode, text: string, accept: Stage0Acce
     if (m) return { accepted: true, matched: a.text, ...(m.length > 1 ? { personal: m.slice(1) } : {}) };
   }
   // the same words without accents / special letters (Latin script only): accepted, with the spelling pointed out
-  if (lang === 'es' || lang === 'de' || lang === 'sq') {
+  if (lang === 'es' || lang === 'de' || lang === 'sq' || lang === 'nb' || lang === 'nn') {
     for (const a of usable) {
-      if (patternOf(lang, stripMarks(a.text)).test(stripMarks(typed))) {
+      if (patternOf(lang, stripFor(lang, a.text)).test(stripFor(lang, typed))) {
         return { accepted: true, matched: a.text, spellingNote: `Right — and it is spelled with its marks: "${a.text.replace(/\{x\}/g, '…')}".` };
       }
     }

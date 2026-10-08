@@ -1,0 +1,193 @@
+{
+  "id": "nb-s01",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "Hello, I am Sam",
+    "target": "Hei"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Hei.",
+      "en": "Hello.",
+      "speaker": "ana",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Hei. Jeg heter Sam.",
+      "en": "Hello. My name is Sam.",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Jeg heter Anna.",
+      "en": "My name is Anna.",
+      "speaker": "ana",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Hyggelig, Anna.",
+      "en": "Nice to meet you, Anna.",
+      "speaker": "sam",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Hyggelig også, Sam.",
+      "en": "Nice to meet you too, Sam.",
+      "speaker": "ana",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "hei",
+      "jeg",
+      "heter",
+      "hyggelig",
+      "også"
+    ],
+    "constructions": [
+      "nb.greeting",
+      "nb.jeg-heter",
+      "nb.present-tense"
+    ]
+  },
+  "represents": [
+    "nb.greeting",
+    "nb.jeg-heter",
+    "nb.present-tense"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "What is the man's name?"
+      },
+      "options": [
+        {
+          "en": "Sam"
+        },
+        {
+          "en": "Anna"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What are Sam and Anna doing?"
+      },
+      "options": [
+        {
+          "en": "Meeting for the first time"
+        },
+        {
+          "en": "Saying goodbye"
+        },
+        {
+          "en": "Ordering food"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write what Sam says: \"Hei. Jeg heter Sam.\"",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "Hei jeg heter Sam"
+        },
+        {
+          "text": "Jeg heter Sam"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Now give your own name.",
+      "basedOn": [
+        "l2",
+        "nb.jeg-heter"
+      ],
+      "frame": "Jeg heter ___.",
+      "accept": [
+        {
+          "text": "Jeg heter {x}"
+        },
+        {
+          "text": "Hei, jeg heter {x}"
+        }
+      ],
+      "personal": "your name",
+      "speak": true
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "Jeg heter …",
+      "text": "This is how you give your name. Word for word it is \"I am called …\". \"Hyggelig\" means \"pleasant\" or \"nice\": it is what you say when you meet someone. The longer \"Hyggelig å møte deg\" (\"nice to meet you\") comes soon. Notice that the verb never changes with the person: \"jeg heter\", \"Anna heter\".",
+      "explains": [
+        "nb.jeg-heter",
+        "nb.greeting",
+        "nb.present-tense"
+      ],
+      "afterScenes": 0
+    }
+  ]
+}

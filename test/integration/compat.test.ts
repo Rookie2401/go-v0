@@ -10,10 +10,10 @@ import { importDocuments, validateBatch } from '../../src/ingest';
 import { exportLearner, restoreLearner, validateBackup } from '../../src/backup';
 import { bundled, bundledDoc, liveSentences, makeApp, makeClock, reader, seedUser, tokensOf } from './harness';
 
-const COURSES: Record<LanguageCode, string> = { es: 'honduras-es', sq: 'albania-sq', th: 'thailand-th', hi: 'india-hi', de: 'germany-de' };
+const COURSES: Record<LanguageCode, string> = { es: 'honduras-es', sq: 'albania-sq', th: 'thailand-th', hi: 'india-hi', de: 'germany-de', nb: 'norway-nb', nn: 'norway-nb' };
 const LANGS = Object.keys(COURSES) as LanguageCode[];
 // es and de: public-domain translations verified against the distributor; hi: a licensed translation (IRV, CC BY-SA 4.0) verified the same way
-const SCRIPTURE_PUBLISHED: Record<LanguageCode, boolean> = { es: true, de: true, sq: false, th: false, hi: true };
+const SCRIPTURE_PUBLISHED: Record<LanguageCode, boolean> = { es: true, de: true, sq: false, th: false, hi: true, nb: false, nn: false };
 
 function graphemeBoundaries(text: string, lang: string): Set<number> {
   const out = new Set<number>([0, text.length]);

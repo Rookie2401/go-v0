@@ -1,0 +1,177 @@
+{
+  "id": "nb-s02",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "This is Lars",
+    "target": "Dette er Lars"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Dette er Lars.",
+      "en": "This is Lars.",
+      "speaker": "ana",
+      "picture": "👨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Hei, Sam.",
+      "en": "Hello, Sam.",
+      "speaker": "luis",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Hei, Lars. Hyggelig.",
+      "en": "Hello, Lars. Nice to meet you.",
+      "speaker": "sam",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Lars er broren min.",
+      "en": "Lars is my brother.",
+      "speaker": "ana",
+      "picture": "👨‍👩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Anna er søstera mi.",
+      "en": "Anna is my sister.",
+      "speaker": "luis",
+      "picture": "👩",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "dette",
+      "er",
+      "broren",
+      "min",
+      "søstera",
+      "mi"
+    ],
+    "constructions": [
+      "nb.er-identity",
+      "nb.possessive-postposed"
+    ]
+  },
+  "represents": [
+    "nb.greeting",
+    "nb.er-identity",
+    "nb.possessive-postposed",
+    "nb.noun-endings",
+    "nb.lowercase"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Who is Lars?"
+      },
+      "options": [
+        {
+          "en": "Anna's brother"
+        },
+        {
+          "en": "Anna's father"
+        },
+        {
+          "en": "Sam's brother"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Anna is Lars's sister."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "choose",
+      "prompt": "Which sentence says \"Lars is my brother\"?",
+      "basedOn": [
+        "l4"
+      ],
+      "options": [
+        "Lars er broren min.",
+        "Lars er broren mi.",
+        "Lars er min broren."
+      ],
+      "accept": [
+        {
+          "text": "Lars er broren min."
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "broren min, søstera mi",
+      "text": "The little word for \"my\" comes after the noun and changes a little with it: broren min (a masculine word), søstera mi (a feminine word). The endings -en and -a on the noun itself mean \"the\": broren is \"the brother\", søstera is \"the sister\". So \"broren min\" is literally \"the brother my\". Notice too that nouns start with a small letter in Norwegian: broren, søstera.",
+      "explains": [
+        "nb.possessive-postposed",
+        "nb.noun-endings",
+        "nb.lowercase"
+      ],
+      "afterScenes": 0
+    }
+  ]
+}

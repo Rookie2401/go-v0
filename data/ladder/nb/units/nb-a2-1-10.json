@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-1-10",
+  "lang": "nb",
+  "title": "Four seasons",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-1-10",
+    "title": "Four seasons (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". General description of the seasons and daylight in Norway, kept simple; a Norwegian reviewer should confirm the statements."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "seasons",
+    "light",
+    "dark",
+    "weather",
+    "Norway"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "nature"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam",
+    "luis": "Lars",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "Året i Norge",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "I Norge er det vår, sommer, høst og vinter.",
+              "english": "In Norway there are spring, summer, autumn and winter."
+            },
+            {
+              "text": "Om våren blir det varmt. Sola kommer, og snøen er ikke her mer.",
+              "english": "In spring it gets warm. The sun comes, and the snow is no longer here."
+            },
+            {
+              "text": "Om sommeren er det lyst, også om natten. Folk er ute og er glade.",
+              "english": "In summer it is light, even at night. People are outside and are happy."
+            },
+            {
+              "text": "Om høsten regner det mye, og det blir mørkt.",
+              "english": "In autumn it rains a lot, and it gets dark."
+            },
+            {
+              "text": "Om vinteren er det kaldt og mørkt. Men det er snø, og folk drar til hytta.",
+              "english": "In winter it is cold and dark. But there is snow, and people go to the cabin."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hva synes Sam?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hva synes du om året i Norge, Sam?",
+              "english": "What do you think about the year in Norway, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg liker sommeren. Det er lyst, og folk er glade.",
+              "english": "I like the summer. It is light, and people are happy.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Og høsten?",
+              "english": "And the autumn?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Høsten er våt. Jeg liker ikke høsten så mye.",
+              "english": "The autumn is wet. I do not like the autumn so much.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg liker vinteren. Vi drar til hytta, og vi går på ski.",
+              "english": "I like the winter. We go to the cabin, and we ski.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg liker våren. Sola kommer, og snøen går.",
+              "english": "I like the spring. The sun comes, and the snow goes.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg synes at alle tider er bra, hvis jeg er hos dere.",
+              "english": "I think all times are good, if I am with you.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lys og mørke",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Om sommeren står Sam opp tidlig. Det er lyst klokka fem.",
+              "english": "In summer Sam gets up early. It is light at five o'clock."
+            },
+            {
+              "text": "Om vinteren er det mørkt om morgenen og om kvelden.",
+              "english": "In winter it is dark in the morning and in the evening."
+            },
+            {
+              "text": "Marta sier: «Det er ikke dårlig. Vi drikker te og snakker, og da er det lyst hos oss.»",
+              "english": "Marta says: \"It is not bad. We drink tea and talk, and then it is light at our place.\""
+            },
+            {
+              "text": "Ja, når folk er glade, blir det lyst.",
+              "english": "Yes, when people are happy, it gets light.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg liker snø, og jeg liker is, men jeg liker ikke prøver!",
+              "english": "I like snow, and I like ice cream, but I do not like tests!",
+              "speaker": "nico"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Gården lå i fjellet. Marta hadde hest, og hun kjørte med den noen ganger. Livet var bra, og hun levde godt.",
+              "english": "The farm was in the mountains. Marta had a horse, and she drove with it sometimes. Life was good, and she lived well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Toget er forsinket, og Anna kjører bilen. Det regner fortsatt.",
+              "english": "The train is late, and Anna drives the car. It is still raining."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jeg liker våren mer enn høsten.",
+              "english": "I like the spring more than the autumn."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

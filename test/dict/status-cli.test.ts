@@ -20,7 +20,7 @@ describe('dict:status', () => {
     fs.mkdirSync(empty, { recursive: true });
     const r = await run('--dir', empty);
     expect(r.status).toBe(0);
-    for (const lang of ['es', 'sq', 'th', 'hi', 'de']) expect(r.out).toContain(`dict:status - ${lang}: none`);
+    for (const lang of ['es', 'sq', 'th', 'hi', 'de', 'nb', 'nn']) expect(r.out).toContain(`dict:status - ${lang}: none`);
   }, 120_000);
 
   it('describes a built dictionary: id, entries, shards, source file, licence', async () => {

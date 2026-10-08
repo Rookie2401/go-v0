@@ -1,0 +1,32 @@
+=== nb-a1-1-02 | story | daily-life | Sam's room | Rommet til {sam} | room,furniture,home
+note: "ei seng / senga" is feminine; the house style writes the -a forms (sengen is also correct Bokmål).
+## Rommet
+{sam} bor i et hus. Huset er stort. || Sam lives in a house. The house is big.
+{sam} har et rom i huset. Rommet er lite. || Sam has a room in the house. The room is small.
+Det er ei seng i rommet. Senga er stor. || There is a bed in the room. The bed is big.
+Rommet har også et vindu. || The room also has a window.
+Vinduet er her. {sam} liker vinduet. || The window is here. Sam likes the window.
+
+## Hvem bor hvor?
+{ana} bor her. Hun jobber på klinikken. || Anna lives here. She works at the clinic.
+{luis} bor her også. Han er lærer på skolen. || Lars lives here too. He is a teacher at the school.
+{marta} bor ikke her. Hun bor i byen. || Marta does not live here. She lives in town.
+{marta} er bestemora til {nico}. {nico} bor ikke hos {marta}. || Marta is Nils's grandmother. Nils does not live with Marta.
+{nico} bor hjemme. Han går på skolen. || Nils lives at home. He goes to school.
+
+## {ana} og {sam}
+[ana] Hei, {sam}! Hvordan går det? || Hi, Sam! How are you?
+[sam] Det går bra, takk. Jeg er glad. || I am fine, thank you. I am happy.
+[ana] Liker du huset? || Do you like the house?
+[sam] Ja, jeg liker huset. Men jeg er trøtt i dag. || Yes, I like the house. But I am tired today.
+[ana] Har du ei seng? || Do you have a bed?
+[sam] Ja, jeg har ei seng. || Yes, I have a bed.
+[sam] Ja, det er bra. Rommet er lite, men jeg er glad. || Yes, that is good. The room is small, but I am happy.
+{luis} er hjemme. Han er trøtt. || Lars is at home. He is tired.
+[luis] Hei, {sam}! Kommer du til kirka i dag? || Hi, Sam! Are you coming to church today?
+[sam] Ja, gjerne! || Yes, gladly!
+[luis] Bra! Vil du ha kaffe? || Good! Do you want coffee?
+[sam] Ja, takk! || Yes, please!
+
+## Husker du?
+Fru Berg bor ikke i huset. Hun kommer fra byen, og hun er glad i {sam}. || Mrs Berg does not live in the house. She comes from town, and she is fond of Sam.

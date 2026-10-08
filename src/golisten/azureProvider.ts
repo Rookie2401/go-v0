@@ -55,6 +55,16 @@ export const AZURE_VOICES: Record<LanguageCode, AzureVoiceEntry[]> = {
     { id: 'de-DE-KatjaNeural', locale: 'de-DE', gender: 'female' },
     { id: 'de-DE-ConradNeural', locale: 'de-DE', gender: 'male' },
   ],
+  // Bokmål: Azure's nb-NO neural voices (ids from memory of the Azure voice gallery; unverified against the live list, which
+  // `listVoices` reads at runtime when it can).
+  nb: [
+    { id: 'nb-NO-PernilleNeural', locale: 'nb-NO', gender: 'female' },
+    { id: 'nb-NO-FinnNeural', locale: 'nb-NO', gender: 'male' },
+    { id: 'nb-NO-IselinNeural', locale: 'nb-NO', gender: 'female' },
+  ],
+  // Nynorsk: Azure has no nn-NO voice. An empty list is honest: the voice plan then borrows the Bokmål voice and records that
+  // its accent is not Nynorsk (src/golisten/voices.ts); an nb voice is never listed under nn here.
+  nn: [],
 };
 
 export interface AzureSpeechOptions {

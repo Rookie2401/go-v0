@@ -11,7 +11,7 @@ import {
   AZURE_VOICES, PROXY_PROVIDER_ID, PROXY_PROVIDER_VERSION_UNRESOLVED, ProxySpeechProvider, TtsProviderError, fixtureChunks, renderFixtureChunks, validateWav,
 } from '../../src/golisten';
 import { createRateLimiter, handleSpeechRequest, type SpeechEnv } from '../../server/speechHandler';
-import { LANGS, addStory, makeEnv } from './support';
+import { AZURE_LANGS, addStory, makeEnv } from './support';
 
 const KEY = 'SECRET-KEY-0123456789abcdef';
 const REGION = 'westeurope';
@@ -271,7 +271,7 @@ async function dump(store: AppStore): Promise<string> {
 }
 
 describe('ProxySpeechProvider through GoListen (the real proxy handler, mocked Azure)', () => {
-  it.each(LANGS)('%s: generates validated audio; records provider speech-proxy + version, voice, requested vs delivered locale, isSpeech; stays unreviewed', async (lang) => {
+  it.each(AZURE_LANGS)('%s: generates validated audio; records provider speech-proxy + version, voice, requested vs delivered locale, isSpeech; stays unreviewed', async (lang) => {
     const net = proxyNetwork();
     const proxy = new ProxySpeechProvider({ baseUrl: ORIGIN, fetch: net.net });
     await proxy.availability(); // learn the version before registering, as bootstrap does

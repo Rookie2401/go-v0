@@ -25,9 +25,9 @@ const MAX_CANDIDATES = 40;
  * Candidates from the course's available reading streams, merged fairly and capped before profiling.
  * Unpublished texts only in preview mode. Scripture has its own door.
  */
-async function candidatePage(args: { library: ReturnType<typeof useApp>['library']; lang: LanguageCode; interests: string[]; streamKeys: Set<string>; preview: boolean }): Promise<CatalogText[]> {
-  const { library, lang, interests, streamKeys, preview } = args;
-  const base = { lang, publishedOnly: !preview };
+async function candidatePage(args: { library: ReturnType<typeof useApp>['library']; lang: LanguageCode; alsoLangs?: LanguageCode[]; interests: string[]; streamKeys: Set<string>; preview: boolean }): Promise<CatalogText[]> {
+  const { library, lang, alsoLangs, interests, streamKeys, preview } = args;
+  const base = { lang, ...(alsoLangs?.length ? { alsoLangs } : {}), publishedOnly: !preview };
   const keys = [...new Set([...interests.filter((i) => streamKeys.has(i)), ...streamKeys])];
   // Short texts remain discoverable even when a stream's first page is a long classic.
   // Length is a sampling tool, never a language-level claim or a reading gate.
@@ -62,7 +62,7 @@ export function BestNextReads({ onCount }: { onCount?: (shown: number) => void }
       await golearn.settled();
       const streams = await streamsOf(catalog, course.id);
       const streamKeys = new Set(streams.filter((s) => s.available && s.kind !== 'scripture' && s.kind !== 'personal' && s.key !== 'listening').map((s) => s.key));
-      const items = await candidatePage({ library, lang, interests, streamKeys, preview });
+      const items = await candidatePage({ library, lang, alsoLangs: course.readsLangs, interests, streamKeys, preview });
       if (items.length === 0) { if (live) setPicks([]); return; }
       const profiles = await Promise.all(items.map((t) => library.profile(t.id)));
       let read = new Set<string>();
@@ -83,7 +83,7 @@ export function BestNextReads({ onCount }: { onCount?: (shown: number) => void }
       if (live) setPicks(out);
     })().catch(() => { if (live) setPicks([]); }); // no ranking is not an error the learner can act on: the section simply is not shown
     return () => { live = false; };
-  }, [library, catalog, golearn, userId, lang, interests, preview, course.id, course.variety?.target]);
+  }, [library, catalog, golearn, userId, lang, interests, preview, course.id, course.readsLangs, course.variety?.target]);
 
   useEffect(() => { if (picks) onCount?.(picks.length); }, [picks, onCount]);
 

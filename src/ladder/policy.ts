@@ -38,6 +38,21 @@ export const NEW_LEMMAS_PER_100 = { warn: 5, error: 9 } as const;
  */
 export const RECYCLING = { window: 6, minEncounters: 3, maxUnmetShare: 0.25 } as const;
 
+/**
+ * Orphans (a warning for every language, never an error): a lemma first met in a unit that is never met again in any later unit of
+ * the ladder. The warning fires for a unit when more than `maxShare` of its new lemmas are orphans. A unit with fewer than
+ * `minLaterUnits` readable units after it is not judged (the end of a ladder has nothing after it to come back in).
+ */
+export const ORPHANS = { maxShare: 0.15, minLaterUnits: 3 } as const;
+
+/**
+ * Recurrence intervals (a warning for every language, never an error). For each new lemma of a unit, the word distance between its
+ * successive meetings (see gate.ts `recurrenceOf`); the warning fires for a unit when the median second gap is shorter than the
+ * median first gap, i.e. the intervals do not widen. Judged only when at least `minLemmas` of the unit's new lemmas are met three or
+ * more times (fewer would make a median noise).
+ */
+export const RECURRENCE = { minLemmas: 5 } as const;
+
 /** A stage whose words are more than this share Scripture draws a warning. */
 export const SCRIPTURE_SHARE_MAX = 0.4;
 
@@ -51,6 +66,8 @@ export interface LadderPolicy {
   cliff: { previousUnits: number; warnPoints: number; errorPoints: number };
   newLemmasPer100: { warn: number; error: number };
   recycling: { window: number; minEncounters: number; maxUnmetShare: number };
+  orphans: { maxShare: number; minLaterUnits: number };
+  recurrence: { minLemmas: number };
   scriptureShareMax: number;
   placementThreshold: number;
 }
@@ -62,6 +79,8 @@ export const POLICY: LadderPolicy = {
   cliff: CLIFF,
   newLemmasPer100: NEW_LEMMAS_PER_100,
   recycling: RECYCLING,
+  orphans: ORPHANS,
+  recurrence: RECURRENCE,
   scriptureShareMax: SCRIPTURE_SHARE_MAX,
   placementThreshold: PLACEMENT_THRESHOLD,
 };

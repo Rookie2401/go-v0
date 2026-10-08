@@ -19,6 +19,8 @@ export interface UnitStat {
   lemmas: Map<string, number>;
   /** Construction keys found by `detectPatterns` anywhere in the document. */
   patterns: Set<string>;
+  /** Lemma -> the running-word index (0-based, counting every word token of the document in reading order) of each occurrence. */
+  positions: Map<string, number[]>;
 }
 
 /** The sentences of a document, in order. */
@@ -54,6 +56,7 @@ export function isAbbreviation(c: { pos?: string; notes?: Record<string, unknown
 export function analyseDocument(adapter: LanguageAdapter, doc: CorpusDocument): UnitStat {
   const lemmas = new Map<string, number>();
   const patterns = new Set<string>();
+  const positions = new Map<string, number[]>();
   let words = 0, auto = 0;
   for (const s of documentSentences(adapter, doc)) {
     const tokens = adapter.tokenize(s);
@@ -66,10 +69,12 @@ export function analyseDocument(adapter: LanguageAdapter, doc: CorpusDocument): 
       if ((c?.pos === 'PROPN' && !isNameGuess(c)) || c?.pos === 'NUM' || isAbbreviation(c) || /^\p{N}+$/u.test(norm)) { auto++; continue; }
       const l = (c?.lemma ?? norm).normalize('NFC').toLowerCase();
       lemmas.set(l, (lemmas.get(l) ?? 0) + 1);
+      const at = positions.get(l);
+      if (at) at.push(words - 1); else positions.set(l, [words - 1]);
     }
     for (const p of adapter.detectPatterns(tokens, analyses)) patterns.add(p.key);
   }
-  return { words, auto, lemmas, patterns };
+  return { words, auto, lemmas, patterns, positions };
 }
 
 /** What a learner who has read a sequence of texts has met: lemma encounter counts and construction keys. */

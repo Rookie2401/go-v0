@@ -1,0 +1,391 @@
+{
+  "lang": "nb",
+  "version": 1,
+  "after": "stage0",
+  "units": [
+    {
+      "id": "nb-a1-1-01",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/nb-a1-1-01.json",
+      "domain": "conversation",
+      "title": "Meeting in the street"
+    },
+    {
+      "id": "nb-a1-1-02",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/nb-a1-1-02.json",
+      "domain": "daily-life",
+      "title": "Sam's room"
+    },
+    {
+      "id": "nb-a1-1-03",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/nb-a1-1-03.json",
+      "domain": "family",
+      "title": "Anna's family"
+    },
+    {
+      "id": "nb-a1-1-04",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/nb-a1-1-04.json",
+      "domain": "food",
+      "title": "Breakfast at the café"
+    },
+    {
+      "id": "nb-a1-1-05",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/nb-a1-1-05.json",
+      "domain": "food",
+      "title": "Sunday dinner"
+    },
+    {
+      "id": "nb-a1-1-06",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/nb-a1-1-06.json",
+      "domain": "town",
+      "title": "At the market"
+    },
+    {
+      "id": "nb-a1-1-07",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/nb-a1-1-07.json",
+      "domain": "daily-life",
+      "title": "Nils's school day"
+    },
+    {
+      "id": "nb-a1-1-08",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/nb-a1-1-08.json",
+      "domain": "work",
+      "title": "Who works where"
+    },
+    {
+      "id": "nb-a1-1-09",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/nb-a1-1-09.json",
+      "domain": "faith",
+      "title": "Sunday morning at church"
+    },
+    {
+      "id": "nb-a1-1-10",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/nb-a1-1-10.json",
+      "domain": "travel",
+      "title": "The bus into town"
+    },
+    {
+      "id": "nb-a1-1-11",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/nb-a1-1-11.json",
+      "domain": "nature",
+      "title": "Rain in Bergen"
+    },
+    {
+      "id": "nb-a1-1-12",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/nb-a1-1-12.json",
+      "domain": "narrative",
+      "title": "Sam tells about his week"
+    },
+    {
+      "id": "nb-a1-2-01",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/nb-a1-2-01.json",
+      "domain": "conversation",
+      "title": "A visit at Marta's"
+    },
+    {
+      "id": "nb-a1-2-02",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/nb-a1-2-02.json",
+      "domain": "daily-life",
+      "title": "The key is gone"
+    },
+    {
+      "id": "nb-a1-2-03",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/nb-a1-2-03.json",
+      "domain": "daily-life",
+      "title": "The shopping list"
+    },
+    {
+      "id": "nb-a1-2-04",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/nb-a1-2-04.json",
+      "domain": "health",
+      "title": "At the clinic"
+    },
+    {
+      "id": "nb-a1-2-05",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/nb-a1-2-05.json",
+      "domain": "daily-life",
+      "title": "A normal day"
+    },
+    {
+      "id": "nb-a1-2-06",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/nb-a1-2-06.json",
+      "domain": "narrative",
+      "title": "The lost bag"
+    },
+    {
+      "id": "nb-a1-2-07",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/nb-a1-2-07.json",
+      "domain": "nature",
+      "title": "A walk up the mountain"
+    },
+    {
+      "id": "nb-a1-2-08",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/nb-a1-2-08.json",
+      "domain": "faith",
+      "title": "Prayer and thanks"
+    },
+    {
+      "id": "nb-a1-2-09",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/nb-a1-2-09.json",
+      "domain": "norway",
+      "title": "Norway and Bergen"
+    },
+    {
+      "id": "nb-a1-2-10",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/nb-a1-2-10.json",
+      "domain": "conversation",
+      "title": "On the phone"
+    },
+    {
+      "id": "nb-a1-2-11",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/nb-a1-2-11.json",
+      "domain": "family",
+      "title": "Nils's birthday"
+    },
+    {
+      "id": "nb-a1-2-12",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/nb-a1-2-12.json",
+      "domain": "narrative",
+      "title": "Sam's long week"
+    },
+    {
+      "id": "nb-a2-1-01",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/nb-a2-1-01.json",
+      "domain": "narrative",
+      "title": "Before the journey"
+    },
+    {
+      "id": "nb-a2-1-02",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/nb-a2-1-02.json",
+      "domain": "correspondence",
+      "title": "A letter home"
+    },
+    {
+      "id": "nb-a2-1-03",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/nb-a2-1-03.json",
+      "domain": "work",
+      "title": "The teacher's day"
+    },
+    {
+      "id": "nb-a2-1-04",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/nb-a2-1-04.json",
+      "domain": "nature",
+      "title": "The cabin in the mountains"
+    },
+    {
+      "id": "nb-a2-1-05",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/nb-a2-1-05.json",
+      "domain": "biography",
+      "title": "Marta's childhood"
+    },
+    {
+      "id": "nb-a2-1-06",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/nb-a2-1-06.json",
+      "domain": "norway",
+      "title": "The 17th of May"
+    },
+    {
+      "id": "nb-a2-1-07",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/nb-a2-1-07.json",
+      "domain": "narrative",
+      "title": "The bus does not come"
+    },
+    {
+      "id": "nb-a2-1-08",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/nb-a2-1-08.json",
+      "domain": "conversation",
+      "title": "What do you think?"
+    },
+    {
+      "id": "nb-a2-1-09",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/nb-a2-1-09.json",
+      "domain": "faith",
+      "title": "The good Samaritan"
+    },
+    {
+      "id": "nb-a2-1-10",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/nb-a2-1-10.json",
+      "domain": "nature",
+      "title": "Four seasons"
+    },
+    {
+      "id": "nb-a2-1-11",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/nb-a2-1-11.json",
+      "domain": "daily-life",
+      "title": "Friday evening"
+    },
+    {
+      "id": "nb-a2-1-12",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/nb-a2-1-12.json",
+      "domain": "narrative",
+      "title": "A year in Norway"
+    },
+    {
+      "id": "nb-a2-2-01",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/nb-a2-2-01.json",
+      "domain": "community",
+      "title": "News from the town"
+    },
+    {
+      "id": "nb-a2-2-02",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/nb-a2-2-02.json",
+      "domain": "travel",
+      "title": "By train to Oslo"
+    },
+    {
+      "id": "nb-a2-2-03",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/nb-a2-2-03.json",
+      "domain": "narrative",
+      "title": "The troll on the bridge"
+    },
+    {
+      "id": "nb-a2-2-04",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/nb-a2-2-04.json",
+      "domain": "faith",
+      "title": "Faith and doubt"
+    },
+    {
+      "id": "nb-a2-2-05",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/nb-a2-2-05.json",
+      "domain": "norway",
+      "title": "Two written languages"
+    },
+    {
+      "id": "nb-a2-2-06",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/nb-a2-2-06.json",
+      "domain": "work",
+      "title": "How to bake bread"
+    },
+    {
+      "id": "nb-a2-2-07",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/nb-a2-2-07.json",
+      "domain": "work",
+      "title": "A difficult choice"
+    },
+    {
+      "id": "nb-a2-2-08",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/nb-a2-2-08.json",
+      "domain": "norway",
+      "title": "Fishing and the sea"
+    },
+    {
+      "id": "nb-a2-2-09",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/nb-a2-2-09.json",
+      "domain": "faith",
+      "title": "A letter from the congregation"
+    },
+    {
+      "id": "nb-a2-2-10",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/nb-a2-2-10.json",
+      "domain": "nature",
+      "title": "Water, forest and electricity"
+    },
+    {
+      "id": "nb-a2-2-11",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/nb-a2-2-11.json",
+      "domain": "narrative",
+      "title": "A dog in the rain"
+    },
+    {
+      "id": "nb-a2-2-12",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/nb-a2-2-12.json",
+      "domain": "narrative",
+      "title": "Sam stays"
+    }
+  ]
+}

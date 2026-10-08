@@ -209,6 +209,26 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
     return { sentence, parsed: p, errorTokens };
   }
 
+  /**
+   * Register rule (docs/norway/SPEC.md §3). True when the phrase has at least one recorded occurrence and EVERY occurrence is in a
+   * text whose `variety` is a historical variety of the adapter's `varieties` table (kind 'historical': Riksmål, Dano-Norwegian,
+   * Landsmål, old German spelling ...). A phrase the learner has met only in older language is not offered back to him as wording to
+   * write: he would be nudged to produce "efter" or "sprog". A phrase with no recorded occurrence, any occurrence in a text with no
+   * variety or a non-historical one, or an adapter without historical varieties, is never affected - so a language with no historical
+   * variety table behaves exactly as before.
+   */
+  async function onlyMetInHistoricalTexts(adapter: LanguageAdapter, phraseId: string): Promise<boolean> {
+    const varieties = adapter.varieties;
+    if (!varieties || !Object.values(varieties).some((v) => v.kind === 'historical')) return false;
+    const occurrences = await store.phraseOccurrences.where('phraseId', phraseId);
+    if (occurrences.length === 0) return false;
+    for (const textId of unique(occurrences.map((o) => o.textId))) {
+      const variety = (await store.texts.get(textId))?.variety;
+      if (!variety || varieties[variety]?.kind !== 'historical') return false;
+    }
+    return true;
+  }
+
   /** Turn a provider proposal into a final candidate — or drop it (never-add-content rule). */
   async function finalize(
     userId: string, lang: LanguageCode, adapter: LanguageAdapter, known: KnownPhrase[], proposal: ProposedSuggestion, order: number, sources: SourceFinder,
@@ -219,6 +239,9 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
 
     // allowed extra words: only those of known phrases the suggestion actually uses
     const usedPhraseIds = proposal.itemIds.filter((id) => id.startsWith('phrase:'));
+    if (proposal.kind !== 'repair') {
+      for (const pid of usedPhraseIds) if (await onlyMetInHistoricalTexts(adapter, pid)) return undefined; // register rule
+    }
     const allowed = new Set(known.filter((k) => usedPhraseIds.includes(k.phraseId)).flatMap((k) => k.pattern.filter((w) => w !== '_')));
     if (addsContent(adapter, orig, sug, allowed)) return undefined;
 

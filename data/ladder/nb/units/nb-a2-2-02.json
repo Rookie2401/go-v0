@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-2-02",
+  "lang": "nb",
+  "title": "By train to Oslo",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-2-02",
+    "title": "By train to Oslo (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". The railway is not named and no facts about the real line are given beyond mountains and tunnels. A Norwegian reviewer should confirm how natural the journey sounds."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "train",
+    "journey",
+    "station",
+    "view",
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam",
+    "dame": "Damen"
+  },
+  "sections": [
+    {
+      "title": "På stasjonen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam skulle reise med tog fra Bergen til Oslo. Han hadde ikke reist så langt med tog før.",
+              "english": "Sam was going to travel by train from Bergen to Oslo. He had not travelled so far by train before."
+            },
+            {
+              "text": "Anna kjørte ham til stasjonen. Mange folk var på stasjonen.",
+              "english": "Anna drove him to the station. Many people were at the station."
+            },
+            {
+              "text": "Har du billett, Sam?",
+              "english": "Do you have a ticket, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, her er billetten. Toget går klokka åtte.",
+              "english": "Yes, here is the ticket. The train leaves at eight.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ha en god reise! Ring meg når du kommer til Oslo.",
+              "english": "Have a good journey! Call me when you get to Oslo.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Det skal jeg gjøre. Hils Lars!",
+              "english": "I will. Say hello to Lars!",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "I toget",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam fant plassen sin. Han satt og så ut av vinduet.",
+              "english": "Sam found his seat. He sat and looked out of the window."
+            },
+            {
+              "text": "Utsikten var bra. Toget gikk gjennom fjellet. Det ble mørkt i tunnelen, og så ble det lyst igjen.",
+              "english": "The view was good. The train went through the mountain. It got dark in the tunnel, and then it got light again."
+            },
+            {
+              "text": "Det var mange tunneler. Hver gang ble det mørkt, og så kom utsikten tilbake.",
+              "english": "There were many tunnels. Each time it got dark, and then the view came back."
+            },
+            {
+              "text": "En dame satt hos Sam. Hun snakket til ham.",
+              "english": "A woman sat with Sam. She spoke to him."
+            },
+            {
+              "text": "Hvor skal du?",
+              "english": "Where are you going?",
+              "speaker": "dame"
+            },
+            {
+              "text": "Jeg skal til Oslo. Jeg bor i Bergen.",
+              "english": "I am going to Oslo. I live in Bergen.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du snakker godt norsk! Er du fra Norge?",
+              "english": "You speak good Norwegian! Are you from Norway?",
+              "speaker": "dame"
+            },
+            {
+              "text": "Nei, jeg er fra USA. Jeg har bodd her i åtte måneder.",
+              "english": "No, I am from the USA. I have lived here for eight months.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Åtte måneder? Da har du lært mye!",
+              "english": "Eight months? Then you have learned a lot!",
+              "speaker": "dame"
+            },
+            {
+              "text": "Jeg har lært litt, men jeg vil lære mer.",
+              "english": "I have learned a little, but I want to learn more.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "I Oslo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Toget kom til Oslo klokka tre. Sam var trøtt, men han var glad.",
+              "english": "The train arrived in Oslo at three o'clock. Sam was tired, but he was happy."
+            },
+            {
+              "text": "Han tok telefonen og ringte til Anna.",
+              "english": "He took the phone and called Anna."
+            },
+            {
+              "text": "Hei, Anna! Jeg er i Oslo nå. Utsikten var bra!",
+              "english": "Hi, Anna! I am in Oslo now. The view was good!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Så bra! Jeg er glad for at reisen gikk bra.",
+              "english": "How good! I am glad that the journey went well.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Historien om samaritanen: En mann var skadet av røvere. Presten gikk forbi, men samaritanen var hans nabo. Han hjalp ham, og han tok ham til et hotell. Vi lytter og lærer.",
+              "english": "The story of the Samaritan: A man was injured by robbers. The priest walked past, but the Samaritan was his neighbour. He helped him, and he took him to a hotel. We listen and learn."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Første gang Sam laget taco, var det fredagskveld. Alle satt ved bordet. Hvilken film vil du se?",
+              "english": "The first time Sam made tacos, it was Friday evening. Everyone sat at the table. Which film do you want to watch?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Skolen blir bygget i byen. Den åpner i høst, og det er plass til mange elever.",
+              "english": "The school is being built in town. It opens in autumn, and there is room for many pupils."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam vil bo her lenger.",
+              "english": "Sam wants to live here longer."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -12,7 +12,7 @@
  */
 import type { AdapterRegistry, LanguageAdapter, LanguageCode, RawToken, Script, SyllableAnalysis } from '../../src/core';
 
-const SCRIPT: Record<LanguageCode, Script> = { es: 'Latn', sq: 'Latn', de: 'Latn', th: 'Thai', hi: 'Deva' };
+const SCRIPT: Record<LanguageCode, Script> = { es: 'Latn', sq: 'Latn', de: 'Latn', th: 'Thai', hi: 'Deva', nb: 'Latn', nn: 'Latn' };
 const CLASSES = ['mid', 'high', 'low'] as const;
 const TONES = ['mid', 'low', 'falling', 'high', 'rising'] as const;
 
@@ -72,7 +72,7 @@ export function createTestAdapter(lang: LanguageCode, lemmaOf: Record<string, st
 export function createTestRegistry(
   lemmaOf: Partial<Record<LanguageCode, Record<string, string>>> = {}, opts: { decode?: LanguageCode[] } = {},
 ): AdapterRegistry {
-  const langs: LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de'];
+  const langs: LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de', 'nb', 'nn'];
   const adapters = new Map(langs.map((l) => [l, createTestAdapter(l, lemmaOf[l] ?? {}, { decode: opts.decode?.includes(l) })] as const));
   return { get: (lang) => adapters.get(lang)!, all: () => [...adapters.values()] };
 }

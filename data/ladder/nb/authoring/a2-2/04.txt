@@ -1,0 +1,31 @@
+=== nb-a2-2-04 | dialogue | faith | Faith and doubt | Tro og tvil | faith,doubt,questions,trust,testimony
+note: A quiet conversation about doubt. It echoes the seed story: Sam does not understand everything, but he believes in God. Marta speaks from experience, not from doctrine.
+## Et spørsmål
+Det er søndag kveld. {sam} sitter hos {marta}. Han tenker mye. || It is Sunday evening. Sam sits at Marta's. He thinks a lot.
+[marta] Hva tenker du på, {sam}? || What are you thinking about, Sam?
+[sam] Jeg tror på Gud, men jeg har mange spørsmål. Ofte har jeg tvil. || I believe in God, but I have many questions. Often I have doubt.
+[marta] Det er ikke dårlig å ha tvil. Alle folk har tvil. || It is not bad to have doubt. All people have doubt.
+[sam] Har du hatt tvil, {marta}? || Have you had doubt, Marta?
+[marta] Ja, mange ganger. Da jeg var liten, var jeg ikke sikker. || Yes, many times. When I was small, I was not sure.
+[sam] Hva gjorde du da? || What did you do then?
+[marta] Jeg leste i bibelen, og jeg ba. Jeg ventet på svar. || I read in the Bible, and I prayed. I waited for an answer.
+
+## Svar
+[sam] Fikk du svar? || Did you get an answer?
+[marta] Ikke alltid. Men jeg var ikke redd. Jeg kjente Gud. || Not always. But I was not afraid. I knew God.
+[sam] Er du sikker på det nå? || Are you sure of that now?
+[marta] Jeg er ikke sikker på mye. Men jeg er trygg. Jeg kjenner Gud, og han kjenner meg. || I am not sure of much. But I feel safe. I know God, and he knows me.
+[sam] Kan du ha tvil og være trygg? || Can you have doubt and feel safe?
+[marta] Ja, det kan jeg. Jeg har hatt mange spørsmål. Gud har hjulpet meg hver dag. || Yes, I can. I have had many questions. God has helped me every day.
+
+## Takk
+{sam} sitter lenge og tenker. Så sier han: «Takk, {marta}. Nå har jeg et svar.» || Sam sits and thinks for a long time. Then he says: "Thank you, Marta. Now I have an answer."
+[marta] Hva er svaret? || What is the answer?
+[sam] Jeg trenger ikke å være sikker på alt. Jeg trenger å kjenne Gud. || I do not need to be sure of everything. I need to know God.
+[marta] Det er et godt svar. Vi ber for deg, {sam}, hver dag. || That is a good answer. We pray for you, Sam, every day.
+{sam} er glad. Han har fortsatt spørsmål, men han er trygg. || Sam is happy. He still has questions, but he feels safe.
+
+## Husker du?
+[sam] Hvilken film så vi på fredag? || Which film did we watch on Friday?
+[nico] Filmen om fjell. Vi satt i sofaen, spiste taco og spilte etterpå. || The film about mountains. We sat on the sofa, ate tacos and played afterwards.
+

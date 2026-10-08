@@ -141,6 +141,9 @@ const FUNCTION_WORDS: Partial<Record<LanguageCode, ReadonlySet<string>>> = {
   es: new Set('de la que el en y a los se del las un por con no una su para es al lo como más mas o pero sus le ya si porque esta entre cuando muy sin sobre me hasta hay donde quien desde todo nos durante también tambien ser son dos fue era'.split(' ')),
   de: new Set('der die und in den von zu das mit sich des auf für fur ist im dem nicht ein eine als auch es an werden aus er hat dass daß sie nach wird bei einer um am sind noch wie einem über uber so zum'.split(' ')),
   sq: new Set('dhe të te e që qe në ne për per me një nje nga është eshte i u si por do ka kjo ky ishte nuk më ajo ai kur edhe pas'.split(' ')),
+  // machine-draft, native review pending
+  nb: new Set('og i er det som på en et til av for med at har den ikke jeg var om han hun seg men vi kan fra så ble også å de du hva noen eller når skal vil blir bare hadde etter mer meg deg sin sitt sine ut opp inn her der hvor hvis nå mye alle andre ham dem oss'.split(' ')),
+  nn: new Set('og i er det som på ein ei eit til av for med at har den ikkje eg var om han ho seg men vi me kan frå så vart også å dei du kva nokon eller når skal vil blir berre hadde etter meir meg deg sin sitt sine ut opp inn her der kor viss no mykje alle andre oss'.split(' ')),
 };
 const ENGLISH_WORDS = new Set('the of and to in is that it was for on are with as his they be at one have this from or had by not but what all were we when your can said there use an each which she do how their if will up other about out many then them these so some her would make like him into time has look two more write go see number no way could people my than first water been call who oil its now find long down day did get come made may part'.split(' '));
 
@@ -149,7 +152,7 @@ const SCRIPTS: Array<[string, RegExp]> = [
   ['Hebrew', /\p{Script=Hebrew}/u], ['Thai', /\p{Script=Thai}/u], ['Devanagari', /\p{Script=Devanagari}/u], ['Han', /\p{Script=Han}/u],
   ['Hangul', /\p{Script=Hangul}/u], ['Kana', /[\p{Script=Hiragana}\p{Script=Katakana}]/u],
 ];
-const EXPECTED_SCRIPT: Record<LanguageCode, string> = { es: 'Latin', de: 'Latin', sq: 'Latin', th: 'Thai', hi: 'Devanagari' };
+const EXPECTED_SCRIPT: Record<LanguageCode, string> = { es: 'Latin', de: 'Latin', sq: 'Latin', th: 'Thai', hi: 'Devanagari', nb: 'Latin', nn: 'Latin' };
 
 /**
  * Whether one paragraph looks like English rather than the language of the text: the paragraph rule of `inspectText`

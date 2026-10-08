@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-2-04",
+  "lang": "nb",
+  "title": "At the clinic",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-2-04",
+    "title": "At the clinic (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". \"Jeg har vondt i hodet\" is the usual way to say \"I have a headache\"; \"legen\" is the doctor."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "health",
+    "illness",
+    "doctor",
+    "rest"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "luis": "Lars",
+    "sam": "Sam",
+    "ana": "Anna",
+    "lege": "Legen",
+    "marta": "Marta",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "Sam er syk",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam har feber. Han må gå til legen.",
+              "english": "Sam has a fever. He has to go to the doctor."
+            },
+            {
+              "text": "Det er tirsdag. Sam er syk. Han har vondt i hodet.",
+              "english": "It is Tuesday. Sam is ill. He has a headache."
+            },
+            {
+              "text": "Han har feber, og han er veldig trøtt.",
+              "english": "He has a fever, and he is very tired."
+            },
+            {
+              "text": "Du er syk, Sam! Du må gå til klinikken.",
+              "english": "You are ill, Sam! You have to go to the clinic.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja, jeg må gå til legen.",
+              "english": "Yes, I have to go to the doctor.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Sam tar bussen til klinikken. Mange er syke i dag.",
+              "english": "Sam takes the bus to the clinic. Many are ill today."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "På klinikken",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna jobber på klinikken. Hun er sykepleier.",
+              "english": "Anna works at the clinic. She is a nurse."
+            },
+            {
+              "text": "Hei, Sam! Hvordan går det?",
+              "english": "Hi, Sam! How are you?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Det går ikke bra. Jeg har vondt i hodet.",
+              "english": "I am not well. I have a headache.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Har du feber?",
+              "english": "Do you have a fever?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg har feber.",
+              "english": "Yes, I have a fever.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du må snakke med legen. Han heter Dahl.",
+              "english": "You have to talk to the doctor. His name is Dahl.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hos legen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Legen er snill. Han hjelper mange pasienter.",
+              "english": "The doctor is kind. He helps many patients."
+            },
+            {
+              "text": "Hei, Sam! Hva er det med deg?",
+              "english": "Hi, Sam! What is the matter with you?",
+              "speaker": "lege"
+            },
+            {
+              "text": "Jeg har vondt i hodet. Jeg er trøtt.",
+              "english": "I have a headache. I am tired.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du må hvile. Du må drikke vann og te.",
+              "english": "You have to rest. You have to drink water and tea.",
+              "speaker": "lege"
+            },
+            {
+              "text": "Du må hvile hjemme i dag og i morgen.",
+              "english": "You have to rest at home today and tomorrow.",
+              "speaker": "lege"
+            },
+            {
+              "text": "Takk. Jeg skal hvile.",
+              "english": "Thanks. I will rest.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ha det bra, Sam!",
+              "english": "Goodbye, Sam!",
+              "speaker": "lege"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjemme",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam er hjemme. Han hviler i rommet. Han drikker te.",
+              "english": "Sam is at home. He rests in his room. He drinks tea."
+            },
+            {
+              "text": "Marta kommer med suppe. Hun er snill.",
+              "english": "Marta comes with soup. She is kind."
+            },
+            {
+              "text": "Her er suppe, Sam. Du må spise.",
+              "english": "Here is soup, Sam. You have to eat.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Takk, Marta! Suppen er god.",
+              "english": "Thank you, Marta! The soup is good.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nils kommer også. Han har brød.",
+              "english": "Nils comes too. He has bread."
+            },
+            {
+              "text": "Er du syk, Sam?",
+              "english": "Are you ill, Sam?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, men jeg skal hvile. Jeg er glad for suppen.",
+              "english": "Yes, but I will rest. I am glad about the soup.",
+              "speaker": "sam"
+            },
+            {
+              "text": "På torsdag er Sam i kirka. Han har ikke vondt i hodet.",
+              "english": "On Thursday Sam is at church. He does not have a headache."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "I Bergen er været ofte vått, og paraplyen er alltid med. Sola er ute, og det er varmt.",
+              "english": "In Bergen the weather is often wet, and the umbrella is always with you. The sun is out, and it is warm."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta kommer på besøk. Hun sitter i stua, og hun får te.",
+              "english": "Marta comes for a visit. She sits in the living room, and she gets tea."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lars handler i butikken. På listen er det egg og smør. Han trenger melk også.",
+              "english": "Lars shops at the shop. On the list there are eggs and butter. He needs milk too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+=== nb-a2-2-02 | story | travel | By train to Oslo | Med tog til Oslo | train,journey,station,view,conversation
+speakers: dame=Damen
+note: The railway is not named and no facts about the real line are given beyond mountains and tunnels. A Norwegian reviewer should confirm how natural the journey sounds.
+## På stasjonen
+{sam} skulle reise med tog fra {city} til Oslo. Han hadde ikke reist så langt med tog før. || Sam was going to travel by train from Bergen to Oslo. He had not travelled so far by train before.
+{ana} kjørte ham til stasjonen. Mange folk var på stasjonen. || Anna drove him to the station. Many people were at the station.
+[ana] Har du billett, {sam}? || Do you have a ticket, Sam?
+[sam] Ja, her er billetten. Toget går klokka åtte. || Yes, here is the ticket. The train leaves at eight.
+[ana] Ha en god reise! Ring meg når du kommer til Oslo. || Have a good journey! Call me when you get to Oslo.
+[sam] Det skal jeg gjøre. Hils {luis}! || I will. Say hello to Lars!
+
+## I toget
+{sam} fant plassen sin. Han satt og så ut av vinduet. || Sam found his seat. He sat and looked out of the window.
+Utsikten var bra. Toget gikk gjennom fjellet. Det ble mørkt i tunnelen, og så ble det lyst igjen. || The view was good. The train went through the mountain. It got dark in the tunnel, and then it got light again.
+Det var mange tunneler. Hver gang ble det mørkt, og så kom utsikten tilbake. || There were many tunnels. Each time it got dark, and then the view came back.
+En dame satt hos {sam}. Hun snakket til ham. || A woman sat with Sam. She spoke to him.
+[dame] Hvor skal du? || Where are you going?
+[sam] Jeg skal til Oslo. Jeg bor i {city}. || I am going to Oslo. I live in Bergen.
+[dame] Du snakker godt norsk! Er du fra Norge? || You speak good Norwegian! Are you from Norway?
+[sam] Nei, jeg er fra USA. Jeg har bodd her i åtte måneder. || No, I am from the USA. I have lived here for eight months.
+[dame] Åtte måneder? Da har du lært mye! || Eight months? Then you have learned a lot!
+[sam] Jeg har lært litt, men jeg vil lære mer. || I have learned a little, but I want to learn more.
+
+## I Oslo
+Toget kom til Oslo klokka tre. {sam} var trøtt, men han var glad. || The train arrived in Oslo at three o'clock. Sam was tired, but he was happy.
+Han tok telefonen og ringte til {ana}. || He took the phone and called Anna.
+[sam] Hei, {ana}! Jeg er i Oslo nå. Utsikten var bra! || Hi, Anna! I am in Oslo now. The view was good!
+[ana] Så bra! Jeg er glad for at reisen gikk bra. || How good! I am glad that the journey went well.
+
+## Husker du?
+Historien om samaritanen: En mann var skadet av røvere. Presten gikk forbi, men samaritanen var hans nabo. Han hjalp ham, og han tok ham til et hotell. Vi lytter og lærer. || The story of the Samaritan: A man was injured by robbers. The priest walked past, but the Samaritan was his neighbour. He helped him, and he took him to a hotel. We listen and learn.
+
+Første gang {sam} laget taco, var det fredagskveld. Alle satt ved bordet. Hvilken film vil du se? || The first time Sam made tacos, it was Friday evening. Everyone sat at the table. Which film do you want to watch?
+
+Skolen blir bygget i byen. Den åpner i høst, og det er plass til mange elever. || The school is being built in town. It opens in autumn, and there is room for many pupils.
+
+{sam} vil bo her lenger. || Sam wants to live here longer.

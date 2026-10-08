@@ -1,0 +1,247 @@
+{
+  "entries": [
+    {
+      "id": "nb.greeting",
+      "kind": "pragmatics",
+      "label": "greeting and meeting (Hei, Hyggelig, God morgen)",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.jeg-heter",
+      "kind": "construction",
+      "label": "Jeg heter + name",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.present-tense",
+      "kind": "grammar",
+      "label": "present tense: one form for every person (jeg / du / Anna drikker)",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.er-identity",
+      "kind": "construction",
+      "label": "X er Y (identity); Dette er …",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.noun-endings",
+      "kind": "grammar",
+      "label": "nouns: the ending that means \"the\" (-en, -a, -et)",
+      "prerequisites": [
+        "nb.er-identity"
+      ]
+    },
+    {
+      "id": "nb.possessive-postposed",
+      "kind": "grammar",
+      "label": "broren min / søstera mi: \"my\" after the noun, agreeing with it",
+      "prerequisites": [
+        "nb.er-identity"
+      ]
+    },
+    {
+      "id": "nb.lowercase",
+      "kind": "orth",
+      "label": "nouns, days and languages start with a small letter",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.har-object",
+      "kind": "construction",
+      "label": "ha + thing (Anna har vann)",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.negation-ikke",
+      "kind": "grammar",
+      "label": "ikke right after the verb",
+      "prerequisites": [
+        "nb.har-object"
+      ]
+    },
+    {
+      "id": "nb.vil-ha",
+      "kind": "construction",
+      "label": "Jeg vil ha / Vil du ha …? (want)",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.yes-no-question",
+      "kind": "construction",
+      "label": "yes/no question: verb first (Vil du ha …?)",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.politeness",
+      "kind": "pragmatics",
+      "label": "takk, bare hyggelig, vær så god",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.er-location",
+      "kind": "construction",
+      "label": "er + place (hjemme, på skolen)",
+      "prerequisites": [
+        "nb.er-identity"
+      ]
+    },
+    {
+      "id": "nb.i-pa",
+      "kind": "grammar",
+      "label": "i and på with places",
+      "prerequisites": [
+        "nb.er-location"
+      ]
+    },
+    {
+      "id": "nb.adjective-state",
+      "kind": "construction",
+      "label": "er + state (trøtt, sulten)",
+      "prerequisites": [
+        "nb.er-location"
+      ]
+    },
+    {
+      "id": "nb.verb-second",
+      "kind": "grammar",
+      "label": "the verb is the second item (I dag er Anna trøtt)",
+      "prerequisites": [
+        "nb.er-identity"
+      ]
+    },
+    {
+      "id": "nb.w-question",
+      "kind": "construction",
+      "label": "question words (hvor, hva)",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.hvor-er",
+      "kind": "construction",
+      "label": "Hvor er …?",
+      "prerequisites": [
+        "nb.er-location",
+        "nb.w-question"
+      ]
+    },
+    {
+      "id": "nb.vet-ikke",
+      "kind": "construction",
+      "label": "Jeg vet ikke",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.liker",
+      "kind": "construction",
+      "label": "liker + thing (like)",
+      "prerequisites": [
+        "nb.har-object"
+      ]
+    },
+    {
+      "id": "nb.men-og",
+      "kind": "construction",
+      "label": "og (and), men (but)",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.polite-du",
+      "kind": "pragmatics",
+      "label": "du to everyone (no everyday polite \"you\")",
+      "prerequisites": [
+        "nb.politeness"
+      ]
+    },
+    {
+      "id": "nb.numbers",
+      "kind": "grammar",
+      "label": "numbers and kroner (tjue, tretti, femti)",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.time-days",
+      "kind": "grammar",
+      "label": "i dag, i morgen, på søndag",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.gaa-place",
+      "kind": "construction",
+      "label": "gå + i kirka / med / hjem",
+      "prerequisites": [
+        "nb.er-location"
+      ]
+    },
+    {
+      "id": "nb.hjem-hjemme",
+      "kind": "construction",
+      "label": "hjemme (at home) vs hjem (going home)",
+      "prerequisites": [
+        "nb.gaa-place"
+      ]
+    },
+    {
+      "id": "nb.fordi",
+      "kind": "construction",
+      "label": "fordi (because)",
+      "prerequisites": [
+        "nb.adjective-state"
+      ]
+    },
+    {
+      "id": "nb.det-weather",
+      "kind": "construction",
+      "label": "det regner / det er kaldt (the empty \"det\")",
+      "prerequisites": []
+    },
+    {
+      "id": "nb.reflexive-si",
+      "kind": "grammar",
+      "label": "bestemora si: \"his / her own\" (si, sin, sitt)",
+      "prerequisites": [
+        "nb.possessive-postposed"
+      ]
+    },
+    {
+      "id": "nb.tro",
+      "kind": "construction",
+      "label": "Jeg tror på Gud (believe)",
+      "prerequisites": [
+        "nb.i-pa"
+      ]
+    },
+    {
+      "id": "nb.past-simple",
+      "kind": "grammar",
+      "label": "simple past: one form for every person (regnet, ble)",
+      "prerequisites": [
+        "nb.present-tense"
+      ]
+    },
+    {
+      "id": "nb.vil-infinitive",
+      "kind": "construction",
+      "label": "vil gjerne + basic verb (Jeg vil gjerne bo her)",
+      "prerequisites": [
+        "nb.vil-ha"
+      ]
+    },
+    {
+      "id": "nb.perfect",
+      "kind": "grammar",
+      "label": "perfect: har + -t form (har glemt)",
+      "prerequisites": [
+        "nb.har-object"
+      ]
+    },
+    {
+      "id": "nb.particle-verb",
+      "kind": "grammar",
+      "label": "verb + particle as one unit (rydde av)",
+      "prerequisites": [
+        "nb.gaa-place"
+      ]
+    }
+  ]
+}

@@ -25,7 +25,7 @@
  * The UI never imports the engines' extras directly: the importer, backup and speech-provider controls reach it as
  * small interfaces in `AppServices` (ingest / backup / speech), bound to the real modules here.
  */
-import { COURSES, FEATURES, LANGUAGE_ROWS, StoreEventBus, hash, ids } from '../core';
+import { COURSES, FEATURES, LANGUAGE_ROWS, StoreEventBus, courseLangs, hash, ids } from '../core';
 import type { AppStore, Course, EventBus, Features, GoListen, LanguageCode, Library, LexiconSource, ProviderAvailability, TtsProvider, User } from '../core';
 import { createCourseCatalog } from '../course';
 import { createDexieStore } from '../db/dexie';
@@ -355,7 +355,8 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
     return run;
   };
   const indexLibrary = async (course: Course): Promise<void> => {
-    try { if ((await catalog.streams(course.id)).length > 0) await library.indexStore(course.lang); } catch { /* the catalogue pages say what is missing */ }
+    // the course's own language and the companion languages it reads (Course.readsLangs)
+    try { if ((await catalog.streams(course.id)).length > 0) for (const l of courseLangs(course)) await library.indexStore(l); } catch { /* the catalogue pages say what is missing */ }
   };
   /**
    * Everything a course needs before its Home is shown: its language's built-in texts, the learner models rebuilt if a
@@ -364,8 +365,9 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   const ensureCourse = async (courseId: string): Promise<void> => {
     const course = (await store.courses.get(courseId)) ?? COURSES.find((c) => c.id === courseId);
     if (!course) return;
-    const report = await ensureBundle(course.lang);
-    if ((report ?? []).some((d) => d.action === 'updated')) for (const u of await store.users.all()) await golearn.rebuild(u.id);
+    const report: ImportDocView[] = [];
+    for (const l of courseLangs(course)) report.push(...((await ensureBundle(l)) ?? []));
+    if (report.some((d) => d.action === 'updated')) for (const u of await store.users.all()) await golearn.rebuild(u.id);
     try { await catalog.install(course.id); } catch { /* the ladder pages say what is missing */ }
     await indexLibrary(course);
   };
@@ -379,7 +381,7 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   if (user && !recallChosenCourse()) rememberChosenCourse(user.courseId);
 
   // ── the built-in texts: the active course's language (or every language when asked) ──
-  const languages: LanguageCode[] = opts.bundleLanguages === 'all' ? adapters.all().map((a) => a.lang) : course ? [course.lang] : [];
+  const languages: LanguageCode[] = opts.bundleLanguages === 'all' ? adapters.all().map((a) => a.lang) : course ? courseLangs(course) : [];
   for (const lang of languages) {
     const report = await ensureBundle(lang);
     if (report) startup.bundledReport = [...(startup.bundledReport ?? []), ...report];

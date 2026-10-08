@@ -62,12 +62,12 @@ export async function fetchWorks(catalog: CourseCatalog, courseId: string, f: Wo
  * What stands behind a door: texts the library holds (only published ones outside preview mode, as everywhere) and works the catalogue
  * lists. A listed work is a recommendation, not a text: the two are counted apart so the page never calls a recommendation a text.
  */
-export async function countBehind(catalog: CourseCatalog, library: Library, courseId: string, lang: LanguageCode, door: Door, publishedOnly: boolean): Promise<{ texts: number; works: number }> {
+export async function countBehind(catalog: CourseCatalog, library: Library, courseId: string, lang: LanguageCode, door: Door, publishedOnly: boolean, alsoLangs?: readonly LanguageCode[]): Promise<{ texts: number; works: number }> {
   try {
     const works = (await fetchWorks(catalog, courseId, { stream: door.stream, domain: door.domain, stages: door.stages }, 0, 1)).total;
     let texts = 0;
     for (const key of door.stages?.length ? door.stages : [undefined]) {
-      texts += (await library.search({ lang, ...(door.stream ? { stream: door.stream } : {}), ...(door.domain ? { domain: door.domain } : {}), ...(key ? { stageId: ids.stage(courseId, key) } : {}), publishedOnly, limit: 1 })).total;
+      texts += (await library.search({ lang, ...(alsoLangs?.length ? { alsoLangs: [...alsoLangs] } : {}), ...(door.stream ? { stream: door.stream } : {}), ...(door.domain ? { domain: door.domain } : {}), ...(key ? { stageId: ids.stage(courseId, key) } : {}), publishedOnly, limit: 1 })).total;
     }
     return { texts, works };
   } catch { return { texts: 0, works: 0 }; }
@@ -96,10 +96,10 @@ export function useDoors(): { doors: Door[]; counts: Map<string, { texts: number
   useEffect(() => {
     let live = true;
     setCounts(new Map());
-    void Promise.all(doors.filter((d) => d.key !== 'your-books').map(async (d) => [d.key, await countBehind(catalog, library, course.id, lang, d, !preview)] as const))
+    void Promise.all(doors.filter((d) => d.key !== 'your-books').map(async (d) => [d.key, await countBehind(catalog, library, course.id, lang, d, !preview, course.readsLangs)] as const))
       .then((rows) => { if (live) setCounts(new Map(rows)); });
     return () => { live = false; };
-  }, [catalog, library, course.id, lang, doors, preview]);
+  }, [catalog, library, course.id, course.readsLangs, lang, doors, preview]);
   return { doors, counts };
 }
 

@@ -1,0 +1,45 @@
+=== nb-a1-1-11 | story | nature | Rain in Bergen | Regn i {city} | weather,rain,sun,cold,warm
+## Været
+Været i {city} er ofte vått. Men sola er også ute. || The weather in Bergen is often wet. But the sun is also out.
+I {city} regner det ofte. || In Bergen it often rains.
+Folk sier: «Det regner alltid i {city}!» || People say: "It always rains in Bergen!"
+Men det regner ikke alltid. Mange dager er sola ute. || But it does not always rain. Many days the sun is out.
+I dag regner det. Det er kaldt og vått. || Today it is raining. It is cold and wet.
+Været er ikke bra i dag. || The weather is not good today.
+
+## {sam} og regnet
+{sam} vil gå til skolen. Han tar paraplyen. || Sam wants to go to the school. He takes the umbrella.
+[ana] Det er ikke varmt i dag, {sam}. Ta jakka di! || It is not warm today, Sam. Take your jacket!
+[sam] Ja, jeg tar jakka. || Yes, I will take the jacket.
+[ana] Er det varmt i USA? || Is it warm in the USA?
+[sam] Ja, det er ofte varmt. Det regner ikke mye. || Yes, it is often warm. It does not rain much.
+[ana] Regn er vann. Vann er bra! || Rain is water. Water is good!
+{sam} går ut. Det regner mye. Paraplyen er bra. || Sam goes out. It rains a lot. The umbrella is good.
+[sam] Jeg er våt, men jeg er glad! || I am wet, but I am happy!
+
+## Hjemme
+Det regner. {ana} og {luis} er hjemme i dag. || It is raining. Anna and Lars are at home today.
+[luis] Jeg er trøtt. Vil du ha te, {ana}? || I am tired. Do you want tea, Anna?
+[ana] Ja, gjerne! Jeg vil ha te med melk. || Yes, please! I want tea with milk.
+[luis] Vi er hjemme, og vi drikker te. Det er bra. || We are at home, and we drink tea. That is good.
+[ana] Jeg liker regn i dag. || I like rain today.
+
+## Sola
+Dagen etter er sola ute! || The next day the sun is out!
+Det er ikke vått. Været er bra i dag. || It is not wet. The weather is good today.
+{nico} kommer til {sam}. Han har ikke jakka i dag. || Nils comes to Sam. He does not have a jacket today.
+[nico] Sola er ute, {sam}! || The sun is out, Sam!
+[sam] Ja! I dag vil jeg ikke ha paraply. || Yes! Today I do not want an umbrella.
+[nico] Vi går ut! || Let's go out!
+Folk er glade i dag. Mange går til markedet. || People are happy today. Many go to the market.
+{marta} er på markedet. Hun selger brød. || Marta is at the market. She sells bread.
+Været i {city} er ikke alltid bra, men folk er glade i byen. || The weather in Bergen is not always good, but people are fond of their town.
+
+## Husker du?
+{sam} har penger, og han vil kjøpe epler. Brød er billig, men jakka er dyr. Han betaler og er glad. || Sam has money, and he wants to buy apples. Bread is cheap, but the jacket is expensive. He pays and is happy.
+
+I regnet hjelper {ana} pasienter på klinikken. {marta} baker brød. Det er bra. || In the rain Anna helps patients at the clinic. Marta bakes bread. That is a good job.
+
+{sam} tar bussen til sentrum. Bussen stopper på busstoppet. || Sam takes the bus to the town centre. The bus stops at the bus stop.
+
+{sam} synger en sang i regnet. Han vet: Gud elsker alle. || Sam sings a song in the rain. He knows: God loves everyone.

@@ -1,0 +1,46 @@
+=== nb-a2-2-01 | nonfiction | community | News from the town | Nyheter fra byen | news,school,building,community
+speakers: ola=Ola
+note: A short invented local news item in the style of a newspaper, followed by people discussing it. No real institutions are named.
+## Avisen
+Ny skole i {city} || New school in Bergen
+Det blir en ny skole i byen. Skolen skal bygges i år, og den skal åpne neste høst. || There will be a new school in town. The school is to be built this year, and it will open next autumn.
+Den gamle skolen er for liten. Det er mange elever, og klassene er store. || The old school is too small. There are many pupils, and the classes are big.
+Den nye skolen blir stor og lys. Folk i byen er glade for nyheten. || The new school will be big and light. People in town are glad about the news.
+Læreren {luis} sier: «Det er bra at skolen blir ny. Vi trenger mer plass.» || The teacher Lars says: "It is good that the school is getting new. We need more space."
+
+## Hjemme
+[ana] Har du lest nyhetene i dag, {luis}? || Have you read the news today, Lars?
+[luis] Ja, jeg har lest om skolen. Den blir bygget neste år. || Yes, I have read about the school. It will be built next year.
+[sam] Hvem skal bygge den? || Who is going to build it?
+[luis] Det vet jeg ikke. Men skolen blir åpnet neste høst. || I do not know. But the school will be opened next autumn.
+[ana] Det er en god nyhet for byen. Elevene trenger en ny skole. || That is good news for the town. The pupils need a new school.
+[sam] Hvis den blir lys og stor, blir elevene glade. || If it becomes light and big, the pupils will be happy.
+[luis] Ja, og jeg blir glad, når klassen min har mer plass. || Yes, and I will be happy when my class has more space.
+
+## På markedet
+{marta} har også lest nyhetene. Hun snakker med {ola} om skolen. || Marta has also read the news. She talks with Ola about the school.
+[marta] Skolen min var liten og gammel. Jeg gikk lenge for å komme dit. || My school was small and old. I walked a long time to get there.
+[ola] Alle trenger en god skole. Jeg håper at den blir åpnet snart. || Everyone needs a good school. I hope it will be opened soon.
+[marta] Jeg håper det også. Da blir {nico} glad, og jeg blir glad. || I hope so too. Then Nils will be happy, and I will be happy.
+
+## Om kvelden
+Om kvelden snakker alle om skolen. {nico} spør om han kan gå på den nye skolen. || In the evening everyone talks about the school. Nils asks whether he can go to the new school.
+[luis] Du er elleve år nå, {nico}. Når skolen åpner, er du tolv år. || You are eleven now, Nils. When the school opens, you will be twelve.
+[nico] Da skal jeg lese mer, og jeg skal ikke glemme veska mi! || Then I will read more, and I will not forget my bag!
+[ana] Det håper vi, {nico}. Du har mistet veska mange ganger. || We hope so, Nils. You have lost your bag many times.
+[sam] Jeg vil også gå på skolen, hvis jeg kan lære mer norsk der. || I also want to go to school, if I can learn more Norwegian there.
+[luis] Du kan komme i klassen min, {sam}. Da får du mange spørsmål! || You can come to my class, Sam. Then you will get many questions!
+
+[ana] Det er en god nyhet, {luis}. Du jobber mye, og du er alltid glad i elevene dine. || That is good news, Lars. You work a lot, and you are always fond of your pupils.
+
+## Husker du?
+[luis] Jeg synes at den nye skolen er bra. Er dere enige? || I think the new school is good. Do you agree?
+[ana] Kanskje, men jeg liker den gamle mer enn den nye. || Maybe, but I like the old one more than the new one.
+
+Om sommeren er {sam} ute hver dag. Om høsten regner det, og om våren kommer sola. || In summer Sam is outside every day. In autumn it rains, and in spring the sun comes.
+
+{sam} har bestemt seg. Om en måned skal han bestemme seg for et år til. || Sam has decided. In a month he will decide on one more year.
+
+På fredagskveld satt vi i sofaen ved bordet. Hvilken film vil du se? Vi spilte først. || On Friday evening we sat on the sofa by the table. Which film do you want to watch? We played first.
+
+{nico} husker historien om samaritanen. En mann lå skadet på veien. Røverne tok jakka hans. Presten gikk forbi, men samaritanen hjalp ham. Han tok ham til et hotell, og han var hans nabo. || Nils remembers the story about the Samaritan. A man lay injured on the road. The robbers took his jacket. The priest walked past, but the Samaritan helped him. He took him to a hotel, and he was his neighbour.

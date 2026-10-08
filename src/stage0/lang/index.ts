@@ -4,11 +4,44 @@
  * Every sound explanation below is machine-drafted and awaits a teacher's or native speaker's review (TODO(review)).
  */
 import type { LanguageCode } from '../../core';
-import type { Stage0LanguageConfig } from './types';
+import type { Stage0LanguageConfig, Stage0SpellingFeature } from './types';
 
 export type { Stage0FadePolicy, Stage0LanguageConfig, Stage0SpellingFeature } from './types';
 
 const LATIN_BANDS = { earlyScenes: 4, earlyMaxNew: 6, laterMaxNew: 8, laterMinCoverage: 0.6, exitMinCoverage: 0.95 };
+
+/**
+ * Sound-spelling features of Norwegian (Bokmål and Nynorsk spell alike here). The sounds are described for the East Norwegian
+ * reference realisation, which is a reference and never a norm (docs/norway/SPEC.md section 6). Machine-draft, native review
+ * pending (TODO(review)). The feature ids carry the language so that Bokmål and Nynorsk progress stay apart.
+ */
+const norwegianSpelling = (lang: 'nb' | 'nn'): Stage0SpellingFeature[] => [
+  { id: `${lang}:kj`, label: 'kj, tj (and k before i, y, ø) — a soft hiss, like a whispered "hy" (kjære, tjue, kino)', pattern: /kj|tj|(?<!s)k(?=[iyø]|ei|øy)/ },
+  { id: `${lang}:sj`, label: 'sj, skj (and sk before i, y, ø) — like sh (sjø, skjære, ski)', pattern: /sj|skj|sk(?=[iyø]|ei|øy)/ },
+  { id: `${lang}:hj-hv`, label: 'hj, hv at the start — the h is silent (hjem, hva)', pattern: /^h[jv]/ },
+  { id: `${lang}:silent-d`, label: 'd after n, l or r at the end of a word — silent (land, kald, jord)', pattern: /[nlr]dt?$/ },
+  { id: `${lang}:ig`, label: '-ig, -lig at the end — said "-i", "-li" (riktig, vanlig)', pattern: /ig$/ },
+  { id: `${lang}:o`, label: 'o — often an "oo" sound (bok, sko, god), sometimes "aw" (stor)', pattern: /o/ },
+  { id: `${lang}:u`, label: 'u — a rounded sound with no English twin: say "ee" and round your lips (hus, ut)', pattern: /u/ },
+  { id: `${lang}:y`, label: 'y — say "ee", round your lips (by, nytt; like German ü)', pattern: /y/ },
+  { id: `${lang}:æ`, label: 'æ — like a in "cat" (være, ærlig)', pattern: /æ/ },
+  { id: `${lang}:ø`, label: 'ø — say "e", round your lips (søster, før; like German ö)', pattern: /ø/ },
+  { id: `${lang}:å`, label: 'å — like aw in "saw" (båt, gå)', pattern: /å/ },
+  { id: `${lang}:rs`, label: 'rs, and r before t, d, n, l — the r joins the next sound (norsk, barn): in East Norwegian a curled tongue', pattern: /r[sdntl]/ },
+  // length by letters: one consonant (or none) after the strong vowel = long, two or a doubled letter = short
+  { id: `${lang}:vowel-length`, label: 'a vowel before one consonant — long (bil, være); before two — short (middag, mann)', pattern: /[aeiouyæøå](?:[^aeiouyæøå]{2}|[^aeiouyæøå](?:[aeiouyæøå]|$)|$)/ },
+  // Bokmål only (added at the request of the Stage 0 package; machine-draft, native review pending)
+  ...(lang === 'nb' ? [
+    { id: 'nb:ei', label: 'ei, au, øy — diphthongs: ei as in "eye", au like "ow", øy like "uh-ee"', pattern: /ei|au|øy/ },
+    { id: 'nb:eg', label: '-eg at the end — jeg, meg, deg sound like "yai, mai, dai"', pattern: /eg$/ },
+    { id: 'nb:weak-e', label: 'unstressed endings -e, -er, -en, -et — a short, weak e', pattern: /[aeiouyæøå][^aeiouyæøå]+(?:e|er|en|et)$/ },
+    { id: 'nb:gj', label: 'gj, and g before i or y — like y in "yes"', pattern: /gj|g(?=[iy])/ },
+    { id: 'nb:det', label: 'det — the t is silent: "deh"', pattern: /^det$/ },
+    { id: 'nb:lowercase', label: 'days and languages are written lowercase: søndag, norsk', pattern: /dag$|^norsk$/ },
+  ] : []),
+];
+
+const NORWEGIAN_EXIT = { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1 } };
 
 export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
   es: {
@@ -102,6 +135,25 @@ export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
     bands: LATIN_BANDS,
     exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1 } },
     intro: 'Albanian is spelled as it sounds, with a few letters of its own: you will read real Albanian at once.',
+  },
+  // machine-draft, native review pending. Bokmål is the course target; the Nynorsk config is the same spelling features under its own ids.
+  nb: {
+    lang: 'nb',
+    name: 'Norwegian (Bokmål)',
+    voiceLangs: ['nb-NO', 'nb', 'no-NO', 'no'],
+    script: { kind: 'latin', features: 'spelling', spelling: norwegianSpelling('nb') },
+    bands: LATIN_BANDS,
+    exit: NORWEGIAN_EXIT,
+    intro: 'Norwegian spelling follows a handful of patterns; you meet them in real sentences, not in a list.',
+  },
+  nn: {
+    lang: 'nn',
+    name: 'Norwegian (Nynorsk)',
+    voiceLangs: ['nn-NO', 'nn'],
+    script: { kind: 'latin', features: 'spelling', spelling: norwegianSpelling('nn') },
+    bands: LATIN_BANDS,
+    exit: NORWEGIAN_EXIT,
+    intro: 'Nynorsk is spelled with the same patterns as Bokmål; you read it as the other written standard of Norwegian.',
   },
   hi: {
     lang: 'hi',

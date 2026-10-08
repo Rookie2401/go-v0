@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-2-09",
+  "lang": "nb",
+  "title": "A letter from the congregation",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-2-09",
+    "title": "A letter from the congregation (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". An invented invitation letter from a local congregation; no real church is named. The register is warm and formal-friendly (\"Kjære venner\", \"Hilsen\")."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "letter",
+    "invitation",
+    "church",
+    "welcome",
+    "community"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "faith"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "ana": "Anna",
+    "luis": "Lars"
+  },
+  "sections": [
+    {
+      "title": "Brevet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Kjære venner,",
+              "english": "Dear friends,"
+            },
+            {
+              "text": "Vi inviterer dere til gudstjeneste i kirka vår på søndag klokka elleve.",
+              "english": "We invite you to the service in our church on Sunday at eleven o'clock."
+            },
+            {
+              "text": "Alle er velkomne, gamle og små.",
+              "english": "Everyone is welcome, old and small."
+            },
+            {
+              "text": "Etter gudstjenesten drikker vi kaffe og spiser kake sammen. Der kan dere treffe folk i menigheten.",
+              "english": "After the service we drink coffee and eat cake together. There you can meet the people of the congregation."
+            },
+            {
+              "text": "Hvis dere har spørsmål, kan dere ringe til presten. Han heter Hansen.",
+              "english": "If you have questions, you can call the pastor. His name is Hansen."
+            },
+            {
+              "text": "Vi håper å se dere!",
+              "english": "We hope to see you!"
+            },
+            {
+              "text": "Hilsen menigheten",
+              "english": "Greetings from the congregation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjemme",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam har fått brevet. Han leser det for Anna og Lars.",
+              "english": "Sam has received the letter. He reads it to Anna and Lars."
+            },
+            {
+              "text": "Menigheten inviterer oss til gudstjeneste på søndag.",
+              "english": "The congregation invites us to the service on Sunday.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vi går i kirka hver søndag, men det er bra å få et brev.",
+              "english": "We go to church every Sunday, but it is good to get a letter.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Alle er velkomne, sier brevet. Det er en bra menighet.",
+              "english": "Everyone is welcome, says the letter. It is a good congregation.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg vil gjerne treffe flere folk. Jeg har mange venner, men jeg vil ha flere.",
+              "english": "I would like to meet more people. I have many friends, but I want more.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du kan invitere Marta og Nils. De er også velkomne.",
+              "english": "You can invite Marta and Nils. They are welcome too.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, det gjør jeg. Jeg ringer til Marta i kveld.",
+              "english": "Yes, I will. I will call Marta this evening.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gudstjenesten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På søndag kom mange folk til kirka. Alle var velkomne, og alle var glade.",
+              "english": "On Sunday many people came to the church. Everyone was welcome, and everyone was happy."
+            },
+            {
+              "text": "Presten ba, og menigheten sang. Sam sang med, og han var glad.",
+              "english": "The pastor prayed, and the congregation sang. Sam sang along, and he was happy."
+            },
+            {
+              "text": "Etter gudstjenesten drakk de kaffe og spiste kake. Sam traff mange nye folk.",
+              "english": "After the service they drank coffee and ate cake. Sam met many new people."
+            },
+            {
+              "text": "En gammel dame sa til ham: «Velkommen, Sam! Vi har hørt om deg.»",
+              "english": "An old lady said to him: \"Welcome, Sam! We have heard about you.\""
+            },
+            {
+              "text": "Sam ble glad. Han tenkte: «Jeg er ikke alene i Norge. Jeg har en menighet.»",
+              "english": "Sam became glad. He thought: \"I am not alone in Norway. I have a congregation.\""
+            },
+            {
+              "text": "Han skrev et brev til menigheten og takket for invitasjonen.",
+              "english": "He wrote a letter to the congregation and thanked them for the invitation."
+            },
+            {
+              "text": "Marta og Nils var også i kirka. De satt hos Sam, og de sang sammen.",
+              "english": "Marta and Nils were also in the church. They sat with Sam, and they sang together."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "I menigheten kjenner folk hverandre. De har tvil og spørsmål, men de er trygge. Svaret er ikke alltid lett.",
+              "english": "In the congregation people know each other. They have doubt and ask questions, but they feel safe. The answer is not always easy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam leser begge. Først leser han bokmål, og så leser han nynorsk. Han vil heller forstå dialekter, slik som Marta snakker.",
+              "english": "Sam reads both. First he reads Bokmål, and then he reads Nynorsk. He would rather understand dialects, the way Marta speaks."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

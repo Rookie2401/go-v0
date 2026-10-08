@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-2-07",
+  "lang": "nb",
+  "title": "A walk up the mountain",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-2-07",
+    "title": "A walk up the mountain (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". \"Fløyen\" is a real mountain at Bergen; the story gives no facts about it beyond its name. \"tre / trær\" is a neuter noun with an irregular plural."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "nature",
+    "walk",
+    "mountain",
+    "birds",
+    "trees"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "nature"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nico": "Nils",
+    "ana": "Anna",
+    "luis": "Lars",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Til fjellet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Lørdag var det sol i Bergen. Anna og Lars jobbet ikke.",
+              "english": "On Saturday there was sun in Bergen. Anna and Lars did not work."
+            },
+            {
+              "text": "De ville gå en tur. Sam og Nils ville gå også.",
+              "english": "They wanted to go for a walk. Sam and Nils wanted to go too."
+            },
+            {
+              "text": "Fjellet heter Fløyen.",
+              "english": "The mountain is called Fløyen."
+            },
+            {
+              "text": "De tok bussen til sentrum. Så gikk de.",
+              "english": "They took the bus to the town centre. Then they walked."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "På veien",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Veien var lang. Mange folk gikk her.",
+              "english": "The road was long. Many people walked here."
+            },
+            {
+              "text": "Jeg er sulten!",
+              "english": "I am hungry!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Her er brød og ost. Her er melk.",
+              "english": "Here is bread and cheese. Here is milk.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Nils spiste brød med ost. Han var glad.",
+              "english": "Nils ate bread with cheese. He was happy."
+            },
+            {
+              "text": "Veien er lang! Er fjellet høyt?",
+              "english": "The road is long! Is the mountain high?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, det er høyt. Gå, Nils! Du kan gå!",
+              "english": "Yes, it is high. Keep going, Nils! You can do it!",
+              "speaker": "luis"
+            },
+            {
+              "text": "Nils gikk. Han var trøtt, men han gråt ikke.",
+              "english": "Nils walked. He was tired, but he did not cry."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "På fjellet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nå var de på fjellet.",
+              "english": "Now they were on the mountain."
+            },
+            {
+              "text": "Se byen! Jeg ser kirka og skolen!",
+              "english": "Look at the town! I see the church and the school!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Klinikken er stor! Huset mitt er lite!",
+              "english": "The clinic is big! My house is small!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Skolen min er liten!",
+              "english": "My school is small!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Det var en bra dag.",
+              "english": "It was a good day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjem",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "De gikk hjem. Veien var ikke lang.",
+              "english": "They went home. The road was not long."
+            },
+            {
+              "text": "I byen drakk de kaffe og te. Nils drakk melk.",
+              "english": "In town they drank coffee and tea. Nils drank milk."
+            },
+            {
+              "text": "Jeg vil gå hver lørdag!",
+              "english": "I want to go every Saturday!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, turen var bra. Du er ikke trøtt nå?",
+              "english": "Yes, the walk was good. You are not tired now?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja, jeg er trøtt, men jeg er glad.",
+              "english": "Yes, I am tired, but I am happy.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Sam tenkte: «Det er høyt, men turen var bra.»",
+              "english": "Sam thought: \"It is high, but the walk was good.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På turen er telefonen til Sam borte. Han leter lenge. Den ligger i vesken, under jakka.",
+              "english": "On the walk Sam's phone is gone. He looks for a long time. It is in the bag, under the jacket."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Etter turen er Nils syk. Han har feber og vondt i hodet, og han må hvile.",
+              "english": "After the walk Nils is ill. He has a fever and a headache, and he has to rest."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nils husket vesken på turen, og han gråt ikke. Lars tenkte at det var bra.",
+              "english": "Nils remembered the bag on the walk, and he did not cry. Lars thought that was good."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

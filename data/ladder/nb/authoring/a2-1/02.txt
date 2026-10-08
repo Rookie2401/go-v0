@@ -1,0 +1,33 @@
+=== nb-a2-1-02 | nonfiction | correspondence | A letter home | Et brev hjem | letter,family,missing someone,hope
+note: A personal letter: "Kjære mamma" opens it and "Mange hilsener fra …" closes it. Sam writes "mamma" to his mother; the earlier units say "mora mi".
+## Brevet
+I dag skriver {sam} et brev til mamma. Han savner henne. || Today Sam writes a letter to Mum. He misses her.
+{city}, søndag || Bergen, Sunday
+Kjære mamma, || Dear Mum,
+Nå har jeg bodd i Norge i mange uker. Jeg skriver et brev til deg, fordi jeg savner deg. || Now I have lived in Norway for many weeks. I am writing a letter to you, because I miss you.
+Jeg har det bra. Jeg bor hos {ana} og {luis}. De er snille. Huset er lite, men rommet mitt er bra. || I am fine. I live with Anna and Lars. They are kind. The house is small, but my room is good.
+Jeg snakker norsk hver dag. Jeg går til skolen på mandag og onsdag. Jeg leser og skriver mye. || I speak Norwegian every day. I go to school on Monday and Wednesday. I read and write a lot.
+Jeg har mange venner nå. {marta} baker brød og selger det på markedet. {nico} er elleve år, og han gråter ikke mer. || I have many friends now. Marta bakes bread and sells it at the market. Nils is eleven years old, and he does not cry any more.
+Jeg går i kirka hver søndag. Jeg ber for deg og for far. || I go to church every Sunday. I pray for you and for Dad.
+Jeg savner deg og far. Jeg savner broren min også. || I miss you and Dad. I miss my brother too.
+Jeg håper at du har det bra. Jeg håper at du kommer til {city}. || I hope that you are well. I hope that you will come to Bergen.
+Jeg ringer snart. Vi snakker på telefonen på søndag. || I will call soon. We will talk on the phone on Sunday.
+Hils far og broren min. || Say hello to Dad and to my brother.
+Mange hilsener fra {sam} || Many greetings from Sam
+
+## Etter brevet
+[ana] Hva gjør du, {sam}? Er det et brev? || What are you doing, Sam? Is that a letter?
+[sam] Ja, jeg skriver et brev til mora mi. || Yes, I am writing a letter to my mother.
+[ana] Det er bra. Skal du sende det snart? || That is good. Are you going to send it soon?
+[sam] Ja, jeg skal sende det i morgen. Jeg håper at hun svarer snart. || Yes, I will send it tomorrow. I hope that she answers soon.
+[ana] Hils mora di fra meg. || Say hello to your mother from me.
+[sam] Ja, jeg skal hilse fra deg og fra {luis}. || Yes, I will say hello from you and from Lars.
+[ana] Du savner henne. || You miss her.
+[sam] Ja, men jeg er glad i Norge, og jeg er glad for dere. || Yes, but I am fond of Norway, and I am glad for you.
+
+## Husker du?
+Jeg er i Norge, et land i nord. {city} ligger i vest, og jeg liker landet. || I am in Norway, a country in the north. Bergen is in the west, and I like the country.
+
+{marta} bakte kake til bursdagen. Gjestene spiste kake, og alle gratulerte {nico}. || Marta baked a cake for the birthday. The guests ate cake, and everyone congratulated Nils.
+
+Jeg reiste med fly til Norge. Jeg pakket ei veske, og derfor hadde jeg ikke mye. Det var nytt, men jeg fikk nye venner. || I travelled by plane to Norway. I packed a bag, and that is why I did not have much. It was new, but I got new friends.

@@ -5,6 +5,7 @@ import { LANGS } from './support';
 
 const SAMPLE: Record<string, string> = {
   es: 'Yo creo en Dios.', sq: 'Unë besoj te Zoti.', th: 'ฉันเชื่อในพระเจ้า', hi: 'मैं परमेश्वर पर विश्वास करता हूँ।', de: 'Ich glaube an Gott.',
+  nb: 'Jeg tror på Gud.', nn: 'Eg trur på Gud.',
 };
 
 describe('FixtureTtsProvider', () => {

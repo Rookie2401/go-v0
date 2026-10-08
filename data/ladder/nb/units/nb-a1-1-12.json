@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-1-12",
+  "lang": "nb",
+  "title": "Sam tells about his week",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-1-12",
+    "title": "Sam tells about his week (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". The days of the week are written in lower case, as Norwegian does. The narration is in the present tense, as in the earlier units; the past tense comes in a1-2."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "week",
+    "retelling",
+    "days",
+    "daily life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam",
+    "marta": "Marta"
+  },
+  "sections": [
+    {
+      "title": "Uka mi",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mandag, tirsdag, onsdag, torsdag, fredag, lørdag, søndag: det er sju dager i uka.",
+              "english": "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday: that is seven days in the week."
+            },
+            {
+              "text": "Jeg heter Sam. Jeg bor i Bergen. Jeg vil snakke om uka mi.",
+              "english": "My name is Sam. I live in Bergen. I want to talk about my week."
+            },
+            {
+              "text": "På mandag er jeg på skolen. Jeg leser og skriver.",
+              "english": "On Monday I am at school. I read and write."
+            },
+            {
+              "text": "På tirsdag er jeg på markedet. Jeg kjøper brød og epler.",
+              "english": "On Tuesday I am at the market. I buy bread and apples."
+            },
+            {
+              "text": "På onsdag er jeg hjemme. Jeg leser i bibelen.",
+              "english": "On Wednesday I am at home. I read in the Bible."
+            },
+            {
+              "text": "På torsdag er jeg hos Marta. Hun lager fisk og poteter.",
+              "english": "On Thursday I am at Marta's. She makes fish and potatoes."
+            },
+            {
+              "text": "På fredag tar jeg bussen til sentrum.",
+              "english": "On Friday I take the bus to the town centre."
+            },
+            {
+              "text": "På lørdag er jeg hos Anna og Lars. Jeg hjelper Anna og Lars.",
+              "english": "On Saturday I am at Anna's and Lars's. I help Anna and Lars."
+            },
+            {
+              "text": "På søndag går jeg til kirka. Jeg synger og ber.",
+              "english": "On Sunday I go to church. I sing and pray."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Anna og Sam",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Er du på skolen på mandag, Sam?",
+              "english": "Are you at school on Monday, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg er på skolen på mandag.",
+              "english": "Yes, I am at school on Monday.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Og på tirsdag?",
+              "english": "And on Tuesday?",
+              "speaker": "ana"
+            },
+            {
+              "text": "På tirsdag er jeg på markedet.",
+              "english": "On Tuesday I am at the market.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Er du hjemme på onsdag?",
+              "english": "Are you at home on Wednesday?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, på onsdag er jeg hjemme.",
+              "english": "Yes, on Wednesday I am at home.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Er du hos Marta på torsdag?",
+              "english": "Are you at Marta's on Thursday?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, på torsdag er jeg hos Marta.",
+              "english": "Yes, on Thursday I am at Marta's.",
+              "speaker": "sam"
+            },
+            {
+              "text": "På fredag tar jeg bussen, og på lørdag er jeg hos deg.",
+              "english": "On Friday I take the bus, and on Saturday I am at your place.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du har en bra uke!",
+              "english": "You have a good week!",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Uka til Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta baker brød hver dag. På fredag og lørdag er hun på markedet.",
+              "english": "Marta bakes bread every day. On Friday and Saturday she is at the market."
+            },
+            {
+              "text": "På søndag er hun ikke på markedet. Hun går til kirka.",
+              "english": "On Sunday she is not at the market. She goes to church."
+            },
+            {
+              "text": "Nils går på skolen hver dag, men ikke på søndag.",
+              "english": "Nils goes to school every day, but not on Sunday."
+            },
+            {
+              "text": "Hver uke er bra.",
+              "english": "Every week is good."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Fred",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Har du fred, Sam?",
+              "english": "Do you have peace, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg har fred. Nå har jeg fred i hjertet.",
+              "english": "Yes, I have peace. Now I have peace in my heart.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg liker uka mi. Jeg liker folk i Bergen. Jeg er glad.",
+              "english": "I like my week. I like the people in Bergen. I am happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På mandag begynner skolen. Nils er elev. Han har lekse, og han skriver litt. Om kvelden er leksa slutt.",
+              "english": "On Monday school begins. Nils is a pupil. He has homework, and he writes a little. In the evening the homework is finished."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Presten ber, og alle ber. Jeg synger og ber. Gud elsker meg, og han er i hjertet mitt.",
+              "english": "The pastor prays, and everyone prays. I sing and pray. God loves me, and he is in my heart."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Været er bra i dag. Sola er ute, og det er varmt. Paraplyen er hjemme.",
+              "english": "The weather is good today. The sun is out, and it is warm. The umbrella is at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Unnskyld, hvor er busstoppet?",
+              "english": "Excuse me, where is the bus stop?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Gå rett fram og til høyre. Bussen stopper på busstoppet.",
+              "english": "Go straight ahead and to the right. The bus stops at the bus stop.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

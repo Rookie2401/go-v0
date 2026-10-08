@@ -1,0 +1,41 @@
+=== nb-a2-2-06 | nonfiction | work | How to bake bread | Slik baker man brød | process,bread,baking,instructions
+note: A simple description of a process in the present tense ("først, så, til slutt"). Marta explains; the quantities are left out on purpose.
+## {marta} baker
+{sam} er hos {marta} klokka fem om morgenen. Han vil se hvordan hun baker brød. || Sam is at Marta's at five o'clock in the morning. He wants to see how she bakes bread.
+[sam] Hva trenger du til brød, {marta}? || What do you need for bread, Marta?
+[marta] Jeg trenger mel, vann, salt og gjær. Det er alt. || I need flour, water, salt and yeast. That is all.
+[sam] Det er ikke mye! || That is not much!
+[marta] Nei, men det må gjøres riktig. Se på meg. || No, but it must be done right. Watch me.
+
+## Slik gjør man det
+Først tar {marta} mel. Hun tar vann og salt og gjær også. Så lager hun deig. || First Marta takes flour. She takes water and salt and yeast too. Then she makes dough.
+Deigen må hvile. Den hviler lenge, og den blir stor. || The dough must rest. It rests for a long time, and it gets big.
+[sam] Hvor lenge må deigen hvile? || How long must the dough rest?
+[marta] Lenge. Hvis du ikke venter, blir brødet dårlig. || A long time. If you do not wait, the bread will be bad.
+Etterpå lager hun små brød av deigen. Hun setter dem i ovnen. || Afterwards she makes small loaves from the dough. She puts them in the oven.
+Ovnen er varm. Etter litt lukter det godt, og brødet blir ferdig. || The oven is hot. After a little while it smells good, and the bread is done.
+
+## Til slutt
+[marta] Nå er brødet ferdig. Smak! || Now the bread is done. Taste!
+[sam] Det er veldig godt! Jeg liker brød som er varmt. || It is very good! I like bread that is warm.
+[marta] Du kan lage det selv, {sam}. Du trenger mel, vann, salt og gjær. || You can make it yourself, Sam. You need flour, water, salt and yeast.
+[sam] Og deig, ovn og tid. Jeg skal prøve hjemme! || And dough, oven and time. I will try at home!
+Neste dag baker {sam} brød hjemme hos {ana}. Det blir ikke så bra, men alle spiser det. || The next day Sam bakes bread at Anna's. It does not turn out so well, but everyone eats it.
+[luis] Det er godt, {sam}! Du må lære av {marta}. || It is good, Sam! You must learn from Marta.
+[sam] Jeg skal komme hver lørdag og lære. Er det bra for deg? || I will come every Saturday and learn. Is that good for you?
+[marta] Ja, det er veldig bra. Jeg er gammel, og jeg liker å ha deg her. || Yes, that is very good. I am old, and I like having you here.
+Hver lørdag står {sam} opp tidlig. Han går til {marta}, og de baker brød. || Every Saturday Sam gets up early. He goes to Marta, and they bake bread.
+Folk på markedet liker brødet. De spør: «Hvem baker så godt brød?» {marta} sier: «Det er {sam} og jeg!» || People at the market like the bread. They ask: "Who bakes such good bread?" Marta says: "It is Sam and I!"
+
+## Husker du?
+Nyheten sier at de bygger en ny skole. Ola sier at det blir mer plass der. {sam} vil gå dit og lære. || The news says that they are building a new school. Ola says that there will be more room there. Sam wants to go there and learn.
+
+Jenta svarte på gåten. Hun var klok. Ingen hadde svart før, og hun var ikke redd for trollet. || The girl answered the riddle. She was clever. Nobody had answered before, and she was not afraid of the troll.
+
+På skolen lærer vi begge: bokmål og nynorsk. Dialektene er forskjellige, men vi forstår hverandre. || At school we learn both: Bokmål and Nynorsk. The dialects are different, but we understand each other.
+
+Toget går langt, gjennom en tunnel. En dame går ut igjen. || The train goes far, through a tunnel. A woman gets off again.
+
+Er du sikker på at brødet er ferdig? || Are you sure that the bread is ready?
+
+Ingrid stoppet på brua. «Stopp!» sa trollet. || Ingrid stopped on the bridge. "Stop!" said the troll.

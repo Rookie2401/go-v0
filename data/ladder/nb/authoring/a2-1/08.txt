@@ -1,0 +1,37 @@
+=== nb-a2-1-08 | dialogue | conversation | What do you think? | Hva mener du? | opinions,agreeing,disagreeing,weather,food
+speakers: elev=Eleven
+note: "synes" (think, have an opinion) and "mene" (mean, think) are close; "kanskje" means maybe. A friendly disagreement about the weather and the food.
+## Om været
+[ana] Hva synes du om været i {city}, {sam}? || What do you think about the weather in Bergen, Sam?
+[sam] Jeg synes at det er bra. Jeg liker regn. || I think it is good. I like rain.
+[luis] Liker du regn? Det synes ikke jeg. || Do you like rain? I do not think so.
+[ana] Jeg mener at sola er bra. Jeg liker sola mer enn regn. || I think the sun is good. I like the sun more than rain.
+[sam] Er du enig, {luis}? || Do you agree, Lars?
+[luis] Ja, jeg er enig med {ana}. Men regnet er ikke dårlig. || Yes, I agree with Anna. But the rain is not bad.
+[sam] Jeg er ikke enig. Regn er vann, og vann er bra! || I do not agree. Rain is water, and water is good!
+[ana] Kanskje du har rett. Vi har mye vann i {city}. || Maybe you are right. We have a lot of water in Bergen.
+
+## Om maten
+[marta] Hva mener du om maten min, {sam}? || What do you think about my food, Sam?
+[sam] Maten din er veldig bra! Den er ikke dårlig. || Your food is very good! It is not bad.
+[nico] Jeg mener at fisk er dårlig. Jeg liker brød. || I think fish is bad. I like bread.
+[marta] Nei, {nico}! Fisk er bra mat. Er du enig, {sam}? || No, Nils! Fish is good food. Do you agree, Sam?
+[sam] Ja, jeg er enig med deg, {marta}. Jeg liker fisk og poteter. || Yes, I agree with you, Marta. I like fish and potatoes.
+[nico] Kanskje jeg liker fisk i morgen. || Maybe I will like fish tomorrow.
+[marta] Kanskje, ja! Du liker kake hver dag. || Maybe, yes! You like cake every day.
+
+## Om søndagen
+[ana] Hva synes du om søndagen i {city}, {sam}? || What do you think about Sundays in Bergen, Sam?
+[sam] Jeg synes at søndagen er den beste dagen. Vi går til kirka, og vi spiser middag hos {marta}. || I think Sunday is the best day. We go to church, and we have dinner at Marta's.
+[luis] Jeg er enig. Søndagen er en bra dag. Men jeg er ofte trøtt. || I agree. Sunday is a good day. But I am often tired.
+[ana] Det er ikke dårlig å være trøtt på søndag! || It is not bad to be tired on Sunday!
+[sam] Vi er ikke alltid enige, men vi er alltid venner. || We do not always agree, but we are always friends.
+
+## Husker du?
+Hvis jeg ikke forstår, spør jeg. Når jeg spør, forstår jeg. Det er ikke vanskelig. || If I do not understand, I ask. When I ask, I understand. It is not difficult.
+
+Noen ganger kjørte {marta} hesten til markedet. Den var gammel, men hun var glad i den. || Sometimes Marta drove the horse to the market. It was old, but she was fond of it.
+
+Bussen var forsinket, og {luis} kjørte bilen. Det var nesten sent. || The bus was late, and Lars drove the car. It was almost late.
+
+{ana} har bunad, og hun feirer sytten mai. || Anna has a bunad, and she celebrates the seventeenth of May.

@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-1-03",
+  "lang": "nb",
+  "title": "The teacher's day",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-1-03",
+    "title": "The teacher's day (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Subordinate clauses with \"når\" and \"hvis\" (the verb comes after the subject and the sentence adverb: \"hvis du ikke forstår\")."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "school",
+    "teacher",
+    "questions",
+    "exam"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "luis": "Lars",
+    "nico": "Nils",
+    "elev": "Eleven",
+    "ana": "Anna",
+    "marta": "Marta"
+  },
+  "sections": [
+    {
+      "title": "I klassen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Lars er lærer. Han har en klasse med tjue elever. Nils er i klassen.",
+              "english": "Lars is a teacher. He has a class of twenty pupils. Nils is in the class."
+            },
+            {
+              "text": "Hver morgen er Lars i klassen. Når skolen begynner, sier elevene: «God morgen!»",
+              "english": "Every morning Lars is in the classroom. When school begins, the pupils say: \"Good morning!\""
+            },
+            {
+              "text": "I dag leser klassen om Norge. Lars har mange spørsmål.",
+              "english": "Today the class reads about Norway. Lars has many questions."
+            },
+            {
+              "text": "Hvor ligger Bergen?",
+              "english": "Where is Bergen?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Bergen ligger i vest!",
+              "english": "Bergen is in the west!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Bra! Hva er en fjord?",
+              "english": "Good! What is a fjord?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg forstår ikke spørsmålet. Det er vanskelig.",
+              "english": "I do not understand the question. It is difficult.",
+              "speaker": "elev"
+            },
+            {
+              "text": "Hvis du ikke forstår, kan du spørre. Det er ikke vanskelig å spørre.",
+              "english": "If you do not understand, you can ask. It is not difficult to ask.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Er en fjord havet i fjellet?",
+              "english": "Is a fjord the sea in the mountains?",
+              "speaker": "elev"
+            },
+            {
+              "text": "Ja, du forstår! Når du leser om Norge, vet du mer.",
+              "english": "Yes, you understand! When you read about Norway, you know more.",
+              "speaker": "luis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Prøven",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "I morgen er det en prøve. Elevene liker ikke prøver.",
+              "english": "Tomorrow there is a test. The pupils do not like tests."
+            },
+            {
+              "text": "Er prøven vanskelig, Lars?",
+              "english": "Is the test difficult, Lars?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Nei, den er lett. Hvis du leser, er den lett.",
+              "english": "No, it is easy. If you read, it is easy.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg leser hjemme hos Marta. Hun hjelper meg.",
+              "english": "I read at home at Marta's. She helps me.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Det er bra. Spør Marta, hvis du vil.",
+              "english": "That is good. Ask Marta, if you want.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Klokka to er skolen slutt. Elevene går hjem.",
+              "english": "At two o'clock school is over. The pupils go home."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjemme",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Når Lars kommer hjem, er han trøtt. Han drikker kaffe.",
+              "english": "When Lars comes home, he is tired. He drinks coffee."
+            },
+            {
+              "text": "Hvordan var dagen?",
+              "english": "How was the day?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Den var bra. Elevene vet mer hver uke.",
+              "english": "It was good. The pupils know more every week.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Er elevene snille?",
+              "english": "Are the pupils kind?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg liker elevene, og jeg liker spørsmålene.",
+              "english": "Yes, I like the pupils, and I like the questions.",
+              "speaker": "luis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hos Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nils er hos Marta etter skolen. Han leser, og hun lager middag.",
+              "english": "Nils is at Marta's after school. He reads, and she makes dinner."
+            },
+            {
+              "text": "Hva leser du, Nils?",
+              "english": "What are you reading, Nils?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg leser om fjorder. Jeg liker fjorder, men jeg liker ikke prøver.",
+              "english": "I am reading about fjords. I like fjords, but I do not like tests.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Du er glad i bøker, Nils. Det er bra.",
+              "english": "You are fond of books, Nils. That is good.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, og jeg er glad i kake og brød også!",
+              "english": "Yes, and I am fond of cake and bread too!",
+              "speaker": "nico"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Lars svarer på en melding fra Sam. Han har ikke tid i dag. Han vil ringe i morgen, og så har de en plan.",
+              "english": "Lars answers a message from Sam. He does not have time today. He will call tomorrow, and then they have a plan."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kjære mamma, jeg skriver et brev i dag. Jeg savner deg, og jeg håper du svarer snart. Hilsen Sam",
+              "english": "Dear Mum, I am writing a letter today. I miss you, and I hope you answer soon. Greetings, Sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Flyet kom til Bergen, og Sam gikk ut.",
+              "english": "The plane arrived in Bergen, and Sam went out."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

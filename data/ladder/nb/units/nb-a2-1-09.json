@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-1-09",
+  "lang": "nb",
+  "title": "The good Samaritan",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-1-09",
+    "title": "The good Samaritan (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". A simple retelling, in the course's own words, of the parable Jesus told in Luke 10 (not a quotation of any translation). The wording of the Bible itself is a separate matter (see the seed document bible-1john-1)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "parable",
+    "helping",
+    "neighbour",
+    "Jesus"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "faith"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nico": "Nils",
+    "marta": "Marta",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Marta leser",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta leser i bibelen. Nils sitter hos henne.",
+              "english": "Marta reads in the Bible. Nils sits with her."
+            },
+            {
+              "text": "Hva leser du, bestemor?",
+              "english": "What are you reading, grandmother?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Jeg leser om en samaritan. Jesus snakket om ham.",
+              "english": "I am reading about a Samaritan. Jesus spoke about him.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Historien",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En mann gikk en lang vei. Røverne tok pengene og jakka hans.",
+              "english": "A man walked a long way. The robbers took his money and his jacket."
+            },
+            {
+              "text": "Mannen lå på veien. Han var skadet.",
+              "english": "The man lay on the road. He was injured."
+            },
+            {
+              "text": "En prest kom, men han gikk forbi.",
+              "english": "A priest came, but he walked past."
+            },
+            {
+              "text": "Så kom en samaritan. Samaritanen stoppet og hjalp ham.",
+              "english": "Then a Samaritan came. The Samaritan stopped and helped him."
+            },
+            {
+              "text": "Han tok ham til et hotell. Han betalte for hotellet.",
+              "english": "He took him to a hotel. He paid for the hotel."
+            },
+            {
+              "text": "Han sa: «Hjelp ham. Jeg betaler mer hvis du trenger det.»",
+              "english": "He said: \"Help him. I will pay more if you need it.\""
+            },
+            {
+              "text": "Han var skadet, men samaritanen var snill.",
+              "english": "He was injured, but the Samaritan was kind."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hvem er nabo?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hvem var nabo til ham, bestemor?",
+              "english": "Who was his neighbour, grandmother?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Samaritanen var nabo til ham. Han hjalp ham.",
+              "english": "The Samaritan was his neighbour. He helped him.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Presten gikk forbi, men samaritanen stoppet. Jesus sa: «Gå, og hjelp alle.»",
+              "english": "The priest walked past, but the Samaritan stopped. Jesus said: \"Go, and help everyone.\"",
+              "speaker": "marta"
+            },
+            {
+              "text": "Hvem er nabo til oss?",
+              "english": "Who is our neighbour?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Alle folk. Du kan hjelpe dem hver dag.",
+              "english": "All people. You can help them every day.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg vil hjelpe Sam! Han er ny i byen.",
+              "english": "I want to help Sam! He is new in town.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Takk, Nils! Jeg er glad for at du ikke er en røver. Hotellet er ikke dyrt hos Marta!",
+              "english": "Thanks, Nils! I am glad that you are not a robber. The hotel at Marta's is not expensive!",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Etter historien",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta leser mer i bibelen. Nils sitter og lytter.",
+              "english": "Marta reads more in the Bible. Nils sits and listens."
+            },
+            {
+              "text": "Jeg liker historien. Den er ikke lang, men den er bra.",
+              "english": "I like the story. It is not long, but it is good.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, Jesus snakket om mye. Han elsker alle folk.",
+              "english": "Yes, Jesus spoke about much. He loves all people.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Når jeg er stor, vil jeg hjelpe folk, som samaritanen.",
+              "english": "When I am big, I want to help people, like the Samaritan.",
+              "speaker": "nico"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nils vil dra til hytta og gå på ski. Han vil sitte i stua med melk. Peisen er varm.",
+              "english": "Nils wants to go to the cabin and ski. He wants to sit in the living room with milk. The fireplace is warm."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nils husker sytten mai. Han hadde flagg, og han spiste is og pølse. Toget var langt, og alle feiret.",
+              "english": "Nils remembers the seventeenth of May. He had a flag, and he ate ice cream and sausage. The parade was long, and everyone celebrated."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jeg synes at det var dårlig å gå forbi. Er du enig, bestemor?",
+              "english": "I think it was bad to walk past. Do you agree, grandmother?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, jeg er enig. Kanskje er det lett å gå forbi, men det er dårlig.",
+              "english": "Yes, I agree. Maybe it is easy to walk past, but it is bad.",
+              "speaker": "marta"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Det er nesten sent, men regnet fortsetter.",
+              "english": "It is almost late, but the rain continues."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

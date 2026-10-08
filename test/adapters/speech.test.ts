@@ -9,6 +9,8 @@ const WITH_MARKERS: Record<string, string> = {
   th: 'เพราะว่า [16] พระเจ้า ¹⁶ ทรงรักโลก',
   hi: 'क्योंकि [16] परमेश्वर ¹⁶ ने प्रेम रखा।',
   de: 'Also [16] hat Gott ¹⁶ die Welt geliebt.',
+  nb: 'For [16] så høyt elsket Gud ¹⁶ verden.',
+  nn: 'For [16] så høgt elska Gud ¹⁶ verda.',
 };
 
 describe('speechNormalize (all languages)', () => {
@@ -43,7 +45,7 @@ describe('speechNormalize (all languages)', () => {
     });
 
     it(`${lang}: never transliterates: script of the words is unchanged`, () => {
-      const script = { es: /^[\p{Script=Latin}\s.,:;!?¿¡'«»"“”()…-]+$/u, sq: /^[\p{Script=Latin}\s.,:;!?'«»—-]+$/u, de: /^[\p{Script=Latin}\s.,:;!?'„“‚‘»«()…–—-]+$/u, th: /^[\p{Script=Thai}\s]+$/u, hi: /^[\p{Script=Devanagari}\s।,.?!:;'"“”‘’()…–—-]+$/u }[lang];
+      const script = { es: /^[\p{Script=Latin}\s.,:;!?¿¡'«»"“”()…-]+$/u, sq: /^[\p{Script=Latin}\s.,:;!?'«»—-]+$/u, de: /^[\p{Script=Latin}\s.,:;!?'„“‚‘»«()…–—-]+$/u, th: /^[\p{Script=Thai}\s]+$/u, nb: /^[\p{Script=Latin}\s.,:;!?'«»"“”()…–—-]+$/u, nn: /^[\p{Script=Latin}\s.,:;!?'«»"“”()…–—-]+$/u, hi: /^[\p{Script=Devanagari}\s।,.?!:;'"“”‘’()…–—-]+$/u }[lang];
       for (const doc of loadBundledCorpus().filter((d) => d.lang === lang && d.contentType !== 'scripture')) {
         for (const sec of doc.sections) for (const par of sec.paragraphs) {
           if (!('sentences' in par)) continue;

@@ -1,0 +1,246 @@
+{
+  "id": "nb-s09",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "Good morning at the market",
+    "target": "God morgen"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "bread"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Sam kjøper brød.",
+      "en": "Sam is buying bread.",
+      "picture": "🙂🛒🍞",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "God morgen.",
+      "en": "Good morning.",
+      "speaker": "sam",
+      "picture": "🌞",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "God morgen. Jeg heter Marta.",
+      "en": "Good morning. My name is Marta.",
+      "speaker": "marta",
+      "picture": "👵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Hyggelig å møte deg, Marta.",
+      "en": "Nice to meet you, Marta.",
+      "speaker": "sam",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Hva vil du ha?",
+      "en": "What do you want?",
+      "speaker": "marta",
+      "picture": "👵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Jeg vil ha et brød, takk.",
+      "en": "I would like a bread, please.",
+      "speaker": "sam",
+      "picture": "🍞🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Vær så god. Vil du ha kaffe også?",
+      "en": "Here you are. Would you like coffee too?",
+      "speaker": "marta",
+      "picture": "🍞☕❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l8",
+      "text": "Nei, takk.",
+      "en": "No, thank you.",
+      "speaker": "sam",
+      "picture": "🙅☕",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "kjøper",
+      "god",
+      "morgen",
+      "et",
+      "en",
+      "vær",
+      "så"
+    ],
+    "constructions": [
+      "nb.polite-du"
+    ]
+  },
+  "represents": [
+    "nb.greeting",
+    "nb.politeness",
+    "nb.polite-du",
+    "nb.vil-ha",
+    "nb.w-question",
+    "nb.yes-no-question",
+    "nb.present-tense"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Marta ask Sam?"
+      },
+      "options": [
+        {
+          "en": "What he wants"
+        },
+        {
+          "en": "Where he lives"
+        },
+        {
+          "en": "What his name is"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l6"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam want?"
+      },
+      "options": [
+        {
+          "en": "bread",
+          "picture": "🍞"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l7",
+        "l8"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Sam take coffee too?"
+      },
+      "options": [
+        {
+          "en": "No"
+        },
+        {
+          "en": "Yes"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Ask for a bread, please.",
+      "basedOn": [
+        "l6"
+      ],
+      "frame": "Jeg vil ha ___, takk.",
+      "accept": [
+        {
+          "text": "Jeg vil ha et brød, takk"
+        },
+        {
+          "text": "Jeg vil ha brød, takk"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say good morning.",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "God morgen"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "culture",
+      "title": "du to everyone",
+      "text": "Marta is a shopkeeper and Sam a customer, but they still say \"du\" (\"you\") to each other. Norwegian has an old polite word, \"De\", but almost nobody uses it today: \"du\" is for everyone, even a teacher or a shop assistant. \"Vær så god\" is what you say when you hand something over; it means \"here you are\" or \"please, go ahead\".",
+      "explains": [
+        "nb.polite-du",
+        "nb.politeness"
+      ],
+      "afterScenes": 0
+    }
+  ]
+}

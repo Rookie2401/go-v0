@@ -101,7 +101,7 @@ export function CopyImporter({ work, onImported }: { work?: Work; onImported(vie
     const converted = source.kind === 'text' ? ingest.convertPlainText(source.text, opts) : await ingest.convertEpub(source.bytes, opts);
     if (source.kind === 'epub') {
       // an EPUB is only readable once converted: the team's language is checked on its chapters' running text
-      const verdict = fitsTeamLanguage(converted.documents.map((d) => documentText(d)).join('\n'), { lang: course.lang, country: course.country });
+      const verdict = fitsTeamLanguage(converted.documents.map((d) => documentText(d)).join('\n'), { lang: course.lang, country: course.country, readsLangs: course.readsLangs });
       if (!verdict.ok) { setError(verdict.message!); return; }
     }
     await check(converted.documents, converted.notes, fileName, true, { source, quality: qualityOf(converted), headings: headingsOf(converted), titled: titleFor });
@@ -123,7 +123,7 @@ export function CopyImporter({ work, onImported }: { work?: Work; onImported(vie
       const text = await readFileText(file);
       if (isText(file)) {
         if (text.trim() === '') { setError('That file is empty.'); return; }
-        const verdict = fitsTeamLanguage(text, { lang: course.lang, country: course.country });
+        const verdict = fitsTeamLanguage(text, { lang: course.lang, country: course.country, readsLangs: course.readsLangs });
         if (!verdict.ok) { setError(verdict.message!); return; }
         const source: Source = { kind: 'text', text };
         if (work) await convert(source, file.name, undefined, DEFAULT_CHOICES);
@@ -134,7 +134,7 @@ export function CopyImporter({ work, onImported }: { work?: Work; onImported(vie
         const parsedDocs = Array.isArray(parsed) ? parsed : [parsed];
         for (const d of parsedDocs) {
           const declared = d && typeof d === 'object' ? (d as { lang?: unknown }).lang : undefined;
-          const verdict = fitsTeamLanguage(documentText(d), { lang: course.lang, country: course.country }, typeof declared === 'string' ? declared : undefined);
+          const verdict = fitsTeamLanguage(documentText(d), { lang: course.lang, country: course.country, readsLangs: course.readsLangs }, typeof declared === 'string' ? declared : undefined);
           if (!verdict.ok) { setError(verdict.message!); return; }
         }
         await check(parsedDocs, [], file.name, false);

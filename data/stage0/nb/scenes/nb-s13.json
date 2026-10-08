@@ -1,0 +1,235 @@
+{
+  "id": "nb-s13",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "Sam tells about himself",
+    "target": "Jeg heter Sam"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "places": [
+      "clinic",
+      "school",
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Jeg heter Sam, og jeg bor i byen. Jeg snakker litt norsk.",
+      "en": "My name is Sam, and I live in the city. I speak a little Norwegian.",
+      "speaker": "sam",
+      "picture": "🙂🏙️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Anna er venninna mi. Hun jobber på klinikken.",
+      "en": "Anna is my friend. She works at the clinic.",
+      "speaker": "sam",
+      "picture": "👩‍⚕️🏥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Lars er lærer på skolen.",
+      "en": "Lars is a teacher at the school.",
+      "speaker": "sam",
+      "picture": "👨‍🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Jeg tror også på Gud.",
+      "en": "I believe in God too.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "På søndag går jeg i kirka med Anna og Lars.",
+      "en": "On Sunday I go to church with Anna and Lars.",
+      "speaker": "sam",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "I går regnet det, og vi ble hjemme.",
+      "en": "Yesterday it rained, and we stayed at home.",
+      "speaker": "sam",
+      "picture": "🌧️🏠",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "bor",
+      "byen",
+      "snakker",
+      "litt",
+      "venninna",
+      "lærer",
+      "regnet",
+      "ble"
+    ],
+    "constructions": [
+      "nb.past-simple"
+    ]
+  },
+  "represents": [
+    "nb.past-simple",
+    "nb.jeg-heter",
+    "nb.present-tense",
+    "nb.possessive-postposed",
+    "nb.tro",
+    "nb.gaa-place",
+    "nb.time-days",
+    "nb.men-og",
+    "nb.det-weather",
+    "nb.i-pa",
+    "nb.er-identity"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where does Sam live?"
+      },
+      "options": [
+        {
+          "en": "In the city"
+        },
+        {
+          "en": "At the school"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2",
+        "l3"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who is a teacher?"
+      },
+      "options": [
+        {
+          "en": "Lars"
+        },
+        {
+          "en": "Anna"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What happened yesterday?"
+      },
+      "options": [
+        {
+          "en": "It rained and they stayed at home"
+        },
+        {
+          "en": "They went to church"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "describe",
+      "prompt": "Say where you live.",
+      "basedOn": [
+        "l1"
+      ],
+      "accept": [
+        {
+          "text": "Jeg bor i {x}"
+        }
+      ],
+      "personal": "your town or country",
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "retell",
+      "prompt": "Tell about Anna in one sentence: where she works.",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "Anna jobber på klinikken"
+        },
+        {
+          "text": "Hun jobber på klinikken"
+        },
+        {
+          "text": "Anna er venninna mi og jobber på klinikken"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "regnet, ble: the past",
+      "text": "\"I går\" means \"yesterday\". It looks like \"går\" (\"goes\") but it is a different word. The past tense is one form for everyone: regner became regnet, blir became ble. You learn each verb's past form as it comes: there is no rule you need yet.",
+      "explains": [
+        "nb.past-simple",
+        "nb.time-days"
+      ],
+      "afterScenes": 0
+    }
+  ]
+}

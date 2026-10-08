@@ -1,0 +1,31 @@
+=== nb-a2-1-10 | nonfiction | nature | Four seasons | Fire tider i året | seasons,light,dark,weather,Norway
+note: General description of the seasons and daylight in Norway, kept simple; a Norwegian reviewer should confirm the statements.
+## Året i Norge
+I Norge er det vår, sommer, høst og vinter. || In Norway there are spring, summer, autumn and winter.
+Om våren blir det varmt. Sola kommer, og snøen er ikke her mer. || In spring it gets warm. The sun comes, and the snow is no longer here.
+Om sommeren er det lyst, også om natten. Folk er ute og er glade. || In summer it is light, even at night. People are outside and are happy.
+Om høsten regner det mye, og det blir mørkt. || In autumn it rains a lot, and it gets dark.
+Om vinteren er det kaldt og mørkt. Men det er snø, og folk drar til hytta. || In winter it is cold and dark. But there is snow, and people go to the cabin.
+
+## Hva synes {sam}?
+[ana] Hva synes du om året i Norge, {sam}? || What do you think about the year in Norway, Sam?
+[sam] Jeg liker sommeren. Det er lyst, og folk er glade. || I like the summer. It is light, and people are happy.
+[ana] Og høsten? || And the autumn?
+[sam] Høsten er våt. Jeg liker ikke høsten så mye. || The autumn is wet. I do not like the autumn so much.
+[luis] Jeg liker vinteren. Vi drar til hytta, og vi går på ski. || I like the winter. We go to the cabin, and we ski.
+[ana] Jeg liker våren. Sola kommer, og snøen går. || I like the spring. The sun comes, and the snow goes.
+[sam] Jeg synes at alle tider er bra, hvis jeg er hos dere. || I think all times are good, if I am with you.
+
+## Lys og mørke
+Om sommeren står {sam} opp tidlig. Det er lyst klokka fem. || In summer Sam gets up early. It is light at five o'clock.
+Om vinteren er det mørkt om morgenen og om kvelden. || In winter it is dark in the morning and in the evening.
+{marta} sier: «Det er ikke dårlig. Vi drikker te og snakker, og da er det lyst hos oss.» || Marta says: "It is not bad. We drink tea and talk, and then it is light at our place."
+[sam] Ja, når folk er glade, blir det lyst. || Yes, when people are happy, it gets light.
+[nico] Jeg liker snø, og jeg liker is, men jeg liker ikke prøver! || I like snow, and I like ice cream, but I do not like tests!
+
+## Husker du?
+Gården lå i fjellet. {marta} hadde hest, og hun kjørte med den noen ganger. Livet var bra, og hun levde godt. || The farm was in the mountains. Marta had a horse, and she drove with it sometimes. Life was good, and she lived well.
+
+Toget er forsinket, og {ana} kjører bilen. Det regner fortsatt. || The train is late, and Anna drives the car. It is still raining.
+
+Jeg liker våren mer enn høsten. || I like the spring more than the autumn.

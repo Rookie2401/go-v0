@@ -87,7 +87,7 @@ export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
       const rows: CatalogText[] = [];
       let offset = 0;
       while (true) {
-        const page = await library.search({ lang, publishedOnly: !preview, limit: 200, offset });
+        const page = await library.search({ lang, ...(course.readsLangs?.length ? { alsoLangs: course.readsLangs } : {}), publishedOnly: !preview, limit: 200, offset });
         rows.push(...page.items.filter((t) => t.stream !== 'scripture' && !(t.streams ?? []).includes('scripture') && (t.published || preview)));
         offset += page.items.length;
         if (page.items.length === 0 || offset >= page.total) break;
@@ -95,7 +95,7 @@ export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
       if (live) { setCatalogTexts(rows); setCatalogReady(true); }
     })().catch((e: unknown) => { if (live) { setCatalogTexts([]); setCatalogReady(true); setCatalogError(e instanceof Error ? e.message : 'Could not load available reading.'); } });
     return () => { live = false; };
-  }, [library, lang, mode, preview]);
+  }, [library, lang, course.readsLangs, mode, preview]);
   const residentIds = useMemo(() => new Set(texts.map((t) => t.id)), [texts]);
   const lazyTexts = useMemo(() => catalogTexts.filter((t) => !residentIds.has(t.id)), [catalogTexts, residentIds]);
 

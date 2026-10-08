@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildFixtureText, hash, ids, COURSES, type AppStore, type LanguageCode } from '../../src/core';
+import { buildFixtureText, hash, ids, courseForLang, type AppStore, type LanguageCode } from '../../src/core';
 import { FixtureTtsProvider, GOLISTEN_VERSION, stripVerseMarkers } from '../../src/golisten';
 import { LANGS, MarksTestProvider, STORY, SCRIPTURE, addScripture, addStory, editSentence, makeEnv } from './support';
 
@@ -144,9 +144,10 @@ expect(new Set(r.manifest.segmentIds).size).toBe(3);
   it('records requestedLocale vs actualLocale honestly and leaves voices unapproved', async () => {
     const { store, gl } = await makeEnv();
     await addStory(store, lang);
-    const course = COURSES.find((c) => c.lang === lang)!;
+    const course = courseForLang(lang);
     const voice = await gl.resolveVoice(lang);
-    expect(voice.requestedLocale).toBe(course.preferredLocales[0]);
+    // a companion language (nn) is requested in its own locale, the others in the course's first preferred locale
+    expect(voice.requestedLocale).toBe(lang === course.lang ? course.preferredLocales[0] : 'nn-NO');
     expect(voice.approved).toBe(false);
     expect(voice.providerId).toBe('fixture');
     expect(voice.qaNote).toMatch(/not speech/i);

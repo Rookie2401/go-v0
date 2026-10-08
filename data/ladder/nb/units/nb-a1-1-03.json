@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-1-03",
+  "lang": "nb",
+  "title": "Anna's family",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-1-03",
+    "title": "Anna's family (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "family",
+    "mother",
+    "father",
+    "age"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "ana": "Anna",
+    "marta": "Marta",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "Familien",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna snakker om familien.",
+              "english": "Anna talks about her family."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hvem er dette?",
+              "english": "Who is this?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Dette er mora mi. Hun heter Ingrid.",
+              "english": "This is my mother. Her name is Ingrid.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Og dette er faren min. Han heter Olav.",
+              "english": "And this is my father. His name is Olav.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Bor mora di og faren din her i byen?",
+              "english": "Do your mother and your father live here in town?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nei, mora mi og faren min bor i Trondheim.",
+              "english": "No, my mother and my father live in Trondheim.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Hvem er han?",
+              "english": "Who is he?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er Lars. Han er broren min.",
+              "english": "That is Lars. He is my brother.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Lars er tretti år. Jeg er tretti år også.",
+              "english": "Lars is thirty years old. I am thirty years old too.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Hvem er hun?",
+              "english": "Who is she?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Hun er søstera mi. Hun heter Kari. Hun er tjue år.",
+              "english": "She is my sister. Her name is Kari. She is twenty years old.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg har en bror og ei søster.",
+              "english": "I have a brother and a sister.",
+              "speaker": "ana"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jeg har en bror også. Han bor i USA.",
+              "english": "I have a brother too. He lives in the USA.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bor han i Bergen?",
+              "english": "Does he live in Bergen?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Nei, han bor ikke i Bergen. Han er ikke her.",
+              "english": "No, he does not live in Bergen. He is not here.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Familien min bor i USA.",
+              "english": "My family lives in the USA.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg liker familien din, Sam!",
+              "english": "I like your family, Sam!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg liker familien din også!",
+              "english": "I like your family too!",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Marta og Nils",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta bor i byen. Hun er bestemora til Nils.",
+              "english": "Marta lives in town. She is Nils's grandmother."
+            },
+            {
+              "text": "Marta er ikke trøtt i dag. Hun er glad.",
+              "english": "Marta is not tired today. She is happy."
+            },
+            {
+              "text": "Nils bor hjemme. Huset er lite, men han er glad. Skolen er stor.",
+              "english": "Nils lives at home. The house is small, but he is happy. The school is big."
+            },
+            {
+              "text": "Hei, Nils! Hvordan går det?",
+              "english": "Hi, Nils! How are you?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Det går bra, takk.",
+              "english": "I am fine, thank you.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Går du til skolen i dag?",
+              "english": "Are you going to school today?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, jeg går til skolen. Men jeg er trøtt.",
+              "english": "Yes, I am going to school. But I am tired.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Gå til skolen! Ha det bra, Nils.",
+              "english": "Go to school! Goodbye, Nils.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ha det bra, Marta!",
+              "english": "Goodbye, Marta!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Nils går til skolen. Lars er på skolen også.",
+              "english": "Nils goes to school. Lars is at school too."
+            },
+            {
+              "text": "Lars er læreren til Nils. Han er glad i dag.",
+              "english": "Lars is Nils's teacher. He is happy today."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hvordan er rommet ditt, Sam?",
+              "english": "How is your room, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Det er lite, men jeg har ei seng og et vindu.",
+              "english": "It is small, but I have a bed and a window.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

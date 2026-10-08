@@ -1,0 +1,38 @@
+=== nb-a1-2-07 | story | nature | A walk up the mountain | En tur i fjellet | nature,walk,mountain,birds,trees
+note: "Fløyen" is a real mountain at Bergen; the story gives no facts about it beyond its name. "tre / trær" is a neuter noun with an irregular plural.
+## Til fjellet
+Lørdag var det sol i {city}. {ana} og {luis} jobbet ikke. || On Saturday there was sun in Bergen. Anna and Lars did not work.
+De ville gå en tur. {sam} og {nico} ville gå også. || They wanted to go for a walk. Sam and Nils wanted to go too.
+Fjellet heter Fløyen. || The mountain is called Fløyen.
+De tok bussen til sentrum. Så gikk de. || They took the bus to the town centre. Then they walked.
+
+## På veien
+Veien var lang. Mange folk gikk her. || The road was long. Many people walked here.
+[nico] Jeg er sulten! || I am hungry!
+[ana] Her er brød og ost. Her er melk. || Here is bread and cheese. Here is milk.
+{nico} spiste brød med ost. Han var glad. || Nils ate bread with cheese. He was happy.
+[nico] Veien er lang! Er fjellet høyt? || The road is long! Is the mountain high?
+[luis] Ja, det er høyt. Gå, {nico}! Du kan gå! || Yes, it is high. Keep going, Nils! You can do it!
+{nico} gikk. Han var trøtt, men han gråt ikke. || Nils walked. He was tired, but he did not cry.
+
+## På fjellet
+Nå var de på fjellet. || Now they were on the mountain.
+[sam] Se byen! Jeg ser kirka og skolen! || Look at the town! I see the church and the school!
+[ana] Klinikken er stor! Huset mitt er lite! || The clinic is big! My house is small!
+[nico] Skolen min er liten! || My school is small!
+Det var en bra dag. || It was a good day.
+
+## Hjem
+De gikk hjem. Veien var ikke lang. || They went home. The road was not long.
+I byen drakk de kaffe og te. {nico} drakk melk. || In town they drank coffee and tea. Nils drank milk.
+[nico] Jeg vil gå hver lørdag! || I want to go every Saturday!
+[luis] Ja, turen var bra. Du er ikke trøtt nå? || Yes, the walk was good. You are not tired now?
+[nico] Ja, jeg er trøtt, men jeg er glad. || Yes, I am tired, but I am happy.
+{sam} tenkte: «Det er høyt, men turen var bra.» || Sam thought: "It is high, but the walk was good."
+
+## Husker du?
+På turen er telefonen til {sam} borte. Han leter lenge. Den ligger i vesken, under jakka. || On the walk Sam's phone is gone. He looks for a long time. It is in the bag, under the jacket.
+
+Etter turen er {nico} syk. Han har feber og vondt i hodet, og han må hvile. || After the walk Nils is ill. He has a fever and a headache, and he has to rest.
+
+{nico} husket vesken på turen, og han gråt ikke. {luis} tenkte at det var bra. || Nils remembered the bag on the walk, and he did not cry. Lars thought that was good.

@@ -109,6 +109,11 @@ export interface TextProfile {
 
 export interface LibraryQuery {
   lang: LanguageCode;
+  /**
+   * Companion languages whose catalogue is searched after `lang`'s (`Course.readsLangs`): one result list, `lang` first, each
+   * companion's rows after it; `total` is the sum. Absent or empty = `lang` only, exactly as before.
+   */
+  alsoLangs?: LanguageCode[];
   /** All catalogued texts (chapters) of one work, in chapter order. */
   workId?: string;
   stream?: string;

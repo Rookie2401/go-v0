@@ -10,7 +10,7 @@ import type {
   Authorship, AdapterRegistry, ContentNote, Corpus, LanguageCode, PartOfSpeech, QualityReport, RightsStatus, ReviewStatus, SourceVerification,
   Text, TextKind,
 } from '../core';
-import { COURSES, LANGUAGES, LANGUAGE_ROWS, courseForLang, ids } from '../core';
+import { COURSES, LANGUAGES, LANGUAGE_ROWS, courseForLang, courseReads, ids } from '../core';
 import { analysisCoverage, type AnalysisCoverage } from '../adapters/shared';
 import { contentSignatureOf } from './publish';
 import { pipelineProblems } from './pipeline';
@@ -461,7 +461,7 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
       if (w.courseId !== undefined) {
         const c = typeof w.courseId === 'string' ? COURSES.find((x) => x.id === w.courseId) : undefined;
         if (!c) err('work.courseId', 'invalid-value', `work.courseId ${JSON.stringify(w.courseId)} is not a course`, `Use one of ${COURSES.map((x) => x.id).join(', ')}, or omit it to use the course of the document's language.`);
-        else if (lang && c.lang !== lang) err('work.courseId', 'invalid-value', `course "${c.id}" teaches "${c.lang}" but the document is "${lang}"`, 'Use a course of the same language, or correct lang.');
+        else if (lang && !courseReads(c, lang)) err('work.courseId', 'invalid-value', `course "${c.id}" teaches "${c.lang}" but the document is "${lang}"`, 'Use a course of the same language (or one that also reads it), or correct lang.');
         else courseId = c.id;
       } else if (lang) courseId = courseForLang(lang).id;
       if (w.chapter !== undefined) {

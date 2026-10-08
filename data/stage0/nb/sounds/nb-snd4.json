@@ -1,0 +1,136 @@
+{
+  "id": "nb-snd4",
+  "lang": "nb",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "kj, tj, sj and rs"
+  },
+  "features": [
+    "nb:kj",
+    "nb:sj",
+    "nb:rs"
+  ],
+  "words": [
+    {
+      "text": "kjøper",
+      "en": "buys",
+      "picture": "🛒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "tjue",
+      "en": "twenty",
+      "picture": "2️⃣0️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "sju",
+      "en": "seven",
+      "picture": "7️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "skolen",
+      "en": "the school",
+      "picture": "🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "norsk",
+      "en": "Norwegian",
+      "picture": "🇳🇴",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "kj and tj make a soft hissing sound, a bit like the \"h\" in \"huge\" (kjøper, tjue). sj is like English \"sh\" (sju), and so is rs in Eastern speech (norsk is NOSHK). sk is a hard \"sk\" in most words (skolen) but \"sh\" before i, y and ø (ski).",
+    "more": "Many Norwegians, especially younger ones, now say kj like sj (kjøper like \"sjøper\"). Both are normal and neither is a mistake; Go shows the traditional kj as a soft hiss and the written spelling keeps the difference. The \"sh\" in rs is typical of Eastern speech; in some regions the r is said separately."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "kjøper",
+      "prompt": "How does \"kj\" sound in \"kjøper\"?",
+      "options": [
+        "a soft hiss, like \"h\" in \"huge\"",
+        "a hard \"k\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "tjue",
+      "prompt": "How does \"tj\" sound in \"tjue\"?",
+      "options": [
+        "a hard \"t\" and \"j\"",
+        "a soft hiss, like \"kj\""
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "sju",
+      "prompt": "How does \"sj\" sound in \"sju\"?",
+      "options": [
+        "like \"sh\"",
+        "like \"s\" and \"y\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "skolen",
+      "prompt": "How does \"sk\" sound in \"skolen\"?",
+      "options": [
+        "\"sk\", both letters said",
+        "like \"sh\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-reading",
+      "word": "norsk",
+      "prompt": "How is \"rs\" said in \"norsk\" (Eastern)?",
+      "options": [
+        "like \"sh\": NOSHK",
+        "each letter on its own: NOR-sk"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-word",
+      "word": "tjue",
+      "prompt": "Which is the Norwegian spelling of \"twenty\"?",
+      "options": [
+        "tjue",
+        "chue"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-2-03",
+  "lang": "nb",
+  "title": "The troll on the bridge",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-2-03",
+    "title": "The troll on the bridge (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". An original short tale in the manner of a Norwegian folk tale (not a retelling of any published tale). The riddle's answer is \"regn\" (rain)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "tale",
+    "troll",
+    "riddle",
+    "bridge",
+    "courage"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "troll": "Trollet",
+    "ingrid": "Ingrid"
+  },
+  "sections": [
+    {
+      "title": "Brua",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det var en gang ei jente som het Ingrid. Hun bodde i en liten by i fjellet.",
+              "english": "Once upon a time there was a girl called Ingrid. She lived in a small town in the mountains."
+            },
+            {
+              "text": "En dag skulle Ingrid gå til markedet. Hun skulle selge brød.",
+              "english": "One day Ingrid was going to the market. She was going to sell bread."
+            },
+            {
+              "text": "Veien gikk til ei bro. Under brua bodde et troll.",
+              "english": "The road went to a bridge. Under the bridge lived a troll."
+            },
+            {
+              "text": "Trollet var stort og mørkt. Folk var redd.",
+              "english": "The troll was big and dark. People were afraid."
+            },
+            {
+              "text": "Ingrid var også redd, men hun gikk.",
+              "english": "Ingrid was also afraid, but she walked on."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gåten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Da hun kom til brua, sa trollet: «Stopp! Du må svare på en gåte!»",
+              "english": "When she came to the bridge, the troll said: \"Stop! You must answer a riddle!\""
+            },
+            {
+              "text": "Ingrid stoppet. Hun var redd, men hun var klok.",
+              "english": "Ingrid stopped. She was afraid, but she was clever."
+            },
+            {
+              "text": "Jeg er vått. Jeg kommer når det er mørkt og kaldt. Folk i Bergen har meg ofte. Hva er jeg?",
+              "english": "I am wet. I come when it is dark and cold. People in Bergen often have me. What am I?",
+              "speaker": "troll"
+            },
+            {
+              "text": "Ingrid tenkte lenge. Hun tenkte på byen, på været og på paraplyen sin.",
+              "english": "Ingrid thought for a long time. She thought of the town, of the weather and of her umbrella."
+            },
+            {
+              "text": "Jeg vet det! Du er regn!",
+              "english": "I know! You are rain!",
+              "speaker": "ingrid"
+            },
+            {
+              "text": "Trollet ble glad. Ingen hadde svart på gåten før.",
+              "english": "The troll became glad. Nobody had answered the riddle before."
+            },
+            {
+              "text": "Du er klok, Ingrid! Du kan gå her hver dag.",
+              "english": "You are clever, Ingrid! You can walk here every day.",
+              "speaker": "troll"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Etterpå",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ingrid solgte brødet på markedet. Hun sa til alle at trollet var snill.",
+              "english": "Ingrid sold the bread at the market. She told everyone that the troll was kind."
+            },
+            {
+              "text": "Folk ville ikke tro det. Men neste dag gikk de på veien, og han sa bare: «God dag!»",
+              "english": "People did not want to believe it. But the next day they walked on the road, and he only said: \"Hello!\""
+            },
+            {
+              "text": "Nå er folk ikke redd mer. De tar brød til ham, og han sier gåter.",
+              "english": "Now people are no longer afraid. They bring bread to him, and he tells riddles."
+            },
+            {
+              "text": "Ingrid er ikke redd. Hun er klok, og hun er glad i ham.",
+              "english": "Ingrid is not afraid. She is clever, and she is fond of him."
+            },
+            {
+              "text": "Hver lørdag går hun til markedet, og hver lørdag sier han: «God dag, Ingrid!»",
+              "english": "Every Saturday she goes to the market, and every Saturday he says: \"Hello, Ingrid!\""
+            },
+            {
+              "text": "Hun selger brød, og hun er glad. Hun har en venn under brua.",
+              "english": "She sells bread, and she is happy. She has a friend under the bridge."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Om våren og sommeren er det lyst. Om høsten er det mørkt.",
+              "english": "In spring and summer it is light. In autumn it is dark."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "I Norge har Sam bodd lenge. Han vil bo her lenger. Han har bestemt seg for ikke å reise hjem.",
+              "english": "Sam has lived in Norway for a long time. He wants to live here longer. He has decided not to travel home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Toget fra stasjonen gikk langt, gjennom fjellet. Utsikten var bra.",
+              "english": "The train from the station went far, through the mountain. The view was good."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Første fredagskveld i Norge satt Sam i sofaen, og de spilte ved peisen.",
+              "english": "The first Friday evening in Norway Sam sat on the sofa, and they played by the fireplace."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "De bygger skolen, og den åpner snart. Nyheten er bra.",
+              "english": "They are building the school, and it opens soon. The news is good."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

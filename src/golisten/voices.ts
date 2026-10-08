@@ -1,4 +1,4 @@
-import { COURSES } from '../core/config';
+import { COURSES, courseReads } from '../core/config';
 import type { LanguageCode, VoiceConfig } from '../core/model';
 import { REVIEW_OK } from '../core/model';
 import type { TtsProvider } from '../core/contracts/golisten';
@@ -47,23 +47,33 @@ export interface VoicePlan { voice: VoiceConfig; provider: TtsProvider; persiste
  * provider's voices; if none matches, the provider's first voice is used and the fallback is recorded:
  * `requestedLocale` (what the course wanted) vs `actualLocale` (what will be delivered).
  * An existing VoiceConfig row is reused so a human's review decision is never reset (except by a provider-version change).
+ * A COMPANION language (a language the course also reads, `Course.readsLangs`: Nynorsk in the Norway course) is voiced in its
+ * own locale ("nn-NO"); when the provider has no voice for it, the course language's voice is used and the fallback is recorded
+ * in the voice's note (the voice then speaks the companion text with the course language's accent).
  * Throws AudioUnavailable when no usable provider exists.
  */
 export async function planVoice(rt: Runtime, lang: LanguageCode, courseId?: string): Promise<VoicePlan> {
   const course = courseId
     ? (await rt.store.courses.get(courseId)) ?? COURSES.find((c) => c.id === courseId)
-    : (await rt.store.courses.all()).find((c) => c.lang === lang) ?? COURSES.find((c) => c.lang === lang);
+    : (await rt.store.courses.all()).find((c) => c.lang === lang) ?? COURSES.find((c) => c.lang === lang)
+      ?? (await rt.store.courses.all()).find((c) => courseReads(c, lang)) ?? COURSES.find((c) => courseReads(c, lang));
   if (!course) throw new Error(`GoListen: no course for ${courseId ?? lang}`);
-  if (course.lang !== lang) throw new Error(`GoListen: course ${course.id} is ${course.lang}, not ${lang}`);
+  if (!courseReads(course, lang)) throw new Error(`GoListen: course ${course.id} is ${course.lang}, not ${lang}`);
+  const companion = course.lang !== lang;
   const provider = requireUsable(await selectProvider(rt));
-  const voices = await provider.listVoices(lang);
+  let voices = await provider.listVoices(lang);
+  // a companion language is requested in its own locale ("nn-NO": the region of the course's first locale); a provider
+  // with no voice for it lends the course language's voices, and the note below says so
+  const wanted = companion ? [`${lang}-${(course.preferredLocales[0] ?? '').split('-')[1] ?? lang.toUpperCase()}`] : course.preferredLocales;
+  let borrowed = false;
+  if (voices.length === 0 && companion) { voices = await provider.listVoices(course.lang); borrowed = true; }
   if (voices.length === 0) throw new Error(`GoListen: provider ${provider.id} has no ${lang} voice`);
   let chosen = undefined as (typeof voices)[number] | undefined;
-  for (const loc of course.preferredLocales) {
+  for (const loc of wanted) {
     chosen = voices.find((v) => v.locale.toLowerCase() === loc.toLowerCase());
     if (chosen) break;
   }
-  const requestedLocale = course.preferredLocales[0] ?? voices[0].locale;
+  const requestedLocale = wanted[0] ?? voices[0].locale;
   const fellBack = !chosen || chosen.locale.toLowerCase() !== requestedLocale.toLowerCase();
   chosen ??= voices[0];
   const id = `${requestedLocale}:${provider.id}:${chosen.id}`;
@@ -75,6 +85,7 @@ export async function planVoice(rt: Runtime, lang: LanguageCode, courseId?: stri
   const notes: string[] = [];
   if (!provider.isSpeech) notes.push(provider.id === FIXTURE_PROVIDER_ID ? FIXTURE_DISCLAIMER : `${provider.id} is not a speech provider: preview only.`);
   if (fellBack) notes.push(`Fallback accent: course asked for ${requestedLocale}, provider delivers ${chosen.locale}.`);
+  if (borrowed) notes.push(`No ${lang} voice: the ${course.lang} voice ${chosen.id} speaks this ${lang} text, so the accent is not ${lang}.`);
   const voice: VoiceConfig = {
     id, lang, courseId: course.id, providerId: provider.id,
     engine: provider.id === FIXTURE_PROVIDER_ID ? FIXTURE_ENGINE : undefined,

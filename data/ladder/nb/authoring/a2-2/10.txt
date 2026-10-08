@@ -1,0 +1,36 @@
+=== nb-a2-2-10 | nonfiction | nature | Water, forest and electricity | Natur og strøm | nature,rivers,forest,electricity,environment
+note: A simple lesson about nature in Norway. The claims (many rivers, electricity from water, large forests) are general knowledge and unchecked; a Norwegian reviewer should confirm them.
+## Timen
+I dag har {luis} en time om naturen. Elevene skal lære om elver, skog og strøm. || Today Lars has a lesson about nature. The pupils will learn about rivers, forest and electricity.
+[luis] Norge har mye natur. Vi har fjell, fjorder, skog og elver. || Norway has a lot of nature. We have mountains, fjords, forest and rivers.
+[luis] Vannet i elvene kommer fra fjellet. Når det regner, blir det mye vann. || The water in the rivers comes from the mountains. When it rains, there is a lot of water.
+[nico] Hva gjør vi med vannet? || What do we do with the water?
+[luis] Vi lager strøm. Vannet går, og det lager strøm. || We make electricity. The water runs, and it makes electricity.
+[nico] Så vi har lys fordi vi har vann! || So we have light because we have water!
+[luis] Ja. Derfor er regn bra for oss. || Yes. That is why rain is good for us.
+
+## Skogen
+Etter timen går klassen en tur i skogen. Den er stor og mørk. || After the lesson the class goes for a walk in the forest. It is big and dark.
+[luis] Her er naturen også. Vi må være snille. || Here is nature too. We must be kind.
+[nico] Hvordan kan vi være snille, {luis}? || How can we be kind, Lars?
+[luis] Vi kan gå på veien, og vi kan ta med oss maten hjem. || We can walk on the road, and we can take our food home with us.
+{sam} går med klassen. Han er glad i fjell og vann. || Sam walks with the class. He is fond of mountains and water.
+[sam] I USA har vi også fjell og vann. Men jeg liker Norge veldig godt. || In the USA we also have mountains and water. But I like Norway very much.
+[nico] Fordi det regner mye! || Because it rains a lot!
+[sam] Ja, kanskje. Regn lager vann, og vann lager lys. || Yes, maybe. Rain makes water, and water makes light.
+
+## Hjemme
+Om kvelden er {luis} trøtt. Han drikker te, og han tenker på timen. || In the evening Lars is tired. He drinks tea, and he thinks about the lesson.
+[ana] Hva lærte elevene i dag? || What did the pupils learn today?
+[luis] De lærte at vi har lys fordi vi har regn. Og at vi må være snille. || They learned that we have light because we have rain. And that we must be kind.
+[ana] Det er en god time! Kanskje elevene husker den lenge. || That is a good lesson! Maybe the pupils will remember it for a long time.
+[luis] Jeg håper det. Jeg husker selv timer fra da jeg var liten. || I hope so. I myself remember lessons from when I was small.
+
+## Husker du?
+Først leste {sam} bokmål, men så leste han nynorsk også. Han ville heller lære begge måter. Han forstår dialekter, og hvert ord er ikke feil. || First Sam read Bokmål, but then he read Nynorsk too. He would rather learn both ways. He understands dialects, and no word is wrong.
+
+Menigheten inviterer til gudstjeneste. Alle er velkomne, og vi er sammen, ikke alene. || The congregation invites to the service. Everyone is welcome, and we are together, not alone.
+
+Hvorfor skriver vi slik? Bokmål eller nynorsk, vi forstår hverandre heller godt. || Why do we write like this? Bokmål or Nynorsk, we understand each other rather well.
+
+Mel, salt og gjær: sett deigen riktig. Smak på brødet. || Flour, salt and yeast: put the dough right. Taste the bread.

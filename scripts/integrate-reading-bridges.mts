@@ -5,7 +5,7 @@ import type { BuildEntry, BuildManifest } from '../src/library/build';
 import { ids, type LanguageCode, type Work } from '../src/core';
 
 // Source acquisition remains separate. This binds new catalogue records to exact installed bytes.
-const configs: Record<LanguageCode, { courseId: string; stage: string; base: string; prefix: string; additions: string[] }> = {
+const configs: Partial<Record<LanguageCode, { courseId: string; stage: string; base: string; prefix: string; additions: string[] }>> = {
   de: { courseId: 'germany-de', stage: 's1', base: 'de/library-manifest.json', prefix: '', additions: ['reading-bridge/de/library-manifest.json'] },
   es: { courseId: 'honduras-es', stage: 's1', base: 'es/library-manifest.json', prefix: '', additions: ['reading-bridge/es/library-manifest.json', 'reading-bridge/es-es/library-manifest.json'] },
   hi: { courseId: 'india-hi', stage: 'c5', base: 'hi/library-manifest.json', prefix: 'hi', additions: ['hi-literature-bridge/library-manifest.json'] },

@@ -18,6 +18,14 @@ export interface AudioImportManifest {
   locale: string;
   narrator: string;
   variety?: string;
+  /** Who speaks: a stable id, and what is known of the voice (native speaker, region, locality, dialect). All optional. */
+  speaker?: { id: string; native?: boolean; region?: string; locality?: string; dialect?: string };
+  /** The written standard of the text that was read ('nb' | 'nn' for Norwegian), when the language has more than one. */
+  writtenStandard?: 'nb' | 'nn';
+  /** What was actually said, sentence by sentence, when it differs from the written text (spoken "e" for written "ikke"). */
+  spokenTranscript?: Array<{ sentenceId: string; spoken: string }>;
+  /** The granularity and provenance of `coverage`; absent = sentence level, method and confidence unknown. */
+  alignment?: { unit: 'sentence' | 'phrase' | 'word'; method?: string; confidence?: number };
   kind: 'human' | 'synthetic';
   syntheticProvider?: { id: string; terms: string; retention: 'none' | 'transient' | 'stored' };
   recording: { owner: string; basis: string; license?: string; attribution?: string };

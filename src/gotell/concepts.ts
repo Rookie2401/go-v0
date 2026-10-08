@@ -171,6 +171,57 @@ const TABLES: Record<LanguageCode, LangTable> = {
     now: { forms: ['jetzt', 'heute', 'nun'], lexemes: ['jetzt'] },
     share: { stems: ['erzähl', 'mitteil', 'weitersag'], lexemes: ['erzählen'] },
   },
+  // machine-draft, native review pending: Norwegian Bokmål and Nynorsk (the function words of docs/norway/recon/linguistics-policy.md B3/B9/B10)
+  nb: {
+    // forms, not the stem 'ung': 'Ungarn' must not read as youth
+    young: { stems: ['barn'], forms: ['ung', 'unge', 'ungt', 'yngre', 'yngst', 'ungdom', 'ungdommen'], lexemes: ['ung'] },
+    family: { stems: ['famili'], forms: ['mor', 'moren', 'far', 'faren', 'foreldre', 'foreldrene', 'søsken'], lexemes: ['familie'] },
+    jesus: { stems: ['jesus', 'kristus', 'gud', 'kirke', 'bibel', 'menighet'], lexemes: ['Jesus'] },
+    know: { forms: ['vet', 'vite', 'visste', 'visst', 'kjenner', 'kjente', 'kjenne', 'kjent'], lexemes: ['kjenne', 'vite'] },
+    understand: { stems: ['forstå', 'forståelse'], forms: ['forsto', 'forstod'], lexemes: ['forstå'] },
+    sin: { stems: ['synd'], lexemes: ['synd'] },
+    // forms, not the stems 'skyld' / 'angr': 'skylder' (owes), 'angrep' (attack) and 'angripe' (to attack) must not read as guilt or repentance
+    guilt: { forms: ['skyld', 'skylden', 'skyldig', 'skyldige', 'skyldfølelse', 'skyldfølelsen'], lexemes: ['skyld'] },
+    conviction: { stems: ['overbevis'], lexemes: ['overbevisning'] },
+    repent: { stems: ['omvend'], forms: ['angre', 'angrer', 'angret', 'angra', 'angrende', 'anger', 'angeren'], lexemes: ['angre'] },
+    regret: { stems: ['beklag'], lexemes: ['beklage'] },
+    forgive: { stems: ['tilgi', 'tilga'], lexemes: ['tilgi'] },
+    grace: { stems: ['nåde'], lexemes: ['nåde'] },
+    salvation: { stems: ['frels'], lexemes: ['frelse'] },
+    // verb and noun share the lemma 'tro' and concept matching tries the lemma too: the bare lemma is listed under 'believe' ONLY, so
+    // 'tror' reads as believing and never as faith; the noun 'troen' is ambiguous (believe + faith), so a swap to it is flagged.
+    // The bare noun 'tro' cannot be told from the verb (matching has no part of speech).
+    believe: { forms: ['tro', 'tror', 'trodde', 'trodd', 'troende'], lexemes: ['tro'] },
+    faith: { forms: ['troen', 'troens'], lexemes: ['tro'] },
+    trust: { forms: ['stoler', 'stolte', 'stole'], stems: ['tillit', 'tiltro'], lexemes: ['stole'] },
+    change: { stems: ['endr', 'forandr'], forms: ['ny', 'nytt', 'nye'], lexemes: ['endre'] },
+    now: { forms: ['nå', 'idag', 'dagens'], lexemes: ['nå'] },
+    share: { stems: ['fortell', 'fortalt'], forms: ['dele', 'deler', 'delte'], lexemes: ['fortelle', 'dele'] },
+  },
+  nn: {
+    young: { stems: ['born', 'barn'], forms: ['ung', 'unge', 'ungt', 'yngre', 'yngst', 'ungdom', 'ungdommen'], lexemes: ['ung'] },
+    family: { stems: ['famili'], forms: ['mor', 'mora', 'far', 'faren', 'foreldre', 'foreldra', 'søsken'], lexemes: ['familie'] },
+    jesus: { stems: ['jesus', 'kristus', 'gud', 'kyrkj', 'bibel', 'menigheit', 'menighet'], lexemes: ['Jesus'] },
+    // 'kjend' is the adjective the analyzer reads 'kjende' as; 'vete' is the other infinitive of vite
+    know: { forms: ['veit', 'vite', 'vete', 'visste', 'visst', 'kjenner', 'kjende', 'kjend', 'kjenne', 'kjent'], lexemes: ['kjenne', 'vite'] },
+    understand: { stems: ['forstå', 'forståing'], forms: ['forstod', 'forsto'], lexemes: ['forstå'] },
+    sin: { stems: ['synd'], lexemes: ['synd'] },
+    // forms, not the stem 'skuld': 'skulder' (shoulders) must not read as guilt; 'angrep' / 'angripe' must not read as repentance
+    guilt: { forms: ['skuld', 'skulda', 'skuldig', 'skuldige', 'skuldkjensle', 'skuldkjensla'], lexemes: ['skuld'] },
+    conviction: { stems: ['overbevis'], lexemes: ['overbevisning'] },
+    repent: { stems: ['omvend'], forms: ['angre', 'angrar', 'angra', 'angrande', 'anger', 'angeren'], lexemes: ['angre'] },
+    regret: { stems: ['beklag'], lexemes: ['beklage'] },
+    forgive: { stems: ['tilgi', 'tilgje', 'tilga'], lexemes: ['tilgje'] },
+    grace: { stems: ['nåde'], lexemes: ['nåde'] },
+    salvation: { stems: ['frels'], lexemes: ['frelse'] },
+    // same as Bokmål: the shared lemma 'tru' is listed under 'believe' only
+    believe: { forms: ['tru', 'trur', 'trudde', 'trudd', 'truande'], lexemes: ['tru'] },
+    faith: { forms: ['trua', 'truas'], lexemes: ['tru'] },
+    trust: { forms: ['stolar', 'stolte', 'stole'], stems: ['tillit', 'tiltru'], lexemes: ['stole'] },
+    change: { stems: ['endr', 'forandr'], forms: ['ny', 'nytt', 'nye'], lexemes: ['endre'] },
+    now: { forms: ['no', 'nå', 'idag', 'dagens'], lexemes: ['no'] },
+    share: { stems: ['fortel', 'fortald'], forms: ['dele', 'deler', 'delte'], lexemes: ['fortelje', 'dele'] },
+  },
 };
 
 /** Negation markers (per language). Used to keep negation outside a recombined phrase and flag it. */
@@ -180,6 +231,9 @@ export const NEGATORS: Record<LanguageCode, string[]> = {
   th: ['ไม่', 'ไม่ได้', 'มิ'],
   hi: ['नहीं', 'न', 'मत'],
   de: ['nicht', 'kein', 'keine', 'keinen', 'keinem', 'keiner', 'nie', 'niemals'],
+  // machine-draft, native review pending
+  nb: ['ikke', 'aldri', 'ingen', 'intet', 'ingenting', 'verken'],
+  nn: ['ikkje', 'aldri', 'ingen', 'inkje', 'ingenting', 'verken'],
 };
 
 /**
@@ -193,6 +247,9 @@ export const CHRONOLOGY: Record<LanguageCode, string[]> = {
   th: ['เมื่อ', 'ตอน', 'ก่อน', 'หลัง', 'แล้ว', 'ตอนนี้', 'วันนี้', 'เมื่อวาน', 'พรุ่งนี้', 'เคย', 'ยัง', 'เสมอ', 'ตลอด', 'ในที่สุด', 'ขณะที่', 'จน', 'ตั้งแต่'],
   hi: ['जब', 'पहले', 'बाद', 'फिर', 'तब', 'अब', 'आज', 'कल', 'अभी', 'हमेशा', 'कभी', 'आखिरकार', 'जबकि', 'तक'],
   de: ['als', 'wenn', 'bevor', 'nachdem', 'dann', 'danach', 'vorher', 'später', 'spaeter', 'jetzt', 'heute', 'gestern', 'morgen', 'schon', 'noch', 'immer', 'nie', 'niemals', 'zuerst', 'schließlich', 'schliesslich', 'während', 'waehrend', 'seit', 'bis', 'damals'],
+  // machine-draft, native review pending
+  nb: ['da', 'når', 'før', 'etter', 'så', 'deretter', 'nå', 'idag', 'igår', 'imorgen', 'allerede', 'ennå', 'fortsatt', 'alltid', 'aldri', 'først', 'endelig', 'mens', 'siden', 'inntil', 'snart', 'tidligere', 'senere'],
+  nn: ['då', 'når', 'før', 'etter', 'så', 'deretter', 'no', 'nå', 'idag', 'igår', 'imorgon', 'allereie', 'enno', 'framleis', 'alltid', 'aldri', 'først', 'endeleg', 'medan', 'sidan', 'inntil', 'snart', 'tidlegare', 'seinare'],
 };
 
 /** Subject pronouns: a slot filler that extends backwards stops here (the subject is not part of a phrase slot). */
@@ -202,6 +259,9 @@ export const SUBJECT_PRONOUNS: Record<LanguageCode, string[]> = {
   th: ['ฉัน', 'ผม', 'ดิฉัน', 'เขา', 'เธอ', 'เรา', 'คุณ'],
   hi: ['मैं', 'तू', 'तुम', 'वह', 'वो', 'हम', 'आप', 'ये', 'वे'],
   de: ['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr'],
+  // machine-draft, native review pending
+  nb: ['jeg', 'du', 'han', 'hun', 'vi', 'dere', 'de', 'man'],
+  nn: ['eg', 'du', 'han', 'ho', 'vi', 'me', 'de', 'dei'],
 };
 
 // ───────────────────────── compiled matchers ─────────────────────────

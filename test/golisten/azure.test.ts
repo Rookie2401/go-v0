@@ -6,7 +6,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { ids, type AppStore, type LanguageCode } from '../../src/core';
 import { AZURE_OUTPUT_FORMAT, AZURE_VOICES, AzureSpeechProvider, TtsProviderError, fixtureChunks, renderFixtureChunks, validateWav } from '../../src/golisten';
-import { LANGS, addStory, makeEnv } from './support';
+import { AZURE_LANGS, LANGS, addStory, makeEnv } from './support';
 
 const KEY = 'SECRET-KEY-0123456789abcdef';
 const REGION = 'westeurope';
@@ -38,7 +38,7 @@ describe('AzureSpeechProvider request and response', () => {
     expect(p.capabilities()).toMatchObject({ wordBoundaries: false, phonemeOverrides: false, outputFormats: ['audio/wav'], streaming: false });
   });
 
-  it.each(LANGS)('%s: posts SSML for the static voice, asks for riff-24khz-16bit-mono-pcm, and returns a validatable WAV with no marks', async (lang) => {
+  it.each(AZURE_LANGS)('%s: posts SSML for the static voice, asks for riff-24khz-16bit-mono-pcm, and returns a validatable WAV with no marks', async (lang) => {
     const { fn, calls } = mockFetch(() => ok());
     const p = new AzureSpeechProvider({ key: KEY, region: REGION, fetch: fn });
     const voices = await p.listVoices(lang);
@@ -156,7 +156,7 @@ async function dump(store: AppStore): Promise<string> {
 }
 
 describe('AzureSpeechProvider through GoListen (mocked fetch)', () => {
-  it.each(LANGS)('%s: generates validated audio, records requested vs delivered locale, voice, provider + version, isSpeech, and stays unreviewed until a person says otherwise', async (lang) => {
+  it.each(AZURE_LANGS)('%s: generates validated audio, records requested vs delivered locale, voice, provider + version, isSpeech, and stays unreviewed until a person says otherwise', async (lang) => {
     const { fn, calls } = mockFetch(() => ok());
     const azure = new AzureSpeechProvider({ key: KEY, region: REGION, fetch: fn });
     const { store, gl } = await makeEnv({ allowFixture: false, providers: [azure] });

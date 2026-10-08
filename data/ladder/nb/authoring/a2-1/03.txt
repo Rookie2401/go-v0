@@ -1,0 +1,43 @@
+=== nb-a2-1-03 | story | work | The teacher's day | Dagen til læreren | school,teacher,questions,exam
+speakers: elev=Eleven
+note: Subordinate clauses with "når" and "hvis" (the verb comes after the subject and the sentence adverb: "hvis du ikke forstår").
+## I klassen
+{luis} er lærer. Han har en klasse med tjue elever. {nico} er i klassen. || Lars is a teacher. He has a class of twenty pupils. Nils is in the class.
+Hver morgen er {luis} i klassen. Når skolen begynner, sier elevene: «God morgen!» || Every morning Lars is in the classroom. When school begins, the pupils say: "Good morning!"
+I dag leser klassen om Norge. {luis} har mange spørsmål. || Today the class reads about Norway. Lars has many questions.
+[luis] Hvor ligger {city}? || Where is Bergen?
+[nico] {city} ligger i vest! || Bergen is in the west!
+[luis] Bra! Hva er en fjord? || Good! What is a fjord?
+[elev] Jeg forstår ikke spørsmålet. Det er vanskelig. || I do not understand the question. It is difficult.
+[luis] Hvis du ikke forstår, kan du spørre. Det er ikke vanskelig å spørre. || If you do not understand, you can ask. It is not difficult to ask.
+[elev] Er en fjord havet i fjellet? || Is a fjord the sea in the mountains?
+[luis] Ja, du forstår! Når du leser om Norge, vet du mer. || Yes, you understand! When you read about Norway, you know more.
+
+## Prøven
+I morgen er det en prøve. Elevene liker ikke prøver. || Tomorrow there is a test. The pupils do not like tests.
+[nico] Er prøven vanskelig, {luis}? || Is the test difficult, Lars?
+[luis] Nei, den er lett. Hvis du leser, er den lett. || No, it is easy. If you read, it is easy.
+[nico] Jeg leser hjemme hos {marta}. Hun hjelper meg. || I read at home at Marta's. She helps me.
+[luis] Det er bra. Spør {marta}, hvis du vil. || That is good. Ask Marta, if you want.
+Klokka to er skolen slutt. Elevene går hjem. || At two o'clock school is over. The pupils go home.
+
+## Hjemme
+Når {luis} kommer hjem, er han trøtt. Han drikker kaffe. || When Lars comes home, he is tired. He drinks coffee.
+[ana] Hvordan var dagen? || How was the day?
+[luis] Den var bra. Elevene vet mer hver uke. || It was good. The pupils know more every week.
+[ana] Er elevene snille? || Are the pupils kind?
+[luis] Ja, jeg liker elevene, og jeg liker spørsmålene. || Yes, I like the pupils, and I like the questions.
+
+## Hos {marta}
+{nico} er hos {marta} etter skolen. Han leser, og hun lager middag. || Nils is at Marta's after school. He reads, and she makes dinner.
+[marta] Hva leser du, {nico}? || What are you reading, Nils?
+[nico] Jeg leser om fjorder. Jeg liker fjorder, men jeg liker ikke prøver. || I am reading about fjords. I like fjords, but I do not like tests.
+[marta] Du er glad i bøker, {nico}. Det er bra. || You are fond of books, Nils. That is good.
+[nico] Ja, og jeg er glad i kake og brød også! || Yes, and I am fond of cake and bread too!
+
+## Husker du?
+{luis} svarer på en melding fra {sam}. Han har ikke tid i dag. Han vil ringe i morgen, og så har de en plan. || Lars answers a message from Sam. He does not have time today. He will call tomorrow, and then they have a plan.
+
+Kjære mamma, jeg skriver et brev i dag. Jeg savner deg, og jeg håper du svarer snart. Hilsen {sam} || Dear Mum, I am writing a letter today. I miss you, and I hope you answer soon. Greetings, Sam
+
+Flyet kom til {city}, og {sam} gikk ut. || The plane arrived in Bergen, and Sam went out.

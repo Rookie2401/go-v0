@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 2,
+  "id": "dialogue-01",
+  "lang": "nb",
+  "title": "En samtale",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ci-nb",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:dialogue-01",
+    "title": "Norwegian (Bokmål) beginner dialogue 1 (course-authored)",
+    "author": "Go course authors (first draft by an AI assistant at the authors’ request)",
+    "attribution": "Course-authored beginner text. First draft by an AI assistant; not yet reviewed by a native speaker.",
+    "provenance": "Written for the course authors as a beginner seed text in contemporary Bokmål (2005 norm). The drafter was an AI assistant (Claude), not a native speaker: the text is simple and deliberately repetitive but has NOT been reviewed by a native speaker and may contain unnatural phrasing. The English glosses are the drafter's own. Have a native speaker review it before release.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; first draft machine-generated, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Drafted by an AI assistant; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "mission"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "Drafter-written English gloss (course authors)"
+  },
+  "sections": [
+    {
+      "title": "En samtale",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hei, Anna, hvordan har du det?",
+              "english": "Hello, Anna, how are you?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jeg har det bra, Per, men det er noe jeg ikke forstår.",
+              "english": "I am fine, Per, but there is something I do not understand."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hva er det du ikke forstår?",
+              "english": "What is it that you do not understand?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jeg forstår ikke hvorfor Gud tilgir synd.",
+              "english": "I do not understand why God forgives sin."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jeg har også begynt å forstå det.",
+              "english": "I have also begun to understand it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jeg tror på Gud, og Gud elsker oss, og derfor tilgir han oss.",
+              "english": "I believe in God, and God loves us, and that is why he forgives us."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nå forstår jeg det også.",
+              "english": "Now I understand it too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Takk, Per!",
+              "english": "Thank you, Per!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

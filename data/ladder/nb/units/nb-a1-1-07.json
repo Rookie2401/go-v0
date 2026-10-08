@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-1-07",
+  "lang": "nb",
+  "title": "Nils's school day",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-1-07",
+    "title": "Nils's school day (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "school",
+    "time",
+    "clock",
+    "lessons"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "luis": "Lars",
+    "nico": "Nils",
+    "marta": "Marta",
+    "ana": "Anna",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Skolen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Skolen begynner. Mange elever har lekse.",
+              "english": "School begins. Many pupils have homework."
+            },
+            {
+              "text": "Nils er ti år. Han går på skolen.",
+              "english": "Nils is ten years old. He goes to school."
+            },
+            {
+              "text": "Skolen er stor. Mange elever er på skolen.",
+              "english": "The school is big. Many pupils are at the school."
+            },
+            {
+              "text": "Lars er læreren til Nils.",
+              "english": "Lars is Nils's teacher."
+            },
+            {
+              "text": "Klokka åtte begynner skolen.",
+              "english": "At eight o'clock school begins."
+            },
+            {
+              "text": "Lars sier: «God morgen!» Elevene sier: «God morgen!»",
+              "english": "Lars says: \"Good morning!\" The pupils say: \"Good morning!\""
+            },
+            {
+              "text": "Elevene leser. Så skriver Nils.",
+              "english": "The pupils read. Then Nils writes."
+            },
+            {
+              "text": "Nils liker å lese. Han liker ikke å skrive.",
+              "english": "Nils likes to read. He does not like to write."
+            },
+            {
+              "text": "Nils, hvor er boka di?",
+              "english": "Nils, where is your book?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Boka er hjemme.",
+              "english": "The book is at home.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Hjemme?",
+              "english": "At home?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Nei, her er den! Den er i vesken.",
+              "english": "No, here it is! It is in the bag.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Mange er glade i dag. Mange liker skolen.",
+              "english": "Many are happy today. Many like school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Klokka tolv spiser elevene mat.",
+              "english": "At twelve o'clock the pupils eat."
+            },
+            {
+              "text": "Nils spiser brød med ost og drikker melk.",
+              "english": "Nils eats bread with cheese and drinks milk."
+            },
+            {
+              "text": "Etter maten begynner skolen. Nå begynner Lars.",
+              "english": "After the meal school begins. Now Lars begins."
+            },
+            {
+              "text": "Så er skolen slutt.",
+              "english": "Then school is over."
+            },
+            {
+              "text": "Er skolen slutt, Nils?",
+              "english": "Is school over, Nils?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, nå er skolen slutt.",
+              "english": "Yes, now school is over.",
+              "speaker": "nico"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Etter skolen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nils går hjem til Marta.",
+              "english": "Nils goes home to Marta."
+            },
+            {
+              "text": "Hei, Nils! Har du lekse?",
+              "english": "Hello, Nils! Do you have homework?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, jeg har lekse.",
+              "english": "Yes, I have homework.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Er leksa stor?",
+              "english": "Is the homework big?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Nei, den er liten. Jeg vil skrive litt.",
+              "english": "No, it is small. I want to write a little.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Bra! Marta sier: «Ha det bra, Nils!»",
+              "english": "Good! Marta says: \"Goodbye, Nils!\"",
+              "speaker": "marta"
+            },
+            {
+              "text": "Nils er glad. Han liker Marta.",
+              "english": "Nils is happy. He likes Marta."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sam og norsk",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam er ikke på skolen. Han er hjemme. Han er glad.",
+              "english": "Sam is not at school. He is at home. He is happy."
+            },
+            {
+              "text": "Hei, Sam! Hvordan går det?",
+              "english": "Hi, Sam! How are you?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Det går bra! Jeg er i rommet. Jeg liker norsk!",
+              "english": "I am fine! I am in my room. I like Norwegian!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bra! Du snakker norsk, og du vil lese norsk.",
+              "english": "Good! You speak Norwegian, and you want to read Norwegian.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg vil snakke norsk hver dag.",
+              "english": "Yes, I want to speak Norwegian every day.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lars og Anna",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Lars er trøtt etter skolen. Han vil ha kaffe.",
+              "english": "Lars is tired after school. He wants coffee."
+            },
+            {
+              "text": "Hei, Lars! Hvordan går det?",
+              "english": "Hi, Lars! How are you?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Det går bra, men jeg er trøtt. Jeg liker skolen.",
+              "english": "I am fine, but I am tired. I like the school.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Her er kaffe, Lars. Du jobber mye.",
+              "english": "Here is coffee, Lars. You work a lot.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Takk, Anna! Du er bra.",
+              "english": "Thanks, Anna! You are good.",
+              "speaker": "luis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Rommet til Nils er lite, men vinduet er stort. Han har ei seng og en bok.",
+              "english": "Nils's room is small, but the window is big. He has a bed and a book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Etter skolen går Nils til kafeen. Han vil ha ost og melk, men han er mett.",
+              "english": "After school Nils goes to the café. He wants cheese and milk, but he is full."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nils har penger, og han vil kjøpe epler. Epler er billig, og brød er ikke dyrt.",
+              "english": "Nils has money, and he wants to buy apples. Apples are cheap, and bread is not expensive."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mora og faren til Nils er hjemme. Familien er glad.",
+              "english": "Nils's mother and father are at home. The family is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

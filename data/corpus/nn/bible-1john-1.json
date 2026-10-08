@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "id": "bible-1john-1",
+  "lang": "nn",
+  "title": "1 Johannes 1,8–9; Johannes 3,16",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "bible-nn-1921-unverified",
+    "kind": "scripture",
+    "title": "Studentmållagsbibelen 1921 (unverified sample)"
+  },
+  "source": {
+    "id": "src:nn:bible-1john-1",
+    "title": "Studentmållagsbibelen frå 1921, as shown by the CrossWire SWORD module NorSMB",
+    "url": "https://crosswire.org/study/passagestudy.jsp?mod=NorSMB&key=1John+1%3A8-9",
+    "edition": "Studentmållagsbibelen 1921 (CrossWire module NorSMB)",
+    "attribution": "Studentmållagsbibelen 1921 (Landsmål/Nynorsk), as shown by CrossWire module NorSMB; rights unverified - not for release.",
+    "provenance": "Read on 2026-10-07 from the CrossWire passage-study pages for module NorSMB (1 John 1:8-9: https://crosswire.org/study/passagestudy.jsp?mod=NorSMB&key=1John+1%3A8-9 and John 3:16: https://crosswire.org/study/passagestudy.jsp?mod=NorSMB&key=John+3%3A16); nothing was downloaded. SINGLE-SOURCE READING: no second independent source for the 1921 text was found (the Åpen Bibel repository is the 1930 Bokmål text; bibel.no returned 403), so the wording is NOT confirmed and no scripture.verification record exists. The language is the 1921 Landsmål (hev, me, so, sanningi), not today's Nynorsk. Rights are unverified: CrossWire labels module NorSMB Public Domain; the translators' death years were not checked; this is not the 1938 translation. This sample MUST be replaced or verified before any release.",
+    "rights": "unverified",
+    "licenseNote": "Rights unverified. CrossWire labels module NorSMB Public Domain; translators' death years unchecked. Do not ship until a person verifies.",
+    "authorship": "human",
+    "retrievedAt": "2026-10-07"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Unverified sample: wording read from one source only (CrossWire NorSMB). Landsmål of 1921, not the 2012 Nynorsk norm."
+  },
+  "topics": [
+    "scripture",
+    "1john-1",
+    "john-3"
+  ],
+  "editorialTags": [
+    "unverified-sample",
+    "single-source-reading",
+    "rights-unverified"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "studentmaallagsbibelen-1921",
+    "courseId": "norway-nb",
+    "chapter": {
+      "index": 0,
+      "title": "1 Johannes 1,8–9; Johannes 3,16"
+    }
+  },
+  "scripture": {
+    "translationId": "norsmb1921",
+    "translationName": "Studentmållagsbibelen 1921 (Landsmål)",
+    "edition": "Studentmållagsbibelen 1921 (CrossWire module NorSMB)",
+    "book": "1JN",
+    "chapter": 1
+  },
+  "english": {
+    "source": "World English Bible (public domain)"
+  },
+  "sections": [
+    {
+      "title": "1 Johannes 1",
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+              "english": "If we say that we have no sin, we deceive ourselves, and the truth isn’t in us.",
+              "verseRefs": [
+                "1JN.1.8"
+              ]
+            },
+            {
+              "text": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+              "english": "If we confess our sins, he is faithful and righteous to forgive us the sins, and to cleanse us from all unrighteousness.",
+              "verseRefs": [
+                "1JN.1.9"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Johannes 3",
+      "chapter": 3,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+              "english": "For God so loved the world, that he gave his only born Son, that whoever believes in him should not perish, but have eternal life.",
+              "verseRefs": [
+                "JHN.3.16"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

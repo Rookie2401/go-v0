@@ -15,6 +15,7 @@ import { DEFAULT_ASSISTANCE } from '../core';
 import { ALBANIAN_COURSE_ID, ALBANIAN_STAGES, ALBANIAN_STREAMS, ALBANIAN_WORKS } from './albanian';
 import { GERMAN_COURSE_ID, GERMAN_SHELVES, GERMAN_STREAMS, GERMAN_WORKS } from './german';
 import { HINDI_COURSE_ID, HINDI_OUTSIDE_ASSISTANCE, HINDI_SHELVES, HINDI_STREAMS, HINDI_WORKS } from './hindi';
+import { NORWEGIAN_COURSE_ID, NORWEGIAN_SHELVES, NORWEGIAN_STREAMS, NORWEGIAN_WORKS } from './norwegian';
 import { SPANISH_COURSE_ID, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS } from './spanish';
 import { THAI_COURSE_ID, THAI_STAGES, THAI_STREAMS, THAI_WORKS } from './thai';
 import { getStageContract } from './curriculumPolicy';
@@ -41,6 +42,8 @@ const LADDERS: Record<string, { stages: Stage[]; works: Work[]; outside?: Assist
   // Hindi: shelves that carry a help profile each (decoding the script first at Stage 0); `outside` is the profile of a
   // text on no shelf (the learner's own book, his testimony)
   [HINDI_COURSE_ID]: { stages: HINDI_SHELVES, works: HINDI_WORKS, outside: HINDI_OUTSIDE_ASSISTANCE },
+  // Norwegian: shelves like German (a browsing orientation, never a gate); empty until the Norwegian catalogue is filled in
+  [NORWEGIAN_COURSE_ID]: { stages: NORWEGIAN_SHELVES, works: NORWEGIAN_WORKS },
 };
 
 /** The content streams of the courses that have them. */
@@ -50,6 +53,7 @@ const STREAMS: Record<string, Stream[]> = {
   [GERMAN_COURSE_ID]: GERMAN_STREAMS,
   [ALBANIAN_COURSE_ID]: ALBANIAN_STREAMS,
   [HINDI_COURSE_ID]: HINDI_STREAMS,
+  [NORWEGIAN_COURSE_ID]: NORWEGIAN_STREAMS,
 };
 
 /** Accent- and case-insensitive text for matching titles and authors. */

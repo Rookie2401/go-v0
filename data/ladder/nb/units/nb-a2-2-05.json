@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-2-05",
+  "lang": "nb",
+  "title": "Two written languages",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-2-05",
+    "title": "Two written languages (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". General explanation of Bokmål, Nynorsk and dialects in simple words (the official norms apply to written language; speech varies). Statements are deliberately general; a Norwegian reviewer must check them."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "Bokmål",
+    "Nynorsk",
+    "dialects",
+    "language",
+    "Norway"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "norway"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "ana": "Anna",
+    "luis": "Lars",
+    "marta": "Marta",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "To måter å skrive",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "I Norge er det to måter å skrive på: bokmål og nynorsk.",
+              "english": "In Norway there are two ways of writing: Bokmål and Nynorsk."
+            },
+            {
+              "text": "Begge er norsk. Mange skriver bokmål, og noen skriver nynorsk. På skolen lærer elevene begge.",
+              "english": "Both are Norwegian. Many write Bokmål, and some write Nynorsk. At school the pupils learn both."
+            },
+            {
+              "text": "De er ikke like, men folk forstår dem.",
+              "english": "They are not the same, but people understand them."
+            },
+            {
+              "text": "Når folk snakker, har de ofte en dialekt. Folk i Bergen snakker ikke som folk i Oslo.",
+              "english": "When people speak, they often have a dialect. People in Bergen do not speak like people in Oslo."
+            },
+            {
+              "text": "Dialektene er forskjellige, men folk forstår hverandre.",
+              "english": "The dialects are different, but people understand each other."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Samtale",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg forstår ikke alltid hva folk sier. Hvorfor snakker de forskjellig?",
+              "english": "I do not always understand what people say. Why do they speak differently?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Fordi de kommer fra forskjellige byer. Vi snakker dialekt, men vi skriver bokmål eller nynorsk.",
+              "english": "Because they come from different towns. We speak dialect, but we write Bokmål or Nynorsk.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Hva skriver du, Anna?",
+              "english": "What do you write, Anna?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg skriver som elevene. Men Lars kan også skrive nynorsk.",
+              "english": "I write like the pupils. But Lars can also write Nynorsk.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja. Jeg lærte begge på skolen. Hvis du leser mye, forstår du dem.",
+              "english": "Yes. I learned both at school. If you read a lot, you understand them.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg vil lese begge! Jeg liker å lære.",
+              "english": "I want to read both! I like to learn.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hos Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta snakker en gammel dialekt. Sam forstår henne nesten alltid.",
+              "english": "Marta speaks an old dialect. Sam understands her almost always."
+            },
+            {
+              "text": "Jeg snakker slik jeg gjorde da jeg var liten. Det er dialekten min.",
+              "english": "I speak the way I did when I was small. It is my dialect.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg liker den. Jeg lærer norsk på to måter: jeg leser, og jeg snakker med deg.",
+              "english": "I like it. I learn Norwegian in two ways: I read, and I talk with you.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er en god måte å lære på! Du må ikke være redd for å ta feil.",
+              "english": "That is a good way to learn! You must not be afraid of making mistakes.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Nei, jeg er ikke redd. Jeg er glad for alle ordene.",
+              "english": "No, I am not afraid. I am glad for all the words.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nils kommer inn. Han har lekse i dag, og han liker ikke å skrive.",
+              "english": "Nils comes in. He has homework today, and he does not like to write."
+            },
+            {
+              "text": "Du må skrive hver dag, Nils. Da lærer du mer.",
+              "english": "You must write every day, Nils. Then you learn more.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg vil heller spise kake. Kan jeg få litt?",
+              "english": "I would rather eat cake. Can I have some?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, men du må skrive først, og så får du kake.",
+              "english": "Yes, but you must write first, and then you get cake.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hver måned ringer Sam hjem. Han har ikke bestemt seg om han skal reise hjem. Han vil bo lenger.",
+              "english": "Every month Sam calls home. He has not decided whether he will travel home. He wants to live longer."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "På stasjonen kjøpte Sam billett. Han gikk ut av toget, og damen sa ha det bra. Tunnelen var mørk.",
+              "english": "At the station Sam bought a ticket. He got off the train, and the woman said goodbye. The tunnel was dark."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Folk har tvil, og ingen er sikker på alt. Marta kjenner Gud og er trygg. Hun fikk svar på bønnen.",
+              "english": "People have doubt, and nobody is sure of everything. Marta knows God and feels safe. She got an answer to her prayer."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Brua er stor. Trollet sa «Stopp!», men jenta var klok og ikke redd.",
+              "english": "The bridge is big. The troll said \"Stop!\", but the girl was clever and not afraid."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-2-09",
+  "lang": "nb",
+  "title": "Norway and Bergen",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-2-09",
+    "title": "Norway and Bergen (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". General knowledge about Norway kept deliberately simple and unchecked: a Norwegian reviewer should confirm every statement. Lars the teacher talks about the country with his pupils."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "Norway",
+    "geography",
+    "fjord",
+    "sea",
+    "north",
+    "south",
+    "west"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "norway"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "luis": "Lars",
+    "nico": "Nils",
+    "sam": "Sam",
+    "marta": "Marta"
+  },
+  "sections": [
+    {
+      "title": "På skolen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Lars er lærer. Han snakker om Norge på skolen.",
+              "english": "Lars is a teacher. He talks about Norway at the school."
+            },
+            {
+              "text": "Norge er et land i nord. Norge er langt.",
+              "english": "Norway is a country in the north. Norway is long.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Norge har mange fjell. Norge har også mange fjorder.",
+              "english": "Norway has many mountains. Norway also has many fjords.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Havet er i fjellet. Det er en fjord.",
+              "english": "The sea is in the mountains. That is a fjord.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Hvor er Bergen, Lars?",
+              "english": "Where is Bergen, Lars?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Bergen ligger i vest. Havet er i vest.",
+              "english": "Bergen is in the west. The sea is in the west.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Hvor er Oslo?",
+              "english": "Where is Oslo?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Oslo ligger i sør. Oslo er en stor by.",
+              "english": "Oslo is in the south. Oslo is a big city.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Er USA et stort land?",
+              "english": "Is the USA a big country?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, USA er stort. Norge er langt, men ikke stort.",
+              "english": "Yes, the USA is big. Norway is long, but not big.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Elevene leser om Norge. De liker fjellene og fjordene.",
+              "english": "The pupils read about Norway. They like the mountains and the fjords."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjemme hos Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam er hos Marta. De drikker te.",
+              "english": "Sam is at Marta's. They drink tea."
+            },
+            {
+              "text": "Jeg bor i vest. Norge er et land med mange fjell.",
+              "english": "I live in the west. Norway is a country with many mountains.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, du bor i Bergen. Det er byen i vest.",
+              "english": "Yes, you live in Bergen. It is the town in the west.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Er det kaldt i nord?",
+              "english": "Is it cold in the north?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, det er kaldt i nord. I sør er det varmt.",
+              "english": "Yes, it is cold in the north. In the south it is warm.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg vil se Norge. Jeg vil se nord og sør!",
+              "english": "I want to see Norway. I want to see the north and the south!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er bra. Fisk bor i havet. Folk liker fisk.",
+              "english": "That is good. Fish live in the sea. People like fish.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, og jeg liker fisken din, Marta.",
+              "english": "Yes, and I like your fish, Marta.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Marta er glad. Hun lager middag i kveld, og Sam kommer.",
+              "english": "Marta is happy. She is making dinner this evening, and Sam is coming."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna er sykepleier, men i dag er hun syk. Legen sier at hun må hvile.",
+              "english": "Anna is a nurse, but today she is ill. The doctor says that she has to rest."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta sa at Nils mistet vesken ofte. Han gråt, men nå husker han den. Hun tenkte at det går bra.",
+              "english": "Marta said that Nils often lost the bag. He cried, but now he remembers it. She thought that it is going well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta ber en bønn. Hun takker Gud, og hun ber om håp.",
+              "english": "Marta says a prayer. She thanks God, and she prays for hope."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

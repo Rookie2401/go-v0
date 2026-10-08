@@ -1,0 +1,31 @@
+=== nb-a2-1-05 | story | biography | Marta's childhood | Da {marta} var liten | biography,farm,childhood,bread,horse
+note: Marta tells about her childhood on a farm. The details of farm life are general and unchecked; a Norwegian reviewer should adjust them to a plausible setting.
+## Gården
+{marta} er gammel nå. Ja, hun er gammel, og livet har vært langt. Hun har levd lenge. || Marta is old now. Yes, she is old, and life has been long. She has lived a long time.
+En dag spør {nico}: «Bestemor, hvordan var livet da du var liten?» || One day Nils asks: "Grandmother, how was life when you were small?"
+[marta] Da jeg var liten, bodde jeg på en gård. Gården lå i fjellet. || When I was small, I lived on a farm. The farm was in the mountains.
+[marta] Gården var ikke stor. Vi hadde to hester. || The farm was not big. We had two horses.
+[nico] Hadde du en hest, bestemor? || Did you have a horse, grandmother?
+[marta] Ja, jeg hadde en hest. Jeg likte hesten. Jeg var glad i den. || Yes, I had a horse. I liked the horse. I was fond of it.
+
+## Livet på gården
+[marta] Jeg sto opp klokka fem hver dag. Jeg hjalp mora mi. || I got up at five o'clock every day. I helped my mother.
+[marta] Faren min kjørte, og han kjørte brødet til markedet. Vi bakte brød. || My father drove, and he drove the bread to the market. We baked bread.
+[nico] Derfor baker du brød nå! || That is why you bake bread now!
+[marta] Ja, jeg lærte å bake da jeg var liten. Livet var ikke lett, men jeg var glad. || Yes, I learned to bake when I was small. Life was not easy, but I was happy.
+[sam] Gikk du på skolen, {marta}? || Did you go to school, Marta?
+[marta] Ja, men skolen var langt fra gården. Jeg gikk lenge hver morgen. || Yes, but the school was far from the farm. I walked for a long time every morning.
+[marta] Noen ganger var det kaldt. Noen ganger gråt jeg. Men jeg lærte å lese. || Sometimes it was cold. Sometimes I cried. But I learned to read.
+
+## Nå
+[nico] Savner du gården, bestemor? || Do you miss the farm, grandmother?
+[marta] Ja, jeg savner den. Men livet er bra nå. Jeg har deg, og jeg har {sam}. || Yes, I miss it. But life is good now. I have you, and I have Sam.
+[marta] Jeg takker Gud for livet. Jeg har levd lenge, og jeg er glad. || I thank God for life. I have lived a long time, and I am happy.
+[sam] Du er gammel, {marta}, men du er alltid glad! || You are old, Marta, but you are always happy!
+
+## Husker du?
+{sam} skriver et brev til mamma. Han hilser fra {marta}. Han savner mamma, men han håper at hun kommer snart. || Sam writes a letter to Mum. He sends greetings from Marta. He misses Mum, but he hopes that she will come soon.
+
+{marta} drar ikke til hytta. Hun går ikke på ski, men hjemme har hun en peis, og hun sitter i stua. || Marta does not go to the cabin. She does not ski, but at home she has a fireplace, and she sits in the living room.
+
+I klassen har {luis} en prøve. Elevene har spørsmål. || In the class Lars has a test. The pupils have questions.

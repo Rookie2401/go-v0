@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-2-02",
+  "lang": "nb",
+  "title": "The key is gone",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-2-02",
+    "title": "The key is gone (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". \"glemme\" is regular; \"må\" is the modal \"must/have to\". \"har glemt\" is the perfect and appears first here."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "morning",
+    "key",
+    "looking for",
+    "helping"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "luis": "Lars",
+    "sam": "Sam",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "Mandag morgen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det er mandag morgen. Klokka er sju.",
+              "english": "It is Monday morning. It is seven o'clock."
+            },
+            {
+              "text": "Anna må gå til klinikken.",
+              "english": "Anna has to go to the clinic."
+            },
+            {
+              "text": "Men Anna har ikke nøkkelen. Den er borte.",
+              "english": "But Anna does not have the key. It is gone."
+            },
+            {
+              "text": "Hvor er nøkkelen? Jeg må finne den!",
+              "english": "Where is the key? I have to find it!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg vet ikke, Anna. Har du den i vesken?",
+              "english": "I do not know, Anna. Do you have it in the bag?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Nei, den er ikke i vesken. Den er borte!",
+              "english": "No, it is not in the bag. It is gone!",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "De leter",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna leter i stua. Den er ikke på bordet. Den er ikke under sengen.",
+              "english": "Anna looks in the living room. It is not on the table. It is not under the bed."
+            },
+            {
+              "text": "Sam kommer inn.",
+              "english": "Sam comes in."
+            },
+            {
+              "text": "Hei, Anna! Hva leter du etter?",
+              "english": "Hi, Anna! What are you looking for?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg leter etter nøkkelen. Den er borte!",
+              "english": "I am looking for the key. It is gone!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg kan hjelpe deg. Er den under bordet?",
+              "english": "I can help you. Is it under the table?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Er den under sengen?",
+              "english": "Is it under the bed?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Sam finner telefonen til Anna.",
+              "english": "Sam finds Anna's phone."
+            },
+            {
+              "text": "Her er telefonen din. Men den er ikke her.",
+              "english": "Here is your phone. But it is not here.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Takk, Sam! Telefonen er bra, men jeg må finne den.",
+              "english": "Thanks, Sam! The phone is good, but I have to find it.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Den er i jakka",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nils kommer inn. Han går til skolen.",
+              "english": "Nils comes in. He is going to school."
+            },
+            {
+              "text": "Hei! Hvor er den? Her er den!",
+              "english": "Hi! Where is it? Here it is!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Den ligger i jakka di, Anna!",
+              "english": "It is in your jacket, Anna!",
+              "speaker": "nico"
+            },
+            {
+              "text": "I jakka? Jeg har glemt den i jakka!",
+              "english": "In the jacket? I have forgotten it in the jacket!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Du glemmer ofte mye, Anna.",
+              "english": "You often forget a lot, Anna.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja, jeg glemmer mye. Takk, Nils!",
+              "english": "Yes, I forget a lot. Thanks, Nils!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Nå ligger den i vesken din.",
+              "english": "Now it is in your bag.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, den ligger her. Nå går jeg. Ha det bra!",
+              "english": "Yes, it is here. Now I am going. Goodbye!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ha det bra, Anna! Du er ofte trøtt, men du er glad.",
+              "english": "Goodbye, Anna! You are often tired, but you are happy.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Anna går til bussen. Hun er glad. Det er bra!",
+              "english": "Anna goes to the bus. She is happy. That is good!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Te hjemme",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam og Lars er hjemme og drikker te med melk.",
+              "english": "Sam and Lars are at home. They drink tea with milk."
+            },
+            {
+              "text": "Vil du ha brød, Sam?",
+              "english": "Do you want bread, Sam?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja, gjerne. Jeg liker brød med ost.",
+              "english": "Yes, please. I like bread with cheese.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Anna jobber mye. Hun er ofte trøtt.",
+              "english": "Anna works a lot. She is often tired.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja, men hun er glad. Hun liker klinikken.",
+              "english": "Yes, but she is happy. She likes the clinic.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På søndag leser presten i bibelen. Alle ber og synger en sang. Gud elsker oss, og vi har det i hjertet.",
+              "english": "On Sunday the pastor reads in the Bible. Everyone prays and sings a song. God loves us, and we have it in our hearts."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Det er vått ute i dag, men i morgen kommer sola. Det blir varmt.",
+              "english": "It is wet outside today, but tomorrow the sun comes. It will be warm."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam besøker Anna og Lars. Han kan sitte i stua, og han får kaffe.",
+              "english": "Sam visits Anna and Lars. He can sit in the living room, and he gets coffee."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "På onsdag og fredag ber Sam om fred.",
+              "english": "On Wednesday and Friday Sam prays for peace."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-2-01",
+  "lang": "nb",
+  "title": "A visit at Marta's",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-2-01",
+    "title": "A visit at Marta's (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". \"Kan jeg få …?\" is the polite request; \"kom inn\" is the imperative of \"komme\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "visit",
+    "tea",
+    "asking politely",
+    "living room"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "marta": "Marta",
+    "nico": "Nils",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Et besøk",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det er lørdag. Sam besøker Marta.",
+              "english": "It is Saturday. Sam is visiting Marta."
+            },
+            {
+              "text": "Marta bor i et lite hus i byen. Sam kommer til huset. Han er glad.",
+              "english": "Marta lives in a small house in town. Sam comes to the house. He is happy."
+            },
+            {
+              "text": "God dag, Marta! Kan jeg komme inn?",
+              "english": "Hello, Marta! Can I come in?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Hei, Sam! Ja, kom inn!",
+              "english": "Hi, Sam! Yes, come in!",
+              "speaker": "marta"
+            },
+            {
+              "text": "Vær så god! Du kan sitte her.",
+              "english": "Please! You can sit here.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Takk. Du har en stor stue, Marta.",
+              "english": "Thanks. You have a big living room, Marta.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, stua er stor. Huset er lite.",
+              "english": "Yes, the living room is big. The house is small.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Te i stua",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg lager kaffe. Vil du ha kaffe?",
+              "english": "I am making coffee. Do you want coffee?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Nei takk. Kan jeg få te?",
+              "english": "No thanks. Can I have tea?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, du får te. Vil du ha melk i teen?",
+              "english": "Yes, you get tea. Do you want milk in the tea?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, gjerne. Litt melk, takk.",
+              "english": "Yes, please. A little milk, please.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Her er te. Her er melk.",
+              "english": "Here is tea. Here is milk.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Sam sitter her. Han drikker te. Teen er god.",
+              "english": "Sam sits here. He drinks tea. The tea is good."
+            },
+            {
+              "text": "Teen er god, Marta. Du er snill.",
+              "english": "The tea is good, Marta. You are kind.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nei, nei. Du er snill, Sam. Du besøker meg hver lørdag.",
+              "english": "No, no. You are kind, Sam. You visit me every Saturday.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nils kommer inn",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nils kommer inn i stua. Han er sulten.",
+              "english": "Nils comes into the living room. He is hungry."
+            },
+            {
+              "text": "Hei, Sam! Er du på besøk?",
+              "english": "Hi, Sam! Are you visiting?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, jeg er hos bestemora di.",
+              "english": "Yes, I am at your grandmother's.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bestemor, får jeg brød?",
+              "english": "Grandmother, may I have bread?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, her er brød med ost. Du er snill, Nils.",
+              "english": "Yes, here is bread with cheese. You are kind, Nils.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Nils sitter og spiser brød med ost.",
+              "english": "Nils sits and eats bread with cheese."
+            },
+            {
+              "text": "Jeg vil ha melk også.",
+              "english": "I want milk too.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Her er melk.",
+              "english": "Here is milk.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Marta er glad.",
+              "english": "Marta is happy."
+            },
+            {
+              "text": "Kom hver lørdag, Sam! Du er alltid glad i kirka.",
+              "english": "Come every Saturday, Sam! You are always happy at church.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Takk, Marta! Jeg kommer gjerne.",
+              "english": "Thank you, Marta! I will gladly come.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jobben til Marta er å bake brød. Anna er sykepleier, og hun hjelper pasientene.",
+              "english": "Marta's job is to bake bread. Anna is a nurse, and she helps the patients."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Unnskyld, hvor er busstoppet?",
+              "english": "Excuse me, where is the bus stop?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Gå rett fram, og så til høyre. Så er du i sentrum.",
+              "english": "Go straight ahead, and then to the right. Then you are in the town centre.",
+              "speaker": "marta"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Du har en lang uke, Sam. På mandag og tirsdag er du på skolen.",
+              "english": "You have a long week, Sam. On Monday and Tuesday you are at school.",
+              "speaker": "ana"
+            },
+            {
+              "text": "På onsdag og torsdag er du hjemme, og på fredag er du i sentrum.",
+              "english": "On Wednesday and Thursday you are at home, and on Friday you are in the town centre.",
+              "speaker": "ana"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Det regner, og været er vått. Anna har paraply.",
+              "english": "It is raining, and the weather is wet. Anna has an umbrella."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

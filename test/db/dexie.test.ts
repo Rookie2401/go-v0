@@ -85,7 +85,7 @@ describe('Dexie store', () => {
     expect(creo).toHaveLength(2);
     expect((await store.rescues.where('textId', text.id))[0].english).toBe('I believe.');
     expect(await store.users.where('courseId', 'honduras-es')).toHaveLength(1);
-    expect(await store.languages.count()).toBe(5);
+    expect(await store.languages.count()).toBe(7);
   });
 
   it('persists across a reopen of the same database name', async () => {

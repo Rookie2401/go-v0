@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-2-11",
+  "lang": "nb",
+  "title": "Nils's birthday",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-2-11",
+    "title": "Nils's birthday (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". \"Gratulerer med dagen\" is the fixed birthday greeting; \"Gratulerer med bursdagen\" is also correct."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "birthday",
+    "cake",
+    "gift",
+    "guests",
+    "party"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "nico": "Nils",
+    "ana": "Anna",
+    "luis": "Lars",
+    "marta": "Marta"
+  },
+  "sections": [
+    {
+      "title": "Bursdag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "I dag har Nils bursdag. Han er elleve år.",
+              "english": "Today it is Nils's birthday. He is eleven years old."
+            },
+            {
+              "text": "Marta har bakt en stor kake. Hun liker å bake.",
+              "english": "Marta has baked a big cake. She likes baking."
+            },
+            {
+              "text": "Alle kommer til Marta. Hun er glad.",
+              "english": "Everyone comes to Marta's. She is happy."
+            },
+            {
+              "text": "Sam er gjest. Anna og Lars er gjester også.",
+              "english": "Sam is a guest. Anna and Lars are guests too."
+            },
+            {
+              "text": "Marta liker gjester. Hun er glad.",
+              "english": "Marta likes guests. She is happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gaver",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Gratulerer med dagen, Nils! Her er en gave.",
+              "english": "Happy birthday, Nils! Here is a gift.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Takk for gaven, Sam!",
+              "english": "Thank you for the gift, Sam!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Nils tar gaven. Det er en bok.",
+              "english": "Nils takes the gift. It is a book."
+            },
+            {
+              "text": "Jeg liker bøker. Jeg vil lese den hver dag.",
+              "english": "I like books. I want to read it every day.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Gratulerer, Nils! Du er elleve år nå.",
+              "english": "Congratulations, Nils! You are eleven now.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Gratulerer med bursdagen! Du er en bra elev.",
+              "english": "Happy birthday! You are a good pupil.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Her er jakka fra meg.",
+              "english": "Here is the jacket from me.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Takk, bestemor! Jeg trenger en jakke.",
+              "english": "Thank you, grandmother! I need a jacket.",
+              "speaker": "nico"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Kake og sang",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Alle synger en sang for Nils. Sam synger litt.",
+              "english": "Everyone sings a song for Nils. Sam sings a little."
+            },
+            {
+              "text": "Kaken er stor. Alle spiser kake.",
+              "english": "The cake is big. Everyone eats cake."
+            },
+            {
+              "text": "Den er veldig god, Marta!",
+              "english": "It is very good, Marta!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Takk, Sam! Du må komme hver søndag.",
+              "english": "Thank you, Sam! You must come every Sunday.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, gjerne! Det er en bra bursdag.",
+              "english": "Yes, gladly! It is a good birthday.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nils er glad. Han har bok og jakke. Han er ikke trøtt i dag!",
+              "english": "Nils is happy. He has a book and a jacket. He is not tired today!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nils tenkte på gaven. Han mistet den ikke, og han husket at Sam var snill.",
+              "english": "Nils thought about the gift. He did not lose it, and he remembered that Sam was kind."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Alle har synd, sier Marta. Men Gud tilgir, og det er et håp. Sam takker Gud.",
+              "english": "Everyone has sin, says Marta. But God forgives, and there is hope. Sam thanks God."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam sender en melding til Nils: «Har du tid på lørdag? Vi skal treffe Marta.»",
+              "english": "Sam sends a message to Nils: \"Do you have time on Saturday? We are going to meet Marta.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "I nord og sør er det fjell, og havet er i vest.",
+              "english": "In the north and the south there are mountains, and the sea is in the west."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

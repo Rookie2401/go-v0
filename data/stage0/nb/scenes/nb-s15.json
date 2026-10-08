@@ -1,0 +1,247 @@
+{
+  "id": "nb-s15",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "Dinner at Marta's",
+    "target": "Middag hos Marta"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis",
+      "marta",
+      "nico"
+    ],
+    "things": [
+      "rice",
+      "bread",
+      "money"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Det regner. I kveld spiser vi hos Marta.",
+      "en": "It is raining. Tonight we are eating at Marta's.",
+      "speaker": "ana",
+      "picture": "🌧️🌆🍽️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "I kveld spiser vi klokka sju. Jeg har ris og brød. Hva vil du ha, Sam?",
+      "en": "We eat at seven o'clock tonight. I have rice and bread. What do you want, Sam?",
+      "speaker": "marta",
+      "picture": "🕖🍚🍞❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Jeg vil ha ris, fordi jeg er sulten.",
+      "en": "I want rice, because I am hungry.",
+      "speaker": "sam",
+      "picture": "🍚😋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Jeg er også sulten. Bestemor, hva koster brødet i dag?",
+      "en": "I am hungry too. Grandma, how much is the bread today?",
+      "speaker": "nico",
+      "picture": "😋🍞💵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Det koster ingenting, Nils.",
+      "en": "It costs nothing, Nils.",
+      "speaker": "marta",
+      "picture": "😄",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Ingenting? Dette er veldig bra!",
+      "en": "Nothing? This is very good!",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Takk, bestemor! Jeg rydder av bordet.",
+      "en": "Thank you, Grandma! I will clear the table.",
+      "speaker": "nico",
+      "picture": "🙏🍽️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l8",
+      "text": "Jeg rydder av bordet også.",
+      "en": "I will clear the table too.",
+      "speaker": "sam",
+      "picture": "🙂🍽️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "kveld",
+      "spiser",
+      "sulten",
+      "bestemor",
+      "ingenting",
+      "rydder",
+      "av"
+    ],
+    "constructions": [
+      "nb.particle-verb"
+    ]
+  },
+  "represents": [
+    "nb.particle-verb",
+    "nb.fordi",
+    "nb.det-weather",
+    "nb.w-question",
+    "nb.vil-ha",
+    "nb.adjective-state",
+    "nb.numbers",
+    "nb.politeness",
+    "nb.verb-second",
+    "nb.present-tense",
+    "nb.har-object"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where do they eat tonight?"
+      },
+      "options": [
+        {
+          "en": "At Marta's"
+        },
+        {
+          "en": "At the clinic"
+        },
+        {
+          "en": "At school"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2",
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam want?"
+      },
+      "options": [
+        {
+          "en": "rice",
+          "picture": "🍚"
+        },
+        {
+          "en": "bread",
+          "picture": "🍞"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does the bread cost today for Nils?"
+      },
+      "options": [
+        {
+          "en": "Nothing"
+        },
+        {
+          "en": "20 kroner"
+        },
+        {
+          "en": "50 kroner"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "retell",
+      "prompt": "Tell what Sam wants for dinner, and why, in one sentence.",
+      "basedOn": [
+        "l3",
+        "nb.fordi"
+      ],
+      "accept": [
+        {
+          "text": "Sam vil ha ris, fordi han er sulten"
+        },
+        {
+          "text": "Sam vil ha ris fordi han er sulten"
+        },
+        {
+          "text": "Sam vil ha ris"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "rydder av",
+      "text": "\"Å rydde av bordet\" is \"to clear the table\". The little word \"av\" belongs to the verb and stays after it: \"Jeg rydder av bordet\". Norwegian has many such pairs (a verb plus a short word like \"av\", \"opp\", \"ut\"); you meet them as whole units.",
+      "explains": [
+        "nb.particle-verb"
+      ],
+      "afterScenes": 0
+    }
+  ]
+}

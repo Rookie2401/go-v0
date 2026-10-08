@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-1-12",
+  "lang": "nb",
+  "title": "A year in Norway",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-1-12",
+    "title": "A year in Norway (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Sam looks back with the perfect tense (har bodd, har lært) and decides about the future. The unit recycles much of the vocabulary of the stage."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "review",
+    "perfect tense",
+    "decision",
+    "plans"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Åtte måneder",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam har bodd i Norge i åtte måneder. Han har lært mye.",
+              "english": "Sam has lived in Norway for eight months. He has learned a lot."
+            },
+            {
+              "text": "Han snakker norsk hver dag, og han har skrevet brev til mora si.",
+              "english": "He speaks Norwegian every day, and he has written letters to his mother."
+            },
+            {
+              "text": "Han har vært på fjellet, han har vært på hytta, og han har spist taco.",
+              "english": "He has been on the mountain, he has been at the cabin, and he has eaten tacos."
+            },
+            {
+              "text": "Han har mange venner. Han har vært hos Marta hver søndag.",
+              "english": "He has many friends. He has been at Marta's every Sunday."
+            },
+            {
+              "text": "Men om to måneder har han vært her i et år.",
+              "english": "But in two months he will have been here for a year."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Et valg",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg har tenkt mye, Anna. Neste måned må jeg bestemme meg.",
+              "english": "I have thought a lot, Anna. Next month I have to decide.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Hva har du tenkt?",
+              "english": "What have you thought?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg vil bo her lenger. Jeg vil ikke reise hjem nå.",
+              "english": "I want to live here longer. I do not want to travel home now.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er bra! Vi vil ha deg her lenger.",
+              "english": "That is good! We want to have you here longer.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Men jeg savner mora mi og far. Jeg har ringt hver søndag.",
+              "english": "But I miss my mother and father. I have called every Sunday.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du kan besøke dem neste år. De kan også besøke deg.",
+              "english": "You can visit them next year. They can also visit you.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, kanskje de kommer neste vår! Da kan de treffe dere.",
+              "english": "Yes, maybe they will come next spring! Then they can meet you.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bønn",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam har bestemt seg. Han vil bo i Bergen i et år til.",
+              "english": "Sam has decided. He wants to live in Bergen for one more year."
+            },
+            {
+              "text": "Han har ringt til mora si og sagt det. Hun var glad, men hun savner ham.",
+              "english": "He has called his mother and told her. She was happy, but she misses him."
+            },
+            {
+              "text": "Om kvelden ber Sam: «Gud, takk for dette året. Takk for Anna, Lars, Marta og Nils.»",
+              "english": "In the evening Sam prays: \"God, thank you for this year. Thank you for Anna, Lars, Marta and Nils.\""
+            },
+            {
+              "text": "«Du har hjulpet meg. Hjelp meg neste måned også.»",
+              "english": "\"You have helped me. Help me next month too.\""
+            },
+            {
+              "text": "Sam er trøtt, men han er glad. Han har fred i hjertet.",
+              "english": "Sam is tired, but he is happy. He has peace in his heart."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Bilen er nesten ny. Bussen er ofte forsinket, men regnet fortsetter.",
+              "english": "The car is almost new. The bus is often late, but the rain continues."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta sier: «Historien om samaritanen er bra. Han var nabo til mannen, og han ga ham hjelp. Han betalte for hotellet.»",
+              "english": "Marta says: \"The story about the Samaritan is good. He was the neighbour of the man, and he gave him help. He paid for the hotel.\""
+            },
+            {
+              "text": "Nils lytter til historien. Folk går ofte forbi, som presten gjorde.",
+              "english": "Nils listens to the story. People often walk past, as the priest did."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "På fredagskveld spiste vi taco. Etter maten satt vi i sofaen og så en film. Nils ville spille.",
+              "english": "On Friday evening we ate tacos. After the meal we sat on the sofa and watched a film. Nils wanted to play."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

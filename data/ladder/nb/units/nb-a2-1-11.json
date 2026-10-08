@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-1-11",
+  "lang": "nb",
+  "title": "Friday evening",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-1-11",
+    "title": "Friday evening (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". \"Fredagstaco\" is a widespread Friday-evening custom in Norway; the story only mentions it in passing. A Norwegian reviewer should confirm how natural it sounds."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "Friday",
+    "taco",
+    "film",
+    "game",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam",
+    "nico": "Nils",
+    "marta": "Marta",
+    "luis": "Lars"
+  },
+  "sections": [
+    {
+      "title": "Fredag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På fredag er det fredagskveld. Alle er trøtte etter uka.",
+              "english": "On Friday it is Friday evening. Everyone is tired after the week."
+            },
+            {
+              "text": "Anna og Lars har ofte taco på fredag. Det er mat som alle liker.",
+              "english": "Anna and Lars often have tacos on Friday. It is food that everyone likes."
+            },
+            {
+              "text": "I dag kommer Marta og Nils også. De skal spise hos Anna og Lars.",
+              "english": "Today Marta and Nils are coming too. They will eat at Anna and Lars's."
+            },
+            {
+              "text": "Sam hjelper Anna med maten. Han lager taco for første gang.",
+              "english": "Sam helps Anna with the food. He makes tacos for the first time."
+            },
+            {
+              "text": "Du lager bra mat, Sam!",
+              "english": "You make good food, Sam!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Takk! Jeg liker taco. Det er god mat, og det er lett å lage.",
+              "english": "Thanks! I like tacos. It is good food, and it is easy to make.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Alle sitter ved bordet og spiser.",
+              "english": "Everyone sits at the table and eats."
+            },
+            {
+              "text": "Jeg vil ha mer taco!",
+              "english": "I want more tacos!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Du har spist mye, Nils. Nå er du mett.",
+              "english": "You have eaten a lot, Nils. Now you are full.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Film og spill",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Etter maten sitter de i sofaen. De skal se en film.",
+              "english": "After the meal they sit on the sofa. They are going to watch a film."
+            },
+            {
+              "text": "Hvilken film vil dere se?",
+              "english": "Which film do you want to watch?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg vil se en film om fjell og fjorder!",
+              "english": "I want to watch a film about mountains and fjords!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Det er en bra film. Vi har vært i fjellet.",
+              "english": "That is a good film. We have been in the mountains.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Etter filmen vil Nils spille. Han liker å spille.",
+              "english": "After the film Nils wants to play. He likes to play."
+            },
+            {
+              "text": "Kan vi spille, Sam?",
+              "english": "Can we play, Sam?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, gjerne! Vi spiller, og så sover du.",
+              "english": "Yes, gladly! We play, and then you sleep.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Marta sitter i sofaen. Hun er glad, og hun er trøtt.",
+              "english": "Marta sits on the sofa. She is happy, and she is tired."
+            },
+            {
+              "text": "Fredag er en bra dag. Vi spiser, vi snakker, og vi er glade.",
+              "english": "Friday is a good day. We eat, we talk, and we are happy.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nils sier: «Jeg vil ha is og pølse, som på sytten mai!» Han tenker på flagg og tog og bunad.",
+              "english": "Nils says: \"I want ice cream and sausage, like on the seventeenth of May!\" He thinks of flags and parades and bunads."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jeg synes at film er bra. Er du enig, Nils?",
+              "english": "I think film is good. Do you agree, Nils?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Kanskje. Jeg liker taco mer enn film.",
+              "english": "Maybe. I like tacos more than film.",
+              "speaker": "nico"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nå er det høst. Etter høsten kommer vinteren, og så kommer våren og sommeren.",
+              "english": "Now it is autumn. After the autumn comes the winter, and then come the spring and the summer."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Røvere skadet mannen, men han fikk hjelp. Nils lytter til historien.",
+              "english": "Robbers injured the man, but he got help. Nils listens to the story."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

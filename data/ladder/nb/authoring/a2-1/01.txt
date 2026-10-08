@@ -1,0 +1,36 @@
+=== nb-a2-1-01 | story | narrative | Before the journey | Før reisen | arrival,journey,memory,friends
+note: First-person past tense with subordinate clauses introduced by "før" and "da". "Husker du da du kom?" begins a short dialogue.
+## Før reisen
+Før jeg kom til Norge, bodde jeg i USA. Jeg hadde ei mor, en far og en bror. || Before I came to Norway I lived in the USA. I had a mother, a father and a brother.
+Jeg ville bo i Norge i et år. Derfor pakket jeg ei veske. || I wanted to live in Norway for a year. That is why I packed a bag.
+I vesken hadde jeg jakka mi, to bøker og bibelen min. Jeg pakket ikke mye. || In the bag I had my jacket, two books and my Bible. I did not pack much.
+Mora mi sa: «Du må ringe oss!» Jeg sa: «Ja, jeg skal ringe hver søndag.» || My mother said: "You must call us!" I said: "Yes, I will call every Sunday."
+Vennene mine i USA sa: «Du skal reise til Norge? Det er langt!» || My friends in the USA said: "You are going to travel to Norway? That is far!"
+Jeg sa: «Ja, derfor må jeg pakke nå.» || I said: "Yes, that is why I have to pack now."
+
+## Reisen
+Jeg tok flyet til Norge. Reisen var lang. Jeg sov lenge i flyet. || I took the plane to Norway. The journey was long. I slept for a long time on the plane.
+Flyet kom til {city} klokka fem. Etter reisen var jeg trøtt, men jeg var glad. || The plane arrived in Bergen at five o'clock. After the journey I was tired, but I was happy.
+Jeg ventet på {ana}. Hun skulle treffe meg. Jeg ventet lenge. || I waited for Anna. She was going to meet me. I waited a long time.
+Så kom {ana}. Hun sa: «Hei, {sam}! Her er jeg!» Jeg sa: «Det går bra.» || Then Anna came. She said: "Hi, Sam! Here I am!" I said: "That is fine."
+Da jeg kom til huset, var {luis} hjemme. Han drakk kaffe. || When I came to the house, Lars was at home. He was drinking coffee.
+
+## En ny by
+Byen var ny, og maten var ny. Det var en ny dag, og jeg var i Norge. || The town was new, and the food was new. It was a new day, and I was in Norway.
+Jeg hadde ikke mange venner i Norge. Nå har jeg {ana}, {luis}, {marta} og {nico}. De er venner. || I did not have many friends in Norway. Now I have Anna, Lars, Marta and Nils. They are friends.
+[ana] Husker du da du kom til {city}, {sam}? || Do you remember when you came to Bergen, Sam?
+[sam] Ja! Det regnet, og jeg hadde ikke paraply. Jeg var våt. || Yes! It was raining, and I had no umbrella. I was wet.
+[ana] Du var trøtt, og du snakket litt. Men du snakket norsk! || You were tired, and you spoke a little. But you spoke Norwegian!
+[sam] Nei, jeg kunne litt norsk. Derfor ventet jeg lenge på deg. || No, I knew a little Norwegian. That is why I waited for you so long.
+[ana] Du var snill, og du ventet ikke for lenge. || You were kind, and you did not wait too long.
+[luis] Da du kom, drakk vi kaffe. || When you came, we drank coffee.
+[sam] Ja, jeg var glad for kaffen. || Yes, I was glad for the coffee.
+
+## Husker du?
+Da jeg kom til Norge, ba jeg en bønn. Jeg takket Gud, og jeg hadde håp. Gud tilgir synd. || When I came to Norway, I said a prayer. I thanked God, and I had hope. God forgives sin.
+
+Jeg sendte en melding til {ana}. Hun svarte at hun hadde tid. Vi hadde en plan: Vi skulle treffe {luis}. || I sent a message to Anna. She answered that she had time. We had a plan: We were going to meet Lars.
+
+Sør i landet er det varmt, men nord i landet er det kaldt. || In the south of the country it is warm, but in the north of the country it is cold.
+
+{marta} liker gjester. || Marta likes guests.

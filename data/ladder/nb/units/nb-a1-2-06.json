@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-2-06",
+  "lang": "nb",
+  "title": "The lost bag",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-2-06",
+    "title": "The lost bag (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". The past tense appears here for the first time: var, hadde, mistet, gråt, sa, lette, gikk, så, lå, fant."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "past tense",
+    "market",
+    "losing things",
+    "helping"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nico": "Nils",
+    "marta": "Marta",
+    "ola": "Ola",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "På markedet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "I går var Nils på markedet med Marta.",
+              "english": "Yesterday Nils was at the market with Marta."
+            },
+            {
+              "text": "Nils hadde ei veske. Han hadde en bok, en telefon og brød i vesken.",
+              "english": "Nils had a bag. He had a book, a phone and bread in the bag."
+            },
+            {
+              "text": "Så mistet Nils vesken. Han gråt.",
+              "english": "Then Nils lost the bag. He cried."
+            },
+            {
+              "text": "Veska er borte! Jeg har mistet den!",
+              "english": "The bag is gone! I have lost it!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Marta sa: «Ikke gråt, Nils. Vi skal finne den.»",
+              "english": "Marta said: \"Do not cry, Nils. We will find it.\""
+            },
+            {
+              "text": "Marta tenkte: «Hvor var vi før?»",
+              "english": "Marta thought: \"Where were we before?\""
+            },
+            {
+              "text": "Kan du huske det, Nils?",
+              "english": "Can you remember, Nils?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Nei, jeg husker ikke. Jeg var hos Ola.",
+              "english": "No, I do not remember. I was at Ola's.",
+              "speaker": "nico"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hos Ola",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "De gikk til Ola. Ola selger epler på markedet.",
+              "english": "They went to Ola. Ola sells apples at the market."
+            },
+            {
+              "text": "God dag, Marta! God dag, Nils!",
+              "english": "Hello, Marta! Hello, Nils!",
+              "speaker": "ola"
+            },
+            {
+              "text": "Har du ei veske, Ola? Jeg har mistet min.",
+              "english": "Do you have a bag, Ola? I have lost mine.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja! Jeg har sett ei veske her. Den lå under bordet.",
+              "english": "Yes! I have seen a bag here. It was under the table.",
+              "speaker": "ola"
+            },
+            {
+              "text": "Ola fant vesken. Han sa: «Er det din?»",
+              "english": "Ola found the bag. He said: \"Is it yours?\""
+            },
+            {
+              "text": "Ja! Det er min veske!",
+              "english": "Yes! It is my bag!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Nils gråt ikke mer. Han var glad.",
+              "english": "Nils did not cry any more. He was happy."
+            },
+            {
+              "text": "Takk, Ola! Takk, bestemor!",
+              "english": "Thank you, Ola! Thank you, grandmother!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Du må huske vesken, Nils.",
+              "english": "You must remember the bag, Nils.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjemme",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam hadde sett Nils på markedet.",
+              "english": "Sam had seen Nils at the market."
+            },
+            {
+              "text": "Han ser at Nils er glad. Nils har vesken.",
+              "english": "He sees that Nils is happy. Nils has the bag."
+            },
+            {
+              "text": "Du er glad, Nils! Jeg tenkte at du var trøtt.",
+              "english": "You are happy, Nils! I thought that you were tired.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja! Jeg mistet vesken, men Ola fant den.",
+              "english": "Yes! I lost the bag, but Ola found it.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Marta tenkte at Nils glemmer mye. Men hun var glad i Nils.",
+              "english": "Marta thought that Nils forgets a lot. But she was fond of Nils."
+            },
+            {
+              "text": "Sam sa at han liker folk på markedet. De er snille.",
+              "english": "Sam said that he likes the people at the market. They are kind."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hos Marta sitter alle i stua. Sam får kaffe, og han besøker henne hver lørdag.",
+              "english": "At Marta's everyone sits in the living room. Sam gets coffee, and he visits her every Saturday."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "I butikken trenger Sam egg, smør og brød. Han har listen, og han handler.",
+              "english": "In the shop Sam needs eggs, butter and bread. He has the list, and he shops."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta står opp tidlig, før klokka fem. Hva gjør hun? Hun baker. Om natten sover hun.",
+              "english": "Marta gets up early, before five o'clock. What does she do? She bakes. At night she sleeps."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Legen sier: «Du har feber og vondt i hodet. Du må hvile.»",
+              "english": "The doctor says: \"You have a fever and a headache. You have to rest.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

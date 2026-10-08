@@ -181,8 +181,27 @@ export function createLibrary(deps: LibraryDeps): Library {
     },
 
     async search(q) {
-      await sync(q.lang, q).catch(() => undefined);
-      return searchCatalog(store, q, clock());
+      const { alsoLangs, ...base } = q;
+      const companions = [...new Set(alsoLangs ?? [])].filter((l) => l !== q.lang);
+      if (companions.length === 0) {
+        await sync(q.lang, base).catch(() => undefined);
+        return searchCatalog(store, base, clock());
+      }
+      // one list over the course language and its companions: the page is cut across the languages in order
+      const want = Math.min(200, Math.max(1, Math.floor(q.limit ?? 30)));
+      const offset = Math.max(0, Math.floor(q.offset ?? 0));
+      let before = 0;
+      let total = 0;
+      const items: CatalogText[] = [];
+      for (const lang of [q.lang, ...companions]) {
+        await sync(lang, { ...base, lang }).catch(() => undefined);
+        const room = want - items.length;
+        const page = await searchCatalog(store, { ...base, lang, offset: Math.max(0, offset - before), limit: Math.max(1, room) }, clock());
+        if (room > 0 && offset - before < page.total) items.push(...page.items.slice(0, room));
+        before += page.total;
+        total += page.total;
+      }
+      return { total, items };
     },
 
     entry,

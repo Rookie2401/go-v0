@@ -26,7 +26,7 @@ const sentencesOf = (d: CorpusDocument): S[] =>
 describe('bundled corpus shape (schema version 2)', () => {
   it('has story, dialogue and Bible doc for each language, sorted deterministically', () => {
     expect(docs.map((d) => `${d.lang}/${d.id}`)).toEqual(
-      ['de', 'es', 'hi', 'sq', 'th'].flatMap((l) => ['bible-1john-1', 'dialogue-01', 'story-01'].map((s) => `${l}/${s}`)));
+      ['de', 'es', 'hi', 'nb', 'nn', 'sq', 'th'].flatMap((l) => ['bible-1john-1', 'dialogue-01', 'story-01'].map((s) => `${l}/${s}`)));
     for (const l of LANGUAGES) expect(byLang(l).map((d) => d.contentType).sort()).toEqual(['dialogue', 'scripture', 'story']);
     for (const d of docs) expect(d.schemaVersion).toBe(2);
   });

@@ -8,9 +8,11 @@ import {
   type AdapterRegistry, type AppStore, type EventBus, type FixtureSentence, type LanguageAdapter, type LanguageCode, type RawToken,
   type ProviderAvailability, type SynthesisRequest, type SynthesisResult, type TtsProvider, type WordMark,
 } from '../../src/core';
-import { canonicalTextSha256, createGoListen, editionIdOf, FixtureTtsProvider, encodeWav, fixtureChunks, releaseIdOf, renderFixtureChunks, type AudioGenerationAuthorization, type GoListenDeps, type GoListenService } from '../../src/golisten';
+import { AZURE_VOICES, canonicalTextSha256, createGoListen, editionIdOf, FixtureTtsProvider, encodeWav, fixtureChunks, releaseIdOf, renderFixtureChunks, type AudioGenerationAuthorization, type GoListenDeps, type GoListenService } from '../../src/golisten';
 
-export const LANGS: LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de'];
+export const LANGS: LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de', 'nb', 'nn'];
+/** The languages the Azure voice table has a voice for (Nynorsk has none: its voice plan borrows the Bokmål voice). */
+export const AZURE_LANGS: LanguageCode[] = LANGS.filter((l) => AZURE_VOICES[l].length > 0);
 
 // ───────────────────────── test adapter registry ─────────────────────────
 
@@ -106,6 +108,16 @@ export const STORY: Record<LanguageCode, FixtureSentence[]> = {
     { tokens: ['Gott', 'hat', 'mir', 'vergeben'].map(w).concat(dot()) },
     { tokens: ['Ich', 'verstehe', 'mein', 'Herz'].map(w).concat(dot()) },
   ],
+  nb: [
+    { tokens: ['Jeg', 'tror', 'på', 'Gud'].map(w).concat(dot()) },
+    { tokens: ['Gud', 'tilga', 'meg'].map(w).concat(dot()) },
+    { tokens: ['Jeg', 'forstår', 'hjertet', 'mitt'].map(w).concat(dot()) },
+  ],
+  nn: [
+    { tokens: ['Eg', 'trur', 'på', 'Gud'].map(w).concat(dot()) },
+    { tokens: ['Gud', 'tilgav', 'meg'].map(w).concat(dot()) },
+    { tokens: ['Eg', 'forstår', 'hjartet', 'mitt'].map(w).concat(dot()) },
+  ],
 };
 
 /** Scripture: verse numbers are metadata (verseRefs), never in the sentence text. */
@@ -129,6 +141,14 @@ export const SCRIPTURE: Record<LanguageCode, FixtureSentence[]> = {
   de: [
     { tokens: ['Denn', 'also', 'hat', 'Gott', 'die', 'Welt', 'geliebt'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
     { tokens: ['So', 'wir', 'unsere', 'Sünden', 'bekennen'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
+  ],
+  nb: [
+    { tokens: ['For', 'så', 'høyt', 'elsket', 'Gud', 'verden'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
+    { tokens: ['Hvis', 'vi', 'bekjenner', 'våre', 'synder'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
+  ],
+  nn: [
+    { tokens: ['For', 'så', 'høgt', 'elska', 'Gud', 'verda'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
+    { tokens: ['Om', 'vi', 'stadfestar', 'syndene', 'våre'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
   ],
 };
 

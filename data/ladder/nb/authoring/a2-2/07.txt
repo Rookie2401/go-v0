@@ -1,0 +1,40 @@
+=== nb-a2-2-07 | story | work | A difficult choice | Et vanskelig valg | work,decision,offer,advice,moving
+note: Anna receives a job offer in Oslo and must choose. A realistic everyday dilemma told in the past tense with dialogue; no real hospital is named.
+## Tilbudet
+En dag fikk {ana} et brev. Det var et tilbud om ny jobb på et sykehus i Oslo. || One day Anna got a letter. It was an offer of a new job at a hospital in Oslo.
+{ana} leste brevet to ganger. Hun var glad, men hun var også redd. || Anna read the letter twice. She was happy, but she was also afraid.
+Hun hadde jobbet på klinikken i mange år. Hun likte jobben, og hun likte pasientene. || She had worked at the clinic for many years. She liked the job, and she liked the patients.
+Men sykehuset i Oslo var stort, og de trengte en sykepleier som henne. || But the hospital in Oslo was big, and they needed a nurse like her.
+Hvis hun sa ja, måtte hun flytte fra {city}. || If she said yes, she would have to move away from Bergen.
+
+## Samtalen
+[ana] Jeg har fått et tilbud, {luis}. Jeg vet ikke hva jeg skal gjøre. || I have received an offer, Lars. I do not know what to do.
+[luis] Et tilbud om jobb? Hvor? || An offer of a job? Where?
+[ana] På et sykehus i Oslo. Sjefen skrev til meg. Han vil at jeg skal komme. || At a hospital in Oslo. The boss wrote to me. He wants me to come.
+[luis] Det er et godt tilbud. Men du bor her, og du har jobb her. || It is a good offer. But you live here, and you have a job here.
+[sam] Vil du flytte, {ana}? || Do you want to move, Anna?
+[ana] Jeg vet ikke. Jeg vil ikke flytte fra dere. Men jeg vil også lære mer. || I do not know. I do not want to move away from you. But I also want to learn more.
+[luis] Det er et vanskelig valg. Du må tenke lenge. || It is a difficult choice. You must think for a long time.
+
+## Råd
+{ana} gikk til {marta}. {marta} hørte på henne. || Anna went to Marta. Marta listened to her.
+[marta] Hva sier hjertet ditt? || What does your heart say?
+[ana] Hjertet sier at jeg er glad her. Men jeg lurer på om jeg kan gjøre mer. || My heart says that I am happy here. But I wonder whether I can do more.
+[marta] Du kan be om hjelp. Gud hjelper deg, og vi hjelper deg også. || You can ask for help. God helps you, and we help you too.
+{ana} ba den kvelden. Hun ba om hjelp og om fred i hjertet. || Anna prayed that evening. She prayed for help and for peace in her heart.
+Neste dag skrev hun til sjefen. Hun takket for tilbudet, men sa nei. || The next day she wrote to the boss. She thanked him for the offer, but said no.
+«Jeg vil lære mer,» skrev hun, «men jeg vil bo her et år til. Kanskje kommer jeg senere.» || "I want to learn more," she wrote, "but I want to live here one more year. Maybe I will come later."
+{luis} og {sam} var glade. {marta} sa: «Du har bestemt deg. Det er bra.» || Lars and Sam were glad. Marta said: "You have decided. That is good."
+
+## Husker du?
+Utsikten fra toget var bra. Etter tunnelen var det lyst igjen. {sam} kom tilbake fra Oslo, og han gikk ut på stasjonen. || The view from the train was good. After the tunnel it was light again. Sam came back from Oslo, and he went out onto the station.
+
+{sam} har fortsatt tvil. Han er ikke sikker på alt, men han kjenner Gud og er trygg. Han venter på svar. || Sam still has doubt. He is not sure of everything, but he knows God and feels safe. He waits for an answer.
+
+Folk skriver bokmål eller nynorsk, og ordene er forskjellige. Hvorfor? Det er to måter, og ingen er feil. Dialektene er også forskjellige. || People write Bokmål or Nynorsk, and the words are different. Why? There are two ways, and neither is wrong. The dialects are also different.
+
+Mel, salt og gjær blir deig. Deigen må hvile før ovnen. Brødet lukter godt, og det smaker bra. || Flour, salt and yeast become dough. The dough must rest before the oven. The bread smells good, and it tastes good.
+
+Først bygger de skolen, og så åpner de den. {sam} går dit, og der er det plass. || First they build the school, and then they open it. Sam goes there, and there is room there.
+
+Langt fra stasjonen kjøpte {sam} billett. En dame gikk ut av toget før ham. || Far from the station Sam bought a ticket. A woman got off the train before him.

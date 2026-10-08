@@ -1,0 +1,35 @@
+=== nb-a2-1-04 | story | nature | The cabin in the mountains | Hytta i fjellet | winter,cabin,snow,skis,fireplace
+note: Going to a cabin in the mountains for a winter weekend is a very common Norwegian custom; the details here are simple and unchecked.
+## Til hytta
+Det er vinter i {city}. Det er kaldt, og det er snø i fjellet. || It is winter in Bergen. It is cold, and there is snow in the mountains.
+{ana} og {luis} har ei hytte i fjellet. De drar til hytta hver vinter. || Anna and Lars have a cabin in the mountains. They go to the cabin every winter.
+I år skal {sam} dra med dem. {nico} og {marta} skal ikke dra. || This year Sam is going with them. Nils and Marta are not going.
+[sam] Hva gjør vi på hytta? || What do we do at the cabin?
+[luis] Vi går på ski. Vi sover, og vi spiser mat. || We ski. We sleep, and we eat food.
+[sam] Jeg kan ikke gå på ski. || I cannot ski.
+[ana] Det er ikke vanskelig. Hvis du går hver dag, går du bra. || It is not difficult. If you ski every day, you will ski well.
+De tok bussen, og så gikk de lenge i snøen. || They took the bus, and then they walked for a long time in the snow.
+Da de kom til hytta, var det kaldt. || When they came to the cabin, it was cold.
+
+## Peisen
+[luis] Vi trenger peisen! || We need the fireplace!
+Peisen ble varm. De satt i stua og var glade. || The fireplace became warm. They sat in the living room and were happy.
+{ana} laget middag. De spiste suppe og brød, og de drakk te. || Anna made dinner. They ate soup and bread, and they drank tea.
+[sam] Peisen er bra. Jeg liker stua. || The fireplace is good. I like the living room.
+Etter middagen satt de lenge og snakket om Norge, om fjellet og om familien. || After dinner they sat and talked for a long time about Norway, about the mountains and about the family.
+[ana] Er du trøtt, {sam}? || Are you tired, Sam?
+[sam] Ja, men jeg er glad. Vi sover snart. || Yes, but I am happy. We will sleep soon.
+
+## På ski
+Dagen etter var det sol. {sam} tok skiene, og de gikk ut. || The next day there was sun. Sam took the skis, and they went out.
+{sam} var ikke bra på ski, men {luis} hjalp ham. || Sam was not good at skiing, but Lars helped him.
+[sam] Det er vanskelig! Men jeg liker snøen. || It is difficult! But I like the snow.
+[ana] Du går bra nå. Du kan dra til hytta hver vinter! || You are skiing well now. You can go to the cabin every winter!
+Om kvelden satt de i stua igjen. {sam} var trøtt, men han var glad. || In the evening they sat in the living room again. Sam was tired, but he was happy.
+
+## Husker du?
+{ana} har bursdag i vinter. {luis} har en gave, og {sam} lager kake. Alle gratulerer henne. || Anna has a birthday in winter. Lars has a gift, and Sam makes a cake. Everyone congratulates her.
+
+Før turen til hytta pakket vi. Vennene mine pakket jakker. Det var en ny reise for meg. || Before the trip to the cabin we packed. My friends packed jackets. It was a new journey for me.
+
+[sam] Hvis jeg ikke forstår, kan jeg spørre. Det er vanskelig å gå på ski, men ikke når {ana} hjelper. || If I do not understand, I can ask. It is difficult to ski, but not when Anna helps.

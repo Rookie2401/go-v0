@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-2-12",
+  "lang": "nb",
+  "title": "Sam stays",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-2-12",
+    "title": "Sam stays (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". The last unit of the Bokmål ladder before the bridge: Sam looks back and ahead, in the first person. It echoes the seed story (story-01) and recycles the vocabulary of the whole ladder."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "reflection",
+    "testimony",
+    "gratitude",
+    "future",
+    "review"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam",
+    "luis": "Lars",
+    "marta": "Marta",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "Et år",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg heter Sam. Jeg har bodd i Bergen i ett år nå. Det har vært et langt år, og det har vært et bra år.",
+              "english": "My name is Sam. I have lived in Bergen for a year now. It has been a long year, and it has been a good year."
+            },
+            {
+              "text": "Da jeg kom, snakket jeg litt norsk. Jeg forstod ikke alt, og jeg var ofte trøtt.",
+              "english": "When I came, I spoke a little Norwegian. I did not understand everything, and I was often tired."
+            },
+            {
+              "text": "Nå leser jeg bøker, og jeg skriver brev. Jeg snakker med folk på markedet, og de forstår meg.",
+              "english": "Now I read books, and I write letters. I talk with people at the market, and they understand me."
+            },
+            {
+              "text": "Jeg har lært mye av Marta, Anna, Lars og Nils. De har hjulpet meg hver dag.",
+              "english": "I have learned a lot from Marta, Anna, Lars and Nils. They have helped me every day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Troen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Da jeg var ung, forstod jeg ikke hjertet mitt. Jeg trodde ikke på Gud.",
+              "english": "When I was young, I did not understand my heart. I did not believe in God."
+            },
+            {
+              "text": "Så begynte jeg å forstå synden min. Gud tilgav meg, og jeg fikk fred i hjertet.",
+              "english": "Then I began to understand my sin. God forgave me, and I got peace in my heart."
+            },
+            {
+              "text": "Nå går jeg i kirka hver søndag. Jeg ber, og jeg synger, og jeg takker Gud.",
+              "english": "Now I go to church every Sunday. I pray, and I sing, and I thank God."
+            },
+            {
+              "text": "Jeg har fortsatt spørsmål, og noen ganger har jeg tvil. Men jeg er trygg.",
+              "english": "I still have questions, and sometimes I have doubt. But I feel safe."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Neste år",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hva skal du gjøre neste år, Sam?",
+              "english": "What will you do next year, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg skal bli i Bergen. Jeg vil lære mer norsk, og jeg vil lese flere bøker.",
+              "english": "I will stay in Bergen. I want to learn more Norwegian, and I want to read more books.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du kan lese bøker på bokmål og på nynorsk.",
+              "english": "You can read books in Bokmål and in Nynorsk.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja, og jeg vil lese gamle bøker også. Kanskje jeg forstår dem en dag!",
+              "english": "Yes, and I want to read old books too. Maybe I will understand them one day!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du forstår mer hver uke. Det tar tid, men du kommer dit.",
+              "english": "You understand more every week. It takes time, but you will get there.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg skal lese bøker sammen med deg, Sam! Jeg skal ikke glemme veska mi!",
+              "english": "I will read books together with you, Sam! I will not forget my bag!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Alle ler. Sam ser på dem og er glad.",
+              "english": "Everyone laughs. Sam looks at them and is glad."
+            },
+            {
+              "text": "Han tenker: «Gud er god. Jeg har et hjem, jeg har venner, og jeg har en menighet.»",
+              "english": "He thinks: \"God is good. I have a home, I have friends, and I have a congregation.\""
+            },
+            {
+              "text": "Han ber: «Takk, Gud, for dette året. Hjelp meg neste år også.»",
+              "english": "He prays: \"Thank you, God, for this year. Help me next year too.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Til slutt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Vi er glade for at du blir, Sam. Du er en god venn.",
+              "english": "We are glad that you are staying, Sam. You are a good friend.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Du hjelper oss, og vi hjelper deg. Slik er det i en familie.",
+              "english": "You help us, and we help you. That is how it is in a family.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Kom hit på søndag. Jeg lager middag, og vi drikker kaffe etter kirka.",
+              "english": "Come on Sunday. I will make dinner, and we will drink coffee after church.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, gjerne! Jeg kommer hver søndag, som jeg har gjort i et år.",
+              "english": "Yes, gladly! I come every Sunday, as I have done for a year.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Og jeg kommer også! Jeg skal ikke glemme veska mi denne gangen.",
+              "english": "And I am coming too! I will not forget my bag this time.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Sam ler. Han er glad, og han har fred i hjertet.",
+              "english": "Sam laughs. He is happy, and he has peace in his heart."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hunden til fru Berg heter Bjørn. Eieren er glad, og hunden er lik en liten bjørn.",
+              "english": "Mrs Berg's dog is called Bjørn. The owner is happy, and the dog looks like a little bear."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nils er glad i hunden. Eieren, fru Berg, er også glad i den. Den er lik en liten bjørn.",
+              "english": "Nils is fond of the dog. The owner, Mrs Berg, is also fond of it. It looks like a little bear."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nils fortalte om prosjektet. Fiskerne bor nær havet, drar ut i båt og fanger fisk. Tørrfisk er tørr fisk.",
+              "english": "Nils told about the project. The fishermen live near the sea, go out in a boat and catch fish. Dried fish is dry fish."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "I timen lærte vi om naturen, om elver og skog og strøm. Vi tok med mat.",
+              "english": "In the lesson we learned about nature, about rivers and forest and electricity. We took food with us."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Brødet er ferdig når det lukter riktig. Sam setter deigen i ovnen selv. Etterpå smaker han.",
+              "english": "The bread is done when it smells right. Sam puts the dough in the oven himself. Afterwards he tastes it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam husker invitasjonen til menigheten. Han var ikke alene.",
+              "english": "Sam remembers the invitation to the congregation. He was not alone."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+=== nb-a1-2-08 | dialogue | faith | Prayer and thanks | Bønn og takk | prayer,thanks,forgiveness,hope,testimony
+note: "Gud tilgir synd" echoes the seed story story-01. Marta speaks of prayer as speaking with God.
+## {marta} forteller
+Hver søndag går {marta} i kirka. Hun ber, og hun takker Gud. || Every Sunday Marta goes to church. She prays, and she thanks God.
+[marta] Gud er god. Jeg takker Gud hver dag. || God is good. I thank God every day.
+[sam] Hva ber du om, {marta}? || What do you pray about, Marta?
+[marta] Jeg ber om håp for alle folk. Jeg ber om det hver dag. || I pray for hope for all people. I pray for it every day.
+[sam] Takk, {marta}! Hva er en bønn? || Thank you, Marta! What is a prayer?
+[marta] En bønn er å snakke med Gud. Du kan be hver dag. || A prayer is talking with God. You can pray every day.
+[marta] Du kan takke Gud. Du kan be for {ana}, {luis} og {nico}. || You can thank God. You can pray for Anna, Lars and Nils.
+
+## Synd og håp
+[sam] Jeg har synd i hjertet, {marta}. || I have sin in my heart, Marta.
+[marta] Alle folk har det. Det er en bønn. Gud tilgir deg. || All people do. That is a prayer. God forgives you.
+[sam] Jeg vet at Gud tilgir synd. Jeg vil be om det. || I know that God forgives sin. I want to ask for it.
+[marta] Det er bra. Gud elsker deg, {sam}. Det er håp. || That is good. God loves you, Sam. There is hope.
+
+## {sam} ber
+{sam} ber hjemme i rommet. Han sier: «Gud, tilgi synden min.» || Sam prays at home in his room. He says: "God, forgive my sin."
+«Takk, Gud. Takk for {marta}, {ana}, {luis} og {nico}.» || "Thank you, God. Thank you for Marta, Anna, Lars and Nils."
+«Du elsker meg. Jeg har håp.» || "You love me. I have hope."
+{sam} er glad. Han har fred i hjertet. Det er en god bønn. || Sam is happy. He has peace in his heart. It is a good prayer.
+
+## Etter kirka
+Det er søndag. {sam} og {marta} drikker kaffe etter kirka. || It is Sunday. Sam and Marta drink coffee after church.
+{nico} kommer til dem. Han er sulten. || Nils comes to them. He is hungry.
+[nico] Hva gjør du i kirka, {marta}? || What do you do in church, Marta?
+[marta] Vi sang, og vi ba. Presten leste i bibelen. || We sang, and we prayed. The pastor read in the Bible.
+[nico] Jeg liker sangen. Men jeg liker ikke å sitte. || I like the song. But I do not like sitting.
+[sam] Jeg liker å sitte. Jeg liker sangen også. || I like sitting. I like the song too.
+
+## Husker du?
+{marta} trenger smør og egg. Hun handler i butikken, og listen er lang. || Marta needs butter and eggs. She shops at the shop, and the list is long.
+
+{sam} står opp før {ana}. Han gjør lekser tidlig, og om natten sover han godt. || Sam gets up before Anna. He does homework early, and at night he sleeps well.
+
+{sam} tenker på turen til fjellet. Veien var lang, og fjellet var høyt. || Sam thinks about the walk to the mountain. The road was long, and the mountain was high.
+
+{luis} har vondt i hodet. Legen sier at han må hvile. || Lars has a headache. The doctor says that he has to rest.
+
+{nico} mistet ikke jakka på turen. || Nils did not lose his jacket on the walk.

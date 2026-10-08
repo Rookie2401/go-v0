@@ -24,6 +24,7 @@ export const COURSE_MODULES: Record<string, { module: string; exportName: string
   sq: { module: 'albanian', exportName: 'ALBANIAN_WORKS' },
   es: { module: 'spanish', exportName: 'SPANISH_WORKS' },
   de: { module: 'german', exportName: 'GERMAN_WORKS' },
+  nb: { module: 'norwegian', exportName: 'NORWEGIAN_WORKS' },
 };
 
 /** The stage function from the course catalogue of `lang`; undefined stages everywhere when the module or its works are absent. */

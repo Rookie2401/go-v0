@@ -1,0 +1,146 @@
+{
+  "id": "nb-snd5",
+  "lang": "nb",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "æ, gj, silent d and t — and small letters"
+  },
+  "features": [
+    "nb:æ",
+    "nb:silent-d",
+    "nb:gj",
+    "nb:det",
+    "nb:lowercase"
+  ],
+  "words": [
+    {
+      "text": "vær",
+      "en": "be (vær så god)",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "gjerne",
+      "en": "gladly",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "kaldt",
+      "en": "cold",
+      "picture": "🥶",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "det",
+      "en": "it, that",
+      "picture": "👉",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "bord",
+      "en": "table",
+      "picture": "🍽️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "søndag",
+      "en": "Sunday",
+      "picture": "📅",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "æ is like the \"a\" in \"cat\" (vær). gj is said like English \"y\" (gjerne is YER-neh). After n, l or r a final d is often silent (bord sounds like \"boor\", kaldt like \"kalt\"), and the t in det is silent (it sounds like \"deh\"). Days of the week start with a small letter: søndag.",
+    "more": "Norwegian words also come with one of two melodies (tone 1 or tone 2), which can tell two words that are spelled alike apart. Go does not teach the melodies here: you will hear them in the recordings. Languages and nationalities also start with a small letter (norsk); only names such as Anna and Gud begin with a capital letter."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "vær",
+      "prompt": "How is \"æ\" said in \"vær\"?",
+      "options": [
+        "like \"a\" in \"cat\"",
+        "like \"ay\" in \"say\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "gjerne",
+      "prompt": "How does \"gj\" sound in \"gjerne\"?",
+      "options": [
+        "like English \"y\": YER-neh",
+        "a hard \"g\": GYER-neh"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "kaldt",
+      "prompt": "How is \"kaldt\" said?",
+      "options": [
+        "KAL-d-t, every letter",
+        "KALT (the d is silent)"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "det",
+      "prompt": "How is \"det\" said?",
+      "options": [
+        "DEH (the t is silent)",
+        "DET"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-word",
+      "word": "søndag",
+      "prompt": "Which is the correct spelling of \"Sunday\"?",
+      "options": [
+        "søndag",
+        "Søndag"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-reading",
+      "word": "bord",
+      "prompt": "How is \"bord\" said?",
+      "options": [
+        "BOR-d, with a d",
+        "BOOR (the d is silent)"
+      ],
+      "answer": 1
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  }
+}

@@ -1,0 +1,1179 @@
+{
+  "schema": 1,
+  "lang": "nb",
+  "_comment": "Leads only (Team Norway package D, 2026-10-07). EVERY entry is rights-unverified and withheld: nothing is downloaded or bundled. Evidence records are from research report docs/norway/recon/corpus-rights-bible.md and were not checked by a person or a lawyer. Entries with \"lang\": \"nn\" are Nynorsk works kept in this Bokmål course manifest (the course reads nn as a companion language); the library builder needs a decision on where they are built.",
+  "entries": [
+    {
+      "slug": "bibelen-1930",
+      "title": "Bibelen (Det Norske Bibelselskap, 1930)",
+      "author": "Det Norske Bibelselskap (translation committee)",
+      "courseId": "norway-nb",
+      "lang": "nb",
+      "stage": "s6",
+      "stream": "scripture",
+      "streams": [
+        "scripture",
+        "mission"
+      ],
+      "domains": [
+        "theology"
+      ],
+      "contentType": "scripture",
+      "variety": "nb-riksmal",
+      "era": "early 20th century",
+      "genre": "Bible translation",
+      "level": "intermediate",
+      "registers": [
+        "religious",
+        "archaic"
+      ],
+      "role": "scripture",
+      "publicationYear": 1930,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Bibelselskapet says on its own page that the 1930 Bokmål translation has \"falt i det fri\"; it names no legal basis. The CrossWire SWORD module Norsk labels it Public Domain, which is CrossWire's statement, not Bibelselskapet's. The death years of the 1930 translators are unchecked and the 2020 notes and cross-references of the module have an unstated author. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "publisher-statement",
+            "url": "https://bibel.no/verbum/rettigheter-til-bruk-av-bibeltekst",
+            "quote": "Oversettelsen av 1930 (bokmål)",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Bibelselskapet lists the 1930 Bokmål and 1938 Nynorsk translations (and Bibal 1895, North Sami) as free to use without permission. No date on the page; no legal basis given; protected: Bibel 2011, NO78/85, NO78, NT 2005, Biibbal 2019. Bibel 2024 is not named (inferred protected)."
+          },
+          {
+            "kind": "catalogue-entry",
+            "url": "https://crosswire.org/ftpmirror/pub/sword/raw/mods.d/norsk.conf",
+            "quote": "DistributionLicense=Public Domain",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "CrossWire module Norsk, version 2.0 (2020-02-08), OSIS XML, 1.82 MB, Lang=nb; text scanned and proofed by H. Priebe and co-workers, based on the version prepared by Tore Vamraak; TextSource http://unbound.biola.edu/. Completeness and error rate not documented."
+          },
+          {
+            "kind": "other",
+            "url": "https://github.com/Ravatsaas/apen-bibel",
+            "quote": "copyright has expired",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Åpen Bibel README says the copyright of the 1930 base text has expired; contributors waive their rights under CC0; no licence file; baseline provenance undocumented."
+          }
+        ]
+      },
+      "source": {
+        "file": "nb-bible/norsk-1930.osis.xml",
+        "kind": "documents",
+        "url": "https://crosswire.org/sword/modules/ModInfo.jsp?modName=Norsk",
+        "edition": "Bibelen 1930, CrossWire module Norsk 2.0"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified: Bibelselskapet's \"falt i det fri\" statement gives no legal basis and the translators' death years are unchecked; the module also needs the owner's download approval (about 1.82 MB). Only the three-verse seed excerpt data/corpus/nb/bible-1john-1.json exists, and it is held out of the release bundle.",
+      "notes": "A full Bible needs the owner's download approval for SWORD module Norsk and its own builder. The 1930 text is the Bokmål of the 1917 reform (Riksmål era): \"forat\", \"gav\", hard consonants, ei/en forms."
+    },
+    {
+      "slug": "studentmaallagsbibelen-1921",
+      "title": "Studentmållagsbibelen (1921)",
+      "author": "Studentmållaget (Peter Hognestad, main editor)",
+      "courseId": "norway-nb",
+      "lang": "nn",
+      "stage": "s6",
+      "stream": "scripture",
+      "streams": [
+        "scripture",
+        "nynorsk",
+        "heritage"
+      ],
+      "domains": [
+        "theology"
+      ],
+      "contentType": "scripture",
+      "variety": "nn-landsmal",
+      "era": "early 20th century",
+      "genre": "Bible translation",
+      "level": "advanced",
+      "registers": [
+        "religious",
+        "historical"
+      ],
+      "role": "scripture",
+      "publicationYear": 1921,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "The CrossWire SWORD module NorSMB labels the 1921 Studentmållag translation Public Domain. This is the 1921 Landsmål text, NOT the 1938 Nynorsk Bible; the 1938 reviser (Ragnvald Indrebø) died in 1984, so Bibelselskapet's \"falt i det fri\" statement for 1938 is in tension with life plus 70 years. No digital 1938 text with a licence statement was found. The 1921 contributors' death years are unchecked. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "catalogue-entry",
+            "url": "https://crosswire.org/ftpmirror/pub/sword/raw/mods.d/norsmb.conf",
+            "quote": "DistributionLicense=Public Domain",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "CrossWire module NorSMB, version 1.0 (2012-01-25), Lang=nn, 1.72 MB; TextSource http://gamal.nynorsk.no/mu/smio/bibelen/ (host no longer resolves)."
+          },
+          {
+            "kind": "publisher-statement",
+            "url": "https://bibel.no/verbum/rettigheter-til-bruk-av-bibeltekst",
+            "quote": "Oversettelsen av 1938 (nynorsk)",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Bibelselskapet says the 1938 Nynorsk translation has fallen into the public domain; this concerns 1938, not the 1921 translation, and gives no legal basis."
+          },
+          {
+            "kind": "author-death",
+            "url": "https://snl.no/Ragnvald_Indrebø",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Ragnvald Indrebø (born 1891), sole reviser of the 1938 Nynorsk Bible, died 26 June 1984 (SNL / Wikipedia digests): under life plus 70 years the 1938 revision would run to the end of 2054."
+          }
+        ]
+      },
+      "source": {
+        "file": "nn-bible/norsmb-1921.osis.xml",
+        "kind": "documents",
+        "url": "https://crosswire.org/sword/modules/ModInfo.jsp?modName=NorSMB",
+        "edition": "Studentmållagsbibelen 1921, CrossWire module NorSMB 1.0"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified: contributors' death years unchecked; the 1938 text has no digital source with a licence; the module needs the owner's download approval (about 1.72 MB). Only the three-verse seed excerpt data/corpus/nn/bible-1john-1.json exists, held out of the release bundle.",
+      "notes": "Nynorsk work, read receptively and counted in its own (nn) accounts. The language is 1921 Landsmål (hev, me, so, sanningi), not the 2012 norm."
+    },
+    {
+      "slug": "biblica-open-nt",
+      "title": "Biblica Open Norwegian New Testament (En Levende Bok)",
+      "author": "Biblica",
+      "courseId": "norway-nb",
+      "lang": "nb",
+      "stage": "s6",
+      "stream": "modern",
+      "streams": [
+        "modern",
+        "scripture",
+        "mission"
+      ],
+      "domains": [
+        "theology"
+      ],
+      "contentType": "scripture",
+      "variety": "nb",
+      "era": "contemporary",
+      "genre": "Bible translation (modern paraphrase), New Testament only",
+      "level": "intermediate",
+      "registers": [
+        "religious"
+      ],
+      "role": "scripture",
+      "publicationYear": 2025,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "eBible.org lists translation noblb with CC BY-SA 4.0; 27 books, 7,748 verses, updated 2025-05-17. A modern paraphrase, not a historical text. Share-alike applies to any derivative; whether an app mixing it with public-domain text must itself be share-alike is an open question for the owner. Listed as a lead only; no person has checked the licence text. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "licence": "CC BY-SA 4.0 (as listed by eBible.org)",
+        "licenceName": "CC BY-SA",
+        "licenceVersion": "4.0",
+        "attributionText": "Biblica Open En Levende Bok: Det Nye Testamentet, Biblica, CC BY-SA 4.0 (via eBible.org). The Biblica trademark must be removed from derivatives.",
+        "attributionRequired": true,
+        "evidenceRecords": [
+          {
+            "kind": "catalogue-entry",
+            "url": "https://ebible.org/Scriptures/translations.csv",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Raw-checked in recon 3: the only Norwegian entry on eBible.org is noblb, \"Biblica Open En Levende Bok: Det Nye Testamentet\", NT only, CC BY-SA 4.0, trademark of Biblica to be removed from derivatives."
+          },
+          {
+            "kind": "licence-text",
+            "url": "https://ebible.org/noblb/",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Licence page to be read by a person before anything is bundled."
+          }
+        ]
+      },
+      "source": {
+        "file": "nb-bible/noblb-usfm.zip",
+        "kind": "documents",
+        "url": "https://ebible.org/noblb/",
+        "edition": "Biblica Open Norwegian NT (noblb), 2025-05-17"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified; share-alike conditions not decided; needs the owner's download approval (1-3 MB, optional).",
+      "notes": "Optional modern Scripture alongside the 1930 text; derivative works stay CC BY-SA 4.0."
+    },
+    {
+      "slug": "hamsun-sult",
+      "title": "Sult",
+      "author": "Knut Hamsun",
+      "courseId": "norway-nb",
+      "lang": "nb",
+      "stage": "s3",
+      "stream": "heritage",
+      "streams": [
+        "heritage",
+        "library"
+      ],
+      "domains": [
+        "literature"
+      ],
+      "contentType": "story",
+      "variety": "nb-dano",
+      "era": "19th century",
+      "genre": "novel",
+      "level": "literary",
+      "registers": [
+        "literary",
+        "historical"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 1890,
+      "authorDied": 1952,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Hamsun died in 1952, so the work is out of copyright in Norway from 2023 on the usual term. Project Gutenberg #30027 carries the 1890 first-edition spelling and a US public-domain notice, which is a US statement. Edition, spelling and proofreading not checked. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "author-death",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Knut Hamsun died in 1952; under åndsverkloven § 11 (life plus 70 years after the end of the death year) the work is out of copyright in Norway from 1 January 2023. A lead taken from a research report (recon 3), not checked against a primary source."
+          },
+          {
+            "kind": "catalogue-entry",
+            "url": "https://www.gutenberg.org/ebooks/30027",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Gutenberg edition #30027, first-edition 1890 spelling per recon 3. \"Public domain in the USA\" is not a statement about Norway."
+          }
+        ]
+      },
+      "source": {
+        "file": "nb-heritage/hamsun-sult.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/30027.txt.utf-8",
+        "edition": "Project Gutenberg #30027"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified and the file has not been downloaded (the owner must approve the download, under 1 MB).",
+      "notes": "Dano-Norwegian orthography of 1890 (capitalised nouns, soft consonants). Read as heritage, never credited as modern Bokmål."
+    },
+    {
+      "slug": "hamsun-markens-groede",
+      "title": "Markens grøde",
+      "author": "Knut Hamsun",
+      "courseId": "norway-nb",
+      "lang": "nb",
+      "stage": "s3",
+      "stream": "heritage",
+      "streams": [
+        "heritage",
+        "library"
+      ],
+      "domains": [
+        "literature"
+      ],
+      "contentType": "story",
+      "variety": "nb-riksmal",
+      "era": "early 20th century",
+      "genre": "novel",
+      "level": "literary",
+      "registers": [
+        "literary",
+        "historical"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 1917,
+      "authorDied": 1952,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Hamsun died in 1952. Gutenberg #43724 (part 1) and #43725 (part 2); edition and spelling not checked. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "author-death",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Knut Hamsun died in 1952; under åndsverkloven § 11 (life plus 70 years after the end of the death year) the work is out of copyright in Norway from 1 January 2023. A lead taken from a research report (recon 3), not checked against a primary source."
+          },
+          {
+            "kind": "catalogue-entry",
+            "url": "https://www.gutenberg.org/ebooks/43724",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Gutenberg part 1; part 2 is #43725 (https://www.gutenberg.org/ebooks/43725)."
+          }
+        ]
+      },
+      "source": {
+        "file": "nb-heritage/hamsun-markens-groede.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/43724.txt.utf-8",
+        "urls": [
+          "https://www.gutenberg.org/ebooks/43724.txt.utf-8",
+          "https://www.gutenberg.org/ebooks/43725.txt.utf-8"
+        ],
+        "edition": "Project Gutenberg #43724 and #43725"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified and the files have not been downloaded (owner approval needed, each under 1 MB).",
+      "notes": "Possibly intermediate; the spelling of the edition (1917 reform or earlier) is unchecked."
+    },
+    {
+      "slug": "undset-jenny",
+      "title": "Jenny",
+      "author": "Sigrid Undset",
+      "courseId": "norway-nb",
+      "lang": "nb",
+      "stage": "s3",
+      "stream": "heritage",
+      "streams": [
+        "heritage",
+        "library"
+      ],
+      "domains": [
+        "literature"
+      ],
+      "contentType": "story",
+      "variety": "nb-riksmal",
+      "era": "early 20th century",
+      "genre": "novel",
+      "level": "literary",
+      "registers": [
+        "literary",
+        "historical"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 1911,
+      "authorDied": 1949,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Undset died in 1949, so the work is out of copyright in Norway from 2020 on the usual term. Gutenberg #32245; edition and spelling not checked. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "author-death",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Sigrid Undset died in 1949; under åndsverkloven § 11 (life plus 70 years after the end of the death year) the work is out of copyright in Norway from 1 January 2020. A lead taken from a research report (recon 3), not checked against a primary source."
+          },
+          {
+            "kind": "catalogue-entry",
+            "url": "https://www.gutenberg.org/ebooks/32245",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Gutenberg edition #32245."
+          }
+        ]
+      },
+      "source": {
+        "file": "nb-heritage/undset-jenny.txt",
+        "kind": "gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/32245.txt.utf-8",
+        "edition": "Project Gutenberg #32245"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified and the file has not been downloaded (owner approval needed, under 1 MB).",
+      "notes": "Riksmål of 1911 (after the 1907 reform)."
+    },
+    {
+      "slug": "bjornson-fiskerjenten",
+      "title": "Fiskerjenten",
+      "author": "Bjørnstjerne Bjørnson",
+      "courseId": "norway-nb",
+      "lang": "nb",
+      "stage": "s3",
+      "stream": "heritage",
+      "streams": [
+        "heritage",
+        "library"
+      ],
+      "domains": [
+        "literature"
+      ],
+      "contentType": "story",
+      "variety": "nb-dano",
+      "era": "19th century",
+      "genre": "novel (rural tale)",
+      "level": "literary",
+      "registers": [
+        "literary",
+        "historical"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 1868,
+      "authorDied": 1910,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Bjørnson died in 1910. Project Runeberg page (NB scan July 2008, 207 pp, OCR from NB, Fraktur original with a normalised version); proofreading status unclear; Runeberg states no reuse licence for its OCR text. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "author-death",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Bjørnstjerne Bjørnson died in 1910; under åndsverkloven § 11 (life plus 70 years after the end of the death year) the work is out of copyright in Norway from 1 January 1981. A lead taken from a research report (recon 3), not checked against a primary source."
+          },
+          {
+            "kind": "catalogue-entry",
+            "url": "https://runeberg.org/fiskjenten/",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Runeberg publishes only works whose authors died more than 70 years ago (https://runeberg.org/admin/copyright.html); that is a compilation-level policy, not a per-work verification."
+          }
+        ]
+      },
+      "source": {
+        "file": "nb-heritage/bjornson-fiskerjenten.txt",
+        "kind": "plain",
+        "url": "https://runeberg.org/fiskjenten/",
+        "edition": "Project Runeberg, NB scan 2008"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified; not downloaded; OCR proofreading status unclear.",
+      "notes": "The simplest Bjørnson register. Dano-Norwegian orthography."
+    },
+    {
+      "slug": "bjornson-arne",
+      "title": "Arne",
+      "author": "Bjørnstjerne Bjørnson",
+      "courseId": "norway-nb",
+      "lang": "nb",
+      "stage": "s3",
+      "stream": "heritage",
+      "streams": [
+        "heritage",
+        "library"
+      ],
+      "domains": [
+        "literature"
+      ],
+      "contentType": "story",
+      "variety": "nb-dano",
+      "era": "19th century",
+      "genre": "novel (rural tale)",
+      "level": "literary",
+      "registers": [
+        "literary",
+        "historical"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 1859,
+      "authorDied": 1910,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Bjørnson died in 1910. Runeberg: Samlede værker, 3rd ed., Nordisk forlag; spell-checked, not manually proofread. A duplicate exists at runeberg.org/bbarne/. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "author-death",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Bjørnstjerne Bjørnson died in 1910; under åndsverkloven § 11 (life plus 70 years after the end of the death year) the work is out of copyright in Norway from 1 January 1981. A lead taken from a research report (recon 3), not checked against a primary source."
+          },
+          {
+            "kind": "catalogue-entry",
+            "url": "https://runeberg.org/arneno/",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Runeberg edition; a duplicate is at https://runeberg.org/bbarne/."
+          }
+        ]
+      },
+      "source": {
+        "file": "nb-heritage/bjornson-arne.txt",
+        "kind": "plain",
+        "url": "https://runeberg.org/arneno/",
+        "edition": "Project Runeberg, Samlede værker 3rd ed."
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified; not downloaded.",
+      "notes": "Dano-Norwegian orthography."
+    },
+    {
+      "slug": "kielland-garman-worse",
+      "title": "Garman & Worse",
+      "author": "Alexander L. Kielland",
+      "courseId": "norway-nb",
+      "lang": "nb",
+      "stage": "s3",
+      "stream": "heritage",
+      "streams": [
+        "heritage",
+        "library"
+      ],
+      "domains": [
+        "literature"
+      ],
+      "contentType": "story",
+      "variety": "nb-dano",
+      "era": "19th century",
+      "genre": "novel",
+      "level": "literary",
+      "registers": [
+        "literary",
+        "historical"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 1880,
+      "authorDied": 1906,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Kielland died in 1906. Runeberg: 4th ed. 1890, scanned 1995 from the 1899 collected works; proofread. Skipper Worse is at https://runeberg.org/skipwors/. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "author-death",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Alexander L. Kielland died in 1906; under åndsverkloven § 11 (life plus 70 years after the end of the death year) the work is out of copyright in Norway from 1 January 1977. A lead taken from a research report (recon 3), not checked against a primary source."
+          },
+          {
+            "kind": "catalogue-entry",
+            "url": "https://runeberg.org/garmwors/",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Runeberg edition, proofread."
+          }
+        ]
+      },
+      "source": {
+        "file": "nb-heritage/kielland-garman-worse.txt",
+        "kind": "plain",
+        "url": "https://runeberg.org/garmwors/",
+        "edition": "Project Runeberg, 4th ed. 1890 (1899 collected works)"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified; not downloaded.",
+      "notes": "Dano-Norwegian orthography."
+    },
+    {
+      "slug": "asbjornsen-moe-folkeeventyr-1852",
+      "title": "Norske Folkeeventyr (2nd edition, 1852)",
+      "author": "Peter Christen Asbjørnsen and Jørgen Moe",
+      "courseId": "norway-nb",
+      "lang": "nb",
+      "stage": "s2",
+      "stream": "heritage",
+      "streams": [
+        "heritage",
+        "library"
+      ],
+      "domains": [
+        "literature",
+        "folklore"
+      ],
+      "contentType": "story",
+      "variety": "nb-dano",
+      "era": "19th century",
+      "genre": "folk tales",
+      "level": "intermediate",
+      "registers": [
+        "literary",
+        "historical"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 1852,
+      "authorDied": 1885,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Asbjørnsen died in 1885, Moe in 1882. The Wikikilden (Norwegian Wikisource) 1852 text is the lead. Do NOT use the Runeberg text (runeberg.org/folkeven/): it is an electronic edition of 1996 by Kjell Nedrelid in more modern language with undocumented source, which may carry someone else's rights. The licence of Wikikilden's volunteer transcriptions needs a recheck on the live page. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "author-death",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "P. C. Asbjørnsen (d. 1885) and Jørgen Moe (d. 1882) died in 1885; under åndsverkloven § 11 (life plus 70 years after the end of the death year) the work is out of copyright in Norway from 1 January 1956. A lead taken from a research report (recon 3), not checked against a primary source."
+          },
+          {
+            "kind": "catalogue-entry",
+            "url": "https://no.wikisource.org/wiki/Wikikilden:Opphavsrett",
+            "quote": "Oversettelser eller senere utgaver kan være beskyttet av opphavsretten.",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Wikikilden policy page (GFDL wording, possibly old): contributors may upload only public-domain or properly licensed material; texts must be 70 years past the author's death. Author pages carry \"Oversettelser eller senere utgaver kan være beskyttet av opphavsretten.\""
+          }
+        ]
+      },
+      "source": {
+        "file": "nb-heritage/asbjornsen-moe-1852.txt",
+        "kind": "plain",
+        "url": "https://no.wikisource.org/",
+        "edition": "Wikikilden, 2nd ed. 1852 (exact page to be identified)"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified; the exact Wikikilden page and its licence are not recorded; not downloaded.",
+      "notes": "Good graded heritage material; spelling of the 1850s."
+    },
+    {
+      "slug": "rolfsen-laesebok-2",
+      "title": "Læsebok for folkeskolen, part 2 (Riksmaalsutgave, 1909)",
+      "author": "Nordahl Rolfsen (compiler)",
+      "courseId": "norway-nb",
+      "lang": "nb",
+      "stage": "s4",
+      "stream": "heritage",
+      "streams": [
+        "heritage",
+        "library"
+      ],
+      "domains": [
+        "literature",
+        "education"
+      ],
+      "contentType": "nonfiction",
+      "variety": "nb-riksmal",
+      "era": "early 20th century",
+      "genre": "school reader (140 selections)",
+      "audience": "children",
+      "level": "easy",
+      "registers": [
+        "historical"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 1909,
+      "authorDied": 1928,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Rolfsen died in 1928. The reader contains texts by many authors; each contributor needs a death year before 1955 to be free in Norway. Runeberg: 1909 ed., Jacob Dybwad, 320 pp, OCR with Tesseract 4.0. Parts 3-5 are also on Runeberg. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "author-death",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Nordahl Rolfsen (compiler) died in 1928; under åndsverkloven § 11 (life plus 70 years after the end of the death year) the work is out of copyright in Norway from 1 January 1999. A lead taken from a research report (recon 3), not checked against a primary source."
+          },
+          {
+            "kind": "catalogue-entry",
+            "url": "https://runeberg.org/lffrolfsen/2/",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Runeberg part 2: 1909 ed., \"Riksmaalsutgave\", 320 pp, 140 selections. Contributors of the individual selections are not yet identified."
+          }
+        ]
+      },
+      "source": {
+        "file": "nb-heritage/rolfsen-laesebok-2.txt",
+        "kind": "plain",
+        "url": "https://runeberg.org/lffrolfsen/2/",
+        "edition": "Project Runeberg, Part 2, 1909"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified: each contributor needs a death year; not downloaded (owner approval needed).",
+      "notes": "The best heritage candidate for a graded ladder (b1-bridge). Riksmål of 1909."
+    },
+    {
+      "slug": "garborg-haugtussa",
+      "title": "Haugtussa",
+      "author": "Arne Garborg",
+      "courseId": "norway-nb",
+      "lang": "nn",
+      "stage": "s5",
+      "stream": "heritage",
+      "streams": [
+        "nynorsk",
+        "heritage",
+        "library"
+      ],
+      "domains": [
+        "literature",
+        "poetry"
+      ],
+      "contentType": "story",
+      "variety": "nn-landsmal",
+      "era": "19th century",
+      "genre": "poetry cycle",
+      "level": "literary",
+      "registers": [
+        "literary",
+        "historical"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 1895,
+      "authorDied": 1924,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Garborg died in 1924. Wikikilden has a full text (Landsmål, poetry); the licence of the transcription is unrecorded. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "author-death",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Arne Garborg died in 1924; under åndsverkloven § 11 (life plus 70 years after the end of the death year) the work is out of copyright in Norway from 1 January 1995. A lead taken from a research report (recon 3), not checked against a primary source."
+          },
+          {
+            "kind": "catalogue-entry",
+            "url": "https://no.wikisource.org/wiki/Wikikilden:Opphavsrett",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Wikikilden holds the text per recon 3; exact page not recorded."
+          }
+        ]
+      },
+      "source": {
+        "file": "nn-heritage/garborg-haugtussa.txt",
+        "kind": "plain",
+        "url": "https://no.wikisource.org/",
+        "edition": "Wikikilden (exact page to be identified)"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified; not downloaded.",
+      "notes": "Nynorsk work (Landsmål of 1895)."
+    },
+    {
+      "slug": "duun-early-works",
+      "title": "Olav Duun: early works (1907-1910)",
+      "author": "Olav Duun",
+      "courseId": "norway-nb",
+      "lang": "nn",
+      "stage": "s5",
+      "stream": "heritage",
+      "streams": [
+        "nynorsk",
+        "heritage",
+        "library"
+      ],
+      "domains": [
+        "literature"
+      ],
+      "contentType": "story",
+      "variety": "nn-landsmal",
+      "era": "early 20th century",
+      "genre": "novels",
+      "level": "literary",
+      "registers": [
+        "literary",
+        "historical"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 1907,
+      "authorDied": 1939,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Duun died in 1939, free in Norway from 2010. The Wikikilden author page lists four titles; Juvikfolke was not found. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "author-death",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Olav Duun died in 1939; under åndsverkloven § 11 (life plus 70 years after the end of the death year) the work is out of copyright in Norway from 1 January 2010. A lead taken from a research report (recon 3), not checked against a primary source."
+          },
+          {
+            "kind": "catalogue-entry",
+            "url": "https://no.wikisource.org/wiki/Wikikilden:Opphavsrett",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Wikikilden author page (four early titles) per recon 3; titles to be named when a person checks the page."
+          }
+        ]
+      },
+      "source": {
+        "file": "nn-heritage/duun-early-works.txt",
+        "kind": "plain",
+        "url": "https://no.wikisource.org/",
+        "edition": "Wikikilden author page (to be identified)"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified; titles and pages not yet identified; not downloaded.",
+      "notes": "Nynorsk work."
+    },
+    {
+      "slug": "aasen-prover-af-landsmaalet",
+      "title": "Prøver af Landsmaalet i Norge",
+      "author": "Ivar Aasen",
+      "courseId": "norway-nb",
+      "lang": "nn",
+      "stage": "s5",
+      "stream": "heritage",
+      "streams": [
+        "nynorsk",
+        "heritage",
+        "library"
+      ],
+      "domains": [
+        "literature",
+        "language"
+      ],
+      "contentType": "nonfiction",
+      "variety": "nn-landsmal",
+      "era": "19th century",
+      "genre": "specimens of the language",
+      "level": "literary",
+      "registers": [
+        "historical"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 1853,
+      "authorDied": 1896,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Aasen died in 1896. Wikikilden lists Prøver af Landsmaalet i Norge (1853) and Symra (1863); pre-1901 orthography. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "author-death",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Ivar Aasen died in 1896; under åndsverkloven § 11 (life plus 70 years after the end of the death year) the work is out of copyright in Norway from 1 January 1967. A lead taken from a research report (recon 3), not checked against a primary source."
+          },
+          {
+            "kind": "catalogue-entry",
+            "url": "https://no.wikisource.org/wiki/Wikikilden:Opphavsrett",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Wikikilden listing per recon 3; exact pages not recorded."
+          }
+        ]
+      },
+      "source": {
+        "file": "nn-heritage/aasen-prover.txt",
+        "kind": "plain",
+        "url": "https://no.wikisource.org/",
+        "edition": "Wikikilden (to be identified)"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified; not downloaded.",
+      "notes": "Landsmål before the 1901 orthography; also Symra (1863)."
+    },
+    {
+      "slug": "vinje-ferdaminni",
+      "title": "Ferdaminni fraa Sumaren 1860",
+      "author": "Aasmund Olavsson Vinje",
+      "courseId": "norway-nb",
+      "lang": "nn",
+      "stage": "s5",
+      "stream": "heritage",
+      "streams": [
+        "nynorsk",
+        "heritage",
+        "library"
+      ],
+      "domains": [
+        "literature",
+        "travel"
+      ],
+      "contentType": "story",
+      "variety": "nn-landsmal",
+      "era": "19th century",
+      "genre": "travel writing",
+      "level": "literary",
+      "registers": [
+        "literary",
+        "historical"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 1861,
+      "authorDied": 1870,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Vinje died in 1870. Wikikilden holds it per recon 3; Landsmål in old spelling. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "evidenceRecords": [
+          {
+            "kind": "author-death",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "A. O. Vinje died in 1870; under åndsverkloven § 11 (life plus 70 years after the end of the death year) the work is out of copyright in Norway from 1 January 1941. A lead taken from a research report (recon 3), not checked against a primary source."
+          },
+          {
+            "kind": "catalogue-entry",
+            "url": "https://no.wikisource.org/wiki/Wikikilden:Opphavsrett",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Wikikilden listing per recon 3; exact page not recorded."
+          }
+        ]
+      },
+      "source": {
+        "file": "nn-heritage/vinje-ferdaminni.txt",
+        "kind": "plain",
+        "url": "https://no.wikisource.org/",
+        "edition": "Wikikilden (to be identified)"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified; not downloaded.",
+      "notes": "Nynorsk (Landsmål) work in old spelling."
+    },
+    {
+      "slug": "tatoeba-nob",
+      "title": "Tatoeba: Norwegian Bokmål sentences",
+      "author": "Tatoeba contributors",
+      "courseId": "norway-nb",
+      "lang": "nb",
+      "stage": "s1",
+      "stream": "modern",
+      "streams": [
+        "modern",
+        "library"
+      ],
+      "domains": [
+        "sentences"
+      ],
+      "contentType": "nonfiction",
+      "variety": "nb",
+      "era": "contemporary",
+      "genre": "single sentences with translations",
+      "level": "easy",
+      "registers": [
+        "everyday"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 2026,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Tatoeba states CC BY 2.0 FR with attribution required; cached statistics list nob 18,898 sentences (date uncertain). Single sentences, no connected text. Listed as a lead only. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "licence": "CC BY 2.0 FR (Tatoeba terms of use); some sentences may carry other terms",
+        "licenceName": "CC BY",
+        "licenceVersion": "2.0 FR",
+        "attributionText": "Tatoeba contributors, CC BY 2.0 FR (https://tatoeba.org).",
+        "attributionRequired": true,
+        "evidenceRecords": [
+          {
+            "kind": "licence-text",
+            "url": "https://tatoeba.org/en/terms_of_use",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Attribution required; some sentences may carry other terms. Not read by a person."
+          }
+        ]
+      },
+      "source": {
+        "file": "nb-open/tatoeba-nob.tsv",
+        "kind": "plain",
+        "url": "https://tatoeba.org/en/downloads",
+        "edition": "Tatoeba per-language export (path and size not verified)"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified; the export has not been downloaded (owner approval needed, likely a few hundred KB).",
+      "notes": "A1-B1 single sentences; attribution must be shown."
+    },
+    {
+      "slug": "tatoeba-nno",
+      "title": "Tatoeba: Norwegian Nynorsk sentences",
+      "author": "Tatoeba contributors",
+      "courseId": "norway-nb",
+      "lang": "nn",
+      "stage": "s5",
+      "stream": "nynorsk",
+      "streams": [
+        "nynorsk",
+        "library"
+      ],
+      "domains": [
+        "sentences"
+      ],
+      "contentType": "nonfiction",
+      "variety": "nn",
+      "era": "contemporary",
+      "genre": "single sentences with translations",
+      "level": "easy",
+      "registers": [
+        "everyday"
+      ],
+      "role": "subsidiary",
+      "publicationYear": 2026,
+      "rights": {
+        "state": "rights-unverified",
+        "copyrightStatus": "unknown",
+        "permission": "unknown",
+        "canBundle": false,
+        "userImportOnly": true,
+        "canModify": false,
+        "canStoreOffline": false,
+        "canBundleAudio": false,
+        "audiobook": "unknown",
+        "verified": false,
+        "jurisdiction": "not established",
+        "basis": "Tatoeba states CC BY 2.0 FR with attribution required; cached statistics list nno 12,494 sentences (date uncertain). Listed as a lead only. A lead for verification, not a conclusion. Norwegian term: åndsverkloven § 11, life of the author plus 70 years (recon 3, digest of lovdata.no). A translation or a modern edition is its own protected work (§ 6).",
+        "acquisitionNotes": "Rights not verified. Nothing is bundled until a person records the exact edition, its source and the legal basis with their evidence.",
+        "licence": "CC BY 2.0 FR (Tatoeba terms of use); some sentences may carry other terms",
+        "licenceName": "CC BY",
+        "licenceVersion": "2.0 FR",
+        "attributionText": "Tatoeba contributors, CC BY 2.0 FR (https://tatoeba.org).",
+        "attributionRequired": true,
+        "evidenceRecords": [
+          {
+            "kind": "licence-text",
+            "url": "https://tatoeba.org/en/terms_of_use",
+            "checkedAt": "2026-10-07",
+            "by": "research agent (no legal check)",
+            "note": "Attribution required; some sentences may carry other terms. Not read by a person."
+          }
+        ]
+      },
+      "source": {
+        "file": "nn-open/tatoeba-nno.tsv",
+        "kind": "plain",
+        "url": "https://tatoeba.org/en/downloads",
+        "edition": "Tatoeba per-language export (path and size not verified)"
+      },
+      "withheld": true,
+      "withheldReason": "rights unverified; the export has not been downloaded (owner approval needed).",
+      "notes": "Nynorsk single sentences, counted in the nn accounts."
+    }
+  ],
+  "withheld": []
+}

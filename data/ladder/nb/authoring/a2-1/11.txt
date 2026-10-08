@@ -1,0 +1,33 @@
+=== nb-a2-1-11 | story | daily-life | Friday evening | Fredagskveld | Friday,taco,film,game,family
+note: "Fredagstaco" is a widespread Friday-evening custom in Norway; the story only mentions it in passing. A Norwegian reviewer should confirm how natural it sounds.
+## Fredag
+På fredag er det fredagskveld. Alle er trøtte etter uka. || On Friday it is Friday evening. Everyone is tired after the week.
+{ana} og {luis} har ofte taco på fredag. Det er mat som alle liker. || Anna and Lars often have tacos on Friday. It is food that everyone likes.
+I dag kommer {marta} og {nico} også. De skal spise hos {ana} og {luis}. || Today Marta and Nils are coming too. They will eat at Anna and Lars's.
+{sam} hjelper {ana} med maten. Han lager taco for første gang. || Sam helps Anna with the food. He makes tacos for the first time.
+[ana] Du lager bra mat, {sam}! || You make good food, Sam!
+[sam] Takk! Jeg liker taco. Det er god mat, og det er lett å lage. || Thanks! I like tacos. It is good food, and it is easy to make.
+Alle sitter ved bordet og spiser. || Everyone sits at the table and eats.
+[nico] Jeg vil ha mer taco! || I want more tacos!
+[marta] Du har spist mye, {nico}. Nå er du mett. || You have eaten a lot, Nils. Now you are full.
+
+## Film og spill
+Etter maten sitter de i sofaen. De skal se en film. || After the meal they sit on the sofa. They are going to watch a film.
+[luis] Hvilken film vil dere se? || Which film do you want to watch?
+[nico] Jeg vil se en film om fjell og fjorder! || I want to watch a film about mountains and fjords!
+[sam] Det er en bra film. Vi har vært i fjellet. || That is a good film. We have been in the mountains.
+Etter filmen vil {nico} spille. Han liker å spille. || After the film Nils wants to play. He likes to play.
+[nico] Kan vi spille, {sam}? || Can we play, Sam?
+[sam] Ja, gjerne! Vi spiller, og så sover du. || Yes, gladly! We play, and then you sleep.
+{marta} sitter i sofaen. Hun er glad, og hun er trøtt. || Marta sits on the sofa. She is happy, and she is tired.
+[marta] Fredag er en bra dag. Vi spiser, vi snakker, og vi er glade. || Friday is a good day. We eat, we talk, and we are happy.
+
+## Husker du?
+{nico} sier: «Jeg vil ha is og pølse, som på sytten mai!» Han tenker på flagg og tog og bunad. || Nils says: "I want ice cream and sausage, like on the seventeenth of May!" He thinks of flags and parades and bunads.
+
+[luis] Jeg synes at film er bra. Er du enig, {nico}? || I think film is good. Do you agree, Nils?
+[nico] Kanskje. Jeg liker taco mer enn film. || Maybe. I like tacos more than film.
+
+Nå er det høst. Etter høsten kommer vinteren, og så kommer våren og sommeren. || Now it is autumn. After the autumn comes the winter, and then come the spring and the summer.
+
+Røvere skadet mannen, men han fikk hjelp. {nico} lytter til historien. || Robbers injured the man, but he got help. Nils listens to the story.

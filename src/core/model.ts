@@ -11,10 +11,13 @@
 
 // ───────────────────────────── languages / courses ─────────────────────────────
 
-/** BCP-47 primary subtags of the five course languages. */
-export type LanguageCode = 'es' | 'sq' | 'th' | 'hi' | 'de';
+/**
+ * BCP-47 primary subtags of the course languages. `nb` (Bokmål) and `nn` (Nynorsk) are two separate written standards of
+ * Norwegian: separate codes keep their item ids, dictionaries and counts apart (one Norway course reads both).
+ */
+export type LanguageCode = 'es' | 'sq' | 'th' | 'hi' | 'de' | 'nb' | 'nn';
 import type { CurriculumMetadata } from '../course/curriculumPolicy';
-export const LANGUAGES: readonly LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de'] as const;
+export const LANGUAGES: readonly LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de', 'nb', 'nn'] as const;
 
 export type Script = 'Latn' | 'Deva' | 'Thai';
 
@@ -31,6 +34,11 @@ export interface Language {
 export interface Course {
   id: string; // e.g. "honduras-es"
   lang: LanguageCode;
+  /**
+   * Companion languages this course also reads; their items stay in their own language's accounts (item ids are
+   * language-scoped, so nothing is merged or credited across). Undefined means the course reads only `lang`.
+   */
+  readsLangs?: LanguageCode[];
   country: string; // "Honduras"
   title: string; // "Honduras → Spanish"
   /** Preferred TTS locale(s), most preferred first. GoListen records the actual fallback used. */
@@ -679,6 +687,14 @@ export interface AudioAsset {
   narratorOrVoiceId?: string;
   variety?: string;
   qualityState?: 'unreviewed' | 'machine_checked' | 'human_reviewed' | 'approved' | 'rejected';
+  /** Declared by the importer (AudioImportManifest) and carried as given, never verified; absent when the manifest omitted it. */
+  speaker?: { id: string; native?: boolean; region?: string; locality?: string; dialect?: string };
+  /** 'nb' | 'nn': the written standard of the text that was read. */
+  writtenStandard?: 'nb' | 'nn';
+  /** What was actually said, per sentence, where it differs from the written text. */
+  spokenTranscript?: Array<{ sentenceId: string; spoken: string }>;
+  /** The declared granularity and provenance of the imported timing. */
+  alignment?: { unit: 'sentence' | 'phrase' | 'word'; method?: string; confidence?: number };
 }
 
 export interface AudioValidation {
@@ -743,6 +759,10 @@ export interface AudioManifest {
   segmentIds: string[];
   /** All segments ready? */
   complete: boolean;
+  /** Imported recordings only, as declared by the importer (see AudioAsset): who speaks, which written standard, how fine the timing. */
+  speakerId?: string;
+  writtenStandard?: 'nb' | 'nn';
+  alignmentUnit?: 'sentence' | 'phrase' | 'word';
   createdAt: string;
   updatedAt: string;
 }

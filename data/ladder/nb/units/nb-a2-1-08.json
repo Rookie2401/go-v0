@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-1-08",
+  "lang": "nb",
+  "title": "What do you think?",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-1-08",
+    "title": "What do you think? (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". \"synes\" (think, have an opinion) and \"mene\" (mean, think) are close; \"kanskje\" means maybe. A friendly disagreement about the weather and the food."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "opinions",
+    "agreeing",
+    "disagreeing",
+    "weather",
+    "food"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam",
+    "luis": "Lars",
+    "marta": "Marta",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "Om været",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hva synes du om været i Bergen, Sam?",
+              "english": "What do you think about the weather in Bergen, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg synes at det er bra. Jeg liker regn.",
+              "english": "I think it is good. I like rain.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Liker du regn? Det synes ikke jeg.",
+              "english": "Do you like rain? I do not think so.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg mener at sola er bra. Jeg liker sola mer enn regn.",
+              "english": "I think the sun is good. I like the sun more than rain.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Er du enig, Lars?",
+              "english": "Do you agree, Lars?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, jeg er enig med Anna. Men regnet er ikke dårlig.",
+              "english": "Yes, I agree with Anna. But the rain is not bad.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg er ikke enig. Regn er vann, og vann er bra!",
+              "english": "I do not agree. Rain is water, and water is good!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Kanskje du har rett. Vi har mye vann i Bergen.",
+              "english": "Maybe you are right. We have a lot of water in Bergen.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Om maten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hva mener du om maten min, Sam?",
+              "english": "What do you think about my food, Sam?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Maten din er veldig bra! Den er ikke dårlig.",
+              "english": "Your food is very good! It is not bad.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg mener at fisk er dårlig. Jeg liker brød.",
+              "english": "I think fish is bad. I like bread.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Nei, Nils! Fisk er bra mat. Er du enig, Sam?",
+              "english": "No, Nils! Fish is good food. Do you agree, Sam?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, jeg er enig med deg, Marta. Jeg liker fisk og poteter.",
+              "english": "Yes, I agree with you, Marta. I like fish and potatoes.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Kanskje jeg liker fisk i morgen.",
+              "english": "Maybe I will like fish tomorrow.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Kanskje, ja! Du liker kake hver dag.",
+              "english": "Maybe, yes! You like cake every day.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Om søndagen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hva synes du om søndagen i Bergen, Sam?",
+              "english": "What do you think about Sundays in Bergen, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg synes at søndagen er den beste dagen. Vi går til kirka, og vi spiser middag hos Marta.",
+              "english": "I think Sunday is the best day. We go to church, and we have dinner at Marta's.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg er enig. Søndagen er en bra dag. Men jeg er ofte trøtt.",
+              "english": "I agree. Sunday is a good day. But I am often tired.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Det er ikke dårlig å være trøtt på søndag!",
+              "english": "It is not bad to be tired on Sunday!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Vi er ikke alltid enige, men vi er alltid venner.",
+              "english": "We do not always agree, but we are always friends.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hvis jeg ikke forstår, spør jeg. Når jeg spør, forstår jeg. Det er ikke vanskelig.",
+              "english": "If I do not understand, I ask. When I ask, I understand. It is not difficult."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Noen ganger kjørte Marta hesten til markedet. Den var gammel, men hun var glad i den.",
+              "english": "Sometimes Marta drove the horse to the market. It was old, but she was fond of it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Bussen var forsinket, og Lars kjørte bilen. Det var nesten sent.",
+              "english": "The bus was late, and Lars drove the car. It was almost late."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna har bunad, og hun feirer sytten mai.",
+              "english": "Anna has a bunad, and she celebrates the seventeenth of May."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

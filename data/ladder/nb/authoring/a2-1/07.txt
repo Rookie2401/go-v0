@@ -1,0 +1,42 @@
+=== nb-a2-1-07 | story | narrative | The bus does not come | Bussen kommer ikke | bus,delay,rain,help,patience
+note: A short problem story in the past tense: waiting, calling, being helped. "Kirka begynte klokka ni" uses the past of "begynne".
+## På busstoppet
+Det var søndag morgen. {sam} skulle til kirka. Kirka begynte klokka ni. || It was Sunday morning. Sam was going to church. Church began at nine.
+Det regnet, og det var kaldt. {sam} ventet på busstoppet. || It was raining, and it was cold. Sam waited at the bus stop.
+Bussen kom ikke. Den var forsinket. || The bus did not come. It was late.
+{sam} ventet og ventet. Han hadde paraply, men han var nesten våt. || Sam waited and waited. He had an umbrella, but he was almost wet.
+Klokka var nesten ni. Bussen var fortsatt ikke her. || It was almost nine o'clock. The bus was still not here.
+{sam} tenkte: «Jeg kommer sent til kirka.» || Sam thought: "I will be late for church."
+
+## Telefonen
+{sam} tok telefonen og ringte til {luis}. || Sam took the phone and called Lars.
+[sam] Hei, {luis}! Bussen er forsinket. Jeg er fortsatt her. || Hi, Lars! The bus is late. I am still here.
+[luis] Jeg kommer! Jeg tar bilen. || I am coming! I will take the car.
+{luis} kjørte bilen til {sam}. {sam} satt i bilen. || Lars drove the car to Sam. Sam sat in the car.
+Det regnet fortsatt, men det var varmt. || It was still raining, but it was warm.
+[luis] Du er våt, {sam}! Har du ikke jakke? || You are wet, Sam! Do you not have a jacket?
+[sam] Ja, men det regnet mye. Takk, {luis}! || Yes, but it rained a lot. Thanks, Lars!
+
+## I kirka
+De kom klokka ni. Det var nesten sent. || They came at nine o'clock. It was almost late.
+{marta} satt i kirka. Hun sa: «Hvor var du, {sam}?» || Marta was sitting in the church. She said: "Where were you, Sam?"
+[sam] Bussen var forsinket, men {luis} hjalp meg. Han kjørte meg. || The bus was late, but Lars helped me. He drove me.
+[marta] Du er snill, {luis}. Du hjelper alle folk. || You are kind, Lars. You help everyone.
+{sam} satt i kirka. Han var glad. Han ba: «Gud, takk for {luis}.» || Sam sat in the church. He was glad for the help. He prayed: "God, thank you for Lars."
+
+## Husker du?
+[ana] Hils mamma fra oss alle. Vi håper at dere kommer snart. || Say hello to Mum from all of us. We hope that you will come soon.
+
+Om vinteren drar {ana} og {luis} til hytta. De går på ski, og de sitter i stua med peisen. || In winter Anna and Lars go to the cabin. They ski, and they sit in the living room with the fireplace.
+
+På sytten mai feirer folk Norge. De har flagg og bunad, og de går i tog. De spiser is og pølse. || On the seventeenth of May people celebrate Norway. They have flags and bunads, and they walk in a parade. They eat ice cream and sausage.
+
+Klassen får et spørsmål, og {nico} har en prøve. || The class gets a question, and Nils has a test.
+
+{marta} levde på en gård med en hest. Livet var bra, og noen ganger kjørte hun. || Marta lived on a farm with a horse. Life was good, and sometimes she drove.
+
+Kjære {ana}, takk for brevet. Hilsen {sam} || Dear Anna, thank you for the letter. Greetings, Sam
+
+Kjære {luis}, takk for hjelpen. Hilsen {sam} || Dear Lars, thank you for the help. Greetings, Sam
+
+{sam} skriver et brev til dere. Han hilser fra {city}, og dere får hilsen. || Sam writes a letter to you. He sends greetings from Bergen, and you get a greeting.

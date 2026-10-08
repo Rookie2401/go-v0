@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-2-04",
+  "lang": "nb",
+  "title": "Faith and doubt",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-2-04",
+    "title": "Faith and doubt (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". A quiet conversation about doubt. It echoes the seed story: Sam does not understand everything, but he believes in God. Marta speaks from experience, not from doctrine."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "faith",
+    "doubt",
+    "questions",
+    "trust",
+    "testimony"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "faith"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "marta": "Marta",
+    "sam": "Sam",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "Et spørsmål",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det er søndag kveld. Sam sitter hos Marta. Han tenker mye.",
+              "english": "It is Sunday evening. Sam sits at Marta's. He thinks a lot."
+            },
+            {
+              "text": "Hva tenker du på, Sam?",
+              "english": "What are you thinking about, Sam?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg tror på Gud, men jeg har mange spørsmål. Ofte har jeg tvil.",
+              "english": "I believe in God, but I have many questions. Often I have doubt.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er ikke dårlig å ha tvil. Alle folk har tvil.",
+              "english": "It is not bad to have doubt. All people have doubt.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Har du hatt tvil, Marta?",
+              "english": "Have you had doubt, Marta?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, mange ganger. Da jeg var liten, var jeg ikke sikker.",
+              "english": "Yes, many times. When I was small, I was not sure.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Hva gjorde du da?",
+              "english": "What did you do then?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg leste i bibelen, og jeg ba. Jeg ventet på svar.",
+              "english": "I read in the Bible, and I prayed. I waited for an answer.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Svar",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Fikk du svar?",
+              "english": "Did you get an answer?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ikke alltid. Men jeg var ikke redd. Jeg kjente Gud.",
+              "english": "Not always. But I was not afraid. I knew God.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Er du sikker på det nå?",
+              "english": "Are you sure of that now?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg er ikke sikker på mye. Men jeg er trygg. Jeg kjenner Gud, og han kjenner meg.",
+              "english": "I am not sure of much. But I feel safe. I know God, and he knows me.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Kan du ha tvil og være trygg?",
+              "english": "Can you have doubt and feel safe?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, det kan jeg. Jeg har hatt mange spørsmål. Gud har hjulpet meg hver dag.",
+              "english": "Yes, I can. I have had many questions. God has helped me every day.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Takk",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam sitter lenge og tenker. Så sier han: «Takk, Marta. Nå har jeg et svar.»",
+              "english": "Sam sits and thinks for a long time. Then he says: \"Thank you, Marta. Now I have an answer.\""
+            },
+            {
+              "text": "Hva er svaret?",
+              "english": "What is the answer?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg trenger ikke å være sikker på alt. Jeg trenger å kjenne Gud.",
+              "english": "I do not need to be sure of everything. I need to know God.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er et godt svar. Vi ber for deg, Sam, hver dag.",
+              "english": "That is a good answer. We pray for you, Sam, every day.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Sam er glad. Han har fortsatt spørsmål, men han er trygg.",
+              "english": "Sam is happy. He still has questions, but he feels safe."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hvilken film så vi på fredag?",
+              "english": "Which film did we watch on Friday?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Filmen om fjell. Vi satt i sofaen, spiste taco og spilte etterpå.",
+              "english": "The film about mountains. We sat on the sofa, ate tacos and played afterwards.",
+              "speaker": "nico"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

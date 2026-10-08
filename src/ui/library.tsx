@@ -3,7 +3,8 @@
  * belong to, and the badges that say what a text is (generated, unpublished, review status).
  */
 import { useEffect, useState } from 'react';
-import type { Corpus, Text } from '../core';
+import type { Corpus, LanguageCode, Text } from '../core';
+import { courseLangs } from '../core';
 import { useApp } from './context';
 import { REVIEW_LABEL, isTestimonyText, plainReasons } from './format';
 
@@ -15,19 +16,21 @@ export interface LangTexts {
 
 /** All (non-testimony) texts of the learner's current language. Re-read when the learner or language changes. */
 export function useLangTexts(reloadKey?: unknown): LangTexts {
-  const { store, lang } = useApp();
+  const { store, lang, course } = useApp();
+  const langsKey = courseLangs(course).join(',');
   const [state, setState] = useState<LangTexts>({ texts: null, corpora: new Map() });
   useEffect(() => {
     let live = true;
     setState((s) => ({ ...s, texts: null }));
     void (async () => {
-      const [rows, cs] = await Promise.all([store.texts.where('lang', lang), store.corpora.all()]);
+      const [perLang, cs] = await Promise.all([Promise.all(langsKey.split(',').map((l) => store.texts.where('lang', l as LanguageCode))), store.corpora.all()]);
+      const rows = perLang.flat();
       const corpora = new Map(cs.map((c) => [c.id, c]));
       const texts = rows.filter((t) => t.listeningAssessmentId === undefined && t.readingAssessmentId === undefined && !isTestimonyText(t, corpora));
       if (live) setState({ texts, corpora });
     })().catch(() => { if (live) setState({ texts: [], corpora: new Map() }); });
     return () => { live = false; };
-  }, [store, lang, reloadKey]);
+  }, [store, lang, langsKey, reloadKey]);
   return state;
 }
 

@@ -1,0 +1,49 @@
+=== nb-a1-1-06 | dialogue | town | At the market | På markedet | market,buying,prices,money
+speakers: ola=Ola
+note: Prices are in kroner. The number words are written out so that the reader meets them.
+## På markedet
+{sam} er på markedet. Han vil kjøpe mat. || Sam is at the market. He wants to buy food.
+{marta} er også på markedet. Hun selger brød. || Marta is also at the market. She sells bread.
+
+[sam] God dag, {marta}! Jeg vil kjøpe brød. || Hello, Marta! I want to buy bread.
+[marta] God dag, {sam}! Hvor mye brød vil du ha? || Hello, Sam! How much bread do you want?
+[sam] Jeg tar to brød. Hvor mye koster det? || I will take two loaves. How much does it cost?
+[marta] Brødet koster tretti kroner. || The bread costs thirty kroner.
+[sam] Er det dyrt? || Is that expensive?
+[marta] Nei, det er ikke dyrt. Det er billig! || No, it is not expensive. It is cheap!
+[sam] Bra! Jeg tar tre brød. || Good! I will take three loaves.
+[marta] Tre brød koster nitti kroner. || Three loaves cost ninety kroner.
+{sam} har penger. Han betaler nitti kroner. || Sam has money. He pays ninety kroner.
+[marta] Takk, {sam}! Ha det bra! || Thanks, Sam! Goodbye!
+
+## Epler
+Ola selger epler. || Ola sells apples.
+[sam] Hei, Ola! Hva koster eplene? || Hi, Ola! What do the apples cost?
+[ola] To koster tjue kroner. || Two cost twenty kroner.
+[sam] Er det dyrt? || Is that expensive?
+[ola] Nei, nei! Det er billig! || No, no! It is cheap!
+[sam] Jeg tar fire epler. || I will take four apples.
+[ola] Det blir førti kroner. || That will be forty kroner.
+[sam] Jeg har penger. Jeg betaler nå. || I have money. I am paying now.
+[ola] Takk! Ha det bra, {sam}! || Thanks! Goodbye, Sam!
+
+## Hjem
+{sam} har brød og mat. Han går hjem. || Sam has bread and food. He goes home.
+{ana} er hjemme. Hun er trøtt i dag. || Anna is at home. She is tired today.
+[ana] Hei, {sam}! Hva har du? || Hi, Sam! What do you have?
+[sam] Jeg har brød og mat. || I have bread and food.
+[ana] Er det dyrt? || Is that expensive?
+[sam] Nei, det er billig. Jeg betaler ikke mye. || No, it is cheap. I do not pay much.
+[sam] Nå har jeg ikke penger. Men jeg har mat! || Now I have no money. But I have food!
+[ana] Bra! Jeg liker brød. Vil du ha te, {sam}? || Good! I like bread. Do you want tea, Sam?
+[sam] Ja, gjerne! Jeg er glad i dag. || Yes, please! I am happy today.
+[ana] Du kjøper mye, {sam}. Du er glad! || You buy a lot, Sam. You are happy!
+[sam] Ja, jeg liker markedet. Det er bra. || Yes, I like the market. It is good.
+
+## Husker du?
+Fru Berg er også på markedet. Hun kommer fra kirka, og hun vil kjøpe brød. || Mrs Berg is also at the market. She comes from church, and she wants to buy bread.
+
+[marta] Hvem er læreren din, {nico}? || Who is your teacher, Nils?
+[nico] Det er {luis}. Han er læreren min på skolen. || It is Lars. He is my teacher at the school.
+
+{marta} lager middag. Hun lager fisk og poteter, og hun lager suppe. || Marta makes dinner. She makes fish and potatoes, and she makes soup.

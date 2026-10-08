@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-2-03",
+  "lang": "nb",
+  "title": "The shopping list",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-2-03",
+    "title": "The shopping list (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". \"skal\" here means a plan or an arrangement (\"we are going to\"), not \"shall\". Egg is neuter: \"egg\" (plural indefinite), \"eggene\" (definite)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "shopping",
+    "list",
+    "food",
+    "plans"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "luis": "Lars",
+    "sam": "Sam",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Planen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "I dag er det lørdag. Lars og Sam skal handle.",
+              "english": "Today it is Saturday. Lars and Sam are going shopping."
+            },
+            {
+              "text": "På søndag har vi middag hjemme. Marta og Nils kommer. Anna lager fisk og poteter.",
+              "english": "On Sunday we have dinner at home. Marta and Nils are coming. Anna makes fish and potatoes."
+            },
+            {
+              "text": "Lars har ei liste.",
+              "english": "Lars has a list."
+            },
+            {
+              "text": "Det er mye på listen. Vi trenger brød, melk, egg og smør.",
+              "english": "There is a lot on the list. We need bread, milk, eggs and butter.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Vi trenger fisk og poteter også.",
+              "english": "We need fish and potatoes too.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, og ost.",
+              "english": "Yes, and cheese.",
+              "speaker": "luis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "I butikken",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "De går til butikken.",
+              "english": "They go to the shop."
+            },
+            {
+              "text": "Butikken er ikke stor, men mange folk handler her.",
+              "english": "The shop is not big, but many people shop here."
+            },
+            {
+              "text": "Hvor er eggene?",
+              "english": "Where are the eggs?",
+              "speaker": "sam"
+            },
+            {
+              "text": "De er her. Hvor mye koster de?",
+              "english": "They are here. How much do they cost?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Det er dyrt, men vi trenger det.",
+              "english": "That is expensive, but we need it.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Her er smør. Smøret er ikke dyrt.",
+              "english": "Here is butter. The butter is not expensive.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Bra! Vi tar det.",
+              "english": "Good! We will take it.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vi skal ha fisk på søndag. Hvor er fisken?",
+              "english": "We are going to have fish on Sunday. Where is the fish?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Fisken er her. Den er billig i dag!",
+              "english": "The fish is here. It is cheap today!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Poteter skal vi ha også.",
+              "english": "Potatoes we shall have too.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Nå har vi handlet. Jeg har mat på listen.",
+              "english": "Now we have shopped. I have food on the list.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Lars betaler, og Sam og Lars går hjem.",
+              "english": "Lars pays, and Sam and Lars go home."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjemme",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna er hjemme. Hun er glad.",
+              "english": "Anna is at home. She is happy."
+            },
+            {
+              "text": "Har du mat, Lars?",
+              "english": "Do you have food, Lars?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, vi har brød, melk og ost. Vi har fisk også.",
+              "english": "Yes, we have bread, milk and cheese. We have fish too.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Har du egg?",
+              "english": "Do you have eggs?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, vi har egg. Butikken er bra!",
+              "english": "Yes, we have eggs. The shop is good!",
+              "speaker": "luis"
+            },
+            {
+              "text": "Bra! Jeg lager middag på søndag. Jeg trenger poteter.",
+              "english": "Good! I am making dinner on Sunday. I need potatoes.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Vi har poteter også.",
+              "english": "We have potatoes too.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Takk, Sam! Du er snill.",
+              "english": "Thanks, Sam! You are kind.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Unnskyld, hvor er butikken?",
+              "english": "Excuse me, where is the shop?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Gå rett fram og til høyre. Bussen stopper i sentrum.",
+              "english": "Go straight ahead and to the right. The bus stops in the town centre.",
+              "speaker": "sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Uka er lang. På mandag, tirsdag og onsdag er Anna trøtt. Hver uke ber Sam om fred.",
+              "english": "The week is long. On Monday, Tuesday and Wednesday Anna is tired. Every week Sam prays for peace."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Telefonen til Lars er borte. Han leter, og den ligger under bordet.",
+              "english": "Lars's phone is gone. He looks, and it is under the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam besøker Marta i dag. Det er et bra besøk.",
+              "english": "Sam visits Marta today. It is a good visit."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

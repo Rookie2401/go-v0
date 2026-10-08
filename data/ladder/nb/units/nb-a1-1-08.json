@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-1-08",
+  "lang": "nb",
+  "title": "Who works where",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-1-08",
+    "title": "Who works where (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "work",
+    "jobs",
+    "nurse",
+    "teacher",
+    "baker"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "pasient": "Pasienten",
+    "sam": "Sam",
+    "marta": "Marta",
+    "luis": "Lars"
+  },
+  "sections": [
+    {
+      "title": "Folk i Bergen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Alle folk jobber. Anna er sykepleier, og Marta baker brød.",
+              "english": "All people work. Anna is a nurse, and Marta bakes bread."
+            },
+            {
+              "text": "Folk i Bergen jobber hver dag.",
+              "english": "People in Bergen work every day."
+            },
+            {
+              "text": "Anna er sykepleier. Hun jobber på klinikken.",
+              "english": "Anna is a nurse. She works at the clinic."
+            },
+            {
+              "text": "Lars er lærer. Han jobber på skolen.",
+              "english": "Lars is a teacher. He works at the school."
+            },
+            {
+              "text": "Marta er bestemor, men hun jobber også.",
+              "english": "Marta is a grandmother, but she works too."
+            },
+            {
+              "text": "Hun baker brød, og hun selger brød på markedet.",
+              "english": "She bakes bread, and she sells bread at the market."
+            },
+            {
+              "text": "Alle jobber hver dag. Sam jobber ikke nå. Han vil lære norsk.",
+              "english": "Everyone works every day. Sam is not working now. He wants to learn Norwegian."
+            },
+            {
+              "text": "Nils er ti år. Han jobber ikke. Han går på skolen.",
+              "english": "Nils is ten years old. He does not work. He goes to school."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Anna på klinikken",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Klokka åtte jobber Anna på klinikken.",
+              "english": "At eight o'clock Anna works at the clinic."
+            },
+            {
+              "text": "Mange pasienter er på klinikken.",
+              "english": "Many patients are at the clinic."
+            },
+            {
+              "text": "Anna hjelper pasientene.",
+              "english": "Anna helps the patients."
+            },
+            {
+              "text": "Hvordan går det med deg?",
+              "english": "How are you?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg er veldig trøtt.",
+              "english": "I am very tired.",
+              "speaker": "pasient"
+            },
+            {
+              "text": "Jeg vil hjelpe deg.",
+              "english": "I want to help you.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Takk, sykepleier!",
+              "english": "Thank you, nurse!",
+              "speaker": "pasient"
+            },
+            {
+              "text": "Anna jobber mye, og hun er ofte trøtt. Men hun er glad.",
+              "english": "Anna works a lot, and she is often tired. But she is happy."
+            },
+            {
+              "text": "Anna er en bra sykepleier. Pasienten er glad nå.",
+              "english": "Anna is a good nurse. The patient is happy now."
+            },
+            {
+              "text": "Hun vil hjelpe folk hver dag.",
+              "english": "She wants to help people every day."
+            },
+            {
+              "text": "Alle liker Anna.",
+              "english": "Everyone likes Anna."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lars og Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Lars jobber mye. Han er ofte trøtt også. Han drikker kaffe.",
+              "english": "Lars works a lot. He is often tired too. He drinks coffee."
+            },
+            {
+              "text": "Marta baker brød hver dag.",
+              "english": "Marta bakes bread every day."
+            },
+            {
+              "text": "Hva jobber du med, Marta?",
+              "english": "What is your work, Marta?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg baker brød og selger brød. Folk liker brødet mitt!",
+              "english": "I bake bread and sell bread. People like my bread!",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg vil også jobbe en dag.",
+              "english": "I want to work one day too.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bra! Du vil lære norsk. Du vil lære mye.",
+              "english": "Good! You want to learn Norwegian. You want to learn a lot.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg er ofte hos deg, Marta. Alle i byen liker deg.",
+              "english": "I am often at your place, Marta. Everyone in town likes you.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Takk, Sam! Mange folk er glad i brød.",
+              "english": "Thank you, Sam! Many people are fond of bread.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Anna, Lars og Marta jobber mye.",
+              "english": "Anna, Lars and Marta work a lot."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hvem er læreren i familien til Anna? Det er Lars.",
+              "english": "Who is the teacher in Anna's family? It is Lars."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta jobber, men hun lager også middag. I dag er det fisk, poteter og suppe.",
+              "english": "Marta works, but she also makes dinner. Today there is fish, potatoes and soup."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lars har mange elever. Skolen begynner klokka åtte, og klokka to er skolen slutt.",
+              "english": "Lars has many pupils. School begins at eight o'clock, and at two o'clock school is over."
+            },
+            {
+              "text": "Elevene har lekse, og elevene skriver mye.",
+              "english": "The pupils have homework, and the pupils write a lot.",
+              "speaker": "luis"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna betaler middagen i dag.",
+              "english": "Anna pays for the dinner today."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

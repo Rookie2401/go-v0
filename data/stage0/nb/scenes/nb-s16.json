@@ -1,0 +1,228 @@
+{
+  "id": "nb-s16",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "Speaking Norwegian",
+    "target": "Å snakke norsk"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "places": [
+      "street"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Sam vil snakke norsk.",
+      "en": "Sam wants to speak Norwegian.",
+      "picture": "🙂🗣️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Du snakker norsk, Sam!",
+      "en": "You speak Norwegian, Sam!",
+      "speaker": "luis",
+      "picture": "👍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Bare litt, men jeg vil gjerne snakke norsk.",
+      "en": "Only a little, but I would like to speak Norwegian.",
+      "speaker": "sam",
+      "picture": "🙂🗣️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Vil du bo her?",
+      "en": "Do you want to live here?",
+      "speaker": "ana",
+      "picture": "🏙️❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Ja, jeg vil gjerne bo her. Det er en god by.",
+      "en": "Yes, I would like to live here. It is a good city.",
+      "speaker": "sam",
+      "picture": "🏙️🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Han vil bo her, og han liker å snakke norsk.",
+      "en": "He wants to live here, and he likes to speak Norwegian.",
+      "speaker": "luis",
+      "picture": "👨🙂",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "snakke",
+      "bo",
+      "by"
+    ],
+    "constructions": [
+      "nb.vil-infinitive"
+    ]
+  },
+  "represents": [
+    "nb.vil-infinitive",
+    "nb.vil-ha",
+    "nb.liker",
+    "nb.men-og",
+    "nb.er-identity",
+    "nb.yes-no-question",
+    "nb.present-tense"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1",
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam want to speak?"
+      },
+      "options": [
+        {
+          "en": "Norwegian"
+        },
+        {
+          "en": "German"
+        },
+        {
+          "en": "Spanish"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How well does Sam speak it?"
+      },
+      "options": [
+        {
+          "en": "Only a little"
+        },
+        {
+          "en": "Very well"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where would Sam like to live?"
+      },
+      "options": [
+        {
+          "en": "Here, in the city"
+        },
+        {
+          "en": "At the school"
+        },
+        {
+          "en": "Nowhere"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Say that you would like to speak Norwegian.",
+      "basedOn": [
+        "l3",
+        "nb.vil-infinitive"
+      ],
+      "frame": "Jeg vil gjerne ___ norsk.",
+      "accept": [
+        {
+          "text": "Jeg vil gjerne snakke norsk"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Anna asks: \"Vil du bo her?\" Say yes, you would like to.",
+      "basedOn": [
+        "l4",
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "Ja, jeg vil gjerne bo her"
+        },
+        {
+          "text": "Ja jeg vil gjerne bo her"
+        },
+        {
+          "text": "Ja, gjerne"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "vil gjerne + verb",
+      "text": "After \"vil\" the next verb stays in its basic form, which usually ends in -e: \"snakke\" (speak), \"bo\" (live). You have seen the -er form: Sam snakker, Sam bor. \"Jeg vil gjerne …\" is a friendly way to say \"I would like to …\". After \"liker\" the basic form comes with the little word \"å\": \"liker å snakke norsk\".",
+      "explains": [
+        "nb.vil-infinitive",
+        "nb.liker"
+      ],
+      "afterScenes": 0
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-1-04",
+  "lang": "nb",
+  "title": "The cabin in the mountains",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-1-04",
+    "title": "The cabin in the mountains (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Going to a cabin in the mountains for a winter weekend is a very common Norwegian custom; the details here are simple and unchecked."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "winter",
+    "cabin",
+    "snow",
+    "skis",
+    "fireplace"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "nature"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "luis": "Lars",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Til hytta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det er vinter i Bergen. Det er kaldt, og det er snø i fjellet.",
+              "english": "It is winter in Bergen. It is cold, and there is snow in the mountains."
+            },
+            {
+              "text": "Anna og Lars har ei hytte i fjellet. De drar til hytta hver vinter.",
+              "english": "Anna and Lars have a cabin in the mountains. They go to the cabin every winter."
+            },
+            {
+              "text": "I år skal Sam dra med dem. Nils og Marta skal ikke dra.",
+              "english": "This year Sam is going with them. Nils and Marta are not going."
+            },
+            {
+              "text": "Hva gjør vi på hytta?",
+              "english": "What do we do at the cabin?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vi går på ski. Vi sover, og vi spiser mat.",
+              "english": "We ski. We sleep, and we eat food.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg kan ikke gå på ski.",
+              "english": "I cannot ski.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er ikke vanskelig. Hvis du går hver dag, går du bra.",
+              "english": "It is not difficult. If you ski every day, you will ski well.",
+              "speaker": "ana"
+            },
+            {
+              "text": "De tok bussen, og så gikk de lenge i snøen.",
+              "english": "They took the bus, and then they walked for a long time in the snow."
+            },
+            {
+              "text": "Da de kom til hytta, var det kaldt.",
+              "english": "When they came to the cabin, it was cold."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Peisen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Vi trenger peisen!",
+              "english": "We need the fireplace!",
+              "speaker": "luis"
+            },
+            {
+              "text": "Peisen ble varm. De satt i stua og var glade.",
+              "english": "The fireplace became warm. They sat in the living room and were happy."
+            },
+            {
+              "text": "Anna laget middag. De spiste suppe og brød, og de drakk te.",
+              "english": "Anna made dinner. They ate soup and bread, and they drank tea."
+            },
+            {
+              "text": "Peisen er bra. Jeg liker stua.",
+              "english": "The fireplace is good. I like the living room.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Etter middagen satt de lenge og snakket om Norge, om fjellet og om familien.",
+              "english": "After dinner they sat and talked for a long time about Norway, about the mountains and about the family."
+            },
+            {
+              "text": "Er du trøtt, Sam?",
+              "english": "Are you tired, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, men jeg er glad. Vi sover snart.",
+              "english": "Yes, but I am happy. We will sleep soon.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "På ski",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dagen etter var det sol. Sam tok skiene, og de gikk ut.",
+              "english": "The next day there was sun. Sam took the skis, and they went out."
+            },
+            {
+              "text": "Sam var ikke bra på ski, men Lars hjalp ham.",
+              "english": "Sam was not good at skiing, but Lars helped him."
+            },
+            {
+              "text": "Det er vanskelig! Men jeg liker snøen.",
+              "english": "It is difficult! But I like the snow.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du går bra nå. Du kan dra til hytta hver vinter!",
+              "english": "You are skiing well now. You can go to the cabin every winter!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Om kvelden satt de i stua igjen. Sam var trøtt, men han var glad.",
+              "english": "In the evening they sat in the living room again. Sam was tired, but he was happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna har bursdag i vinter. Lars har en gave, og Sam lager kake. Alle gratulerer henne.",
+              "english": "Anna has a birthday in winter. Lars has a gift, and Sam makes a cake. Everyone congratulates her."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Før turen til hytta pakket vi. Vennene mine pakket jakker. Det var en ny reise for meg.",
+              "english": "Before the trip to the cabin we packed. My friends packed jackets. It was a new journey for me."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hvis jeg ikke forstår, kan jeg spørre. Det er vanskelig å gå på ski, men ikke når Anna hjelper.",
+              "english": "If I do not understand, I can ask. It is difficult to ski, but not when Anna helps.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

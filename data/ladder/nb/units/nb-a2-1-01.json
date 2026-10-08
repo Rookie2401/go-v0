@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-1-01",
+  "lang": "nb",
+  "title": "Before the journey",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-1-01",
+    "title": "Before the journey (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". First-person past tense with subordinate clauses introduced by \"før\" and \"da\". \"Husker du da du kom?\" begins a short dialogue."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "arrival",
+    "journey",
+    "memory",
+    "friends"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam",
+    "luis": "Lars"
+  },
+  "sections": [
+    {
+      "title": "Før reisen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Før jeg kom til Norge, bodde jeg i USA. Jeg hadde ei mor, en far og en bror.",
+              "english": "Before I came to Norway I lived in the USA. I had a mother, a father and a brother."
+            },
+            {
+              "text": "Jeg ville bo i Norge i et år. Derfor pakket jeg ei veske.",
+              "english": "I wanted to live in Norway for a year. That is why I packed a bag."
+            },
+            {
+              "text": "I vesken hadde jeg jakka mi, to bøker og bibelen min. Jeg pakket ikke mye.",
+              "english": "In the bag I had my jacket, two books and my Bible. I did not pack much."
+            },
+            {
+              "text": "Mora mi sa: «Du må ringe oss!» Jeg sa: «Ja, jeg skal ringe hver søndag.»",
+              "english": "My mother said: \"You must call us!\" I said: \"Yes, I will call every Sunday.\""
+            },
+            {
+              "text": "Vennene mine i USA sa: «Du skal reise til Norge? Det er langt!»",
+              "english": "My friends in the USA said: \"You are going to travel to Norway? That is far!\""
+            },
+            {
+              "text": "Jeg sa: «Ja, derfor må jeg pakke nå.»",
+              "english": "I said: \"Yes, that is why I have to pack now.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Reisen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg tok flyet til Norge. Reisen var lang. Jeg sov lenge i flyet.",
+              "english": "I took the plane to Norway. The journey was long. I slept for a long time on the plane."
+            },
+            {
+              "text": "Flyet kom til Bergen klokka fem. Etter reisen var jeg trøtt, men jeg var glad.",
+              "english": "The plane arrived in Bergen at five o'clock. After the journey I was tired, but I was happy."
+            },
+            {
+              "text": "Jeg ventet på Anna. Hun skulle treffe meg. Jeg ventet lenge.",
+              "english": "I waited for Anna. She was going to meet me. I waited a long time."
+            },
+            {
+              "text": "Så kom Anna. Hun sa: «Hei, Sam! Her er jeg!» Jeg sa: «Det går bra.»",
+              "english": "Then Anna came. She said: \"Hi, Sam! Here I am!\" I said: \"That is fine.\""
+            },
+            {
+              "text": "Da jeg kom til huset, var Lars hjemme. Han drakk kaffe.",
+              "english": "When I came to the house, Lars was at home. He was drinking coffee."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En ny by",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Byen var ny, og maten var ny. Det var en ny dag, og jeg var i Norge.",
+              "english": "The town was new, and the food was new. It was a new day, and I was in Norway."
+            },
+            {
+              "text": "Jeg hadde ikke mange venner i Norge. Nå har jeg Anna, Lars, Marta og Nils. De er venner.",
+              "english": "I did not have many friends in Norway. Now I have Anna, Lars, Marta and Nils. They are friends."
+            },
+            {
+              "text": "Husker du da du kom til Bergen, Sam?",
+              "english": "Do you remember when you came to Bergen, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja! Det regnet, og jeg hadde ikke paraply. Jeg var våt.",
+              "english": "Yes! It was raining, and I had no umbrella. I was wet.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du var trøtt, og du snakket litt. Men du snakket norsk!",
+              "english": "You were tired, and you spoke a little. But you spoke Norwegian!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Nei, jeg kunne litt norsk. Derfor ventet jeg lenge på deg.",
+              "english": "No, I knew a little Norwegian. That is why I waited for you so long.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du var snill, og du ventet ikke for lenge.",
+              "english": "You were kind, and you did not wait too long.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Da du kom, drakk vi kaffe.",
+              "english": "When you came, we drank coffee.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja, jeg var glad for kaffen.",
+              "english": "Yes, I was glad for the coffee.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Da jeg kom til Norge, ba jeg en bønn. Jeg takket Gud, og jeg hadde håp. Gud tilgir synd.",
+              "english": "When I came to Norway, I said a prayer. I thanked God, and I had hope. God forgives sin."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jeg sendte en melding til Anna. Hun svarte at hun hadde tid. Vi hadde en plan: Vi skulle treffe Lars.",
+              "english": "I sent a message to Anna. She answered that she had time. We had a plan: We were going to meet Lars."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sør i landet er det varmt, men nord i landet er det kaldt.",
+              "english": "In the south of the country it is warm, but in the north of the country it is cold."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta liker gjester.",
+              "english": "Marta likes guests."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

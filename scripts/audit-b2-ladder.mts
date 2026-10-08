@@ -46,7 +46,7 @@ import { bundledStage0 } from '../src/stage0/content';
 import { sceneDocument } from '../src/stage0/documents';
 
 const args = process.argv.slice(2).filter((a) => a !== '--');
-const LANGS = (args.length ? args : ['es', 'de', 'sq', 'th', 'hi']) as LanguageCode[];
+const LANGS = (args.length ? args : ['es', 'de', 'sq', 'th', 'hi']) as LanguageCode[]; // nb (or nn) on request: pass it as an argument
 const OUT = path.resolve('data/research/audit-b2');
 fs.mkdirSync(OUT, { recursive: true });
 const adapters = createAdapterRegistry();

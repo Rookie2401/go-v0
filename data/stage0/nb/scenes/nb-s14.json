@@ -1,0 +1,244 @@
+{
+  "id": "nb-s14",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "Nils at school",
+    "target": "Nils på skolen"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "luis"
+    ],
+    "places": [
+      "school"
+    ],
+    "things": [
+      "book"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Lars er lærer på skolen. Han liker Nils.",
+      "en": "Lars is a teacher at the school. He likes Nils.",
+      "picture": "👨‍🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Nils, hvor er boka di?",
+      "en": "Nils, where is your book?",
+      "speaker": "luis",
+      "picture": "📖❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Jeg vet ikke. Den er ikke på bordet.",
+      "en": "I don't know. It is not on the table.",
+      "speaker": "nico",
+      "picture": "🤷",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Du har glemt den hos bestemora di.",
+      "en": "You have forgotten it at your grandmother's.",
+      "speaker": "luis",
+      "picture": "📖👵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Å ja! Jeg har glemt boka mi. Så bra, takk.",
+      "en": "Oh yes! I have forgotten my book. How good, thanks.",
+      "speaker": "nico",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Bare hyggelig. Det er sent, Nils. Klokka er sju. Går du hjem?",
+      "en": "You're welcome. It is late, Nils. It is seven o'clock. Are you going home?",
+      "speaker": "luis",
+      "picture": "🌙🕖🏠❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Ja, jeg går hjem. Det er veldig sent.",
+      "en": "Yes, I am going home. It is very late.",
+      "speaker": "nico",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "boka",
+      "bordet",
+      "glemt",
+      "hos",
+      "sent",
+      "klokka",
+      "hjem"
+    ],
+    "constructions": [
+      "nb.perfect",
+      "nb.hjem-hjemme"
+    ]
+  },
+  "represents": [
+    "nb.perfect",
+    "nb.hjem-hjemme",
+    "nb.hvor-er",
+    "nb.vet-ikke",
+    "nb.possessive-postposed",
+    "nb.negation-ikke",
+    "nb.gaa-place",
+    "nb.yes-no-question",
+    "nb.politeness",
+    "nb.har-object",
+    "nb.i-pa"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2",
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is Nils looking for?"
+      },
+      "options": [
+        {
+          "en": "his book",
+          "picture": "📖"
+        },
+        {
+          "en": "his key",
+          "picture": "🔑"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where is the book?"
+      },
+      "options": [
+        {
+          "en": "At his grandmother's"
+        },
+        {
+          "en": "On the table"
+        },
+        {
+          "en": "At school"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6",
+        "l7"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where does Nils go?"
+      },
+      "options": [
+        {
+          "en": "Home"
+        },
+        {
+          "en": "To church"
+        },
+        {
+          "en": "To the market"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Lars asks: \"Går du hjem?\" Say yes, you are going home.",
+      "basedOn": [
+        "l6",
+        "l7"
+      ],
+      "accept": [
+        {
+          "text": "Ja, jeg går hjem"
+        },
+        {
+          "text": "Ja jeg går hjem"
+        },
+        {
+          "text": "Jeg går hjem"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "hjemme and hjem",
+      "text": "Norwegian has two words for home: \"hjemme\" for being there (\"Anna er hjemme\") and \"hjem\" for going there (\"Jeg går hjem\"). English uses one word for both.",
+      "explains": [
+        "nb.hjem-hjemme"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "har glemt: have forgotten",
+      "text": "\"Du har glemt den\" is \"you have forgotten it\": \"har\" plus a form of the verb that ends in -t (glemt). This is how Norwegian says what has happened and still matters now.",
+      "explains": [
+        "nb.perfect"
+      ],
+      "afterScenes": 1
+    }
+  ]
+}

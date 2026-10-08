@@ -13,11 +13,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { DescribeMorph, DictionaryView, SoundView } from './assistance';
 import { varietyLine as courseVarietyLine } from '../../core';
-import type { Variety, VarietyPolicy } from '../../core';
+import type { ConceptFamily, PartOfSpeech, Variety, VarietyPolicy } from '../../core';
 import type { AnalysisSourceInfo, ContentNote, DictionaryInfo, HelpLayer, LanguageCode, Sentence, SyllableAnalysis, Token, TokenSupport } from '../../core';
 import { useApp } from '../context';
 import { I, IconBtn } from '../ui';
-import { MORE_LABEL, NOTE_KIND_LABEL, analysisSourceLine, certainty, clauseSegments, compoundHeadLine, decodingSource, dictionaryName, dictionaryOthers, hasClauseSpans, listsDiffer, maxLevel, morphAlternates, morphInWords, noteIsReviewed, olderSpellingLine, partRole, partText, pick, posWord, roleText, ruleToneLine, syllableSourceLabel, unitRoleText, unitText, varietyLine, wordParts } from './assistance';
+import { MORE_LABEL, NOTE_KIND_LABEL, analysisSourceLine, certainty, clauseSegments, compoundHeadLine, decodingSource, dictionaryName, dictionaryOthers, familyLine, hasClauseSpans, listsDiffer, maxLevel, morphAlternates, morphInWords, noteIsReviewed, olderSpellingLine, partRole, partText, pick, posWord, roleText, ruleToneLine, syllableSourceLabel, unitRoleText, unitText, varietyLine, wordParts } from './assistance';
 
 
 export type SheetSubject = { kind: 'word'; token: Token } | { kind: 'sentence'; sentence: Sentence };
@@ -77,6 +77,8 @@ export interface TokenCardProps {
   /** The course's variety policy and the adapter's variety definitions, for the line under the gloss. */
   varietyPolicy?: VarietyPolicy;
   varieties?: Readonly<Record<string, Variety>>;
+  /** The adapter's `family()` (Bokmål jeg ↔ Nynorsk eg), for the line under the gloss; family members are never credited to this word. */
+  familyOf?: (lemma: string, pos?: PartOfSpeech) => ConceptFamily | undefined;
   /** Lines from the learner's own record with this word (`golearn.itemHistory`). */
   history: string[];
   /** When the word is one piece of a lexical unit written as several words: its pieces as stretches of the text, in text order (neighbours already joined). */
@@ -91,7 +93,7 @@ export interface TokenCardProps {
 }
 
 export function TokenCard(props: TokenCardProps) {
-  const { subject, legacy, opened, next, supports, loaded, explanation, english, why, lang, sentence, notes, clauseView, decoding, sound, sources, dictionary, dictionaryView, describeMorph, varietyPolicy, varieties, history, unitPieces, open, onMore, onRescue, onClose, onExited } = props;
+  const { subject, legacy, opened, next, supports, loaded, explanation, english, why, lang, sentence, notes, clauseView, decoding, sound, sources, dictionary, dictionaryView, describeMorph, varietyPolicy, varieties, familyOf, history, unitPieces, open, onMore, onRescue, onClose, onExited } = props;
   const { store } = useApp();
   const token = subject.kind === 'word' ? subject.token : undefined;
   const level = maxLevel(opened);
@@ -162,6 +164,11 @@ export function TokenCard(props: TokenCardProps) {
   const dialogLabel = subject.kind === 'word' ? `Help for ${subject.token.surface}` : `Notes for sentence ${subject.sentence.index + 1}`;
   const senses = !legacy ? sensesOf(analysis?.notes?.senses) : [];
   const variety = !legacy ? varietyLine(analysis?.register) : undefined;
+  // the lemma support arrives with a layer; the analysis's lemma id ("lemma:nb:jeg:PRON") is there from the start
+  const familyLemma = lemma?.lemma ?? (analysis?.lemmaId ? analysis.lemmaId.split(':')[2] : undefined);
+  const familyPos = lemma?.pos ?? analysis?.pos;
+  // shown under every profile (the courses' shelves still use the plain profile): it is information about the other standard, never a help layer
+  const familyText = familyOf && familyLemma && lang ? familyLine(familyOf(familyLemma, familyPos), lang) : undefined;
   // Parts, variety tags and a modern aid appear only when the analysis carries them (the Spanish adapter fills them).
   const parts = wordParts(analysis);
   const varietyTagsLine = analysis?.varieties?.length ? courseVarietyLine(analysis.varieties, varietyPolicy, varieties) : undefined;
@@ -215,6 +222,7 @@ export function TokenCard(props: TokenCardProps) {
             {fromDictionary && gloss && <p className="card__note" data-testid="dictionary-gloss">dictionary meaning, not checked for this sentence</p>}
             {sourceLine && <p className="card__note sheet__source" data-testid="analysis-source">{sourceLine}</p>}
             {variety && <p className="card__note sheet__variety" data-testid="variety">{variety}</p>}
+            {familyText && <p className="card__note sheet__variety" data-testid="family" title="The same idea in the other written standard; it is a different word, counted on its own">{familyText}</p>}
             {unit && (
               <p className="card__note sheet__unit" data-testid="word-unit">
                 <span lang={lang} data-testid="unit-pieces">{unitText(unitPieces ?? [], unit.display)}</span>

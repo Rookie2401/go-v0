@@ -8,7 +8,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
-import { COURSES, createMemoryStore, type LanguageCode, type Work } from '../core';
+import { COURSES, courseReads, createMemoryStore, type LanguageCode, type Work } from '../core';
 import { createAdapterRegistry } from '../adapters';
 import { createCourseCatalog } from '../course';
 import { createFileLexiconSource } from '../dict/file';
@@ -53,7 +53,7 @@ export async function catalogueWorksOf(lang: LanguageCode): Promise<Map<string, 
   const store = createMemoryStore();
   const catalog = createCourseCatalog({ store });
   const out = new Map<string, Work>();
-  for (const course of COURSES.filter((c) => c.lang === lang)) {
+  for (const course of COURSES.filter((c) => courseReads(c, lang))) {
     await catalog.install(course.id);
     for (const w of await store.works.where('courseId', course.id)) out.set(w.id, w);
   }

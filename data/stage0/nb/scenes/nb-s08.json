@@ -1,0 +1,229 @@
+{
+  "id": "nb-s08",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "I like bread",
+    "target": "Jeg liker brød"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "ana",
+      "luis",
+      "sam"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "bread",
+      "coffee",
+      "water"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Bestemora mi selger brød på markedet.",
+      "en": "My grandma sells bread at the market.",
+      "speaker": "nico",
+      "picture": "👵🍞🛒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Og Nils liker brød.",
+      "en": "And Nils likes bread.",
+      "speaker": "ana",
+      "picture": "👦🍞❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Jeg liker kaffe.",
+      "en": "I like coffee.",
+      "speaker": "luis",
+      "picture": "👨☕❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Jeg liker ikke kaffe.",
+      "en": "I don't like coffee.",
+      "speaker": "sam",
+      "picture": "🙂☕🚫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Liker du vann, Sam?",
+      "en": "Do you like water, Sam?",
+      "speaker": "ana",
+      "picture": "💧❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Ja, jeg liker vann.",
+      "en": "Yes, I like water.",
+      "speaker": "sam",
+      "picture": "💧❤️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "bestemora",
+      "selger",
+      "brød",
+      "og",
+      "liker"
+    ],
+    "constructions": [
+      "nb.liker",
+      "nb.men-og"
+    ]
+  },
+  "represents": [
+    "nb.liker",
+    "nb.men-og",
+    "nb.negation-ikke",
+    "nb.yes-no-question",
+    "nb.present-tense",
+    "nb.possessive-postposed",
+    "nb.i-pa"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does the grandma sell?"
+      },
+      "options": [
+        {
+          "en": "bread",
+          "picture": "🍞"
+        },
+        {
+          "en": "rice",
+          "picture": "🍚"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3",
+        "l4"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who likes coffee?"
+      },
+      "options": [
+        {
+          "en": "Lars"
+        },
+        {
+          "en": "Sam"
+        },
+        {
+          "en": "Anna"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5",
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Sam like water?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Say that you like bread.",
+      "basedOn": [
+        "l2"
+      ],
+      "frame": "Jeg liker ___.",
+      "accept": [
+        {
+          "text": "Jeg liker brød"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say that you don't like coffee.",
+      "basedOn": [
+        "l4"
+      ],
+      "accept": [
+        {
+          "text": "Jeg liker ikke kaffe"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "liker",
+      "text": "\"Liker\" is \"like\" (a thing or a person). The negative is \"liker ikke\", with \"ikke\" right after the verb, as before. \"Og\" is \"and\". Bestemora is \"the grandmother\": bestemor with the ending -a, so it goes with \"mi\" like søstera mi.",
+      "explains": [
+        "nb.liker",
+        "nb.men-og"
+      ],
+      "afterScenes": 0
+    }
+  ]
+}

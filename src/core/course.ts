@@ -157,6 +157,22 @@ export interface WorkRights {
   proofreading?: string;
   /** The evidence itself, one statement per line: who died when, which edition, what the source page says. */
   evidence?: string[];
+  /** The name of the licence ("CC BY-SA", "CC0") and its version ("4.0"); `licence` stays the free-text statement. */
+  licenceName?: string;
+  licenceVersion?: string;
+  /** The attribution line the licence or the rights holder asks for, ready to show. */
+  attributionText?: string;
+  /** Whether redistribution of the text (bundling it in the app) is allowed at all; absent = not established. */
+  redistribution?: boolean;
+  /** Machine-readable evidence, one record per source consulted; `evidence` keeps the plain statements. */
+  evidenceRecords?: Array<{
+    kind: 'publisher-statement' | 'catalogue-entry' | 'author-death' | 'licence-text' | 'correspondence' | 'statute' | 'other';
+    url?: string;
+    quote?: string;
+    checkedAt: string;
+    by: string;
+    note?: string;
+  }>;
   /** Contractual limits of the source site that apply whatever the copyright status (a site's terms of use). */
   sourceTerms?: string;
   /** Whether the app as built meets the licence's conditions (attribution shown, share-alike respected), and how. */

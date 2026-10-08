@@ -1,0 +1,40 @@
+=== nb-a1-2-06 | story | narrative | The lost bag | Veska er borte | past tense,market,losing things,helping
+speakers: ola=Ola
+note: The past tense appears here for the first time: var, hadde, mistet, gråt, sa, lette, gikk, så, lå, fant.
+## På markedet
+I går var {nico} på markedet med {marta}. || Yesterday Nils was at the market with Marta.
+{nico} hadde ei veske. Han hadde en bok, en telefon og brød i vesken. || Nils had a bag. He had a book, a phone and bread in the bag.
+Så mistet {nico} vesken. Han gråt. || Then Nils lost the bag. He cried.
+[nico] Veska er borte! Jeg har mistet den! || The bag is gone! I have lost it!
+{marta} sa: «Ikke gråt, {nico}. Vi skal finne den.» || Marta said: "Do not cry, Nils. We will find it."
+{marta} tenkte: «Hvor var vi før?» || Marta thought: "Where were we before?"
+[marta] Kan du huske det, {nico}? || Can you remember, Nils?
+[nico] Nei, jeg husker ikke. Jeg var hos Ola. || No, I do not remember. I was at Ola's.
+
+## Hos Ola
+De gikk til Ola. Ola selger epler på markedet. || They went to Ola. Ola sells apples at the market.
+[ola] God dag, {marta}! God dag, {nico}! || Hello, Marta! Hello, Nils!
+[nico] Har du ei veske, Ola? Jeg har mistet min. || Do you have a bag, Ola? I have lost mine.
+[ola] Ja! Jeg har sett ei veske her. Den lå under bordet. || Yes! I have seen a bag here. It was under the table.
+Ola fant vesken. Han sa: «Er det din?» || Ola found the bag. He said: "Is it yours?"
+[nico] Ja! Det er min veske! || Yes! It is my bag!
+{nico} gråt ikke mer. Han var glad. || Nils did not cry any more. He was happy.
+[nico] Takk, Ola! Takk, bestemor! || Thank you, Ola! Thank you, grandmother!
+[marta] Du må huske vesken, {nico}. || You must remember the bag, Nils.
+
+## Hjemme
+{sam} hadde sett {nico} på markedet. || Sam had seen Nils at the market.
+Han ser at {nico} er glad. {nico} har vesken. || He sees that Nils is happy. Nils has the bag.
+[sam] Du er glad, {nico}! Jeg tenkte at du var trøtt. || You are happy, Nils! I thought that you were tired.
+[nico] Ja! Jeg mistet vesken, men Ola fant den. || Yes! I lost the bag, but Ola found it.
+{marta} tenkte at {nico} glemmer mye. Men hun var glad i {nico}. || Marta thought that Nils forgets a lot. But she was fond of Nils.
+{sam} sa at han liker folk på markedet. De er snille. || Sam said that he likes the people at the market. They are kind.
+
+## Husker du?
+Hos {marta} sitter alle i stua. {sam} får kaffe, og han besøker henne hver lørdag. || At Marta's everyone sits in the living room. Sam gets coffee, and he visits her every Saturday.
+
+I butikken trenger {sam} egg, smør og brød. Han har listen, og han handler. || In the shop Sam needs eggs, butter and bread. He has the list, and he shops.
+
+{marta} står opp tidlig, før klokka fem. Hva gjør hun? Hun baker. Om natten sover hun. || Marta gets up early, before five o'clock. What does she do? She bakes. At night she sleeps.
+
+Legen sier: «Du har feber og vondt i hodet. Du må hvile.» || The doctor says: "You have a fever and a headache. You have to rest."

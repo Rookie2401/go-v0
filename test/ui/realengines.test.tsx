@@ -119,7 +119,7 @@ describe('the UI over the real engines', () => {
     const page = await render('/settings');
     await click(button(byLabel(page, 'Advanced'), 'Advanced')); // the language-support table and the evidence audit are under Advanced
     const table = byLabel(page, 'Language support table');
-    expect(qa(table, 'tbody tr')).toHaveLength(5);
+    expect(qa(table, 'tbody tr')).toHaveLength(7);
     expect(table.textContent).toContain('seed words only'); // the adapters say lemmatization is seed-only
     expect(byLabel(page, 'Language support').textContent).toMatch(/limitations/i);
     // the list of texts is the real catalogue, with real reasons for what is held back

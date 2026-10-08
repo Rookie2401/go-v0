@@ -1,0 +1,269 @@
+{
+  "id": "nb-exit-a",
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "reading": {
+    "lines": [
+      {
+        "id": "r1",
+        "text": "I dag er Lars på markedet.",
+        "en": "Today Lars is at the market.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r2",
+        "text": "Han vil ha brød og kaffe.",
+        "en": "He wants bread and coffee.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r3",
+        "text": "Marta har brød, men hun har ikke kaffe.",
+        "en": "Marta has bread, but she does not have coffee.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r4",
+        "text": "Lars har femti kroner.",
+        "en": "Lars has fifty kroner.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r5",
+        "text": "Lars er trøtt og går hjem.",
+        "en": "Lars is tired and goes home.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "q1",
+        "lines": [
+          "r1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Lars today?"
+        },
+        "options": [
+          {
+            "en": "at the market"
+          },
+          {
+            "en": "at the school"
+          },
+          {
+            "en": "at church"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "r3"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Marta NOT have?"
+        },
+        "options": [
+          {
+            "en": "coffee"
+          },
+          {
+            "en": "bread"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "r4"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How much money does Lars have?"
+        },
+        "options": [
+          {
+            "en": "50 kroner"
+          },
+          {
+            "en": "20 kroner"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "lines": [
+          "r5"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How is Lars, and where does he go?"
+        },
+        "options": [
+          {
+            "en": "Tired; home"
+          },
+          {
+            "en": "Tired; to church"
+          },
+          {
+            "en": "Happy; to school"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "listening": {
+    "lines": [
+      {
+        "id": "h1",
+        "text": "Nils er hjemme.",
+        "en": "Nils is at home.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "h2",
+        "text": "Nils vil ha vann.",
+        "en": "Nils wants water.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "lq1",
+        "lines": [
+          "h1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Nils?"
+        },
+        "options": [
+          {
+            "en": "at home"
+          },
+          {
+            "en": "at the market"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "lq2",
+        "lines": [
+          "h2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Nils want?"
+        },
+        "options": [
+          {
+            "en": "water"
+          },
+          {
+            "en": "coffee"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "writing": [
+    {
+      "id": "w1",
+      "kind": "answer",
+      "prompt": "Where is Lars today? Answer in Norwegian.",
+      "basedOn": [
+        "r1"
+      ],
+      "accept": [
+        {
+          "text": "Lars er på markedet"
+        },
+        {
+          "text": "Han er på markedet"
+        },
+        {
+          "text": "På markedet"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "kind": "describe",
+      "prompt": "Give your name and say where you live.",
+      "basedOn": [
+        "nb.jeg-heter"
+      ],
+      "accept": [
+        {
+          "text": "Jeg heter {x} jeg bor i {x}"
+        },
+        {
+          "text": "Jeg heter {x} og jeg bor i {x}"
+        },
+        {
+          "text": "Jeg heter {x} og bor i {x}"
+        }
+      ],
+      "personal": "your name, your town"
+    },
+    {
+      "id": "w3",
+      "kind": "recall",
+      "prompt": "Ask, politely, for water.",
+      "basedOn": [
+        "nb.politeness"
+      ],
+      "accept": [
+        {
+          "text": "Jeg vil ha vann, takk"
+        },
+        {
+          "text": "Vann, takk"
+        },
+        {
+          "text": "Kan jeg få vann, takk"
+        },
+        {
+          "text": "Jeg vil ha vann"
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "sp1",
+      "prompt": "Say your name, and that you would like coffee, please.",
+      "model": "Jeg heter Sam. Jeg vil ha kaffe, takk."
+    }
+  ]
+}

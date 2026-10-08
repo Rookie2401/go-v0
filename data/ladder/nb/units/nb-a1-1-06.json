@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-1-06",
+  "lang": "nb",
+  "title": "At the market",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-1-06",
+    "title": "At the market (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Prices are in kroner. The number words are written out so that the reader meets them."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "market",
+    "buying",
+    "prices",
+    "money"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "town"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "marta": "Marta",
+    "ola": "Ola",
+    "ana": "Anna",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "På markedet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam er på markedet. Han vil kjøpe mat.",
+              "english": "Sam is at the market. He wants to buy food."
+            },
+            {
+              "text": "Marta er også på markedet. Hun selger brød.",
+              "english": "Marta is also at the market. She sells bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "God dag, Marta! Jeg vil kjøpe brød.",
+              "english": "Hello, Marta! I want to buy bread.",
+              "speaker": "sam"
+            },
+            {
+              "text": "God dag, Sam! Hvor mye brød vil du ha?",
+              "english": "Hello, Sam! How much bread do you want?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg tar to brød. Hvor mye koster det?",
+              "english": "I will take two loaves. How much does it cost?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Brødet koster tretti kroner.",
+              "english": "The bread costs thirty kroner.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Er det dyrt?",
+              "english": "Is that expensive?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nei, det er ikke dyrt. Det er billig!",
+              "english": "No, it is not expensive. It is cheap!",
+              "speaker": "marta"
+            },
+            {
+              "text": "Bra! Jeg tar tre brød.",
+              "english": "Good! I will take three loaves.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Tre brød koster nitti kroner.",
+              "english": "Three loaves cost ninety kroner.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Sam har penger. Han betaler nitti kroner.",
+              "english": "Sam has money. He pays ninety kroner."
+            },
+            {
+              "text": "Takk, Sam! Ha det bra!",
+              "english": "Thanks, Sam! Goodbye!",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Epler",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ola selger epler.",
+              "english": "Ola sells apples."
+            },
+            {
+              "text": "Hei, Ola! Hva koster eplene?",
+              "english": "Hi, Ola! What do the apples cost?",
+              "speaker": "sam"
+            },
+            {
+              "text": "To koster tjue kroner.",
+              "english": "Two cost twenty kroner.",
+              "speaker": "ola"
+            },
+            {
+              "text": "Er det dyrt?",
+              "english": "Is that expensive?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nei, nei! Det er billig!",
+              "english": "No, no! It is cheap!",
+              "speaker": "ola"
+            },
+            {
+              "text": "Jeg tar fire epler.",
+              "english": "I will take four apples.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det blir førti kroner.",
+              "english": "That will be forty kroner.",
+              "speaker": "ola"
+            },
+            {
+              "text": "Jeg har penger. Jeg betaler nå.",
+              "english": "I have money. I am paying now.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Takk! Ha det bra, Sam!",
+              "english": "Thanks! Goodbye, Sam!",
+              "speaker": "ola"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjem",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam har brød og mat. Han går hjem.",
+              "english": "Sam has bread and food. He goes home."
+            },
+            {
+              "text": "Anna er hjemme. Hun er trøtt i dag.",
+              "english": "Anna is at home. She is tired today."
+            },
+            {
+              "text": "Hei, Sam! Hva har du?",
+              "english": "Hi, Sam! What do you have?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg har brød og mat.",
+              "english": "I have bread and food.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Er det dyrt?",
+              "english": "Is that expensive?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Nei, det er billig. Jeg betaler ikke mye.",
+              "english": "No, it is cheap. I do not pay much.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nå har jeg ikke penger. Men jeg har mat!",
+              "english": "Now I have no money. But I have food!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bra! Jeg liker brød. Vil du ha te, Sam?",
+              "english": "Good! I like bread. Do you want tea, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, gjerne! Jeg er glad i dag.",
+              "english": "Yes, please! I am happy today.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du kjøper mye, Sam. Du er glad!",
+              "english": "You buy a lot, Sam. You are happy!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg liker markedet. Det er bra.",
+              "english": "Yes, I like the market. It is good.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Fru Berg er også på markedet. Hun kommer fra kirka, og hun vil kjøpe brød.",
+              "english": "Mrs Berg is also at the market. She comes from church, and she wants to buy bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hvem er læreren din, Nils?",
+              "english": "Who is your teacher, Nils?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Det er Lars. Han er læreren min på skolen.",
+              "english": "It is Lars. He is my teacher at the school.",
+              "speaker": "nico"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta lager middag. Hun lager fisk og poteter, og hun lager suppe.",
+              "english": "Marta makes dinner. She makes fish and potatoes, and she makes soup."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

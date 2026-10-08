@@ -27,6 +27,8 @@ import type { SimMode, SimRun } from '../src/sim/types';
 
 const argv = process.argv.slice(2).filter((a) => a !== '--');
 const ALL: LanguageCode[] = ['es', 'de', 'sq', 'th', 'hi'];
+// Norwegian is run on request only (it is not in the default set until its content is committed and reviewed).
+const ON_REQUEST: LanguageCode[] = ['nb'];
 const langs: LanguageCode[] = [];
 let mode: SimMode | 'both' = 'both';
 let maxWords = 1_500_000, maxTexts = 3000, maxMinutes = 30;
@@ -41,7 +43,7 @@ for (let i = 0; i < argv.length; i++) {
   else if (a === '--dict') dict = true;
   else if (a === '--quiet') quiet = true;
   else if (a === '--skip-rereads') skipRereads = true;
-  else if ((ALL as string[]).includes(a)) langs.push(a as LanguageCode);
+  else if (([...ALL, ...ON_REQUEST] as string[]).includes(a)) langs.push(a as LanguageCode);
   else throw new Error(`unknown argument: ${a}`);
 }
 if (![maxWords, maxTexts, maxMinutes].every((n) => Number.isFinite(n) && n > 0)) throw new Error('the budgets must be positive numbers');

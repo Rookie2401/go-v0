@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-2-08",
+  "lang": "nb",
+  "title": "Fishing and the sea",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-2-08",
+    "title": "Fishing and the sea (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Nils's school project about fishing. The facts are very general (fishing, boats, dried fish) and unchecked; a Norwegian reviewer should confirm them and may add specific, correct details."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "fishing",
+    "sea",
+    "boat",
+    "dried fish",
+    "Norway"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "norway"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nico": "Nils",
+    "marta": "Marta"
+  },
+  "sections": [
+    {
+      "title": "Skoleprosjektet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nils skal skrive om fiskere. Han har lekse, og han er hos Marta.",
+              "english": "Nils is going to write about fishermen. He has homework, and he is at Marta's."
+            },
+            {
+              "text": "Hva vet du om fiskere, bestemor?",
+              "english": "What do you know about fishermen, grandmother?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Jeg vet litt. Fiskerne bor nær havet. De har båt, og de drar ut på havet.",
+              "english": "I know a little. The fishermen live near the sea. They have a boat, and they go out onto the sea.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Hva gjør de på havet?",
+              "english": "What do they do on the sea?",
+              "speaker": "nico"
+            },
+            {
+              "text": "De fanger fisk. Det er et vanskelig liv, for været er ofte dårlig.",
+              "english": "They catch fish. It is a difficult life, because the weather is often bad.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Spiser vi fisk fra havet?",
+              "english": "Do we eat fish from the sea?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja. Fisken i butikken og på markedet kommer fra fiskerne.",
+              "english": "Yes. The fish in the shop and at the market comes from the fishermen.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Tørrfisk",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nils leser mer i en bok om fisk. Boka forteller om tørrfisk.",
+              "english": "Nils reads more in a book about fish. The book tells about dried fish."
+            },
+            {
+              "text": "Tørrfisk er fisk som er tørr. Den blir tørr, og folk kan spise den lenge etterpå.",
+              "english": "Dried fish is fish that is dry. It becomes dry, and people can eat it a long time afterwards."
+            },
+            {
+              "text": "Har du spist tørrfisk, bestemor?",
+              "english": "Have you eaten dried fish, grandmother?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, mange ganger. Jeg likte den ikke da jeg var liten, men nå liker jeg den.",
+              "english": "Yes, many times. I did not like it when I was small, but now I like it.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg liker ikke tørrfisk. Jeg liker ferdig fisk og poteter.",
+              "english": "I do not like dried fish. I like ready-made fish and potatoes.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Du får lære å like den! Nå må du skrive, Nils.",
+              "english": "You will learn to like it! Now you must write, Nils.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Prosjektet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nils skrev: «Fiskere bor nær havet. De har båt, og de fanger fisk. Tørrfisk er fisk som er tørr. Jeg liker ikke tørrfisk, men jeg liker fiskerne.»",
+              "english": "Nils wrote: \"Fishermen live near the sea. They have a boat, and they catch fish. Dried fish is fish that is dry. I do not like dried fish, but I like the fishermen.\""
+            },
+            {
+              "text": "Lars leste prosjektet på skolen. Han sa at det var godt.",
+              "english": "Lars read the project at school. He said that it was good."
+            },
+            {
+              "text": "Får jeg kake nå, bestemor? Jeg har skrevet mye i dag.",
+              "english": "May I have cake now, grandmother? I have written a lot today.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, du har jobbet bra. Her er kake og melk.",
+              "english": "Yes, you have worked well. Here is cake and milk.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Nils er glad. Han spiser kake og drikker melk. Så går han hjem, og han sover godt.",
+              "english": "Nils is happy. He eats cake and drinks milk. Then he goes home, and he sleeps well."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ingen var redd for jenta på brua, for hun var klok. Hun stoppet og svarte på gåter.",
+              "english": "Nobody was afraid of the girl on the bridge, because she was clever. She stopped and answered riddles."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hvorfor skriver noen nynorsk eller bokmål? Det er to måter, og ingen skriver feil. Ordene er forskjellige, men slik er det.",
+              "english": "Why do some write Nynorsk or Bokmål? There are two ways, and nobody writes wrongly. The words are different, but that is how it is."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Etter tilbudet fra sykehuset snakket Anna om valget. Hun ville ikke flytte nå, men kanskje senere. Sjefen svarte.",
+              "english": "After the offer from the hospital Anna talked about the choice. She did not want to move now, but maybe later. The boss answered."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

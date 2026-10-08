@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-2-05",
+  "lang": "nb",
+  "title": "A normal day",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-2-05",
+    "title": "A normal day (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". \"stå opp\" is a particle verb: the particle \"opp\" follows the verb. Times are given as \"klokka\" plus the number."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily routine",
+    "time",
+    "morning",
+    "evening"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam",
+    "luis": "Lars",
+    "nico": "Nils",
+    "marta": "Marta"
+  },
+  "sections": [
+    {
+      "title": "Om morgenen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Lars står opp klokka seks. Han drikker kaffe før skolen.",
+              "english": "Lars gets up at six. He drinks coffee before school."
+            },
+            {
+              "text": "Anna står opp klokka sju. Hun er ofte trøtt om morgenen.",
+              "english": "Anna gets up at seven. She is often tired in the morning."
+            },
+            {
+              "text": "Marta står opp tidlig. Hun baker brød før klokka åtte. Så går hun til markedet.",
+              "english": "Marta gets up early. She bakes bread before eight o'clock. Then she goes to the market."
+            },
+            {
+              "text": "Nils spiser brød før skolen. Skolen begynner klokka åtte.",
+              "english": "Nils eats bread before school. School begins at eight."
+            },
+            {
+              "text": "Nils vil ikke komme sent.",
+              "english": "Nils does not want to be late."
+            },
+            {
+              "text": "Sam har ikke skole i dag. Han er hjemme.",
+              "english": "Sam has no school today. He is at home."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hva gjør du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hva gjør du i dag, Sam?",
+              "english": "What are you doing today, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg leser norsk. Jeg leser i bibelen.",
+              "english": "I read Norwegian. I read in the Bible.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Står du opp tidlig?",
+              "english": "Do you get up early?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Nei, ikke veldig tidlig.",
+              "english": "No, not very early.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Marta gjør mye. Hun er alltid glad.",
+              "english": "Marta does a lot. She is always happy.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, og folk liker brødet.",
+              "english": "Yes, and people like the bread.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg jobber til klokka fem. Så går jeg hjem.",
+              "english": "I work until five o'clock. Then I go home.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg er hjemme med Lars. Vi drikker te.",
+              "english": "I am at home with Lars. We drink tea.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Om kvelden",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Om kvelden er alle trøtte. Anna kommer hjem klokka fem.",
+              "english": "In the evening everyone is tired. Anna comes home at five."
+            },
+            {
+              "text": "Lars og Anna spiser middag. Sam spiser med dem.",
+              "english": "Lars and Anna eat dinner. Sam eats with them."
+            },
+            {
+              "text": "Hva gjør du om kvelden, Sam?",
+              "english": "What do you do in the evening, Sam?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg leser, og jeg ber. Så er jeg trøtt, og jeg sover.",
+              "english": "I read, and I pray. Then I am tired, and I sleep.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er bra. God natt, Sam!",
+              "english": "That is good. Good night, Sam!",
+              "speaker": "ana"
+            },
+            {
+              "text": "God natt, Anna! God natt, Lars!",
+              "english": "Good night, Anna! Good night, Lars!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nå sover alle i huset. Marta sover også.",
+              "english": "Now everyone in the house is asleep. Marta is asleep too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hos Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg er ikke trøtt i kveld, bestemor!",
+              "english": "I am not tired this evening, grandmother!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Det er sent, Nils. Du må gå hjem.",
+              "english": "It is late, Nils. You have to go home.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Skolen begynner klokka åtte, bestemor.",
+              "english": "School begins at eight o'clock, grandmother.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, men du må være glad i morgen også.",
+              "english": "Yes, but you must be happy tomorrow too.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Nils går hjem. Han er glad, men han er trøtt.",
+              "english": "Nils goes home. He is happy, but he is tired."
+            },
+            {
+              "text": "Sam er glad. Han liker huset, og han liker folk i Bergen.",
+              "english": "Sam is happy. He likes the house, and he likes the people in Bergen."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På torsdag og fredag lager Marta middag. Hun vil ha fred i uka.",
+              "english": "On Thursday and Friday Marta makes dinner. She wants peace in the week."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna leter etter telefonen. Den ligger under jakka, og den er ikke borte.",
+              "english": "Anna looks for the phone. It is under the jacket, and it is not gone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nils er syk i dag. Han har vondt i hodet, og han har feber.",
+              "english": "Nils is ill today. He has a headache, and he has a fever."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hvem besøker Nils? Det er et besøk fra Marta.",
+              "english": "Who visits Nils? It is a visit from Marta."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

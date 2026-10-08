@@ -1,0 +1,33 @@
+=== nb-a2-2-09 | nonfiction | faith | A letter from the congregation | Et brev fra menigheten | letter,invitation,church,welcome,community
+note: An invented invitation letter from a local congregation; no real church is named. The register is warm and formal-friendly ("Kjære venner", "Hilsen").
+## Brevet
+Kjære venner, || Dear friends,
+Vi inviterer dere til gudstjeneste i kirka vår på søndag klokka elleve. || We invite you to the service in our church on Sunday at eleven o'clock.
+Alle er velkomne, gamle og små. || Everyone is welcome, old and small.
+Etter gudstjenesten drikker vi kaffe og spiser kake sammen. Der kan dere treffe folk i menigheten. || After the service we drink coffee and eat cake together. There you can meet the people of the congregation.
+Hvis dere har spørsmål, kan dere ringe til presten. Han heter Hansen. || If you have questions, you can call the pastor. His name is Hansen.
+Vi håper å se dere! || We hope to see you!
+Hilsen menigheten || Greetings from the congregation
+
+## Hjemme
+{sam} har fått brevet. Han leser det for {ana} og {luis}. || Sam has received the letter. He reads it to Anna and Lars.
+[sam] Menigheten inviterer oss til gudstjeneste på søndag. || The congregation invites us to the service on Sunday.
+[ana] Vi går i kirka hver søndag, men det er bra å få et brev. || We go to church every Sunday, but it is good to get a letter.
+[luis] Alle er velkomne, sier brevet. Det er en bra menighet. || Everyone is welcome, says the letter. It is a good congregation.
+[sam] Jeg vil gjerne treffe flere folk. Jeg har mange venner, men jeg vil ha flere. || I would like to meet more people. I have many friends, but I want more.
+[ana] Du kan invitere {marta} og {nico}. De er også velkomne. || You can invite Marta and Nils. They are welcome too.
+[sam] Ja, det gjør jeg. Jeg ringer til {marta} i kveld. || Yes, I will. I will call Marta this evening.
+
+## Gudstjenesten
+På søndag kom mange folk til kirka. Alle var velkomne, og alle var glade. || On Sunday many people came to the church. Everyone was welcome, and everyone was happy.
+Presten ba, og menigheten sang. {sam} sang med, og han var glad. || The pastor prayed, and the congregation sang. Sam sang along, and he was happy.
+Etter gudstjenesten drakk de kaffe og spiste kake. {sam} traff mange nye folk. || After the service they drank coffee and ate cake. Sam met many new people.
+En gammel dame sa til ham: «Velkommen, {sam}! Vi har hørt om deg.» || An old lady said to him: "Welcome, Sam! We have heard about you."
+{sam} ble glad. Han tenkte: «Jeg er ikke alene i Norge. Jeg har en menighet.» || Sam became glad. He thought: "I am not alone in Norway. I have a congregation."
+Han skrev et brev til menigheten og takket for invitasjonen. || He wrote a letter to the congregation and thanked them for the invitation.
+{marta} og {nico} var også i kirka. De satt hos {sam}, og de sang sammen. || Marta and Nils were also in the church. They sat with Sam, and they sang together.
+
+## Husker du?
+I menigheten kjenner folk hverandre. De har tvil og spørsmål, men de er trygge. Svaret er ikke alltid lett. || In the congregation people know each other. They have doubt and ask questions, but they feel safe. The answer is not always easy.
+
+{sam} leser begge. Først leser han bokmål, og så leser han nynorsk. Han vil heller forstå dialekter, slik som {marta} snakker. || Sam reads both. First he reads Bokmål, and then he reads Nynorsk. He would rather understand dialects, the way Marta speaks.

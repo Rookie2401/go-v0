@@ -5,6 +5,7 @@ import { ALBANIAN_STAGES } from './albanian';
 import { SPANISH_SHELVES } from './spanish';
 import { GERMAN_SHELVES } from './german';
 import { HINDI_SHELVES } from './hindi';
+import { NORWEGIAN_SHELVES } from './norwegian';
 
 export type Lifecycle = 'candidate' | 'rights_pending' | 'acquired' | 'converted' | 'linguistic_review' | 'native_review' | 'ready' | 'published' | 'rejected';
 export type PedagogicalRole = 'controlled' | 'graded' | 'bridge' | 'authentic' | 'heritage' | 'scripture' | 'reference' | 'assessment';
@@ -38,12 +39,15 @@ export interface StageContract {
   exitEvidence: { kind: 'unseen-reading'; measures: readonly string[]; certification: false };
 }
 const measures = ['comprehension', 'gist', 'detail', 'inference', 'lookups', 'rescue-use', 'reading-time'] as const;
-const ladders = [THAI_STAGES, ALBANIAN_STAGES, SPANISH_SHELVES, GERMAN_SHELVES, HINDI_SHELVES];
+const ladders = [THAI_STAGES, ALBANIAN_STAGES, SPANISH_SHELVES, GERMAN_SHELVES, HINDI_SHELVES, NORWEGIAN_SHELVES];
 const constructions: Record<LanguageCode, readonly string[][]> = {
   de: [['Sound/spelling correspondence', 'Basic verb-second statements'], ['Present tense and questions', 'Article/noun agreement'], ['Accusative and dative phrases', 'Separable verbs'], ['Perfect past', 'Modal verbs'], ['Common subordinate clauses', 'Relative clauses'], ['Passive and indirect reference'], ['Argument structure and discourse connectors'], ['Register-sensitive idiom and implicit viewpoint']],
   es: [['Sound/spelling correspondence', 'Present-tense everyday statements'], ['Gender and number agreement', 'Questions and negation'], ['Object pronouns', 'Frequent past forms'], ['Preterite/imperfect narrative contrast'], ['Subordination and relative clauses'], ['Frequent subjunctive contexts'], ['Connectors and implicit reference'], ['Register-sensitive idiom and inference']],
   hi: [['Vowel signs and consonant combinations', 'Basic copular statements'], ['Gender agreement', 'Postpositions'], ['Oblique forms', 'Habitual and progressive aspect'], ['Perfective and ergative marking'], ['Compound verbs', 'Relative-correlative constructions'], ['Reported speech and embedded clauses'], ['Discourse continuity across Sanskritic and everyday registers'], ['Implicit reference and extended argument']],
   sq: [['Contemporary Standard spelling', 'Basic copular and present statements'], ['Definite/indefinite noun forms', 'Gender agreement'], ['Case relations and prepositions', 'Clitic pronouns'], ['Past narrative tense contrasts'], ['Subjunctive constructions and subordination'], ['Clitic combinations and reported speech'], ['Discourse reference; recognize labelled Gheg/historical forms'], ['Implicit argument and register-sensitive idiom']],
+  // machine-draft, native review pending (Norwegian: Bokmål is the target; Nynorsk is read receptively, so its row mirrors Bokmål's)
+  nb: [['Sound/spelling correspondence (kj, sj, skj, å/ø/æ)', 'Basic verb-second statements'], ['Present tense and questions', 'Gender and definite forms (en/ei/et, -en/-a/-et)'], ['Prepositions and adjective agreement', 'Modal verbs'], ['Preterite and perfect', 'Particle verbs'], ['Subordinate clauses and word order', 'Relative clauses'], ['Passive (-s and bli) and reflexives'], ['Argument structure and discourse connectors', 'Compounds'], ['Register-sensitive idiom and implicit viewpoint; recognise Nynorsk and older spelling']],
+  nn: [['Sound/spelling correspondence (kj, sj, skj, å/ø/æ)', 'Basic verb-second statements'], ['Present tense and questions', 'Gender and definite forms (ein/ei/eit)'], ['Prepositions and adjective agreement', 'Modal verbs'], ['Preterite and perfect', 'Particle verbs'], ['Subordinate clauses and word order', 'Relative clauses'], ['Passive (-st and verta) and reflexives'], ['Argument structure and discourse connectors', 'Compounds'], ['Register-sensitive idiom and implicit viewpoint; recognise Bokmål and older spelling']],
   th: [['Consonant classes, vowels and tone decoding', 'Basic Thai word order'], ['Negation and questions', 'Common classifiers'], ['Aspect markers and serial verbs'], ['Pronoun omission', 'Dialogue/discourse particles'], ['Connected clauses and narrative reference'], ['Embedded explanation', 'Register-dependent pronouns'], ['Implicit reference and literary economy'], ['Regional/historical recognition and contextual inference']],
 };
 const bandFor = (i: number, size: number) => Math.min(7, Math.floor(i * 8 / size));

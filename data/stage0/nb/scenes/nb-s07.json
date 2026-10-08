@@ -1,0 +1,234 @@
+{
+  "id": "nb-s07",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "Where is my key?",
+    "target": "Hvor er nøkkelen min?"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "marta"
+    ],
+    "things": [
+      "key",
+      "bag"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Hvor er nøkkelen min?",
+      "en": "Where is my key?",
+      "speaker": "nico",
+      "picture": "🔑❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Jeg vet ikke, Nils.",
+      "en": "I don't know, Nils.",
+      "speaker": "marta",
+      "picture": "🤷",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Den er ikke her.",
+      "en": "It is not here.",
+      "speaker": "nico",
+      "picture": "🚫🔑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Er den i veska di?",
+      "en": "Is it in your bag?",
+      "speaker": "marta",
+      "picture": "👜❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Ja! Her er den.",
+      "en": "Yes! Here it is.",
+      "speaker": "nico",
+      "picture": "🔑🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Veldig bra.",
+      "en": "Very good.",
+      "speaker": "marta",
+      "picture": "👍",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "nøkkelen",
+      "vet",
+      "den",
+      "veska",
+      "di",
+      "bra",
+      "veldig"
+    ],
+    "constructions": [
+      "nb.hvor-er",
+      "nb.w-question",
+      "nb.vet-ikke"
+    ]
+  },
+  "represents": [
+    "nb.hvor-er",
+    "nb.w-question",
+    "nb.vet-ikke",
+    "nb.possessive-postposed",
+    "nb.er-location",
+    "nb.i-pa",
+    "nb.negation-ikke",
+    "nb.yes-no-question"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What has Nils lost?"
+      },
+      "options": [
+        {
+          "en": "his key",
+          "picture": "🔑"
+        },
+        {
+          "en": "his bag",
+          "picture": "👜"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Marta ask?"
+      },
+      "options": [
+        {
+          "en": "Is it in your bag?"
+        },
+        {
+          "en": "Is it at school?"
+        },
+        {
+          "en": "Is it at home?"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5",
+        "l6"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where is the key?"
+      },
+      "options": [
+        {
+          "en": "in the bag",
+          "picture": "👜"
+        },
+        {
+          "en": "at school",
+          "picture": "🏫"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Marta asks: \"Er den i veska di?\" Say yes, here it is.",
+      "basedOn": [
+        "l4",
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "Ja her er den"
+        },
+        {
+          "text": "Her er den"
+        },
+        {
+          "text": "Ja"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Ask where your key is.",
+      "basedOn": [
+        "l1",
+        "nb.hvor-er"
+      ],
+      "accept": [
+        {
+          "text": "Hvor er nøkkelen min"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "den, di, min",
+      "text": "\"Den\" means \"it\" for words like nøkkelen and veska. \"Min\" and \"di\" are again the little words that come after the noun: nøkkelen min, veska di. A feminine word like veska takes \"mi\" and \"di\", a masculine word like nøkkelen takes \"min\" and \"din\". \"Jeg vet ikke\" is \"I don't know\".",
+      "explains": [
+        "nb.possessive-postposed",
+        "nb.vet-ikke"
+      ],
+      "afterScenes": 0
+    }
+  ]
+}

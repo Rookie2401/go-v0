@@ -18,6 +18,68 @@ function optionalText(v: unknown, name: string): void {
   if (typeof v === 'string' && PLACEHOLDER.test(v.trim())) throw new Error(`GoListen import: ${name} is still the template placeholder ${v.trim()}; fill it in or leave it out`);
 }
 
+const ALIGNMENT_UNITS: ReadonlyArray<NonNullable<AudioImportManifest['alignment']>['unit']> = ['sentence', 'phrase', 'word'];
+const WRITTEN_STANDARD_LANGS: ReadonlyArray<string> = ['nb', 'nn'];
+
+/**
+ * The optional speaker / written-standard / alignment declarations (docs/norway/SPEC.md §6). Every field may be absent; a manifest
+ * that omits all of them is validated exactly as before. What is given is checked for shape, never for truth (a speaker's
+ * "native" or "region" is the importer's statement).
+ */
+function validateRecordingMeta(m: AudioImportManifest, textLang: string): void {
+  if (m.speaker !== undefined) {
+    const sp = m.speaker as unknown;
+    if (typeof sp !== 'object' || sp === null || Array.isArray(sp)) throw new Error('GoListen import: speaker must be an object with an id');
+    requiredText(m.speaker.id, 'speaker id');
+    if (m.speaker.native !== undefined && typeof m.speaker.native !== 'boolean') throw new Error('GoListen import: speaker native must be true or false');
+    for (const [v, n] of [[m.speaker.region, 'speaker region'], [m.speaker.locality, 'speaker locality'], [m.speaker.dialect, 'speaker dialect']] as const) {
+      if (v !== undefined && typeof v !== 'string') throw new Error(`GoListen import: ${n} must be text`);
+      optionalText(v, n);
+    }
+  }
+  if (m.writtenStandard !== undefined) {
+    if (m.writtenStandard !== 'nb' && m.writtenStandard !== 'nn') throw new Error("GoListen import: writtenStandard must be 'nb' or 'nn'");
+    if (!WRITTEN_STANDARD_LANGS.includes(textLang)) throw new Error(`GoListen import: writtenStandard applies only to Norwegian (nb, nn) texts, not ${textLang}`);
+    if (m.writtenStandard !== textLang) throw new Error(`GoListen import: writtenStandard ${m.writtenStandard} does not match the text's language ${textLang}`);
+  }
+  if (m.alignment !== undefined) {
+    const al = m.alignment as unknown;
+    if (typeof al !== 'object' || al === null || Array.isArray(al)) throw new Error('GoListen import: alignment must be an object with a unit');
+    if (!ALIGNMENT_UNITS.includes(m.alignment.unit)) throw new Error(`GoListen import: alignment unit must be one of ${ALIGNMENT_UNITS.join(', ')}`);
+    if (m.alignment.method !== undefined) requiredText(m.alignment.method, 'alignment method');
+    const c = m.alignment.confidence;
+    if (c !== undefined && (typeof c !== 'number' || !Number.isFinite(c) || c < 0 || c > 1)) throw new Error('GoListen import: alignment confidence must be a number from 0 to 1');
+  }
+}
+
+/** spokenTranscript: every sentenceId must be a current sentence of the bound text; each spoken wording is non-empty; no sentence twice. */
+function validateSpokenTranscript(m: AudioImportManifest, sentences: ReadonlyMap<string, Sentence>): void {
+  if (m.spokenTranscript === undefined) return;
+  if (!Array.isArray(m.spokenTranscript)) throw new Error('GoListen import: spokenTranscript must be a list');
+  const seen = new Set<string>();
+  for (const t of m.spokenTranscript) {
+    if (typeof t?.sentenceId !== 'string' || !sentences.has(t.sentenceId)) throw new Error(`GoListen import: spokenTranscript names an unknown or retired sentence ${String(t?.sentenceId)}`);
+    if (seen.has(t.sentenceId)) throw new Error(`GoListen import: spokenTranscript has sentence ${t.sentenceId} twice`);
+    seen.add(t.sentenceId);
+    requiredText(t.spoken, `spoken wording of ${t.sentenceId}`);
+  }
+}
+
+/** The declarations as they are stored on the asset: copies of the known fields only, and no key at all for what the manifest omitted. */
+function recordingMetaOf(m: AudioImportManifest): Pick<AudioAsset, 'speaker' | 'writtenStandard' | 'spokenTranscript' | 'alignment'> {
+  const sp = m.speaker;
+  return {
+    ...(sp ? { speaker: { id: sp.id.trim(), ...(sp.native !== undefined ? { native: sp.native } : {}), ...(sp.region !== undefined ? { region: sp.region } : {}),
+      ...(sp.locality !== undefined ? { locality: sp.locality } : {}), ...(sp.dialect !== undefined ? { dialect: sp.dialect } : {}) } } : {}),
+    ...(m.writtenStandard ? { writtenStandard: m.writtenStandard } : {}),
+    ...(m.spokenTranscript ? { spokenTranscript: m.spokenTranscript.map((t) => ({ sentenceId: t.sentenceId, spoken: t.spoken })) } : {}),
+    ...(m.alignment ? { alignment: { unit: m.alignment.unit, ...(m.alignment.method !== undefined ? { method: m.alignment.method } : {}),
+      ...(m.alignment.confidence !== undefined ? { confidence: m.alignment.confidence } : {}) } } : {}),
+  };
+}
+const metaKey = (a: Pick<AudioAsset, 'speaker' | 'writtenStandard' | 'spokenTranscript' | 'alignment'>): string =>
+  JSON.stringify([a.speaker ?? null, a.writtenStandard ?? null, a.spokenTranscript ?? null, a.alignment ?? null]);
+
 /** meta row holding what the importer declared and who (if anyone) reviewed; see ImportRecord. */
 export const importRecordId = (assetId: string): string => `golisten-import:${assetId}`;
 
@@ -49,6 +111,7 @@ export async function importRecordingFor(rt: Runtime, args: ImportRecordingArgs)
   if (m.qualityState === 'rejected') throw new Error('GoListen import: audio marked rejected cannot be imported as playable speech');
   if (isThsv11(text) || /\bTHSV\s*11\b|Thai Standard Version\s*2011/i.test(`${m.editionId ?? ''} ${m.releaseId}`)) throw new Error('GoListen import: THSV11 audio is prohibited and cannot be imported');
   if (text.lang !== m.lang) throw new Error(`GoListen import: language mismatch (${m.lang} vs ${text.lang})`);
+  validateRecordingMeta(m, text.lang);
   if (m.contentVersion !== text.contentVersion || m.releaseId !== releaseIdOf(text)) throw new Error('GoListen import: stale or mismatched text release');
   const expectedEdition = editionIdOf(text);
   if (expectedEdition !== m.editionId) throw new Error('GoListen import: Bible edition mismatch');
@@ -70,6 +133,7 @@ export async function importRecordingFor(rt: Runtime, args: ImportRecordingArgs)
     performanceOwner: m.performance.performer, performancePermission: m.performance.permission, attribution: m.recording.attribution };
   if (!approvedForPlay(candidateRights, m.kind)) throw new Error('GoListen import: recording rights are not approved for in-app playback');
   const map = new Map(sentences.map((s) => [s.id, s]));
+  validateSpokenTranscript(m, map);
   let previousIndex = -1, previousEnd = 0;
   const covered = new Set<string>();
   for (const c of m.coverage) {
@@ -116,6 +180,7 @@ export async function importRecordingFor(rt: Runtime, args: ImportRecordingArgs)
     sampleRate: wav.sampleRate, channels: wav.channels, durationMs: Math.round(wav.durationMs), bytes: args.bytes.length,
     checksum: await sha256Hex(args.bytes), createdAt: prior?.createdAt ?? now, isSpeech: true, rights, textBinding: binding,
     narratorOrVoiceId: m.narrator, variety: m.variety, qualityState, validation: { ...wav.validation, ok: true, problems: [] },
+    ...recordingMetaOf(m),
   };
   // Identical bytes already stored: the stored asset (and its review state) is kept. A learner import never changes it, and a
   // curated import may only raise an unreviewed / machine-checked asset to a reviewed one (with a named reviewer).
@@ -125,7 +190,7 @@ export async function importRecordingFor(rt: Runtime, args: ImportRecordingArgs)
     const sameFacts = prior.textBinding?.textId === binding.textId && prior.textBinding.textSha256 === binding.textSha256 && prior.textBinding.releaseId === binding.releaseId
       && prior.rights?.id === rights.id && prior.audioKind === candidate.audioKind && prior.sourceType === candidate.sourceType
       && prior.lang === candidate.lang && prior.locale === candidate.locale && prior.narratorOrVoiceId === candidate.narratorOrVoiceId
-      && prior.variety === candidate.variety;
+      && prior.variety === candidate.variety && metaKey(prior) === metaKey(candidate);
     const upgrade = !learner && prior.qualityState !== qualityState && (prior.qualityState === 'unreviewed' || prior.qualityState === 'machine_checked')
       && (qualityState === 'human_reviewed' || qualityState === 'approved');
     if (!sameFacts || (!learner && prior.qualityState !== qualityState && !upgrade)) {
@@ -184,6 +249,7 @@ export async function importRecordingFor(rt: Runtime, args: ImportRecordingArgs)
   const previous = await rt.store.manifests.get(manifestId);
   const manifest: AudioManifest = { id: manifestId, textId: text.id, lang: text.lang, voiceConfigId: voiceId,
     contentVersion: text.contentVersion, segmentIds, complete: m.coverage.length === sentences.length,
+    ...(m.speaker ? { speakerId: m.speaker.id.trim() } : {}), ...(m.writtenStandard ? { writtenStandard: m.writtenStandard } : {}), ...(m.alignment ? { alignmentUnit: m.alignment.unit } : {}),
     createdAt: previous?.createdAt ?? now, updatedAt: now };
   await rt.store.manifests.put(manifest);
   return { manifest, asset, imported: segmentIds.length, reused: !!prior };

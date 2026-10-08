@@ -1,0 +1,40 @@
+=== nb-a2-1-09 | story | faith | The good Samaritan | Den gode samaritan | parable,helping,neighbour,Jesus
+note: A simple retelling, in the course's own words, of the parable Jesus told in Luke 10 (not a quotation of any translation). The wording of the Bible itself is a separate matter (see the seed document bible-1john-1).
+## Marta leser
+{marta} leser i bibelen. {nico} sitter hos henne. || Marta reads in the Bible. Nils sits with her.
+[nico] Hva leser du, bestemor? || What are you reading, grandmother?
+[marta] Jeg leser om en samaritan. Jesus snakket om ham. || I am reading about a Samaritan. Jesus spoke about him.
+
+## Historien
+En mann gikk en lang vei. Røverne tok pengene og jakka hans. || A man walked a long way. The robbers took his money and his jacket.
+Mannen lå på veien. Han var skadet. || The man lay on the road. He was injured.
+En prest kom, men han gikk forbi. || A priest came, but he walked past.
+Så kom en samaritan. Samaritanen stoppet og hjalp ham. || Then a Samaritan came. The Samaritan stopped and helped him.
+Han tok ham til et hotell. Han betalte for hotellet. || He took him to a hotel. He paid for the hotel.
+Han sa: «Hjelp ham. Jeg betaler mer hvis du trenger det.» || He said: "Help him. I will pay more if you need it."
+Han var skadet, men samaritanen var snill. || He was injured, but the Samaritan was kind.
+
+## Hvem er nabo?
+[nico] Hvem var nabo til ham, bestemor? || Who was his neighbour, grandmother?
+[marta] Samaritanen var nabo til ham. Han hjalp ham. || The Samaritan was his neighbour. He helped him.
+[marta] Presten gikk forbi, men samaritanen stoppet. Jesus sa: «Gå, og hjelp alle.» || The priest walked past, but the Samaritan stopped. Jesus said: "Go, and help everyone."
+[nico] Hvem er nabo til oss? || Who is our neighbour?
+[marta] Alle folk. Du kan hjelpe dem hver dag. || All people. You can help them every day.
+[nico] Jeg vil hjelpe {sam}! Han er ny i byen. || I want to help Sam! He is new in town.
+[sam] Takk, {nico}! Jeg er glad for at du ikke er en røver. Hotellet er ikke dyrt hos {marta}! || Thanks, Nils! I am glad that you are not a robber. The hotel at Marta's is not expensive!
+
+## Etter historien
+{marta} leser mer i bibelen. {nico} sitter og lytter. || Marta reads more in the Bible. Nils sits and listens.
+[nico] Jeg liker historien. Den er ikke lang, men den er bra. || I like the story. It is not long, but it is good.
+[marta] Ja, Jesus snakket om mye. Han elsker alle folk. || Yes, Jesus spoke about much. He loves all people.
+[nico] Når jeg er stor, vil jeg hjelpe folk, som samaritanen. || When I am big, I want to help people, like the Samaritan.
+
+## Husker du?
+{nico} vil dra til hytta og gå på ski. Han vil sitte i stua med melk. Peisen er varm. || Nils wants to go to the cabin and ski. He wants to sit in the living room with milk. The fireplace is warm.
+
+{nico} husker sytten mai. Han hadde flagg, og han spiste is og pølse. Toget var langt, og alle feiret. || Nils remembers the seventeenth of May. He had a flag, and he ate ice cream and sausage. The parade was long, and everyone celebrated.
+
+[nico] Jeg synes at det var dårlig å gå forbi. Er du enig, bestemor? || I think it was bad to walk past. Do you agree, grandmother?
+[marta] Ja, jeg er enig. Kanskje er det lett å gå forbi, men det er dårlig. || Yes, I agree. Maybe it is easy to walk past, but it is bad.
+
+Det er nesten sent, men regnet fortsetter. || It is almost late, but the rain continues.

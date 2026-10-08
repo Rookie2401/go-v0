@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "id": "bible-1john-1",
+  "lang": "nb",
+  "title": "1 Johannes 1,8–9; Johannes 3,16",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "bible-nb-1930-unverified",
+    "kind": "scripture",
+    "title": "Bibelen på Norsk 1930 (unverified sample)"
+  },
+  "source": {
+    "id": "src:nb:bible-1john-1",
+    "title": "Bibelen (Det Norske Bibelselskap, 1930), as shown by the CrossWire SWORD module Norsk",
+    "url": "https://crosswire.org/study/passagestudy.jsp?mod=Norsk&key=1John+1%3A8-9",
+    "edition": "Bibelen på Norsk 1930 (CrossWire module Norsk)",
+    "attribution": "Bibelen 1930 (Bokmål), as shown by CrossWire module Norsk; rights unverified - not for release.",
+    "provenance": "Read on 2026-10-07 from the CrossWire passage-study pages for module Norsk (1 John 1:8-9: https://crosswire.org/study/passagestudy.jsp?mod=Norsk&key=1John+1%3A8-9 and John 3:16: https://crosswire.org/study/passagestudy.jsp?mod=Norsk&key=John+3%3A16); nothing was downloaded. SINGLE-SOURCE READING: an independent reading of the Åpen Bibel repository (Ravatsaas/apen-bibel, Tekst/62 Johannes første brev/001.md and Tekst/43 Johannes/003.md) DISAGREES in two places (1 John 1:9 \"tilgir oss syndene\" there against \"forlater oss syndene\" here; John 3:16 \"for at\" there against \"forat\" here), so the wording is NOT confirmed against two agreeing sources and no scripture.verification record exists. Rights are unverified: Bibelselskapet says the 1930 translation has \"falt i det fri\" (https://bibel.no/verbum/rettigheter-til-bruk-av-bibeltekst) without naming a legal basis, and the CrossWire licence statement is not Bibelselskapet's. This sample MUST be replaced or verified before any release.",
+    "rights": "unverified",
+    "licenseNote": "Rights unverified. Bibelselskapet states the 1930 translation has fallen into the public domain; CrossWire labels module Norsk Public Domain; no legal basis checked. Do not ship until a person verifies.",
+    "authorship": "human",
+    "retrievedAt": "2026-10-07"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Unverified sample: wording read from one source only (CrossWire); the Åpen Bibel text differs in two places. Needs a second, agreeing source or a printed-edition check by a person."
+  },
+  "topics": [
+    "scripture",
+    "1john-1",
+    "john-3"
+  ],
+  "editorialTags": [
+    "unverified-sample",
+    "single-source-reading",
+    "rights-unverified"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "bibelen-1930",
+    "courseId": "norway-nb",
+    "chapter": {
+      "index": 0,
+      "title": "1 Johannes 1,8–9; Johannes 3,16"
+    }
+  },
+  "scripture": {
+    "translationId": "nor1930",
+    "translationName": "Bibelen 1930 (Bokmål)",
+    "edition": "Bibelen på Norsk 1930 (CrossWire module Norsk)",
+    "book": "1JN",
+    "chapter": 1
+  },
+  "english": {
+    "source": "World English Bible (public domain)"
+  },
+  "sections": [
+    {
+      "title": "1 Johannes 1",
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dersom vi sier at vi ikke har synd, da dårer vi oss selv, og sannheten er ikke i oss;",
+              "english": "If we say that we have no sin, we deceive ourselves, and the truth isn’t in us.",
+              "verseRefs": [
+                "1JN.1.8"
+              ]
+            },
+            {
+              "text": "dersom vi bekjenner våre synder, er han trofast og rettferdig, så han forlater oss syndene og renser oss fra all urettferdighet.",
+              "english": "If we confess our sins, he is faithful and righteous to forgive us the sins, and to cleanse us from all unrighteousness.",
+              "verseRefs": [
+                "1JN.1.9"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Johannes 3",
+      "chapter": 3,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "For så har Gud elsket verden at han gav sin Sønn, den enbårne, forat hver den som tror på ham, ikke skal fortapes, men ha evig liv;",
+              "english": "For God so loved the world, that he gave his only born Son, that whoever believes in him should not perish, but have eternal life.",
+              "verseRefs": [
+                "JHN.3.16"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

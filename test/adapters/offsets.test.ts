@@ -8,6 +8,8 @@ const SAMPLES: Record<string, string[]> = {
   sq: ['Nuk e kuptoja zemrën time.', 'Çfarë? Një gjë: "mëkat".', 'Perëndia e fali mëkatin tim; tani besoj.'],
   th: ['พระเจ้าทรงรักโลก', 'ตอนที่ฉันยังเด็ก ฉันไม่เข้าใจหัวใจของฉัน', 'ฉันมีหนังสือ 2 เล่ม (ไม่ใช่ 3)'],
   hi: ['उसने काम किया।', 'मैं ठीक हूँ, पॉल, पर मैं एक बात नहीं समझती।', 'क्योंकि परमेश्वर ने जगत से ऐसा प्रेम रखा कि उसने दिया, ताकि वह नाश न हो।'],
+  nb: ['Jeg begynte å forstå det.', 'Hva sa du? Ikke noe: bare «ja» (eller nei).', 'Han kjøpte brød, smør og ost — på Grünerløkka.'],
+  nn: ['Eg byrja å forstå det.', 'Kva sa du? Ikkje noko: berre «ja» (eller nei).', 'Ho kjøpte brød, smør og ost — på Grünerløkka.'],
   de: ['Ich fing an, es zu verstehen.', 'Am 3. Mai kam der Gotteshaus-Mann (z. B.) nach Hause!', 'Sünde — „Untugend“ und Wahrheit.'],
 };
 

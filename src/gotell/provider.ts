@@ -45,10 +45,10 @@ const MAX_FILLER_TOKENS = 6;
 const nfc = (s: string) => s.normalize('NFC').toLowerCase();
 const setOf = (xs: string[]) => new Set(xs.map(nfc));
 const NEG_SETS: Record<LanguageCode, Set<string>> = {
-  es: setOf(NEGATORS.es), sq: setOf(NEGATORS.sq), th: setOf(NEGATORS.th), hi: setOf(NEGATORS.hi), de: setOf(NEGATORS.de),
+  es: setOf(NEGATORS.es), sq: setOf(NEGATORS.sq), th: setOf(NEGATORS.th), hi: setOf(NEGATORS.hi), de: setOf(NEGATORS.de), nb: setOf(NEGATORS.nb), nn: setOf(NEGATORS.nn),
 };
 const SUBJ_SETS: Record<LanguageCode, Set<string>> = {
-  es: setOf(SUBJECT_PRONOUNS.es), sq: setOf(SUBJECT_PRONOUNS.sq), th: setOf(SUBJECT_PRONOUNS.th), hi: setOf(SUBJECT_PRONOUNS.hi), de: setOf(SUBJECT_PRONOUNS.de),
+  es: setOf(SUBJECT_PRONOUNS.es), sq: setOf(SUBJECT_PRONOUNS.sq), th: setOf(SUBJECT_PRONOUNS.th), hi: setOf(SUBJECT_PRONOUNS.hi), de: setOf(SUBJECT_PRONOUNS.de), nb: setOf(SUBJECT_PRONOUNS.nb), nn: setOf(SUBJECT_PRONOUNS.nn),
 };
 
 export interface RuleBasedProviderDeps { adapters: AdapterRegistry }

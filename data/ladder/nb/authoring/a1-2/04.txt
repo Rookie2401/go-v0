@@ -1,0 +1,44 @@
+=== nb-a1-2-04 | story | health | At the clinic | På klinikken | health,illness,doctor,rest
+speakers: lege=Legen
+note: "Jeg har vondt i hodet" is the usual way to say "I have a headache"; "legen" is the doctor.
+## {sam} er syk
+{sam} har feber. Han må gå til legen. || Sam has a fever. He has to go to the doctor.
+Det er tirsdag. {sam} er syk. Han har vondt i hodet. || It is Tuesday. Sam is ill. He has a headache.
+Han har feber, og han er veldig trøtt. || He has a fever, and he is very tired.
+[luis] Du er syk, {sam}! Du må gå til klinikken. || You are ill, Sam! You have to go to the clinic.
+[sam] Ja, jeg må gå til legen. || Yes, I have to go to the doctor.
+{sam} tar bussen til klinikken. Mange er syke i dag. || Sam takes the bus to the clinic. Many are ill today.
+
+## På klinikken
+{ana} jobber på klinikken. Hun er sykepleier. || Anna works at the clinic. She is a nurse.
+[ana] Hei, {sam}! Hvordan går det? || Hi, Sam! How are you?
+[sam] Det går ikke bra. Jeg har vondt i hodet. || I am not well. I have a headache.
+[ana] Har du feber? || Do you have a fever?
+[sam] Ja, jeg har feber. || Yes, I have a fever.
+[ana] Du må snakke med legen. Han heter Dahl. || You have to talk to the doctor. His name is Dahl.
+
+## Hos legen
+Legen er snill. Han hjelper mange pasienter. || The doctor is kind. He helps many patients.
+[lege] Hei, {sam}! Hva er det med deg? || Hi, Sam! What is the matter with you?
+[sam] Jeg har vondt i hodet. Jeg er trøtt. || I have a headache. I am tired.
+[lege] Du må hvile. Du må drikke vann og te. || You have to rest. You have to drink water and tea.
+[lege] Du må hvile hjemme i dag og i morgen. || You have to rest at home today and tomorrow.
+[sam] Takk. Jeg skal hvile. || Thanks. I will rest.
+[lege] Ha det bra, {sam}! || Goodbye, Sam!
+
+## Hjemme
+{sam} er hjemme. Han hviler i rommet. Han drikker te. || Sam is at home. He rests in his room. He drinks tea.
+{marta} kommer med suppe. Hun er snill. || Marta comes with soup. She is kind.
+[marta] Her er suppe, {sam}. Du må spise. || Here is soup, Sam. You have to eat.
+[sam] Takk, {marta}! Suppen er god. || Thank you, Marta! The soup is good.
+{nico} kommer også. Han har brød. || Nils comes too. He has bread.
+[nico] Er du syk, {sam}? || Are you ill, Sam?
+[sam] Ja, men jeg skal hvile. Jeg er glad for suppen. || Yes, but I will rest. I am glad about the soup.
+På torsdag er {sam} i kirka. Han har ikke vondt i hodet. || On Thursday Sam is at church. He does not have a headache.
+
+## Husker du?
+I {city} er været ofte vått, og paraplyen er alltid med. Sola er ute, og det er varmt. || In Bergen the weather is often wet, and the umbrella is always with you. The sun is out, and it is warm.
+
+{marta} kommer på besøk. Hun sitter i stua, og hun får te. || Marta comes for a visit. She sits in the living room, and she gets tea.
+
+{luis} handler i butikken. På listen er det egg og smør. Han trenger melk også. || Lars shops at the shop. On the list there are eggs and butter. He needs milk too.

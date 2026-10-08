@@ -9,7 +9,8 @@ import {
 import { loadSeedCorpus } from './seed';
 import { baseDoc, clock, countWrites, registry, scriptureDoc, snapshot } from './helpers';
 
-const docs = loadSeedCorpus(); // the original fifteen seed texts; the course texts have their own tests (corpus.test.ts)
+const ANALYZED = [...LANGUAGES];
+const docs = loadSeedCorpus(); // the seed texts (three per language, seven languages); the course texts have their own tests (corpus.test.ts)
 const clone = <T,>(x: T): T => structuredClone(x);
 const sentencesOf = (d: CorpusDocument): string[] =>
   d.sections.flatMap((s) => s.paragraphs.flatMap((p) => ('sentences' in p ? p.sentences.map((x) => x.text) : [p.text])));
@@ -36,9 +37,9 @@ describe('import of the bundled corpus', () => {
     report = await importDocuments(store, registry, docs, { clock });
   });
 
-  it('imports all fifteen documents as created, with a per-document report', async () => {
+  it('imports every seed document as created, with a per-document report', async () => {
     expect(report.ok).toBe(true);
-    expect(report.documents).toHaveLength(15);
+    expect(report.documents).toHaveLength(21);
     for (const r of report.documents) {
       expect(r.action).toBe('created');
       expect(r.contentVersion).toBe(1);
@@ -50,8 +51,8 @@ describe('import of the bundled corpus', () => {
       expect(t.published).toBe(r.published);
       expect(t.unpublishedReasons).toEqual(r.unpublishedReasons);
     }
-    expect(await store.texts.count()).toBe(15);
-    expect(await store.sources.count()).toBe(15);
+    expect(await store.texts.count()).toBe(docs.length);
+    expect(await store.sources.count()).toBe(docs.length);
     for (const lang of LANGUAGES) expect((await store.texts.where('lang', lang)).map((t) => t.id).sort()).toEqual(
       ['bible-1john-1', 'dialogue-01', 'story-01'].map((s) => ids.text(lang, s)).sort());
   });
@@ -99,7 +100,7 @@ describe('import of the bundled corpus', () => {
 
   it('keeps scripture text unchanged and carries verse references (and translation identity) as metadata', async () => {
     const bibles = docs.filter((d) => d.contentType === 'scripture');
-    expect(bibles).toHaveLength(5);
+    expect(bibles).toHaveLength(7);
     for (const d of bibles) {
       const textId = ids.text(d.lang, d.id);
       const text = (await store.texts.get(textId))!;
@@ -169,7 +170,7 @@ describe('import of the bundled corpus', () => {
 
   it('gives the same form in story and Bible the same formId, yet distinct tokens', async () => {
     const sharedContent: Record<LanguageCode, string[]> = {
-      es: ['pecado', 'dios'], de: ['sünde', 'gott'], sq: ['mëkat', 'perëndia'], th: ['บาป', 'พระเจ้า'], hi: ['पाप', 'परमेश्वर'],
+      es: ['pecado', 'dios'], de: ['sünde', 'gott'], sq: ['mëkat', 'perëndia'], th: ['บาป', 'พระเจ้า'], hi: ['पाप', 'परमेश्वर'], nb: [], nn: [],
     };
     for (const lang of LANGUAGES) {
       for (const word of sharedContent[lang]) {
@@ -194,7 +195,7 @@ describe('import of the bundled corpus', () => {
       }
       return out;
     };
-    for (const lang of LANGUAGES) {
+    for (const lang of ANALYZED) {
       const story = await lemmasIn(lang, 'story-01');
       const bible = await lemmasIn(lang, 'bible-1john-1');
       const shared = [...story].filter((l) => bible.has(l) && /:(NOUN|VERB|PROPN)$/.test(l));
@@ -209,8 +210,9 @@ describe('import of the bundled corpus', () => {
       sq: ['mëkat', 'fal', 'kuptoj', 'zemër', 'besoj'],
       th: ['บาป', 'ยก', 'เข้าใจ', 'หัวใจ', 'เชื่อ'],
       hi: ['पाप', 'क्षमा', 'समझना', 'दिल', 'विश्वास'],
+      nb: [], nn: [],
     };
-    for (const lang of LANGUAGES) {
+    for (const lang of ANALYZED) {
       const lemmas = await store.lemmas.where('lang', lang);
       const used = new Set<string>();
       for (const t of await store.tokens.where('textId', ids.text(lang, 'story-01'))) for (const a of await store.analyses.where('tokenId', t.id)) if (a.lemmaId) used.add(a.lemmaId);
@@ -230,8 +232,10 @@ describe('import of the bundled corpus', () => {
       sq: { young: ['kur', 'jam', 'i', 'ri'], began: ['filloj', 'të', 'kuptoj'], believe: ['besoj', 'te', '_'] },
       th: { young: ['ตอน', 'เด็ก'], began: ['เริ่ม', 'เข้าใจ'], believe: ['เชื่อ', 'ใน', '_'] },
       hi: { young: ['जब', '_', 'छोटा', 'होना'], began: ['समझना', 'लगना'], believe: ['_', 'पर', 'विश्वास'] },
+      nb: { young: ['da', '_', 'være', 'ung'], began: ['begynne', 'å', 'forstå'], believe: ['tro', 'på', '_'] },
+      nn: { young: ['då', '_', 'vere', 'ung'], began: ['byrje', 'å', 'forstå'], believe: ['tru', 'på', '_'] },
     };
-    for (const lang of LANGUAGES) {
+    for (const lang of ANALYZED) {
       const occIn = async (slug: string, pattern: string[]) =>
         (await store.phraseOccurrences.where('phraseId', ids.phrase(lang, pattern))).filter((o) => o.textId === ids.text(lang, slug));
       for (const key of ['young', 'began', 'believe'] as const) expect((await occIn('story-01', P[lang][key])).length, `${lang} story ${key}`).toBeGreaterThan(0);
@@ -247,7 +251,7 @@ describe('import of the bundled corpus', () => {
     const rows = await store.analyses.all();
     expect(rows.length).toBeGreaterThan(500);
     for (const a of rows) {
-      expect(a.analyzer).toMatch(/^adapter-(es|sq|th|hi|de)@\d+$/);
+      expect(a.analyzer).toMatch(/^adapter-(es|sq|th|hi|de|nb|nn)@\d+$/);
       expect(['lexicon', 'machine']).toContain(a.provenance);
       expect(a.confidence).toBeGreaterThan(0);
       expect(a.confidence).toBeLessThanOrEqual(1);

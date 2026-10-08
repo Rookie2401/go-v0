@@ -49,7 +49,7 @@ if (lang === ('all' as string)) {
   // every language that has a library, one after the other, same options; exit 1 when any fails
   const { spawnSync } = await import('node:child_process');
   let failed = 0;
-  for (const l of ['es', 'de', 'hi', 'sq', 'th']) {
+  for (const l of ['es', 'de', 'hi', 'sq', 'th', 'nb', 'nn']) {
     if (!fs.existsSync(path.join(path.resolve(opt('library') ?? 'public/library'), l, 'manifest.json'))) { console.log(`library:audit ${l} — no library installed`); continue; }
     const r = spawnSync(process.execPath, [path.resolve('node_modules/vite-node/dist/cli.mjs'), '--config', path.resolve('scripts/vite.config.ts'), path.resolve('scripts/library-audit.mts'), l, ...args.filter((x) => x !== 'all')], { stdio: 'inherit' });
     if (r.status !== 0) failed++;

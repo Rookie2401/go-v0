@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a2-2-01",
+  "lang": "nb",
+  "title": "News from the town",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a2-2-01",
+    "title": "News from the town (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". A short invented local news item in the style of a newspaper, followed by people discussing it. No real institutions are named."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "news",
+    "school",
+    "building",
+    "community"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "luis": "Lars",
+    "sam": "Sam",
+    "marta": "Marta",
+    "ola": "Ola",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "Avisen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ny skole i Bergen",
+              "english": "New school in Bergen"
+            },
+            {
+              "text": "Det blir en ny skole i byen. Skolen skal bygges i år, og den skal åpne neste høst.",
+              "english": "There will be a new school in town. The school is to be built this year, and it will open next autumn."
+            },
+            {
+              "text": "Den gamle skolen er for liten. Det er mange elever, og klassene er store.",
+              "english": "The old school is too small. There are many pupils, and the classes are big."
+            },
+            {
+              "text": "Den nye skolen blir stor og lys. Folk i byen er glade for nyheten.",
+              "english": "The new school will be big and light. People in town are glad about the news."
+            },
+            {
+              "text": "Læreren Lars sier: «Det er bra at skolen blir ny. Vi trenger mer plass.»",
+              "english": "The teacher Lars says: \"It is good that the school is getting new. We need more space.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjemme",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Har du lest nyhetene i dag, Lars?",
+              "english": "Have you read the news today, Lars?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg har lest om skolen. Den blir bygget neste år.",
+              "english": "Yes, I have read about the school. It will be built next year.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Hvem skal bygge den?",
+              "english": "Who is going to build it?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det vet jeg ikke. Men skolen blir åpnet neste høst.",
+              "english": "I do not know. But the school will be opened next autumn.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Det er en god nyhet for byen. Elevene trenger en ny skole.",
+              "english": "That is good news for the town. The pupils need a new school.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Hvis den blir lys og stor, blir elevene glade.",
+              "english": "If it becomes light and big, the pupils will be happy.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, og jeg blir glad, når klassen min har mer plass.",
+              "english": "Yes, and I will be happy when my class has more space.",
+              "speaker": "luis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "På markedet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta har også lest nyhetene. Hun snakker med {ola} om skolen.",
+              "english": "Marta has also read the news. She talks with Ola about the school."
+            },
+            {
+              "text": "Skolen min var liten og gammel. Jeg gikk lenge for å komme dit.",
+              "english": "My school was small and old. I walked a long time to get there.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Alle trenger en god skole. Jeg håper at den blir åpnet snart.",
+              "english": "Everyone needs a good school. I hope it will be opened soon.",
+              "speaker": "ola"
+            },
+            {
+              "text": "Jeg håper det også. Da blir Nils glad, og jeg blir glad.",
+              "english": "I hope so too. Then Nils will be happy, and I will be happy.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Om kvelden",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Om kvelden snakker alle om skolen. Nils spør om han kan gå på den nye skolen.",
+              "english": "In the evening everyone talks about the school. Nils asks whether he can go to the new school."
+            },
+            {
+              "text": "Du er elleve år nå, Nils. Når skolen åpner, er du tolv år.",
+              "english": "You are eleven now, Nils. When the school opens, you will be twelve.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Da skal jeg lese mer, og jeg skal ikke glemme veska mi!",
+              "english": "Then I will read more, and I will not forget my bag!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Det håper vi, Nils. Du har mistet veska mange ganger.",
+              "english": "We hope so, Nils. You have lost your bag many times.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg vil også gå på skolen, hvis jeg kan lære mer norsk der.",
+              "english": "I also want to go to school, if I can learn more Norwegian there.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du kan komme i klassen min, Sam. Da får du mange spørsmål!",
+              "english": "You can come to my class, Sam. Then you will get many questions!",
+              "speaker": "luis"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Det er en god nyhet, Lars. Du jobber mye, og du er alltid glad i elevene dine.",
+              "english": "That is good news, Lars. You work a lot, and you are always fond of your pupils.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg synes at den nye skolen er bra. Er dere enige?",
+              "english": "I think the new school is good. Do you agree?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Kanskje, men jeg liker den gamle mer enn den nye.",
+              "english": "Maybe, but I like the old one more than the new one.",
+              "speaker": "ana"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Om sommeren er Sam ute hver dag. Om høsten regner det, og om våren kommer sola.",
+              "english": "In summer Sam is outside every day. In autumn it rains, and in spring the sun comes."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam har bestemt seg. Om en måned skal han bestemme seg for et år til.",
+              "english": "Sam has decided. In a month he will decide on one more year."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "På fredagskveld satt vi i sofaen ved bordet. Hvilken film vil du se? Vi spilte først.",
+              "english": "On Friday evening we sat on the sofa by the table. Which film do you want to watch? We played first."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nils husker historien om samaritanen. En mann lå skadet på veien. Røverne tok jakka hans. Presten gikk forbi, men samaritanen hjalp ham. Han tok ham til et hotell, og han var hans nabo.",
+              "english": "Nils remembers the story about the Samaritan. A man lay injured on the road. The robbers took his jacket. The priest walked past, but the Samaritan helped him. He took him to a hotel, and he was his neighbour."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

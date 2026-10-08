@@ -1,0 +1,151 @@
+{
+  "lang": "nb",
+  "version": 1,
+  "steps": [
+    {
+      "id": "s01",
+      "kind": "scene",
+      "ref": "nb-s01"
+    },
+    {
+      "id": "s02",
+      "kind": "scene",
+      "ref": "nb-s02"
+    },
+    {
+      "id": "snd1",
+      "kind": "sounds",
+      "ref": "nb-snd1"
+    },
+    {
+      "id": "s03",
+      "kind": "scene",
+      "ref": "nb-s03"
+    },
+    {
+      "id": "s04",
+      "kind": "scene",
+      "ref": "nb-s04"
+    },
+    {
+      "id": "snd2",
+      "kind": "sounds",
+      "ref": "nb-snd2"
+    },
+    {
+      "id": "s05",
+      "kind": "scene",
+      "ref": "nb-s05"
+    },
+    {
+      "id": "s06",
+      "kind": "scene",
+      "ref": "nb-s06"
+    },
+    {
+      "id": "snd3",
+      "kind": "sounds",
+      "ref": "nb-snd3"
+    },
+    {
+      "id": "r1",
+      "kind": "review",
+      "ref": "nb-s04",
+      "channel": "listen-first"
+    },
+    {
+      "id": "s07",
+      "kind": "scene",
+      "ref": "nb-s07"
+    },
+    {
+      "id": "s08",
+      "kind": "scene",
+      "ref": "nb-s08"
+    },
+    {
+      "id": "s09",
+      "kind": "scene",
+      "ref": "nb-s09"
+    },
+    {
+      "id": "snd4",
+      "kind": "sounds",
+      "ref": "nb-snd4"
+    },
+    {
+      "id": "s10",
+      "kind": "scene",
+      "ref": "nb-s10"
+    },
+    {
+      "id": "r2",
+      "kind": "review",
+      "ref": "nb-s07",
+      "channel": "listen-first"
+    },
+    {
+      "id": "snd5",
+      "kind": "sounds",
+      "ref": "nb-snd5"
+    },
+    {
+      "id": "s11",
+      "kind": "scene",
+      "ref": "nb-s11"
+    },
+    {
+      "id": "s12",
+      "kind": "scene",
+      "ref": "nb-s12"
+    },
+    {
+      "id": "s13",
+      "kind": "scene",
+      "ref": "nb-s13"
+    },
+    {
+      "id": "s14",
+      "kind": "scene",
+      "ref": "nb-s14"
+    },
+    {
+      "id": "s15",
+      "kind": "scene",
+      "ref": "nb-s15"
+    },
+    {
+      "id": "s16",
+      "kind": "scene",
+      "ref": "nb-s16"
+    },
+    {
+      "id": "s17",
+      "kind": "scene",
+      "ref": "nb-s17"
+    },
+    {
+      "id": "r3",
+      "kind": "review",
+      "ref": "nb-s12",
+      "channel": "listen-only"
+    },
+    {
+      "id": "r4",
+      "kind": "review",
+      "ref": "nb-s13",
+      "channel": "listen-only"
+    },
+    {
+      "id": "exit",
+      "kind": "exit"
+    }
+  ],
+  "next": [
+    {
+      "textId": "text:nb:nb-a1-1-01",
+      "title": "Første steg — first ladder text",
+      "note": "The first controlled text of the Norwegian course (a draft awaiting review)."
+    }
+  ]
+}

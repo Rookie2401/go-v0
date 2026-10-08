@@ -8,6 +8,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { LanguageCode, ScriptureReadiness, Text, TextViewed } from '../../core';
+import { courseReads } from '../../core';
 import { useApp } from '../context';
 import { ProgressLine, VocabularyLine, useCoverage, useReadingProgress } from '../coverage';
 import { useEmitter } from '../events';
@@ -29,7 +30,8 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
   const onChange = useCallback((i: PlayerChange) => setInfo(i), []);
   const back = mode === 'scripture' ? '/scripture' : '/read';
   const backLabel = mode === 'scripture' ? 'Scripture' : 'Library';
-  const { store, lang, library } = useApp();
+  const { store, lang, library, course } = useApp();
+  const readsLangs = course?.readsLangs;
   const listen = useListenEnabled();
   const preview = usePreview();
   const [gate, setGate] = useState<Gate>({ state: 'loading' });
@@ -44,13 +46,13 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
       const corpus = text ? await store.corpora.get(text.corpusId) : undefined;
       let next: Gate;
       if (!text || (text.listeningAssessmentId !== undefined || text.readingAssessmentId !== undefined) || isTestimonyText(text, corpus ? new Map([[corpus.id, corpus]]) : undefined)) next = { state: 'missing' };
-      else if (text.lang !== lang) next = { state: 'language', textLang: text.lang };
+      else if (!courseReads({ lang, readsLangs }, text.lang)) next = { state: 'language', textLang: text.lang };
       else if (text.published !== true && !preview) next = { state: 'unpublished', reasons: plainReasons(text.unpublishedReasons ?? []) };
       else next = { state: 'ok' };
       if (live) setGate(next);
     })();
     return () => { live = false; };
-  }, [store, library, textId, lang, preview]);
+  }, [store, library, textId, lang, readsLangs, preview]);
 
   const bar = <Topbar title={backLabel} left={<BackLink to={back} label={backLabel} />} />;
   if (gate.state === 'loading') return <div>{bar}<div className="page"><p className="muted" role="status">Loading…</p></div></div>;

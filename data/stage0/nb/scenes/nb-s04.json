@@ -1,0 +1,225 @@
+{
+  "id": "nb-s04",
+  "lang": "nb",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-07",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Bokmål drafted for Stage 0 (machine draft, TODO(review)): needs a native Bokmål speaker before it is trusted."
+    }
+  },
+  "intentional": [],
+  "title": {
+    "en": "No, thank you",
+    "target": "Nei, takk"
+  },
+  "world": {
+    "characters": [
+      "luis",
+      "sam",
+      "ana"
+    ],
+    "things": [
+      "water",
+      "coffee"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Vil du ha kaffe, Sam?",
+      "en": "Do you want coffee, Sam?",
+      "speaker": "luis",
+      "picture": "☕❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Nei, takk. Jeg vil ha vann.",
+      "en": "No, thank you. I want water.",
+      "speaker": "sam",
+      "picture": "🙅☕ 💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Her er vann.",
+      "en": "Here is water.",
+      "speaker": "luis",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Takk, Lars.",
+      "en": "Thank you, Lars.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Bare hyggelig.",
+      "en": "You're welcome.",
+      "speaker": "luis",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Jeg vil ha kaffe.",
+      "en": "I want coffee.",
+      "speaker": "ana",
+      "picture": "👩☕",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "vil",
+      "ha",
+      "nei",
+      "takk",
+      "her",
+      "bare"
+    ],
+    "constructions": [
+      "nb.vil-ha",
+      "nb.yes-no-question",
+      "nb.politeness"
+    ]
+  },
+  "represents": [
+    "nb.vil-ha",
+    "nb.yes-no-question",
+    "nb.politeness",
+    "nb.present-tense",
+    "nb.negation-ikke"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Lars offer Sam?"
+      },
+      "options": [
+        {
+          "en": "coffee",
+          "picture": "☕"
+        },
+        {
+          "en": "water",
+          "picture": "💧"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam say?"
+      },
+      "options": [
+        {
+          "en": "No coffee, water please"
+        },
+        {
+          "en": "Yes, coffee"
+        },
+        {
+          "en": "Nothing"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Anna want?"
+      },
+      "options": [
+        {
+          "en": "water",
+          "picture": "💧"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        }
+      ],
+      "answer": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Say that you don't want coffee, you want water.",
+      "basedOn": [
+        "l2"
+      ],
+      "frame": "Nei, takk. Jeg vil ha ___.",
+      "accept": [
+        {
+          "text": "Nei takk jeg vil ha vann"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Offer someone coffee.",
+      "basedOn": [
+        "l1",
+        "nb.yes-no-question"
+      ],
+      "accept": [
+        {
+          "text": "Vil du ha kaffe"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "vil ha, takk, bare hyggelig",
+      "text": "\"Vil du ha …?\" is the everyday way to offer something: word for word \"will you have …?\". \"Jeg vil ha …\" is \"I want …\", and it is not rude. A question puts the verb first: \"Vil du ha kaffe?\". \"Takk\" is \"thanks\" and \"Bare hyggelig\" (\"just pleasant\") is a common answer to it.",
+      "explains": [
+        "nb.vil-ha",
+        "nb.yes-no-question",
+        "nb.politeness"
+      ],
+      "afterScenes": 0
+    }
+  ]
+}

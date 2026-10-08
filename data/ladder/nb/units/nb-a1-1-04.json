@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-1-04",
+  "lang": "nb",
+  "title": "Breakfast at the café",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-1-04",
+    "title": "Breakfast at the café (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". This unit orders with \"Jeg vil ha …\", the form Stage 0 uses. \"Kan jeg få …?\" comes later."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "breakfast",
+    "food",
+    "drinks",
+    "café"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "food"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "serv": "Servitøren",
+    "ana": "Anna",
+    "sam": "Sam",
+    "luis": "Lars",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "På kafé",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam og Anna er på kafé. Det er morgen.",
+              "english": "Sam and Anna are at a café. It is morning."
+            },
+            {
+              "text": "Sam er sulten. Anna er trøtt, men hun er glad.",
+              "english": "Sam is hungry. Anna is tired, but she is happy."
+            },
+            {
+              "text": "God morgen! Hva vil du ha, Anna?",
+              "english": "Good morning! What would you like, Anna?",
+              "speaker": "serv"
+            },
+            {
+              "text": "Jeg vil ha kaffe og brød med ost.",
+              "english": "I want coffee and bread with cheese.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Og du, Sam? Hva vil du ha?",
+              "english": "And you, Sam? What would you like?",
+              "speaker": "serv"
+            },
+            {
+              "text": "Jeg vil ha te med melk.",
+              "english": "I want tea with milk.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vil du ha brød?",
+              "english": "Do you want bread?",
+              "speaker": "serv"
+            },
+            {
+              "text": "Ja, jeg vil gjerne ha brød med ost.",
+              "english": "Yes, I would like bread with cheese.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vær så god.",
+              "english": "Here you are.",
+              "speaker": "serv"
+            },
+            {
+              "text": "Takk!",
+              "english": "Thank you!",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Frokost",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna spiser brød. Sam spiser brød med ost også.",
+              "english": "Anna eats bread. Sam eats bread with cheese too."
+            },
+            {
+              "text": "Anna drikker kaffe. Sam liker melk.",
+              "english": "Anna drinks coffee. Sam likes milk."
+            },
+            {
+              "text": "Er du mett nå, Sam?",
+              "english": "Are you full now, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Nei, nå er jeg ikke mett. Jeg vil ha mer brød.",
+              "english": "No, now I am not full. I want more bread.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg er mett. Men jeg vil ha mer kaffe.",
+              "english": "I am full. But I want more coffee.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg vil ha mer melk.",
+              "english": "I want more milk.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Kafeen er bra!",
+              "english": "The café is good!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg liker kafeen.",
+              "english": "Yes, I like the café.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nå går vi til kirka.",
+              "english": "Now we are going to church.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "På skolen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Lars er ikke på kafé. Han er på skolen.",
+              "english": "Lars is not at a café. He is at the school."
+            },
+            {
+              "text": "Han er lærer, og han er trøtt i dag. Han vil ha kaffe.",
+              "english": "He is a teacher, and he is tired today. He wants coffee."
+            },
+            {
+              "text": "Nils er også på skolen. Han liker ikke kaffe.",
+              "english": "Nils is at the school too. He does not like coffee."
+            },
+            {
+              "text": "Nils vil ha brød. Han er sulten.",
+              "english": "Nils wants bread. He is hungry."
+            },
+            {
+              "text": "Hei, Nils! Hva vil du ha?",
+              "english": "Hi, Nils! What do you want?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg vil ha brød, takk!",
+              "english": "I want bread, please!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Vær så god.",
+              "english": "Here you are.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Takk, Lars! Du er glad i dag.",
+              "english": "Thanks, Lars! You are happy today.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja, jeg er glad. Men jeg er trøtt.",
+              "english": "Yes, I am happy. But I am tired.",
+              "speaker": "luis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Fru Berg kommer til kafeen. Hun kommer fra kirka.",
+              "english": "Mrs Berg is coming to the café. She is coming from church.",
+              "speaker": "ana"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hvem er mora di, Anna?",
+              "english": "Who is your mother, Anna?",
+              "speaker": "sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Huset til Anna har et stort vindu.",
+              "english": "Anna's house has a big window."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

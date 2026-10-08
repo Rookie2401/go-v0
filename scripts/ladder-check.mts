@@ -28,6 +28,9 @@ function printReport(r: LadderReport): void {
   }
   console.log('\nstage       units   words  scripture %  mean cov3 %   (* = Scripture)');
   for (const s of r.stages) console.log(`${pad(s.stage, 10)} ${pad(s.units, 6, true)} ${pad(s.words, 7, true)} ${pad(pct(s.scriptureShare), 11, true)} ${pad(s.meanCov3 === null ? '-' : pct(s.meanCov3), 12, true)}`);
+  const o = r.advice.orphans, rc = r.advice.recurrence;
+  console.log(`\norphans    (advice): ${o.orphanLemmas} of ${o.newLemmas} new lemmas in ${o.judgedUnits} judged units are never met again; ${o.unitsOverThreshold} unit(s) over the threshold${o.worst.length ? '; worst: ' + o.worst.map((w) => `${w.unit} ${w.orphans}/${w.newLemmas}`).join(', ') : ''}`);
+  console.log(`recurrence (advice): ${rc.nonWidening} of ${rc.judgedUnits} judged units have intervals that do not widen${rc.worst.length ? '; worst: ' + rc.worst.map((w) => `${w.unit} ${w.first}->${w.second}`).join(', ') : ''}`);
   if (!r.findings.length) console.log('\nno findings.');
   else {
     console.log('');

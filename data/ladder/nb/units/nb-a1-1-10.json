@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-a1-1-10",
+  "lang": "nb",
+  "title": "The bus into town",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-a1-1-10",
+    "title": "The bus into town (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". \"Unnskyld\" opens a request to a stranger. \"Gå rett fram\" is the standard instruction for \"go straight ahead\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "bus",
+    "ticket",
+    "town centre",
+    "directions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "sjafor": "Sjåføren",
+    "dame": "Damen",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "På busstoppet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam er på busstoppet. Han vil til sentrum.",
+              "english": "Sam is at the bus stop. He wants to go to the town centre."
+            },
+            {
+              "text": "Bussen kommer. Sam er glad.",
+              "english": "The bus is coming. Sam is happy."
+            },
+            {
+              "text": "Unnskyld, går bussen til sentrum?",
+              "english": "Excuse me, does the bus go to the town centre?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, den går til sentrum.",
+              "english": "Yes, it goes to the town centre.",
+              "speaker": "sjafor"
+            },
+            {
+              "text": "Hvor mye koster det?",
+              "english": "How much does it cost?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det koster førti kroner.",
+              "english": "It costs forty kroner.",
+              "speaker": "sjafor"
+            },
+            {
+              "text": "Her er pengene. Takk.",
+              "english": "Here is the money. Thanks.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vær så god.",
+              "english": "Here you are.",
+              "speaker": "sjafor"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "På bussen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam liker byen fra vinduet.",
+              "english": "Sam likes the town from the window."
+            },
+            {
+              "text": "Han liker kirka, skolen og markedet. Det regner litt.",
+              "english": "He likes the church, the school and the market. It is raining a little."
+            },
+            {
+              "text": "Stopper den her?",
+              "english": "Does it stop here?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, den stopper her.",
+              "english": "Yes, it stops here.",
+              "speaker": "sjafor"
+            },
+            {
+              "text": "Den stopper bare litt. Mange folk går ut. Alle går ut, og Sam går ut også.",
+              "english": "It stops only a little. Many people get out. Everyone gets out, and Sam gets out too."
+            },
+            {
+              "text": "Mange takk! Ha det bra!",
+              "english": "Thank you very much! Goodbye!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ha det bra!",
+              "english": "Goodbye!",
+              "speaker": "sjafor"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Til klinikken",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam er i byen. Han vil til klinikken. Anna jobber på klinikken.",
+              "english": "Sam is in town. He wants to go to the clinic. Anna works at the clinic."
+            },
+            {
+              "text": "Unnskyld, hvor er klinikken?",
+              "english": "Excuse me, where is the clinic?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Gå rett fram. Så går du til høyre.",
+              "english": "Go straight ahead. Then you turn right.",
+              "speaker": "dame"
+            },
+            {
+              "text": "Rett fram og til høyre?",
+              "english": "Straight ahead and to the right?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, det er bra.",
+              "english": "Yes, that is right.",
+              "speaker": "dame"
+            },
+            {
+              "text": "Mange takk!",
+              "english": "Thank you very much!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vær så god!",
+              "english": "You are welcome!",
+              "speaker": "dame"
+            },
+            {
+              "text": "Sam går rett fram. Så går han til høyre.",
+              "english": "Sam goes straight ahead. Then he turns right."
+            },
+            {
+              "text": "Unnskyld, er dette klinikken?",
+              "english": "Excuse me, is this the clinic?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, hei, Sam! Her er klinikken.",
+              "english": "Yes, hi, Sam! Here is the clinic.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Anna og Sam",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hvordan går det? Du er i byen i dag!",
+              "english": "How are you? You are in town today!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, jeg er her. Jeg vil ha litt kaffe.",
+              "english": "Yes, I am here. I want a little coffee.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bra! Vil du ha kaffe nå?",
+              "english": "Good! Do you want coffee now?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, gjerne! Du jobber mye, Anna.",
+              "english": "Yes, please! You work a lot, Anna.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, jeg er trøtt i dag. Men jeg er glad.",
+              "english": "Yes, I am tired today. But I am glad.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Anna har kaffe og brød. Sam er glad.",
+              "english": "Anna has coffee and bread. Sam is happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam er på bussen, og han vil ha middag. Han vil ha fisk og poteter. Marta lager suppe.",
+              "english": "Sam is on the bus, and he wants dinner. He wants fish and potatoes. Marta makes soup."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nils er elev. Skolen begynner klokka åtte. Han har lekse, men han liker ikke å skrive.",
+              "english": "Nils is a pupil. School begins at eight o'clock. He has homework, but he does not like to write."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Presten leser i bibelen, og alle synger en sang.",
+              "english": "The pastor reads in the Bible, and everyone sings a song."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna er sykepleier, og hun tar bussen til klinikken.",
+              "english": "Anna is a nurse, and she takes the bus to the clinic."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

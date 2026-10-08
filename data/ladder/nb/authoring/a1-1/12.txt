@@ -1,0 +1,45 @@
+=== nb-a1-1-12 | story | narrative | Sam tells about his week | {sam} snakker om uka | week,retelling,days,daily life
+note: The days of the week are written in lower case, as Norwegian does. The narration is in the present tense, as in the earlier units; the past tense comes in a1-2.
+## Uka mi
+Mandag, tirsdag, onsdag, torsdag, fredag, lørdag, søndag: det er sju dager i uka. || Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday: that is seven days in the week.
+Jeg heter {sam}. Jeg bor i {city}. Jeg vil snakke om uka mi. || My name is Sam. I live in Bergen. I want to talk about my week.
+På mandag er jeg på skolen. Jeg leser og skriver. || On Monday I am at school. I read and write.
+På tirsdag er jeg på markedet. Jeg kjøper brød og epler. || On Tuesday I am at the market. I buy bread and apples.
+På onsdag er jeg hjemme. Jeg leser i bibelen. || On Wednesday I am at home. I read in the Bible.
+På torsdag er jeg hos {marta}. Hun lager fisk og poteter. || On Thursday I am at Marta's. She makes fish and potatoes.
+På fredag tar jeg bussen til sentrum. || On Friday I take the bus to the town centre.
+På lørdag er jeg hos {ana} og {luis}. Jeg hjelper {ana} og {luis}. || On Saturday I am at Anna's and Lars's. I help Anna and Lars.
+På søndag går jeg til kirka. Jeg synger og ber. || On Sunday I go to church. I sing and pray.
+
+## {ana} og {sam}
+[ana] Er du på skolen på mandag, {sam}? || Are you at school on Monday, Sam?
+[sam] Ja, jeg er på skolen på mandag. || Yes, I am at school on Monday.
+[ana] Og på tirsdag? || And on Tuesday?
+[sam] På tirsdag er jeg på markedet. || On Tuesday I am at the market.
+[ana] Er du hjemme på onsdag? || Are you at home on Wednesday?
+[sam] Ja, på onsdag er jeg hjemme. || Yes, on Wednesday I am at home.
+[ana] Er du hos {marta} på torsdag? || Are you at Marta's on Thursday?
+[sam] Ja, på torsdag er jeg hos {marta}. || Yes, on Thursday I am at Marta's.
+[sam] På fredag tar jeg bussen, og på lørdag er jeg hos deg. || On Friday I take the bus, and on Saturday I am at your place.
+[ana] Du har en bra uke! || You have a good week!
+
+## Uka til {marta}
+{marta} baker brød hver dag. På fredag og lørdag er hun på markedet. || Marta bakes bread every day. On Friday and Saturday she is at the market.
+På søndag er hun ikke på markedet. Hun går til kirka. || On Sunday she is not at the market. She goes to church.
+{nico} går på skolen hver dag, men ikke på søndag. || Nils goes to school every day, but not on Sunday.
+Hver uke er bra. || Every week is good.
+
+## Fred
+[ana] Har du fred, {sam}? || Do you have peace, Sam?
+[sam] Ja, jeg har fred. Nå har jeg fred i hjertet. || Yes, I have peace. Now I have peace in my heart.
+Jeg liker uka mi. Jeg liker folk i {city}. Jeg er glad. || I like my week. I like the people in Bergen. I am happy.
+
+## Husker du?
+På mandag begynner skolen. {nico} er elev. Han har lekse, og han skriver litt. Om kvelden er leksa slutt. || On Monday school begins. Nils is a pupil. He has homework, and he writes a little. In the evening the homework is finished.
+
+Presten ber, og alle ber. Jeg synger og ber. Gud elsker meg, og han er i hjertet mitt. || The pastor prays, and everyone prays. I sing and pray. God loves me, and he is in my heart.
+
+Været er bra i dag. Sola er ute, og det er varmt. Paraplyen er hjemme. || The weather is good today. The sun is out, and it is warm. The umbrella is at home.
+
+[sam] Unnskyld, hvor er busstoppet? || Excuse me, where is the bus stop?
+[marta] Gå rett fram og til høyre. Bussen stopper på busstoppet. || Go straight ahead and to the right. The bus stops at the bus stop.
